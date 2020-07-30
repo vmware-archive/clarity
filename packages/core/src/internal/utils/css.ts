@@ -32,8 +32,7 @@ export function removeClassnamesUnless(
 }
 
 export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, string][]): HTMLElement {
-  styleTuples.forEach((tup: [string, string]) => {
-    const [styleKey, value] = tup;
+  styleTuples.forEach(([styleKey, value]) => {
     (el.style as { [key: string]: any })[styleKey] = value;
   });
   return el;

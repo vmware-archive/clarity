@@ -9,8 +9,6 @@ import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
 import { ClarityIcons, timesIcon } from '@clr/core/icon';
 
-ClarityIcons.addIcons(timesIcon);
-
 /**
  * Standard close button for Clarity Components
  *
@@ -46,5 +44,10 @@ export class CdsInternalCloseButton extends CdsBaseButton {
 
   static get styles() {
     return [baseStyles, styles];
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(timesIcon);
   }
 }

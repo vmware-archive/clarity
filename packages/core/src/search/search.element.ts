@@ -11,8 +11,6 @@ import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, searchIcon } from '@clr/core/icon';
 import { styles as globalStyles } from './search.global.css.js';
 
-ClarityIcons.addIcons(searchIcon);
-
 /**
  * Search
  *
@@ -50,5 +48,10 @@ export class CdsSearch extends CdsControl {
 
   static get styles() {
     return [...super.styles, inputStyles];
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(searchIcon);
   }
 }

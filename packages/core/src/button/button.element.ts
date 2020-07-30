@@ -20,8 +20,6 @@ import { html, query } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
 
-ClarityIcons.addIcons(errorStandardIcon);
-
 // TODO: when we migrate away from the base64 icons in other states, we will need to either move the consts
 // into this file or move the base button here. pulling cds-icons into core/internal creates a circular dependency
 const iconSpinnerError = html`<span class="button-status-icon" cds-layout="horizontal align:center"
@@ -126,6 +124,11 @@ export class CdsButton extends CdsBaseButton {
    */
   @property({ type: String })
   loadingState = ClrLoadingState.DEFAULT;
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(errorStandardIcon);
+  }
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);

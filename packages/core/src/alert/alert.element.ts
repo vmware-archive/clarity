@@ -6,7 +6,6 @@
 
 import { html, LitElement } from 'lit-element';
 import {
-  applyMixins,
   baseStyles,
   CommonStringsService,
   event,
@@ -14,10 +13,10 @@ import {
   property,
   querySlot,
   querySlotAll,
-  UniqueId,
   setAttributes,
   syncDefinedProps,
   internalProperty,
+  id,
 } from '@clr/core/internal';
 import {
   CdsIcon,
@@ -33,15 +32,6 @@ import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interface
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
 import { styles } from './alert.element.css.js';
-
-ClarityIcons.addIcons(
-  infoStandardIcon,
-  errorStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  timesIcon,
-  helpIcon
-);
 
 export function getIconStatusTuple(status: string): [string, string] {
   const commonstrings = CommonStringsService.keys;
@@ -115,10 +105,6 @@ export function getAlertContentLayout(
   }
 }
 
-class AlertMixinClass extends LitElement {}
-
-applyMixins(AlertMixinClass, [UniqueId]);
-
 /**
  * Alerts are banners that communicate a message with a severity attached to it.
  * They grab the user’s attention to provide critical information needed in context.
@@ -157,7 +143,7 @@ applyMixins(AlertMixinClass, [UniqueId]);
  * @cssprop --close-icon-color
  * @cssprop --close-icon-color-hover
  */
-export class CdsAlert extends AlertMixinClass {
+export class CdsAlert extends LitElement {
   @event() private closeChange: EventEmitter<boolean>;
 
   /**
@@ -175,7 +161,8 @@ export class CdsAlert extends AlertMixinClass {
   @internalProperty({ type: String, reflect: true })
   type: AlertGroupTypes = 'light';
 
-  private idForAriaDescriber = 'aria-' + this._idPrefix + this._uniqueId;
+  @id()
+  private idForAriaDescriber: string;
 
   /**
    * If false, the alert will not render the close button.
@@ -288,6 +275,18 @@ export class CdsAlert extends AlertMixinClass {
     `;
   }
 
+  constructor() {
+    super();
+    ClarityIcons.addIcons(
+      infoStandardIcon,
+      errorStandardIcon,
+      successStandardIcon,
+      warningStandardIcon,
+      timesIcon,
+      helpIcon
+    );
+  }
+
   private closeAlert() {
     this.closeChange.emit(true);
   }
@@ -296,5 +295,3 @@ export class CdsAlert extends AlertMixinClass {
     return [baseStyles, styles];
   }
 }
-
-export interface CdsAlert extends AlertMixinClass, UniqueId {}

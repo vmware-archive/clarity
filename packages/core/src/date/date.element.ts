@@ -11,8 +11,6 @@ import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, calendarIcon } from '@clr/core/icon';
 import { styles as globalStyles } from './date.global.css.js';
 
-ClarityIcons.addIcons(calendarIcon);
-
 /**
  * Date
  *
@@ -40,5 +38,10 @@ export class CdsDate extends CdsControl {
 
   static get styles() {
     return [...super.styles, inputStyles];
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(calendarIcon);
   }
 }

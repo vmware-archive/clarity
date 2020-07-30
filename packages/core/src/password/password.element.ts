@@ -10,8 +10,6 @@ import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, eyeIcon, eyeHideIcon } from '@clr/core/icon';
 
-ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
-
 /**
  * Password
  *
@@ -42,6 +40,11 @@ ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
  */
 export class CdsPassword extends CdsControl {
   @internalProperty() private showPassword = false;
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
+  }
 
   private get ariaLabel() {
     return this.showPassword ? CommonStringsService.keys.hide : CommonStringsService.keys.show;

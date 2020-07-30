@@ -37,8 +37,5 @@ export * from './utils/metadata.js';
 export * from './utils/responsive.js';
 export * from './utils/string.js';
 export * from './utils/supports.js';
-export * from './mixins/css-helpers.js';
-export * from './mixins/unique-id.js';
-export * from './mixins/apply-mixins.js';
 export * from './interfaces/index.js';
 export { styles as baseStyles } from './base/base.element.css.js';

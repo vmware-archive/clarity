@@ -4,27 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  applyMixins,
-  baseStyles,
-  CdsBaseFocusTrap,
-  CommonStringsService,
-  CssHelpers,
-  event,
-  EventEmitter,
-  onKey,
-  property,
-  UniqueId,
-} from '@clr/core/internal';
+import { baseStyles, CommonStringsService, event, EventEmitter, onKey, property, id } from '@clr/core/internal';
 import { ClarityIcons, timesIcon } from '@clr/core/icon';
-import { html } from 'lit-element';
+import { html, LitElement } from 'lit-element';
 import { styles } from './modal.element.css.js';
-
-ClarityIcons.addIcons(timesIcon);
-
-class ModalMixinClass extends CdsBaseFocusTrap {}
-
-applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
 
 /**
  * Web component modal.
@@ -64,7 +47,7 @@ applyMixins(ModalMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --content-box-shadow-color
  * @cssprop --width
  */
-export class CdsModal extends ModalMixinClass {
+export class CdsModal extends LitElement {
   static get styles() {
     return [baseStyles, styles];
   }
@@ -79,7 +62,8 @@ export class CdsModal extends ModalMixinClass {
   @property({ type: String })
   size: 'default' | 'sm' | 'lg' | 'xl';
 
-  private idForAriaLabel = `${this._idPrefix}${this._uniqueId}`;
+  @id()
+  private idForAriaLabel: string;
 
   render() {
     return html`
@@ -119,6 +103,11 @@ export class CdsModal extends ModalMixinClass {
     `;
   }
 
+  constructor() {
+    super();
+    ClarityIcons.addIcons(timesIcon);
+  }
+
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener('keydown', this.fireEventOnEscape);
@@ -139,5 +128,3 @@ export class CdsModal extends ModalMixinClass {
     });
   };
 }
-
-export interface CdsModal extends ModalMixinClass, UniqueId, CssHelpers {}

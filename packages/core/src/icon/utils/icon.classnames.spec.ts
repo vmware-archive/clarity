@@ -127,12 +127,12 @@ describe('Icon classname helpers: ', () => {
       expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
     });
     it('should remove size styles and add classname if passed a t-shirt size', async () => {
-      const myDims = '30px';
+      const myDims = '30';
       await componentIsStable(component);
-      component.addEquilateralStyles(myDims);
+      component.size = myDims;
       await componentIsStable(component);
-      expect(component.style.height).toEqual(myDims);
-      expect(component.style.width).toEqual(myDims);
+      expect(component.style.height).toEqual(`${myDims}px`);
+      expect(component.style.width).toEqual(`${myDims}px`);
       updateIconSizeStyleOrClassnames(component, 'xl');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');

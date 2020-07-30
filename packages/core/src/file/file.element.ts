@@ -10,8 +10,6 @@ import { CdsControl } from '@clr/core/forms';
 import { folderIcon, ClarityIcons } from '@clr/core/icon';
 import { styles } from './file.element.css.js';
 
-ClarityIcons.addIcons(folderIcon);
-
 /**
  * Time Input
  *
@@ -75,5 +73,10 @@ export class CdsFile extends CdsControl {
       this.buttonLabel = CommonStringsService.keys.browse;
       this.inputControl.value = '';
     }
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(folderIcon);
   }
 }

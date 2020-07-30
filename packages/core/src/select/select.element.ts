@@ -12,8 +12,6 @@ import { ClarityIcons, angleIcon } from '@clr/core/icon';
 import { styles as globalStyles } from './select.global.css.js';
 import { styles } from './select.element.css.js';
 
-ClarityIcons.addIcons(angleIcon);
-
 /**
  * Select
  *
@@ -57,6 +55,11 @@ export class CdsSelect extends CdsControl {
   @globalStyle() protected globalStyles = globalStyles;
 
   @internalProperty({ type: Boolean, reflect: true }) protected multiple = false;
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(angleIcon);
+  }
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);

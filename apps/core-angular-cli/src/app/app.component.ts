@@ -21,8 +21,6 @@ import '@clr/core/textarea/register.js';
 import '@clr/core/time/register.js';
 import '@clr/core/toggle/register.js';
 
-ClarityIcons.addIcons(cloudIcon);
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -35,6 +33,8 @@ export class AppComponent {
   formValue: Observable<{}>;
 
   constructor(private formBuilder: FormBuilder) {
+    ClarityIcons.addIcons(cloudIcon);
+
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       select: ['Option One'],

@@ -4,7 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getEnumValues, isString, transformToSpacedString } from '@clr/core/internal';
+import {
+  getEnumValues,
+  isString,
+  transformToSpacedString,
+  updateElementStyles,
+  removeClassnames,
+  addClassnames,
+  removeClassnamesUnless,
+} from '@clr/core/internal';
 import isNil from 'ramda/es/isNil';
 import { CdsIcon } from '../icon.element.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
@@ -127,17 +135,17 @@ export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
-      el.addEquilateralStyles(size + 'px');
-      el.removeClassnames(getAllIconTshirtSizeClassnames());
+      updateElementStyles(el, ['width', `${size}px`], ['height', `${size}px`]);
+      removeClassnames(el, ...getAllIconTshirtSizeClassnames());
       return;
     case SizeUpdateStrategies.ValidSizeString:
-      el.addClassname(newTshirtSize);
-      el.removeClassnamesUnless(getAllIconTshirtSizeClassnames(), [newTshirtSize]);
-      el.removeEquilateralStyles();
+      addClassnames(el, newTshirtSize);
+      removeClassnamesUnless(el, getAllIconTshirtSizeClassnames(), [newTshirtSize]);
+      updateElementStyles(el, ['width', ''], ['height', '']);
       return;
     case SizeUpdateStrategies.NilSizeValue: // nil values empty out all sizing
-      el.removeClassnames(getAllIconTshirtSizeClassnames());
-      el.removeEquilateralStyles();
+      removeClassnames(el, ...getAllIconTshirtSizeClassnames());
+      updateElementStyles(el, ['width', ''], ['height', '']);
       return;
     case SizeUpdateStrategies.BadSizeValue:
       // bad-value is ignored

@@ -5,26 +5,20 @@
  */
 
 import {
-  applyMixins,
   baseStyles,
-  CssHelpers,
   Directions,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
   Orientations,
   property,
   StatusTypes,
-  UniqueId,
+  id,
 } from '@clr/core/internal';
 import { html, LitElement, query } from 'lit-element';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
 import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames.js';
 import { hasIcon } from './utils/icon.service-helpers.js';
-
-class IconMixinClass extends LitElement {}
-
-applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
 
 /**
  * Icon component that renders svg shapes that can be customized.
@@ -45,7 +39,7 @@ applyMixins(IconMixinClass, [UniqueId, CssHelpers]);
  * @cssprop --color
  * @cssprop --badge-color
  */
-export class CdsIcon extends IconMixinClass {
+export class CdsIcon extends LitElement {
   static get styles() {
     return [baseStyles, styles];
   }
@@ -162,7 +156,8 @@ export class CdsIcon extends IconMixinClass {
 
   @query('svg') private svg: SVGElement;
 
-  private idForAriaLabel = 'aria-' + this._idPrefix + this._uniqueId;
+  @id()
+  private idForAriaLabel: string;
 
   firstUpdated() {
     this.updateSVGAriaLabel();
@@ -197,4 +192,3 @@ export class CdsIcon extends IconMixinClass {
     }
   }
 }
-export interface CdsIcon extends IconMixinClass, UniqueId, CssHelpers {}

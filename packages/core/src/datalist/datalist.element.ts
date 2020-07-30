@@ -11,8 +11,6 @@ import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, angleIcon } from '@clr/core/icon';
 import { styles as globalStyles } from './datalist-global.element.css.js';
 
-ClarityIcons.addIcons(angleIcon);
-
 /**
  * Datalist
  *
@@ -57,5 +55,10 @@ export class CdsDatalist extends CdsControl {
 
   static get styles() {
     return [...super.styles, inputStyles];
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(angleIcon);
   }
 }

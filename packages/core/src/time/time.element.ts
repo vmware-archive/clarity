@@ -11,8 +11,6 @@ import { inputStyles } from '@clr/core/input';
 import { ClarityIcons, clockIcon } from '@clr/core/icon';
 import { styles as globalStyles } from './time.global.css.js';
 
-ClarityIcons.addIcons(clockIcon);
-
 /**
  * Time Input
  *
@@ -50,5 +48,10 @@ export class CdsTime extends CdsControl {
 
   static get styles() {
     return [...super.styles, inputStyles];
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(clockIcon);
   }
 }

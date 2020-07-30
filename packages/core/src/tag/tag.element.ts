@@ -9,8 +9,6 @@ import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } fro
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
-ClarityIcons.addIcons(timesIcon);
-
 /**
  * Tags show concise metadata in a compact format.
  * Tags are visually styled to differentiate them from buttons.
@@ -90,5 +88,10 @@ export class CdsTag extends CdsBaseButton {
       </div>
       ${this.hiddenButtonTemplate}
     `;
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(timesIcon);
   }
 }

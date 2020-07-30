@@ -162,7 +162,7 @@ describe('icon element', () => {
       await componentIsStable(component);
 
       const id = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"').getAttribute('id');
-      expect(id.includes('aria-cds-icon')).toBe(true);
+      expect(id.charAt(0)).toBe('_');
       expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
     });
   });

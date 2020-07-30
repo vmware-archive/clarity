@@ -1,6 +1,6 @@
 # Angular Quickstart
 
-Clarity works best with Angular, and we are constantly updating Clarity to work best with the latest version of Angular. If you are not using Angular, then you'll want to review the [HTML/CSS Quickstart](./html).
+Clarity works best with Angular, and we are constantly updating Clarity to work best with the latest version of Angular. If you are not using Angular, then you'll want to review the [HTML/CSS Quickstart](/get-started/html).
 
 Before you begin, make sure that you have all of the prerequisites setup for your computer. You can review the [local environment setup on Angular's documentation](https://angular.io/guide/setup-local).
 

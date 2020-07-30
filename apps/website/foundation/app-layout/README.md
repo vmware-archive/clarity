@@ -11,7 +11,7 @@ toc: true
 
 The `.main-container` is a vertical flexbox which wraps the following components:
 
-- [App-Level Alert](/componenst/alerts)
+- [App-Level Alert](/components/alerts)
 - [Header](/components/header)
 - [Subnav](/components/header)
 - Content Container
@@ -52,17 +52,17 @@ The content area is where users focus their attention most of the time, gatherin
 
 ### Layout
 
-Your layout should reflect the information or workflow of the selected [navigation](/documentation/navigation). When laying out the content, keep the following in mind:
+Your layout should reflect the information or workflow of the selected [navigation](/foundation/navigation). When laying out the content, keep the following in mind:
 
 - The flow of content–how to create a hierarchy and layout that draws attention to the areas of importance
-- The importance of designing to the [grid](/documentation/grid)
+- The importance of designing to the [grid](/components/grid)
 - How to aid users in completing their tasks
 - How to handle large amounts of data
 - Responsive design (if that is part of your product’s goals)
 
 #### Common Layout Patterns
 
-Content can consist of any of the [Clarity components](/documentation), or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav, and sidenav, see [Navigation](/documentation/navigation).
+Content can consist of any of the [Clarity components](/components), or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav, and sidenav, see [Navigation](/foundation/navigation).
 
 ##### Cards
 

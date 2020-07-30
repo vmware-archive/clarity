@@ -9,7 +9,7 @@ The signpost is a convenient, lightweight way to show contextual help of informa
 
 Use a signpost when you want to show a small amount of contextual help of information without taking the user out of the current context. Use sparingly as a supplemental element and not as a primary method of adding details.
 
-<ClrImage title="basic and pie chart" src="/images/components/signpost/basic-and-pie-chart.svg" align="cener" />
+<ClrImage title="basic and pie chart" src="/images/components/signpost/basic-and-pie-chart.svg" align="center" />
 
 Use a signpost:
 
@@ -29,7 +29,7 @@ Max-width 360px; Max-height 504px
 
 Clicking the icon triggers the signpost. It remains visible until the user clicks the close icon or clicks anywhere outside of the dialog to dismiss it. To keep the interface uncluttered, only one signpost is displayed at a time. When a dialog is visible, clicking an icon to open another one automatically dismisses the previous dialog.
 
-<ClrImage title="states" src="/images/components/signpost/states.svg" align="cener" />
+<ClrImage title="states" src="/images/components/signpost/states.svg" align="center" />
 
 ## Placement
 
@@ -37,7 +37,7 @@ Clicking the icon triggers the signpost. It remains visible until the user click
 
 Default position for the dialog is 6px to the right of the trigger icon.
 
-<ClrImage title="Trigger icon and dialog positioning" src="/images/components/signpost/positioning.svg" align="cener" />
+<ClrImage title="Trigger icon and dialog positioning" src="/images/components/signpost/positioning.svg" align="center" />
 
 [//]: # 'IMAGES x2 - icon position'
 
@@ -45,13 +45,13 @@ Default position for the dialog is 6px to the right of the trigger icon.
 
 <div class="clr-col-12 clr-col-md-6">
 
-<ClrImage title="Default position for the dialog is 6px from the end of the text" src="/images/components/signpost/inline-alignment.svg" align="cener" />
+<ClrImage title="Default position for the dialog is 6px from the end of the text" src="/images/components/signpost/inline-alignment.svg" align="center" />
 Default position for the dialog is 6px from the end of the text
 
 </div>
 <div class="clr-col-12 clr-col-md-6">
 
-<ClrImage title="In tables, the icons may be aligned in a column" src="/images/components/signpost/column-alignment.svg" align="cener" />
+<ClrImage title="In tables, the icons may be aligned in a column" src="/images/components/signpost/column-alignment.svg" align="center" />
 In tables, the icons may be aligned in a column
 
 </div>
@@ -82,7 +82,7 @@ The default signpost is shown to the right of the trigger icon with the content 
 
 There are twelve signpost positions to help place popover content in an appropriate position when it is shown. Control the position and direction by declaring a position that orients the Signpost content in one of these positions.
 
-To set a position, use the `clrInput` property on the [ClrSignpostContent](/components/signposts/api.html#clrsignpostcontent) element:
+To set a position, use the `clrInput` property on the [ClrSignpostContent](/components/signposts/api/#clrsignpostcontent) element:
 
 - top-left
 - top-middle
@@ -101,6 +101,6 @@ You can see the behavior for each position in the [demo](/demo.html).
 
 ## Custom Trigger
 
-Clarity provides a default trigger. If needed, a custom trigger can be provided for any icon or element. Adding the [ClrSignpostTrigger](/components/signposts/api.html#clrsignposttrigger) directive to any element will turn it into a toggle control for the content.
+Clarity provides a default trigger. If needed, a custom trigger can be provided for any icon or element. Adding the [ClrSignpostTrigger](/components/signpost/api/#clrsignposttrigger) directive to any element will turn it into a toggle control for the content.
 
 <doc-demo src="/demos/signpost/custom-ng.html" demo="/demos/signpost/custom-css.html"/></doc-demo>

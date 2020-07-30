@@ -7,7 +7,7 @@ Password fields are a specialized input field with the ability to toggle between
 
 ## Usage
 
-Use a password field when the user needs to set or input the password. When setting a password, display the password requirement in the helper text to guide the user. Don’t hide it a in signpost, or reveal it only after the user fails the frist attempt.
+Use a password field when the user needs to set or input the password. When setting a password, display the password requirement in the helper text to guide the user. Don’t hide it a in signpost, or reveal it only after the user fails the first attempt.
 
 <!-- [//]: # Types -->
 

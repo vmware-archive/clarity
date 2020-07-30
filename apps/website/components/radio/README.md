@@ -56,10 +56,10 @@ A radio can be disabled by simply putting the `disabled` attribute on the radio 
 
 ### Usage
 
-Use radio buttons when you want users to see all available options and the list of options is small. For mutually exclusive options, consider a [checkbox](/documentation/checkboxes) or [toggle switch](/documentation/toggle-switches).
+Use radio buttons when you want users to see all available options and the list of options is small. For mutually exclusive options, consider a [checkbox](/components/checkbox) or [toggle switch](/components/toggle).
 
 - Radio buttons are best for six or fewer options.
-- For more than six options, consider a [select box](/documentation/select-boxes), which prompts users to disclose the options.
+- For more than six options, consider a [select box](/components/select), which prompts users to disclose the options.
 
 ## Accessibility
 

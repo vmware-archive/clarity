@@ -870,7 +870,7 @@ Cards can contain [progress bars](/documentation/progress).
 
 #### Card Layout
 
-Clarity recommends using cards in a [grid](/documentation/grid) or a CSS column layout.
+Clarity recommends using cards in a [grid](/components/grid) or a CSS column layout.
 
 ##### Cards in a Grid
 

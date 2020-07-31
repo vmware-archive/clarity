@@ -21,6 +21,9 @@
         cds-layout="pl@sm:md"
       >
         <Home v-if="$page.frontmatter.home" class="make-it-scrollable" />
+        <div v-if="is404" class="make-it-scrollable" cds-layout="horizontal gap:md align:horizontal-center">
+          <slot></slot>
+        </div>
         <div class="page-wrapper" v-else>
           <Page :sidebar-items="sidebarItems">
             <template #nav-toc>
@@ -66,10 +69,13 @@ import Sidebar from '@theme/components/Sidebar';
 import Footer from '@theme/components/Footer';
 import { resolveSidebarItems } from '../util';
 import { scrollToGuard } from '../util/route-guards';
-import TimerUtils from '../util/timer-utils';
 
 export default {
   name: 'Layout',
+
+  props: {
+    is404: { type: Boolean, default: false },
+  },
 
   components: {
     Home,

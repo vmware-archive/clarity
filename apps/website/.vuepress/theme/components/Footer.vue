@@ -49,9 +49,9 @@ export default {
   &:before {
     content: '';
     position: absolute;
-    width: calc(100% + 2.4rem);
+    width: 100%;
     top: 0;
-    left: -1.2rem;
+    left: 0;
     border-top: 1px solid #ccc;
   }
 }

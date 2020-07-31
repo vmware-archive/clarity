@@ -163,3 +163,11 @@ h4 .header-anchor cds-icon {
   width: var(--cds-token-space-size-9);
   height: var(--cds-token-space-size-9);
 }
+
+.hero {
+  h1,
+  h2,
+  p {
+    color: #ffffff;
+  }
+}

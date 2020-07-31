@@ -7,7 +7,7 @@
           <div class="code-license-wrapper">
             Code licensed by
             <a href="https://opensource.org/licenses/MIT" target="_blank" class="mit-link">MIT License</a>
-            <a href="#">Privacy Policy</a>
+            <a href="https://www.vmware.com/help/privacy.html" target="_blank">Privacy Policy</a>
           </div>
         </div>
 

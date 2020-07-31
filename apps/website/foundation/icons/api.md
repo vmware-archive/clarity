@@ -4,9 +4,13 @@ title: API
 
 The Clarity Icons library features a namespaced core of functionality that is publicly accessible from the browser's `window` object. This "API" is available at `ClarityIcons` and provides three useful pieces of functionality such as retrieving icons, adding new icons, and creating aliases for icons. It's worth noting that you can also access the API from the `"@clr/icons"` module in Typescript. For example:
 
-```typescript
+<DocDemo toggle="false">
+
+```javascript
 import { ClarityIcons } from '@clr/icons';
 ```
+
+</DocDemo>
 
 If you load `"@clr/icons"` like this make sure that you are not also loading it via a script tag or in some other manner.
 
@@ -26,15 +30,23 @@ You can retrieve and check the currently available icons in Clarity Icons by cal
 
 The ClarityIcons API enables you to add your own icons to the publicly available ClarityIcons architecture. Use the following call to add your icon to our library in your application:
 
-```typescript
+<DocDemo toggle="false">
+
+```javascript
 ClarityIcons.add({ 'my-custom-icon': '<svg ... >[your SVG code goes here]</svg>' });
 ```
 
+</DocDemo>
+
 This API method will assign your SVG markup to the named shape it is sent. The icon can then be used in your application like any other icon in the Clarity Icons library.
+
+<DocDemo toggle="false">
 
 ```html
 <clr-icon shape="my-custom-icon" size="24"></clr-icon>
 ```
+
+</DocDemo>
 
 [View example](https://embed.plnkr.co/MiRlaQDHIIJd3e3Hgxyj/)
 
@@ -42,16 +54,24 @@ This API method will assign your SVG markup to the named shape it is sent. The i
 
 The Clarity Icons API can create aliases for the icons in your application with a single API call:
 
-```typescript
+<DocDemo toggle="false">
+
+```javascript
 ClarityIcons.alias({ bell: ['alarm', 'oh-noehz'] });
 ```
 
+</DocDemo>
+
 The above method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the "bell" icon with any of the new names you have assigned it.
+
+<DocDemo toggle="false">
 
 ```html
 <clr-icon shape="bell"></clr-icon>
 <clr-icon shape="alarm"></clr-icon>
 <clr-icon shape="oh-noehz"></clr-icon>
 ```
+
+</DocDemo>
 
 [View example](https://embed.plnkr.co/7lsRWtqzta0FApicikel/)

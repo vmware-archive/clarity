@@ -229,7 +229,7 @@ If you want to support multiple error messages, you can do this by defining an e
 
 All Clarity form controls support resetting the validation state simply by calling the `reset()` method on the `FormControl` or `FormGroup`.
 
-```typescript
+```javascript
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -262,7 +262,7 @@ export class ReactiveFormsDemo {
 
 Normally, validation errors only appear after the control has been focused on by the user. In cases where you want to force validation errors to show (such as when the user tried to submit a form), you simply need to mark every control as touched with Angular. You can use the form API to accomplish this, `ClrForm.markAsTouched()`, which will force all form controls inside of a form to be touched, which will display the validation errors.
 
-```typescript
+```javascript
 import { ViewChild, Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -327,7 +327,7 @@ For horizontal layouts, you can override the default widths for labels (2 column
 
 Forms also work with reactive forms with the same support for validations.
 
-```typescript
+```javascript
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -360,7 +360,7 @@ The basic process is to wrap the form control in the `clr-control-container` com
 
 It is likely that you'll have to write some CSS rules to make the custom controls fit and look correct within the generic control container. Use specific selectors to avoid changing the default form control behaviors in other parts of the application!
 
-```typescript
+```javascript
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 

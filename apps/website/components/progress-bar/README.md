@@ -9,40 +9,39 @@ A progress bar is a linear indicator for providing feedback about an ongoing, us
 
 Use a progress bar to set expectation of the loading time. Users are more willing to tolerate a long wait time if they see the actual progress. It gives users control to decide whether to wait or not. It may also reduce the perceived wait time.
 
-[//] # (DEMO - progress example)
-
 <div class="clr-row">
-<div class="clr-col-12 clr-col-md-6">
-
-::: inset
-<DocInset height="100">
-
-- When you want to indicate "This will be a moment". Between 1-10 seconds
-- When progress cannot be indicated by percentage
-- When space is limited
-
-</DocInset>
-
-:::
-**Spinner Usage**
-
-</div>
-<div class="clr-col-12 clr-col-md-6">
-
-::: inset
-<DocInset height="100">
-
-- To want to indicate "This will take awhile, here is an estimate". More than 10 seconds
-- When progress can be indicated by percentage
-- When space permits
-
-</DocInset>
-:::
+<div class="clr-col-md-12 clr-col-lg-6">
+<div class="doc-height-100-container" cds-layout="p:xl"><doc-demo  demo="/demos/progress/labeled-css.html" toggle="false" /></div>
 
 **Progress Bar Usage**
 
-</div>
+::: inset
 
+<ul class="list">
+<li>To want to indicate "This will take awhile, here is an estimate". More than 10 seconds</li>
+<li>When progress can be indicated by percentage</li>
+<li>When space permits</li>
+</ul>
+
+:::
+
+</div>
+<div class="clr-col-md-12 clr-col-lg-6">
+
+<div class="doc-height-100-container" cds-layout="p-t:md"><doc-demo demo="/demos/spinner/page-css.html" toggle="false" /></div>
+
+**Spinner Usage**
+
+::: inset
+
+<ul class="list">
+<li>When you want to indicate "This will be a moment". Between 1-10 seconds</li>
+<li>When progress cannot be indicated by percentage</li>
+<li>When space is limited</li>
+</ul>
+:::
+
+</div>
 </div>
 
 ## Types
@@ -84,4 +83,3 @@ When there is no estimate for the completion time or goal of a process, show ind
 Progress bars fill from left to right. Clarity places an optional label to the right of the progress bar.
 
 <doc-demo src="/demos/progress/labeled-ng.html" demo="/demos/progress/labeled-css.html" toggle="false" />
-[//] # (Demo label)

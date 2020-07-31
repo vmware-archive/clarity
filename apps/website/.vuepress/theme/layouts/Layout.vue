@@ -66,7 +66,6 @@ import Navbar from '@theme/components/Navbar';
 import NavToc from '@theme/components/NavToc';
 import Page from '@theme/components/Page';
 import Sidebar from '@theme/components/Sidebar';
-import Footer from '@theme/components/Footer';
 import { resolveSidebarItems } from '../util';
 import { scrollToGuard } from '../util/route-guards';
 
@@ -83,7 +82,6 @@ export default {
     Sidebar,
     Navbar,
     NavToc,
-    Footer,
   },
 
   data() {

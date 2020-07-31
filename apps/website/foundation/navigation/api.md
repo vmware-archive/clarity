@@ -4,13 +4,17 @@ title: API
 
 ## Angular Navigation Components and Directives
 
-### ClrHeader, ClrMainContainer & ClrNavLevel
+### Selector & Basic Usage
 
-#### Selector & Basic Usage
+To create responsive application navigation, these three entities need to be composed together:
 
-To create responsive application navigationThese three entities need to be composed together. There is only one @Input (clr-nav-level).
-When the app is in responsive mode, level one appears on the left side and level two appears on the right side.
-_Note:_ there are multiple possibilities for designating primary and secondary navigation elements. The example below is for illustrating two places that primary navigation might live and one place for secondary navigation.
+- `clr-main-container`{.clr-code}
+- `clr-header`{.clr-code}
+- `clr-nav-level`{.clr-code}
+
+There is only one `@Input` which is `clr-nav-level` directive itself. When the app is in responsive mode, level one appears on the left side and level two appears on the right side. _Note:_ there are multiple possibilities for designating primary and secondary navigation elements. The example below is for illustrating two places that primary navigation might live and one place for secondary navigation.
+
+<DocDemo toggle="false">
 
 ```html
 <clr-main-container>
@@ -38,6 +42,8 @@ _Note:_ there are multiple possibilities for designating primary and secondary n
   </div>
 </clr-main-container>
 ```
+
+</DocDemo>
 
 ## CSS
 

@@ -187,25 +187,33 @@ In order to customize the Clarity light theme you will need to build with the Cl
 
 First, since we are going to be creating custom component styles the first step is to remove all of the Clarity css from your build process.
 
-```
+<DocDemo toggle="false">
+
+```javascript
 "styles": [
       ...
       "./node_modules/@clr/icons/clr-icons.min.css",
       ...
-  ]
+]
 ```
+
+</DocDemo>
 
 ###### Add (or modify) your applications main.scss file
 
 Next, we need to include the the application scss variable overrides and the Clarity component styles. This example shows one way of adding the Clarity dependencies and component styles based on standard `npm` installation into a `node_modules` directory of the project. In this example the `styles.scss` file lives at the top of a standard angular-cli application `src` folder.
 
-```
+<DocDemo toggle="false">
+
+```css
 // Your Application Theme File
-@import "./theme.scss";
+@import './theme.scss';
 
 // Clarity Component SCSS
-@import "../node_modules/@clr/ui/src/utils/components.clarity";
+@import '../node_modules/@clr/ui/src/utils/components.clarity';
 ```
+
+</DocDemo>
 
 ##### Why is SASS-based theming going away?
 
@@ -272,7 +280,15 @@ If, however, your product has not been able to stop supporting Internet Explorer
 
 #### Setting up IE11 support
 
-First, you will need to install Clarity Core and its dependencies: `npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponents/webcomponentsjs ramda @clr/core`.
+First, you will need to install Clarity Core and its dependencies:
+
+<DocDemo toggle="false">
+
+```bash
+npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponents/webcomponentsjs ramda @clr/core
+```
+
+</DocDemo>
 
 #### Using the polyfills
 

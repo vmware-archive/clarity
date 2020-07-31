@@ -96,7 +96,7 @@ TODO: Add in docs for clr-dg-string-filter and clr-dg-numeric-filter
 </clr-dg-column>
 ```
 
-```typescript
+```javascript
 import { ClrDatagridFilterInterface } from '@clr/angular';
 
 class MyFilter implements ClrDatagridFilterInterface<User> {
@@ -129,7 +129,7 @@ class MyComponent {
 </clr-dg-filter>
 ```
 
-```typescript
+```javascript
 import { ClrDatagridFilterInterface, ClrDatagridFilter } from '@clr/angular';
 
 @Component({
@@ -371,17 +371,17 @@ the data gets sorted.
 
 #### Basic Usage
 
-```typescript
+```javascript
 interface ClrDatagridStateInterface<T = any> {
   page?: {
-    from?: number;
-    to?: number;
-    size?: number;
-    current?: number;
+    from?: number,
+    to?: number,
+    size?: number,
+    current?: number,
   };
   sort?: {
-    by: string | ClrDatagridComparatorInterface<T>;
-    reverse: boolean;
+    by: string | ClrDatagridComparatorInterface<T>,
+    reverse: boolean,
   };
   filters?: any[];
 }

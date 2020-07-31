@@ -1,30 +1,22 @@
 <template>
-  <div class="theme-container">
-    <div class="theme-default-content">
-      <h1>404</h1>
+  <Layout :is404="true">
+    <div cds-layout="vertical gap:md align:vertical-center">
+      <p cds-text="message semibold">404 ERROR</p>
 
-      <blockquote>{{ getMsg() }}</blockquote>
+      <h1 cds-text="heading" cds-layout="m-y:md">Page not found</h1>
 
-      <RouterLink to="/">
-        Take me home.
-      </RouterLink>
+      <p cds-layout="m-b:md">The link is broken or the page has moved.</p>
+      <button class="btn" cds-layout="m-b:md m-b@sm:xl" style="color: #000;">
+        <!-- hard coded for now, css overrides were not working. Anywhere. -->
+        <router-link to="/">Back to home page</router-link>
+      </button>
     </div>
-  </div>
+    <div>
+      <img cds-layout="container:fill" src="/images/404.svg" alt="" />
+    </div>
+  </Layout>
 </template>
 
 <script>
-const msgs = [
-  `There's nothing here.`,
-  `How did we get here?`,
-  `That's a Four-Oh-Four.`,
-  `Looks like we've got some broken links.`,
-];
-
-export default {
-  methods: {
-    getMsg() {
-      return msgs[Math.floor(Math.random() * msgs.length)];
-    },
-  },
-};
+export default {};
 </script>

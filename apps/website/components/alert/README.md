@@ -229,12 +229,6 @@ This class must be applied with `.alert` to render an app-level alert.
 
 <doc-demo src="/demos/alert/multiple-app-level-alerts-ng.html" />
 
-### Summary of Options
-
-<DocAlertSummaryOfOptions table="text-styles" />
-
-Deprecation: Since v4, we will no longer handle setting `aria-live` and announcing the message for you by default. Based on the application use case, you can use the new `ClrAriaLiveService` to make announcements when they make sense for a user to hear about updates or loading status changes. This will result in of removing few inputs provided by the component such as `clrPolite`, `clrAssertive`, `clrOff`
-
 ## Accessibility
 
 <cds-alert-group status="warning" type="default">

@@ -97,3 +97,52 @@ Homogeneous content facilitates scanning – users quickly find and compare info
 Cards can contain text, images, data visualizations, or multimedia. Ensure that the content serves your use case. Keep it simple and legible. Avoid using too much content, overloading the card with too many actions, and placing links within the content.
 
 A card consists of a title 18 px Clarity City Light - content is Clarity City Regular 14px.
+
+## Code & Examples
+
+### Basic card
+
+<doc-demo src="/demos/card/basic-css.html" demo="/demos/card/basic-css.html"></doc-demo>
+
+### Clickable cards
+
+<doc-demo src="/demos/card/clickable-css.html" demo="/demos/card/clickable-css.html"></doc-demo>
+
+### Image in cards
+
+<doc-demo src="/demos/card/images-css.html" demo="/demos/card/images-css.html"></doc-demo>
+
+### Dropdown in card
+
+The footer can contain two actions. For more actions, use a [dropdown](/components/dropdown).
+
+<doc-demo src="/demos/card/dropdown-css.html" demo="/demos/card/dropdown-css.html"></doc-demo>
+
+### Card media block
+
+<doc-demo src="/demos/card/media-block-css.html" demo="/demos/card/media-block-css.html"></doc-demo>
+
+### Alert in card
+
+Cards can contain [alerts](/components/alert).
+<doc-demo src="/demos/card/alert-css.html" demo="/demos/card/alert-css.html"></doc-demo>
+
+### Lists in cards
+
+<doc-demo src="/demos/card/lists-css.html" demo="/demos/card/lists-css.html"></doc-demo>
+
+### List group in cards
+
+<doc-demo src="/demos/card/list-group-css.html" demo="/demos/card/list-group-css.html"></doc-demo>
+
+### Progress bars in cards
+
+<doc-demo src="/demos/card/progress-bars-css.html" demo="/demos/card/progress-bars-css.html"></doc-demo>
+
+### Cards in a grid
+
+<doc-demo src="/demos/card/grid-css.html" demo="/demos/card/grid-css.html"></doc-demo>
+
+### Cards in css columns
+
+<doc-demo src="/demos/card/columns-css.html" demo="/demos/card/columns-css.html"></doc-demo>

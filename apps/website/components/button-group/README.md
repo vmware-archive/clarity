@@ -489,16 +489,67 @@ If your icon button has no text, we recommend adding the **title="" attribute** 
 additional context for users unfamiliar with what action your icon button might produce. The text should reflect the
 action.
 
-```html
-<div class="btn-group btn-primary btn-icon">
-  <button class="btn">
-    <clr-icon shape="check" title="Check"></clr-icon>
-  </button>
-  <button class="btn">
-    <clr-icon shape="home" title="home"></clr-icon>
-  </button>
-  <button class="btn">
-    <clr-icon shape="user" title="user"></clr-icon>
-  </button>
-</div>
-```
+<doc-demo src="/demos/button-group/accessibility.html"></doc-demo>
+
+## Code & Examples
+
+Clarity defines three button group types:
+
+- Solid. A solid background with light text. These buttons are prominent on the page.
+- Outline. A transparent background with colored border and text. On hover, the button fills with color.
+- Flat. Text in Action Blue, used to indicate an action.
+
+Clarity [Buttons](/components/button) primary, outline and flat classes can be used along with the .btn-group class to style the buttons in a Button Group.
+
+### Basic Structure
+
+<doc-demo src="/demos/button-group/basic-css.html" demo="/demos/button-group/basic-css.html"></doc-demo>
+
+### Overflow
+
+<doc-demo src="/demos/button-group/overflow-css.html" demo="/demos/button-group/overflow-css.html"></doc-demo>
+
+### Primary
+
+<doc-demo src="/demos/button-group/primary-css.html" demo="/demos/button-group/primary-css.html"></doc-demo>
+
+### Outline
+
+<doc-demo src="/demos/button-group/outline-css.html" demo="/demos/button-group/outline-css.html"></doc-demo>
+
+### Flat
+
+<doc-demo src="/demos/button-group/flat-css.html" demo="/demos/button-group/flat-css.html"></doc-demo>
+
+### Small
+
+<doc-demo src="/demos/button-group/small-css.html" demo="/demos/button-group/small-css.html"></doc-demo>
+
+### Mixed
+
+Override a Button type in a Button Group by extending the Button type class directly on the corresponding Button.
+
+<doc-demo src="/demos/button-group/mixed-css.html" demo="/demos/button-group/mixed-css.html"></doc-demo>
+
+### Icons
+
+Text wrapped in `.clr-icon-title` is only displayed in the Overflow Menu.
+
+<doc-demo src="/demos/button-group/icons-css.html" demo="/demos/button-group/icons-css.html"></doc-demo>
+
+### Icons with text
+
+<doc-demo src="/demos/button-group/icon-with-text-css.html" demo="/demos/button-group/icon-with-text-css.html"></doc-demo>
+
+### Checkbox
+
+<doc-demo src="/demos/button-group/checkbox-css.html" demo="/demos/button-group/checkbox-css.html"></doc-demo>
+
+### Radio
+
+<doc-demo src="/demos/button-group/radio-css.html" demo="/demos/button-group/radio-css.html"></doc-demo>
+
+### Angular component
+
+Use the `clrInMenu` input to determine if a Button belongs in the Overflow Menu or not
+<doc-demo src="/demos/button-group/basic-ng.html"></doc-demo>

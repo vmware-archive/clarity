@@ -17,12 +17,6 @@ Don’t confuse a select box with a dropdown menu. Select boxes are for setting 
 
 Typically, a select box contains between 3 and 12 items. For fewer than 3 items or to present choices that are always visible, consider a radio button.
 
-<!-- [//]: # Types -->
-
-<!-- [//]: # Behavior -->
-
-<!-- [//]: # Placement -->
-
 ## Content
 
 Use sentence-style capitalization for both the label and the menu items.
@@ -35,7 +29,7 @@ If you are using Angular, the recommended approach is to always use the `ClrSele
 
 This is the standard way to define a select box inside of a form, without the use of a label or validation. You need to add `clrSelect` to your select to wire up the directive.
 
-<doc-demo src="/demos/select/basic-ng.html" demo="/demos/select/basic-css.html" toggle="false" />
+<doc-demo src="/demos/select/basic-ng.html" demo="/demos/select/basic-css.html" />
 
 ### Labels
 
@@ -43,7 +37,7 @@ For anything beyond a standalone select control, you'll need to wrap your select
 
 Then you can add a `label` element and it will automatically get laid out correctly in the form.
 
-<doc-demo src="/demos/select/label-ng.html" demo="/demos/select/label-css.html" toggle="false" />
+<doc-demo src="/demos/select/label-ng.html" demo="/demos/select/label-css.html" />
 
 ### Helper and error messages
 

@@ -328,3 +328,45 @@ When labels get too long they will be trimmed and followed by an ellipsis (…).
 </div>
 
 </div>
+
+## Code & Examples
+
+### Basic structure
+
+Use the `clr-vertical-nav` component to create the Vertical Nav. Add the `clrVerticalNavLink` directive on each Nav Link in the Vertical Nav. Use `<div class="nav-divider"></div>` to add a horizonal divider to separate logical groups.
+
+<doc-demo src="/demos/vertical-nav/basic-ng.html" />
+
+### Icon links
+
+Use the `clrVerticalNavIcon` directive on the icon leading the text in a navigation link.
+
+<doc-demo src="/demos/vertical-nav/icon-links-ng.html" />
+
+### Collapsible navigation
+
+`[clrVerticalNavCollapsible]` input can be used to toggle the collapsible behavior of the Vertical Nav. The state of the nav can be controlled by the `[(clrVerticalNavCollapsed)]` input.
+
+<doc-demo src="/demos/vertical-nav/collapsible-ng.html" />
+
+### VerticalNav groups
+
+Navigation Links can also be added directly inside of the `clr-vertical-nav` without creating a `clr-vertical-nav-group` to create a mixed navigation.
+
+<cds-alert-group status="warning" type="default">
+<cds-alert>We recommend that the application <a href="https://angular.io/guide/router">routing</a> be hierarchical.</cds-alert>
+</cds-alert-group>
+
+<doc-demo src="/demos/vertical-nav/vertical-ng.html" />
+
+### Lazy loading nav links
+
+`clrIfExpanded` structural directive can be used along with `clr-vertical-nav-group-children` to lazily load links inside of a `clr-vertical-nav-group`.
+
+<cds-alert-group status="warning" type="default">
+<cds-alert>We recommend that the application <a href="https://angular.io/guide/router">routing</a> be hierarchical.</cds-alert>
+<cds-alert>For the nav group highlighting to work with lazy loading, we need to add an empty hidden link with the routerLink pointing to a common URL prefix for the children links as shown below.</cds-alert>
+<cds-alert>Please do not add the <code>clrVerticalNavLink</code> directive to the empty link.</cds-alert>
+</cds-alert-group>
+
+<doc-demo src="/demos/vertical-nav/lazy-ng.html" />

@@ -205,7 +205,7 @@ Start icon buttons with text and follow with icon. This makes them more difficul
 
 #### Title Attribute
 
-If your icon button is has no text, we recommend adding the `title=""` attribute to your icon buttons. This adds some additional context for users unfamiliar with what action your icon button might produce. Hovering over the icon button for a moment will show a tooltip that has the `title` text. The text should reflect the action being completed.
+If your icon button is has no text, we recommend adding the `title="` attribute to your icon buttons. This adds some additional context for users unfamiliar with what action your icon button might produce. Hovering over the icon button for a moment will show a tooltip that has the `title` text. The text should reflect the action being completed.
 
 </div>
 <div class="clr-col-sm-12 clr-col-lg-6">
@@ -214,3 +214,52 @@ If your icon button is has no text, we recommend adding the `title=""` attribute
 
 </div>
 </div>
+
+## Code & Examples
+
+### Solid Buttons
+
+<doc-demo src="/demos/button/solid-css.html" demo="/demos/button/solid-css.html"></doc-demo>
+
+### Outline
+
+<doc-demo src="/demos/button/outline-css.html" demo="/demos/button/outline-css.html"></doc-demo>
+
+### Flat Buttons
+
+<doc-demo src="/demos/button/flat-css.html" demo="/demos/button/flat-css.html"></doc-demo>
+
+### Types: Primary,Secondary and Tertiary
+
+<doc-demo src="/demos/button/types-css.html" demo="/demos/button/types-css.html"></doc-demo>
+
+### States: Info, Success and Danger Outline Buttons
+
+<doc-demo src="/demos/button/states-css.html" demo="/demos/button/states-css.html"></doc-demo>
+
+### Sizes: Normal, Small, Normal Flat, Small Flat
+
+<doc-demo src="/demos/button/sizes-css.html" demo="/demos/button/sizes-css.html"></doc-demo>
+
+### Block
+
+<doc-demo src="/demos/button/block-css.html" demo="/demos/button/block-css.html"></doc-demo>
+
+### Inverse
+
+<doc-demo src="/demos/button/inverse-css.html" demo="/demos/button/inverse-css.html"></doc-demo>
+
+### Icon
+
+<doc-demo src="/demos/button/icon-css.html" demo="/demos/button/icon-css.html"></doc-demo>
+
+### Loading
+
+Use the `clrLoading` directive to change the state of the spinner button. The directive can be set to one of the following values:
+
+- `ClrLoadingState.DEFAULT`: the default state of the button.
+- `ClrLoadingState.LOADING`: replaces the button text with a spinner.
+- `ClrLoadingState.SUCCESS`: briefly shows a check mark, and automatically transition back to the ClrLoadingState.DEFAULT state.
+
+<doc-demo src="/demos/button/loading-ng.html"></doc-demo>
+<doc-demo src="/demos/button/loading.ts"></doc-demo>

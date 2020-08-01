@@ -99,7 +99,7 @@ For anything beyond a standalone input field, you'll need to wrap your input wit
 
 Then you can add a `label` element and it will automatically get laid out correctly in the form.
 
-<doc-demo src="/demos/input/label-ng.html" demo="/demos/input/label-css.html" toggle="false" />
+<doc-demo src="/demos/input/label-ng.html" demo="/demos/input/label-css.html" />
 
 #### Helper and error messages
 
@@ -107,7 +107,7 @@ The input form control wires up with the validations placed on an input, such as
 
 Note: the validation only displays an error after the user has left focus on an input. This is for better UX where the user doesn't see an error while they are still typing.
 
-<doc-demo src="/demos/input/helper-ng.html" demo="/demos/input/helper-css.html" toggle="false" />
+<doc-demo src="/demos/input/helper-ng.html" demo="/demos/input/helper-css.html" />
 
 ## Accessibility
 

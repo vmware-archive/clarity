@@ -24,7 +24,7 @@
         <div v-if="is404" class="make-it-scrollable" cds-layout="horizontal gap:md align:horizontal-center">
           <slot></slot>
         </div>
-        <div class="page-wrapper" v-else>
+        <div class="page-wrapper" v-if="!$page.frontmatter.home && !is404">
           <Page :sidebar-items="sidebarItems">
             <template #nav-toc>
               <NavToc v-if="shouldShowTOC" cds-layout="p-t:sm p-b:sm display@md:none" />

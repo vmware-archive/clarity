@@ -18,7 +18,7 @@ A dropdown menu is a contextual list that allows the user to choose an option th
 
 <div class="clr-row custom-block">
 <div class="clr-col">
-<DocInset>
+<DocInset >
 <ClrImage src="/images/components/dropdown/basic-dropdown.png" />
 </DocInset>
 
@@ -27,7 +27,7 @@ A dropdown menu is a contextual list that allows the user to choose an option th
 </div>
 
 <div class="clr-col">
-<DocInset>
+<DocInset :height="231">
 <ClrImage src="/images/components/dropdown/select.png" />
 <ClrImage src="/images/components/dropdown/select-options.png" />
 </DocInset>

@@ -48,7 +48,8 @@ Vertical navigation has a few layout options including dividers and section head
 ::: inset Basic
 ![Basic Vertical Navigation](/images/components/vertical-nav/basic.png)
 :::
-**Basic**
+**Basic**<br/>
+No dividers or section headers.
 
 </div>
 <div class="clr-col-12 clr-col-md-4">
@@ -56,7 +57,8 @@ Vertical navigation has a few layout options including dividers and section head
 ::: inset Dividers
 ![Dividers](/images/components/vertical-nav/divider.png)
 :::
-**Dividers**
+**Dividers**<br/>
+Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
 
 </div>
 <div class="clr-col-12 clr-col-md-4">
@@ -64,7 +66,8 @@ Vertical navigation has a few layout options including dividers and section head
 ::: inset Dividers & Headers
 ![Headers](/images/components/vertical-nav/header.png)
 :::
-**Dividers & Headers**
+**Dividers & Headers**<br/>
+Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
 
 </div>
 </div>

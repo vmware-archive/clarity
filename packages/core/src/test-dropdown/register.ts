@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsTestDropdown } from '@clr/core/test-dropdown';
+import { CdsTestDropdown } from './test-dropdown.element.js';
 
 registerElementSafely('cds-test-dropdown', CdsTestDropdown);
 

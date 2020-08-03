@@ -19,6 +19,9 @@ import {
   supportsResizeObserver,
   setAttributes,
 } from '@clr/core/internal';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { exclamationCircleIcon } from '@clr/core/icon/shapes/exclamation-circle.js';
+import { checkCircleIcon } from '@clr/core/icon/shapes/check-circle.js';
 import { CdsControl } from '../control/control.element.js';
 import { styles } from './control-group.element.css.js';
 import { ControlStatus, FormLayout, ControlWidth } from '../utils/interfaces.js';
@@ -167,6 +170,11 @@ export class CdsInternalControlGroup extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  constructor() {
+    super();
+    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
   }
 
   connectedCallback() {

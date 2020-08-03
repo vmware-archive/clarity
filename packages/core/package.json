@@ -42,7 +42,6 @@
     "url": "git@github.com:vmware/clarity.git"
   },
   "dependencies": {
-    "css-vars-ponyfill": "^2.3.2",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "ramda": "^0.27.0",
@@ -53,6 +52,7 @@
     "@webcomponents/shadycss": "^1.10.1",
     "@webcomponents/custom-elements": "^1.4.2",
     "@webcomponents/webcomponentsjs": "^2.4.4",
+    "css-vars-ponyfill": "^2.3.2",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {

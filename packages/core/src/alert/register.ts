@@ -8,7 +8,9 @@ import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
 import '@clr/core/internal-components/close-button/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsAlert, CdsAlertActions, CdsAlertGroup } from '@clr/core/alert';
+import { CdsAlertActions } from './alert-actions.element.js';
+import { CdsAlertGroup } from './alert-group.element.js';
+import { CdsAlert } from './alert.element.js';
 
 registerElementSafely('cds-alert', CdsAlert);
 registerElementSafely('cds-alert-actions', CdsAlertActions);

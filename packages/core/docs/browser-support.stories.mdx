@@ -35,9 +35,10 @@ Clarity uses CSS Custom Properties to theme and style components.
 To support IE you will need to run a polyfill and a function Core provides.
 
 ```typescript
+import cssVars from 'css-vars-ponyfill';
 import { runCssVarsPolyfill } from '@clr/core';
 
-runCssVarsPolyfill(); // run at application start up or any time after a theme swap
+runCssVarsPolyfill(cssVars); // run at application start up or any time after a theme swap
 ```
 
 ### 3. Transpile to ES5

@@ -8,7 +8,9 @@ import { internalProperty, html } from 'lit-element';
 import { CommonStringsService } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
-import { ClarityIcons, eyeIcon, eyeHideIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { eyeIcon } from '@clr/core/icon/shapes/eye.js';
+import { eyeHideIcon } from '@clr/core/icon/shapes/eye-hide.js';
 
 /**
  * Password

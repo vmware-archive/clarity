@@ -4,9 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CommonStringsService, event, EventEmitter, onKey, property, id } from '@clr/core/internal';
-import { ClarityIcons, timesIcon } from '@clr/core/icon';
 import { html, LitElement } from 'lit-element';
+import { baseStyles, CommonStringsService, event, EventEmitter, onKey, property, id } from '@clr/core/internal';
 import { styles } from './modal.element.css.js';
 
 /**
@@ -101,11 +100,6 @@ export class CdsModal extends LitElement {
         <div class="modal-backdrop" aria-hidden="true"></div>
       </div>
     `;
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(timesIcon);
   }
 
   connectedCallback() {

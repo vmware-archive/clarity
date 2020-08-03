@@ -6,7 +6,11 @@
 
 import '@clr/core/internal-components/close-button/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader, CdsModalHeaderActions } from '@clr/core/modal';
+import { CdsModal } from './modal.element.js';
+import { CdsModalActions } from './modal-actions.element.js';
+import { CdsModalContent } from './modal-content.element.js';
+import { CdsModalHeader } from './modal-header.element.js';
+import { CdsModalHeaderActions } from './modal-header-actions.element.js';
 
 registerElementSafely('cds-modal-header-actions', CdsModalHeaderActions);
 registerElementSafely('cds-modal-actions', CdsModalActions);

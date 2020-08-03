@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import cssVars from 'css-vars-ponyfill';
 import { cssVarsDefaultConfig, runCssVarsPolyfill } from './css-vars.js';
 
 describe('Utilities - CssVarsPolyfill ', () => {
@@ -20,7 +21,7 @@ describe('Utilities - CssVarsPolyfill ', () => {
     });
 
     it('calls ponyfill with default config', () => {
-      const ponyfill = runCssVarsPolyfill(undefined, fakePonyfill);
+      const ponyfill = runCssVarsPolyfill(fakePonyfill);
       expect(tester).not.toBeNull();
       expect(tester).toBe(cssVarsDefaultConfig);
       expect(ponyfill).toBe(fakePonyfillFnName);
@@ -28,19 +29,19 @@ describe('Utilities - CssVarsPolyfill ', () => {
 
     it('calls ponyfill with custom config', () => {
       const customConfig = { ohai: 'hello' };
-      const ponyfill = runCssVarsPolyfill(customConfig, fakePonyfill);
+      const ponyfill = runCssVarsPolyfill(fakePonyfill, customConfig);
       expect(tester).not.toBeNull();
       expect(tester).toBe(customConfig);
       expect(ponyfill).toBe(fakePonyfillFnName);
     });
 
     it('calls cssVars() if no ponyfill is passed', () => {
-      const ponyfill = runCssVarsPolyfill();
+      const ponyfill = runCssVarsPolyfill(cssVars);
       expect(ponyfill).toBe('cssVars');
     });
 
     it('okay with a lambda ponyfill', () => {
-      const ponyfill = runCssVarsPolyfill(undefined, () => {
+      const ponyfill = runCssVarsPolyfill(() => {
         return;
       });
       expect(ponyfill).toBe('anonymous fn');

@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsBadge } from '@clr/core/badge';
+import { CdsBadge } from './badge.element.js';
 
 registerElementSafely('cds-badge', CdsBadge);
 

@@ -8,7 +8,8 @@ import { html } from 'lit-element';
 import { querySlot, globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
-import { ClarityIcons, angleIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { angleIcon } from '@clr/core/icon/shapes/angle.js';
 import { styles as globalStyles } from './datalist-global.element.css.js';
 
 /**

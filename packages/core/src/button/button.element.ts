@@ -15,7 +15,8 @@ import {
   iconSlot,
   property,
 } from '@clr/core/internal';
-import { ClarityIcons, errorStandardIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { errorStandardIcon } from '@clr/core/icon/shapes/error-standard.js';
 import { html, query } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';

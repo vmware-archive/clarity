@@ -7,7 +7,8 @@
 import { baseStyles, property, CdsBaseButton } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
-import { ClarityIcons, timesIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { timesIcon } from '@clr/core/icon/shapes/times.js';
 
 /**
  * Standard close button for Clarity Components

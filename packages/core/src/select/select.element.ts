@@ -8,7 +8,8 @@ import { html } from 'lit-element';
 import { globalStyle, internalProperty, listenForAttributeChange } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
-import { ClarityIcons, angleIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { angleIcon } from '@clr/core/icon/shapes/angle.js';
 import { styles as globalStyles } from './select.global.css.js';
 import { styles } from './select.element.css.js';
 

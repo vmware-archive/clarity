@@ -18,16 +18,13 @@ import {
   internalProperty,
   id,
 } from '@clr/core/internal';
-import {
-  CdsIcon,
-  ClarityIcons,
-  timesIcon,
-  infoStandardIcon,
-  successStandardIcon,
-  warningStandardIcon,
-  errorStandardIcon,
-  helpIcon,
-} from '@clr/core/icon';
+import { CdsIcon } from '@clr/core/icon/icon.element.js';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { infoStandardIcon } from '@clr/core/icon/shapes/info-standard.js';
+import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
+import { warningStandardIcon } from '@clr/core/icon/shapes/warning-standard.js';
+import { errorStandardIcon } from '@clr/core/icon/shapes/error-standard.js';
+import { helpIcon } from '@clr/core/icon/shapes/help.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
@@ -277,14 +274,7 @@ export class CdsAlert extends LitElement {
 
   constructor() {
     super();
-    ClarityIcons.addIcons(
-      infoStandardIcon,
-      errorStandardIcon,
-      successStandardIcon,
-      warningStandardIcon,
-      timesIcon,
-      helpIcon
-    );
+    ClarityIcons.addIcons(infoStandardIcon, errorStandardIcon, successStandardIcon, warningStandardIcon, helpIcon);
   }
 
   private closeAlert() {

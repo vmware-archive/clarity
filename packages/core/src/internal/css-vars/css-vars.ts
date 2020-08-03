@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import cssVars from 'css-vars-ponyfill';
 import { existsInWindow } from '../utils/exists.js';
 
 // exported for tests
@@ -19,7 +18,7 @@ export const cssVarsDefaultConfig = {
   },
 };
 
-export function runCssVarsPolyfill(config: {} = cssVarsDefaultConfig, ponyfill = cssVars): string {
+export function runCssVarsPolyfill(ponyfill: any, config: {} = cssVarsDefaultConfig): string {
   ponyfill(config);
   return ponyfill.name ? ponyfill.name : 'anonymous fn';
 }

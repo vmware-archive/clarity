@@ -8,7 +8,8 @@ import { html } from 'lit-element';
 import { globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { inputStyles } from '@clr/core/input';
-import { ClarityIcons, calendarIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { calendarIcon } from '@clr/core/icon/shapes/calendar.js';
 import { styles as globalStyles } from './date.global.css.js';
 
 /**

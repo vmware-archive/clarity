@@ -20,27 +20,20 @@ import '@clr/core/time/register.js';
 import '@clr/core/toggle/register.js';
 
 import {
+  CdsIcon,
+  ClarityIcons,
+  linkIcon,
+  fileIcon,
+  pencilIcon,
+  folderOpenIcon,
+  cloudIcon,
+  imageGalleryIcon,
+  videoGalleryIcon,
   loadCoreIconSet,
-  loadChartIconSet,
-  loadCommerceIconSet,
-  loadEssentialIconSet,
-  loadMediaIconSet,
-  loadSocialIconSet,
-  loadTechnologyIconSet,
-  loadTextEditIconSet,
-  loadTravelIconSet,
 } from '@clr/core/icon';
 
+ClarityIcons.addIcons(linkIcon, fileIcon, pencilIcon, folderOpenIcon, cloudIcon, imageGalleryIcon, videoGalleryIcon);
 loadCoreIconSet();
-loadChartIconSet();
-loadEssentialIconSet();
-loadCommerceIconSet();
-loadMediaIconSet();
-loadSocialIconSet();
-loadTechnologyIconSet();
-loadTextEditIconSet();
-loadTravelIconSet();
 
-// TODO: replace clr-icon code with cds-icon and remove this
-import '@clr/icons';
-import '@clr/icons/shapes/all-shapes';
+class LegacyIcon extends CdsIcon {}
+customElements.define('clr-icon', LegacyIcon);

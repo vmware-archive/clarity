@@ -26,8 +26,8 @@
       </div>
     </section>
     <!-- whats new -->
-    <section class="section-content whats-new" cds-layout="grid">
-      <div cds-layout="col:12 m:sm m@sm:lg">
+    <section class="section-content whats-new" cds-layout="grid p:sm">
+      <div cds-layout="col:12 m@sm:lg">
         <WhatsNew version="latest" />
       </div>
       <div cds-layout="col:12">
@@ -39,7 +39,7 @@
       </div>
     </section>
     <!-- design+dev section -->
-    <section class="section-content">
+    <section cds-layout="p:sm" class="section-content">
       <h3 cds-text="display center semibold">
         Build inclusive and consistent products with Clarity
       </h3>
@@ -47,7 +47,7 @@
         <div class="image-cell" cds-layout="horizontal align:right">
           <img cds-layout="container:fill" src="/images/home/img-design-dev.svg" aria-hidden="true" />
         </div>
-        <div class="content-cell" cds-layout="vertical gap:sm align:center m:sm m@sm:lg">
+        <div class="content-cell" cds-layout="vertical gap:sm align:center m@sm:lg">
           <h4 cds-text="heading" cds-layout="p-b:lg">Design, Develop and Deploy</h4>
           <p class="section-block" cds-text="message">
             Our design guidelines, component library, and front end assets are built by working directly within product
@@ -58,12 +58,12 @@
       </div>
     </section>
     <!-- a11y section -->
-    <section class="section-content">
+    <section cds-layout="p:sm" class="section-content">
       <div class="home-block alternate">
         <div class="image-cell" cds-layout="horizontal align:center">
           <img cds-layout="container:fill" src="/images/home/img-accessibility.svg" aria-hidden="true" />
         </div>
-        <div class="content-cell" cds-layout="vertical gap:sm align:center m:sm m@sm:lg">
+        <div class="content-cell" cds-layout="vertical gap:sm align:center m@sm:lg">
           <h4 cds-text="heading" cds-layout="p-b:lg">Accessible</h4>
           <p cds-text="message">
             We are continually investing heavily in accessibility. Use Clarity to address the needs of a large and
@@ -73,12 +73,12 @@
       </div>
     </section>
     <!-- enterprise section -->
-    <section class="section-content">
+    <section cds-layout="p:sm" class="section-content">
       <div class="home-block">
         <div class="image-cell" cds-layout="horizontal align:right">
           <img cds-layout="container:fill" src="/images/home/img-design-dev.svg" aria-hidden="true" />
         </div>
-        <div class="content-cell" cds-layout="vertical gap:sm align:center m:sm m@sm:lg">
+        <div class="content-cell" cds-layout="vertical gap:sm align:center m@sm:lg">
           <h4 cds-text="heading" cds-layout="p-b:lg">Enterprise Ready</h4>
           <p class="section-block" cds-text="message">
             Many Fortune 500 companies rely on us to support demanding, high-performance environments. Use Clarity for
@@ -88,12 +88,12 @@
       </div>
     </section>
     <!-- open source section -->
-    <section class="section-content">
+    <section cds-layout="p:sm" class="section-content">
       <div class="home-block alternate">
         <div class="image-cell" cds-layout="horizontal align:right">
           <img cds-layout="container:fill" src="/images/home/img-open-source.svg" aria-hidden="true" />
         </div>
-        <div class="content-cell" cds-layout="vertical gap:sm align:center m:sm m@sm:lg">
+        <div class="content-cell" cds-layout="vertical gap:sm align:center m@sm:lg">
           <h4 cds-text="heading" cds-layout="p-b:lg">Open Source</h4>
           <p class="section-block" cds-text="message">
             Our vision since inception has been focused on supporting a community of designers and developers working
@@ -103,9 +103,9 @@
       </div>
     </section>
     <!-- popular resources section -->
-    <section class="section-content" cds-layout="vertical">
+    <section cds-layout="vertical p:sm" class="section-content">
       <h3 cds-text="display center medium" cds-layout="m-b:xl">Popular Resources</h3>
-      <div cds-layout="grid gap:lg cols@xs:12 cols@sm:6 m:sm">
+      <div cds-layout="grid gap:lg cols@xs:12 cols@sm:6">
         <div class="image-cell" cds-layout="m-b:sm m-b@sm:xxl">
           <img cds-layout="container:fill" src="/images/home/img-pr-components.svg" aria-hidden="true" />
           <h4 cds-text="title medium" cds-layout="m-t:lg">Components</h4>

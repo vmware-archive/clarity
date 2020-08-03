@@ -3,6 +3,13 @@ title: API
 toc: true
 ---
 
+<cds-alert-group type="default" status="warning">
+ <cds-alert closable><strong>Deprecation</strong>: Since v4, we will no longer handle setting `aria-live` and announcing the message for you by default. Based on the application use case, you can use the new `ClrAriaLiveService` to make announcements when they make sense for a user to hear about updates or loading status changes. This will result in of removing few inputs provided by the component such as `clrPolite`, `clrAssertive`, `clrOff`.
+ <cds-alert-actions>
+ </cds-alert-actions>
+ </cds-alert>
+ </cds-alert-group>
+
 ## Angular Components
 
 {.section-header}

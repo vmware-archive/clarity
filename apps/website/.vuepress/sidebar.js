@@ -50,7 +50,13 @@ module.exports = [
   {
     title: 'Get Started',
     path: '/get-started/',
-    children: getChildren('get-started'),
+    children: [
+      {
+        title: 'Introduction',
+        path: '/get-started/',
+      },
+      ...getChildren('get-started'),
+    ],
   },
   {
     title: 'Foundation',

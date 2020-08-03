@@ -27,10 +27,9 @@
         <div class="page-wrapper" v-if="!$page.frontmatter.home && !is404">
           <Page :sidebar-items="sidebarItems">
             <template #nav-toc>
-              <NavToc v-if="shouldShowTOC" cds-layout="p-t:sm p-b:sm display@md:none" />
+              <NavToc v-if="shouldShowTOC" />
             </template>
           </Page>
-          <NavToc :sticky="true" v-if="shouldShowTOC" cds-layout="p@md:lg display:none display@md:block" />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ title: Overview
 toc: true
 ---
 
-##### A properly structured layout enforces an optimal, consistent experience across applications.
+A properly structured layout enforces an optimal, consistent experience across applications.
 
 ### Layout
 

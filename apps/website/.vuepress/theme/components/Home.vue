@@ -107,15 +107,25 @@
       <h3 cds-text="display center medium" cds-layout="m-b:xl">Popular Resources</h3>
       <div cds-layout="grid gap:lg cols@xs:12 cols@sm:6">
         <div class="image-cell" cds-layout="m-b:sm m-b@sm:xxl">
-          <img cds-layout="container:fill" src="/images/home/img-pr-components.svg" aria-hidden="true" />
-          <h4 cds-text="title medium" cds-layout="m-t:lg">Components</h4>
+          <router-link to="/components/accordion/">
+            <img cds-layout="container:fill" src="/images/home/img-pr-components.svg" aria-hidden="true" />
+          </router-link>
+          <router-link to="/components/accordion/">
+            <h4 cds-text="title medium" cds-layout="m-t:lg">Components</h4>
+          </router-link>
           <p cds-text="message medium" cds-layout="m-t:md">
             Access UX guidelines and developer documentation for interactive components.
           </p>
         </div>
         <div class="image-cell" cds-layout="m-b:xxl m-b@xs:none">
-          <img cds-layout="container:fill" src="/images/home/img-pr-icons.svg" aria-hidden="true" />
-          <h4 cds-text="title medium" cds-layout="m-t:lg">Icons</h4>
+          <router-link to="/foundation/icons/">
+            <img cds-layout="container:fill" src="/images/home/img-pr-icons.svg" aria-hidden="true" />
+          </router-link>
+          <router-link to="/foundation/icons/">
+            <h4 cds-text="title medium" cds-layout="m-t:lg">
+              Icons
+            </h4>
+          </router-link>
           <p cds-text="message medium" cds-layout="m-t:md">
             Over 380 flexible and easy to use SVG icons, complete with variations to meet your design needs.
           </p>
@@ -192,7 +202,9 @@
 <script>
 import Footer from '@theme/components/Footer';
 export default {
-  components: { Footer },
+  components: {
+    Footer,
+  },
   name: 'Home',
 
   computed: {

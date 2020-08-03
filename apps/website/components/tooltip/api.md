@@ -41,7 +41,7 @@ toc: true
 
 ### ClrTooltipTrigger
 
-Used to designate the open/close element for [ClrTooltipContent](./api.md#clrtooltipcontent).
+Used to designate the open/close element for [ClrTooltipContent](./api/#clrtooltipcontent).
 
 #### Selector & Basic Usage
 

@@ -23,7 +23,7 @@ An accordion allows generic content to be collapsed and allows users to expand t
 
 ### ClrAccordionContent
 
-ClrAccordionContent is a child of [ClrAccordionPanel](./api.md#clraccordionpanel)
+ClrAccordionContent is a child of [ClrAccordionPanel](./api/#clraccordionpanel)
 
 #### Selector & Basic Usage
 
@@ -37,7 +37,7 @@ ClrAccordionContent is a child of [ClrAccordionPanel](./api.md#clraccordionpanel
 
 ### ClrAccordionDescription
 
-ClrAccordionDescription is a child of [ClrAccordionPanel](./api.md#clraccordionpanel)
+ClrAccordionDescription is a child of [ClrAccordionPanel](./api/#clraccordionpanel)
 
 #### Selector & Basic Usage
 
@@ -54,7 +54,7 @@ ClrAccordionDescription is a child of [ClrAccordionPanel](./api.md#clraccordionp
 ### ClrAccordionPanel
 
 Use content projection and give the panel a title and content that can be hidden or shown.
-ClrAccordionPanel is a child of [ClrAccordion](./api.md#clraccordion)
+ClrAccordionPanel is a child of [ClrAccordion](./api/#clraccordion)
 
 #### Selector & Basic Usage
 

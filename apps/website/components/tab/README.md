@@ -8,7 +8,7 @@ Tabs divide content into separate views which users navigate between.
 ## Usage
 
 - Use tabs in the main content area or, alternatively use the [vertical nav](/components/vertical-nav) component to break up separate views.
-- Don't use tabs to break user interactions into a series of steps. Serial workflows are best presented in a multi-step workflow, like [wizard](/components/wizards), [stepper](/components/stepper), or a [timeline](/components/timeline).
+- Don't use tabs to break user interactions into a series of steps. Serial workflows are best presented in a multi-step workflow, like [wizard](/components/wizard), [stepper](/components/stepper), or a [timeline](/components/timeline).
 
 ### Content
 
@@ -18,13 +18,13 @@ Content projected within tabs is flexible. Follow these guidelines to organize a
 2. Don’t force users to navigate back and forth to compare data
 3. Avoid cross-linking between tabs
 4. When the content within a view is broad, divide it into subsections
-5. Avoid using tabs in [cards](/components/cards) and [modals](/components/modals)
+5. Avoid using tabs in a [card](/components/card) and [modal](/components/modal)
 
 ### Presentation
 
 Tabs appear in a single, non-scrollable row, above their content. The width of each tab is dependent on its label.
 
-When there are seven or fewer tabs, limit the labels to on or two words. This ensures that all tabs appear in the container. If the application is using Angular and there need to be more than seven tabs look into the overflow input for [ClrTabLink](/components/tabs/api.html#clrtablink).
+When there are seven or fewer tabs, limit the labels to on or two words. This ensures that all tabs appear in the container. If the application is using Angular and there need to be more than seven tabs look into the overflow input for [ClrTabLink](/components/tab/api/#clrtablink).
 
 ### Labels
 
@@ -38,9 +38,9 @@ Use labels to organize the tabs and their content.
 
 ## Types
 
-There are four types of tabs that might be used. Go to the [demo](/components/tabs/demo.html) to see them in action.
+There are four types of tabs that might be used. Go to the [demo](/components/tab/demo) to see them in action.
 For optimization, tabs component uses the \*clrIfActive structural directive to lazy load the content of an active tab.
-If you need two-way binding on the active state of a tab, use the de-sugared syntax for the [ClrIfActive](/components/tabs/api.html#clrifactive) structural directive shown below in the two way binding example.
+If you need two-way binding on the active state of a tab, use the de-sugared syntax for the [ClrIfActive](/components/tab/api/#clrifactive) structural directive shown below in the two way binding example.
 
 ### Horizontal
 
@@ -65,23 +65,23 @@ Compose tabs with the following components and directives. ClrIfActive is option
 
 ### ClrTabs
 
-[ClrTabs](/components/tabs/api.html#clrtabs) is the parent container for all Angular children components. Its default layout is horizontal but it can also be set to vertical.
+[ClrTabs](/components/tab/api/#clrtabs) is the parent container for all Angular children components. Its default layout is horizontal but it can also be set to vertical.
 
 ### ClrTab
 
-[ClrTab](/compnents/tabs/api.html#clrtab) is a child of [ClrTabs](/components/tabs/api.html#clrtabs) that contains the tab link and the tab content which must be associated together.
+[ClrTab](/compnents/tab/api/#clrtab) is a child of [ClrTabs](/components/tab/api/#clrtabs) that contains the tab link and the tab content which must be associated together.
 
 ### ClrTabContent
 
-[ClrTabContent](/compnents/tabs/api.html#clrtabcontent) is a component where application content can be projected into for display.
+[ClrTabContent](/compnents/tab/api/#clrtabcontent) is a component where application content can be projected into for display.
 
 ### ClrTabLink
 
-[ClrTabLink](/compnents/tabs/api.html#clrtablink) is an attribute directive that designates button elements to be used as the displayed tab.
+[ClrTabLink](/compnents/tab/api/#clrtablink) is an attribute directive that designates button elements to be used as the displayed tab.
 
 ### ClrIfActive
 
-[ClrIfActive](/compnents/tabs/api.html#clrifactive) is a structural directive used to lazy load the tab content.
+[ClrIfActive](/compnents/tab/api/#clrifactive) is a structural directive used to lazy load the tab content.
 
 ## Accessibility
 

@@ -199,7 +199,7 @@ A basic tree can be created by simply nesting `clr-tree-node` components at will
 
 ### Tracking expanded nodes
 
-Use two-way binding `[(clrExpanded)]="expanded"` on the [clrExpanded](/components/tree-view/api.html#properties) property to track when a node is expanded or collapsed.
+Use two-way binding `[(clrExpanded)]="expanded"` on the [clrExpanded](/components/tree-view/api/#clrifexpanded) property to track when a node is expanded or collapsed.
 <doc-demo src="/demos/tree-view/expanded-ng.html"/></doc-demo>
 
 ### Routing with a tree
@@ -209,7 +209,7 @@ Use the `.clr-treenode-link` class to style content inside of a Tree Node as cli
 
 ### Generating a tree dynamically
 
-When the tree structure is large and complex you can use iteration to generate nodes and child nodes based on the structure given to the [ClrTree](/components/tree-view/api.html#clrtree).
+When the tree structure is large and complex you can use iteration to generate nodes and child nodes based on the structure given to the [ClrTree](/components/tree-view/api/#clrtree).
 
 ![Dynamically Generated Tree](/images/components/tree-view/dynamic-tree.png)
 
@@ -223,10 +223,10 @@ When the tree structure is large and complex you can use iteration to generate n
 
 ### Checkbox tree
 
-Use checkbox when nodes of the tree need to be selected or unselected by users. There are three parts that are needed to implement a [ClrTree](/components/tree-view/api.html#clrtree) with checkbox controls.
+Use checkbox when nodes of the tree need to be selected or unselected by users. There are three parts that are needed to implement a [ClrTree](/components/tree-view/api/#clrtree) with checkbox controls.
 
 1. Data structured in a tree hierarchy
-1. The correct declaration on the [ClrTreeNode](/components/tree-view/api.html#clrtreenode)'s that need to be selectable
+1. The correct declaration on the [ClrTreeNode](/components/tree-view/api/#clrtreenode)'s that need to be selectable
 1. A ClrSelectedState for each node that is selectable
 
 <div class="clr-row custom-block">
@@ -251,7 +251,7 @@ Use checkbox when nodes of the tree need to be selected or unselected by users. 
 
 ### Binding selection to a boolean
 
-If you know a specific node can never become indeterminate, you probably want to use a boolean property on your node. As mentioned previously, `[(clrSelected)]` always outputs [ClrSelectedState](/components/tree-view/api.html#properties) enum values, making two-way binding with a boolean problematic. The most straightforward solution is to use the de-sugarized syntax of the two-way binding , transforming the output to a boolean directly.
+If you know a specific node can never become indeterminate, you probably want to use a boolean property on your node. As mentioned previously, `[(clrSelected)]` always outputs [ClrSelectedState](/components/tree-view/api/#bindings) enum values, making two-way binding with a boolean problematic. The most straightforward solution is to use the de-sugarized syntax of the two-way binding , transforming the output to a boolean directly.
 
 <div class="clr-row custom-block">
 <div class="clr-col">

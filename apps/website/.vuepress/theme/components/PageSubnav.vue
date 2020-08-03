@@ -23,11 +23,11 @@ h1 {
   margin: 0rem;
 }
 .nav .btn.btn-link:visited {
-  color: var(--clr-nav-link-color, #8c8c8c);
+  color: var(--cds-token-color-neutral-700, #666);
 }
 
 .nav .btn.nav-link.active {
-  color: var(--clr-nav-link-active-color, #000);
+  color: var(--cds-token-color-neutral-1000, #000);
 }
 </style>
 

@@ -53,14 +53,4 @@ export default {
 
     return '#' + r.toUpperCase() + g.toUpperCase() + b.toUpperCase();
   },
-
-  getForeground(color) {
-    if (color.text === 'dark') {
-      return '#000000';
-    } else if (color.text === 'light') {
-      return '#FFFFFF';
-    } else {
-      return color.weight >= 600 ? '#FFFFFF' : '#000000';
-    }
-  },
 };

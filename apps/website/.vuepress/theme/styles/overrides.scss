@@ -136,6 +136,9 @@ h5 {
       margin-top: calc(-1 * var(--cds-token-space-size-3));
       cursor: pointer;
     }
+    &:focus {
+      opacity: 1;
+    }
   }
 
   &:hover .header-anchor {

@@ -1,8 +1,7 @@
 ---
+title: Accessibility
 toc: true
 ---
-
-# Accessibility
 
 Clarity tries to cover as many best practices for accessibility out of the box. However, some things are too application specific for Clarity to provide and we've provided some tools to make it easier when you need to implement custom accessibility.
 

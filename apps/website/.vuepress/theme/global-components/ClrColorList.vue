@@ -5,8 +5,8 @@
     <ul class="swatch-list">
       <li
         v-for="(color, index) in colors"
-        v-bind:class="{ copied: color.isCopied }"
-        v-bind:style="{ backgroundColor: getColorInCode(color), color: getForeground(color) }"
+        v-bind:class="{ copied: color.isCopied, 'in-dark-mode': isColorInDarkMode(color) }"
+        v-bind:style="{ backgroundColor: getColorInCode(color) }"
       >
         <div
           class="color"
@@ -20,7 +20,8 @@
           <div class="weight">{{ color.weight }}</div>
           <div class="color-code-container">
             <div class="color-code">
-              <cds-icon class="copy-icon" shape="copy"></cds-icon> {{ getColorInCode(color) }}
+              <cds-icon class="copy-icon" shape="copy"></cds-icon>
+              {{ getColorInCode(color) }}
             </div>
           </div>
         </div>
@@ -58,7 +59,9 @@ export default {
         return ColorUtils.getHex(color);
       }
     },
-    getForeground: ColorUtils.getForeground,
+    isColorInDarkMode: function (color) {
+      return color.weight >= 600 || color.text === 'light';
+    },
     copyText: ClipboardCopy.copyText,
   },
 };
@@ -81,18 +84,27 @@ export default {
   li {
     position: relative;
     list-style: none;
+    color: var(--cds-token-color-neutral-1000, #000);
+  }
+
+  li.in-dark-mode {
+    color: var(--cds-token-color-neutral-0, #fff);
   }
 
   .copy-icon {
     opacity: 0;
-    fill: currentColor;
     transition: opacity 0.2s ease-out;
+    --color: var(--cds-token-color-neutral-1000, #000);
+  }
+
+  .in-dark-mode .copy-icon {
+    --color: var(--cds-token-color-neutral-0, #fff);
   }
 
   .color {
     display: grid;
     padding: 0.375rem;
-    grid-template-columns: 0.5rem 2rem auto 0.5rem;
+    grid-template-columns: 0.5rem 1rem auto 0.5rem;
     cursor: pointer;
 
     &:hover .copy-icon {

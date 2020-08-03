@@ -276,7 +276,7 @@ When collapsed, text will disappear and only icons will show. Clicking on an ico
 
 ### Smaller Screens - Responsive
 
-When screens drop below 768px wide, the navigation will hide completely and can be shown by clicking on one of the header icons. All normal vertical navigation designs and behaviors are the same in the responsive state. Read about [Responsive Navigation](/foundation/navigation/#responsive-navigation) and the [directives](/foundation/navigation/api.html#clrheader-clrmaincontainer-clrnavlevel) to use for implementation.
+When screens drop below 768px wide, the navigation will hide completely and can be shown by clicking on one of the header icons. All normal vertical navigation designs and behaviors are the same in the responsive state. Read about [Responsive Navigation](/foundation/navigation/#responsive-navigation) and the [directives](/foundation/navigation/api/#clrheader-clrmaincontainer-clrnavlevel) to use for implementation.
 
 <div class="clr-row">
 

@@ -27,7 +27,7 @@ A Stepper structures a multi-step process into two or more expanding panels.
 
 ### ClrStepPanel
 
-ClrStepperPanel extends [ClrAccordionPanel](../accordion/api.md#clraccordionpanel)
+ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 
 #### Selector & Basic Usage
 
@@ -66,7 +66,7 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api.md#clraccordionpane
 </form>
 ```
 
-**Note:** `clr-step-title` is an overloaded selector and is the same component as [ClrAccordionTitle](../accordion/api.md#clraccordiontitle)
+**Note:** `clr-step-title` is an overloaded selector and is the same component as [ClrAccordionTitle](../accordion/api/#clraccordiontitle)
 
 ### ClrStepDescription
 
@@ -83,7 +83,7 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api.md#clraccordionpane
 </form>
 ```
 
-**Note:** `clr-step-description` is an overloaded selector and is the same component as [ClrAccordionDescription](../accordion/api.md#clraccordiondescription)
+**Note:** `clr-step-description` is an overloaded selector and is the same component as [ClrAccordionDescription](../accordion/api/#clraccordiondescription)
 
 ### ClrStepContent
 
@@ -100,7 +100,7 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api.md#clraccordionpane
 </form>
 ```
 
-**Note:** `clr-step-content` is an overloaded selector and is the same component as [ClrAccordionContent](../accordion/api.md#clraccordioncontent)
+**Note:** `clr-step-content` is an overloaded selector and is the same component as [ClrAccordionContent](../accordion/api/#clraccordioncontent)
 
 ## Angular Directives
 

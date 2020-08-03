@@ -13,7 +13,7 @@ Accordions can make information processing and discovering more effective. Howev
 
 ## Anatomy
 
-Accordions are a collection of panels that encapsulate a title and content. You can read more about [ClrAccordionTitle](/components/accordion/api.html#clraccordiontitle) and [ClrAccordionContent](/components/accordion/api.html#clraccordioncontent) in the API section.
+Accordions are a collection of panels that encapsulate a title and content. You can read more about [ClrAccordionTitle](/components/accordion/api/#clraccordiontitle) and [ClrAccordionContent](/components/accordion/api/#clraccordioncontent) in the API section.
 
 Accordion titles use **13px Clarity City Medium** font. The default content font is **14px Clarity city Regular**.
 

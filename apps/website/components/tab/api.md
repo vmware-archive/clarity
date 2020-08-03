@@ -25,7 +25,7 @@ Tabs structure content into separate views and allow navigation between.
 
 ### ClrTab
 
-ClrTab associates the [ClrTabContent](./api.md#clrtabcontent) component with the [ClrTabLink](./api.md#clrtablink) directive.
+ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [ClrTabLink](./api/#clrtablink) directive.
 
 #### Selector & Basic Usage
 

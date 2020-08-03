@@ -51,6 +51,8 @@ Vertical navigation has a few layout options including dividers and section head
 **Basic**<br/>
 No dividers or section headers.
 
+No dividers or section headers.
+
 </div>
 <div class="clr-col-12 clr-col-md-4">
 
@@ -60,6 +62,8 @@ No dividers or section headers.
 **Dividers**<br/>
 Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
 
+Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
+
 </div>
 <div class="clr-col-12 clr-col-md-4">
 
@@ -67,6 +71,8 @@ Used to separate logical clusters of navigation items. Best used when you have t
 ![Headers](/images/components/vertical-nav/header.png)
 :::
 **Dividers & Headers**<br/>
+Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
+
 Used to separate logical clusters of navigation items. Best used when you have two or more links in a cluster.
 
 </div>

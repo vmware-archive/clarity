@@ -6,7 +6,9 @@
 
 import '@clr/core/icon/register.js';
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsButton, CdsIconButton, CdsInlineButton } from '@clr/core/button';
+import { CdsButton } from './button.element.js';
+import { CdsIconButton } from './icon-button.element.js';
+import { CdsInlineButton } from './inline-button.element.js';
 
 registerElementSafely('cds-button', CdsButton);
 registerElementSafely('cds-icon-button', CdsIconButton);

@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsTag } from '@clr/core/tag';
+import { CdsTag } from './tag.element.js';
 
 registerElementSafely('cds-tag', CdsTag);
 

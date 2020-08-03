@@ -5,7 +5,7 @@
  */
 
 import { html, property } from 'lit-element';
-import { CdsIcon } from '@clr/core/icon';
+import { CdsIcon } from '@clr/core/icon/icon.element.js';
 import { baseStyles, CdsBaseButton, querySlot, setAttributes, assignSlotNames } from '@clr/core/internal';
 import { styles } from './control-action.element.css.js';
 import { LogService } from '@clr/core/internal';

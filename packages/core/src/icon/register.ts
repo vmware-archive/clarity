@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
-import { CdsIcon } from '@clr/core/icon';
+import { CdsIcon } from './icon.element.js';
 
 registerElementSafely('cds-icon', CdsIcon);
 

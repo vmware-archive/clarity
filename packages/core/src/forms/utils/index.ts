@@ -5,14 +5,11 @@
  */
 
 import { html } from 'lit-element';
-import { exclamationCircleIcon, checkCircleIcon, ClarityIcons } from '@clr/core/icon';
 import { isVisible } from '@clr/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsControl } from '../control/control.element.js';
 import { CdsControlMessage } from '../control-message/control-message.element.js';
-
-ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
 
 export const formLayouts: FormLayout[] = ['vertical', 'vertical-inline', 'horizontal', 'horizontal-inline', 'compact'];
 

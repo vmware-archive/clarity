@@ -7,7 +7,8 @@
 import { html, internalProperty } from 'lit-element';
 import { CommonStringsService } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
-import { folderIcon, ClarityIcons } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { folderIcon } from '@clr/core/icon/shapes/folder.js';
 import { styles } from './file.element.css.js';
 
 /**

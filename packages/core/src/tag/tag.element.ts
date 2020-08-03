@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons, timesIcon } from '@clr/core/icon';
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { timesIcon } from '@clr/core/icon/shapes/times.js';
 import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';

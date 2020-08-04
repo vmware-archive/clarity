@@ -23,10 +23,10 @@
   to = "/releases/v4"
   status = 301
 
-# community ->
+# community -> (re-direct to homepage)
 [[redirects]]
-  from = "/news/*"
-  to = "/releases/v4"
+  from = "/community"
+  to = "/"
   status = 301
 
 # Icons
@@ -38,37 +38,37 @@
 # foundation pages
 [[redirects]]
   from = "/documentation/accessibility"
-  to = "/foundation/accessibility/"
+  to = "/foundation/accessibility"
   status = 301
 
 [[redirects]]
   from = "/documentation/app-layout"
-  to = "/foundation/app-layout/"
+  to = "/foundation/app-layout"
   status = 301
 
 [[redirects]]
   from = "/documentation/color"
-  to = "/foundation/color/"
+  to = "/foundation/color"
   status = 301
 
 [[redirects]]
   from = "/documentation/internationalization"
-  to = "/foundation/internationalization/"
+  to = "/foundation/internationalization"
   status = 301
 
 [[redirects]]
   from = "/documentation/navigation"
-  to = "/foundation/navigation/"
+  to = "/foundation/navigation"
   status = 301
 
 [[redirects]]
   from = "/documentation/themes"
-  to = "/foundation/themes/"
+  to = "/foundation/themes"
   status = 301
 
 [[redirects]]
   from = "/documentation/typography"
-  to = "/foundation/typography/"
+  to = "/foundation/typography"
   status = 301
 
 # Redirect components
@@ -93,7 +93,7 @@
   status = 301
 
 [[redirects]]
-  from = "/documentation/button-group/"
+  from = "/documentation/button-group"
   to = "/components/button-group"
   status = 301
 
@@ -284,10 +284,3 @@
   for = "/*.json"
     [headers.values]
     Access-Control-Allow-Origin = "*"
-
-# Handle 404s in our app, SPA redirect config
-# SHOULD ALWAYS BE LAST!
-[[redirects]]
-  from = "/*"
-  to = "/"
-  status = 200

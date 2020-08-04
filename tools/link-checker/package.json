@@ -1,0 +1,15 @@
+{
+  "name": "link-checker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "broken-link-checker": "^0.7.8",
+    "commander": "^6.0.0",
+    "fast-xml-parser": "^3.17.4",
+    "got": "^11.5.1",
+    "mkdirp": "^1.0.4"
+  }
+}

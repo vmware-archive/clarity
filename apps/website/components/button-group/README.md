@@ -489,7 +489,7 @@ If your icon button has no text, we recommend adding the **title="" attribute** 
 additional context for users unfamiliar with what action your icon button might produce. The text should reflect the
 action.
 
-<doc-demo src="/demos/button-group/accessibility.html"></doc-demo>
+<doc-demo file="/demos/button-group/accessibility.html" />
 
 ## Code & Examples
 
@@ -503,53 +503,53 @@ Clarity [Buttons](/components/button) primary, outline and flat classes can be u
 
 ### Basic Structure
 
-<doc-demo src="/demos/button-group/basic-css.html" demo="/demos/button-group/basic-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/basic-css.html" />
 
 ### Overflow
 
-<doc-demo src="/demos/button-group/overflow-css.html" demo="/demos/button-group/overflow-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/overflow-css.html" />
 
 ### Primary
 
-<doc-demo src="/demos/button-group/primary-css.html" demo="/demos/button-group/primary-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/primary-css.html" />
 
 ### Outline
 
-<doc-demo src="/demos/button-group/outline-css.html" demo="/demos/button-group/outline-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/outline-css.html" />
 
 ### Flat
 
-<doc-demo src="/demos/button-group/flat-css.html" demo="/demos/button-group/flat-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/flat-css.html" />
 
 ### Small
 
-<doc-demo src="/demos/button-group/small-css.html" demo="/demos/button-group/small-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/small-css.html" />
 
 ### Mixed
 
 Override a Button type in a Button Group by extending the Button type class directly on the corresponding Button.
 
-<doc-demo src="/demos/button-group/mixed-css.html" demo="/demos/button-group/mixed-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/mixed-css.html" />
 
 ### Icons
 
 Text wrapped in `.clr-icon-title` is only displayed in the Overflow Menu.
 
-<doc-demo src="/demos/button-group/icons-css.html" demo="/demos/button-group/icons-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/icons-css.html" />
 
 ### Icons with text
 
-<doc-demo src="/demos/button-group/icon-with-text-css.html" demo="/demos/button-group/icon-with-text-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/icons-with-text-css.html" />
 
 ### Checkbox
 
-<doc-demo src="/demos/button-group/checkbox-css.html" demo="/demos/button-group/checkbox-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/checkbox-css.html" />
 
 ### Radio
 
-<doc-demo src="/demos/button-group/radio-css.html" demo="/demos/button-group/radio-css.html"></doc-demo>
+<doc-demo file="/demos/button-group/radio-css.html" />
 
 ### Angular component
 
 Use the `clrInMenu` input to determine if a Button belongs in the Overflow Menu or not
-<doc-demo src="/demos/button-group/basic-ng.html"></doc-demo>
+<doc-demo file="/demos/button-group/basic-ng.html" />

@@ -230,10 +230,6 @@ If you are using rem values outside of Clarity, you can update them by either:
 - multiplying them by 1.2 – so a value of `1.4rem` in a SASS file becomes `1.2 * 1.4rem`
 - doing the math upfront and updating rem values in place – so that `1.4rem` becomes `1.68rem`
 
-###### Use Clarity's \$clrBaselineRem\_\* variables (Recommended)
-
-[Clarity has a number of size variables that you can use in your applications](//github.com/vmware/clarity/blob/master/src/clr-core/styles/variables/_variables.global.scss). It is recommended that you update your application to make use of them. This is the safest course of action going forward and will result in the least amount of rework in the future.
-
 ###### What if I can't do this right now?
 
 If you would prefer to update Clarity to version 3.x and cannot update the sizes in your application that rely on Clarity's baseline, you can override the `$clr-baseline-denominator` SASS variable. Setting it to `24` ignores the baseline changes, putting everything back to the pre-3.0 24px baseline.

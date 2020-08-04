@@ -23,7 +23,7 @@
                 <template v-for="childItem in item.children">
                   <router-link
                     class="nav-link"
-                    :to="childItem.path"
+                    :to="childItem.path + '/'"
                     v-if="childItem.type !== 'external'"
                     v-bind:class="{
                       active: isItemActive(childItem),
@@ -35,7 +35,7 @@
               </div>
             </div>
 
-            <router-link class="nav-link" v-if="!item.children" :to="item.path">
+            <router-link class="nav-link" v-if="!item.children" :to="item.path + '/'">
               <span class="nav-text">{{ item.title }}</span>
             </router-link>
           </template>

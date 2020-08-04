@@ -20,5 +20,12 @@ export default ({
       dsn: 'https://3e41de8eb9e440d6b834fc556ad8e83c@o378402.ingest.sentry.io/5201749',
       integrations: [new VueIntegration({ Vue, attachProps: true, logErrors: true })],
     });
+
+    // Register the service worker after it has everything it needs.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
   }
 };

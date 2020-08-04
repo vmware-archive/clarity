@@ -46,13 +46,6 @@ module.exports = {
     'vuepress-plugin-table-of-contents',
     '@vuepress/active-header-links',
     '@vuepress/last-updated',
-    [
-      '@vuepress/pwa',
-      {
-        serviceWorker: true,
-        updatePopup: true,
-      },
-    ],
     'vuepress-plugin-smooth-scroll',
     [
       'vuepress-plugin-sitemap',
@@ -71,7 +64,8 @@ module.exports = {
     [
       'vuepress-plugin-clean-urls',
       {
-        normalSuffix: '',
+        normalSuffix: '/',
+        indexSuffix: '/',
         notFoundPath: '/404.html',
       },
     ],
@@ -140,4 +134,5 @@ module.exports = {
       },
     },
   },
+  shouldPrefetch: () => false,
 };

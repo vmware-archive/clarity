@@ -1,0 +1,15 @@
+{
+  "name": "audit-website",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "chrome-launcher": "^0.13.4",
+    "commander": "^6.0.0",
+    "fast-xml-parser": "^3.17.4",
+    "got": "^11.5.1",
+    "lighthouse": "^6.1.1",
+    "mkdirp": "^1.0.4"
+  }
+}

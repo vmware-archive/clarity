@@ -1,7 +1,7 @@
 <template>
-  <div cds-layout="vertical gap:md m-t:lg">
-    <h3 cds-text="heading center medium" cds-layout="m-b:xl">What's New</h3>
-    <p cds-text="title semibold" cds-layout="m-b:md">
+  <div cds-layout="vertical gap:lg">
+    <h3 cds-text="heading center medium">What's New</h3>
+    <p cds-text="title semibold" cds-layout="">
       {{ data.version }}
       <span class="action-text">Released {{ data.date }}</span>
     </p>

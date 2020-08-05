@@ -10,7 +10,7 @@ import { klingonLocale } from './translations/klingon';
 export class AppComponent {
   constructor(commonStrings: ClrCommonStringsService) {
     // Call this method to set the new locale values into the service, defaults for English
-    // will be used for in any missing strings
+    // will be used for any missing strings
     commonStrings.localize(klingonLocale);
   }
 }

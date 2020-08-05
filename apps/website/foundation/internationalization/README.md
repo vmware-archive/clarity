@@ -6,7 +6,7 @@ toc: true
 Easily translate internal Clarity text into multiple languages.
 
 <cds-alert-group status="warning" type="default">
-<cds-alert>There is a breaking change required to fix the language support starting in version 2.1.1 and 1.2.1. The original implementation was broken in a way that could not be fixed with the original API, and due to the importance of this service for localization we opted to introduce a different API. If you have an implementation of a custom language strings before this release, [follow the instructions](/foundation/internationalization#updating) on how to update your code.</cds-alert>
+<cds-alert>There is a breaking change required to fix the language support starting in version 2.1.1 and 1.2.1. The original implementation was broken in a way that could not be fixed with the original API, and due to the importance of this service for localization we opted to introduce a different API. If you have an implementation of a custom language strings before this release, <a href="#updating">follow the instructions</a> on how to update your code.</cds-alert>
 </cds-alert-group>
 
 ## Internal language strings
@@ -33,9 +33,9 @@ The list of strings available to configure can be found by simply looking at the
 
 ## Updating
 
-If you used the original implementation of `ClrCommonStrings` found in versions prior to v1.2.1 and v2.1.1, you need to follow these steps to update to the new API that is used from to v1.2.1 on in Clarity.
+If you used the original implementation of `ClrCommonStrings` found in versions prior to v1.2.1 and v2.1.1, you need to follow these steps to update to the new API that is used from v1.2.1 on in Clarity.
 
-First, Remove the provider from your `AppModule`. It should have looked something like the following.
+First, remove the provider from your `AppModule`. It should look something like the following.
 
 <doc-demo src="/demos/i18n/update-step-1.ts"></doc-demo>
 

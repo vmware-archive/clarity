@@ -9,9 +9,9 @@ A sound navigation layout offers a high degree of discoverability and feedback, 
 
 Clarity Navigation depends on a specific DOM structure. Consult an appropriate demo to see the code and structure needed for the styles and layout to work. Clarity provides three levels of navigation represented by the following classnames.
 
-- `.header-nav` in the application header.
+- `.header-nav` in the application [header](/components/header).
 - `.subnav` immediately below the header.
-- `.sidenav` inside the content container. See sidenav.
+- `.sidenav` inside the content container. See [sidenav](/components/sidenav).
 
 ### Designing Navigation Patterns
 
@@ -55,7 +55,7 @@ Conversely, the header supports other items (search and setting) and the navigat
 
 {.custom-container}
 
-Use the <a href="/components/header/#subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
+Use the <a href="/components/subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
 
 - You have more links than can fit in the header.
 - The text of your links is too long for the header.
@@ -75,7 +75,7 @@ Use the <a href="/components/header/#subnav">subnav</a> for primary navigation w
 
 {.custom-container}
 
-Benefits of the <a href="/components/header/#sidenav">sidenav</a> are that it:
+Benefits of the <a href="/components/sidenav">sidenav</a> are that it:
 
 - Is a familiar navigation pattern for users.
 - Accommodates a large number of links, becoming vertically scrollable when content exceeds the view port.
@@ -159,13 +159,13 @@ Clarity has three navigation components: header, subnav, and sidenav. Following 
 
 ### Header + Subnav
 
-When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/component/header) component with the [subnav](/components/header/#subnav) component using the DOM structure shown in code examples.
+When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/component/header) component with the [subnav](/components/header#subnav) component using the DOM structure shown in code examples.
 // Need code+demo here w/ subnav
 <doc-demo src="/demos/navigation/header-subnav-ng.html" demo="/demos/navigation/header-subnav-css.html" />
 
 ### Header + Sidenav
 
-When header is the primary navigation and sidnav is the secondary navigation combine the [Header](/component/header) component with the [disenav](/components/header/#sidenav) component using the DOM structure shown in code examples.
+When header is the primary navigation and sidenav is the secondary navigation combine the [Header](/component/header) component with the [sidenav](/components/sidenav) component using the DOM structure shown in code examples.
 <doc-demo src="/demos/navigation/header-sidenav-ng.html" demo="/demos/navigation/header-sidenav-css.html" />
 
 ### Header

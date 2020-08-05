@@ -38,14 +38,14 @@ Clarity is published as three separate packages on NPM, as well as one dependenc
 - **@clr/ui.** Contains the static styles for building HTML components.
 - **@clr/core.** Contains a shared core library of web components.
 - **@clr/angular.** Contains the Angular components. This package depends on @clr/ui for styles.
-- **@webcomponents/webcomponentsjs.** A polyfill for webcomponents for older browsers, which Clarity depends upon.
+- **@webcomponents/webcomponentsjs.** A polyfill for web components for older browsers, which Clarity depends upon.
 
 Install them all by running the following command with `npm` or `yarn`.
 
 <DocDemo toggle="false">
 
 ```bash
-npm install @clr/icons @clr/angular @clr/ui @clr/core @webcomponents/webcomponentsjs --save
+npm install @clr/icons @clr/angular @clr/ui @clr/core @webcomponents/webcomponentsjs
 ```
 
 </DocDemo>

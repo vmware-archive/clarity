@@ -49,7 +49,7 @@ our development environment on your computer. You will need to have
     yarn website:start
     ```
 
-5.  See changes in your browser at `localhost:4200`
+5.  See changes in your browser at `localhost:8080`
 
 The source code for the Clarity Documentation is located in the `src/website` folder.
 Once you have made the changes and are happy with the results you can submit and

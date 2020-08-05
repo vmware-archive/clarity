@@ -253,19 +253,22 @@
       );
     }
 
-    .clr-accordion-panel:last-child .clr-accordion-header {
-      @include css-var(
-        border-bottom-left-radius,
-        clr-accordion-border-radius,
-        $clr-accordion-border-radius,
-        $clr-use-custom-properties
-      );
-      @include css-var(
-        border-bottom-right-radius,
-        clr-accordion-border-radius,
-        $clr-accordion-border-radius,
-        $clr-use-custom-properties
-      );
+    .clr-accordion-panel:last-child {
+      .clr-accordion-content,
+      .clr-accordion-header {
+        @include css-var(
+          border-bottom-left-radius,
+          clr-accordion-border-radius,
+          $clr-accordion-border-radius,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          border-bottom-right-radius,
+          clr-accordion-border-radius,
+          $clr-accordion-border-radius,
+          $clr-use-custom-properties
+        );
+      }
     }
 
     .clr-accordion-title {
@@ -298,6 +301,13 @@
         @include equilateral($clr_baselineRem_0_583);
       }
     }
+  }
+
+  // override the border bottom style when last panel is open
+  .clr-accordion-panel-open .clr-accordion-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: 0 !important;
   }
 
   // stepper forms mode

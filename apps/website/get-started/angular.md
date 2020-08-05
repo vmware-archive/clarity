@@ -60,15 +60,15 @@ yarn add @clr/icons @clr/angular @clr/ui @clr/core @webcomponents/webcomponentsj
 
 ### Step 2: Adding scripts and styles
 
-We need to make the build system aware of some CSS and JavaScript files so it can include them in the build. If you are using the Angular CLI, you need to add the `angular.json` file. Find the `scripts` and `styles` arrays and add the following:
+We need to make the build system aware of some CSS and JavaScript files so it can include them in the build. If you are using the Angular CLI, you need to add the files to the `angular.json` file. Find the `scripts` and `styles` arrays and add the following:
 
 <DocDemo toggle="false">
 
 ```javascript
 "styles": [
-      "node_modules/@clr/icons/clr-icons.min.css",
-      "node_modules/@clr/ui/clr-ui.min.css",
-      "... any other styles"
+  "node_modules/@clr/icons/clr-icons.min.css",
+  "node_modules/@clr/ui/clr-ui.min.css",
+  "... any other styles"
 ],
 "scripts": [
   "... any existing scripts",

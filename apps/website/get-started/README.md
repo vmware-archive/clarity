@@ -45,5 +45,3 @@ Ask questions on StackOverflow with the [vmware-clarity](https://stackoverflow.c
 ## Attributions
 
 See the [legal attributions](https://github.com/vmware/clarity/blob/master/docs/ATTRIBUTION.md) for third party software included in Clarity.
-
-This is a spacer to force sidenav highlighting on scroll

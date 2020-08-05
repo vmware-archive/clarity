@@ -24,15 +24,27 @@ import {
   ClarityIcons,
   linkIcon,
   fileIcon,
+  downloadIcon,
+  copyIcon,
+  pencilIcon,
+  folderOpenIcon,
+  imageGalleryIcon,
+  videoGalleryIcon,
+  cloudIcon,
+  loadCoreIconSet,
+} from '@clr/core/icon';
+
+ClarityIcons.addIcons(
+  linkIcon,
+  fileIcon,
   pencilIcon,
   folderOpenIcon,
   cloudIcon,
   imageGalleryIcon,
   videoGalleryIcon,
-  loadCoreIconSet,
-} from '@clr/core/icon';
-
-ClarityIcons.addIcons(linkIcon, fileIcon, pencilIcon, folderOpenIcon, cloudIcon, imageGalleryIcon, videoGalleryIcon);
+  downloadIcon,
+  copyIcon
+);
 loadCoreIconSet();
 
 class LegacyIcon extends CdsIcon {}

@@ -16,9 +16,6 @@
 </template>
 
 <style lang="scss">
-.page-subnav {
-  margin-bottom: 1rem;
-}
 h1 {
   margin: 0rem;
 }

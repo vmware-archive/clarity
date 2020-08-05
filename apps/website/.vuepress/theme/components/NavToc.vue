@@ -55,8 +55,6 @@ export default {
       position: fixed;
       top: 8.1rem;
       padding-bottom: 8.1rem;
-      padding-left: var(--cds-token-space-size-9);
-      padding-right: var(--cds-token-space-size-9);
     }
   }
 
@@ -103,7 +101,7 @@ export default {
   li li {
     padding-top: 0;
     a {
-      margin-left: var(--cds-token-space-size-4);
+      margin-left: var(--cds-token-space-size-6);
     }
   }
 }

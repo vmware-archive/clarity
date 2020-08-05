@@ -34,6 +34,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: var(--cds-token-space-size-9) var(--cds-token-space-size-9) 0;
 
   @media (min-width: 992px) {
     width: calc(100% - 10rem);

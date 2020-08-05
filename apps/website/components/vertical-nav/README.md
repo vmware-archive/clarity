@@ -15,11 +15,7 @@ Use the vertical navigation:
 - for hierarchical navigation or nested navigation. Up to two tiers of navigation is supported by vertical nav
 - when the user need to collapse and expand the navigation to free up space for the content area
 
-<div class="clr-row">
-
-![Jigglypuff is active nav](/images/components/vertical-nav/jigglypuff.png)
-
-</div>
+<ClrImage class="doc-example" title="Jigglypuff is active nav" src="/images/components/vertical-nav/jigglypuff.png" align="center" />
 
 <div class="clr-row">
 

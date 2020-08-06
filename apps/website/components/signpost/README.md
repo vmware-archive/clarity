@@ -65,11 +65,11 @@ In tables, the icons may be aligned in a column
 - Don't rely on signposts as a primary method of displaying additional information - i.e. as a way to save space on a page
 - Use sparingly as a device to add immediate, relevant information
 
-#Content
+## Code & Examples
 
-## Basic
+### Basic Signpost
 
-The signpost component uses the \*clrIfOpen structural directive (detailed documentation coming soon) on the signpost content to indicate clearly that said content is only present in the DOM when open. We heavily recommend using it for many reasons: better performance, making the intent clear in your own templates, and following a more natural lifecycle for any directives or components inside of the signpost.
+The signpost component uses the `*clrIfOpen` structural directive (detailed documentation coming soon) on the signpost content to indicate clearly that said content is only present in the DOM when open. We heavily recommend using it for many reasons: better performance, making the intent clear in your own templates, and following a more natural lifecycle for any directives or components inside of the signpost.
 
 If for some reason this behavior was not the one you wanted, for instance if you want screen readers to read the signpost inline as opposed to when the user activates the trigger, we also support the signpost content without a \*clrIfOpen directive on it. It will be created eagerly when the signpost itself initializes, and will not be destroyed or recreated until the signpost itself is. Please make sure you know exactly why you are omitting this directive if you end up doing so.
 
@@ -78,7 +78,7 @@ The default signpost is shown to the right of the trigger icon with the content 
 ![Basic Wizard](/images/components/signpost/basic.png)
 <doc-demo src="/demos/signpost/basic-ng.html" demo="/demos/signpost/basic-css.html"/></doc-demo>
 
-## Positions
+### Positions
 
 There are twelve signpost positions to help place popover content in an appropriate position when it is shown. Control the position and direction by declaring a position that orients the Signpost content in one of these positions.
 
@@ -99,7 +99,7 @@ To set a position, use the `clrInput` property on the [ClrSignpostContent](/comp
 
 You can see the behavior for each position in the [demo](/demo.html).
 
-## Custom Trigger
+### Custom Trigger
 
 Clarity provides a default trigger. If needed, a custom trigger can be provided for any icon or element. Adding the [ClrSignpostTrigger](/components/signpost/api/#clrsignposttrigger) directive to any element will turn it into a toggle control for the content.
 

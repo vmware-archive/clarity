@@ -30,7 +30,7 @@ Use the sidenav:
 
 The sidenav works best in desktop applications. Scroll when the content exceeds the viewport.
 
-## Anatomy
+## Code & Examples
 
 ### Structure
 

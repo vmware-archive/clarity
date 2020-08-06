@@ -13,13 +13,13 @@ Use a text field when the expected user input may be more than a single line.
 
 If you are using Angular, the recommended approach is to always use the `ClrTextarea` directive on your textareas to help manage the form control. By using `ClrTextarea`, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.
 
-#### Basic textarea
+### Basic textarea
 
 This is the most basic way to create a textarea inside of a form. This is only if you don't have a need for a label or validation. You need to add `clrTextarea` to your textarea to wire up the directive. Notice, it is not necessary to add `type="text"` as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.
 
 <doc-demo src="/demos/textarea/basic-ng.html" demo="/demos/textarea/basic-css.html" toggle="false" />
 
-#### Labels
+### Labels
 
 For anything beyond a standalone textarea field, you'll need to wrap it with the `ClrTextareaContainer` component. This is required to contain all of the logic and validation details for the individual textarea control.
 
@@ -27,7 +27,7 @@ Then you can add a `label` element and it will automatically get laid out correc
 
 <doc-demo src="/demos/textarea/label-ng.html" demo="/demos/textarea/label-css.html" />
 
-#### Helper and error messages
+### Helper and error messages
 
 The textarea form control wires up with the validations placed on it, such as `required` or even custom built validators in Angular. Under the hood, it looks at the `NgControl` values to determine the control validity, and display the helper text or error message accordingly.
 

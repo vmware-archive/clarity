@@ -26,7 +26,7 @@ For data sets with a blend of text, images, and data visualizations, or content 
 
 The Clarity datagrid uses 13px ClarityCity REGULAR for content and 11px Clarity City SEMIBOLD for column headers. Consolas (monospaced) is recommended for tabular data where alignment of columns improves legibility.
 
-## Types
+## Code & Examples
 
 ### Basic Structure
 
@@ -877,7 +877,7 @@ It is possible to listen for changes to the Detail Pane state, by desugaring the
 
 #### Controlling the Detail Pane programmatically
 
-In some cases, you might want to programmatically control the toggling of the Detail Pane, which you can do by desugaring `*clrIfDetail` directive and using the two way binding syntax. Be sure to include the local template variable like `let-detail` to get access to the row object.
+In some cases, you might want to programmatically control the toggling of the Detail Pane, which you can do by desugaring `*clrIfDetail` directive and using the two way binding syntax. To open the detail pane, set the `detailState` value to the row object, or to `null` to close it. Be sure to include the local template variable like `let-detail` to get access to the row object.
 
 <DocDemo toggle="false">
 

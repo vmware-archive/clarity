@@ -9,7 +9,7 @@ A table displays information in a grid of rows and columns providing a method of
 
 Use the table styles wherever you need to present static data in a tabular format. For advanced features like sorting, filtering, pagination etc. see [Datagrid.](/components/datagrid)
 
-## Code Examples
+## Code & Examples
 
 ### Basic Tables
 

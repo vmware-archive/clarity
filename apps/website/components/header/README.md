@@ -228,7 +228,9 @@ You can read more in about search in the design spec. The search component itsel
 
 The header and subnav support app-level information and navigation links.
 
-###### .header
+### Basics
+
+#### .header
 
 `.header` is a wrapper around the following four sections:
 
@@ -237,21 +239,21 @@ The header and subnav support app-level information and navigation links.
 - Search
 - Settings
 
-###### .branding
+#### .branding
 
 `.branding` contains the product logo and the product title. The logo extends the `.clr-icon` class and the title extends the `.title` class.
 
-###### .header-nav
+#### .header-nav
 
 `.header-nav` contains the navigation links. Each navigation link extends the `.nav-link` class along with the `.nav-text` class for text links and the `.nav-icon` class icon links.
 
 <doc-demo file="/demos/header/basic.html" />
 
-###### .search
+#### .search
 
 `.search` is a form containing the search icon and the search input field.
 
-###### .header-actions
+#### .header-actions
 
 `.header-actions` is a wrapper that contains secondary navigation links. Each navigation link extends the `.nav-link` class. Navigation links can be text or icons.
 
@@ -259,11 +261,11 @@ Info
 
 <!-- For information about headers with responsive navigation, see [Responsive Navigation](/foundation/navigation#responsive_navigation). -->
 
-#### Types
+### Types
 
 <doc-demo file="/demos/header/types.html" id="header-types" />
 
-#### Color Options
+### Color Options
 
 <doc-demo file="/demos/header/colors.html" id="color-types" />
 

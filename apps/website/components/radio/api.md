@@ -3,17 +3,6 @@ title: API
 toc: true
 ---
 
-# API
-
-### Code & Examples
-
----
-
-title: API
-toc: true
-
----
-
 Use checkboxes when users need to select multiple options in a list of related options.
 
 ## Angular Components

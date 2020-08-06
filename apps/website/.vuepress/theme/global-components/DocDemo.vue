@@ -1,6 +1,6 @@
 <template>
   <div class="demo-container" :id="id">
-    <div class="demo-wrapper" v-if="demoHTML">
+    <div class="demo-wrapper" v-if="demoHTML" :class="{ center }">
       <span v-html="demoHTML"></span>
     </div>
     <div class="code-wrapper" :class="{ expanded: state }" v-if="hasCodeProjection() || codeHTML">
@@ -31,6 +31,7 @@ export default {
     id: String,
     src: String,
     demo: String,
+    center: Boolean,
     toggle: { type: Boolean | String, default: true },
     file: String | { file: String, lang: { type: String, default: 'html' } },
   },
@@ -105,6 +106,10 @@ export default {
 
   .has-padding & {
     padding: 1.2rem;
+  }
+
+  &.center {
+    text-align: center;
   }
 }
 

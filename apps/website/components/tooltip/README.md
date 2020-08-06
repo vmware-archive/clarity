@@ -23,14 +23,29 @@ Don’t rely on tooltips to meet accessibility requirements. Rather, ensure that
 
 Set a width that accommodates the text string. If no size class is used on the tooltip, the default is 240px wide (e.g - `.tooltip-md`) is applied. Other choices are 72 px, 120 px, and 360 px.
 
-1. `.tooltip-xs` is 72px wide
-   <doc-demo file="/demos/tooltip/tooltip-xs.html"></doc-demo>
-2. `.tooltip-sm` is 120px wide:
-   <doc-demo file="/demos/tooltip/tooltip-sm.html"></doc-demo>
-3. `.tooltip-md` is 240px wide:
-   <doc-demo file="/demos/tooltip/tooltip-md.html"></doc-demo>
-4. `.tooltip-lg` is 360px wide:
-   <doc-demo file="/demos/tooltip/tooltip-lg.html"></doc-demo>
+#### Extra Small
+
+`.tooltip-xs` is 72px wide
+
+<doc-demo file="/demos/tooltip/tooltip-xs.html" center></doc-demo>
+
+#### Small
+
+`.tooltip-sm` is 120px wide
+
+<doc-demo file="/demos/tooltip/tooltip-sm.html" center></doc-demo>
+
+#### Medium
+
+`.tooltip-md` is 240px wide
+
+<doc-demo file="/demos/tooltip/tooltip-md.html" center></doc-demo>
+
+#### Large
+
+`.tooltip-lg` is 360px wide
+
+<doc-demo file="/demos/tooltip/tooltip-lg.html" center></doc-demo>
 
 ## Placement
 
@@ -40,31 +55,31 @@ Use tooltip positions that ensure the entire element is visible onscreen. Do not
 
 #### `.tooltip-top-left`
 
-<doc-demo file="/demos/tooltip/tooltip-top-left.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-top-left.html" center></doc-demo>
 
 #### `.tooltip-top-right`
 
-<doc-demo file="/demos/tooltip/tooltip-top-right.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-top-right.html" center></doc-demo>
 
 #### `.tooltip-bottom-left`
 
-<doc-demo file="/demos/tooltip/tooltip-bottom-left.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-bottom-left.html" center></doc-demo>
 
 #### `.tooltip-bottom-right`
 
-<doc-demo file="/demos/tooltip/tooltip-bottom-right.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-bottom-right.html" center></doc-demo>
 
 #### `.tooltip-right`
 
-<doc-demo file="/demos/tooltip/tooltip-right.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-right.html" center></doc-demo>
 
 #### `.tooltip-left`
 
-<doc-demo file="/demos/tooltip/tooltip-left.html"></doc-demo>
+<doc-demo file="/demos/tooltip/tooltip-left.html" center></doc-demo>
 
 ## Content
 
-- Use a verb phrase to describe the action on the icon, for example, “Edit settings.”
+- Use a verb phrase to describe the action on the icon, for example, "Edit settings."
 - Use only plain text and be concise. Tooltips can be a sentence fragment.
 - If more detailed information is required, use another form of help.
 - Use sentence-style caps and no ending punctuation.

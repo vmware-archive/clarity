@@ -67,7 +67,9 @@ While reactive forms and template forms have the same behavior, the implementati
 #### HTML
 
 <doc-demo src="/demos/stepper/reactive-form.html" />
+
 #### TypeScript
+
 <doc-demo src="/demos/stepper/reactive-form.ts" />
 
 ### Template Forms
@@ -75,5 +77,7 @@ While reactive forms and template forms have the same behavior, the implementati
 #### HTML
 
 <doc-demo src="/demos/stepper/template-form.html" />
+
 #### TypeScript
+
 <doc-demo src="/demos/stepper/template-form.ts" />

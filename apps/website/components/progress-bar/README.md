@@ -50,10 +50,6 @@ Use a progress bar to set expectation of the loading time. Users are more willin
 
 When there is a specific goal duration use determinate progress to inform users about the process. Two examples are file upload/download, or a series of configuration steps that happen during an initialization process.
 
-[//] # (DEMOS x2 - processing / 3 of 4)
-
-#### Determinate Progress Bar
-
 - Show progress towards a specific maximum goal or known duration
 - Has an optional label that shows percentage completion
 - Keep messaging minimal
@@ -61,13 +57,9 @@ When there is a specific goal duration use determinate progress to inform users 
 
 <doc-demo src="/demos/progress/determinate-ng.html" demo="/demos/progress/determinate-css.html" toggle="false" />
 
-[//] # (DEMOS x2 - processing / 3 of 4)
-
 ### Indeterminate Progress
 
 When there is no estimate for the completion time or goal of a process, show indeterminate progress. This indicates that work is occurring but does not indicate a scope or imply an estimate for how long it will take to complete. One example is uploading a file of data that will be analyzed before a response.
-
-#### Indeterminate
 
 - Will animate continuously until complete
 - Uses specific messaging: E.g "Loading update 3 of 7"

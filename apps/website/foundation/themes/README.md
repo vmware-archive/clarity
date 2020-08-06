@@ -66,7 +66,7 @@ Themes offer a great deal of flexibility — which can be both a good and bad th
 <div class="clr-row">
 <div class="clr-col-sm-12 clr-col-lg-6">
 
-#### Use color responsibly
+### Use color responsibly
 
 Use colors that reinforce your brand but in a way that is pleasing.
 
@@ -86,7 +86,7 @@ Use brand colors in a pleasing manner
 <div class="clr-row">
 <div class="clr-col-sm-12 clr-col-lg-6">
 
-#### Communicate with color
+### Communicate with color
 
 Consider using color to communicate meaning to users. Using colors like red for warning or danger and green for success or preferred actions reinforces your user experience.
 
@@ -99,7 +99,7 @@ Don't use brand colors irrespective of what the color communicates to users
 
 </div>
 
-#### Create visual hierarchy
+### Create visual hierarchy
 
 Darker colors recede while lighter and brighter colors push forward. Be mindful of this when working with brand colors to create a custom theme.
 
@@ -119,7 +119,7 @@ Draw attention to the wrong items with the use of color.
 
 Color draws visual focus. Visual hierarchy can be re-inforced or circumvented. Be specfic to where a design guides vidual focus. Observe an unintended effect in the example above where the content in the cards and the datagrid recede into the background while the sidenav and the header draw the visual attention away from the data.
 
-#### Avoid extreme color combinations
+### Avoid extreme color combinations
 
 <div class="clr-row">
 <div class="clr-col-sm-12 clr-col-lg-6">
@@ -135,7 +135,7 @@ Don't use color combinations that may cause eye-strain
 
 </div>
 
-#### Be Accessible
+### Be Accessible
 
 Clarity’s color palette is WCAG AA compliant, meaning all color combinations of text-on-background meet the standard for color accessibility for our users. Use [the WebAIM Color Contrast Checker tool](//webaim.org/resources/contrastchecker/) to test text and background colors when deciding how a brand’s color palette will be used in an application.
 
@@ -145,13 +145,13 @@ All of the text/background combinations on the Clarity Color Palette page are te
 
 Clarity UI ships with two css files, `clr-ui.min.css` for the light theme and `clr-ui-dark.min.css` for the dark theme. You can consume either one of these files and have a fully light or dark-themed Clarity application. If you already use `@clr/ui` in your project there is nothing more you need to do. If you want to switch over to the dark theme use one of the examples below to modify your build process and consume the `clr-ui-dark.min.css` code.
 
-#### Angular CLI Builds
+### Angular CLI Builds
 
 Consume the dark theme code in `clr-ui-dark.min.css` by adding it to your styles array in the `angular.json` file.
 
 <doc-demo src="/demos/themes/angular.json" />
 
-#### Webpack Builds
+### Webpack Builds
 
 Modify your `webpack.config.js` entry styles to consume the new `clr-ui-dark.min.css`
 <doc-demo src="/demos/themes/webpack.js" />
@@ -160,7 +160,7 @@ Modify your `webpack.config.js` entry styles to consume the new `clr-ui-dark.min
 
 If you need to customize components for your application we suggest starting with either the light theme or the dark theme and overriding variables from there to suit your customizations.
 
-#### Two Ways to Theme Clarity
+### Two Ways to Theme Clarity
 
 With the 3.0 release, there are two ways to theme Clarity: _SASS variables_ and _CSS custom properties_. The recommended way to theme Clarity is through [CSS Custom Properties](//developer.mozilla.org/en-US/docs/Web/CSS/--*).
 
@@ -170,7 +170,7 @@ After the release of Clarity 4.0, SASS based theming will no longer work in Clar
 <cds-alert>SASS-based theming is deprecated in Clarity 3.0 and will no longer work when Clarity 4.0 is released. It is recommended that you convert your themes to use CSS custom properties for the 4.0 release in Spring of 2020.</cds-alert>
 </cds-alert-group>
 
-#### SASS-based Theming
+### SASS-based Theming
 
 SASS-based theming is most familiar to those who use SASS/SCSS in their own products to build CSS stylesheets. SASS acts like a superset of CSS that enables convenient nesting syntax and programming-like functionality in a CSS-based language that compiles to CSS. SASS also gives developers variables they can reuse throughout their SASS codebase.
 
@@ -183,7 +183,7 @@ It is these variables that we override in SASS to build out a new CSS file for o
 
 In order to customize the Clarity light theme you will need to build with the Clarity SCSS and overwrite the SCSS variables that set the look-n-feel for each component you need to customize. You will need to build your applications CSS output with Clarity's SCSS.
 
-###### Remove Clarity CSS from your build configuration
+#### Remove Clarity CSS from your build configuration
 
 First, since we are going to be creating custom component styles the first step is to remove all of the Clarity css from your build process.
 
@@ -199,7 +199,7 @@ First, since we are going to be creating custom component styles the first step 
 
 </DocDemo>
 
-###### Add (or modify) your applications main.scss file
+#### Add (or modify) your applications main.scss file
 
 Next, we need to include the the application scss variable overrides and the Clarity component styles. This example shows one way of adding the Clarity dependencies and component styles based on standard `npm` installation into a `node_modules` directory of the project. In this example the `styles.scss` file lives at the top of a standard angular-cli application `src` folder.
 
@@ -215,11 +215,11 @@ Next, we need to include the the application scss variable overrides and the Cla
 
 </DocDemo>
 
-##### Why is SASS-based theming going away?
+### Why is SASS-based theming going away?
 
 Once the Clarity Angular library begins to integrate the web components from Clarity Core, SASS-based theming will no longer work. The Clarity Core web components are encapsulated within the shadow DOM. Changes to the CSS at the global level will not be able to affect shadow DOM encapsulated web components through any means outside of CSS custom properties.
 
-#### CSS Custom Properties
+### CSS Custom Properties
 
 CSS custom properties are a specification that defines a syntax that allows developers to define "variables" in their stylesheets whose values they can reuse and override. This is a huge improvement for CSS and greatly streamlines theming, as well as the management of complex stylesheets.
 
@@ -236,7 +236,7 @@ When doing research on how best to deliver a theming solution to our developer c
 - Customized themes
 - Dynamically switching an application between multiple theme options
 
-#### CSS Custom Property Dark Theme
+### CSS Custom Property Dark Theme
 
 After adopting custom properties, delivering a dark theme in Clarity no longer requires pointing to a separately built CSS file. Likewise, if your application relies on Clarity but needs a different color scheme, you'll no longer need to rebuild the Clarity CSS at build time.
 
@@ -246,7 +246,7 @@ If you are already working with a SASS/SCSS file with Clarity SASS variables, cl
 
 So, the previous SASS variable `$clr-alert-info-bg-color` would become a custom property of `--clr-alert-info-bg-color`. [This file on github](//github.com/mathisscott/clarity-theming-starter/blob/clarity-css-dark-theme/src/_dark-theme.scss) shows an example of what this looks like in practice.
 
-#### Theme Switching
+### Theme Switching
 
 A common use case for applications is giving users the ability to switch between predefined universal themes. An example would be switching between a light and a dark theme.
 
@@ -258,7 +258,7 @@ Instead, our theme only contains the custom property values we want to change wh
 
 An example of this kind of "theme switching" [can be found here in this github repository](//github.com/mathisscott/clarity-theming-starter/tree/clarity-css-dark-theme-switcher).
 
-#### Whitelabeling
+### Whitelabeling
 
 Whitelabeling is a term that describes a product feature that allows end-users to change a minimal set of colors to aid with brand identity across a company's offerings. Typically, whitelabeling refers to the ability to change navigation or header colors and sometimes elements such as buttons.
 
@@ -266,7 +266,7 @@ This was incredibly difficult in Clarity prior to custom properties. Due to the 
 
 Because custom properties allows us to change just the styles that we want to override in normal CSS, [whitelabeling Clarity applications is far more streamlined](//github.com/mathisscott/clarity-theming-starter/tree/clarity-css-whitelabeling).
 
-#### Dynamic Whitelabeling
+### Dynamic Whitelabeling
 
 A feature that often walks hand-in-hand with whitelabeling is some sort of theme generator the customers can use to customize a product to their needs. Again, this is often limited to a subset of styles -- generally concerned with Color and navigation.
 
@@ -278,7 +278,7 @@ With the ease of accessing and updating CSS custom properties with JavaScript, t
 
 If, however, your product has not been able to stop supporting Internet Explorer, Clarity Core can offer some assistance.
 
-#### Setting up IE11 support
+### Setting up IE11 support
 
 First, you will need to install Clarity Core and its dependencies:
 
@@ -290,11 +290,11 @@ npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponent
 
 </DocDemo>
 
-#### Using the polyfills
+### Using the polyfills
 
 Once the dependencies are in a good place, you will need to import the `runCssVarsPolyfill` helper from `@clr/core`. This is what you will use to update the CSS custom properties in Internet Explorer.
 
-#### When to call the polyfills
+### When to call the polyfills
 
 [As demonstrated in this example](//github.com/mathisscott/clarity-theming-starter/blob/clarity-css-whitelabel-switcher/src/app/app.component.ts), you'll want to call `runCssVarsPolyfill()` whenever making a change to your custom properties. This includes if you are enabling or disabling stylesheets.
 

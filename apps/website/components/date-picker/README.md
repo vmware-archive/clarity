@@ -13,7 +13,7 @@ Date Picker is a popover control for picking a date value for a date input. It's
 <p>Date Pickers aren’t helpful when the date is a known value like a birthday. A user will likely want to type that value in versus hunting for it in a Date Picker. In cases where space is limited, it may be a good idea to omit the Date Picker.</p>
 </div>
 <div class="clr-col doc-wrapper">
-<ClrImage src="/images/components/datepicker/datepicker.png" />
+<ClrImage src="/images/components/datepicker/basic-demo.png" />
 </div>
 </div>
 
@@ -109,7 +109,7 @@ The `min` and the `max` attributes can be used alone or together to have both an
 
 Clarity uses the [locale identifiers](https://github.com/angular/angular/tree/master/packages/common/locales) supported by Angular for getting the date format, first day of the week, month and day names. These values are used to generate the input field placeholder and the calendar.
 
-#### Placeholder
+### Placeholder
 
 Using the date format retrieved from Angular, the placeholder is generated in one of the following formats:
 {.custom-block}
@@ -213,9 +213,9 @@ You can add a two way binding on clrDate to access the date value. The benefit o
 
 <doc-demo src="/demos/datepicker/js-date-object.html" />
 
-```
+```javascript
 // clrDate Output
-"2020-07-16T17:56:30.728Z"
+'2020-07-16T17:56:30.728Z';
 ```
 
 </DocDemo>
@@ -224,15 +224,15 @@ You can add a two way binding on clrDate to access the date value. The benefit o
 
 Template Driven Forms use the `ngModel` directive to create a binding between the model and the input field.
 
-##### HTML
+#### HTML
 
 <doc-demo src="/demos/datepicker/template-driven.html" />
 
-##### TypeScript
+#### TypeScript
 
 <doc-demo src="/demos/datepicker/template-driven.ts" />
 
-##### Example Output
+#### Example Output
 
 <DocDemo toggle="false">
 

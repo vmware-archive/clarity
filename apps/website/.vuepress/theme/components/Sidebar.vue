@@ -25,7 +25,9 @@
                     class="nav-link"
                     :to="childItem.path"
                     v-if="childItem.type !== 'external'"
-                    v-bind:class="{ active: childItem.path === activePage.path || childActive(childItem) }"
+                    v-bind:class="{
+                      active: isItemActive(childItem),
+                    }"
                   >
                     <span class="nav-text">{{ childItem.title }}</span>
                   </router-link>
@@ -145,6 +147,9 @@ export default {
     toggle: function (index) {
       // This is because Vue can't detect changes mutated on an array, so this alerts it of changes
       this.$set(this.states, index, !this.states[index]);
+    },
+    isItemActive: function (childItem) {
+      return childItem.path === this.activePage.path || this.activePage.path.startsWith(childItem.path + '/');
     },
     childActive: function (item) {
       let path = this.$page.path;

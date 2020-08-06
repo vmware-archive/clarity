@@ -14,17 +14,7 @@ Use a checkbox for yes or no choices, for example "Remember me" on the [login pa
 
 For on and off options, use a [toggle switch](/components/toggle).
 
-<!-- [//]: # Types -->
-
-<!-- [//]: # Anatomy -->
-
-<!-- [//]: # Behavior -->
-
-<!-- [//]: # Placement - Checkboxes are often use in forms see: vertical, horizontal and compact form elements. -->
-
-<!-- [//]: # Content -->
-
-## Code Examples
+## Code & Examples
 
 ### Basic checkbox button
 

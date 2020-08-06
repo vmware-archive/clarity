@@ -10,6 +10,12 @@
   }
 }
 
+// Code Snippets
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background-color: #ffffff;
+}
+
 // HEADERS
 #header-types,
 #color-types {
@@ -48,6 +54,63 @@
 // Prism code snippet margin
 div[class^='language-'] pre {
   margin: 1rem 0;
+}
+
+// Override icons in header
+.header-1 clr-icon,
+.header-2 clr-icon,
+.header-3 clr-icon,
+.header-4 clr-icon,
+.header-5 clr-icon,
+.header-6 clr-icon {
+  --color: var(--clr-header-title-color);
+  opacity: 1;
+}
+
+// Override icons in buttons
+.btn-primary.btn-icon clr-icon {
+  --color: var(--clr-btn-primary-color, #fff);
+}
+.btn-icon clr-icon {
+  --color: var(--clr-btn-default-color, #0072a3);
+}
+.btn-danger.btn-icon clr-icon,
+.btn-warning.btn-icon clr-icon {
+  --color: var(--clr-btn-default-color, #0072a3);
+}
+.btn-success.btn-icon clr-icon {
+  --color: var(--clr-btn-success-color, #fff);
+}
+.btn-icon[disabled] clr-icon {
+  --color: var(--clr-btn-icon-disabled-color, #666);
+}
+
+// Override icons in alerts
+.alert-danger .alert-icon {
+  --color: var(--clr-alert-danger-icon-color, #991700);
+}
+.alert-warning .alert-icon {
+  --color: var(--clr-alert-warning-icon-color, #454545);
+}
+.alert-info .alert-icon {
+  --color: var(--clr-alert-info-icon-color, #00567a);
+}
+.alert-success .alert-icon {
+  --color: var(--clr-alert-success-icon-color, #306b00);
+}
+.alert-app-level.alert-info .alert-icon,
+.alert-app-level.alert-danger .alert-icon,
+.alert-app-level.alert-warning .alert-icon {
+  --color: var(--clr-app-alert-info-icon-color);
+}
+
+// Override for Clarity Core icon colors
+.clr-validate-icon {
+  --color: var(--cds-token-color-danger-800);
+}
+
+// Center the tooltip demos
+.demo-wrapper .tooptip {
 }
 
 p code {

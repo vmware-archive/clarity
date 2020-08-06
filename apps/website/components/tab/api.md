@@ -72,7 +72,7 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
 
 <DocComponentApi component="ClrTabContent" item="bindings" />
 
-# Angular Directives
+## Angular Directives
 
 {.section-header}
 
@@ -121,7 +121,3 @@ A structural directive that enables lazy-loading the content for an active tab.
 #### Bindings
 
 <DocComponentApi component="ClrIfActive" item="bindings" />
-
-#### Methods
-
-<DocComponentApi component="ClrIfActive" item="methods" />

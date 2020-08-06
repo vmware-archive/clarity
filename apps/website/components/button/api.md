@@ -3,10 +3,10 @@ title: API
 toc: true
 ---
 
-# CSS
+## CSS
 
 Clarity defines different button, status and size classes.
 
-## Classes
+### Classes
 
 <DocComponentApi component="ClrButton" item="css" />

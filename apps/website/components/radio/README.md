@@ -7,26 +7,16 @@ Using radio buttons, users can select one option from a group of options.
 
 ## Usage
 
-Use radio buttons when you want users to see all available options and the list of options is small. For mutually exclusive options, consider a checkbox or toggle switch.
+Use radio buttons when you want users to see all available options and the list of options is small. For mutually exclusive options, consider a [checkbox](/components/checkbox) or [toggle switch](/components/toggle).
 
 - Radio buttons are best for six or fewer options.
-- For more than six options, consider a select box, which prompts users to disclose the options.
+- For more than six options, consider a [select box](/components/select), which prompts users to disclose the options.
 
-<!-- [//]: # Types -->
-
-<!-- [//]: # Anatomy -->
-
-<!-- [//]: # Behavior -->
-
-<!-- [//]: # Placement -->
-
-<!-- [//]: # Content -->
-
-## Angular Radio Component
+## Code & Examples
 
 If you are using Angular, the recommended approach is to always use the `ClrRadio` directive on your radio buttons to help manage the form control. By using `ClrRadio`, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.
 
-#### Basic radio button
+### Basic radio button
 
 While it is possible to create a radio button without a label, the cases are rare. However, it is possible by just adding `clrRadio` to your radio button to wire up the directive. Notice, it is necessary to add `type="radio"`.
 
@@ -34,7 +24,7 @@ For anything beyond a standalone radio button, you'll need to wrap your radios w
 
 <doc-demo src="/demos/radio/basic-ng.html" demo="/demos/radio/basic-css.html"></doc-demo>
 
-#### Helper and error messages
+### Helper and error messages
 
 To leverage helper and validation messages, you'll need to wrap all of the radios inside of a `ClrRadioContainer` component. The radio button container tracks the the validations placed on a radio button, such as `required` or even custom built validators in Angular. Under the hood, it looks at the `NgControl` values to determine the control validity, and display the helper text or error message accordingly.
 
@@ -42,24 +32,17 @@ Note: the validation in this example only displays an error after you focus and 
 
 <doc-demo src="/demos/radio/helper-ng.html" demo="/demos/radio/helper-css.html"></doc-demo>
 
-#### Inline radios
+### Inline radios
 
 Radio buttons can be placed inline by default by adding the `clrInline` directive to your radio container elements. The radio buttons will wrap if there is not enough space.
 
 <doc-demo src="/demos/radio/inline-ng.html" demo="/demos/radio/inline-css.html"></doc-demo>
 
-#### Disabled radio
+### Disabled radio
 
 A radio can be disabled by simply putting the `disabled` attribute on the radio input. This does require the radio to be inside of a radio container. Also, for groups of radios you have to put the disabled attribute on the last radio and cannot disable individual ones, as Angular doesn't have support to disable individual radios in a group.
 
 <doc-demo src="/demos/radio/disabled-ng.html" demo="/demos/radio/disabled-css.html"></doc-demo>
-
-### Usage
-
-Use radio buttons when you want users to see all available options and the list of options is small. For mutually exclusive options, consider a [checkbox](/components/checkbox) or [toggle switch](/components/toggle).
-
-- Radio buttons are best for six or fewer options.
-- For more than six options, consider a [select box](/components/select), which prompts users to disclose the options.
 
 ## Accessibility
 

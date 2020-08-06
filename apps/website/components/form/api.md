@@ -97,8 +97,6 @@ Enable helper messages per form control.
 
 ## Angular Directives
 
-#### Bindings
-
 ### ClrLayout
 
 Use the ClrLayout directive to enable different layouts for the form.

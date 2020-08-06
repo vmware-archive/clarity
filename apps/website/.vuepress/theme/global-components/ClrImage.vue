@@ -1,6 +1,6 @@
 <template>
   <div class="image-wrapper" v-bind:style="{ 'justify-content': align }">
-    <img :src="src" :alt="title" :width="width" />
+    <img :src="src" :alt="title" :width="width" loading="lazy" decoding="async" />
   </div>
 </template>
 

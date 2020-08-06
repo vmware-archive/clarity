@@ -3,6 +3,9 @@
     <div class="demo-wrapper" v-if="demoHTML" :class="{ center }">
       <span v-html="demoHTML"></span>
     </div>
+    <div class="demo-wrapper" v-if="$slots.demo">
+      <slot name="demo"></slot>
+    </div>
     <div class="code-wrapper" :class="{ expanded: state }" v-if="hasCodeProjection() || codeHTML">
       <button class="btn btn-primary btn-sm toggle-button" @click="toggleState()" v-if="showToggle">
         {{ state ? 'hide' : 'show' }} code

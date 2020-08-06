@@ -1,4 +1,5 @@
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItInclude = require('markdown-it-include');
 const sidebar = require('./sidebar');
 const blocks = require('./blocks');
 const path = require('path');
@@ -34,6 +35,7 @@ module.exports = {
   markdown: {
     extendMarkdown: md => {
       md.use(markdownItAttrs);
+      md.use(markdownItInclude);
     },
     anchor: {
       permalink: true,

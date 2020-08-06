@@ -21648,6 +21648,11 @@ markdown-it-emoji@^1.4.0:
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
 
+markdown-it-include@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/markdown-it-include/-/markdown-it-include-1.1.1.tgz#7015209f7b64365d32bb6ccc25366bc15d3eadc9"
+  integrity sha512-jDWIHhOtiQkFIc6BqXqXK1r4LfCxKFOWtsdvwZjLw5zZaWk64n71lE5HWHtzyVvfDudYWxR+tH0hO10B2I1e3w==
+
 markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.4.4.tgz#3dc7ce8b8fc17e5981c77cc398d1782319f37fbc"

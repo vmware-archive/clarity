@@ -11,6 +11,8 @@ Use checkboxes when users need to select multiple options in a list of related o
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <form clrForm>
   <clr-select-container>
@@ -23,6 +25,8 @@ Use checkboxes when users need to select multiple options in a list of related o
   </clr-select-container>
 </form>
 ```
+
+</DocDemo>
 
 #### Bindings
 

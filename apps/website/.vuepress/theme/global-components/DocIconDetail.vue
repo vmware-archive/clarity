@@ -151,11 +151,15 @@ export default {
 }
 
 .icon-snippet {
-  background-color: #f5f2f0;
+  background: #fafafa;
   padding: 0.5rem;
   margin: 1rem 0;
   border-radius: 0.15rem;
   border: 1px solid #ccc;
+
+  code {
+    background: inherit;
+  }
 }
 
 .icon-variants {

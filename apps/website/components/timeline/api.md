@@ -13,11 +13,15 @@ ClrTimeline component is the container component of all children timeline compon
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-timeline>
   <!-- One or more clr-timeline-step components -->
 </clr-timeline>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -29,6 +33,8 @@ ClrTimelineStep is the container component for the parts of an individual step. 
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-timeline>
   <clr-timeline-step [clrState]="currentState">
@@ -39,6 +45,8 @@ ClrTimelineStep is the container component for the parts of an individual step. 
   <!-- Additional clr-timeline-step components -->
 </clr-timeline>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -50,6 +58,8 @@ Content which appears above (horizontal) or left of (vertical) the step icon.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-timeline>
   <clr-timeline-step [clrState]="currentState">
@@ -61,11 +71,15 @@ Content which appears above (horizontal) or left of (vertical) the step icon.
 </clr-timeline>
 ```
 
+</DocDemo>
+
 ### ClrTimelineStepTitle
 
 Title content for the step.
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-timeline>
@@ -78,11 +92,15 @@ Title content for the step.
 </clr-timeline>
 ```
 
+</DocDemo>
+
 ### ClrTimelineStepDescription
 
 Description content (including buttons) for the step.
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-timeline>
@@ -94,3 +112,5 @@ Description content (including buttons) for the step.
   <!-- Additional clr-timeline-step components -->
 </clr-timeline>
 ```
+
+</DocDemo>

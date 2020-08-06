@@ -75,7 +75,7 @@ In the following example, we are using a small size modal dialog.
 
 <DocModalWrapper size="sm"></DocModalWrapper>
 
-<DocDemo>
+<DocDemo toggle="false">
 
 ```html
 <div class="modal">
@@ -99,7 +99,8 @@ Modals are used in different scenarios. Most notably: alerting the user, confirm
 The background overlay animates once a modal is launched to grab a user’s attention and retain their focus. Modals and backdrops support fading animations. Clarity recommends using `fadeDown` on the `modal-dialog` and `fade` on the `modal-backdrop`. These animations hide the modal and backdrop by default. Adding or removing the `in` class animates the modal or backdrop in or out, respectively.
 
 <div class="top-margin-wrapper">
-<DocDemo>
+
+<DocDemo toggle="false">
 
 ```html
 <div class="modal">
@@ -113,6 +114,7 @@ The background overlay animates once a modal is launched to grab a user’s atte
 ```
 
 </DocDemo>
+
 </div>
 
 #### Dismissing modals
@@ -168,7 +170,8 @@ If your modals scroll, make sure:
 Besides a static HTML/CSS Modal component, we also offer a fully interactive Angular version of the component. So if you are using Angular, you can use the `ClrModal` component. By using `ClrModal`, you'll be able to leverage its interactive behavior and features out-of-the-box. If you would like to learn more about how to customize its default interactive behavior, please refer to [the API tab](./api.html).
 
 <div class="top-margin-wrapper">
-<DocDemo>
+
+<DocDemo toggle="false">
 
 ```html
 <clr-modal [(clrModalOpen)]="openModal">
@@ -184,4 +187,5 @@ Besides a static HTML/CSS Modal component, we also offer a fully interactive Ang
 ```
 
 </DocDemo>
+
 </div>

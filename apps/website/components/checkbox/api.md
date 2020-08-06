@@ -11,6 +11,8 @@ Use checkboxes when users need to select multiple options in a list of related o
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-checkbox-container>
   <clr-checkbox-wrapper>
@@ -23,6 +25,8 @@ Use checkboxes when users need to select multiple options in a list of related o
   </clr-checkbox-wrapper>
 </clr-checkbox-container>
 ```
+
+</DocDemo>
 
 #### Bindings
 

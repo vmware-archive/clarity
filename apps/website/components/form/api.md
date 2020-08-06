@@ -11,6 +11,8 @@ Use checkboxes when users need to select multiple options in a list of related o
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <form clrForm>
   <clr-date-container>
@@ -19,6 +21,8 @@ Use checkboxes when users need to select multiple options in a list of related o
   </clr-date-container>
 </form>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -47,11 +51,15 @@ A generic control container that supports form controls not directly support in 
 </form>
 ````
 
+</DocDemo>
+
 ### ClrControlError
 
 Enable error messages per form control.
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <form clrForm>
@@ -64,11 +72,15 @@ Enable error messages per form control.
 </form>
 ```
 
+</DocDemo>
+
 ### ClrControlHelper
 
 Enable helper messages per form control.
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <form clrForm>
@@ -81,6 +93,8 @@ Enable helper messages per form control.
 </form>
 ```
 
+</DocDemo>
+
 ## Angular Directives
 
 #### Bindings
@@ -91,8 +105,12 @@ Use the ClrLayout directive to enable different layouts for the form.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <form clrForm clrLayout="horizontal">
   ... form controls
 </form>
 ```
+
+</DocDemo>

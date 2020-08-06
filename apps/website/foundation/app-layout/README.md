@@ -11,7 +11,7 @@ A properly structured layout enforces an optimal, consistent experience across a
 
 The `.main-container` is a vertical flexbox which wraps the following components:
 
-- [App-Level Alert](/components/alerts)
+- [App-Level Alert](/components/alert)
 - [Header](/components/header)
 - [Subnav](/components/header)
 - Content Container

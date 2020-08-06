@@ -33,7 +33,7 @@
 .doc-dont {
   @extend .doc-do;
   .doc-example:after {
-    content: 'Dont';
+    content: "Don't";
     color: var(--cds-token-color-danger-600);
   }
 }

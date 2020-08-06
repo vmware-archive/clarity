@@ -25,6 +25,32 @@ export default {
       return this.$route.path === '/foundation/icons/';
     },
   },
+  mounted: function () {
+    // @TODO Enable this or something similar to handle scroll spy
+    // if (document) {
+    //   let headers = [...document.querySelectorAll('h2, h3')];
+    //   let active;
+    //
+    //   const content = document.querySelector('.content-area');
+    //   content.addEventListener('scroll', function () {
+    //     headers = [...document.querySelectorAll('h2, h3')];
+    //     const current = headers.reverse().find(header => content.scrollTop > header.offsetTop);
+    //
+    //     if (current && (current !== active || !active)) {
+    //       active = current;
+    //
+    //       const links = [...document.querySelectorAll('.nav-toc a')];
+    //       links.forEach(link => {
+    //         if (link.textContent.trim() === active.textContent.trim()) {
+    //           link.classList.add('router-link-active');
+    //         } else {
+    //           link.classList.remove('router-link-active');
+    //         }
+    //       });
+    //     }
+    //   });
+    // }
+  },
 };
 </script>
 

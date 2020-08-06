@@ -327,7 +327,7 @@ Overflow is used when the button group is larger than its containing space, or u
 <div class="clr-row">
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
-<div class="doc-example">
+<div class="doc-example" style="padding: 40px 0 130px 0">
 
 <div class="btn-group btn-primary">
   <button class="btn">Create</button>
@@ -356,7 +356,7 @@ Overflow is used when the button group is larger than its containing space, or u
 <div class="clr-row">
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
-<div class="doc-example">
+<div class="doc-example" style="padding: 40px 0 130px 0">
 
 <div class="btn-group btn-primary">
   <button class="btn">Create</button>
@@ -377,7 +377,7 @@ Overflow is used when the button group is larger than its containing space, or u
 </div>
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
-<div class="doc-example">
+<div class="doc-example" style="padding: 40px 0 130px 0">
 
 <div class="btn-group btn-primary btn-icon">
   <button class="btn">
@@ -418,7 +418,7 @@ Use when you want similar actions to be grouped together and separated from othe
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
 <div class="doc-example">
 
-<div class="btn-group btn-primary" style="margin-right: 12px">
+<div class="btn-group btn-primary" style="margin-right: 0.6rem">
   <button class="btn">Create</button>
   <button class="btn">Edit</button>
 </div>
@@ -435,7 +435,7 @@ Lead with primary actions followed by secondary actions.
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
 <div class="doc-example">
 
-<div class="btn-group btn-danger" style="margin-right: 12px">
+<div class="btn-group btn-danger" style="margin-right: 0.6rem">
   <button class="btn">Delete</button>
   <button class="btn">Stop</button>
 </div>

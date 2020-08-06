@@ -17,7 +17,7 @@ const path = require('path');
 const supported = ['.js', '.ts', '.html', '.css', '.scss', '.sass'];
 
 // Stash unstaged files
-exec('git stash --keep-index --include-untracked');
+// exec('git stash --keep-index --include-untracked');
 
 // Grab list of staged files
 const files = exec('git diff --name-only --cached --diff-filter=d', { encoding: 'utf8' }).split('\n');
@@ -37,4 +37,4 @@ console.log('Updated license headers');
 exec(`git add ${files.map(file => "'" + path.join(__dirname, '../', file) + "'").join(' ')}`);
 
 // Restore from stash
-exec('git stash pop');
+// exec('git stash pop');

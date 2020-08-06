@@ -39,9 +39,59 @@ Users might not scan to the bottom right of wide cards.
 
 </div>
 
+<div class="clr-row">
+
+<div class="clr-col-sm-12 clr-col-lg-6 doc-do">
+<ClrImage class="doc-example" title="Do align card actions to the left" src="/images/components/card/buttons_in_cards_2.png" align="center" />
+This card correctly aligns actions to the left.
+</div>
+
+<div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
+<ClrImage class="doc-example" title="Don't align buttons to right" src="/images/components/card/buttons_in_cards_1.png" align="center" />
+Users might not scan to the bottom right of wide cards.
+</div>
+
+<div class="clr-col-sm-12 clr-col-lg-6">
+
 Progress bars belong at the card top or above the footer, closest to the triggering action. Be consistent with progress bar placement within a card group.
 
-<ClrImage title="Cards with Progress Bars" src="/images/components/card/card_progress.png" />
+</div>
+
+<div class="clr-col-sm-12 clr-col-lg-6">
+
+<div class="clr-row">
+    <div class="clr-col-6">
+        <div class="card">
+            <div class="card-block">
+                <div class="progress top">
+                    <progress value="30" max="100"></progress>
+                </div>
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">...</p>
+            </div>
+            <div class="card-footer">
+                <a href="javascript://" class="card-link">Click</a>
+            </div>
+        </div>
+    </div>
+    <div class="clr-col-6">
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">...</p>
+            </div>
+            <div class="card-footer">
+                <div class="progress">
+                    <progress value="50" max="100"></progress>
+                </div>
+                <a href="javascript://" class="card-link">Click</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
 
 ## Behavior
 

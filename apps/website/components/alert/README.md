@@ -163,15 +163,15 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 
 ### Placement
 
-##### Alerts in the Content Area
+#### Alerts in the Content Area
 
 <doc-demo src="/demos/alert/content-area-css.html" demo="/demos/alert/content-area-css.html" />
 
-##### Alerts in Cards
+#### Alerts in Cards
 
 <doc-demo src="/demos/alert/card-ng.html" demo="/demos/alert/card-css.html" />
 
-##### Alerts in Modals
+#### Alerts in Modals
 
 <doc-demo src="/demos/alert/modal-ng.html" demo="/demos/alert/modal-css.html" />
 
@@ -183,13 +183,11 @@ Use the `.alert-sm` class with `.alert` for an alert 24 pixels in height. The de
 
 ### App-Level Alerts
 
-###### .alert-app-level
+#### .alert-app-level
 
 This class must be applied with `.alert` to render an app-level alert.
 
 <doc-demo src="/demos/alert/basic-app-level-ng.html" demo="/demos/alert/basic-app-level-css.html" />
-
-### Examples
 
 #### CSS
 

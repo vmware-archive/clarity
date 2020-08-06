@@ -5,7 +5,7 @@ toc: true
 
 A properly structured layout enforces an optimal, consistent experience across applications.
 
-### Layout
+## Layout
 
 **.main-container:**
 
@@ -27,30 +27,28 @@ The `.content-container` is a horizontal flexbox which wraps the following compo
 
 <doc-demo src="/demos/app-layout/content-container-ng.html" demo="/demos/app-layout/content-container-css.html"></doc-demo>
 
-### Basic Structure
+## Basic Structure
 
 Two constants of an app built in Clarity are the header and content area. These are the blocks upon which you build your app model.
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/header_contentarea.png" />
 </div>
-<div>
+<div class="clr-col-8">
 
-{.custom-container}
-
-#### Header
+### Header
 
 The [header](/components/header) is for branding and app-level elements such as navigation, search, and account settings.
 
-#### Content Area
+### Content Area
 
 The content area is where users focus their attention most of the time, gathering information and performing tasks–it is the canvas for your application. As the largest portion of your app, the content area is always visible.
 
 </div>
 </div>
 
-### Layout
+## Layout
 
 Your layout should reflect the information or workflow of the selected [navigation](/foundation/navigation). When laying out the content, keep the following in mind:
 
@@ -60,19 +58,17 @@ Your layout should reflect the information or workflow of the selected [navigati
 - How to handle large amounts of data
 - Responsive design (if that is part of your product’s goals)
 
-#### Common Layout Patterns
+## Common Layout Patterns
 
 Content can consist of any of the [Clarity components](/components), or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav, and sidenav, see [Navigation](/foundation/navigation).
 
-##### Cards
+### Cards
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/cards.png" />
 </div>
-<div>
-
-{.custom-container}
+<div class="clr-col-8">
 
 [Cards](/components/card) are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
 
@@ -85,15 +81,13 @@ Benefits of using cards include:
 </div>
 </div>
 
-##### Tables and Datagrids
+### Tables and Datagrids
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/tables.png" />
 </div>
-<div>
-
-{.custom-container}
+<div class="clr-col-8">
 
 [Tables](/components/table) and datagrids are for good for managing large amounts of data. These layouts work well when users need to compare data and perform batch operations.
 
@@ -104,15 +98,13 @@ Complex tables and datagrids work best on larger screens.
 </div>
 </div>
 
-###### Forms
+### Forms
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/forms.png" />
 </div>
-<div>
-
-{.custom-container}
+<div class="clr-col-8">
 
 [Forms](/components/forms) are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
 
@@ -123,15 +115,13 @@ Inline forms are better than modals in cases where you don't want to block users
 </div>
 </div>
 
-###### Tabs
+### Tabs
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/tabs.png" />
 </div>
-<div>
-
-{.custom-container}
+<div class="clr-col-8">
 
 [Tabs](/components/tabs) appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
 
@@ -140,22 +130,20 @@ Tabs are not appropriate if users need to compare data across views.
 </div>
 </div>
 
-###### White Space and Typography
+### White Space and Typography
 
 <div class="clr-row">
-<div>
+<div class="clr-col-4">
 <ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/typography.png" />
 </div>
-<div>
-
-{.custom-container}
+<div class="clr-col-8">
 
 White space and [typography](/foundation/typography) are important elements in conveying hierarchy. These elements direct users to what they should view next and make the content and data easier to parse. They also helps bring consistency to an app.
 
 </div>
 </div>
 
-###### Button Placement
+### Button Placement
 
 In the content area, buttons are left-aligned, with the primary button in the leftmost position. This placement supports the F-pattern layout.
 
@@ -173,11 +161,11 @@ On the right, buttons might appear separate from content.
 
 </div>
 
-#### Using Vertical Rhythm for Layout
+### Using Vertical Rhythm for Layout
 
 Vertical rhythm is the repetition of spatial relationships in a design. A consistent rhythm gives elements a uniform and balanced placement in a design. The more consistent the design, the easier it is for users to read and understand.
 
-##### The Clarity Baseline is 24px
+### The Clarity Baseline is 24px
 
 All elements in Clarity are _designed_ with a 24px baseline:
 
@@ -186,11 +174,11 @@ All elements in Clarity are _designed_ with a 24px baseline:
 
 <ClrImage title="Clarity baseline image" src="/images/foundation/app-layout/24_baseline.png" />
 
-###### Repeat 24px in Your Layout
+### Repeat 24px in Your Layout
 
 Design the vertical margins and padding between elements using the Clarity baseline. A multiple of 24px can be a whole or half-ratio. Common numbers include: 6px, 12px, 18px, 24px, 30px, 36px, 42px, 48px, 54px, 60px, 66px, 72px.
 
-### Code & Examples
+## Code & Examples
 
 Clarity layouts and components are _designed_ with a "24px baseline". This means that the visual size of our components is expressed in clean multiples of 24.
 
@@ -198,7 +186,7 @@ But starting with version 3.0, the Clarity CSS _code's_ rem values are derived f
 
 Why the difference?
 
-#### Rem Sizing
+### Rem Sizing
 
 In its underlying code, the Clarity styles had to move away from a root font-size of 24px for a couple of reasons:
 
@@ -207,36 +195,36 @@ In its underlying code, the Clarity styles had to move away from a root font-siz
 
 The changes to "rem" sizing in Clarity addresses both of those concerns. But there are a few caveats to keep in mind.
 
-##### Design remains at 24px, underlying code is at 20px
+### Design remains at 24px, underlying code is at 20px
 
 The visual baseline for our design system remains 24px with a base grid of 6px. _For designers using the Clarity Design System, nothing has changed_.
 
 Developers, however, must convert 24px based designs to a system that uses 20px at its core.
 
-##### Converting from old 24px-based styles to new 20px based styles
+### Converting from old 24px-based styles to new 20px based styles
 
 First and most importantly, you do not need to do _anything_ if your application does not use rem values or percentages that rely on Clarity's default root font-size.
 
 If you do, however, rely on the rem sizing available in Clarity, there are a number of options available to update the old code to the new rem sizing.
 
-###### Set hard pixel values (Not recommended)
+### Set hard pixel values (Not recommended)
 
 If you are already setting hard pixel values outside of Clarity, no change is needed on your part. Setting hard pixel values is not recommended, however, because it breaks accessibility and browser text resizing features.
 
-###### Update your rem values
+### Update your rem values
 
 If you are using rem values outside of Clarity, you can update them by either:
 
 - multiplying them by 1.2 – so a value of `1.4rem` in a SASS file becomes `1.2 * 1.4rem`
 - doing the math upfront and updating rem values in place – so that `1.4rem` becomes `1.68rem`
 
-###### What if I can't do this right now?
+### What if I can't do this right now?
 
 If you would prefer to update Clarity to version 3.x and cannot update the sizes in your application that rely on Clarity's baseline, you can override the `$clr-baseline-denominator` SASS variable. Setting it to `24` ignores the baseline changes, putting everything back to the pre-3.0 24px baseline.
 
 Clarity implemented this workaround to make the transition to 3.0 easier on our users, allowing them to take on the work of updating their rem sizes at their own pace if they need to. Note that this should be consider a temporary workaround, however, not a long-term solution. There is no guarantee that this override will be supported beyond 3.0.
 
-#### Customizing the root font-size
+### Customizing the root font-size
 
 Clarity uses [rem units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) for its whitespace and sizing. If the 24px vertical baseline is too large or too small for your needs, you can edit this globally across a Clarity application by changing the `font-size` style of the `html` element, as in the example below.
 

@@ -3,8 +3,6 @@ title: Overview
 toc: true
 ---
 
-# Spinner
-
 A spinner is visual indicator of an ongoing, user-initiated process.
 
 ## Usage
@@ -67,17 +65,17 @@ When there is a dark background behind a spinner, use the inverse to make it acc
 
 ## Sizes
 
-#### Large
+### Large
 
 Large spinners have 3rem (72px) width and height. Use them to track progress of an operation that is related to the page. For example, while a form is being authenticated, use a large spinner on top of or in place of the form controls.
 <doc-demo src="/demos/spinner/large-ng.html" demo="/demos/spinner/large-css.html" toggle="false" />
 
-#### Medium
+### Medium
 
 Medium spinners have 1.5rem (36px) width and height. Use them to track progress when content is being loaded. For example when data for a table or datagrid is being loaded.
 <doc-demo src="/demos/spinner/medium-ng.html" demo="/demos/spinner/medium-css.html" toggle="false" />
 
-#### Small
+### Small
 
 Small spinners have 0.75rem (18px) width and height. Use them in constrained spaces like an input field or next to a button. While the spinner is animating and active the input field or button should be disabled until the action is complete.
 <doc-demo src="/demos/spinner/small-ng.html" demo="/demos/spinner/small-css.html" toggle="false" />

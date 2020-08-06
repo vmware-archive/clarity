@@ -41,6 +41,8 @@ Leverage our optional `*clrIfExpanded` structural directive on the `clr-accordio
 
 A basic accordion is made up of a set of panels, each with a title and content.
 
+<ClrImage src="/images/components/accordion/accordion.png" />
+
 <doc-demo src="/demos/accordion/basic.html""></doc-demo>
 
 ## Accessibility

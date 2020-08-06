@@ -141,7 +141,7 @@ Deprecation: Since v4, we will no longer handle setting `aria-live` and announci
 
 Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added regularly.
 
-#### Basic form
+### Basic form
 
 Then declare a form start by adding the `clrForm` directive to the form element. This will wire up some internals to manage the form itself.
 
@@ -155,7 +155,7 @@ Then declare a form start by adding the `clrForm` directive to the form element.
 
 </DocDemo>
 
-#### Layout options
+### Layout options
 
 If you wish to have a different layout, then you can use the `clrLayout` directive to set the desired layout. The appropriate grid classes will be applied to enable automatic layout switching for mobile viewports.
 
@@ -169,7 +169,7 @@ If you wish to have a different layout, then you can use the `clrLayout` directi
 
 </DocDemo>
 
-#### Basic structure
+### Basic structure
 
 When you start to fill in your form controls, each will should be wrapped in a container like you see here in this text input example.
 
@@ -190,7 +190,7 @@ When you start to fill in your form controls, each will should be wrapped in a c
 
 </DocDemo>
 
-#### Helper and validation messages
+### Helper and validation messages
 
 These Angular components also support built in helper text and validation with error messages.
 
@@ -241,11 +241,11 @@ For screen reader accessibility, forms with validation messages should provide a
 
 This pattern is more accessible and clear by writing the word "error" explicitly for users (and screen readers) to read, with research to back this up compared with the use of a red required asterisk (\*). See [this article from fusionbox](https://www.fusionbox.com/blog/detail/rethinking-the-red-required-asterisk-for-better-form-ux/599/) provides some evidence for this rationale.
 
-#### Multiple error messages
+### Multiple error messages
 
 If you want to support multiple error messages, you can do this by defining an error message for each scenario using `clrIfError`. It is recommended that you create an error message for each validator you specify. Use the validator name provided in the binding for `*clrIfError="'errorName'"`, which might be your custom validator or a built in Angular one.
 
-#### Reset and force validation
+### Reset and force validation
 
 All Clarity form controls support resetting the validation state simply by calling the `reset()` method on the `FormControl` or `FormGroup`.
 
@@ -322,7 +322,7 @@ export class ReactiveFormsDemo {
 
 </DocDemo>
 
-#### Layout with grid
+### Layout with grid
 
 You can use the `clrLabelSize` directive to configure the label width for an entire form. This is useful for `horizontal` and compact layouts, but doesn't apply when you are using `vertical` layout. It will accept a number between 1-12 to calculate the width according to our grid, and the controls will adopt the remaining size. For example if you pass `clrLabelSize="4"` it will size the controls to use 8 grid columns for a total of 12 columns.
 
@@ -340,7 +340,7 @@ You can use the `clrLabelSize` directive to configure the label width for an ent
 
 </DocDemo>
 
-#### Overriding column widths
+### Overriding column widths
 
 For horizontal layouts, you can override the default widths for labels (2 columns) and controls (10 columns). Even on horizontal layouts, the default behavior should still use a vertical layout for narrow mobile sizes. That means you should always include the class `clr-col-12` on both the input and label. Ensure your override columns add up to 12 to use the full space.
 
@@ -359,7 +359,7 @@ For horizontal layouts, you can override the default widths for labels (2 column
 
 </DocDemo>
 
-#### Reactive Forms
+### Reactive Forms
 
 Forms also work with reactive forms with the same support for validations.
 
@@ -396,7 +396,7 @@ export class ReactiveFormsDemo {
 
 </DocDemo>
 
-#### Custom and non-Clarity Controls
+### Custom and non-Clarity Controls
 
 Applications often have form controls that are not supported by Clarity directly. To make these controls work nicely with Clarity, you can wrap them in a generic control container. Regardless if you make your own form controls or import a third party control, the generic container should help make your controls more consistent. The only requirement is that the form control works with Angular forms (Reactive or Template-Driven).
 

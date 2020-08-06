@@ -87,13 +87,13 @@ For cases with highly limited space, we provide a compact form layout.
 
 If you are using Angular, the recommended approach is to always use the `ClrInput` directive on your inputs to help manage the form control. By using `ClrInput`, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.
 
-#### Basic input
+### Basic input
 
 This is the most basic way to create an input inside of a form. This is only if you don't have a need for a label or validation. You need to add `clrInput` to your input to wire up the directive. Notice, it is not necessary to add `type="text"` as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.
 
 <doc-demo src="/demos/input/basic-ng.html" demo="/demos/input/basic-css.html" toggle="false" />
 
-#### Labels
+### Labels
 
 For anything beyond a standalone input field, you'll need to wrap your input with the `ClrInputContainer` component. This is required to contain all of the logic and validation details for the individual input control.
 
@@ -101,7 +101,7 @@ Then you can add a `label` element and it will automatically get laid out correc
 
 <doc-demo src="/demos/input/label-ng.html" demo="/demos/input/label-css.html" />
 
-#### Helper and error messages
+### Helper and error messages
 
 The input form control wires up with the validations placed on an input, such as `required` or even custom built validators in Angular. Under the hood, it looks at the `NgControl` values to determine the control validity, and display the helper text or error message accordingly.
 

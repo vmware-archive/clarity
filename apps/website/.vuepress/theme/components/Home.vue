@@ -12,8 +12,8 @@
         <div cds-layout="m-y:lg m-y@sm:xl">
           <!--          <div>-->
           <h2 cds-text="title center medium">
-            We didn’t invent design systems - we just made the best one. Clarity is an open source, enterprise-focused
-            design system with a core value of accessibility.
+            We built an awesome design system, and we think you’ll agree. Join us to see how Clarity is an open source,
+            enterprise-focused design system with a core design principle of inclusion.
           </h2>
           <!--          </div>-->
         </div>
@@ -161,7 +161,7 @@
               <img cds-layout="container:fill" src="/images/home/img-pr-icons.svg" aria-hidden="true" />
             </router-link>
             <router-link to="/foundation/icons/">
-              <h4 cds-text="title medium" cds-layout="m-t:lg">
+              <h4 cds-text="title regular" cds-layout="m-t:lg">
                 Icons
               </h4>
             </router-link>

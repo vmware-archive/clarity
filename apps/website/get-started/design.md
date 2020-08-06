@@ -2,23 +2,6 @@
 
 Clarity provides design assets that help designers get started. These assets should be used in a design process that aligns with the Clarity Design System. To jump start your project and align with the Clarity Design System you should download the font resources below and have them installed on your computer. Set up a [free tier Figma](https://www.figma.com/pricing/) account to get started with the Clarity themes, icons and color libraries.
 
-<!-- ## Primary Font
-
-The default font intended for use with Clarity is [Clarity CIty](https://github.com/vmware/clarity-city). Download and install the [font files](https://github.com/vmware/clarity-city/archive/v1.0.0.zip) on your computer to make sure it is available when using the assets below.
-
-## Figma Libraries
-
-Clarity uses the popular design tool [Figma](https://www.figma.com/) when designing and documenting components and foundations. Bookmark these resources to re-use Clarity assets in your design process.
-
-### Themes
-
-<div class="themes-figma-asset-wrapper">
-
-
-## Icon Files
-
-We provide a convenient zip of all icon files. This download includes all svg files for the icons available in the library. -->
-
 <div class="clr-row">
 
 <div class="clr-col-md-6 clr-col-sm-12">
@@ -27,7 +10,7 @@ We provide a convenient zip of all icon files. This download includes all svg fi
 
 <div>
 
-### Primary Font
+## Primary Font
 
 The default font intended for use with Clarity is [Clarity CIty](https://github.com/vmware/clarity-city). Download and install the [font files](https://github.com/vmware/clarity-city/archive/v1.0.0.zip) on your computer to make sure it is available when using the assets below.
 
@@ -39,7 +22,7 @@ The default font intended for use with Clarity is [Clarity CIty](https://github.
 
 <div>
 
-### Icon Assets
+## Icon Assets
 
 We provide a convenient zip of all icon files. This download includes all svg files for the icons available in the library.
 
@@ -55,7 +38,7 @@ We provide a convenient zip of all icon files. This download includes all svg fi
 
 <div class="clr-col-md-6 clr-col-sm-12">
 
-### Figma Libraries
+## Figma Libraries
 
 Clarity uses the popular design tool [Figma](https://www.figma.com/) when designing and documenting components and foundations. Bookmark these resources to re-use Clarity assets in your design process.
 

@@ -9,22 +9,22 @@ The HTML5 range input element is used when a user can choose between a min and a
 
 The range input control allows the user to chose a value when they don’t care (or know) what the specific number value chosen is. This is an imprecise input control that should only be used when the exact value is not important for the user to know. Range controls work well when the users is more concerned with percent distance between the min and the max.
 
-### Code Examples
+## Code & Examples
 
 The Range input uses standard HTML5 attributes and can be used with Clarity forms.
 
-#### Basic
+### Basic
 
 <doc-demo src="/demos/range/basic-ng.html" demo="/demos/range/basic-css.html" />
 
-#### Full Example
+### Full Example
 
 <doc-demo src="/demos/range/helper-ng.html" demo="/demos/range/helper-css.html" />
 
-#### Disabled
+### Disabled
 
 <doc-demo src="/demos/range/disabled-ng.html" demo="/demos/range/disabled-css.html" />
 
-#### Value Changes
+### Value Changes
 
 Applications may need to be aware of the current slider value. They can use the standard Angular `(change)` output to handle changes to the slider value.

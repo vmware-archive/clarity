@@ -96,7 +96,7 @@ column and declare filters, sorting as well as if it can be hidden by the user.
 Declares the filter component to be applied on the container (clr-dg-column) element. This is only needed when
 creating and applying custom filters to a column.
 
-TODO: Add in docs for clr-dg-string-filter and clr-dg-numeric-filter
+<!-- @TODO: Add in docs for clr-dg-string-filter and clr-dg-numeric-filter -->
 
 #### Selector & Basic Usage
 

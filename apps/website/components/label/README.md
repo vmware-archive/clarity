@@ -101,10 +101,6 @@ A label can be dismissed. Use a close icon at the right-most side of a label to 
 </div>
 </div>
 
-[//]: # 'DEMO - James and Jimmy'
-
-[//]: # Placement
-
 ## Content
 
 ### Status

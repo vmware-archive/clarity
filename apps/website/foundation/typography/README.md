@@ -39,31 +39,31 @@ or <code class="language-html">Monospaced</code>
 
 Clarity includes several SASS variables, collections, mixing, and functions for working with typography. These are described below:
 
-###### \$clr-font
+**\$clr-font**
 
 This SASS variable points to our default text font, Metropolis.
 
-###### \$clr-altFont
+**\$clr-altFont**
 
 This SASS variable is only used for our headers (H1..H6). Currently, it also points to Metropolis.
 
-###### \$clr-font-size
+**\$clr-font-size**
 
 This SASS variable sets our default font size to 14px.
 
-###### \$clr-font-weight-light
+**\$clr-font-weight-light**
 
 This SASS variable defaults to 200. It is used in very large display text (p0) and headers 1 through 4.
 
-###### \$clr-font-weight-regular
+**\$clr-font-weight-regular**
 
 This SASS is the default font weight for Clarity. It defaults to 400.
 
-###### \$clr-font-weight-semibold
+**\$clr-font-weight-semibold**
 
 This SASS variable is the default bold font-weight of Clarity. It is Metropolis semi-bold (500).
 
-###### \$clr-font-weight-bold
+**\$clr-font-weight-bold**
 
 This SASS variable defaults to 600. It is used in very small text (p4 and p6).
 

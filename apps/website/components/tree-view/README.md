@@ -122,7 +122,7 @@ In read-only trees where highlighting is not an option, this pattern remains tru
 </div>
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Expand and collapse tree node" src="/images/components/tree-view/expand-collapse-node.png" />
+<ClrImage title="Expand and collapse tree node" src="/images/components/tree-view/tree_interacting.svg" />
 </DocInset>
 </div>
 </div>
@@ -137,12 +137,10 @@ To navigate to a content area based on a tree node or to highlight a tree node i
 </div>
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Expand and collapse tree node" src="/images/components/tree-view/highlight-node.png" />
+<ClrImage title="Expand and collapse tree node" src="/images/components/tree-view/tree_highlighting.svg" />
 </DocInset>
 </div>
 </div>
-
-[//]: # 'IMAGE - dashboard'
 
 #### Interacting With Checkbox Trees
 
@@ -159,12 +157,10 @@ With a checkbox tree, a user is able to perform one or a combination of three ac
 </div>
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Interacting with checkboxes" src="/images/components/tree-view/checkbox-interaction.png" />
+<ClrImage title="Interacting with checkboxes" src="/images/components/tree-view/tree_checkbox_interacting.svg" />
 </DocInset>
 </div>
 </div>
-
-[//]: # 'IMAGE - view privileges'
 
 ### Loading Data
 
@@ -179,7 +175,7 @@ The way to load data within the tree is based on the scenario in which the tree 
 </div>
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Loading data" src="/images/components/tree-view/loading-node.png" />
+<ClrImage title="Loading data" src="/images/components/tree-view/tree_lazyloading.svg" />
 </DocInset>
 </div>
 </div>
@@ -194,7 +190,8 @@ A basic tree can be created by simply nesting `clr-tree-node` components at will
 <cds-alert>Please note that every tree requires to have root node to work properly, this is done by having clr-tree as root wrapper, please check the example below.</cds-alert>
 </cds-alert-group>
 
-![Basic Tree](/images/components/tree-view/basic-tree-demo.png)
+<ClrImage title="Basic Tree" src="/images/components/tree-view/basic-tree-demo.png" />
+
 <doc-demo src="/demos/tree-view/basic-ng.html"/></doc-demo>
 
 ### Tracking expanded nodes
@@ -204,6 +201,8 @@ Use two-way binding `[(clrExpanded)]="expanded"` on the [clrExpanded](/component
 
 ### Routing with a tree
 
+<ClrImage title="Routing Tree" src="/images/components/tree-view/tree-routing.png" />
+
 Use the `.clr-treenode-link` class to style content inside of a Tree Node as clickable. Indicate an active Tree Node with the `.active` class combined with the `.clr-treenode-link` class.
 <doc-demo src="/demos/tree-view/routed-ng.html"/></doc-demo>
 
@@ -211,7 +210,7 @@ Use the `.clr-treenode-link` class to style content inside of a Tree Node as cli
 
 When the tree structure is large and complex you can use iteration to generate nodes and child nodes based on the structure given to the [ClrTree](/components/tree-view/api/#clrtree).
 
-![Dynamically Generated Tree](/images/components/tree-view/dynamic-tree.png)
+<ClrImage title="Dynamically Generated Tree" src="/images/components/tree-view/dynamic-tree.png" />
 
 #### Tree element
 
@@ -278,7 +277,7 @@ If you know a specific node can never become indeterminate, you probably want to
 
 If the data you are displaying is recursive or has an unknown depth, you can use our `*clrRecursiveFor` structural directive to recursively iterate over your data. It has the same syntax as `*ngFor`, and accepts an additional `getChildren` parameter that receives a node and should return its children. Please note that it needs to be used inside of a `<clr-tree>` to function properly.
 
-![Recursive Tree](/images/components/tree-view/recursive-tree-demo.png)
+<ClrImage title="Recursive Tree" src="/images/components/tree-view/recursive-tree-demo.png" />
 
 #### Recursive element
 

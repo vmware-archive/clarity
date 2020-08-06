@@ -8,7 +8,8 @@
   "private": true,
   "scripts": {
     "start": "vuepress dev",
-    "build": "vuepress build"
+    "build": "vuepress build",
+    "lint": "markdownlint '**/*.md' --ignore 'node_modules'"
   },
   "dependencies": {
     "@sentry/browser": "5.15.5",
@@ -22,6 +23,7 @@
     "@vuepress/plugin-last-updated": "1.5.2",
     "@vuepress/plugin-google-analytics": "1.5.2",
     "@vuepress/plugin-pwa": "1.5.2",
+    "markdownlint-cli": "^0.23.2",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "stylus": "0.54.8",

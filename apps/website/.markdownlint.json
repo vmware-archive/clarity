@@ -1,0 +1,8 @@
+{
+  "default": true,
+  "line-length": false,
+  "MD024": false,
+  "MD036": false,
+  "no-trailing-punctuation": false,
+  "no-inline-html": false
+}

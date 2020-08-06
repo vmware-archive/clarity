@@ -16,7 +16,7 @@ Use a stack view when you want to:
 
 ## Anatomy
 
-#### Labels
+### Labels
 
 Consider following points for stack view labels:
 
@@ -24,7 +24,7 @@ Consider following points for stack view labels:
 - Use noun phrases, sentence-style capitalization, and no ending punctuation.
 - Avoid using icons.
 
-#### Highlights and Horizontal lines
+### Highlights and Horizontal lines
 
 The stack view highlight color (`#DDDDDD`) differs from the usual Clarity highlight color to make it more distinct. Expanded sections have a lighter background color to make it easier to understand the hierarchy.
 
@@ -32,29 +32,29 @@ Horizontal lines in the stack editor are for readability–they help users quick
 
 ## Behavior
 
-#### Enabling Value Editing
+### Enabling Value Editing
 
 StackView has an Edit button on the top right, which on click opens an editable stack view in a modal. This design prevents users from accidentally altering a value in the main content area. Common editing controls include input fields, select boxes, checkboxes, and radio buttons.
 
-#### Placement
+### Placement
 
 Stack views are designed for use in the main content area and modals.
 
-## Types
+## Code & Examples
 
-#### Basic Stack View
+### Basic Stack View
 
 <DocVideo src="/images/components/stack-view/stackview-basic.mp4" :width="874" :autoplay="true"></DocVideo>
 
 <doc-demo src="/demos/stack-view/stack-view.html"></doc-demo>
 
-#### Stack View With Editing in a Modal
+### Stack View With Editing in a Modal
 
 <DocVideo src="/images/components/stack-view/stackview-editing.mp4" :width="884" :autoplay="true"></DocVideo>
 
 <doc-demo src="/demos/stack-view/stack-view-editing.html"></doc-demo>
 
-#### Lazy Loading of Children
+### Lazy Loading of Children
 
 <DocVideo src="/images/components/stack-view/stackview-lazy.mp4" :width="874" :autoplay="true"></DocVideo>
 

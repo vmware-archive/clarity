@@ -21,7 +21,7 @@ Typically, a select box contains between 3 and 12 items. For fewer than 3 items 
 
 Use sentence-style capitalization for both the label and the menu items.
 
-## Code Examples
+## Code & Examples
 
 If you are using Angular, the recommended approach is to always use the `ClrSelect` directive on your selects to help manage the form control. By using `ClrSelect`, you'll automatically be able to leverage built in validation, helper text, and layout features in forms.
 

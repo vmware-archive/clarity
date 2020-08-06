@@ -22,6 +22,8 @@ Use checkboxes when users need to select multiple options in a list of related o
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <form clrForm>
   <clr-range-container [clrRangeHasProgress]="true">
@@ -31,6 +33,8 @@ Use checkboxes when users need to select multiple options in a list of related o
   </clr-range-container>
 </form>
 ```
+
+</DocDemo>
 
 #### Bindings
 

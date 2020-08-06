@@ -461,6 +461,8 @@ Use the clrInMenu input to determine if a button belongs in the overflow menu or
 
 #### Default position
 
+<DocDemo toggle="false">
+
 ```html
 <clr-button-group class="btn-primary">
   <clr-button>Create</clr-button>
@@ -471,7 +473,11 @@ Use the clrInMenu input to determine if a button belongs in the overflow menu or
 </clr-button-group>
 ```
 
+</DocDemo>
+
 ### Menu Position
+
+<DocDemo toggle="false">
 
 ```html
 <clr-button-group class="btn-primary" [clrMenuPosition]="'bottom-right'">
@@ -482,6 +488,8 @@ Use the clrInMenu input to determine if a button belongs in the overflow menu or
   <clr-button [clrInMenu]="true">Delete</clr-button>
 </clr-button-group>
 ```
+
+</DocDemo>
 
 ## Accessibility
 

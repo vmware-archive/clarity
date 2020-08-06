@@ -11,15 +11,21 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tree>
   <!-- clr-tree-node children components -->
 </clr-tree>
 ```
 
+</DocDemo>
+
 ### ClrTreeNode
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-tree>
@@ -29,6 +35,8 @@ toc: true
   <!-- more sibling nodes as needed -->
 </clr-tree>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -40,9 +48,13 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -52,6 +64,8 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tree>
   <clr-tree-node *clrRecursiveFor="let node of nodes; getChildren: getChildren">
@@ -59,6 +73,8 @@ toc: true
   </clr-tree-node>
 </clr-tree>
 ```
+
+</DocDemo>
 
 #### Bindings
 

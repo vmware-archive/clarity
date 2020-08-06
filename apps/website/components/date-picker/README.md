@@ -218,6 +218,8 @@ You can add a two way binding on clrDate to access the date value. The benefit o
 "2020-07-16T17:56:30.728Z"
 ```
 
+</DocDemo>
+
 #### String: Template Driven
 
 Template Driven Forms use the `ngModel` directive to create a binding between the model and the input field.
@@ -232,11 +234,15 @@ Template Driven Forms use the `ngModel` directive to create a binding between th
 
 ##### Example Output
 
+<DocDemo toggle="false">
+
 ```javascript
 {
   "date": "01/02/2015"
 }
 ```
+
+</DocDemo>
 
 #### String: Reactive Form
 
@@ -254,8 +260,12 @@ Reactive Forms use FormControls to create the binding between the model and the 
 
 The date value will be null until a user selects a date.
 
+<DocDemo toggle="false">
+
 ```javascript
 {
   "date": null
 }
 ```
+
+</DocDemo>

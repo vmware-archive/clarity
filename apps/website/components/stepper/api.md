@@ -13,6 +13,8 @@ A Stepper structures a multi-step process into two or more expanding panels.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <!-- template form -->
 <form clrStepper #contactForm="ngForm" (ngSubmit)="templateFormSubmit(contactForm.value)">
@@ -25,11 +27,15 @@ A Stepper structures a multi-step process into two or more expanding panels.
 </form>
 ```
 
+</DocDemo>
+
 ### ClrStepPanel
 
 ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <!-- template form -->
@@ -51,9 +57,13 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 </form>
 ```
 
+</DocDemo>
+
 ### ClrStepTitle
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <!-- clr-step-title is the same for template or reactive forms -->
@@ -66,11 +76,15 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 </form>
 ```
 
+</DocDemo>
+
 **Note:** `clr-step-title` is an overloaded selector and is the same component as [ClrAccordionTitle](../accordion/api/#clraccordiontitle)
 
 ### ClrStepDescription
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <!-- clr-step-description is the same for template or reactive forms -->
@@ -83,11 +97,15 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 </form>
 ```
 
+</DocDemo>
+
 **Note:** `clr-step-description` is an overloaded selector and is the same component as [ClrAccordionDescription](../accordion/api/#clraccordiondescription)
 
 ### ClrStepContent
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <!-- clr-step-content is the same for template or reactive forms -->
@@ -100,6 +118,8 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 </form>
 ```
 
+</DocDemo>
+
 **Note:** `clr-step-content` is an overloaded selector and is the same component as [ClrAccordionContent](../accordion/api/#clraccordioncontent)
 
 ## Angular Directives
@@ -109,6 +129,8 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 ### ClrStepButton
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <!-- reactive forms -->
@@ -153,6 +175,8 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
   </clr-stepper-panel>
 </form>
 ```
+
+</DocDemo>
 
 #### Bindings
 

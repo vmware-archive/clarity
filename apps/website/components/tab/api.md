@@ -13,11 +13,15 @@ Tabs structure content into separate views and allow navigation between.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tabs>
   <!-- one or more clr-tab components -->
 </clr-tabs>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -29,6 +33,8 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tabs>
   <clr-tab>
@@ -42,9 +48,13 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
 </clr-tabs>
 ```
 
+</DocDemo>
+
 ### ClrTabContent
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-tabs>
@@ -55,6 +65,8 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
   <!-- more sibling clr-tab components -->
 </clr-tabs>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -68,6 +80,8 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tabs>
   <clr-tab>
@@ -77,6 +91,8 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
   <!-- more sibling clr-tab components -->
 </clr-tabs>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -88,6 +104,8 @@ A structural directive that enables lazy-loading the content for an active tab.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-tabs>
   <clr-tab>
@@ -97,6 +115,8 @@ A structural directive that enables lazy-loading the content for an active tab.
   <!-- more sibling clr-tab components -->
 </clr-tabs>
 ```
+
+</DocDemo>
 
 #### Bindings
 

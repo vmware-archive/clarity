@@ -11,9 +11,13 @@ Use checkboxes when users need to select multiple options in a list of related o
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <input type="checkbox" clrToggle value="option1" name="options" />
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -24,6 +28,8 @@ Use checkboxes when users need to select multiple options in a list of related o
 A container component used to enable helper and error messages and works with Angular forms.
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-toggle-container>
@@ -40,6 +46,8 @@ A container component used to enable helper and error messages and works with An
 </clr-toggle-container>
 ```
 
+</DocDemo>
+
 #### Bindings
 
 <DocComponentApi component="ClrCheckboxContainer" item="bindings" />
@@ -50,9 +58,13 @@ The ClrToggleWrapper associates a specific label with the ClrToggle input.
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-toggle-wrapper>
   <input type="checkbox" clrToggle value="option1" name="options" />
   <label>Option 1</label>
 </clr-toggle-wrapper>
 ```
+
+</DocDemo>

@@ -11,9 +11,13 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-modal>...</clr-modal>
 ```
+
+</DocDemo>
 
 #### Bindings
 

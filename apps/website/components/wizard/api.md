@@ -11,6 +11,8 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-wizard #wizardReference>
   <!-- clr-wizard-title -->
@@ -18,6 +20,8 @@ toc: true
   <!-- clr-wizard-page components with page content -->
 </clr-wizard>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -31,6 +35,8 @@ toc: true
 
 #### Selector & Basic Usage
 
+<DocDemo toggle="false">
+
 ```html
 <clr-wizard #wizardReference>
   <!-- clr-wizard-title -->
@@ -39,6 +45,8 @@ toc: true
 </clr-wizard>
 ```
 
+</DocDemo>
+
 #### Bindings
 
 <DocComponentApi component="ClrWizardButton" item="bindings" />
@@ -46,6 +54,8 @@ toc: true
 ### ClrWizardHeaderAction
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -57,6 +67,8 @@ toc: true
 </clr-wizard>
 ```
 
+</DocDemo>
+
 #### Bindings
 
 <DocComponentApi component="ClrWizardHeaderAction" item="bindings" />
@@ -64,6 +76,8 @@ toc: true
 ### ClrWizardPage
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -76,6 +90,8 @@ toc: true
   <!-- additional clr-wizard-page components with page content -->
 </clr-wizard>
 ```
+
+</DocDemo>
 
 #### Bindings
 
@@ -90,6 +106,8 @@ toc: true
 ### ClrWizardPageButtons
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -108,9 +126,13 @@ toc: true
 </clr-wizard>
 ```
 
+</DocDemo>
+
 ### ClrPageHeaderActions
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -127,9 +149,13 @@ toc: true
 </clr-wizard>
 ```
 
+</DocDemo>
+
 ### ClrWizardPageNavTitle
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -146,9 +172,13 @@ toc: true
 </clr-wizard>
 ```
 
+</DocDemo>
+
 ### ClrWizardPageTitle
 
 #### Selector & Basic Usage
+
+<DocDemo toggle="false">
 
 ```html
 <clr-wizard #wizardReference>
@@ -164,3 +194,5 @@ toc: true
   <!-- additional clr-wizard-page components with page content -->
 </clr-wizard>
 ```
+
+</DocDemo>

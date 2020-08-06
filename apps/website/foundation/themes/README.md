@@ -166,9 +166,9 @@ With the 3.0 release, there are two ways to theme Clarity: _SASS variables_ and 
 
 After the release of Clarity 4.0, SASS based theming will no longer work in Clarity.
 
-Error
-
-SASS-based theming is deprecated in Clarity 3.0 and will no longer work when Clarity 4.0 is released. It is recommended that you convert your themes to use CSS custom properties for the 4.0 release in Spring of 2020.
+<cds-alert-group status="danger" type="default">
+<cds-alert>SASS-based theming is deprecated in Clarity 3.0 and will no longer work when Clarity 4.0 is released. It is recommended that you convert your themes to use CSS custom properties for the 4.0 release in Spring of 2020.</cds-alert>
+</cds-alert-group>
 
 #### SASS-based Theming
 

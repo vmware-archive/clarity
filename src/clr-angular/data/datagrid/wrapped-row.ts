@@ -6,7 +6,6 @@
 import { AfterViewInit, Component, EmbeddedViewRef, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
-import { ifIvyEnabled } from '../../utils/ivy/if-ivy-enabled';
 
 @Component({
   selector: 'dg-wrapped-row',
@@ -28,15 +27,6 @@ export class WrappedRow implements DynamicWrapper, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    /**
-     * @TODO
-     * Check to see if Ivy is enabled and if so call destroy method.
-     * This is related to this issues #4692 #4232
-     *
-     * This check is for backward compatibility for NON-Ivy builds
-     */
-    ifIvyEnabled(() => {
-      this.rowView.destroy();
-    });
+    this.rowView.destroy();
   }
 }

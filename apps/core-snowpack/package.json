@@ -1,0 +1,25 @@
+{
+  "name": "core-snowpack",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "@clr/city": "^1.1.0",
+    "@clr/core": "./packages/core/dist/core"
+  },
+  "devDependencies": {
+    "snowpack": "^2.7.6"
+  },
+  "workspaces": {
+    "nohoist": [
+      "@clr/city",
+      "@clr/city/**",
+      "normalize.css",
+      "normalize.css/**"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "core-cdn-demo",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "dependencies": { },
+  "devDependencies": { }
+}

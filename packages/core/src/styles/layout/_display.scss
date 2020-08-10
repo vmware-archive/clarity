@@ -52,7 +52,7 @@
   white-space: nowrap;
   top: 0;
   left: 0;
-  display: block;
+  display: block !important;
 }
 
 @media (min-width: $cds-token-layout-width-sm-static) {

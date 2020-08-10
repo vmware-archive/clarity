@@ -3,4 +3,18 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './tokens/generated/index';
-@import './layout/_layout';
+@import './layout/optimize';
+@import './layout/mixins/mixins';
+@import './layout/type-horizontal';
+@import './layout/type-vertical';
+@import './layout/type-grid';
+@import './layout/display';
+@import './layout/spacing';
+@import './layout/container';
+
+*,
+*:before,
+*:after,
+:host {
+  box-sizing: border-box;
+}

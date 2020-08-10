@@ -36,6 +36,14 @@ $cds-layout-spacing-sides: (
   'left': 'l',
 );
 
+@mixin generateGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [#{$layout}*='#{$gap}#{$breakpoint}:#{$size}'] {
+      gap: $sizeValue;
+    }
+  }
+}
+
 @mixin spacers($breakpoint: null) {
   @each $size, $sizeValue in $cds-layout-sizes {
     [cds-layout~='p#{$breakpoint}:#{$size}'] {
@@ -59,7 +67,9 @@ $cds-layout-spacing-sides: (
       padding-top: #{$sizeValue} !important;
       padding-bottom: #{$sizeValue} !important;
     }
+  }
 
+  @each $size, $sizeValue in $cds-layout-sizes {
     [cds-layout~='m-x#{$breakpoint}:#{$size}'] {
       margin-left: #{$sizeValue} !important;
       margin-right: #{$sizeValue} !important;
@@ -78,7 +88,11 @@ $cds-layout-spacing-sides: (
       [cds-layout~='p-#{$sideValue}#{$breakpoint}:#{$size}'] {
         padding-#{$side}: #{$sizeValue} !important;
       }
+    }
+  }
 
+  @each $size, $sizeValue in $cds-layout-sizes {
+    @each $side, $sideValue in $cds-layout-spacing-sides {
       [cds-layout~='m-#{$sideValue}#{$breakpoint}:#{$size}'] {
         margin-#{$side}: #{$sizeValue} !important;
       }

@@ -2,34 +2,129 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin generateGaps($breakpoint: null) {
-  @each $size, $sizeValue in $cds-layout-sizes {
-    [cds-layout~='horizontal'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
-      width: calc(100% + #{$sizeValue});
-      margin-bottom: calc(#{$sizeValue} * -1) !important;
-      margin-right: calc(#{$sizeValue} * -1) !important;
+@mixin generateAlignments($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
+      align-content: flex-start;
+    }
 
-      & > *,
-      &::slotted(*) {
-        margin-top: #{$sizeValue} !important;
-        margin-left: #{$sizeValue} !important;
-        top: calc(-1 * #{$sizeValue}) !important;
-        left: calc(-1 * #{$sizeValue}) !important;
-        position: relative !important;
-      }
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
+      align-content: flex-end;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
+      align-content: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
+      justify-content: flex-start;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
+      justify-content: stretch;
+      flex-grow: 1;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
+      align-content: stretch;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
+      justify-content: flex-end;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
+      justify-content: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$center}'] {
+      justify-content: center;
+      align-content: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}']::slotted(*) {
+      flex-grow: 1 !important;
+      flex-basis: 0 !important;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
+      justify-content: stretch;
+      align-content: stretch;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}']::slotted(*) {
+      flex-grow: 1 !important;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'],
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}']::slotted(*) {
+      align-content: stretch !important;
+    }
+
+    &[#{$layout}~='wrap#{$breakpoint}:none'] {
+      flex-wrap: nowrap;
+    }
+
+    &[#{$layout}~='order#{$breakpoint}:reverse'] {
+      flex-direction: row-reverse;
+    }
+
+    // Align Single Item
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
+      flex-grow: 1 !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+      align-self: center;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+      align-self: flex-start;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+      align-self: flex-end;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+      margin-left: auto !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+      margin-right: auto !important;
     }
   }
 }
 
-@include generateGaps();
-
-@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
-  @media (min-width: $breakpoint-value) {
-    @include generateGaps($breakpoint);
-  }
-}
-
-[cds-layout~='horizontal'] {
+[#{$layout}~='#{$horizontal}'] {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -40,132 +135,17 @@
   margin: 0;
   min-height: 0;
 
-  > [cds-layout~='horizontal'],
-  > [cds-layout~='vertical'],
+  > [#{$layout}~='#{$horizontal}'],
+  > [#{$layout}~='#{$vertical}'],
   > [cds-text] {
-    width: initial;
+    width: initial !important;
   }
+}
 
-  &[cds-layout~='wrap:none'] {
-    flex-wrap: nowrap;
-  }
+@include generateAlignments();
 
-  // Align Items
-  &[cds-layout~='align:top'] {
-    align-content: flex-start;
-  }
-
-  &[cds-layout~='align:bottom'] {
-    align-content: flex-end;
-  }
-
-  &[cds-layout~='align:vertical-center'] {
-    align-content: center;
-  }
-
-  &[cds-layout~='align:left'] {
-    justify-content: flex-start;
-  }
-
-  &[cds-layout~='align:horizontal-stretch'] {
-    justify-content: stretch;
-    flex-grow: 1;
-  }
-
-  &[cds-layout~='align:vertical-stretch'] {
-    align-content: stretch;
-  }
-
-  &[cds-layout~='align:right'] {
-    justify-content: flex-end;
-  }
-
-  &[cds-layout~='align:horizontal-center'] {
-    justify-content: center;
-  }
-
-  &[cds-layout~='align:center'] {
-    justify-content: center;
-    align-content: center;
-  }
-
-  &[cds-layout~='align:fill'] > *,
-  &[cds-layout~='align:fill']::slotted(*) {
-    flex-grow: 1 !important;
-    flex-basis: 0 !important;
-  }
-
-  &[cds-layout~='align:stretch'] {
-    justify-content: stretch;
-    align-content: stretch;
-  }
-
-  &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:horizontal-stretch'] > *,
-  &[cds-layout~='align:stretch']::slotted(*),
-  &[cds-layout~='align:horizontal-stretch']::slotted(*) {
-    flex-grow: 1 !important;
-  }
-
-  &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:vertical-stretch'],
-  &[cds-layout~='align:stretch']::slotted(*),
-  &[cds-layout~='align:vertical-stretch']::slotted(*) {
-    align-content: stretch !important;
-  }
-
-  &[cds-layout~='wrap:none'] {
-    flex-wrap: nowrap;
-  }
-
-  &[cds-layout~='order:reverse'] {
-    flex-direction: row-reverse;
-  }
-
-  // Align Single Item
-  & > [cds-layout~='align:stretch'],
-  &::slotted([cds-layout~='align:stretch']) {
-    flex-grow: 1 !important;
-  }
-
-  & > [cds-layout~='align:shrink'],
-  &::slotted([cds-layout~='align:shrink']) {
-    flex-shrink: 1 !important;
-    flex-grow: 0 !important;
-  }
-
-  & > [cds-layout~='align:center'],
-  & > [cds-layout~='align:vertical-center'],
-  &::slotted([cds-layout~='align:center']),
-  &::slotted([cds-layout~='align:vertical-center']) {
-    align-self: center;
-  }
-
-  & > [cds-layout~='align:center'],
-  & > [cds-layout~='align:horizontal-center'],
-  &::slotted([cds-layout~='align:center']),
-  &::slotted([cds-layout~='align:horizontal-center']) {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  & > [cds-layout~='align:top'],
-  &::slotted([cds-layout~='align:top']) {
-    align-self: flex-start;
-  }
-
-  & > [cds-layout~='align:bottom'],
-  &::slotted([cds-layout~='align:bottom']) {
-    align-self: flex-end;
-  }
-
-  & > [cds-layout~='align:right'],
-  &::slotted([cds-layout~='align:right']) {
-    margin-left: auto !important;
-  }
-
-  & > [cds-layout~='align:left'],
-  &::slotted([cds-layout~='align:left']) {
-    margin-right: auto !important;
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateAlignments($breakpoint);
   }
 }

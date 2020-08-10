@@ -2,6 +2,10 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+body[cds-layout='no-scrolling'] {
+  overflow: hidden;
+}
+
 [cds-layout~='fill'],
 [cds-layout~='container:fill'] {
   width: 100% !important;

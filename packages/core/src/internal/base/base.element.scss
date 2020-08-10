@@ -2,10 +2,14 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import './../../styles/tokens/generated/index';
-@import './../../styles/mixins/mixins';
-@import './../../styles/layout/layout';
-@import './../../styles/typography/typography';
+@import './../../styles/module.layout';
+@import './../../styles/module.typography';
+@import './../../styles/layout/shims/gap';
+
+// older safari
+@media not all and (min-resolution: 0.001dpcm) {
+  @include generateGapShim();
+}
 
 // Every Web Component will need to import a minimal amount of core CSS
 :host {

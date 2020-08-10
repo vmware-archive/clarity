@@ -7,19 +7,44 @@
 
 :root,
 :host {
-  --clxxs: var(--cds-token-layout-space-xxs, #{$cds-token-layout-space-xxs-static});
-  --clxs: var(--cds-token-layout-space-xs, #{$cds-token-layout-space-xs-static});
-  --clsm: var(--cds-token-layout-space-sm, #{$cds-token-layout-space-sm-static});
-  --clmd: var(--cds-token-layout-space-md, #{$cds-token-layout-space-md-static});
-  --cllg: var(--cds-token-layout-space-lg, #{$cds-token-layout-space-lg-static});
-  --clxl: var(--cds-token-layout-space-xl, #{$cds-token-layout-space-xl-static});
-  --clxxl: var(--cds-token-layout-space-xxl, #{$cds-token-layout-space-xxl-static});
+  --cxxs: var(--cds-token-layout-space-xxs, #{$cds-token-layout-space-xxs-static});
+  --cxs: var(--cds-token-layout-space-xs, #{$cds-token-layout-space-xs-static});
+  --csm: var(--cds-token-layout-space-sm, #{$cds-token-layout-space-sm-static});
+  --cmd: var(--cds-token-layout-space-md, #{$cds-token-layout-space-md-static});
+  --clg: var(--cds-token-layout-space-lg, #{$cds-token-layout-space-lg-static});
+  --cxl: var(--cds-token-layout-space-xl, #{$cds-token-layout-space-xl-static});
+  --cxxl: var(--cds-token-layout-space-xxl, #{$cds-token-layout-space-xxl-static});
 }
 
-$cds-token-layout-space-xxs: var(--clxxs);
-$cds-token-layout-space-xs: var(--clxs);
-$cds-token-layout-space-sm: var(--clsm);
-$cds-token-layout-space-md: var(--clmd);
-$cds-token-layout-space-lg: var(--cllg);
-$cds-token-layout-space-xl: var(--clxl);
-$cds-token-layout-space-xxl: var(--clxxl);
+$cds-token-layout-space-xxs: var(--cxxs);
+$cds-token-layout-space-xs: var(--cxs);
+$cds-token-layout-space-sm: var(--csm);
+$cds-token-layout-space-md: var(--cmd);
+$cds-token-layout-space-lg: var(--clg);
+$cds-token-layout-space-xl: var(--cxl);
+$cds-token-layout-space-xxl: var(--cxxl);
+
+// selectors one location to make it easier to test for shorthand optimizations
+// this is also helpful for tools like AMP that require data-* prefix on all attrs
+$layout: 'cds-layout';
+$horizontal: 'horizontal';
+$vertical: 'vertical';
+$grid: 'grid';
+$gap: 'gap';
+$align: 'align';
+$top: 'top';
+$bottom: 'bottom';
+$left: 'left';
+$right: 'right';
+$center: 'center';
+$stretch: 'stretch';
+$shrink: 'shrink';
+$fill: 'fill';
+$cols: 'cols';
+$rows: 'rows';
+$col: 'col';
+$row: 'row';
+$vertical-center: 'vertical-center';
+$horizontal-center: 'horizontal-center';
+$vertical-stretch: 'vertical-stretch';
+$horizontal-stretch: 'horizontal-stretch';

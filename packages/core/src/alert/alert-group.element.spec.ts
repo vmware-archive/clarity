@@ -72,12 +72,12 @@ describe('Alert groups – ', () => {
     });
 
     it('sets cds-layout as expected', async () => {
-      const wrapper = compactAlertGroup.shadowRoot.querySelector('.alert-group-wrapper');
+      const slot = compactAlertGroup.shadowRoot.querySelector('.alert-group-wrapper slot');
       let layout: string;
 
       await componentIsStable(compactAlertGroup);
 
-      layout = wrapper.getAttribute('cds-layout');
+      layout = slot.getAttribute('cds-layout');
       expect(layout.includes('vertical')).toBe(true, 'Compact alert group should include vertical layout');
       expect(layout.includes('wrap:none')).toBe(true, 'Compact alert group should include wrap:none layout');
       expect(layout.includes('gap:none')).toBe(true, 'Compact alert group should include gap:none layout');
@@ -91,7 +91,7 @@ describe('Alert groups – ', () => {
 
       await componentIsStable(compactAlertGroup);
 
-      layout = wrapper.getAttribute('cds-layout');
+      layout = slot.getAttribute('cds-layout');
       expect(layout.includes('vertical')).toBe(true, 'Default alert group should include vertical layout');
       expect(layout.includes('wrap:none')).toBe(true, 'Default alert group should include wrap:none layout');
       expect(layout.includes('gap:none')).toBe(false, 'Default alert group should NOT include gap:none layout');

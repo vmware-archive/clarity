@@ -100,7 +100,7 @@ describe('cds-control', () => {
     control.hiddenLabel = true;
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('cds-internal-control-label')).toBe(null);
-    expect(control.shadowRoot.querySelector('slot[name=label]').getAttribute('cds-layout')).toBe(
+    expect(control.shadowRoot.querySelector('slot[name=label]').parentElement.getAttribute('cds-layout')).toBe(
       'display:screen-reader-only'
     );
   });

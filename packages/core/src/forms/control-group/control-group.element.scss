@@ -13,6 +13,10 @@ slot[name='message'] {
   line-height: 0;
 }
 
+slot[name='label'] {
+  display: contents !important; // todo: make all slot use this by default to ensure no Safari issues
+}
+
 :host([control-width='shrink']) {
   width: auto;
 }

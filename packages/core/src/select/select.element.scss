@@ -13,6 +13,7 @@
   border-radius: #{$cds-token-global-border-radius} !important;
   border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500} !important;
   padding: 0 !important;
+  font-size: $cds-token-typography-font-size-3 !important;
 }
 
 :host([multiple]) .input-container {

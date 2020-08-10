@@ -158,7 +158,7 @@ export class CdsControl extends LitElement {
 
   render() {
     return html`
-      ${this.hiddenLabel ? html`<slot name="label" cds-layout="display:screen-reader-only"></slot>` : ''}
+      ${this.hiddenLabel ? html`<span cds-layout="display:screen-reader-only"><slot name="label"></slot></span>` : ''}
       <div
         cds-layout="${this.layout === 'vertical' ? 'vertical gap:sm' : 'horizontal gap:lg'} align:stretch"
         class="private-host ${this.isRTL ? 'rtl' : ''}"

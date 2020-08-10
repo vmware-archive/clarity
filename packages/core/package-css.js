@@ -18,9 +18,10 @@ const read = dir =>
 read('./dist/core')
   .filter(f => f.endsWith('.css') && !f.endsWith('.min.css'))
   .forEach(file => {
-    const css = fs.readFileSync(file, 'utf8');
-    const result = csso.minify(css);
-    fs.writeFileSync(file.replace('.css', '.min.css'), result.css);
+    // remove internal shadow dom selectors from global light dom styles + ie11 fix with error on ::slotted
+    let css = fs.readFileSync(file, 'utf8').replace(/(,|,\n  \[)[^,]*(::slotted).*{/g, '{');
+    fs.writeFileSync(file, css);
+    fs.writeFileSync(file.replace('.css', '.min.css'), csso.minify(css).css);
   });
 
 // This will remove unused utilities from cds-layout and typography from core components

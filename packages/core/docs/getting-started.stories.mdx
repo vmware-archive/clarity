@@ -22,16 +22,16 @@ all our global style modules. To install the global styles you can import via CS
 Preprocessor like Sass/Less or reference the CSS directly in your HTML.
 
 ```scss
-// import via Sass
-@import '~normalize.css/normalize.css';
-@import '~@clr/core/global.min';
-@import '~@clr/city/css/bundles/default.min';
+@import '~normalize.css/normalize.css'; // css reset
+@import '~@clr/core/global.min'; // clarity global styles
+@import '~@clr/core/styles/module.shims.min'; // non-evergreen browser shims (IE11, Safari)
+@import '~@clr/city/css/bundles/default.min'; // load base font
 ```
 
 ```html
-<!-- or import via HTML -->
 <link href="/node_modules/normalize.css/normalize.css" rel="stylesheet" />
 <link href="/node_modules/@clr/core/global.min.css" rel="stylesheet" />
+<link href="/node_modules/@clr/core/styles/module.shims.min.css" rel="stylesheet" />
 <link href="/node_modules/@clr/city/css/bundles/default.min.css" rel="stylesheet" />
 ```
 
@@ -121,4 +121,6 @@ across browsers.
 @import '@clr/core/styles/module.tokens.min.css';
 @import '@clr/core/styles/module.layout.min.css';
 @import '@clr/core/styles/module.typography.min.css';
+@import '@clr/core/styles/module.shims.min.css';
+@import '@clr/city/css/bundles/default.min.css';
 ```

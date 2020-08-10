@@ -1,0 +1,58 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Shim for CSS Gap for IE11 and Safari
+@mixin generateHorizontalGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [#{$layout}~='#{$horizontal}'][#{$layout}*='#{$gap}#{$breakpoint}:#{$size}'] {
+      width: calc(100% + #{$sizeValue});
+      margin-bottom: calc(#{$sizeValue} * -1) !important;
+      margin-right: calc(#{$sizeValue} * -1) !important;
+
+      & > *,
+      // the ::slotted selectors are removed from the global layout at build time as its not needed and breaks IE
+      &::slotted(*) {
+        margin-top: #{$sizeValue} !important;
+        margin-left: #{$sizeValue} !important;
+        top: calc(-1 * #{$sizeValue}) !important;
+        left: calc(-1 * #{$sizeValue}) !important;
+        position: relative !important;
+      }
+    }
+  }
+}
+
+@mixin generateVerticalGaps($breakpoint: null) {
+  @each $size, $sizeValue in $cds-layout-sizes {
+    [#{$layout}~='#{$vertical}'][#{$layout}*='#{$gap}#{$breakpoint}:#{$size}'] {
+      & > *,
+      &::slotted(*) {
+        margin-top: $sizeValue !important;
+      }
+
+      & > *:first-child,
+      &::slotted(*:first-child),
+      &::slotted([slot]:first-of-type) {
+        margin-top: 0 !important;
+      }
+    }
+  }
+}
+
+@mixin generateGapShim() {
+  @include generateHorizontalGaps();
+  @include generateVerticalGaps();
+
+  @each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+    @media (min-width: $breakpoint-value) {
+      @include generateHorizontalGaps($breakpoint);
+    }
+  }
+
+  @each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+    @media (min-width: $breakpoint-value) {
+      @include generateVerticalGaps($breakpoint);
+    }
+  }
+}

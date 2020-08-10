@@ -12,12 +12,14 @@
 // a compact syntax to prevent an excessive amount of generated CSS.
 // [type]-[side]@[breakpoint]:[size]
 
+@include generateGaps();
 @include spacers();
 @include axisSpacers();
 @include sideSpacers();
 
 @each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
   @media (min-width: $breakpoint-value) {
+    @include generateGaps($breakpoint);
     @include spacers($breakpoint);
     @include axisSpacers($breakpoint);
     @include sideSpacers($breakpoint);

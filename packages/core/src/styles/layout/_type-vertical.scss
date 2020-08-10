@@ -2,138 +2,125 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin generateGaps($breakpoint: null) {
-  @each $size, $sizeValue in $cds-layout-sizes {
-    [cds-layout~='vertical'][cds-layout~='gap#{$breakpoint}:#{$size}'] {
-      & > *,
-      &::slotted(*) {
-        margin-top: $sizeValue !important;
-      }
+@mixin generateAlignments($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
+    // Align Items
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
+      justify-content: flex-start;
+    }
 
-      & > *:first-child,
-      &::slotted(*:first-child),
-      &::slotted([slot]:first-of-type) {
-        margin-top: 0 !important;
-      }
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
+      justify-content: flex-end;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
+      align-items: flex-start;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
+      align-items: flex-end;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
+      justify-content: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
+      justify-content: stretch;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
+      align-items: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
+      align-items: stretch;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$center}'] {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}']::slotted(*) {
+      flex-grow: 1 !important;
+      flex-basis: 0 !important;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] > *,
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}']::slotted(*) {
+      flex-grow: 1 !important;
+    }
+
+    // Align Single Item
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
+      flex-grow: 1 !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
+      flex-shrink: 1 !important;
+      flex-grow: 0 !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+      align-self: center;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+      margin-bottom: auto !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+      margin-top: auto !important;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+      margin-left: auto;
+    }
+
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
+    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+      margin-right: auto;
     }
   }
 }
 
-@include generateGaps();
-
-@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
-  @media (min-width: $breakpoint-value) {
-    @include generateGaps($breakpoint);
-  }
-}
-
-[cds-layout~='vertical'] {
+[#{$layout}~='#{$vertical}'] {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
 
-  // Align Items
-  &[cds-layout~='align:top'] {
-    justify-content: flex-start;
-  }
+@include generateAlignments();
 
-  &[cds-layout~='align:bottom'] {
-    justify-content: flex-end;
-  }
-
-  &[cds-layout~='align:left'] {
-    align-items: flex-start;
-  }
-
-  &[cds-layout~='align:right'] {
-    align-items: flex-end;
-  }
-
-  &[cds-layout~='align:vertical-center'] {
-    justify-content: center;
-  }
-
-  &[cds-layout~='align:vertical-stretch'] {
-    justify-content: stretch;
-  }
-
-  &[cds-layout~='align:horizontal-center'] {
-    align-items: center;
-  }
-
-  &[cds-layout~='align:horizontal-stretch'] {
-    align-items: stretch;
-  }
-
-  &[cds-layout~='align:center'] {
-    align-items: center;
-    justify-content: center;
-  }
-
-  &[cds-layout~='align:fill'] > *,
-  &[cds-layout~='align:fill']::slotted(*) {
-    flex-grow: 1 !important;
-    flex-basis: 0 !important;
-  }
-
-  &[cds-layout~='align:stretch'] {
-    align-items: stretch;
-    justify-content: stretch;
-  }
-
-  &[cds-layout~='align:stretch'] > *,
-  &[cds-layout~='align:vertical-stretch'] > *,
-  &[cds-layout~='align:stretch']::slotted(*),
-  &[cds-layout~='align:vertical-stretch']::slotted(*) {
-    flex-grow: 1 !important;
-  }
-
-  // Align Single Item
-  & > [cds-layout~='align:stretch'],
-  &::slotted([cds-layout~='align:stretch']) {
-    flex-grow: 1 !important;
-  }
-
-  & > [cds-layout~='align:shrink'],
-  &::slotted([cds-layout~='align:shrink']) {
-    flex-shrink: 1 !important;
-    flex-grow: 0 !important;
-  }
-
-  & > [cds-layout~='align:center'],
-  & > [cds-layout~='align:vertical-center'],
-  &::slotted([cds-layout~='align:center']),
-  &::slotted([cds-layout~='align:vertical-center']) {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-  & > [cds-layout~='align:center'],
-  & > [cds-layout~='align:horizontal-center'],
-  &::slotted([cds-layout~='align:center']),
-  &::slotted([cds-layout~='align:horizontal-center']) {
-    align-self: center;
-  }
-
-  & > [cds-layout~='align:top'],
-  &::slotted([cds-layout~='align:top']) {
-    margin-bottom: auto !important;
-  }
-
-  & > [cds-layout~='align:bottom'],
-  &::slotted([cds-layout~='align:bottom']) {
-    margin-top: auto !important;
-  }
-
-  & > [cds-layout~='align:right'],
-  &::slotted([cds-layout~='align:right']) {
-    margin-left: auto;
-  }
-
-  & > [cds-layout~='align:left'],
-  &::slotted([cds-layout~='align:left']) {
-    margin-right: auto;
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateAlignments($breakpoint);
   }
 }

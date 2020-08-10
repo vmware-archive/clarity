@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Clarity Core - Snowpack App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@clr/core@next/global.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@clr/city/css/bundles/default.min.css" />
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body cds-text="body" cds-layout="p:lg">
+    <cds-button status="primary">hello there</cds-button>
+
+    <cds-alert-group status="danger" hidden>
+      <cds-alert closable>
+        General Kenobi. You are a bold one.
+      </cds-alert>
+    </cds-alert-group>
+
+    <script type="module" src="/_dist_/index.js"></script>
+  </body>
+</html>

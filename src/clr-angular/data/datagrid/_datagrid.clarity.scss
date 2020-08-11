@@ -839,14 +839,6 @@
         align-self: center;
         display: flex;
 
-        /**
-         * Default white space wrap causes the grid header to shrink vertically.
-         * When shrinking the title goes over the data in the grid and makes the data unreadable.
-         *
-         * Fix: #4872
-         */
-        white-space: nowrap;
-
         .signpost .signpost-action.btn {
           height: inherit;
           line-height: inherit;

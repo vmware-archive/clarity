@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -65,6 +65,16 @@
   .modal-header {
     border-bottom: none;
     padding: 0 0 $clr_baselineRem_1 0;
+
+    // TODO: This class is used only in the clr-modal template.
+    // It should be merged this with `.modal-header` in a major version
+    // because this would be breaking for the static modals.
+    &--accessible {
+      @extend .modal-header;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
 
     .modal-title {
       @include css-var(color, clr-modal-title-color, $clr-modal-title-color, $clr-use-custom-properties);

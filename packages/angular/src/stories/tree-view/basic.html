@@ -8,43 +8,23 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Tree View demo</h1>
-      <clr-tree>
-        <ng-container *ngIf="selectable; else nocheckbox">
-          <clr-tree-node *ngFor="let directory of demoTree" clrSelected>
-            <clr-icon *ngIf="icon" [attr.shape]="directory.icon"></clr-icon>
-            {{directory.name}}
-            <clr-tree-node *ngFor="let file of directory.files">
-              <button
-                (click)="openFile(directory.name, file.name)"
-                class="clr-treenode-link"
-                [class.active]="file.active"
-              >
-                <clr-icon *ngIf="icon" [attr.shape]="file.icon"></clr-icon>
-                {{file.name}}
-              </button>
-            </clr-tree-node>
-          </clr-tree-node>
-        </ng-container>
-      </clr-tree>
 
-      <ng-template #nocheckbox>
-        <clr-tree>
-          <clr-tree-node *ngFor="let directory of demoTree">
-            <clr-icon *ngIf="icon" [attr.shape]="directory.icon"></clr-icon>
-            {{directory.name}}
-            <clr-tree-node *ngFor="let file of directory.files">
-              <button
-                (click)="openFile(directory.name, file.name)"
-                class="clr-treenode-link"
-                [class.active]="file.active"
-              >
-                <clr-icon *ngIf="icon" [attr.shape]="file.icon"></clr-icon>
-                {{file.name}}
-              </button>
-            </clr-tree-node>
+      <clr-tree [style.display]="selectable?'block':'none'">
+        <clr-tree-node *ngFor="let directory of demoTree">
+          {{directory.name}}
+          <clr-tree-node *ngFor="let file of directory.files" [(clrSelected)]="file.selected">
+            {{file.name}}
           </clr-tree-node>
-        </clr-tree></ng-template
-      >
+        </clr-tree-node>
+      </clr-tree>
+      <clr-tree [style.display]="selectable?'none':'block'">
+        <clr-tree-node *ngFor="let directory of demoTree">
+          {{directory.name}}
+          <clr-tree-node *ngFor="let file of directory.files">
+            {{file.name}}
+          </clr-tree-node>
+        </clr-tree-node>
+      </clr-tree>
     </div>
   </div>
 </div>

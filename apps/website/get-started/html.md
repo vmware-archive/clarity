@@ -2,7 +2,7 @@
 
 Clarity provides its CSS as a standalone package for applications to use if they want to use Clarity without Angular. This is useful for some projects that want to look like Clarity but, for any number of reasons, may not want or be able to use Angular.
 
-> It is important to note that many components are not functional without Angular, and applications will need to either avoid those components or implement the interaction on their own. For example, if you are using Vue.js, you can still get Clarity styling on your page but behaviors like Datagrid interactions will not work out of the box.
+It is important to note that many components are not functional without Angular, and applications will need to either avoid those components or implement the interaction on their own. For example, if you are using Vue.js, you can still get Clarity styling on your page but behaviors like Datagrid interactions will not work out of the box.
 
 ## Step 1: Install Dependencies
 

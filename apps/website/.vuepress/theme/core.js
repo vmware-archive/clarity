@@ -34,6 +34,10 @@ import {
   videoGalleryIcon,
   cloudIcon,
   loadCoreIconSet,
+  dotCircleIcon,
+  circleIcon,
+  successStandardIcon,
+  errorStandardIcon,
 } from '@clr/core/icon';
 
 ClarityIcons.addIcons(
@@ -47,7 +51,11 @@ ClarityIcons.addIcons(
   imageGalleryIcon,
   videoGalleryIcon,
   downloadIcon,
-  copyIcon
+  copyIcon,
+  dotCircleIcon,
+  circleIcon,
+  successStandardIcon,
+  errorStandardIcon
 );
 loadCoreIconSet();
 

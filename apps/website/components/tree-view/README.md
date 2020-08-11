@@ -168,10 +168,13 @@ The way to load data within the tree is based on the scenario in which the tree 
 
 <div class="clr-row">
 <div class="clr-col">
-#### Load Parent Nodes First
-<p>With a dynamic tree, make sure to load the parent nodes first and then lazy load child nodes when requested.</p>
 
-<p>A general goal to keep in mind is that you want to minimize the time a user needs to spend before their first interaction with the tree as well as every subsequent interaction afterwards.</p>
+#### Load Parent Nodes First
+
+With a dynamic tree, make sure to load the parent nodes first and then lazy load child nodes when requested.
+
+A general goal to keep in mind is that you want to minimize the time a user needs to spend before their first interaction with the tree as well as every subsequent interaction afterwards.
+
 </div>
 <div class="clr-col">
 <DocInset>

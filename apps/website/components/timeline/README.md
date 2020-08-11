@@ -9,12 +9,13 @@ A timeline displays a series of events which can guide the user through processe
 
 Timeline sets an expectation for the whole process by breaking it up into concrete steps and a pre-determined goal. It shows the user their progress along the steps of the timeline with a current step. For all of the steps, a timeline can provide additional information such as a header (timestamp), an icon showing state, a title and a description that optionally includes related contextual actions.
 
-Use a timeline:
-• When the workflow requires the full content area to show information
-• For content with distinct higher-level stages
-• When the user needs clear progress indication
-• For workflows with complex steps
-• For workflows between 3 to 5 steps for horizontal timeline; 5+ steps for vertical
+**Use a timeline:**
+
+- When the workflow requires the full content area to show information
+- For content with distinct higher-level stages
+- When the user needs clear progress indication
+- For workflows with complex steps
+- For workflows between 3 to 5 steps for horizontal timeline; 5+ steps for vertical
 
 ## Types
 
@@ -122,3 +123,22 @@ When steps one and two are complete, step three gets highlighted.
 
 - When loading or taking action, display a spinner
 - Disable buttons when loading or make buttons contextual for the loading state (e.g CANCEL)
+
+## Angular Component
+
+Besides a static HTML/CSS Timeline component, we also offer a fully interactive Angular version of the component. So if you are using Angular, you can use the `ClrTimeline` component. By using `ClrTimeline`, you'll be able to leverage its interactive behavior and features out-of-the-box. If you would like to learn more about how to customize its default interactive behavior, please refer to [the API tab](./api.html).
+
+<DocDemo>
+
+```html
+<clr-timeline>
+  <clr-timeline-step [clrState]="currentState">
+    <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+    <!-- clr-timeline-step-title -->
+    <!-- clr-timeline-step-description -->
+  </clr-timeline-step>
+  <!-- Additional clr-timeline-step components -->
+</clr-timeline>
+```
+
+</DocDemo>

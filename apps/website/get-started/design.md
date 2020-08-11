@@ -12,10 +12,10 @@ Clarity provides design assets that help designers get started. These assets sho
 
 ## Primary Font
 
-The default font intended for use with Clarity is [Clarity CIty](https://github.com/vmware/clarity-city). Download and install the [font files](https://github.com/vmware/clarity-city/archive/v1.0.0.zip) on your computer to make sure it is available when using the assets below.
+The default font intended for use with Clarity is [Clarity City](https://github.com/vmware/clarity-city). Download and install the font files on your computer to make sure it is available when using the assets below.
 
 <div cds-layout="m-t:md">
-<a class="btn btn-primary asset-download-btn" target="_blank" href="https://github.com/vmware/clarity-city/archive/v1.0.0.zip"><cds-icon shape="download" inverse></cds-icon> UI Library - Light (2.2.0)</a>
+<a class="btn btn-primary asset-download-btn" target="_blank" href="https://github.com/vmware/clarity-city/archive/v1.0.0.zip"><cds-icon shape="download" inverse></cds-icon> Clarity City (1.0.0)</a>
 </div>
 
 </div>

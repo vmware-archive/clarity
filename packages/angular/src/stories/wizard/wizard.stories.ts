@@ -23,11 +23,11 @@ export const Basic = () => {
   const size = select(
     'Size',
     {
-      Small: 'sm',
       Medium: 'md',
       Large: 'lg',
+      'Extra Large': `xl`,
     },
-    'sm'
+    'md'
   );
   let open = false; // eslint-disable-line prefer-const
   function toggle() {

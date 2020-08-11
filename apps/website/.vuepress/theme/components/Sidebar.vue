@@ -31,16 +31,6 @@
                   >
                     <span class="nav-text">{{ childItem.title }}</span>
                   </router-link>
-                  <a
-                    v-else-if="childItem.type === 'external'"
-                    :href="childItem.path"
-                    :target="childItem.target"
-                    class="nav-link"
-                  >
-                    <span class="nav-text"
-                      >{{ childItem.title }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon
-                    ></span>
-                  </a>
                 </template>
               </div>
             </div>
@@ -112,6 +102,8 @@
 </style>
 
 <script>
+import { removePathExt } from '../util/remove-path-ext';
+
 export default {
   name: 'Sidebar',
   props: {
@@ -149,7 +141,8 @@ export default {
       this.$set(this.states, index, !this.states[index]);
     },
     isItemActive: function (childItem) {
-      return childItem.path === this.activePage.path || this.activePage.path.startsWith(childItem.path + '/');
+      const childItemPath = removePathExt(childItem.path);
+      return childItemPath === this.activePage.path || this.activePage.path.startsWith(childItem.path + '/');
     },
     childActive: function (item) {
       let path = this.$page.path;

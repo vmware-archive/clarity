@@ -6,7 +6,7 @@
 
 import { moduleMetadata } from '@storybook/angular';
 import { action } from '@storybook/addon-actions';
-import { boolean, radios } from '@storybook/addon-knobs';
+import { boolean } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

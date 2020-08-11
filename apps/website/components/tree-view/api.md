@@ -48,10 +48,22 @@ toc: true
 
 #### Selector & Basic Usage
 
+Use our `*clrIfExpanded` structural directive to lazy-load node children.
+
 <DocDemo toggle="false">
 
 ```html
-
+<clr-tree [clrLazy]="true">
+  <clr-tree-node [clrLoading]="loading">
+    <clr-icon shape="building"></clr-icon>
+    Office Locations
+    <ng-template clrIfExpanded (clrIfExpandedChange)="$event ? fetchLocations() : null">
+      <clr-tree-node *ngFor="let location of locations$ | async">
+        {{location}}
+      </clr-tree-node>
+    </ng-template>
+  </clr-tree-node>
+</clr-tree>
 ```
 
 </DocDemo>
@@ -60,7 +72,7 @@ toc: true
 
 <DocComponentApi component="ClrIfExpanded" item="bindings" />
 
-### clrRecursiveFor
+### ClrRecursiveFor
 
 #### Selector & Basic Usage
 

@@ -3,7 +3,7 @@ title: Overview
 toc: true
 ---
 
-Toggle switches allow the selection of on `on` or `off` state.
+Toggle switches allow the selection of `on` or `off` state.
 
 ## Usage
 

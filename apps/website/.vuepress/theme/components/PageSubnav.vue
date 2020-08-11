@@ -6,8 +6,8 @@
         <router-link
           :to="item.path"
           class="btn btn-link nav-link"
-          v-bind:aria-selected="activePage.path === item.path"
-          v-bind:class="{ active: activePage.path === item.path }"
+          v-bind:aria-selected="isActive(activePagePath, item.path)"
+          v-bind:class="{ active: isActive(activePagePath, item.path) }"
           >{{ item.title }}</router-link
         >
       </li>
@@ -19,7 +19,7 @@
 h1 {
   margin: 0rem;
 }
-.nav .btn.btn-link:visited {
+.nav .btn.btn-link.nav-link {
   color: var(--cds-token-color-neutral-700, #666);
 }
 
@@ -29,6 +29,7 @@ h1 {
 </style>
 
 <script>
+import { removePathExt } from '../util/remove-path-ext';
 // This whole system is just setup to assume a 3 level navigation pattern, anything else might break this
 export default {
   name: 'PageSubnav',
@@ -39,8 +40,13 @@ export default {
     subnav() {
       return resolveSubnav(this.$page, this.sidebarItems);
     },
-    activePage() {
-      return this.$page;
+    activePagePath() {
+      return this.$page.path;
+    },
+  },
+  methods: {
+    isActive: function (activePath, itemPath) {
+      return activePath === removePathExt(itemPath);
     },
   },
 };

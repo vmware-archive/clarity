@@ -103,6 +103,7 @@ export default {
 
 .demo-wrapper {
   margin-bottom: 1.2rem;
+  overflow: hidden;
 
   .has-padding & {
     padding: 1.2rem;

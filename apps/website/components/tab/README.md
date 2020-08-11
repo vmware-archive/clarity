@@ -59,30 +59,6 @@ When there are to many horizontal tabs to fit into the viewport, use overflow to
 
 <doc-demo src="/demos/tabs/two-way-ng.html" demo="/demos/tabs/two-way-css.html" />
 
-## Anatomy
-
-Compose tabs with the following components and directives. ClrIfActive is optional but recommended.
-
-### ClrTabs
-
-[ClrTabs](/components/tab/api/#clrtabs) is the parent container for all Angular children components. Its default layout is horizontal but it can also be set to vertical.
-
-### ClrTab
-
-[ClrTab](/compnents/tab/api/#clrtab) is a child of [ClrTabs](/components/tab/api/#clrtabs) that contains the tab link and the tab content which must be associated together.
-
-### ClrTabContent
-
-[ClrTabContent](/compnents/tab/api/#clrtabcontent) is a component where application content can be projected into for display.
-
-### ClrTabLink
-
-[ClrTabLink](/compnents/tab/api/#clrtablink) is an attribute directive that designates button elements to be used as the displayed tab.
-
-### ClrIfActive
-
-[ClrIfActive](/compnents/tab/api/#clrifactive) is a structural directive used to lazy load the tab content.
-
 ## Accessibility
 
 The Clarity Angular components implement the following behaviors to make them accessible.

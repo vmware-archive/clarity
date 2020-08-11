@@ -8,19 +8,29 @@
   <div class="content-container">
     <div class="content-area">
       <h1>Spinner demo</h1>
-      <section class="story-align-center" [class.inverse]="inverse">
-        <p>
-          This is a paragraph with entertaining text. It also happens to have a
+      <section class="story-align-center" [class.inverse]="inverse" *ngIf="inverse">
+        <div>
           <clr-spinner
             [clrInline]="inline"
-            [clrInverse]="inverse"
+            [clrInverse]="true"
             [clrMedium]="(size == 'medium')"
             [clrSmall]="(size == 'small')"
           >
-            Downloading
-          </clr-spinner>
-          so that you can see inline vs block behavior.
-        </p>
+            Downloading </clr-spinner
+          ><span *ngIf="inline"> Loading text...</span>
+        </div>
+      </section>
+      <section class="story-align-center" [class.inverse]="inverse" *ngIf="!inverse">
+        <div>
+          <clr-spinner
+            [clrInline]="inline"
+            [clrInverse]="false"
+            [clrMedium]="(size == 'medium')"
+            [clrSmall]="(size == 'small')"
+          >
+            Downloading </clr-spinner
+          ><span *ngIf="inline"> Loading text...</span>
+        </div>
       </section>
     </div>
   </div>

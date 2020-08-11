@@ -56,10 +56,6 @@
       // right padding nudged a bit to better align icons
       padding: $clr-wizard-default-space ($clr-wizard-default-space - $clr_baselineRem_5px) $clr_baselineRem_0_25
         $clr-wizard-default-space;
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      align-items: flex-start;
     }
 
     .modal-title {

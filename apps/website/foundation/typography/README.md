@@ -9,6 +9,8 @@ Clarity uses the geometric sans-serif font, Clarity City.
 
 <DocTypographyTable table="text-styles" />
 
+<DocDemo toggle="false">
+
 ```html
 <p class="p1">Body text</p>
 <p class="p2">Section header</p>
@@ -22,9 +24,13 @@ Clarity uses the geometric sans-serif font, Clarity City.
 or <code class="language-html">Monospaced</code>
 ```
 
+</DocDemo>
+
 ## Header Styles
 
 <DocTypographyTable table="header-styles" />
+
+<DocDemo toggle="false">
 
 ```html
 <h1>Header 1 (Display)</h1>
@@ -34,6 +40,8 @@ or <code class="language-html">Monospaced</code>
 <h5>Header 5 (Category / group label, TOC)</h5>
 <h6>Header 6 (Section Heading Level 2 group label)</h6>
 ```
+
+</DocDemo>
 
 ## Using Typography
 

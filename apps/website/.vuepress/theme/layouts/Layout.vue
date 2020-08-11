@@ -36,7 +36,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-wrapper {
   display: flex;
   max-width: 60rem;
@@ -56,6 +56,10 @@
   .hamburger-icon {
     cursor: inherit;
   }
+}
+.main-container .content-container .content-area {
+  padding: 0;
+  overflow-x: hidden;
 }
 </style>
 

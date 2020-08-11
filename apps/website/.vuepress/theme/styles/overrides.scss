@@ -190,7 +190,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   .header-anchor {
     opacity: 0;
     cursor: pointer;
@@ -245,9 +246,4 @@ h4 .header-anchor cds-icon {
 
 .asset-download-btn cds-icon {
   vertical-align: text-top;
-}
-
-.main-container .content-container .content-area {
-  padding: 0;
-  overflow-x: hidden;
 }

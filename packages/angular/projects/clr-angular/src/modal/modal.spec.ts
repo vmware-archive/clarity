@@ -277,4 +277,14 @@ describe('Modal', () => {
     expect(messages[0].innerText).toBe('Beginning of Modal Content');
     expect(messages[1].innerText).toBe('End of Modal Content');
   }));
+
+  it('renders the title before the close button', fakeAsync(() => {
+    const modalHeader = compiled.querySelector('.modal-header--accessible');
+    expect(modalHeader.children.length).toBeGreaterThanOrEqual(2);
+
+    const maybeTitleWrapper = modalHeader.children[0];
+    const maybleCloseButton = modalHeader.children[1];
+    expect(maybeTitleWrapper.classList.contains('modal-title-wrapper')).toBeTrue();
+    expect(maybleCloseButton.classList.contains('close')).toBeTrue();
+  }));
 });

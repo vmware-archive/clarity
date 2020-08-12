@@ -196,6 +196,17 @@ export const horizontalLayoutAlignStretch = () => {
   `;
 };
 
+export const horizontalLayoutAlignResponsive = () => {
+  return html`
+    <cds-demo layout wide>
+      <div cds-layout="horizontal gap:md align@md:right align@lg:center">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
 export const horizontalLayoutItemStretch = () => {
   return html`
     <cds-demo layout wide>
@@ -299,6 +310,16 @@ export const horizontalLayoutItemAlignLeft = () => {
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:left">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
+export const horizontalLayoutItemAlignResponsive = () => {
+  return html`
+    <cds-demo layout wide>
+      <div cds-layout="horizontal gap:md">
+        <cds-placeholder cds-layout="align@md:right align@lg:center">1</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -556,6 +577,17 @@ export const verticalLayoutAlignStretch = () => {
   `;
 };
 
+export const verticalLayoutAlignResponsive = () => {
+  return html`
+    <cds-demo layout tall>
+      <div cds-layout="vertical gap:md align@md:bottom align@lg:center">
+        <cds-placeholder>1</cds-placeholder>
+        <cds-placeholder>2</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
 export const verticalLayoutItemStretch = () => {
   return html`
     <cds-demo layout tall>
@@ -659,6 +691,16 @@ export const verticalLayoutItemAlignLeft = () => {
         <cds-placeholder>1</cds-placeholder>
         <cds-placeholder cds-layout="align:left">2</cds-placeholder>
         <cds-placeholder>3</cds-placeholder>
+      </div>
+    </cds-demo>
+  `;
+};
+
+export const verticalLayoutItemAlignResponsive = () => {
+  return html`
+    <cds-demo layout tall>
+      <div cds-layout="vertical gap:md">
+        <cds-placeholder cds-layout="align@md:bottom align@lg:center">1</cds-placeholder>
       </div>
     </cds-demo>
   `;
@@ -1463,6 +1505,7 @@ export const utilitiesContainers = () => {
       <cds-demo layout cds-layout="container:md">container:md (992px)</cds-demo>
       <cds-demo layout cds-layout="container:lg">container:lg (1200px)</cds-demo>
       <cds-demo layout cds-layout="container:xl">container:xl (1440px)</cds-demo>
+      <cds-demo layout cds-layout="container:fill">'container:fill' or 'fill' (width 100%)</cds-demo>
       <cds-demo layout cds-layout="container:xs container:center">container:xs container:center</cds-demo>
     </div>
   `;
@@ -1522,10 +1565,8 @@ export const patternsApplicationVerticalLayoutSubnav = () => {
       <div class="demo-subnav" cds-layout="p:md">subnav</div>
       <div cds-layout="horizontal align:stretch">
         <nav class="demo-sidenav" cds-layout="p:md p@md:lg align:shrink">sidebar</nav>
-        <div class="demo-content demo-scrollable-content" cds-layout="align:stretch">
-          <div cds-layout="vertical gap:md p:lg">
-            ${scrollableContentHtml}
-          </div>
+        <div class="demo-content demo-scrollable-content" cds-layout="vertical gap:md p:lg align:stretch">
+          ${scrollableContentHtml}
         </div>
       </div>
       <footer class="demo-footer" cds-layout="p:md p@md:lg align:shrink">footer</footer>
@@ -1549,10 +1590,8 @@ export const patternsApplicationVerticalIconLayout = () => {
         </nav>
         <div cds-layout="vertical align:stretch">
           <div class="demo-header demo-alt-content-header" cds-layout="p:md align:shrink">header</div>
-          <div class="demo-content demo-scrollable-content demo-alt-content" cds-layout="align:stretch">
-            <div cds-layout="vertical gap:md p:lg">
-              ${scrollableContentHtml}
-            </div>
+          <div class="demo-content demo-scrollable-content demo-alt-content" cds-layout="vertical gap:md p:lg">
+            ${scrollableContentHtml}
           </div>
           <footer class="demo-footer" cds-layout="p:md align:shrink">footer</footer>
         </div>
@@ -1577,10 +1616,8 @@ export const patternsApplicationVerticalIconLayoutHybrid = () => {
         </header>
         <div cds-layout="horizontal align:stretch">
           <nav class="demo-sidenav" cds-layout="p:md p@md:lg align:shrink">sidebar</nav>
-          <div class="demo-content demo-scrollable-content" cds-layout="align:stretch">
-            <div cds-layout="vertical gap:md p:lg">
-              ${scrollableContentHtml}
-            </div>
+          <div class="demo-content demo-scrollable-content" cds-layout="vertical gap:md p:lg align:stretch">
+            ${scrollableContentHtml}
           </div>
         </div>
         <footer class="demo-footer" cds-layout="p:md p@md:lg align:shrink">footer</footer>
@@ -1663,22 +1700,19 @@ export const patternsResponsiveImageGallery = () => {
       <header class="demo-header" cds-layout="p:md p@md:lg">
         header
       </header>
-      <div
-        cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:lg gap:md align:horizontal-stretch"
-        class="demo-content"
-      >
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
-        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="container:fill" />
+      <div cds-layout="grid cols@sm:6 cols@md:4 cols@lg:3 cols@xl:2 p:lg gap:md" class="demo-content">
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
+        <img src="https://dummyimage.com/600x400/000/fff" alt="placeholder image" cds-layout="fill" />
       </div>
       <footer class="demo-footer" cds-layout="p:md p@md:lg">footer</footer>
     </div>

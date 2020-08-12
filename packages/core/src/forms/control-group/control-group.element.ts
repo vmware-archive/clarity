@@ -105,9 +105,9 @@ export class CdsInternalControlGroup extends LitElement {
   /** @private */
   @query('cds-internal-control-label[action=primary]') controlLabel: CdsInternalControlLabel;
 
-  @query('slot[name=controls]') private controlSlot: HTMLElement;
+  @query('.controls') private controlSlot: HTMLElement;
 
-  @query('slot[name=message]') private messageSlot: HTMLElement;
+  @query('.messages') private messageSlot: HTMLElement;
 
   @id() private groupLabelId: string;
 
@@ -127,7 +127,9 @@ export class CdsInternalControlGroup extends LitElement {
     return html`
       <div cds-layout="horizontal align:shrink ${this.messages?.length ? 'gap:sm' : ''}" class="messages-container">
         ${!this.isInlineControlGroup ? getStatusIcon(this.status) : ''}
-        <slot class="messages" name="message"></slot>
+        <div class="messages">
+          <slot name="message"></slot>
+        </div>
       </div>
     `;
   }
@@ -136,13 +138,17 @@ export class CdsInternalControlGroup extends LitElement {
     return this.isInlineControlGroup
       ? html`
           <div cds-layout="horizontal gap:sm align:horizontal-stretch" class="input-container">
-            <slot name="controls" cds-layout="horizontal align:horizontal-stretch"></slot>
+            <div class="controls" cds-layout="horizontal align:horizontal-stretch">
+              <slot name="controls"></slot>
+            </div>
             ${getStatusIcon(this.status)}
           </div>
         `
       : html`
           <div cds-layout="horizontal align:shrink" class="input-container">
-            <slot name="controls" cds-layout="${this.inlineControlLayout}"></slot>
+            <div class="controls" cds-layout="${this.inlineControlLayout}">
+              <slot name="controls"></slot>
+            </div>
           </div>
         `;
   }

@@ -32,9 +32,9 @@ import { html, LitElement } from 'lit-element';
  */
 export class CdsModalContent extends LitElement {
   render() {
-    return html`<slot
-      cds-layout="${this.hasAttribute('cds-layout') ? 'display:contents' : 'vertical gap:lg p-y:xs'}"
-    ></slot>`;
+    return this.hasAttribute('cds-layout')
+      ? html`<slot></slot>`
+      : html`<div cds-layout="vertical gap:lg p-y:xs"><slot></slot></div>`;
   }
 
   static get styles() {

@@ -22,11 +22,6 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height;
   min-height: var(--min-height);
 }
 
-slot[name='close-button'],
-slot[name='alert-icon'] {
-  line-height: 0;
-}
-
 :host([type='default']) {
   --font-size: #{$cds-token-typography-font-size-3};
 }
@@ -125,8 +120,7 @@ cds-internal-close-button {
 }
 
 :host([type='banner']) {
-  .alert-content,
-  .alert-content slot {
+  .alert-content {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

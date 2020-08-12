@@ -44,8 +44,8 @@ export class CdsAlertActions extends LitElement {
   private buttons: NodeListOf<CdsButton>;
 
   render() {
-    return html`<div class="private-host">
-      <slot cds-layout="horizontal wrap:none gap:sm align:vertical-center"></slot>
+    return html`<div class="private-host" cds-layout="horizontal wrap:none gap:sm align:vertical-center">
+      <slot></slot>
     </div>`;
   }
 

@@ -72,7 +72,7 @@ describe('Alert groups – ', () => {
     });
 
     it('sets cds-layout as expected', async () => {
-      const slot = compactAlertGroup.shadowRoot.querySelector('.alert-group-wrapper slot');
+      const slot = compactAlertGroup.shadowRoot.querySelector('.alert-group-wrapper > [cds-layout]');
       let layout: string;
 
       await componentIsStable(compactAlertGroup);

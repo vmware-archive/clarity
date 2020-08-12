@@ -55,11 +55,15 @@ export class CdsInternalControlInline extends CdsControl {
         ${!this.isControlGroup
           ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:sm' : ''}">
               ${getStatusIcon(this.status)}
-              <slot name="message" cds-layout="align:vertical-center" class="messages"></slot>
+              <div cds-layout="align:vertical-center" class="messages">
+                <slot name="message"></slot>
+              </div>
             </div>`
           : ''}
       </div>
-      <slot name="input" cds-layout="display:screen-reader-only"></slot>
+      <div cds-layout="display:screen-reader-only">
+        <slot name="input"></slot>
+      </div>
     `;
   }
 

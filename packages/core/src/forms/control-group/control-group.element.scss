@@ -8,15 +8,6 @@
   width: 100%;
 }
 
-slot[name='input'],
-slot[name='message'] {
-  line-height: 0;
-}
-
-slot[name='label'] {
-  display: contents !important; // todo: make all slot use this by default to ensure no Safari issues
-}
-
 :host([control-width='shrink']) {
   width: auto;
 }
@@ -36,7 +27,7 @@ cds-control-action.status {
 :host([layout='compact']),
 :host([status='success']),
 :host([status='error']) {
-  slot[name='message'] {
+  .messages {
     padding-top: $cds-token-space-size-3;
   }
 }

@@ -13,23 +13,12 @@
   line-height: 0;
 }
 
-:host([disabled]) .input,
-:host([disabled]) ::slotted([slot='input']) {
+:host([disabled]) .input {
   cursor: not-allowed;
 }
 
 :host([control-width='shrink']) {
   width: auto;
-}
-
-slot[name='input'],
-slot[name='label'],
-slot[name='message'] {
-  line-height: 0;
-}
-
-slot[name='label'] {
-  display: contents !important; // todo: make all slot use this by default to ensure no Safari issues
 }
 
 ::slotted(input) {
@@ -53,7 +42,7 @@ cds-control-action.status {
 :host([layout='compact']),
 :host([layout='compact'][status='success']),
 :host([layout='compact'][status='error']) {
-  slot[name='message'] {
+  .messages {
     padding-top: $cds-token-space-size-5;
   }
 }

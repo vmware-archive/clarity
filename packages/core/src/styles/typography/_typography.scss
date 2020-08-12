@@ -379,7 +379,7 @@
   display: block;
   height: $cds-token-space-size-1;
   overflow: hidden;
-  box-shadow: var(--clr-color-neutral-300, #{$cds-token-color-neutral-300}) 0 0 0 $cds-token-space-size-1 inset;
+  box-shadow: $cds-token-color-neutral-300 0 0 0 $cds-token-space-size-1 inset;
 }
 
 // font-weight

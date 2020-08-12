@@ -5,13 +5,11 @@
 @mixin generateColumnsAndRows($breakpoint: null) {
   @for $i from 1 through $cds-token-layout-grid-cols-static {
     // implicit columns/rows
-    [#{$layout}*='#{$cols}#{$breakpoint}:#{$i}'] > *,
-    [#{$layout}*='#{$cols}#{$breakpoint}:#{$i}']::slotted(*) {
+    [#{$layout}*='#{$cols}#{$breakpoint}:#{$i}'] > * {
       grid-column: span $i / span $i;
     }
 
-    [#{$layout}*='#{$rows}#{$breakpoint}:#{$i}'] > *,
-    [#{$layout}*='#{$rows}#{$breakpoint}:#{$i}']::slotted(*) {
+    [#{$layout}*='#{$rows}#{$breakpoint}:#{$i}'] > * {
       grid-row: span $i / span $i;
     }
   }
@@ -52,25 +50,20 @@
 }
 
 @mixin generateAlignments($breakpoint: null) {
-  [#{$layout}^='#{$grid}'] {
-    // alignments
+  [#{$layout}~='#{$grid}'] {
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
-      align-items: start;
       align-content: start;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
-      justify-items: end;
       justify-content: end;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
-      align-items: end;
       align-content: end;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
-      justify-items: start;
       justify-content: start;
     }
 
@@ -110,7 +103,7 @@
   }
 }
 
-[#{$layout}^='#{$grid}'] {
+[#{$layout}~='#{$grid}'] {
   display: grid;
   align-items: start;
   align-content: start;
@@ -131,8 +124,7 @@
   }
 }
 
-[#{$layout}*='#{$cols}\@'] > *,
-[#{$layout}*='#{$cols}\@']::slotted(*) {
+[#{$layout}*='#{$cols}\@'] > * {
   grid-column: span $cds-token-layout-grid-cols;
 }
 

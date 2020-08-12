@@ -1576,8 +1576,8 @@ export const patternsApplicationVerticalLayoutSubnav = () => {
 
 export const patternsApplicationVerticalIconLayout = () => {
   return html`
-    <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none">
-      <header class="demo-header demo-alt-header" cds-layout="p:md vertical gap:lg">
+    <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none align:vertical-stretch">
+      <header class="demo-header demo-alt-header" cds-layout="vertical gap:lg p:md">
         <cds-icon shape="applications" size="lg" inverse></cds-icon>
         <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>
         <cds-icon shape="bundle" size="lg" inverse></cds-icon>
@@ -1602,7 +1602,7 @@ export const patternsApplicationVerticalIconLayout = () => {
 
 export const patternsApplicationVerticalIconLayoutHybrid = () => {
   return html`
-    <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none">
+    <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none align:vertical-stretch">
       <header class="demo-header demo-alt-header-2" cds-layout="p:md vertical gap:lg">
         <cds-icon shape="applications" size="lg" inverse></cds-icon>
         <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>

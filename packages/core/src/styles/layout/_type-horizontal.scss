@@ -2,35 +2,27 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin generateAlignments($breakpoint: null) {
+@mixin generateHorizontalAxisAlignment($breakpoint: null) {
   [#{$layout}~='#{$horizontal}'] {
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
-      align-content: flex-start;
+      align-items: flex-start;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
-      align-content: flex-end;
-    }
-
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
-      align-content: center;
+      align-items: flex-end;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
       justify-content: flex-start;
     }
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
-      justify-content: stretch;
-      flex-grow: 1;
-    }
-
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
-      align-content: stretch;
-    }
-
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
       justify-content: flex-end;
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
+      align-items: center;
+      align-content: center;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
@@ -38,90 +30,96 @@
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$center}'] {
-      justify-content: center;
+      align-items: center;
       align-content: center;
+      justify-content: center;
+    }
+  }
+}
+
+@mixin generateHorizontalOrder($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
+    &[#{$layout}*='order#{$breakpoint}:reverse'] {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@mixin generateHorizontalStretch($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
+      align-items: stretch;
+      align-content: stretch;
+      flex-grow: 1;
     }
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}']::slotted(*) {
-      flex-grow: 1 !important;
-      flex-basis: 0 !important;
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
+      justify-content: stretch;
+      flex-grow: 1;
+
+      & > *,
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
-      justify-content: stretch;
+      align-items: stretch;
       align-content: stretch;
-    }
+      flex-grow: 1;
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}']::slotted(*) {
-      flex-grow: 1 !important;
+      & > *,
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
     }
+  }
+}
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'],
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}']::slotted(*) {
-      align-content: stretch !important;
-    }
-
-    &[#{$layout}~='wrap#{$breakpoint}:none'] {
-      flex-wrap: nowrap;
-    }
-
-    &[#{$layout}~='order#{$breakpoint}:reverse'] {
-      flex-direction: row-reverse;
-    }
-
-    // Align Single Item
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
-      flex-grow: 1 !important;
-    }
-
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
-      flex-shrink: 1 !important;
-      flex-grow: 0 !important;
-    }
-
+@mixin generateHorizontalItemAlignment($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
       align-self: center;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
       margin-left: auto !important;
       margin-right: auto !important;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
       align-self: flex-start;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
       align-self: flex-end;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
       margin-left: auto !important;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
       margin-right: auto !important;
     }
   }
+}
+
+@mixin generateHorizontalAlignments($breakpoint: null) {
+  @include generateHorizontalAxisAlignment($breakpoint);
+  @include generateHorizontalOrder($breakpoint);
+  @include generateHorizontalStretch($breakpoint);
+  @include generateHorizontalItemAlignment($breakpoint);
 }
 
 [#{$layout}~='#{$horizontal}'] {
@@ -131,6 +129,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   margin: 0;
   min-height: 0;
@@ -142,10 +141,10 @@
   }
 }
 
-@include generateAlignments();
+@include generateHorizontalAlignments();
 
 @each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
   @media (min-width: $breakpoint-value) {
-    @include generateAlignments($breakpoint);
+    @include generateHorizontalAlignments($breakpoint);
   }
 }

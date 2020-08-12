@@ -2,9 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@mixin generateAlignments($breakpoint: null) {
+@mixin generateVerticalAxisAlignment($breakpoint: null) {
   [#{$layout}~='#{$vertical}'] {
-    // Align Items
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
       justify-content: flex-start;
     }
@@ -25,88 +24,96 @@
       justify-content: center;
     }
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
-      justify-content: stretch;
-    }
-
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
       align-items: center;
-    }
-
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
-      align-items: stretch;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$center}'] {
       align-items: center;
       justify-content: center;
     }
+  }
+}
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$fill}']::slotted(*) {
-      flex-grow: 1 !important;
-      flex-basis: 0 !important;
+@mixin generateVerticalOrder($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
+    &[#{$layout}*='order#{$breakpoint}:reverse'] {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+@mixin generateVerticalStretch($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
+      justify-content: stretch;
+
+      & > *,
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
+      align-items: stretch;
     }
 
     &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
       align-items: stretch;
       justify-content: stretch;
-    }
 
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] > *,
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']::slotted(*),
-    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}']::slotted(*) {
-      flex-grow: 1 !important;
+      & > *,
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
     }
+  }
+}
 
-    // Align Single Item
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
-      flex-grow: 1 !important;
-    }
-
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
-      flex-shrink: 1 !important;
-      flex-grow: 0 !important;
-    }
-
+@mixin generateVerticalItemAlignment($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
       margin-top: auto;
       margin-bottom: auto;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
       align-self: center;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
       margin-bottom: auto !important;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
       margin-top: auto !important;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
       margin-left: auto;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
-    &::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
       margin-right: auto;
     }
   }
+}
+
+@mixin generateVerticalAlignments($breakpoint: null) {
+  @include generateVerticalAxisAlignment($breakpoint);
+  @include generateVerticalOrder($breakpoint);
+  @include generateVerticalStretch($breakpoint);
+  @include generateVerticalItemAlignment($breakpoint);
 }
 
 [#{$layout}~='#{$vertical}'] {
@@ -117,10 +124,10 @@
   align-items: flex-start;
 }
 
-@include generateAlignments();
+@include generateVerticalAlignments();
 
 @each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
   @media (min-width: $breakpoint-value) {
-    @include generateAlignments($breakpoint);
+    @include generateVerticalAlignments($breakpoint);
   }
 }

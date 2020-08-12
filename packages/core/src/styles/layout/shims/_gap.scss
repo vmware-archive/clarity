@@ -12,9 +12,9 @@
 
       & > *,
       // the ::slotted selectors are removed from the global layout at build time as its not needed and breaks IE
-      &::slotted(*) {
-        margin-top: #{$sizeValue} !important;
-        margin-left: #{$sizeValue} !important;
+      & > ::slotted(*) {
+        margin-top: #{$sizeValue};
+        margin-left: #{$sizeValue};
         top: calc(-1 * #{$sizeValue}) !important;
         left: calc(-1 * #{$sizeValue}) !important;
         position: relative !important;
@@ -27,14 +27,14 @@
   @each $size, $sizeValue in $cds-layout-sizes {
     [#{$layout}~='#{$vertical}'][#{$layout}*='#{$gap}#{$breakpoint}:#{$size}'] {
       & > *,
-      &::slotted(*) {
-        margin-top: $sizeValue !important;
+      & > ::slotted(*) {
+        margin-top: $sizeValue;
       }
 
       & > *:first-child,
-      &::slotted(*:first-child),
-      &::slotted([slot]:first-of-type) {
-        margin-top: 0 !important;
+      & > ::slotted(*:first-child),
+      & > ::slotted([slot]:first-of-type) {
+        margin-top: 0;
       }
     }
   }

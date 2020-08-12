@@ -1,0 +1,46 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// common alignment styles shared between vertical and horizontal layouts
+
+@mixin generateHorizontalVerticalAxisFill($breakpoint: null) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > ::slotted(*) {
+    flex-grow: 1 !important;
+    flex-basis: 0 !important;
+  }
+}
+
+@mixin generateHorizontalVerticalWrap($breakpoint: null) {
+  [#{$layout}~='wrap#{$breakpoint}:none'] {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@mixin generateHorizontalVerticalItemStretchShrink($breakpoint: null) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
+  ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
+    flex-grow: 1 !important;
+  }
+
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
+  ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
+    flex-shrink: 1 !important;
+    flex-grow: 0 !important;
+  }
+}
+
+@mixin generateHorizontalVerticalAlignments($breakpoint: null) {
+  @include generateHorizontalVerticalAxisFill($breakpoint);
+  @include generateHorizontalVerticalWrap($breakpoint);
+  @include generateHorizontalVerticalItemStretchShrink($breakpoint);
+}
+
+@include generateHorizontalVerticalAlignments();
+
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateHorizontalVerticalAlignments($breakpoint);
+  }
+}

@@ -29,7 +29,7 @@
 
 slot {
   font-family: $cds-token-typography-font-family;
-  display: block;
+  display: contents !important;
 }
 
 // normalize focus styles

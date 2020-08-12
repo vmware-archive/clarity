@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Injectable, TrackByFunction } from '@angular/core';
+import { Injectable, TrackByFunction, NgZone } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { FiltersProvider } from './filters';
@@ -21,7 +21,7 @@ export class Selection<T = any> {
   private lockedRefs: T[] = []; // Ref of locked items
   private debounce = false;
 
-  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
+  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>, private _zone: NgZone) {
     this.id = 'clr-dg-selection' + nbSelection++;
 
     this.subscriptions.push(
@@ -238,11 +238,16 @@ export class Selection<T = any> {
 
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    if (emit && !this.debounce) {
-      this.emitChange();
-      this.debounce = true;
-      setTimeout(() => (this.debounce = false));
-    }
+    // This setTimeout makes sure that the change is
+    // not emitted multiple times in the same change
+    // detection cycle.
+    this._zone.runOutsideAngular(() => {
+      if (emit && !this.debounce) {
+        this.emitChange();
+        this.debounce = true;
+        setTimeout(() => (this.debounce = false));
+      }
+    });
   }
 
   /**

@@ -11,10 +11,6 @@
   --fill-box-shadow: none;
 }
 
-slot[name='input'] {
-  padding-left: $cds-token-space-size-2;
-}
-
 .input {
   width: var(--width);
   height: var(--height);

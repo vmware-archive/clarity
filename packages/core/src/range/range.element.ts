@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-element';
 import { globalStyle } from '@clr/core/internal';
 import { CdsControl } from '@clr/core/forms';
 import { styles as globalStyles } from './range.global.css.js';
@@ -40,6 +41,10 @@ export class CdsRange extends CdsControl {
   }
 
   @globalStyle() protected globalStyles = globalStyles;
+
+  protected get inputTemplate() {
+    return html`<div class="input-track"></div>`;
+  }
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);

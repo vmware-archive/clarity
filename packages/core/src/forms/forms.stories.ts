@@ -1851,7 +1851,7 @@ export const responsiveCheckoutForm = () => {
     const iframe = document.querySelector<HTMLIFrameElement>('#complex-form-demo');
     iframe.onload = () => {
       const resizeObserver = new ResizeObserver(
-        () => (iframe.style.height = `${iframe.contentWindow.document.body.scrollHeight}px`)
+        () => (iframe.style.height = `${iframe.contentWindow?.document.body.scrollHeight}px`)
       );
       resizeObserver.observe(iframe);
     };

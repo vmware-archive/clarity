@@ -91,8 +91,8 @@ export class CdsModal extends LitElement {
             <div class="modal-body">
               <slot></slot>
             </div>
-            <div cds-layout="p-t:md p-t@md:lg">
-              <slot name="modal-actions" cds-layout="align-stretch"></slot>
+            <div cds-layout="p-t:md p-t@md:lg align-stretch">
+              <slot name="modal-actions"></slot>
             </div>
           </div>
           <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentEnd}</div>

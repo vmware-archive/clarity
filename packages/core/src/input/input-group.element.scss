@@ -8,11 +8,6 @@
   width: 100%;
 }
 
-slot[name='input'],
-slot[name='message'] {
-  line-height: 0;
-}
-
 :host([control-width='shrink']) {
   width: auto;
 }
@@ -37,7 +32,7 @@ cds-control-action.status {
 :host([layout='compact']),
 :host([layout='compact'][status='success']),
 :host([layout='compact'][status='error']) {
-  slot[name='message'] {
+  .messages {
     padding-top: $cds-token-space-size-5;
   }
 }

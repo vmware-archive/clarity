@@ -3,8 +3,8 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TrackByFunction } from '@angular/core';
-import { fakeAsync, tick } from '@angular/core/testing';
+import { TrackByFunction, NgZone } from '@angular/core';
+import { fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 
 import { ClrDatagridFilterInterface } from '../interfaces/filter.interface';
@@ -38,8 +38,8 @@ export default function (): void {
         itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
         itemsInstance.smartenUp();
         itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        const ngZone = TestBed.get(NgZone);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
       });
 
       afterEach(function () {
@@ -193,7 +193,7 @@ export default function (): void {
         expect(currentSelection.sort(numberSort)).toEqual(itemsInstance.displayed);
         selectionInstance.toggleAll();
         expect(currentSelection).toEqual([]);
-        expect(nbChanges).toBe(3);
+        expect(nbChanges).toBe(4);
       });
 
       it('exposes an Observable to follow selection changes in single selection type', function () {
@@ -347,6 +347,27 @@ export default function (): void {
 
         expect(selectionInstance.current).toEqual([4, 2]);
       });
+
+      it('does not mutate the selection array when selecting or deselecting', function () {
+        selectionInstance.selectionType = SelectionType.Multi;
+        const selection = [4, 2];
+        selectionInstance.current = selection;
+
+        selectionInstance.setSelected(1, true);
+        expect(selectionInstance.current === selection).toBe(false);
+
+        selectionInstance.setSelected(1, false);
+        expect(selectionInstance.current === selection).toBe(false);
+      });
+
+      it('does not mutate the selection array when clearing the selection', function () {
+        selectionInstance.selectionType = SelectionType.Multi;
+        const selection = [4, 2];
+        selectionInstance.current = selection;
+
+        selectionInstance.clearSelection();
+        expect(selectionInstance.current === selection).toBe(false);
+      });
     });
 
     describe('clrDgPreserveSelection', () => {
@@ -364,8 +385,8 @@ export default function (): void {
         itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
         itemsInstance.smartenUp();
         itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        const ngZone = TestBed.get(NgZone);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
         selectionInstance.preserveSelection = true;
       });
 
@@ -459,8 +480,8 @@ export default function (): void {
         itemsInstance.smartenUp();
         itemsInstance.all = items;
         pageInstance.size = 3;
-
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        const ngZone = TestBed.get(NgZone);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
       });
 
       afterEach(function () {
@@ -503,8 +524,10 @@ export default function (): void {
       });
 
       describe('single selection', function () {
+        let ngZone: NgZone;
         beforeEach(function () {
           selectionInstance.selectionType = SelectionType.Single;
+          ngZone = TestBed.get(NgZone);
         });
 
         it('should preserve selection on page change', function () {
@@ -528,7 +551,7 @@ export default function (): void {
 
         it('does not apply trackBy to single selection with no items', () => {
           const emptyItems = new Items(filtersInstance, sortInstance, pageInstance);
-          const selection = new Selection(emptyItems, filtersInstance);
+          const selection = new Selection(emptyItems, filtersInstance, ngZone);
 
           spyOn(emptyItems, 'trackBy');
 
@@ -595,8 +618,9 @@ export default function (): void {
         filtersInstance = new FiltersProvider(pageInstance, stateDebouncer);
         sortInstance = new Sort(stateDebouncer);
         itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
+        const ngZone = TestBed.get(NgZone);
 
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
       });
 
       afterEach(function () {
@@ -721,8 +745,8 @@ export default function (): void {
         itemsInstance = new Items(filtersInstance, sortInstance, pageInstance);
         itemsInstance.smartenUp();
         itemsInstance.all = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        const ngZone = TestBed.get(NgZone);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
       });
 
       afterEach(function () {
@@ -750,7 +774,8 @@ export default function (): void {
 
       it('should not execute canItBeLocked block when there are no items to scan inside lockItem and isLocked method', function () {
         itemsInstance.all = undefined;
-        selectionInstance = new Selection(itemsInstance, filtersInstance);
+        const ngZone = TestBed.get(NgZone);
+        selectionInstance = new Selection(itemsInstance, filtersInstance, ngZone);
         selectionInstance.selectionType = SelectionType.Multi;
 
         // lock a row

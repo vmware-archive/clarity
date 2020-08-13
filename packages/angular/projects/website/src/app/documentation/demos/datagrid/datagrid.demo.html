@@ -1,0 +1,40 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <h5
+      class="component-summary"
+      id="datagrids-are-for-organizing-large-volumes-of-data-that-users-can-scan-compare-and-perform-actions-on"
+    >
+      Datagrids are for organizing large volumes of data that users can scan, compare, and perform actions on.
+    </h5>
+
+    <div id="code-examples">
+      <p>
+        We have {{childRoutes.length}} datagrid demos. Starting with the basics, each demo shows you one or more of the
+        advanced Datagrid features.
+      </p>
+
+      <div class="clr-row" style="margin-top: 24px;">
+        <div class="clr-col-12">
+          <ul class="list demo-list">
+            <li *ngFor="let route of childRoutes"><a [routerLink]="[route?.path]">{{route?.data?.demoName}}</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div #demoView></div>
+
+      <router-outlet></router-outlet>
+
+      <div class="datagrid-demo-pagination">
+        <button class="btn btn-primary demo-pagination-prev" *ngIf="previous" (click)="movePrevious()">
+          <clr-icon shape="angle left"></clr-icon>
+          {{previousRoute.data.demoName}}
+        </button>
+        <button class="btn btn-primary demo-pagination-next" *ngIf="next" (click)="moveNext()">
+          {{nextRoute.data.demoName}}
+          <clr-icon shape="angle right"></clr-icon>
+        </button>
+      </div>
+    </div>
+  </article>
+</clr-doc-wrapper>

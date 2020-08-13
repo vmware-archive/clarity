@@ -1,0 +1,221 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../styles/clarity-imports';
+
+$clr-icons-hero-height: $clr_baselineRem_10;
+$clr-icons-content-top: calc(#{$clr-icons-hero-height} + #{$clr-header-height});
+$clr-icons-content-width: $clr_baselineRem_1080px;
+$clr-sidenav-width: $clr_baselineRem_9;
+$clr-searchbar-nonsticky-margintop: 0;
+$clr-searchbar-container-height: $clr_baselineRem_5 + $clr-searchbar-nonsticky-margintop;
+$clr-searchbar-container-height-sm: $clr_baselineRem_4_5;
+
+.icons-header {
+  position: fixed;
+  top: $clr-header-height;
+  left: 0;
+  width: 100%;
+  height: $clr-icons-hero-height;
+  background: $clr-color-secondary-action-800;
+
+  .icons-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    .icon-bg-wrapper {
+      width: $clr_baselineRem_3_33;
+      height: $clr_baselineRem_3_33;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba($clr-color-neutral-0, 0.2);
+      transition: all 0.3s ease-out;
+
+      clr-icon {
+        transform: translate3d(0, 0, 0) rotate(-30deg);
+      }
+
+      &.glow {
+        color: rgba($clr-color-neutral-0, 0.6);
+      }
+    }
+  }
+
+  .icons-header-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $clr_baselineRem_1_5;
+
+    h1 {
+      color: $clr-color-neutral-0;
+      text-align: center;
+      margin: 0 0 $clr_baselineRem_0_5 0;
+      font-weight: 400;
+    }
+
+    .icons-header-message {
+      font-size: $clr_baselineRem_0_667;
+      color: $clr-color-neutral-0;
+      text-align: center;
+      font-weight: 100;
+      margin: $clr_baselineRem_0_5 0 $clr_baselineRem_1 0;
+    }
+  }
+}
+
+.icons-content {
+  position: absolute;
+  top: $clr-icons-content-top;
+  left: 0;
+  background-color: $clr-color-neutral-50;
+  min-height: calc(100vh - #{$clr-icons-content-top});
+  width: 100%;
+  text-align: center;
+
+  .content-container {
+    max-width: $clr-icons-content-width;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
+.searchbar-container {
+  width: 100%;
+  height: $clr-searchbar-container-height;
+  margin: $clr-searchbar-nonsticky-margintop auto 0;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 $clr_baselineRem_5px 0 rgba($clr-color-neutral-1000, 0);
+  display: flex;
+  transform: translate3d(0, 0, 0);
+
+  &.sticky {
+    position: fixed;
+    top: $clr-header-height;
+    margin: 0 auto;
+    z-index: map-get($clr-layers, sidepanel) - 1;
+  }
+
+  .icons-search-wrapper {
+    width: calc(100% - #{$clr-sidenav-width});
+    max-width: calc(#{$clr-icons-content-width} - #{$clr-sidenav-width});
+    position: relative;
+    flex: 0 0 auto;
+    padding: $clr_baselineRem_1 $clr_baselineRem_1_5;
+    margin-left: $clr-sidenav-width;
+    text-align: left;
+  }
+
+  .searchbar-label {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    clr-icon[shape='search'] {
+      position: absolute;
+      left: $clr_baselineRem_0_5;
+      top: $clr_baselineRem_0_5;
+      color: $clr-color-action-600;
+    }
+
+    button.close {
+      position: absolute;
+      right: $clr_baselineRem_0_5;
+      top: $clr_baselineRem_0_5;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+
+    input.searchbar-input {
+      width: 100%;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2;
+      height: $clr_baselineRem_2;
+      margin-bottom: $clr_baselineRem_0_75;
+    }
+  }
+
+  .icon-preview-settings {
+    clr-toggle-wrapper,
+    clr-radio-container {
+      display: inline-block;
+      margin-top: 0;
+    }
+  }
+}
+
+.icons-sidenav {
+  border: none;
+  padding: 0;
+  text-align: left;
+  width: $clr-sidenav-width;
+
+  .nav-group {
+    label {
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: $clr_baselineRem_0_5;
+      padding: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_25;
+    }
+
+    .nav-list {
+      padding: 0;
+
+      .nav-link {
+        padding: $clr_baselineRem_0_125 $clr_baselineRem_0_25;
+        border-radius: $clr-global-borderradius;
+      }
+    }
+  }
+
+  .sidenav-content {
+    padding: $clr_baselineRem_1_5 0 0 $clr_baselineRem_1;
+
+    &.sticky {
+      position: fixed;
+      top: $clr-header-height + $clr-searchbar-container-height;
+      max-height: calc(100vh - #{$clr_baselineRem_2_5});
+      width: inherit;
+    }
+
+    &.on-icon-sets {
+      padding: $clr_baselineRem_0_5 0 0 $clr_baselineRem_1;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar-container {
+    height: $clr-searchbar-container-height-sm;
+
+    .icons-search-wrapper {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .icon-preview-settings {
+      display: none;
+    }
+  }
+  .icons-header {
+    .icons-header-wrapper {
+      padding: 0 $clr_baselineRem_0_5;
+    }
+  }
+}

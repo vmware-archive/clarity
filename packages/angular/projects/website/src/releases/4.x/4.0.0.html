@@ -1,0 +1,72 @@
+<p>
+  This is the official 4.0.0 release, which is fully compatible with Angular 10.
+</p>
+
+<p>
+  To update to Clarity v4, first update to Angular 10 following their
+  <a href="https://update.angular.io/">update guide</a>. Then to update Clarity, run the update command below to have it
+  update necessary dependencies. Finally, review any breaking changes that might impact you and update as necessary.
+</p>
+
+<pre><code class="clr-code">
+ng update @clr/angular@latest
+</code></pre>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Hide vertical nav helper button from screen readers (<a
+      href="https://github.com/vmware/clarity/issues/4799"
+      target="_blank"
+      >#4799</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix tab content width in IE11 (<a href="https://github.com/vmware/clarity/issues/4804" target="_blank">#4804</a>)
+  </li>
+  <li bug-fix>
+    Fix potential undefined error in form control error message (<a
+      href="https://github.com/vmware/clarity/issues/4817"
+      target="_blank"
+      >#4817</a
+    >)
+  </li>
+  <li bug-fix>
+    Set aria-current in wizard steps (<a href="https://github.com/vmware/clarity/issues/4905" target="_blank">#4905</a>)
+  </li>
+  <li bug-fix>
+    Handle possible exception in stepper with unknown first panel (<a
+      href="https://github.com/vmware/clarity/issues/4904"
+      target="_blank"
+      >#4904</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix border on last accordion panel when opened (<a
+      href="https://github.com/vmware/clarity/issues/4873"
+      target="_blank"
+      >#4873</a
+    >)
+  </li>
+  <li bug-fix>
+    Handle Stepper bug where in some cases it threw an error when opening with conditional first panels
+    <a href="https://github.com/vmware/clarity/pull/4904" target="_blank"> (#4904) </a>
+  </li>
+  <li bug-fix>
+    Reverted a change in 3.1.5 that tried to fix Ivy compatability but cause potential memory leak in some uses of
+    Datagrid
+    <a href="https://github.com/vmware/clarity/pull/4888" target="_blank"> (#4888) </a>
+  </li>
+  <li bug-fix>
+    Removed unnecessary inline style on wizard button
+    <a href="https://github.com/vmware/clarity/pull/4851" target="_blank"> (#4851) </a>
+  </li>
+  <li bug-fix>
+    Fix Combobox focus indicator animations
+    <a href="https://github.com/vmware/clarity/pull/4918" target="_blank"> (#4918) </a>
+  </li>
+  <li bug-fix>
+    Fix form success and helper messages hiding when they should be visible
+    <a href="https://github.com/vmware/clarity/pull/4917" target="_blank"> (#4917) </a>
+  </li>
+</ul>

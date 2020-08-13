@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-row">
+  <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of clarityPalettes">
+    <h4>{{palette.name}}</h4>
+    <ul class="card card-block card-swatch-block">
+      <li
+        class="card-swatch"
+        *ngFor="let color of palette.weights"
+        [style.background-color]="color.hsl"
+        [class.copied]="color.copied"
+        (click)="copyToClipboard(color.hsl); color.copied = true"
+        (mouseleave)="color.copied = false"
+        [style.color]="color.on"
+      >
+        <div class="card-swatch-content">
+          <div class="weight">
+            <div *ngIf="color.baseColor" class="bullet">&#8226;</div>
+            <div *ngIf="!color.baseColor" class="bullet">&nbsp;</div>
+            <span>{{color.weight}}</span>
+          </div>
+          <div class="copied">
+            <span aria-hidden="true" class="copied-indication">Copied!</span>
+            <clr-icon shape="copy"></clr-icon>
+          </div>
+          <div class="rgb-value">
+            {{color.hsl}}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

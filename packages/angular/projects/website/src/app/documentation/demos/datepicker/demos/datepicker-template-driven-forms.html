@@ -1,0 +1,12 @@
+<form clrForm #simpleForm="ngForm">
+  <h4>Template Driven Form Demo</h4>
+  <clr-date-container>
+    <label>Enter Date</label>
+    <input type="date" name="date" [(ngModel)]="date" clrDate />
+  </clr-date-container>
+</form>
+<pre class="datepicker-output">
+{{simpleForm.value | json}}
+</pre>
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+<clr-code-snippet [clrCode]="tsExample" [clrLanguage]="'typescript'"></clr-code-snippet>

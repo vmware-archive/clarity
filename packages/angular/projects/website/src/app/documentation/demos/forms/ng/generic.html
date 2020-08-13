@@ -1,0 +1,71 @@
+<!-- Template Driven Example -->
+<form clrForm>
+  <clr-control-container>
+    <input clrControl placeholder="Basic text" name="basic" [(ngModel)]="model.container" />
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Required</label>
+    <input
+      clrControl
+      placeholder="Input control"
+      name="required"
+      [(ngModel)]="model.required"
+      pattern="asdfasdf"
+      required
+      minlength="5"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'; error as err"
+      >Must be at least {{ err.requiredLength }} characters</clr-control-error
+    >
+    <clr-control-error *clrIfError="'pattern'; error as err"
+      >It must match '{{ err.requiredPattern }}'</clr-control-error
+    >
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Ng Select 2</label>
+    <ng-select clrControl [multiple]="true" name="cars" [(ngModel)]="model.cars" required>
+      <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+      <ng-option [value]="'custom'">Custom</ng-option>
+    </ng-select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+  </clr-control-container>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<!-- Reactive Example -->
+<form clrForm [formGroup]="reactiveModel">
+  <clr-control-container>
+    <input clrControl placeholder="Basic text" formControlName="container" />
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Required</label>
+    <input clrControl placeholder="Input control" formControlName="required" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'; error as err"
+      >Must be at least {{ err.requiredLength }} characters</clr-control-error
+    >
+    <clr-control-error *clrIfError="'pattern'; error as err"
+      >It must match '{{ err.requiredPattern }}'</clr-control-error
+    >
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Ng Select 2</label>
+    <ng-select clrControl [multiple]="true" formControlName="cars">
+      <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+      <ng-option [value]="'custom'">Custom</ng-option>
+    </ng-select>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+  </clr-control-container>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

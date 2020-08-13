@@ -1,0 +1,389 @@
+<p>
+  This is the official 3.0.0 release, which is fully compatible with Angular 9. The release notes below include all of
+  the changes so far in v3, so you can see the whole summary in one place.
+</p>
+
+<p>
+  To update to Clarity v3, first update to Angular 9 following their
+  <a href="https://update.angular.io/">update guide</a>. Then to update Clarity, run the update command to have it
+  update necessary dependencies. Finally, review any breaking changes that might impact you and update as necessary.
+</p>
+
+<pre><code class="clr-code">
+ng update @clr/angular@latest
+</code></pre>
+
+<h2>New Components and Enhancements</h2>
+<ul class="list">
+  <li new-component>
+    <strong
+      >Datagrid Detail Pane (<a href="https://github.com/vmware/clarity/pull/3797" target="_blank">#3797</a>)</strong
+    >
+    We've introduced a new pattern for drilling down into a Datagrid row details called Detail Pane. This will open a
+    panel where applications can place any content they wish inside.
+  </li>
+  <li new-component>
+    <strong
+      >Range (Slider) form input (<a href="https://github.com/vmware/clarity/issues/112" target="_blank">#112</a
+      >)</strong
+    >
+    We've introduced the range slider form input to Clarity in 3.0. The range input works alongside the rest of our
+    Clarity form components and offers a number of customization options!
+  </li>
+  <li new-component>
+    <strong
+      >Datalist form input (<a href="https://github.com/vmware/clarity/issues/3813" target="_blank">#3813</a>)</strong
+    >
+    Say hello to the datalist input. The datalist works similarly to a select-box but adds autocomplete functionality.
+    For those interested in a "combo-box" or autocomplete field in your forms, you should take a look at the datalist!
+  </li>
+  <li new-component>
+    <strong
+      >Generic Form Control Container (<a href="https://github.com/vmware/clarity/issues/4280" target="_blank">#4280</a
+      >)</strong
+    >
+    Added a new generic form control container to allow you to more easily integrate custom or third party form controls
+    into Clarity's form layout and validation.
+  </li>
+  <li new-component>
+    <strong
+      >Aria Live Service (<a href="https://github.com/vmware/clarity/issues/4310" target="_blank">#4310</a>)</strong
+    >
+    Made our internal Aria Live service public so applications can more easily make announcements for screeen readers
+    and accessibility.
+  </li>
+  <li>
+    <strong>Volume 17 icons</strong> include: more essential, commerce, and technology icons. (<a
+      href="https://github.com/vmware/clarity/pull/4218"
+      target="_blank"
+      >#4218</a
+    >)
+  </li>
+  <li>
+    <strong
+      >Datagrid: Add API for disabling direct page access in pagination component (<a
+        href="https://github.com/vmware/clarity/pull/4253"
+        target="_blank"
+        >#4253</a
+      >)</strong
+    >
+    Declaring the <code class="clr-code">[clrDgPageInputDisabled]="'true'"</code> input onto the
+    <code class="clr-code">clr-dg-pagination</code> component allows an application to disable user access to the
+    pagination controls.
+  </li>
+</ul>
+
+<h2>Breaking Changes</h2>
+<ul class="list">
+  <li breaking-change>
+    Update to Angular 9 (<a href="https://github.com/vmware/clarity/pull/4232" target="_blank">#4232</a>) This release
+    updates to the Angular v9.0.0. Note: The TypeScript version changed between Angular 8 and Angular 9 in a way that
+    made Clarity unable to support both for Clarity 3. The TypeScript version to use with Clarity 3 is: v3.7.5
+  </li>
+  <li breaking-change>
+    Removed the max-height from <code class="clr-code">pre</code> element (<a
+      href="https://github.com/vmware/clarity/pull/3875"
+      target="_blank"
+      >#3875</a
+    >)
+  </li>
+  <li breaking-change>
+    SCSS deprecations and base20 rem refactor(<a href="https://github.com/vmware/clarity/pull/3814" target="_blank"
+      >#3814</a
+    >) Previously we were using base 24px and rem with browser rounding to render font-sizes this led to sizes like
+    0.5833333rem which became 13.999992px in browsers setting the base font size to a hard px value broke browser
+    settings that scaled the font.
+  </li>
+  <li breaking-change>
+    SCSS deprecations and CSS custom properties for v3.0(<a
+      href="https://github.com/vmware/clarity/pull/3892"
+      target="_blank"
+      >#3892</a
+    >)
+  </li>
+  <li breaking-change>
+    Sticky row actions in Datagrid (<a href="https://github.com/vmware/clarity/pull/3926" target="_blank">#3926</a>)
+    This is a visually breaking change. Row controls for actions like master/detail or select row have been moved into a
+    sticky column and will remain visible when columns scroll horizontally.
+  </li>
+  <li breaking-change>
+    Updated Color Palette (<a href="https://github.com/vmware/clarity/pull/3995" target="_blank">#3995</a>) The Clarity
+    color palette has been updated to use adjusted hsl values. This is a visually breaking change that will affect hues
+    in the palette that are used in Clarity components. You can view the new color palettes
+    <a routerLink="/documentation/color">here.</a>
+  </li>
+  <li breaking-change>
+    Change Wizard use of h1, h2 and h3 tags for accessibility (<a
+      href="https://github.com/vmware/clarity/issues/4283"
+      target="_blank"
+      >#4283</a
+    >)
+  </li>
+  <li breaking-change>
+    <code class="clr-code">clr-tree</code> as a root wrapper is no longer optional but mandatory now. (<a
+      href="https://github.com/vmware/clarity/pull/3851"
+      target="_blank"
+      >#3851</a
+    >)
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Limit title width to stepper only and not accordion title (<a
+      href="https://github.com/vmware/clarity/issues/4315"
+      target="_blank"
+      >#4315</a
+    >)
+  </li>
+  <li bug-fix>
+    Improved accessibility of vertical nav (<a href="https://github.com/vmware/clarity/pull/3860" target="_blank"
+      >#3860</a
+    >)
+  </li>
+  <li bug-fix>
+    Improved accessibility of forms (<a href="https://github.com/vmware/clarity/pull/3830" target="_blank">#3830</a>)
+  </li>
+  <li bug-fix>
+    Fix extra spacing between tab and tab content in ie 11 (<a
+      href="https://github.com/vmware/clarity/pull/3750"
+      target="_blank"
+      >#3750</a
+    >)
+  </li>
+  <li bug-fix>
+    Don't emit page changes on destroy (<a href="https://github.com/vmware/clarity/pull/3872" target="_blank">#3872</a>)
+  </li>
+  <li bug-fix>
+    Align column header vertically (<a href="https://github.com/vmware/clarity/pull/3866" target="_blank">#3866</a>)
+  </li>
+  <li bug-fix>
+    Fixed Datagrid clrDgFilterOpenChange not firing when open is toggled between true / false (<a
+      href="https://github.com/vmware/clarity/pull/4000"
+      target="_blank"
+      >#4000</a
+    >)
+  </li>
+  <li bug-fix>
+    Prevent date input from displaying -1 day for specific timezones on mobile devices (<a
+      href="https://github.com/vmware/clarity/pull/3993"
+      target="_blank"
+      >#3993</a
+    >)
+  </li>
+  <li bug-fix>
+    Prevent date from being deleted when selected on mobile (<a
+      href="https://github.com/vmware/clarity/pull/3992"
+      target="_blank"
+      >#3992</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed misspelling of opacity (<a href="https://github.com/vmware/clarity/pull/4076" target="_blank">#4076</a>)
+  </li>
+  <li bug-fix>
+    Adds min/max date boundries for datepicker (<a href="https://github.com/vmware/clarity/issues/1984" target="_blank"
+      >#1984</a
+    >)
+  </li>
+  <li bug-fix>
+    Adds correct invalid/error style for select input element (<a
+      href="https://github.com/vmware/clarity/pull/4036"
+      target="_blank"
+      >#4036</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix type for clrInitialStep Input (<a href="https://github.com/vmware/clarity/pull/4052" target="_blank">#4052</a>)
+  </li>
+  <li bug-fix>
+    Prevent date from being deleted when selected on mobile (<a
+      href="https://github.com/vmware/clarity/pull/3992"
+      target="_blank"
+      >#3992</a
+    >)
+  </li>
+  <li bug-fix>
+    Select-all checkmark position (<a href="https://github.com/vmware/clarity/pull/4028" target="_blank">#4028</a>)
+  </li>
+  <li bug-fix>
+    Datagrid clrDgFilterOpenChange was not fired (<a href="https://github.com/vmware/clarity/pull/4000" target="_blank"
+      >#4000</a
+    >)
+  </li>
+  <li bug-fix>
+    Aria Live service to handle SR for all browsers and OS (<a
+      href="https://github.com/vmware/clarity/pull/3934"
+      target="_blank"
+      >#3934</a
+    >)
+  </li>
+  <li bug-fix>
+    Datagrid animation performance issues (<a href="https://github.com/vmware/clarity/pull/4050" target="_blank"
+      >#4050</a
+    >)
+  </li>
+  <li bug-fix>
+    Prevent focus steal, when date-picker is closed (<a
+      href="https://github.com/vmware/clarity/issues/4069"
+      target="_blank"
+      >#4069</a
+    >)
+  </li>
+  <li bug-fix>
+    clrDgActionOverflowOpenChange is not fired (<a href="https://github.com/vmware/clarity/issues/4063" target="_blank"
+      >#4063</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix datagrid focus trap focus stealing issue (<a
+      href="https://github.com/vmware/clarity/issues/4027"
+      target="_blank"
+      >#4027</a
+    >)
+  </li>
+  <li bug-fix>
+    Update smart popover for dynamic content (<a href="https://github.com/vmware/clarity/issues/4068" target="_blank"
+      >#4068</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix datagrid-row add aria-expanded & aria-label on open/close (<a
+      href="https://github.com/vmware/clarity/issues/4089"
+      target="_blank"
+      >#4089</a
+    >)
+  </li>
+  <li bug-fix>
+    Stop ClrCommonStringsService initializing twice at run-time (<a
+      href="https://github.com/vmware/clarity/issues/4018"
+      target="_blank"
+      >#4018</a
+    >)
+  </li>
+  <li bug-fix>
+    Stack-view and stack-block component templates now allow screenreaders to access the projected content and label in
+    the stack-view (<a href="https://github.com/vmware/clarity/issues/3567" target="_blank">#3567</a>)
+  </li>
+  <li bug-fix>
+    Improve comparison of min/max date limits (<a href="https://github.com/vmware/clarity/issues/4144" target="_blank"
+      >#4144</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix date picker to set disabled state without needing clrForm container (<a
+      href="https://github.com/vmware/clarity/issues/4016"
+      target="_blank"
+      >#4016</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix css class collisions in icon error/danger classes (<a
+      href="https://github.com/vmware/clarity/pull/4132"
+      target="_blank"
+      >#4132</a
+    >)
+  </li>
+  <li bug-fix>
+    Make sidenav collapsible group trigger focusable again (<a
+      href="https://github.com/vmware/clarity/pull/4138"
+      target="_blank"
+      >#4138</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix style issues in vertical nav (<a href="https://github.com/vmware/clarity/pull/4139" target="_blank">#4139</a>)
+  </li>
+  <li bug-fix>
+    Fixed single action overflow close behavior in Datagrid (<a
+      href="https://github.com/vmware/clarity/pull/4180"
+      target="_blank"
+      >#4180</a
+    >)
+  </li>
+  <li bug-fix>
+    Added guards calling an optional date picker service in Datepicker (<a
+      href="https://github.com/vmware/clarity/pull/4224"
+      target="_blank"
+      >#4224</a
+    >)
+  </li>
+  <li bug-fix>
+    Added a11y attributes to Datagrid filter button (<a
+      href="https://github.com/vmware/clarity/pull/4197"
+      target="_blank"
+      >#4197</a
+    >)
+  </li>
+  <li bug-fix>
+    Added a11y attributes to StackView (<a href="https://github.com/vmware/clarity/pull/4142" target="_blank">#4142</a>)
+  </li>
+  <li bug-fix>
+    Added optional service in Datalist (<a href="https://github.com/vmware/clarity/pull/4198" target="_blank">#4198</a>)
+  </li>
+  <li bug-fix>
+    Fixed core support typed events with @event (<a href="https://github.com/vmware/clarity/pull/4195" target="_blank"
+      >#4195</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed auto update attr for prop decorator (<a href="https://github.com/vmware/clarity/pull/4195" target="_blank"
+      >#4195</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed wrong import path for DynamicWrapper in Datalist (<a
+      href="https://github.com/vmware/clarity/pull/4186"
+      target="_blank"
+      >#4186</a
+    >)
+  </li>
+  <li bug-fix>
+    Adjustment to Clarity action blue color for a11y(<a
+      href="https://github.com/vmware/clarity/pull/4248"
+      target="_blank"
+      >#4248</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix Datepicker input disabled state (<a href="https://github.com/vmware/clarity/issues/4252" target="_blank"
+      >#4252</a
+    >)
+  </li>
+  <li bug-fix>
+    Only toggle overflow when button is in overflow menu (<a
+      href="https://github.com/vmware/clarity/issues/4281"
+      target="_blank"
+      >#4281</a
+    >)
+  </li>
+  <li bug-fix>
+    Fix order of datagrid filters, sorting buttons (<a
+      href="https://github.com/vmware/clarity/issues/4296"
+      target="_blank"
+      >#4296</a
+    >)
+  </li>
+</ul>
+
+<h2>Deprecations</h2>
+<ul class="list">
+  <li>
+    Deprecating the @clr/icons package as a standalone package. A migration path will be available to get improvements
+    made in Clarity Core initative to optimize build sizes.
+  </li>
+  <li>
+    Deprecating dir attr in core icons (<a href="https://github.com/vmware/clarity/pull/4194" target="_blank">#4194</a>)
+    We are replacing <code class="clr-code">dir</code> attribute with <code class="clr-code">direction</code> as we have
+    found that using <code class="clr-code">dir</code> as an attribute confuses ltr localization.
+  </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+  <li>
+    Added 3.0 SASS rem-sizing variables (<a href="https://github.com/vmware/clarity/pull/3966" target="_blank">#3966</a
+    >)
+  </li>
+</ul>

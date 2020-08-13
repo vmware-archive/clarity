@@ -1,0 +1,73 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './clarity-imports';
+
+//Styles for Clarity Demos
+.clr-example {
+  margin-top: $clr_baselineRem_1;
+  .main-container {
+    height: auto;
+    padding-top: 0;
+    background: $clr-color-neutral-50;
+    .content-area {
+      overflow-y: hidden;
+    }
+    header.header {
+      .branding {
+        position: static;
+        z-index: 1;
+      }
+    }
+  }
+  &.squeeze {
+    padding: $clr_baselineRem_2;
+  }
+}
+
+.modal.static {
+  position: relative;
+  padding: $clr_baselineRem_3;
+}
+
+.modal-backdrop.static {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.modal-icon {
+  float: left;
+  color: $clr-color-success-400;
+  font-size: $clr_baselineRem_3;
+  margin-right: $clr_baselineRem_0_5;
+}
+
+.backdrop-example-container {
+  position: relative;
+  padding: $clr_baselineRem_1;
+}
+
+.bump-down {
+  margin-top: $clr_baselineRem_1 !important;
+}
+
+//Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
+//we don't want to override the background in case someone chooses to use
+//another PrismJS theme.
+:not(pre) > code[class*='language-'],
+pre[class*='language-'],
+pre {
+  background: transparent;
+  padding: 0 0 $clr_baselineRem_1 $clr_baselineRem_1;
+}
+
+// Fixes specific prism issue only for labels with badges (#1700: https://github.com/vmware/clarity/issues/1700)
+.prism-fix {
+  pre {
+    margin-top: $clr_baselineRem_7px;
+  }
+}

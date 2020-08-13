@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<h3>Angular 8.0.0-rc.1</h3>
+
+<p breaking-change>
+  Support for Angular 8.0.0-rc.1 (<a href="https://github.com/vmware/clarity/pull/3310" target="_blank">#3310</a>). This
+  release brings Angular minimum 8.0.0-rc.1 support for Clarity, and this Clarity major version will be supported for
+  Angular 8 while Angular is supported.
+</p>
+<p></p>
+<h3>Deprecations</h3>
+<ul class="list">
+  <li>
+    Deprecated the <code class="clr-code">ClrDgColumnToggle</code> component (<a
+      href="https://github.com/vmware/clarity/pull/3312"
+      target="_blank"
+      >#3312</a
+    >) in favor of using the <code class="clr-code">ClrCommonStrings</code> for internationalization.
+  </li>
+  <li>
+    Deprecated the row selection option for the Datagrid, as it is not accessible (<a
+      href="https://github.com/vmware/clarity/pull/3312"
+      target="_blank"
+      >#3312</a
+    >), should just use regular selection options.
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Fixed some styles so they compile with the latest Angular CLI which now uses dart-sass. (<a
+      href="https://github.com/vmware/clarity/pull/3323"
+      target="_blank"
+    >
+      #3323</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed styling issues with the Datagrid in last beta release (<a
+      href="https://github.com/vmware/clarity/issues/3311"
+      target="_blank"
+      >#3311</a
+    >)
+  </li>
+  <li bug-fix>
+    Support better pagination template for datagrid to not say 0 of 1 page (<a
+      href="https://github.com/vmware/clarity/pull/2947"
+      target="_blank"
+      >#2947</a
+    >)
+  </li>
+</ul>

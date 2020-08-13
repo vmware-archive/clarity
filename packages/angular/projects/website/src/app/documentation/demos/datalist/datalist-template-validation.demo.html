@@ -1,0 +1,33 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button>
+<form clrForm>
+  <clr-datalist-container>
+    <label>{{ disabled ? 'Disabled':'Enabled' }}</label>
+    <input minlength="4" name="Option" required clrDatalistInput [disabled]="disabled" [(ngModel)]="vertical" />
+    <datalist>
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-datalist-container>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>template.html</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="templateHTML" clrLanguage="html"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>template.ts</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="templateTS" clrLanguage="typescript"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

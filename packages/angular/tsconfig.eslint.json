@@ -1,5 +1,5 @@
 {
   "compilerOptions": { "strict": true },
   "include": ["**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", "projects/website"]
 }

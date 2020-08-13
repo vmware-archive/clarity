@@ -1,0 +1,87 @@
+<h2>Getting started with Clarity Icons</h2>
+
+<p class="lead-header">
+  The Clarity Icons library presents pixel-perfect, scalable SVG-based icons. This new icon system gives you complete
+  control over icon color, orientation, and size. Additionally, you can access and customize any SVG graphic elements
+  inside the icon through standard CSS.
+</p>
+
+<h3 class="paragraph-header">Install and load Clarity Icons:</h3>
+
+<p>
+  Install the Clarity Icons package through npm:
+  <clr-code-snippet [clrCode]="'npm install @clr/icons --save'" [clrDisablePrism]="true"></clr-code-snippet>
+</p>
+
+<p>
+  Install the polyfill for Custom Elements, on which Clarity Icons is dependent:
+  <clr-code-snippet
+    [clrCode]="'npm install @webcomponents/custom-elements@1.0.0 --save'"
+    [clrDisablePrism]="true"
+  ></clr-code-snippet>
+</p>
+
+<p>
+  Load the library in your app by including
+  <code class="clr-code">clr-icons.min.css</code> and <code class="clr-code">clr-icons.min.js</code>. Also, make sure to
+  include <code class="clr-code">custom-elements.min.js</code>, the Custom Elements polyfill before
+  <code class="clr-code">clr-icons.min.js</code>:
+  <clr-code-snippet [clrCode]="iconsImportsAllExample"></clr-code-snippet>
+
+  That's it! As
+  <code class="clr-code">clr-icons.min.js</code> loads not only the Clarity Icons Api, but also all icons sets, you will
+  have access to more than 100 different icons that have variants, orientations, and colors out of the box. You can now
+  render any icon with <code class="clr-code">clr-icon</code> tag and specify your desired shape in its
+  <code class="clr-code">shape</code> attribute.
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/lxi4NBhTf42rSDZ65KTr/" target="_blank" class="btn btn-primary btn-sm"
+    >View example
+  </a>
+</div>
+
+<h3 class="paragraph-header">Load icon sets individually:</h3>
+<p>
+  If you want to use icons from few individual sets, you don't have to load all icons with
+  <code class="clr-code">clr-icons.min.js</code>. Instead, load the lighter version of Clarity Icons library with
+  <code class="clr-code">clr-icons-lite.min.js</code>, which loads only Clarity Icons Api and Core Shapes set. For
+  example, if you want to use icons from only Social Shapes and Travel Shapes, you would load Clarity Icons this way:
+  <clr-code-snippet [clrCode]="iconsImportsSomeExample"></clr-code-snippet>
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/d9YYiHRxxi6igd20YsgF/" target="_blank" class="btn btn-primary btn-sm"
+    >View example
+  </a>
+</div>
+
+<h3 class="paragraph-header">Load Clarity Icons API and icon sets in Typescript:</h3>
+
+<p>
+  It's easy to load Clarity Icons API and icon sets in Typescript.
+</p>
+
+<clr-alert [clrAlertClosable]="false">
+  <clr-alert-item>
+    <span class="alert-text">
+      If you load the Clarity Icons in Typescript, make sure you are not loading it through the script tag again.
+      Otherwise you will have two different instances of Clarity Icons that override one another.
+    </span>
+  </clr-alert-item>
+</clr-alert>
+
+<p>
+  For example:
+  <clr-code-snippet [clrCode]="iconsImportsTSCoreExample" clrLanguage="typescript"></clr-code-snippet>
+  The example above is loading only Clarity Icons Api and Core Shapes set. You can load more icon sets on top of it as
+  needed:
+  <clr-code-snippet [clrCode]="iconsImportsTSSomeExample" clrLanguage="typescript"></clr-code-snippet>
+  And lastly, if you need to use shapes from all sets, you don't need to import and load every single icon set, because
+  you have a shortcut for loading all sets:
+  <clr-code-snippet [clrCode]="iconsImportsTSAllExample" clrLanguage="typescript"></clr-code-snippet>
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/PlgTCx/" target="_blank" class="btn btn-primary btn-sm">View example</a>
+</div>

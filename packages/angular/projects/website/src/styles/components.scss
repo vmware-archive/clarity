@@ -1,0 +1,719 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './clarity-imports';
+
+@mixin clrwebMakeFlexbox($alignItems: false) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  @if $alignItems {
+    -webkit-box-align: $alignItems;
+    -ms-flex-align: $alignItems;
+    align-items: $alignItems;
+  }
+}
+
+.component-workstream-bugs {
+  position: absolute;
+  top: $clr_baselineRem_1;
+  right: $clr_baselineRem_1;
+  width: $clr_baselineRem_3_5833;
+  .bug {
+    &.hidden {
+      visibility: hidden;
+    }
+    & > img {
+      height: $clr_baselineRem_1 + $clr_baselineRem_1px;
+    }
+  }
+  .bug-ng > img {
+    height: $clr_baselineRem_1 + $clr_baselineRem_2px;
+  }
+}
+
+.component-summary {
+  font-size: $clr_baselineRem_0_667;
+  font-weight: 200;
+  &:not(.no-margin) {
+    margin-bottom: $clr_baselineRem_0_5 + $clr_baselineRem_3px;
+    margin-top: $clr_baselineRem_0_25 + $clr_baselineRem_2px;
+  }
+  & + p {
+    margin-top: $clr_baselineRem_1 - $clr_baselineRem_2px;
+  }
+}
+
+clr-web-new-layout-alert + .component-summary:not(.no-margin) {
+  margin-top: $clr_baselineRem_2 - $clr_baselineRem_4px;
+}
+
+.layout-documentation {
+  .content-area section {
+    max-width: $clrweb-content-maxwidth;
+  }
+  img {
+    max-width: $clrweb-content-maxwidth;
+  }
+  img.img-fluid {
+    max-width: 100%;
+  }
+  .code-card {
+    // weirdness with how these are coming through clarity-demos
+    padding-left: 0;
+    padding-bottom: 0;
+    overflow-x: auto;
+  }
+  .table-component-list {
+    max-width: $clrweb-content-maxwidth;
+    th {
+      border-top: 0 none;
+    }
+    th,
+    td {
+      text-align: center;
+      vertical-align: middle;
+      &:first-child,
+      &:last-child {
+        text-align: left;
+      }
+    }
+  }
+  .component-legend-item {
+    font-size: $clr_baselineRem_13px;
+    width: $clr_baselineRem_5;
+    display: inline-block;
+    span {
+      display: inline-block;
+    }
+    .symbol {
+      width: $clr_baselineRem_0_75;
+      & > img {
+        margin-top: -1 * $clr_baselineRem_3px;
+      }
+    }
+    &:first-child img {
+      margin-top: -1 * $clr_baselineRem_1px;
+    }
+    &:last-child img {
+      margin-top: 0;
+    }
+  }
+}
+
+.page-typography {
+  clr-typography-demo {
+    div.indent {
+      & > h4 {
+        font-size: $clr_baselineRem_1_16;
+        line-height: $clr_baselineRem_2;
+        font-weight: 200;
+        margin-left: -1 * $clr_baselineRem_2;
+        margin-bottom: $clr_baselineRem_0_5;
+      }
+      & div.code-card {
+        padding-left: $clr_baselineRem_2;
+        padding-top: 0;
+        padding-bottom: $clr_baselineRem_1_5;
+      }
+    }
+  }
+}
+
+.components-spinner {
+  position: relative;
+  left: 50%;
+  margin-top: 15%;
+  margin-left: -1 * $clr_baselineRem_0_95833;
+}
+
+.page-stack-view {
+  h3 + .alert {
+    margin-top: $clr_baselineRem_0_667;
+  }
+}
+
+table.buttons-cmp-table td {
+  vertical-align: middle;
+  text-align: left;
+}
+
+.buttons-modal-gfx {
+  margin-top: $clr_baselineRem_1;
+}
+
+.buttons-modal-gfx p {
+  margin-top: $clr_baselineRem_0_25;
+  margin-bottom: $clr_baselineRem_0_75;
+}
+
+.main-container {
+  .header > .header-nav > .nav-link:last-child::after {
+    content: none;
+  }
+}
+
+.layout-documentation {
+  .main-container .content-container .dox-content-panel {
+    padding: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .dox-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dox-header {
+    padding-top: $clr_baselineRem_0_75;
+    -ms-flex: 0 0 $clr_baselineRem_4_5;
+    flex: 0 0 $clr_baselineRem_4_5;
+    padding-left: $clr_baselineRem_1_5;
+    position: relative;
+    border-bottom: $clr-global-borderwidth solid $clr-color-neutral-400;
+  }
+  .dox-content-panel .dox-content {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    width: 100%;
+    max-width: 100%;
+    border-top: $clr-global-borderwidth solid transparent;
+    height: 100%;
+
+    .dox-content-wrapper {
+      padding-left: $clr_baselineRem_1_5;
+      padding-top: $clr_baselineRem_0_25;
+      padding-bottom: $clr_baselineRem_4;
+      max-width: $clr_baselineRem_37_5;
+      width: 100%;
+    }
+  }
+  .dox-tabs {
+    padding-top: $clr_baselineRem_0_5;
+    ul {
+      margin-top: 0;
+      margin-bottom: $clr_baselineRem_0_25;
+    }
+    li {
+      display: inline-block;
+      border-right: $clr-global-borderwidth solid $clr-color-neutral-400;
+      &:last-child {
+        border-right: 0 none;
+      }
+      &:first-child {
+        a {
+          padding-left: 0;
+        }
+      }
+    }
+    a {
+      display: inline-block;
+      padding-right: $clr_baselineRem_0_75;
+      padding-top: $clr_baselineRem_2px;
+      padding-bottom: $clr_baselineRem_2px;
+      padding-left: $clr_baselineRem_0_5 + $clr_baselineRem_1px;
+    }
+    a.active {
+      color: $clr-color-neutral-1000;
+      &:hover {
+        color: $clr-color-neutral-1000;
+      }
+    }
+  }
+  .component-summary {
+    & ~ h3,
+    & ~ #design-guidelines > h3,
+    & ~ #code-examples > h3 {
+      // This changed b/c labels doc has demo element between .component-summary and the h3 element.
+      margin-top: $clr_baselineRem_2;
+    }
+  }
+  .clrweb-button-demo,
+  .clrweb-stackview-demo {
+    h4 {
+      font-size: $clr_baselineRem_0_667;
+      margin-bottom: $clr_baselineRem_0_25;
+    }
+  }
+  h3 + .clrweb-button-demo > h4:first-child {
+    margin-top: $clr_baselineRem_1_5;
+  }
+  .clrweb-datagrid-first-demo {
+    h2 {
+      margin-top: 0;
+    }
+  }
+  .clrweb-progress-demo {
+    h4:not(.card-title) {
+      margin-top: $clr_baselineRem_1_5;
+      font-size: $clr_baselineRem_0_667;
+    }
+  }
+  .clrweb-wizardsteps-block {
+    h4:first-child {
+      margin-top: $clr_baselineRem_1;
+    }
+  }
+  h3#examples {
+    border-top: $clr-global-borderwidth solid $clr-color-neutral-400;
+    padding-top: $clr_baselineRem_2;
+  }
+}
+
+.clrweb-tablink-scrolled.layout-documentation .dox-content {
+  border-top-color: $clr-color-neutral-500 !important;
+}
+
+@media (max-width: 768px) {
+  .layout-documentation .clrweb-wizardsteps-block {
+    h4:first-child {
+      margin-top: $clr_baselineRem_1;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .component-workstream-bugs {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .layout-documentation .component-legend-item {
+    width: $clr_baselineRem_4_5;
+  }
+}
+
+@media (max-width: 415px) {
+  .layout-documentation {
+    h1 {
+      font-size: $clr_baselineRem_1_16;
+      line-height: $clr_baselineRem_1_5;
+    }
+    h1 + p {
+      margin-top: $clr_baselineRem_0_5;
+    }
+  }
+}
+
+@media (max-width: 329px) {
+  .layout-documentation {
+    .dox-tabs {
+      padding-top: 0;
+      li {
+        border-right: 0 none;
+        display: block;
+      }
+      a {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .dox-content-panel .dox-content .dox-content-wrapper {
+      padding-top: 0;
+    }
+  }
+}
+
+// IE10 hack
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .layout-news,
+  .layout-documentation {
+    .main-container .content-container .content-area {
+      display: -ms-flexbox;
+      min-height: 1px;
+    }
+  }
+}
+
+// reset IE10 hack for IE11+
+_:-ms-fullscreen,
+:root {
+  .layout-news,
+  .layout-documentation {
+    .main-container .content-container .content-area {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .layout-news .main-container .content-container .content-area,
+  .layout-documentation .dox-header,
+  .layout-documentation .dox-content-panel .dox-content .dox-content-wrapper {
+    padding-left: $clr_baselineRem_1;
+    padding-right: $clr_baselineRem_1;
+  }
+}
+
+@media (max-width: 1136px) {
+  .component-workstream-bugs {
+    right: $clr_baselineRem_1;
+  }
+}
+
+.category-documentation-color {
+  .card.card-block {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .card .card-title {
+    padding-left: $clr_baselineRem_0_75 - $clr_baselineRem_2px;
+  }
+}
+
+.clrweb-DoxMedia {
+  width: 100%;
+  margin-top: $clr_baselineRem_1;
+  &-block {
+    min-height: $clr_baselineRem_6_04167;
+    background: $clr-color-neutral-200;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: $clr_baselineRem_1;
+    width: 100%;
+
+    &.other-color {
+      background: hsl(202, 18%, 79%);
+    }
+
+    &.not-centered {
+      -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+      align-items: baseline;
+    }
+
+    &.is-colorblock {
+      background: hsl(276, 48%, 47%);
+      color: $clr-color-neutral-0;
+      font-size: $clr_baselineRem_1;
+      font-weight: 400;
+      padding: 0 $clr_baselineRem_1;
+    }
+  }
+  &.is-figure &-block {
+    background: none;
+    padding: 0;
+  }
+  &.is-figure &-text {
+    p {
+      margin-top: $clr_baselineRem_0_25;
+    }
+  }
+  &-img {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    > * {
+      margin: 0;
+    }
+    > img {
+      width: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+    &.is-left-aligned {
+      text-align: left;
+    }
+  }
+  &-text {
+    padding-bottom: $clr_baselineRem_1;
+    h6 {
+      margin-top: $clr_baselineRem_1 !important;
+    }
+  }
+  &.is-dont-block &-text,
+  &.is-do-block &-text,
+  &.is-warn-block &-text {
+    position: relative;
+    h6 {
+      margin-top: $clr_baselineRem_1;
+    }
+    &::before {
+      content: ' ';
+      display: block;
+      width: 100%;
+      background: hsl(98, 100%, 26%);
+      height: $clr_baselineRem_8px;
+      position: absolute;
+      top: -1 * $clr_baselineRem_0_83;
+      left: 0;
+    }
+  }
+  &.is-dont-block &-text::before {
+    background: hsl(9, 100%, 44%);
+  }
+  &.is-warn-block &-text::before {
+    background: hsl(36, 100%, 46%);
+  }
+  &.is-do-block &-do-dont {
+    color: hsl(98, 100%, 26%);
+  }
+  &.is-dont-block &-do-dont {
+    color: hsl(9, 100%, 44%);
+  }
+  &.is-warn-block &-warn {
+    color: hsl(36, 100%, 46%);
+  }
+}
+
+.clrweb-DoxMedia.is-horizontal {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  .clrweb-DoxMedia-block {
+    height: 100%;
+    min-height: auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .clrweb-DoxMedia-text {
+    padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_0_5;
+    h6 {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.modal-size-design-demo {
+  .clrweb-DoxMedia-block.is-colorblock {
+    padding: 0;
+    text-align: center;
+    width: $clr_baselineRem_2;
+    height: $clr_baselineRem_3;
+  }
+}
+
+.clrweb-DoxVersusBox {
+  width: 100%;
+  border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  border-radius: $clr-global-borderradius;
+  margin-top: $clr_baselineRem_2;
+  @include clrwebMakeFlexbox;
+  &-items {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    @include clrwebMakeFlexbox;
+  }
+  &-pin {
+    -ms-flex: 0 0 (3 * $clr_baselineRem_1);
+    flex: 0 0 (3 * $clr_baselineRem_1);
+    min-height: 4 * $clr_baselineRem_1;
+    background: $clr-color-neutral-200;
+    @include clrwebMakeFlexbox(center);
+    clr-icon {
+      height: $clr_baselineRem_1;
+      width: $clr_baselineRem_1;
+      color: hsl(276, 48%, 47%);
+      margin: 0 auto;
+      display: block;
+    }
+  }
+  &-vsWrapper {
+    -ms-flex: 0 0 $clr_baselineRem_2;
+    flex: 0 0 $clr_baselineRem_2;
+    @include clrwebMakeFlexbox(center);
+  }
+  &-itemWrapper {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: $clr_baselineRem_1;
+    @include clrwebMakeFlexbox(center);
+  }
+  &-vs {
+    $vs-dimension: $clr_baselineRem_1_5;
+    height: $vs-dimension;
+    width: $vs-dimension;
+    display: block;
+    background: hsl(276, 48%, 47%);
+    color: $clr-color-neutral-0;
+    line-height: $vs-dimension;
+    border-radius: 49%;
+    font-size: $clr_baselineRem_0_583;
+    font-weight: 100;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  &-item p {
+    margin: 0;
+  }
+}
+
+.clrweb-DoxBookmark {
+  @include clrwebMakeFlexbox(top);
+  > * {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    margin: 0;
+  }
+  &-bookmark {
+    -ms-flex: 0 0 $clr_baselineRem_1;
+    flex: 0 0 $clr_baselineRem_1;
+    text-align: left;
+  }
+  [shape='bookmark'] {
+    width: $clr_baselineRem_1_0833;
+    margin-left: -1 * $clr_baselineRem_5px;
+    height: $clr_baselineRem_1_0833;
+  }
+}
+
+.clrweb-Img {
+  width: 100%;
+}
+
+.clrweb-Img--popout {
+  margin-left: -4.3%;
+}
+
+@media screen and (max-width: 576px) {
+  .clrweb-DoxVersusBox {
+    &-items {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+    &-vs {
+      margin: 0;
+      margin-left: $clr_baselineRem_1;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .clrweb-DoxBookmark {
+    margin-top: $clr_baselineRem_0_5;
+  }
+  .clrweb-Img {
+    margin-top: $clr_baselineRem_1;
+  }
+  .clrweb-Img--popout {
+    margin-left: 0;
+  }
+}
+
+.in-place-takeover {
+  .clr-example {
+    height: $clr_baselineRem_16_5833;
+    position: relative;
+  }
+  &.is-large .clr-example {
+    height: $clr_baselineRem_24_5;
+  }
+  .backdrop-example-container {
+    background: hsl(200, 100%, 11%);
+    height: 100%;
+    width: 100%;
+  }
+  .modal {
+    position: absolute;
+  }
+  .modal-backdrop {
+    position: absolute;
+  }
+}
+
+@media (max-width: 420px) {
+  .clr-example .modal.static {
+    padding: 0;
+  }
+}
+
+.has-h4-margin {
+  margin-top: $clr_baselineRem_3;
+}
+
+.has-h6-margin {
+  margin-top: $clr_baselineRem_2;
+}
+
+.has-margin-top-b2 {
+  margin-top: $clr_baselineRem_2;
+}
+
+.clr-demo {
+  margin-top: $clr_baselineRem_1;
+}
+
+.clr-demo-container {
+  padding: $clr_baselineRem_1 $clr_baselineRem_2;
+  background-color: $clr-color-neutral-200;
+
+  &__content {
+    padding: $clr_baselineRem_0_5;
+    width: 100%;
+    background-color: $clr-color-neutral-0;
+    border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  }
+}
+
+// Utility class for an textarea element that's temporarily
+// created and used for copying content into clipboard
+.offscreen-clipboard-textarea {
+  position: fixed !important;
+  border: none !important;
+  height: 1px !important;
+  width: 1px !important;
+
+  left: 0 !important;
+  top: -1px !important;
+
+  padding: 0 !important;
+  margin: 0 0 -1px 0 !important;
+}
+
+.clr-tab-container {
+  background-color: $clr-color-neutral-100;
+  border: $clr-global-borderwidth solid $clr-color-neutral-400;
+  border-radius: $clr-global-borderradius;
+  margin-top: $clr_baselineRem_1;
+  box-shadow: 0.05rem 0.05rem 0.1rem #ddd;
+
+  .nav-item:first-child {
+    margin-left: $clr_baselineRem_0_5;
+  }
+
+  .tab-content > *,
+  clr-code-snippet pre {
+    margin-left: $clr_baselineRem_0_5;
+    margin-right: $clr_baselineRem_0_5;
+  }
+}

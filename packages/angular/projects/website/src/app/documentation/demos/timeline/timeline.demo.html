@@ -1,0 +1,366 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <h5 class="component-summary" id="timeline-summary">
+      A timeline is a visual indicator that shows progress and might guide the user through specific processes or
+      pre-defined steps while also showing current progress.
+    </h5>
+
+    <div id="design-guidelines">
+      <h3 id="guidelines">Design Guidelines</h3>
+
+      <p>
+        Timeline should set an expectation for the whole process by breaking it up into concrete steps and a
+        pre-determined goal. It shows the user their progress along the steps of the timeline with a current step. For
+        all of the steps, a timeline can provide additional information such as a header (timestamp), an icon showing
+        state, a title and a description that optionally includes related contextual actions.
+      </p>
+
+      <h3 id="layout">Layout</h3>
+      <p>There are two types of layouts, horizontal and vertical.</p>
+
+      <div class="clr-row">
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block" style="height: 297px;">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/timeline/timeline-horizontal-example.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>Horizontal</h6>
+              <ul class="list">
+                <li>Used when there are workflows of 3 - 5 steps</li>
+                <li>Used when all steps can be displayed without wrapping</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block" style="height: 297px;">
+              <div class="clrweb-DoxMedia-img" style="height: 100%;">
+                <img src="assets/images/documentation/timeline/timeline-vertical-example.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>Vertical</h6>
+              <ul class="list">
+                <li>Used when there are workflows greater than five steps</li>
+                <li>Used when timestamps are optional</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="timeline-step-states">Timeline Step States</h3>
+      <p>
+        Every timeline step has one of five steps. With one exception these steps are represented with a Clarity Icon.
+        The exception is for loading state which uses the <code class="clr-code">clr-spinner</code> component.
+      </p>
+
+      <ol class="margin-top-12">
+        <li>
+          &nbsp;<!-- align the icons b/c 1. is shorter than the rest --><clr-icon
+            size="36"
+            class="is-success"
+            shape="success-standard"
+            aria-label="step complete"
+          ></clr-icon>
+          - <strong>Step complete</strong> uses the <code class="clr-code">success-standard</code> shape
+        </li>
+        <li>
+          <clr-icon size="36" class="is-info" shape="dot-circle" aria-current="true" aria-label="Current"></clr-icon>
+          - <strong>Current step</strong> uses the <code class="clr-code">dot-circle</code> shape
+        </li>
+        <li>
+          <clr-icon size="36" shape="circle" aria-label="Not started"></clr-icon>
+          - <strong>Not started, available to start</strong> uses the <code class="clr-code">circle</code> shape
+        </li>
+        <li>
+          <clr-spinner clrMedium aria-label="In progress" class="clr-align-middle">Fetching data</clr-spinner>
+          - <strong>Processing user initiated action</strong> uses the <code class="clr-code">clr-spinner</code> (w/
+          clrMedium size) component
+        </li>
+        <li>
+          <clr-icon size="36" class="is-error" shape="error-standard" aria-label="Error"></clr-icon>
+          - <strong>Error completing step</strong> uses the <code class="clr-code">error</code> shape
+        </li>
+      </ol>
+
+      <h4>Showing the current step</h4>
+      <div class="clr-row">
+        <div class="clr-col-4">
+          <p>By default, step one is highlighted as the current step.</p>
+        </div>
+        <div class="clr-col-8">
+          <p><img src="assets/images/documentation/timeline/timeline-step-1.svg" alt="" /></p>
+        </div>
+      </div>
+      <div class="clr-row">
+        <div class="clr-col-4">
+          <p>When step one is complete the step two gets highlighted.</p>
+        </div>
+        <div class="clr-col-8">
+          <p><img src="assets/images/documentation/timeline/timeline-step-2.svg" alt="" /></p>
+        </div>
+      </div>
+      <div class="clr-row">
+        <div class="clr-col-4">
+          <p>When steps one and two are complete, step three gets highlighted.</p>
+        </div>
+        <div class="clr-col-8">
+          <p><img src="assets/images/documentation/timeline/timeline-step-3.svg" alt="" /></p>
+        </div>
+      </div>
+      <div class="clr-row">
+        <div class="clr-col-4">
+          <p>All steps are complete.</p>
+        </div>
+        <div class="clr-col-8">
+          <p><img src="assets/images/documentation/timeline/timeline-step-4.svg" alt="" /></p>
+        </div>
+      </div>
+
+      <h4>Additional States</h4>
+      <div class="clr-row">
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block" style="height: 205px;">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/timeline/timeline-error-state.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>Error</h6>
+              <ul class="list">
+                <li>Display the error message under the error icon if needed</li>
+                <li>Tooltips are not recommended because of low affordance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block" style="height: 205px;">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/timeline/timeline-loading-state.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>Loading</h6>
+              <ul class="list">
+                <li>When loading or taking action, display a spinner</li>
+                <li>Disable buttons when loading or make buttons contextual for the loading state (e.g CANCEL)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Step Description</h3>
+      <p>
+        It is optional to have a step description that offers additional information and guidance to the user. This
+        information can be displayed all of the time or only for the current step.
+      </p>
+      <div class="clr-row">
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/timeline/single-step-description.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>Single step description</h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="clr-col-12 clr-col-md-6">
+          <div class="clrweb-DoxMedia">
+            <div class="clrweb-DoxMedia-block">
+              <div class="clrweb-DoxMedia-img">
+                <img src="assets/images/documentation/timeline/all-step-descriptions.svg" alt="" />
+              </div>
+            </div>
+            <div class="clrweb-DoxMedia-text">
+              <h6>All step descriptions</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="code-examples">
+      <h3 id="examples">Code &amp; Examples</h3>
+      <h4>Structure</h4>
+      <p>
+        A Timeline is structured as a container component with classes placed on the correct DOM structure to target
+        elements for timeline specific style and layout. Te first container element is an unordered list element with
+        <code class="clr-code">.clr-timeline</code> class. Each list item corresponds to a step that has the
+        <code class="clr-code">.clr-timeline-step</code> class on it. Steps are composed with several children elements.
+        Timelines can be either horizontal or vertical and it is specified by the css class declared with the
+        <code class="clr-code">.clr-timeline</code>element.
+      </p>
+      <p>Each timeline step can have three children elements:</p>
+
+      <ol class="list">
+        <li>
+          An optional header (<code class="clr-code">.clr-timeline-step-header</code>) that appears above the timeline
+          when its horizontal and to the left of the timeline when its vertical. In the demos they are populated with
+          times. e.g 11:59am.
+        </li>
+        <li>
+          An icon shape that corresponds to the correct step state (note usage of
+          <code class="clr-code">aria-label</code> for accessibility):
+          <ul>
+            <li>
+              <clr-icon size="18" class="is-success" shape="success-standard" aria-label="step complete"></clr-icon>
+              : <strong>Step complete</strong> uses the <code class="clr-code">success-standard</code> shape
+            </li>
+            <li>
+              <clr-icon
+                size="18"
+                class="is-info"
+                shape="dot-circle"
+                aria-current="true"
+                aria-label="Current"
+              ></clr-icon>
+              : <strong>Current step</strong> uses the <code class="clr-code">dot-circle</code> shape
+            </li>
+            <li>
+              <clr-icon size="18" shape="circle" aria-label="Not started"></clr-icon>
+              : <strong>Not started, available to start</strong> uses the <code class="clr-code">circle</code> shape
+            </li>
+            <li>
+              <span class="spinner spinner-inline spinner-sm">
+                Loading...
+              </span>
+              : <strong>Processing user initiated action</strong> uses the <code class="clr-code">spinner</code> shape
+            </li>
+            <li>
+              <clr-icon size="18" class="is-error" shape="error-standard" aria-label="Error"></clr-icon>
+              : <strong>Error completing step</strong> uses the <code class="clr-code">error</code> shape
+            </li>
+          </ul>
+        </li>
+        <li>
+          A container element for the <code class="clr-code">.clr-timeline-step-body</code> that contains two children
+          elements:
+          <ul>
+            <li>
+              A <code class="clr-code">.clr-timeline-step-title</code> for calling out the step title below the step
+              icon when horizontal and on the right at the top of the step when it is vertical
+            </li>
+            <li>A <code class="clr-code">.clr-timeline-step-description</code></li>
+            to put a longer description that wraps with the width of the step container. This is also where (optional)
+            action buttons will be placed.
+          </ul>
+        </li>
+      </ol>
+
+      <h4>CSS Classes (for Clarity UI static implementation)</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="288px">Classname</th>
+            <th class="left">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline</code>
+            </td>
+            <td class="left">
+              Designates the timeline container element and is used on an unordered list
+              <code class="clr-code">ul</code>. This class should only contain <code class="clr-code">li</code> children
+              with the <code class="clr-code">clr-timeline-step</code> class.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline-vertical</code>
+            </td>
+            <td class="left">
+              Used in conjunction with <code class="clr-code">clr-timeline</code> class to designate a vertical
+              timeline.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline-step</code>
+            </td>
+            <td class="left">
+              A class to designate a step container. It should be placed on an <code class="clr-code">li</code> element
+              as a child of the <code class="clr-code">clr-timeline</code> class.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline-step-header</code>
+            </td>
+            <td class="left">
+              Used to display information like a time or a date. This element will appear
+              <strong>above</strong> the <a routerLink="/icons">ClarityIcon</a> used in the time line step when its a
+              horizontal timeline and to the <strong>left</strong> when it is a vertical timeline.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">clr-timeline-step-body</code>
+            </td>
+            <td class="left">
+              This is a container class used to group the <code class="clr-code">.clr-timeline-step-title</code> and
+              <code class="clr-code">.clr-timeline-step-description</code> elements. This element will appear
+              <strong>below</strong> the <a routerLink="/icons">ClarityIcon</a> used in the timeline step when its a
+              horizontal timeline and to the <strong>right</strong> when it is a vertical timeline.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline-step-title</code>
+            </td>
+            <td class="left">
+              Used inside of the <code class="clr-code">clr-timeline-step-body</code> container this is a bolded title
+              that describes the step.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code class="clr-code">.clr-timeline-step-description</code>
+            </td>
+            <td class="left">
+              This element contains a longer description and details about the step it is used on. This is also where
+              consumers should place any action buttons that may be used in <strong>this</strong> step.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Examples</h4>
+      <p>Lets look at some of the elements in isolation and then put everything together at the bottom of the page.</p>
+
+      <!--      includes vertical and horizontal code snippets-->
+      <h3>Timeline</h3>
+      <clr-timeline-container-demo></clr-timeline-container-demo>
+
+      <!--      includes optional header, clr icon and step-body-->
+      <h3>Timeline Step</h3>
+      <clr-timeline-step-demo></clr-timeline-step-demo>
+
+      <!--      includes body elements title and description (multiple descriptions with -->
+      <!--      title description, desc +button, desc + button link-->
+      <h3>Timeline Step Body</h3>
+      <clr-timeline-body-demo></clr-timeline-body-demo>
+
+      <h4>Summary of Options (for Angular implementation)</h4>
+      <clr-timeline-component></clr-timeline-component>
+
+      <h3>Full Demo</h3>
+      <clr-timeline-full-demo></clr-timeline-full-demo>
+    </div>
+  </article>
+</clr-doc-wrapper>

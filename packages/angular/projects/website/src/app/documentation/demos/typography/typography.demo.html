@@ -1,0 +1,96 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <h5 class="component-summary" id="clarity-uses-the-geometric-sans-serif-font-metropolis">
+      Clarity uses the geometric sans-serif font, Metropolis.
+    </h5>
+
+    <div id="code-examples">
+      <h3 id="text-styles">Text Styles</h3>
+
+      <clr-typography-text></clr-typography-text>
+
+      <h3 id="header-styles">Header Styles</h3>
+
+      <clr-typography-headers></clr-typography-headers>
+
+      <h3 id="using-typography">Using Typography</h3>
+
+      <p>
+        Clarity includes several SASS variables, collections, mixing, and functions for working with typography. These
+        are described below:
+      </p>
+
+      <h6 id="clr-font">$clr-font</h6>
+
+      <p>This SASS variable points to our default text font, Metropolis.</p>
+
+      <h6 id="clr-altfont">$clr-altFont</h6>
+
+      <p>This SASS variable is only used for our headers (H1..H6). Currently, it also points to Metropolis.</p>
+
+      <h6 id="clr-font-size">$clr-font-size</h6>
+
+      <p>This SASS variable sets our default font size to 14px.</p>
+
+      <h6 id="clr-font-weights">$clr-font-weight-light</h6>
+
+      <p>This SASS variable defaults to 200. It is used in very large display text (p0) and headers 1 through 4.</p>
+
+      <h6 id="clr-font-weights">$clr-font-weight-regular</h6>
+
+      <p>This SASS is the default font weight for Clarity. It defaults to 400.</p>
+
+      <h6 id="clr-font-weights">$clr-font-weight-semibold</h6>
+
+      <p>This SASS variable is the default bold font-weight of Clarity. It is Metropolis semi-bold (500).</p>
+
+      <h6 id="clr-font-weights">$clr-font-weight-bold</h6>
+
+      <p>This SASS variable defaults to 600. It is used in very small text (p4 and p6).</p>
+    </div>
+    <div id="design-guidelines">
+      <h3 id="guidelines">The Metropolis Font</h3>
+
+      <p>
+        Metropolis has clear, simple letters with rounded forms. <br />
+        This gives the font a friendly and modern appearance.
+      </p>
+
+      <p>
+        <img
+          src="assets/images/documentation/typography/Typography-A-Z.png?1481774870417534000"
+          alt="Metropolis light, regular, medium, and semibold"
+        />
+      </p>
+
+      <h3 id="font-weights-in-clarity">Font Weights in Clarity</h3>
+
+      <p>To maintain a light, clean look, Clarity does not use a weight stronger than semibold.</p>
+
+      <p>
+        <img
+          src="assets/images/documentation/typography/Typography-Metropolis.png?1481774870417534000"
+          alt="Metropolis light, regular, medium, and semibold"
+        />
+      </p>
+
+      <h3 id="use-the-built-in-styles">Use the Built-in Styles</h3>
+
+      <p>
+        The Clarity team determined the optimal height and weight of the text for each component. Some components also
+        have line wrapping built-in. If not, text should be kept to a single line.
+      </p>
+
+      <h3 id="use-text-links-for-navigation">Use Text Links for Navigation</h3>
+
+      <clr-typography-links></clr-typography-links>
+
+      <p>Don’t use text links for a call to action. <a routerLink="../../buttons">Buttons</a> are better.</p>
+    </div>
+  </article>
+</clr-doc-wrapper>

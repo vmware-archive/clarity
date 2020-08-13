@@ -1,0 +1,57 @@
+<clr-vertical-nav class="documentation-vertical-nav" [clr-nav-level]="2">
+  <version-switcher></version-switcher>
+
+  <a
+    clrVerticalNavLink
+    routerLink="/documentation"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <clr-icon shape="home" clrVerticalNavIcon></clr-icon> Component Status
+  </a>
+
+  <a clrVerticalNavLink routerLink="get-started" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    <clr-icon shape="help-info" clrVerticalNavIcon></clr-icon> Get Started
+  </a>
+
+  <clr-vertical-nav-group
+    routerLinkActive="active"
+    [clrVerticalNavGroupExpanded]="navExpandedState?.pattern"
+    (clrVerticalNavGroupExpandedChange)="cacheNavState($event, 'pattern')"
+  >
+    <clr-icon shape="library" clrVerticalNavIcon></clr-icon> Patterns
+    <clr-vertical-nav-group-children>
+      <ng-container *ngFor="let component of components">
+        <a
+          clrVerticalNavLink
+          [routerLink]="component.url"
+          routerLinkActive="active"
+          *ngIf="component.url && !component.noDemo && component.type == 'pattern'"
+        >
+          {{ component.text }}
+        </a>
+      </ng-container>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+
+  <clr-vertical-nav-group
+    routerLinkActive="active"
+    [clrVerticalNavGroupExpanded]="navExpandedState?.component"
+    (clrVerticalNavGroupExpandedChange)="cacheNavState($event, 'component')"
+  >
+    <clr-icon shape="cog" clrVerticalNavIcon></clr-icon> Components
+    <clr-vertical-nav-group-children>
+      <ng-container *ngFor="let component of components">
+        <a
+          clrVerticalNavLink
+          [routerLink]="component.url"
+          routerLinkActive="active"
+          *ngIf="component.url && !component.noDemo && component.type == 'component'"
+        >
+          {{ component.text }}
+        </a>
+      </ng-container>
+    </clr-vertical-nav-group-children>
+  </clr-vertical-nav-group>
+</clr-vertical-nav>
+<router-outlet></router-outlet>

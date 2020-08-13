@@ -1,0 +1,61 @@
+<h4>Angular - Template Forms</h4>
+
+<form clrStepper #contactForm="ngForm" (ngSubmit)="templateFormSubmit(contactForm.value)">
+  <clr-stepper-panel ngModelGroup="name">
+    <clr-step-title>Legal Name</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content>
+      <clr-input-container>
+        <label>First Name</label>
+        <input clrInput [ngModel]="templateForm.name.firstName" name="firstName" required />
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Last Name</label>
+        <input clrInput [ngModel]="templateForm.name.lastName" name="lastName" required />
+      </clr-input-container>
+
+      <button clrStepButton="next">next</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel ngModelGroup="contact">
+    <clr-step-title>Contact Information</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content>
+      <clr-input-container>
+        <label>Email</label>
+        <input clrInput [ngModel]="templateForm.contact.email" name="email" />
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Phone</label>
+        <input clrInput [ngModel]="templateForm.contact.phone" name="phone" />
+      </clr-input-container>
+
+      <button clrStepButton="next">next</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel ngModelGroup="password">
+    <clr-step-title>Password</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content>
+      <clr-password-container>
+        <label>Password</label>
+        <input clrPassword [ngModel]="templateForm.password.password" name="password" />
+      </clr-password-container>
+
+      <clr-password-container>
+        <label>Confirm Password</label>
+        <input clrPassword [ngModel]="templateForm.password.confirm" name="confirm" />
+      </clr-password-container>
+
+      <button clrStepButton="submit">submit</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+</form>
+
+<clr-code-snippet [clrCode]="templateExample"></clr-code-snippet>
+
+<clr-code-snippet [clrCode]="componentExample" clrLanguage="typescript"></clr-code-snippet>

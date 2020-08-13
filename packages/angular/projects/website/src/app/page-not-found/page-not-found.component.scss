@@ -1,0 +1,27 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../styles/clarity-imports';
+
+.clrweb-error-block {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: $clr_baselineRem_1;
+}
+
+.clrweb-error-block .logo-block img {
+  width: 100%;
+  max-width: $clr_baselineRem_15_833;
+  text-align: center;
+  height: $clr_baselineRem_11_9167;
+  opacity: 0.28;
+}
+
+.clrweb-error-block p.error-code {
+  font-size: $clr_baselineRem_2_5;
+  font-weight: 200;
+  line-height: 1em;
+  opacity: 0.5;
+  margin-top: 0;
+}

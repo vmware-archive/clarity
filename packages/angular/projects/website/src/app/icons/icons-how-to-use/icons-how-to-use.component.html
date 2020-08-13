@@ -1,0 +1,194 @@
+<h2>How to use Clarity Icons</h2>
+
+<h3 class="paragraph-header">Set icon size:</h3>
+
+<p>
+  By default, the size for Clarity Icons is 16 by 16 pixels, and you have two ways of customizing this default value.
+  One is through the use of the size attribute; the other is manually customizing the width and height values in your
+  icon's style.
+
+  <clr-code-snippet [clrCode]="sizeExamples"></clr-code-snippet>
+
+  <em>Both of the methods above will produce this result:</em>
+</p>
+
+<span class="clr-example">
+  <!--SETTING THE SIZE THROUGH CLR-ICON SIZE ATTRIBUTE-->
+  <clr-icon shape="info-circle" size="12"></clr-icon>
+  <clr-icon shape="info-circle" size="16"></clr-icon>
+  <clr-icon shape="info-circle" size="36"></clr-icon>
+  <clr-icon shape="info-circle" size="48"></clr-icon>
+  <clr-icon shape="info-circle" size="64"></clr-icon>
+  <clr-icon shape="info-circle" size="72"></clr-icon>
+</span>
+
+<h3 class="paragraph-header">Rotate icons:</h3>
+
+<p>
+  The default rotation for every shape in Clarity Icons is 0 degrees. With directional icons such as arrows and carets,
+  0 degrees means it points up. To rotate an icon to another direction, specify that either in the shape or dir
+  attribute. Alternatively, you can set the rotation values in the icon's style attribute.
+
+  <clr-code-snippet [clrCode]="directionExample"></clr-code-snippet>
+
+  <em>All three methods above will produce this result:</em>
+</p>
+
+<span class="clr-example">
+  <!--SETTING THE ROTATION DIRECTION THROUGH CLR-ICON DIR ATTRIBUTE-->
+  <clr-icon shape="caret" dir="up"></clr-icon>
+  <clr-icon shape="caret" dir="right"></clr-icon>
+  <clr-icon shape="caret" dir="down"></clr-icon>
+  <clr-icon shape="caret" dir="left"></clr-icon>
+</span>
+
+<h3 class="paragraph-header">Flip icons:</h3>
+
+<p>
+  You can flip icons horizontally or vertically through the use of the flip attribute.
+
+  <clr-code-snippet [clrCode]="flipExample"></clr-code-snippet>
+</p>
+
+<span class="clr-example">
+  <clr-icon shape="floppy"></clr-icon>
+  <clr-icon shape="floppy" flip="horizontal"></clr-icon>
+  <clr-icon shape="floppy" flip="vertical"></clr-icon>
+</span>
+
+<h3 class="paragraph-header">Make Icons Accessible:</h3>
+<p>
+  Add a custom title to your icon using the <code class="clr-code">title</code> attribute. Adding a title improves the
+  accessibility of the icon, making it recognizable by screen readers. Title attribute also helps you to localize your
+  Icon.
+</p>
+<clr-code-snippet [clrCode]="titleExample"></clr-code-snippet>
+
+<h3 class="paragraph-header">Predefined Clarity color classes for icons:</h3>
+
+<p>
+  Clarity Icons also come with predefined color classes.
+  <clr-code-snippet [clrCode]="colorExample"></clr-code-snippet>
+</p>
+
+<span class="clr-example">
+  <clr-icon shape="info-circle"></clr-icon>
+  <clr-icon shape="info-circle" class="is-highlight"></clr-icon>
+  <clr-icon shape="info-circle" class="is-error"></clr-icon>
+  <clr-icon shape="info-circle" class="is-warning"></clr-icon>
+  <clr-icon shape="info-circle" class="is-success"></clr-icon>
+  <clr-icon shape="info-circle" class="is-info"></clr-icon>
+</span>
+
+<p>
+  There is also <code class="clr-code">is-inverse</code> color class, which is suitable for icons used on darker
+  backgrounds.
+  <clr-code-snippet [clrCode]="inverseColorExample"></clr-code-snippet>
+</p>
+
+<span class="clr-example inverse">
+  <clr-icon shape="info-circle" class="is-inverse"></clr-icon>
+</span>
+
+<h3 class="paragraph-header">Display variant icons:</h3>
+
+<p>
+  Clarity Icons come with variants of each icon where applicable. Variants may include:
+</p>
+
+<ul class="list variant-options">
+  <li><b>Badged icons</b> have a small dot in the top right corner</li>
+  <li><b>Alerted icons</b> have a triangle in the top right corner</li>
+  <li><b>Solid icons</b> are filled in as opposed to the default outlined style</li>
+  <li><b>Combinations.</b> Such as: <i>solid + badged</i> and <i>alerted + badged</i></li>
+</ul>
+
+<div class="clr-row">
+  <div class="clr-col-12">
+    <table class="table variant-table">
+      <thead>
+        <tr>
+          <th class="left">Class name</th>
+          <th class="left">What it does</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="left"><code class="clr-code">.is-solid</code></td>
+          <td class="left">
+            Replaces the default outlined style of the icon with a filled-in solid version for icons that have a solid
+            version.
+          </td>
+        </tr>
+        <tr>
+          <td class="left"><code class="clr-code">.has-alert</code></td>
+          <td class="left">
+            Causes a small yellow triangle to appear in the top right corner of an icon that supports it.
+          </td>
+        </tr>
+        <tr>
+          <td class="left"><code class="clr-code">.has-badge</code></td>
+          <td class="left">
+            Causes a small dot to appear in the top right corner of an icon that supports badging. By default, this dot
+            is red.
+          </td>
+        </tr>
+        <tr>
+          <td class="left"><code class="clr-code">.has-badge--success</code></td>
+          <td class="left">
+            Causes a small green dot to appear in the top right corner of an icon that supports badging.
+          </td>
+        </tr>
+        <tr>
+          <td class="left"><code class="clr-code">.has-badge--error</code></td>
+          <td class="left">
+            Causes a small red dot to appear in the top right corner of an icon that supports badging.
+          </td>
+        </tr>
+        <tr>
+          <td class="left"><code class="clr-code">.has-badge--info</code></td>
+          <td class="left">
+            Causes a small blue dot to appear in the top right corner of an icon that supports badging.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p>
+  Displaying an icon variant only requires adding a CSS class to your <code class="clr-code">clr-icon</code>
+  element. Applicable classes are listed below.
+  <clr-code-snippet [clrCode]="variantExample"></clr-code-snippet>
+</p>
+
+<span class="clr-example">
+  <clr-icon shape="user" size="36"></clr-icon>
+  <clr-icon shape="user" class="has-alert" size="36"></clr-icon>
+  <clr-icon shape="user" class="has-badge" size="36"></clr-icon>
+  <clr-icon shape="user" class="is-solid" size="36"></clr-icon>
+  <clr-icon shape="user" class="is-solid has-alert" size="36"></clr-icon>
+  <clr-icon shape="user" class="is-solid has-badge" size="36"></clr-icon>
+  <clr-icon shape="user" class="is-solid has-badge--success" size="36"></clr-icon>
+</span>
+
+<h3 class="paragraph-header">Manipulate the inline SVG graphic elements via CSS</h3>
+
+<p>
+  After adding <code class="clr-code">clr-icon</code> in your HTML, check it with a web inspection tool. You will find
+  that SVG elements are injected inside the <code class="clr-code">clr-icon</code> tag that responsible for drawing the
+  icon.
+</p>
+
+<p>
+  You can individually select any of these SVG graphic elements and stylize them through CSS. For easier access to the
+  individual graphic parts of the icon, each piece of the glyph has a unique number identifier. For example,
+  <code class="clr-code">.clr-i-outline-path-3</code> targets the third path in the outlined version of an icon.
+</p>
+
+<p>
+  There are also a couple of common CSS classes that can help you target common elements.
+  <code class="clr-code">.clr-i-badge</code> targets the round dot in badged icons. Likewise,
+  <code class="clr-code">.clr-i-alert</code> targets the yellow triangle in alerted icons. Both of these classes work
+  across solid and outlined icons.
+</p>

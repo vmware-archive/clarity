@@ -1,0 +1,99 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">
+      {{ clrIcon }}
+      <ng-container *ngIf="clrIconAliases.length > 0">
+        <span class="aliases">Aliases: [{{ clrIconAliases.toString() }}]</span>
+      </ng-container>
+    </h4>
+
+    <div [ngSwitch]="activeVariantClasses">
+      <clr-code-snippet
+        *ngSwitchCase="'is-solid'"
+        [clrCode]="
+          '&#x3C;clr-icon shape=&#x22;' +
+          clrIcon +
+          '&#x22; class=&#x22;' +
+          activeVariantClasses +
+          '&#x22;&#x3E;&#x3C;/clr-icon&#x3E;'
+        "
+      ></clr-code-snippet>
+
+      <clr-code-snippet
+        *ngSwitchCase="'has-alert'"
+        [clrCode]="
+          '&#x3C;clr-icon shape=&#x22;' +
+          clrIcon +
+          '&#x22; class=&#x22;' +
+          activeVariantClasses +
+          '&#x22;&#x3E;&#x3C;/clr-icon&#x3E;'
+        "
+      ></clr-code-snippet>
+
+      <clr-code-snippet
+        *ngSwitchCase="'has-badge'"
+        [clrCode]="
+          '&#x3C;clr-icon shape=&#x22;' +
+          clrIcon +
+          '&#x22; class=&#x22;' +
+          activeVariantClasses +
+          '&#x22;&#x3E;&#x3C;/clr-icon&#x3E;'
+        "
+      ></clr-code-snippet>
+
+      <clr-code-snippet
+        *ngSwitchCase="'has-badge is-solid'"
+        [clrCode]="
+          '&#x3C;clr-icon shape=&#x22;' +
+          clrIcon +
+          '&#x22; class=&#x22;' +
+          activeVariantClasses +
+          '&#x22;&#x3E;&#x3C;/clr-icon&#x3E;'
+        "
+      ></clr-code-snippet>
+
+      <clr-code-snippet
+        *ngSwitchCase="'has-alert is-solid'"
+        [clrCode]="
+          '&#x3C;clr-icon shape=&#x22;' +
+          clrIcon +
+          '&#x22; class=&#x22;' +
+          activeVariantClasses +
+          '&#x22;&#x3E;&#x3C;/clr-icon&#x3E;'
+        "
+      ></clr-code-snippet>
+
+      <pre
+        *ngSwitchDefault
+        class="language-html"
+      ><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>clr-icon</span> <span class="token attr-name">shape</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{clrIcon}}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>clr-icon</span><span class="token punctuation">&gt;</span></span></code></pre>
+    </div>
+
+    <div class="icon-variants">
+      <button
+        type="button"
+        class="icon-variant"
+        [class.active]="activeVariantClasses === ''"
+        (click)="activeVariantClasses = ''"
+      >
+        <clr-icon [attr.shape]="clrIcon" size="24"></clr-icon>
+      </button>
+      <button
+        type="button"
+        class="icon-variant"
+        *ngFor="let variant of variants"
+        [class.active]="activeVariantClasses === variant"
+        (click)="activeVariantClasses = variant"
+      >
+        <clr-icon [attr.shape]="clrIcon" [attr.class]="variant" size="24"></clr-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-footer">
+    See more usage options in&nbsp;<a [routerLink]="['./how-to-use']" class="card-link">How To Use</a>
+    <a class="btn btn-sm download-svg-icon hidden-sm-down download-svg-icon" [href]="downloadPath" download>
+      <clr-icon shape="download"></clr-icon>
+      SVG ICON
+    </a>
+  </div>
+</div>

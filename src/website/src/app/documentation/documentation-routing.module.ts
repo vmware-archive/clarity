@@ -11,7 +11,7 @@ import { ComponentStatusComponent } from './component-status/component-status.co
 
 const documentationRoutes: Routes = [
   {
-    path: `documentation`,
+    path: ``,
     component: DocumentationComponent,
     data: {
       bodyClass: 'layout-documentation',

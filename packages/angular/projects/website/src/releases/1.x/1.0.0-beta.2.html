@@ -1,0 +1,85 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled">
+  <li>
+    <p>
+      This release does not include schematics to help migration steps for 1.0 yet, so you'll have to manually apply the
+      fixes listed here.
+    </p>
+    <p>
+      To get this update, run <code class="clr-code">npm i @clr/angular@next @clr/ui@next @clr/icons@next</code>. The
+      <code class="clr-code">@next</code> tag is necessary only while Clarity 1.0 is in prerelease, afterwards it won't
+      be necessary. You can use this with any Angular CLI project, even if you've already started to work on it. You may
+      need to run <code class="clr-code">ng update @angular/core @angular/cli</code> first to update to Angular 7.
+    </p>
+    <h6 breaking-change>
+      Support for new checkboxes (<a href="https://github.com/vmware/clarity/pull/2782" target="_blank">#2782</a>)
+    </h6>
+    <p>
+      The checkboxes have been overhauled to work with the new forms, and the old
+      <code class="clr-code">clr-checkbox</code> component has been removed.
+    </p>
+
+    <h6 breaking-change>
+      Support new forms in login form (<a href="https://github.com/vmware/clarity/pull/2804" target="_blank">#2804</a>)
+    </h6>
+    <p>
+      The login page template has been updated to support the new form controls, with only a slight visual difference.
+      If you do not update to the new forms, you'll need to be sure to include the deprecated forms module in your
+      Angular module.
+    </p>
+
+    <h6 breaking-change>
+      New pagination in Datagrid (<a href="https://github.com/vmware/clarity/pull/2754" target="_blank">#2754</a>)
+    </h6>
+    <p>
+      The new datagrid pagination is a visual improvement to the original pagination that also includes a new text field
+      for users to manually input the page they'd like to view by entering the number directly. It also was a
+      requirement for future work in the datagrid. You can also add a new component
+      <code class="clr-code">clr-dg-page-size</code> which will display a select box for items per page.
+    </p>
+
+    <h6>
+      Support for form resets and forced validation (<a
+        href="https://github.com/vmware/clarity/pull/2735"
+        target="_blank"
+        >#2735</a
+      >)
+    </h6>
+    <p>
+      Forms have been improved to support NgControl reset methods, and can be forced to display validation by marking
+      them as dirty. This helps in cases where you want to force validation (such as when the user submits a form
+      without filling in all the fields), and when you need to clear the values and reset validation.
+    </p>
+
+    <h6 breaking-change>
+      Set default form layout to horizontal (<a href="https://github.com/vmware/clarity/pull/2797" target="_blank"
+        >#2797</a
+      >)
+    </h6>
+    <p>
+      Previously, Angular forms would default to the vertical layout, which is against the desired UX default.
+      Therefore, unless you specify a different layout it will adopt horizontal by default with Angular forms.
+    </p>
+  </li>
+</ul>
+
+<h2>Bugfixes</h2>
+<ul class="list-unstyled">
+  <li>
+    <h6 bug-fix>
+      Date picker reset bugfix (<a href="https://github.com/vmware/clarity/pull/2803" target="_blank">#2803</a>)
+    </h6>
+    <p>Fixed a bug that if you reset the date picker, you were unable to reselect the same date again.</p>
+
+    <h6 bug-fix>
+      Date picker grid override bugfix (<a href="https://github.com/vmware/clarity/pull/2803" target="_blank">#2803</a>)
+    </h6>
+    <p>Fixed a bug that didn't correctly set the correct grid class overrides when specified.</p>
+  </li>
+</ul>

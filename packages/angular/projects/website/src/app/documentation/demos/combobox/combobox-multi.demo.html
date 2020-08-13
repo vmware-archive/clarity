@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-combobox-container>
+  <label>Favorite States</label>
+  <clr-combobox [(ngModel)]="selection" name="multiSelect" clrMulti="true">
+    <ng-container *clrOptionSelected="let selected">
+      <clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}
+    </ng-container>
+    <clr-options>
+      <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
+        <clr-icon shape="world" role="img" aria-label="World is turning"></clr-icon> {{state.name}}
+        <clr-icon shape="sun" role="img" aria-label="Sun is shining"></clr-icon>
+      </clr-option>
+    </clr-options>
+  </clr-combobox>
+  <clr-control-helper>Which state do you live in?</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-combobox-container>
+
+<clr-code-snippet [clrCode]="basicHTML" clrLanguage="html"></clr-code-snippet>

@@ -1,0 +1,87 @@
+<p>
+  Each panel representing each step will contain a title and a description that describes the entire workflow at a
+  glance. After completing each step, collapsed panels then replace step descriptions with summaries describing what the
+  user has accomplished.
+</p>
+
+<h4>
+  Here is when you might want to use a stepper over normal forms or wizards:
+</h4>
+
+<ul>
+  <li>Complex and long work processes that may not fit in one viewport</li>
+  <li>When the user would need to see the forms in-line with the rest of the page content</li>
+  <li>If users need more detail than step titles to understand the process.</li>
+  <li>If summaries of previous steps are helpful in informing next steps.</li>
+</ul>
+<h3>Style</h3>
+<img src="assets/images/documentation/stepper/stepper-style.png" alt="" class="clrweb-DoxMedia-img" />
+
+<p>
+  Steppers are composed of two sections, the stepper header and input section.
+</p>
+
+<h5>Stepper Header Section</h5>
+
+<p>
+  The step title section has three states: completed, active, to-do. When a step is in its active state, its title
+  section will be highlighted and its input section will be visible for users to interact. As users complete steps, the
+  steps are marked with a green bar to the left, and a summary of user's input will replace the description.
+</p>
+
+<h5>Input Section</h5>
+
+<p>
+  The input section has two elements: the form and the buttons. The form is used to collect input from users to finish
+  the step. The buttons section will allow the users to proceed to the next step or finish the workflow. To go back to a
+  previous step, users need to click on the step title of one of the previous steps. That step will become the active
+  step with its input section visible for editing.
+</p>
+
+<div class="clr-row">
+  <div class="clr-col-12 clr-col-md-6">
+    <div class="clrweb-DoxMedia is-dont-block">
+      <div class="clrweb-DoxMedia-block" style="height: 276px;">
+        <div class="clrweb-DoxMedia-img">
+          <img src="assets/images/documentation/stepper/stepper-dont.png" alt="" />
+        </div>
+      </div>
+      <div class="clrweb-DoxMedia-text">
+        <h6 class="clrweb-DoxMedia-do-dont">Don't</h6>
+        <p>
+          Don't use ambiguous a non-action oriented description that does not specify what users are accomplishing.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-col-12 clr-col-md-6">
+    <div class="clrweb-DoxMedia is-do-block">
+      <div class="clrweb-DoxMedia-block" style="height: 276px;">
+        <div class="clrweb-DoxMedia-img">
+          <img src="assets/images/documentation/stepper/stepper-do.png" alt="" />
+        </div>
+      </div>
+      <div class="clrweb-DoxMedia-text">
+        <h6 class="clrweb-DoxMedia-do-dont">Do</h6>
+        <p>
+          Use clear copy in the final call to action to best represent the action that users are taking in completing
+          the stepper.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5>Final Call to Action</h5>
+
+<p>
+  For the button label in the final call to action, we recommend that the copy also describe an immediate outcome of
+  completing a stepper. If the workflow will require more time to process after the stepper is complete, then FINISH or
+  other non-specific terminology may work better.
+</p>
+
+<p>
+  Though we recommend action-oriented button labels, there are use cases where labels like DONE work well. If the user
+  is viewing read-only information, we recommend using labels like DONE.
+</p>

@@ -1,0 +1,51 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <div id="guidelines">
+      <h3 id="accessibility">Accessibility</h3>
+      <p>
+        Clarity tries to cover as many best practices for accessibility out of the box. However, some things are too
+        application specific for Clarity to provide and we've provided some tools to make it easier when you need to
+        implement custom accessibility.
+      </p>
+
+      <h3 id="aria-live-region">Aria live region</h3>
+      <p>
+        When content changed dynamically on the page outside of the current focus, a screen reader user would not be
+        aware of those changes. In these scenarios, the browser supports the
+        <code class="clr-code">aria-live</code> attribute to make important announcements. You might announce errors in
+        a form, status updates for long running tasks, or alert messages.
+      </p>
+
+      <p>
+        There are limitations to how different screen readers and assistive technologies support
+        <code class="clr-code">aria-live</code>, and we've provided a service
+        <code class="clr-code">ClrAriaLiveService</code> for your Angular application to use anytime you need to make an
+        announcement in a fully compatible way.
+      </p>
+
+      <p>
+        Clarity will not make any announcements by default in version 4, it is up to the application to do this when it
+        makes sense. Here are a few examples of how the service works and could be used.
+      </p>
+
+      <clr-code-snippet [clrCode]="example1" [clrLanguage]="'typescript'"></clr-code-snippet>
+
+      <p>
+        Aria live regions have three levels, <code class="clr-code">off</code> to disable it,
+        <code class="clr-code">polite</code> to announce to the user at the next opportunity (default), and
+        <code class="clr-code">assertive</code> to alert the user immediately and interrupt any other announcements in
+        progress.
+      </p>
+      <clr-code-snippet [clrCode]="example2" [clrLanguage]="'typescript'"></clr-code-snippet>
+
+      <h5 id="aria-live-integration">Integration</h5>
+      <p>
+        A working example of using <code class="clr-code">ClrAriaLiveService</code> with a download, asynchronous
+        process is below. You start by injecting the service, and based on changes in the progress state it will
+        announce updates of the percentage updates. You might also want to debounce messages if you expect to get them
+        very quickly so you don't have too many rapid announcements and annoy the users.
+      </p>
+      <clr-code-snippet [clrCode]="example3" [clrLanguage]="'typescript'"></clr-code-snippet>
+    </div>
+  </article>
+</clr-doc-wrapper>

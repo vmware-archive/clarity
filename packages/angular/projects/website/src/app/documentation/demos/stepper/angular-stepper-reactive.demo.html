@@ -1,0 +1,65 @@
+<h4>Angular - Reactive Forms</h4>
+
+<button (click)="form.reset()" class="btn">Reset Stepper</button>
+
+<form clrStepper [formGroup]="form" (ngSubmit)="submit()">
+  <clr-stepper-panel formGroupName="name">
+    <clr-step-title>Legal Name</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-input-container>
+        <label>First Name</label>
+        <input clrInput formControlName="first" />
+        <clr-control-error *clrIfError="'required'">First Name Required</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Last Name</label>
+        <input clrInput formControlName="last" />
+        <clr-control-error *clrIfError="'required'">Last Name Required</clr-control-error>
+      </clr-input-container>
+
+      <button clrStepButton="next">next</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel formGroupName="contact">
+    <clr-step-title>Contact Information</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-input-container>
+        <label>Email</label>
+        <input clrInput formControlName="email" />
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Phone</label>
+        <input clrInput formControlName="phone" />
+      </clr-input-container>
+
+      <button clrStepButton="next">next</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+
+  <clr-stepper-panel formGroupName="password">
+    <clr-step-title>Password</clr-step-title>
+    <clr-step-description>Description goes here.</clr-step-description>
+    <clr-step-content *clrIfExpanded>
+      <clr-password-container>
+        <label>Password</label>
+        <input clrPassword formControlName="password" />
+      </clr-password-container>
+
+      <clr-password-container>
+        <label>Confirm Password</label>
+        <input clrPassword formControlName="confirm" />
+      </clr-password-container>
+
+      <button clrStepButton="submit">submit</button>
+    </clr-step-content>
+  </clr-stepper-panel>
+</form>
+
+<clr-code-snippet [clrCode]="templateExample"></clr-code-snippet>
+
+<clr-code-snippet [clrCode]="componentExample" clrLanguage="typescript"></clr-code-snippet>

@@ -1,0 +1,36 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
+.link-normal {
+  color: $clr-color-action-600;
+  text-decoration: none;
+}
+
+.link-hovered {
+  color: $clr-color-action-600;
+  text-decoration: underline;
+}
+
+.link-clicked {
+  color: $clr-color-secondary-action-500;
+  text-decoration: underline;
+}
+
+.link-visited {
+  color: $clr-color-secondary-action-500;
+  text-decoration: none;
+}
+
+.typography-demo-table {
+  td > * {
+    margin-top: 0;
+  }
+
+  td > ul.list-unstyled {
+    margin-left: 0;
+    list-style-position: 0;
+  }
+}

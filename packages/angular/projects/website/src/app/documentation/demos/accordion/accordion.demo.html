@@ -1,0 +1,38 @@
+<clr-doc-wrapper [ng]="ng" [ui]="ui" [title]="title" [newLayout]="newLayout">
+  <article>
+    <h5 class="component-summary" id="stepper-header">
+      An accordion allows generic content to be collapsed and allows users to expand to show more detail.
+    </h5>
+
+    <div id="design-guidelines">
+      <h3>Design Guidelines</h3>
+
+      <h3>Usage</h3>
+      <p>
+        Accordions are designed for use in the main content area. Use an accordion when you want to progressively
+        disclose data. This is useful when the set of information is large or you want to enable users to reveal more
+        complex or less frequently used data as necessary.
+      </p>
+    </div>
+
+    <div id="code-examples">
+      <h3 id="examples">Code &amp; Examples</h3>
+
+      <p>
+        Accordions by default only allow one panel to be open at a time. To enable multiple panels set
+        <code>clrAccordionMultiPanel="true"</code>
+        on the <code>clr-accordion</code> component.
+      </p>
+
+      <p>
+        Leverage our optional <code>*clrIfExpanded</code> structural directive on the
+        <code>clr-accordion-panel</code> to only instantiate children when they are displayed.
+      </p>
+
+      <br />
+
+      <clr-angular-accordion-demo></clr-angular-accordion-demo>
+      <clr-api-accordion-demo></clr-api-accordion-demo>
+    </div>
+  </article>
+</clr-doc-wrapper>

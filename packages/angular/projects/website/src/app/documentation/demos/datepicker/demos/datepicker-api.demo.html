@@ -1,0 +1,62 @@
+<h3>API</h3>
+<h4><code class="clr-code">clrDate</code> Directive</h4>
+<p>
+  To use the date picker, add the <code class="clr-code">clrDate</code> directive to an
+  <code class="clr-code">input</code> field. Then, place the input inside the
+  <code class="clr-code">clr-date-container</code> container element.
+</p>
+<form class="datepicker-demo" clrForm clrLayout="horizontal">
+  <clr-date-container>
+    <label>Basic Demo</label>
+    <input type="date" clrDate name="demo" [(ngModel)]="demo" />
+  </clr-date-container>
+</form>
+<clr-code-snippet [clrCode]="htmlExample"></clr-code-snippet>
+
+<clr-alert [clrAlertClosable]="false">
+  <div class="alert-item">
+    <span class="alert-text">
+      It is recommended that you set the <code class="clr-code">type</code> to <code class="clr-code">date</code> as it
+      increases readability of your code, helps with SEO, and keeps your HTML markup semantic. When the date picker is
+      enabled, this <code class="clr-code">type</code> is overridden to <code class="clr-code">text</code> to disable
+      the built-in date pickers that some desktop browsers provide.
+    </span>
+  </div>
+</clr-alert>
+
+<h4>Min/Max attributes</h4>
+<p>
+  The earliest and latest acceptable dates can also be set. Just like the native HTML5 date spec a
+  <code class="clr-code">yyyy-mm-dd</code> string can be used in the value for min or max. If the max value isn't a
+  possible date then that the input has no max value. Similar for min values, if the string used is not a possible date
+  then the input will not have a min value.
+</p>
+<p>
+  Only dates inside the min/max range will be selectable for the input when there is a bound placed for the min or max
+  attribute.
+</p>
+
+<h5>Only Min</h5>
+<form clrForm clrLayout="vertical">
+  <clr-date-container>
+    <label>Min date: 2019-11-17</label>
+    <input type="date" clrDate name="minDemo" [(ngModel)]="demo" min="2019-11-17" />
+  </clr-date-container>
+</form>
+<clr-code-snippet [clrCode]="minExample"></clr-code-snippet>
+<h5>Only Max</h5>
+<form clrForm clrLayout="vertical">
+  <clr-date-container>
+    <label>Max date: 2019-11-19</label>
+    <input type="date" clrDate name="maxDemo" [(ngModel)]="demo" max="2019-11-19" />
+  </clr-date-container>
+</form>
+<clr-code-snippet [clrCode]="maxExample"></clr-code-snippet>
+<h5>Min and Max</h5>
+<form clrForm clrLayout="horizontal">
+  <clr-date-container>
+    <label>Min date: 2019-11-17 AND Max date: 2019-11-19</label>
+    <input type="date" clrDate name="minMaxDemo" [(ngModel)]="demo" min="2019-11-17" max="2019-11-19" />
+  </clr-date-container>
+</form>
+<clr-code-snippet [clrCode]="minMaxExample"></clr-code-snippet>

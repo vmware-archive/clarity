@@ -1,0 +1,101 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../styles/clarity-imports';
+
+.alert {
+  margin: $clr_baselineRem_0_25 0;
+}
+
+h2 {
+  padding: 0 $clr_baselineRem_0_5;
+  margin-top: 0;
+  &.deactivated {
+    color: $clr-color-neutral-500;
+  }
+}
+
+.clr-icon-collection {
+  padding: $clr_baselineRem_1 0;
+  .clr-icon-item {
+    padding: 0 $clr_baselineRem_0_5;
+    clr-icon {
+      margin: 0 $clr_baselineRem_0_5;
+      transform: translate3d(0, 0, 0);
+    }
+    span.icon-shape-name {
+      white-space: nowrap;
+    }
+  }
+}
+
+.icon-detail {
+  position: relative;
+  height: $clr_baselineRem_11;
+  overflow: hidden;
+  will-change: height;
+  transform: translateZ(-1);
+  &:before {
+    content: '';
+    position: absolute;
+    top: $clr_baselineRem_1px;
+    left: $clr_baselineRem_13px;
+    width: calc(100% - #{$clr_baselineRem_1_0833});
+    height: $clr_baselineRem_1;
+    display: block;
+    background-color: $clr-color-neutral-0;
+    z-index: 3;
+    transform: translateZ(0);
+  }
+}
+
+.visible-icon {
+  position: relative;
+  top: $clr_baselineRem_3px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: left;
+  padding: $clr_baselineRem_0_75 $clr_baselineRem_0_25;
+  background-color: transparent;
+  border: $clr-global-borderwidth solid hsla(0, 0%, 84%, 0);
+  transform: translateZ(0);
+  color: $clr-color-neutral-700;
+  cursor: pointer;
+  z-index: 1;
+
+  &.active {
+    border-top-left-radius: $clr-global-borderradius;
+    border-top-right-radius: $clr-global-borderradius;
+    border-color: hsl(0, 0%, 84%);
+    border-style: solid;
+    border-width: $clr-global-borderwidth;
+    border-bottom-width: 0;
+    border-bottom-color: transparent;
+    background-color: $clr-color-neutral-0;
+    outline: 0 none;
+  }
+
+  &:hover {
+    color: $clr-color-action-600;
+  }
+
+  .icon-shape {
+    flex: 0 0 auto;
+  }
+
+  .icon-shape-name {
+    flex: 1 1 auto;
+    margin-right: $clr_baselineRem_0_5;
+  }
+}
+
+.no-results-found {
+  padding: $clr_baselineRem_0_75 $clr_baselineRem_0_5;
+}
+
+.download-set {
+  margin-left: auto;
+  margin-top: $clr_baselineRem_0_5;
+}

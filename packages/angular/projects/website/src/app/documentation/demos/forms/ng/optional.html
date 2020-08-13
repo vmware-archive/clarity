@@ -1,0 +1,17 @@
+<form clrForm>
+  <span class="clr-sr-only">Tabbing through form inputs will trigger validation messages to be read aloud.</span>
+  <clr-input-container>
+    <label>First name</label>
+    <input clrInput type="text" [(ngModel)]="firstName" name="firstName" required />
+    <clr-control-error>We need your first name for legal compliance</clr-control-error>
+  </clr-input-container>
+  <clr-input-container>
+    <label>Middle name (Optional)</label>
+    <input clrInput type="text" [(ngModel)]="midleName" name="midleName" />
+  </clr-input-container>
+  <clr-input-container>
+    <label>Last name</label>
+    <input clrInput type="text" [(ngModel)]="lastName" name="lastName" required />
+    <clr-control-error>We need your last name for legal compliance</clr-control-error>
+  </clr-input-container>
+</form>

@@ -1,0 +1,28 @@
+import {ViewChild, Component} from "@angular/core";
+import {FormGroup, FormControl, Validators} from "@angular/forms";
+
+@Component({
+    template: `
+    <form clrForm [formGroup]="exampleForm">
+        <clr-input-container>
+            <input clrInput formControlName="sample" />
+            <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+        </clr-input-container>
+    </form>
+    `
+})
+export class ReactiveFormsDemo {
+    @ViewChild(ClrForm, {static: true}) clrForm;
+
+    exampleForm = new FormGroup({
+        sample: new FormControl('', Validators.required),
+    });
+
+    submit() {
+        if (this.exampleForm.invalid) {
+            this.clrForm.markAsTouched();
+        } else {
+            // Do submit logic
+        }
+    }
+}

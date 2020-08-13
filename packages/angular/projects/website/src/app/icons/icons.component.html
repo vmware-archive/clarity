@@ -1,0 +1,120 @@
+<ng-template #searchBarContent>
+  <label for="search-icons-sticky" class="searchbar-label">
+    <clr-icon shape="search" size="24"></clr-icon>
+    <button aria-label="Close" class="close" type="button" (click)="resetSearchBar()" [class.active]="searchValue">
+      <clr-icon shape="close" size="24"></clr-icon>
+    </button>
+    <input
+      id="search-icons-sticky"
+      [(ngModel)]="searchValue"
+      placeholder="Search for Clarity Icons..."
+      type="text"
+      class="searchbar-input clr-input"
+      (input)="getSearchValue($event)"
+    />
+  </label>
+
+  <div class="icon-preview-settings">
+    Preview:
+    <clr-toggle-wrapper>
+      <input clrToggle type="checkbox" [(ngModel)]="iconSolidness" />
+      <label>Solid</label>
+    </clr-toggle-wrapper>
+
+    Variations:
+    <clr-radio-container clrInline>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="notificationType" [(ngModel)]="iconDecoration" checked />
+        <label>none</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio [value]="'badge'" name="notificationType" [(ngModel)]="iconDecoration" />
+        <label>badge</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio [value]="'alert'" name="notificationType" [(ngModel)]="iconDecoration" />
+        <label>alert</label>
+      </clr-radio-wrapper>
+    </clr-radio-container>
+  </div>
+</ng-template>
+
+<section class="icons-header">
+  <div class="icons-background">
+    <div
+      class="icon-bg-wrapper"
+      [class.glow]="blinkIconsRandomly.indexOf(i) >= 0"
+      *ngFor="let shape of blinkIconsFromEssentialSet; let i = index"
+    >
+      <clr-icon [attr.shape]="shape" size="24"></clr-icon>
+    </div>
+  </div>
+
+  <div class="icons-header-wrapper">
+    <h1>Clarity Icons</h1>
+    <p class="icons-header-message">
+      Over 380 beautiful and easy to use SVG icons, flexible with variations to meet your needs
+    </p>
+    <div *ngIf="isOnIconSetsRoute">
+      <a class="btn btn-primary" routerLink="./get-started">GET STARTED</a>
+      <a class="btn btn-primary hidden-sm-down" [href]="allSetsLink">DOWNLOAD ALL SVG SETS</a>
+    </div>
+    <div *ngIf="!isOnIconSetsRoute">
+      <a class="btn btn-primary" routerLink="./get-started">GET STARTED</a>
+      <a class="btn btn-primary" routerLink="./">SEE ICON SETS</a>
+    </div>
+  </div>
+</section>
+
+<div
+  *ngIf="isOnIconSetsRoute && isSearchbarSticky"
+  [@searchBarStickAnimation]="isSearchbarSticky"
+  class="searchbar-container sticky"
+>
+  <div class="icons-search-wrapper">
+    <ng-container *ngTemplateOutlet="searchBarContent"></ng-container>
+  </div>
+</div>
+
+<section class="icons-content">
+  <div class="searchbar-container" *ngIf="isOnIconSetsRoute">
+    <div class="icons-search-wrapper" *ngIf="!isSearchbarSticky">
+      <ng-container *ngTemplateOutlet="searchBarContent"></ng-container>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <nav class="sidenav icons-sidenav" [clr-nav-level]="2">
+      <section class="sidenav-content" [class.on-icon-sets]="isOnIconSetsRoute" [class.sticky]="isSidenavSticky">
+        <section class="nav-group">
+          <label>Overview</label>
+          <nav class="nav-list">
+            <a routerLinkActive="active" routerLink="get-started" class="nav-link">Get Started</a>
+            <a routerLinkActive="active" routerLink="how-to-use" class="nav-link">How To Use</a>
+            <a routerLinkActive="active" routerLink="accessibility" class="nav-link">Accessibility</a>
+            <a routerLinkActive="active" routerLink="api" class="nav-link">API</a>
+          </nav>
+        </section>
+
+        <section class="nav-group">
+          <label>Icon Sets</label>
+          <nav class="nav-list">
+            <a routerLink="./" fragment="core-shapes" class="nav-link">Core</a>
+            <a routerLink="./" fragment="commerce-shapes" class="nav-link">Commerce</a>
+            <a routerLink="./" fragment="essential-shapes" class="nav-link">Essential</a>
+            <a routerLink="./" fragment="media-shapes" class="nav-link">Media</a>
+            <a routerLink="./" fragment="social-shapes" class="nav-link">Social</a>
+            <a routerLink="./" fragment="travel-shapes" class="nav-link">Travel</a>
+            <a routerLink="./" fragment="chart-shapes" class="nav-link">Chart</a>
+            <a routerLink="./" fragment="text-edit-shapes" class="nav-link">Text Edit</a>
+            <a routerLink="./" fragment="technology-shapes" class="nav-link">Technology</a>
+          </nav>
+        </section>
+      </section>
+    </nav>
+
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

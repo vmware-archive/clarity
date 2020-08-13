@@ -1,0 +1,29 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<form clrForm>
+  <clr-datalist-container>
+    <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+    <datalist>
+      <option *ngFor="let item of items" [value]="item"></option>
+    </datalist>
+  </clr-datalist-container>
+</form>
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>basic.html</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="basicHTML" clrLanguage="html"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>basic.ts</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="basicTS" clrLanguage="typescript"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

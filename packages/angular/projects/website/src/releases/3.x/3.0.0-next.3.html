@@ -1,0 +1,77 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Breaking Changes</h2>
+<ul class="list">
+  <li breaking-change>
+    <h6>
+      Sticky row actions in Datagrid (<a href="https://github.com/vmware/clarity/pull/3926" target="_blank">#3926</a>)
+    </h6>
+    <p>
+      This is a visually breaking change. Row controls for actions like master/detail or select row have been moved into
+      a sticky column and will remain visible when columns scroll horizontally.
+    </p>
+  </li>
+  <li breaking-change>
+    <h6>Updated Color Palette (<a href="https://github.com/vmware/clarity/pull/3995" target="_blank">#3995</a>)</h6>
+    <p>
+      The Clarity color palette has been updated to use adjusted hsl values. This is a visually breaking change that
+      will affect hues in the palette that are used in Clarity components. You can view the new color palettes
+      <a routerLink="/documentation/color">here.</a>
+    </p>
+  </li>
+</ul>
+
+<h2>Highlights</h2>
+<ul class="list">
+  <li new-component>
+    <h6>Volume 16 Icons</h6>
+    <p>Volume 16 icons include: more social icons and technology icons.</p>
+  </li>
+  <li>
+    <h6>Vertical Nav Accessibility Improvements</h6>
+    <p>
+      Added aria-expanded attributes on the vertical nav element and on the vertical-nav-group elements to indicate
+      expanded/collapsed state to screen readers (<a href="https://github.com/vmware/clarity/pull/4019" target="_blank"
+        >#4019</a
+      >)
+    </p>
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="“list”">
+  <li bug-fix>
+    Datagrid: Fixed clrDgFilterOpenChange not firing when open is toggled between true / false (<a
+      href="https://github.com/vmware/clarity/pull/4000"
+      target="_blank"
+      >#4000</a
+    >)
+  </li>
+  <li bug-fix>
+    Datepicker: Prevent date input from displaying -1 day for specific timezones on mobile devices (<a
+      href="https://github.com/vmware/clarity/pull/3993"
+      target="_blank"
+      >#3993</a
+    >)
+  </li>
+  <li bug-fix>
+    Datepicker: Prevent date from being deleted when selected on mobile (<a
+      href="https://github.com/vmware/clarity/pull/3992"
+      target="_blank"
+      >#3992</a
+    >)
+  </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="“list”">
+  <li>
+    Added 3.0 SASS rem-sizing variables (<a href="https://github.com/vmware/clarity/pull/3966" target="_blank">#3966</a
+    >)
+  </li>
+  <li>Updated <a href="https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md">contribution guideline</a></li>
+</ul>

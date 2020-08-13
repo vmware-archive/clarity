@@ -1,0 +1,37 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../styles/clarity-imports';
+@import '../icons-get-started/icons-get-started.component';
+
+.clr-example {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  margin: 0;
+  padding: $clr_baselineRem_0_5 0;
+  // without specifying z-index; IE11 is acting goofy.
+  z-index: 2;
+  &.inverse {
+    background: hsl(218, 14%, 30%);
+    margin: 0 0 $clr_baselineRem_2;
+  }
+  clr-icon {
+    width: $clr_baselineRem_1_5;
+    height: $clr_baselineRem_1_5;
+    margin: 0 $clr_baselineRem_0_25;
+  }
+}
+
+.variant-options {
+  line-height: 2.5em;
+  padding: $clr_baselineRem_0_5 0 0;
+}
+.variant-table {
+  td.left:first-child {
+    width: 25%;
+  }
+}

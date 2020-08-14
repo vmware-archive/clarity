@@ -82,6 +82,15 @@ describe('StepperModel', () => {
     expect(stepper.panels[1].status).toBe(AccordionStatus.Inactive);
   });
 
+  it('should not throw error when we could not find first element', () => {
+    /* make sure no panel had index set */
+    stepper = new StepperModel();
+    stepper.addPanel(step1Id);
+    stepper.addPanel(step2Id);
+    stepper.addPanel(step3Id);
+    expect(() => stepper.resetPanels()).not.toThrowAnyError();
+  });
+
   it('should allow user to open and close a previously completed step', () => {
     stepper.navigateToNextPanel(step1Id);
     expect(stepper.panels[0].status).toBe(AccordionStatus.Complete);

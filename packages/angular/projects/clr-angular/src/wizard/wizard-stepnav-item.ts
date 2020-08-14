@@ -34,7 +34,7 @@ import { ClrWizardPage } from './wizard-page';
   `,
   host: {
     '[id]': 'id',
-    '[attr.aria-selected]': 'isCurrent',
+    '[attr.aria-current]': 'stepAriaCurrent',
     '[attr.aria-controls]': 'id',
     '[class.clr-nav-link]': 'true',
     '[class.nav-item]': 'true',
@@ -59,6 +59,10 @@ export class ClrWizardStepnavItem {
   public get id(): string {
     this.pageGuard();
     return this.pageCollection.getStepItemIdForPage(this.page);
+  }
+
+  public get stepAriaCurrent(): string {
+    return this.isCurrent && 'step';
   }
 
   public get isDisabled(): boolean {

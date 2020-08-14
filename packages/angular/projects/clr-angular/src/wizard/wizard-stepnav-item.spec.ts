@@ -290,36 +290,36 @@ export default function (): void {
           expect(myStepnavItem.classList.contains('clr-nav-link')).toBe(true, 'stepnav item has .clr-nav-link class');
         });
 
-        it('aria-selected should be false if page is not current', () => {
-          expect(myStepnavItem.hasAttribute('aria-selected')).toBeTruthy('stepnav item has aria-selected attr');
-          expect(myStepnavItem.getAttribute('aria-selected')).toBe(
+        it('aria-current should be false if page is not current', () => {
+          expect(myStepnavItem.hasAttribute('aria-current')).toBeTruthy('stepnav item has aria-current attr');
+          expect(myStepnavItem.getAttribute('aria-current')).toBe(
             'false',
-            'aria-selected should be false if page not current'
+            'aria-current should be false if page not current'
           );
         });
 
-        it('aria-selected should be true if page is current', () => {
+        it('aria-current should be true if page is current', () => {
           fakeOutPage.current = true;
           fixture.detectChanges();
-          expect(myStepnavItem.hasAttribute('aria-selected')).toBeTruthy('stepnav item has aria-selected attr');
-          expect(myStepnavItem.getAttribute('aria-selected')).toBe(
-            'true',
-            'aria-selected should be true if page is current'
+          expect(myStepnavItem.hasAttribute('aria-current')).toBeTruthy('stepnav item has aria-current attr');
+          expect(myStepnavItem.getAttribute('aria-current')).toBe(
+            'step',
+            'aria-current should be set if page is current'
           );
         });
 
-        it('aria-selected should update with page current state', () => {
-          expect(myStepnavItem.hasAttribute('aria-selected')).toBeTruthy('stepnav item has aria-selected attr');
-          expect(myStepnavItem.getAttribute('aria-selected')).toBe(
+        it('aria-current should update with page current state', () => {
+          expect(myStepnavItem.hasAttribute('aria-current')).toBeTruthy('stepnav item has aria-current attr');
+          expect(myStepnavItem.getAttribute('aria-current')).toBe(
             'false',
-            'aria-selected should be false if page not current'
+            'aria-current should be false if page not current'
           );
           fakeOutPage.current = true;
           fixture.detectChanges();
-          expect(myStepnavItem.hasAttribute('aria-selected')).toBeTruthy('stepnav item has aria-selected attr');
-          expect(myStepnavItem.getAttribute('aria-selected')).toBe(
-            'true',
-            'aria-selected should be true if page is current'
+          expect(myStepnavItem.hasAttribute('aria-current')).toBeTruthy('stepnav item has aria-current attr');
+          expect(myStepnavItem.getAttribute('aria-current')).toBe(
+            'step',
+            'aria-current should be true if page is current'
           );
         });
 
@@ -330,7 +330,7 @@ export default function (): void {
           );
         });
 
-        it('aria-selected have .active class if page is current', () => {
+        it('should have .active class if page is current', () => {
           fakeOutPage.current = true;
           fixture.detectChanges();
           expect(myStepnavItem.classList.contains('active')).toBe(
@@ -397,7 +397,7 @@ export default function (): void {
           );
         });
 
-        it('aria-selected have .complete class if page is completed', () => {
+        it('should have .complete class if page is completed', () => {
           fakeOutPage.completed = true;
           fixture.detectChanges();
           expect(myStepnavItem.classList.contains('complete')).toBe(
@@ -419,7 +419,7 @@ export default function (): void {
           );
         });
 
-        it('aria-selected have .error class if page has an error', () => {
+        it('should have .error class if page has an error', () => {
           fakeOutPage.completed = true;
           fakeOutPage.hasError = true;
           fixture.detectChanges();
@@ -443,7 +443,7 @@ export default function (): void {
           );
         });
 
-        it('aria-selected not have .error class if page has an error and page is not completed', () => {
+        it('should not have .error class if page has an error and page is not completed', () => {
           fakeOutPage.completed = false;
           fakeOutPage.hasError = true;
           fixture.detectChanges();

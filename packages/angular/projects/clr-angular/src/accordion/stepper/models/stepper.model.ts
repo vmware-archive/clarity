@@ -82,6 +82,15 @@ export class StepperModel extends AccordionModel {
 
   private openFirstPanel() {
     const firstPanel = this.getFirstPanel();
+    /**
+     * You need to call updatePanelOrder first to get the correct order,
+     * else the list of panels will not have `index` set and we won't know
+     * how to find the first panel.
+     */
+    if (!firstPanel) {
+      return;
+    }
+
     this._panels[firstPanel.id].open = true;
     this._panels[firstPanel.id].disabled = true;
     this.stepperModelInitialize = true;

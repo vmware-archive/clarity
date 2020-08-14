@@ -17,14 +17,11 @@
 }
 
 .private-host {
-  height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
   color: $cds-token-color-neutral-600;
   font-size: $cds-token-typography-font-size-3;
   display: flex;
   justify-content: center;
-}
-
-slot {
+  align-items: center;
   line-height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
 }
 
@@ -33,14 +30,6 @@ slot {
   height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
   margin-bottom: $cds-token-space-size-1;
   pointer-events: none;
-}
-
-::slotted(cds-icon[shape='exclamation-circle']),
-::slotted(cds-icon[shape='check-circle']),
-::slotted(cds-icon[shape='info-circle']) {
-  @include equilateral($cds-token-space-size-9);
-  margin: calc(-1 * #{$cds-token-space-size-3});
-  margin-bottom: 0;
 }
 
 ::slotted(cds-icon[shape='angle']) {

@@ -82,17 +82,13 @@ export class CdsBaseButton extends LitElement {
 
   protected firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-    this.updateButtonAttributes();
     this.setupAnchorFocus();
     this.setupNativeButtonBehavior();
   }
 
   protected updated(props: Map<string, any>) {
     super.updated(props);
-    // if readonly or disabled attribute was updated, button attributes might need updating
-    if (props.has('readonly') || props.has('disabled')) {
-      this.updateButtonAttributes();
-    }
+    this.updateButtonAttributes();
   }
 
   private setupAnchorFocus() {

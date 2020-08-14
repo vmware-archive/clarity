@@ -22,7 +22,7 @@ export default {
 export const group = () => {
   return html`
     <div cds-layout="vertical gap:lg">
-      <cds-input-group>
+      <cds-input-group layout="vertical">
         <label>Host URL</label>
         <cds-select cds-layout="align:shrink">
           <label>Protocol</label>
@@ -41,7 +41,7 @@ export const group = () => {
         <cds-control-message>Host ID: 123456</cds-control-message>
       </cds-input-group>
 
-      <cds-input-group>
+      <cds-input-group layout="vertical">
         <label>Billing Limit</label>
         <cds-input>
           <label>Billing Limit</label>
@@ -58,7 +58,7 @@ export const group = () => {
         <cds-control-message>Maximum host budget for billing period</cds-control-message>
       </cds-input-group>
 
-      <cds-input-group control-width="shrink">
+      <cds-input-group layout="vertical" control-width="shrink">
         <label>Schedule Deployment</label>
         <cds-date>
           <label>Date for deployment</label>
@@ -90,7 +90,7 @@ export const group = () => {
 
 export const prefixSuffix = () => {
   return html`
-    <div cds-layout="vertical gap:lg">
+    <cds-form-group layout="vertical">
       <cds-input>
         <label>suffix</label>
         <input aria-label="url input with .com suffix" />
@@ -109,13 +109,13 @@ export const prefixSuffix = () => {
         <cds-control-action action="prefix" readonly>https://</cds-control-action>
         <cds-control-action action="suffix" readonly>.com</cds-control-action>
       </cds-input>
-    </div>
+    </cds-form-group>
   `;
 };
 
 export const iconsButtons = () => {
   return html`
-    <div cds-layout="vertical gap:lg">
+    <cds-form-group layout="vertical">
       <cds-input>
         <label>icon</label>
         <input placeholder="example" />
@@ -158,13 +158,13 @@ export const iconsButtons = () => {
           <cds-icon shape="times"></cds-icon>
         </cds-control-action>
       </cds-password>
-    </div>
+    </cds-form-group>
   `;
 };
 
 export const status = () => {
   return html`
-    <div cds-layout="vertical gap:lg">
+    <cds-form-group layout="vertical">
       <cds-input-group>
         <label>Host URL</label>
         <cds-select cds-layout="align:shrink">
@@ -212,6 +212,6 @@ export const status = () => {
         </cds-input>
         <cds-control-message status="success">Host ID: 123456</cds-control-message>
       </cds-input-group>
-    </div>
+    </cds-form-group>
   `;
 };

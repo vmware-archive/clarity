@@ -2082,6 +2082,7 @@ export declare class ClrWizardStepnavItem {
     navService: WizardNavigationService;
     page: ClrWizardPage;
     pageCollection: PageCollectionService;
+    get stepAriaCurrent(): string;
     constructor(navService: WizardNavigationService, pageCollection: PageCollectionService);
     click(): void;
 }

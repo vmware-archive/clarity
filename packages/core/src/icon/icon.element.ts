@@ -11,6 +11,7 @@ import {
   hasStringPropertyChangedAndNotNil,
   Orientations,
   property,
+  internalProperty,
   StatusTypes,
   id,
 } from '@clr/core/internal';
@@ -154,6 +155,13 @@ export class CdsIcon extends LitElement {
   @property({ type: String })
   badge: StatusTypes | 'inherit' | 'warning-triangle' | 'inherit-triangle' | true | false;
 
+  /**
+   * @private
+   * given a pixel value offset any surrounding whitespace within the svg
+   */
+  @internalProperty({ type: Number, reflect: true })
+  innerOffset = 0;
+
   @query('svg') private svg: SVGElement;
 
   @id()
@@ -166,6 +174,13 @@ export class CdsIcon extends LitElement {
   updated(props: Map<string, any>) {
     if (props.has('title')) {
       this.updateSVGAriaLabel();
+    }
+
+    if (props.has('innerOffset') && this.innerOffset > 0) {
+      const dimension = `calc(100% + ${this.innerOffset * 2}px)`;
+      this.svg.style.width = dimension;
+      this.svg.style.height = dimension;
+      this.svg.style.margin = `-${this.innerOffset} 0 0 -${this.innerOffset}`;
     }
   }
 

@@ -15,7 +15,7 @@ import { Sort } from './providers/sort';
 import { StateDebouncer } from './providers/state-debouncer.provider';
 
 export default function(): void {
-  describe('DatagridItemsTrackby directive', function() {
+  describe('DatagridItemsTrackBy directive', function() {
     beforeEach(function() {
       /*
              * Since the DatagridItems element is a template that isn't rendered in the DOM,
@@ -29,6 +29,8 @@ export default function(): void {
       this.fixture = TestBed.createComponent(FullTest);
       this.fixture.detectChanges();
       this.testComponent = this.fixture.componentInstance;
+      this.testComponent.trackBy = (index: number, item: number) => index;
+      this.testComponent.trackByNgFor = (index: number, item: number) => index;
       this.itemsProvider = TestBed.get(Items);
     });
 
@@ -38,18 +40,29 @@ export default function(): void {
 
     it('receives an input for the trackBy option', function() {
       expect(this.itemsProvider.trackBy).toBeUndefined();
-      this.testComponent.trackBy = (index: number, item: number) => index;
       this.fixture.detectChanges();
       expect(this.itemsProvider.trackBy).toBe(this.testComponent.trackBy);
+    });
+
+    it("doesn't take the ngFor trackBy option", function() {
+      expect(this.itemsProvider.trackBy).toBeUndefined();
+      this.fixture.detectChanges();
+      expect(this.itemsProvider.trackBy).not.toBe(this.testComponent.trackByNgFor);
     });
   });
 }
 
-@Component({ template: `<div *ngFor="let n of numbers; trackBy: trackBy">{{n}}</div>` })
+@Component({
+  template: `
+  <div *ngFor="let n of numbers; trackBy: trackByNgFor">{{n}}</div>
+  <div *clrDgItems="let n of numbers; trackBy: trackBy">{{n}}</div>
+`,
+})
 class FullTest {
   @ViewChild(ClrDatagridItems) datagridItems: ClrDatagridItems<number>;
 
   numbers = [1, 2, 3, 4, 5];
 
   trackBy: (index: number, item: number) => any;
+  trackByNgFor: (index: number, item: number) => any;
 }

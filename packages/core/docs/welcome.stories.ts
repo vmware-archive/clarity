@@ -23,7 +23,7 @@ export const core = () => {
       </h1>
       <h2 cds-text="section">Web Component Implementation of the Clarity Design System</h2>
 
-      <div cds-layout="vertical gap:lg container:xs" cds-text="body left">
+      <div cds-layout="vertical gap:lg container:xs" cds-text="left">
         <p cds-text="body">
           Clarity Core is a Web Component implementation of the
           <a href="https://clarity.design">Clarity Design System</a>. Clarity Core provides a set of reusable UI

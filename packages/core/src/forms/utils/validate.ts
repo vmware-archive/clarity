@@ -8,19 +8,18 @@ import { CdsControlMessage } from '../control-message/control-message.element';
 import { CdsControl } from '../control/control.element';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
-export enum ValidityStateKey {
-  valueMissing = 'valueMissing',
-  badInput = 'badInput',
-  customError = 'customError',
-  patternMismatch = 'patternMismatch',
-  rangeOverflow = 'rangeOverflow',
-  rangeUnderflow = 'rangeUnderflow',
-  stepMismatch = 'stepMismatch',
-  tooLong = 'tooLong',
-  tooShort = 'tooShort',
-  typeMismatch = 'typeMismatch',
-  valid = 'valid',
-}
+export type ValidityStateKey =
+  | 'valueMissing'
+  | 'badInput'
+  | 'customError'
+  | 'patternMismatch'
+  | 'rangeOverflow'
+  | 'rangeUnderflow'
+  | 'stepMismatch'
+  | 'tooLong'
+  | 'tooShort'
+  | 'typeMismatch'
+  | 'valid';
 
 export function syncHTML5Validation(control: CdsControl, messages: CdsControlMessage[]) {
   messages

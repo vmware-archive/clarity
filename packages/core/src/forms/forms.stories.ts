@@ -23,7 +23,7 @@ import { useEffect } from '@storybook/client-api';
 
 export default {
   title: 'Forms (Preview)/Forms/Stories',
-  component: 'cds-form',
+  component: 'cds-form-group',
   parameters: {
     options: { showPanel: true },
     design: {

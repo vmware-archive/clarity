@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Using Icons" />
+
+# Internal Icon Usage
+
+To get the optimal performance, we only import and register the icons necessary
+within a given component. Consumers of Clarity Icons would use the following:
+
+```typescript
+import { ClarityIcons, successStandardIcon } from '@clr/core/icon';
+
+ClarityIcons.addIcons(successStandardIcon);
+```
+
+The icon service and icons are all exported in the `index.ts`, the root
+`@clr/core/icon` entry point. This makes it easy to use but breaks certain performance
+characteristics internally. If a consumer is using a component via a CDN
+importing the compiled `index.js`, the browser will resolve all imports within
+that file. This means the browser will load hundreds of icons regardless of whether
+the user was using an alert with one icon.
+
+This issue is only when using native modules without a module bundler. However
+to keep our components as compatible as possible with all options internally we
+must use a slightly different import than our typical users.
+
+```typescript
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
+```
+
+By importing the direct path, we bypass the `index .js` file to prevent
+a large module resolution when using native ESM. This is an internal-only
+optimization, and users of the icons should continue to use the root `@clr/core/icon` import.
+
+We may be able to change this in the future, but since it's possibly a breaking
+change, for now, we import explicitly.
+
+Once imported, we must register the icon within the Constructor of the component.
+
+```typescript
+import { ClarityIcons } from '@clr/core/icon/icon.service.js';
+import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
+
+export class CdsMyComponent {
+  constructor() {
+    super();
+    ClarityIcons.addIcons(successStandardIcon);
+  }
+}
+```
+
+If `ClarityIcons.addIcons()` is called outside the component Constructor in the
+module file, it may be removed by any code tree-shaking optimizations as it is a
+side effect call. By keeping it within the Constructor, we guarantee that the
+icon will be added and not removed by aggressive tree shaking.

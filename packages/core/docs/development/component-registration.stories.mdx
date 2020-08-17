@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Registering Components" />
+
+# Registering Components
+
+To use a component, it must be registered with the Custom Elements Registry.
+To ensure we preserve tree-shaking, we must isolate the registration side effect
+to a single `register.js` file. We signal to bundler tools like Webpack and Rollup
+that only this file has side effects, and the rest is safe to tree shake. We do
+this by setting the `sideEffects` key in the `package.json` of the component.
+
+```json
+// @clr/core/alert/package.json
+{
+  "name": "@clr/core/alert",
+  "sideEffects": ["./register.js"]
+}
+```
+
+In the `register.ts` file we import any other component dependencies including
+other core component side effect registrations.
+
+```typescript
+// @clr/core/alert/register.js
+import '@clr/core/button/register.js';
+import '@clr/core/icon/register.js';
+import '@clr/core/internal-components/close-button/register.js';
+import { registerElementSafely } from '@clr/core/internal';
+import { CdsAlertActions } from './alert-actions.element.js';
+import { CdsAlertGroup } from './alert-group.element.js';
+import { CdsAlert } from './alert.element.js';
+
+registerElementSafely('cds-alert', CdsAlert);
+registerElementSafely('cds-alert-actions', CdsAlertActions);
+registerElementSafely('cds-alert-group', CdsAlertGroup);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cds-alert': CdsAlert;
+    'cds-alert-actions': CdsAlertActions;
+    'cds-alert-group': CdsAlertGroup;
+  }
+}
+```
+
+When registering the component we do not use `customElements.define()`. This
+will throw an exception if called more than once on the same component tag.
+Instead, we use `registerElementSafely` which will check and warn that it has
+been registered prior. The `registerElementSafely` also adds the element to
+our global `window.CDS` API, which we use for diagnosing potential issues,
+opened on Github.

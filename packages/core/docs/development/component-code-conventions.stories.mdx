@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Component Code Conventions" />
+
+# Component Code Conventions
+
+## TS API Docs
+
+- Components should follow the appropriate TSDoc summary convention as well as proper TSDoc comments for properties and methods. See existing components for convention examples. These comments allow us to generate the API documentation for all Core components.
+
+```typescript
+/**
+ * Dropdown, example test component. Do not use it in production.
+ *
+ * @element `cds-test-dropdown`
+ * @slot - Content slot for dropdown content
+ * @cssprop `--border-color`
+ * @cssprop `--background`
+ * @cssprop `--color`
+ */
+export class CdsDropdown extends LitElement {}
+```
+
+## Generic Code Conventions
+
+- Core Web Components are built using [lit-element](https://lit-element.polymer-project.org/)
+- One Component per file.
+- Prefer setting properties over attributes.
+- Built-in component style options should be exposed via attributes and/or CSS Custom Properties
+  Custom Properties. More details on themes will be coming soon.
+- The Component class should be prefixed with `Cds`. Example `export class CdsModal { }`
+- Components should rarely if ever, expose public methods as this encourages managing state within the Component.
+
+## Defining Properties and Custom Events
+
+Properties should only reflect into attributes if expecting primitive values
+like `string`, `number`, or `boolean`. Use the provided `@property` decorator
+from `@clr/core/internal` as this provides the same lit-element decorator with
+our project defaults. All public properties should typically have a default value.
+
+Input properties should use our built-in `@property` decorator which extends
+the lit-element decorator by adding our preferred defaults.
+
+```typescript
+import { property } from '@clr/core/internal';
+
+@property({ type: Boolean }) open = false;
+```
+
+Custom events should use our built-in `@event` decorator as it enforces best
+practices as well as providing a generic type interface to the event.
+
+```typescript
+import { event } from '@clr/core/internal';
+
+@event() private closeChange: EventEmitter<boolean>;
+
+this.closeChange.emit(true);
+```
+
+- Custom events, by default, should not bubble events to the global document.
+- Custom events should not re-emit events when an input property value changes.
+- Custom events should be used to communicate to the application when a user
+  interacts with the component UI.

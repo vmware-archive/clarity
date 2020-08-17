@@ -1,7 +1,5 @@
 <style>
-  .sidebar-item[id*='internal'],
-  .sidebar-item[id*='experimental'],
-  [data-title='Internal APIs'] {
+  .sidebar-item[id*='experimental'] {
     display: none;
   }
 
@@ -9,13 +7,8 @@
     min-width: 240px;
   }
 
-  body[localhost] .sidebar-item[id*='internal'],
   body[localhost] .sidebar-item[id*='experimental'] {
     display: flex;
-  }
-
-  body[localhost] [data-title='Internal APIs'] {
-    display: block;
   }
 </style>
 <script>

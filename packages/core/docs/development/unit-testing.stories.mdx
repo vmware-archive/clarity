@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Unit Testing" />
+
+# Unit Testing
+
+- We expect extensive unit test coverage of any code submitted. See existing
+  components for test examples. The build enforces code coverage. You can
+  run code coverage checks using the `core:` npm scripts defined in the
+  `package.json`.
+
+- Unit tests should not duplicate coverage. In particular, avoid multiple unit
+  tests failing for the same error.
+
+- Do not test several components at the same time, unless you're explicitly
+  writing an integration test.
+
+- We run our unit tests in Chrome with native ESM modules. Currently, any
+  imports will have to be added to the [import map file](https://github.com/vmware/clarity/blob/master/packages/core/import-map.importmap).
+  This file tells Chrome how to resolve bare module import names to the local
+  file path. This will be automated in the near future. Example:
+
+```json
+// importmap.importmap
+"lit-html": "/base/node_modules/lit-html/lit-html.js",
+"@clr/core/button": "/base/dist/core/button/index.js",
+"@clr/core/button/register.js": "/base/dist/core/button/register.js",
+```

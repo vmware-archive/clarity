@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Imports and Dependencies" />
+
+# Imports and Dependencies
+
+Core cannot take on any third-party dependencies other than the dependencies
+defined in the project already. Core also cannot have any dependencies on
+Clarity Angular. This restriction is to ensure proper tree shaking and performance standards.
+
+Core has the following direct dependencies:
+
+- [lit-element](https://lit-element.polymer-project.org/) is a
+  lightweight base class that provides syntactic sugar to Web Components.
+- [Ramda JS](https://ramdajs.com/) for common functional utilities. To use
+  Currying, use the `curryN` function for TypeScript support.
+
+## Internal Imports
+
+When developing a Core Component, it's important to know the import modules available.
+Each component is treated as a separate entry point. This means each component can
+be imported independently without needing to share the same import path. Entry points
+enforce a strong boundary of separation between component responsibilities and
+help tools better tree shake.
+
+Public components should remain on the root of the src directory to ensure the
+import path remains consistent throughout the library.
+
+```bash
+/src
+  /alert
+  /button
+  /modal
+  /input
+  /radio
+```
+
+```typescript
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/modal/register.js';
+import '@clr/core/input/register.js';
+import '@clr/core/radio/register.js';
+```
+
+## Shared Component Code
+
+Any common shared code between component entry points should exist within the `@clr/core/internal` module.
+
+```typescript
+// cool-widget.element.ts
+import { SharedUtil } from '@clr/core/internal';
+import { CdsButton } from '@clr/core/button';
+
+export class CdsCoolWidget {}
+```
+
+Any component-specific code can be kept within the components directory but should
+be referenced with a local path ending with `.js`.
+
+```typescript
+// cool-widget.element.ts
+import { SharedUtil } from '@clr/core/internal';
+import { CdsButton } from '@clr/core/button';
+import { componentSpecificUtil } from './utils.js';
+
+export class CdsCoolWidget {}
+```
+
+The `.js` is necessary as TypeScript [does not append the extension](https://github.com/microsoft/TypeScript/issues/16577)
+when compiled to plain JavaScript. The `.js` extension is required for valid
+ES modules. The file is referred to with a local path as this exists within
+the component directory itself and does not need to be publicly exposed on the
+bare module import.
+
+## Shared Internal Components
+
+Any components that may be shared between public API components should be their
+own entry point but moved to `internal-components`. By keeping each internal
+component an isolated entry point/registry, we can ensure optimal tree shaking.
+
+Internal components should be prefixed with `cds-internal` to make it clear
+to users what components are safe for use. Internal components can be documented
+under the Internal/API section in storybook. See the `cds-internal-close-button`
+for an example to get started with.
+
+```bash
+/src
+  /alert
+  /button
+  /internal
+  /internal-components
+    /close-button
+```
+
+```typescript
+import '@clr/core/alert/register.js';
+import '@clr/core/button/register.js';
+import '@clr/core/internal-components/close-button/register.js';
+```
+
+```html
+<cds-internal-close-button></cds-internal-close-button>
+```

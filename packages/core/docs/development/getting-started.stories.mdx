@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Getting Started" />
+
+# Getting Started - Contributing to Clarity Core
+
+### Code Conventions, Patterns, and Internal APIs
+
+To ensure the highest quality and maintainability for Clarity Web Components, we
+adhere to the following guidelines for our Core Web Component codebase.
+
+<cds-alert-group status="warning" cds-layout="m-t:lg">
+  <cds-alert>
+    Internal APIs are not to be used in application code. They are for the use of
+    Clarity Components only and do not follow our standard release cycle.
+  </cds-alert>
+</cds-alert-group>
+
+## Philosophy
+
+- Web standards over frameworks.
+- Lightweight, only ship what you need.
+- Accessible by default.
+- Minimally Stateful Components
+- Automated/Build enforced code conventions and performance.
+
+## New Components
+
+- New components should go through our standard [Development Contribution Guidelines](./../DEVELOPMENT_CONTRIBUTION.md).
+  New components that have an accepted proposal and API design will need to follow
+  the code conventions, as described in this outline. New components will need to
+  have a new Storybook Story for the full API, as well as any additional common
+  use cases as additional stories.
+
+## Project Design
+
+- Components should be as stateless as possible – leaning on the host application framework to manage state.
+- Stateless components prevent "escape hatches" or additional APIs added to change the default stateful behavior.
+- Stateless internal utilities should default to being pure JavaScript functions instead of Classes.
+- Stateful logic between components when necessary should be encapsulated in a
+  Class following our Service conventions described in this document.
+
+## Learning Resources
+
+- https://developers.google.com/web/fundamentals/web-components
+- https://lit-element.polymer-project.org
+- https://custom-elements-everywhere.com
+
+
+## Starting Up
+
+1. Clone the repository https://github.com/vmware/clarity
+2. Ensure you have yarn 1.x (classic) installed https://classic.yarnpkg.components
+3. In the root directory run `yarn`
+4. Start project `cd projects/core && yarn run start`. This starts storybook and the build watcher.
+5. Run Unit test watcher `cd projects/core && yarn run test:watch`
+
+To run a full repository build in the root directory run the following:
+
+```bash
+yarn run build && yarn run build:website
+```
+
+This is the same build tasks ran by the CI check-in process.

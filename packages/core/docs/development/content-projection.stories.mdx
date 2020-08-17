@@ -1,0 +1,87 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Content Projection" />
+
+# Content Projection (Slots)
+
+<cds-alert-group status="warning" cds-layout="m-y:lg">
+  <cds-alert>
+    Slot behavior is similar to ng-content in Angular. Treat slot as if it does not exist at runtime.
+  </cds-alert>
+</cds-alert-group>
+
+Don't use slot selectors in JS or CSS as it's just for marking where the content
+will be projected. Important note IE11 also will remove the `<slot>` element all
+together due to polyfill limitations.
+
+We do not use named slots as a public API but rather provide wrapper components.
+
+```html
+<cds-modal>
+  <cds-modal-header></cds-modal-header>
+  <cds-modal-body></cds-modal-body>
+  <cds-modal-actions></cds-modal-actions>
+</cds-modal>
+```
+
+Internally we use named slots but automatically add the named slot.
+
+```html
+<!-- cds-modal template -->
+<slot name="header"></slot>
+<slot></slot>
+<slot name="actions"></slot>
+```
+
+```typescript
+// cds-modal-actions
+connectedCallback() {
+  super.connectedCallback();
+  this.setAttribute('slot', 'actions');
+}
+```
+
+The Web Component can apply styles to content provided by the application
+using the `::slotted` CSS selector. However, we should avoid applying any
+styles that may alter the provided content's layout. The host application should
+manage layout as we do not want to assume layout use cases. A component can provide
+a default layout for projected content but ensure that custom provided
+layouts still behave as expected.
+
+```html
+<cds-modal>
+  <div cds-layout="vertical gap:md">
+    ...
+  </div>
+</cds-modal>
+```
+
+The `slot` tag can vary in style behavior between browsers. Most treat the
+tag with `display: contents` style or similar behavior. This behavior treats as
+if the tag does not exist so CSS styles will ignore it.
+
+```scss
+// my-component css
+.wrapper {
+  display: flex;
+  gap: 12px;
+}
+```
+
+```html
+<!-- my-component html -->
+<div class="wrapper">
+  <slot></slot>
+</div>
+```
+
+Each item projected will have the set 12px gap in the flexbox parent. The slot
+is ignored and not treated as the direct child of the `.wrapper` element.
+
+```html
+<my-component>
+  <p>item</p>
+  <p>item</p>
+  <p>item</p>
+</my-component>
+```

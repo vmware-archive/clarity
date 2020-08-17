@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Package" />
+
+# Publishing and Package Artifacts
+
+Core ships modern ESM2020+ JavaScript under the `@clr/core` name on [NPM](https://www.npmjs.com/package/@clr/core).
+We do not compile down to ES5 or bundle/minify the code. The recommended way to
+ship Web Components is modern ES code and allow the app to compile/bundle as
+needed. This strategy gets us the broadest amount of tooling support. Here are
+some excellent resources and deploy checklists on the topic:
+
+- https://open-wc.org/publishing/
+- https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm/
+
+By avoiding bundles, we can support performant build-less options with CDNs.
+
+- https://unpkg.com/  (good generic CDN with module resolution)
+- https://skypack.dev (this has excellent performance characteristics)
+- https://www.snowpack.dev (a local tool for module resolution but no bundling/build step needed)
+
+It is recommended consumers use a build step to tree-shake and optimize their
+application build. This will help ensure dependencies are deduped, and peer
+dependencies are correctly managed.
+
+- https://angular.io/guide/deployment#differential-loading
+- https://cli.vuejs.org/guide/browser-compatibility.html#modern-mode
+- https://cli.vuejs.org/config/#transpiledependencies
+- https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md
+
+## Library Authors using Core
+
+<cds-alert-group status="danger" cds-layout="m-y:lg">
+  <cds-alert>Custom Element tags names are global!</cds-alert>
+</cds-alert-group>
+
+If you ship a library that contains Clarity Core Web Components as a dependency,
+be aware that custom element tags names are global to the DOM. To prevent version
+conflicts, you will need to list Core as a peer dependency in your library.
+This will help applications at build time resolve to a single shared version
+of the Core components. Peer dependencies are currently the only way to manage
+dependencies with Web Components. This is due to Web Components being registered
+in the global scope. See discussion for Custom Elements Scoped Registry support
+https://github.com/w3c/webcomponents/issues/716

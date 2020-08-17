@@ -1,0 +1,107 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Accessibility" />
+
+# Accessibility
+
+Core components follow the same Accessibility standards as clr-angular.
+They should try to encapsulate a11y best practices with few exceptions.
+
+## Common Strings and i18n
+
+Currently, we use a `CommonStrings` service similar to the one in clr-angular.
+In version 5, we will be updating all components to use a new single unified API
+that will allow internal strings to be set for a11y and i18n. This new API Also
+will allow not only global level common strings but component instance-specific
+strings.
+
+- Tracking Issue https://github.com/vmware/clarity/issues/4502
+- Demo https://stackblitz.com/edit/typescript-kbwbop
+
+## Aria Attributes
+
+Most aria labels can and should be safely encapsulated within the component.
+Encapsulated aria attributes should only reflect the state given
+to the component and remain stateless, not tracking any state. Example:
+
+```html
+<cds-tag>hello there</cds-tag>
+
+<cds-tag readonly>hello there</cds-tag>
+```
+
+When rendered the following output is given:
+
+```html
+<cds-tag tabindex="0" role="button">hello there</cds-tag>
+
+<cds-tag readonly>hello there</cds-tag>
+```
+
+## Aria Live
+
+The `aria-live` attributes should never be used within a Core component. Due to
+the risk of triggering to many announcements, the use of `aria-live` must be
+managed by the application. Application developers can use `aria-live`
+
+```html
+<span cds-layout="display:screen-reader-only" aria-live="polite">
+  This will be announced by the screen reader but visibly hidden.
+</span>
+```
+
+## Element Associations with DescribedBy
+
+Using associative aria elements such as `aria-describedby` or `id` + `for` are
+safe to use within one rule. The associated elements must exist within the same
+DOM boundary and not cross between the light or shadow DOM. Example:
+
+```html
+<cds-input label="my cool label">
+  <input type="text" />
+</cds-input>
+```
+
+The `cds-input` could take a label as an input property and apply the text to the
+label with an associated id. However, in the example, the HTML input exists within
+the light DOM and projected into the component slot. The label element would exist
+within the shadow DOM and template of the component.
+
+```html
+<cds-input label="my cool label">
+  <shadow-root>
+    <label for="some-id">${this.label}</label>
+    <!-- this is in the shadow DOM -->
+    <slot></slot>
+  </shadow-root>
+  <input type="text" />
+  <!-- this is in the light DOM -->
+</cds-input>
+```
+
+```typescript
+
+connectedCallback() {
+  this.querySelector('input').id = 'some-id';
+}
+```
+
+This breaks the rule and will fail to link the label and input. Also, this is a
+poor API design as it restricts the label only to have basic string text. An
+improvement would be to move both the label and input to the same DOM level.
+
+```html
+<cds-input>
+  <label>my cool label</label>
+  <input type="text" />
+</cds-input>
+```
+
+The component then can query and set the appropriate attributes.
+
+```html
+<cds-input>
+  <label for="some-id">my cool label</label>
+  <input type="text" id="some-id" />
+</cds-input>
+```

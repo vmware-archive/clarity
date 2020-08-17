@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Code Conventions" />
+
+# Code Conventions
+
+In general, if possible, any code convention should be enforced by the build
+system and not require explicit documentation. The following are conventions
+not currently enforced by our build.
+
+## Filenames
+
+- Components should end with an `element` suffix.
+  `packages/core/my-toggle/my-toggle.element.ts`.
+
+- Stateless Utilities should be named appropriately in the `utils` directory.
+  `packages/core/internal/utils/register.ts`.
+
+- Stateful Utilities should be named with a `service` suffix in the `services`
+  directory. `packages/core/internal/services/common-strings.service.ts`.
+
+- Common Interfaces should be named with an `interface` suffix in the `interfaces`
+  directory. `packages/core/internal/interfaces/types.interface.ts`.
+
+- Common Enums should be named with an `enum` suffix in the `enums`
+  directory. `packages/core/internal/enums/key-events.enum.ts`.
+
+- Common Functions should have an appropriate file name with no prefix or suffix
+  that describes the functionality.
+
+## Naming and TypeScript Conventions
+
+- Function Utilities should be named by their sole responsibility.
+  `function myUtil() { }`
+
+- Stateful Class Services should be suffixed with `Service`.
+  `class MyUtilService { }`
+
+- Private properties **not** be prefixed with a `_` but denoted with the `private` keyword.
+  Long term when EcmaScript [private fields](https://github.com/tc39/proposal-class-fields)
+  and [private methods](https://github.com/tc39/proposal-private-methods) land
+  we will migrate to use the native syntax.
+
+  There are two exceptions to this rule, and they're the only cases where we allow
+  the use of an `_` prefix: A private property is hidden behind a getter
+  (and maybe a setter) that has the same name.
+
+  ```typescript
+  private _open: boolean;
+  get open(): boolean;
+  set open(value: boolean);
+  ```
+
+- Public properties and methods should not need `public` keyword as that is
+  the default behavior.
+
+  ```typescript
+  open = false;
+  next() { ... }
+  private name: string;
+  ```
+
+- Constants internal to Clarity are named following the `SCREAMING_SNAKE_CASE`
+  convention.
+
+- Enum values are `SCREAMING_SNAKE_CASE` because they are constant. For
+  instance: `KeyboardKeys.ARROW_DOWN`.

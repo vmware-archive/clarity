@@ -42,6 +42,7 @@
     "url": "git@github.com:vmware/clarity.git"
   },
   "dependencies": {
+    "@types/resize-observer-browser": "^0.1.3",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "ramda": "^0.27.0",
@@ -76,7 +77,6 @@
     "@types/jasminewd2": "2.0.6",
     "@types/node": "^12.11.1",
     "@types/ramda": "0.27.11",
-    "@types/resize-observer-browser": "^0.1.3",
     "@typescript-eslint/eslint-plugin": "2.30.0",
     "@typescript-eslint/parser": "2.30.0",
     "bundlesize": "1.0.0-beta.2",

@@ -18,7 +18,11 @@ import { By } from '@angular/platform-browser';
 import { ComboboxContainerService } from './providers/combobox-container.service';
 
 @Component({
-  template: ` <clr-combobox-container></clr-combobox-container> `,
+  template: `
+    <clr-combobox-container>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-combobox-container>
+  `,
 })
 class NoLabelTest {}
 

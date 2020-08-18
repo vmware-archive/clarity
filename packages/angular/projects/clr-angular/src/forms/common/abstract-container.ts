@@ -14,6 +14,7 @@ import { ClrLabel } from './label';
 import { ControlClassService } from './providers/control-class.service';
 import { Subscription } from 'rxjs';
 import { IfControlStateService, CONTROL_STATE } from './if-control-state/if-control-state.service';
+import { ClrControlSuccess } from './success';
 
 @Directive()
 export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy {
@@ -24,12 +25,17 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
   control: NgControl;
   private state: CONTROL_STATE;
 
+  /**
+   * Search for `ClrSuccessComponent` to know do we want to display clr-success or not
+   */
+  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
+
   get showHelper(): boolean {
-    return this.state === CONTROL_STATE.NONE;
+    return this.state === CONTROL_STATE.NONE || (!this.showInvalid && !this.controlSuccessComponent);
   }
 
   get showValid(): boolean {
-    return this.state === CONTROL_STATE.VALID;
+    return this.state === CONTROL_STATE.VALID && !!this.controlSuccessComponent;
   }
 
   get showInvalid(): boolean {
@@ -56,6 +62,17 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
   }
 
   controlClass() {
+    /**
+     * Decide what subtext to display:
+     *   - element is valid but no success component is implemented - show helper
+     *   - element is valid and success component is implemented - show success
+     */
+    if (!this.controlSuccessComponent && this.state === CONTROL_STATE.VALID) {
+      return this.controlClassService.controlClass(CONTROL_STATE.NONE, this.addGrid());
+    }
+    /**
+     * Pass form control state and return string of classes to be applyed to the container.
+     */
     return this.controlClassService.controlClass(this.state, this.addGrid());
   }
 

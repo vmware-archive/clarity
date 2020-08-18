@@ -17,6 +17,7 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
       <option value="1">one</option>
       <option value="2">two</option>
     </select>
+    <clr-control-helper>Helper text</clr-control-helper>
   </clr-select-container>`,
 })
 class NoLabelTest {}

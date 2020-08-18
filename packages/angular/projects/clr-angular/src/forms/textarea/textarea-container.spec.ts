@@ -30,6 +30,7 @@ class SimpleTest {
 @Component({
   template: ` <clr-textarea-container>
     <textarea clrTextarea [(ngModel)]="model"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
   </clr-textarea-container>`,
 })
 class NoLabelTest {}

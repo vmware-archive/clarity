@@ -30,6 +30,7 @@ class SimpleTest {
 @Component({
   template: ` <clr-input-container>
     <input clrInput name="model" [(ngModel)]="model" />
+    <clr-control-helper>Helper text</clr-control-helper>
   </clr-input-container>`,
 })
 class NoLabelTest {

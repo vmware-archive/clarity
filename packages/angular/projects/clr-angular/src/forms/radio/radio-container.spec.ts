@@ -21,7 +21,11 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
-  template: ` <clr-radio-container></clr-radio-container> `,
+  template: `
+    <clr-radio-container>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-radio-container>
+  `,
 })
 class NoLabelTest {}
 

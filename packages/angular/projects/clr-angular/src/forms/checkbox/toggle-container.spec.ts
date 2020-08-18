@@ -21,7 +21,11 @@ import { ClrCheckboxWrapper } from './checkbox-wrapper';
 import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests/container.spec';
 
 @Component({
-  template: ` <clr-toggle-container></clr-toggle-container> `,
+  template: `
+    <clr-toggle-container>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-toggle-container>
+  `,
 })
 class NoLabelTest {}
 

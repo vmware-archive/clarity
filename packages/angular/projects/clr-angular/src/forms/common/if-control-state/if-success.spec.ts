@@ -15,7 +15,6 @@ import { ClrIfSuccess } from './if-success';
 import { IfControlStateService } from './if-control-state.service';
 
 const successMessage = 'SUCCESS_MESSAGE';
-const minLengthMessage = 'MIN_LENGTH_MESSAGE';
 
 @Component({ template: `<div *clrIfSuccess></div>` })
 class InvalidUseTest {}
@@ -25,15 +24,6 @@ class InvalidUseTest {}
   providers: [IfControlStateService, NgControlService],
 })
 class GeneralSuccessTest {}
-
-@Component({
-  template: `
-    <clr-control-success *clrIfSuccess="'required'">${successMessage}</clr-control-success>
-    <clr-control-success *clrIfSuccess="'minlength'">${minLengthMessage}</clr-control-success>
-  `,
-  providers: [IfControlStateService, NgControlService],
-})
-class SpecificSuccessTest {}
 
 export default function (): void {
   describe('ClrIfSuccess', () => {
@@ -68,35 +58,6 @@ export default function (): void {
       it('displays the success message after touched', () => {
         expect(fixture.nativeElement.innerHTML).not.toContain(successMessage);
         const control = new FormControl('abc', Validators.required);
-        control.markAsTouched();
-        ngControlService.setControl(control);
-        ifControlStateService.triggerStatusChange();
-        fixture.detectChanges();
-        expect(fixture.nativeElement.innerHTML).toContain(successMessage);
-      });
-    });
-
-    describe('specific success', () => {
-      let fixture, ifControlStateService, ngControlService;
-
-      beforeEach(() => {
-        TestBed.configureTestingModule({
-          imports: [ClrIconModule, FormsModule],
-          declarations: [ClrInput, ClrControlSuccess, ClrInputContainer, ClrIfSuccess, SpecificSuccessTest],
-        });
-        fixture = TestBed.createComponent(SpecificSuccessTest);
-        fixture.detectChanges();
-        ngControlService = fixture.debugElement.injector.get(NgControlService);
-        ifControlStateService = fixture.debugElement.injector.get(IfControlStateService);
-      });
-
-      it('hides the success initially', () => {
-        expect(fixture.nativeElement.innerHTML).not.toContain(successMessage);
-      });
-
-      it('displays the success when the specific success is defined', () => {
-        expect(fixture.nativeElement.innerHTML).not.toContain(successMessage);
-        const control = new FormControl('abcde', [Validators.required, Validators.minLength(5)]);
         control.markAsTouched();
         ngControlService.setControl(control);
         ifControlStateService.triggerStatusChange();

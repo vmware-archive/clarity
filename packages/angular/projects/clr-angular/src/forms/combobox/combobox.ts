@@ -88,6 +88,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   protected index = 1;
 
   invalid = false;
+  focused = false;
 
   constructor(
     vcr: ViewContainerRef,
@@ -211,6 +212,11 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     if (this.control.control.updateOn === 'blur') {
       this.control.control.updateValueAndValidity();
     }
+    this.focused = false;
+  }
+
+  onFocus() {
+    this.focused = true;
   }
 
   getSelectionAriaLabel() {

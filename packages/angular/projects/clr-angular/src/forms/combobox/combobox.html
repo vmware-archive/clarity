@@ -61,6 +61,7 @@
       class="clr-input clr-combobox-input"
       [(ngModel)]="searchText"
       (blur)="onBlur()"
+      (focus)="onFocus()"
       [attr.aria-expanded]="openState"
       [attr.aria-owns]="ariaOwns"
       aria-haspopup="listbox"
@@ -83,6 +84,8 @@
   >
     <clr-icon shape="caret down" size="12"></clr-icon>
   </button>
+
+  <div class="clr-focus-indicator" [class.clr-focus]="focused"></div>
 </div>
 
 <!-- Both close handlers are handled manually due to issues in Edge browser.

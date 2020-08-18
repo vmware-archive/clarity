@@ -10,6 +10,23 @@
     align-items: stretch;
   }
 
+  // Focus indicator, this is a custom implementation compared with other controls due to DOM structure and potential growth of height
+  .clr-focus-indicator {
+    @include css-var(background-color, clr-forms-focused-color, $clr-forms-focused-color, $clr-use-custom-properties);
+    height: $clr_baselineRem_2px;
+    width: 0;
+    transition: width 0.2s ease;
+    position: absolute;
+    bottom: -$clr_baselineRem_1px;
+    left: 0;
+  }
+  .clr-focus {
+    width: 100%;
+  }
+  .clr-error .clr-focus-indicator {
+    @include css-var(background-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
+  }
+
   .clr-combobox-wrapper {
     position: relative;
 
@@ -35,23 +52,7 @@
       $clr-use-custom-properties
     );
 
-    border-bottom: $clr-global-borderwidth solid $clr-forms-border-color;
-
-    // the border color is on the component; we don't want it on the input itself
-    .clr-input.clr-combobox-input:focus {
-      background: none;
-    }
-
-    // ideally I want to just use &:focus-within, but cross-browser support is limited
-    // for now, we programmatically add/remove .clr-focus class to achieve this
-    &:focus-within,
-    &.clr-focus {
-      border-bottom: $clr_baselineRem_2px solid $clr-forms-focused-color;
-    }
-
-    &.invalid,
-    &.invalid:focus,
-    &.clr-focus.invalid {
+    &.invalid {
       border-bottom-color: $clr-forms-invalid-color;
     }
 

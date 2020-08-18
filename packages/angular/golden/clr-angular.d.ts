@@ -293,6 +293,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     control: NgControl;
     get displayField(): string;
     protected el: ElementRef;
+    focused: boolean;
     focusedPill: any;
     get id(): string;
     protected index: number;
@@ -319,6 +320,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onBlur(): void;
+    onFocus(): void;
     onKeyUp(event: KeyboardEvent): void;
     registerOnChange(onChange: any): void;
     registerOnTouched(onTouched: any): void;

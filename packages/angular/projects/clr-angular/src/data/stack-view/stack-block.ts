@@ -26,13 +26,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       [attr.aria-level]="ariaLevel"
       [attr.aria-setsize]="ariaSetsize"
     >
-      <clr-icon
-        shape="caret"
-        class="stack-block-caret"
-        *ngIf="expandable"
-        [attr.dir]="caretDirection"
-        [attr.title]="caretTitle"
-      ></clr-icon>
+      <clr-icon shape="caret" class="stack-block-caret" *ngIf="expandable" [attr.dir]="caretDirection"></clr-icon>
       <span class="clr-sr-only" *ngIf="getChangedValue">{{ commonStrings.keys.stackViewChanged }}</span>
       <div class="stack-view-key">
         <!-- This structure changed to fix #3567 and the a11y request was to move away from dl's -->
@@ -145,10 +139,6 @@ export class ClrStackBlock implements OnInit {
 
   get caretDirection(): string {
     return this.expanded ? 'down' : 'right';
-  }
-
-  get caretTitle(): string {
-    return this.expanded ? this.commonStrings.keys.collapse : this.commonStrings.keys.expand;
   }
 
   get role(): string {

@@ -1561,7 +1561,6 @@ export declare class ClrStackBlock implements OnInit {
     ariaPosinset: number;
     ariaSetsize: number;
     get caretDirection(): string;
-    get caretTitle(): string;
     commonStrings: ClrCommonStringsService;
     expandable: boolean;
     expanded: boolean;

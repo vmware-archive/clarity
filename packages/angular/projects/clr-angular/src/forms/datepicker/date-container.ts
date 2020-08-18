@@ -35,9 +35,9 @@ import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-posit
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { ClrControlSuccess } from '../common/success';
 import { Subscription } from 'rxjs';
 import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
+import { ClrControlSuccess } from '../common/success';
 
 @Component({
   selector: 'clr-date-container',
@@ -65,17 +65,17 @@ import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state
             clrFocusTrap
           ></clr-datepicker-view-manager>
         </div>
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
         <clr-icon
-          *ngIf="valid && controlSuccessComponent"
+          *ngIf="showInvalid"
           class="clr-validate-icon"
-          shape="check-circle"
+          shape="exclamation-circle"
           aria-hidden="true"
         ></clr-icon>
+        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
-      <ng-content select="clr-control-error" *ngIf="invalid"></ng-content>
-      <ng-content select="clr-control-success" *ngIf="valid"></ng-content>
+      <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
+      <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
     </div>
   `,
   providers: [
@@ -102,10 +102,10 @@ import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state
 })
 export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit {
   _dynamic = false;
-  invalid = false;
+  showInvalid = false;
   showHelper = false;
   focus = false;
-  valid = false;
+  showValid = false;
   state: CONTROL_STATE;
   control: NgControl;
   @ContentChild(ClrLabel) label: ClrLabel;
@@ -169,9 +169,9 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     this.subscriptions.push(
       this.ifControlStateService.statusChanges.subscribe((state: CONTROL_STATE) => {
         this.state = state;
-        this.valid = CONTROL_STATE.VALID === state;
-        this.invalid = CONTROL_STATE.INVALID === state;
-        this.showHelper = CONTROL_STATE.NONE === state;
+        this.showValid = CONTROL_STATE.VALID === state && !!this.controlSuccessComponent;
+        this.showInvalid = CONTROL_STATE.INVALID === state;
+        this.showHelper = CONTROL_STATE.NONE === state || (!this.showInvalid && !this.controlSuccessComponent);
       })
     );
   }

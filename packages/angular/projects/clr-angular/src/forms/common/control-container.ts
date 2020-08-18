@@ -4,14 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { NgControlService } from './providers/ng-control.service';
 import { ControlIdService } from './providers/control-id.service';
 import { ControlClassService } from './providers/control-class.service';
 import { IfControlStateService } from './if-control-state/if-control-state.service';
-import { ClrControlSuccess } from '../common/success';
 
 @Component({
   selector: 'clr-control-container',
@@ -27,12 +26,7 @@ import { ClrControlSuccess } from '../common/success';
           shape="exclamation-circle"
           aria-hidden="true"
         ></clr-icon>
-        <clr-icon
-          *ngIf="showValid && controlSuccessComponent"
-          class="clr-validate-icon"
-          shape="check-circle"
-          aria-hidden="true"
-        ></clr-icon>
+        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
@@ -46,6 +40,4 @@ import { ClrControlSuccess } from '../common/success';
   },
   providers: [IfControlStateService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrControlContainer extends ClrAbstractContainer {
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
-}
+export class ClrControlContainer extends ClrAbstractContainer {}

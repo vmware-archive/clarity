@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Inject, InjectionToken, Input, Optional, ContentChild } from '@angular/core';
+import { Component, Inject, InjectionToken, Input, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { ControlClassService } from '../common/providers/control-class.service';
@@ -14,7 +14,6 @@ import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
-import { ClrControlSuccess } from '../common/success';
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 export const TOGGLE_SERVICE = new InjectionToken<BehaviorSubject<boolean>>(undefined);
@@ -51,12 +50,7 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
           shape="exclamation-circle"
           aria-hidden="true"
         ></clr-icon>
-        <clr-icon
-          *ngIf="showValid && controlSuccessComponent"
-          class="clr-validate-icon"
-          shape="check-circle"
-          aria-hidden="true"
-        ></clr-icon>
+        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
@@ -81,8 +75,6 @@ export class ClrPasswordContainer extends ClrAbstractContainer {
   show = false;
   focus = false;
   private _toggle = true;
-
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   @Input('clrToggle')
   set clrToggle(state: boolean) {

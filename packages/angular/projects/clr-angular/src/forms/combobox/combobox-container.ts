@@ -21,7 +21,6 @@ import { LayoutService } from '../common/providers/layout.service';
 import { ComboboxContainerService } from './providers/combobox-container.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { ClrLabel } from '../common/label';
-import { ClrControlSuccess } from '../common/success';
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
@@ -32,12 +31,7 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
     <div class="clr-control-container" [ngClass]="controlClass()" #controlContainer>
       <ng-content select="clr-combobox"></ng-content>
       <clr-icon *ngIf="showInvalid" class="clr-validate-icon" shape="exclamation-circle" aria-hidden="true"></clr-icon>
-      <clr-icon
-        *ngIf="showValid && controlSuccessComponent"
-        class="clr-validate-icon"
-        shape="check-circle"
-        aria-hidden="true"
-      ></clr-icon>
+      <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
       <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
@@ -54,7 +48,6 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
 export class ClrComboboxContainer extends ClrAbstractContainer implements AfterContentInit, AfterViewInit {
   @ViewChild('controlContainer') controlContainer: ElementRef;
   @ContentChild(ClrLabel) label: ClrLabel;
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   constructor(
     ifControlStateService: IfControlStateService,

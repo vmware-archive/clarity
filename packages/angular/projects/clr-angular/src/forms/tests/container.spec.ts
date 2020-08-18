@@ -19,7 +19,7 @@ import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state
 
 export function ContainerNoLabelSpec(testContainer, testControl, testComponent): void {
   describe('no label', () => {
-    let fixture, containerDE, containerEl, layoutService;
+    let fixture, containerDE, containerEl, layoutService, container;
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
@@ -31,6 +31,7 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
       containerDE = fixture.debugElement.query(By.directive(testContainer));
       containerEl = containerDE.nativeElement;
       layoutService = containerDE.injector.get(LayoutService);
+      container = containerDE.componentInstance;
     });
 
     it('adds an empty label when instantiated without vertical layout', () => {
@@ -44,6 +45,17 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
       fixture.detectChanges();
       const labels = containerEl.querySelectorAll('label');
       expect(Array.prototype.filter.call(labels, label => label.textContent === '').length).toBe(0);
+    });
+
+    it('should display helper text when no success-component is present', () => {
+      fixture.detectChanges();
+      expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();
+      container.state = CONTROL_STATE.INVALID;
+      fixture.detectChanges();
+      expect(containerEl.querySelector('clr-control-helper')).toBeFalsy();
+      container.state = CONTROL_STATE.VALID;
+      fixture.detectChanges();
+      expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();
     });
   });
 }

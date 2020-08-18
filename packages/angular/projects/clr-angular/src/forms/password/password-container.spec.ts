@@ -37,6 +37,7 @@ class TemplateDrivenTest {
 @Component({
   template: ` <clr-password-container>
     <input clrPassword [(ngModel)]="model" />
+    <clr-control-helper>Helper text</clr-control-helper>
   </clr-password-container>`,
 })
 class NoLabelTest {}

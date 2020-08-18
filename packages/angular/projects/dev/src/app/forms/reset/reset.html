@@ -14,7 +14,7 @@
     <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
     <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
     <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
-    <clr-control-success *clrIfSuccess="'pattern'">That's correct the input must be 'asdfasdf' </clr-control-success>
+    <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
   </clr-input-container>
 
   <button class="btn btn-primary" type="button" (click)="validate()">Validate</button>

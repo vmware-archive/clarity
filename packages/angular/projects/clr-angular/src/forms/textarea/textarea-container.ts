@@ -4,13 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ContentChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
-import { ClrControlSuccess } from '../common/success';
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
@@ -27,12 +26,7 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
           shape="exclamation-circle"
           aria-hidden="true"
         ></clr-icon>
-        <clr-icon
-          *ngIf="showValid && controlSuccessComponent"
-          class="clr-validate-icon"
-          shape="check-circle"
-          aria-hidden="true"
-        ></clr-icon>
+        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
@@ -46,6 +40,4 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
   },
   providers: [IfControlStateService, NgControlService, ControlIdService, ControlClassService],
 })
-export class ClrTextareaContainer extends ClrAbstractContainer {
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
-}
+export class ClrTextareaContainer extends ClrAbstractContainer {}

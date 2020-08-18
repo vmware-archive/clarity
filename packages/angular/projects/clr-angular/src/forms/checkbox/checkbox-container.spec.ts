@@ -21,7 +21,11 @@ import { ContainerNoLabelSpec, TemplateDrivenSpec, ReactiveSpec } from '../tests
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
-  template: ` <clr-checkbox-container></clr-checkbox-container> `,
+  template: `
+    <clr-checkbox-container>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-checkbox-container>
+  `,
 })
 class NoLabelTest {}
 

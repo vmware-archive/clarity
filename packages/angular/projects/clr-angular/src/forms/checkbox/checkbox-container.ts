@@ -4,13 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input, Optional, ContentChild } from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
 
 import { ControlClassService } from '../common/providers/control-class.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { LayoutService } from '../common/providers/layout.service';
-import { ClrControlSuccess } from '../common/success';
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
 
 @Component({
@@ -28,12 +27,7 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
           shape="exclamation-circle"
           aria-hidden="true"
         ></clr-icon>
-        <clr-icon
-          *ngIf="showValid && controlSuccessComponent"
-          class="clr-validate-icon"
-          shape="check-circle"
-          aria-hidden="true"
-        ></clr-icon>
+        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
         <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
         <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
       </div>
@@ -48,7 +42,6 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
 })
 export class ClrCheckboxContainer extends ClrAbstractContainer {
   private inline = false;
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
 
   constructor(
     @Optional() protected layoutService: LayoutService,

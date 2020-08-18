@@ -41,6 +41,7 @@ class TemplateDrivenTest {
       <option [value]="'item2'"></option>
       <option [value]="'item3'"></option>
     </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
   </clr-datalist-container>`,
 })
 class NoLabelTest {}

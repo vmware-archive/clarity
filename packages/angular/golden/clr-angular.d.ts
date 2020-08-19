@@ -1043,7 +1043,7 @@ export declare class ClrFocusOnViewInitModule {
 }
 
 export declare class ClrForm {
-    set labelSize(size: number);
+    set labelSize(size: number | string);
     labels: QueryList<ClrLabel>;
     layoutService: LayoutService;
     constructor(layoutService: LayoutService, markControlService: MarkControlService);

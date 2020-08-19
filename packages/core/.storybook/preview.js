@@ -54,6 +54,7 @@ export const parameters = {
             'Getting Started',
             'Package',
             'Public API',
+            'Stateless API',
             'Component Code Conventions',
             'Imports and Dependencies',
             'Registering Components',

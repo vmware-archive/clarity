@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Internal/Documentation/Stateless API" />
+
+# Stateless Components
+
+Core components are intentionally as stateless as possible. This means components
+do not maintain state but rather only render based on the information passed to
+the component. Let's take a look at an example with a modal.
+
+```html
+<cds-modal>modal content</cds-modal>
+```
+
+With the modal we want to show or hide based on some application logic. We don't
+define a `show` property or a `showChange` property. The logic to determine if the
+modal should show be fully controlled by the applicaiton. The applicaiton may
+want to hide via CSS or completely add or remove the modal from the DOM. Because
+of this the modal by default is visible. We do not assume the state of its visibility.
+
+Instead of defining a `open` or `show` state we provide a `closeChange` event.
+This event fires when the user has clicked the close button within the modal.
+The modal itself does nothing but emit the event. The modal only notifies the
+application the user had clicked the close button. We leave it to the application
+to determine what it should do.
+
+This is important as it provides a much more flexible API and prevents "escape hatch"
+APIs. If we were to control the visibility of the modal then if the application
+needs to validate some logic before closing we would have to introduce yet another
+API to be able to intercept before closing. Let's take a look at how an Angular
+app may use this.
+
+```html
+<cds-button (click)="showModal = true">open modal</cds-modal>
+<cds-modal *ngIf="showModal" (closeChange)="closeModal($event.detail)">Some Content</cds-modal>
+```
+
+```ts
+export class AppComponent {
+  showModal = false;
+
+  async closeModal(modalClosed: boolean) {
+    const isValid: boolean = await someAsyncValidationCheck();
+
+    if (valid) {
+      this.showModal = false;
+    } else {
+      warnOfPotentialIssues();
+    }
+  }
+}
+```
+
+Because we defer the state to the application the developer now has the flexibility
+to intercept and run additional checks before closing the modal. While this is a
+subtle difference when compared to the stateful version, it provides a more
+fexible component and keeps the overall public API surface small.

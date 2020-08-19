@@ -20,8 +20,9 @@ import { ClrLabel } from './label';
 })
 export class ClrForm {
   @Input('clrLabelSize')
-  set labelSize(size: number) {
-    this.layoutService.labelSize = size;
+  set labelSize(size: number | string) {
+    const sizeNumber = parseInt(size as string, 10) || 2;
+    this.layoutService.labelSize = sizeNumber;
   }
 
   constructor(public layoutService: LayoutService, private markControlService: MarkControlService) {}

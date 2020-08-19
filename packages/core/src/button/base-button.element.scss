@@ -107,9 +107,7 @@
 
 ::slotted(cds-icon) {
   --color: inherit;
-
   @include equilateral(calc(var(--font-size) + (2 * #{$cds-token-space-size-2})));
-  margin-top: calc(-1 * #{$cds-token-space-size-1});
 }
 
 :host([action='outline']) {

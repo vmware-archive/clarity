@@ -17,6 +17,7 @@ import {
   setAttributes,
   listenForAttributeChange,
   isVisible,
+  spanWrapper,
 } from './dom.js';
 
 describe('Functional Helper: ', () => {
@@ -342,6 +343,16 @@ describe('Functional Helper: ', () => {
 
       removeTestElement(element);
       expect(isVisible(element)).toBe(false);
+    });
+  });
+  describe('spanWrapper', () => {
+    it('wraps text nodes in an element', () => {
+      const element: HTMLElement = createTestElement();
+      const text = document.createTextNode('Hello spanWrapper');
+      element.appendChild(text);
+      spanWrapper(element.childNodes);
+      expect(element.children[0].tagName).toBe('SPAN');
+      expect(element.children[0].textContent).toBe('Hello spanWrapper');
     });
   });
 });

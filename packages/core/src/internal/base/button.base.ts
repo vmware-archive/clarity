@@ -11,6 +11,7 @@ import { property, internalProperty } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
+import { supportsFlexGap } from '@clr/core/internal';
 
 // TODO: replace with circular progress bar when complete
 export const iconSpinnerCheck = html`<span class="button-status-icon" cds-layout="horizontal align:center"
@@ -22,8 +23,6 @@ export const iconSpinner = html`<span class="button-status-icon" cds-layout="hor
 ></span>`;
 
 export const iconSlot = html`<span class="button-icon"><slot name="button-icon"></slot></span>`;
-
-export const badgeSlot = html`<span class="button-badge"><slot name="button-badge"></slot></span>`;
 
 // @dynamic
 export class CdsBaseButton extends LitElement {
@@ -45,6 +44,8 @@ export class CdsBaseButton extends LitElement {
 
   /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
   @internalProperty({ type: Boolean, reflect: true }) protected containsAnchor = false;
+
+  @internalProperty({ type: Boolean, reflect: true }) protected hasFlexGapSupport: boolean = supportsFlexGap();
 
   /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
   @querySlot('a') protected anchor: HTMLAnchorElement;

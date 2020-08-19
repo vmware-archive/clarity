@@ -102,3 +102,14 @@ export function listenForAttributeChange(
 export function isVisible(element: HTMLElement) {
   return element?.offsetHeight > 0 && element?.hasAttribute('hidden') === false;
 }
+
+export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {
+  nodeList.forEach(node => {
+    if (node.parentElement && node.textContent !== null && node.nodeType === 3) {
+      const spanWrapper = document.createElement('span');
+      const parent = node.parentElement;
+      spanWrapper!.appendChild(node);
+      parent!.appendChild(spanWrapper);
+    }
+  });
+}

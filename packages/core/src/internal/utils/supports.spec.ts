@@ -4,10 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { supportsResizeObserver } from './supports.js';
+import { supportsFlexGap, supportsResizeObserver } from './supports.js';
 
 describe('browser support feature checks', () => {
   it('should check if browser supports ResizeObserver', () => {
     expect(supportsResizeObserver()).toBe(true);
+  });
+  it('should check if browser supports FlexGap', () => {
+    expect(supportsFlexGap()).toBe(true);
   });
 });

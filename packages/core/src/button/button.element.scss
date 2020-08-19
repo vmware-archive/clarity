@@ -17,23 +17,6 @@
   font-weight: var(--font-weight);
   letter-spacing: var(--letter-spacing);
   text-transform: var(--text-transform);
-
-  & > span > span.button-content {
-    @include line-height-eraser(0em);
-  }
-
-  .button-icon + .button-content {
-    margin-left: #{$cds-token-space-size-4};
-  }
-
-  .button-content + .button-badge {
-    margin-left: #{$cds-token-space-size-4};
-  }
-
-  .button-icon,
-  .button-badge {
-    margin-top: calc(-1 * #{$cds-token-space-size-1});
-  }
 }
 
 :host([size='sm']) .private-host {
@@ -72,13 +55,6 @@
   --font-weight: #{$cds-token-typography-font-weight-semibold} !important;
 }
 
-:host(:not[block]) .private-host .button-content {
-  transform: translateX(#{$cds-token-space-size-1});
-}
-
-:host(:not([action='flat'])) {
-  // TODO: nesting inflation is starting to creep in...
-  .private-host .button-icon + .button-content + .button-badge {
-    margin-left: calc(#{$cds-token-space-size-6} - #{$cds-token-space-size-2});
-  }
+::slotted(span) {
+  @include line-height-eraser(0em);
 }

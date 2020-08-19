@@ -16,6 +16,7 @@ const files = [
   'packages/angular/package.json',
   'packages/core/package.json',
   'packages/icons/package.json',
+  'packages/react/package.json',
   'packages/ui/package.json',
 ];
 

@@ -1,6 +1,6 @@
 {
   "name": "@clr/react",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0",
   "scripts": {
     "start": "npm-run-all core:build dev:start",
     "dev:start": "parcel index.html",

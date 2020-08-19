@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -31,7 +31,7 @@
     "start": "yarn angular:dev:start",
     "build": "npm-run-all build:ci",
     "build:ci": "npm-run-all clean format lint build:libs core:dev:build react:build test",
-    "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build",
+    "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build react:build",
     "build:apps": "npm-run-all -p angular:dev:build core:dev:build",
     "build:website": "yarn --cwd apps/website run build",
     "build:storybook:angular": "yarn --cwd packages/angular run build-storybook",

@@ -1,6 +1,6 @@
 {
   "name": "@clr/core",
-  "version": "4.0.0-rc.1",
+  "version": "4.0.0",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook",
     "storybook": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",

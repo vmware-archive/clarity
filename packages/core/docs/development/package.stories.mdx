@@ -15,7 +15,7 @@ some excellent resources and deploy checklists on the topic:
 
 By avoiding bundles, we can support performant build-less options with CDNs.
 
-- https://unpkg.com/  (good generic CDN with module resolution)
+- https://unpkg.com/ (good generic CDN with module resolution)
 - https://skypack.dev (this has excellent performance characteristics)
 - https://www.snowpack.dev (a local tool for module resolution but no bundling/build step needed)
 
@@ -27,6 +27,17 @@ dependencies are correctly managed.
 - https://cli.vuejs.org/guide/browser-compatibility.html#modern-mode
 - https://cli.vuejs.org/config/#transpiledependencies
 - https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md
+
+## Release Cycle
+
+All new components go through a two-stage release cycle. Once a component is
+completed and merged, it will be released as under preview. Each new component
+remains in preview for about six months or one major release cycle. After the
+preview cycle, it will move into stable and follow our standard semver policy.
+
+By providing a six-month preview window, we give early adopters a chance to start
+trying out the component sooner but allow a bit more flexibility if an API breaking
+change is required before going stable.
 
 ## Library Authors using Core
 

@@ -11,8 +11,8 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 <cds-alert-group status="warning" cds-layout="m-t:lg">
   <cds-alert>
-    Internal APIs are not to be used in application code. They are for the use of
-    Clarity Components only and do not follow our standard release cycle.
+    Internal APIs are not to be used in application code. They are for the use of Clarity Components only and do not
+    follow our standard release cycle.
   </cds-alert>
 </cds-alert-group>
 
@@ -26,11 +26,40 @@ adhere to the following guidelines for our Core Web Component codebase.
 
 ## New Components
 
-- New components should go through our standard [Development Contribution Guidelines](./../DEVELOPMENT_CONTRIBUTION.md).
+- New components should go through our standard [Development Contribution Guidelines](https://github.com/vmware/clarity/blob/master/docs/CONTRIBUTING_DEVELOPMENT.md).
   New components that have an accepted proposal and API design will need to follow
   the code conventions, as described in this outline. New components will need to
   have a new Storybook Story for the full API, as well as any additional common
   use cases as additional stories.
+
+```
+## Github API Proposal Template Example
+
+## Basic Usage
+
+`<cds-alert status="success" closable>This is an Alert</cds-alert>`
+
+## API
+
+_Describe the intended API_
+
+### Element
+- `cds-alert`
+
+### Properties/Attributes
+- `status: 'default' | 'info' | 'warning' | 'danger' | 'success'`: sets the color and icon style
+- `closable: boolean`: determines if close icon should be visible
+
+### Custom Events
+- `closeChange`: emit when the close button is clicked by user
+
+## Slots
+- `default`: only one default slot
+
+### CSS Custom Properties
+- `--background`
+- `--color`
+```
 
 ## Project Design
 
@@ -45,7 +74,6 @@ adhere to the following guidelines for our Core Web Component codebase.
 - https://developers.google.com/web/fundamentals/web-components
 - https://lit-element.polymer-project.org
 - https://custom-elements-everywhere.com
-
 
 ## Starting Up
 

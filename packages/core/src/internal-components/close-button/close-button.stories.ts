@@ -13,7 +13,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(angleIcon, userIcon, timesCircleIcon);
 
 export default {
-  title: 'Internal APIs/Close Button/Stories',
+  title: 'Internal/APIs/Close Button/Stories',
   component: 'cds-internal-close-button',
   argTypes: getElementStorybookArgTypes('cds-internal-close-button', customElements),
   parameters: {

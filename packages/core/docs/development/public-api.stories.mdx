@@ -7,7 +7,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 ## Component APIs
 
 - Custom Elements (Web Components) should be prefixed with `cds-`.
-- There is no prefix on public custom element attributes or properties.
+- There is no prefix on public custom element attributes or properties as they
+  are scoped to the custom element.
 - Style attributes related to sizes should use t-shirt style values. Example
   `size="sm"` ... xs, sm, md, lg, xl xxl
 - Events/props should follow Angular/Vue style naming conventions of using a
@@ -15,50 +16,95 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 These component conventions allow frameworks to consume the Web easily. The convention
 is also needed so extend libraries like our React wrappers `@clr/react` can parse
-and set up the React version of the event. `openChange` => `onOpenChange`.
+and set up the React version of the event. `closeChange` => `onCloseChange`.
 
 Components primarily communicate the following ways:
 
-- properties/attrs (data in)
-- custom events (data out)
-- slots (content projection)
+```
+1. properties/attrs (data in)
+2. custom events (data out)
+3. slots (content projection)
+```
+
+## Properties vs Attributes
+
+Most frameworks provide a templating syntax to set JavaScript properties on a component.
+Example:
+
+```typescript
+const modal = document.querySelector('cds-modal');
+modal.closable = false; // setting the JavaScript object property
+```
+
+If I am using a framework like Angular I can use the template binding to
+set the property.
+
+```html
+<cds-modal [closable]="booleanValue"></cds-modal>
+```
+
+Lit-element will automatically sync attributes and properties together unless
+specified otherwise. While attributes are always string values in HTML, lit-element
+and the `@property` decorator will attempt to convert the attribute value based
+on the value type that was set on the `@property` decorator. [This includes shallow objects and arrays.](https://lit-element.polymer-project.org/guide/properties#initialize-markup)
+
+## Example APIs
+
+Here are some examples of what the syntax of different frameworks look like
+when interacting with a Custom Element.
+
+### Angular
+
+Angular can set attributes or properties. To set a property use the `[prop]`]
+syntax. To listen to an event use the `(event)` syntax.
 
 ```html
 <!--
-  Example of a modal web component in Angular
-  - `size` is a attribute style hook
-  - [open] is setting a property on the element
-  - (openChange) is listening for the `openChange` custom event
+  - `size` is set as an HTML attribute so no binding syntax is used
+  - [closable] is setting a property on the element
+  - (closeChange) is listening for the `closeChange` custom event
 -->
-<cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
+<cds-modal size="lg" [closable]="booleanValue" (closeChange)="log($event.detail)">
   <p>slot content</p>
 </cds-modal>
 ```
 
+### VueJS
+
+Vue can set attributes or properties. To set a property use the `:prop` syntax.
+To listen to an event use the `@event` syntax.
+
 ```html
 <!--
-  Example of a modal web component in Vue
-  - `size` is a attribute style hook
-  - :open is setting a property on the element
-  - @openChange is listening for the `openChange` custom event
+  - `size` is set as an HTML attribute so no binding syntax is used
+  - :closable is setting a property on the element
+  - @closeChange is listening for the `closeChange` custom event
 -->
-<cds-modal size="lg" :open="true" @openChange="log($event.detail)">
+<cds-modal size="lg" :closable="booleanValue" @closeChange="log($event.detail)">
   <p>slot content</p>
 </cds-modal>
 ```
+
+### React + @clr/react wrappers
+
+<cds-alert-group status="danger" cds-layout="m-y:lg">
+  <cds-alert>
+    React requires use of the @clr/react package to workaround
+    <a cds-text="link" href="https://custom-elements-everywhere.com/#react">
+      several open issues
+    </a>.
+  </cds-alert>
+</cds-alert-group>
 
 ```jsx
-{
-  /*
-  Example of a modal web component in React with @clr/react wrapper
-  - `size` is an attribute style hook
-  - open is setting a property on the element
-  - openChange is listening for the `openChange` custom event
+/*
+  - `size` unlike the examples above `size` is set as a property
+  - closable is setting a property on the element
+  - onCloseChange is listening for the `closeChange` custom event
 */
-}
-<CdsModal size="lg" open={this.state.open} onOpenChange={this.log}>
+<CdsModal size="lg" closable={this.state.booleanValue} onCloseChange={this.log}>
   <p>slot content</p>
-</CdsModal>;
+</CdsModal>
 ```
 
 ## Public Import APIs

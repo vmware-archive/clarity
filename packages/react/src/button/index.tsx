@@ -9,5 +9,5 @@ export type CdsIconButtonType = IconButton;
 export type CdsInlineButtonType = InlineButton;
 
 export class CdsButton extends createReactComponent<CdsButtonType>('cds-button') {}
-export class CdsIconButton extends createReactComponent<CdsIconButtonType>('cds-button') {}
-export class CdsInlineButton extends createReactComponent<CdsInlineButtonType>('cds-button') {}
+export class CdsIconButton extends createReactComponent<CdsIconButtonType>('cds-icon-button') {}
+export class CdsInlineButton extends createReactComponent<CdsInlineButtonType>('cds-inline-button') {}

@@ -17,6 +17,16 @@
   font-family: $cds-token-typography-font-family;
   margin-top: 0;
   margin-bottom: 0;
+
+  // remove as they cause excess gap when combined with cds-layout on the same element
+  &[cds-layout~='vertical'],
+  &[cds-layout~='horizontal'],
+  &[cds-layout~='grid'] {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 }
 
 [cds-text*='display'],

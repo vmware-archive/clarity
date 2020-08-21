@@ -23,7 +23,7 @@ $list-default-unordered-type: disc;
 
 %kill-list-styles {
   padding-left: 0 !important;
-  margin-left: 0 !important;
+  margin: 0 !important;
   // zero-width blank space added to help VoiceOver screen reader read a list-style-type none list
   list-style: '\200B' !important;
   list-style-position: inside !important;
@@ -33,12 +33,14 @@ ol[cds-list] {
   list-style-type: $list-default-ordered-type;
   list-style-position: outside;
   padding-left: $list-indent;
+  margin: 0;
 }
 
 ul[cds-list]:not([cds-list='unstyled']) {
   list-style-type: $list-default-unordered-type;
   list-style-position: outside;
   padding-left: $list-indent;
+  margin: 0;
 }
 
 @include renderListStyles(ul, disc circle square);

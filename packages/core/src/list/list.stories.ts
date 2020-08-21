@@ -386,3 +386,81 @@ export const API = () => {
     </div>
   `;
 };
+
+export const orderedList = () => {
+  return html`
+    <ol cds-list>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ol>
+  `;
+};
+
+export const unorderedList = () => {
+  return html`
+    <ul cds-list>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ul>
+  `;
+};
+
+export const unstyledList = () => {
+  return html`
+    <ol cds-list="unstyled">
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ol>
+
+    <br />
+
+    <ul cds-list="unstyled">
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ul>
+  `;
+};
+
+export const nestedList = () => {
+  return html`
+    <ol cds-list>
+      <li>The quick brown fox jumps over the lazy dog</li>
+      <li>The quick brown fox jumps over the lazy dog</li>
+      <li>The quick brown fox jumps over the lazy dog</li>
+      <li>The quick brown fox jumps over the lazy dog</li>
+      <li>
+        The quick brown fox jumps over the lazy dog
+        <ul cds-list>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+        </ul>
+      </li>
+      <li>The quick brown fox jumps over the lazy dog</li>
+      <li>The quick brown fox jumps over the lazy dog</li>
+    </ol>
+  `;
+};
+
+export const customSpaceList = () => {
+  return html`
+    <ol cds-list cds-layout="vertical gap:md">
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ol>
+  `;
+};

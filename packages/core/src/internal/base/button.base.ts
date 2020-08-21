@@ -35,6 +35,8 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: String }) value: string;
 
+  @property({ type: String }) href: string;
+
   @property({ type: Boolean }) disabled = false;
 
   @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior

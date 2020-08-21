@@ -19,7 +19,7 @@ import { styles } from './badge.element.css.js';
  * ```html
  * <cds-badge status="info">2</cds-badge>
  * ```
- * @beta
+ *
  * @element cds-badge
  * @slot - Content slot for inside the badge
  * @cssprop --background

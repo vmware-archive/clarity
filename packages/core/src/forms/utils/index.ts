@@ -44,7 +44,7 @@ export function getStatusIcon(status: 'error' | 'success' | 'neutral') {
           status="${status === 'error' ? 'danger' : 'success'}"
           shape="${status === 'error' ? 'exclamation-circle' : 'check-circle'}"
           size="16"
-          .innerOffset=${4}
+          inner-offset=${0.2}
         ></cds-icon>
       </cds-control-action>`
     : ''} `;

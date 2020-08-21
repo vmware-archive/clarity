@@ -20,7 +20,7 @@ import { timesIcon } from '@clr/core/icon/shapes/times.js';
  * ```html
  * <cds-internal-close-button></cds-internal-close-button>
  * ```
- * @beta
+ *
  * @element cds-internal-close-button
  * @cssprop --background
  * @cssprop --color
@@ -29,7 +29,10 @@ import { timesIcon } from '@clr/core/icon/shapes/times.js';
  */
 export class CdsInternalCloseButton extends CdsBaseButton {
   @property({ type: String })
-  iconSize = '18';
+  iconSize = '10';
+
+  @property({ type: Number })
+  innerOffset = 0.4;
 
   @property({ type: String })
   iconShape = 'times';
@@ -37,7 +40,11 @@ export class CdsInternalCloseButton extends CdsBaseButton {
   render() {
     return html`
       <div class="private-host">
-        <cds-icon shape="${this.iconShape}" size="${this.iconSize}"></cds-icon>
+        <cds-icon
+          .shape="${this.iconShape}"
+          .size="${this.iconSize}"
+          inner-offset=${this.iconShape === 'times' ? this.innerOffset : ''}
+        ></cds-icon>
         ${this.hiddenButtonTemplate}
       </div>
     `;
@@ -50,5 +57,22 @@ export class CdsInternalCloseButton extends CdsBaseButton {
   constructor() {
     super();
     ClarityIcons.addIcons(timesIcon);
+  }
+
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+    this.calculatePaddingOffset();
+  }
+
+  /**
+   * If the icon size is smaller than the minimum button size then offset with
+   * negative margin to remove visual empty space while preserving touch target size.
+   */
+  private calculatePaddingOffset() {
+    const iconWidth = this.shadowRoot?.querySelector('cds-icon')?.getBoundingClientRect().width;
+    if (iconWidth && iconWidth < this.getBoundingClientRect().width) {
+      const offset = iconWidth * this.innerOffset;
+      this.style.margin = `-${offset - 1}px -${offset - 1}px 0 -${offset - 1}px`;
+    }
   }
 }

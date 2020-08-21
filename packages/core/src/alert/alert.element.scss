@@ -82,10 +82,6 @@ cds-internal-close-button {
   display: none;
 }
 
-:host([alert-group-type='default']) cds-internal-close-button {
-  height: #{$cds-token-space-size-8};
-}
-
 :host([type='default']) .alert-content-wrapper {
   align-items: self-start;
 }
@@ -138,8 +134,7 @@ cds-internal-close-button {
 
 :host([type='banner']) cds-internal-close-button {
   --color: var(--icon-color);
-  height: $cds-token-space-size-9;
-  margin-top: $cds-token-space-size-3;
+  padding-top: $cds-token-space-size-2;
 }
 
 @supports (-moz-appearance: none) and (text-emphasis: none) {

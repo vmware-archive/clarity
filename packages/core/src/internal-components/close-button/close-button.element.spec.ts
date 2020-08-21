@@ -33,4 +33,10 @@ describe('internal close button element', () => {
     await componentIsStable(component);
     expect(component.innerText).not.toBe(placeholderText);
   });
+
+  it('should offset the button position to visually align small icons while keeping the same touch target size', async () => {
+    component.iconSize = '9';
+    await componentIsStable(component);
+    expect(component.style.margin).toBe('-3px -3px 0px');
+  });
 });

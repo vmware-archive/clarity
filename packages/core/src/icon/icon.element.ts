@@ -157,9 +157,9 @@ export class CdsIcon extends LitElement {
 
   /**
    * @private
-   * given a pixel value offset any surrounding whitespace within the svg
+   * given a ratio value offset any surrounding whitespace within the svg
    */
-  @internalProperty({ type: Number, reflect: true })
+  @internalProperty({ type: Number })
   innerOffset = 0;
 
   @query('svg') private svg: SVGElement;
@@ -177,10 +177,11 @@ export class CdsIcon extends LitElement {
     }
 
     if (props.has('innerOffset') && this.innerOffset > 0) {
-      const dimension = `calc(100% + ${this.innerOffset * 2}px)`;
+      const offset = this.svg.getBoundingClientRect().width * this.innerOffset;
+      const dimension = `calc(100% + ${offset * 2}px)`;
       this.svg.style.width = dimension;
       this.svg.style.height = dimension;
-      this.svg.style.margin = `-${this.innerOffset} 0 0 -${this.innerOffset}`;
+      this.svg.style.margin = `-${offset} 0 0 -${offset}`;
     }
   }
 

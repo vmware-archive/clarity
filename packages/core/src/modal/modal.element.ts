@@ -83,7 +83,7 @@ export class CdsModal extends LitElement {
                       cds-layout="align:top"
                       @click="${() => this.closeModal()}"
                       aria-label="${CommonStringsService.keys.modalCloseButtonAriaLabel}"
-                      .iconSize="${'24'}"
+                      .iconSize="${'14'}"
                     ></cds-internal-close-button>
                   `
                 : html``}

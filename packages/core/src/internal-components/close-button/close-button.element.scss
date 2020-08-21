@@ -7,7 +7,7 @@
   --background: transparent;
   --color: inherit;
   --opacity: 0.8;
-  --padding: #{$cds-token-space-size-2};
+  --padding: 0;
   display: inline-block;
 }
 
@@ -17,6 +17,12 @@
   opacity: var(--opacity);
   background: var(--background);
   cursor: pointer;
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $cds-token-space-size-9;
+  min-height: $cds-token-space-size-9;
 }
 
 :host(:hover) {

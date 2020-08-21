@@ -259,11 +259,11 @@ describe('Alert element – ', () => {
       expect(slots.default.trim()).toBe(`${placeholderText}`);
     });
 
-    it('close-button should be size "20"', async () => {
+    it('close-button should be size "11"', async () => {
       await componentIsStable(component);
       const closeBtn = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
       expect(!!closeBtn).not.toBe(false, 'close-button should exist');
-      expect(closeBtn.iconSize).toBe('20', 'close-button icon size should be 20');
+      expect(closeBtn.iconSize).toBe('11', 'close-button icon size should be 11');
     });
 
     it('should show neutral spinner if set to loading status', async () => {
@@ -349,7 +349,7 @@ describe('Alert element – ', () => {
       button.click();
     });
 
-    it('sets 16 as the default icon size', async () => {
+    it('sets 9 as the default icon size', async () => {
       await componentIsStable(component);
 
       component.closable = true;
@@ -359,7 +359,7 @@ describe('Alert element – ', () => {
       const icon = getCloseButton().shadowRoot.querySelector<CdsIcon>('cds-icon');
       expect(icon).not.toBeNull();
       expect(icon.hasAttribute('size')).toBe(true);
-      expect(icon.getAttribute('size')).toBe('16');
+      expect(icon.getAttribute('size')).toBe('9');
     });
   });
 

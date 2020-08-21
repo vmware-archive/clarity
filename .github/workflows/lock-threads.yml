@@ -1,0 +1,24 @@
+name: 'Lock threads'
+
+# This is a daily cron job that will lock closed issues and PRs over a certain age.
+# This is to limit the amount of noise on older issues and to encourage new issues.
+# This will only lock up to 50 per run.
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dessant/lock-threads@v2
+        with:
+          github-token: ${{ github.token }}
+          issue-lock-inactive-days: '14'
+          issue-lock-comment: 'Hi there 👋, this is an automated message. To help Clarity keep track of discussions, we automatically lock closed issues after 14 days. Please look for another open issue or open a new issue with updated details and reference this one as necessary.'
+          issue-lock-reason: ''
+          pr-lock-inactive-days: '14'
+          pr-lock-comment: 'Hi there 👋, this is an automated message. To help Clarity keep track of discussions, we automatically lock closed PRs after 14 days. Please look for another open issue or open a new issue with updated details and reference this one as necessary.'
+          pr-lock-reason: ''
+          process-only: 'issues'

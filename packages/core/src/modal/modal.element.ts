@@ -33,7 +33,7 @@ import { styles } from './modal.element.css.js';
  * @slot
  * @slot cds-modal-content
  * @slot cds-modal-header
- * @slot cds-modal-footer
+ * @slot cds-modal-actions
  * @event closeChange - notify when the user has clicked the close button
  * @cssprop --backdrop-opacity
  * @cssprop --backdrop-background
@@ -69,9 +69,9 @@ export class CdsModal extends LitElement {
       <div class="private-host" cds-layout="horizontal p:md p@md:xl align:center">
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
           <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentStart}</div>
-          <div class="modal-content" cds-layout="p:lg">
-            <div cds-layout="horizontal gap:md p-b:md p-b@md:lg">
-              <div cds-layout="align-stretch" id="${this.idForAriaLabel}">
+          <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch p:lg">
+            <div cds-layout="horizontal gap:md wrap:none align:vertical-center">
+              <div id="${this.idForAriaLabel}">
                 <slot name="modal-header"></slot>
               </div>
               <div cds-layout="align:right">
@@ -91,7 +91,7 @@ export class CdsModal extends LitElement {
             <div class="modal-body">
               <slot></slot>
             </div>
-            <div cds-layout="p-t:md p-t@md:lg align-stretch">
+            <div cds-layout="align-stretch">
               <slot name="modal-actions"></slot>
             </div>
           </div>

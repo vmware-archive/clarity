@@ -27,13 +27,13 @@ export const API = (args: any) => {
     <cds-demo popover>
       <cds-modal __demo-mode ...="${spreadProps(getElementStorybookArgs(args))}">
         <cds-modal-header>
-          <div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>
+          <h3 cds-text="title">${args['cds-modal-header']}</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <div cds-layout="vertical gap:lg p-y:sm"><p cds-text="body">This is a modal.</p></div>
+          <p cds-text="body">${args['cds-modal-content']}</p>
         </cds-modal-content>
         <cds-modal-actions>
-          <div cds-layout="horizontal align:right"><cds-button>Ok</cds-button></div>
+          ${args['cds-modal-actions']}
         </cds-modal-actions>
       </cds-modal>
     </cds-demo>

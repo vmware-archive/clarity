@@ -104,15 +104,21 @@ export const withIcons = () => {
 
 export const inlineButtonLinks = () => {
   return html`
-    <div cds-layout="vertical gap:md">
+    <div cds-layout="vertical gap:lg">
       <p cds-text="body">
-        Because you know someone is going to try to do this:
-        <cds-inline-button
-          ><a href="javascript:void(0)"><cds-icon shape="user"></cds-icon>Ohai</a></cds-inline-button
-        >. We need to make sure it still works. And still looks okay
-        <cds-inline-button disabled
-          ><a href="javascript:void(0)">Disabled<cds-icon direction="down" shape="angle"></cds-icon></a
-        ></cds-inline-button>
+        To create links you can use the <a href="javascript:void(0)" cds-text="link">cds-text="link"</a> attribute.
+      </p>
+
+      <p cds-text="body">
+        Optionally you can wrap the
+        <a href="javascript:void(0)"
+          ><cds-inline-button><cds-icon shape="user"></cds-icon>inline button</cds-inline-button></a
+        >
+        with an
+        <a href="javascript:void(0)"
+          ><cds-inline-button disabled>anchor<cds-icon direction="down" shape="angle"></cds-icon></cds-inline-button
+        ></a>
+        for improved icon alignment.
       </p>
     </div>
   `;

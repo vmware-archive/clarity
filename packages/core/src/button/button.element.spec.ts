@@ -202,17 +202,20 @@ describe('button element', () => {
     let componentLink: CdsButton;
     let componentButton: CdsButton;
     let anchor: HTMLAnchorElement;
+    let anchorButton: HTMLAnchorElement;
 
     beforeEach(async () => {
       testLinkElement = createTestElement();
       testLinkElement.innerHTML = `
-        <cds-button><a href="about">About</a></cds-button>
+        <cds-button><a href="about">About</a></cds-button> <!-- deprecated 4.0 in favor of wrapping -->
         <cds-button>About</cds-button>
+        <a href="about"><cds-button>About</cds-button></a>
       `;
       await waitForComponent('cds-button');
       componentLink = testLinkElement.querySelectorAll<CdsButton>('cds-button')[0];
       componentButton = testLinkElement.querySelectorAll<CdsButton>('cds-button')[1];
       anchor = componentLink.querySelector<HTMLAnchorElement>('a');
+      anchorButton = testLinkElement.querySelectorAll<HTMLAnchorElement>('a')[1];
     });
 
     afterEach(() => {
@@ -223,11 +226,15 @@ describe('button element', () => {
       await componentIsStable(componentLink);
       expect(componentLink).toBeTruthy();
       expect(componentLink.innerText).toBe('ABOUT');
+
+      expect(anchorButton.style.lineHeight).toBe('0');
+      expect(anchorButton.style.textDecoration).toBe('none');
     });
 
     it('should set button to be readonly', async () => {
       await componentIsStable(componentLink);
       expect(componentLink.readonly).toBe(true);
+      expect(anchorButton.querySelector('cds-button').readonly).toBe(true);
     });
 
     it('should apply host focus styles when link is in focus', async () => {

@@ -4,8 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
-import { baseStyles, CommonStringsService, event, EventEmitter, onKey, property, id } from '@clr/core/internal';
+import { html } from 'lit-element';
+import {
+  baseStyles,
+  CommonStringsService,
+  event,
+  EventEmitter,
+  onKey,
+  property,
+  id,
+  CdsBaseFocusTrap,
+} from '@clr/core/internal';
 import { styles } from './modal.element.css.js';
 
 /**
@@ -46,7 +55,7 @@ import { styles } from './modal.element.css.js';
  * @cssprop --content-box-shadow-color
  * @cssprop --width
  */
-export class CdsModal extends LitElement {
+export class CdsModal extends CdsBaseFocusTrap {
   static get styles() {
     return [baseStyles, styles];
   }

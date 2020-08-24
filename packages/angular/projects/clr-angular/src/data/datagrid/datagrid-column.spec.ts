@@ -439,6 +439,14 @@ export default function (): void {
         expect(context.clarityDirective.registered.filter instanceof DatagridStringFilterImpl).toBe(true);
         expect(context.clarityElement.querySelector('clr-dg-string-filter')).toBeDefined();
       });
+
+      it('order of the argument should not have effect when settings filters', function () {
+        context.testComponent.field = 'id';
+        context.testComponent.type = 'number';
+        context.detectChanges();
+        expect(context.clarityDirective.registered.filter instanceof DatagridNumericFilterImpl).toBe(true);
+        expect(context.clarityElement.querySelector('clr-dg-numeric-filter')).toBeDefined();
+      });
     });
 
     describe('Column View Changes On ChangeDetectionStrategy.OnPush', function () {

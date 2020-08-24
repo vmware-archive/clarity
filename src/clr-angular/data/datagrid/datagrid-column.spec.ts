@@ -432,6 +432,14 @@ export default function(): void {
         expect(context.clarityElement.querySelector('clr-dg-numeric-filter')).toBeDefined();
       });
 
+      it('order of the argument should not have effect when settings filters', function() {
+        context.testComponent.field = 'id';
+        context.testComponent.type = 'number';
+        context.detectChanges();
+        expect(context.clarityDirective.registered.filter instanceof DatagridNumericFilterImpl).toBe(true);
+        expect(context.clarityElement.querySelector('clr-dg-numeric-filter')).toBeDefined();
+      });
+
       it('when clrDgColType is set to `string` it shoul use the string filter', function() {
         context.testComponent.type = 'string';
         context.testComponent.field = 'id';

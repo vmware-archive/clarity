@@ -41,13 +41,17 @@ export class CdsBaseButton extends LitElement {
 
   @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
-
   @internalProperty({ type: String, reflect: true }) protected role: string | null = 'button';
 
-  @querySlot('cds-icon') protected icon: HTMLElement;
+  /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
+  @internalProperty({ type: Boolean, reflect: true }) protected containsAnchor = false;
 
+  /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
   @querySlot('a') protected anchor: HTMLAnchorElement;
+
+  @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
+
+  @querySlot('cds-icon') protected icon: HTMLElement;
 
   @querySlot('cds-badge') protected badge: HTMLElement;
 
@@ -136,8 +140,15 @@ export class CdsBaseButton extends LitElement {
   }
 
   private updateButtonAttributes() {
-    this.isAnchor = !!this.anchor;
-    this.readonly = this.readonly || this.isAnchor;
+    this.containsAnchor = !!this.anchor;
+    this.isAnchor = this.parentElement?.tagName === 'A';
+
+    if (this.isAnchor && this.parentElement) {
+      this.parentElement.style.lineHeight = '0';
+      this.parentElement.style.textDecoration = 'none'; // fixes issue when style is applied to text node
+    }
+
+    this.readonly = this.readonly || this.containsAnchor || this.isAnchor;
     this.role = this.readonly ? null : 'button';
 
     if (this.readonly) {

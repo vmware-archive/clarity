@@ -109,7 +109,8 @@
   }
 }
 
-:host(:not([readonly])) {
+:host(:not([readonly])),
+:host([is-anchor]) {
   &:host(:focus),
   &:host(:hover),
   &:host(:active) {
@@ -193,7 +194,8 @@
   }
 }
 
-:host(:not([readonly])) {
+:host(:not([readonly])),
+:host([is-anchor]) {
   &:host([status='info']:focus),
   &:host([status='info']:hover),
   &:host([status='info']:active) {
@@ -217,7 +219,8 @@
   }
 }
 
-:host(:not([readonly])) {
+:host(:not([readonly])),
+:host([is-anchor]) {
   &:host([status='success']:focus),
   &:host([status='success']:hover),
   &:host([status='success']:active) {
@@ -241,7 +244,8 @@
   }
 }
 
-:host(:not([readonly])) {
+:host(:not([readonly])),
+:host([is-anchor]) {
   &:host([status='warning']:focus),
   &:host([status='warning']:hover),
   &:host([status='warning']:active) {
@@ -277,7 +281,8 @@
   }
 }
 
-:host(:not([readonly])) {
+:host(:not([readonly])),
+:host([is-anchor]) {
   &:host([status='danger']:focus),
   &:host([status='danger']:hover),
   &:host([status='danger']:active) {

@@ -77,6 +77,10 @@
   .tag-close-icon {
     overflow: hidden;
     width: calc(var(--size) - #{$cds-token-space-size-3});
+
+    cds-icon {
+      cursor: pointer;
+    }
   }
 
   .tag-icon + .tag-content {
@@ -87,13 +91,28 @@
 // style for clickable tag
 :host(:not([readonly])) .private-host {
   text-decoration: none;
-  cursor: pointer;
+}
+
+:host([disabled]) {
+  --background: #{$cds-token-color-neutral-200} !important;
+  --color: #{$cds-token-color-neutral-600} !important;
+  --border-color: #{$cds-token-color-neutral-600} !important;
+
+  &:host(:active) {
+    .private-host {
+      box-shadow: none !important;
+    }
+
+    .tag-content {
+      transform: initial !important;
+    }
+  }
 }
 
 :host(:not([readonly])) {
-  &:host(:focus) .private-host,
-  &:host(:hover) .private-host,
-  &:host(:active) .private-host {
+  &:host(:focus),
+  &:host(:hover),
+  &:host(:active) {
     --background: #{$cds-token-color-neutral-200};
   }
 
@@ -116,16 +135,6 @@
   @include equilateral(calc(var(--size) - #{$cds-token-space-size-3}));
   margin-bottom: 1px;
   fill: var(--color);
-}
-
-:host([color='gray']) {
-  --border-color: #{$cds-token-color-neutral-600};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-neutral-600};
-    --border-color: #{$cds-token-color-neutral-600};
-    --color: #{$cds-token-color-neutral-0};
-  }
 }
 
 :host([color='purple']) {
@@ -185,9 +194,9 @@
 }
 
 :host(:not([readonly])) {
-  &:host([status='info']:focus) .private-host,
-  &:host([status='info']:hover) .private-host,
-  &:host([status='info']:active) .private-host {
+  &:host([status='info']:focus),
+  &:host([status='info']:hover),
+  &:host([status='info']:active) {
     --background: #{$cds-token-color-action-100};
   }
 }
@@ -209,9 +218,9 @@
 }
 
 :host(:not([readonly])) {
-  &:host([status='success']:focus) .private-host,
-  &:host([status='success']:hover) .private-host,
-  &:host([status='success']:active) .private-host {
+  &:host([status='success']:focus),
+  &:host([status='success']:hover),
+  &:host([status='success']:active) {
     --background: #{$cds-token-color-success-100};
   }
 }
@@ -233,9 +242,9 @@
 }
 
 :host(:not([readonly])) {
-  &:host([status='warning']:focus) .private-host,
-  &:host([status='warning']:hover) .private-host,
-  &:host([status='warning']:active) .private-host {
+  &:host([status='warning']:focus),
+  &:host([status='warning']:hover),
+  &:host([status='warning']:active) {
     --background: #{$cds-token-color-warning-200};
     --border-color: #{$cds-token-color-warning-500};
   }
@@ -257,10 +266,21 @@
   }
 }
 
+:host([color='gray']),
+:host([disabled]) {
+  --border-color: #{$cds-token-color-neutral-600};
+
+  ::slotted(cds-badge) {
+    --background: #{$cds-token-color-neutral-600};
+    --border-color: #{$cds-token-color-neutral-600};
+    --color: #{$cds-token-color-neutral-0};
+  }
+}
+
 :host(:not([readonly])) {
-  &:host([status='danger']:focus) .private-host,
-  &:host([status='danger']:hover) .private-host,
-  &:host([status='danger']:active) .private-host {
+  &:host([status='danger']:focus),
+  &:host([status='danger']:hover),
+  &:host([status='danger']:active) {
     --background: #{$cds-token-color-danger-200};
     --border-color: #{$cds-token-color-danger-400};
   }

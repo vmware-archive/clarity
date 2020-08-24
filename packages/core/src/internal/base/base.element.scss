@@ -32,7 +32,8 @@ slot {
   display: contents !important;
 }
 
-:host([role='button']) {
+:host([role='button']),
+:host([is-anchor]) {
   cursor: pointer !important;
 
   ::slotted(*) {
@@ -55,7 +56,7 @@ slot {
 
 // normalize focus styles
 :host([tabindex='0']:focus),
-:host([focused][is-anchor]),
+:host([focused][contains-anchor]),
 :host([focused]) .input {
   outline: Highlight solid $cds-token-space-size-2;
   outline-offset: $cds-token-space-size-1;

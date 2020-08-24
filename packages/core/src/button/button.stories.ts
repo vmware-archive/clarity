@@ -163,31 +163,33 @@ export const links = () => {
   return html`
     <div cds-layout="horizontal gap:sm">
       <cds-button>
-        link
-      </cds-button>
-      <cds-button>
-        <a href="javascript:void(0)">link</a>
+        button
       </cds-button>
 
-      <cds-button>
-        <a href="javascript:void(0)">this is a long link</a>
-      </cds-button>
+      <a href="javascript:void(0)">
+        <cds-button>link</cds-button>
+      </a>
 
-      <cds-button size="sm">
-        <a href="javascript:void(0)">small link</a>
-      </cds-button>
+      <a href="javascript:void(0)">
+        <cds-button>this is a long link</cds-button>
+      </a>
+
+      <a href="javascript:void(0)">
+        <cds-button size="sm">small link</cds-button>
+      </a>
+
       <br />
-      <cds-button action="outline">
-        <a href="javascript:void(0)">link</a>
-      </cds-button>
+      <a href="javascript:void(0)">
+        <cds-button action="outline">link</cds-button>
+      </a>
 
-      <cds-button action="outline">
-        <a href="javascript:void(0)">this is a long link</a>
-      </cds-button>
+      <a href="javascript:void(0)">
+        <cds-button action="outline">this is a long link</cds-button>
+      </a>
 
-      <cds-button action="outline" size="sm">
-        <a href="javascript:void(0)">small link</a>
-      </cds-button>
+      <a href="javascript:void(0)">
+        <cds-button action="outline" size="sm">small link</cds-button>
+      </a>
     </div>
   `;
 };

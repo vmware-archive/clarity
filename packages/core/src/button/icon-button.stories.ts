@@ -101,19 +101,19 @@ export const block = () => {
 
 export const links = () => {
   return html`
-    <div cds-layout="vertical gap:xs align:horizontal-stretch">
-      <cds-icon-button
-        ><a href="#"><cds-icon shape="user"></cds-icon></a
-      ></cds-icon-button>
-      <cds-icon-button action="outline"
-        ><a href="#"><cds-icon shape="user"></cds-icon></a
-      ></cds-icon-button>
-      <cds-icon-button size="sm"
-        ><a href="#"><cds-icon shape="user"></cds-icon></a
-      ></cds-icon-button>
-      <cds-icon-button action="outline" size="sm"
-        ><a href="#"><cds-icon shape="user"></cds-icon></a
-      ></cds-icon-button>
+    <div cds-layout="horizontal gap:xs">
+      <a href="javascript:void(0)">
+        <cds-icon-button><cds-icon shape="user"></cds-icon></cds-icon-button>
+      </a>
+      <a href="javascript:void(0)">
+        <cds-icon-button action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      </a>
+      <a href="javascript:void(0)">
+        <cds-icon-button size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      </a>
+      <a href="javascript:void(0)">
+        <cds-icon-button action="outline" size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      </a>
     </div>
   `;
 };

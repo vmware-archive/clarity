@@ -73,7 +73,7 @@
   }
 }
 
-:host([is-anchor]) .private-host {
+:host([contains-anchor]) .private-host {
   padding: 0;
 }
 
@@ -90,6 +90,7 @@
   color: inherit !important;
 }
 
+/** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
 ::slotted(a) {
   text-decoration: none !important;
   display: block !important;

@@ -515,7 +515,7 @@ export declare class ClrDatagridCell implements OnInit {
     ngOnInit(): void;
 }
 
-export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit {
+export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit, OnChanges {
     get _view(): any;
     get ariaSort(): "none" | "ascending" | "descending";
     get colType(): 'string' | 'number';
@@ -541,6 +541,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     sortedChange: EventEmitter<boolean>;
     set updateFilterValue(newValue: string | [number, number]);
     constructor(_sort: Sort<T>, filters: FiltersProvider<T>, vcr: ViewContainerRef, detailService: DetailService, changeDetectorRef: ChangeDetectorRef, commonStrings: ClrCommonStringsService);
+    ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;

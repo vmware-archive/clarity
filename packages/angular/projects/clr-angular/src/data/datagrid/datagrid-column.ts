@@ -15,6 +15,8 @@ import {
   ViewContainerRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -87,7 +89,7 @@ import { DetailService } from './providers/detail.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
-  implements OnDestroy, OnInit {
+  implements OnDestroy, OnInit, OnChanges {
   constructor(
     private _sort: Sort<T>,
     filters: FiltersProvider<T>,
@@ -159,9 +161,6 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   @Input('clrDgColType')
   set colType(value: 'string' | 'number') {
     this._colType = value;
-    if (!this.customFilter && !this.filter && this._colType && this._field) {
-      this.setupDefaultFilter(this._field, this._colType);
-    }
   }
 
   /*
@@ -177,11 +176,9 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
   public set field(field: string) {
     if (typeof field === 'string') {
       this._field = field;
-      if (!this.customFilter && this._colType) {
-        this.setupDefaultFilter(this._field, this._colType);
-      }
+
       if (!this._sortBy) {
-        this._sortBy = new DatagridPropertyComparator(this._field);
+        this._sortBy = new DatagridPropertyComparator(field);
       }
     }
   }
@@ -198,6 +195,23 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       // So deleting this property value to prevent it from being used again
       // if this field property is set again
       delete this.initFilterValue;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (
+      changes.colType &&
+      changes.colType.currentValue &&
+      changes.colType.currentValue !== changes.colType.previousValue
+    ) {
+      if (!this.customFilter && !this.filter && this.colType && this.field) {
+        this.setupDefaultFilter(this.field, this.colType);
+      }
+    }
+    if (changes.field && changes.field.currentValue && changes.field.currentValue !== changes.field.previousValue) {
+      if (!this.customFilter && this.colType) {
+        this.setupDefaultFilter(this.field, this.colType);
+      }
     }
   }
 
@@ -219,8 +233,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
       if (comparator) {
         this._sortBy = comparator;
       } else {
-        if (this._field) {
-          this._sortBy = new DatagridPropertyComparator(this._field);
+        if (this.field) {
+          this._sortBy = new DatagridPropertyComparator(this.field);
         } else {
           delete this._sortBy;
         }

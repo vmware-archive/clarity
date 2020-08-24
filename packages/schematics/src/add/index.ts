@@ -4,204 +4,162 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-// @TODO REWRITE THIS
-// This is a mess, because it was written early on and could be much better.
-// Also, no real docs existed then or now, so good luck brave soldier.
-
-import { normalize, Path } from '@angular-devkit/core';
 import { chain, Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import * as fs from 'fs';
+import { existsSync } from 'fs';
 import { join } from 'path';
-import * as ts from 'typescript';
+import { getJsonFile } from '../utility/get-json-file';
+import { updateJsonFile } from '../utility/update-json-file';
+import { findAppModule } from '../utility/find-app-module';
+import { addModuleImportToModule } from '../utility/add-module-import-to-module';
+import { Schema as NgAddOptions } from './schema';
 
-import { addSymbolToNgModuleMetadata } from '../utility/ast-utils';
-import { InsertChange } from '../utility/change';
+interface ProjectSettings extends NgAddOptions {
+  module?: string;
+}
 
-import { Schema as ComponentOptions } from './schema';
+const CONFIG_FILE_NAME = 'angular.json';
+let projectSettings: ProjectSettings = {};
 
+// TODO: Stop using fs, keep the version somewhere else
 // Determine where to load the package.json, if doing local dev or not
 let corePackage: any;
-if (fs.existsSync(join(__dirname, '../../package.json'))) {
+if (existsSync(join(__dirname, '../../package.json'))) {
   corePackage = require('../../package.json');
 } else {
   corePackage = require('../../../../package.json');
 }
 
-// Looks up and finds the path to the app module (or other module if specified)
-function findModuleFromOptions(host: Tree, options: ComponentOptions, config: any): Path {
-  const modulePath = normalize('/' + config.projects[options.project].sourceRoot + '/' + options.module);
-  const moduleBaseName = normalize(options.module).split('/').pop();
-
-  // Try to handle any number of semi-valid paths
-  if (host.exists(modulePath)) {
-    // Default /[PROJECT_SRC]/[MODULE]
-    return normalize(modulePath);
-  } else if (host.exists(modulePath + '.ts')) {
-    // /[PROJECT_SRC]/[MODULE].ts
-    return normalize(modulePath + '.ts');
-  } else if (host.exists(modulePath + '.module.ts')) {
-    // /[PROJECT_SRC]/[MODULE].module.ts
-    return normalize(modulePath + '.module.ts');
-  } else if (host.exists(modulePath + '/app/' + moduleBaseName)) {
-    // /[PROJECT_SRC]/app/[MODULE]
-    return normalize(modulePath + '/app/' + moduleBaseName);
-  } else if (host.exists(modulePath + '/app/' + moduleBaseName + '.ts')) {
-    // /[PROJECT_SRC]/app/[MODULE].ts
-    return normalize(modulePath + '/app/' + moduleBaseName + '.ts');
-  } else if (host.exists(modulePath + '/app/' + moduleBaseName + '.module.ts')) {
-    // /[PROJECT_SRC]/app/[MODULE].module..ts
-    return normalize(modulePath + '/app/' + moduleBaseName + '.module.ts');
-  } else {
-    throw new Error('Could not find the module, please specify a path to the app module file with the --module flag');
-  }
+// Chain a series of tasks to setup Clarity
+// 1. Add Clarity dependencies
+// 2. Add styles and scripts assets to angular.json
+// 3. Add ClarityModule to NgModule
+// 4. Add BrowserAnimationsModule to NgModule
+// 5. Run npm install
+export default function (options: NgAddOptions): Rule {
+  return chain([
+    setProjectSettings(options),
+    addClarityDependencies,
+    addAssetsToConfigFile,
+    importClarityModule,
+    importBrowserAnimationsModule,
+    runNpmInstall,
+  ]);
 }
 
-// Read a file
-function readJsonFile(path: string) {
-  return JSON.parse(fs.readFileSync(path, 'utf-8'));
+function setProjectSettings(options: NgAddOptions) {
+  return (host: Tree) => {
+    if (!host.exists(CONFIG_FILE_NAME)) {
+      throw new SchematicsException('Could not install Clarity, requires Angular and Angular CLI version 6 or greater');
+    }
+
+    projectSettings = { ...options };
+    const config = getJsonFile(host, CONFIG_FILE_NAME) as any;
+
+    if (!options.project) {
+      if (!config.defaultProject) {
+        throw new SchematicsException('Could not find a default project, please specify --project PROJECT_NAME');
+      }
+      projectSettings.project = config.defaultProject;
+    }
+
+    projectSettings.module = findAppModule(host, config, projectSettings.project || '');
+  };
 }
 
-// Writes changes to a JSON file
-function updateJsonFile(path: string, callback: (a: any) => any) {
-  const json = readJsonFile(path);
-  callback(json);
-  fs.writeFileSync(path, JSON.stringify(json, null, 2));
+function importClarityModule() {
+  return (host: Tree) => addModuleImportToModule(host, 'ClarityModule', '@clr/angular', projectSettings.module || '');
+}
+
+function importBrowserAnimationsModule() {
+  return (host: Tree) =>
+    addModuleImportToModule(
+      host,
+      'BrowserAnimationsModule',
+      '@angular/platform-browser/animations',
+      projectSettings.module || ''
+    );
+}
+
+function addClarityDependencies(host: Tree) {
+  updateJsonFile(host, 'package.json', json => {
+    const version = getVersion(json.dependencies['@angular/core'], corePackage.version);
+
+    json.dependencies['@clr/angular'] = version;
+    json.dependencies['@clr/ui'] = version;
+    json.dependencies['@clr/icons'] = version;
+
+    if (!Object.keys(json.dependencies).includes('@webcomponents/webcomponentsjs')) {
+      json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
+    }
+  });
 }
 
 // Checks if a version of Angular is compatible with current or next
-function getVersion(ngVersion: string, clrVersion: string) {
+function getVersion(ngVersion: string, clrVersion: string): string {
   const diff = 6; // Number disparity between Angular and Clarity, this works as long as we stay in sync with versioning
-  const version1 = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
-  const version2 = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
+  const majorNgVersion = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
+  const majorClrVersion = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
 
-  if (version1 - version2 < diff) {
+  if (majorNgVersion - majorClrVersion < diff) {
     // If Angular is less than 6 versions ahead, backtrack Clarity version
-    return `^${version1 - diff}.0.0`;
+    return `^${majorNgVersion - diff}.0.0`;
   } else {
     // Otherwise, just link to installed version for latest or next releases
     return clrVersion;
   }
 }
 
-// Handles adding a module to the NgModule
-function addDeclarationToNgModule(
-  options: ComponentOptions,
-  imports: string,
-  moduleName: string,
-  packageName: string
-): Rule {
-  return (host: Tree) => {
-    const modulePath = options.module as string;
+function addAssetsToConfigFile(host: Tree) {
+  updateJsonFile(host, CONFIG_FILE_NAME, json => {
+    const project = Object.keys(json.projects).find(key => key === projectSettings.project);
 
-    const text = host.read(modulePath);
-    if (text === null) {
-      throw new SchematicsException(`File ${modulePath} does not exist.`);
-    }
-    const sourceText = text.toString('utf-8');
-    const source = ts.createSourceFile(modulePath, sourceText, ts.ScriptTarget.Latest, true);
-
-    const declarationChanges = addSymbolToNgModuleMetadata(source, modulePath, imports, moduleName, packageName);
-
-    const declarationRecorder = host.beginUpdate(modulePath);
-    for (const change of declarationChanges) {
-      if (change instanceof InsertChange) {
-        declarationRecorder.insertLeft(change.pos, change.toAdd);
-      }
-    }
-    host.commitUpdate(declarationRecorder);
-
-    return host;
-  };
-}
-
-export default function (options: ComponentOptions): Rule {
-  return (host: Tree, context: SchematicContext) => {
-    const configFile = 'angular.json';
-
-    if (!fs.existsSync(configFile)) {
-      console.error('Could not install Clarity, requires Angular and Angular CLI version 6 or greater');
+    if (!project) {
+      console.warn(`Could not update CLI config file to add scripts and styles. You'll have to add them manually.`);
       return;
     }
 
-    const config = readJsonFile(configFile);
+    const target = json.projects[project].targets || json.projects[project].architect;
+    const pathPrefix = json.apps ? '../' : '';
+    updateStyleAssets(target, pathPrefix);
+    updateScriptAssets(target, pathPrefix);
+  });
+}
 
-    if (!options.project) {
-      if (!config.defaultProject) {
-        console.error('Could not find a default project, please specify --project PROJECT_NAME');
-        return;
-      }
-      options.project = config.defaultProject;
-    }
+function updateStyleAssets(target: any, pathPrefix: string): void {
+  const styles = target.build.options.styles || [];
 
-    options.module = findModuleFromOptions(host, options, config);
+  if (!styles.includes('node_modules/@clr/ui/clr-ui')) {
+    styles.unshift(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
+  }
 
-    // Add Clarity packages to package.json, if not found
-    updateJsonFile('package.json', json => {
-      const version = getVersion(json.dependencies['@angular/core'], corePackage.version);
+  if (!styles.includes('node_modules/@clr/icons/clr-icons')) {
+    styles.unshift(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.css');
+  }
 
-      const packages = Object.keys(json.dependencies);
-      json.dependencies['@clr/angular'] = `${version}`;
-      json.dependencies['@clr/ui'] = `${version}`;
-      json.dependencies['@clr/icons'] = `${version}`;
+  target.build.options.styles = styles;
+}
 
-      if (!packages.includes('@webcomponents/webcomponentsjs')) {
-        json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
-      }
-    });
+function updateScriptAssets(target: any, pathPrefix: string): void {
+  const scripts = target.build.options.scripts || [];
 
-    // Add Clarity assets to .angular.json, if not found
-    updateJsonFile(configFile, json => {
-      const projects = Object.keys(json.projects);
-      const project = projects.find(key => {
-        if (key === options.project) {
-          return true;
-        }
-        return false;
-      });
-      if (!project) {
-        console.info(`Could not update CLI config file to add scripts and styles. You'll have to add them manually.`);
-        return;
-      }
+  if (!scripts.includes('node_modules/@clr/icons/clr-icons.min.js')) {
+    scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
+  }
 
-      const target = json.projects[project].targets ? json.projects[project].targets : json.projects[project].architect;
+  if (!scripts.includes('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js')) {
+    // Want this second
+    scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js');
+  }
 
-      const scripts = target.build.options.scripts;
-      const styles = target.build.options.styles;
+  if (!scripts.includes('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js')) {
+    // Want this first
+    scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
+  }
 
-      const scriptsSearch = scripts.join('|');
-      const stylesSearch = styles.join('|');
-      const pathPrefix = json.apps ? '../' : '';
+  target.build.options.scripts = scripts;
+}
 
-      if (stylesSearch.search('node_modules/@clr/ui/clr-ui') < 0) {
-        styles.unshift(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
-      }
-      if (stylesSearch.search('node_modules/@clr/icons/clr-icons') < 0) {
-        styles.unshift(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.css');
-      }
-      if (scriptsSearch.search('node_modules/@clr/icons/clr-icons.min.js') < 0) {
-        scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
-      }
-      if (scriptsSearch.search('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js') < 0) {
-        // Want this second
-        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js');
-      }
-      if (scriptsSearch.search('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js') < 0) {
-        // Want this first
-        scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
-      }
-    });
-
-    // Chain a series of tasks to setup Clarity
-    // 1. Add ClarityModule to NgModule
-    // 2. Add BrowserAnimationsModule to NgModule
-    // 3. Run npm install
-    return chain([
-      addDeclarationToNgModule(options, 'imports', 'ClarityModule', '@clr/angular'),
-      addDeclarationToNgModule(options, 'imports', 'BrowserAnimationsModule', '@angular/platform-browser/animations'),
-      (_tree: Tree, context: SchematicContext) => {
-        context.addTask(new NodePackageInstallTask());
-      },
-    ])(host, context);
-  };
+function runNpmInstall(_tree: Tree, context: SchematicContext) {
+  context.addTask(new NodePackageInstallTask());
 }

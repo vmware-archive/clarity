@@ -4,9 +4,7 @@ These schematics provide built in integrations with the Angular CLI features in 
 
 ## TODO
 
-- Add proper unit tests
 - Add e2e tests on travis
-- Clean up unnecessary utils
 
 ### Development setup
 
@@ -23,6 +21,51 @@ Install it `npm i -g verdaccio` and then run it with `verdaccio` in a terminal w
 This is how to run schematics globally on your system.
 
 `npm i -g @angular-devkit/schematics-cli`
+
+**Debugging unit tests with VSCode**
+
+Add the following configuration files to `packages/schematics/.vscode` if you want to debug the Jasmine tests in VSCode.
+
+**.vscode/tasks.json**
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build:test",
+      "problemMatcher": [],
+      "label": "npm-build-test"
+    }
+  ]
+}
+```
+
+**.vscode/launch.json**
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach",
+      "port": 9229
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test",
+      "program": "${workspaceFolder}/../../node_modules/jasmine/bin/jasmine.js",
+      "args": ["**/*_spec.js"],
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "preLaunchTask": "npm-build-test"
+    }
+  ]
+}
+```
 
 ## `ng add @clr/angular`
 

@@ -1,4 +1,5 @@
 {
+  "search.followSymlinks": false,
   "files.exclude": {
     "**/*.element.css.ts": true,
     "**/*.global.css.ts": true

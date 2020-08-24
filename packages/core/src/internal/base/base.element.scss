@@ -32,6 +32,22 @@ slot {
   display: contents !important;
 }
 
+:host([role='button']) {
+  cursor: pointer !important;
+
+  ::slotted(*) {
+    cursor: pointer !important;
+  }
+}
+
+:host([role='button'][disabled]) {
+  cursor: not-allowed !important;
+
+  ::slotted(*) {
+    cursor: not-allowed !important;
+  }
+}
+
 // normalize focus styles
 :host([tabindex='0']:focus),
 :host([focused][is-anchor]),

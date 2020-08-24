@@ -5,6 +5,6 @@
  */
 
 export interface Schema {
-  project: string;
-  module: string;
+  project?: string;
+  module?: string;
 }

@@ -8,6 +8,10 @@
   // needed for the proper calculation of popover offset that we do to keep label always visible
   .clr-combobox-form-control {
     align-items: stretch;
+
+    .clr-error .clr-validate-icon {
+      margin-left: 0;
+    }
   }
 
   // Focus indicator, this is a custom implementation compared with other controls due to DOM structure and potential growth of height
@@ -19,6 +23,18 @@
     position: absolute;
     bottom: -$clr_baselineRem_1px;
     left: 0;
+    @include css-var(
+      border-bottom-left-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      border-bottom-right-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
   }
   .clr-focus {
     width: 100%;
@@ -52,6 +68,20 @@
       $clr-use-custom-properties
     );
 
+    border: $clr-global-borderwidth solid $clr-combobox-border-color;
+    border-bottom: $clr-global-borderwidth solid $clr-forms-border-color;
+    @include css-var(
+      border-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
+
+    // the border color is on the component; we don't want it on the input itself
+    .clr-input.clr-combobox-input:focus {
+      background: none;
+    }
+
     &.invalid {
       border-bottom-color: $clr-forms-invalid-color;
     }
@@ -66,12 +96,12 @@
       background: transparent;
       border: none;
       cursor: pointer;
-      padding: $clr_baselineRem_4px $clr_baselineRem_4px;
+      padding: $clr_baselineRem_3px $clr_baselineRem_3px;
       color: $clr-combobox-pill-font-color;
     }
 
     .label-combobox-pill {
-      margin: $clr_baselineRem_0_125 $clr_baselineRem_0_125 0 0;
+      margin: $clr_baselineRem_0_125 $clr_baselineRem_0_25 0 0;
       @include css-var(
         background-color,
         clr-combobox-pill-background-color,
@@ -80,6 +110,12 @@
       );
       border-width: $clr_baselineRem_1px;
       border-style: solid;
+      @include css-var(
+        border-radius,
+        clr-combobox-pill-border-radius,
+        $clr-combobox-pill-border-radius,
+        $clr-use-custom-properties
+      );
       @include css-var(
         border-color,
         clr-combobox-pill-border-color,

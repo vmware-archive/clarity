@@ -12,9 +12,12 @@ $clr-combobox-trigger-left-padding: $clr_baselineRem_0_25 !default;
 $clr-combobox-trigger-right-padding: $clr_baselineRem_1 !default;
 
 $clr-combobox-font-size: $clr-p2-font-size !default;
+$clr-combobox-border-color: hsl(198, 10%, 90%) !default;
+$clr-combobox-border-radius: $clr_baselineRem_3px !default;
 
-$clr-combobox-input-background-color: hsl(201, 10%, 96%) !default;
-$clr-combobox-pill-background-color: hsl(201, 80%, 95%) !default;
-$clr-combobox-pill-border-color: hsl(201, 55%, 81%) !default;
+$clr-combobox-input-background-color: hsl(198, 12%, 97%) !default;
+$clr-combobox-pill-background-color: hsl(198, 0%, 100%) !default;
+$clr-combobox-pill-border-color: hsl(198, 10%, 90%) !default;
+$clr-combobox-pill-border-radius: $clr_baselineRem_3px !default;
 $clr-combobox-pill-font-color: $clr-label-font-color-light !default;
 $clr-combobox-filter-highlight: hsl(198, 0%, 34%) !default;

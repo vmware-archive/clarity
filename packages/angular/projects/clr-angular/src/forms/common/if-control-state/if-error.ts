@@ -28,17 +28,24 @@ export class ClrIfError extends AbstractIfState {
    * @param state CONTROL_STATE
    */
   protected handleState(state: CONTROL_STATE) {
-    const isInvalid = CONTROL_STATE.INVALID === state;
-
-    if (isInvalid && this.displayedContent === false) {
-      let options = {};
-      if (this.error && this.control && this.control.hasError(this.error)) {
-        options = { error: this.control.getError(this.error) };
-      }
-      this.container.createEmbeddedView(this.template, options);
-    } else if (!isInvalid && this.container) {
-      this.container.clear();
+    if (this.error && this.control) {
+      this.displayError(this.control.hasError(this.error));
+    } else {
+      this.displayError(CONTROL_STATE.INVALID === state);
     }
-    this.displayedContent = isInvalid;
+  }
+
+  private displayError(invalid: boolean) {
+    /* if no container do nothing */
+    if (!this.container) {
+      return;
+    }
+    if (invalid && this.displayedContent === false) {
+      this.container.createEmbeddedView(this.template, { error: this.control.getError(this.error) });
+      this.displayedContent = true;
+    } else if (!invalid) {
+      this.container.clear();
+      this.displayedContent = false;
+    }
   }
 }

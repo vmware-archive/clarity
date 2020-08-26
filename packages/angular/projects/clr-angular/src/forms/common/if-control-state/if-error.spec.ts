@@ -127,6 +127,44 @@ export default function (): void {
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
       });
+
+      it('should show error only when they are required', () => {
+        const control = new FormControl(undefined, [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(5),
+        ]);
+        control.markAsTouched();
+        ngControlService.setControl(control);
+        ifControlStateService.triggerStatusChange();
+        fixture.detectChanges();
+
+        // Required message
+        expect(fixture.nativeElement.innerHTML).toContain(errorMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(minLengthMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(maxLengthMessage);
+
+        // MinLength message
+        control.setValue('abc');
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
+        expect(fixture.nativeElement.innerHTML).toContain(minLengthMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(maxLengthMessage);
+
+        // MaxLength message
+        control.setValue('abcdef');
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(minLengthMessage);
+        expect(fixture.nativeElement.innerHTML).toContain(maxLengthMessage);
+
+        // No errors
+        control.setValue('abcde');
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).not.toContain(errorMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(minLengthMessage);
+        expect(fixture.nativeElement.innerHTML).not.toContain(maxLengthMessage);
+      });
     });
   });
 }

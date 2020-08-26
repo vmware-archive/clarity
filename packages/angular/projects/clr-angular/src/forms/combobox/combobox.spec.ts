@@ -21,6 +21,7 @@ import { ClrComboboxModule } from './combobox.module';
 @Component({
   template: `
     <clr-combobox
+      [placeholder]="placeholder"
       [(ngModel)]="selection"
       [clrMulti]="multi"
       (clrInputChange)="inputChanged($event)"
@@ -41,6 +42,7 @@ class TestComponent {
   inputValue: string;
   openState: boolean;
   disabled = false;
+  placeholder: string;
   inputChanged(value: string) {
     this.inputValue = value;
   }
@@ -213,6 +215,13 @@ export default function (): void {
           const button: HTMLButtonElement = clarityElement.querySelector('.clr-combobox-trigger');
           expect(button.disabled).toBeTruthy();
         }));
+
+      it('should pass placeholder to internal input', () => {
+        fixture.componentInstance.placeholder = 'hello world';
+        fixture.detectChanges();
+        const combobox: HTMLElement = clarityElement.querySelector('.clr-combobox-input');
+        expect(combobox.getAttribute('placeholder')).toEqual('hello world');
+      });
     });
   });
 }

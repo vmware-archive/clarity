@@ -303,6 +303,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     get openState(): boolean;
     optionSelected: ClrOptionSelected<T>;
     optionSelectionService: OptionSelectionService<T>;
+    placeholder: string;
     protected renderer: Renderer2;
     set searchText(text: string);
     get searchText(): string;

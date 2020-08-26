@@ -87,7 +87,15 @@
 
 <h4>Horizontal</h4>
 <form clrForm clrLayout="horizontal">
-  <clr-combobox [(ngModel)]="horizontal.one" name="one" required [disabled]="disabled" aria-label="one" class="foo">
+  <clr-combobox
+    [(ngModel)]="horizontal.one"
+    placeholder="type here"
+    name="one"
+    required
+    [disabled]="disabled"
+    aria-label="one"
+    class="foo"
+  >
     <clr-options>
       <clr-option clrValue="1">1</clr-option>
       <clr-option clrValue="2">2</clr-option>

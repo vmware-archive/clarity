@@ -175,6 +175,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     }
   }
 
+  @Input('placeholder') placeholder = '';
+
   @Input('clrMulti')
   set multiSelect(value: boolean) {
     if (value) {

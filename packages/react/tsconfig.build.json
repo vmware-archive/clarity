@@ -27,10 +27,7 @@
     "importHelpers": true,
     "composite": true,
     "baseUrl": "./",
-    "rootDir": "./src",
-    "paths": {
-      "@clr/core/*": ["../../dist/core/*"]
-    }
+    "rootDir": "./src"
   },
   "exclude": ["node_modules"]
 }

@@ -18,6 +18,7 @@ import LayoutServiceSpecs from './providers/layout.service.spec';
 import NgControlServiceSpecs from './providers/ng-control.service.spec';
 import WrappedControlSpecs from './wrapped-control.spec';
 import ControlContainerSpecs from './control-container.spec';
+import IfErrorSpec from './if-control-state/if-error.spec';
 
 describe('Forms common utilities', function () {
   ControlClassServiceSpecs();
@@ -34,4 +35,5 @@ describe('Forms common utilities', function () {
   ErrorSpecs();
   SuccessSpec();
   HelperSpecs();
+  IfErrorSpec();
 });

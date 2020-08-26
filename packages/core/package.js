@@ -82,6 +82,9 @@ function distributeBuild() {
     // make copy into root dist for publishing
     cpy(['./core'], '../../../dist', { cwd: './dist', parents: true }),
 
+    // copy latest for react wrapper dev app
+    cpy(['./core'], '../../react/node_modules/@clr', { cwd: './dist', parents: true }),
+
     // copy latest for demo apps (many tools don't support symlinks so this is a workaround of sorts)
     ...[
       'core-angular-cli',

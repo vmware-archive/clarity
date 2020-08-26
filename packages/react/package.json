@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "scripts": {
     "start": "npm-run-all core:build dev:start",
-    "dev:start": "parcel index.html",
+    "dev:start": "yarn run clean && parcel index.html --cache-dir=./.parcel-cache",
     "build": "npm-run-all -s build:ts build:package build:copy",
     "build:copy": "cpy './react' '../../../dist' --cwd=./dist --parents",
     "build:package": "cpy '**/package.json' '../dist/react/' --cwd=./src --parents && cpy ./package.json ./dist/react/ && cpy ./README.md ./dist/react/ && node ./package.js",
@@ -13,10 +13,11 @@
     "lint:fix": "eslint --fix \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "test:snap:update": "jest --updateSnapshot"
+    "test:snap:update": "jest --updateSnapshot",
+    "clean": "del ./dist .parcel-cache"
   },
   "dependencies": {
-    "@clr/core": "^4.0.0-rc.1",
+    "@clr/core": "./packages/core/dist/core",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

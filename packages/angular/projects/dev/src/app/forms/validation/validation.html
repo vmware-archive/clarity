@@ -13,8 +13,8 @@
       <input clrInput placeholder="Input control" name="input" formControlName="input" />
       <clr-control-helper>Helper text</clr-control-helper>
       <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
-      <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
-      <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+      <clr-control-error *clrIfError="'minlength'; error as err">Must be at least 5 characters</clr-control-error>
+      <clr-control-error *clrIfError="'pattern'; error as err">It must match 'asdfasdf'</clr-control-error>
       <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
     </clr-input-container>
 

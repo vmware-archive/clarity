@@ -1,8 +1,8 @@
 # Clarity Core Web Components
 
-Clarity Web Components is a suite of Web Components from the [Clarity Design System](https://clarity.design).
+Clarity Core is a suite of Web Components for [Clarity Design System](https://clarity.design/storybook/core).
 
-## Installing Clarity Web Components
+## Quick Start Install
 
 1.  First, install the Clarity Core package from npm.
 
@@ -13,50 +13,63 @@ Clarity Web Components is a suite of Web Components from the [Clarity Design Sys
 2.  Import desired Web Component into your JavaScript or TypeScript
 
     ```typescript
-    import '@clr/core/modal';
+    import '@clr/core/modal/register.js';
     ```
 
-3.  Use Web Component in desired framework template
+Full installation steps can be found in the [Core Getting Started Guide](https://clarity.design/storybook/core/?path=/story/documentation-getting-started--page).
 
-    #### Angular
+## Usage
 
-    ```html
-    <!--
-        - size - attribute style hook
-        - [open] - setting the 'open' property on the element
-        - (openChange) - listen for the `openChange` custom event
-      -->
-    <cds-modal size="lg" [open]="true" (openChange)="log($event.detail)">
-      <p>slot content</p>
-    </cds-modal>
-    ```
+### No Framework
 
-    #### Vue
+```html
+<cds-modal size="lg">
+  <p>slot content</p>
+</cds-modal>
+<script>
+  const modal = document.querySelector('cds-modal');
+  modal.addEventListener('closeChange', event => console.log(event));
+  modal.closable = true;
+</script>
+```
 
-    ```html
-    <!--
-      Example of a modal web component in Vue
-      - size - attribute style hook
-      - :open - setting the 'open' property on the element
-      - @openChange - listen for the `openChange` custom event
-    -->
-    <cds-modal size="lg" :open="true" @openChange="log($event.detail)">
-      <p>slot content</p>
-    </cds-modal>
-    ```
+### Angular
 
-    #### React (Support Coming Soon)
+```html
+<!--
+  - `size` is set as an HTML attribute so no binding syntax is used
+  - [closable] is setting a property on the element
+  - (closeChange) is listening for the `closeChange` custom event
+-->
 
-    ```jsx
-    {
-      /*
-      Example of a modal web component in React with React Shim
-      - size - attribute style hook
-      - open - setting the 'open' property on the element
-      - openChange - listen for the `openChange` custom event
-    */
-    }
-    <CdsModal size="lg" open={this.state.open} openChange={this.log}>
-      <p>slot content</p>
-    </CdsModal>;
-    ```
+<cds-modal size="lg" [closable]="booleanValue" (closeChange)="log($event.detail)">
+  <p>slot content</p>
+</cds-modal>
+```
+
+### Vue
+
+```html
+<!--
+  - `size` is set as an HTML attribute so no binding syntax is used
+  - :closable is setting a property on the element
+  - @closeChange is listening for the `closeChange` custom event
+-->
+
+<cds-modal size="lg" :closable="booleanValue" @closeChange="log($event.detail)">
+  <p>slot content</p>
+</cds-modal>
+```
+
+### React via `@clr/react` package
+
+```jsx
+/*
+  - `size` unlike the examples above `size` is set as a property
+  - closable is setting a property on the element
+  - onCloseChange is listening for the `closeChange` custom event
+*/
+<CdsModal size="lg" closable={this.state.booleanValue} onCloseChange={this.log}>
+  <p>slot content</p>
+</CdsModal>
+```

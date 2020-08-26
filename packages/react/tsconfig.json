@@ -26,9 +26,6 @@
     "importHelpers": true,
     "composite": true,
     "baseUrl": "./",
-    "rootDir": "./src",
-    "paths": {
-      "@clr/core/*": ["../../dist/core/*"] // This mapping is relative to "baseUrl"
-    }
+    "rootDir": "./src"
   }
 }

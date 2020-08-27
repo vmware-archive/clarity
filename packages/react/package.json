@@ -8,7 +8,7 @@
     "build:copy": "cpy './react' '../../../dist' --cwd=./dist --parents",
     "build:package": "cpy '**/package.json' '../dist/react/' --cwd=./src --parents && cpy ./package.json ./dist/react/ && cpy ./README.md ./dist/react/ && node ./package.js",
     "build:ts": "tsc --b ./tsconfig.project.json --force",
-    "core:build": "yarn --cwd packages/core run build",
+    "core:build": "yarn --cwd ../core run build",
     "lint": "eslint \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
     "lint:fix": "eslint --fix \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
     "test": "jest --coverage",

@@ -373,13 +373,9 @@
 
 [cds-text~='link'] {
   color: $cds-token-color-action-600 !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;
   line-height: inherit !important;
   font-size: inherit !important;
-
-  &:hover {
-    text-decoration: underline !important;
-  }
 }
 
 [cds-text~='code'] {

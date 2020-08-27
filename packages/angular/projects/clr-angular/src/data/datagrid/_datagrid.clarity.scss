@@ -600,7 +600,6 @@
     // bug(popover): prevents action-overflow from being on top (first row).
     // Needed to keep select/radio and expand svgs underneath header on scrolling
     z-index: map-get($clr-layers, datagrid-header);
-    min-height: $clr_baselineRem_1_5;
     width: auto;
 
     .datagrid-column {

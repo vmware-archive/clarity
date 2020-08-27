@@ -49,6 +49,15 @@ describe('modal element', () => {
       await componentIsStable(component);
       expect((component as any).focusTrap).toBeDefined();
     });
+
+    it('should remove the focus trap if hidden attr is used', async () => {
+      await componentIsStable(component);
+      expect(document.querySelector('.offscreen-focus-rebounder')).toBeTruthy();
+
+      component.setAttribute('hidden', '');
+      await componentIsStable(component);
+      expect(document.querySelector('.offscreen-focus-rebounder')).toBeFalsy();
+    });
   });
 
   describe('demo mode', () => {

@@ -48,6 +48,11 @@ slot {
   }
 }
 
+// https://developers.google.com/web/fundamentals/web-components/best-practices#add-a-:host-display-style-that-respects-the-hidden-attribute.
+:host([hidden]) {
+  display: none !important;
+}
+
 // normalize focus styles
 :host([tabindex='0']:focus),
 :host([focused][is-anchor]),

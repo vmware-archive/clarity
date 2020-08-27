@@ -6,7 +6,7 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --text-decoration: none;
+  --text-decoration: underline;
   --color: #{$cds-token-color-action-600};
   --font-size: inherit;
   --line-height: inherit;

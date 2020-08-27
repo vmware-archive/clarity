@@ -22,11 +22,11 @@ import { styles } from './inline-button.element.css.js';
  * @beta
  * @element cds-inline-button
  * @slot - Content slot for inside the button
+ * @cssprop --text-decoration
  * @cssprop --color
  * @cssprop --font-size
- * @cssprop --font-weight
+ * @cssprop --line-height
  * @cssprop --letter-spacing
- * @cssprop --text-decoration
  */
 export class CdsInlineButton extends CdsBaseButton {
   connectedCallback(): void {
@@ -40,12 +40,7 @@ export class CdsInlineButton extends CdsBaseButton {
   }
 
   render() {
-    return html`
-      <span class="private-host">
-        <slot></slot>
-        ${this.hiddenButtonTemplate}
-      </span>
-    `;
+    return html`<span class="private-host"><slot></slot>${this.hiddenButtonTemplate}</span>`;
   }
 
   static get styles() {

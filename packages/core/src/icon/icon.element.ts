@@ -167,7 +167,8 @@ export class CdsIcon extends LitElement {
   @id()
   private idForAriaLabel: string;
 
-  firstUpdated() {
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
     this.updateSVGAriaLabel();
   }
 

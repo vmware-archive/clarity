@@ -81,18 +81,20 @@ describe('@property decorator defaults', () => {
     spyOn(console, 'warn');
 
     class Proto {
-      test: undefined;
+      test: 'value';
       tagName = 'cds-test-warning';
       firstUpdated() {
         // do nothing
       }
     }
 
-    requirePropertyCheck(Proto.prototype, 'test', { type: String, required: 'warning' });
+    const obj = new Proto();
+    requirePropertyCheck.apply(obj, [Proto.prototype, 'test', { type: String, required: 'warning' }]);
 
-    new Proto().firstUpdated();
-
+    obj.test = undefined;
+    obj.firstUpdated();
     expect(console.warn).toHaveBeenCalled();
+
     window.jasmine = jasmine;
   });
 });

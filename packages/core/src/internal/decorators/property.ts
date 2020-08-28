@@ -8,6 +8,7 @@ import { property as prop } from 'lit-element';
 import { camelCaseToKebabCase, kebabCaseToPascalCase, capitalizeFirstLetter } from '../utils/string.js';
 import { LogService } from '../services/log.service.js';
 import { getAngularVersion, getReactVersion, getVueVersion } from '../utils/framework.js';
+import { isNilOrEmpty } from '../utils/identity.js';
 
 export interface CustomPropertyConfig {
   type: unknown;
@@ -70,7 +71,7 @@ export function requirePropertyCheck(protoOrDescriptor: any, name: string, optio
   const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
   function firstUpdated(this: any, props: Map<string, any>): void {
-    if (options && options.required) {
+    if (options && options.required && isNilOrEmpty(this[name])) {
       const message = options.requiredMessage || getRequiredMessage(options.required, name, this.tagName);
       if (options.required === 'error') {
         throw new Error(message);

@@ -156,7 +156,7 @@
     //Other
     background: none;
     border: none;
-    @include css-var(color, clr-combobox-trigger-color, $clr-combobox-trigger-color, $clr-use-custom-properties);
+    color: currentColor;
     cursor: pointer;
     outline: none;
   }

@@ -6,18 +6,17 @@ $clr-combobox-min-height: $clr_baselineRem_1 !default;
 $clr-combobox-min-width: $clr_baselineRem_7 !default;
 $clr-ng-multiselect-min-width: $clr_baselineRem_15 !default;
 
-$clr-combobox-trigger-color: $clr-color-neutral-500 !default;
 $clr-combobox-trigger-dimensions: $clr_baselineRem_1 !default;
 $clr-combobox-trigger-left-padding: $clr_baselineRem_0_25 !default;
 $clr-combobox-trigger-right-padding: $clr_baselineRem_1 !default;
 
 $clr-combobox-font-size: $clr-p2-font-size !default;
-$clr-combobox-border-color: hsl(198, 10%, 90%) !default;
+$clr-combobox-border-color: $clr-color-neutral-200 !default;
 $clr-combobox-border-radius: $clr_baselineRem_3px !default;
 
-$clr-combobox-input-background-color: hsl(198, 12%, 97%) !default;
-$clr-combobox-pill-background-color: hsl(198, 0%, 100%) !default;
-$clr-combobox-pill-border-color: hsl(198, 10%, 90%) !default;
+$clr-combobox-input-background-color: $clr-color-neutral-100 !default;
+$clr-combobox-pill-background-color: $clr-color-neutral-0 !default;
+$clr-combobox-pill-border-color: $clr-color-neutral-200 !default;
 $clr-combobox-pill-border-radius: $clr_baselineRem_3px !default;
 $clr-combobox-pill-font-color: $clr-label-font-color-light !default;
-$clr-combobox-filter-highlight: hsl(198, 0%, 34%) !default;
+$clr-combobox-filter-highlight: $clr-color-neutral-800 !default;

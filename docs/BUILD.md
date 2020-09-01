@@ -33,7 +33,7 @@ mode while you develop.
 
 ## Full Project Build
 
-To build the entire repo and all projects run the command `yarn build:ci`.
+To build the entire repo and all projects run the command `yarn build`.
 This command is useful to run before submitting a PR to ensure everything will
 pass the CI build.
 
@@ -103,7 +103,7 @@ This entry file now lives in src/clr-angular/test.tsand is now confined to what'
 
 ##### `yarn build:ci`
 
-The `build:ci` script is used by Travis-CI to run all of the checks, such as format, lint, and unit tests.
+The `build:ci` script is used by Github CI to run all of the library build checks, such as format, lint, and unit tests.
 If the code doesn't pass both the format and lint checkers, then the build fails before running the unit tests.
 
 ##### `yarn format` and `yarn format:fix`

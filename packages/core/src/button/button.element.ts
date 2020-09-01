@@ -27,7 +27,7 @@ const iconSpinnerError = html`<span class="button-status-icon" cds-layout="horiz
   ><cds-icon shape="error-standard" cds-layout="align:center"></cds-icon
 ></span>`;
 
-export enum ClrLoadingState {
+export const enum ClrLoadingState {
   DEFAULT = 'default',
   LOADING = 'loading',
   SUCCESS = 'success',

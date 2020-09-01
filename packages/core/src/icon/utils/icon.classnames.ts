@@ -18,18 +18,18 @@ import { CdsIcon } from '../icon.element.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 import { iconHasAlertedShapes, iconHasBadgedShapes, iconHasSolidShapes } from './icon.has-shape.js';
 
-export enum IconSvgClassnames {
+export const enum IconSvgClassnames {
   Badged = 'can-badge',
   Alerted = 'can-alert',
   Solid = 'has-solid',
 }
 
-export enum IconDecorationClassnames {
+export const enum IconDecorationClassnames {
   Badge = 'clr-i-badge',
   Alert = 'clr-i-alert',
 }
 
-export enum IconShapeClassnames {
+export const enum IconShapeClassnames {
   Outline = 'outline',
   Solid = 'solid',
   OutlineBadged = 'outline--badged',
@@ -106,7 +106,7 @@ export function getIconSvgClasses(icon: IconShapeCollection): string {
   return transformToSpacedString(tests, icon);
 }
 
-export enum SizeUpdateStrategies {
+export const enum SizeUpdateStrategies {
   BadSizeValue = 'bad-value',
   ValidSizeString = 'value-is-string',
   ValidNumericString = 'value-is-numeric',

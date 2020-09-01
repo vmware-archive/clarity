@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export enum AriaRole {
+export const enum AriaRole {
   Presentation = 'presentation',
   Button = 'button',
 }

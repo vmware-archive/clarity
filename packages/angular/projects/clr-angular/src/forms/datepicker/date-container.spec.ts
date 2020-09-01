@@ -13,7 +13,7 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
-import { Layouts, LayoutService } from '../common/providers/layout.service';
+import { ClrFormLayout, LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { PopoverPosition } from '../../popover/common/popover-positions';
 
@@ -209,7 +209,7 @@ export default function () {
         expect(context.clarityDirective.controlClass()).toContain('clr-error');
         const controlClassService = context.getClarityProvider(ControlClassService);
         const layoutService = context.getClarityProvider(LayoutService);
-        layoutService.layout = Layouts.VERTICAL;
+        layoutService.layout = ClrFormLayout.VERTICAL;
         context.clarityDirective.state = CONTROL_STATE.VALID;
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');

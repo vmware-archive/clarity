@@ -6,6 +6,7 @@
 
 export * from './if-control-state/if-error';
 export * from './if-control-state/if-success';
+export { ClrFormLayout } from './providers/layout.service';
 export * from './error';
 export * from './success';
 export * from './form';

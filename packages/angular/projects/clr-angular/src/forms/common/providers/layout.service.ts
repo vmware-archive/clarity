@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 
-export enum Layouts {
+export enum ClrFormLayout {
   VERTICAL = 'vertical',
   HORIZONTAL = 'horizontal',
   COMPACT = 'compact',
@@ -16,12 +16,12 @@ export enum Layouts {
 export class LayoutService {
   readonly minLabelSize = 1;
   readonly maxLabelSize = 12;
-  layout: Layouts = Layouts.HORIZONTAL;
+  layout: ClrFormLayout = ClrFormLayout.HORIZONTAL;
 
   // This is basically a replacement for Object.values(), which IE11 and Node <9 don't support :(
-  // String enums cannot be reverse-mapped, meaning Layouts['COMPACT'] does not return 'compact' so
+  // String enums cannot be reverse-mapped, meaning ClrFormLayout['COMPACT'] does not return 'compact' so
   // this exists to deal with this little caveat to get the list of the values as an array.
-  private layoutValues: string[] = Object.keys(Layouts).map(key => (Layouts as Record<string, any>)[key]);
+  private layoutValues: string[] = Object.keys(ClrFormLayout).map(key => (ClrFormLayout as Record<string, any>)[key]);
   private _labelSize = 2;
 
   set labelSize(size: number) {
@@ -35,15 +35,15 @@ export class LayoutService {
   }
 
   isVertical(): boolean {
-    return this.layout === Layouts.VERTICAL;
+    return this.layout === ClrFormLayout.VERTICAL;
   }
 
   isHorizontal(): boolean {
-    return this.layout === Layouts.HORIZONTAL;
+    return this.layout === ClrFormLayout.HORIZONTAL;
   }
 
   isCompact(): boolean {
-    return this.layout === Layouts.COMPACT;
+    return this.layout === ClrFormLayout.COMPACT;
   }
 
   get layoutClass(): string {

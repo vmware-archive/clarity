@@ -12,7 +12,7 @@ import { ClrInputContainer } from '../input/input-container';
 
 import { ClrLabel } from './label';
 import { ControlIdService } from './providers/control-id.service';
-import { Layouts, LayoutService } from './providers/layout.service';
+import { ClrFormLayout, LayoutService } from './providers/layout.service';
 import { NgControlService } from './providers/ng-control.service';
 
 @Component({ template: `<label></label>` })
@@ -106,7 +106,7 @@ export default function (): void {
       });
       const fixture = TestBed.createComponent(ContainerizedTest);
       const layoutService = fixture.debugElement.injector.get(LayoutService);
-      layoutService.layout = Layouts.HORIZONTAL;
+      layoutService.layout = ClrFormLayout.HORIZONTAL;
       fixture.detectChanges();
       const label = fixture.nativeElement.querySelector('label');
       expect(label.classList.contains('clr-col-md-2')).toBeTrue();
@@ -121,7 +121,7 @@ export default function (): void {
       });
       const fixture = TestBed.createComponent(ContainerizedTest);
       const layoutService = fixture.debugElement.injector.get(LayoutService);
-      layoutService.layout = Layouts.HORIZONTAL;
+      layoutService.layout = ClrFormLayout.HORIZONTAL;
       layoutService.labelSize = 3;
       fixture.detectChanges();
       const label = fixture.nativeElement.querySelector('label');
@@ -137,7 +137,7 @@ export default function (): void {
       });
       const fixture = TestBed.createComponent(ContainerizedTest);
       const layoutService = fixture.debugElement.injector.get(LayoutService);
-      layoutService.layout = Layouts.HORIZONTAL;
+      layoutService.layout = ClrFormLayout.HORIZONTAL;
       fixture.componentInstance.label.disableGrid();
       fixture.detectChanges();
       const label = fixture.nativeElement.querySelector('label');

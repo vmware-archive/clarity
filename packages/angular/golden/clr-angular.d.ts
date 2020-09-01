@@ -1050,6 +1050,12 @@ export declare class ClrForm {
     onFormSubmit(): void;
 }
 
+export declare enum ClrFormLayout {
+    VERTICAL = "vertical",
+    HORIZONTAL = "horizontal",
+    COMPACT = "compact"
+}
+
 export declare class ClrFormsModule {
 }
 
@@ -1146,7 +1152,7 @@ export declare class ClrLabel implements OnInit, OnDestroy {
 }
 
 export declare class ClrLayout implements OnInit {
-    layout: Layouts;
+    layout: ClrFormLayout;
     layoutService: LayoutService;
     constructor(layoutService: LayoutService);
     ngOnInit(): void;

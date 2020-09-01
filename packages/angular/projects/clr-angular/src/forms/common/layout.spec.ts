@@ -8,9 +8,13 @@ import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrLayout } from './layout';
-import { LayoutService, Layouts } from './providers/layout.service';
+import { LayoutService, ClrFormLayout } from './providers/layout.service';
 
-function customTestComponentFactory(layout: Layouts = Layouts.VERTICAL, hasLabelSize = false, labelSize: any = 2) {
+function customTestComponentFactory(
+  layout: ClrFormLayout = ClrFormLayout.VERTICAL,
+  hasLabelSize = false,
+  labelSize: any = 2
+) {
   @Component({
     template: `<div clrForm clrLayout="${layout}" ${hasLabelSize ? `clrLabelSize="${labelSize}"` : ''}></div>`,
     providers: [LayoutService],
@@ -28,7 +32,7 @@ export default function (): void {
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.VERTICAL);
+      expect(service.layout).toEqual(ClrFormLayout.VERTICAL);
     });
 
     it('accepts layout option through layout input binding', function () {
@@ -40,22 +44,22 @@ export default function (): void {
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(directive.layout).toEqual(Layouts.VERTICAL);
-      expect(service.layout).toEqual(Layouts.VERTICAL);
+      expect(directive.layout).toEqual(ClrFormLayout.VERTICAL);
+      expect(service.layout).toEqual(ClrFormLayout.VERTICAL);
     });
 
     it('ignores invalid layout types', function () {
-      const testClass = customTestComponentFactory('invalid' as Layouts);
+      const testClass = customTestComponentFactory('invalid' as ClrFormLayout);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
     });
 
     it('label should have a default size of 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -65,7 +69,7 @@ export default function (): void {
     });
 
     it('layout service should properly validate label sizes', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -87,7 +91,7 @@ export default function (): void {
     });
 
     it('horizontal layout label that are out of (1, 12) range should default to size of 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, -1);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true, -1);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -97,7 +101,7 @@ export default function (): void {
     });
 
     it('compact layout label that are out of (1, 12) range should default to size of 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, -1);
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, -1);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -107,7 +111,7 @@ export default function (): void {
     });
 
     it("vertical layout label shouldn't be able to set label size", () => {
-      const testClass = customTestComponentFactory(Layouts.VERTICAL, true, 3);
+      const testClass = customTestComponentFactory(ClrFormLayout.VERTICAL, true, 3);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
@@ -117,113 +121,113 @@ export default function (): void {
     });
 
     it('ignores string label sizes for horizontal layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, '2');
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true, '2');
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores boolean label sizes for horizontal layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, true);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true, true);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores object label sizes for horizontal layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, new Object());
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true, new Object());
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores null label sizes for horizontal layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true, null);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true, null);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores undefined label sizes for horizontal layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.HORIZONTAL, true);
+      const testClass = customTestComponentFactory(ClrFormLayout.HORIZONTAL, true);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.HORIZONTAL);
+      expect(service.layout).toEqual(ClrFormLayout.HORIZONTAL);
       expect(service.labelSize).toEqual(2);
     });
     //
 
     it('ignores string label sizes for compact layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, '2');
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, '2');
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.COMPACT);
+      expect(service.layout).toEqual(ClrFormLayout.COMPACT);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores boolean label sizes for compact layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, true);
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, true);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.COMPACT);
+      expect(service.layout).toEqual(ClrFormLayout.COMPACT);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores object label sizes for compact layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, new Object());
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, new Object());
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.COMPACT);
+      expect(service.layout).toEqual(ClrFormLayout.COMPACT);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores null label sizes for compact layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, null);
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, null);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.COMPACT);
+      expect(service.layout).toEqual(ClrFormLayout.COMPACT);
       expect(service.labelSize).toEqual(2);
     });
 
     it('ignores undefined label sizes for compact layout and defaults to 2', () => {
-      const testClass = customTestComponentFactory(Layouts.COMPACT, true, undefined);
+      const testClass = customTestComponentFactory(ClrFormLayout.COMPACT, true, undefined);
       TestBed.configureTestingModule({ declarations: [ClrLayout, testClass] });
       const fixture = TestBed.createComponent(testClass);
       const service = fixture.debugElement.injector.get(LayoutService);
       fixture.detectChanges();
 
-      expect(service.layout).toEqual(Layouts.COMPACT);
+      expect(service.layout).toEqual(ClrFormLayout.COMPACT);
       expect(service.labelSize).toEqual(2);
     });
   });

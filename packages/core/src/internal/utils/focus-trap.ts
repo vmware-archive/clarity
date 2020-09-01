@@ -72,11 +72,11 @@ export function removeReboundElementsFromFocusTrapElement(focusTrapElement: Focu
   }
 }
 export class FocusTrap {
-  focusTrapElement: FocusTrapElement;
+  private focusTrapElement: FocusTrapElement;
   private previousFocus: HTMLElement;
   private onFocusInEvent: any;
 
-  constructor(public hostElement: HTMLElement) {
+  constructor(hostElement: HTMLElement) {
     this.focusTrapElement = hostElement as FocusTrapElement;
   }
 

@@ -125,7 +125,7 @@ steps.
 
 1.  Have [NodeJS](https://nodejs.org) installed and [Yarn](https://yarnpkg.com)
 2.  In the root project directory run, `yarn`
-3.  Run `yarn build:ci` to build entire project (this may take several minutes)
+3.  Run `yarn build` to build entire project (this may take several minutes)
 4.  Startup the project
     - If Angular change run `yarn start`
     - If Web Component change run `yarn core:start`
@@ -234,7 +234,14 @@ you should:
 - Make sure `yarn test` passes for each of them.
   For individual lint failures, you will have to fix them manually.
 
-To test the same thing that the CI will test you could run `yarn build:ci`
+The CI runs three parallel Jobs for performance.
+
+1. Build and test libraries
+2. Build website and storybook
+3. Build angular dev app
+
+To ensure your PR will pass the CI you can run `yarn run build` which will run
+all three CI checks locally on your machine. This may take several minutes.
 
 If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
 

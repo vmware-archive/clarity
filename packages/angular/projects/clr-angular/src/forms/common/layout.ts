@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Directive, Input, OnInit } from '@angular/core';
-import { Layouts, LayoutService } from './providers/layout.service';
+import { ClrFormLayout, LayoutService } from './providers/layout.service';
 
 @Directive({
   selector: '[clrForm][clrLayout]',
 })
 export class ClrLayout implements OnInit {
-  @Input('clrLayout') layout: Layouts;
+  @Input('clrLayout') layout: ClrFormLayout;
 
   constructor(public layoutService: LayoutService) {}
 

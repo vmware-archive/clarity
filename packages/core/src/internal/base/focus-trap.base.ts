@@ -9,7 +9,7 @@ import { FocusTrap } from '../utils/focus-trap.js';
 import { internalProperty, property } from '../decorators/property.js';
 
 export class CdsBaseFocusTrap extends LitElement {
-  protected focusTrap: FocusTrap;
+  protected focusTrap = new FocusTrap(this);
 
   /**
    * Its recommended to remove or add a focus trap element from the DOM
@@ -23,30 +23,31 @@ export class CdsBaseFocusTrap extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-
-    if (!this.__demoMode) {
-      this.focusTrap = new FocusTrap(this);
-      this.focusTrap.enableFocusTrap();
-    }
+    this.toggleFocusTrap();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-
-    if (!this.__demoMode) {
-      this.focusTrap.removeFocusTrap();
-    }
+    this.focusTrap.removeFocusTrap();
   }
 
   attributeChangedCallback(name: string, old: string, value: string) {
     super.attributeChangedCallback(name, old, value);
 
-    if (name === 'hidden' && old !== value && !this.__demoMode) {
-      this.hasAttribute('hidden') ? this.focusTrap.removeFocusTrap() : this.focusTrap.enableFocusTrap();
+    if (name === 'hidden' && old !== value) {
+      this.toggleFocusTrap();
     }
   }
 
   protected render() {
     return html`<slot></slot>`;
+  }
+
+  private toggleFocusTrap() {
+    if (!this.__demoMode && !this.hasAttribute('hidden')) {
+      this.focusTrap.enableFocusTrap();
+    } else {
+      this.focusTrap.removeFocusTrap();
+    }
   }
 }

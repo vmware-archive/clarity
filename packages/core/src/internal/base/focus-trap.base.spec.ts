@@ -50,13 +50,34 @@ describe('modal element', () => {
       expect((component as any).focusTrap).toBeDefined();
     });
 
-    it('should remove the focus trap if hidden attr is used', async () => {
+    it('should remove the focus trap if hidden attr is set', async () => {
       await componentIsStable(component);
       expect(document.querySelector('.offscreen-focus-rebounder')).toBeTruthy();
 
       component.setAttribute('hidden', '');
       await componentIsStable(component);
       expect(document.querySelector('.offscreen-focus-rebounder')).toBeFalsy();
+    });
+  });
+
+  describe('initialized hidden modal', () => {
+    let testElement: HTMLElement;
+    let component: CdsBaseFocusTrap;
+
+    beforeEach(async () => {
+      testElement = createTestElement();
+      testElement.innerHTML = `<cds-base-focus-trap hidden></cds-base-focus-trap>`;
+      await waitForComponent('cds-base-focus-trap');
+      component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('should remove the focus trap if initialized with hidden attr', async () => {
+      await componentIsStable(component);
+      expect(document.querySelector('.offscreen-focus-rebounder')).toBe(null);
     });
   });
 
@@ -85,7 +106,7 @@ describe('modal element', () => {
 
     it('should not create focus trap if demo mode', async () => {
       await componentIsStable(component);
-      expect((component as any).focusTrap).toBeUndefined();
+      expect(document.querySelector('.offscreen-focus-rebounder')).toBe(null);
     });
   });
 });

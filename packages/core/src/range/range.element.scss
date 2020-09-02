@@ -16,6 +16,10 @@
   width: 100%;
 }
 
+.input-container {
+  position: relative;
+}
+
 ::slotted(input) {
   -webkit-appearance: none;
   width: 100%;

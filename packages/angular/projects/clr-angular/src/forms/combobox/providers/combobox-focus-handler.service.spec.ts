@@ -13,13 +13,18 @@ import { SingleSelectComboboxModel } from '../model/single-select-combobox.model
 import { KeyCodes } from '../../../utils/enums/key-codes.enum';
 
 @Component({
-  template: `<input type="text" #textInput /><button #trigger></button>
-    <ul #listbox></ul>`,
+  template: `<form (submit)="onSubmit()">
+    <input type="text" #textInput /><button #trigger></button>
+    <ul #listbox></ul>
+  </form>`,
 })
 class SimpleHost {
   @ViewChild('textInput') textInput: ElementRef;
   @ViewChild('trigger') trigger: ElementRef;
   @ViewChild('listbox') listbox: ElementRef;
+  onSubmit() {
+    // do nothing; it makes eslint happy
+  }
 }
 
 interface TestContext {
@@ -142,6 +147,21 @@ export default function (): void {
 
       expect(item.equals(sameItem)).toBeTrue();
       expect(item.equals(otherItem)).toBeFalse();
+    });
+
+    it('does submit on Enter when dialog is closed', function (this: TestContext) {
+      spyOn(this.testComponent, 'onSubmit');
+      const event = new KeyboardEvent('keydown', { key: KeyCodes.Enter });
+      this.testComponent.textInput.nativeElement.dispatchEvent(event);
+      expect(this.testComponent.onSubmit).not.toHaveBeenCalled();
+    });
+
+    it('does not submit on Enter when dialog is open', function (this: TestContext) {
+      spyOn(this.testComponent, 'onSubmit');
+      this.toggleService.open = true;
+      const event = new KeyboardEvent('keydown', { key: KeyCodes.Enter });
+      this.testComponent.textInput.nativeElement.dispatchEvent(event);
+      expect(this.testComponent.onSubmit).not.toHaveBeenCalled();
     });
   });
 }

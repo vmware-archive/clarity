@@ -132,7 +132,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     }
   }
 
-  // By default every item is selectable
+  // By default every item is selectable; it becomes not selectable only if it's explicitly set to false
   @Input('clrDgSelectable')
   public set clrDgSelectable(value: boolean) {
     this.selection.lockItem(this.item, value === false);
@@ -261,6 +261,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
 
   ngOnInit() {
     this.wrappedInjector = new HostWrapper(WrappedRow, this.vcr);
+    this.selection.lockItem(this.item, this.clrDgSelectable === false);
   }
 
   public get _view() {

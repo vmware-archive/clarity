@@ -107,9 +107,8 @@ export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {
   nodeList.forEach(node => {
     if (node.parentElement && node.textContent !== null && node.nodeType === 3) {
       const spanWrapper = document.createElement('span');
-      const parent = node.parentElement;
-      spanWrapper!.appendChild(node);
-      parent!.appendChild(spanWrapper);
+      node.after(spanWrapper);
+      spanWrapper.appendChild(node);
     }
   });
 }

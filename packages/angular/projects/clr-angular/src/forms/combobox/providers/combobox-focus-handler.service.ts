@@ -112,11 +112,9 @@ export class ComboboxFocusHandler<T> {
     if (event) {
       switch (key) {
         case KeyCodes.Enter:
-          if (!this.toggleService.open) {
-            this.toggleService.open = true;
-            preventDefault = true;
-          } else if (this.pseudoFocus.model) {
+          if (this.toggleService.open && this.pseudoFocus.model) {
             this.selectionService.select(this.pseudoFocus.model.value);
+            preventDefault = true;
           }
           break;
         case KeyCodes.Space:

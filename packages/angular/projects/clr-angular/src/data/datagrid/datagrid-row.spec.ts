@@ -111,7 +111,41 @@ export default function (): void {
         expect(context.clarityDirective.selected).toBe(true);
       });
 
-      it('should be able you toggle the state of selection when clrDgSelectable is false', () => {
+      it('should be able to toggle selection through API when clrDgSelectable is false', () => {
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.clarityDirective.toggle(true);
+        context.testComponent.clrDgSelectable = false;
+        context.detectChanges();
+        context.clarityDirective.toggle();
+        expect(context.clarityDirective.selected).toBe(false);
+      });
+    });
+
+    describe('Conditional selection switch order or arguments', function () {
+      let context: TestContext<ClrDatagridRow, SelectableRowOrder>;
+      let selectionProvider: Selection;
+      let checkbox: HTMLElement;
+
+      beforeEach(function () {
+        context = this.create(ClrDatagridRow, SelectableRowOrder, DATAGRID_SPEC_PROVIDERS);
+        selectionProvider = TestBed.get(Selection);
+        TestBed.get(Items).all = [{ id: 1 }, { id: 2 }];
+      });
+
+      it('should toggle when clrDgSelectable is false for type  SelectionType.Multi', () => {
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.testComponent.clrDgSelectable = false;
+        context.detectChanges();
+        checkbox = context.clarityElement.querySelector("input[type='checkbox']");
+
+        expect(checkbox.getAttribute('disabled')).toBe('true');
+        expect(checkbox.getAttribute('aria-disabled')).toBe('true');
+
+        context.clarityDirective.toggle();
+        expect(context.clarityDirective.selected).toBe(true);
+      });
+
+      it('should be able to toggle selection through API when clrDgSelectable is false', () => {
         selectionProvider.selectionType = SelectionType.Multi;
         context.clarityDirective.toggle(true);
         context.testComponent.clrDgSelectable = false;
@@ -452,10 +486,18 @@ export default function (): void {
 class ProjectionTest {}
 
 @Component({
-  template: `<clr-dg-row [clrDgSelectable]="clrDgSelectable" [clrDgItem]="item">None</clr-dg-row>`,
+  template: `<clr-dg-row [clrDgItem]="item" [clrDgSelectable]="clrDgSelectable">None</clr-dg-row>`,
 })
 class SelectableRow {
   clrDgSelectable = true;
+  item: Item = { id: 42 };
+}
+
+@Component({
+  template: `<clr-dg-row [clrDgSelectable]="clrDgSelectable" [clrDgItem]="item">None</clr-dg-row>`,
+})
+class SelectableRowOrder {
+  clrDgSelectable = undefined;
   item: Item = { id: 42 };
 }
 

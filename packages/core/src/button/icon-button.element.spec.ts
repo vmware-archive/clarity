@@ -116,12 +116,9 @@ describe('Anchor Tags in Buttons: ', () => {
     removeTestElement(testElement);
   });
 
-  it('should set element slots as expected', async () => {
+  it('should set anchored icon class', async () => {
     expect(anchor).toBeDefined();
     expect(icon).toBeDefined();
-    expect(anchor.hasAttribute('slot')).toBe(true);
-    expect(icon.hasAttribute('slot')).toBe(false);
-    expect(anchor.getAttribute('slot')).toBe('button-icon');
     expect(icon.classList.contains('anchored-icon')).toBe(true);
   });
 });

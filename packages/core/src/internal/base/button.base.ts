@@ -22,8 +22,6 @@ export const iconSpinner = html`<span class="button-status-icon" cds-layout="hor
   ><span class="spinner spinner-inline" cds-layout="align:center"></span
 ></span>`;
 
-export const iconSlot = html`<span class="button-icon"><slot name="button-icon"></slot></span>`;
-
 // @dynamic
 export class CdsBaseButton extends LitElement {
   @property({ type: Boolean }) readonly = false;

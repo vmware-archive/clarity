@@ -1,0 +1,20 @@
+name: Stale threads
+
+on:
+  schedule:
+    - cron: '30 3 * * *' # Run daily around 3:30 UTC
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/stale@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 90 # Wait for 90 days of inactivity to mark something as stale
+          stale-pr-label: 'flag: stale' # Flag PRs as stale with this label
+          stale-issue-label: 'flag: stale' # Flag issues as stale with this label
+          days-before-close: -1 # Never close issues, just mark as stale
+          skip-stale-pr-message: true # Skip commenting on stale PRs
+          skip-stale-issue-message: true # Skip commenting on stale issues

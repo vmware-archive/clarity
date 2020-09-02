@@ -5,6 +5,10 @@
       "description": "Add Clarity to your project",
       "factory": "./add",
       "schema": "./add/schema.json"
+    },
+    "migrate-alert": {
+      "description": "Migrate Clarity Angular alerts to Clarity Core alerts",
+      "factory": "./ng-core-migration/alert/index#migrateAlert"
     }
   }
 }

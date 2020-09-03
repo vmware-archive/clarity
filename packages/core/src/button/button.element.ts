@@ -112,7 +112,7 @@ export class CdsButton extends CdsBaseButton {
     super.firstUpdated(props);
 
     // Find and wrap any text nodes into span elements
-    this.wrapTextNodes();
+    spanWrapper(this.childNodes);
 
     if (this.loadingState !== ClrLoadingState.DEFAULT) {
       this.updateLoadingState();
@@ -139,17 +139,10 @@ export class CdsButton extends CdsBaseButton {
           ? html`${iconSpinnerError}`
           : ''}${loadingState === ClrLoadingState.LOADING ? html`${iconSpinner}` : ''}${loadingState ===
         ClrLoadingState.DEFAULT
-          ? html`<slot @slotchange=${() => this.wrapTextNodes()}></slot>`
+          ? html`<slot @slotchange=${() => spanWrapper(this.childNodes)}></slot>`
           : ''}${this.hiddenButtonTemplate}
       </div>
     </div>`;
-  }
-
-  private wrapTextNodes() {
-    // only needs to run for Safari/IE
-    if (!this.hasFlexGapSupport) {
-      spanWrapper(this.childNodes);
-    }
   }
 
   static get styles() {

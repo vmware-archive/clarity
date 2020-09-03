@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
 import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsButton } from '@clr/core/button';
 import { CdsFile } from '@clr/core/file';
@@ -17,17 +16,15 @@ describe('cds-file', () => {
 
   beforeEach(async () => {
     element = createTestElement();
-    render(
-      html` <cds-file>
+    element.innerHTML = `
+      <cds-file>
         <label>file</label>
         <input type="file" />
         <cds-control-message>message text</cds-control-message>
-      </cds-file>`,
-      element
-    );
+      </cds-file>
+    `;
 
     await waitForComponent('cds-file');
-
     component = element.querySelector<CdsFile>('cds-file');
     button = component.shadowRoot.querySelector('cds-button');
   });

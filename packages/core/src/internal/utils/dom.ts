@@ -104,11 +104,13 @@ export function isVisible(element: HTMLElement) {
 }
 
 export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {
-  nodeList.forEach(node => {
-    if (node.parentElement && node.textContent !== null && node.nodeType === 3) {
-      const spanWrapper = document.createElement('span');
-      node.after(spanWrapper);
-      spanWrapper.appendChild(node);
-    }
-  });
+  Array.from(nodeList)
+    .filter(node => node.textContent!.trim().length > 0)
+    .forEach(node => {
+      if (node.parentElement && node.textContent !== null && node.nodeType === 3) {
+        const spanWrapper = document.createElement('span');
+        node.after(spanWrapper);
+        spanWrapper.appendChild(node);
+      }
+    });
 }

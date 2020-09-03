@@ -45,12 +45,15 @@ export class IfControlStateService implements OnDestroy {
   }
 
   triggerStatusChange() {
-    // These status values are mutually exclusive, so a control
-    // cannot be both valid AND invalid or invalid AND disabled.
-    const status = CONTROL_STATE[this.control.status];
-    this._statusChanges.next(
-      this.control.touched && ['VALID', 'INVALID'].includes(status) ? status : CONTROL_STATE.NONE
-    );
+    /* Check if control is defined and run the code only then */
+    if (this.control) {
+      // These status values are mutually exclusive, so a control
+      // cannot be both valid AND invalid or invalid AND disabled.
+      const status = CONTROL_STATE[this.control.status];
+      this._statusChanges.next(
+        this.control.touched && ['VALID', 'INVALID'].includes(status) ? status : CONTROL_STATE.NONE
+      );
+    }
   }
 
   // Clean up subscriptions

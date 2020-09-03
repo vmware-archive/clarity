@@ -23,6 +23,10 @@ export default function (): void {
       expect(testControl.statusChanges.subscribe).toHaveBeenCalled();
     });
 
+    it('should not throw error when triggerStatusChange is called and control is not set yet', () => {
+      expect(() => service.triggerStatusChange()).not.toThrowError();
+    });
+
     it('provides observable for statusChanges, return valid when touched and no rules added', () => {
       const cb = jasmine.createSpy('cb');
       const sub = service.statusChanges.subscribe((control: CONTROL_STATE) => cb(control));

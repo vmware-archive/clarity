@@ -4,26 +4,23 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export const spyOnFunction = <T>(obj: T, func: keyof T) => {
-  // eslint-disable-next-line jasmine/no-unsafe-spy
-  const spy = jasmine.createSpy(func as string);
-  spyOnProperty(obj, func, 'get').and.returnValue(spy);
+import { TemplateResult, render } from 'lit-html';
 
-  return spy;
-};
-
-export function createTestElement(): HTMLElement {
+export function createTestElement(template?: TemplateResult): Promise<HTMLElement> {
   const element = document.createElement('div');
   document.body.appendChild(element);
-  return element;
+
+  if (template) {
+    render(template, element);
+  }
+
+  return Promise.all(
+    Array.from(document.querySelectorAll(':not(:defined)')).map(el => customElements.whenDefined(el.tagName))
+  ).then(() => element);
 }
 
 export function removeTestElement(element: HTMLElement) {
   element.remove();
-}
-
-export function waitForComponent(elementName: string): Promise<void> {
-  return window.customElements.whenDefined(elementName);
 }
 
 export function getComponentSlotContent(component: HTMLElement): { [name: string]: string } {

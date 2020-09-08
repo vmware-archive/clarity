@@ -3,37 +3,30 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/modal/register.js';
 import { CommonStringsServiceInternal } from '@clr/core/internal';
 import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
 import { CdsModal } from '@clr/core/modal';
-import {
-  componentIsStable,
-  createTestElement,
-  getComponentSlotContent,
-  removeTestElement,
-  waitForComponent,
-} from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
 
 describe('modal element', () => {
   let testElement: HTMLElement;
   let component: CdsModal;
   const placeholderHeader = 'I have a nice title';
-  const placeholderContent = '<p>But not much to say...</p>';
+  const placeholderContent = 'But not much to say...';
   const placeholderActionText = 'Ok';
   const placeholderAction = `<cds-button>${placeholderActionText}</cds-button>`;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
-    <cds-modal>
+    testElement = await createTestElement(html`
+      <cds-modal>
         <cds-modal-header>${placeholderHeader}</cds-modal-header>
-        <cds-modal-content>${placeholderContent}</cds-modal-content>
+        <cds-modal-content><p>${placeholderContent}</p></cds-modal-content>
         <cds-modal-actions>${placeholderAction}</cds-modal-actions>
-    </cds-modal>
-    `;
-
-    await waitForComponent('cds-modal');
+      </cds-modal>
+    `);
     component = testElement.querySelector<CdsModal>('cds-modal');
   });
 
@@ -44,8 +37,10 @@ describe('modal element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots.default).toBe(`<cds-modal-content>${placeholderContent}</cds-modal-content>`);
-    expect(slots['modal-header']).toBe(`<cds-modal-header slot="modal-header">${placeholderHeader}</cds-modal-header>`);
+    expect(slots.default).toBe(`<cds-modal-content><p><!---->${placeholderContent}<!----></p></cds-modal-content>`);
+    expect(slots['modal-header']).toBe(
+      `<cds-modal-header slot="modal-header"><!---->${placeholderHeader}<!----></cds-modal-header>`
+    );
     // since cds-button further adds and modifies the element we simply test that it contains the button text
     expect(slots['modal-actions']).toContain(`${placeholderActionText}`);
   });

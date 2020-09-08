@@ -8,8 +8,8 @@ import { getElementLanguageDirection } from './utils.js';
 import { createTestElement } from '@clr/core/test/utils';
 
 describe('getElementLanguageDirection', () => {
-  it('should return the current element level language direction', () => {
-    const element = createTestElement();
+  it('should return the current element level language direction', async () => {
+    const element = await createTestElement();
     expect(getElementLanguageDirection(element)).toBe('ltr');
 
     element.style.direction = 'rtl';

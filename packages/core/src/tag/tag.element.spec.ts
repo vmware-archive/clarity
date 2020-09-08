@@ -3,10 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/tag/register.js';
 import '@clr/core/icon/register.js';
 import { CdsTag } from '@clr/core/tag';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('tag element', () => {
   let testElement: HTMLElement;
@@ -24,14 +26,11 @@ describe('tag element', () => {
   beforeEach(async () => {
     spyOn(console, 'warn').and.callThrough();
 
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <cds-tag aria-label="test" class="${defaultClassname}">${placeholderText}</cds-tag>
       <cds-tag class="${readonlyClassname}" readonly>Readonly Tag</cds-tag>
       <cds-tag aria-label="test" class="${closableClassname}" closable>Closable Tag</cds-tag>
-    `;
-
-    await waitForComponent('cds-tag');
+    `);
   });
 
   afterEach(() => {
@@ -85,26 +84,18 @@ describe('tag element', () => {
   });
 
   it('should warn if closable but there is no aria-label', async () => {
-    const inaccessibleTestElement = createTestElement();
-    inaccessibleTestElement.innerHTML = `
+    await createTestElement(html`
       <cds-tag class="${readonlyClassname}" readonly>Readonly Tag</cds-tag>
       <cds-tag class="${closableClassname}" closable>Closable Tag</cds-tag>
-    `;
-
-    await waitForComponent('cds-tag');
-
+    `);
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
 
   it('should warn if clickable but there is no aria-label', async () => {
-    const inaccessibleTestElement = createTestElement();
-    inaccessibleTestElement.innerHTML = `
+    await createTestElement(html`
       <cds-tag class="${readonlyClassname}" readonly>Readonly Tag</cds-tag>
       <cds-tag class="${closableClassname}">Clickable Tag</cds-tag>
-    `;
-
-    await waitForComponent('cds-tag');
-
+    `);
     expect(console.warn).toHaveBeenCalledTimes(1);
   });
 

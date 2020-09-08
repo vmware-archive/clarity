@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsCheckbox } from '@clr/core/checkbox';
 import '@clr/core/checkbox/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-checkbox', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-checkbox>
+    element = await createTestElement(html`
+      <cds-checkbox>
         <label>checkbox</label>
         <input type="checkbox" />
         <cds-control-message>message text</cds-control-message>
-      </cds-checkbox>`,
-      element
-    );
-
-    await waitForComponent('cds-checkbox');
+      </cds-checkbox>
+    `);
 
     component = element.querySelector<CdsCheckbox>('cds-checkbox');
   });

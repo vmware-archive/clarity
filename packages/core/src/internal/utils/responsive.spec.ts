@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, removeTestElement, waitForComponent, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsControl } from '@clr/core/forms/index.js';
 
 describe('responsive utilities', () => {
@@ -13,17 +13,13 @@ describe('responsive utilities', () => {
   let component: CdsControl;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-control layout="horizontal">
+    element = await createTestElement(html`
+      <cds-control layout="horizontal">
         <label>test</label>
         <input type="text" />
         <cds-control-message>message text</cds-control-message>
-      </cds-control>`,
-      element
-    );
-
-    await waitForComponent('cds-control');
+      </cds-control>
+    `);
 
     component = element.querySelector<CdsControl>('cds-control');
   });

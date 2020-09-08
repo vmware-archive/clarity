@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/modal/register.js';
 import { CdsModalHeader } from '@clr/core/modal';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('modal-header element', () => {
   let testElement: HTMLElement;
@@ -13,10 +15,7 @@ describe('modal-header element', () => {
   const placeholderContent = 'Modal Placeholder';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `<cds-modal-header>${placeholderContent}</cds-modal-header>`;
-
-    await waitForComponent('cds-modal-header');
+    testElement = await createTestElement(html`<cds-modal-header>${placeholderContent}</cds-modal-header>`);
     component = testElement.querySelector<CdsModalHeader>('cds-modal-header');
   });
 

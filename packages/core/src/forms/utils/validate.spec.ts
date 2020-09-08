@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, removeTestElement, waitForComponent, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsControlMessage } from '@clr/core/forms';
 import { CdsInput } from '@clr/core/input';
 import '@clr/core/input/register.js';
@@ -17,19 +17,13 @@ let controlMessage: CdsControlMessage;
 
 describe('syncHTML5Validation', () => {
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-input validate>
-          <label>input</label>
-          <input type="text" required />
-          <cds-control-message error="valueMissing">required</cds-control-message>
-        </cds-input>
-      `,
-      element
-    );
-
-    await waitForComponent('cds-alert');
+    element = await createTestElement(html`
+      <cds-input validate>
+        <label>input</label>
+        <input type="text" required />
+        <cds-control-message error="valueMissing">required</cds-control-message>
+      </cds-input>
+    `);
 
     control = element.querySelector<CdsInput>('cds-input');
     controlMessage = element.querySelector<CdsControlMessage>('cds-control-message');

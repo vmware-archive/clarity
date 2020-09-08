@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsDate } from '@clr/core/date';
 import '@clr/core/date/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-date', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-date>
+    element = await createTestElement(html`
+      <cds-date>
         <label>date</label>
         <input type="date" />
         <cds-control-message>message text</cds-control-message>
-      </cds-date>`,
-      element
-    );
-
-    await waitForComponent('cds-date');
+      </cds-date>
+    `);
 
     component = element.querySelector<CdsDate>('cds-date');
   });

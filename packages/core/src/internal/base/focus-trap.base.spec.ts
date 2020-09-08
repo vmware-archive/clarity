@@ -3,7 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { createTestElement, removeTestElement, waitForComponent, componentIsStable } from '@clr/core/test/utils';
+
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { registerElementSafely } from '../utils/register.js';
 import { CdsBaseFocusTrap } from './focus-trap.base.js';
 
@@ -23,16 +25,14 @@ describe('modal element', () => {
     const placeholderText = 'Button Placeholder';
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
-              <cds-base-focus-trap>
-                  <cds-button>
-                      <span>${placeholderText}</span>
-                  </cds-button>
-              </cds-base-focus-trap>
-          `;
+      testElement = await createTestElement(html`
+        <cds-base-focus-trap>
+          <cds-button>
+            <span>${placeholderText}</span>
+          </cds-button>
+        </cds-base-focus-trap>
+      `);
 
-      await waitForComponent('cds-base-focus-trap');
       component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
     });
 
@@ -65,9 +65,7 @@ describe('modal element', () => {
     let component: CdsBaseFocusTrap;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `<cds-base-focus-trap hidden></cds-base-focus-trap>`;
-      await waitForComponent('cds-base-focus-trap');
+      testElement = await createTestElement(html`<cds-base-focus-trap hidden></cds-base-focus-trap>`);
       component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
     });
 
@@ -87,16 +85,14 @@ describe('modal element', () => {
     const placeholderText = 'Button Placeholder';
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-base-focus-trap __demo-mode>
-            <cds-button>
-                <span>${placeholderText}</span>
-            </cds-button>
+          <cds-button>
+            <span>${placeholderText}</span>
+          </cds-button>
         </cds-base-focus-trap>
-      `;
+      `);
 
-      await waitForComponent('cds-base-focus-trap');
       component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
     });
 

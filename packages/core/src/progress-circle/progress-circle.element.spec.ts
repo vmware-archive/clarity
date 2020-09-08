@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/progress-circle/register.js';
 import { CdsProgressCircle } from '@clr/core/progress-circle';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('progress circle element – ', () => {
   let testElementUnset: HTMLElement;
@@ -14,12 +16,10 @@ describe('progress circle element – ', () => {
   let component: CdsProgressCircle;
 
   beforeEach(async () => {
-    testElementUnset = createTestElement();
-    testElement = createTestElement();
-    testElementUnset.innerHTML = `<cds-progress-circle></cds-progress-circle>`;
-    testElement.innerHTML = `<cds-progress-circle status="info" value="49" inverse></cds-progress-circle>`;
-
-    await waitForComponent('cds-progress-circle');
+    testElementUnset = await createTestElement(html`<cds-progress-circle></cds-progress-circle>`);
+    testElement = await createTestElement(
+      html`<cds-progress-circle status="info" value="49" inverse></cds-progress-circle>`
+    );
     componentUnset = testElementUnset.querySelector<CdsProgressCircle>('cds-progress-circle');
     component = testElement.querySelector<CdsProgressCircle>('cds-progress-circle');
   });

@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsSelect } from '@clr/core/select';
 import '@clr/core/select/register.js';
 
@@ -14,9 +14,8 @@ describe('cds-select', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-select>
+    element = await createTestElement(html`
+      <cds-select>
         <label>select</label>
         <select>
           <option>option one</option>
@@ -24,11 +23,8 @@ describe('cds-select', () => {
           <option>option three</option>
         </select>
         <cds-control-message>message text</cds-control-message>
-      </cds-select>`,
-      element
-    );
-
-    await waitForComponent('cds-select');
+      </cds-select>
+    `);
 
     component = element.querySelector<CdsSelect>('cds-select');
   });

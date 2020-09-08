@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import '@clr/core/internal-components/close-button/register.js';
 import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('internal close button element', () => {
   let testElement: HTMLElement;
@@ -14,14 +15,11 @@ describe('internal close button element', () => {
   const placeholderText = 'ohai';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <form>
         <cds-internal-close-button>${placeholderText}</cds-internal-close-button>
       </form>
-    `;
-
-    await waitForComponent('cds-internal-close-button');
+    `);
     component = testElement.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
   });
 

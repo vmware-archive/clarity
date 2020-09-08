@@ -3,11 +3,13 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
 import { CdsInlineButton } from '@clr/core/button';
 import { CdsIcon } from '@clr/core/icon';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('Inline button element', () => {
   let testElement: HTMLElement;
@@ -15,14 +17,11 @@ describe('Inline button element', () => {
   const placeholderText = 'ohai';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <form>
         <cds-inline-button>${placeholderText}</cds-inline-button>
       </form>
-    `;
-
-    await waitForComponent('cds-inline-button');
+    `);
     component = testElement.querySelector<CdsInlineButton>('cds-inline-button');
   });
 
@@ -38,14 +37,12 @@ describe('Inline button element', () => {
 
 describe('Inline button element with icon', () => {
   it('add the anchored-icon classname to icons', async () => {
-    const testElement = createTestElement();
-    testElement.innerHTML = `
+    const testElement = await createTestElement(html`
       <form>
         <cds-inline-button><cds-icon shape="go-niners"></cds-icon>kthxbye</cds-inline-button>
       </form>
-    `;
+    `);
 
-    await waitForComponent('cds-inline-button');
     const component = testElement.querySelector<CdsInlineButton>('cds-inline-button');
     const icon = component.querySelector<CdsIcon>('cds-icon');
 

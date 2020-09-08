@@ -23,6 +23,6 @@ export function supportsFlexGap(): boolean {
   // append to the DOM (needed to obtain scrollHeight)
   document.body.appendChild(flex);
   const isSupported = flex.scrollHeight === 1; // flex container should be 1px high from the row-gap
-  flex.parentNode!.removeChild(flex);
+  (flex.parentNode as Element).removeChild(flex);
   return isSupported;
 }

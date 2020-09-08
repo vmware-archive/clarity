@@ -3,9 +3,11 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/icon/register.js';
 import { CdsIcon } from '@clr/core/icon';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { renderIcon } from './icon.renderer.js';
 import { ClarityIcons } from './icon.service.js';
 
@@ -20,12 +22,7 @@ describe('icon element', () => {
   });
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
-      <cds-icon></cds-icon>
-    `;
-
-    await waitForComponent('cds-icon');
+    testElement = await createTestElement(html`<cds-icon></cds-icon>`);
     component = testElement.querySelector<CdsIcon>('cds-icon');
   });
 

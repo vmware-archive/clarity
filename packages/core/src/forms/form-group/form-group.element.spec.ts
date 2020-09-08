@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { removeTestElement, waitForComponent, createTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsControl } from '@clr/core/forms';
 import '@clr/core/forms/register.js';
 import { CdsFormGroup } from './form-group.element';
@@ -16,26 +16,19 @@ let controls: CdsControl[];
 
 describe('cds-form-group', () => {
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-form-group layout="horizontal">
-          <cds-control>
-            <label style="width: 200px">control</label>
-            <input type="text" />
-          </cds-control>
+    element = await createTestElement(html`
+      <cds-form-group layout="horizontal">
+        <cds-control>
+          <label style="width: 200px">control</label>
+          <input type="text" />
+        </cds-control>
 
-          <cds-control>
-            <label>control</label>
-            <input type="text" />
-          </cds-control>
-        </cds-form-group>
-      `,
-      element
-    );
-
-    await waitForComponent('cds-form-group');
-    await waitForComponent('cds-control');
+        <cds-control>
+          <label>control</label>
+          <input type="text" />
+        </cds-control>
+      </cds-form-group>
+    `);
 
     formGroup = element.querySelector<CdsFormGroup>('cds-form-group');
     controls = Array.from(element.querySelectorAll<CdsControl>('cds-control'));

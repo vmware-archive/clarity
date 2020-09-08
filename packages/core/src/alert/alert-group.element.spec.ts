@@ -3,16 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/alert/register.js';
 import '@clr/core/icon/register.js';
 import { CdsAlert, CdsAlertGroup } from '@clr/core/alert';
-import {
-  componentIsStable,
-  createTestElement,
-  getComponentSlotContent,
-  removeTestElement,
-  waitForComponent,
-} from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
 
 describe('Alert groups – ', () => {
   let testElement: HTMLElement;
@@ -25,17 +21,15 @@ describe('Alert groups – ', () => {
     let compactAlertGroup: CdsAlertGroup;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-alert-group id="default">
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
         <cds-alert-group id="small" size="sm">
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
-      `;
+      `);
 
-      await waitForComponent('cds-alert');
       alertGroup = testElement.querySelector<CdsAlertGroup>('#default');
       compactAlertGroup = testElement.querySelector<CdsAlertGroup>('#small');
     });
@@ -107,8 +101,7 @@ describe('Alert groups – ', () => {
     let lightAlertGroup: CdsAlertGroup;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-alert-group id="default">
           <cds-alert>${placeholderText}</cds-alert>
           <cds-alert>${placeholderText}</cds-alert>
@@ -117,9 +110,8 @@ describe('Alert groups – ', () => {
           <cds-alert>${placeholderText}</cds-alert>
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
-      `;
+      `);
 
-      await waitForComponent('cds-alert');
       alertGroup = testElement.querySelector<CdsAlertGroup>('#default');
       lightAlertGroup = testElement.querySelector<CdsAlertGroup>('#light');
     });
@@ -176,16 +168,15 @@ describe('Alert groups – ', () => {
     let bannerAlertGroupWithNoStatus: CdsAlertGroup;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-alert-group type="banner" id="bannerAlertGroup" status="warning">
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
         <cds-alert-group type="banner" id="bannerAlertGroupNoStatus">
           <cds-alert id="statusless">${placeholderText}</cds-alert>
         </cds-alert-group>
-      `;
-      await waitForComponent('cds-alert');
+      `);
+
       bannerAlertGroup = testElement.querySelector('#bannerAlertGroup');
       bannerAlertGroupWithNoStatus = testElement.querySelector('#bannerAlertGroupNoStatus');
     });
@@ -214,16 +205,14 @@ describe('Alert groups – ', () => {
     let loadingAlert: CdsAlert;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-alert-group>
           <cds-alert id="defaultAlert">${placeholderText}</cds-alert>
           <cds-alert id="customAlert" status="warning"><cds-icon shape="ohai"></cds-icon>${placeholderText}</cds-alert>
           <cds-alert id="loadingAlert" status="loading">${placeholderText}</cds-alert>
         </cds-alert-group>
-      `;
+      `);
 
-      await waitForComponent('cds-alert');
       alertGroup = testElement.querySelector<CdsAlertGroup>('cds-alert-group');
       defaultAlert = alertGroup.querySelector('#defaultAlert');
       customAlert = alertGroup.querySelector('#customAlert');
@@ -294,8 +283,7 @@ describe('Alert groups – ', () => {
     let pager: HTMLElement;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `
+      testElement = await createTestElement(html`
         <cds-alert-group id="noPager" type="banner">
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
@@ -303,9 +291,8 @@ describe('Alert groups – ', () => {
           <div id="pager" class="pager">Pager Here</div>
           <cds-alert>${placeholderText}</cds-alert>
         </cds-alert-group>
-      `;
+      `);
 
-      await waitForComponent('cds-alert');
       alertGroup = testElement.querySelector<CdsAlertGroup>('#noPager');
       alertGroupWithPager = testElement.querySelector<CdsAlertGroup>('#hasPager');
       pager = testElement.querySelector<HTMLElement>('#pager');

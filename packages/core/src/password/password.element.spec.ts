@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsPassword } from '@clr/core/password';
 import '@clr/core/password/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-password', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-password>
+    element = await createTestElement(html`
+      <cds-password>
         <label>password</label>
         <input type="password" />
         <cds-control-message>message text</cds-control-message>
-      </cds-password>`,
-      element
-    );
-
-    await waitForComponent('cds-password');
+      </cds-password>
+    `);
 
     component = element.querySelector<CdsPassword>('cds-password');
   });

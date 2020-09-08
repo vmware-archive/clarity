@@ -26,3 +26,40 @@ import { Meta } from '@storybook/addon-docs/blocks';
 "@clr/core/button": "/base/dist/core/button/index.js",
 "@clr/core/button/register.js": "/base/dist/core/button/register.js",
 ```
+
+## Test Utilities
+
+There are a couple of test utilities provided to make testing a bit easier. These can be found in `/projects/core/test`.
+Here is a basic starter test for a Clarity Web Component.
+
+```typescript
+import { html } from 'lit-html';
+import '@clr/core/badge/register.js';
+import { CdsBadge } from '@clr/core/badge';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+
+describe('badge element', () => {
+  let testElement: HTMLElement;
+  let component: CdsBadge;
+
+  beforeEach(async () => {
+    // create a test DOM element with the component to be tested
+    // this function is async to wait and check all custom elements to have been registered
+    testElement = await createTestElement(html`<cds-badge>10</cds-badge>`);
+
+    // query the test element to get a reference to our component instance
+    component = testElement.querySelector<CdsBadge>('cds-badge');
+  });
+
+  afterEach(() => {
+    // after each test cleanup and remove the test element so we do not pollute the DOM
+    removeTestElement(testElement);
+  });
+
+  it('should create the component', async () => {
+    // lit-element renders asynchronously, this utility will wait until all rendering has completed before continuing
+    await componentIsStable(component);
+    expect(component.innerText).toBe('10');
+  });
+});
+```

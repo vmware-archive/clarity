@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { removeTestElement, waitForComponent, createTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsInternalControlInline } from '@clr/core/forms';
 import '@clr/core/forms/register.js';
 
@@ -15,18 +15,13 @@ let input: HTMLInputElement;
 
 describe('cds-internal-control-inline', () => {
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-internal-control-inline>
-          <label>control</label>
-          <input type="checkbox" />
-        </cds-internal-control-inline>
-      `,
-      element
-    );
+    element = await createTestElement(html`
+      <cds-internal-control-inline>
+        <label>control</label>
+        <input type="checkbox" />
+      </cds-internal-control-inline>
+    `);
 
-    await waitForComponent('cds-internal-control-inline');
     control = element.querySelector<CdsInternalControlInline>('cds-internal-control-inline');
     input = element.querySelector<HTMLInputElement>('input');
   });

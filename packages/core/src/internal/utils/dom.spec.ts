@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import {
   addAttributeValue,
@@ -25,8 +26,8 @@ describe('Functional Helper: ', () => {
     let testElement: HTMLElement;
     const elementWidth = '100px';
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
       testElement.style.width = elementWidth;
     });
 
@@ -47,8 +48,8 @@ describe('Functional Helper: ', () => {
     let testElement: HTMLElement;
     const elementWidth = '100px';
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
       testElement.style.width = elementWidth;
     });
 
@@ -68,8 +69,8 @@ describe('Functional Helper: ', () => {
   describe('isHTMLElement() ', () => {
     let testElement: any;
 
-    it('returns true if it is an HTMLElement', () => {
-      testElement = createTestElement();
+    it('returns true if it is an HTMLElement', async () => {
+      testElement = await createTestElement();
       expect(isHTMLElement(testElement)).toEqual(true);
     });
 
@@ -91,8 +92,8 @@ describe('Functional Helper: ', () => {
     let testElement: HTMLElement;
     const attrName = 'myAttr';
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
     });
 
     afterEach(() => {
@@ -126,8 +127,8 @@ describe('Functional Helper: ', () => {
       ['data-attr', 'stringified data goes here'],
     ];
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
     });
 
     afterEach(() => {
@@ -201,8 +202,8 @@ describe('Functional Helper: ', () => {
       ['data-attr', 'stringified data goes here'],
     ];
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
       setAttributes(testElement, ...testAttrs);
     });
 
@@ -235,10 +236,12 @@ describe('Functional Helper: ', () => {
     let testDiv3: null;
     let testDiv4: HTMLElement;
 
-    beforeEach(() => {
-      testElement = createTestElement();
-      testElement.innerHTML =
-        '<div id="testDiv1">ohai</div><div id="testDiv2">kthxbye</div><div id="testDiv4">omye</div>';
+    beforeEach(async () => {
+      testElement = await createTestElement(
+        html`<div id="testDiv1">ohai</div>
+          <div id="testDiv2">kthxbye</div>
+          <div id="testDiv4">omye</div>`
+      );
       testDiv1 = testElement.querySelector('#testDiv1');
       testDiv2 = testElement.querySelector('#testDiv2');
       testDiv3 = testElement.querySelector('#testDiv3');
@@ -287,8 +290,8 @@ describe('Functional Helper: ', () => {
       ['data-attr', 'stringified data goes here'],
     ];
 
-    beforeEach(() => {
-      testElement = createTestElement();
+    beforeEach(async () => {
+      testElement = await createTestElement();
       setAttributes(testElement, ...testAttrs);
     });
 
@@ -316,8 +319,8 @@ describe('Functional Helper: ', () => {
   });
 
   describe('listenForAttributeChange', () => {
-    it('executes callback when observed attribute changes', done => {
-      const element = createTestElement();
+    it('executes callback when observed attribute changes', async done => {
+      const element = await createTestElement();
       expect(element.getAttribute('name')).toBe(null);
 
       listenForAttributeChange(element, 'name', id => {
@@ -331,8 +334,8 @@ describe('Functional Helper: ', () => {
   });
 
   describe('isVisible', () => {
-    it('determines if element is visible', () => {
-      const element = createTestElement();
+    it('determines if element is visible', async () => {
+      const element = await createTestElement();
       element.style.width = '100px';
       element.style.height = '100px';
 
@@ -346,10 +349,8 @@ describe('Functional Helper: ', () => {
     });
   });
   describe('spanWrapper', () => {
-    it('wraps text nodes in an element', () => {
-      const element: HTMLElement = createTestElement();
-      const text = document.createTextNode('Hello spanWrapper');
-      element.appendChild(text);
+    it('wraps text nodes in an element', async () => {
+      const element = await createTestElement(html`Hello spanWrapper`);
       spanWrapper(element.childNodes);
       expect(element.children[0].tagName).toBe('SPAN');
       expect(element.children[0].textContent).toBe('Hello spanWrapper');

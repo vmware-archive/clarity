@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { removeTestElement, waitForComponent, createTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsControl, CdsInternalControlGroup } from '@clr/core/forms';
 import '@clr/core/forms/register.js';
 import { CdsControlMessage } from '../control-message/control-message.element';
@@ -18,29 +18,21 @@ let message: CdsControlMessage;
 
 describe('cds-internal-control-group', () => {
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-internal-control-group>
-          <label>control group</label>
-          <cds-control>
-            <label>control</label>
-            <input type="text" />
-          </cds-control>
+    element = await createTestElement(html`
+      <cds-internal-control-group>
+        <label>control group</label>
+        <cds-control>
+          <label>control</label>
+          <input type="text" />
+        </cds-control>
 
-          <cds-control>
-            <label>control</label>
-            <input type="text" />
-          </cds-control>
-          <cds-control-message>message text</cds-control-message>
-        </cds-internal-control-group>
-      `,
-      element
-    );
-
-    await waitForComponent('cds-internal-control-group');
-    await waitForComponent('cds-control');
-    await waitForComponent('cds-control-message');
+        <cds-control>
+          <label>control</label>
+          <input type="text" />
+        </cds-control>
+        <cds-control-message>message text</cds-control-message>
+      </cds-internal-control-group>
+    `);
 
     controlGroup = element.querySelector<CdsInternalControlGroup>('cds-internal-control-group');
     controls = Array.from(element.querySelectorAll<CdsControl>('cds-control'));
@@ -87,6 +79,7 @@ describe('cds-internal-control-group', () => {
   });
 
   it('should apply status to all child controls', async () => {
+    await componentIsStable(controlGroup);
     expect(controlGroup.status).toBe('neutral');
     expect(controls[0].status).toBe('neutral');
     expect(controls[1].status).toBe('neutral');

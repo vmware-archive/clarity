@@ -6,9 +6,10 @@
 
 import { registerElementSafely } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
-import { createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { querySlot, querySlotAll } from './query-slot.js';
 
+/** @element test-element */
 class TestElement extends LitElement {
   @querySlot('#test') test: HTMLDivElement;
   @querySlotAll('.item') testItems: NodeListOf<HTMLDivElement>;
@@ -25,16 +26,14 @@ describe('query slot decorator', () => {
   let component: TestElement;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <test-element>
         <div id="test">hi</div>
         <div class="item">item 1</div>
         <div class="item">item 2</div>
         <div class="item">item 3</div>
       </test-element>
-    `;
-    await waitForComponent('test-element');
+    `);
     component = testElement.querySelector<TestElement>('test-element');
   });
 

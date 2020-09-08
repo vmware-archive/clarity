@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsSearch } from '@clr/core/search';
 import '@clr/core/search/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-search', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-search>
+    element = await createTestElement(html`
+      <cds-search>
         <label>search</label>
         <input type="search" />
         <cds-control-message>message test</cds-control-message>
-      </cds-search>`,
-      element
-    );
-
-    await waitForComponent('cds-search');
+      </cds-search>
+    `);
 
     component = element.querySelector<CdsSearch>('cds-search');
   });

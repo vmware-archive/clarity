@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import '@clr/core/alert/register.js';
 import '@clr/core/button/register.js';
 import { CdsAlertActions } from '@clr/core/alert';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('alert-actions element', () => {
   describe(' - the basics: ', () => {
@@ -16,10 +17,7 @@ describe('alert-actions element', () => {
     const placeholderText = 'Alert Text Placeholder';
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `<cds-alert-actions>${placeholderText}</cds-alert-actions>`;
-
-      await waitForComponent('cds-alert-actions');
+      testElement = await createTestElement(html`<cds-alert-actions>${placeholderText}</cds-alert-actions>`);
       component = testElement.querySelector<CdsAlertActions>('cds-alert-actions');
     });
 
@@ -38,13 +36,13 @@ describe('alert-actions element', () => {
     let component: CdsAlertActions;
 
     beforeEach(async () => {
-      testElement = createTestElement();
-      testElement.innerHTML = `<cds-alert-actions>
-        <cds-button>ohai</cds-button>
-        <cds-button>kthxbye</cds-button>
-      </cds-alert-actions>`;
+      testElement = await createTestElement(html`
+        <cds-alert-actions>
+          <cds-button>ohai</cds-button>
+          <cds-button>kthxbye</cds-button>
+        </cds-alert-actions>
+      `);
 
-      await waitForComponent('cds-alert-actions');
       component = testElement.querySelector<CdsAlertActions>('cds-alert-actions');
     });
 

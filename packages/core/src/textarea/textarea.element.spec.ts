@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsTextarea } from '@clr/core/textarea';
 import '@clr/core/textarea/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-textarea', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-textarea>
+    element = await createTestElement(html`
+      <cds-textarea>
         <label>textarea</label>
         <textarea></textarea>
         <cds-control-message>message text</cds-control-message>
-      </cds-textarea>`,
-      element
-    );
-
-    await waitForComponent('cds-textarea');
+      </cds-textarea>
+    `);
 
     component = element.querySelector<CdsTextarea>('cds-textarea');
   });

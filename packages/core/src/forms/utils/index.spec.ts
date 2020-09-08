@@ -9,9 +9,9 @@ import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { associateInputAndLabel, associateInputToDatalist, getStatusIcon, isVerticalLayout } from './index.js';
 
 describe('form internal utilities', () => {
-  it('associateInputAndLabel', () => {
-    const input = createTestElement() as HTMLInputElement;
-    const label = createTestElement() as HTMLLabelElement;
+  it('associateInputAndLabel', async () => {
+    const input = (await createTestElement()) as HTMLInputElement;
+    const label = (await createTestElement()) as HTMLLabelElement;
     associateInputAndLabel(input, label, 'test-id');
 
     expect(input.id).toBe('test-id');
@@ -20,9 +20,9 @@ describe('form internal utilities', () => {
     removeTestElement(label);
   });
 
-  it('associateInputToDatalist', () => {
-    const input = createTestElement() as HTMLInputElement;
-    const datalist = createTestElement() as HTMLDataListElement;
+  it('associateInputToDatalist', async () => {
+    const input = (await createTestElement()) as HTMLInputElement;
+    const datalist = (await createTestElement()) as HTMLDataListElement;
     input.id = 'test-id';
 
     associateInputToDatalist(input, datalist);
@@ -33,9 +33,8 @@ describe('form internal utilities', () => {
     removeTestElement(datalist);
   });
 
-  it('getStatusIcon', () => {
-    const element = createTestElement() as HTMLInputElement;
-    render(html`${getStatusIcon('neutral')}`, element);
+  it('getStatusIcon', async () => {
+    const element = (await createTestElement(html`${getStatusIcon('neutral')}`)) as HTMLInputElement;
     expect(element.querySelector('cds-control-action')).toBe(null);
 
     render(html`${getStatusIcon('error')}`, element);

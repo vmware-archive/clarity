@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsRange } from '@clr/core/range';
 import '@clr/core/range/register.js';
 
@@ -14,17 +14,13 @@ describe('cds-range', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-range>
+    element = await createTestElement(html`
+      <cds-range>
         <label>range</label>
         <input type="range" />
         <cds-control-message>message test</cds-control-message>
-      </cds-range>`,
-      element
-    );
-
-    await waitForComponent('cds-range');
+      </cds-range>
+    `);
 
     component = element.querySelector<CdsRange>('cds-range');
   });

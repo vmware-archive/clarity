@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import '@clr/core/forms/register.js';
 import { CdsControlMessage } from '@clr/core/forms';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('cds-control-message element', () => {
   let testElement: HTMLElement;
@@ -14,10 +15,7 @@ describe('cds-control-message element', () => {
   const placeholderText = 'message';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `<cds-control-message>${placeholderText}</cds-control-message>`;
-
-    await waitForComponent('cds-control-message');
+    testElement = await createTestElement(html`<cds-control-message>${placeholderText}</cds-control-message>`);
     component = testElement.querySelector<CdsControlMessage>('cds-control-message');
   });
 

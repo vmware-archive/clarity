@@ -3,25 +3,25 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
 import { CdsIcon } from '@clr/core/icon';
 import { CdsIconButton, ClrLoadingState } from '@clr/core/button';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('Icon button element – ', () => {
   let testElement: HTMLElement;
   let component: CdsIconButton;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <form>
         <cds-icon-button><cds-icon></cds-icon></cds-icon-button>
       </form>
-    `;
+    `);
 
-    await waitForComponent('cds-icon-button');
     component = testElement.querySelector<CdsIconButton>('cds-icon-button');
   });
 
@@ -99,14 +99,14 @@ describe('Anchor Tags in Buttons: ', () => {
   let icon: CdsIcon;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <form>
-        <cds-icon-button><a href="javascript:void(0)"><cds-icon></cds-icon></a></cds-icon-button>
+        <cds-icon-button
+          ><a href="javascript:void(0)"><cds-icon></cds-icon></a
+        ></cds-icon-button>
       </form>
-    `;
+    `);
 
-    await waitForComponent('cds-icon-button');
     component = testElement.querySelector<CdsIconButton>('cds-icon-button');
     anchor = component.querySelector('a');
     icon = component.querySelector('cds-icon');

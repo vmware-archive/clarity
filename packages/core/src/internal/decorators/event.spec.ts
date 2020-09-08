@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { LitElement, html } from 'lit-element';
 import { event, EventEmitter, registerElementSafely } from '@clr/core/internal';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
-import { LitElement } from 'lit-element';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
+/** @element test-event-decorator */
 export class TestElement extends LitElement {
   @event() test: EventEmitter<string>;
 }
@@ -19,10 +20,7 @@ describe('event decorator', () => {
   let component: TestElement;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `<test-event-decorator></test-event-decorator>`;
-
-    await waitForComponent('test-event-decorator');
+    testElement = await createTestElement(html`<test-event-decorator></test-event-decorator>`);
     component = testElement.querySelector<TestElement>('test-event-decorator');
   });
 

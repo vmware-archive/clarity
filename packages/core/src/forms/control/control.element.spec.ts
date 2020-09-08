@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { removeTestElement, waitForComponent, createTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsIcon } from '@clr/core/icon';
 import { CdsControl } from '@clr/core/forms';
 import '@clr/core/forms/register.js';
@@ -22,24 +22,18 @@ describe('cds-control', () => {
   const getStatusIcon = () => control.shadowRoot.querySelector<CdsIcon>('cds-icon');
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-control validate>
-          <label>control</label>
-          <input type="text" require />
-          <datalist>
-            <option value="item 1"></option>
-            <option value="item 2"></option>
-            <option value="item 3"></option>
-          </datalist>
-          <cds-control-message error="valueMissing">message text</cds-control-message>
-        </cds-control>
-      `,
-      element
-    );
-
-    await waitForComponent('cds-control');
+    element = await createTestElement(html`
+      <cds-control validate>
+        <label>control</label>
+        <input type="text" require />
+        <datalist>
+          <option value="item 1"></option>
+          <option value="item 2"></option>
+          <option value="item 3"></option>
+        </datalist>
+        <cds-control-message error="valueMissing">message text</cds-control-message>
+      </cds-control>
+    `);
 
     control = element.querySelector<CdsControl>('cds-control');
     label = element.querySelector<HTMLLabelElement>('label');
@@ -163,21 +157,16 @@ describe('cds-control validation', () => {
   let message: CdsControlMessage;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <form novalidate>
-          <cds-control validate>
-            <label>control</label>
-            <input type="text" require />
-            <cds-control-message error="valueMissing">message text</cds-control-message>
-          </cds-control>
-        </form>
-      `,
-      element
-    );
+    element = await createTestElement(html`
+      <form novalidate>
+        <cds-control validate>
+          <label>control</label>
+          <input type="text" require />
+          <cds-control-message error="valueMissing">message text</cds-control-message>
+        </cds-control>
+      </form>
+    `);
 
-    await waitForComponent('cds-control');
     message = element.querySelector<CdsControlMessage>('cds-control-message');
   });
 
@@ -195,19 +184,13 @@ describe('cds-control responsive', () => {
   let control: CdsControl;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html`
-        <cds-control layout="compact">
-          <label>control</label>
-          <input type="text" />
-          <cds-control-message>message text</cds-control-message>
-        </cds-control>
-      `,
-      element
-    );
-
-    await waitForComponent('cds-control');
+    element = await createTestElement(html`
+      <cds-control layout="compact">
+        <label>control</label>
+        <input type="text" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-control>
+    `);
 
     control = element.querySelector<CdsControl>('cds-control');
   });

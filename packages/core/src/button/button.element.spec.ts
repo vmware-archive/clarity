@@ -3,16 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { html } from 'lit-html';
 import { CdsButton, ClrLoadingState } from '@clr/core/button';
 import '@clr/core/badge/register.js';
 import '@clr/core/button/register.js';
-import {
-  componentIsStable,
-  createTestElement,
-  getComponentSlotContent,
-  removeTestElement,
-  waitForComponent,
-} from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
 
 describe('button element', () => {
   let testElement: HTMLElement;
@@ -20,16 +16,14 @@ describe('button element', () => {
   const placeholderText = 'Button Placeholder';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <form>
         <cds-button>
           <span>${placeholderText}</span>
         </cds-button>
       </form>
-    `;
+    `);
 
-    await waitForComponent('cds-button');
     component = testElement.querySelector<CdsButton>('cds-button');
   });
 
@@ -205,13 +199,13 @@ describe('button element', () => {
     let anchorButton: HTMLAnchorElement;
 
     beforeEach(async () => {
-      testLinkElement = createTestElement();
-      testLinkElement.innerHTML = `
-        <cds-button><a href="about">About</a></cds-button> <!-- deprecated 4.0 in favor of wrapping -->
+      testLinkElement = await createTestElement(html`
+        <cds-button><a href="about">About</a></cds-button>
+        <!-- deprecated 4.0 in favor of wrapping -->
         <cds-button>About</cds-button>
         <a href="about"><cds-button>About</cds-button></a>
-      `;
-      await waitForComponent('cds-button');
+      `);
+
       componentLink = testLinkElement.querySelectorAll<CdsButton>('cds-button')[0];
       componentButton = testLinkElement.querySelectorAll<CdsButton>('cds-button')[1];
       anchor = componentLink.querySelector<HTMLAnchorElement>('a');
@@ -239,11 +233,11 @@ describe('button element', () => {
 
     it('should apply host focus styles when link is in focus', async () => {
       anchor.dispatchEvent(new Event('focusin'));
-      await waitForComponent('cds-button');
+      await componentIsStable(componentLink);
       expect(componentLink.getAttribute('focused')).toBe('');
 
       anchor.dispatchEvent(new Event('focusout'));
-      await waitForComponent('cds-button');
+      await componentIsStable(componentLink);
       expect(componentLink.getAttribute('focused')).toBe(null);
     });
 
@@ -277,8 +271,8 @@ describe('button element', () => {
 describe('buttonSlots: ', () => {
   let elem: HTMLElement;
 
-  beforeEach(() => {
-    elem = createTestElement();
+  beforeEach(async () => {
+    elem = await createTestElement(html`<cds-button>Text slot</cds-button>`);
   });
 
   afterEach(() => {
@@ -286,8 +280,6 @@ describe('buttonSlots: ', () => {
   });
 
   it('should project content into the slot', async () => {
-    elem.innerHTML = `<cds-button>Text slot</cds-button>`;
-    await waitForComponent('cds-button');
     const component = elem.querySelector<CdsButton>('cds-button');
     const slots = getComponentSlotContent(component);
     expect(slots.default).toContain('Text slot');

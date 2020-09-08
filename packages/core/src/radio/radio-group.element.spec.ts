@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { html } from 'lit-html';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { CdsRadioGroup } from '@clr/core/radio';
 import '@clr/core/radio/register.js';
 
@@ -14,9 +14,8 @@ describe('cds-radio-group', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-radio-group>
+    element = await createTestElement(html`
+      <cds-radio-group>
         <label>radio group</label>
         <cds-radio>
           <label>radio 1</label>
@@ -27,11 +26,8 @@ describe('cds-radio-group', () => {
           <input type="radio" value="2" />
         </cds-radio>
         <cds-control-message>message text</cds-control-message>
-      </cds-radio-group>`,
-      element
-    );
-
-    await waitForComponent('cds-radio-group');
+      </cds-radio-group>
+    `);
 
     component = element.querySelector<CdsRadioGroup>('cds-radio-group');
   });

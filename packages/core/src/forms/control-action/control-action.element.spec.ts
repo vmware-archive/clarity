@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
+import { html } from 'lit-html';
 import { CdsControlAction } from '@clr/core/forms';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 import { LogService } from '@clr/core/internal';
 
 describe('cds-control-action', () => {
@@ -14,11 +14,7 @@ describe('cds-control-action', () => {
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(html` <cds-control-action>test</cds-control-action> `, element);
-
-    await waitForComponent('cds-control-action');
-
+    element = await createTestElement(html` <cds-control-action>test</cds-control-action>`);
     controlAction = element.querySelector<CdsControlAction>('cds-control-action');
   });
 

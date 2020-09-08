@@ -3,9 +3,10 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { html } from 'lit-html';
 import '@clr/core/badge/register.js';
 import { CdsBadge } from '@clr/core/badge';
-import { componentIsStable, createTestElement, removeTestElement, waitForComponent } from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
 describe('badge element', () => {
   let testElement: HTMLElement;
@@ -13,10 +14,7 @@ describe('badge element', () => {
   const placeholderText = 'Badge Placeholder';
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `<cds-badge>${placeholderText}</cds-badge>`;
-
-    await waitForComponent('cds-badge');
+    testElement = await createTestElement(html`<cds-badge>${placeholderText}</cds-badge>`);
     component = testElement.querySelector<CdsBadge>('cds-badge');
   });
 

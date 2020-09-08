@@ -4,29 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import '@clr/core/test-dropdown';
 import { CdsTestDropdown } from '@clr/core/test-dropdown';
-import {
-  componentIsStable,
-  createTestElement,
-  getComponentSlotContent,
-  removeTestElement,
-  waitForComponent,
-} from '@clr/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
 
 describe('dropdown test element', () => {
   let testElement: HTMLElement;
   let component: CdsTestDropdown;
 
   beforeEach(async () => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
+    testElement = await createTestElement(html`
       <cds-test-dropdown title="custom title">
         <span>hello world</span>
       </cds-test-dropdown>
-    `;
-
-    await waitForComponent('cds-test-dropdown');
+    `);
     component = testElement.querySelector<CdsTestDropdown>('cds-test-dropdown');
   });
 

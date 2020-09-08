@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html } from 'lit-html';
 import { createTestElement, removeTestElement } from './../../test/utils.js';
 import { addClassnames, hasClassnames, removeClassnames, removeClassnamesUnless, updateElementStyles } from './css.js';
 
@@ -11,11 +12,8 @@ describe('Css utility functions - ', () => {
   let testElement: HTMLElement;
   let testDiv: HTMLElement;
 
-  beforeEach(() => {
-    testElement = createTestElement();
-    testElement.innerHTML = `
-      <div id="myTestElement" class="test1 test2">Ohai</div>
-    `;
+  beforeEach(async () => {
+    testElement = await createTestElement(html`<div id="myTestElement" class="test1 test2">Ohai</div>`);
     testDiv = testElement.querySelector<HTMLElement>('#myTestElement');
   });
 

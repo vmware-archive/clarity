@@ -20,8 +20,8 @@ describe('Focus Trap Utilities: ', () => {
     describe('addReboundElementsToFocusTrapElement()', () => {
       let focusTrapElement: FocusTrapElement;
 
-      beforeEach(() => {
-        focusTrapElement = createTestElement() as FocusTrapElement;
+      beforeEach(async () => {
+        focusTrapElement = (await createTestElement()) as FocusTrapElement;
       });
 
       afterEach(() => {
@@ -60,8 +60,8 @@ describe('Focus Trap Utilities: ', () => {
     describe('removeReboundElementsFromFocusTrapElement()', () => {
       let focusTrapElement: FocusTrapElement;
 
-      beforeEach(() => {
-        focusTrapElement = createTestElement() as FocusTrapElement;
+      beforeEach(async () => {
+        focusTrapElement = (await createTestElement()) as FocusTrapElement;
       });
 
       afterEach(() => {
@@ -102,8 +102,8 @@ describe('Focus Trap Utilities: ', () => {
       let focusedElement: HTMLElement;
       let focusTrapElement: FocusTrapElement;
 
-      beforeEach(() => {
-        focusTrapElement = createTestElement() as FocusTrapElement;
+      beforeEach(async () => {
+        focusTrapElement = (await createTestElement()) as FocusTrapElement;
       });
 
       afterEach(() => {
@@ -111,20 +111,20 @@ describe('Focus Trap Utilities: ', () => {
         removeTestElement(focusedElement);
       });
 
-      it('calls focus() if in current focus trap element', () => {
+      it('calls focus() if in current focus trap element', async () => {
         spyOn(focusTrapElement, 'focus');
 
-        focusedElement = createTestElement();
+        focusedElement = await createTestElement();
         FocusTrapTracker.setCurrent(focusTrapElement);
 
         focusElementIfInCurrentFocusTrapElement(focusedElement, focusTrapElement);
         expect(focusTrapElement.focus).toHaveBeenCalled();
       });
 
-      it('does not call focus() if not in current focus trap element', () => {
+      it('does not call focus() if not in current focus trap element', async () => {
         spyOn(focusTrapElement, 'focus');
 
-        focusedElement = createTestElement();
+        focusedElement = await createTestElement();
 
         focusElementIfInCurrentFocusTrapElement(focusedElement, focusTrapElement);
         expect(focusTrapElement.focus).not.toHaveBeenCalled();
@@ -135,8 +135,8 @@ describe('Focus Trap Utilities: ', () => {
       let focusedElement: HTMLElement;
       let focusTrapElement: FocusTrapElement;
 
-      beforeEach(() => {
-        focusTrapElement = createTestElement() as FocusTrapElement;
+      beforeEach(async () => {
+        focusTrapElement = (await createTestElement()) as FocusTrapElement;
       });
 
       afterEach(() => {
@@ -146,19 +146,19 @@ describe('Focus Trap Utilities: ', () => {
         }
       });
 
-      it('returns true if element is outside focus trap element', () => {
-        focusedElement = createTestElement();
+      it('returns true if element is outside focus trap element', async () => {
+        focusedElement = await createTestElement();
         expect(elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)).toBeTruthy();
       });
 
-      it('returns true if focused element is top rebound element', () => {
-        const focusedElement = createTestElement();
+      it('returns true if focused element is top rebound element', async () => {
+        const focusedElement = await createTestElement();
         focusTrapElement.topReboundElement = focusedElement;
         expect(elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)).toBeTruthy();
       });
 
-      it('returns true if focused element is bottom rebound element', () => {
-        const focusedElement = createTestElement();
+      it('returns true if focused element is bottom rebound element', async () => {
+        const focusedElement = await createTestElement();
         focusTrapElement.bottomReboundElement = focusedElement;
         expect(elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)).toBeTruthy();
       });
@@ -176,8 +176,8 @@ describe('Focus Trap Utilities: ', () => {
     let testElement: HTMLElement;
 
     describe('enableFocusTrap()', () => {
-      beforeEach(() => {
-        testElement = createTestElement();
+      beforeEach(async () => {
+        testElement = await createTestElement();
         focusTrap = new FocusTrap(testElement);
         focusTrap.enableFocusTrap();
       });
@@ -216,9 +216,9 @@ describe('Focus Trap Utilities: ', () => {
     describe('removeFocusTrap()', () => {
       let previousFocusedElement: HTMLElement;
 
-      beforeEach(() => {
-        testElement = createTestElement();
-        previousFocusedElement = createTestElement();
+      beforeEach(async () => {
+        testElement = await createTestElement();
+        previousFocusedElement = await createTestElement();
         previousFocusedElement.setAttribute('tabindex', '0');
         previousFocusedElement.focus();
         focusTrap = new FocusTrap(testElement);

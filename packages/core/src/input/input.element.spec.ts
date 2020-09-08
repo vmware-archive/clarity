@@ -4,25 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
+import { html } from 'lit-html';
 import { CdsInput } from '@clr/core/input';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 
 describe('cds-input', () => {
   let component: CdsInput;
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-input>
+    element = await createTestElement(html`
+      <cds-input>
         <label>input</label>
         <input type="text" />
-      </cds-input>`,
-      element
-    );
-
-    await waitForComponent('cds-input');
+      </cds-input>
+    `);
 
     component = element.querySelector<CdsInput>('cds-input');
   });

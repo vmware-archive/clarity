@@ -5,7 +5,6 @@
  */
 
 import { LitElement, html, css } from 'lit-element';
-import { render } from 'lit-html';
 import { registerElementSafely } from '@clr/core/internal';
 import { createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { globalStyle } from './global-style.js';
@@ -38,9 +37,8 @@ let element: HTMLElement;
 let testElement: TestElement;
 
 describe('globalStyle decorator', () => {
-  beforeEach(() => {
-    element = createTestElement();
-    render(html`<test-global-style-decorator></test-global-style-decorator>`, element);
+  beforeEach(async () => {
+    element = await createTestElement(html`<test-global-style-decorator></test-global-style-decorator>`);
     testElement = element.querySelector<TestElement>('test-global-style-decorator');
   });
 

@@ -8,9 +8,9 @@ import { describeElementByElements } from './a11y.js';
 import { createTestElement } from '@clr/core/test/utils';
 
 describe('a11y utilities', () => {
-  it('describeElementByElements', () => {
-    const element = createTestElement();
-    const descriptions: HTMLElement[] = [createTestElement(), createTestElement()];
+  it('describeElementByElements', async () => {
+    const element = await createTestElement();
+    const descriptions: HTMLElement[] = [await createTestElement(), await createTestElement()];
     describeElementByElements(element, descriptions);
 
     expect(element.getAttribute('aria-describedby').trim()).toBe(`${descriptions[0].id} ${descriptions[1].id}`);

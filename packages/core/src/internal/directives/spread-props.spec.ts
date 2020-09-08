@@ -27,10 +27,8 @@ registerElementSafely('test-spread-props-directive', TestElement);
 
 describe('spread props directive', () => {
   it('should assign all props to component within template', async () => {
-    const element = createTestElement();
+    const element = await createTestElement(html`<test-spread-props-directive></test-spread-props-directive>`);
     const getTestElement = () => element.querySelector<TestElement>('test-spread-props-directive');
-
-    render(html`<test-spread-props-directive></test-spread-props-directive>`, element);
     expect(getTestElement().test).toBe(false);
     expect(getTestElement().test2).toBe('hello');
 

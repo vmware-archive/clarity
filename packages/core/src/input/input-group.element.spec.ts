@@ -4,18 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
+import { html } from 'lit-html';
 import { CdsInputGroup, CdsInput } from '@clr/core/input';
-import { createTestElement, waitForComponent, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
 
 describe('cds-input-group', () => {
   let component: CdsInputGroup;
   let element: HTMLElement;
 
   beforeEach(async () => {
-    element = createTestElement();
-    render(
-      html` <cds-input-group>
+    element = await createTestElement(html`
+      <cds-input-group>
         <label>input group</label>
         <cds-input>
           <label>input 1</label>
@@ -26,11 +25,8 @@ describe('cds-input-group', () => {
           <input type="text" />
         </cds-input>
         <cds-control-message>message text</cds-control-message>
-      </cds-input-group>`,
-      element
-    );
-
-    await waitForComponent('cds-input-group');
+      </cds-input-group>
+    `);
 
     component = element.querySelector<CdsInputGroup>('cds-input-group');
   });

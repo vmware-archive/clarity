@@ -17,7 +17,5 @@ addons.setConfig({
   isFullscreen: false, // when true, add on panel doesn't open.
   showPanel: true,
   panelPosition: 'bottom',
-  showNav: false,
   selectedPanel: 'storybookjs/knobs/panel',
-  enableShortcuts: false,
 });

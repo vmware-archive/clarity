@@ -44,7 +44,7 @@ export function createReactComponent<BaseComponent extends HTMLElement>(elementN
     }
 
     _propIsReservedReactProp(prop) {
-      const reactProperties = ['children', 'localName', 'ref', 'style', 'className'];
+      const reactProperties = ['children', 'localName', 'ref', 'style'];
       return reactProperties.indexOf(prop) !== -1;
     }
 

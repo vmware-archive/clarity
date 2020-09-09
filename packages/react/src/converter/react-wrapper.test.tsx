@@ -79,4 +79,16 @@ describe('CdsTestComponent', () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('correctly passes down className to the underlying web component', () => {
+    const wrapper = mount(
+      <div>
+        <CdsTestComponent className="test-classname">Hello World</CdsTestComponent>
+      </div>
+    );
+
+    const { classList } = wrapper.find('ReactWrapperComponent').getDOMNode();
+    expect(classList).toHaveLength(1);
+    expect(classList).toContain('test-classname');
+  });
 });

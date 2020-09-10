@@ -17,6 +17,66 @@ describe('Alert groups – ', () => {
   const placeholderText = 'I am an alert.';
   const alertStatusIconSelector = '.alert-status-icon';
 
+  describe('syncAlerts: ', () => {
+    beforeEach(async () => {
+      testElement = await createTestElement(html`
+        <cds-alert-group id="default" status="success">
+          <cds-alert>ohai</cds-alert>
+          <cds-alert status="loading">not me</cds-alert>
+          <cds-alert>ohai</cds-alert>
+        </cds-alert-group>
+      `);
+
+      alertGroup = testElement.querySelector<CdsAlertGroup>('#default');
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('should sync alerts to alert group when rendered', async () => {
+      await componentIsStable(alertGroup);
+      const alertGroupSize = alertGroup.size;
+      const alertGroupStatus = alertGroup.status;
+      const alertGroupType = alertGroup.type;
+
+      alertGroup.querySelectorAll<CdsAlert>('cds-alert').forEach(a => {
+        expect(a.size).toBe(alertGroupSize);
+        expect(a.type).toBe(alertGroupType);
+        if (a.status !== 'loading') {
+          expect(a.status).toBe(alertGroupStatus);
+        }
+      });
+    });
+
+    it('should sync alerts to alert group when alerts are added to the alerts slot', async () => {
+      await componentIsStable(alertGroup);
+      const alertGroupSize = alertGroup.size;
+      const alertGroupStatus = alertGroup.status;
+      const alertGroupType = alertGroup.type;
+
+      function addNewAlert(grp: CdsAlertGroup) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            grp.innerHTML = grp.innerHTML + '<cds-alert id="problemchild">Muwahahahaha</cds-alert>';
+            resolve('ok');
+          }, 100);
+        });
+      }
+
+      await addNewAlert(alertGroup);
+      await componentIsStable(alertGroup);
+
+      alertGroup.querySelectorAll<CdsAlert>('cds-alert').forEach(a => {
+        expect(a.size).toBe(alertGroupSize);
+        expect(a.type).toBe(alertGroupType);
+        if (a.status !== 'loading') {
+          expect(a.status).toBe(alertGroupStatus);
+        }
+      });
+    });
+  });
+
   describe('size: ', () => {
     let compactAlertGroup: CdsAlertGroup;
 

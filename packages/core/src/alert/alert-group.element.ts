@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, query } from 'lit-element';
 import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@clr/core/internal';
 import { CdsAlert } from './alert.element.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
@@ -81,6 +81,8 @@ export class CdsAlertGroup extends LitElement {
   /** @private */
   @querySlot('.pager', { assign: 'pager' }) pager: HTMLElement;
 
+  @query('.alerts') private alertSlot: HTMLElement;
+
   render() {
     return html`
       <div
@@ -92,6 +94,7 @@ export class CdsAlertGroup extends LitElement {
         </div>
         <div class="alert-group-wrapper">
           <div
+            class="alerts"
             cds-layout="vertical wrap:none align:horizontal-stretch fill ${this.size === 'sm' ? 'gap:none' : 'gap:sm'}"
           >
             <slot></slot>
@@ -101,17 +104,35 @@ export class CdsAlertGroup extends LitElement {
     `;
   }
 
-  async updated(props: Map<string, any>) {
-    super.updated(props);
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+    this.setupAlertsUpdate();
+  }
+
+  private setupAlertsUpdate() {
+    const propsToSync = { status: true, type: true, size: true };
+    this.alertSlot?.addEventListener('slotchange', () => this.syncAlerts(propsToSync));
+  }
+
+  private async syncAlerts(propsToSync: { status: boolean; type: boolean; size: boolean }) {
     await Promise.all(Array.from(this.alerts).map(a => a.updateComplete));
 
-    Array.from(this.alerts).forEach(alert =>
+    this.alerts.forEach(alert =>
       syncProps(alert, this, {
-        status: props.has('status') && this.type !== 'light' && alert.status !== 'loading',
-        type: props.has('type'),
-        size: props.has('size'),
+        status: propsToSync.status && this.type !== 'light' && alert.status !== 'loading',
+        type: propsToSync.type,
+        size: propsToSync.size,
       })
     );
+  }
+
+  updated(props: Map<string, any>) {
+    super.updated(props);
+    this.syncAlerts({
+      status: props.has('status'),
+      type: props.has('type'),
+      size: props.has('size'),
+    });
   }
 
   static get styles() {

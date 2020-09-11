@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Injectable, TrackByFunction } from '@angular/core';
+import { Injectable, TrackByFunction, NgZone } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { FiltersProvider } from './filters';
@@ -19,7 +19,7 @@ export class Selection<T = any> {
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
 
-  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
+  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>, private _zone: NgZone) {
     this.id = 'clr-dg-selection' + nbSelection++;
 
     this.subscriptions.push(
@@ -141,7 +141,7 @@ export class Selection<T = any> {
   }
 
   public clearSelection(): void {
-    this.current.length = 0;
+    this.current = [];
     this.prevSelectionRefs = [];
     this._currentSingle = null;
     this.prevSingleSelectionRef = null;
@@ -205,10 +205,15 @@ export class Selection<T = any> {
       this.prevSingleSelectionRef = this._items.trackBy(lookup, value);
     }
     this.emitChange();
-    // Ignore items changes in the same change detection cycle.
-    // @TODO This can likely be removed!
-    this.debounce = true;
-    setTimeout(() => (this.debounce = false));
+    // This setTimeout makes sure that the change is
+    // not emitted multiple times in the same change
+    // detection cycle.
+    this._zone.runOutsideAngular(() => {
+      if (!this.debounce) {
+        this.debounce = true;
+        setTimeout(() => (this.debounce = false));
+      }
+    });
   }
 
   /**
@@ -224,13 +229,16 @@ export class Selection<T = any> {
 
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    if (emit) {
-      this.emitChange();
-      // Ignore items changes in the same change detection cycle.
-      // @TODO This can likely be removed!
-      this.debounce = true;
-      setTimeout(() => (this.debounce = false));
-    }
+    // This setTimeout makes sure that the change is
+    // not emitted multiple times in the same change
+    // detection cycle.
+    this._zone.runOutsideAngular(() => {
+      if (emit && !this.debounce) {
+        this.emitChange();
+        this.debounce = true;
+        setTimeout(() => (this.debounce = false));
+      }
+    });
   }
 
   /**
@@ -265,8 +273,8 @@ export class Selection<T = any> {
    * Selects an item
    */
   private selectItem(item: T): void {
-    this.current.push(item);
-    if (this._items.trackBy) {
+    this.current = this.current.concat(item);
+    if (this._items.trackBy && this._items.all) {
       // Push selected ref onto array
       const lookup = this._items.all.findIndex(maybe => maybe === item);
       this.prevSelectionRefs.push(this._items.trackBy(lookup, item));
@@ -277,7 +285,7 @@ export class Selection<T = any> {
    * Deselects an item
    */
   private deselectItem(indexOfItem: number): void {
-    this.current.splice(indexOfItem, 1);
+    this.current = this.current.slice(0, indexOfItem).concat(this.current.slice(indexOfItem + 1));
     if (this._items.trackBy && indexOfItem < this.prevSelectionRefs.length) {
       // Keep selected refs array in sync
       this.prevSelectionRefs.splice(indexOfItem, 1);
@@ -298,10 +306,8 @@ export class Selection<T = any> {
         const index = this.current.indexOf(item);
         if (index >= 0 && !selected) {
           this.deselectItem(index);
-          this.emitChange();
         } else if (index < 0 && selected) {
           this.selectItem(item);
-          this.emitChange();
         }
         break;
       default:

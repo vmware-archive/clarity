@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Injectable, TrackByFunction } from '@angular/core';
+import { Injectable, TrackByFunction, NgZone } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { FiltersProvider } from './filters';
@@ -19,8 +19,9 @@ export class Selection<T = any> {
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
   private lockedRefs: T[] = []; // Ref of locked items
+  private debounce = false;
 
-  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>) {
+  constructor(private _items: Items<T>, private _filters: FiltersProvider<T>, private _zone: NgZone) {
     this.id = 'clr-dg-selection' + nbSelection++;
 
     this.subscriptions.push(
@@ -162,7 +163,7 @@ export class Selection<T = any> {
   }
 
   public clearSelection(): void {
-    this.current.length = 0;
+    this.current = [];
     this.prevSelectionRefs = [];
     this._currentSingle = null;
     this.prevSingleSelectionRef = null;
@@ -237,9 +238,16 @@ export class Selection<T = any> {
 
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    if (emit) {
-      this.emitChange();
-    }
+    // This setTimeout makes sure that the change is
+    // not emitted multiple times in the same change
+    // detection cycle.
+    this._zone.runOutsideAngular(() => {
+      if (emit && !this.debounce) {
+        this.emitChange();
+        this.debounce = true;
+        setTimeout(() => (this.debounce = false));
+      }
+    });
   }
 
   /**
@@ -274,7 +282,7 @@ export class Selection<T = any> {
    * Selects an item
    */
   private selectItem(item: T): void {
-    this.current.push(item);
+    this.current = this.current.concat(item);
     if (this._items.trackBy && this._items.all) {
       // Push selected ref onto array
       const lookup = this._items.all.findIndex(maybe => maybe === item);
@@ -286,7 +294,7 @@ export class Selection<T = any> {
    * Deselects an item
    */
   private deselectItem(indexOfItem: number): void {
-    this.current.splice(indexOfItem, 1);
+    this.current = this.current.slice(0, indexOfItem).concat(this.current.slice(indexOfItem + 1));
     if (this._items.trackBy && indexOfItem < this.prevSelectionRefs.length) {
       // Keep selected refs array in sync
       const removedItems = this.prevSelectionRefs.splice(indexOfItem, 1);

@@ -6,8 +6,23 @@
     { "path": "./src/alert/entrypoint.tsconfig.json" },
     { "path": "./src/badge/entrypoint.tsconfig.json" },
     { "path": "./src/button/entrypoint.tsconfig.json" },
+    { "path": "./src/checkbox/entrypoint.tsconfig.json" },
+    { "path": "./src/datalist/entrypoint.tsconfig.json" },
+    { "path": "./src/date/entrypoint.tsconfig.json" },
+    { "path": "./src/divider/entrypoint.tsconfig.json" },
+    { "path": "./src/file/entrypoint.tsconfig.json" },
+    { "path": "./src/forms/entrypoint.tsconfig.json" },
     { "path": "./src/icon/entrypoint.tsconfig.json" },
     { "path": "./src/modal/entrypoint.tsconfig.json" },
-    { "path": "./src/tag/entrypoint.tsconfig.json" }
+    { "path": "./src/password/entrypoint.tsconfig.json" },
+    { "path": "./src/progress-circle/entrypoint.tsconfig.json" },
+    { "path": "./src/radio/entrypoint.tsconfig.json" },
+    { "path": "./src/range/entrypoint.tsconfig.json" },
+    { "path": "./src/search/entrypoint.tsconfig.json" },
+    { "path": "./src/select/entrypoint.tsconfig.json" },
+    { "path": "./src/tag/entrypoint.tsconfig.json" },
+    { "path": "./src/textarea/entrypoint.tsconfig.json" },
+    { "path": "./src/time/entrypoint.tsconfig.json" },
+    { "path": "./src/toggle/entrypoint.tsconfig.json" }
   ]
 }

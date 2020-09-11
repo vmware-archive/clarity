@@ -48,7 +48,7 @@ export const parameters = {
           'Date (Internal)',
         ],
         'Components (Preview)',
-        ['Circular Progress'],
+        ['Circular Progress', 'Divider'],
         'Utilities (Preview)',
         'Internal',
         [

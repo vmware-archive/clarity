@@ -89,12 +89,13 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
     accordionDescription: QueryList<ClrAccordionDescription>;
     commonStrings: ClrCommonStringsService;
     disabled: boolean;
-    id: string;
+    get id(): string;
+    set id(value: string);
     isAccordion: boolean;
     panel: Observable<AccordionPanelModel>;
     panelOpen: boolean;
     panelOpenChange: EventEmitter<boolean>;
-    constructor(commonStrings: ClrCommonStringsService, accordionService: AccordionService, ifExpandService: IfExpandService, id: string);
+    constructor(commonStrings: ClrCommonStringsService, accordionService: AccordionService, ifExpandService: IfExpandService, _id: string);
     collapsePanelOnAnimationDone(panel: AccordionPanelModel): void;
     getAccordionContentId(id: string): string;
     getAccordionHeaderId(id: string): string;

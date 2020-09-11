@@ -47,11 +47,19 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   readonly AccordionStatus = AccordionStatus;
   isAccordion = true;
 
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
+  }
+
   constructor(
     public commonStrings: ClrCommonStringsService,
     private accordionService: AccordionService,
     private ifExpandService: IfExpandService,
-    @Inject(UNIQUE_ID) public id: string
+    @Inject(UNIQUE_ID) private _id: string
   ) {}
 
   ngOnInit() {

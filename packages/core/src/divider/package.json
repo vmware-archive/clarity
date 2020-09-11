@@ -1,0 +1,7 @@
+{
+    "name": "@clr/core/divider",
+    "sideEffects": [
+      "./register.js"
+    ]
+  }
+  

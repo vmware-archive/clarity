@@ -21,6 +21,7 @@ import { CdsTime } from './src/time';
 import { CdsTextarea } from './src/textarea';
 import { CdsToggle, CdsToggleGroup } from './src/toggle';
 import { ClarityIcons, userIcon, timesIcon } from '@clr/core/icon';
+import { CdsDivider } from './src/divider';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -611,6 +612,13 @@ export default class App extends React.Component<{}, AppState> {
             <CdsControlMessage>message text</CdsControlMessage>
           </CdsSelect>
         </CdsFormGroup>
+
+        <h2>Divider</h2>
+        <CdsDivider></CdsDivider>
+
+        <div style={{ height: '140px', marginTop: '24px' }}>
+          <CdsDivider orientation="vertical">1</CdsDivider>
+        </div>
 
         <h2>Progress</h2>
         <h3>Circular</h3>

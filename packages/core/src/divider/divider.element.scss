@@ -1,0 +1,31 @@
+@import './../styles/tokens/generated/index';
+
+:host {
+  --color: #{$cds-token-color-neutral-300};
+  --size: #{$cds-token-space-size-1};
+  --padding: 0;
+
+  display: block;
+  width: 100%;
+  padding: var(--padding);
+}
+
+.private-host {
+  height: var(--size);
+  background: var(--color);
+}
+
+:host([orientation='vertical']) {
+  // align-self and the height allow the vertical divider to fill up its parent container inside a layout
+  // - height will likely have to be set via CSS if the vertical divider is used outside of a layout
+  // - if a container is set to a smaller height than its contents should allow the vertical divider
+  //   will creep up on the screen above the container.
+  align-self: stretch;
+  height: inherit;
+  width: var(--size);
+}
+
+:host([orientation*='vertical']) .private-host {
+  height: 100%;
+  width: var(--size);
+}

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsDivider snapshot 1`] = `
+<div>
+  <CdsDivider>
+    <cds-divider />
+  </CdsDivider>
+  <div
+    style={
+      Object {
+        "height": "140px",
+        "marginTop": "24px",
+      }
+    }
+  >
+    <CdsDivider
+      orientation="vertical"
+    >
+      <cds-divider>
+        1
+      </cds-divider>
+    </CdsDivider>
+  </div>
+</div>
+`;

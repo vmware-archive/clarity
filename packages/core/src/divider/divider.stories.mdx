@@ -1,0 +1,48 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components (Preview)/Divider/Getting Started" />
+
+# Dividers
+
+Dividers are a convenient way to place lined dividers or "rules" between blocks of content.
+
+## Installation
+
+To use the divider component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/divider/register.js';
+```
+
+```html
+<cds-divider></cds-divider>
+```
+
+## Divider
+
+<Preview>
+  <Story id="components-preview-divider-stories--horizontal" />
+</Preview>
+
+## Vertical Divider
+
+<Preview>
+  <Story id="components-preview-divider-stories--vertical" />
+</Preview>
+
+## Vertical Dividers Without Layouts
+
+<Preview>
+  <Story id="components-preview-divider-stories--vertical-fill" />
+</Preview>
+
+## Custom Dividers
+
+<Preview>
+  <Story id="components-preview-divider-stories--custom" />
+</Preview>
+
+## API
+
+<Props of={'cds-divider'} />

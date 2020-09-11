@@ -12,6 +12,7 @@
     { "path": "./src/checkbox/entrypoint.tsconfig.json" },
     { "path": "./src/datalist/entrypoint.tsconfig.json" },
     { "path": "./src/date/entrypoint.tsconfig.json" },
+    { "path": "./src/divider/entrypoint.tsconfig.json" },
     { "path": "./src/file/entrypoint.tsconfig.json" },
     { "path": "./src/forms/entrypoint.tsconfig.json" },
     { "path": "./src/icon/entrypoint.tsconfig.json" },

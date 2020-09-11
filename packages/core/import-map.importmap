@@ -52,6 +52,8 @@
     "@clr/core/datalist/register.js": "/base/dist/core/datalist/register.js",
     "@clr/core/date": "/base/dist/core/date/index.js",
     "@clr/core/date/register.js": "/base/dist/core/date/register.js",
+    "@clr/core/divider": "/base/dist/core/divider/index.js",
+    "@clr/core/divider/register.js": "/base/dist/core/divider/register.js",
     "@clr/core/file": "/base/dist/core/file/index.js",
     "@clr/core/file/register.js": "/base/dist/core/file/register.js",
     "@clr/core/forms": "/base/dist/core/forms/index.js",

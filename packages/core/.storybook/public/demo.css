@@ -143,35 +143,39 @@ cds-card {
   overflow: hidden;
 }
 
+.demo-divider {
+  --color: var(--cds-token-color-neutral-500);
+}
+
 .demo-header {
   background: var(--cds-token-color-action-1000);
   color: var(--cds-token-color-neutral-0);
 }
 
+.demo-sidenav,
 .demo-content {
   background: var(--cds-token-color-neutral-200);
 }
 
-.demo-footer {
+.demo-subnav,
+.demo-footer,
+.demo-alt-content,
+.demo-alt-content-header {
   background: var(--cds-token-color-neutral-0);
+}
+
+.demo-footer,
+.demo-alt-content-header {
   color: var(--cds-token-color-neutral-700);
-  box-shadow: 0 0.05rem 0 hsl(198, 0%, 70%) inset;
 }
 
 .demo-sidenav {
-  background: var(--cds-token-color-neutral-200);
-  box-shadow: -0.05rem 0 0 rgba(0, 0, 0, 0.2) inset;
   width: 25%;
 }
 
 .demo-sidebar {
   background: var(--cds-token-color-neutral-100);
   width: 25%;
-}
-
-.demo-subnav {
-  background: var(--cds-token-color-neutral-0);
-  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
 }
 
 .demo-alt-header cds-icon,
@@ -199,14 +203,4 @@ cds-card {
 
 .demo-alt-header-2 {
   background: var(--cds-token-color-neutral-900);
-}
-
-.demo-alt-content {
-  background: var(--cds-token-color-neutral-0);
-}
-
-.demo-alt-content-header {
-  background: var(--cds-token-color-neutral-0);
-  color: var(--cds-token-color-neutral-700);
-  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
 }

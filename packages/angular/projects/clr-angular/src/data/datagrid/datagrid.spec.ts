@@ -29,6 +29,7 @@ import { Sort } from './providers/sort';
 import { DatagridRenderOrganizer } from './render/render-organizer';
 import { SelectionType } from './enums/selection-type';
 import { HIDDEN_COLUMN_CLASS } from './render/constants';
+import { DetailService } from './providers/detail.service';
 
 @Component({
   template: `
@@ -408,6 +409,24 @@ class ExpandedReplacedCellsTest {
 })
 class TabsIntegrationTest {
   items = Array(10).fill(0);
+}
+
+@Component({
+  template: `
+    <clr-datagrid>
+      <clr-dg-column>Item</clr-dg-column>
+      <clr-dg-row *ngFor="let item of items; trackBy: trackById" [clrDgItem]="item">
+        <clr-dg-cell>{{ item.id }}</clr-dg-cell>
+      </clr-dg-row>
+      <clr-dg-detail *clrIfDetail> </clr-dg-detail>
+    </clr-datagrid>
+  `,
+})
+class PanelTrackByTest {
+  items = Array.from(Array(3), (v, i) => {
+    return { name: v, id: i };
+  });
+  trackById = (index, item) => item.id;
 }
 
 export default function (): void {
@@ -985,6 +1004,38 @@ export default function (): void {
       it('column width manual setting is applied', function () {
         expect(context.clarityElement.querySelector('.datagrid-column').clientWidth).toBe(123);
         expect(context.clarityElement.querySelector('.datagrid-column').getAttribute('style')).toBe('width: 123px;');
+      });
+    });
+
+    describe('detail pane and track by', function () {
+      let context: TestContext<ClrDatagrid, PanelTrackByTest>;
+      let detailService;
+
+      beforeEach(function () {
+        context = this.create(ClrDatagrid, PanelTrackByTest, DATAGRID_SPEC_PROVIDERS);
+        detailService = context.getClarityProvider(DetailService) as DetailService;
+      });
+
+      it('should keep open the panel', () => {
+        /**
+         * trackBy function is defined inside the testComponent and
+         * it is tracking by `id` so unless the id is not changed the
+         * item must stay the same.
+         */
+        /* Open second detail pane */
+        const detailButton = context.clarityElement.querySelectorAll('.datagrid-detail-caret-button')[1];
+        detailService.open(context.testComponent.items[1], detailButton);
+        context.detectChanges();
+
+        /* make sure that the state is set */
+        expect(detailService.state).toEqual(context.testComponent.items[1]);
+
+        /* update the name of the second pane */
+        context.testComponent.items[1].name = 'changed';
+        context.detectChanges();
+
+        /* make sure that the same item is still selected */
+        expect(detailService.state).toEqual(context.testComponent.items[1]);
       });
     });
   });

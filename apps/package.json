@@ -9,8 +9,9 @@
     "build:core-angular-universal": "yarn --cwd core-angular-universal run build",
     "build:core-create-react-app": "yarn --cwd core-create-react-app run build",
     "build:core-parcel-js": "yarn --cwd core-parcel-js run build",
-    "build:core-vue-cli": "yarn --cwd core-vue-cli run build",
-    "build:core-snowpack": "yarn --cwd core-snowpack run build"
+    "build:core-rollup-js": "yarn --cwd core-rollup-js run build",
+    "build:core-snowpack": "yarn --cwd core-snowpack run build",
+    "build:core-vue-cli": "yarn --cwd core-vue-cli run build"
   },
   "license": "MIT",
   "dependencies": { },

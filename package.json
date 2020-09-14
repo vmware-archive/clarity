@@ -21,7 +21,9 @@
       "**/@angular/*/**",
       "**/@angular-devkit/**",
       "**/@nguniversal/**",
-      "core-create-react-app/jest"
+      "core-create-react-app/jest",
+      "core-rollup-js/**",
+      "core-snowpack/**"
     ]
   },
   "scripts": {

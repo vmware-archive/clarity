@@ -88,10 +88,12 @@ function distributeBuild() {
     // copy latest for demo apps (many tools don't support symlinks so this is a workaround of sorts)
     ...[
       'core-angular-cli',
+      'core-angular-js',
       'core-angular-universal',
       'core-create-react-app',
       'core-ie',
       'core-parcel-js',
+      'core-rollup-js',
       'core-snowpack',
       'core-vue-cli',
     ].map(app => cpy(['./core'], `../../../apps/${app}/node_modules/@clr`, { cwd: './dist', parents: true })),

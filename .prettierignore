@@ -6,6 +6,7 @@ golden/
 .vscode
 .ng_build
 **/node_modules/**
+**/web_modules/**
 packages/core/**/*.css.ts
 packages/core/custom-elements.json
 packages/core/src/styles/tokens/generated/**
@@ -16,3 +17,4 @@ docs/core
 apps/core-create-react-app
 .cache
 apps/website/.vuepress/config.js
+apps/core-snowpack/build

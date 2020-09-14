@@ -42,6 +42,7 @@ function getChildren(dir) {
         if (fs.statSync(path.join(base, basename)).isDirectory()) {
           return {
             title: camelCase(basename),
+            name: basename,
             path: `/${dir}/${basename}`,
             children: [`/${dir}/${basename}/`, ...sortChildren(getChildren(`${dir}/${basename}`))],
           };
@@ -72,7 +73,13 @@ module.exports = [
   {
     title: 'Components',
     path: '/components/',
-    children: getChildren('components'),
+    children: [
+      {
+        title: 'Overview',
+        path: '/components/',
+      },
+      ...getChildren('components'),
+    ],
   },
   {
     title: 'Releases',

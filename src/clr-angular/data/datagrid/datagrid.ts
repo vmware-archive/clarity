@@ -229,6 +229,18 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         this.rows.forEach(row => {
           this._displayedRows.insert(row._view);
         });
+
+        // Try to update only when there is something cached and its open.
+        if (this.detailService.state && this.detailService.isOpen) {
+          const foundRow = this.rows.find((row, index) => {
+            return this.items.trackBy(index, row.item) === this.items.trackBy(index, this.detailService.state);
+          });
+
+          /**
+           * Reopen updated row or close it
+           */
+          foundRow ? this.detailService.open(foundRow.item, foundRow.detailButton) : this.detailService.close();
+        }
       })
     );
   }

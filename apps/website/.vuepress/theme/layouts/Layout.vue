@@ -1,5 +1,6 @@
 <template>
   <div class="main-container" cds-layout="vertical align:stretch">
+    <SkipTo toId="content-area" label="Skip to main content" />
     <Navbar v-if="shouldShowNavbar">
       <template #sidebar-toggle>
         <button
@@ -17,6 +18,7 @@
       <Sidebar :items="sidebarItems" :isSidebarOpen="isSidebarOpen" @isSidebarOpenChange="toggleSidebar()" />
       <div
         id="content-area"
+        tabindex="-1"
         :class="{ 'content-area': true, 'home-page': $page.frontmatter.home }"
         cds-layout="pl@sm:md"
       >
@@ -69,6 +71,7 @@ import Navbar from '@theme/components/Navbar';
 import NavToc from '@theme/components/NavToc';
 import Page from '@theme/components/Page';
 import Sidebar from '@theme/components/Sidebar';
+import SkipTo from '@theme/components/SkipTo';
 import { resolveSidebarItems } from '../util';
 import { scrollToGuard } from '../util/route-guards';
 
@@ -85,6 +88,7 @@ export default {
     Sidebar,
     Navbar,
     NavToc,
+    SkipTo,
   },
 
   data() {

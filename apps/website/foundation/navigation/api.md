@@ -1,5 +1,6 @@
 ---
 title: API
+toc: true
 ---
 
 ## Angular Navigation Components and Directives

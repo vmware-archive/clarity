@@ -318,10 +318,8 @@ export class Selection<T = any> {
       case SelectionType.Multi:
         if (index >= 0 && !selected) {
           this.deselectItem(index);
-          this.emitChange();
         } else if (index < 0 && selected) {
           this.selectItem(item);
-          this.emitChange();
         }
         break;
       default:

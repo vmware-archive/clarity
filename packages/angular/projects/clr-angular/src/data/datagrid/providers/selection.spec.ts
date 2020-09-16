@@ -193,7 +193,7 @@ export default function (): void {
         expect(currentSelection.sort(numberSort)).toEqual(itemsInstance.displayed);
         selectionInstance.toggleAll();
         expect(currentSelection).toEqual([]);
-        expect(nbChanges).toBe(4);
+        expect(nbChanges).toBe(3);
       });
 
       it('exposes an Observable to follow selection changes in single selection type', function () {

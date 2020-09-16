@@ -3,6 +3,7 @@ import { setCustomElements } from '@storybook/web-components';
 import { applyPolyfill } from 'custom-elements-hmr-polyfill';
 import customElements from '../dist/core/custom-elements.json';
 
+window.HMR_SKIP_DEEP_PATCH = true;
 applyPolyfill();
 
 export const parameters = {

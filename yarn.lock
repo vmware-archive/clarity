@@ -12345,10 +12345,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-custom-elements-hmr-polyfill@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/custom-elements-hmr-polyfill/-/custom-elements-hmr-polyfill-1.0.0.tgz#474a33cbcb08164f586fff99e7c1b59d226b04c9"
-  integrity sha512-gNFGJ8rfF+XVv/7dAF/Vo9pMqGRcwnRzK96DlFPgWyEZaznoJ1HDAe/J88kNMK300XGwo8Ck230IkqqvE75tMw==
+custom-elements-hmr-polyfill@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/custom-elements-hmr-polyfill/-/custom-elements-hmr-polyfill-1.0.3.tgz#ee25e525020162a9d811c9108d4b398e1c624cad"
+  integrity sha512-LG9AcR3MKLOjZmw3UNY1GWkA0NdWm/BMi8dLf+s59Kk0BJ77wssUbAIVXJIkCmoDuPkC4Y+nN8fff4QTtF4rOA==
 
 custom-event@~1.0.0:
   version "1.0.1"

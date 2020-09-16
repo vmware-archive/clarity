@@ -27,6 +27,7 @@ ClarityIcons.addIcons(userIcon, timesIcon);
 
 interface AppState {
   modalOpen: boolean;
+  modal2Open: boolean;
 }
 
 export default class App extends React.Component<{}, AppState> {
@@ -34,7 +35,7 @@ export default class App extends React.Component<{}, AppState> {
 
   constructor(props: any) {
     super(props);
-    this.state = { modalOpen: false };
+    this.state = { modalOpen: false, modal2Open: false };
     this.buttonRef = React.createRef<CdsButton>();
   }
 
@@ -50,6 +51,7 @@ export default class App extends React.Component<{}, AppState> {
 
   render() {
     const isModalOpen = this.state.modalOpen;
+    const isModal2Open = this.state.modal2Open;
     return (
       <div>
         <h1>Rendered by React!</h1>
@@ -64,6 +66,9 @@ export default class App extends React.Component<{}, AppState> {
             <CdsModalContent>
               <div cds-layout="vertical gap:md p-y:xs">
                 <p cds-text="body">Lorem Ipsum</p>
+                <CdsButton ref={this.buttonRef} onClick={() => this.setState({ modal2Open: true })}>
+                  Open Modal 2
+                </CdsButton>
               </div>
             </CdsModalContent>
             <CdsModalActions>
@@ -74,6 +79,21 @@ export default class App extends React.Component<{}, AppState> {
                 <CdsButton onClick={() => this.setState({ modalOpen: false })}>Ok</CdsButton>
               </div>
             </CdsModalActions>
+            <CdsModal hidden={!isModal2Open} onCloseChange={() => this.setState({ modal2Open: false })}>
+              <CdsModalHeader>
+                <h3 cds-text="title">My Modal</h3>
+              </CdsModalHeader>
+              <CdsModalContent>
+                <div cds-layout="vertical gap:md p-y:xs">
+                  <p cds-text="body">Focus trap inception!</p>
+                </div>
+              </CdsModalContent>
+              <CdsModalActions>
+                <div cds-layout="horizontal gap:sm align:right">
+                  <CdsButton onClick={() => this.setState({ modal2Open: false })}>Ok</CdsButton>
+                </div>
+              </CdsModalActions>
+            </CdsModal>
           </CdsModal>
         ) : (
           <br />

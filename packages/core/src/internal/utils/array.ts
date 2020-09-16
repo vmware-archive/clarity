@@ -10,3 +10,7 @@ export function arrayToObject(arr: any[], key: string) {
     return obj;
   }, {});
 }
+
+export function arrayTail(arr: any[]) {
+  return arr.length ? arr[arr.length - 1] : void 0;
+}

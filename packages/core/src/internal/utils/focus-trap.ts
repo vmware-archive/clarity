@@ -4,32 +4,35 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { FocusTrapTracker } from '../services/focus-trap-tracker.service.js';
-import { addAttributeValue, isHTMLElement, removeAttributeValue } from './dom.js';
+import { LitElement } from 'lit-element';
+import { CDS_FOCUS_TRAP_ID_ATTR, FocusTrapTracker } from '../services/focus-trap-tracker.service.js';
+import { isHTMLElement } from './dom.js';
+import { createId } from './identity.js';
 
 export interface FocusTrapElement extends HTMLElement {
   topReboundElement: HTMLElement;
   bottomReboundElement: HTMLElement;
+  focusTrapId: string;
 }
 
-export function focusElementIfInCurrentFocusTrapElement(
-  focusedElement: HTMLElement,
-  focusTrapElement: FocusTrapElement
-) {
+export function refocusIfOutsideFocusTrapElement(focusedElement: HTMLElement, focusTrapElement: FocusTrapElement) {
   if (
     FocusTrapTracker.getCurrent() === focusTrapElement &&
     elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)
   ) {
     focusTrapElement.focus();
+  } else {
+    focusedElement.focus();
   }
 }
 
 export function elementIsOutsideFocusTrapElement(focusedElement: HTMLElement, focusTrapElement: FocusTrapElement) {
-  return (
-    !focusTrapElement.contains(focusedElement) ||
-    focusedElement === focusTrapElement.topReboundElement ||
-    focusedElement === focusTrapElement.bottomReboundElement
-  );
+  const elementToFocusIsNotInsideFocusTrap = !focusTrapElement.contains(focusedElement);
+  const notTopRebounder = focusedElement === focusTrapElement.topReboundElement;
+  const notBottomRebounder = focusedElement === focusTrapElement.bottomReboundElement;
+  const elementToFocusIsRebounder = notTopRebounder && notBottomRebounder;
+
+  return elementToFocusIsNotInsideFocusTrap || elementToFocusIsRebounder;
 }
 
 export function createFocusTrapReboundElement() {
@@ -40,19 +43,19 @@ export function createFocusTrapReboundElement() {
 }
 
 export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrapElement) {
-  if (focusTrapElement) {
+  if (focusTrapElement && !focusTrapElement.topReboundElement && !focusTrapElement.bottomReboundElement) {
     focusTrapElement.topReboundElement = createFocusTrapReboundElement();
     focusTrapElement.bottomReboundElement = createFocusTrapReboundElement();
 
-    if (focusTrapElement.parentElement) {
-      focusTrapElement.parentElement.insertBefore(focusTrapElement.topReboundElement, focusTrapElement);
-      if (focusTrapElement.nextSibling) {
-        focusTrapElement.parentElement.insertBefore(
-          focusTrapElement.bottomReboundElement,
-          focusTrapElement.nextSibling
-        );
+    const parent = focusTrapElement.parentElement;
+    const sibling = focusTrapElement.nextSibling;
+
+    if (parent) {
+      parent.insertBefore(focusTrapElement.topReboundElement, focusTrapElement);
+      if (sibling) {
+        parent.insertBefore(focusTrapElement.bottomReboundElement, sibling);
       } else {
-        focusTrapElement.parentElement.appendChild(focusTrapElement.bottomReboundElement);
+        parent.appendChild(focusTrapElement.bottomReboundElement);
       }
     }
   }
@@ -60,46 +63,76 @@ export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrap
 
 export function removeReboundElementsFromFocusTrapElement(focusTrapElement: FocusTrapElement) {
   if (focusTrapElement) {
-    if (focusTrapElement.topReboundElement && focusTrapElement.parentElement) {
-      focusTrapElement.parentElement.removeChild(focusTrapElement.topReboundElement);
-    }
-    if (focusTrapElement.bottomReboundElement && focusTrapElement.parentElement) {
-      focusTrapElement.parentElement.removeChild(focusTrapElement.bottomReboundElement);
+    const parent = focusTrapElement.parentElement;
+
+    if (parent) {
+      const topRebound = focusTrapElement.topReboundElement;
+      const bottomRebound = focusTrapElement.bottomReboundElement;
+      if (topRebound) {
+        parent.removeChild(topRebound);
+      }
+      if (bottomRebound) {
+        parent.removeChild(bottomRebound);
+      }
     }
     // These are here to to make sure that we completely delete all traces of the removed DOM objects.
     delete focusTrapElement.topReboundElement;
     delete focusTrapElement.bottomReboundElement;
   }
 }
+
+// this helper exists to enable the focus trap class to handle vanilla html elements
+// it's primary concern is to keep TS happy.
+// end users should prefer using the CdsBaseFocusTrap component to this method.
+// but it exists...
+export function castHtmlElementToFocusTrapElement(el: HTMLElement): FocusTrapElement {
+  return el as FocusTrapElement;
+}
+
 export class FocusTrap {
-  private focusTrapElement: FocusTrapElement;
+  focusTrapElement: FocusTrapElement;
   private previousFocus: HTMLElement;
   private onFocusInEvent: any;
 
-  constructor(hostElement: HTMLElement) {
-    this.focusTrapElement = hostElement as FocusTrapElement;
+  constructor(hostElement: FocusTrapElement) {
+    hostElement = castHtmlElementToFocusTrapElement(hostElement);
+
+    if (!hostElement.focusTrapId) {
+      hostElement.focusTrapId = createId();
+    }
+
+    // @deprecation
+    // reflect attr for non-Lit Element traps
+    // IMPORTANT! Using something other than a LitElement will break in React.
+    // The preference should be to use the CdsBaseFocusTrap component
+    // If that is not possible, avoid passing HTMLElement through here
+    if (!(hostElement instanceof LitElement) && !hostElement.hasAttribute(CDS_FOCUS_TRAP_ID_ATTR)) {
+      hostElement.setAttribute(CDS_FOCUS_TRAP_ID_ATTR, hostElement.focusTrapId);
+    }
+
+    this.focusTrapElement = hostElement;
   }
 
   enableFocusTrap() {
-    if (FocusTrapTracker.getCurrent() === this.focusTrapElement) {
+    const fte = this.focusTrapElement;
+    const activeEl = document.activeElement;
+    if (FocusTrapTracker.getCurrent() === fte) {
       throw new Error('Focus trap is already enabled for this instance.');
     }
 
-    addReboundElementsToFocusTrapElement(this.focusTrapElement);
-    this.focusTrapElement.setAttribute('tabindex', '0');
-    if (document.activeElement && isHTMLElement(document.activeElement)) {
-      this.previousFocus = document.activeElement as HTMLElement;
+    addReboundElementsToFocusTrapElement(fte);
+    fte.setAttribute('tabindex', '0');
+    if (activeEl && isHTMLElement(activeEl)) {
+      this.previousFocus = activeEl as HTMLElement;
     }
-    addAttributeValue(document.body, 'cds-layout', 'no-scrolling');
-    FocusTrapTracker.setCurrent(this.focusTrapElement);
-    this.focusTrapElement.focus();
+    FocusTrapTracker.setCurrent(fte.focusTrapId);
+    fte.focus();
     this.onFocusInEvent = this.onFocusIn.bind(this);
     document.addEventListener('focusin', this.onFocusInEvent);
   }
 
   removeFocusTrap() {
     document.removeEventListener('focusin', this.onFocusInEvent);
-    removeAttributeValue(document.body, 'cds-layout', 'no-scrolling');
     removeReboundElementsFromFocusTrapElement(this.focusTrapElement);
     FocusTrapTracker.activatePreviousCurrent();
     if (this.previousFocus) {
@@ -108,6 +141,6 @@ export class FocusTrap {
   }
 
   private onFocusIn(event: FocusEvent) {
-    focusElementIfInCurrentFocusTrapElement(event.target as HTMLElement, this.focusTrapElement);
+    refocusIfOutsideFocusTrapElement(event.target as HTMLElement, this.focusTrapElement);
   }
 }

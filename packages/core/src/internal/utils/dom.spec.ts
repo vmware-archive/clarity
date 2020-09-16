@@ -11,6 +11,7 @@ import {
   assignSlotNames,
   getElementWidth,
   getElementWidthUnless,
+  hasAttributeAndIsNotEmpty,
   HTMLAttributeTuple,
   isHTMLElement,
   removeAttributes,
@@ -348,12 +349,35 @@ describe('Functional Helper: ', () => {
       expect(isVisible(element)).toBe(false);
     });
   });
+
   describe('spanWrapper', () => {
     it('wraps text nodes in an element', async () => {
       const element = await createTestElement(html`Hello spanWrapper`);
       spanWrapper(element.childNodes);
       expect(element.children[0].tagName).toBe('SPAN');
       expect(element.children[0].textContent).toBe('Hello spanWrapper');
+    });
+  });
+
+  describe('hasAttributeAndIsNotEmpty', () => {
+    it('should return false if element does not exist', () => {
+      const nope = document.getElementById('ohai');
+      expect(hasAttributeAndIsNotEmpty(nope, 'id')).toBe(false);
+    });
+    it('should return true if element has attribute', async () => {
+      const element = await createTestElement(html`<div id="ohai" data-test-value="false">howdy</div>`);
+      expect(hasAttributeAndIsNotEmpty(document.getElementById('ohai'), 'data-test-value')).toBe(true);
+      removeTestElement(element);
+    });
+    it('should return false if element has attribute but it is an empty string', async () => {
+      const element = await createTestElement(html`<div id="ohai" data-test-value="">howdy</div>`);
+      expect(hasAttributeAndIsNotEmpty(document.getElementById('ohai'), 'data-test-value')).toBe(false);
+      removeTestElement(element);
+    });
+    it('should return false if element has attribute but there is no value in the attribute', async () => {
+      const element = await createTestElement(html`<div id="ohai" data-test-value>howdy</div>`);
+      expect(hasAttributeAndIsNotEmpty(document.getElementById('ohai'), 'data-test-value')).toBe(false);
+      removeTestElement(element);
     });
   });
 });

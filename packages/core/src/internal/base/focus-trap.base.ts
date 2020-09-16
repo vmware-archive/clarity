@@ -7,9 +7,13 @@
 import { html, LitElement } from 'lit-element';
 import { FocusTrap } from '../utils/focus-trap.js';
 import { internalProperty, property } from '../decorators/property.js';
+import { createId } from '../utils/identity.js';
 
 export class CdsBaseFocusTrap extends LitElement {
-  protected focusTrap = new FocusTrap(this);
+  focusTrap: FocusTrap;
+
+  topReboundElement: HTMLElement;
+  bottomReboundElement: HTMLElement;
 
   /**
    * Its recommended to remove or add a focus trap element from the DOM
@@ -20,6 +24,16 @@ export class CdsBaseFocusTrap extends LitElement {
 
   @internalProperty({ type: Boolean, reflect: true })
   protected __demoMode = false;
+
+  @property({ type: String }) focusTrapId: string;
+
+  constructor() {
+    super();
+    this.focusTrapId = createId();
+    // if we see issues instantiating here, we should consider moving to
+    // firstUpdated()
+    this.focusTrap = new FocusTrap(this);
+  }
 
   connectedCallback() {
     super.connectedCallback();

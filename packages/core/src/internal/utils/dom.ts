@@ -6,6 +6,8 @@
 import includes from 'ramda/es/includes';
 import without from 'ramda/es/without';
 
+import { isStringAndNotNilOrEmpty } from './identity.js';
+
 export function getElementWidth(element: HTMLElement, unit = 'px') {
   if (element) {
     return element.getBoundingClientRect ? element.getBoundingClientRect().width + unit : '';
@@ -25,6 +27,10 @@ export function isHTMLElement(el: any) {
 }
 
 export type HTMLAttributeTuple = [string, string | boolean];
+
+export function hasAttributeAndIsNotEmpty(element: HTMLElement | null, attribute: string) {
+  return !!element && element.hasAttribute(attribute) && isStringAndNotNilOrEmpty(element.getAttribute(attribute));
+}
 
 export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttributeTuple[]) {
   if (element) {

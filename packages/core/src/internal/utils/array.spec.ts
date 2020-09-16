@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { arrayToObject } from './array.js';
+import { arrayTail, arrayToObject } from './array.js';
 
 describe('array utils', () => {
   it('arrayToObject', () => {
@@ -19,5 +19,14 @@ describe('array utils', () => {
     expect(obj.one.value).toBe('value 1');
     expect(obj.two.value).toBe('value 2');
     expect(obj.three.value).toBe('value 3');
+  });
+
+  describe('arrayTail: ', () => {
+    it('returns undefined if array is empty', () => {
+      expect(arrayTail([])).toBeUndefined();
+    });
+    it('returns tail of array as expected', () => {
+      expect(arrayTail([0, 1, 2, 3, 4, 5])).toBe(5);
+    });
   });
 });

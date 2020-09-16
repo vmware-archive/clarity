@@ -18,7 +18,7 @@ declare global {
   }
 }
 
-describe('modal element', () => {
+describe('focus trap element', () => {
   describe('basic', () => {
     let testElement: HTMLElement;
     let component: CdsBaseFocusTrap;
@@ -43,6 +43,8 @@ describe('modal element', () => {
     it('should create the component', async () => {
       await componentIsStable(component);
       expect(component.innerText).toBe(placeholderText.toUpperCase());
+      expect(component.focusTrapId).toBeDefined('should have a focus trap id');
+      expect(component.focusTrap).toBeDefined('should have a focus trap');
     });
 
     it('should enable focus trap', async () => {

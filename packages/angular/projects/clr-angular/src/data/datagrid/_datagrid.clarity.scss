@@ -40,8 +40,6 @@
     overflow: auto;
     flex: 1 1 auto;
     margin-top: $clr_baselineRem_0_5;
-    // Force content stretch on Safari
-    display: flex;
   }
 
   .datagrid-container {
@@ -645,6 +643,7 @@
   .datagrid-table-wrapper {
     display: flex;
     flex: 1 1 auto;
+    min-height: 100%;
   }
 
   .datagrid-table {
@@ -652,9 +651,7 @@
     flex-direction: column;
     flex: 1 1 auto;
     align-content: flex-start;
-    min-height: $clr_baselineRem_3; // Includes header and space for a single (non existing) row
     position: relative;
-    height: 100%;
 
     .datagrid-body {
       width: auto;

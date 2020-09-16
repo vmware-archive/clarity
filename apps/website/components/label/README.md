@@ -10,7 +10,13 @@ Labels show concise metadata in a compact format.
 Use a label to show the metadata when the space is limited or when you want to catch user’s attention. It is commonly used for tags, or fitter items.
 The distinctive visual style of labels deliberately deviates from buttons. This prevents users from confusing labels with buttons and allows labels to co-exist with other components without competing for a user's attention with primary and secondary buttons on the screen.
 
-<doc-demo src="/demos/label/food-ng.html" demo="/demos/label/food-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/label/food-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/label/food-ng.html
+</doc-code>
 
 ## Anatomy
 
@@ -24,7 +30,13 @@ If the intent is to use colors as a way to have groups of labels be visually dis
 
 Avoid using too many colors within the same context, displaying too many colors may distract the user from the core of your application and the information it presents.
 
-<doc-demo src="/demos/label/color-ng.html" demo="/demos/label/color-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/label/color-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/label/color-ng.html
+</doc-code>
 
 ### Labels and Badges
 
@@ -105,8 +117,20 @@ A label can be dismissed. Use a close icon at the right-most side of a label to 
 
 ### Status
 
-<doc-demo src="/demos/label/status-ng.html" demo="/demos/label/status-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/label/status-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/label/status-ng.html
+</doc-code>
 
 ### Labels with badges
 
-<doc-demo src="/demos/label/badges-ng.html" demo="/demos/label/badges-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/label/badges-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/label/badges-ng.html
+</doc-code>

@@ -11,7 +11,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -21,7 +21,7 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -35,7 +35,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -45,7 +45,7 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -55,7 +55,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -67,7 +67,7 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -77,7 +77,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -91,7 +91,7 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -107,7 +107,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -126,13 +126,13 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrPageHeaderActions
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -149,13 +149,13 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrWizardPageNavTitle
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -172,13 +172,13 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrWizardPageTitle
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-wizard #wizardReference>
@@ -195,4 +195,4 @@ toc: true
 </clr-wizard>
 ```
 
-</DocDemo>
+</doc-code>

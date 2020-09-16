@@ -44,20 +44,44 @@ If you need two-way binding on the active state of a tab, use the de-sugared syn
 
 ### Horizontal
 
-<doc-demo src="/demos/tabs/horizontal-ng.html" demo="/demos/tabs/horizontal-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/tabs/horizontal-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tabs/horizontal-ng.html
+</doc-code>
 
 ### Vertical
 
-<doc-demo src="/demos/tabs/vertical-ng.html" demo="/demos/tabs/vertical-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/tabs/vertical-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tabs/vertical-ng.html
+</doc-code>
 
 ### Overflow
 
 When there are to many horizontal tabs to fit into the viewport, use overflow to hide less important tabs.
-<doc-demo src="/demos/tabs/overflow-ng.html" demo="/demos/tabs/overflow-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/tabs/overflow-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tabs/overflow-ng.html
+</doc-code>
 
 ### Two-way Binding
 
-<doc-demo src="/demos/tabs/two-way-ng.html" demo="/demos/tabs/two-way-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/tabs/two-way-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tabs/two-way-ng.html
+</doc-code>
 
 ## Accessibility
 

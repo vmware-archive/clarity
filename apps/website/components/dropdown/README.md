@@ -160,15 +160,33 @@ Clarity Angular component follows these guidelines:
 
 #### Default (bottom-left)
 
-<doc-demo src="/demos/dropdown/basic-ng.html" demo="/demos/dropdown/basic-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/dropdown/basic-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/dropdown/basic-ng.html
+</doc-code>
 
 #### Bottom-right
 
-<doc-demo src="/demos/dropdown/bottom-right-ng.html" demo="/demos/dropdown/bottom-right-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/dropdown/bottom-right-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/dropdown/bottom-right-ng.html
+</doc-code>
 
 #### Icon toggle
 
-<doc-demo src="/demos/dropdown/icon-toggle-ng.html" demo="/demos/dropdown/icon-toggle-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/dropdown/icon-toggle-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/dropdown/icon-toggle-ng.html
+</doc-code>
 
 ### CSS Classes
 
@@ -214,8 +232,20 @@ If for some reason this behavior was not the one you wanted, we also support the
 
 #### Basic
 
-<doc-demo src="/demos/dropdown/basic-angular-ng.html" demo="/demos/dropdown/basic-angular-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/dropdown/basic-angular-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/dropdown/basic-angular-ng.html
+</doc-code>
 
 #### Icon
 
-<doc-demo src="/demos/dropdown/icon-angular-ng.html" demo="/demos/dropdown/icon-toggle-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/dropdown/icon-toggle-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/dropdown/icon-angular-ng.html
+</doc-code>

@@ -17,7 +17,13 @@ If you are using Angular, the recommended approach is to always use the `ClrText
 
 This is the most basic way to create a textarea inside of a form. This is only if you don't have a need for a label or validation. You need to add `clrTextarea` to your textarea to wire up the directive. Notice, it is not necessary to add `type="text"` as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.
 
-<doc-demo src="/demos/textarea/basic-ng.html" demo="/demos/textarea/basic-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/textarea/basic-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/textarea/basic-ng.html
+</doc-code>
 
 ### Labels
 
@@ -25,7 +31,13 @@ For anything beyond a standalone textarea field, you'll need to wrap it with the
 
 Then you can add a `label` element and it will automatically get laid out correctly in the form.
 
-<doc-demo src="/demos/textarea/label-ng.html" demo="/demos/textarea/label-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/textarea/label-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/textarea/label-ng.html
+</doc-code>
 
 ### Helper and error messages
 
@@ -33,7 +45,13 @@ The textarea form control wires up with the validations placed on it, such as `r
 
 Note: the validation only displays an error after the user has left focus on a control. This is for better UX where the user doesn't see an error while they are still typing.
 
-<doc-demo src="/demos/textarea/helper-ng.html" demo="/demos/textarea/helper-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/textarea/helper-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/textarea/helper-ng.html
+</doc-code>
 
 ## Accessibility
 

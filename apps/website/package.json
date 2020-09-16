@@ -15,6 +15,7 @@
     "@sentry/browser": "5.15.5",
     "@sentry/integrations": "5.15.5",
     "markdown-it-attrs": "^3.0.2",
+    "markdown-it-include": "^2.0.0",
     "vue-resource": "^1.5.1"
   },
   "devDependencies": {

@@ -19,7 +19,9 @@ Here is when you might want to use a wizard over just a normal form:
 ![Basic Wizard](/images/components/wizard/basic.png)
 :::
 
-<doc-demo src="/demos/wizard/basic-ng.html" demo="/demos/wizard/basic-css.html"/></doc-demo>
+<doc-code>
+<<< .vuepress/public/demos/wizard/basic-ng.html
+</doc-code>
 
 ## Anatomy
 

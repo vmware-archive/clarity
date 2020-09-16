@@ -13,13 +13,13 @@ Combobox description here
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-combobox></clr-combobox>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 
@@ -29,13 +29,13 @@ Combobox description here
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-combobox-container></clr-combobox-container>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 
@@ -45,13 +45,13 @@ Combobox description here
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clroption></clroption>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 
@@ -61,13 +61,13 @@ Combobox description here
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-options></clr-options>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 
@@ -81,7 +81,7 @@ Combobox description here
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
@@ -89,7 +89,7 @@ Combobox description here
 </clr-option>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 

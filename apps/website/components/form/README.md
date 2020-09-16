@@ -19,19 +19,37 @@ Clarity offers three types of forms: horizontal (our recommended default), verti
 
 Default Horizontal formats are good for the quick scanning of labels, and can be used in cases of limited vertical space. The space between label and input however can slow users down.
 
-<doc-demo file="/demos/form/horizontal.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/form/horizontal.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/form/horizontal.html
+</doc-code>
 
 ### Vertical
 
 This option is better for scanning, mobile experiences, accessibility, and localization. While it offers better completion rates, it is less ideal for longer forms.
 
-<doc-demo file="/demos/form/vertical.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/form/vertical.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/form/vertical.html
+</doc-code>
 
 ### Compact
 
 For cases with highly limited space, we provide a compact form layout.
 
-<doc-demo file="/demos/form/compact.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/form/compact.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/form/compact.html
+</doc-code>
 
 ### Form Length
 
@@ -145,7 +163,7 @@ Clarity has created a set of directives to help manage forms with minimal effort
 
 Then declare a form start by adding the `clrForm` directive to the form element. This will wire up some internals to manage the form itself.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -153,13 +171,13 @@ Then declare a form start by adding the `clrForm` directive to the form element.
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Layout options
 
 If you wish to have a different layout, then you can use the `clrLayout` directive to set the desired layout. The appropriate grid classes will be applied to enable automatic layout switching for mobile viewports.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm clrLayout="horizontal">
@@ -167,13 +185,13 @@ If you wish to have a different layout, then you can use the `clrLayout` directi
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Basic structure
 
 When you start to fill in your form controls, each will should be wrapped in a container like you see here in this text input example.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -188,13 +206,13 @@ When you start to fill in your form controls, each will should be wrapped in a c
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Helper and validation messages
 
 These Angular components also support built in helper text and validation with error messages.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -207,7 +225,7 @@ These Angular components also support built in helper text and validation with e
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 All fields should be assumed to be required. Clarity does not support a required input treatment for labels (which often comes in the form of an \* by the label). The recommendation is to focus your forms to include only required fields, and if a field is optional then you can describe it as such in the label like (Optional).
 
@@ -215,7 +233,7 @@ Info
 
 For screen reader accessibility, forms with validation messages should provide a descriptive message on how validation messages will be triggered. The `.clr-sr-only` class will hide content and only make it visible for screen readers.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -237,7 +255,7 @@ For screen reader accessibility, forms with validation messages should provide a
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 This pattern is more accessible and clear by writing the word "error" explicitly for users (and screen readers) to read, with research to back this up compared with the use of a red required asterisk (\*). See [this article from fusionbox](https://www.fusionbox.com/blog/detail/rethinking-the-red-required-asterisk-for-better-form-ux/599/) provides some evidence for this rationale.
 
@@ -249,7 +267,7 @@ If you want to support multiple error messages, you can do this by defining an e
 
 All Clarity form controls support resetting the validation state simply by calling the `reset()` method on the `FormControl` or `FormGroup`.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { Component } from '@angular/core';
@@ -282,11 +300,11 @@ export class ReactiveFormsDemo {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 Normally, validation errors only appear after the control has been focused on by the user. In cases where you want to force validation errors to show (such as when the user tried to submit a form), you simply need to mark every control as touched with Angular. You can use the form API to accomplish this, `ClrForm.markAsTouched()`, which will force all form controls inside of a form to be touched, which will display the validation errors.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ViewChild, Component } from '@angular/core';
@@ -320,13 +338,13 @@ export class ReactiveFormsDemo {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Layout with grid
 
 You can use the `clrLabelSize` directive to configure the label width for an entire form. This is useful for `horizontal` and compact layouts, but doesn't apply when you are using `vertical` layout. It will accept a number between 1-12 to calculate the width according to our grid, and the controls will adopt the remaining size. For example if you pass `clrLabelSize="4"` it will size the controls to use 8 grid columns for a total of 12 columns.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm clrLayout="horizontal" clrLabelSize="4">
@@ -338,13 +356,13 @@ You can use the `clrLabelSize` directive to configure the label width for an ent
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Overriding column widths
 
 For horizontal layouts, you can override the default widths for labels (2 columns) and controls (10 columns). Even on horizontal layouts, the default behavior should still use a vertical layout for narrow mobile sizes. That means you should always include the class `clr-col-12` on both the input and label. Ensure your override columns add up to 12 to use the full space.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -357,13 +375,13 @@ For horizontal layouts, you can override the default widths for labels (2 column
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Reactive Forms
 
 Forms also work with reactive forms with the same support for validations.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { Component } from '@angular/core';
@@ -379,9 +397,9 @@ export class ReactiveFormsDemo {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm [formGroup]="exampleForm">
@@ -394,7 +412,7 @@ export class ReactiveFormsDemo {
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Custom and non-Clarity Controls
 
@@ -404,7 +422,7 @@ The basic process is to wrap the form control in the `clr-control-container` com
 
 It is likely that you'll have to write some CSS rules to make the custom controls fit and look correct within the generic control container. Use specific selectors to avoid changing the default form control behaviors in other parts of the application!
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { Component } from '@angular/core';
@@ -437,9 +455,9 @@ export class FormsGenericContainerDemo {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- Template Driven Example -->
@@ -507,4 +525,4 @@ export class FormsGenericContainerDemo {
 </form>
 ```
 
-</DocDemo>
+</doc-code>

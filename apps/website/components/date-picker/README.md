@@ -92,7 +92,10 @@ For applications that use the ClrDateInput directive and the associated ClrDateC
 To use the date picker, add the [clrDate](/components/datepicker#clrdate) directive to an input field. Then, place the input inside the clr-date-container container element.
 
 ![Basic Datepicker](/images/components/datepicker/basic-demo.png)
-<doc-demo src="/demos/datepicker/basic-ng.html" />
+
+<doc-code>
+<<< .vuepress/public/demos/datepicker/basic-ng.html
+</doc-code>
 
 ### Min/Max Dates
 
@@ -103,7 +106,10 @@ Only dates inside the min/max range will be selectable for the input when there 
 The `min` and the `max` attributes can be used alone or together to have both an upper and a lower bound on accepted dates.
 
 ![Basic Datepicker](/images/components/datepicker/min-max-demo.png)
-<doc-demo src="/demos/datepicker/min-max-ng.html" />
+
+<doc-code>
+<<< .vuepress/public/demos/datepicker/min-max-ng.html
+</doc-code>
 
 ### Internationalization
 
@@ -191,7 +197,9 @@ The following demo shows two date pickers. The first date picker uses the `en-US
 
 Changing the locale requires its data to be registered first. Afterwards you can simply provide the locale in any Module or Component by the LOCALE_ID token.
 
-<doc-demo src="/demos/datepicker/i18n-ng.ts" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/i18n-ng.ts
+</doc-code>
 
 For more information on setting the locale parameter and loading the locale data, please read the Angular [internationalization](https://angular.io/guide/i18n) documentation.
 
@@ -211,14 +219,14 @@ You can add a two way binding on clrDate to access the date value. The benefit o
 <cds-alert>Date picker emits `null` when an invalid date is entered after a valid date was set.</cds-alert>
 </cds-alert-group>
 
-<doc-demo src="/demos/datepicker/js-date-object.html" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/js-date-object.html
+</doc-code>
 
 ```javascript
 // clrDate Output
 '2020-07-16T17:56:30.728Z';
 ```
-
-</DocDemo>
 
 #### String: Template Driven
 
@@ -226,15 +234,19 @@ Template Driven Forms use the `ngModel` directive to create a binding between th
 
 #### HTML
 
-<doc-demo src="/demos/datepicker/template-driven.html" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/template-driven.html
+</doc-code>
 
 #### TypeScript
 
-<doc-demo src="/demos/datepicker/template-driven.ts" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/template-driven.ts
+</doc-code>
 
 #### Example Output
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 {
@@ -242,7 +254,7 @@ Template Driven Forms use the `ngModel` directive to create a binding between th
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 #### String: Reactive Form
 
@@ -250,17 +262,21 @@ Reactive Forms use FormControls to create the binding between the model and the 
 
 ##### HTML
 
-<doc-demo src="/demos/datepicker/reactive-date.html" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/reactive-date.html
+</doc-code>
 
 ##### TypeScript
 
-<doc-demo src="/demos/datepicker/reactive-date.ts" />
+<doc-code>
+<<< .vuepress/public/demos/datepicker/reactive-date.ts
+</doc-code>
 
 ##### Example Output
 
 The date value will be null until a user selects a date.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 {
@@ -268,4 +284,4 @@ The date value will be null until a user selects a date.
 }
 ```
 
-</DocDemo>
+</doc-code>

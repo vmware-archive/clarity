@@ -1,4 +1,5 @@
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItInclude = require('markdown-it-include');
 const sidebar = require('./sidebar');
 const blocks = require('./blocks');
 const path = require('path');
@@ -34,6 +35,7 @@ module.exports = {
   markdown: {
     extendMarkdown: md => {
       md.use(markdownItAttrs);
+      md.use(markdownItInclude);
     },
     anchor: {
       permalink: true,
@@ -41,7 +43,7 @@ module.exports = {
       permalinkSymbol: '<cds-icon shape="link"></cds-icon>',
     },
   },
-  extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/blocks.js'],
+  extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/blocks.js', '.vuepress/public/**'],
   plugins: [
     'vuepress-plugin-table-of-contents',
     '@vuepress/active-header-links',

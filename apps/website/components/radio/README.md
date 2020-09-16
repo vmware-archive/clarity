@@ -22,7 +22,13 @@ While it is possible to create a radio button without a label, the cases are rar
 
 For anything beyond a standalone radio button, you'll need to wrap your radios with the `ClrRadioWrapper` component when you include a label. This manages the label and display of the radio button for you.
 
-<doc-demo src="/demos/radio/basic-ng.html" demo="/demos/radio/basic-css.html"></doc-demo>
+<doc-demo>
+!!!include(.vuepress/public/demos/radio/basic-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/radio/basic-ng.html
+</doc-code>
 
 ### Helper and error messages
 
@@ -30,19 +36,37 @@ To leverage helper and validation messages, you'll need to wrap all of the radio
 
 Note: the validation in this example only displays an error after you focus and leave focus without selecting a value. The easiest way to do this is to highlight the text in this paragraph, and hit tab a few times to change the focus.
 
-<doc-demo src="/demos/radio/helper-ng.html" demo="/demos/radio/helper-css.html"></doc-demo>
+<doc-demo>
+!!!include(.vuepress/public/demos/radio/helper-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/radio/helper-ng.html
+</doc-code>
 
 ### Inline radios
 
 Radio buttons can be placed inline by default by adding the `clrInline` directive to your radio container elements. The radio buttons will wrap if there is not enough space.
 
-<doc-demo src="/demos/radio/inline-ng.html" demo="/demos/radio/inline-css.html"></doc-demo>
+<doc-demo>
+!!!include(.vuepress/public/demos/radio/inline-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/radio/inline-ng.html
+</doc-code>
 
 ### Disabled radio
 
 A radio can be disabled by simply putting the `disabled` attribute on the radio input. This does require the radio to be inside of a radio container. Also, for groups of radios you have to put the disabled attribute on the last radio and cannot disable individual ones, as Angular doesn't have support to disable individual radios in a group.
 
-<doc-demo src="/demos/radio/disabled-ng.html" demo="/demos/radio/disabled-css.html"></doc-demo>
+<doc-demo>
+!!!include(.vuepress/public/demos/radio/disabled-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/radio/disabled-ng.html
+</doc-code>
 
 ## Accessibility
 

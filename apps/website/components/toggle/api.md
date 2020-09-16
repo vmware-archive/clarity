@@ -9,13 +9,13 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <input type="checkbox" clrToggle value="option1" name="options" />
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -27,7 +27,7 @@ A container component used to enable helper and error messages and works with An
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-toggle-container>
@@ -44,7 +44,7 @@ A container component used to enable helper and error messages and works with An
 </clr-toggle-container>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -56,7 +56,7 @@ The ClrToggleWrapper associates a specific label with the ClrToggle input.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-toggle-wrapper>
@@ -65,4 +65,4 @@ The ClrToggleWrapper associates a specific label with the ClrToggle input.
 </clr-toggle-wrapper>
 ```
 
-</DocDemo>
+</doc-code>

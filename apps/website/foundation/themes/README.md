@@ -149,12 +149,17 @@ Clarity UI ships with two css files, `clr-ui.min.css` for the light theme and `c
 
 Consume the dark theme code in `clr-ui-dark.min.css` by adding it to your styles array in the `angular.json` file.
 
-<doc-demo src="/demos/themes/angular.json" />
+<doc-code>
+<<< .vuepress/public/demos/themes/angular.json
+</doc-code>
 
 ### Webpack Builds
 
 Modify your `webpack.config.js` entry styles to consume the new `clr-ui-dark.min.css`
-<doc-demo src="/demos/themes/webpack.js" />
+
+<doc-code>
+<<< .vuepress/public/demos/themes/webpack.js
+</doc-code>
 
 ## Custom Themes
 
@@ -187,7 +192,7 @@ In order to customize the Clarity light theme you will need to build with the Cl
 
 First, since we are going to be creating custom component styles the first step is to remove all of the Clarity css from your build process.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 "styles": [
@@ -197,13 +202,13 @@ First, since we are going to be creating custom component styles the first step 
 ]
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Add (or modify) your applications main.scss file
 
 Next, we need to include the the application scss variable overrides and the Clarity component styles. This example shows one way of adding the Clarity dependencies and component styles based on standard `npm` installation into a `node_modules` directory of the project. In this example the `styles.scss` file lives at the top of a standard angular-cli application `src` folder.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```css
 // Your Application Theme File
@@ -213,7 +218,7 @@ Next, we need to include the the application scss variable overrides and the Cla
 @import '../node_modules/@clr/ui/src/utils/components.clarity';
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Why is SASS-based theming going away?
 
@@ -282,13 +287,13 @@ If, however, your product has not been able to stop supporting Internet Explorer
 
 First, you will need to install Clarity Core and its dependencies:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```bash
 npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponents/webcomponentsjs ramda @clr/core
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Using the polyfills
 

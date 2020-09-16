@@ -13,13 +13,13 @@ ClrSpinner is a visual indicator for an ongoing, user-initiated process.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-spinner *ngIf="uploadingPhotos">Loading photos</clr-spinner>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

@@ -27,25 +27,49 @@ Set a width that accommodates the text string. If no size class is used on the t
 
 `.tooltip-xs` is 72px wide
 
-<doc-demo file="/demos/tooltip/tooltip-xs.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-xs.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-xs.html
+</doc-code>
 
 #### Small
 
 `.tooltip-sm` is 120px wide
 
-<doc-demo file="/demos/tooltip/tooltip-sm.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-sm.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-sm.html
+</doc-code>
 
 #### Medium
 
 `.tooltip-md` is 240px wide
 
-<doc-demo file="/demos/tooltip/tooltip-md.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-md.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-md.html
+</doc-code>
 
 #### Large
 
 `.tooltip-lg` is 360px wide
 
-<doc-demo file="/demos/tooltip/tooltip-lg.html" center></doc-demo>
+<doc-demo center style="height: 50px">
+!!!include(.vuepress/public/demos/tooltip/tooltip-lg.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-lg.html
+</doc-code>
 
 ## Placement
 
@@ -55,27 +79,63 @@ Use tooltip positions that ensure the entire element is visible onscreen. Do not
 
 #### `.tooltip-top-left`
 
-<doc-demo file="/demos/tooltip/tooltip-top-left.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-top-left.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-top-left.html
+</doc-code>
 
 #### `.tooltip-top-right`
 
-<doc-demo file="/demos/tooltip/tooltip-top-right.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-top-right.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-top-right.html
+</doc-code>
 
 #### `.tooltip-bottom-left`
 
-<doc-demo file="/demos/tooltip/tooltip-bottom-left.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-bottom-left.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-bottom-left.html
+</doc-code>
 
 #### `.tooltip-bottom-right`
 
-<doc-demo file="/demos/tooltip/tooltip-bottom-right.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-bottom-right.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-bottom-right.html
+</doc-code>
 
 #### `.tooltip-right`
 
-<doc-demo file="/demos/tooltip/tooltip-right.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-right.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-right.html
+</doc-code>
 
 #### `.tooltip-left`
 
-<doc-demo file="/demos/tooltip/tooltip-left.html" center></doc-demo>
+<doc-demo center>
+!!!include(.vuepress/public/demos/tooltip/tooltip-left.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/tooltip/tooltip-left.html
+</doc-code>
 
 ## Content
 

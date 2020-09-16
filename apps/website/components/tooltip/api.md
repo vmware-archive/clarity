@@ -11,7 +11,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tooltip>
@@ -20,13 +20,13 @@ toc: true
 </clr-tooltip>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrTooltipContent
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tooltip>
@@ -37,7 +37,7 @@ toc: true
 </clr-tooltip>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -53,7 +53,7 @@ Used to designate the open/close element for [ClrTooltipContent](./api/#clrtoolt
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tooltip>
@@ -62,7 +62,7 @@ Used to designate the open/close element for [ClrTooltipContent](./api/#clrtoolt
 </clr-tooltip>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrIfOpen
 
@@ -73,7 +73,7 @@ One reason to bypass the `*clrIfOpen` directive is when screenreaders need to re
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tooltip>
@@ -84,7 +84,7 @@ One reason to bypass the `*clrIfOpen` directive is when screenreaders need to re
 </clr-tooltip>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

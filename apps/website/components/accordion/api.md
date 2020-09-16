@@ -13,13 +13,13 @@ An accordion allows generic content to be collapsed and allows users to expand t
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion></clr-accordion>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Properties
 
@@ -31,7 +31,7 @@ ClrAccordionContent is a child of [ClrAccordionPanel](./api/#clraccordionpanel)
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion>
@@ -41,7 +41,7 @@ ClrAccordionContent is a child of [ClrAccordionPanel](./api/#clraccordionpanel)
 </clr-accordion>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrAccordionDescription
 
@@ -49,7 +49,7 @@ ClrAccordionDescription is a child of [ClrAccordionPanel](./api/#clraccordionpan
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion>
@@ -61,7 +61,7 @@ ClrAccordionDescription is a child of [ClrAccordionPanel](./api/#clraccordionpan
 </clr-accordion>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrAccordionPanel
 
@@ -70,7 +70,7 @@ ClrAccordionPanel is a child of [ClrAccordion](./api/#clraccordion)
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion>
@@ -78,7 +78,7 @@ ClrAccordionPanel is a child of [ClrAccordion](./api/#clraccordion)
 </clr-accordion>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -92,13 +92,13 @@ ClrAccordionPanel is a child of [ClrAccordion](./api/#clraccordion)
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion-title>Panel Title</clr-accordion-title>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## Angular Directives
 
@@ -111,11 +111,11 @@ state. The panel content node is removed from the DOM when closed. The default i
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-accordion-content *clrIfExpanded>Panel content</clr-accordion-content>
 <clr-accordion-content [(clrIfExpanded)]="panelExpandedProperty">Panel content</clr-accordion-content>
 ```
 
-</DocDemo>
+</doc-code>

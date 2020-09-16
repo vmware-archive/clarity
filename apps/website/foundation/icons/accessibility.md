@@ -8,13 +8,13 @@ Icons have different accessibility requirements dependent on the context they ar
 
 Icons by default are presentational only meaning they do not provide any context to screen readers and will be purely cosmetic without additional markup.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="info-circle"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Interactive
 
@@ -22,17 +22,17 @@ When icons are used in buttons or links they should be used in conjunction with 
 
 Menu
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <button class="btn"><clr-icon shape="bars"></clr-icon> Menu</button>
 ```
 
-</DocDemo>
+</doc-code>
 
 If the icon in an interactive item does not have text then the parent interactive item (typically a button or link) should have an appropriate `aria-label` describing the interaction.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <button class="btn btn-icon" aria-label="main menu">
@@ -40,7 +40,7 @@ If the icon in an interactive item does not have text then the parent interactiv
 </button>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Status/Indicator
 
@@ -48,7 +48,7 @@ If an icon is used to show a status/indicator or part of a larger body of text t
 
 Usage Warning CPU usage is at 99% use.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <p>
@@ -57,4 +57,4 @@ Usage Warning CPU usage is at 99% use.
 </p>
 ```
 
-</DocDemo>
+</doc-code>

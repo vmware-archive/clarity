@@ -34,7 +34,9 @@ To use our Datagrid, you do not need to pass an array of data or a JSON configur
 
 <ClrImage title="basic structure" src="/images/components/datagrid/datagrid-basic-structure.png" :align="'center'" :width="864" />
 
-<DocDemo src="/demos/datagrid/basic-structure.html"></DocDemo>
+<doc-code>
+<<< .vuepress/public/demos/datagrid/basic-structure.html
+</doc-code>
 
 ### Custom Cell Rendering
 
@@ -42,13 +44,17 @@ The contents of datagrid cells or column headers can be as complex as you need t
 
 Because we use a declarative API, simply projecting your HTML inside our components' templates, you have complete control over what we display. The contents of datagrid cells or column headers can be as complex as you need them to be, with nested components and interpolation.
 
-<DocDemo src="/demos/datagrid/custom-rendering.html"></DocDemo>
+<doc-code>
+<<< .vuepress/public/demos/datagrid/custom-rendering.html
+</doc-code>
 
 ### Smart Iterator
 
 If you want to let us handle all the data processing needed by our various features, you will need to use `*clrDgItems` instead of `*ngFor`. They have the exact syntax and behave the same way, but the former lets us have full control what is actually being displayed. As you can see in the following example it doesn't change anything for our simple case, but it will as soon as we start adding features like sorting, filtering, pagination, etc.,
 
-<DocDemo src="/demos/datagrid/smart-iterator.html" toggle="false"></DocDemo>
+<doc-code>
+<<< .vuepress/public/demos/datagrid/smart-iterator.html
+</doc-code>
 
 ### Binding Properties
 
@@ -60,7 +66,9 @@ By default, bound columns are assumed to contain string-like contents and the us
 
 <DocVideo src="/images/components/datagrid/datagrid-binding-properties.mp4" :width="874" :autoplay="true"></DocVideo>
 
-<DocDemo src="/demos/datagrid/binding-properties.html"></DocDemo>
+<doc-code>
+<<< .vuepress/public/demos/datagrid/binding-properties.html
+</doc-code>
 
 <cds-alert-group status="warning" type="default">
 <cds-alert>In this example, the <code class="clr-code">[clrDgField]</code> input is a hard-coded string, so it needs to be quoted twice: <code class="clr-code">[clrDgField]="'name'"</code>.</cds-alert>
@@ -88,7 +96,7 @@ In our example, everyone knows pokemon **should not** be sorted lexicographicall
 
 <DocVideo src="/images/components/datagrid/datagrid-custom-sorting.mp4" :width="876" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridComparatorInterface } from '@clr/angular';
@@ -107,16 +115,16 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
 <clr-dg-column [clrDgField]="'pokemon.name'" [clrDgSortBy]="pokemonComparator">Pokemon</clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Pre-Sorted Columns
 
@@ -124,7 +132,7 @@ Columns can be pre-sorted ascending or descending by declaring the `clrSortOrder
 
 Here is an example that presorts the **Name** column for descending sort order.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import {ClrDatagridSortOrder} from '@clr/angular';
@@ -135,15 +143,15 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Custom Filtering
 
@@ -151,7 +159,7 @@ Similarly to the advanced sorting features, sometimes the default filter on a st
 
 The filter you provide to the `<clr-dg-filter>` component needs to implement the ClrDatagridFilterInterface interface provided by Clarity:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 interface ClrDatagridFilterInterface<T, S = any> {
@@ -163,13 +171,13 @@ interface ClrDatagridFilterInterface<T, S = any> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 There are several ways to pass your filter to the `<clr-dg-filter>` component:
 
 - The simplest, but less reusable way, is to simply inline your filter's template in the column and use the `[clrDgFilter]` input to pass your filter instance:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridFilterInterface } from '@clr/angular';
@@ -192,9 +200,9 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
@@ -206,11 +214,11 @@ class MyComponent {
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 - A more reusable way is to write an actual component for your custom filter, and inject its DatagridFilter parent in its constructor so that it can register itself:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridFilterInterface, ClrDatagridFilter } from '@clr/angular';
@@ -233,9 +241,9 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
@@ -247,11 +255,11 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 - Finally, if you want to have a completely reusable filter independently of our Datagrid, you can write a component for it and use a template reference variable to declare the filter to its container:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 @Component({
@@ -269,9 +277,9 @@ class MyReusableFilter {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
@@ -283,13 +291,13 @@ class MyReusableFilter {
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 In our example, we can create "color picker" filter, rather than have to search by color name.
 
 <DocVideo src="/images/components/datagrid/datagrid-custom-filtering.mp4" :width="872" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridFilterInterface } from '@clr/angular';
@@ -309,9 +317,9 @@ class ColorFilter implements ClrDatagridFilterInterface<User> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
@@ -323,11 +331,11 @@ class ColorFilter implements ClrDatagridFilterInterface<User> {
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 By default, filtering searches the original model value for matches. In cases where you format the text for display (such as using a pipe), you may want to create a custom filter to handle searching the formatted text. Otherwise, the results you see may not be filtered in the way you expect.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -349,7 +357,7 @@ By default, filtering searches the original model value for matches. In cases wh
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 In the example above you will need to go with custom filters that will take into account the data that the user sees is the same that he is searching into.
 
@@ -357,7 +365,7 @@ In the example above you will need to go with custom filters that will take into
 
 You can use a preset filter on columns to initialize the data grid to a specific filtered state. `[(clrFilterValue)]` can be pre-set.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- Using clrFilterValue declaration -->
@@ -366,7 +374,7 @@ You can use a preset filter on columns to initialize the data grid to a specific
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Built-in Filters
 
@@ -376,7 +384,7 @@ Before reading this, you should make sure you read the previous section on custo
 
 The first and default filter is the "string" filter one, meaning the user is offered a text input, and the rows will be filtered based on a string-matching function you provide. You should now be familiar with our use of interfaces for this, so here is the interface your string matcher should implement:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 interface ClrDatagridStringFilterInterface<T> {
@@ -384,11 +392,11 @@ interface ClrDatagridStringFilterInterface<T> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 Once you have it, you simply need to pass it to a `<clr-dg-string-filter>` component:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- In the columns declaration -->
@@ -398,7 +406,7 @@ Once you have it, you simply need to pass it to a `<clr-dg-string-filter>` compo
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 In our example, we can allow the user to filter not only by pokemon name, but also by entering the exact number of the pokemon they are interested in.
 
@@ -406,7 +414,7 @@ In our example, we can allow the user to filter not only by pokemon name, but al
 
 Another built-in filter is the numeric filter, which allows you to filter a column by a minimum and/or maximum numeric value. The "Wins" column demonstrates the numeric filter. You provide the function logic and the user can optionally enter high and low limits for elements in the column. In this case, use a `<clr-dg-numeric-filter>` component and pass the filter to the `[clrDgNumericFilter]` property.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 interface ClrDatagridNumericFilterInterface<T> {
@@ -414,9 +422,9 @@ interface ClrDatagridNumericFilterInterface<T> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-column>
@@ -425,11 +433,11 @@ interface ClrDatagridNumericFilterInterface<T> {
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 In the example below, we are implementing the string filter on pokemons' names.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridStringFilterInterface } from '@clr/angular';
@@ -448,13 +456,13 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Filters with preset values
 
 You can use a preset filter with either of the built-in filters to initialize the data grid to a specific state. `[(clrFilterValue)]` can be pre-set to a string for a string filter or a range of numbers for a numeric filter. With numeric filters you can pass null for either of the limits to not set it. The example below sets a lower limit of 10 and no upper limit.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- Using clrFilterValue declaration -->
@@ -462,7 +470,7 @@ You can use a preset filter with either of the built-in filters to initialize th
 <clr-dg-numeric-filter [clrDgNumericFilter]="winsFilter" [clrFilterValue]="[10, null]"> </clr-dg-numeric-filter>
 ```
 
-</DocDemo>
+</doc-code>
 
 <cds-alert-group status="warning" type="default">
 <cds-alert>We are planning on writing more of these semi-customisable filters in future releases, including a filter where the user selects values among the ones that are actually present in the data. If the one you are looking for isn't implemented yet, you can absolutely write it yourself using the fully customisable filters. And if you think it's good, feel free to contribute back to Clarity and add it for everyone!</cds-alert>
@@ -478,7 +486,7 @@ Here is an example of how to use pagination, and attach a template reference var
 
 <DocVideo src="/images/components/datagrid/datagrid-pagination.mp4" :width="876" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- Inside the full datagrid declaration -->
@@ -490,7 +498,7 @@ Here is an example of how to use pagination, and attach a template reference var
 </clr-dg-footer>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Selection
 
@@ -505,7 +513,7 @@ In the following example, we simply display the names of the selected users, but
 
 <DocVideo src="/images/components/datagrid/datagrid-selection.mp4" :width="872" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [(clrDgSelected)]="selected">
@@ -517,11 +525,11 @@ In the following example, we simply display the names of the selected users, but
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 If you need an easier access to the selected state of a row, without having to go through the entire array, we also provide a boolean `[(clrDgSelected)]` two-way binding on the `<clr-dg-row>` itself. For instance, when your model itself tracks if items are selected, you can simply write:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item" [(clrDgSelected)]="item.selected">
@@ -529,11 +537,11 @@ If you need an easier access to the selected state of a row, without having to g
 </clr-dg-row>
 ```
 
-</DocDemo>
+</doc-code>
 
 If you need to listen to when the selection changes, you can use Angular's two way binding to listen to the `(clrDgSelectedChange)` event:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [clrDgSelected]="selected" (clrDgSelectedChange)="selectionChanged($event)">
@@ -541,11 +549,11 @@ If you need to listen to when the selection changes, you can use Angular's two w
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 Mark a row with `clrDgSelectable`, this way the state of the row could not be changed by user interactions. This property works only when using single or multi-selection modes.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row [clrDgSelectable]="!user.locked" *clrDgItems="let user of users" [clrDgItem]="user">
@@ -555,7 +563,7 @@ Mark a row with `clrDgSelectable`, this way the state of the row could not be ch
 </clr-dg-row>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Preserving Selection
 
@@ -573,7 +581,7 @@ In the following example, we simply display the name of the selected user, but s
 
 <DocVideo src="/images/components/datagrid/datagrid-single-selection.mp4" :width="872" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [(clrDgSingleSelected)]="selectedUser">
@@ -585,11 +593,11 @@ In the following example, we simply display the name of the selected user, but s
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 If you need to listen to when the selection changes, you can use Angular's two way binding to listen to the `(clrDgSingleSelectedChange)` event:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [clrDgSingleSelected]="selected" (clrDgSingleSelectedChange)="selectionChanged($event)">
@@ -597,11 +605,11 @@ If you need to listen to when the selection changes, you can use Angular's two w
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 In order to conditionally disable selection on a row, use the `clrDgSelectable` input to disable selection state changes. This has to be done on each row you wish to disable, and works with single and multi selection.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row [clrDgSelectable]="!user.locked" *clrDgItems="let user of users" [clrDgItem]="user">
@@ -611,7 +619,7 @@ In order to conditionally disable selection on a row, use the `clrDgSelectable` 
 </clr-dg-row>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Batch Action
 
@@ -623,7 +631,7 @@ Depending on the role of certain batch actions, you can choose to break button b
 
 <DocVideo src="/images/components/datagrid/datagrid-batch-action.mp4" :width="872" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [(clrDgSelected)]="selected">
@@ -662,7 +670,7 @@ Depending on the role of certain batch actions, you can choose to break button b
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Single Action
 
@@ -672,7 +680,7 @@ In the following example, we simply display the names of the selected users, but
 
 <DocVideo src="/images/components/datagrid/datagrid-single-action.mp4" :width="872" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -688,7 +696,7 @@ In the following example, we simply display the names of the selected users, but
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Server-Driven datagrid
 
@@ -696,7 +704,7 @@ When dealing with large amounts of data or heavy processing, a datagrid often ha
 
 We expose events and hooks on all parts of the datagrid to make sure you can trigger any requests you need based on precise user actions. But an important thing to note is that when the server does handle pagination, it needs to also deal with sorting and filtering, because all three are tightly coupled. In light of this, we decided to expose a single global output `(clrDgRefresh)` that emits the current "state" of the datagrid whenever it changes due to a user action or an external one. This state has the following format:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 interface ClrDatagridStateInterface<T = any> {
@@ -714,7 +722,7 @@ interface ClrDatagridStateInterface<T = any> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 It contains all the information you need to send to the server in order to get the slice of data currently displayed. It even contains redundant information ( `page.to` and `page.size` for instance), to make sure you have access to the most practical for you without extra processing.
 
@@ -724,7 +732,7 @@ One important thing to note is that since you don't have all the data available 
 
 Finally, since server calls are involved, we need some way of notifying the user that his action has been acknowledged and that we are currently working on it. To this effect, we provide an input `[clrDgLoading]` that you can use to display the datagrid in a loading state, while fetching data.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridStateInterface } from '@clr/angular';
@@ -758,9 +766,9 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
@@ -787,7 +795,7 @@ class MyComponent {
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Placeholder
 
@@ -795,7 +803,7 @@ Your datagrid can be empty for any number of reasons: you are still fetching the
 
 <ClrImage title="basic structure" src="/images/components/datagrid/datagrid-placeholder.png" :align="'center'" :width="864" />
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -809,7 +817,7 @@ Your datagrid can be empty for any number of reasons: you are still fetching the
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Detail Pane
 
@@ -823,7 +831,7 @@ The Detail Pane is not compatible with Expandable Rows; when both are enabled, t
 
 To use the Detail Pane, add a new element with the following syntax inside of the Datagrid
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-detail *clrIfDetail="let detail">
@@ -834,11 +842,11 @@ To use the Detail Pane, add a new element with the following syntax inside of th
 </clr-dg-detail>
 ```
 
-</DocDemo>
+</doc-code>
 
 <DocVideo src="/images/components/datagrid/datagrid-detail-pane.mp4" :width="870" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid [(clrDgSelected)]="selected">
@@ -854,13 +862,13 @@ To use the Detail Pane, add a new element with the following syntax inside of th
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Reacting to changes in Detail Pane state
 
 It is possible to listen for changes to the Detail Pane state, by desugaring the `*clrIfDetail` directive and listening for the `(clrIfDetailChange)` event. It is important to use a local template variable like `let-detail` to reference the row object.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <ng-template clrIfDetail let-detail (clrIfDetailChange)="onDetailOpen($event)">
@@ -873,13 +881,13 @@ It is possible to listen for changes to the Detail Pane state, by desugaring the
 </ng-template>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Controlling the Detail Pane programmatically
 
 In some cases, you might want to programmatically control the toggling of the Detail Pane, which you can do by desugaring `*clrIfDetail` directive and using the two way binding syntax. To open the detail pane, set the `detailState` value to the row object, or to `null` to close it. Be sure to include the local template variable like `let-detail` to get access to the row object.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <ng-template [(clrIfDetail)]="detailState" let-detail>
@@ -892,7 +900,7 @@ In some cases, you might want to programmatically control the toggling of the De
 </ng-template>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Expandable Rows
 
@@ -900,7 +908,7 @@ Use expandable rows when you have additional information for a row, or row cells
 
 To make a row expandable, you need to put a `<clr-dg-row-detail>` component inside your row, and add a \*clrIfExpanded structural directive on it. This directive doesn't take any input, it is here for 2 reasons: make sure the details are only instantiated once they are needed, and make it very clear in your application templates that this part of the DOM is not present at all times, but only when the row is expanded. This component can contain anything: text, images, graphs, ... It can ignore the overall table layout. If you wish to display details for each cell of the row individually and respect the table layout, all you need to do is use our usual `<clr-dg-cell>` component in the detail. Make sure you have exactly as many cells in the detail as you have in the row, or they will not align properly.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row *ngFor="let user of users">
@@ -913,11 +921,11 @@ To make a row expandable, you need to put a `<clr-dg-row-detail>` component insi
 </clr-dg-row>
 ```
 
-</DocDemo>
+</doc-code>
 
 If you want the details to replace the original row rather than expand under it, we offer a `[clrDgReplace]` input that receives a boolean on the `<clr-dg-row-detail>` component. In other words, to make details replace the row they're in, just write:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="true">
@@ -925,11 +933,11 @@ If you want the details to replace the original row rather than expand under it,
 </clr-dg-row-detail>
 ```
 
-</DocDemo>
+</doc-code>
 
 Sometimes you want to conditionally display the expandable row, depending on if the given row has any content to expand. In order to handle this, you'll need to wrap your expandable row in a conditional \*ngIf directive to handle this, but since you can't put two structural directives on the same element you'll need to use NgContainer and ngProjectAs like you see here in the following snippet.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="true">
@@ -939,11 +947,11 @@ Sometimes you want to conditionally display the expandable row, depending on if 
 </ng-container>
 ```
 
-</DocDemo>
+</doc-code>
 
 Finally, you might need to make a server call to get the details for a row before you can display them. This is a very common lazy loading pattern. In this case, you need to add a `[clrLoading]` directive receiving a boolean anywhere in the row. Yes, it can be absolutely anywhere, as long as it's in or on the row itself. The easiest way to make the server call lazily is simply to create a component that will make the call on initialization (typically in the `ngOnInit()` method), and to use that component inside the `*clrIfExpanded` structural directive. Here is an example of what this solution typically looks like.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-row *ngFor="let user of users">
@@ -954,9 +962,9 @@ Finally, you might need to make a server call to get the details for a row befor
 </clr-dg-row>
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 @Component({
@@ -978,7 +986,7 @@ class MyDetailComponent implements OnInit {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 <cds-alert-group status="warning" type="default">
 <cds-alert>Note the <code class="clr-code">ngProjectAs</code> attribute on our custom detail component. This is needed to make sure it is projected in the same place an actual <code class="clr-code">clr-dg-row-detail</code> would be.</cds-alert>
@@ -994,7 +1002,7 @@ Datagrid columns are hideable with the `*clrDgHideableColumn` directive. Because
 
 <DocVideo src="/images/components/datagrid/datagrid-hide-show-columns.mp4" :width="874" :autoplay="true"></DocVideo>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -1023,7 +1031,7 @@ Datagrid columns are hideable with the `*clrDgHideableColumn` directive. Because
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Compact Datagrid
 
@@ -1031,7 +1039,7 @@ To increase the information density of your Datagrid or to decrease the amount o
 
 <ClrImage title="basic structure" src="/images/components/datagrid/datagrid-compact.png" :align="'center'" :width="864" />
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid class="datagrid-compact">
@@ -1039,4 +1047,4 @@ To increase the information density of your Datagrid or to decrease the amount o
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>

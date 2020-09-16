@@ -13,7 +13,7 @@ A lightweight convenient way to show contextual help without taking the user out
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-signpost>
@@ -25,7 +25,7 @@ A lightweight convenient way to show contextual help without taking the user out
 </clr-signpost>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrSignpostContent
 
@@ -33,7 +33,7 @@ When using ClrSignpost it can be optimized with the CLrIfOpen structural directi
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-signpost>
@@ -45,7 +45,7 @@ When using ClrSignpost it can be optimized with the CLrIfOpen structural directi
 </clr-signpost>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -66,7 +66,7 @@ This directive will mark that element as the signpost trigger.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-signpost>
@@ -77,13 +77,13 @@ This directive will mark that element as the signpost trigger.
 </clr-signpost>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrIfOpen
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-signpost>
@@ -94,7 +94,7 @@ This directive will mark that element as the signpost trigger.
 </clr-signpost>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

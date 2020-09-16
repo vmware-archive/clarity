@@ -128,9 +128,21 @@ A `.clr-row` is a horizontal group of 12 columns.
 
 The column classes specify the number of columns per row. The value appended to the class prefix must be between 1 and 12.
 
-<doc-demo src="/demos/grid/column-1-ng.html" demo="/demos/grid/column-1-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/column-1-css.html)!!!
+</doc-demo>
 
-<doc-demo src="/demos/grid/1-12-ng.html" demo="/demos/grid/1-12-css.html" />
+<doc-code>
+<<< .vuepress/public/demos/grid/column-1-ng.html
+</doc-code>
+
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/1-12-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/1-12-ng.html
+</doc-code>
 
 ## Column Stacking
 
@@ -138,12 +150,24 @@ Grid columns can occupy different widths on different device sizes.
 
 In the example below, if the device size is ≥ 768px (medium or above), the grid has two columns of equal width and a third column that occupies the entire width of the row. For device sizes < 768px, each column occupies the entire width of the row and the columns are stacked. Resize your browser to see how this works.
 
-<doc-demo src="/demos/grid/col-stack-ng.html" demo="/demos/grid/col-stack-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/col-stack-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/col-stack-ng.html
+</doc-code>
 
 ## Column Wrapping
 
 Placing more than 12 columns in a single row will wrap the columns exceeding the row, as one unit, onto a new line.
-<doc-demo src="/demos/grid/col-wrapping-ng.html" demo="/demos/grid/col-wrapping-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/col-wrapping-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/col-wrapping-ng.html
+</doc-code>
 
 ## Flexbox Grid Layout
 
@@ -151,28 +175,64 @@ Placing more than 12 columns in a single row will wrap the columns exceeding the
 
 Using the `.clr-col-*` class divides the row into equal width columns.
 
-<doc-demo src="/demos/grid/flex-grid-ng.html" demo="/demos/grid/flex-grid-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/flex-grid-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/flex-grid-ng.html
+</doc-code>
 
 ### Setting One Column Width
 
 A specific width can be assigned to a column. All the siblings of that columns will automatically resize around it.
-<doc-demo src="/demos/grid/1-col-width-ng.html" demo="/demos/grid/1-col-width-css.html" />
-<doc-demo src="/demos/grid/1-col-width-auto-ng.html" demo="/demos/grid/1-col-width-auto-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/1-col-width-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/1-col-width-ng.html
+</doc-code>
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/1-col-width-auto-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/1-col-width-auto-ng.html
+</doc-code>
 
 ### Variable Width Content
 
 Using the `.clr-col-*-auto` class on a column sizes it based on the width of its content.
-<doc-demo src="/demos/grid/variable-width-content-ng.html" demo="/demos/grid/variable-width-content-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/variable-width-content-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/variable-width-content-ng.html
+</doc-code>
 
 ### Multi Row
 
 Using the `.clr-break-row` class after a column, breaks the following columns to a new line.
-<doc-demo src="/demos/grid/multi-row-ng.html" demo="/demos/grid/multi-row-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/multi-row-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/multi-row-ng.html
+</doc-code>
 
 ## Column Offsets
 
 The responsive `clr-offset-*` classes increase a column’s left margin by \* number of columns.
-<doc-demo src="/demos/grid/col-offset-ng.html" demo="/demos/grid/col-offset-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/col-offset-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/col-offset-ng.html
+</doc-code>
 
 ## Vertical Alignment in Rows
 
@@ -182,14 +242,26 @@ Columns within a row can be vertically aligned using the following responsive cl
 - clr-align-items-\*-center
 - clr-align-items-\*-end
 
-<doc-demo src="/demos/grid/vert-align-ng.html" demo="/demos/grid/vert-align-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/vert-align-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/vert-align-ng.html
+</doc-code>
 
 A column can individually be vertically aligned in a row using the following responsive classes:
 
 - clr-align-self-\*-start
 - clr-align-self-\*-center
 - clr-align-self-\*-end
-  <doc-demo src="/demos/grid/self-align-ng.html" demo="/demos/grid/self-align-css.html" />
+  <doc-demo>
+  !!!include(.vuepress/public/demos/grid/self-align-css.html)!!!
+  </doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/self-align-ng.html
+</doc-code>
 
 ## Horizontal Alignment in Rows
 
@@ -201,11 +273,23 @@ To align columns horizontally within a row, extend the row with one of the follo
 - clr-justify-content-\*-around
 - clr-justify-content-\*-between
 
-<doc-demo src="/demos/grid/horizontal-alignments-ng.html" demo="/demos/grid/horizontal-alignments-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/horizontal-alignments-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/horizontal-alignments-ng.html
+</doc-code>
 
 ### Grid Nesting
 
-<doc-demo src="/demos/grid/grid-nesting-ng.html" demo="/demos/grid/grid-nesting-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/grid/grid-nesting-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/grid/grid-nesting-ng.html
+</doc-code>
 
 ## Usage
 

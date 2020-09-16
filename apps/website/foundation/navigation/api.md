@@ -15,7 +15,7 @@ To create responsive application navigation, these three entities need to be com
 
 There is only one `@Input` which is `clr-nav-level` directive itself. When the app is in responsive mode, level one appears on the left side and level two appears on the right side. _Note:_ there are multiple possibilities for designating primary and secondary navigation elements. The example below is for illustrating two places that primary navigation might live and one place for secondary navigation.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-main-container>
@@ -44,7 +44,7 @@ There is only one `@Input` which is `clr-nav-level` directive itself. When the a
 </clr-main-container>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## CSS
 

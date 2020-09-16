@@ -25,16 +25,40 @@ Clarity has three types of lists: unordered, ordered, and unstyled.
 
 ### Unordered Lists
 
-<doc-demo file="/demos/list/unordered.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/list/unordered.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/list/unordered.html
+</doc-code>
 
 ### Ordered Lists
 
-<doc-demo file="/demos/list/ordered.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/list/ordered.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/list/ordered.html
+</doc-code>
 
 ### Unstyled Lists
 
-<doc-demo file="/demos/list/unstyled.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/list/unstyled.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/list/unstyled.html
+</doc-code>
 
 ### Compact Lists
 
-<doc-demo file="/demos/list/compact.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/list/compact.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/list/compact.html
+</doc-code>

@@ -8,21 +8,21 @@ It is important to note that many components are not functional without Angular,
 
 If you just want to use our HTML/CSS implementations, you need to get the latest code and then add the assets to your project. You can use `npm` or `yarn` to install the dependencies based on your preferred system.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```bash
 npm install @clr/ui @clr/icons @webcomponents/webcomponentsjs --save
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```bash
 yarn add @clr/ui @clr/icons @webcomponents/webcomponentsjs
 ```
 
-</DocDemo>
+</doc-code>
 
 ## Step 2: Include CSS and JavaScript
 
@@ -35,7 +35,7 @@ Depending on your framework and build tooling, this step may be done in many dif
 
 You can also load this CSS file from a CDN like you see below. See [unpkg.com](https://unpkg.com/#/) for more details.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!-- Load the latest version -->
@@ -47,7 +47,7 @@ You can also load this CSS file from a CDN like you see below. See [unpkg.com](h
 <link rel="stylesheet" href="https://unpkg.com/@clr/icons@3.0.0/clr-icons.min.css" />
 ```
 
-</DocDemo>
+</doc-code>
 
 ## What's next?
 

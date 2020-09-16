@@ -11,7 +11,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tree>
@@ -19,13 +19,13 @@ toc: true
 </clr-tree>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrTreeNode
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tree>
@@ -36,7 +36,7 @@ toc: true
 </clr-tree>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -50,7 +50,7 @@ toc: true
 
 Use our `*clrIfExpanded` structural directive to lazy-load node children.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tree [clrLazy]="true">
@@ -66,7 +66,7 @@ Use our `*clrIfExpanded` structural directive to lazy-load node children.
 </clr-tree>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -76,7 +76,7 @@ Use our `*clrIfExpanded` structural directive to lazy-load node children.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-tree>
@@ -86,7 +86,7 @@ Use our `*clrIfExpanded` structural directive to lazy-load node children.
 </clr-tree>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

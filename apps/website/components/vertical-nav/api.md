@@ -11,7 +11,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-vertical-nav>
@@ -20,7 +20,7 @@ toc: true
 </clr-vertical-nav>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -34,7 +34,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-vertical-nav>
@@ -46,7 +46,7 @@ toc: true
 </clr-vertical-nav>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -56,7 +56,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-vertical-nav>
@@ -72,7 +72,7 @@ toc: true
 </clr-vertical-nav>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -88,7 +88,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-vertical-nav>
@@ -99,13 +99,13 @@ toc: true
 </clr-vertical-nav>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrVerticalNavIcon
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-vertical-nav>
@@ -120,4 +120,4 @@ toc: true
 </clr-vertical-nav>
 ```
 
-</DocDemo>
+</doc-code>

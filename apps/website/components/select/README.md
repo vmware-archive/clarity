@@ -29,7 +29,13 @@ If you are using Angular, the recommended approach is to always use the `ClrSele
 
 This is the standard way to define a select box inside of a form, without the use of a label or validation. You need to add `clrSelect` to your select to wire up the directive.
 
-<doc-demo src="/demos/select/basic-ng.html" demo="/demos/select/basic-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/select/basic-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/select/basic-ng.html
+</doc-code>
 
 ### Labels
 
@@ -37,7 +43,13 @@ For anything beyond a standalone select control, you'll need to wrap your select
 
 Then you can add a `label` element and it will automatically get laid out correctly in the form.
 
-<doc-demo src="/demos/select/label-ng.html" demo="/demos/select/label-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/select/label-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/select/label-ng.html
+</doc-code>
 
 ### Helper and error messages
 
@@ -45,7 +57,13 @@ The select form control wires up with the validations placed on an select, such 
 
 Note: the validation in this example only displays an error after you focus and leave focus without selecting a value. The easiest way to do this is to highlight the text in this paragraph, and hit tab a few times to change the focus.
 
-<doc-demo src="/demos/select/helper-ng.html" demo="/demos/select/helper-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/select/helper-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/select/helper-ng.html
+</doc-code>
 
 ## Accessibility
 

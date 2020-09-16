@@ -20,13 +20,13 @@ The `ClrAlert` component displays a single alert.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-alert clrAlertType="warning"></clr-alert>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -36,7 +36,7 @@ The `ClrAlert` component displays a single alert.
 
 The `ClrAlerts` component can host a group of alerts to enable pagination.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-alerts>
@@ -44,7 +44,7 @@ The `ClrAlerts` component can host a group of alerts to enable pagination.
 </clr-alerts>
 ```
 
-</DocDemo>
+</doc-code>
 
 <DocComponentApi component="ClrAlerts" item="bindings" />
 
@@ -52,7 +52,7 @@ The `ClrAlerts` component can host a group of alerts to enable pagination.
 
 The `ClrAlertItem` component wraps the alert content to support displaying an icon.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-alert>
@@ -60,7 +60,7 @@ The `ClrAlertItem` component wraps the alert content to support displaying an ic
 </clr-alert>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## CSS Classes
 
@@ -68,7 +68,7 @@ The `ClrAlertItem` component wraps the alert content to support displaying an ic
 
 There are two types of wrappers that be placed inside of the `ClrAlertItem` component.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-alert-item>
@@ -79,6 +79,6 @@ There are two types of wrappers that be placed inside of the `ClrAlertItem` comp
 </clr-alert-item>
 ```
 
-</DocDemo>
+</doc-code>
 
 <DocComponentApi component="ClrAlertItem" item="css" />

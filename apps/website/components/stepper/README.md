@@ -66,18 +66,26 @@ While reactive forms and template forms have the same behavior, the implementati
 
 #### HTML
 
-<doc-demo src="/demos/stepper/reactive-form.html" />
+<doc-code>
+<<< .vuepress/public/demos/stepper/reactive-form.html
+</doc-code>
 
 #### TypeScript
 
-<doc-demo src="/demos/stepper/reactive-form.ts" />
+<doc-code>
+<<< .vuepress/public/demos/stepper/reactive-form.ts
+</doc-code>
 
 ### Template Forms
 
 #### HTML
 
-<doc-demo src="/demos/stepper/template-form.html" />
+<doc-code>
+<<< .vuepress/public/demos/stepper/template-form.html
+</doc-code>
 
 #### TypeScript
 
-<doc-demo src="/demos/stepper/template-form.ts" />
+<doc-code>
+<<< .vuepress/public/demos/stepper/template-form.ts
+</doc-code>

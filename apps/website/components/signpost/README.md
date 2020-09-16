@@ -75,8 +75,11 @@ If for some reason this behavior was not the one you wanted, for instance if you
 
 The default signpost is shown to the right of the trigger icon with the content centered vertically in the middle of the trigger. It opens with a click action. Once open its contents can be interacted with. The Signpost is closed when clicking on the X icon or by clicking anywhere outside the clr-signpost-content element.
 
-![Basic Wizard](/images/components/signpost/basic.png)
-<doc-demo src="/demos/signpost/basic-ng.html" demo="/demos/signpost/basic-css.html"/></doc-demo>
+![Basic Signpost](/images/components/signpost/basic.png)
+
+<doc-code>
+<<< .vuepress/public/demos/signpost/basic-ng.html
+</doc-code>
 
 ### Positions
 
@@ -103,4 +106,6 @@ You can see the behavior for each position in the [demo](/demo.html).
 
 Clarity provides a default trigger. If needed, a custom trigger can be provided for any icon or element. Adding the [ClrSignpostTrigger](/components/signpost/api/#clrsignposttrigger) directive to any element will turn it into a toggle control for the content.
 
-<doc-demo src="/demos/signpost/custom-ng.html" demo="/demos/signpost/custom-css.html"/></doc-demo>
+<doc-code>
+<<< .vuepress/public/demos/signpost/custom-ng.html
+</doc-code>

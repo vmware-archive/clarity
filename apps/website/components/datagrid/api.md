@@ -11,13 +11,13 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>...</clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -34,13 +34,13 @@ Bindings or methods for this class.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-action-bar><clr-dg-action-bar></clr-dg-action-bar></clr-dg-action-bar>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrDatagridActionOverflow
 
@@ -49,7 +49,7 @@ operate on a single row item.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -66,7 +66,7 @@ operate on a single row item.
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -76,13 +76,13 @@ operate on a single row item.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-column></clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
 The ClrDgatagridColumn is used to project column header content, declare the property on the model that relates to a
 column and declare filters, sorting as well as if it can be hidden by the user.
@@ -102,7 +102,7 @@ creating and applying custom filters to a column.
 
 ##### Inline View
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <-- In the columns declaration -->
@@ -114,9 +114,9 @@ creating and applying custom filters to a column.
 </clr-dg-column>
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridFilterInterface } from '@clr/angular';
@@ -139,11 +139,11 @@ class MyComponent {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 ##### Encapsulated View
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-dg-filter [clrDgFilter]="myFilter">
@@ -155,9 +155,9 @@ class MyComponent {
 </clr-dg-filter>
 ```
 
-</DocDemo>
+</doc-code>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrDatagridFilterInterface, ClrDatagridFilter } from '@clr/angular';
@@ -179,7 +179,7 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -193,7 +193,7 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -204,7 +204,7 @@ class MyFilter implements ClrDatagridFilterInterface<User> {
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -216,7 +216,7 @@ This class is used to project cell content into. Content can be simple textual c
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -227,7 +227,7 @@ This class is used to project cell content into. Content can be simple textual c
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrDgFooter
 
@@ -237,7 +237,7 @@ component. Any other projected content will be displayed in the description slot
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -251,13 +251,13 @@ component. Any other projected content will be displayed in the description slot
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrDatagridPagination
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -273,7 +273,7 @@ component. Any other projected content will be displayed in the description slot
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -285,7 +285,7 @@ Child component of pagination. Used to set the page size for pagination calculat
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -302,7 +302,7 @@ Child component of pagination. Used to set the page size for pagination calculat
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -314,7 +314,7 @@ Content projected into this component appears only when the datagrid is empty.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -323,7 +323,7 @@ Content projected into this component appears only when the datagrid is empty.
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrDatagridDetail
 
@@ -331,7 +331,7 @@ Use this to project the details view when a row has master/detail enabled.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -345,7 +345,7 @@ Use this to project the details view when a row has master/detail enabled.
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## Angular Directives
 
@@ -361,7 +361,7 @@ datagrid displays UI controls to hide and show the columns that have this direct
 
 Note, the object passed to the directive was a design decision to make it explicit what was being set. This separates the declaration of the feature from the (hidden) state of the feature.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -374,7 +374,7 @@ Note, the object passed to the directive was a design decision to make it explic
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -387,7 +387,7 @@ of the data processing needed for filters, sorting and pagination. The TrackByFu
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -398,7 +398,7 @@ of the data processing needed for filters, sorting and pagination. The TrackByFu
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -411,7 +411,7 @@ Use it on the clr-dg-detail element and use the let keyword to declare a templat
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-datagrid>
@@ -425,7 +425,7 @@ Use it on the clr-dg-detail element and use the let keyword to declare a templat
 </clr-datagrid>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -443,7 +443,7 @@ the data gets sorted.
 
 #### Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 interface ClrDatagridStateInterface<T = any> {
@@ -461,7 +461,7 @@ interface ClrDatagridStateInterface<T = any> {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

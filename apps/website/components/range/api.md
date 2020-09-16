@@ -9,7 +9,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -21,7 +21,7 @@ toc: true
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

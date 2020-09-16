@@ -12,7 +12,7 @@ For any Angular application, which uses the Angular CLI version 6 or greater, we
 
 The following example shows how to 1) create a new Angular application, 2) change into the new directory, and 3) add Clarity automatically.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```bash
 ng new my-awesome-app
@@ -20,7 +20,7 @@ cd my-awesome-app
 ng add @clr/angular
 ```
 
-</DocDemo>
+</doc-code>
 
 If you are using the Angular CLI with multiple projects, you can specify which project to add Clarity to by using the `--project PROJECTNAME` flag.
 
@@ -42,27 +42,21 @@ Clarity is published as three separate packages on NPM, as well as one dependenc
 
 Install them all by running the following command with `npm` or `yarn`.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```bash
 npm install @clr/icons @clr/angular @clr/ui @clr/core @webcomponents/webcomponentsjs
-```
 
-</DocDemo>
-
-<DocDemo toggle="false">
-
-```bash
 yarn add @clr/icons @clr/angular @clr/ui @clr/core @webcomponents/webcomponentsjs
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Step 2: Adding scripts and styles
 
 We need to make the build system aware of some CSS and JavaScript files so it can include them in the build. If you are using the Angular CLI, you need to add the files to the `angular.json` file. Find the `scripts` and `styles` arrays and add the following:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 "styles": [
@@ -78,11 +72,11 @@ We need to make the build system aware of some CSS and JavaScript files so it ca
 ]
 ```
 
-</DocDemo>
+</doc-code>
 
 If you are not using the CLI, you'll need to add the files listed above to your build tooling or you could also put them in the head of the index.html file like:
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <link rel="stylesheet" href="path/to/node_modules/@clr/ui/clr-ui.min.css" />
@@ -92,13 +86,13 @@ If you are not using the CLI, you'll need to add the files listed above to your 
 <script src="path/to/node_modules/@clr/icons/clr-icons.min.js"></script>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Step 3: Add Clarity to Angular application
 
 Import the `ClarityModule` into your Angular application's module. Some features also depend upon the `BrowserAnimationsModule`, so you should add it as well. A simple application's main module might look like this, but yours might be more complex.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { NgModule } from '@angular/core';
@@ -115,7 +109,7 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Step 4: Working with Angular Feature Modules (Optional)
 
@@ -125,7 +119,7 @@ Some Angular projects are setup using [Angular Feature Modules](https://angular.
 
 If you'd like to see a Clarity component in action, you can add the following snippet to the very top of the `AppComponent` template to see if it loads an app level alert as expected.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-alert [clrAlertAppLevel]="true">
@@ -137,7 +131,7 @@ If you'd like to see a Clarity component in action, you can add the following sn
 </clr-alert>
 ```
 
-</DocDemo>
+</doc-code>
 
 That is all you need to get Clarity installed. To see it running, start your application build server using `npm start` or `yarn start` (commands may vary if you have a different build system) to see your Angular application. You might notice some small styling changes, but should not see any errors in the browser console.
 

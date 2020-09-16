@@ -49,21 +49,25 @@ Buttons should include clear and direct action for the user to take. Buttons are
 
 The background overlay is dark with opacity to provide the feeling of a third dimensional layer. This also eliminates distraction and helps the user focus on the modal content.
 
-<doc-demo demo="/demos/modal/modal-backdrop.html" class="has-padding"></doc-demo>
+<!-- <doc-demo>
+!!!include(.vuepress/public/demos/modal/modal-backdrop.html)!!!
+</doc-demo> -->
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <div class="modal-backdrop" aria-hidden="true"></div>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Sizes
 
 There are multiple sizes for modals. The Clarity modal defaults to medium but different sizes could be used based on the content and screen sizes you are planning to support. Always remember to test responsiveness as you design and use modals.
 
-<doc-demo demo="/demos/modal/modal-sizes.html"></doc-demo>
+<doc-demo>
+!!!include(.vuepress/public/demos/modal/modal-sizes.html)!!!
+</doc-demo>
 
 <div class="top-margin-wrapper">
   <cds-alert-group status="info">
@@ -75,7 +79,7 @@ In the following example, we are using a small size modal dialog.
 
 <DocModalWrapper size="sm"></DocModalWrapper>
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <div class="modal">
@@ -88,7 +92,7 @@ In the following example, we are using a small size modal dialog.
 <div class="modal-backdrop" aria-hidden="true"></div>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## Behavior
 
@@ -100,7 +104,7 @@ The background overlay animates once a modal is launched to grab a user’s atte
 
 <div class="top-margin-wrapper">
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <div class="modal">
@@ -113,7 +117,7 @@ The background overlay animates once a modal is launched to grab a user’s atte
 <div class="modal-backdrop fade in" aria-hidden="true"></div>
 ```
 
-</DocDemo>
+</doc-code>
 
 </div>
 
@@ -171,7 +175,7 @@ Besides a static HTML/CSS Modal component, we also offer a fully interactive Ang
 
 <div class="top-margin-wrapper">
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-modal [(clrModalOpen)]="openModal">
@@ -186,6 +190,6 @@ Besides a static HTML/CSS Modal component, we also offer a fully interactive Ang
 </clr-modal>
 ```
 
-</DocDemo>
+</doc-code>
 
 </div>

@@ -161,28 +161,58 @@ Clarity has three navigation components: header, subnav, and sidenav. Following 
 
 When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/component/header) component with the [subnav](/components/header#subnav) component using the DOM structure shown in code examples.
 // Need code+demo here w/ subnav
-<doc-demo src="/demos/navigation/header-subnav-ng.html" demo="/demos/navigation/header-subnav-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/navigation/header-subnav-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/navigation/header-subnav-ng.html
+</doc-code>
 
 ### Header + Sidenav
 
 When header is the primary navigation and sidenav is the secondary navigation combine the [Header](/component/header) component with the [sidenav](/components/sidenav) component using the DOM structure shown in code examples.
-<doc-demo src="/demos/navigation/header-sidenav-ng.html" demo="/demos/navigation/header-sidenav-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/navigation/header-sidenav-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/navigation/header-sidenav-ng.html
+</doc-code>
 
 ### Header
 
 When there are only a few locations for users to navigate to use a header as the sole navigation element between pages.
-<doc-demo src="/demos/navigation/header-ng.html" demo="/demos/navigation/header-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/navigation/header-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/navigation/header-ng.html
+</doc-code>
 
 ### Sidnav
 
 When there are more links that can fit into the header or a subnav consider using the sidnav only and combining the navigation into organized groups of locations.
 
-<doc-demo src="/demos/navigation/sidenav-ng.html" demo="/demos/navigation/sidenav-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/navigation/sidenav-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/navigation/sidenav-ng.html
+</doc-code>
 
 ### Subnav + Sidnav
 
 When top level locations have child navigation locations combine subnav with side nav elements specific to each top level location.
-<doc-demo src="/demos/navigation/subnav-sidenav-ng.html" demo="/demos/navigation/subnav-sidenav-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/navigation/subnav-sidenav-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/navigation/subnav-sidenav-ng.html
+</doc-code>
 
 ## Behavior
 
@@ -219,12 +249,16 @@ Clarity supports responsive navigation as follows:
 
 <DocVideo src="/images/foundation/navigation/navLevel1.mp4" :width="468" :autoplay="true"></DocVideo>
 
-<doc-demo src="/demos/navigation/nav-1-css.html" />
+<doc-code>
+<<< .vuepress/public/demos/navigation/nav-1-css.html
+</doc-code>
 </div>
 <div class="clr-col">
 
 <DocVideo src="/images/foundation/navigation/navLevel2.mp4" :width="468" :autoplay="true"></DocVideo>
-<doc-demo src="/demos/navigation/nav-2-css.html" />
+<doc-code>
+<<< .vuepress/public/demos/navigation/nav-2-css.html
+</doc-code>
 
 </div>
 </div>

@@ -26,14 +26,26 @@ There are two types of layouts, horizontal and vertical.
 - Used when there are workflows of 3 - 5 steps
 - Used when all steps can be displayed without wrapping
 
-<doc-demo src="/demos/timeline/horizontal-ng.html" demo="/demos/timeline/horizontal.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/timeline/horizontal.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/timeline/horizontal-ng.html
+</doc-code>
 
 ### Vertical
 
 - Used when there are workflows greater than five steps
 - Used when timestamps are optional
 
-<doc-demo src="/demos/timeline/vertical-ng.html" demo="/demos/timeline/vertical.html"/>
+<doc-demo
+!!!include(.vuepress/public/demos/timeline/vertical.html)!!!
+</doc-demo>
+
+ <doc-code>
+ <<< .vuepress/public/demos/timeline/vertical-ng.html
+ </doc-code>
 
 ## Anatomy
 
@@ -128,7 +140,7 @@ When steps one and two are complete, step three gets highlighted.
 
 Besides a static HTML/CSS Timeline component, we also offer a fully interactive Angular version of the component. So if you are using Angular, you can use the `ClrTimeline` component. By using `ClrTimeline`, you'll be able to leverage its interactive behavior and features out-of-the-box. If you would like to learn more about how to customize its default interactive behavior, please refer to [the API tab](./api.html).
 
-<DocDemo>
+<doc-code>
 
 ```html
 <clr-timeline>
@@ -141,4 +153,4 @@ Besides a static HTML/CSS Timeline component, we also offer a fully interactive 
 </clr-timeline>
 ```
 
-</DocDemo>
+</doc-code>

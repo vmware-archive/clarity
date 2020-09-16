@@ -100,8 +100,20 @@ Use integers within badges. If you’re attempting to use text, consider using a
 
 ### Color Options
 
-<doc-demo src="/demos/badge/colors-ng.html" demo="/demos/badge/colors-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/badge/colors-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/badge/colors-ng.html
+</doc-code>
 
 ### Status Options
 
-<doc-demo src="/demos/badge/status-ng.html" demo="/demos/badge/status-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/badge/status-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/badge/status-ng.html
+</doc-code>

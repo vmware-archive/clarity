@@ -13,7 +13,7 @@ There are limitations to how different screen readers and assistive technologies
 
 Clarity will not make any announcements by default in version 4, it is up to the application to do this when it makes sense. Here are a few examples of how the service works and could be used.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { Component, AfterViewInit, ClrAriaLiveService } from '@angular/core';
@@ -32,11 +32,11 @@ class MyComponent implements AfterViewInit {
 }
 ```
 
-</DocDemo>
+</doc-code>
 
 Aria live regions have three levels, `off` to disable it, `polite` to announce to the user at the next opportunity (default), and `assertive` to alert the user immediately and interrupt any other announcements in progress.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { ClrAriaLiveService, ClrAriaLivePoliteness } from '@clr/angular';
@@ -45,13 +45,13 @@ import { ClrAriaLiveService, ClrAriaLivePoliteness } from '@clr/angular';
 this.ariaLiveService.announce('Message to broadcast to screen reader', ClrAriaLivePoliteness.assertive);
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Integration
 
 A working example of using `ClrAriaLiveService` with a download, asynchronous process is below. You start by injecting the service, and based on changes in the progress state it will announce updates of the percentage updates. You might also want to debounce messages if you expect to get them very quickly so you don't have too many rapid announcements and annoy the users.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```javascript
 import { Component, AfterViewInit, ClrAriaLiveService } from '@angular/core';
@@ -80,4 +80,4 @@ class MyComponent implements AfterViewInit {
 }
 ```
 
-</DocDemo>
+</doc-code>

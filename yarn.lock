@@ -2627,29 +2627,10 @@
   integrity sha512-R+C4uywmXoTD01LINOt3O0cBRviQdbAVNxdVvOyuO3+rM9bvFroF7UZY0R1ue/xvKXlqJrEkNKZQODeKjzaAhA==
 
 "@clr/core@./packages/core/dist/core":
-  version "4.0.0"
-  dependencies:
-    "@types/resize-observer-browser" "^0.1.3"
-    lit-element "^2.3.1"
-    lit-html "^1.2.1"
-    ramda "^0.27.0"
-    tslib "^2.0.0"
-  optionalDependencies:
-    "@clr/city" "^1.1.0"
-    "@webcomponents/custom-elements" "^1.4.2"
-    "@webcomponents/shadycss" "^1.10.1"
-    "@webcomponents/webcomponentsjs" "^2.4.4"
-    css-vars-ponyfill "^2.3.2"
-    normalize.css "^8.0.1"
+  version "0.0.0"
 
 "@clr/react@./packages/react/dist/react":
-  version "4.0.0"
-  dependencies:
-    react "^16.13.1"
-    react-dom "^16.13.1"
-  optionalDependencies:
-    "@clr/city" "^1.1.0"
-    normalize.css "^8.0.1"
+  version "0.0.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -21198,6 +21179,11 @@ markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
+
+markdown-it-include@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-include/-/markdown-it-include-2.0.0.tgz#e86e3b3c68c8f0e0437e179ba919ffd28443127a"
+  integrity sha512-wfgIX92ZEYahYWiCk6Jx36XmHvAimeHN420csOWgfyZjpf171Y0xREqZWcm/Rwjzyd0RLYryY+cbNmrkYW2MDw==
 
 markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"

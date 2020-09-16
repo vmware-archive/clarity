@@ -12,7 +12,11 @@ Use a spinner to offer visual feedback to show users their action is processing.
 <div class="clr-row">
 <div class="clr-col-md-12 clr-col-lg-6">
 
-<div class="doc-height-100-container" cds-layout="p-t:md"><doc-demo demo="/demos/spinner/page-css.html" toggle="false" /></div>
+<div class="doc-height-100-container" cds-layout="p-t:md">
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/page-css.html)!!!
+</doc-demo>
+</div>
 
 **Spinner Usage**
 
@@ -27,7 +31,11 @@ Use a spinner to offer visual feedback to show users their action is processing.
 
 </div>
 <div class="clr-col-md-12 clr-col-lg-6">
-<div class="doc-height-100-container" cds-layout="p:xl"><doc-demo  demo="/demos/progress/labeled-css.html" toggle="false" /></div>
+<div class="doc-height-100-container" cds-layout="p:xl">
+<doc-demo>
+!!!include(.vuepress/public/demos/progress/labeled-css.html)!!!
+</doc-demo>
+</div>
 
 **Progress Bar Usage**
 
@@ -51,34 +59,70 @@ Clarity has two types of spinners.
 ### Page Spinner
 
 When the operation to be tracked is related to the entire page.
-<doc-demo src="/demos/spinner/page-ng.html" demo="/demos/spinner/page-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/page-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/page-ng.html
+</doc-code>
 
 ### Inline Spinner
 
 When the operation being tracked is related to a specific component or section on a page.
-<doc-demo src="/demos/spinner/inline-ng.html" demo="/demos/spinner/inline-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/inline-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/inline-ng.html
+</doc-code>
 
 ### Inverse Spinner
 
 When there is a dark background behind a spinner, use the inverse to make it accessible.
-<doc-demo src="/demos/spinner/inverse-ng.html" demo="/demos/spinner/inverse-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/inverse-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/inverse-ng.html
+</doc-code>
 
 ## Sizes
 
 ### Large
 
 Large spinners have 3rem (72px) width and height. Use them to track progress of an operation that is related to the page. For example, while a form is being authenticated, use a large spinner on top of or in place of the form controls.
-<doc-demo src="/demos/spinner/large-ng.html" demo="/demos/spinner/large-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/large-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/large-ng.html
+</doc-code>
 
 ### Medium
 
 Medium spinners have 1.5rem (36px) width and height. Use them to track progress when content is being loaded. For example when data for a table or datagrid is being loaded.
-<doc-demo src="/demos/spinner/medium-ng.html" demo="/demos/spinner/medium-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/medium-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/medium-ng.html
+</doc-code>
 
 ### Small
 
 Small spinners have 0.75rem (18px) width and height. Use them in constrained spaces like an input field or next to a button. While the spinner is animating and active the input field or button should be disabled until the action is complete.
-<doc-demo src="/demos/spinner/small-ng.html" demo="/demos/spinner/small-css.html" toggle="false" />
+<doc-demo>
+!!!include(.vuepress/public/demos/spinner/small-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/spinner/small-ng.html
+</doc-code>
 
 ## Label
 

@@ -11,7 +11,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-stack-view>
@@ -20,13 +20,13 @@ toc: true
 </clr-stack-view>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrStackHeader
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-stack-view>
@@ -35,13 +35,13 @@ toc: true
 </clr-stack-view>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrStackBlock
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-stack-view>
@@ -53,13 +53,13 @@ toc: true
 </clr-stack-view>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrStackLabel
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-stack-view>
@@ -71,13 +71,13 @@ toc: true
 </clr-stack-view>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrStackContent
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-stack-view>
@@ -89,4 +89,4 @@ toc: true
 </clr-stack-view>
 ```
 
-</DocDemo>
+</doc-code>

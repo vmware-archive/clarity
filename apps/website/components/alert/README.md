@@ -159,27 +159,57 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 - .alert-info
 - .alert-success
 
-<doc-demo src="/demos/alert/types-ng.html" demo="/demos/alert/types-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/types-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/types-ng.html
+</doc-code>
 
 ### Placement
 
 #### Alerts in the Content Area
 
-<doc-demo src="/demos/alert/content-area-css.html" demo="/demos/alert/content-area-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/content-area-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/content-area-css.html
+</doc-code>
 
 #### Alerts in Cards
 
-<doc-demo src="/demos/alert/card-ng.html" demo="/demos/alert/card-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/card-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/card-ng.html
+</doc-code>
 
 #### Alerts in Modals
 
-<doc-demo src="/demos/alert/modal-ng.html" demo="/demos/alert/modal-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/modal-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/modal-ng.html
+</doc-code>
 
 ### Size
 
 Use the `.alert-sm` class with `.alert` for an alert 24 pixels in height. The default is 36 pixels.
 
-<doc-demo src="/demos/alert/size-css.html" demo="/demos/alert/size-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/size-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/size-css.html
+</doc-code>
 
 ### App-Level Alerts
 
@@ -187,17 +217,35 @@ Use the `.alert-sm` class with `.alert` for an alert 24 pixels in height. The de
 
 This class must be applied with `.alert` to render an app-level alert.
 
-<doc-demo src="/demos/alert/basic-app-level-ng.html" demo="/demos/alert/basic-app-level-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/basic-app-level-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/basic-app-level-ng.html
+</doc-code>
 
 #### CSS
 
 ##### App-Level Alert in the main-container
 
-<doc-demo src="/demos/alert/app-level-main-css.html" demo="/demos/alert/app-level-main-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/app-level-main-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/app-level-main-css.html
+</doc-code>
 
 ##### Custom Icon in an App-Level Alert
 
-<doc-demo src="/demos/alert/app-level-icon-css.html" demo="/demos/alert/app-level-icon-css.html" />
+<doc-demo>
+!!!include(.vuepress/public/demos/alert/app-level-icon-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/public/demos/alert/app-level-icon-css.html
+</doc-code>
 
 #### Angular
 
@@ -205,27 +253,39 @@ This class must be applied with `.alert` to render an app-level alert.
 
 ##### clrAlertClosable set to false. Default value is true.
 
-<doc-demo src="/demos/alert/closable-false-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/closable-false-ng.html
+</doc-code>
 
 ##### clrAlertType set to alert-success. Default value is alert-info. Accepts values same as the static alert type classes.
 
-<doc-demo src="/demos/alert/clr-alert-type-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/clr-alert-type-ng.html
+</doc-code>
 
 ##### clrAlertSizeSmall set to true. Default value is false.
 
-<doc-demo src="/demos/alert/clr-alert-size-small-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/clr-alert-size-small-ng.html
+</doc-code>
 
 ##### Binding to the clrAlertClosedChange event.
 
-<doc-demo src="/demos/alert/clr-alert-closed-change-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/clr-alert-closed-change-ng.html
+</doc-code>
 
 ##### clrAlertAppLevel set to true. Default is false.
 
-<doc-demo src="/demos/alert/clr-alert-app-level-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/clr-alert-app-level-ng.html
+</doc-code>
 
 ##### Multiple app level alerts can be displayed with previous and next buttons.
 
-<doc-demo src="/demos/alert/multiple-app-level-alerts-ng.html" />
+<doc-code>
+<<< .vuepress/public/demos/alert/multiple-app-level-alerts-ng.html
+</doc-code>
 
 ## Accessibility
 

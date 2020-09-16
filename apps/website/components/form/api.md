@@ -9,7 +9,7 @@ toc: true
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -20,7 +20,7 @@ toc: true
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -49,7 +49,7 @@ A generic control container that supports form controls not directly support in 
 </form>
 ````
 
-</DocDemo>
+</doc-code>
 
 ### ClrControlError
 
@@ -57,7 +57,7 @@ Enable error messages per form control.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -70,7 +70,7 @@ Enable error messages per form control.
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### ClrControlHelper
 
@@ -78,7 +78,7 @@ Enable helper messages per form control.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm>
@@ -91,7 +91,7 @@ Enable helper messages per form control.
 </form>
 ```
 
-</DocDemo>
+</doc-code>
 
 ## Angular Directives
 
@@ -101,7 +101,7 @@ Use the ClrLayout directive to enable different layouts for the form.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <form clrForm clrLayout="horizontal">
@@ -109,4 +109,4 @@ Use the ClrLayout directive to enable different layouts for the form.
 </form>
 ```
 
-</DocDemo>
+</doc-code>

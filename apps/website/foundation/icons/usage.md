@@ -6,7 +6,7 @@ title: Usage
 
 By default, the size for Clarity Icons is 16 by 16 pixels, and you have two ways of customizing this default value. One is through the use of the size attribute; the other is manually customizing the width and height values in your icon's style.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!--A. SETTING THE SIZE THROUGH CLR-ICON SIZE ATTRIBUTE-->
@@ -26,7 +26,7 @@ By default, the size for Clarity Icons is 16 by 16 pixels, and you have two ways
 <clr-icon shape="info-circle" style="width: 72px; height: 72px;"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 _Both of the methods above will produce this result:_
 
@@ -34,7 +34,7 @@ _Both of the methods above will produce this result:_
 
 The default rotation for every shape in Clarity Icons is 0 degrees. With directional icons such as arrows and carets, 0 degrees means it points up. To rotate an icon to another direction, specify that either in the shape or dir attribute. Alternatively, you can set the rotation values in the icon's style attribute.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <!--A. SETTING THE ROTATION DIRECTION THROUGH CLR-ICON SHAPE ATTRIBUTE-->
@@ -56,7 +56,7 @@ The default rotation for every shape in Clarity Icons is 0 degrees. With directi
 <clr-icon shape="caret" style="transform: rotate(270deg);"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 _All three methods above will produce this result:_
 
@@ -64,7 +64,7 @@ _All three methods above will produce this result:_
 
 You can flip icons horizontally or vertically through the use of the flip attribute.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="floppy"></clr-icon>
@@ -72,25 +72,25 @@ You can flip icons horizontally or vertically through the use of the flip attrib
 <clr-icon shape="floppy" flip="vertical"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Make Icons Accessible:
 
 Add a custom title to your icon using the `title` attribute. Adding a title improves the accessibility of the icon, making it recognizable by screen readers. Title attribute also helps you to localize your Icon.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="copy" title="Copy Document"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Predefined Clarity color classes for icons:
 
 Clarity Icons also come with predefined color classes.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="info-circle"></clr-icon>
@@ -101,17 +101,17 @@ Clarity Icons also come with predefined color classes.
 <clr-icon shape="info-circle" class="is-info"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 There is also `is-inverse` color class, which is suitable for icons used on darker backgrounds.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="info-circle" class="is-inverse"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Display variant icons:
 
@@ -152,7 +152,7 @@ Causes a small blue dot to appear in the top right corner of an icon that suppor
 
 Displaying an icon variant only requires adding a CSS class to your `clr-icon` element. Applicable classes are listed below.
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-icon shape="user"></clr-icon>
@@ -164,7 +164,7 @@ Displaying an icon variant only requires adding a CSS class to your `clr-icon` e
 <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon>
 ```
 
-</DocDemo>
+</doc-code>
 
 ### Manipulate the inline SVG graphic elements via CSS
 

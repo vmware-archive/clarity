@@ -14,13 +14,13 @@ optionally be designated for an overflow menu.
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-button-group></clr-button-group>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 
@@ -32,13 +32,13 @@ Angular button component used only with [ClrButtonGroup](./api/#clrbuttongroup).
 
 #### Selector & Basic Usage
 
-<DocDemo toggle="false">
+<doc-code>
 
 ```html
 <clr-button></clr-button>
 ```
 
-</DocDemo>
+</doc-code>
 
 #### Bindings
 

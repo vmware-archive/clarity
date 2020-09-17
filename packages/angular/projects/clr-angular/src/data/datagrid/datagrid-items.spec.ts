@@ -134,6 +134,10 @@ export default function (): void {
         expect(this.clarityDirective.iterableProxy.ngForTrackBy).toBe(this.testComponent.trackBy);
       });
 
+      it('items receive the provided trackBy option', function () {
+        expect(this.clarityDirective.items.trackBy).toBe(this.testComponent.trackBy);
+      });
+
       it('correctly mutates and resets an array with trackBy', function () {
         // Initial state
         this.fixture.nativeElement.querySelectorAll('li:first-child').forEach(li => (li.style.color = 'red'));

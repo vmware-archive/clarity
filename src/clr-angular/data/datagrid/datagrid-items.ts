@@ -35,6 +35,7 @@ export class ClrDatagridItems<T> implements DoCheck, OnDestroy {
 
   @Input('clrDgItemsTrackBy')
   set trackBy(value: TrackByFunction<T>) {
+    this.items.trackBy = value;
     this.iterableProxy.ngForTrackBy = value;
   }
 

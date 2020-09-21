@@ -40,7 +40,8 @@ module.exports = {
     anchor: {
       permalink: true,
       permalinkBefore: false,
-      permalinkSymbol: '<cds-icon shape="link"></cds-icon>',
+      permalinkSymbol: '<cds-icon shape="link" aria-hidden="true"></cds-icon>',
+      permalinkAttrs: (slug, state) => ({"aria-label": `permalink to ${slug}`})
     },
   },
   extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/blocks.js', '.vuepress/public/**'],

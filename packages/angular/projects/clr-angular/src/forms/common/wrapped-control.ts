@@ -73,8 +73,7 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
     if (this.markControlService) {
       this.subscriptions.push(
         this.markControlService.touchedChange.subscribe(() => {
-          this.ngControl.control.markAsTouched();
-          this.ngControl.control.updateValueAndValidity();
+          this.markAsTouched();
         })
       );
     }
@@ -100,10 +99,15 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
        * This one is a workaround to provide the control to be 'touched' on blur and fix #4480.
        */
       if (this.ngControl && !this.ngControl.touched) {
-        this.markControlService.markAsTouched();
+        this.markAsTouched();
       }
       this.ifControlStateService.triggerStatusChange();
     }
+  }
+
+  private markAsTouched(): void {
+    this.ngControl.control.markAsTouched();
+    this.ngControl.control.updateValueAndValidity();
   }
 
   private _containerInjector: Injector;

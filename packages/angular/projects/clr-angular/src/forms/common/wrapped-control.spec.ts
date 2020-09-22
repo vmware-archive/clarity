@@ -55,14 +55,7 @@ class TestControl2 extends WrappedFormControl<TestWrapper2> {
 @Component({
   selector: 'test-wrapper3',
   template: `<div id="wrapper"><ng-content></ng-content></div>`,
-  providers: [
-    ControlIdService,
-    MarkControlService,
-    NgControlService,
-    IfControlStateService,
-    ControlClassService,
-    LayoutService,
-  ],
+  providers: [ControlIdService, NgControlService, IfControlStateService, ControlClassService],
 })
 class TestWrapper3 implements DynamicWrapper {
   _dynamic = false;
@@ -75,11 +68,18 @@ class TestControl3 extends WrappedFormControl<TestWrapper3> {
   }
 }
 
+@Component({
+  selector: 'form-wrapper',
+  template: `<div id="form-wrapper"><ng-content></ng-content></div>`,
+  providers: [MarkControlService, LayoutService],
+})
+class FormWrapper {}
+
 @NgModule({
   imports: [ClrHostWrappingModule, FormsModule],
-  declarations: [TestWrapper, TestControl, TestWrapper2, TestControl2, TestControl3, TestWrapper3],
-  exports: [TestWrapper, TestControl, TestWrapper2, TestControl2, TestControl3, TestWrapper3],
-  entryComponents: [TestWrapper, TestWrapper2, TestWrapper3],
+  declarations: [TestWrapper, TestControl, TestWrapper2, TestControl2, TestControl3, TestWrapper3, FormWrapper],
+  exports: [TestWrapper, TestControl, TestWrapper2, TestControl2, TestControl3, TestWrapper3, FormWrapper],
+  entryComponents: [TestWrapper, TestWrapper2, TestWrapper3, FormWrapper],
 })
 class WrappedFormControlTestModule {}
 
@@ -101,13 +101,22 @@ class WithWrapperWithId {}
 @Component({ template: `<test-wrapper2><input testControl id="hello" /></test-wrapper2>` })
 class WithMultipleNgContent {}
 
-@Component({ template: `<test-wrapper3><input testControl3 [(ngModel)]="model" required /></test-wrapper3>` })
+@Component({
+  template: ` <form-wrapper>
+    <test-wrapper3><input testControl3 [(ngModel)]="model" required /></test-wrapper3>
+  </form-wrapper>`,
+})
 class WithControl {
   model = '';
 }
 
 @Component({
-  template: `<test-wrapper3><input type="number" testControl3 [(ngModel)]="model" required /></test-wrapper3>`,
+  template: `
+    <form-wrapper>
+      <test-wrapper3><input type="number" testControl3 [(ngModel)]="model" required /></test-wrapper3>
+      <test-wrapper3><input type="number" testControl3 [(ngModel)]="model" required id="control2" /></test-wrapper3>
+    </form-wrapper>
+  `,
 })
 class WithNumberControl {
   model = '';
@@ -250,6 +259,7 @@ export default function (): void {
         this.input.blur();
         this.fixture.detectChanges();
         expect(this.input.className).toContain('ng-touched');
+        expect(this.fixture.nativeElement.querySelector('#control2').className).toContain('ng-untouched');
       });
 
       it('implements ngOnDestroy', function (this: TestContext) {

@@ -1,7 +1,7 @@
 <template>
   <transition name="slide-fade">
     <div class="side-nav-container" v-show="isOpen" @click="checkOutsideClick($event)">
-      <nav class="clr-vertical-nav has-nav-groups side-nav" ref="nav">
+      <nav aria-label="Sidebar navigation" class="clr-vertical-nav has-nav-groups side-nav" ref="nav">
         <div class="nav-content">
           <template v-for="(item, index) in items">
             <div class="nav-group" v-if="item.children">

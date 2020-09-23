@@ -1,6 +1,6 @@
 <template>
   <div class="nav-toc-container">
-    <nav class="nav-toc">
+    <nav aria-label="Table of content navigation" class="nav-toc">
       <div class="asset-download-btn-wrapper" cds-layout="m-b:md" v-if="isOnIconsPage">
         <a
           class="btn btn-outline asset-download-btn"

@@ -4,7 +4,9 @@
       type="button"
       class="icon-detail-trigger"
       @click="openDetail($event, iconName)"
+      :aria-expanded="isActive ? 'true' : 'false'"
       :class="{ 'is-active': isActive }"
+      :aria-label="`Demo ${iconName}, button`"
     >
       <slot></slot> {{ iconName }}
     </button>

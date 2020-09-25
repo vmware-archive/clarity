@@ -72,7 +72,7 @@ Content can consist of any of the [Clarity components](/components), or no compo
 
 <div class="clr-row">
 <div class="clr-col-4">
-<ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/cards.png" />
+<ClrImage title="A common layout for cards." src="/images/foundation/app-layout/cards.png" />
 </div>
 <div class="clr-col-8">
 
@@ -91,7 +91,7 @@ Benefits of using cards include:
 
 <div class="clr-row">
 <div class="clr-col-4">
-<ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/tables.png" />
+<ClrImage title="A common layout for tables and datagrids." src="/images/foundation/app-layout/tables.png" />
 </div>
 <div class="clr-col-8">
 
@@ -108,7 +108,7 @@ Complex tables and datagrids work best on larger screens.
 
 <div class="clr-row">
 <div class="clr-col-4">
-<ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/forms.png" />
+<ClrImage title="A common layout for forms." src="/images/foundation/app-layout/forms.png" />
 </div>
 <div class="clr-col-8">
 
@@ -125,7 +125,7 @@ Inline forms are better than modals in cases where you don't want to block users
 
 <div class="clr-row">
 <div class="clr-col-4">
-<ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/tabs.png" />
+<ClrImage title="A common navigation layout with tabs." src="/images/foundation/app-layout/tabs.png" />
 </div>
 <div class="clr-col-8">
 
@@ -140,7 +140,7 @@ Tabs are not appropriate if users need to compare data across views.
 
 <div class="clr-row">
 <div class="clr-col-4">
-<ClrImage title="Header navigation pattern" src="/images/foundation/app-layout/typography.png" />
+<ClrImage title="Good application layouts use whitespace and typography to convey hierarchy." src="/images/foundation/app-layout/typography.png" />
 </div>
 <div class="clr-col-8">
 
@@ -178,7 +178,7 @@ All elements in Clarity are _designed_ with a 24px baseline:
 - The visual height of all components and text elements is in multiples of 24px.
 - The vertical white space between elements is also in multiples of 24px.
 
-<ClrImage title="Clarity baseline image" src="/images/foundation/app-layout/24_baseline.png" />
+<ClrImage title="Image showing how the 24 pixel baseline is used to provide vertical height and visual white space in an application layout." src="/images/foundation/app-layout/24_baseline.png" />
 
 ### Repeat 24px in Your Layout
 

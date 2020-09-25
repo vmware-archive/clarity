@@ -11,7 +11,7 @@ Clarity’s designs stem from continuous exploration and research. These designs
 
 ## Device and Browser Support
 
-<ClrImage src="/images/get-started/device_support.png" width="100%" />
+<ClrImage src="/images/get-started/device_support.png" width="100%" aria-label="Image showing supported browser list that contains icons for: IE11, Edge, Chrome, Safari and Firefox."/>
 
 - Internet Explorer 11
 - MS Edge

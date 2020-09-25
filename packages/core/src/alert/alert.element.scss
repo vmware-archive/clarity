@@ -1,9 +1,6 @@
 @import './../styles/tokens/generated/index';
 @import './../styles/mixins/mixins';
 
-// TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
-@import './../styles/utils/legacy-spinner';
-
 $lightweight-alert-line-height: $cds-token-typography-body-line-height;
 
 :host {

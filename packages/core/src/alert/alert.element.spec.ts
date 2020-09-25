@@ -175,7 +175,7 @@ describe('Alert element – ', () => {
       expect(customComponent.status).toBe('loading');
       expect(customComponent.shadowRoot.querySelector(alertStatusIconSelector)).toBeNull();
       expect(customComponent.shadowRoot.querySelector('cds-icon')).toBeNull();
-      expect(customComponent.shadowRoot.querySelector('.spinner')).not.toBeNull();
+      expect(customComponent.shadowRoot.querySelector('.alert-spinner')).not.toBeNull();
       const customAlertSlotContent = getComponentSlotContent(customComponent);
       expect(customAlertSlotContent['alert-icon']).toBeUndefined();
     });
@@ -254,12 +254,8 @@ describe('Alert element – ', () => {
       expect(component.status).toBe('loading');
       expect(component.shadowRoot.querySelector(alertStatusIconSelector)).toBeNull();
       expect(component.shadowRoot.querySelector('cds-icon')).toBeNull();
-      const spinner = component.shadowRoot.querySelector('.spinner');
+      const spinner = component.shadowRoot.querySelector('.alert-spinner');
       expect(spinner).not.toBeNull('loading status should show spinner');
-      expect(spinner.classList.contains('spinner-neutral-0')).toBe(
-        true,
-        'banner loading spinner should be white/neutral'
-      );
       const customAlertSlotContent = getComponentSlotContent(component);
       expect(customAlertSlotContent['alert-icon']).toBeUndefined();
     });
@@ -387,7 +383,7 @@ describe('Alert element – ', () => {
 
       component.setAttribute('status', 'loading');
       await componentIsStable(component);
-      alertIcon = component.shadowRoot.querySelector('.spinner-inline');
+      alertIcon = component.shadowRoot.querySelector('.alert-spinner');
       expect(component.shadowRoot.querySelector('cds-icon.alert-icon')).toBeNull('verify loading status pt. 1');
       expect(alertIcon).not.toBeNull('verify loading status pt. 2');
       expect(alertIcon.getAttribute('aria-hidden')).toBe(

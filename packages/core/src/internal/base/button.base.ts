@@ -13,15 +13,6 @@ import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
 import { supportsFlexGap } from '@clr/core/internal';
 
-// TODO: replace with circular progress bar when complete
-export const iconSpinnerCheck = html`<span class="button-status-icon" cds-layout="horizontal align:center"
-  ><span class="spinner spinner-inline spinner-check" cds-layout="align:center"></span
-></span>`;
-
-export const iconSpinner = html`<span class="button-status-icon" cds-layout="horizontal align:center"
-  ><span class="spinner spinner-inline" cds-layout="align:center"></span
-></span>`;
-
 // @dynamic
 export class CdsBaseButton extends LitElement {
   @property({ type: Boolean }) readonly = false;

@@ -301,7 +301,7 @@ describe('Alert groups – ', () => {
         'does not override child alert loading status pt. 1'
       );
       expect(loadingAlertSlotContent['alert-icon']).toBeUndefined('does not override child alert loading status pt. 1');
-      expect(loadingAlert.shadowRoot.querySelectorAll('.spinner-inline').length > 0).toBe(
+      expect(loadingAlert.shadowRoot.querySelectorAll('.alert-spinner').length > 0).toBe(
         true,
         'does not override child alert loading status pt. 2'
       );
@@ -330,7 +330,7 @@ describe('Alert groups – ', () => {
         null,
         'does not update icon shape of child alerts with a loading status pt. 1'
       );
-      expect(loadingAlert.shadowRoot.querySelectorAll('.spinner-inline').length > 0).toBe(
+      expect(loadingAlert.shadowRoot.querySelectorAll('.alert-spinner').length > 0).toBe(
         true,
         'does not update icon shape of child alerts with a loading status pt. 2'
       );

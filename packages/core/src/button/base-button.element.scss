@@ -5,9 +5,6 @@
 @import './../styles/tokens/generated/index';
 @import './../styles/mixins/mixins';
 
-// TODO: progress spinner CSS deprecated, will be replaced by cds-circular-progress
-@import './../styles/utils/legacy-spinner';
-
 :host {
   --box-shadow-color: #{$cds-token-color-action-900};
   --border-radius: #{$cds-token-global-border-radius};
@@ -69,6 +66,10 @@
 
     cds-icon[shape='error-standard'] {
       --color: #{$cds-token-color-danger-700};
+    }
+
+    .button-spinner {
+      --ring-color: var(--cds-token-color-neutral-400);
     }
   }
 }

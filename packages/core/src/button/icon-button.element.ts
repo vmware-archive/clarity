@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, iconSpinner, iconSpinnerCheck, property, addClassnames } from '@clr/core/internal';
+import { baseStyles, property, addClassnames } from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './icon-button.element.css.js';
-import { CdsButton, ClrLoadingState } from './button.element.js';
+import { CdsButton, ClrLoadingState, iconCheck, iconSpinner } from './button.element.js';
 
 /**
  * Icon buttons give applications a compact alternative to communicate action and direct user intent.
@@ -56,8 +56,8 @@ export class CdsIconButton extends CdsButton {
   render() {
     return html`
       <div class="private-host">
-        ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner : ''}
-        ${this.loadingState === ClrLoadingState.SUCCESS ? iconSpinnerCheck : ''}
+        ${this.loadingState === ClrLoadingState.LOADING ? iconSpinner(this.size) : ''}
+        ${this.loadingState === ClrLoadingState.SUCCESS ? iconCheck : ''}
         ${this.loadingState === ClrLoadingState.DEFAULT ? html`<slot></slot>` : ''} ${this.hiddenButtonTemplate}
       </div>
     `;

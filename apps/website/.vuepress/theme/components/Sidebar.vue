@@ -22,6 +22,7 @@
               >
                 <template v-for="childItem in item.children">
                   <router-link
+                    @focus.native="focusToggle(index)"
                     class="nav-link"
                     :to="childItem.path"
                     v-if="childItem.type !== 'external'"
@@ -139,6 +140,15 @@ export default {
     toggle: function (index) {
       // This is because Vue can't detect changes mutated on an array, so this alerts it of changes
       this.$set(this.states, index, !this.states[index]);
+    },
+    focusToggle: function (index) {
+      if (this.states[index]) {
+        // already open
+        return;
+      } else {
+        // open when hidden item is focused
+        this.$set(this.states, index, !this.states[index]);
+      }
     },
     isItemActive: function (childItem) {
       const childItemPath = removePathExt(childItem.path);

@@ -1,4 +1,4 @@
-## Installing Clarity Angular
+## Installing Clarity Angular [![npm version](https://badge.fury.io/js/%40clr%2Fangular.svg)](https://badge.fury.io/js/%40clr%2Fangular)
 
 The easiest way is to use the Angular CLI to automatically install Angular into your project
 

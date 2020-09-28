@@ -6,6 +6,8 @@
 
 [![Build Status](https://saucelabs.com/browser-matrix/claritydesignsystem.svg)](https://saucelabs.com/beta/builds/b16110e384ce459ab68f10da6e38a285)
 
+[![npm version](https://badge.fury.io/js/%40clr%2Fcore.svg)](https://badge.fury.io/js/%40clr%2Fcore)
+
 Project Clarity is an open source design system that brings together UX
 guidelines, an HTML/CSS framework, Angular components, and Web Components. This
 repository includes everything you need to build, customize, test, and deploy

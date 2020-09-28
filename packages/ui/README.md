@@ -1,4 +1,4 @@
-### Installing Clarity UI
+### Installing Clarity UI [![npm version](https://badge.fury.io/js/%40clr%2Fui.svg)](https://badge.fury.io/js/%40clr%2Fui)
 
 1.  Install Clarity UI package through npm:
 

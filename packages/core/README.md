@@ -1,4 +1,4 @@
-# Clarity Core Web Components
+# Clarity Core Web Components [![npm version](https://badge.fury.io/js/%40clr%2Fcore.svg)](https://badge.fury.io/js/%40clr%2Fcore)
 
 Clarity Core is a suite of Web Components for [Clarity Design System](https://clarity.design/storybook/core).
 

@@ -1,4 +1,4 @@
-### Installing Clarity Icons
+### Installing Clarity Icons [![npm version](https://badge.fury.io/js/%40clr%2Ficons.svg)](https://badge.fury.io/js/%40clr%2Ficons)
 
 1.  Install Clarity Icons package through npm:
 

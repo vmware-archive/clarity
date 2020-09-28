@@ -1,4 +1,4 @@
-# Clarity React Wrappers for Core Web Components
+# Clarity React Wrappers for Core Web Components [![npm version](https://badge.fury.io/js/%40clr%2Freact.svg)](https://badge.fury.io/js/%40clr%2Freact)
 
 Clarity Core is a suite of Web Components from the [Clarity Design System](https://clarity.design). Because React [doesn't fully interoperate with custom elements](https://custom-elements-everywhere.com/) we have developed this library of React components that wrap Clarity Web Components
 

@@ -67,6 +67,7 @@
     "angular:dev:deploy": "./scripts/dev.sh",
     "angular:website:news": "yarn --cwd packages/angular run website:news",
     "angular:website:build": "yarn --cwd packages/angular run website:build",
+    "angular:website:functions": "netlify-lambda build scripts/netlify",
     "angular:website:serve": "yarn --cwd packages/angular run website:serve",
     "schematics:build": "yarn --cwd packages/schematics run build",
     "schematics:clean": "yarn --cwd packages/schematics run clean",

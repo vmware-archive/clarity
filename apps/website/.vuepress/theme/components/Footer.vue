@@ -12,13 +12,28 @@
         </div>
 
         <div class="social-media-links">
-          <a href="https://github.com/vmware/clarity" target="_blank" class="sm-icon-link">
+          <a
+            aria-label="Clarity on GitHub"
+            href="https://github.com/vmware/clarity"
+            target="_blank"
+            class="sm-icon-link"
+          >
             <img src="/images/footer/github.svg" alt="Clarity Github" />
           </a>
-          <a href="https://twitter.com/VMwareClarity" target="_blank" class="sm-icon-link">
+          <a
+            aria-label="Clarity on twitter"
+            href="https://twitter.com/VMwareClarity"
+            target="_blank"
+            class="sm-icon-link"
+          >
             <img src="/images/footer/twitter.svg" alt="Clarity Twitter" />
           </a>
-          <a href="https://medium.com/claritydesignsystem" target="_blank" class="sm-icon-link">
+          <a
+            aria-label="Clarity on Medium"
+            href="https://medium.com/claritydesignsystem"
+            target="_blank"
+            class="sm-icon-link"
+          >
             <img src="/images/footer/medium.svg" alt="Clarity Medium" />
           </a>
         </div>

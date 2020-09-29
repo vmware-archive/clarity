@@ -1,0 +1,84 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --color: #{$cds-token-color-neutral-800};
+  --icon-color: #{$cds-token-color-neutral-700};
+  --font-size: #{$cds-token-typography-font-size-4};
+  --font-weight: #{$cds-token-typography-font-weight-regular};
+  --header-background: #{$cds-token-color-neutral-50};
+  --header-color: #{$cds-token-color-neutral-800};
+  --header-font-size: #{$cds-token-typography-font-size-3};
+  --header-font-weight: #{$cds-token-typography-font-weight-semibold};
+  --header-open-background: #{$cds-token-global-selection-color};
+  --transition-duration: 200ms;
+}
+
+::slotted(cds-accordion-header) {
+  background: var(--header-background);
+  color: var(--header-color);
+  font-size: var(--header-font-size);
+  font-weight: var(--header-font-weight);
+}
+
+::slotted(cds-accordion-content) {
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
+
+// todo: set max-height for content
+.accordion-content-wrapper {
+  height: 0;
+  transition: transform height var(--transition-duration);
+  transition-timing-function: cubic-bezier(0, 0.99, 0, 0.99);
+
+  overflow-y: hidden;
+
+  &.open {
+    height: auto;
+    border-top: var(--border-width) solid var(--border-color);
+  }
+}
+
+.accordion-header {
+  background: var(--header-background);
+
+  .accordion-angle {
+    --color: var(--icon-color);
+  }
+
+  .accordion-angle,
+  .accordion-header-button,
+  .accordion-status,
+  ::slotted([slot='accordion-header']) {
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    .accordion-angle,
+    .accordion-header-button,
+    .accordion-status,
+    ::slotted([slot='accordion-header']) {
+      cursor: not-allowed;
+    }
+  }
+
+  .accordion-angle-wrapper {
+    transition: transform var(--transition-duration);
+  }
+
+  &.open {
+    --header-background: var(--header-open-background);
+
+    .accordion-angle-wrapper {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.accordion-header-button {
+  background: transparent;
+  border: 0;
+}

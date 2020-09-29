@@ -1,4 +1,5 @@
 import React from 'react';
+import { CdsAccordion, CdsAccordionPanel, CdsAccordionHeader, CdsAccordionContent } from './src/accordion';
 import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './src/alert';
 import { CdsButton } from './src/button';
 import { CdsBadge } from './src/badge';
@@ -55,6 +56,27 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div>
         <h1>Rendered by React!</h1>
+        <CdsAccordion>
+          <CdsAccordionPanel expanded>
+            <CdsAccordionHeader>Item 1</CdsAccordionHeader>
+            <CdsAccordionContent>Content 1</CdsAccordionContent>
+          </CdsAccordionPanel>
+          <CdsAccordionPanel>
+            <CdsAccordionHeader>Item 2</CdsAccordionHeader>
+            <CdsAccordionContent>
+              <CdsAccordion>
+                <CdsAccordionPanel>
+                  <CdsAccordionHeader>Item 2-1</CdsAccordionHeader>
+                  <CdsAccordionContent>Content 2-1</CdsAccordionContent>
+                </CdsAccordionPanel>
+              </CdsAccordion>
+            </CdsAccordionContent>
+          </CdsAccordionPanel>
+          <CdsAccordionPanel disabled>
+            <CdsAccordionHeader>Item 3</CdsAccordionHeader>
+            <CdsAccordionContent>Content 3</CdsAccordionContent>
+          </CdsAccordionPanel>
+        </CdsAccordion>
         <CdsButton ref={this.buttonRef} onClick={() => this.setState({ modalOpen: true })}>
           Open Modal
         </CdsButton>

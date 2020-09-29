@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { cloudIcon, ClarityIcons } from '@clr/core/icon';
 import '@clr/core/icon/register.js';
+import '@clr/core/accordion/register.js';
 import '@clr/core/alert/register.js';
 import '@clr/core/button/register.js';
 import '@clr/core/checkbox/register.js';
@@ -28,6 +29,7 @@ import '@clr/core/toggle/register.js';
 })
 export class AppComponent {
   show = false;
+  panel1Expanded = true;
 
   form: FormGroup;
   formValue: Observable<{}>;
@@ -69,6 +71,10 @@ export class AppComponent {
 
   get passwordMinLength() {
     return this.form.controls.password.touched && this.form.controls.password.hasError('minlength');
+  }
+
+  expandedChange(event): void {
+    this.panel1Expanded = event.detail;
   }
 
   submit() {

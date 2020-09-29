@@ -21,6 +21,10 @@ props:
     value: 'hsl(197, 68%, 65%)'
     type: 'hsl'
     category: 'global'
+  - name: selection-color
+    value: 'hsl(201, 29%, 88%)'
+    type: 'hsl'
+    category: 'global'
 
   # Space
   - name: 'size-0'

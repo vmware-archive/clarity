@@ -11,6 +11,7 @@
   "peerDependencies": {
     "@angular/common": "^11.0.0",
     "@angular/core": "^11.0.0",
+    "@clr/core": ">=4.0.0",
     "@clr/ui": "@VERSION"
   },
   "author": "Clarity Design System",

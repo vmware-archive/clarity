@@ -88,12 +88,7 @@
               <span class="label" [clrDraggable]="file"
                 >{{file.name}}
                 <clr-draggable-ghost *clrIfDragged>
-                  <clr-icon
-                    shape="image"
-                    size="36"
-                    class="is-solid"
-                    style="transform: translate3d(-50%, -50%, 0);"
-                  ></clr-icon>
+                  <cds-icon shape="image" size="36" solid style="transform: translate3d(-50%, -50%, 0);"></cds-icon>
                 </clr-draggable-ghost>
               </span>
             </td>
@@ -117,12 +112,7 @@
               <span class="label" [clrDraggable]="file"
                 >{{file.name}}
                 <clr-draggable-ghost *clrIfDragged>
-                  <clr-icon
-                    shape="image"
-                    size="36"
-                    class="is-solid"
-                    style="transform: translate3d(-50%, -50%, 0);"
-                  ></clr-icon>
+                  <cds-icon shape="image" size="36" solid style="transform: translate3d(-50%, -50%, 0);"></cds-icon>
                 </clr-draggable-ghost>
               </span>
             </td>
@@ -156,7 +146,7 @@
           <tr *ngFor="let file of files">
             <td>
               <span class="label" [clrDraggable]="file"
-                ><clr-icon clrDragHandle shape="image" class="is-solid"></clr-icon> {{file.name}}</span
+                ><cds-icon clrDragHandle shape="image" solid></cds-icon> {{file.name}}</span
               >
             </td>
           </tr>
@@ -177,7 +167,7 @@
           <tr *ngFor="let file of droppedFiles">
             <td>
               <span class="label" [clrDraggable]="file"
-                ><clr-icon clrDragHandle shape="image" class="is-solid"></clr-icon> {{file.name}}</span
+                ><cds-icon clrDragHandle shape="image" solid></cds-icon> {{file.name}}</span
               >
             </td>
           </tr>

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -45,17 +45,9 @@
     );
     line-height: $clr-tree-node-touch-target;
 
-    //Horrible. This, unfortunately, is carried over from earlier to make sure we don't break anything.
-    //Why did I add styles directly on the icons selector? :-( x-(
-    //This was not even needed because it's the user's responsibility to align things they project.
-    clr-icon,
-        /*TODO: Update demos to use .clr-icon class*/
-        .clr-icon {
-      //Dimensions
+    cds-icon {
       @include equilateral($clr-tree-caret-size);
       margin-right: $clr-tree-node-content-icon-margin-right;
-
-      //Others
       vertical-align: middle;
     }
   }

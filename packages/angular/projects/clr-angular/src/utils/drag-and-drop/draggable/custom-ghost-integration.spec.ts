@@ -61,7 +61,7 @@ export default function (): void {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       const draggableGhosts = this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost');
       expect(draggableGhosts.length).toBe(1);
-      expect(draggableGhosts[0].querySelectorAll('clr-icon').length).toBe(1);
+      expect(draggableGhosts[0].querySelectorAll('cds-icon').length).toBe(1);
     });
 
     it('should remove ghost on drag end', function () {
@@ -76,7 +76,7 @@ export default function (): void {
   template: `<div clrDraggable>
     Test
     <clr-draggable-ghost *clrIfDragged>
-      <clr-icon shape="check"></clr-icon>
+      <cds-icon shape="check"></cds-icon>
     </clr-draggable-ghost>
   </div> `,
 })

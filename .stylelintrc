@@ -12,7 +12,7 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "selector-type-no-unknown": [true, {
-      "ignoreTypes": ["/^clr-/", "/^app-/", "/^_/", "_"]
+      "ignoreTypes": ["/^clr-/", "/^cds-/", "/^app-/", "/^_/", "_"]
     }],
     "selector-pseudo-element-no-unknown":[true, {
       "ignorePseudoElements": ["/^ng-deep/"]

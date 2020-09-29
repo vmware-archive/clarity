@@ -6,6 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@clr/core/icon';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrControl } from './control';
 import { ClrControlContainer } from './control-container';
@@ -46,4 +47,8 @@ import { ClrControlSuccess } from './success';
   ],
   entryComponents: [ClrControlContainer],
 })
-export class ClrCommonFormsModule {}
+export class ClrCommonFormsModule {
+  constructor() {
+    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
+  }
+}

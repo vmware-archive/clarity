@@ -9,7 +9,7 @@
     <header class="header header-6">
       <div class="branding">
         <a href="#">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Project Clarity</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
       </form>
       <div class="settings">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
+          <cds-icon shape="cog" inverse></cds-icon>
         </a>
       </div>
     </header>
@@ -31,7 +31,7 @@
         [class.has-icons]="case.hasIcons"
       >
         <button type="button" class="nav-trigger">
-          <clr-icon shape="angle-double" class="nav-trigger-icon" [attr.dir]="'left'"></clr-icon>
+          <cds-icon shape="angle-double" class="nav-trigger-icon" [attr.direction]="'left'"></cds-icon>
         </button>
 
         <div class="nav-content">
@@ -39,11 +39,11 @@
             <div class="nav-group" *ngIf="item['children']">
               <div class="nav-group-content">
                 <a href="javascript://" class="nav-link">
-                  <clr-icon [attr.shape]="item.icon" *ngIf="item['icon']" class="nav-icon"></clr-icon>
+                  <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" class="nav-icon"></cds-icon>
                   <span class="nav-text">{{item.label}}</span>
                 </a>
                 <button class="nav-group-trigger" type="button">
-                  <clr-icon class="clr-nav-caret" shape="caret" [attr.dir]="'down'"></clr-icon>
+                  <cds-icon class="clr-nav-caret" shape="angle" [attr.direction]="'down'"></cds-icon>
                 </button>
               </div>
               <div class="nav-group-children">
@@ -54,7 +54,7 @@
             </div>
 
             <a class="nav-link" *ngIf="!item['children']" href="javascript:void(0)">
-              <clr-icon [attr.shape]="item.icon" *ngIf="item['icon']" class="nav-icon"></clr-icon>
+              <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" class="nav-icon"></cds-icon>
               <span class="nav-text">{{item.label}}</span>
             </a>
           </ng-container>

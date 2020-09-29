@@ -5,7 +5,7 @@
  */
 
 import { ClrTimelineStepState } from '../enums/timeline-step-state.enum';
-import { IconAttributes } from '../interface/icon-attribute.iterface';
+import { IconAttributes } from '../interface/icon-attribute.interface';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { Injectable } from '@angular/core';
 
@@ -16,22 +16,27 @@ export class TimelineIconAttributeService {
   constructor(commonStrings: ClrCommonStringsService) {
     this.attributeMap.set(ClrTimelineStepState.NOT_STARTED, {
       iconShape: 'circle',
+      iconStatus: null,
       ariaLabel: commonStrings.keys.timelineStepNotStarted,
     });
     this.attributeMap.set(ClrTimelineStepState.CURRENT, {
       iconShape: 'dot-circle',
+      iconStatus: 'info',
       ariaLabel: commonStrings.keys.timelineStepCurrent,
     });
     this.attributeMap.set(ClrTimelineStepState.PROCESSING, {
       iconShape: undefined,
+      iconStatus: null,
       ariaLabel: commonStrings.keys.timelineStepProcessing,
     });
     this.attributeMap.set(ClrTimelineStepState.SUCCESS, {
       iconShape: 'success-standard',
+      iconStatus: 'success',
       ariaLabel: commonStrings.keys.timelineStepSuccess,
     });
     this.attributeMap.set(ClrTimelineStepState.ERROR, {
       iconShape: 'error-standard',
+      iconStatus: 'danger',
       ariaLabel: commonStrings.keys.timelineStepError,
     });
   }
@@ -42,5 +47,9 @@ export class TimelineIconAttributeService {
 
   public getIconShape(step: ClrTimelineStepState): string {
     return this.attributeMap.get(step).iconShape;
+  }
+
+  public getIconStatus(step: ClrTimelineStepState): string {
+    return this.attributeMap.get(step).iconStatus;
   }
 }

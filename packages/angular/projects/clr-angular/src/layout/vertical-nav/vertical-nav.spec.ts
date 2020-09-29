@@ -172,16 +172,16 @@ export default function (): void {
 
       it('shows the .nav-links & icons when the nav is expanded', () => {
         expect(compiled.querySelector('.nav-link')).not.toBeNull();
-        expect(compiled.querySelector('clr-icon')).not.toBeNull();
+        expect(compiled.querySelector('cds-icon')).not.toBeNull();
       });
 
-      it('shows the clr-icon when the nav is collapsed', () => {
+      it('shows the cds-icon when the nav is collapsed', () => {
         vertNavService.collapsible = true;
         vertNavService.collapsed = true;
 
         fixture.detectChanges();
 
-        expect(compiled.querySelector('clr-icon')).not.toBeNull();
+        expect(compiled.querySelector('cds-icon')).not.toBeNull();
       });
     });
 
@@ -588,7 +588,7 @@ class NoIconsNoNavGroupTestComponent {
   template: `
     <clr-vertical-nav>
       <a href="#" clrVerticalNavLink>
-        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
+        <cds-icon clrVerticalNavIcon shape="home"></cds-icon>
         Link
       </a>
     </clr-vertical-nav>
@@ -615,7 +615,7 @@ class OnlyNavGroupTestComponent {}
   template: `
     <clr-vertical-nav>
       <clr-vertical-nav-group>
-        <clr-icon clrVerticalNavIcon shape="home"></clr-icon>
+        <cds-icon clrVerticalNavIcon shape="home"></cds-icon>
         Group
         <a href="#" clrVerticalNavLink>
           Link
@@ -630,14 +630,14 @@ class IconsAndNavGroupTestComponent {}
   template: `
     <clr-vertical-nav #nav>
       <clr-vertical-nav-group *ngIf="groupToggle">
-        <clr-icon clrVerticalNavIcon></clr-icon>
+        <cds-icon clrVerticalNavIcon></cds-icon>
         Group
         <a href="#" clrVerticalNavLink>
           Text
         </a>
       </clr-vertical-nav-group>
       <a href="#" clrVerticalNavLink *ngIf="iconToggle">
-        <clr-icon clrVerticalNavIcon></clr-icon>
+        <cds-icon clrVerticalNavIcon></cds-icon>
         Text
       </a>
     </clr-vertical-nav>

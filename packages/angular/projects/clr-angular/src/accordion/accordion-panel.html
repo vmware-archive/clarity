@@ -22,10 +22,10 @@
           <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.keys.success}}</ng-container>
         </span>
         <span class="clr-accordion-status">
-          <clr-icon shape="angle" dir="right" class="clr-accordion-angle"></clr-icon>
+          <cds-icon shape="angle" direction="right" class="clr-accordion-angle"></cds-icon>
           <span class="clr-accordion-number"></span>
-          <clr-icon shape="exclamation-circle" class="clr-accordion-error-icon"></clr-icon>
-          <clr-icon shape="check-circle" class="clr-accordion-complete-icon"></clr-icon>
+          <cds-icon status="danger" shape="exclamation-circle" class="clr-accordion-error-icon"></cds-icon>
+          <cds-icon status="success" shape="check-circle" class="clr-accordion-complete-icon"></cds-icon>
         </span>
         <ng-content select="clr-accordion-title, clr-step-title"></ng-content>
         <ng-content select="clr-accordion-description, clr-step-description"></ng-content>

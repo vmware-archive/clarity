@@ -38,7 +38,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = 1"
           [attr.aria-label]="commonStrings.keys.firstPage"
         >
-          <clr-icon shape="step-forward-2 down"></clr-icon>
+          <cds-icon shape="step-forward-2" direction="down"></cds-icon>
         </button>
         <button
           type="button"
@@ -47,7 +47,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current - 1"
           [attr.aria-label]="commonStrings.keys.previousPage"
         >
-          <clr-icon shape="angle left"></clr-icon>
+          <cds-icon shape="angle" direction="left"></cds-icon>
         </button>
         <input
           *ngIf="!disableCurrentPageInput; else readOnly"
@@ -72,7 +72,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current + 1"
           [attr.aria-label]="commonStrings.keys.nextPage"
         >
-          <clr-icon shape="angle right"></clr-icon>
+          <cds-icon shape="angle" direction="right"></cds-icon>
         </button>
         <button
           type="button"
@@ -81,7 +81,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.last"
           [attr.aria-label]="commonStrings.keys.lastPage"
         >
-          <clr-icon shape="step-forward-2 up"></clr-icon>
+          <cds-icon shape="step-forward-2" direction="up"></cds-icon>
         </button>
       </div>
     </ng-container>
@@ -97,7 +97,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current - 1"
           [attr.aria-label]="commonStrings.keys.previousPage"
         >
-          <clr-icon shape="angle left"></clr-icon>
+          <cds-icon shape="angle" direction="left"></cds-icon>
         </button>
         <span>{{ page.current }}</span>
         <button
@@ -107,7 +107,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current + 1"
           [attr.aria-label]="commonStrings.keys.nextPage"
         >
-          <clr-icon shape="angle right"></clr-icon>
+          <cds-icon shape="angle" direction="right"></cds-icon>
         </button>
       </div>
     </ng-container>

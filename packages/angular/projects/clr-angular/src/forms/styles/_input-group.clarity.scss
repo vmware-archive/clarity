@@ -48,7 +48,7 @@
       @include css-var(color, clr-forms-focused-color, $clr-forms-focused-color, $clr-use-custom-properties);
       padding: 0 $clr-forms-baseline * 1.5;
 
-      clr-icon {
+      cds-icon {
         @include equilateral($clr_baselineRem_0_75);
         transform: translate(-1 * $clr_baselineRem_1px, -1 * $clr_baselineRem_1px);
       }

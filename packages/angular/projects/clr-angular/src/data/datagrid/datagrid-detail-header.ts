@@ -23,7 +23,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         (click)="detailService.close()"
         [attr.aria-label]="commonStrings.keys.close"
       >
-        <clr-icon size="24" shape="times"></clr-icon>
+        <cds-icon size="24" shape="times"></cds-icon>
       </button>
     </div>
   `,

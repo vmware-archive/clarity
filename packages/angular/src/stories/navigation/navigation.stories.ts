@@ -9,6 +9,10 @@ import { boolean } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
+import '@clr/core/icon/register.js';
+import { ClarityIcons, homeIcon } from '@clr/core/icon';
+
+ClarityIcons.addIcons(homeIcon);
 
 export default {
   title: 'Navigation',

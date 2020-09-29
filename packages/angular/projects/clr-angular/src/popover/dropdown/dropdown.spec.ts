@@ -230,7 +230,7 @@ export default function (): void {
     <clr-dropdown [clrCloseMenuOnItemClick]="menuClosable">
       <button class="btn btn-primary" type="button" clrDropdownTrigger>
         Dropdown
-        <clr-icon shape="caret down"></clr-icon>
+        <cds-icon shape="angle" direction="down"></cds-icon>
       </button>
       <clr-dropdown-menu *clrIfOpen>
         <label class="dropdown-header">Header</label>

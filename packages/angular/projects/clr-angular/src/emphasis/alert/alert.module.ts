@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,14 @@ import { ClrAlertItem } from './alert-item';
 import { ClrAlerts } from './alerts';
 import { ClrAlertsPager } from './alerts-pager';
 import { ClrAlertText } from './alert-text';
+import {
+  infoCircleIcon,
+  checkCircleIcon,
+  ClarityIcons,
+  exclamationCircleIcon,
+  exclamationTriangleIcon,
+  windowCloseIcon,
+} from '@clr/core/icon';
 
 export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAlerts, ClrAlertsPager, ClrAlertText];
 
@@ -23,4 +31,14 @@ export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAle
   declarations: [CLR_ALERT_DIRECTIVES],
   exports: [CLR_ALERT_DIRECTIVES],
 })
-export class ClrAlertModule {}
+export class ClrAlertModule {
+  constructor() {
+    ClarityIcons.addIcons(
+      checkCircleIcon,
+      infoCircleIcon,
+      exclamationCircleIcon,
+      exclamationTriangleIcon,
+      windowCloseIcon
+    );
+  }
+}

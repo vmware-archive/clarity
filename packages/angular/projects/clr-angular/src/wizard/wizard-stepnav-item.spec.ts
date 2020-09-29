@@ -467,7 +467,7 @@ export default function (): void {
           );
         });
 
-        it('should have a clr-icon when page has an error', () => {
+        it('should have a cds-icon when page has an error', () => {
           expect(myStepnavItem.classList.contains('error')).toBe(
             false,
             'stepnav item does not have .error class when page has no error'
@@ -475,7 +475,7 @@ export default function (): void {
           fakeOutPage.completed = true;
           fakeOutPage.hasError = true;
           fixture.detectChanges();
-          expect(myStepnavItem.querySelector('clr-icon[shape="error-standard"]')).not.toBeNull();
+          expect(myStepnavItem.querySelector('cds-icon[shape="error-standard"]')).not.toBeNull();
         });
       });
 

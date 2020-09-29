@@ -21,13 +21,20 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
       <ng-content select="clr-checkbox-wrapper,clr-toggle-wrapper"></ng-content>
       <div class="clr-subtext-wrapper">
         <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
-        <clr-icon
+        <cds-icon
           *ngIf="showInvalid"
           class="clr-validate-icon"
+          status="danger"
           shape="exclamation-circle"
           aria-hidden="true"
-        ></clr-icon>
-        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
+        ></cds-icon>
+        <cds-icon
+          *ngIf="showValid"
+          class="clr-validate-icon"
+          status="success"
+          shape="check-circle"
+          aria-hidden="true"
+        ></cds-icon>
         <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>
         <ng-content select="clr-control-success" *ngIf="showValid"></ng-content>
       </div>

@@ -5,6 +5,7 @@
  */
 
 import { Component } from '@angular/core';
+import { bellIcon, ClarityIcons, cloudIcon, warningStandardIcon } from '@clr/core/icon';
 
 @Component({
   template: `
@@ -15,17 +16,17 @@ import { Component } from '@angular/core';
       <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
       <clr-wizard-button [type]="'finish'">Fait Accompli</clr-wizard-button>
       <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
-        <clr-icon shape="cloud" class="is-solid"></clr-icon>
+        <cds-icon shape="cloud" solid></cds-icon>
       </clr-wizard-header-action>
       <clr-wizard-page>
         <ng-template clrPageTitle>Longer Title for Page 1</ng-template>
         <p>Content for step 1</p>
         <ng-template clrPageHeaderActions>
           <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
-            <clr-icon shape="bell" class="has-badge"></clr-icon>
+            <cds-icon shape="bell"></cds-icon>
           </clr-wizard-header-action>
           <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
-            <clr-icon shape="warning"></clr-icon>
+            <cds-icon shape="warning"></cds-icon>
           </clr-wizard-header-action>
         </ng-template>
       </clr-wizard-page>
@@ -54,4 +55,7 @@ export class HeaderActionsTestComponent {
   headerActionClicked = function () {
     this._headerActionWasClicked = true;
   };
+  constructor() {
+    ClarityIcons.addIcons(cloudIcon, bellIcon, warningStandardIcon);
+  }
 }

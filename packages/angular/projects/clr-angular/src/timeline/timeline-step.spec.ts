@@ -182,7 +182,7 @@ export default function (): void {
           hostComponent.state = stepState;
           fixture.detectChanges();
 
-          const icon = debugElement.query(By.css('clr-icon'));
+          const icon = debugElement.query(By.css('cds-icon'));
           const spinner = debugElement.query(By.css('clr-spinner'));
 
           expect(icon).not.toBeNull();
@@ -194,7 +194,7 @@ export default function (): void {
         hostComponent.state = ClrTimelineStepState.PROCESSING;
         fixture.detectChanges();
 
-        const icon = debugElement.query(By.css('clr-icon'));
+        const icon = debugElement.query(By.css('cds-icon'));
         const spinner = debugElement.query(By.css('clr-spinner'));
 
         expect(icon).toBeNull();

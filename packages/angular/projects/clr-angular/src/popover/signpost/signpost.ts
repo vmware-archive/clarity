@@ -18,7 +18,7 @@ import { SignpostFocusManager } from './providers/signpost-focus-manager.service
   template: `
     <ng-container *ngIf="!useCustomTrigger">
       <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
-        <clr-icon shape="info" [attr.title]="commonStrings.keys.info"></clr-icon>
+        <cds-icon shape="info-circle" [attr.title]="commonStrings.keys.info"></cds-icon>
       </button>
     </ng-container>
 

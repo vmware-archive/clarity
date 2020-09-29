@@ -1,0 +1,24 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --border-color: #{$cds-token-color-neutral-500};
+  --border-width: #{$cds-token-global-border-width};
+  --border-radius: #{$cds-token-global-border-radius};
+}
+
+::slotted(cds-accordion-panel) {
+  border: var(--border-width) solid var(--border-color);
+  border-bottom: none;
+}
+
+::slotted(cds-accordion-panel:first-child) {
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+::slotted(cds-accordion-panel:last-child) {
+  border-bottom: var(--border-width) solid var(--border-color);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}

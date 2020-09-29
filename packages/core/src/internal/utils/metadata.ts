@@ -18,7 +18,7 @@ export function getElementStorybookArgs(args: any) {
 
 function getCustomPropsStorybookArgs(customElementMetadata: any) {
   return customElementMetadata.cssProperties?.reduce((obj: any, prop: { name: string }) => {
-    const type = prop?.name?.includes('color') || prop.name === '--background' ? 'color' : 'text';
+    const type = prop?.name?.includes('color') || prop?.name?.endsWith('background') ? 'color' : 'text';
     return { ...obj, [prop.name]: { control: { type } } };
   }, {});
 }

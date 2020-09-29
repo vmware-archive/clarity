@@ -1,0 +1,59 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components (Preview)/Accordion Panel/Getting Started" />
+
+# Accordion Panel
+
+An accordion allows generic content to be collapsed and allows users to expand to show more detail.
+
+Usually, one or more accordion panels will be used inside an accordion container component.
+
+## Installation
+
+To use the accordion component import the component in your JavaScript.
+
+```typescript
+import '@clr/core/accordion/register.js';
+```
+
+```html
+<cds-accordion>
+  <cds-accordion-panel expanded="panel1Expanded">
+    <cds-accordion-header>Item 1</cds-accordion-header>
+    <cds-accordion-content>Content 1</cds-accordion-content>
+  </cds-accordion-panel>
+
+  <cds-accordion-panel expanded="panel2Expanded">
+    <cds-accordion-header>Item 2</cds-accordion-header>
+    <cds-accordion-content>Content 2</cds-accordion-content>
+  </cds-accordion-panel>
+
+  <cds-accordion-panel disabled>
+    <cds-accordion-header>Item 3</cds-accordion-header>
+    <cds-accordion-content>Content 3</cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+```
+
+## Accordion
+
+<Preview>
+  <Story id="components-preview-accordion-panel-stories--basic-accordion" />
+</Preview>
+
+## Async Accordion
+
+<Preview>
+  <Story id="components-preview-accordion-panel-stories--async-accordion" />
+</Preview>
+
+## Custom accordion panel styles
+
+<Preview>
+  <Story id="components-preview-accordion-panel-stories--custom-styles" />
+</Preview>
+
+## API
+
+<Props of={'cds-accordion-panel'} />

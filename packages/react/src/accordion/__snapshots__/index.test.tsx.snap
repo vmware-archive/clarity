@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsAccordion snapshot 1`] = `
+<div>
+  <CdsAccordion>
+    <cds-accordion>
+      <CdsAccordionPanel
+        expanded={true}
+      >
+        <cds-accordion-panel>
+          <CdsAccordionHeader>
+            <cds-accordion-header>
+              Item 1
+            </cds-accordion-header>
+          </CdsAccordionHeader>
+          <CdsAccordionContent>
+            <cds-accordion-content>
+              Content 1
+            </cds-accordion-content>
+          </CdsAccordionContent>
+        </cds-accordion-panel>
+      </CdsAccordionPanel>
+    </cds-accordion>
+  </CdsAccordion>
+</div>
+`;

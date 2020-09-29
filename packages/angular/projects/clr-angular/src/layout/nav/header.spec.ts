@@ -16,7 +16,7 @@ import { ClrNavigationModule } from './navigation.module';
     <clr-header class="header">
       <div class="branding">
         <a href="#" class="nav-link">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Title</span>
         </a>
       </div>

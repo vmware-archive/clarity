@@ -13,12 +13,12 @@
   (click)="toggleByButton()"
   *ngIf="collapsible"
 >
-  <clr-icon
+  <cds-icon
     shape="angle-double"
     class="nav-trigger-icon"
-    [attr.dir]="(this.collapsed) ? 'right' : 'left'"
+    [attr.direction]="(this.collapsed) ? 'right' : 'left'"
     [attr.title]="(this.collapsed) ? commonStrings.keys.expand : commonStrings.keys.collapse"
-  ></clr-icon>
+  ></cds-icon>
 </button>
 <!-- Click handler on .nav-content is bad but required :-( -->
 <div class="nav-content">

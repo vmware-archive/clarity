@@ -46,7 +46,7 @@
           [attr.aria-label]="commonStrings.keys.comboboxDelete + ' ' + optionSelectionService.selectionModel.toString(displayField, i)"
           (click)="unselect(item)"
         >
-          <clr-icon shape="close" size="12"></clr-icon>
+          <cds-icon shape="window-close" size="12"></cds-icon>
         </button>
       </span>
     </span>
@@ -85,7 +85,7 @@
     [disabled]="control?.disabled || null"
     [attr.aria-label]="commonStrings.keys.comboboxOpen"
   >
-    <clr-icon shape="caret down" size="12"></clr-icon>
+    <cds-icon shape="angle" direction="down" size="12"></cds-icon>
   </button>
 
   <div class="clr-focus-indicator" [class.clr-focus]="focused"></div>

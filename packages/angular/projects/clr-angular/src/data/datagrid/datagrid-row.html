@@ -98,12 +98,12 @@
               [attr.aria-label]="expand.expanded ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
               [attr.aria-controls]="expandableId"
             >
-              <clr-icon
-                shape="caret"
+              <cds-icon
+                shape="angle"
                 class="datagrid-expandable-caret-icon"
-                [attr.dir]="expand.expanded ? 'down' : 'right'"
+                [attr.direction]="expand.expanded ? 'down' : 'right'"
                 [attr.title]="expand.expanded ? commonStrings.keys.collapse : commonStrings.keys.expand"
-              ></clr-icon>
+              ></cds-icon>
             </button>
             <clr-spinner *ngIf="expand.loading" clrSmall>{{ commonStrings.keys.loading }}</clr-spinner>
           </ng-container>
@@ -120,12 +120,12 @@
             [attr.aria-controls]="detailService.id"
             aria-haspopup="dialog"
           >
-            <clr-icon
+            <cds-icon
               shape="angle-double"
-              [attr.dir]="detailService.isRowOpen(item) ? 'left' : 'right'"
+              [attr.direction]="detailService.isRowOpen(item) ? 'left' : 'right'"
               class="datagrid-detail-caret-icon"
               [attr.title]="detailService.isRowOpen(item) ? commonStrings.keys.close: commonStrings.keys.open"
-            ></clr-icon>
+            ></cds-icon>
           </button>
         </div>
       </ng-container>

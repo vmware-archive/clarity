@@ -334,7 +334,7 @@ export default function (): void {
       });
 
       it('displays a clickable caret when the row is expandable', function () {
-        expect(context.clarityElement.querySelector('button clr-icon[shape^=caret]')).not.toBeNull();
+        expect(context.clarityElement.querySelector('button cds-icon[shape^=angle]')).not.toBeNull();
       });
 
       it('displays a spinner instead of the caret when the details are loading', function () {

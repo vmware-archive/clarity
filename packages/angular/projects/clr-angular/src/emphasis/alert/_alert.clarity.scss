@@ -98,7 +98,7 @@
       $clr-use-custom-properties
     );
 
-    clr-icon {
+    cds-icon {
       @include css-var(fill, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
     }
 
@@ -267,7 +267,7 @@
       order: 100;
       padding-right: $closeBtnNudge;
 
-      clr-icon {
+      cds-icon {
         $alert-close-icon-dims: $clr_baselineRem_1 - $clr-alert-borderwidth;
         margin-top: -1 * $clr_baselineRem_0_125;
         @include equilateral($alert-close-icon-dims);
@@ -340,7 +340,7 @@
       height: $clr_baselineRem_1_5;
       overflow: hidden;
 
-      clr-icon {
+      cds-icon {
         margin-top: -1 * $clr_baselineRem_5px;
       }
     }
@@ -396,7 +396,7 @@
       height: $clr_baselineRem_1;
       line-height: $clr_baselineRem_1;
 
-      clr-icon {
+      cds-icon {
         $smallAlertCloseIconDims: $clr_baselineRem_0_83;
         margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
         margin-right: -1 * $clr_baselineRem_1px;
@@ -511,6 +511,10 @@
     @include clr-no-styles-button();
     @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
     cursor: pointer;
+
+    cds-icon {
+      @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+    }
   }
 
   .alerts-pager-control {

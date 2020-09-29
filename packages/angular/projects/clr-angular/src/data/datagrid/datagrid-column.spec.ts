@@ -98,24 +98,30 @@ export default function (): void {
       it('knows when the column has an ascending sortIcon', function () {
         component.sortBy = comparator;
         expect(component.sortIcon).toBeUndefined();
+        expect(component.sortDirection).toBeUndefined();
         component.sort();
         expect(component.sortIcon).toBe('arrow');
+        expect(component.sortDirection).toBe('up');
       });
 
       it('knows when the column has a descending sortIcon', function () {
         component.sortBy = comparator;
         expect(component.sortIcon).toBeUndefined();
+        expect(component.sortDirection).toBeUndefined();
         component.sort();
         component.sort();
         expect(component.sortIcon).toBe('arrow down');
+        expect(component.sortDirection).toBe('down');
       });
 
       it('sets the column sortIcon to null when sort is cleared', function () {
         component.sortBy = comparator;
+        expect(component.sortDirection).toBe(undefined);
         expect(component.sortIcon).toBe(undefined);
         component.sort();
         sortService.clear();
         expect(component.sortIcon).toBeNull();
+        expect(component.sortDirection).toBeNull();
       });
 
       it('offers a shortcut to sort based on a property name', function () {
@@ -323,17 +329,17 @@ export default function (): void {
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('adds and removes the correct icon when sorting', function () {
+      it('adds and removes the correct direction when sorting', function () {
         context.clarityDirective.sortBy = new TestComparator();
         context.clarityDirective.sort();
         context.detectChanges();
 
         const arrowIcon = context.clarityElement.querySelector('.sort-icon');
-        expect(arrowIcon.getAttribute('shape')).toEqual('arrow');
+        expect(arrowIcon.getAttribute('direction')).toEqual('up');
 
         context.clarityDirective.sort();
         context.detectChanges();
-        expect(arrowIcon.getAttribute('shape')).toEqual('arrow down');
+        expect(arrowIcon.getAttribute('direction')).toEqual('down');
 
         const sortService = context.fixture.debugElement.query(By.directive(ClrDatagridColumn)).injector.get(Sort);
         sortService.clear();

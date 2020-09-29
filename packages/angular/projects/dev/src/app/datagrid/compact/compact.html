@@ -20,7 +20,7 @@
   <clr-dg-row *ngFor="let user of users; let i = index;">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>
-      <clr-icon shape="user"></clr-icon>
+      <cds-icon shape="user"></cds-icon>
       {{user.name}}
     </clr-dg-cell>
     <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
@@ -40,7 +40,7 @@
     <clr-dg-row *ngFor="let user of nonPaginatedUsers">
       <clr-dg-cell>{{user.id}}</clr-dg-cell>
       <clr-dg-cell>
-        <clr-icon shape="user"></clr-icon>
+        <cds-icon shape="user"></cds-icon>
         {{user.name}}
       </clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -144,11 +144,11 @@
     <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
       <clr-dg-action-overflow>
         <button class="action-item" (click)="onEdit(user)">
-          <clr-icon shape="note"></clr-icon>
+          <cds-icon shape="note"></cds-icon>
           Edit
         </button>
         <button class="action-item" (click)="onDelete(user)">
-          <clr-icon shape="trash"></clr-icon>
+          <cds-icon shape="trash"></cds-icon>
           Delete
         </button>
       </clr-dg-action-overflow>
@@ -397,7 +397,7 @@
         {{user.id}}
         <clr-signpost>
           <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
-            <clr-icon shape="help-info"></clr-icon>
+            <cds-icon shape="help-info"></cds-icon>
           </button>
           <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
             The pokemon is strong.

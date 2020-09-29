@@ -38,19 +38,27 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
             class="clr-input-group-icon-action"
             type="button"
           >
-            <clr-icon
+            <cds-icon
+              status="info"
               [attr.shape]="show ? 'eye-hide' : 'eye'"
               [attr.title]="show ? commonStrings.keys.hide : commonStrings.keys.show"
-            ></clr-icon>
+            ></cds-icon>
           </button>
         </div>
-        <clr-icon
+        <cds-icon
           *ngIf="showInvalid"
           class="clr-validate-icon"
+          status="danger"
           shape="exclamation-circle"
           aria-hidden="true"
-        ></clr-icon>
-        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
+        ></cds-icon>
+        <cds-icon
+          *ngIf="showValid"
+          class="clr-validate-icon"
+          shape="check-circle"
+          status="success"
+          aria-hidden="true"
+        ></cds-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>

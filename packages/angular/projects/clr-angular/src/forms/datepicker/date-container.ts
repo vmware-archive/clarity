@@ -58,20 +58,27 @@ import { ClrControlSuccess } from '../common/success';
             [disabled]="isInputDateDisabled"
             *ngIf="isEnabled"
           >
-            <clr-icon shape="calendar"></clr-icon>
+            <cds-icon status="info" shape="calendar"></cds-icon>
           </button>
           <clr-datepicker-view-manager
             *clrPopoverContent="open; at: popoverPosition; outsideClickToClose: true; scrollToClose: true"
             clrFocusTrap
           ></clr-datepicker-view-manager>
         </div>
-        <clr-icon
+        <cds-icon
           *ngIf="showInvalid"
           class="clr-validate-icon"
+          status="danger"
           shape="exclamation-circle"
           aria-hidden="true"
-        ></clr-icon>
-        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
+        ></cds-icon>
+        <cds-icon
+          *ngIf="showValid"
+          class="clr-validate-icon"
+          shape="check-circle"
+          status="success"
+          aria-hidden="true"
+        ></cds-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>

@@ -9,7 +9,7 @@
     <header class="header header-6">
       <div class="branding">
         <a href="#">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Project Clarity</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
       </form>
       <div class="settings">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
+          <cds-icon shape="cog" inverse></cds-icon>
         </a>
       </div>
     </header>
@@ -42,7 +42,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home"></cds-icon>
             The Beatles
           </a>
           <clr-vertical-nav-group-children>
@@ -65,7 +65,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Killers
           </a>
           <clr-vertical-nav-group-children>
@@ -82,7 +82,7 @@
         </clr-vertical-nav-group>
 
         <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-          <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
           Wikipedia
         </a>
       </clr-vertical-nav>
@@ -98,7 +98,7 @@
           [clrVerticalNavGroupExpanded]="groupExpand"
           (clrVerticalNavGroupExpandedChange)="updateGroupExpand($event)"
         >
-          <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
           The Beatles
           <clr-vertical-nav-group-children>
             <a routerLinkActive="active" [routerLink]="['./beatles/abbey-road']" clrVerticalNavLink>
@@ -114,7 +114,7 @@
         </clr-vertical-nav-group>
 
         <clr-vertical-nav-group routerLinkActive="active">
-          <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
           The Killers
           <clr-vertical-nav-group-children>
             <a routerLinkActive="active" [routerLink]="['./killers/hot-fuss']" clrVerticalNavLink>
@@ -130,7 +130,7 @@
         </clr-vertical-nav-group>
 
         <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-          <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
           Wikipedia
         </a>
       </clr-vertical-nav>

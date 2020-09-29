@@ -107,12 +107,12 @@
             <td>
               <span class="label" [clrDraggable]="file"
                 >{{file.name}}<clr-draggable-ghost *clrIfDragged>
-                  <clr-icon
+                  <cds-icon
                     shape="image"
                     size="36"
-                    class="is-solid"
+                    solid
                     style="transform: translate3d(-50%, -50%, 0);"
-                  ></clr-icon> </clr-draggable-ghost
+                  ></cds-icon> </clr-draggable-ghost
               ></span>
             </td>
           </tr>
@@ -136,12 +136,7 @@
               <span class="label" [clrDraggable]="file"
                 >{{file.name}}
                 <clr-draggable-ghost *clrIfDragged>
-                  <clr-icon
-                    shape="image"
-                    size="36"
-                    class="is-solid"
-                    style="transform: translate3d(-50%, -50%, 0);"
-                  ></clr-icon>
+                  <cds-icon shape="image" size="36" solid style="transform: translate3d(-50%, -50%, 0);"></cds-icon>
                 </clr-draggable-ghost>
               </span>
             </td>

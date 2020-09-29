@@ -20,11 +20,12 @@ import { ClrWizardPage } from './wizard-page';
       [attr.disabled]="isDisabled ? '' : null"
     >
       <span class="clr-wizard-stepnav-link-suffix">
-        <clr-icon
+        <cds-icon
           shape="error-standard"
-          class="is-error clr-wizard-stepnav-item-error-icon"
+          status="danger"
+          class="clr-wizard-stepnav-item-error-icon"
           *ngIf="hasError"
-        ></clr-icon>
+        ></cds-icon>
         <ng-content *ngIf="!hasError"></ng-content>
       </span>
       <span class="clr-wizard-stepnav-link-title">

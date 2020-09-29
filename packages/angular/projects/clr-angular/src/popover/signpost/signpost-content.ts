@@ -44,7 +44,7 @@ const POSITIONS: string[] = [
           (click)="close()"
           [attr.aria-controls]="signpostContentId"
         >
-          <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
+          <cds-icon shape="window-close" [attr.title]="commonStrings.keys.close"></cds-icon>
         </button>
       </div>
       <div class="signpost-content-body">

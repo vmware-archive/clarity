@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -23,11 +23,11 @@
     (click)="expandService.toggle();"
     (focus)="focusTreeNode()"
   >
-    <clr-icon
+    <cds-icon
       class="clr-treenode-caret-icon"
-      shape="caret"
-      [attr.dir]="expandService.expanded ? 'down' : 'right'"
-    ></clr-icon>
+      shape="angle"
+      [attr.direction]="expandService.expanded ? 'down' : 'right'"
+    ></cds-icon>
   </button>
   <div class="clr-treenode-spinner-container" *ngIf="expandService.loading || _model.loading">
     <span class="clr-treenode-spinner spinner"></span>

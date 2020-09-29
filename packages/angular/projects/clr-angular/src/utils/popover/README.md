@@ -30,7 +30,7 @@ This is what it looks like from the implementing component perspective:
 
 ```html
 <button class="btn" clrPopoverOpenCloseButton role="button" type="button" [attr.aria-owns]="popoverId" clrPopoverAnchor>
-  <clr-icon shape="home"></clr-icon> Popover Anchor
+  <cds-icon shape="home"></cds-icon> Popover Anchor
 </button>
 <div
   [id]="popoverId"
@@ -41,7 +41,7 @@ This is what it looks like from the implementing component perspective:
   <header class="header-4" role="heading">
     Header
     <button role="button" class="btn btn-link" clrPopoverCloseButton>
-      <clr-icon shape="close" size="36" class="is-inverse"></clr-icon>
+      <cds-icon shape="window-close" size="36" class="is-inverse"></cds-icon>
     </button>
   </header>
   <section role="region">

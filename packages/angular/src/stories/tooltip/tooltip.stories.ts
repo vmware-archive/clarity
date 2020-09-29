@@ -9,6 +9,11 @@ import { select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
+import '@clr/core/icon/register.js';
+import { ClarityIcons, infoCircleIcon } from '@clr/core/icon';
+
+ClarityIcons.addIcons(infoCircleIcon);
+
 export default {
   title: 'Tooltip',
   decorators: [

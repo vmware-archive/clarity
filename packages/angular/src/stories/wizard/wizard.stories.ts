@@ -10,6 +10,11 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
+import '@clr/core/icon/register.js';
+import { ClarityIcons, stepForward2Icon } from '@clr/core/icon';
+
+ClarityIcons.addIcons(stepForward2Icon);
+
 export default {
   title: 'Wizard',
   decorators: [

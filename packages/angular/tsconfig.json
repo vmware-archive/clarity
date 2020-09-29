@@ -22,9 +22,7 @@
       "@clr/angular": ["./projects/clr-angular/src/index.ts"],
       "@clr/angular/*": ["./projects/clr-angular/src/*"],
       "@clr/icons": ["../../dist/clr-icons"],
-      "@clr/icons/shapes/*": ["../../dist/clr-icons/shapes/*"],
-      "@clr/core": ["../../dist/core"],
-      "@clr/core/*": ["../../dist/core/*"]
+      "@clr/icons/shapes/*": ["../../dist/clr-icons/shapes/*"]
     }
   },
   "angularCompilerOptions": {

@@ -51,6 +51,7 @@
     "@angular/platform-browser-dynamic": "11.0.0",
     "@angular/router": "11.0.0",
     "css-vars-ponyfill": "2.3.1",
+    "@clr/core": "latest",
     "rxjs": "6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "0.10.3"

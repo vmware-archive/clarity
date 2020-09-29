@@ -56,6 +56,18 @@ import { DatagridRowRenderer } from './render/row-renderer';
 import { WrappedCell } from './wrapped-cell';
 import { WrappedColumn } from './wrapped-column';
 import { WrappedRow } from './wrapped-row';
+import {
+  angleDoubleIcon,
+  arrowIcon,
+  ClarityIcons,
+  ellipsisVerticalIcon,
+  filterGridCircleIcon,
+  filterGridIcon,
+  stepForward2Icon,
+  timesIcon,
+  viewColumnsIcon,
+  windowCloseIcon,
+} from '@clr/core/icon';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
@@ -123,4 +135,18 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   exports: [CLR_DATAGRID_DIRECTIVES],
   entryComponents: [WrappedCell, WrappedColumn, WrappedRow],
 })
-export class ClrDatagridModule {}
+export class ClrDatagridModule {
+  constructor() {
+    ClarityIcons.addIcons(
+      ellipsisVerticalIcon,
+      viewColumnsIcon,
+      windowCloseIcon,
+      arrowIcon,
+      timesIcon,
+      stepForward2Icon,
+      angleDoubleIcon,
+      filterGridCircleIcon,
+      filterGridIcon
+    );
+  }
+}

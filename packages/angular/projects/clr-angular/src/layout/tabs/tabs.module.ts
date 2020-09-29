@@ -19,6 +19,7 @@ import { ClrTabLink } from './tab-link.directive';
 import { ClrTabOverflowContent } from './tab-overflow-content';
 import { ClrTabs } from './tabs';
 import { ClrKeyFocusModule } from '../../utils/focus/key-focus/key-focus.module';
+import { ClarityIcons, ellipsisHorizontalIcon } from '@clr/core/icon';
 
 export const CLR_TABS_DIRECTIVES: Type<any>[] = [
   ClrTabContent,
@@ -35,4 +36,8 @@ export const CLR_TABS_DIRECTIVES: Type<any>[] = [
   declarations: [CLR_TABS_DIRECTIVES],
   exports: [CLR_TABS_DIRECTIVES, ClrConditionalModule],
 })
-export class ClrTabsModule {}
+export class ClrTabsModule {
+  constructor() {
+    ClarityIcons.addIcons(ellipsisHorizontalIcon);
+  }
+}

@@ -87,7 +87,7 @@ export default function (): void {
       [ngClass]="{ active: open }"
       clrSignpostTrigger
     >
-      <clr-icon shape="info"></clr-icon>
+      <cds-icon shape="info-circle"></cds-icon>
     </button>
   `,
 })

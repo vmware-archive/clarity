@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ClarityIcons, errorStandardIcon } from '@clr/core/icon';
 
 import { ClrAlertModule } from '../emphasis/alert/alert.module';
 import { ClrModalModule } from '../modal/modal.module';
@@ -41,4 +42,8 @@ export const CLR_WIZARD_DIRECTIVES: any[] = [
   declarations: [CLR_WIZARD_DIRECTIVES],
   exports: [CLR_WIZARD_DIRECTIVES],
 })
-export class ClrWizardModule {}
+export class ClrWizardModule {
+  constructor() {
+    ClarityIcons.addIcons(errorStandardIcon);
+  }
+}

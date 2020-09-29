@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,6 +15,7 @@ import { ClrAccordion } from './accordion';
 import { ClrAccordionContent } from './accordion-content';
 import { AccordionOompaLoompa } from './chocolate/accordion-oompa-loompa';
 import { AccordionWillyWonka } from './chocolate/accordion-willy-wonka';
+import { angleIcon, checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@clr/core/icon';
 
 const declarations = [
   ClrAccordion,
@@ -31,4 +32,8 @@ const declarations = [
   declarations: [...declarations],
   exports: [...declarations],
 })
-export class ClrAccordionModule {}
+export class ClrAccordionModule {
+  constructor() {
+    ClarityIcons.addIcons(angleIcon, exclamationCircleIcon, checkCircleIcon);
+  }
+}

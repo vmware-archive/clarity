@@ -11,11 +11,11 @@ import { AlertIconAndTypesService } from './providers/icon-and-types.service';
   selector: 'clr-alert-item',
   template: `
     <div class="alert-icon-wrapper">
-      <clr-icon
+      <cds-icon
         class="alert-icon"
         [attr.shape]="iconService.alertIconShape"
         [attr.title]="iconService.alertIconTitle"
-      ></clr-icon>
+      ></cds-icon>
     </div>
     <ng-content></ng-content>
   `,

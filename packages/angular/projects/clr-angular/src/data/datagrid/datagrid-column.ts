@@ -46,7 +46,13 @@ import { DetailService } from './providers/detail.service';
     <div class="datagrid-column-flex">
       <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
         <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-        <clr-icon *ngIf="sortIcon" [attr.shape]="sortIcon" aria-hidden="true" class="sort-icon"></clr-icon>
+        <cds-icon
+          *ngIf="sortDirection"
+          shape="arrow"
+          [attr.direction]="sortDirection"
+          aria-hidden="true"
+          class="sort-icon"
+        ></cds-icon>
       </button>
       <!-- I'm really not happy with that select since it's not very scalable -->
       <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>
@@ -129,6 +135,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
         this.sortOrderChange.emit(this._sortOrder);
         // removes the sortIcon when column becomes unsorted
         this.sortIcon = null;
+        this._sortDirection = null;
       }
       // deprecated: to be removed - START
       if (this.sorted && sort.comparator !== this._sortBy) {
@@ -322,7 +329,19 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   @Output('clrDgSortOrderChange') public sortOrderChange = new EventEmitter<ClrDatagridSortOrder>();
 
+  /**
+   * @deprecated
+   *
+   * Use `sortDirection` to indentify the sort direction
+   */
   public sortIcon: string | null;
+
+  private _sortDirection: 'up' | 'down' | null;
+
+  public get sortDirection(): 'up' | 'down' | null {
+    return this._sortDirection;
+  }
+
   /**
    * Sorts the datagrid based on this column
    */
@@ -336,7 +355,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     // setting the private variable to not retrigger the setter logic
     this._sortOrder = this._sort.reverse ? ClrDatagridSortOrder.DESC : ClrDatagridSortOrder.ASC;
     // Sets the correct icon for current sort order
-    this.sortIcon = this._sortOrder === ClrDatagridSortOrder.DESC ? 'arrow down' : 'arrow';
+    this._sortDirection = this._sortOrder === ClrDatagridSortOrder.DESC ? 'down' : 'up';
+    this.sortIcon = this._sortOrder === ClrDatagridSortOrder.DESC ? 'arrow down' : 'arrow'; // Backward compatibility
     this.sortOrderChange.emit(this._sortOrder);
 
     // deprecated: to be removed - START

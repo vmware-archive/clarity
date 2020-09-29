@@ -21,6 +21,7 @@ import { ClrPopoverModuleNext } from '../../utils/popover/popover.module';
 import { ClrOptionItems } from './option-items.directive';
 import { ClrSpinnerModule } from '../../progress/spinner/spinner.module';
 import { ClrKeyFocusModule } from '../../utils/focus/key-focus/key-focus.module';
+import { angleIcon, checkCircleIcon, ClarityIcons, exclamationCircleIcon, windowCloseIcon } from '@clr/core/icon';
 
 @NgModule({
   imports: [
@@ -45,4 +46,8 @@ import { ClrKeyFocusModule } from '../../utils/focus/key-focus/key-focus.module'
     ClrOptionItems,
   ],
 })
-export class ClrComboboxModule {}
+export class ClrComboboxModule {
+  constructor() {
+    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon, angleIcon, windowCloseIcon);
+  }
+}

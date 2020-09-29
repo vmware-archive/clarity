@@ -69,7 +69,7 @@ export default function (): void {
       this.dragEventListener.dragStarted.next(mockDragStartEventInt);
       expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
       const draggableGhost = this.fixture.nativeElement.querySelector('clr-draggable-ghost');
-      expect(draggableGhost.querySelectorAll('clr-icon').length).toBe(1);
+      expect(draggableGhost.querySelectorAll('cds-icon').length).toBe(1);
     });
 
     // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
@@ -86,7 +86,7 @@ export default function (): void {
   template: `<div clrDraggable>
     Test
     <clr-draggable-ghost *clrIfDragged>
-      <clr-icon shape="check"></clr-icon>
+      <cds-icon shape="check"></cds-icon>
     </clr-draggable-ghost>
     <button clrDragHandle></button>
   </div>`,

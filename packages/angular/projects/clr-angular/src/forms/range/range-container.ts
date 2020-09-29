@@ -22,13 +22,20 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
       <div class="clr-range-wrapper" [class.progress-fill]="hasProgress">
         <ng-content select="[clrRange]"></ng-content>
         <span *ngIf="hasProgress" class="fill-input" [style.width]="getRangeProgressFillWidth()"></span>
-        <clr-icon
+        <cds-icon
           *ngIf="showInvalid"
           class="clr-validate-icon"
+          status="danger"
           shape="exclamation-circle"
           aria-hidden="true"
-        ></clr-icon>
-        <clr-icon *ngIf="showValid" class="clr-validate-icon" shape="check-circle" aria-hidden="true"></clr-icon>
+        ></cds-icon>
+        <cds-icon
+          *ngIf="showValid"
+          class="clr-validate-icon"
+          shape="check-circle"
+          status="success"
+          aria-hidden="true"
+        ></cds-icon>
       </div>
       <ng-content select="clr-control-helper" *ngIf="showHelper"></ng-content>
       <ng-content select="clr-control-error" *ngIf="showInvalid"></ng-content>

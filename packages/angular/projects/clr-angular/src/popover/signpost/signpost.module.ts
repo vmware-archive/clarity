@@ -6,6 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
+import { ClarityIcons, infoCircleIcon, windowCloseIcon } from '@clr/core/icon';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
@@ -22,4 +23,8 @@ export const CLR_SIGNPOST_DIRECTIVES: Type<any>[] = [ClrSignpost, ClrSignpostCon
   declarations: [CLR_SIGNPOST_DIRECTIVES],
   exports: [CLR_SIGNPOST_DIRECTIVES, ClrConditionalModule],
 })
-export class ClrSignpostModule {}
+export class ClrSignpostModule {
+  constructor() {
+    ClarityIcons.addIcons(windowCloseIcon, infoCircleIcon);
+  }
+}

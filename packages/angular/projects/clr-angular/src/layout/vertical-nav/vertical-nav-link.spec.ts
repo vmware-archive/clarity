@@ -58,7 +58,7 @@ export default function (): void {
 
         expect(navText[1].textContent).toMatch(/Icon Text/);
 
-        const icon = compiled.querySelector('clr-icon');
+        const icon = compiled.querySelector('cds-icon');
 
         expect(icon).not.toBeNull();
 
@@ -99,7 +99,7 @@ export default function (): void {
       Text
     </a>
     <a href="#" clrVerticalNavLink id="link2">
-      <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
+      <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
       Icon Text
     </a>
   `,

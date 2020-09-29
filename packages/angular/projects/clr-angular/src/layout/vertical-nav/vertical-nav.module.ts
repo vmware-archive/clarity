@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
+import { angleDoubleIcon, angleIcon, ClarityIcons } from '@clr/core/icon';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
@@ -30,4 +31,8 @@ export const CLR_VERTICAL_NAV_DIRECTIVES: Type<any>[] = [
   declarations: [CLR_VERTICAL_NAV_DIRECTIVES],
   exports: [CLR_VERTICAL_NAV_DIRECTIVES, ClrConditionalModule, ClrIconModule, ClrFocusOnViewInitModule],
 })
-export class ClrVerticalNavModule {}
+export class ClrVerticalNavModule {
+  constructor() {
+    ClarityIcons.addIcons(angleIcon, angleDoubleIcon);
+  }
+}

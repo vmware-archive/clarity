@@ -249,7 +249,7 @@
   .switcher {
     @include css-var(color, clr-calendar-btn-color, $clr-calendar-btn-color, $clr-use-custom-properties);
 
-    clr-icon {
+    cds-icon {
       @include equilateral($clr_baselineRem_0_75);
     }
   }

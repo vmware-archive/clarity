@@ -9,7 +9,7 @@
     <header class="header header-6">
       <div class="branding">
         <a href="#">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Project Clarity</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
       </form>
       <div class="settings">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
+          <cds-icon shape="cog" inverse></cds-icon>
         </a>
       </div>
     </header>
@@ -28,7 +28,7 @@
       <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
         <ng-container *ngFor="let item of case.items">
           <a clrVerticalNavLink href="javascript:void(0)" *ngIf="!item['children']">
-            <clr-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></clr-icon>
+            <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></cds-icon>
             {{item.label}}
           </a>
         </ng-container>

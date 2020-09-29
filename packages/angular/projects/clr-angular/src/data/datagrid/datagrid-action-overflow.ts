@@ -36,7 +36,7 @@ let clrDgActionId = 0;
       clrPopoverAnchor
       clrPopoverOpenCloseButton
     >
-      <clr-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></clr-icon>
+      <cds-icon shape="ellipsis-vertical" [attr.title]="commonStrings.keys.rowActions"></cds-icon>
     </button>
 
     <div

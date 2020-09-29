@@ -163,7 +163,7 @@ function fullSpec(description, testContainer, directives: any | any[], testCompo
     it('should have the success icon when valid', () => {
       container.state = CONTROL_STATE.VALID;
       fixture.detectChanges();
-      const icon: HTMLElement = containerEl.querySelector('clr-icon[shape=check-circle]');
+      const icon: HTMLElement = containerEl.querySelector('cds-icon[shape=check-circle]');
       expect(icon).toBeTruthy();
     });
 

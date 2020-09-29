@@ -27,7 +27,7 @@ export class VerticalNavCases {
       { label: 'Music Note Text', icon: 'music-note' },
       { label: 'Bug has a long text that should overflow', icon: 'bug' },
       { label: 'Bolt Text', icon: 'bolt' },
-      { label: 'Edit Text', icon: 'edit' },
+      { label: 'Edit Text', icon: 'pencil' },
       { label: 'Hourglass Text', icon: 'hourglass' },
       { label: 'Happy Face Text', icon: 'happy-face' },
       { label: 'Flame Text', icon: 'flame' },

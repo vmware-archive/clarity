@@ -1,3 +1,6 @@
+export declare class CdsIconCustomTag {
+}
+
 export declare class ClarityModule {
 }
 
@@ -82,6 +85,7 @@ export declare class ClrAccordionDescription {
 }
 
 export declare class ClrAccordionModule {
+    constructor();
 }
 
 export declare class ClrAccordionPanel implements OnInit, OnChanges {
@@ -134,6 +138,7 @@ export declare class ClrAlertItem {
 }
 
 export declare class ClrAlertModule {
+    constructor();
 }
 
 export declare class ClrAlerts implements AfterContentInit, OnDestroy {
@@ -241,6 +246,7 @@ export declare class ClrButtonGroupModule {
 }
 
 export declare class ClrButtonModule {
+    constructor();
 }
 
 export declare class ClrCalendar implements OnDestroy {
@@ -272,6 +278,7 @@ export declare class ClrCheckboxContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrCheckboxModule {
+    constructor();
 }
 
 export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDestroy {
@@ -340,9 +347,11 @@ export declare class ClrComboboxContainer extends ClrAbstractContainer implement
 }
 
 export declare class ClrComboboxModule {
+    constructor();
 }
 
 export declare class ClrCommonFormsModule {
+    constructor();
 }
 
 export interface ClrCommonStrings {
@@ -534,6 +543,7 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     showSeparator: boolean;
     get sortBy(): ClrDatagridComparatorInterface<T> | string;
     set sortBy(comparator: ClrDatagridComparatorInterface<T> | string);
+    get sortDirection(): 'up' | 'down' | null;
     sortIcon: string | null;
     get sortOrder(): ClrDatagridSortOrder;
     set sortOrder(value: ClrDatagridSortOrder);
@@ -671,6 +681,7 @@ export declare class ClrDatagridItemsTrackBy<T = any> {
 }
 
 export declare class ClrDatagridModule {
+    constructor();
 }
 
 export interface ClrDatagridNumericFilterInterface<T> {
@@ -826,6 +837,7 @@ export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistCont
 }
 
 export declare class ClrDatalistModule {
+    constructor();
 }
 
 export declare class ClrDataModule {
@@ -880,6 +892,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
 }
 
 export declare class ClrDatepickerModule {
+    constructor();
 }
 
 export declare class ClrDatepickerViewManager {
@@ -1143,6 +1156,7 @@ export declare class ClrInputContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrInputModule {
+    constructor();
 }
 
 export declare class ClrLabel implements OnInit, OnDestroy {
@@ -1236,6 +1250,7 @@ export declare class ClrModalBody {
 }
 
 export declare class ClrModalModule {
+    constructor();
 }
 
 export declare class ClrMonthpicker implements AfterViewInit {
@@ -1336,6 +1351,7 @@ export declare class ClrPasswordContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrPasswordModule {
+    constructor();
 }
 
 export declare class ClrPopoverAnchor {
@@ -1453,6 +1469,7 @@ export declare class ClrRadioContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrRadioModule {
+    constructor();
 }
 
 export declare class ClrRadioWrapper implements DynamicWrapper, OnInit {
@@ -1474,6 +1491,7 @@ export declare class ClrRangeContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrRangeModule {
+    constructor();
 }
 
 export declare class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
@@ -1512,6 +1530,7 @@ export declare enum ClrSelectedState {
 }
 
 export declare class ClrSelectModule {
+    constructor();
 }
 
 export declare enum ClrSide {
@@ -1537,6 +1556,7 @@ export declare class ClrSignpostContent extends AbstractPopover implements OnDes
 }
 
 export declare class ClrSignpostModule {
+    constructor();
 }
 
 export declare class ClrSignpostTrigger implements OnDestroy {
@@ -1622,6 +1642,7 @@ export declare class ClrStackViewCustomTags {
 }
 
 export declare class ClrStackViewModule {
+    constructor();
 }
 
 export declare class ClrStepButton implements OnInit {
@@ -1736,6 +1757,7 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
 }
 
 export declare class ClrTabsModule {
+    constructor();
 }
 
 export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
@@ -1747,6 +1769,7 @@ export declare class ClrTextareaContainer extends ClrAbstractContainer {
 }
 
 export declare class ClrTextareaModule {
+    constructor();
 }
 
 export declare class ClrTimeline {
@@ -1760,12 +1783,14 @@ export declare enum ClrTimelineLayout {
 }
 
 export declare class ClrTimelineModule {
+    constructor();
 }
 
 export declare class ClrTimelineStep {
     get iconAriaCurrent(): boolean;
     get iconAriaLabel(): string;
     get iconShape(): string;
+    get iconStatus(): string;
     get isProcessing(): boolean;
     state: ClrTimelineStepState;
     stepTitle: ElementRef;
@@ -1859,6 +1884,7 @@ export declare class ClrTreeNodeLink {
 }
 
 export declare class ClrTreeViewModule {
+    constructor();
 }
 
 export declare class ClrVerticalNav implements OnDestroy {
@@ -1906,6 +1932,7 @@ export declare class ClrVerticalNavLink {
 }
 
 export declare class ClrVerticalNavModule {
+    constructor();
 }
 
 export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
@@ -1996,6 +2023,7 @@ export declare class ClrWizardHeaderAction {
 }
 
 export declare class ClrWizardModule {
+    constructor();
 }
 
 export declare class ClrWizardPage implements OnInit {

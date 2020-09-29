@@ -15,7 +15,7 @@
   <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
 
   <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="info" title="Link to Clarity">
-    <clr-icon shape="info"></clr-icon>
+    <cds-icon shape="info"></cds-icon>
   </clr-wizard-header-action>
 
   <clr-wizard-page>
@@ -55,14 +55,14 @@
 
     <ng-template clrPageHeaderActions>
       <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="user">
-        <clr-icon shape="user" [class.has-badge]="userActive" [class.is-solid]="userActive"></clr-icon>
+        <cds-icon shape="user" [attr.solid]="userActive" [attr.badge]="userActive"></cds-icon>
       </clr-wizard-header-action>
       <clr-wizard-header-action
         (actionClicked)="headerActionClicked($event)"
         id="search"
         title="Search for the meaning of life"
       >
-        <clr-icon shape="search"></clr-icon>
+        <cds-icon shape="search"></cds-icon>
       </clr-wizard-header-action>
     </ng-template>
   </clr-wizard-page>

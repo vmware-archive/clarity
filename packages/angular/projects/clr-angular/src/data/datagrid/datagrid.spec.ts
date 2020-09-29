@@ -739,7 +739,7 @@ export default function (): void {
         const context = this.create(ClrDatagrid, ExpandedOnInitTest);
         const caretIcon = context.clarityElement.querySelector('.datagrid-expandable-caret-icon');
         expect(caretIcon).not.toBeNull();
-        expect(caretIcon.getAttribute('dir')).toBe('down');
+        expect(caretIcon.getAttribute('direction')).toBe('down');
         const rowDetail = context.clarityElement.querySelector('.datagrid-row-detail');
         expect(rowDetail).not.toBeNull();
       }));

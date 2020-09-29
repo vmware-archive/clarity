@@ -9,7 +9,16 @@ import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/internal/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-@Component({ templateUrl: './combobox.demo.html' })
+@Component({
+  templateUrl: './combobox.demo.html',
+  styles: [
+    `
+      cds-icon {
+        --color: var(--clr-label-gray-color);
+      }
+    `,
+  ],
+})
 export class ComboboxDemo {
   private _disabled = false;
   get disabled(): boolean {

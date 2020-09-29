@@ -26,7 +26,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       [attr.aria-level]="ariaLevel"
       [attr.aria-setsize]="ariaSetsize"
     >
-      <clr-icon shape="caret" class="stack-block-caret" *ngIf="expandable" [attr.dir]="caretDirection"></clr-icon>
+      <cds-icon shape="angle" class="stack-block-caret" *ngIf="expandable" [attr.direction]="caretDirection"></cds-icon>
       <span class="clr-sr-only" *ngIf="getChangedValue">{{ commonStrings.keys.stackViewChanged }}</span>
       <div class="stack-view-key">
         <!-- This structure changed to fix #3567 and the a11y request was to move away from dl's -->

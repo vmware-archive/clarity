@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,7 @@ import { ClrTree } from './tree';
 import { ClrRecursiveForOf } from './recursive-for-of';
 import { RecursiveChildren } from './recursive-children';
 import { ClrTreeNodeLink } from './tree-node-link';
+import { angleIcon, ClarityIcons } from '@clr/core/icon';
 
 export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode, ClrRecursiveForOf, ClrTreeNodeLink];
 
@@ -22,4 +23,8 @@ export const CLR_TREE_VIEW_DIRECTIVES: Type<any>[] = [ClrTree, ClrTreeNode, ClrR
   declarations: [CLR_TREE_VIEW_DIRECTIVES, RecursiveChildren],
   exports: [CLR_TREE_VIEW_DIRECTIVES],
 })
-export class ClrTreeViewModule {}
+export class ClrTreeViewModule {
+  constructor() {
+    ClarityIcons.addIcons(angleIcon);
+  }
+}

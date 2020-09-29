@@ -9,7 +9,7 @@
     <header class="header header-6">
       <div class="branding">
         <a href="#">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Project Clarity</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
       </form>
       <div class="settings">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
+          <cds-icon inverse shape="cog"></cds-icon>
         </a>
       </div>
     </header>
@@ -33,7 +33,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Beatles
           </a>
           <ng-template clrIfExpanded>
@@ -58,7 +58,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Killers
           </a>
           <ng-template clrIfExpanded>
@@ -76,7 +76,7 @@
           </ng-template>
         </clr-vertical-nav-group>
         <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-          <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
           Wikipedia
         </a>
       </clr-vertical-nav>

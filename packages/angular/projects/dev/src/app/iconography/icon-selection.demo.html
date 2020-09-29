@@ -31,13 +31,9 @@
 
 <section *ngFor="let set of allShapeSets" class="selection-shapes">
   <h5>{{ set.name }}</h5>
-  <div class="clr-row clr-icon-collection">
-    <div *ngFor="let shape of set.shapes" class="clr-icon-item clr-col-xs-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
-      <clr-icon
-        [attr.shape]="shape"
-        [attr.title]="shape"
-        [ngClass]="{ 'is-solid': solid, 'has-alert': options == 'alert', 'has-badge': options == 'badge' }"
-      ></clr-icon>
+  <div class="clr-row cds-icon-collection">
+    <div *ngFor="let shape of set.shapes" class="cds-icon-item clr-col-xs-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
+      <cds-icon [attr.shape]="shape" [attr.title]="shape" [attr.solid]="solid" [attr.badge]="options"></cds-icon>
       <span class="icon-shape-name">{{ shape }}</span>
     </div>
   </div>

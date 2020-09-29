@@ -9,7 +9,7 @@
     <header class="header header-6">
       <div class="branding">
         <a href="#">
-          <clr-icon shape="vm-bug"></clr-icon>
+          <cds-icon shape="vm-bug"></cds-icon>
           <span class="title">Project Clarity</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
       </form>
       <div class="settings">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="cog"></clr-icon>
+          <cds-icon shape="cog" inverse></cds-icon>
         </a>
       </div>
     </header>
@@ -38,7 +38,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Beatles
           </a>
           <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
@@ -63,7 +63,7 @@
             [routerLinkActiveOptions]="{exact:true}"
             clrVerticalNavLink
           >
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Killers
           </a>
           <ng-template clrIfExpanded>
@@ -82,7 +82,7 @@
         </clr-vertical-nav-group>
 
         <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-          <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+          <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
           Wikipedia
         </a>
       </clr-vertical-nav>
@@ -94,7 +94,7 @@
           (clrVerticalNavCollapsedChange)="updateNavCollapsed($event)"
         >
           <clr-vertical-nav-group routerLinkActive="active">
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Beatles
             <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
               <clr-vertical-nav-group-children>
@@ -112,7 +112,7 @@
           </clr-vertical-nav-group>
 
           <clr-vertical-nav-group routerLinkActive="active">
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Killers
             <ng-template clrIfExpanded>
               <clr-vertical-nav-group-children>
@@ -130,7 +130,7 @@
           </clr-vertical-nav-group>
 
           <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-            <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
             Wikipedia
           </a>
         </clr-vertical-nav>
@@ -144,7 +144,7 @@
         >
           <clr-vertical-nav-group routerLinkActive="active">
             <a hidden aria-hidden="true" [routerLink]="['./beatles']"> </a>
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Beatles
             <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
               <clr-vertical-nav-group-children>
@@ -163,7 +163,7 @@
 
           <clr-vertical-nav-group routerLinkActive="active">
             <a hidden aria-hidden="true" [routerLink]="['./killers']"> </a>
-            <clr-icon [attr.shape]="'home'" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
             The Killers
             <ng-template clrIfExpanded>
               <clr-vertical-nav-group-children>
@@ -181,7 +181,7 @@
           </clr-vertical-nav-group>
 
           <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
-            <clr-icon shape="certificate" clrVerticalNavIcon></clr-icon>
+            <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
             Wikipedia
           </a>
         </clr-vertical-nav>

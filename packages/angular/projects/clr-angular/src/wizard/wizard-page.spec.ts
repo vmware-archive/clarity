@@ -133,7 +133,7 @@ class TemplateTestComponent {
       <clr-wizard-button [type]="'finish'" class="clrtest-wizard-finish">Finish</clr-wizard-button>
 
       <clr-wizard-header-action (actionClicked)="headerActionClicked($event)">
-        <clr-icon shape="cloud" class="is-solid"></clr-icon>
+        <cds-icon shape="cloud" solid></cds-icon>
       </clr-wizard-header-action>
 
       <clr-wizard-page #viewTestWizardPageOne [id]="testId" [clrWizardPagePreventDefaultCancel]="preventCancel">
@@ -141,10 +141,10 @@ class TemplateTestComponent {
 
         <ng-template clrPageHeaderActions>
           <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="bell">
-            <clr-icon shape="bell" class="has-badge"></clr-icon>
+            <cds-icon shape="bell" badge></cds-icon>
           </clr-wizard-header-action>
           <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="warning">
-            <clr-icon shape="warning"></clr-icon>
+            <cds-icon shape="warning"></cds-icon>
           </clr-wizard-header-action>
         </ng-template>
 

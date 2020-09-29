@@ -31,7 +31,7 @@
     "clean": "del ./dist && yarn run schematics:clean",
     "start": "yarn angular:dev:start",
     "build": "npm-run-all build:ci build:website build:storybook:angular build:storybook:core angular:dev:build",
-    "build:ci": "npm-run-all clean format lint build:libs test",
+    "build:ci": "npm-run-all clean format build:libs lint test",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build react:build",
     "build:website": "yarn --cwd apps/website run build",
     "build:storybook:angular": "yarn --cwd packages/angular run build-storybook",

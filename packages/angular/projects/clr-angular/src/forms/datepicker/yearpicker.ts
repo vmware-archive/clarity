@@ -23,7 +23,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         (click)="previousDecade()"
         [attr.aria-label]="commonStrings.keys.datepickerPreviousDecade"
       >
-        <clr-icon shape="angle" dir="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></clr-icon>
+        <cds-icon shape="angle" direction="left" [attr.title]="commonStrings.keys.datepickerPreviousDecade"></cds-icon>
       </button>
       <button
         class="calendar-btn switcher"
@@ -31,7 +31,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         (click)="currentDecade()"
         [attr.aria-label]="commonStrings.keys.datepickerCurrentDecade"
       >
-        <clr-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></clr-icon>
+        <cds-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentDecade"></cds-icon>
       </button>
       <button
         class="calendar-btn switcher"
@@ -39,7 +39,7 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
         (click)="nextDecade()"
         [attr.aria-label]="commonStrings.keys.datepickerNextDecade"
       >
-        <clr-icon shape="angle" dir="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></clr-icon>
+        <cds-icon shape="angle" direction="right" [attr.title]="commonStrings.keys.datepickerNextDecade"></cds-icon>
       </button>
     </div>
     <div class="years">

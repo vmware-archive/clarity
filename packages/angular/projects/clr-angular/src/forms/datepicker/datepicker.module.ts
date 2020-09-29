@@ -22,6 +22,14 @@ import { ClrDay } from './day';
 import { ClrDaypicker } from './daypicker';
 import { ClrMonthpicker } from './monthpicker';
 import { ClrYearpicker } from './yearpicker';
+import {
+  checkCircleIcon,
+  ClarityIcons,
+  eventIcon,
+  exclamationCircleIcon,
+  angleIcon,
+  calendarIcon,
+} from '@clr/core/icon';
 
 export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
   ClrDay,
@@ -48,4 +56,8 @@ export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
   exports: [CLR_DATEPICKER_DIRECTIVES],
   entryComponents: [ClrDateContainer],
 })
-export class ClrDatepickerModule {}
+export class ClrDatepickerModule {
+  constructor() {
+    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon, angleIcon, eventIcon, calendarIcon);
+  }
+}

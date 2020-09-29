@@ -167,13 +167,13 @@ export default function (): void {
 
       const caret: HTMLElement = fixture.nativeElement.querySelector('.stack-block-caret');
 
-      expect(caret.getAttribute('dir')).toBe('right');
+      expect(caret.getAttribute('direction')).toBe('right');
 
       getBlockInstance(fixture).expanded = true;
 
       fixture.detectChanges();
 
-      expect(caret.getAttribute('dir')).toBe('down');
+      expect(caret.getAttribute('direction')).toBe('down');
     });
 
     it('adds the on-focus class when the stack label is focused in an expandable but collapsed stack block', () => {

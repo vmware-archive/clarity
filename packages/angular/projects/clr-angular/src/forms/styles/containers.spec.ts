@@ -24,7 +24,7 @@ import { ClrIconModule } from '../../icon/icon.module';
       >
         <div class="clr-input-wrapper">
           <input type="text" id="{{ layout }}-basic" placeholder="Enter value here" class="clr-input" />
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         </div>
         <span class="clr-subtext">Helper Text</span>
       </div>
@@ -78,7 +78,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           </label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -132,7 +132,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           </label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -186,7 +186,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           </label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -240,7 +240,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           </label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -270,7 +270,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           <label for="{{ layout }}-radio3" class="clr-control-label">option 3</label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -300,7 +300,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           <label for="{{ layout }}-radio6" class="clr-control-label">option 3</label>
         </div>
         <div class="clr-subtext-wrapper">
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           <span class="clr-subtext">Helper Text</span>
         </div>
       </div>
@@ -323,7 +323,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           <input #fileInput type="file" id="{{ layout }}-file" placeholder="Enter value here" class="clr-file" />
         </div>
         <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         <span class="clr-subtext">Helper Text</span>
       </div>
     </div>
@@ -344,7 +344,7 @@ import { ClrIconModule } from '../../icon/icon.module';
           <input type="file" id="{{ layout }}-file" placeholder="Enter value here" />
         </div>
         <!-- IMPORTANT DIFFERENCE IN STRUCTURE! ICON IS NOT PART OF THE INPUT WRAPPER -->
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         <span class="clr-subtext">Helper Text</span>
       </div>
     </div>
@@ -368,7 +368,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-textarea"
           ></textarea>
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         </div>
         <span class="clr-subtext">Helper Text</span>
       </div>
@@ -391,7 +391,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             <option>Option 2</option>
             <option>Option 3</option>
           </select>
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         </div>
         <span class="clr-subtext">Helper Text</span>
       </div>
@@ -414,7 +414,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             <option>Option 2</option>
             <option>Option 3</option>
           </select>
-          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
         </div>
         <span class="clr-subtext">Helper Text</span>
       </div>

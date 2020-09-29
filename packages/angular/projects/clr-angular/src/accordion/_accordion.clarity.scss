@@ -310,7 +310,7 @@
     .clr-accordion-status {
       width: $clr_baselineRem_0_8;
 
-      clr-icon {
+      cds-icon {
         @include equilateral($clr_baselineRem_0_583);
       }
     }

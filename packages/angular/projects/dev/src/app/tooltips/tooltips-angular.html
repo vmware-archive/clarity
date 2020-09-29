@@ -7,13 +7,14 @@
 <h6>Top-Right</h6>
 <div class="clr-example squeeze example-center" id="top-right">
   <clr-tooltip>
-    <clr-icon
+    <cds-icon
+      status="info"
       title="Tooltip icon"
       clrTooltipTrigger
       shape="info-standard"
       size="24"
       aria-label="blank id string"
-    ></clr-icon>
+    ></cds-icon>
     <clr-tooltip-content [id]="blankStringId" clrPosition="top-right" clrSize="xs">
       <span>Lorem 12</span>
     </clr-tooltip-content>
@@ -23,7 +24,7 @@
 <h6>Top-Left</h6>
 <div class="clr-example squeeze example-center" id="top-left">
   <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="valid id string"></clr-icon>
+    <cds-icon status="info" clrTooltipTrigger shape="info-standard" size="24" aria-label="valid id string"></cds-icon>
     <clr-tooltip-content [id]="validString" clrPosition="top-left" clrSize="sm">
       <span>Lorem ipsum</span>
     </clr-tooltip-content>
@@ -33,7 +34,7 @@
 <h6>Bottom-Right</h6>
 <div class="clr-example squeeze example-center" id="bottom-right">
   <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="undefined id"></clr-icon>
+    <cds-icon status="info" clrTooltipTrigger shape="info-standard" size="24" aria-label="undefined id"></cds-icon>
     <clr-tooltip-content [id]="undefined" clrPosition="bottom-right" clrSize="md">
       <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -43,7 +44,7 @@
 <h6>Bottom-Left</h6>
 <div class="clr-example squeeze example-center" id="bottom-left">
   <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="null id"></clr-icon>
+    <cds-icon status="info" clrTooltipTrigger shape="info-standard" size="24" aria-label="null id"></cds-icon>
     <clr-tooltip-content [id]="null" clrPosition="bottom-left" clrSize="lg">
       <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -53,7 +54,7 @@
 <h6>Right</h6>
 <div class="clr-example squeeze example-center" id="right">
   <clr-tooltip>
-    <clr-icon id clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 5"></clr-icon>
+    <cds-icon status="info" id clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 5"></cds-icon>
     <clr-tooltip-content>
       <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -63,7 +64,7 @@
 <h6>Left</h6>
 <div class="clr-example squeeze example-center" id="left">
   <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 6"></clr-icon>
+    <cds-icon status="info" clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 6"></cds-icon>
     <clr-tooltip-content clrPosition="left" clrSize="sm">
       <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -73,7 +74,7 @@
 <h6>Tooltip *clrIfOpen Test</h6>
 <div class="clr-example squeeze example-center">
   <clr-tooltip>
-    <clr-icon clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 7"></clr-icon>
+    <cds-icon status="info" clrTooltipTrigger shape="info-standard" size="24" aria-label="Uniq tooltip 7"></cds-icon>
     <clr-tooltip-content *clrIfOpen clrPosition="left" clrSize="sm">
       <span>Lorem ipsum sit</span>
     </clr-tooltip-content>
@@ -84,7 +85,7 @@
 <div class="clr-example" style="margin-bottom: 96px;">
   <clr-tooltip>
     <button clrTooltipTrigger class="btn btn-primary" aria-label="Uniq tooltip 8">
-      <clr-icon shape="info-standard" size="24"></clr-icon>
+      <cds-icon status="info" shape="info-standard" size="24"></cds-icon>
     </button>
     <ng-container *ngIf="true">
       <clr-tooltip-content *clrIfOpen clrSize="lg">

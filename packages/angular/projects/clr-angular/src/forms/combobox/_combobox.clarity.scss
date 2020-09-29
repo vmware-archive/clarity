@@ -137,6 +137,15 @@
         font-weight: $clr-font-weight-regular;
         padding: 0 $clr_baselineRem_8px 0 $clr_baselineRem_4px;
       }
+
+      cds-icon[shape='window-close'] {
+        @include css-var(
+          color,
+          clr-combobox-pill-font-color,
+          $clr-combobox-pill-font-color,
+          $clr-use-custom-properties
+        );
+      }
     }
 
     .clr-combobox-input-wrapper {
@@ -165,6 +174,10 @@
     color: currentColor;
     cursor: pointer;
     outline: none;
+
+    cds-icon[shape='angle'] {
+      @include css-var(color, clr-combobox-pill-font-color, $clr-combobox-pill-font-color, $clr-use-custom-properties);
+    }
   }
 
   .clr-combobox-options {

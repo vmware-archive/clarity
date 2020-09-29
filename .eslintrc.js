@@ -17,7 +17,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  ignorePatterns: ['**/*.css.ts'],
+  ignorePatterns: ['**/*.css.ts', 'tools/**'],
   plugins: ['@typescript-eslint', 'jasmine', 'clarity'],
   rules: {
     'accessor-pairs': 'error',

@@ -37,7 +37,7 @@ import { APP_ROUTES } from './app.routing';
     <!--DO NOT DELETE THE COMMENTS BELOW. Needed for testing the Vertical Nav-->
     <!--clr-vertical-nav [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="2">
                 <clr-vertical-nav-group>
-                    <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
+                    <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
                     Home
                     <ng-container *ngFor="let route of routes" ngProjectAs="[clrVerticalNavLink]">
                         <a clrVerticalNavLink *ngIf="route.path != ''"

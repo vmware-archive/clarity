@@ -15,8 +15,8 @@
             </div>
             <div class="card-block">
               <div class="alert alert-warning alert-sm" *ngIf="showBlockAlert">
-                <button type="button" class="close" aria-label="Close">
-                  <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                <button type="button" class="close" aria-label="window close">
+                  <cds-icon aria-hidden="true" shape="window-close"></cds-icon>
                 </button>
                 <div class="alert-item static">
                   <span class="alert-text">
@@ -41,7 +41,7 @@
               <div class="dropdown top-left" [class.open]="ddOpen">
                 <button class="dropdown-toggle btn btn-sm btn-link">
                   Dropdown Actions
-                  <clr-icon shape="caret down"></clr-icon>
+                  <cds-icon shape="caret" direction="down"></cds-icon>
                 </button>
                 <div class="dropdown-menu">
                   <a href="..." class="dropdown-item">DD Action 1</a>

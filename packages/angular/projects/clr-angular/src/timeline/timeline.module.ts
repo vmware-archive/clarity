@@ -6,6 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
+import { circleIcon, ClarityIcons, dotCircleIcon, errorStandardIcon, successStandardIcon } from '@clr/core/icon';
 
 import { ClrIconModule } from '../icon/icon.module';
 import { ClrSpinnerModule } from '../progress/spinner/spinner.module';
@@ -29,4 +30,8 @@ const CLR_TIMELINE_DIRECTIVES: Type<any>[] = [
   exports: [...CLR_TIMELINE_DIRECTIVES, ClrIconModule, ClrSpinnerModule],
   declarations: [CLR_TIMELINE_DIRECTIVES],
 })
-export class ClrTimelineModule {}
+export class ClrTimelineModule {
+  constructor() {
+    ClarityIcons.addIcons(circleIcon, dotCircleIcon, errorStandardIcon, successStandardIcon);
+  }
+}

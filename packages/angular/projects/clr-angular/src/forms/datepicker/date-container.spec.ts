@@ -183,14 +183,14 @@ export default function () {
         context.clarityDirective.showInvalid = false;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeTruthy();
-        expect(context.clarityElement.querySelector('clr-icon[shape=check-circle]')).toBeTruthy();
+        expect(context.clarityElement.querySelector('cds-icon[shape=check-circle]')).toBeTruthy();
 
         /* invalid */
         context.clarityDirective.showValid = false;
         context.clarityDirective.showInvalid = true;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeNull();
-        expect(context.clarityElement.querySelector('clr-icon[shape=check-circle]')).toBeNull();
+        expect(context.clarityElement.querySelector('cds-icon[shape=check-circle]')).toBeNull();
       });
     });
 

@@ -104,7 +104,7 @@
       font-size: $clr_baselineRem_1_0833;
       line-height: $clr_baselineRem_1;
 
-      clr-icon {
+      cds-icon {
         @include css-var(fill, clr-modal-close-color, $clr-modal-close-color, $clr-use-custom-properties);
 
         // per measurement, this results in an icon that is 16x16...

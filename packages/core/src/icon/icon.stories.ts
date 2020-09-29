@@ -5,7 +5,7 @@
  */
 
 import '@clr/core/icon/register.js';
-import { CdsIcon, ClarityIcons, imageIcon, userIcon } from '@clr/core/icon';
+import { ClarityIcons, imageIcon, userIcon } from '@clr/core/icon';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
@@ -43,13 +43,7 @@ import {
   travelCollectionAliases,
   travelCollectionIcons,
 } from '@clr/core/icon';
-import {
-  propertiesGroup,
-  registerElementSafely,
-  getElementStorybookArgTypes,
-  spreadProps,
-  getElementStorybookArgs,
-} from '@clr/core/internal';
+import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 loadChartIconSet();

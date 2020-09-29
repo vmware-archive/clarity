@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,10 +11,15 @@ import { ClrInputModule } from '../input/input.module';
 import { ClrDatalistContainer } from './datalist-container';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrDatalist } from './datalist';
+import { checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@clr/core/icon';
 
 @NgModule({
   imports: [CommonModule, ClrInputModule, ClrIconModule],
   declarations: [ClrDatalist, ClrDatalistInput, ClrDatalistContainer],
   exports: [ClrDatalist, ClrDatalistInput, ClrDatalistContainer],
 })
-export class ClrDatalistModule {}
+export class ClrDatalistModule {
+  constructor() {
+    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
+  }
+}

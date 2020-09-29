@@ -79,7 +79,7 @@
     }
 
     .clr-icon,
-    clr-icon {
+    cds-icon {
       flex-grow: 0;
       flex-shrink: 0;
       @include equilateral($clr-logo-width);
@@ -118,6 +118,10 @@
       font-weight: 500;
     }
 
+    cds-icon {
+      @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+    }
+
     .nav-icon {
       @include equilateral($clr-header-height);
     }
@@ -135,7 +139,7 @@
         font-size: $clr-nav-icon-size;
       }
 
-      clr-icon {
+      cds-icon {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -144,7 +148,7 @@
       }
 
       &.nav-icon-text {
-        clr-icon {
+        cds-icon {
           position: relative;
           top: auto;
           left: auto;
@@ -234,7 +238,7 @@
         @include header-nav-appearance();
       }
 
-      .dropdown-toggle.nav-icon clr-icon:not([shape^='caret']) {
+      .dropdown-toggle.nav-icon cds-icon:not([shape^='angle']) {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -243,7 +247,7 @@
         right: $clr_baselineRem_1;
       }
 
-      .dropdown-toggle.nav-icon clr-icon[shape^='caret'] {
+      .dropdown-toggle.nav-icon cds-icon[shape^='angle'] {
         right: $clr-header-action-caret-icon-right-position;
       }
 
@@ -251,7 +255,7 @@
       .dropdown-toggle.nav-text {
         padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 
-        clr-icon[shape^='caret'] {
+        cds-icon[shape^='angle'] {
           right: $clr-header-nav-text-horizontal-padding;
         }
       }

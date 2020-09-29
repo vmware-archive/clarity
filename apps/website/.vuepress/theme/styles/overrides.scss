@@ -247,3 +247,16 @@ h4 .header-anchor cds-icon {
 .asset-download-btn cds-icon {
   vertical-align: text-top;
 }
+
+// Target viewports that are scaled (mobile) or zoomed in past 125%
+@media only screen and (max-width: 1433px) {
+  // This should apply to any @clr/ui tables - APIs and releases
+  .table {
+    table-layout: fixed;
+    width: 100%;
+
+    td {
+      word-wrap: break-word;
+    }
+  }
+}

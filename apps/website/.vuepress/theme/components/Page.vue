@@ -1,12 +1,9 @@
 <template>
   <main class="page">
     <PageSubnav v-bind="{ sidebarItems }" />
-
-    <slot name="nav-toc" />
-
     <Content class="theme-default-content" />
-
     <Footer></Footer>
+    <slot name="nav-toc" />
   </main>
 </template>
 

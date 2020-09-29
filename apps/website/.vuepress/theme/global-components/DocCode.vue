@@ -1,13 +1,13 @@
 <template>
-  <div class="code-wrapper" :class="{ expanded: state }">
+  <div class="code-wrapper" :class="{ expanded: state }" v-bind:aria-expanded="state ? 'true' : 'false'">
     <button class="btn btn-primary btn-sm toggle-button" @click="toggleState()" v-if="showToggle">
       {{ state ? 'hide' : 'show' }} code
     </button>
     <div
       class="code"
-      v-bind:aria-expanded="state ? 'true' : 'false'"
       v-bind:style="{ height: this.getHeight() }"
       ref="code-snippet"
+      v-bind:aria-hidden="state ? 'false' : 'true'"
     >
       <slot></slot>
     </div>
@@ -81,7 +81,7 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    color: inherit;
+    color: var(--cds-token-color-neutral-800);
     margin: 0;
     padding: 0;
     outline: none 0;

@@ -29,7 +29,7 @@ When establishing your navigation model, consider:
 
 #### Header
 
-<ClrImage cds-layout="m-t:md" title="Header navigation pattern" src="/images/foundation/navigation/header.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with header container element placement at the top of a viewport. There is a dotted blue line around the header element." src="/images/foundation/navigation/header.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -49,7 +49,7 @@ Conversely, the header supports other items (search and setting) and the navigat
 
 #### Subnav
 
-<ClrImage cds-layout="m-t:md" title="Subnav navigation pattern" src="/images/foundation/navigation/subnav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a subnav container element. There is a dotted blue line around the subnav element." src="/images/foundation/navigation/subnav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -69,7 +69,7 @@ Use the <a href="/components/subnav">subnav</a> for primary navigation when you 
 
 #### Sidenav
 
-<ClrImage cds-layout="m-t:md" title="Sidenav navigation pattern" src="/images/foundation/navigation/sidenav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element placed on the left side of the viewport. There is a dotted blue line around the sidenav element." src="/images/foundation/navigation/sidenav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -94,7 +94,7 @@ Conversely, the sidenav takes real estate away from the content area. Also, on m
 
 #### Header + Sidenav
 
-<ClrImage cds-layout="m-t:md" title="Header + Sidenav navigation pattern" src="/images/foundation/navigation/header_sidenav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element placed under the header and on the left side of the viewport. There is a dotted blue line around the both the sidenav element and the header element." src="/images/foundation/navigation/header_sidenav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -110,7 +110,7 @@ A common pattern for two levels of navigation. The primary navigation is in the 
 
 #### Header + Subnav
 
-<ClrImage cds-layout="m-t:md" title="Header + Subnav navigation pattern" src="/images/foundation/navigation/header_subnav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a subnav container element placed under the header. There is a dotted blue line around the both the subnav element and the header element." src="/images/foundation/navigation/header_subnav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -126,7 +126,7 @@ Because both patterns are horizontal, use this combination only when the seconda
 
 #### Subnav + Sidenav
 
-<ClrImage cds-layout="m-t:md" title="Subnav + Sidenav navigation pattern" src="/images/foundation/navigation/subnav_sidenav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element underneath a subnav container element. There is a dotted blue line around the both the subnav container element and the sidenav container element." src="/images/foundation/navigation/header_subnav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
@@ -142,7 +142,7 @@ Use the subnav for primary navigation when the links do not fit in the header.
 
 #### Header, subnav and sidenav
 
-<ClrImage cds-layout="m-t:md" title="Header, subnav and sidenav navigation pattern" src="/images/foundation/navigation/header_subnav_sidenav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element underneath a subnav container element and the subnav container element is under the header container. There is a dotted blue line around the the subnav container element, the sidenav container element and the header container element." src="/images/foundation/navigation/header_subnav_sidenav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 

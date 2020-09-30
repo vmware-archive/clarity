@@ -36,9 +36,6 @@
       $clr-use-custom-properties
     );
   }
-  .clr-focus {
-    width: 100%;
-  }
   .clr-error .clr-focus-indicator {
     @include css-var(background-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
   }

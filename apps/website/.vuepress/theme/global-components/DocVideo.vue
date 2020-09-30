@@ -12,7 +12,7 @@
         size="72"
       ></cds-icon>
     </div>
-    <video ref="video" v-bind:width="width" v-bind:autoplay="autoplay ? 'autoplay' : null" loop muted>
+    <video ref="video" v-bind:width="width" v-bind:autoplay="autoplay ? 'autoplay' : null" loop muted controls>
       <source v-bind:src="src" type="video/mp4" />
     </video>
   </div>

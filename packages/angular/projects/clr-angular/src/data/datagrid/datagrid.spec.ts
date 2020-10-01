@@ -293,23 +293,21 @@ class MixedExpandableRowTest {
 
 @Component({
   template: `
-    <clr-datagrid
-        [clrDgRowSelection]="true">
-        <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-datagrid [clrDgRowSelection]="true">
+      <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
 
-        <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-          <clr-dg-cell>{{user.name}}</clr-dg-cell>
-        </clr-dg-row>
+      <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+        <clr-dg-cell>{{ user.name }}</clr-dg-cell>
+      </clr-dg-row>
 
-        <clr-dg-footer>
+      <clr-dg-footer>
         <clr-dg-pagination #pagination [clrDgPageSize]="10">
-            <clr-dg-page-size [clrPageSizeOptions]="[10,50,100]">Users per page</clr-dg-page-size>
-            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-            of {{pagination.totalItems}} users
+          <clr-dg-page-size [clrPageSizeOptions]="[10, 50, 100]">Users per page</clr-dg-page-size>
+          {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} users
         </clr-dg-pagination>
-        </clr-dg-footer>
-      </clr-datagrid>
-  `
+      </clr-dg-footer>
+    </clr-datagrid>
+  `,
 })
 export class SortPaginationTest {
   users = [

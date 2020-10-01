@@ -717,34 +717,36 @@ export default function (): void {
         expect(['1', '1', '2', '4', '3', '9']).toEqual([...rows].map(r => r.textContent));
       });
 
-      it('sorting is working', function () {
+      // Covers the case when the application is built without Ivy
+      // and the datagrid items disappear when sorted - #4692 #5085
+      it('sorting is working when using clrDgItems', function () {
         // Instantiate the component only to obtain the test data inside
         const componentInstance = new SortPaginationTest();
         const testUsers = componentInstance.users;
-        const sortedTestUsers = [...componentInstance.users].sort((a, b) => a.name.localeCompare(b.name));
+        const sortedTestUsers = [...testUsers].sort((a, b) => a.name.localeCompare(b.name));
         const reverseSortedTestUsers = [...sortedTestUsers].reverse();
 
         this.context = this.create(ClrDatagrid, SortPaginationTest);
-        const rows: HTMLElement[] = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        const rows: Node[] = Array.from(this.context.clarityElement.querySelectorAll('.datagrid-cell'));
         expect(rows.length).toEqual(10); // 10 items * 1 property = 10 rows
 
-        expect(rows.map(r => r.textContent)).toEqual(testUsers.map(u => u.name));
+        expect(rows.map(r => r.textContent)).toEqual(testUsers.slice(0, 10).map(u => u.name));
 
         const header = this.context.clarityElement.querySelector('.datagrid-column-title');
 
         header.click();
         this.context.detectChanges();
 
-        const sortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        const sortedRows: Node[] = Array.from(this.context.clarityElement.querySelectorAll('.datagrid-cell'));
         expect(sortedRows.length).toEqual(10);
-        expect(sortedRows.map(r => r.textContent)).toEqual(sortedTestUsers.map(u => u.name));
+        expect(sortedRows.map(r => r.textContent)).toEqual(sortedTestUsers.slice(0, 10).map(u => u.name));
 
         header.click();
         this.context.detectChanges();
 
-        const reverseSortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        const reverseSortedRows: Node[] = Array.from(this.context.clarityElement.querySelectorAll('.datagrid-cell'));
         expect(reverseSortedRows.length).toEqual(10);
-        expect(reverseSortedRows.map(r => r.textContent)).toEqual(reverseSortedTestUsers.map(u => u.name));
+        expect(reverseSortedRows.map(r => r.textContent)).toEqual(reverseSortedTestUsers.slice(0, 10).map(u => u.name));
       });
     });
 

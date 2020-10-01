@@ -3,10 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { ɵivyEnabled as ivyEnabled } from '@angular/core';
 
-export function ifIvyEnabled(callback: () => void): void {
-  if (ivyEnabled && typeof callback === 'function') {
-    callback();
-  }
-}
+export const IVY_ENABLED = ivyEnabled;

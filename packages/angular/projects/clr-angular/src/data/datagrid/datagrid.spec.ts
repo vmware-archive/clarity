@@ -291,6 +291,51 @@ class MixedExpandableRowTest {
   }
 }
 
+@Component({
+  template: `
+    <clr-datagrid
+        [clrDgRowSelection]="true">
+        <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+
+        <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+          <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        </clr-dg-row>
+
+        <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="10">
+            <clr-dg-page-size [clrPageSizeOptions]="[10,50,100]">Users per page</clr-dg-page-size>
+            {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+            of {{pagination.totalItems}} users
+        </clr-dg-pagination>
+        </clr-dg-footer>
+      </clr-datagrid>
+  `
+})
+export class SortPaginationTest {
+  users = [
+    { name: 'Rhona' },
+    { name: 'Desirae' },
+    { name: 'Desirae' },
+    { name: 'Shenika' },
+    { name: 'Lottie' },
+    { name: 'Alica' },
+    { name: 'Jeana' },
+    { name: 'Nelson' },
+    { name: 'Nelson' },
+    { name: 'Darla' },
+    { name: 'Debby' },
+    { name: 'Keenan' },
+    { name: 'Desirae' },
+    { name: 'Sibyl' },
+    { name: 'Sibyl' },
+    { name: 'Brynn' },
+    { name: 'Olene' },
+    { name: 'Marcella' },
+    { name: 'Genoveva' },
+    { name: 'Debby' },
+  ];
+}
+
 class TestComparator implements ClrDatagridComparatorInterface<number> {
   compare(_a: number, _b: number): number {
     return 0;
@@ -672,6 +717,43 @@ export default function (): void {
         this.context = this.create(ClrDatagrid, FullTest);
         const rows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
         expect(['1', '1', '2', '4', '3', '9']).toEqual([...rows].map(r => r.textContent));
+      });
+
+      it('sorting by column works when pagination is also added', function () {
+        // Instantiate the component only to obtain the test data inside
+        const componentInstance = new SortPaginationTest();
+        const testUsers = componentInstance.users;
+        const sortedTestUsers = [...testUsers].sort((a, b) => a.name.localeCompare(b.name));
+        const reverseSortedTestUsers = [...sortedTestUsers].reverse();
+
+        this.context = this.create(ClrDatagrid, SortPaginationTest);
+        const rows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        expect(rows.length).toEqual(10); // 10 items * 1 property = 10 rows
+
+        rows.forEach((row, index) => {
+          expect(row.textContent).toEqual(testUsers[index].name);
+        });
+
+        const header = this.context.clarityElement.querySelector('.datagrid-column-title');
+        expect(header.textContent).toEqual('Name');
+
+        header.click();
+        this.context.detectChanges();
+
+        const sortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        expect(sortedRows.length).toEqual(10);
+        sortedRows.forEach((row, index) => {
+          expect(row.textContent).toEqual(sortedTestUsers[index].name);
+        });
+
+        header.click();
+        this.context.detectChanges();
+
+        const reverseSortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        expect(reverseSortedRows.length).toEqual(10);
+        reverseSortedRows.forEach((row, index) => {
+          expect(row.textContent).toEqual(reverseSortedTestUsers[index].name);
+        });
       });
     });
 

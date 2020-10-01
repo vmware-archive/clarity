@@ -6,7 +6,7 @@
 import { AfterViewInit, Component, EmbeddedViewRef, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
-import { ifIvyEnabled } from '../../utils/ivy/if-ivy-enabled';
+import { IVY_ENABLED } from '../../utils/ivy/ivy-enabled';
 
 @Component({
   selector: 'dg-wrapped-cell',
@@ -33,8 +33,8 @@ export class WrappedCell implements DynamicWrapper, AfterViewInit, OnDestroy {
      *
      * This check is for backward compatibility for NON-Ivy builds
      */
-    ifIvyEnabled(() => {
+    if (IVY_ENABLED) {
       this.cellView.destroy();
-    });
+    }
   }
 }

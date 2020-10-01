@@ -29,7 +29,7 @@ export class WrappedCell implements DynamicWrapper, AfterViewInit, OnDestroy {
     /**
      * @TODO
      * Check to see if Ivy is enabled and if so call destroy method.
-     * This is related to this issues #4692 #4232
+     * This is related to this issues #4692 #4232 #5085
      *
      * This check is for backward compatibility for NON-Ivy builds
      */

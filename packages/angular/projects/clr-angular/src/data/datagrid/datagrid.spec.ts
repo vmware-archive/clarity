@@ -717,41 +717,34 @@ export default function (): void {
         expect(['1', '1', '2', '4', '3', '9']).toEqual([...rows].map(r => r.textContent));
       });
 
-      it('sorting by column works when pagination is also added', function () {
+      it('sorting is working', function () {
         // Instantiate the component only to obtain the test data inside
         const componentInstance = new SortPaginationTest();
         const testUsers = componentInstance.users;
-        const sortedTestUsers = [...testUsers].sort((a, b) => a.name.localeCompare(b.name));
+        const sortedTestUsers = [...componentInstance.users].sort((a, b) => a.name.localeCompare(b.name));
         const reverseSortedTestUsers = [...sortedTestUsers].reverse();
 
         this.context = this.create(ClrDatagrid, SortPaginationTest);
-        const rows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
+        const rows: HTMLElement[] = this.context.clarityElement.querySelectorAll('.datagrid-cell');
         expect(rows.length).toEqual(10); // 10 items * 1 property = 10 rows
 
-        rows.forEach((row, index) => {
-          expect(row.textContent).toEqual(testUsers[index].name);
-        });
+        expect(rows.map(r => r.textContent)).toEqual(testUsers.map(u => u.name));
 
         const header = this.context.clarityElement.querySelector('.datagrid-column-title');
-        expect(header.textContent).toEqual('Name');
 
         header.click();
         this.context.detectChanges();
 
         const sortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
         expect(sortedRows.length).toEqual(10);
-        sortedRows.forEach((row, index) => {
-          expect(row.textContent).toEqual(sortedTestUsers[index].name);
-        });
+        expect(sortedRows.map(r => r.textContent)).toEqual(sortedTestUsers.map(u => u.name));
 
         header.click();
         this.context.detectChanges();
 
         const reverseSortedRows = this.context.clarityElement.querySelectorAll('.datagrid-cell');
         expect(reverseSortedRows.length).toEqual(10);
-        reverseSortedRows.forEach((row, index) => {
-          expect(row.textContent).toEqual(reverseSortedTestUsers[index].name);
-        });
+        expect(reverseSortedRows.map(r => r.textContent)).toEqual(reverseSortedTestUsers.map(u => u.name));
       });
     });
 

@@ -1,6 +1,6 @@
 {
   "name": "@clr/clarity",
-  "version": "3.1.8",
+  "version": "3.1.9",
   "private": true,
   "scripts": {
     "ng": "ng",
@@ -27,7 +27,7 @@
     "format:file": "prettier --write",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "publish:prepare": "npm-run-all clean ngcc:fix build:libs",
-    "publish:latest": "npm run publish:prepare; npm run ngcc:fix; npm run angular:build:package; npm run core:build:package; npm run ui:build:package; npm publish dist/clr-core; npm publish dist/clr-ui; npm publish dist/clr-angular; npm publish dist/clr-icons",
+    "publish:latest": "npm run publish:prepare; npm run ngcc:fix; npm run angular:build:package; npm run core:build:package; npm run ui:build:package; npm publish dist/clr-core --tag v3-lts; npm publish dist/clr-ui --tag v3-lts; npm publish dist/clr-angular --tag v3-lts; npm publish dist/clr-icons --tag v3-lts",
     "publish:next": "npm run publish:prepare; npm publish dist/clr-core --tag next; npm publish dist/clr-ui --tag next; npm publish dist/clr-angular --tag next; npm publish dist/clr-icons --tag next",
     "publish:rc": "npm run publish:prepare; npm publish dist/clr-core --tag rc; npm publish dist/clr-ui --tag rc; npm publish dist/clr-angular --tag rc; npm publish dist/clr-icons --tag rc",
     "publish:local": "npm run publish:prepare; npm publish dist/clr-core --registry http://localhost:4873; npm publish dist/clr-ui --registry http://localhost:4873; npm publish dist/clr-angular --registry http://localhost:4873; npm publish dist/clr-icons --registry http://localhost:4873",

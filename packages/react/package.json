@@ -1,6 +1,6 @@
 {
   "name": "@clr/react",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "scripts": {
     "start": "npm-run-all core:build dev:start",
     "dev:start": "yarn run clean && parcel index.html --cache-dir=./.parcel-cache",

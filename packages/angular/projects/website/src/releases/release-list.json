@@ -1,5 +1,5 @@
 {
-  "current": "4.0.2",
+  "current": "4.0.3",
   "all": {
     "4.0.0": {
       "date": "August 19, 2020",
@@ -13,6 +13,10 @@
       "date": "September 17, 2020",
       "figma": "2.2.0"
     },
+    "4.0.3": {
+      "date": "October 1, 2020",
+      "figma": "2.2.0"
+    },
     "4.0.0-rc.1": {
       "date": "July 15, 2020",
       "figma": "2.2.0"
@@ -24,6 +28,11 @@
     "4.0.0-next.0": {
       "date": "June 17, 2020",
       "figma": "2.2.0"
+    },
+    "3.1.9": {
+      "date": "October 1, 2020",
+      "figma": "2.2.0",
+      "sketch": ""
     },
     "3.1.8": {
       "date": "September 17, 2020",

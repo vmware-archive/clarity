@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
 import '@clr/core/icon/register.js';
+
+import { html } from 'lit-html';
 import { CdsIcon } from '@clr/core/icon';
-import { getEnumValues } from '@clr/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 import { renderIcon } from '../icon.renderer.js';
 import { ClarityIcons } from '../icon.service.js';
@@ -15,14 +15,10 @@ import { ClarityIcons } from '../icon.service.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 import {
   getIconSvgClasses,
-  getIconTshirtSizeClassname,
   getUpdateSizeStrategy,
   IconSvgClassnames,
-  iconTshirtSizeClassnamePrefix,
-  IconTshirtSizes,
-  isIconTshirtSizeClassname,
   SizeUpdateStrategies,
-  updateIconSizeStyleOrClassnames,
+  updateIconSizeStyle,
 } from './icon.classnames.js';
 import { testIcons } from './test-icons.js';
 
@@ -99,7 +95,7 @@ describe('Icon classname helpers: ', () => {
     let component: CdsIcon;
 
     beforeAll(() => {
-      ClarityIcons.add({ testing: testIcon });
+      ClarityIcons.addIcons(['testing', testIcon]);
     });
 
     beforeEach(async () => {
@@ -112,15 +108,10 @@ describe('Icon classname helpers: ', () => {
     });
 
     it('should remove classnames and update size styles if passed a numeric string', async () => {
-      await componentIsStable(component);
-      component.classList.add(iconTshirtSizeClassnamePrefix + 'lg');
-      await componentIsStable(component);
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(true);
-      updateIconSizeStyleOrClassnames(component, '15');
+      updateIconSizeStyle(component, '15');
       await componentIsStable(component);
       expect(component.style.width).toEqual('15px');
       expect(component.style.height).toEqual('15px');
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
     });
     it('should remove size styles and add classname if passed a t-shirt size', async () => {
       const myDims = '30';
@@ -129,107 +120,68 @@ describe('Icon classname helpers: ', () => {
       await componentIsStable(component);
       expect(component.style.height).toEqual(`${myDims}px`);
       expect(component.style.width).toEqual(`${myDims}px`);
-      updateIconSizeStyleOrClassnames(component, 'xl');
+      updateIconSizeStyle(component, 'xl');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'xl')).toBe(true);
     });
     it('should replace size styles if passed a new t-shirt size', async () => {
       await componentIsStable(component);
-      updateIconSizeStyleOrClassnames(component, 'lg');
+      updateIconSizeStyle(component, 'lg');
       await componentIsStable(component);
-      updateIconSizeStyleOrClassnames(component, 'sm');
+      updateIconSizeStyle(component, 'sm');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'sm')).toBe(true);
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'lg')).toBe(false);
     });
     it('should remove classnames and size styles if passed a nil value', async () => {
       await componentIsStable(component);
-      updateIconSizeStyleOrClassnames(component, 'lg');
+      updateIconSizeStyle(component, 'lg');
       await componentIsStable(component);
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'lg')).toBe(true);
-      updateIconSizeStyleOrClassnames(component, null);
+      updateIconSizeStyle(component, null);
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
-      updateIconSizeStyleOrClassnames(component, '48');
+      updateIconSizeStyle(component, '48');
       await componentIsStable(component);
       expect(component.style.width).toEqual('48px');
       expect(component.style.height).toEqual('48px');
-      updateIconSizeStyleOrClassnames(component, void 0);
+      updateIconSizeStyle(component, void 0);
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
     });
     it('should remove classnames and size styles if passed an empty string value', async () => {
       await componentIsStable(component);
-      updateIconSizeStyleOrClassnames(component, 'xl');
+      updateIconSizeStyle(component, 'xl');
       await componentIsStable(component);
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'xl')).toBe(true);
-      updateIconSizeStyleOrClassnames(component, '');
+      updateIconSizeStyle(component, '');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
-      updateIconSizeStyleOrClassnames(component, '48');
+      updateIconSizeStyle(component, '48');
       await componentIsStable(component);
       expect(component.style.width).toEqual('48px');
       expect(component.style.height).toEqual('48px');
-      updateIconSizeStyleOrClassnames(component, '');
+      updateIconSizeStyle(component, '');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
       expect(component.style.height).toEqual('');
-      expect(component.classList.toString().indexOf(iconTshirtSizeClassnamePrefix) > -1).toBe(false);
     });
     it('should do nothing if passed a string that is not a t-shirt size and is non-numeric', async () => {
       await componentIsStable(component);
-      updateIconSizeStyleOrClassnames(component, 'sm');
+      updateIconSizeStyle(component, 'sm');
       await componentIsStable(component);
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'sm')).toBe(true);
-      updateIconSizeStyleOrClassnames(component, 'jabberwocky');
+      updateIconSizeStyle(component, 'jabberwocky');
       await componentIsStable(component);
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'sm')).toBe(true);
-      updateIconSizeStyleOrClassnames(component, '24');
+      updateIconSizeStyle(component, '24');
       await componentIsStable(component);
       expect(component.style.width).toEqual('24px');
       expect(component.style.height).toEqual('24px');
-      expect(component.classList.contains(iconTshirtSizeClassnamePrefix + 'sm')).toBe(false);
-      updateIconSizeStyleOrClassnames(component, '4d9rs');
+      updateIconSizeStyle(component, '4d9rs');
       await componentIsStable(component);
       expect(component.style.width).toEqual('24px');
       expect(component.style.height).toEqual('24px');
-    });
-  });
-
-  describe('getIconTshirtSizeClassname', () => {
-    it('should have last two arguments default', () => {
-      expect(getIconTshirtSizeClassname('xs')).toEqual(iconTshirtSizeClassnamePrefix + 'xs');
-    });
-    it('should return an empty string if passed a string that is not a t-shirt size', () => {
-      expect(getIconTshirtSizeClassname('xxxs')).toEqual('');
-      expect(getIconTshirtSizeClassname('')).toEqual('');
-    });
-    it('should return properly prefixed t-shirt sizes if passed a valid t-shirt size', () => {
-      (getEnumValues(IconTshirtSizes) as any[]).forEach(size => {
-        expect(getIconTshirtSizeClassname(size)).toEqual(iconTshirtSizeClassnamePrefix + size);
-      });
-    });
-  });
-
-  describe('isIconTshirtSizeClassname', () => {
-    it('should return true for known t-shirt sizes', () => {
-      (getEnumValues(IconTshirtSizes) as any[]).forEach(size => {
-        expect(isIconTshirtSizeClassname(size)).toBe(true);
-      });
-    });
-    it('should return false if passed something unexpected', () => {
-      expect(isIconTshirtSizeClassname('jabberwocky')).toBe(false);
-      expect(isIconTshirtSizeClassname('xxxs')).toBe(false);
     });
   });
 });

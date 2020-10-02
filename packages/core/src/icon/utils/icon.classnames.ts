@@ -4,15 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  getEnumValues,
-  isString,
-  transformToSpacedString,
-  updateElementStyles,
-  removeClassnames,
-  addClassnames,
-  removeClassnamesUnless,
-} from '@clr/core/internal';
+import { isTshirtSize, transformToSpacedString, updateElementStyles } from '@clr/core/internal';
 import isNil from 'ramda/es/isNil';
 import { CdsIcon } from '../icon.element.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
@@ -66,38 +58,6 @@ export function getShapeClassname(shapeType: string) {
   return className;
 }
 
-export enum IconTshirtSizes {
-  ExtraSmall = 'xs',
-  Small = 'sm',
-  Medium = 'md',
-  Large = 'lg',
-  ExtraLarge = 'xl',
-  ExtraExtraLarge = 'xxl',
-}
-
-export const iconTshirtSizeClassnamePrefix = 'clr-i-size-';
-
-export function getIconTshirtSizeClassname(
-  sizeToLookup: string,
-  prefix = iconTshirtSizeClassnamePrefix,
-  sizes = IconTshirtSizes
-): string {
-  const tshirtSizesVals = getEnumValues(sizes);
-  const indexOfSize = tshirtSizesVals.indexOf(sizeToLookup);
-  if (indexOfSize > -1) {
-    return prefix + tshirtSizesVals[indexOfSize];
-  }
-  return '';
-}
-
-export function getAllIconTshirtSizeClassnames(prefix = iconTshirtSizeClassnamePrefix, sizes = IconTshirtSizes) {
-  return getEnumValues(sizes).map(sz => prefix + sz);
-}
-
-export function isIconTshirtSizeClassname(classname: string, sizes = IconTshirtSizes) {
-  return getEnumValues(sizes).indexOf(classname) > -1;
-}
-
 export function getIconSvgClasses(icon: IconShapeCollection): string {
   const testSolid = (i: IconShapeCollection) => (iconHasSolidShapes(i) ? IconSvgClassnames.Solid : '');
   const testBadged = (i: IconShapeCollection) => (iconHasBadgedShapes(i) ? IconSvgClassnames.Badged : '');
@@ -118,7 +78,7 @@ export function getUpdateSizeStrategy(size: string) {
     return SizeUpdateStrategies.NilSizeValue;
   }
 
-  if (isString(size) && isIconTshirtSizeClassname(size)) {
+  if (isTshirtSize(size)) {
     return SizeUpdateStrategies.ValidSizeString;
   }
 
@@ -129,22 +89,17 @@ export function getUpdateSizeStrategy(size: string) {
   return SizeUpdateStrategies.BadSizeValue;
 }
 
-export function updateIconSizeStyleOrClassnames(el: CdsIcon, size: string) {
+export function updateIconSizeStyle(el: CdsIcon, size: string) {
   const updateStrategy = getUpdateSizeStrategy(size);
-  const newTshirtSize = getIconTshirtSizeClassname(size);
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
       updateElementStyles(el, ['width', `${size}px`], ['height', `${size}px`]);
-      removeClassnames(el, ...getAllIconTshirtSizeClassnames());
       return;
     case SizeUpdateStrategies.ValidSizeString:
-      addClassnames(el, newTshirtSize);
-      removeClassnamesUnless(el, getAllIconTshirtSizeClassnames(), [newTshirtSize]);
       updateElementStyles(el, ['width', ''], ['height', '']);
       return;
     case SizeUpdateStrategies.NilSizeValue: // nil values empty out all sizing
-      removeClassnames(el, ...getAllIconTshirtSizeClassnames());
       updateElementStyles(el, ['width', ''], ['height', '']);
       return;
     case SizeUpdateStrategies.BadSizeValue:

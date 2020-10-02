@@ -18,7 +18,7 @@ describe('icon element', () => {
   let component: CdsIcon;
 
   beforeAll(() => {
-    ClarityIcons.add({ testing: testIcon });
+    ClarityIcons.addIcons(['testing', testIcon]);
   });
 
   beforeEach(async () => {
@@ -108,13 +108,6 @@ describe('icon element', () => {
       await componentIsStable(component);
       expect(component.requestUpdate).not.toHaveBeenCalled();
     });
-    it('should add classname if passed a t-shirt size', async () => {
-      await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-xl')).toBe(false);
-      component.setAttribute('size', 'xl');
-      await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-xl')).toBe(true);
-    });
     it('should add width/height styles if passed numerical value', async () => {
       await componentIsStable(component);
       expect(component.style.width).toBe('');
@@ -124,27 +117,16 @@ describe('icon element', () => {
       expect(component.style.width).toBe('43px');
       expect(component.style.height).toBe('43px');
     });
-    it('should do nothing if passed neither a t-shirt size or numerical value', async () => {
-      await componentIsStable(component);
-      component.setAttribute('size', 'xl');
-      await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-xl')).toBe(true);
-      component.setAttribute('size', 'jabberwocky');
-      await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-xl')).toBe(true);
-    });
     it('should remove the size attribute if set to undefined', async () => {
       await componentIsStable(component);
       component.size = void 0;
       await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-')).toBe(false);
       expect(component.hasAttribute('size')).toBe(false);
     });
     it('should remove the size attribute if set to null', async () => {
       await componentIsStable(component);
       component.size = null;
       await componentIsStable(component);
-      expect(component.classList.contains('clr-i-size-')).toBe(false);
       expect(component.hasAttribute('size')).toBe(false);
     });
   });

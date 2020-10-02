@@ -18,7 +18,7 @@ import {
 import { html, LitElement, query } from 'lit-element';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
-import { updateIconSizeStyleOrClassnames } from './utils/icon.classnames.js';
+import { updateIconSizeStyle } from './utils/icon.classnames.js';
 import { hasIcon } from './utils/icon.service-helpers.js';
 
 /**
@@ -78,7 +78,7 @@ export class CdsIcon extends LitElement {
     if (hasStringPropertyChanged(val, this._size)) {
       const oldVal = this._size;
       this._size = val;
-      updateIconSizeStyleOrClassnames(this, val);
+      updateIconSizeStyle(this, val);
       this.requestUpdate('size', oldVal);
     }
   }
@@ -86,16 +86,6 @@ export class CdsIcon extends LitElement {
   /** If present, customizes the aria-label for the icon for accessibility. */
   @property({ type: String })
   title: string;
-
-  /**
-   * @deprecated
-   * Takes a directional value (up|down|left|right) that rotates the icon 90° with the
-   * top of the icon pointing in the specified direction.
-   *
-   * Deprecated in 3.0. Use `direction` instead. `dir` will be removed in 4.0!
-   */
-  @property({ type: String })
-  dir: Directions;
 
   /**
    * @type {up | down | left | right}

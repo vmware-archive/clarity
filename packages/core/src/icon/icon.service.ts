@@ -4,16 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  IconAlias,
-  IconAliasLegacyObject,
-  IconRegistry,
-  IconShapeSources,
-  IconShapeTuple,
-} from './interfaces/icon.interfaces.js';
+import { IconAlias, IconRegistry, IconShapeTuple } from './interfaces/icon.interfaces.js';
 import { unknownIcon } from './shapes/unknown.js';
 
-import { addIcon, addIcons, getIcon, legacyAlias, setIconAliases } from './utils/icon.service-helpers.js';
+import { addIcons, setIconAliases } from './utils/icon.service-helpers.js';
 
 const iconRegistry: IconRegistry = {
   unknown: unknownIcon[1] as string,
@@ -45,31 +39,19 @@ export class ClarityIcons {
     addIcons(shapes, iconRegistry);
   }
 
+  /**
+   * @description
+   * Use `addIcons` instead of `addAliases`
+   *
+   * This method is a backwords compatibility function to the old API
+   *
+   * The team will revisit this method for possible deprecation.
+   */
   static addAliases(...aliases: IconAlias[]) {
     aliases.forEach(alias => setIconAliases(alias, iconRegistry));
   }
 
   static getIconNameFromShape(iconShape: IconShapeTuple) {
     return iconShape[0];
-  }
-
-  /** @deprecated legacy API */
-  static get(shapeName?: string): string | IconRegistry {
-    return shapeName ? getIcon(shapeName, iconRegistry) : { ...iconRegistry };
-  }
-
-  /** @deprecated legacy API */
-  static add(shapes: IconShapeSources) {
-    for (const shapeName in shapes) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (shapes.hasOwnProperty(shapeName)) {
-        addIcon([shapeName, shapes[shapeName]] as IconShapeTuple, iconRegistry);
-      }
-    }
-  }
-
-  /** @deprecated legacy API */
-  static alias(alias: IconAliasLegacyObject) {
-    legacyAlias(alias, iconRegistry);
   }
 }

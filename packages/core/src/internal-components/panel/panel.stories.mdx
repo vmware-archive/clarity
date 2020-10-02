@@ -1,0 +1,50 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components(Preview)/Panel/Proposal" />
+
+# Panel proposal
+
+## Basic Usage
+
+```typescript
+import '@clr/core/internal-components/panel/register.js';
+```
+
+```html
+<cds-internal-panel>
+  // content
+</cds-internal-panel>
+```
+
+## API
+
+### Template
+
+```html
+<!-- By default -->
+<div class="private-host" cds-layout="vertical">
+  <slot></slot>
+</div>
+
+<!-- with cds-layout -->
+<slot></slot>
+```
+
+### Element
+
+- `cds-internal-panel`
+
+## Slots
+
+- default: defines panel content section
+
+### CSS Custom Properties
+
+- `--background`
+- `--color`
+- `--border-color`
+- `--border-width`
+- `--border-radius`
+- `--padding-horizontal`
+- `--padding-vertical`
+- `--box-shadow`

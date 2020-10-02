@@ -1,0 +1,60 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components(Preview)/Card/Proposal" />
+
+# Card proposal
+
+<cds-alert-group status="info" cds-layout="m-b:lg">
+  <cds-alert>Progress bars are still missing in `core`.</cds-alert>
+</cds-alert-group>
+
+## Basic Usage
+
+```typescript
+import '@clr/core/card/register.js';
+```
+
+```html
+<cds-card>
+  <cds-progress-bar></cds-progress-bar>
+
+  <header>{ header }</header>
+
+  <cds-divider></cds-divider>
+
+  <div>{ main content }</div>
+
+  <cds-divider></cds-divider>
+
+  <cds-progress-bar></cds-progress-bar>
+
+  <footer>{ footer }</footer>
+</cds-card>
+```
+
+## API
+
+Following https://clarity.design/documentation/cards guidelines
+
+### Template
+
+[Panel template]('/packages/core/src/card/panel.stories.mdx')
+
+### Element
+
+- `cds-card`
+
+## Slots
+
+- `default`: defines card content section
+
+### CSS Custom Properties
+
+[Panel CSS properties]('/packages/core/src/card/panel.stories.mdx') with some changes on default values
+
+```css
+:host :not(cds-progress-bar),
+:host :not(cds-divider) {
+  padding: var(--padding-vertical) var(--padding-horizontal);
+}
+```

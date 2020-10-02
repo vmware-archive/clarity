@@ -153,8 +153,6 @@ Without the `clr-CONTROL-container` parent the forms and form controls are not a
 
 Finally, for screen readers, if there are any controls with errors after the submit action an `aria-live` region will be updated with the associated labels for each control in the error state.
 
-Deprecation: Since v4, we will no longer handle setting `aria-live` and announcing the message for you by default. Based on the application use case, you can use the new `ClrAriaLiveService` to make announcements when they make sense for a user to hear about updates or loading status changes.
-
 ## Forms Using Angular
 
 Clarity has created a set of directives to help manage forms with minimal effort by developers. The structure is more condensed and easier to implement, so it is the recommended approach to use the following if you are using Angular. More form controls are being added regularly.

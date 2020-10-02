@@ -21,6 +21,13 @@ export enum ClrAriaLivePoliteness {
 const ARIA_LIVE_TICK = 100;
 
 /**
+ * @deprecated
+ *
+ * -- ClrAriaLiveService is deprecated in 5.0 to be removed in 6.0 --
+ * Please consider using the LiveAnnouncer in the Angular Material CDK
+ * if your project needs this functionality.
+ * More info: https://material.angular.io/cdk/a11y/overview#example-1
+ *
  * This service handle `aria-live` accessibility attribute. The issue is that you need
  * to have the DOM Element with attribute `aria-live` before you could insert content
  * and SR (Screen Reader) pick the change and announce it.

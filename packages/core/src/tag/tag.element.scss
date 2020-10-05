@@ -3,12 +3,12 @@
 
 :host {
   --background: none;
-  --color: #{$cds-token-color-neutral-600};
+  --color: #{$cds-token-color-neutral-800};
   --padding: 0 #{$cds-token-space-size-2};
   --size: #{$cds-token-space-size-8-static + $cds-token-space-size-3-static};
   --font-size: #{($cds-token-space-size-8-static + $cds-token-space-size-2-static) / 2 + $cds-token-space-size-1-static};
   --border-radius: calc(var(--size) / 2);
-  --border-color: #{$cds-token-color-neutral-600};
+  --border-color: #{$cds-token-color-neutral-800};
   --border-width: #{$cds-token-global-border-width};
 
   display: inline-block;

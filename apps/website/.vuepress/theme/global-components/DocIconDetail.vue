@@ -22,10 +22,12 @@
           </div>
         </div>
       </div>
-      <div class="card-footer">
-        See more usage options in&nbsp;<a href="#" class="card-link">How To Use</a>
-        <a class="btn btn-sm hidden-sm-down download-svg-icon-link" href="#">
-          <cds-icon class="download-svg-icon" shape="download"></cds-icon> SVG ICON
+      <div class="card-footer" cds-layout="horizontal">
+        See more usage options in&nbsp;<router-link to="/foundation/icons/usage">How To Use</router-link>
+        <a :href="fetchIconUrl()" cds-layout="align:right">
+          <cds-button size="sm" action="outline">
+            <cds-icon class="download-svg-icon" shape="download"></cds-icon> SVG ICON
+          </cds-button>
         </a>
       </div>
     </div>
@@ -44,11 +46,13 @@ const VARIANTS = {
   SOLID_HAS_BADGE: { classes: ['is-solid', 'has-badge'] },
   SOLID_HAS_ALERT: { classes: ['is-solid', 'has-alert'] },
 };
+const ICON_DOWNLOAD_URL = '/.netlify/functions/download-icon?';
 
 export default {
   name: 'DocIconDetail',
   props: {
     iconName: String,
+    iconSetName: String,
   },
   data: function () {
     return {
@@ -123,6 +127,50 @@ export default {
     },
     activateVariant: function (variant) {
       this.activeVariant = variant;
+      this.fetchIconUrl();
+    },
+    hasSolid: function (variants) {
+      const solidTest = variants.filter(v => v.includes('solid'));
+      return solidTest.length > 0 ? true : false;
+    },
+    createSolidDownload: function (variants) {
+      const hasBadge = variants.filter(v => v.includes('has-badge'));
+      const hasAlert = variants.filter(v => v.includes('has-alert'));
+      if (variants.length === 1) {
+        // is solid
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid`;
+      } else if (hasBadge.length === 1) {
+        // is solid + badged
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid-badged`;
+      } else if (hasAlert.length === 1) {
+        // is solid + alerted
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid-alerted`;
+      }
+    },
+    createOutlineDownload: function (variants) {
+      const hasBadge = variants.filter(v => v.includes('has-badge'));
+      const hasAlert = variants.filter(v => v.includes('has-alert'));
+
+      if (hasBadge.length === 1) {
+        // is oulined + badged
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-outline-badged`;
+      } else if (hasAlert.length === 1) {
+        // is outlined + alerted
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-outline-alerted`;
+      }
+    },
+    fetchIconUrl: function (activeVariant) {
+      const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
+      if (variants.length === 0) {
+        // not solid, no badge, no alert
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
+      } else if (this.hasSolid(variants)) {
+        // is a solid icon download, may have badge or alert
+        return this.createSolidDownload(variants);
+      } else {
+        // is an outline, has either badge or alert
+        return this.createOutlineDownload(variants);
+      }
     },
   },
 };

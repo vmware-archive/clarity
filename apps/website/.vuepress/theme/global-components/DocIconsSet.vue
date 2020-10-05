@@ -10,7 +10,11 @@
         >
           <cds-icon class="icon" :class="previewClasses" :shape="icon.iconName" size="24"></cds-icon>
         </DocIcon>
-        <DocIconDetail :iconName="iconDetailFor" v-if="icon.iconName === iconDetailAt"></DocIconDetail>
+        <DocIconDetail
+          :iconSetName="setName"
+          :iconName="iconDetailFor"
+          v-if="icon.iconName === iconDetailAt"
+        ></DocIconDetail>
       </template>
     </div>
   </section>
@@ -32,6 +36,9 @@ export default {
     },
     icons: function () {
       return this.iconSets[this.setName].icons;
+    },
+    iconSet: function () {
+      return this.iconSet;
     },
   },
   props: {

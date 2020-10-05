@@ -62,6 +62,9 @@ export default {
   input.searchbar-input {
     width: 100%;
     padding: 1.2rem 2rem;
+    &::placeholder {
+      color: var(--cds-token-color-neutral-1000);
+    }
   }
 }
 </style>

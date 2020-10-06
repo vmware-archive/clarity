@@ -1,6 +1,5 @@
 # Default build settings
 [build]
-  command = "yarn website:build && yarn website:deploy"
   functions = "dist/netlify"
   publish = "dist/website"
   environment = { CI = "true", NPM_FLAGS = '--no-optional', CYPRESS_INSTALL_BINARY = "false" }

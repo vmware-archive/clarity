@@ -9,7 +9,7 @@ on: [push]
 #       # TODO: Change this to the default branch you want to migrate away from
 #       - master
 #       # TODO: Change this to the default branch you want to migrate to
-#       - main
+#       - next
 
 jobs:
   migrate_branch:
@@ -25,4 +25,4 @@ jobs:
           # TODO: Change this to the default branch you want to migrate away from
           previous_default: master
           # TODO: Change this to the default branch you want to migrate away to
-          new_default: main
+          new_default: next

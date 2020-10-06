@@ -37,9 +37,6 @@ export default {
     icons: function () {
       return this.iconSets[this.setName].icons;
     },
-    iconSet: function () {
-      return this.iconSet;
-    },
   },
   props: {
     setName: String,

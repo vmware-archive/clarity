@@ -1,0 +1,28 @@
+name: Default Branch Migration
+on: [push]
+# The script does nothing if the push isn't to one of the default branches
+# However, it still runs before exiting. If you would like to not even start it,
+# you can specify the two branches here, uncomment it, and remove the `on: [push]`
+# on:
+#   push:
+#     branches:
+#       # TODO: Change this to the default branch you want to migrate away from
+#       - master
+#       # TODO: Change this to the default branch you want to migrate to
+#       - main
+
+jobs:
+  migrate_branch:
+    name: Migrate Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Migrate
+        uses: liyanchang/default-branch-migration@v1.0.1
+        with:
+          # GitHub will fill in this template with the correct token
+          # You don't need to edit this line
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # TODO: Change this to the default branch you want to migrate away from
+          previous_default: master
+          # TODO: Change this to the default branch you want to migrate away to
+          new_default: main

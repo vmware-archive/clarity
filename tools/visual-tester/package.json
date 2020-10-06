@@ -1,0 +1,19 @@
+{
+  "name": "clarity-visual-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "mkdirp": "^1.0.4",
+    "mz": "^2.7.0",
+    "puppeteer": "^5.3.1",
+    "resemblejs": "^3.2.5"
+  }
+}

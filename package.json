@@ -66,6 +66,8 @@
     "angular:dev:serve": "yarn --cwd packages/angular run serve",
     "angular:dev:serve:dark": "yarn --cwd packages/angular run serve:dark",
     "angular:dev:deploy": "./scripts/dev.sh",
+    "angular:visual-testing": "node ./tools/visual-tester/index.js",
+    "angular:visual-testing:fix": "node ./tools/visual-tester/index.js --overwrite=true",
     "schematics:build": "yarn --cwd packages/schematics run build",
     "schematics:clean": "yarn --cwd packages/schematics run clean",
     "icons:build": "yarn --cwd packages/icons run build",

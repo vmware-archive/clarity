@@ -1,0 +1,69 @@
+{
+  "name": "@clr/eslint-plugin-clarity-migration",
+  "version": "0.0.0",
+  "description": "A set of ESLint rules for Clarity migration.",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
+  "keywords": [
+    "clarity",
+    "eslint-plugin",
+    "eslint"
+  ],
+  "author": "clarity",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:src": "tslint --project ./tsconfig.json -c ./tslint.json 'src/**/*.ts'",
+    "lint:test": "tslint -c ./tslint.json 'test/**/*.ts'",
+    "lint:fix": "npm run lint:src:fix && npm run lint:test:fix",
+    "lint:src:fix": "tslint --project ./tsconfig.json -c ./tslint.json 'src/**/*.ts' --fix",
+    "lint:test:fix": "tslint -c ./tslint.json 'test/**/*.ts' --fix",
+    "test": "jest",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --coverage false",
+    "prepublishOnly": "npm run build && npm run lint && npm run test",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "@typescript-eslint/experimental-utils": "^4.1.1",
+    "node-html-parser": "^1.2.20"
+  },
+  "devDependencies": {
+    "@types/eslint": "^7.2.2",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "@typescript-eslint/typescript-estree": "^4.1.1",
+    "conventional-changelog-cli": "^2.0.25",
+    "eslint": "^7.9.0",
+    "eslint-html-parser": "^6.8.0",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
+    "tslint": "^6.1.3",
+    "typescript": "^3.7.5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**"
+    ],
+    "coverageDirectory": "<rootDir>/reports/coverage",
+    "transform": {
+      "\\.(ts)$": "ts-jest"
+    },
+    "testRegex": "/test/.*\\.spec\\.ts$",
+    "preset": "ts-jest",
+    "testMatch": null
+  }
+}

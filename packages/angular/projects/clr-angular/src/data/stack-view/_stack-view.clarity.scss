@@ -136,10 +136,6 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
     }
 
     .stack-block-label {
-      outline: none;
-    }
-
-    .stack-block-label {
       padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
       @include css-var(
         background-color,
@@ -182,6 +178,10 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         @include equilateral($clr_baselineRem_0_583);
         margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
         text-align: center;
+      }
+
+      &:focus {
+        outline: $clr_baselineRem_5px auto -webkit-focus-ring-color;
       }
     }
 
@@ -267,7 +267,6 @@ $styledInputs: 'input[type=text], input[type=password], input[type=number], inpu
         transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       }
 
-      &.on-focus:not(.stack-block-expanded),
       &:hover:not(.stack-block-expanded) {
         > .stack-block-label {
           @include css-var(

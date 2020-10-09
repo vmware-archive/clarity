@@ -33,6 +33,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   previousPage: 'Previous Page',
   currentPage: 'Current Page',
   totalPages: 'Total Pages',
+  filterItems: 'Filter items',
   minValue: 'Min value',
   maxValue: 'Max value',
   modalContentStart: 'Beginning of Modal Content',

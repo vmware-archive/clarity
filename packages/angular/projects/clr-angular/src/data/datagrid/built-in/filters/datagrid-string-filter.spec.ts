@@ -117,6 +117,13 @@ export default function (): void {
       expect(context.testComponent.filterValue).toBe('t');
     });
 
+    it('has an aria-label on the input', fakeAsync(function () {
+      openFilter();
+      const input: HTMLInputElement = document.querySelector("input[type='text']");
+      expect(input.getAttribute('aria-label')).toBe('Filter items');
+      tick();
+    }));
+
     xit('closes when the user presses Enter in the input', function () {
       // TODO
       openFilter();

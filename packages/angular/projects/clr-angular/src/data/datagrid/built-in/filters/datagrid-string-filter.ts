@@ -11,6 +11,7 @@ import { CustomFilter } from '../../providers/custom-filter';
 import { FiltersProvider, RegisteredFilter } from '../../providers/filters';
 import { DomAdapter } from '../../../../utils/dom-adapter/dom-adapter';
 import { DatagridFilterRegistrar } from '../../utils/datagrid-filter-registrar';
+import { ClrCommonStringsService } from '../../../../utils/i18n/common-strings.service';
 
 import { DatagridStringFilterImpl } from './datagrid-string-filter-impl';
 import { ClrPopoverToggleService } from '../../../../utils/popover/providers/popover-toggle.service';
@@ -20,7 +21,14 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   providers: [{ provide: CustomFilter, useExisting: DatagridStringFilter }],
   template: `
     <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
-      <input #input type="text" name="search" [(ngModel)]="value" class="clr-input" />
+      <input
+        #input
+        type="text"
+        name="search"
+        [(ngModel)]="value"
+        class="clr-input"
+        [attr.aria-label]="commonStrings.keys.filterItems"
+      />
     </clr-dg-filter>
   `,
 })
@@ -30,6 +38,7 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   constructor(
     filters: FiltersProvider<T>,
     private domAdapter: DomAdapter,
+    public commonStrings: ClrCommonStringsService,
     private smartToggleService: ClrPopoverToggleService
   ) {
     super(filters);

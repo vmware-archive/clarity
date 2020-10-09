@@ -380,6 +380,7 @@ export interface ClrCommonStrings {
     detailPaneEnd: string;
     detailPaneStart: string;
     expand: string;
+    filterItems: string;
     firstPage: string;
     hide: string;
     info: string;
@@ -2149,6 +2150,7 @@ export declare class DatagridPropertyStringFilter<T = any> implements ClrDatagri
 }
 
 export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>> implements CustomFilter, AfterViewInit, OnDestroy {
+    commonStrings: ClrCommonStringsService;
     set customStringFilter(value: ClrDatagridStringFilterInterface<T> | RegisteredFilter<T, DatagridStringFilterImpl<T>>);
     filterContainer: ClrDatagridFilter<T>;
     filterValueChange: EventEmitter<any>;
@@ -2156,7 +2158,7 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
     open: boolean;
     get value(): string;
     set value(value: string);
-    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, smartToggleService: ClrPopoverToggleService);
+    constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStringsService, smartToggleService: ClrPopoverToggleService);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
 }

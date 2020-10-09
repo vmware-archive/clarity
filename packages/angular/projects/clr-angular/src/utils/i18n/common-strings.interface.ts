@@ -117,6 +117,10 @@ export interface ClrCommonStrings {
    */
   totalPages: string;
   /**
+   * Datagrid string filter: filter items
+   */
+  filterItems: string;
+  /**
    * Datagrid numeric filter: min
    */
   minValue: string;

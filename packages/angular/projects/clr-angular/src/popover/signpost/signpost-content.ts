@@ -36,9 +36,6 @@ const POSITIONS: string[] = [
   template: `
     <div class="signpost-wrap">
       <div class="popover-pointer"></div>
-      <div class="signpost-content-body">
-        <ng-content></ng-content>
-      </div>
       <div class="signpost-content-header">
         <button
           type="button"
@@ -49,6 +46,9 @@ const POSITIONS: string[] = [
         >
           <clr-icon shape="close" [attr.title]="commonStrings.keys.close"></clr-icon>
         </button>
+      </div>
+      <div class="signpost-content-body">
+        <ng-content></ng-content>
       </div>
     </div>
   `,

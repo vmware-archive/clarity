@@ -6,6 +6,7 @@
 
 export * from './icon.element.js';
 export * from './icon.service.js';
+export { renderIcon } from './icon.renderer.js';
 
 // SHAPES
 export { unknownIcon } from './shapes/unknown.js';

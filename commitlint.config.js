@@ -45,7 +45,6 @@ const scopes = [
   'icons',
   'range',
   'website',
-  'docs',
 ];
 
 module.exports = {

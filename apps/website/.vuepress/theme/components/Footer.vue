@@ -1,6 +1,6 @@
 <template>
-  <footer class="doc-footer">
-    <div class="footer-wrapper">
+  <footer class="doc-footer" cds-layout="m-t:md">
+    <div :class="{ 'footer-wrapper': true, 'has-separator': !isHomePage }">
       <div class="vmware-source-wrapper">
         <div class="copyright-content-wraper">
           <div class="powered-by-wrapper">Powered by VMware, Inc &copy; {{ year }}. All rights reserved.</div>
@@ -45,6 +45,11 @@
 <script>
 export default {
   name: 'Footer',
+  computed: {
+    isHomePage() {
+      return this.$frontmatter.home ? true : false;
+    },
+  },
   data() {
     return {
       year: new Date().getFullYear(),
@@ -59,7 +64,6 @@ export default {
 }
 .footer-wrapper {
   position: relative;
-  margin-top: 3rem;
   padding: var(--cds-token-space-size-9) 0 var(--cds-token-space-size-12);
   &:before {
     content: '';
@@ -67,17 +71,17 @@ export default {
     width: 100%;
     top: 0;
     left: 0;
-    border-top: 1px solid #ccc;
+  }
+  &.has-separator {
+    &:before {
+      border-top: 1px solid #ccc;
+    }
   }
 }
 .vmware-source-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  .code-license-wrapper {
-    margin-top: var(--cds-token-space-size-6);
-  }
 
   .social-media-links {
     display: flex;

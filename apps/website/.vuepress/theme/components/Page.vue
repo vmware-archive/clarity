@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main class="page" cds-layout="p-l:md p-l@sm:xl">
     <PageSubnav v-bind="{ sidebarItems }" />
     <Content class="theme-default-content" />
     <Footer></Footer>

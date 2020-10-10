@@ -1,6 +1,6 @@
 <template>
   <div class="nav-toc-container">
-    <nav aria-label="Table of content navigation" class="nav-toc">
+    <nav aria-label="Table of content navigation" class="nav-toc" cds-layout="align:fill">
       <div class="asset-download-btn-wrapper" cds-layout="m-b:md" v-if="isOnIconsPage">
         <a
           class="btn btn-outline asset-download-btn"
@@ -60,7 +60,7 @@ export default {
   padding: 0 0 var(--cds-token-space-size-9);
 
   .nav-toc {
-    max-height: calc(100vh - 3rem);
+    max-height: 100%;
     overflow-y: auto;
 
     padding-left: var(--cds-token-space-size-4);

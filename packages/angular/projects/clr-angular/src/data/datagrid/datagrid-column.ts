@@ -46,7 +46,7 @@ import { DetailService } from './providers/detail.service';
     <div class="datagrid-column-flex">
       <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
         <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
-        <clr-icon *ngIf="sortIcon" [attr.shape]="sortIcon" class="sort-icon"></clr-icon>
+        <clr-icon *ngIf="sortIcon" [attr.shape]="sortIcon" aria-hidden="true" class="sort-icon"></clr-icon>
       </button>
       <!-- I'm really not happy with that select since it's not very scalable -->
       <ng-content select="clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter"></ng-content>

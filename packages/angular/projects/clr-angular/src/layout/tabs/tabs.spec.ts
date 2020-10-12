@@ -204,6 +204,13 @@ describe('Tabs', () => {
       expect(compiled.querySelector('.tabs-overflow .tab4')).toBeDefined();
     });
 
+    it('should add attribute title to dropdown-toggle', function () {
+      context.fixture.componentInstance.inOverflow = true;
+      context.fixture.detectChanges();
+      const toggle: HTMLElement = compiled.querySelector('.dropdown-toggle');
+      expect(toggle.getAttribute('aria-hidden')).toBe('true');
+    });
+
     it('does not activate overflow in vertical mode', () => {
       expect(compiled.querySelector('.tabs-overflow')).toBeNull();
 

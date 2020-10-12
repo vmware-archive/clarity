@@ -142,12 +142,30 @@ export default function (): void {
         );
       }));
 
+      it('toggle switch must include attr.title', fakeAsync(function () {
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        tick();
+        expect(document.querySelector('button.column-toggle--action').attributes['title'].value).toBe(
+          commonStringsDefault.pickColumns
+        );
+      }));
+
       it('toggle switch close button should have aria-label for close', fakeAsync(function () {
         /* Open it */
         columnToggle.toggleSwitchPanel();
         context.detectChanges();
         tick();
         expect(document.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value).toBe(
+          commonStringsDefault.close
+        );
+      }));
+
+      it('toggle close switch must include attr.title', fakeAsync(function () {
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        tick();
+        expect(document.querySelector('button.toggle-switch-close-button').attributes['title'].value).toBe(
           commonStringsDefault.close
         );
       }));

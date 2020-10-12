@@ -341,6 +341,15 @@ export default function (): void {
         expect(context.clarityElement.querySelector('.sort-icon')).toBeNull();
       });
 
+      it('should add aria-hidden=true to sort-icon', function () {
+        context.clarityDirective.sortBy = new TestComparator();
+        context.clarityDirective.sort();
+        context.detectChanges();
+
+        const arrowIcon = context.clarityElement.querySelector('.sort-icon');
+        expect(arrowIcon.getAttribute('aria-hidden')).toBe('true');
+      });
+
       it('adds a11y roles to the column', function () {
         expect(context.clarityElement.attributes.role.value).toEqual('columnheader');
         expect(context.clarityElement.attributes['aria-sort'].value).toBe('none');

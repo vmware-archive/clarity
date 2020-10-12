@@ -63,12 +63,9 @@ import { ClrTabOverflowContent } from './tab-overflow-content';
               (mousedown)="_mousedown = true"
               (focus)="openOverflowOnFocus()"
               (click)="toggleOverflowOnClick()"
+              [attr.title]="commonStrings.keys.more"
             >
-              <clr-icon
-                shape="ellipsis-horizontal"
-                [class.is-info]="toggleService.open"
-                [attr.title]="commonStrings.keys.more"
-              ></clr-icon>
+              <clr-icon shape="ellipsis-horizontal" [class.is-info]="toggleService.open"></clr-icon>
             </button>
           </li>
           <!--tab links in overflow menu-->

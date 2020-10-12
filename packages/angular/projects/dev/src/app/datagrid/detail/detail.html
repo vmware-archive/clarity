@@ -18,19 +18,22 @@
   </clr-dg-action-bar>
 
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"
-    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
-  >
-  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn>Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn>Creation date</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">
+    <ng-container *clrDgHideableColumn>Pokemon</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>Favorite color</ng-container>
+  </clr-dg-column>
 
-  <clr-dg-row
-    *clrDgItems="let user of users"
-    [clrDgItem]="user"
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user"
     [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
-    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
-  >
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -49,10 +52,9 @@
 
   <!-- Simple API for most cases -->
   <clr-dg-detail *clrIfDetail="let detail">
-    <clr-dg-detail-header
-      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
-      {{detail.name}} {{detail.name}}</clr-dg-detail-header
-    >
+    <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header>
     <clr-dg-detail-body>
       <pre>{{detail | json}}</pre>
       <pre>{{detail | json}}</pre>
@@ -73,12 +75,18 @@
 
 <clr-datagrid id="change-event" [(clrDgSingleSelected)]="singleSelection">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"
-    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
-  >
-  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn>Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn>Creation date</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">
+    <ng-container *clrDgHideableColumn>Pokemon</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>Favorite color</ng-container>
+  </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
@@ -100,10 +108,9 @@
   <!--  Desugared option for change event -->
   <ng-template clrIfDetail let-detail (clrIfDetailChange)="stateEvent = $event">
     <clr-dg-detail>
-      <clr-dg-detail-header
-        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
-        {{detail.name}} {{detail.name}}</clr-dg-detail-header
-      >
+      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header>
       <clr-dg-detail-body>
         <pre>{{detail | json}}</pre>
         <pre>{{detail | json}}</pre>
@@ -125,20 +132,26 @@
 
 <clr-datagrid id="two-way">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"
-    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
-  >
-  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn>Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn>Creation date</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">
+    <ng-container *clrDgHideableColumn>Pokemon</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>Favorite color</ng-container>
+  </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
     <clr-dg-action-overflow>
-      <button class="action-item">
+      <button clrDgActionItem>
         <clr-icon shape="note"></clr-icon>
         Edit
       </button>
-      <button class="action-item">
+      <button clrDgActionItem>
         <clr-icon shape="trash"></clr-icon>
         Delete
       </button>
@@ -163,10 +176,9 @@
   <!--  Desugared option for two way binding -->
   <ng-template [(clrIfDetail)]="state" let-detail>
     <clr-dg-detail>
-      <clr-dg-detail-header
-        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
-        {{detail.name}} {{detail.name}}</clr-dg-detail-header
-      >
+      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header>
       <clr-dg-detail-body>
         <pre>{{detail | json}}</pre>
         <pre>{{detail | json}}</pre>
@@ -188,19 +200,22 @@
 
 <clr-datagrid id="overlay" class="datagrid-detail-overlay">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"
-    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
-  >
-  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn>Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn>Creation date</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">
+    <ng-container *clrDgHideableColumn>Pokemon</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>Favorite color</ng-container>
+  </clr-dg-column>
 
-  <clr-dg-row
-    *clrDgItems="let user of users"
-    [clrDgItem]="user"
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user"
     [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
-    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
-  >
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -212,10 +227,9 @@
 
   <!-- Simple API for most cases -->
   <clr-dg-detail *clrIfDetail="let detail">
-    <clr-dg-detail-header
-      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
-      {{detail.name}} {{detail.name}}</clr-dg-detail-header
-    >
+    <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header>
     <clr-dg-detail-body>
       <pre>{{detail | json}}</pre>
       <pre>{{detail | json}}</pre>
@@ -236,19 +250,22 @@
 
 <clr-datagrid id="simple" [(clrDgSelected)]="selection" style="height: 500px;">
   <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
-  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'creation'"
-    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
-  >
-  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
-  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">
+    <ng-container *clrDgHideableColumn>Name</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn>Creation date</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">
+    <ng-container *clrDgHideableColumn>Pokemon</ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">
+    <ng-container *clrDgHideableColumn>Favorite color</ng-container>
+  </clr-dg-column>
 
-  <clr-dg-row
-    *clrDgItems="let user of users | slice:0:4"
-    [clrDgItem]="user"
+  <clr-dg-row *clrDgItems="let user of users | slice:0:4" [clrDgItem]="user"
     [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
-    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
-  >
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -261,10 +278,9 @@
   <!-- Desugared with pre-selection -->
   <ng-template [(clrIfDetail)]="preState" let-detail>
     <clr-dg-detail>
-      <clr-dg-detail-header
-        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
-        {{detail.name}} {{detail.name}}</clr-dg-detail-header
-      >
+      <clr-dg-detail-header>{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header>
       <clr-dg-detail-body>
         <pre>{{detail | json}}</pre>
         <pre>{{detail | json}}</pre>

@@ -96,11 +96,11 @@
     <clr-dg-placeholder>No users found</clr-dg-placeholder>
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
       <clr-dg-action-overflow (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)">
-        <button class="action-item">
+        <button clrDgActionItem>
           <clr-icon shape="note"></clr-icon>
           Edit
         </button>
-        <button class="action-item">
+        <button clrDgActionItem>
           <clr-icon shape="trash"></clr-icon>
           Delete
         </button>
@@ -125,12 +125,8 @@
     </clr-dg-footer>
   </clr-datagrid>
 
-  <clr-datagrid
-    *ngIf="isServerDriven"
-    [(clrDgSelected)]="selected"
-    (clrDgRefresh)="refresh($event)"
-    [clrDgLoading]="loading"
-  >
+  <clr-datagrid *ngIf="isServerDriven" [(clrDgSelected)]="selected" (clrDgRefresh)="refresh($event)"
+    [clrDgLoading]="loading">
     <clr-dg-column>User ID</clr-dg-column>
     <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
     <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>

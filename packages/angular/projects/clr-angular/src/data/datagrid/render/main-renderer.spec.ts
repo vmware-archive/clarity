@@ -331,7 +331,7 @@ export default function (): void {
         <clr-dg-column>Column</clr-dg-column>
         <clr-dg-row>
           <clr-dg-action-overflow *ngIf="hasActions">
-            <button class="action-item" (click)="(return)">
+            <button clrDgActionItem (click)="(return)">
               Edit
             </button>
           </clr-dg-action-overflow>

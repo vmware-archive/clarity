@@ -196,11 +196,11 @@
 
     <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
       <clr-dg-action-overflow>
-        <button class="action-item" (click)="onEdit(user)">
+        <button clrDgActionItem (click)="onEdit(user)">
           <clr-icon shape="note"></clr-icon>
           Edit
         </button>
-        <button class="action-item" (click)="onDelete(user)">
+        <button clrDgActionItem (click)="onDelete(user)">
           <clr-icon shape="trash"></clr-icon>
           Delete
         </button>

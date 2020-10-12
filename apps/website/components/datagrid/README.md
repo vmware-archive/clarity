@@ -674,7 +674,7 @@ Depending on the role of certain batch actions, you can choose to break button b
 
 ### Single Action
 
-You can allow actions on an item in a single row, in the cases where batch operation is not applicable. You can use this pattern in both selectable and non-selectable datagrids. Add a `clr-dg-action-overflow` inside a `clr-dg-row`. The content inside of it will be projected as an action menu which will toggle when the user clicks on the ellipsis icon as shown below. We recommend that the menu items be buttons with a class `.action-item` as in the example.
+You can allow actions on an item in a single row, in the cases where batch operation is not applicable. You can use this pattern in both selectable and non-selectable datagrids. Add a `clr-dg-action-overflow` inside a `clr-dg-row`. The content inside of it will be projected as an action menu which will toggle when the user clicks on the ellipsis icon as shown below. We recommend that the menu items be buttons with the `clrDgActionItem` directive as in the example.
 
 In the following example, we simply display the names of the selected users, but since we have access to the full objects, we could perform any operation we want on them.
 
@@ -687,8 +687,8 @@ In the following example, we simply display the names of the selected users, but
   <!-- ... -->
   <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
     <clr-dg-action-overflow>
-      <button class="action-item" (click)="onEdit(user)">Edit</button>
-      <button class="action-item" (click)="onDelete(user)">Delete</button>
+      <button clrDgActionItem (click)="onEdit(user)">Edit</button>
+      <button clrDgActionItem (click)="onDelete(user)">Delete</button>
     </clr-dg-action-overflow>
     <!-- ... -->
   </clr-dg-row>

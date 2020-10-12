@@ -143,11 +143,11 @@
 
     <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
       <clr-dg-action-overflow>
-        <button class="action-item" (click)="onEdit(user)">
+        <button clrDgActionItem (click)="onEdit(user)">
           <clr-icon shape="note"></clr-icon>
           Edit
         </button>
-        <button class="action-item" (click)="onDelete(user)">
+        <button clrDgActionItem (click)="onDelete(user)">
           <clr-icon shape="trash"></clr-icon>
           Delete
         </button>
@@ -193,8 +193,7 @@
       <clr-dg-cell>{{user.id}}</clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-      <clr-dg-cell
-        >{{user.pokemon.name}}
+      <clr-dg-cell>{{user.pokemon.name}}
         <span class="badge badge-5">#{{user.pokemon.number}}</span>
       </clr-dg-cell>
       <clr-dg-cell>

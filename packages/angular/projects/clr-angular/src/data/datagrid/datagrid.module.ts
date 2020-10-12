@@ -27,6 +27,7 @@ import { DatagridWillyWonka } from './chocolate/datagrid-willy-wonka';
 import { ExpandableOompaLoompa } from './chocolate/expandable-oompa-loompa';
 import { ClrDatagrid } from './datagrid';
 import { ClrDatagridActionBar } from './datagrid-action-bar';
+import { ClrDatagridActionItem } from './datagrid-action-item';
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { ClrDatagridCell } from './datagrid-cell';
 import { ClrDatagridColumn } from './datagrid-column';
@@ -61,6 +62,7 @@ export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core
   ClrDatagrid,
   ClrDatagridActionBar,
+  ClrDatagridActionItem,
   ClrDatagridActionOverflow,
   ClrDatagridColumn,
   ClrDatagridColumnSeparator,

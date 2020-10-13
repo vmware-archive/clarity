@@ -4,11 +4,43 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, CdsBaseButton } from '@cds/core/internal';
+import { baseStyles, isBrowser, property, setAttributes } from '@cds/core/internal';
+import { CdsIconButton } from '@cds/core/button';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { timesIcon } from '@cds/core/icon/shapes/times.js';
+import { ClarityIcons, timesIcon } from '@cds/core/icon';
+import { HTMLAttributeTuple } from '@cds/core/internal';
+
+export const CdsCloseButtonTagName = 'cds-internal-close-button';
+
+export function appendCloseButton(
+  hostElement: HTMLElement,
+  attributes?: HTMLAttributeTuple[],
+  clickHandler?: () => void
+) {
+  if (isBrowser() && !!hostElement) {
+    const closeBtn = document.createElement(CdsCloseButtonTagName);
+
+    if (attributes && attributes.length > 0) {
+      setAttributes(closeBtn, ...attributes);
+    }
+
+    if (clickHandler) {
+      closeBtn.addEventListener('click', clickHandler.bind(hostElement));
+    }
+    hostElement.appendChild(closeBtn);
+  }
+}
+
+export function removeCloseButton(hostElement: HTMLElement) {
+  if (isBrowser() && !!hostElement) {
+    const closeBtn = hostElement.querySelector(CdsCloseButtonTagName);
+
+    if (closeBtn) {
+      hostElement.removeChild(closeBtn);
+    }
+  }
+}
 
 /**
  * Standard close button for Clarity Components
@@ -27,7 +59,7 @@ import { timesIcon } from '@cds/core/icon/shapes/times.js';
  * @cssprop --opacity
  * @cssprop --padding
  */
-export class CdsInternalCloseButton extends CdsBaseButton {
+export class CdsInternalCloseButton extends CdsIconButton {
   @property({ type: String })
   iconSize = '18';
 

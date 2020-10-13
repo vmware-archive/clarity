@@ -1,0 +1,6 @@
+{
+  "name": "@cds/core/internal-components/overlay",
+  "sideEffects": [
+    "./register.js"
+  ]
+}

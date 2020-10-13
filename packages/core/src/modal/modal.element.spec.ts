@@ -6,7 +6,7 @@
 
 import { html } from 'lit-html';
 import '@cds/core/modal/register.js';
-import { I18nService } from '@cds/core/internal';
+import { I18nService, HTMLAttributeTuple } from '@cds/core/internal';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { CdsModal } from '@cds/core/modal';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
@@ -45,26 +45,91 @@ describe('modal element', () => {
     expect(slots['modal-actions']).toContain(`${placeholderActionText}`);
   });
 
+  it('should add tabindex and aria-label to the content area to support scrolling large text', async () => {
+    await componentIsStable(component);
+    const content = component.shadowRoot.querySelector('.modal-body');
+    expect(content).not.toBeNull('content exists');
+    expect(content.hasAttribute('tabindex') && content.getAttribute('tabindex') === '0').toBe(
+      true,
+      'tabindex set on content'
+    );
+    expect(
+      content.hasAttribute('aria-label') && content.getAttribute('aria-label') === I18nService.keys.modal.contentBox
+    ).toBe(true, 'content area should have an aria label on it');
+  });
+
   it('should support closable option', async () => {
     await componentIsStable(component);
     expect(component.closable).toBe(true);
     expect(component.hasAttribute('closable')).toBe(true);
-    let button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
+    let button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).not.toBeNull();
 
     component.closable = false;
     await componentIsStable(component);
     expect(component.hasAttribute('closable')).toBe(false);
-    button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
+    button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).toBeNull();
   });
 
-  it('should set close button aria label using Common Strings Service', async () => {
-    await componentIsStable(component);
-    const button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-    expect(button).not.toBeNull();
-    expect(button.hasAttribute('aria-label')).toBe(true);
-    expect(button.getAttribute('aria-label')).toEqual(I18nService.keys.modal.closeButtonAriaLabel);
+  describe(' - close button: ', () => {
+    it('should set close button aria label using Common Strings Service', async () => {
+      await componentIsStable(component);
+      const button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
+      expect(button).not.toBeNull();
+      expect(button.hasAttribute('aria-label')).toBe(true);
+      expect(button.getAttribute('aria-label')).toEqual(I18nService.keys.modal.closeButtonAriaLabel);
+    });
+
+    it('should set close button attributes as expected', async () => {
+      const expectedAttrs: HTMLAttributeTuple[] = [
+        ['cds-layout', 'align:top'],
+        ['slot', 'close-button'],
+        ['aria-label', I18nService.keys.modal.closeButtonAriaLabel],
+        ['icon-size', '24'],
+      ];
+      await componentIsStable(component);
+      expect(component.closable).toBe(true, 'should be closable by default');
+      expect(component.shadowRoot.querySelector('cds-internal-close-button')).toBeNull(
+        'close button is not in the shadow dom'
+      );
+      const closeBtn = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
+      expect(closeBtn).not.toBeNull('close button is in the light dom');
+      expectedAttrs.forEach(attr => {
+        const [name, val] = attr;
+        expect(closeBtn.getAttribute(name)).toBe(val as string, `close button has ${name} attr set to ${val}`);
+      });
+    });
+
+    it('should toggle close button as expected', async () => {
+      await componentIsStable(component);
+      expect(component.closable).toBe(true, 'should be closable by default');
+      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).not.toBeNull(
+        'close button should be present by default'
+      );
+      component.size = 'lg';
+      await componentIsStable(component);
+      expect(component.closable).toBe(true, 'should still be closable');
+      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).not.toBeNull(
+        'close button should not be removed if closable not updated'
+      );
+      component.closable = false;
+      await componentIsStable(component);
+      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).toBeNull(
+        'close button should be removed'
+      );
+    });
+
+    it('should set close button click event as expected', async done => {
+      await componentIsStable(component);
+      let value = '';
+      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
+        value = e.detail;
+        expect(value).toBe('close-button-click');
+        done();
+      });
+      component.querySelector<CdsInternalCloseButton>('cds-internal-close-button').click();
+    });
   });
 
   it('should have text based boundaries for screen readers', async () => {
@@ -80,7 +145,7 @@ describe('modal element', () => {
 
     component.addEventListener<any>('closeChange', (e: CustomEvent) => {
       value = e.detail;
-      expect(value).toBe(true);
+      expect(value).toBe('escape-keypress');
       done();
     });
 
@@ -95,11 +160,11 @@ describe('modal element', () => {
     await componentIsStable(component);
     component.addEventListener<any>('closeChange', (e: CustomEvent) => {
       value = e.detail;
-      expect(value).toBe(true);
+      expect(value).toBe('close-button-click');
       done();
     });
 
-    const button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
+    const button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).toBeDefined();
     button.click();
   });

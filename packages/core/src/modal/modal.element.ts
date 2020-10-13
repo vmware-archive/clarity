@@ -5,17 +5,9 @@
  */
 
 import { html } from 'lit-element';
-import {
-  baseStyles,
-  event,
-  EventEmitter,
-  i18n,
-  I18nService,
-  onKey,
-  property,
-  id,
-  CdsBaseFocusTrap,
-} from '@cds/core/internal';
+import { baseStyles, i18n, I18nService, HTMLAttributeTuple, property } from '@cds/core/internal';
+import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
+import { appendCloseButton, removeCloseButton } from '@cds/core/internal-components/close-button';
 import { styles } from './modal.element.css.js';
 
 /**
@@ -45,22 +37,21 @@ import { styles } from './modal.element.css.js';
  * @slot cds-modal-header
  * @slot cds-modal-actions
  * @event closeChange - notify when the user has clicked the close button
- * @cssprop --backdrop-background
- * @cssprop --box-shadow-color
+ * @cssprop --backdrop-background - inherited from the internal overlay component
+ * @cssprop --layered-backdrop-background - inherited from the internal overlay component
+ * @cssprop --border-color
+ * @cssprop --border-width
  * @cssprop --border-radius
- * @cssprop --border
  * @cssprop --background
- * @cssprop --close-icon-color
- * @cssprop --close-icon-color-hover
  * @cssprop --box-shadow
  * @cssprop --width
  */
-export class CdsModal extends CdsBaseFocusTrap {
+export class CdsModal extends CdsInternalOverlay {
   static get styles() {
-    return [baseStyles, styles];
+    return [baseStyles, ...super.styles, styles];
   }
 
-  @event() private closeChange: EventEmitter<boolean>;
+  @i18n() i18n = I18nService.keys.modal;
 
   /** If false, the modal will not render the close button.  */
   @property({ type: Boolean })
@@ -70,66 +61,56 @@ export class CdsModal extends CdsBaseFocusTrap {
   @property({ type: String })
   size: 'default' | 'sm' | 'lg' | 'xl';
 
-  @id()
-  private idForAriaLabel: string;
+  toggleCloseButton() {
+    const closeButtonAttrs: HTMLAttributeTuple[] = [
+      ['cds-layout', 'align:top'],
+      ['slot', 'close-button'],
+      ['aria-label', this.i18n.closeButtonAriaLabel],
+      ['icon-size', '24'],
+    ];
+    if (this.closable) {
+      appendCloseButton(this, closeButtonAttrs, () => this.closeOverlay('close-button-click'));
+    } else {
+      removeCloseButton(this);
+    }
+  }
 
-  @i18n() i18n = I18nService.keys.modal;
+  // TODO: Document what's going on here with the role dialog and aria modal true
+  // Also document why we have to keep everything in the light Dom
+  updated(props: Map<string, any>) {
+    if (props.has('closable')) {
+      this.toggleCloseButton();
+    }
+    super.update(props);
+  }
 
+  // modal-body requires a tab index so it can be scrolled
   render() {
     return html`
-      <div class="private-host" cds-layout="horizontal p:md p@md:xl align:center">
-        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
+      ${this.backdropTemplate}
+      <div cds-layout="horizontal p:md p@md:xl align:center">
+        <div class="modal-dialog private-host" tabindex="-1">
           <div cds-layout="display:screen-reader-only">${this.i18n.contentStart}</div>
-          <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch p:lg">
-            <div cds-layout="horizontal gap:md wrap:none align:vertical-center">
-              <div id="${this.idForAriaLabel}">
+          <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch">
+            <div cds-layout="horizontal gap:md wrap:none align:vertical-center p-x:lg p-t:lg">
+              <div>
                 <slot name="modal-header"></slot>
               </div>
               <div cds-layout="align:right">
                 <slot name="modal-header-actions"></slot>
               </div>
-              ${this.closable
-                ? html`
-                    <cds-internal-close-button
-                      cds-layout="align:top"
-                      @click="${() => this.closeModal()}"
-                      aria-label="${this.i18n.closeButtonAriaLabel}"
-                      .iconSize="${'24'}"
-                    ></cds-internal-close-button>
-                  `
-                : html``}
+              <slot name="close-button"></slot>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" tabindex="0" aria-label="${this.i18n.contentBox}" cds-layout="p-x:lg">
               <slot></slot>
             </div>
-            <div cds-layout="align-stretch">
+            <div cds-layout="align-stretch p-x:lg p-b:lg">
               <slot name="modal-actions"></slot>
             </div>
           </div>
           <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
         </div>
-        <div class="modal-backdrop" aria-hidden="true"></div>
       </div>
     `;
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('keydown', this.fireEventOnEscape);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('keydown', this.fireEventOnEscape);
-  }
-
-  closeModal() {
-    this.closeChange.emit(true);
-  }
-
-  private fireEventOnEscape = (e: KeyboardEvent) => {
-    onKey('escape', e, () => {
-      this.closeModal();
-    });
-  };
 }

@@ -2,8 +2,7 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-body[cds-focus-trap-ids*='_'],
-body[cds-layout='no-scrolling'] {
+[cds-layout='no-scrolling'] {
   overflow: hidden !important;
 }
 

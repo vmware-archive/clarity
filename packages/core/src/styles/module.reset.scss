@@ -52,3 +52,9 @@ body[cds-theme] {
   left: 0;
   display: block !important;
 }
+
+html[cds-focus-trap-ids*='_'] {
+  overflow: hidden !important;
+  width: 100vw;
+  height: 100vh;
+}

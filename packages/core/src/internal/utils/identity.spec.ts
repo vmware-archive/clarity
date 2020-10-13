@@ -5,6 +5,7 @@
  */
 
 import {
+  createId,
   deepClone,
   getEnumValues,
   hasPropertyChanged,
@@ -249,6 +250,24 @@ describe('Functional Helper: ', () => {
       expect(clonedMap.get('b').get('e')).toBe(4, 'expect cloned map to be a map (deeply)');
       expect(clonedMap.get('c').get('f')).toBe(12);
       expect(deepMap.get('c').get('f')).toBe(5);
+    });
+  });
+
+  describe('createId(): ', () => {
+    it('creates an id of numbers and letters', () => {
+      const testMe = createId().substr(1);
+      expect(/[A-Za-z0-9]+/.test(testMe)).toBe(true);
+    });
+
+    it('is prefixed with an underscore if none is provided', () => {
+      const testMe = createId().substr(0, 1);
+      expect(testMe).toBe('_');
+    });
+
+    it('is prefixed with a string if one is provided', () => {
+      const expectedPrefix = 'OHAI_';
+      const testMe = createId('OHAI_').substr(0, 5);
+      expect(testMe).toBe(expectedPrefix);
     });
   });
 });

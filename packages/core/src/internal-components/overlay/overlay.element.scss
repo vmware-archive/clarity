@@ -1,0 +1,39 @@
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/mixins';
+
+:host {
+  // TODO: backdrop appearing needs transitions; what should they be?
+  --backdrop-background: #{$cds-alias-object-overlay-backdrop-background};
+  --layered-backdrop-background: #{$cds-alias-object-opacity-0};
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000000;
+
+  @include center-content;
+}
+
+.private-host {
+  position: relative;
+  // position relative forces overlay content above the backdrop without z-index
+  // shouldn't cause issues with overlays/dropdowns due to onion skinning
+}
+
+.overlay-backdrop {
+  width: 100%;
+  height: 100%;
+  background: var(--backdrop-background);
+  position: fixed;
+}
+
+.layered {
+  background: var(--layered-backdrop-background, var(--backdrop-background));
+}
+
+:host([__demo-mode]) {
+  position: absolute;
+}

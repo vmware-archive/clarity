@@ -4,15 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@cds/core/icon/register.js';
-import '@cds/core/button/register.js';
 import { registerElementSafely } from '@cds/core/internal';
-import { CdsInternalCloseButton, CdsCloseButtonTagName } from './close-button.element.js';
+import { CdsInternalOverlay } from './overlay.element.js';
 
-registerElementSafely(CdsCloseButtonTagName, CdsInternalCloseButton);
+registerElementSafely('cds-internal-overlay', CdsInternalOverlay);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cds-internal-close-button': CdsInternalCloseButton;
+    'cds-internal-overlay': CdsInternalOverlay;
   }
 }

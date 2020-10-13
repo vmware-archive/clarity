@@ -6,7 +6,7 @@
 
 import { html } from 'lit-element';
 import { createTestElement, removeTestElement } from '@cds/core/test/utils';
-import { registerElementSafely } from '@cds/core/internal';
+import { registerElementSafely, sleep } from '@cds/core/internal';
 import {
   addReboundElementsToFocusTrapElement,
   castHtmlElementToFocusTrapElement,
@@ -30,7 +30,11 @@ declare global {
   }
 }
 
-class TestFocusTrap extends CdsBaseFocusTrap {}
+class TestFocusTrap extends CdsBaseFocusTrap {
+  render() {
+    return html`<button class="shadow-button">my shadow button</button><slot></slot>`;
+  }
+}
 registerElementSafely('test-focus-trap', TestFocusTrap);
 
 describe('Focus Trap Utilities: ', () => {
@@ -183,6 +187,16 @@ describe('Focus Trap Utilities: ', () => {
         focusTrapElement.appendChild(focusedElement);
         expect(elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)).toBeFalsy();
       });
+
+      it('returns false if element is inside focus trap element shadow dom', async () => {
+        const specialTestElement = await createTestElement(
+          html`<test-focus-trap><button class="inside-focus">test focus</button></test-focus-trap>`
+        );
+        const fte = testElement.querySelector('test-focus-trap');
+        const elToFocus = fte.shadowRoot.querySelector('.shadow-button');
+        expect(elementIsOutsideFocusTrapElement(elToFocus as HTMLElement, fte)).toBeFalsy();
+        removeTestElement(specialTestElement);
+      });
     });
   });
 });
@@ -192,10 +206,14 @@ describe('FocusTrap Class: ', () => {
     let focusTrap: FocusTrap;
     let testElement: HTMLElement;
 
+    function setUpFocusTrap(element: HTMLElement): FocusTrap {
+      const ft = new FocusTrap(castHtmlElementToFocusTrapElement(element));
+      ft.enableFocusTrap();
+      return ft;
+    }
+
     beforeEach(async () => {
       testElement = await createTestElement();
-      focusTrap = new FocusTrap(castHtmlElementToFocusTrapElement(testElement));
-      focusTrap.enableFocusTrap();
     });
 
     afterEach(() => {
@@ -204,6 +222,7 @@ describe('FocusTrap Class: ', () => {
     });
 
     it('set focus trap id and reflect to attribute', () => {
+      focusTrap = setUpFocusTrap(testElement);
       expect(focusTrap.focusTrapElement.focusTrapId).toBeTruthy('needs to set focus trap id on plain html elements');
       expect(testElement.hasAttribute(CDS_FOCUS_TRAP_ID_ATTR)).toBe(
         true,
@@ -216,28 +235,48 @@ describe('FocusTrap Class: ', () => {
     });
 
     it('should add rebound elements', () => {
+      focusTrap = setUpFocusTrap(testElement);
       expect(document.querySelectorAll('.offscreen-focus-rebounder').length).toBe(2);
     });
 
-    it('should have a tab index of 0 to be able to focus', () => {
-      expect(testElement.getAttribute('tabindex')).toBe('0');
+    it('should have a tabindex of -1 to be able to programatically focus', () => {
+      focusTrap = setUpFocusTrap(testElement);
+      expect(testElement.getAttribute('tabindex')).toBe('-1');
     });
 
-    it('should add to focus trap attr on body to prevent scrolling', () => {
-      expect(document.body.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)).toContain(
+    it('should not override tabindex if focus trap element already has a tabindex set', () => {
+      testElement.setAttribute('tabindex', '1');
+      focusTrap = setUpFocusTrap(testElement);
+      expect(testElement.getAttribute('tabindex')).toBe('1');
+      expect(testElement.getAttribute('tabindex')).not.toBe('-1');
+    });
+
+    it('should add to focus trap attr on root element (html) to prevent scrolling', () => {
+      focusTrap = setUpFocusTrap(testElement);
+      expect(document.documentElement.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)).toContain(
         focusTrap.focusTrapElement.focusTrapId
       );
     });
 
     it('should set itself to current on FocusTrapTracker service', () => {
+      focusTrap = setUpFocusTrap(testElement);
       expect(FocusTrapTracker.getCurrent()).toEqual(testElement);
     });
 
-    it('should be focused', () => {
-      expect(document.activeElement).toEqual(testElement);
+    it('should be focused', async () => {
+      focusTrap = setUpFocusTrap(testElement);
+      // focus is not immediately set due to safari issue
+      await sleep(23);
+      expect(document.activeElement).toEqual(testElement, 'focus is set asynchronously after creation');
+    });
+
+    it('should be set to active', () => {
+      focusTrap = setUpFocusTrap(testElement);
+      expect(focusTrap.active).toBe(true);
     });
 
     it('should throw an error if enabledFocusTrap is called again', () => {
+      focusTrap = setUpFocusTrap(testElement);
       const secondCall = () => focusTrap.enableFocusTrap();
       expect(secondCall).toThrow();
     });
@@ -270,8 +309,12 @@ describe('FocusTrap Class: ', () => {
       expect(document.body.getAttribute('cds-layout')).toBeNull();
     });
 
-    it('should be set itself to current on FocusTrapTracker', () => {
+    it('should not be set as current on FocusTrapTracker', () => {
       expect(FocusTrapTracker.getCurrent()).not.toEqual(testElement);
+    });
+
+    it('should not be set to active', () => {
+      expect(focusTrap.active).toBe(false);
     });
 
     it('should restore previous focus', () => {
@@ -308,12 +351,15 @@ describe('Nested FocusTraps: ', () => {
   });
 
   it('set multiple focus trap ids', () => {
-    expect(
-      document.body.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR).split(' ').indexOf(outerFocusTrap.focusTrapId) === 0
-    ).toBe(true, 'sets focus trap ids as expected (1)');
-    expect(
-      document.body.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR).split(' ').indexOf(innerFocusTrap.focusTrapId) === 1
-    ).toBe(true, 'sets focus trap ids as expected (2)');
+    const focusTrapIdArray = document.documentElement.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR).split(' ');
+    expect(focusTrapIdArray.indexOf(outerFocusTrap.focusTrapId) === 0).toBe(
+      true,
+      'sets focus trap ids as expected (1)'
+    );
+    expect(focusTrapIdArray.indexOf(innerFocusTrap.focusTrapId) === 1).toBe(
+      true,
+      'sets focus trap ids as expected (2)'
+    );
   });
 
   it('keeps focus inside the inner trap', () => {
@@ -339,7 +385,10 @@ describe('Nested FocusTraps: ', () => {
   it('cancelling inner trap falls back to outer trap', () => {
     innerFocusTrap.focusTrap.removeFocusTrap();
     expect(
-      document.body.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR).split(' ').indexOf(innerFocusTrap.focusTrapId) === -1
+      document.documentElement
+        .getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)
+        .split(' ')
+        .indexOf(innerFocusTrap.focusTrapId) === -1
     ).toBe(true, 'should remove focus trap from focus trap ids');
 
     noFocusButton.focus();

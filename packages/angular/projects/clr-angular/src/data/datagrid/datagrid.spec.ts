@@ -5,7 +5,7 @@
  */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
-import { async } from '@angular/core/testing';
+import { async, fakeAsync, tick } from '@angular/core/testing';
 
 import { commonStringsDefault } from './../../utils/i18n/common-strings.default';
 import { DatagridPropertyStringFilter } from './built-in/filters/datagrid-property-string-filter';
@@ -485,15 +485,17 @@ export default function (): void {
         expect(context.clarityDirective.loading).toBe(true);
       });
 
-      it('offers two-way binding on the currently selected items', function () {
+      it('offers two-way binding on the currently selected items', fakeAsync(function () {
         const selection = context.getClarityProvider(Selection);
         context.testComponent.selected = [2];
         context.detectChanges();
+        tick();
         expect(selection.current).toEqual([2]);
         selection.setSelected(1, true);
         context.detectChanges();
+        tick();
         expect(context.testComponent.selected).toEqual([2, 1]);
-      });
+      }));
 
       it('allows to set pre-selected items when initializing the full list of items', function () {
         const selection = context.getClarityProvider(Selection);

@@ -8,6 +8,37 @@ import without from 'ramda/es/without';
 
 import { isStringAndNotNilOrEmpty } from './identity.js';
 
+/**
+ * We are not going to be opinionated about the use of the disabled attribute here.
+ * Browsers will manage that on their own. The focus of this is to determine whether
+ * or not a tabindex should be set on an element to make it programmatically
+ * focusable.
+ *
+ */
+export function isFocusable(element: HTMLElement) {
+  const elementTagName = element.tagName.toLowerCase();
+
+  switch (elementTagName) {
+    case 'input':
+    case 'button':
+    case 'select':
+    case 'textarea':
+    case 'object':
+      return true;
+    case 'a':
+    case 'area':
+      return element.hasAttribute('href');
+    case 'audio':
+    case 'video':
+      return element.hasAttribute('controls');
+    default:
+      // we are not going to get into invalid values sent to the
+      // tabindex attr. users have control of that and should avoid
+      // setting tabindex to weird/unsupported values.
+      return element.hasAttribute('tabindex');
+  }
+}
+
 export function getElementWidth(element: HTMLElement, unit = 'px') {
   if (element) {
     return element.getBoundingClientRect ? element.getBoundingClientRect().width + unit : '';

@@ -17,7 +17,7 @@ export const CDS_FOCUS_TRAP_DOCUMENT_ATTR = 'cds-focus-trap-ids';
 
 export class FocusTrapTracker {
   static getDocroot(): HTMLElement {
-    return document.body as HTMLElement;
+    return document.documentElement as HTMLElement;
   }
 
   static getTrapIds(): string[] {

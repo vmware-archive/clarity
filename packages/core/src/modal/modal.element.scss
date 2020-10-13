@@ -2,7 +2,8 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --backdrop-background: #{$cds-alias-object-overlay-backdrop-background};
+  --border-color: #{$cds-alias-object-container-border-color};
+  --border-width: #{$cds-alias-object-border-width-100};
   --border-radius: #{$cds-alias-object-border-radius-100};
   --background: #{$cds-alias-object-overlay-background};
   --box-shadow: #{$cds-alias-object-shadow-100};
@@ -21,42 +22,24 @@
   --width: calc(16 * #{$cds-global-space-13});
 }
 
-:host,
-.private-host {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 1050; // TODO: restore using map-get to get the z-index
-}
-
 :host([__demo-mode]) {
   position: absolute;
 }
 
 .modal-dialog {
-  position: relative;
-  z-index: 1050; // TODO: restore using map-get to get the z-index
   width: var(--width);
   max-width: 100%;
 }
 
 .modal-content {
   background: var(--background);
-  border: var(--border-radius);
+  border: var(--border-width) solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
 
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+.overlay-backdrop {
   background: var(--backdrop-background);
-  z-index: 1040; // TODO: restore using map-get to get the z-index
 }
 
 .modal-body {

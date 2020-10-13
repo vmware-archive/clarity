@@ -20,20 +20,6 @@ $imported-modules: () !default;
   }
 }
 
-@mixin focus-within() {
-  &:focus-within,
-  &.focus-within {
-    outline: $clr_baselineRem_2px solid Highlight;
-  }
-
-  @media (-webkit-min-device-pixel-ratio: 0) {
-    &:focus-within,
-    &.focus-within {
-      outline: $clr_baselineRem_5px auto -webkit-focus-ring-color;
-    }
-  }
-}
-
 @mixin equilateral($size: 1.2rem) {
   height: $size;
   width: $size;

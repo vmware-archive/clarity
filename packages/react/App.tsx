@@ -81,26 +81,28 @@ export default class App extends React.Component<{}, AppState> {
           Open Modal
         </CdsButton>
         {isModalOpen ? (
-          <CdsModal onCloseChange={() => this.setState({ modalOpen: false })}>
-            <CdsModalHeader>
-              <h3 cds-text="title">My Modal</h3>
-            </CdsModalHeader>
-            <CdsModalContent>
-              <div cds-layout="vertical gap:md p-y:xs">
-                <p cds-text="body">Lorem Ipsum</p>
-                <CdsButton ref={this.buttonRef} onClick={() => this.setState({ modal2Open: true })}>
-                  Open Modal 2
-                </CdsButton>
-              </div>
-            </CdsModalContent>
-            <CdsModalActions>
-              <div cds-layout="horizontal gap:sm align:right">
-                <CdsButton onClick={() => this.setState({ modalOpen: false })} action="outline">
-                  Cancel
-                </CdsButton>
-                <CdsButton onClick={() => this.setState({ modalOpen: false })}>Ok</CdsButton>
-              </div>
-            </CdsModalActions>
+          <div>
+            <CdsModal hidden={!isModalOpen} onCloseChange={() => this.setState({ modalOpen: false })}>
+              <CdsModalHeader>
+                <h3 cds-text="title">My Modal</h3>
+              </CdsModalHeader>
+              <CdsModalContent>
+                <div cds-layout="vertical gap:md p-y:xs">
+                  <p cds-text="body">Lorem Ipsum</p>
+                  <CdsButton ref={this.buttonRef} onClick={() => this.setState({ modal2Open: true })}>
+                    Open Modal 2
+                  </CdsButton>
+                </div>
+              </CdsModalContent>
+              <CdsModalActions>
+                <div cds-layout="horizontal gap:sm align:right">
+                  <CdsButton onClick={() => this.setState({ modalOpen: false })} action="outline">
+                    Cancel
+                  </CdsButton>
+                  <CdsButton onClick={() => this.setState({ modalOpen: false })}>Ok</CdsButton>
+                </div>
+              </CdsModalActions>
+            </CdsModal>
             <CdsModal hidden={!isModal2Open} onCloseChange={() => this.setState({ modal2Open: false })}>
               <CdsModalHeader>
                 <h3 cds-text="title">My Modal</h3>
@@ -116,7 +118,7 @@ export default class App extends React.Component<{}, AppState> {
                 </div>
               </CdsModalActions>
             </CdsModal>
-          </CdsModal>
+          </div>
         ) : (
           <br />
         )}

@@ -21,6 +21,7 @@ import {
   isVisible,
   setOrRemoveAttribute,
   spanWrapper,
+  isFocusable,
 } from './dom.js';
 
 describe('Functional Helper: ', () => {
@@ -416,6 +417,129 @@ describe('Functional Helper: ', () => {
       const element = await createTestElement(html`<div id="ohai" data-test-value>howdy</div>`);
       expect(hasAttributeAndIsNotEmpty(document.getElementById('ohai'), 'data-test-value')).toBe(false);
       removeTestElement(element);
+    });
+  });
+
+  describe('isFocusable() ', () => {
+    let testElement: HTMLElement;
+    const testId = 'testme';
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    describe('- form elements:', () => {
+      it('checkboxes return true', async () => {
+        testElement = await createTestElement(html`<input type="checkbox" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('radios return true', async () => {
+        testElement = await createTestElement(html`<input type="radio" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('text inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="text" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('time inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="time" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('date inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="date" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('color inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="color" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('range inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="range" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('password inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="password" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('search inputs return true', async () => {
+        testElement = await createTestElement(html`<input type="search" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('buttons return true', async () => {
+        testElement = await createTestElement(html`<button type="button" id="${testId}">ohai</button>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('selects return true', async () => {
+        testElement = await createTestElement(
+          html`<select id="${testId}"
+            ><option selected>ohai</option
+            ><option>kthxbye</option></select
+          >`
+        );
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+      it('textareas return true', async () => {
+        testElement = await createTestElement(html`<textarea id="${testId}"></textarea>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+    });
+
+    describe('- anchor elements:', () => {
+      it('a[href] returns true', async () => {
+        testElement = await createTestElement(html`<a href="https://clarity.design" id="${testId}">ohai</a>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('a:not([href]) returns false', async () => {
+        testElement = await createTestElement(html`<a id="${testId}">ohai</a>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(false);
+      });
+    });
+
+    describe('- area elements:', () => {
+      it('area[href] returns true', async () => {
+        testElement = await createTestElement(html`<area href="https://clarity.design" id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('area:not([href]) returns false', async () => {
+        testElement = await createTestElement(html`<area id="${testId}" />`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(false);
+      });
+    });
+
+    describe('- audio and video elements:', () => {
+      it('audio[controls] returns true', async () => {
+        testElement = await createTestElement(html`<audio controls id="${testId}"></audio>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('audio:not([controls]) returns false', async () => {
+        testElement = await createTestElement(html`<audio id="${testId}"></audio>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(false);
+      });
+
+      it('video[controls] returns true', async () => {
+        testElement = await createTestElement(html`<video controls id="${testId}"></video>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('video:not([controls]) returns false', async () => {
+        testElement = await createTestElement(html`<video id="${testId}"></video>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(false);
+      });
+    });
+
+    describe('- tabindex:', () => {
+      it('*[tabindex] returns true', async () => {
+        testElement = await createTestElement(html`<div tabindex="-1" id="${testId}"></div>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('*:not([tabindex]) returns false', async () => {
+        testElement = await createTestElement(html`<div id="${testId}"></div>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(false);
+      });
     });
   });
 });

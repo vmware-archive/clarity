@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { CdsButton, ClrLoadingState } from '@cds/core/button';
+import { CdsButton, ClrLoadingState, iconSpinner } from '@cds/core/button';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
@@ -125,6 +125,19 @@ describe('button element', () => {
       component.disabled = true;
       await componentIsStable(component);
       expect(component.getAttribute('aria-disabled')).toBe('true');
+    });
+
+    it('should keep disabled and aria-disabled in sync', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-disabled')).toBe('false');
+
+      component.disabled = true;
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-disabled')).toBe('true');
+
+      component.disabled = false;
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-disabled')).toBe('false');
     });
   });
 
@@ -271,6 +284,23 @@ describe('buttonSlots: ', () => {
     const component = elem.querySelector<CdsButton>('cds-button');
     const slots = getComponentSlotContent(component);
     expect(slots.default).toContain('Text slot');
+  });
+});
+
+describe('iconSpinner(): ', () => {
+  it('should default to spinner size to "18"', () => {
+    const templateResult = iconSpinner('lg');
+    expect(templateResult.values.indexOf('18') > -1).toBe(true);
+  });
+
+  it('should set spinner size to "18" if not passed size "sm"', () => {
+    const templateResult = iconSpinner('anything-at-all');
+    expect(templateResult.values.indexOf('18') > -1).toBe(true);
+  });
+
+  it('should set spinner size to "12" if size "sm"', () => {
+    const templateResult = iconSpinner('sm');
+    expect(templateResult.values.indexOf('12') > -1).toBe(true);
   });
 });
 

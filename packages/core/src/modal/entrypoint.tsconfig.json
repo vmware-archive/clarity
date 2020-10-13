@@ -4,6 +4,7 @@
     "composite": true
   },
   "references": [
+    { "path": "../internal-components/overlay/entrypoint.tsconfig.json" },
     { "path": "../internal-components/close-button/entrypoint.tsconfig.json" },
     { "path": "../internal/entrypoint.tsconfig.json" }
   ]

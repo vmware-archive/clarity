@@ -20,6 +20,7 @@ export * from './decorators/global-style.js';
 export * from './services/focus-trap-tracker.service.js';
 export * from './services/i18n.service.js';
 export * from './services/log.service.js';
+export * from './utils/async.js';
 export * from './utils/a11y.js';
 export * from './utils/array.js';
 export * from './services/keycodes.service.js';

@@ -2,12 +2,12 @@
   "files": [
     {
       "path": "./dist/core/global.min.css",
-      "maxSize": "7.95 kB",
+      "maxSize": "8.25 kB",
       "compression": "brotli"
     },
     {
       "path": "./dist/core/styles/module.layout.min.css",
-      "maxSize": "4 kB",
+      "maxSize": "4.5 kB",
       "compression": "brotli"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "15.9 kB",
+      "maxSize": "15.5 kB",
       "compression": "brotli"
     }
   ]

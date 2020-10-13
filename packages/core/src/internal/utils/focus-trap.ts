@@ -6,7 +6,7 @@
 
 import { LitElement } from 'lit-element';
 import { CDS_FOCUS_TRAP_ID_ATTR, FocusTrapTracker } from '../services/focus-trap-tracker.service.js';
-import { isHTMLElement } from './dom.js';
+import { isHTMLElement, isFocusable } from './dom.js';
 import { createId } from './identity.js';
 
 export interface FocusTrapElement extends HTMLElement {
@@ -15,24 +15,44 @@ export interface FocusTrapElement extends HTMLElement {
   focusTrapId: string;
 }
 
-export function refocusIfOutsideFocusTrapElement(focusedElement: HTMLElement, focusTrapElement: FocusTrapElement) {
-  if (
-    FocusTrapTracker.getCurrent() === focusTrapElement &&
-    elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement)
-  ) {
-    focusTrapElement.focus();
+export function refocusIfOutsideFocusTrapElement(
+  focusedElement: HTMLElement,
+  focusTrapElement: FocusTrapElement,
+  elementToRefocus?: HTMLElement
+) {
+  const focusTrapIsCurrent = FocusTrapTracker.getCurrent() === focusTrapElement;
+  const elementToFocusIsOutsideFocusTrap = elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement);
+
+  if (focusTrapIsCurrent && elementToFocusIsOutsideFocusTrap) {
+    elementToRefocus = elementToRefocus || focusTrapElement;
+    elementToRefocus.focus();
   } else {
     focusedElement.focus();
   }
 }
 
-export function elementIsOutsideFocusTrapElement(focusedElement: HTMLElement, focusTrapElement: FocusTrapElement) {
-  const elementToFocusIsNotInsideFocusTrap = !focusTrapElement.contains(focusedElement);
-  const notTopRebounder = focusedElement === focusTrapElement.topReboundElement;
-  const notBottomRebounder = focusedElement === focusTrapElement.bottomReboundElement;
-  const elementToFocusIsRebounder = notTopRebounder && notBottomRebounder;
+export function elementIsOutsideFocusTrapElement(
+  focusedElement: HTMLElement,
+  focusTrapElement: FocusTrapElement
+): boolean {
+  if (
+    focusedElement === focusTrapElement.topReboundElement ||
+    focusedElement === focusTrapElement.bottomReboundElement
+  ) {
+    return true;
+  }
 
-  return elementToFocusIsNotInsideFocusTrap || elementToFocusIsRebounder;
+  const elementIsInFocusTrapLightDom = focusTrapElement.contains(focusedElement);
+
+  if (elementIsInFocusTrapLightDom) {
+    return false;
+  }
+
+  if (focusTrapElement.shadowRoot !== null && focusTrapElement.shadowRoot.contains(focusedElement)) {
+    return false;
+  }
+
+  return true;
 }
 
 export function createFocusTrapReboundElement() {
@@ -94,6 +114,10 @@ export class FocusTrap {
   private previousFocus: HTMLElement;
   private onFocusInEvent: any;
 
+  firstFocusElement: HTMLElement | FocusTrapElement;
+
+  active = false;
+
   constructor(hostElement: FocusTrapElement) {
     hostElement = castHtmlElementToFocusTrapElement(hostElement);
 
@@ -115,32 +139,56 @@ export class FocusTrap {
 
   enableFocusTrap() {
     const fte = this.focusTrapElement;
+    const firstFocusElement = fte.querySelector('[cds-first-focus]');
+    const contentWrapper = fte.shadowRoot ? fte.shadowRoot.querySelector('.private-host[tabindex]') : null;
     const activeEl = document.activeElement;
+
     if (FocusTrapTracker.getCurrent() === fte) {
       throw new Error('Focus trap is already enabled for this instance.');
     }
 
+    this.firstFocusElement =
+      (firstFocusElement as HTMLElement) || (contentWrapper as HTMLElement) || this.focusTrapElement;
+
     addReboundElementsToFocusTrapElement(fte);
-    fte.setAttribute('tabindex', '0');
+
+    if (!isFocusable(fte)) {
+      fte.setAttribute('tabindex', '-1');
+    }
+
     if (activeEl && isHTMLElement(activeEl)) {
       this.previousFocus = activeEl as HTMLElement;
     }
+
     FocusTrapTracker.setCurrent(fte.focusTrapId);
-    fte.focus();
+
+    // setTimeout here is required for Safari which may try to set focus on
+    // element before it is visible...
+    const focusTimer = setTimeout(() => {
+      this.firstFocusElement.focus();
+      clearTimeout(focusTimer);
+    }, 10);
+
     this.onFocusInEvent = this.onFocusIn.bind(this);
     document.addEventListener('focusin', this.onFocusInEvent);
+    this.active = true;
   }
 
   removeFocusTrap() {
     document.removeEventListener('focusin', this.onFocusInEvent);
     removeReboundElementsFromFocusTrapElement(this.focusTrapElement);
     FocusTrapTracker.activatePreviousCurrent();
+    this.active = false;
     if (this.previousFocus) {
       this.previousFocus.focus();
     }
   }
 
   private onFocusIn(event: FocusEvent) {
-    refocusIfOutsideFocusTrapElement(event.target as HTMLElement, this.focusTrapElement);
+    refocusIfOutsideFocusTrapElement(
+      event.composedPath()[0] as HTMLElement,
+      this.focusTrapElement,
+      this.firstFocusElement
+    );
   }
 }

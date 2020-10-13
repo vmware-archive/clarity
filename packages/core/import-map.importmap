@@ -66,6 +66,8 @@
     "@cds/core/internal": "/base/dist/core/internal/index.js",
     "@cds/core/internal-components/close-button": "/base/dist/core/internal-components/close-button/index.js",
     "@cds/core/internal-components/close-button/register.js": "/base/dist/core/internal-components/close-button/register.js",
+    "@cds/core/internal-components/overlay": "/base/dist/core/internal-components/overlay/index.js",
+    "@cds/core/internal-components/overlay/register.js": "/base/dist/core/internal-components/overlay/register.js",
     "@cds/core/modal": "/base/dist/core/modal/index.js",
     "@cds/core/modal/register.js": "/base/dist/core/modal/register.js",
     "@cds/core/password": "/base/dist/core/password/index.js",

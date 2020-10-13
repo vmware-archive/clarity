@@ -72,8 +72,6 @@ export function onAnyKey(whichKeys: string[], evt: KeyboardEvent, handler: any) 
  * are all the same thing to onKeyCombo().
  */
 export function onKeyCombo(whichKeyCombo: string, evt: KeyboardEvent, handler: any) {
-  // TODO! need to make sure ALL combo modifier keys were pressed
-  // TESTME!
   if (wereModifierComboKeysPressed(whichKeyCombo, evt) && wereNonModifierComboKeysPressed(whichKeyCombo, evt)) {
     handler();
   }

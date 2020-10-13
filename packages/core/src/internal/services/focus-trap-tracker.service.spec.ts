@@ -26,7 +26,7 @@ describe('Focus Trap Tracker Service - ', () => {
     it('should return something', () => {
       const myDocroot: HTMLElement = service.getDocroot();
       expect(myDocroot).not.toBeNull('Docroot node should exist');
-      expect(myDocroot.tagName.toLowerCase()).toBe('body', 'should return the body node');
+      expect(myDocroot.tagName.toLowerCase()).toBe('html', 'should return the documentElement(html) node');
     });
   });
 

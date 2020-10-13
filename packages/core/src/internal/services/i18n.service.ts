@@ -26,6 +26,7 @@ export interface I18nStrings {
   modal: {
     closeButtonAriaLabel: string;
     contentStart: string;
+    contentBox: string;
     contentEnd: string;
   };
 }
@@ -50,6 +51,7 @@ export const componentStringsDefault = {
   modal: {
     closeButtonAriaLabel: 'Close modal',
     contentStart: 'Beginning of Modal Content',
+    contentBox: 'Scrollable Modal Body',
     contentEnd: 'End of Modal Content',
   },
 };

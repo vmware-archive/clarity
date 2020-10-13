@@ -1,0 +1,86 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Internal/APIs/Overlay/Getting Started" />
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+# Overlay
+
+The overlay does three big things:
+
+1. The overlay projects the content given to it.
+2. The overlay places a backdrop behind the content it is given to prevent users from interacting with anything other than the projected content.
+3. The overlay creates a "focus trap" around the projected content which likewise limits interaction do elements within the overlay.
+
+## Interaction
+
+Until an overlay is closed, interaction is limited to the contents of the overlay. This means that users cannot click on anything outside of the overlay and they cannot move focus with their keyboard to any element outside of the overlay. Scrolling the content beneath the overlay is likewise restricted.
+
+An overlay can be closed by pressing the escape key, clicking on the backdrop behind the overlays content, or defining a custom trigger that fires the `closeOverlay()` method.
+
+## Installation
+
+To use the internal component add the register import to the `register.ts` of
+the consuming component.
+
+```typescript
+import '@cds/core/internal-components/overlay/register.js';
+```
+
+```html
+<cds-internal-overlay>
+  <div>
+    <h1>I am an overlay</h1>
+    <p>Hello, I am an overlay.</p>
+  </div>
+</cds-internal-overlay>
+```
+
+## Basic Overlay
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--basic" />
+</Preview>
+
+## Interactive Demo
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--interactive" />
+</Preview>
+
+## Managing Focus
+
+The `cds-first-focus` attribute can be placed on a focusable element (like a button, link, etc.) inside the overlay's content.
+
+The presence of the `cds-first-focus` attribute will assign focus to that element when the overlay is activated.
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--first-focus" />
+</Preview>
+
+## Overlays on Top of Each Other
+
+While not a pattern that we recommend for modals and dialogs, multiple overlays can be layered ont top of one another.
+
+Note that when placing overlays on top of each other, it is not advised to nest them in the actual HTML.
+
+The overlays will still work but the parent container may force an empty space in its DOM when the child overlay is activated.
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--multiple" />
+</Preview>
+
+## Custom Overlays
+
+The opacity and background color of the overlay backdrops can be customized.
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--custom" />
+</Preview>
+
+## API
+
+<Props of={'cds-internal-overlay'} />

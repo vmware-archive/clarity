@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@cds/core/internal-components/overlay/register.js';
 import '@cds/core/internal-components/close-button/register.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { CdsModal } from './modal.element.js';

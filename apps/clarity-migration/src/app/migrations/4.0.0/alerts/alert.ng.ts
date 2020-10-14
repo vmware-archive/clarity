@@ -6,12 +6,12 @@ import { ClarityModule } from '@clr/angular';
   selector: 'alert-demo',
   templateUrl: './alert.ng.html',
 })
-export class AlertNgDemom {
+export class AlertNgDemo {
   warning = true;
 }
 
 @NgModule({
-  declarations: [AlertNgDemom],
+  declarations: [AlertNgDemo],
   imports: [ClarityModule, CommonModule],
 })
 class AppModule {}

@@ -110,6 +110,7 @@
       );
       border-width: $clr_baselineRem_1px;
       border-style: solid;
+      align-items: baseline;
       @include css-var(
         border-radius,
         clr-combobox-pill-border-radius,
@@ -123,7 +124,7 @@
         $clr-use-custom-properties
       );
 
-      padding: 0 $clr_baselineRem_4px;
+      padding: 0 $clr_baselineRem_2px 0 $clr_baselineRem_4px;
 
       .clr-combobox-pill-content {
         @include css-var(

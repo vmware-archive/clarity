@@ -54,7 +54,8 @@
       (clrOpenChange)="$event ? fetchStates() : null"
     >
       <ng-container *clrOptionSelected="let selected"
-        ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+        ><clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon>
+        {{selected?.name}}</ng-container
       >
       <clr-options>
         <clr-option *clrOptionItems="let state of asyncStates$ | async; field:'name'" [clrValue]="state">
@@ -71,7 +72,7 @@
     <label>Favorite States</label>
     <clr-combobox [(ngModel)]="vertical.five" name="five" clrMulti="true" required [disabled]="disabled">
       <ng-container *clrOptionSelected="let selected">
-        <clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}
+        <clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon> {{selected?.name}}
       </ng-container>
       <clr-options>
         <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
@@ -133,7 +134,8 @@
       (clrOpenChange)="$event ? fetchStates() : null"
     >
       <ng-container *clrOptionSelected="let selected"
-        ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+        ><clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon>
+        {{selected?.name}}</ng-container
       >
       <clr-options>
         <clr-option *clrOptionItems="let state of asyncStates$ | async; field:'name'" [clrValue]="state">
@@ -150,7 +152,8 @@
     <label>Favorite States</label>
     <clr-combobox [(ngModel)]="horizontal.five" name="five" clrMulti="true" required [disabled]="disabled">
       <ng-container *clrOptionSelected="let selected"
-        ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+        ><clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon>
+        {{selected?.name}}</ng-container
       >
       <clr-options>
         <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
@@ -212,7 +215,8 @@
       (clrOpenChange)="$event ? fetchStates() : null"
     >
       <ng-container *clrOptionSelected="let selected"
-        ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+        ><clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon>
+        {{selected?.name}}</ng-container
       >
       <clr-options>
         <clr-option *clrOptionItems="let state of asyncStates$ | async; field:'name'" [clrValue]="state">
@@ -229,7 +233,8 @@
     <label>Favorite States</label>
     <clr-combobox [(ngModel)]="compact.five" name="five" clrMulti="true" required [disabled]="disabled">
       <ng-container *clrOptionSelected="let selected"
-        ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+        ><clr-icon shape="sun" role="img" aria-label="welcome home" size="12"></clr-icon>
+        {{selected?.name}}</ng-container
       >
       <clr-options>
         <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">

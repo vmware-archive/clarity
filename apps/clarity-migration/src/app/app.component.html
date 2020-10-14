@@ -1,0 +1,21 @@
+<!-- @TODO Refactor for a Core layout -->
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <img
+        cds-layout="p:md"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMTc5YmQzIiBkPSJNMjQuNzAyIDQuNTgzbDExLjI3OCA2LjY3OS0uMDE5IDEzLjU2My0xMS4yNiA2LjY2LTYuNjg0LTMuOTcgMTEuNjUyLTYuNTQxdi01Ljg5OGwtNC43NDctMi42MDQtNi44OS0zLjkzOCIvPjxwYXRoIGZpbGw9IiNGMzhCMDAiIGQ9Ik0xMS4zMzEgNC41ODNMLjA1NCAxMS4yNjJsLjAxOCAxMy41NjMgMTEuMjYgNi42NiA2LjY4NS0zLjk3LTEwLjY2My02LjU0MXYtNS44OThsMTAuNjc4LTYuNTQyIi8+PHBhdGggZmlsbD0iIzAwNjQ4ZiIgZD0iTTE4LjAxNyAyNy41MTVMMTEuNSAyMy41MTZsNi41MjItMy44NDUgNi45MyAzLjk1MiIvPjxwYXRoIGZpbGw9IiM5ODQ0MUUiIGQ9Ik0xOC4wMzEgOC41MzNsLTYuNTA0IDMuOTg1IDYuNTE3IDMuODg0IDYuODYyLTMuOTQiLz48L2c+PC9zdmc+"
+      />
+      <a routerLink="/" class="nav-link"><span class="title">Clarity Migration</span></a>
+    </div>
+  </header>
+  <div class="content-container">
+    <clr-vertical-nav>
+      <a routerLink="/alert" routerLinkActive="active" clrVerticalNavLink>Alert</a>
+      <a routerLink="/button" routerLinkActive="active" clrVerticalNavLink>Button</a>
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

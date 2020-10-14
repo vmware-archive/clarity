@@ -1,0 +1,46 @@
+{
+  "name": "clarity-migration",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.1.2",
+    "@angular/common": "~10.1.2",
+    "@angular/compiler": "~10.1.2",
+    "@angular/core": "~10.1.2",
+    "@angular/forms": "~10.1.2",
+    "@angular/platform-browser": "~10.1.2",
+    "@angular/platform-browser-dynamic": "~10.1.2",
+    "@angular/router": "~10.1.2",
+    "@clr/angular": "4.0.2",
+    "@clr/city": "^1.1.0",
+    "@clr/core": "^4.0.2",
+    "@clr/icons": "4.0.2",
+    "@clr/ui": "4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "ng-prismjs": "^0.0.8",
+    "prismjs": "^1.22.0",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-devkit/build-angular": "~0.1001.2",
+    "@angular/cli": "~10.1.2",
+    "@angular/compiler-cli": "~10.1.2",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "raw-loader": "^4.0.2",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.2"
+  }
+}

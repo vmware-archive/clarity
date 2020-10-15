@@ -146,6 +146,11 @@
   }
 
   .clr-combobox-trigger {
+    &:disabled {
+      color: var(--clr-btn-link-disabled-color, #666);
+      opacity: 0.4;
+    }
+
     //Dimensions
     width: $clr-combobox-trigger-dimensions;
     margin: auto;

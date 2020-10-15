@@ -2627,7 +2627,7 @@
   integrity sha512-R+C4uywmXoTD01LINOt3O0cBRviQdbAVNxdVvOyuO3+rM9bvFroF7UZY0R1ue/xvKXlqJrEkNKZQODeKjzaAhA==
 
 "@clr/core@./packages/core/dist/core":
-  version "4.0.2"
+  version "4.0.0"
   dependencies:
     "@types/resize-observer-browser" "^0.1.3"
     lit-element "^2.3.1"
@@ -2643,7 +2643,7 @@
     normalize.css "^8.0.1"
 
 "@clr/react@./packages/react/dist/react":
-  version "4.0.2"
+  version "4.0.0"
   dependencies:
     react "^16.13.1"
     react-dom "^16.13.1"
@@ -32393,6 +32393,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==
+
+vue-hotjar@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue-hotjar/-/vue-hotjar-1.2.0.tgz#528ca196076e91469dae894085ad99b7edf8bf75"
+  integrity sha512-SmR9TtkEw1kZVDCymntLcY5poc6HHAOTLlqC12CicPso2UfoEbYIRp06H+xwmBMOLd+oRhZFADaetuZR+SpjvQ==
 
 vue-loader@^15.7.1:
   version "15.9.3"

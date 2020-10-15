@@ -24,12 +24,12 @@ module.exports = {
   ],
   dest: '../../dist/website',
   themeConfig: {
-    // algolia: {
-    //   apiKey: 'd3349af25a19e3824cb48e57fe88fdcb',
-    //   indexName: 'clarity',
-    // },
+    algolia: {
+      apiKey: 'd3349af25a19e3824cb48e57fe88fdcb',
+      indexName: 'next-clarity',
+    },
     lastUpdated: false,
-    search: false, // Disabling for the moment
+    search: true,
     sidebar,
   },
   markdown: {

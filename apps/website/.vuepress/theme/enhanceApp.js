@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { Vue as VueIntegration } from '@sentry/integrations';
 import VueResource from 'vue-resource';
+import Hotjar from 'vue-hotjar';
 
 import './styles/index.scss';
 
@@ -12,6 +13,9 @@ export default ({
   isServer,
 }) => {
   Vue.use(VueResource);
+  Vue.use(Hotjar, {
+    id: '2043683',
+  });
 
   if (!isServer) {
     import('./core');

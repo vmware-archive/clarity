@@ -82,6 +82,7 @@
     type="button"
     class="clr-combobox-trigger"
     tabindex="-1"
+    [disabled]="control?.disabled || null"
     [attr.aria-label]="commonStrings.keys.comboboxOpen"
   >
     <clr-icon shape="caret down" size="12"></clr-icon>

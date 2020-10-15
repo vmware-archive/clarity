@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,7 @@ import { ClrComboboxModule } from './combobox.module';
       [clrMulti]="multi"
       (clrInputChange)="inputChanged($event)"
       (clrOpenChange)="openChanged($event)"
+      [disabled]="disabled"
     >
       <clr-options>
         <clr-option [clrValue]="1">1</clr-option>
@@ -41,6 +42,7 @@ class TestComponent {
   inputValue: string;
   openState: boolean;
   placeholder: string;
+  disabled = false;
   inputChanged(value: string) {
     this.inputValue = value;
   }
@@ -174,6 +176,15 @@ export default function (): void {
         const combobox: HTMLElement = clarityElement.querySelector('.clr-combobox-input');
         expect(combobox.getAttribute('placeholder')).toEqual('hello world');
       });
+
+      it('should disable openClose button', () =>
+        fakeAsync(function () {
+          fixture.componentInstance.disabled = true;
+          fixture.detectChanges();
+          tick();
+          const button: HTMLButtonElement = clarityElement.querySelector('.clr-combobox-trigger');
+          expect(button.disabled).toBeTruthy();
+        }));
     });
   });
 }

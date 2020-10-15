@@ -226,6 +226,13 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         if (!this.items.smart) {
           this.items.all = this.rows.map((row: ClrDatagridRow<T>) => row.item);
         }
+        // Remove any projected rows from the displayedRows container
+        // Necessary with Ivy off. See https://github.com/vmware/clarity/issues/4692
+        for (let i = this._displayedRows.length - 1; i >= 0; i--) {
+          if (this._displayedRows.get(i).destroyed) {
+            this._displayedRows.remove(i);
+          }
+        }
         this.rows.forEach(row => {
           this._displayedRows.insert(row._view);
         });

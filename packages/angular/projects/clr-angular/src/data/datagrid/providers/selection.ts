@@ -9,6 +9,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { FiltersProvider } from './filters';
 import { Items } from './items';
 import { SelectionType } from '../enums/selection-type';
+import { debounceTime } from 'rxjs/operators';
 
 let nbSelection = 0;
 
@@ -19,7 +20,6 @@ export class Selection<T = any> {
   private prevSelectionRefs: T[] = []; // Refs of selected items
   private prevSingleSelectionRef: T; // Ref of single selected item
   private lockedRefs: T[] = []; // Ref of locked items
-  private debounce = false;
 
   constructor(private _items: Items<T>, private _filters: FiltersProvider<T>, private _zone: NgZone) {
     this.id = 'clr-dg-selection' + nbSelection++;
@@ -160,13 +160,15 @@ export class Selection<T = any> {
         this.lockedRefs = updateLockedRef;
       })
     );
+
+    this.subscriptions.push(this.valueCollector.pipe(debounceTime(0)).subscribe(() => this.emitChange()));
   }
 
   public clearSelection(): void {
-    this.current = [];
+    this._current = [];
     this.prevSelectionRefs = [];
-    this._currentSingle = null;
     this.prevSingleSelectionRef = null;
+    this._currentSingle = null;
     this.emitChange();
   }
 
@@ -236,18 +238,13 @@ export class Selection<T = any> {
     this.updateCurrent(value, true);
   }
 
+  private valueCollector: Subject<T[]> = new Subject<T[]>();
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    // This setTimeout makes sure that the change is
-    // not emitted multiple times in the same change
-    // detection cycle.
-    this._zone.runOutsideAngular(() => {
-      if (emit && !this.debounce) {
-        this.emitChange();
-        this.debounce = true;
-        setTimeout(() => (this.debounce = false));
-      }
-    });
+
+    if (emit) {
+      this.valueCollector.next(value);
+    }
   }
 
   /**
@@ -422,6 +419,5 @@ export class Selection<T = any> {
         }
       });
     }
-    this.emitChange();
   }
 }

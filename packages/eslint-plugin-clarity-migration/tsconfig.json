@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "es2015",
+    "outDir": "./dist",
+    "typeRoots": ["./node_modules/@types/"],
+    "lib": ["es2017"],
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strictNullChecks": true
+  },
+  "exclude": ["./node_modules/*", "./dist/*"]
+}

@@ -3,14 +3,13 @@ import { TSESLint } from '@typescript-eslint/experimental-utils';
 import * as path from 'path';
 
 const parser = '@typescript-eslint/parser';
-const htmlParser = 'eslint-html-parser';
 
 function getFixturesRootDir(): string {
   return path.join(process.cwd(), 'tests/fixtures/');
 }
 
 type RuleTesterConfig = Omit<TSESLint.RuleTesterConfig, 'parser'> & {
-  parser: typeof parser | typeof htmlParser;
+  parser: string;
 };
 
 export class RuleTester extends TSESLint.RuleTester {

@@ -26,7 +26,7 @@ yarn link @clr/eslint-plugin-clarity-migration
 4. Install the other linter dependencies
 
 ```bash
-yarn add -D @typescript-eslint/parser eslint-html-parser eslint
+yarn add -D @typescript-eslint/parser eslint
 ```
 
 5. Add ESLint configuration for TypeScript and HTML.
@@ -46,7 +46,7 @@ yarn add -D @typescript-eslint/parser eslint-html-parser eslint
   "overrides": [
     {
       "files": ["*.html"],
-      "parser": "eslint-html-parser"
+      "parser": "@clr/eslint-plugin-clarity-migration/src/dist/eslint-html-parser"
     }
   ]
 }

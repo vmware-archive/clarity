@@ -108,8 +108,8 @@
           <h1 class="accented" cds-text="subsection uppercase" cds-layout="m-t:lg">
             Clarity is all about people, like designers
           </h1>
-          <h2 cds-text="heading" cds-layout="m-t:md">Design with confidence</h2>
-          <p cds-text="subsection" cds-layout="m-t:lg">
+          <h2 cds-text="heading" cds-layout="m-t:lg">Design with confidence</h2>
+          <p cds-text="subsection" cds-layout="m-t:xl">
             Our toolkit is Figma. Every component, pattern, and guideline we ship is rooted in real customer
             interactions. As a result, you can rely on Clarity for 30+ components and over 200 icons so you can focus on
             product-specific user problems.
@@ -135,8 +135,8 @@
             <div class="orange-accent" cds-layout="col:3"></div>
           </div>
           <h1 cds-text="subsection uppercase" cds-layout="m-t:lg">Clarity is all about people, like developers</h1>
-          <h2 cds-text="heading" cds-layout="m-t:md">Build framework agnostic</h2>
-          <p cds-text="subsection" cds-layout="m-t:lg">
+          <h2 cds-text="heading" cds-layout="m-t:lg">Build framework agnostic</h2>
+          <p cds-text="subsection" cds-layout="m-t:xl">
             The first folx that built Clarity from scratch were a scrappy team of developers, designers, and content
             creators. Clarity has continued to grow on that strong start by supporting the big three: Angular, React and
             Vue. Our latest web components provide support for them all. Clarity provides code examples and detailed API
@@ -162,8 +162,8 @@
           <h1 cds-text="subsection uppercase" cds-layout="m-t:lg">
             Clarity is all about people, like all of our users
           </h1>
-          <h2 cds-text="heading" cds-layout="m-t:md">Backed by performant components</h2>
-          <p cds-text="subsection" cds-layout="m-t:lg">
+          <h2 cds-text="heading" cds-layout="m-t:lg">Backed by performant components</h2>
+          <p cds-text="subsection" cds-layout="m-t:xl">
             When Clarity customers speak, we listen. One of our most requested components, datagrid, can support more
             than a dozen features and handle thousands of data entries. Let us build performant components so you can
             focus on building applications.
@@ -221,15 +221,15 @@
         <div cds-text="center" cds-layout="horizontal gap:lg align:fill col:start-2 col:10 m-t:xl">
           <div>
             <h3 cds-text="display" class="docs-red">2M+</h3>
-            <p>downloads since the beginning of Clarity</p>
+            <p cds-text="body" cds-layout="m-t:lg">downloads since the beginning of Clarity</p>
           </div>
           <div>
             <h3 cds-text="display" class="docs-red">2700+</h3>
-            <p>Github repositories depending on Clarity</p>
+            <p cds-text="body" cds-layout="m-t:lg">Github repositories depending on Clarity</p>
           </div>
           <div>
             <h3 cds-text="display" class="docs-red">300+</h3>
-            <p>releases for new features and continuous improvements</p>
+            <p cds-text="body" cds-layout="m-t:lg">releases for new features and continuous improvements</p>
           </div>
         </div>
         <p cds-text="message" cds-layout="m-t:xl">

@@ -60,7 +60,7 @@ module.exports = {
     [
       'vuepress-plugin-sitemap',
       {
-        hostname: 'https://clarity.design',
+        hostname: 'https://next.clarity.design',
         outFile: 'sitemap.xml',
         changefreq: 'weekly',
       },

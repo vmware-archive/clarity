@@ -9,6 +9,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { FiltersProvider } from './filters';
 import { Items } from './items';
 import { SelectionType } from '../enums/selection-type';
+import { debounceTime } from 'rxjs/operators';
 
 let nbSelection: number = 0;
 
@@ -159,10 +160,12 @@ export class Selection<T = any> {
         this.lockedRefs = updateLockedRef;
       })
     );
+
+    this.subscriptions.push(this._valueCollector.pipe(debounceTime(0)).subscribe(() => this.emitChange()));
   }
 
   public clearSelection(): void {
-    this.current = [];
+    this._current = [];
     this.prevSelectionRefs = [];
     this._currentSingle = null;
     this.prevSingleSelectionRef = null;
@@ -249,18 +252,12 @@ export class Selection<T = any> {
     this.updateCurrent(value, true);
   }
 
+  private _valueCollector: Subject<T[]> = new Subject<T[]>();
   public updateCurrent(value: T[], emit: boolean) {
     this._current = value;
-    // This setTimeout makes sure that the change is
-    // not emitted multiple times in the same change
-    // detection cycle.
-    this._zone.runOutsideAngular(() => {
-      if (emit && !this.debounce) {
-        this.emitChange();
-        this.debounce = true;
-        setTimeout(() => (this.debounce = false));
-      }
-    });
+    if (emit) {
+      this._valueCollector.next(value);
+    }
   }
 
   /**
@@ -428,6 +425,5 @@ export class Selection<T = any> {
         }
       });
     }
-    this.emitChange();
   }
 }

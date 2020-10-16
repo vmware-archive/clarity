@@ -186,22 +186,28 @@ export default function(): void {
         })
       );
 
-      it('exposes an Observable to follow selection changes in multi selection type', function() {
-        selectionInstance.selectionType = SelectionType.Multi;
-        let nbChanges = 0;
-        let currentSelection: number[];
-        selectionInstance.change.subscribe((items: number[]) => {
-          nbChanges++;
-          currentSelection = items;
-        });
-        selectionInstance.setSelected(4, true);
-        expect(currentSelection).toEqual([4]);
-        selectionInstance.toggleAll();
-        expect(currentSelection.sort(numberSort)).toEqual(itemsInstance.displayed);
-        selectionInstance.toggleAll();
-        expect(currentSelection).toEqual([]);
-        expect(nbChanges).toBe(3);
-      });
+      it(
+        'exposes an Observable to follow selection changes in multi selection type',
+        fakeAsync(function() {
+          selectionInstance.selectionType = SelectionType.Multi;
+          let nbChanges = 0;
+          let currentSelection: number[];
+          selectionInstance.change.subscribe((items: number[]) => {
+            nbChanges++;
+            currentSelection = items;
+          });
+          selectionInstance.setSelected(4, true);
+          tick();
+          expect(currentSelection).toEqual([4]);
+          selectionInstance.toggleAll();
+          tick();
+          expect(currentSelection.sort(numberSort)).toEqual(itemsInstance.displayed);
+          selectionInstance.toggleAll();
+          tick();
+          expect(currentSelection).toEqual([]);
+          expect(nbChanges).toBe(3);
+        })
+      );
 
       it('exposes an Observable to follow selection changes in single selection type', function() {
         selectionInstance.selectionType = SelectionType.Single;
@@ -218,26 +224,31 @@ export default function(): void {
         expect(nbChanges).toBe(2);
       });
 
-      it('does not emit selection change twice after a filter is applied', function() {
-        selectionInstance.selectionType = SelectionType.Multi;
-        let nbChanges = 0;
-        selectionInstance.change.subscribe((items: any) => {
-          nbChanges++;
-        });
+      it(
+        'does not emit selection change twice after a filter is applied',
+        fakeAsync(function() {
+          selectionInstance.selectionType = SelectionType.Multi;
+          let nbChanges = 0;
+          selectionInstance.change.subscribe((items: any) => {
+            nbChanges++;
+          });
 
-        selectionInstance.current = [4, 2];
-        expect(nbChanges).toBe(1);
+          selectionInstance.current = [4, 2];
+          tick();
+          expect(nbChanges).toBe(1);
 
-        const evenFilter: EvenFilter = new EvenFilter();
-        filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
-        evenFilter.toggle();
+          const evenFilter: EvenFilter = new EvenFilter();
+          filtersInstance.add(<ClrDatagridFilterInterface<any>>evenFilter);
+          evenFilter.toggle();
+          tick();
 
-        // current is set to [] because filter is applied, and nbChanges is 3.
-        // there isn't an additional change that would have been fired to
-        // update current selection given the new data set post filter.
-        expect(selectionInstance.current.length).toBe(0);
-        expect(nbChanges).toBe(2);
-      });
+          // current is set to [] because filter is applied, and nbChanges is 3.
+          // there isn't an additional change that would have been fired to
+          // update current selection given the new data set post filter.
+          expect(selectionInstance.current.length).toBe(0);
+          expect(nbChanges).toBe(2);
+        })
+      );
 
       it('clears selection when a filter is added (selectionType single)', function() {
         selectionInstance.selectionType = SelectionType.Single;

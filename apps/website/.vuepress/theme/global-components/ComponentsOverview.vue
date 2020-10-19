@@ -25,7 +25,7 @@ export default {
   computed: {
     componentList: function () {
       if (this.$site && this.$site.themeConfig && this.$site.themeConfig.sidebar) {
-        const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === 'Components');
+        const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === 'Angular Components');
 
         if (componentsSection) {
           return componentsSection.children.slice(1);

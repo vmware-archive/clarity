@@ -35,7 +35,7 @@ const orderedListOptions = {
   'upper-roman': 'upper-roman',
 };
 
-export const API = () => {
+export function API() {
   const orderedListStyle = select('Ordered List Style', orderedListOptions, '', propertiesGroup);
 
   const orderedListChildStyle = select('Ordered List Style (Child)', orderedListOptions, '', propertiesGroup);
@@ -385,9 +385,10 @@ export const API = () => {
       </style>
     </div>
   `;
-};
+}
 
-export const orderedList = () => {
+/** @website */
+export function orderedList() {
   return html`
     <ol cds-list>
       <li>The five boxing wizards jump quickly</li>
@@ -396,9 +397,10 @@ export const orderedList = () => {
       <li>The five boxing wizards jump quickly</li>
     </ol>
   `;
-};
+}
 
-export const unorderedList = () => {
+/** @website */
+export function unorderedList() {
   return html`
     <ul cds-list>
       <li>The five boxing wizards jump quickly</li>
@@ -407,9 +409,10 @@ export const unorderedList = () => {
       <li>The five boxing wizards jump quickly</li>
     </ul>
   `;
-};
+}
 
-export const unstyledList = () => {
+/** @website */
+export function unstyledList() {
   return html`
     <ol cds-list="unstyled">
       <li>The five boxing wizards jump quickly</li>
@@ -427,9 +430,10 @@ export const unstyledList = () => {
       <li>The five boxing wizards jump quickly</li>
     </ul>
   `;
-};
+}
 
-export const nestedList = () => {
+/** @website */
+export function nestedList() {
   return html`
     <ol cds-list>
       <li>The quick brown fox jumps over the lazy dog</li>
@@ -452,9 +456,10 @@ export const nestedList = () => {
       <li>The quick brown fox jumps over the lazy dog</li>
     </ol>
   `;
-};
+}
 
-export const customSpaceList = () => {
+/** @website */
+export function customSpaceList() {
   return html`
     <ol cds-list cds-layout="vertical gap:md">
       <li>The five boxing wizards jump quickly</li>
@@ -463,9 +468,10 @@ export const customSpaceList = () => {
       <li>The five boxing wizards jump quickly</li>
     </ol>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="vertical gap:md" cds-theme="dark">
       <ol cds-list>
@@ -483,4 +489,4 @@ export const darkTheme = () => {
       </ul>
     </div>
   `;
-};
+}

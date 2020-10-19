@@ -74,7 +74,7 @@ export default {
   },
 };
 
-export const all = () => {
+export function all() {
   const search = text('search', '', propertiesGroup);
   const size = select(
     'size',
@@ -204,9 +204,9 @@ export const all = () => {
       `
     )}
   `;
-};
+}
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-demo inline-block>
       <cds-icon
@@ -215,16 +215,18 @@ export const API = (args: any) => {
       ></cds-icon>
     </cds-demo>
   `;
-};
+}
 
-export const icon = () => {
+/** @website */
+export function icon() {
   return html`<cds-icon
     shape="user"
     aria-label="This is an icon example that shows how to use the icon element in an application"
   ></cds-icon>`;
-};
+}
 
-export const sizes = () => {
+/** @website */
+export function sizes() {
   return html`
     <cds-icon size="sm" aria-label="This is an example of an icon using a pre-defined small size"></cds-icon>
     <cds-icon size="md" aria-label="This is an example of an icon using a pre-defined medium size"></cds-icon>
@@ -256,9 +258,10 @@ export const sizes = () => {
       aria-label="This is an example of an icon using a custom size of 128 pixels wide and tall"
     ></cds-icon>
   `;
-};
+}
 
-export const badges = () => {
+/** @website */
+export function badges() {
   return html`
     <cds-icon
       shape="user"
@@ -300,9 +303,10 @@ export const badges = () => {
       ></cds-icon>
     </cds-demo>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <cds-icon
       shape="user"
@@ -369,9 +373,10 @@ export const status = () => {
       aria-label="This is an example of an icon of a user completely filled in with a red color indicating danger or an error"
     ></cds-icon>
   `;
-};
+}
 
-export const statusInverse = () => {
+/** @website */
+export function statusInverse() {
   return html`
     <cds-demo inverse inline-block>
       <cds-icon shape="user" inverse size="lg" aria-label="This is an example of an icon of a user on a dark background with the default color of the surrounding text"></cds-icon>
@@ -387,9 +392,10 @@ export const statusInverse = () => {
       <cds-icon shape="user" inverse status="danger" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon>></cds-icon>
     </cds-demo>
   `;
-};
+}
 
-export const direction = () => {
+/** @website */
+export function direction() {
   return html`
     <cds-icon
       size="lg"
@@ -412,9 +418,10 @@ export const direction = () => {
       aria-label="This is an example of an icon whose glyph is directed with its top to point to the right."
     ></cds-icon>
   `;
-};
+}
 
-export const customStyles = () => {
+/** @website */
+export function customStyles() {
   return html`
     <style>
       .custom-icon-colors {
@@ -497,9 +504,10 @@ export const customStyles = () => {
       <i>The third icon should be default gray color with a custom yellow badge</i>
     </p>
   `;
-};
+}
 
-export const flip = () => {
+/** @website */
+export function flip() {
   return html`
     <cds-icon
       size="lg"
@@ -519,9 +527,10 @@ export const flip = () => {
       aria-label="This is an example of an icon whose glyph is flipped horizontally."
     ></cds-icon>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="vertical gap:sm" cds-theme="dark">
       <div cds-layout="horizontal gap:sm">
@@ -549,4 +558,4 @@ export const darkTheme = () => {
       </div>
     </div>
   `;
-};
+}

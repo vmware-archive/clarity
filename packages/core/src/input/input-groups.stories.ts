@@ -19,7 +19,8 @@ export default {
   },
 };
 
-export const group = () => {
+/** @website */
+export function group() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-input-group layout="vertical">
@@ -86,9 +87,10 @@ export const group = () => {
       </cds-input-group>
     </div>
   `;
-};
+}
 
-export const prefixSuffix = () => {
+/** @website */
+export function prefixSuffix() {
   return html`
     <cds-form-group layout="vertical">
       <cds-input>
@@ -111,9 +113,10 @@ export const prefixSuffix = () => {
       </cds-input>
     </cds-form-group>
   `;
-};
+}
 
-export const iconsButtons = () => {
+/** @website */
+export function iconsButtons() {
   return html`
     <cds-form-group layout="vertical">
       <cds-input>
@@ -160,9 +163,10 @@ export const iconsButtons = () => {
       </cds-password>
     </cds-form-group>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <cds-form-group layout="vertical">
       <cds-input-group>
@@ -214,4 +218,4 @@ export const status = () => {
       </cds-input-group>
     </cds-form-group>
   `;
-};
+}

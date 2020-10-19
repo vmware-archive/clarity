@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-demo popover>
       <cds-modal __demo-mode ...="${spreadProps(getElementStorybookArgs(args))}">
@@ -38,9 +38,10 @@ export const API = (args: any) => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const defaultSize = () => {
+/** @website */
+export function defaultSize() {
   return html`
     <cds-demo popover>
       <cds-modal __demo-mode>
@@ -58,9 +59,10 @@ export const defaultSize = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const small = () => {
+/** @website */
+export function small() {
   return html`
     <cds-demo popover>
       <cds-modal size="sm" __demo-mode>
@@ -78,9 +80,10 @@ export const small = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const large = () => {
+/** @website */
+export function large() {
   return html`
     <cds-demo popover>
       <cds-modal size="lg" __demo-mode>
@@ -97,9 +100,10 @@ export const large = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const extraLarge = () => {
+/** @website */
+export function extraLarge() {
   return html`
     <cds-demo popover>
       <cds-modal size="xl" __demo-mode>
@@ -116,9 +120,10 @@ export const extraLarge = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const focusTrap = () => {
+/** @website */
+export function focusTrap() {
   return html`
     <cds-modal>
       <cds-modal-header>
@@ -133,9 +138,10 @@ export const focusTrap = () => {
       </cds-modal-actions>
     </cds-modal>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-demo popover cds-theme="dark">
       <cds-modal __demo-mode>
@@ -153,9 +159,10 @@ export const darkTheme = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}
 
-export const customStyles = () => {
+/** @website */
+export function customStyles() {
   return html`
     <style>
       .modal-branding {
@@ -183,4 +190,4 @@ export const customStyles = () => {
       </cds-modal>
     </cds-demo>
   `;
-};
+}

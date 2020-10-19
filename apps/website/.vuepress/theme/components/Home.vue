@@ -145,7 +145,7 @@
             Vue. Our latest web components provide support for them all. Clarity provides code examples and detailed API
             documentation that guide you as you build your next application.
           </p>
-          <router-link to="/get-started/angular" cds-layout="m-t:lg" cds-text="subsection expanded"
+          <router-link to="angular-components/get-started/" cds-layout="m-t:lg" cds-text="subsection expanded"
             >Get started with Angular</router-link
           >
           <a target="_blank" href="/storybook/core" cds-layout="m-t:md">Get started with web components</a>
@@ -248,7 +248,7 @@
         </p>
 
         <div cds-layout="horizontal gap:lg align:center col:start-2 col:10 m-t:xl m-t@sm:lg">
-          <router-link to="/get-started/angular">
+          <router-link to="/angular/get-started/">
             <cds-button action="outline">
               Get started developing
             </cds-button>

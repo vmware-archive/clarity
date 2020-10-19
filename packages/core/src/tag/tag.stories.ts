@@ -32,15 +32,16 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-tag ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
       ${args.default}${args.badgeValue !== 0 ? html`<cds-badge>${args.badgeValue}</cds-badge>` : ''}
     </cds-tag>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-tag readonly status="info">Info</cds-tag>
@@ -50,9 +51,10 @@ export const status = () => {
       <cds-tag disabled status="info">Disabled</cds-tag>
     </div>
   `;
-};
+}
 
-export const color = () => {
+/** @website */
+export function color() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-tag readonly color="gray">Default</cds-tag>
@@ -62,9 +64,10 @@ export const color = () => {
       <cds-tag readonly color="light-blue">Light Blue</cds-tag>
     </div>
   `;
-};
+}
 
-export const badgesStatus = () => {
+/** @website */
+export function badgesStatus() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-tag readonly status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
@@ -74,9 +77,10 @@ export const badgesStatus = () => {
       <cds-tag disabled status="info">Disabled <cds-badge>12</cds-badge></cds-tag>
     </div>
   `;
-};
+}
 
-export const badgesColor = () => {
+/** @website */
+export function badgesColor() {
   return html`
     <cds-tag readonly>No Badge</cds-tag>
     <cds-tag readonly color="gray">Default <cds-badge>1</cds-badge></cds-tag>
@@ -85,9 +89,10 @@ export const badgesColor = () => {
     <cds-tag readonly color="orange">Orange <cds-badge>12</cds-badge></cds-tag>
     <cds-tag readonly color="light-blue">Light Blue <cds-badge>15</cds-badge></cds-tag>
   `;
-};
+}
 
-export const clickable = () => {
+/** @website */
+export function clickable() {
   return html`
     <div cds-layout="vertical gap:md">
       <div cds-layout="horizontal gap:sm">
@@ -208,9 +213,10 @@ export const clickable = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const links = () => {
+/** @website */
+export function links() {
   return html`
     <div cds-layout="horizontal gap:sm p-b:lg">
       <a href="javascript:void(0)" aria-label="Link">
@@ -237,9 +243,10 @@ export const links = () => {
       <cds-tag>link</cds-tag>
     </a>
   `;
-};
+}
 
-export const closable = () => {
+/** @website */
+export function closable() {
   return html`
     <div>
       <cds-tag aria-label="default" color="gray" closable>Default</cds-tag>
@@ -260,9 +267,10 @@ export const closable = () => {
       >
     </div>
   `;
-};
+}
 
-export const tagsAndIcons = () => {
+/** @website */
+export function tagsAndIcons() {
   const solidIcon = boolean('solid icons', false, propertiesGroup);
 
   return html`
@@ -310,9 +318,10 @@ export const tagsAndIcons = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="horizontal gap:sm" cds-theme="dark">
       <cds-tag status="info"
@@ -332,4 +341,4 @@ export const darkTheme = () => {
       <cds-tag closable><cds-icon shape="info-standard"></cds-icon>Closable</cds-tag>
     </div>
   `;
-};
+}

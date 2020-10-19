@@ -1,0 +1,76 @@
+/* Demo Components */
+.cds-demo {
+  display: block;
+}
+
+.cds-demo[layout],
+.layout-demo {
+  background: hsl(91, 56%, 78%);
+  overflow: hidden;
+  display: inline-block;
+}
+
+.cds-demo[layout][tall] > [cds-layout],
+.layout-demo.tall-demo > cds-layout {
+  min-height: 300px;
+}
+
+.cds-demo[popover] {
+  min-height: 500px;
+  position: relative;
+}
+
+.cds-demo[layout][wide],
+.layout-demo.wide-demo {
+  width: 100%;
+  display: block;
+}
+
+.cds-demo[placeholder],
+cds-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(198, 14%, 92%);
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.cds-demo[inverse] {
+  background: var(--cds-token-color-neutral-800);
+}
+
+.cds-demo[inline-block] {
+  display: inline-block;
+}
+
+.cds-demo[spacing-padding] cds-placeholder {
+  padding: 0;
+}
+
+.cds-demo[spacing-padding] > [cds-layout] {
+  background: hsl(92, 46%, 74%);
+}
+
+.cds-demo[spacing-margin] > div {
+  background: hsl(31, 87%, 79%);
+}
+
+.cds-demo[resizable],
+iframe[resizable] {
+  resize: horizontal;
+  overflow: auto;
+  padding: 24px;
+  background: linear-gradient(135deg, hsl(0, 100%, 100%) 0, hsl(0, 100%, 100%) 97%, hsl(208, 52%, 85%) 90%);
+  border: 1px solid hsl(0, 0%, 87%);
+  margin-bottom: 48px;
+  position: relative;
+}
+
+// For controlling modal behavior with non-interactive demos, interactive examples andthe sticky header
+#sm-modal,
+#md-modal,
+#lg-modal,
+#xl-modal {
+  z-index: 5050; // This places it above the sticky header and lets the modal take over the viewport.
+}

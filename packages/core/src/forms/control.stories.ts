@@ -19,7 +19,8 @@ export default {
   },
 };
 
-export const control = () => {
+/** @website */
+export function control() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-control layout="vertical">
@@ -41,9 +42,10 @@ export const control = () => {
       </cds-control>
     </div>
   `;
-};
+}
 
-export const controlHorizontal = () => {
+/** @website */
+export function controlHorizontal() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-control layout="horizontal">
@@ -65,9 +67,10 @@ export const controlHorizontal = () => {
       </cds-control>
     </div>
   `;
-};
+}
 
-export const controlCompact = () => {
+/** @website */
+export function controlCompact() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-control layout="compact">
@@ -89,4 +92,4 @@ export const controlCompact = () => {
       </cds-control>
     </div>
   `;
-};
+}

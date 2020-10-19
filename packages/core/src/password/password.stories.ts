@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-password ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>password</label>
@@ -30,18 +30,20 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-password>
   `;
-};
+}
 
-export const password = () => {
+/** @website */
+export function password() {
   return html`
     <cds-password control-width="shrink">
       <label>password</label>
       <input type="password" value="123456" />
     </cds-password>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-password layout="vertical">
@@ -69,9 +71,10 @@ export const vertical = () => {
       </cds-password>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-password layout="horizontal">
@@ -99,9 +102,10 @@ export const horizontal = () => {
       </cds-password>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-password layout="compact">
@@ -129,9 +133,10 @@ export const compact = () => {
       </cds-password>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-password layout="horizontal">
@@ -159,4 +164,4 @@ export const darkTheme = () => {
       </cds-password>
     </cds-form-group>
   `;
-};
+}

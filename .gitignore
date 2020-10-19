@@ -70,3 +70,6 @@ yarn-error.log
 
 # Release test
 release-test/
+
+# Generated file
+apps/website/data/core-demos.json

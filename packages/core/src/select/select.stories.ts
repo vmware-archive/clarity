@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-select ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>textarea</label>
@@ -34,9 +34,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-select>
   `;
-};
+}
 
-export const select = () => {
+/** @website */
+export function select() {
   return html`
     <cds-select control-width="shrink">
       <label>textarea</label>
@@ -48,9 +49,10 @@ export const select = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-select>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-select layout="vertical">
@@ -94,9 +96,10 @@ export const vertical = () => {
       </cds-select>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-select layout="horizontal">
@@ -140,9 +143,10 @@ export const horizontal = () => {
       </cds-select>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-select layout="compact">
@@ -186,9 +190,10 @@ export const compact = () => {
       </cds-select>
     </cds-form-group>
   `;
-};
+}
 
-export const multiple = () => {
+/** @website */
+export function multiple() {
   return html`
     <cds-select>
       <label>label</label>
@@ -202,9 +207,10 @@ export const multiple = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-select>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-select layout="horizontal">
@@ -248,4 +254,4 @@ export const darkTheme = () => {
       </cds-select>
     </cds-form-group>
   `;
-};
+}

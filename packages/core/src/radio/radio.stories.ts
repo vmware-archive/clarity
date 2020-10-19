@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-radio ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>radio</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-radio>
   `;
-};
+}
 
-export const radio = () => {
+/** @website */
+export function radio() {
   return html`
     <cds-radio-group>
       <label>radio group</label>
@@ -52,9 +53,10 @@ export const radio = () => {
       </cds-radio>
     </cds-radio-group>
   `;
-};
+}
 
-export const verticalGroup = () => {
+/** @website */
+export function verticalGroup() {
   return html`
     <cds-form-group layout="vertical">
       <cds-radio-group layout="vertical">
@@ -142,9 +144,10 @@ export const verticalGroup = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}
 
-export const verticalInlineGroup = () => {
+/** @website */
+export function verticalInlineGroup() {
   return html`
     <cds-form-group layout="vertical-inline">
       <cds-radio-group layout="vertical-inline">
@@ -228,9 +231,10 @@ export const verticalInlineGroup = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontalGroup = () => {
+/** @website */
+export function horizontalGroup() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-radio-group layout="horizontal">
@@ -314,9 +318,10 @@ export const horizontalGroup = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontalInlineGroup = () => {
+/** @website */
+export function horizontalInlineGroup() {
   return html`
     <cds-form-group layout="horizontal-inline">
       <cds-radio-group layout="horizontal-inline">
@@ -400,9 +405,10 @@ export const horizontalInlineGroup = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}
 
-export const compactGroup = () => {
+/** @website */
+export function compactGroup() {
   return html`
     <cds-form-group layout="compact">
       <cds-radio-group layout="compact">
@@ -486,9 +492,10 @@ export const compactGroup = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal-inline" cds-theme="dark">
       <cds-radio-group layout="horizontal-inline">
@@ -572,4 +579,4 @@ export const darkTheme = () => {
       </cds-radio-group>
     </cds-form-group>
   `;
-};
+}

@@ -23,7 +23,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-demo inline-block>
       <cds-inline-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
@@ -31,9 +31,10 @@ export const API = (args: any) => {
       </cds-inline-button>
     </cds-demo>
   `;
-};
+}
 
-export const actions = () => {
+/** @website */
+export function actions() {
   return html`
     <p cds-text="body">
       Birth Rig Veda great turbulent clouds corpus callosum preserve and cherish that pale blue dot prime number. Finite
@@ -45,18 +46,20 @@ export const actions = () => {
       <cds-inline-button>Ohai</cds-inline-button>
     </p>
   `;
-};
+}
 
-export const disabledInlineButton = () => {
+/** @website */
+export function disabledInlineButton() {
   return html`
     <p cds-text="body">
       A still more glorious dawn awaits intelligent beings colonies vastness is bearable only through love.
       <cds-inline-button disabled>Ohai<cds-icon shape="angle" direction="right"></cds-icon></cds-inline-button>
     </p>
   `;
-};
+}
 
-export const various = () => {
+/** @website */
+export function various() {
   return html`
     <div cds-layout="vertical gap:md">
       <p cds-text="body">
@@ -74,9 +77,10 @@ export const various = () => {
       </p>
     </div>
   `;
-};
+}
 
-export const withIcons = () => {
+/** @website */
+export function withIcons() {
   return html`
     <div cds-layout="vertical gap:md">
       <p cds-text="body">
@@ -100,9 +104,10 @@ export const withIcons = () => {
       </p>
     </div>
   `;
-};
+}
 
-export const inlineButtonLinks = () => {
+/** @website */
+export function inlineButtonLinks() {
   return html`
     <div cds-layout="vertical gap:lg">
       <p cds-text="body">
@@ -122,9 +127,10 @@ export const inlineButtonLinks = () => {
       </p>
     </div>
   `;
-};
+}
 
-export const customStyles = () => {
+/** @website */
+export function customStyles() {
   return html`
     <style>
       .btn-branding {
@@ -145,4 +151,4 @@ export const customStyles = () => {
     </style>
     <cds-inline-button class="btn-branding"><cds-icon shape="user"></cds-icon>Helloworld</cds-inline-button>
   `;
-};
+}

@@ -22,15 +22,16 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-badge ...="${spreadProps(getElementStorybookArgs(args))}">
       ${args.default}
     </cds-badge>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <cds-badge status="info"
       >2<span cds-layout="display:screen-reader-only"> items in an informational badge.</span></cds-badge
@@ -45,9 +46,10 @@ export const status = () => {
       >15<span cds-layout="display:screen-reader-only"> items in a badge indicating an error.</span></cds-badge
     >
   `;
-};
+}
 
-export const color = () => {
+/** @website */
+export function color() {
   return html`
     <cds-badge>5</cds-badge>
     <cds-badge color="gray"
@@ -81,9 +83,10 @@ export const color = () => {
       ></cds-badge
     >
   `;
-};
+}
 
-export const colorCustom = () => {
+/** @website */
+export function colorCustom() {
   return html`
     <style>
       cds-badge.app-custom {
@@ -138,9 +141,10 @@ export const colorCustom = () => {
       >
     </p>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="horizontal gap:sm" cds-theme="dark">
       <cds-badge>10<span cds-layout="display:screen-reader-only"> items in a dark theme default badge.</span></cds-badge></cds-badge>
@@ -150,4 +154,4 @@ export const darkTheme = () => {
       <cds-badge status="danger">50<span cds-layout="display:screen-reader-only"> items in a dark theme danger badge.</span></cds-badge></cds-badge>
     </div>
   `;
-};
+}

@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-search ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>search</label>
@@ -30,18 +30,20 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-search>
   `;
-};
+}
 
-export const search = () => {
+/** @website */
+export function search() {
   return html`
     <cds-search control-width="shrink">
       <label>search</label>
       <input type="search" />
     </cds-search>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-search>
@@ -69,9 +71,10 @@ export const vertical = () => {
       </cds-search>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-search layout="horizontal">
@@ -99,9 +102,10 @@ export const horizontal = () => {
       </cds-search>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-search layout="compact">
@@ -129,9 +133,10 @@ export const compact = () => {
       </cds-search>
     </cds-form-group>
   `;
-};
+}
 
-export const datalist = () => {
+/** @website */
+export function datalist() {
   return html`
     <cds-search>
       <label>search</label>
@@ -143,9 +148,10 @@ export const datalist = () => {
       </datalist>
     </cds-search>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-search layout="horizontal">
@@ -173,4 +179,4 @@ export const darkTheme = () => {
       </cds-search>
     </cds-form-group>
   `;
-};
+}

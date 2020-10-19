@@ -1,0 +1,39 @@
+<form action="" cds-layout="m-t:lg">
+  <cds-form-group layout="horizontal">
+    <cds-input>
+      <label>Name input</label>
+      <input type="text" />
+      <cds-control-message>Enter your full name.</cds-control-message>
+    </cds-input>
+    <cds-select control-width="shrink">
+      <label>Select options</label>
+      <select>
+        <option>Option One</option>
+        <option>Option Two</option>
+        <option>Option Three</option>
+      </select>
+      <cds-control-message>Select one option.</cds-control-message>
+    </cds-select>
+    <cds-textarea>
+      <label>Bio textarea</label>
+      <textarea></textarea>
+      <cds-control-message>Tell us about yourself.</cds-control-message>
+    </cds-textarea>
+    <cds-radio-group name="region">
+      <label>Region</label>
+      <cds-radio>
+        <label>North America</label>
+        <input type="radio" value="north-america" checked />
+      </cds-radio>
+      <cds-radio>
+        <label>South America</label>
+        <input type="radio" value="south-america" />
+      </cds-radio>
+      <cds-radio>
+        <label>Europe</label>
+        <input type="radio" value="europe" />
+      </cds-radio>
+      <cds-control-message>Where is the right place?</cds-control-message>
+    </cds-radio-group>
+  </cds-form-group>
+</form>

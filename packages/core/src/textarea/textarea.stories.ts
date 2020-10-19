@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-textarea ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>textarea</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-textarea>
   `;
-};
+}
 
-export const textarea = () => {
+/** @website */
+export function textarea() {
   return html`
     <cds-textarea control-width="shrink">
       <label>textarea</label>
@@ -40,9 +41,10 @@ export const textarea = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-textarea>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-textarea layout="vertical">
@@ -70,9 +72,10 @@ export const vertical = () => {
       </cds-textarea>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-textarea layout="horizontal">
@@ -100,9 +103,10 @@ export const horizontal = () => {
       </cds-textarea>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-textarea layout="compact">
@@ -130,9 +134,10 @@ export const compact = () => {
       </cds-textarea>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-textarea layout="horizontal">
@@ -160,4 +165,4 @@ export const darkTheme = () => {
       </cds-textarea>
     </cds-form-group>
   `;
-};
+}

@@ -1,0 +1,49 @@
+<form>
+  <cds-form-group layout="vertical">
+    <cds-input-group>
+      <label>Host URL</label>
+      <cds-select cds-layout="align:shrink">
+        <label>Protocol</label>
+        <select>
+          <option>http://</option>
+          <option>https://</option>
+        </select>
+      </cds-select>
+      <cds-input>
+        <label>Host Port</label>
+        <input placeholder="localhost:8000" type="url" />
+      </cds-input>
+      <cds-control-message>Helper text</cds-control-message>
+    </cds-input-group>
+    <cds-input-group status="error">
+      <label>Host URL</label>
+      <cds-select cds-layout="align:shrink">
+        <label>Protocol</label>
+        <select>
+          <option>http://</option>
+          <option>https://</option>
+        </select>
+      </cds-select>
+      <cds-input>
+        <label>Host Port</label>
+        <input placeholder="localhost:8000" type="url" />
+      </cds-input>
+      <cds-control-message status="error">Error text</cds-control-message>
+    </cds-input-group>
+    <cds-input-group status="success">
+      <label>Host URL</label>
+      <cds-select cds-layout="align:shrink">
+        <label>Protocol</label>
+        <select>
+          <option>http://</option>
+          <option>https://</option>
+        </select>
+      </cds-select>
+      <cds-input>
+        <label>Host Port</label>
+        <input placeholder="localhost:8000" type="url" />
+      </cds-input>
+      <cds-control-message status="success">Success text</cds-control-message>
+    </cds-input-group>
+  </cds-form-group>
+</form>

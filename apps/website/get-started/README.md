@@ -7,7 +7,8 @@ Clarity’s designs stem from continuous exploration and research. These designs
 ## How to get started
 
 - [Getting started with Clarity for designers](./design.md)
-- [Getting started with Clarity for Angular](./angular.md)
+- [Getting started with Clarity for Web Components](../angular/components/web-components/get-started.md)
+- [Getting started with Clarity for Angular](../angular/components/angular-components/get-started.md)
 
 ## Device and Browser Support
 

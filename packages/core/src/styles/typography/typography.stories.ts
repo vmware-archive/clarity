@@ -20,7 +20,8 @@ export default {
   },
 };
 
-export const headings = () => {
+/** @website */
+export function headings() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="display">The five boxing wizards jump quickly (display)</p>
@@ -30,9 +31,10 @@ export const headings = () => {
       <p cds-text="subsection">The five boxing wizards jump quickly (subsection)</p>
     </cds-demo>
   `;
-};
+}
 
-export const content = () => {
+/** @website */
+export function content() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="body">The quick brown fox jumps over the lazy dog. (body)</p>
@@ -42,21 +44,24 @@ export const content = () => {
       <p cds-text="smallcaption">The quick brown fox jumps over the lazy dog. (smallcaption)</p>
     </cds-demo>
   `;
-};
+}
 
-export const links = () => {
+/** @website */
+export function links() {
   return html`
     <p cds-text="body">The <a href="#" cds-text="link">quick brown fox</a> jumps over the lazy dog. (link)</p>
   `;
-};
+}
 
-export const code = () => {
+/** @website */
+export function code() {
   return html`
     <p cds-text="body">The <code cds-text="code">quick brown fox</code> jumps over the lazy dog. (code)</p>
   `;
-};
+}
 
-export const weights = () => {
+/** @website */
+export function weights() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="body light">The <em>200</em> quick brown foxes <em>lightly</em> jump over the lazy dog. (light)</p>
@@ -75,9 +80,10 @@ export const weights = () => {
       </p>
     </cds-demo>
   `;
-};
+}
 
-export const inline = () => {
+/** @website */
+export function inline() {
   return html`
     <cds-demo>
       <span cds-text="display inline">We</span>
@@ -87,9 +93,10 @@ export const inline = () => {
       <span cds-text="section inline"> inline!</span>
     </cds-demo>
   `;
-};
+}
 
-export const position = () => {
+/** @website */
+export function position() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="body left">Text Left (left)</p>
@@ -101,9 +108,10 @@ export const position = () => {
       </p>
     </cds-demo>
   `;
-};
+}
 
-export const transforms = () => {
+/** @website */
+export function transforms() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="body capitalize">text title case (capitalize)</p>
@@ -112,9 +120,10 @@ export const transforms = () => {
       <p cds-text="body truncate">Text Truncation (truncate): The quick brown fox jumps over the lazy dog.</p>
     </cds-demo>
   `;
-};
+}
 
-export const legacyHeaders = () => {
+/** @website */
+export function legacyHeaders() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="h1">The five boxing wizards jump quickly (h1)</p>
@@ -125,9 +134,10 @@ export const legacyHeaders = () => {
       <p cds-text="h6">The five boxing wizards jump quickly (h6)</p>
     </cds-demo>
   `;
-};
+}
 
-export const legacyParagraphs = () => {
+/** @website */
+export function legacyParagraphs() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
       <p cds-text="p1">The quick brown fox jumps over the lazy dog. (p1)</p>
@@ -140,9 +150,10 @@ export const legacyParagraphs = () => {
       <p cds-text="p8">The quick brown fox jumps over the lazy dog. (p8)</p>
     </cds-demo>
   `;
-};
+}
 
-export const disableLineHightRemover = () => {
+/** @website */
+export function disableLineHightRemover() {
   return html`
     <style>
       cds-card[show-padding] {
@@ -183,9 +194,10 @@ export const disableLineHightRemover = () => {
       </cds-card>
     </cds-demo>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="vertical gap:lg" cds-theme="dark">
       <div cds-layout="vertical gap:md">
@@ -204,4 +216,4 @@ export const darkTheme = () => {
       </div>
     </div>
   `;
-};
+}

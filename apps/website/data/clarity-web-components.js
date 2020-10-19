@@ -8,7 +8,7 @@ import clarityWebComponents from '../dist/core/custom-elements.json';
 
 export default {
   fetchApi(componentName) {
-    // idea filter the json data for name.
+    // filter the json data for component name.
     console.log(clarityWebComponents);
     return { yes: true };
   },

@@ -27,15 +27,16 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-alert ...="${spreadProps(getElementStorybookArgs(args))}">
       ${args.default} <cds-inline-button @click=${action('alertActionClicked')}>Dismiss</cds-inline-button>
     </cds-alert>
   `;
-};
+}
 
-export const actions = () => {
+/** @website */
+export function actions() {
   return html`
     <div cds-layout="vertical gap:sm">
       <div cds-layout="p:sm" style="background: #333">
@@ -57,9 +58,10 @@ export const actions = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const lightAlerts = () => {
+/** @website */
+export function lightAlerts() {
   return html`
     <div cds-layout="vertical gap:xxs">
       <cds-alert>
@@ -79,9 +81,10 @@ export const lightAlerts = () => {
       </cds-alert>
     </div>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <div cds-layout="vertical gap:xxs">
       <cds-alert>This is an alert with a default neutral status</cds-alert>
@@ -101,9 +104,10 @@ export const status = () => {
       >
     </div>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <div cds-layout="vertical gap:none">
       <cds-alert size="sm">
@@ -129,9 +133,10 @@ export const compact = () => {
       <cds-alert size="sm" status="loading">This is a compact alert with a status of "loading"</cds-alert>
     </div>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-theme="dark">
       <cds-alert-group type="light">
@@ -156,9 +161,10 @@ export const darkTheme = () => {
       </cds-alert-group>
     </div>
   `;
-};
+}
 
-export const customStyles = () => {
+/** @website */
+export function customStyles() {
   return html`
     <style>
       .alert-branding {
@@ -174,4 +180,4 @@ export const customStyles = () => {
       <cds-inline-button>Example Action</cds-inline-button></cds-alert
     >
   `;
-};
+}

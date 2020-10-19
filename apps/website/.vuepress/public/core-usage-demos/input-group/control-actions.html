@@ -1,0 +1,42 @@
+<form>
+  <cds-form-group layout="vertical">
+    <cds-input>
+      <label>icon</label>
+      <input placeholder="example" />
+      <cds-control-action action="prefix" aria-label="select user">
+        <cds-icon shape="user"></cds-icon>
+      </cds-control-action>
+    </cds-input>
+    <cds-input>
+      <label>icon button</label>
+      <input placeholder="example" />
+      <cds-control-action action="suffix" aria-label="clear example input" onclick="alert('!')">
+        <cds-icon shape="times"></cds-icon>
+      </cds-control-action>
+    </cds-input>
+    <cds-input>
+      <label>icon button label</label>
+      <cds-control-action action="label" aria-label="get more details" onclick="alert('!')">
+        <cds-icon shape="info-circle"></cds-icon>
+      </cds-control-action>
+      <input placeholder="example" />
+    </cds-input>
+    <cds-input>
+      <label>icon button message</label>
+      <input placeholder="example" />
+      <cds-control-message>
+        message text
+        <cds-control-action aria-label="get more details" onclick="alert('!')">
+          <cds-icon shape="info-circle"></cds-icon>
+        </cds-control-action>
+      </cds-control-message>
+    </cds-input>
+    <cds-password>
+      <label>additional actions to existing input types</label>
+      <input type="password" value="123456" />
+      <cds-control-action action="suffix" aria-label="clear password input" onclick="alert('!')">
+        <cds-icon shape="times"></cds-icon>
+      </cds-control-action>
+    </cds-password>
+  </cds-form-group>
+</form>

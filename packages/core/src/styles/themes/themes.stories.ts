@@ -90,7 +90,7 @@ export const lightTheme = () => {
   `;
 };
 
-export const darkTheme = () => {
+export function darkTheme() {
   return html`
     <section cds-theme="dark" cds-layout="vertical gap:lg">
       <cds-input layout="vertical" control-width="shrink">
@@ -130,7 +130,7 @@ export const darkTheme = () => {
       </div>
     </section>
   `;
-};
+}
 
 export const dynamicTheme = () => {
   const dynamicTokens: { [key: string]: number | string } = {

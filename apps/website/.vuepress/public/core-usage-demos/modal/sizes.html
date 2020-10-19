@@ -1,0 +1,140 @@
+<script type="text/javascript">
+  var smModal = document.getElementById('sm-modal');
+  var mdModal = document.getElementById('md-modal');
+  var lgModal = document.getElementById('lg-modal');
+  var xlModal = document.getElementById('xl-modal');
+  function toggleSm() {
+    smModal.hidden = !smModal.hidden;
+  }
+  function toggleMd() {
+    mdModal.hidden = !mdModal.hidden;
+  }
+  function toggleLg() {
+    lgModal.hidden = !lgModal.hidden;
+  }
+  function toggleXl() {
+    xlModal.hidden = !xlModal.hidden;
+  }
+</script>
+<div cds-layout="horizontal gap:sm align:fill m-y:md">
+  <div cds-layout="horizontal wrap:none">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 66px;
+        min-width: 66px;
+        background: var(--cds-token-color-secondary-action-700);
+      "
+    >
+      <div cds-text="heading" style="color: var(--cds-token-color-neutral-0);">S</div>
+    </div>
+    <div cds-layout="vertical gap:sm m-l:md" style="white-space: nowrap; overflow: hidden;">
+      <span cds-text="subsection semibold" cds-layout="m-t:sm">Small Modal</span>
+      <span cds-text="body">Width: 288px</span>
+      <cds-button onclick="toggleSm()" size="sm" action="outline">Launch</cds-button>
+      <cds-modal id="sm-modal" size="sm" hidden closable="false">
+        <cds-modal-header>
+          <h3 cds-text="heading">Small Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <p cds-text="body">Small content</p>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <cds-button onclick="toggleSm()" action="outline">Cancel</cds-button>
+        </cds-modal-actions>
+      </cds-modal>
+    </div>
+  </div>
+  <div cds-layout="horizontal wrap:none">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 66px;
+        min-width: 66px;
+        background: var(--cds-token-color-secondary-action-700);
+      "
+    >
+      <div cds-text="heading" style="color: var(--cds-token-color-neutral-0);">M</div>
+    </div>
+    <div cds-layout="vertical gap:sm m-l:md" style="white-space: nowrap; overflow: hidden;">
+      <span cds-text="subsection semibold" cds-layout="m-t:sm">Medium Modal</span>
+      <span cds-text="body">Width: 576px</span>
+      <cds-button onclick="toggleMd()" size="sm" action="outline">Launch</cds-button>
+      <cds-modal id="md-modal" size="md" hidden closable="false">
+        <cds-modal-header>
+          <h3 cds-text="heading">Medium Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <p cds-text="body">Medium content</p>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <cds-button onclick="toggleMd()" action="outline">Cancel</cds-button>
+        </cds-modal-actions>
+      </cds-modal>
+    </div>
+  </div>
+  <div cds-layout="horizontal wrap:none">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 66px;
+        min-width: 66px;
+        background: var(--cds-token-color-secondary-action-700);
+      "
+    >
+      <div cds-text="heading" style="color: var(--cds-token-color-neutral-0);">L</div>
+    </div>
+    <div cds-layout="vertical gap:sm m-l:md" style="white-space: nowrap; overflow: hidden;">
+      <span cds-text="subsection semibold" cds-layout="m-t:sm">Small Modal</span>
+      <span cds-text="body">Width: 864px</span>
+      <cds-button onclick="toggleLg()" size="sm" action="outline">Launch</cds-button>
+      <cds-modal id="lg-modal" size="lg" hidden closable="false">
+        <cds-modal-header>
+          <h3 cds-text="heading">Large Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <p cds-text="body">Large content</p>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <cds-button onclick="toggleLg()" action="outline">Cancel</cds-button>
+        </cds-modal-actions>
+      </cds-modal>
+    </div>
+  </div>
+  <div cds-layout="horizontal wrap:none">
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 66px;
+        min-width: 66px;
+        background: var(--cds-token-color-secondary-action-700);
+      "
+    >
+      <div cds-text="heading" style="color: var(--cds-token-color-neutral-0);">XL</div>
+    </div>
+    <div cds-layout="vertical gap:sm m-l:md" style="white-space: nowrap; overflow: hidden;">
+      <span cds-text="subsection semibold" cds-layout="m-t:sm">Small Modal</span>
+      <span cds-text="body">Width: 1152px</span>
+      <cds-button onclick="toggleXl()" size="sm" action="outline">Launch</cds-button>
+      <cds-modal id="xl-modal" size="sm" hidden closable="false">
+        <cds-modal-header>
+          <h3 cds-text="heading">X-large Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <p cds-text="body">X-large content</p>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <cds-button onclick="toggleXl()" action="outline">Cancel</cds-button>
+        </cds-modal-actions>
+      </cds-modal>
+    </div>
+  </div>
+</div>

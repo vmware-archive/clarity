@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prestart": "ts-node --project build/tsconfig.parse.json build/parse/website-demos.ts",
     "start": "vuepress dev",
+    "prebuild": "ts-node --project build/tsconfig.parse.json build/parse/website-demos.ts",
     "build": "vuepress build",
     "lint": "markdownlint '**/*.md' --ignore 'node_modules'"
   },

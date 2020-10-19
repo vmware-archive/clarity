@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-date ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>date</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-date>
   `;
-};
+}
 
-export const date = () => {
+/** @website */
+export function date() {
   return html`
     <cds-date control-width="shrink">
       <label>date</label>
@@ -40,9 +41,10 @@ export const date = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-date>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-date>
@@ -70,9 +72,10 @@ export const vertical = () => {
       </cds-date>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-date layout="horizontal">
@@ -100,9 +103,10 @@ export const horizontal = () => {
       </cds-date>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-date layout="compact">
@@ -130,9 +134,9 @@ export const compact = () => {
       </cds-date>
     </cds-form-group>
   `;
-};
+}
 
-export const datalist = () => {
+export function datalist() {
   return html`
     <cds-date>
       <label>date</label>
@@ -145,9 +149,10 @@ export const datalist = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-date>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-date layout="horizontal">
@@ -175,4 +180,4 @@ export const darkTheme = () => {
       </cds-date>
     </cds-form-group>
   `;
-};
+}

@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-datalist ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>datalist</label>
@@ -35,9 +35,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-datalist>
   `;
-};
+}
 
-export const datalist = () => {
+/** @website */
+export function datalist() {
   return html`
     <cds-datalist control-width="shrink">
       <label>datalist</label>
@@ -49,9 +50,10 @@ export const datalist = () => {
       </datalist>
     </cds-datalist>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-datalist layuut="vertical">
@@ -99,9 +101,10 @@ export const vertical = () => {
       </cds-datalist>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-datalist layout="horizontal">
@@ -149,9 +152,10 @@ export const horizontal = () => {
       </cds-datalist>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-datalist layout="compact">
@@ -199,9 +203,10 @@ export const compact = () => {
       </cds-datalist>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-datalist layout="horizontal">
@@ -249,4 +254,4 @@ export const darkTheme = () => {
       </cds-datalist>
     </cds-form-group>
   `;
-};
+}

@@ -3,6 +3,8 @@ import { Vue as VueIntegration } from '@sentry/integrations';
 import VueResource from 'vue-resource';
 import Hotjar from 'vue-hotjar';
 
+import './filters/uppercase';
+
 import './styles/index.scss';
 
 export default ({

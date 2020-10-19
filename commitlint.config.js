@@ -14,6 +14,7 @@ const scopes = [
   'date-picker',
   'dropdown',
   'form',
+  'form-group',
   'grid',
   'header',
   'i18n',

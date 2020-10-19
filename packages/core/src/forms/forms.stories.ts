@@ -33,7 +33,8 @@ export default {
   },
 };
 
-export const nativeHTML5ValidationSingle = () => {
+/** @website */
+export function nativeHTML5ValidationSingle() {
   return html`
     <cds-input validate>
       <label>text input (required)</label>
@@ -41,9 +42,10 @@ export const nativeHTML5ValidationSingle = () => {
       <cds-control-message error="valueMissing">required</cds-control-message>
     </cds-input>
   `;
-};
+}
 
-export const nativeHTML5Validation = () => {
+/** @website */
+export function nativeHTML5Validation() {
   return html`
     <form>
       <cds-form-group validate>
@@ -77,9 +79,10 @@ export const nativeHTML5Validation = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const novalidate = () => {
+/** @website */
+export function novalidate() {
   return html`
     <form novalidate>
       <cds-form-group validate>
@@ -91,9 +94,10 @@ export const novalidate = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const form = () => {
+/** @website */
+export function form() {
   return html`
     <form>
       <cds-form-group control-width="shrink">
@@ -243,9 +247,10 @@ export const form = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <form>
       <cds-form-group layout="vertical">
@@ -385,9 +390,10 @@ export const vertical = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const verticalInline = () => {
+/** @website */
+export function verticalInline() {
   return html`
     <form>
       <cds-form-group layout="vertical-inline">
@@ -527,9 +533,10 @@ export const verticalInline = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <form>
       <cds-form-group layout="horizontal">
@@ -669,9 +676,10 @@ export const horizontal = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const horizontalInline = () => {
+/** @website */
+export function horizontalInline() {
   return html`
     <form>
       <cds-form-group layout="horizontal-inline">
@@ -811,9 +819,10 @@ export const horizontalInline = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <form>
       <cds-form-group layout="compact">
@@ -955,9 +964,10 @@ export const compact = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const compactShrink = () => {
+/** @website */
+export function compactShrink() {
   return html`
     <form>
       <cds-form-group layout="compact" control-width="shrink">
@@ -1099,9 +1109,10 @@ export const compactShrink = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const controlWidth = () => {
+/** @website */
+export function controlWidth() {
   return html`
     <form>
       <cds-form-group control-width="shrink">
@@ -1241,9 +1252,10 @@ export const controlWidth = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const internationalization = () => {
+/** @website */
+export function internationalization() {
   return html`
     <form>
       <cds-form-group dir="rtl" layout="horizontal-inline" control-width="shrink">
@@ -1380,9 +1392,10 @@ export const internationalization = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
-export const responsiveCheckboxGroup = () => {
+/** @website */
+export function responsiveCheckboxGroup() {
   return html`
     <cds-demo resizable style="max-width: 565px">
       <cds-checkbox-group layout="compact">
@@ -1405,9 +1418,10 @@ export const responsiveCheckboxGroup = () => {
       </cds-checkbox-group>
     </cds-demo>
   `;
-};
+}
 
-export const disabledResponsiveCheckboxGroup = () => {
+/** @website */
+export function disabledResponsiveCheckboxGroup() {
   return html`
     <cds-demo resizable style="max-width: 565px">
       <cds-checkbox-group layout="compact" responsive="false">
@@ -1430,9 +1444,10 @@ export const disabledResponsiveCheckboxGroup = () => {
       </cds-checkbox-group>
     </cds-demo>
   `;
-};
+}
 
-export const responsive = () => {
+/** @website */
+export function responsive() {
   return html`
     <cds-demo resizable style="max-width: 520px; min-width: 300px">
       <cds-form-group layout="horizontal-inline">
@@ -1493,9 +1508,10 @@ export const responsive = () => {
       </cds-form-group>
     </cds-demo>
   `;
-};
+}
 
-export const longText = () => {
+/** @website */
+export function longText() {
   return html`
     <style>
       .long-text-demo label {
@@ -1696,9 +1712,10 @@ export const longText = () => {
       </cds-form-group>
     </div>
   `;
-};
+}
 
-export const multiColumn = () => {
+/** @website */
+export function multiColumn() {
   return html`
     <form>
       <cds-form-group layout="vertical">
@@ -1727,10 +1744,11 @@ export const multiColumn = () => {
       </cds-form-group>
     </form>
   `;
-};
+}
 
 // https://getbootstrap.com/docs/4.5/examples/checkout/
-export const checkoutForm = () => {
+/** @website */
+export function checkoutForm() {
   return html`
     <div cds-layout="vertical gap:xl container:sm" role="region" aria-labelledby="checkout-form-title">
       <p id="checkout-form-title" cds-text="title">Example Payment Form</p>
@@ -1856,9 +1874,9 @@ export const checkoutForm = () => {
       <cds-button cds-layout="m-t:lg">continue to checkout</cds-button>
     </div>
   `;
-};
+}
 
-export const responsiveCheckoutForm = () => {
+export function responsiveCheckoutForm() {
   useEffect(() => {
     const iframe = document.querySelector<HTMLIFrameElement>('#complex-form-demo');
     iframe.onload = () => {
@@ -1885,9 +1903,10 @@ export const responsiveCheckoutForm = () => {
       id="complex-form-demo"
       resizable
     ></iframe>`;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <form cds-theme="dark">
       <cds-form-group layout="horizontal-inline">
@@ -2028,4 +2047,4 @@ export const darkTheme = () => {
       </cds-form-group>
     </form>
   `;
-};
+}

@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-input ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>input</label>
@@ -30,18 +30,20 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-input>
   `;
-};
+}
 
-export const input = () => {
+/** @website */
+export function input() {
   return html`
     <cds-input control-width="shrink">
       <label>input</label>
       <input placeholder="placeholder text" required />
     </cds-input>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-input layout="vertical">
@@ -69,9 +71,10 @@ export const vertical = () => {
       </cds-input>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-input layout="horizontal">
@@ -99,9 +102,10 @@ export const horizontal = () => {
       </cds-input>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-input layout="compact">
@@ -129,9 +133,10 @@ export const compact = () => {
       </cds-input>
     </cds-form-group>
   `;
-};
+}
 
-export const inputWidth = () => {
+/** @website */
+export function inputWidth() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-input layout="vertical" control-width="shrink">
@@ -155,9 +160,10 @@ export const inputWidth = () => {
       </cds-input>
     </div>
   `;
-};
+}
 
-export const supportedTextTypes = () => {
+/** @website */
+export function supportedTextTypes() {
   return html`
     <div cds-layout="vertical gap:lg">
       <cds-input>
@@ -186,9 +192,10 @@ export const supportedTextTypes = () => {
       </cds-input>
     </div>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-input layout="horizontal">
@@ -216,9 +223,9 @@ export const darkTheme = () => {
       </cds-input>
     </cds-form-group>
   `;
-};
+}
 
-export const box = () => {
+export function box() {
   return html`
     <style>
       [box] cds-input {
@@ -247,4 +254,4 @@ export const box = () => {
       </cds-textarea>
     </cds-form-group>
   `;
-};
+}

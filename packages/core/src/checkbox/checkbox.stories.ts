@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-checkbox ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>checked</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message message</cds-control-message>
     </cds-checkbox>
   `;
-};
+}
 
-export const checkbox = () => {
+/** @website */
+export function checkbox() {
   return html`
     <cds-checkbox>
       <label>checkbox</label>
@@ -40,9 +41,10 @@ export const checkbox = () => {
       <cds-control-message>message message</cds-control-message>
     </cds-checkbox>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <cds-form-group>
       <cds-checkbox>
@@ -88,9 +90,10 @@ export const status = () => {
       </cds-checkbox>
     </cds-form-group>
   `;
-};
+}
 
-export const verticalGroup = () => {
+/** @website */
+export function verticalGroup() {
   return html`
     <cds-form-group layout="vertical">
       <cds-checkbox-group layout="vertical">
@@ -178,9 +181,10 @@ export const verticalGroup = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}
 
-export const verticalInlineGroup = () => {
+/** @website */
+export function verticalInlineGroup() {
   return html`
     <cds-form-group layout="vertical-inline">
       <cds-checkbox-group layout="vertical-inline">
@@ -268,9 +272,10 @@ export const verticalInlineGroup = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontalGroup = () => {
+/** @website */
+export function horizontalGroup() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-checkbox-group layout="horizontal">
@@ -354,9 +359,10 @@ export const horizontalGroup = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontalInlineGroup = () => {
+/** @website */
+export function horizontalInlineGroup() {
   return html`
     <cds-form-group layout="horizontal-inline">
       <cds-checkbox-group layout="horizontal-inline">
@@ -440,9 +446,10 @@ export const horizontalInlineGroup = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}
 
-export const compactGroup = () => {
+/** @website */
+export function compactGroup() {
   return html`
     <cds-form-group layout="compact">
       <cds-checkbox-group layout="compact">
@@ -526,9 +533,10 @@ export const compactGroup = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal-inline" cds-theme="dark">
       <cds-checkbox-group>
@@ -616,4 +624,4 @@ export const darkTheme = () => {
       </cds-checkbox-group>
     </cds-form-group>
   `;
-};
+}

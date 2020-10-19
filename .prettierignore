@@ -19,3 +19,4 @@ apps/core-create-react-app
 apps/website/.vuepress/config.js
 apps/core-snowpack/build
 .netlify
+apps/website/data/core-demos.json

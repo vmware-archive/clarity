@@ -23,7 +23,7 @@ export default {
   },
 };
 
-export const AccordionPanelAPI = (args: any) => {
+export function AccordionPanelAPI(args: any) {
   return html`
     <cds-accordion>
       <cds-accordion-panel
@@ -36,4 +36,24 @@ export const AccordionPanelAPI = (args: any) => {
       </cds-accordion-panel>
     </cds-accordion>
   `;
-};
+}
+
+/** @website */
+export function basicAccordion() {
+  return html`
+    <cds-accordion>
+      <cds-accordion-panel expanded>
+        <cds-accordion-header>Expanded accordion panel</cds-accordion-header>
+        <cds-accordion-content>Expanded accordion content</cds-accordion-content>
+      </cds-accordion-panel>
+      <cds-accordion-panel disabled>
+        <cds-accordion-header>Disabled accordion panel</cds-accordion-header>
+        <cds-accordion-content>Disabled accordion content</cds-accordion-content>
+      </cds-accordion-panel>
+      <cds-accordion-panel>
+        <cds-accordion-header>Collapsed accordion panel</cds-accordion-header>
+        <cds-accordion-content>Collapsed accordion content</cds-accordion-content>
+      </cds-accordion-panel>
+    </cds-accordion>
+  `;
+}

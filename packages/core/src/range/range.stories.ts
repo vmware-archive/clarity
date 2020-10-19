@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-range ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>range</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-range>
   `;
-};
+}
 
-export const range = () => {
+/** @website */
+export function range() {
   return html`
     <cds-range>
       <label>range</label>
@@ -40,9 +41,10 @@ export const range = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-range>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-range layout="vertical">
@@ -70,9 +72,10 @@ export const vertical = () => {
       </cds-range>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-range layout="horizontal">
@@ -100,9 +103,10 @@ export const horizontal = () => {
       </cds-range>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-range layout="compact">
@@ -130,9 +134,10 @@ export const compact = () => {
       </cds-range>
     </cds-form-group>
   `;
-};
+}
 
-export const minMax = () => {
+/** @website */
+export function minMax() {
   return html`
     <cds-range>
       <label>min/max/step</label>
@@ -140,9 +145,10 @@ export const minMax = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-range>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-range layout="horizontal">
@@ -170,4 +176,4 @@ export const darkTheme = () => {
       </cds-range>
     </cds-form-group>
   `;
-};
+}

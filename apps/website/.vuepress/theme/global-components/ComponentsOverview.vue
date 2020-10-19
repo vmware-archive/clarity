@@ -17,6 +17,9 @@
 <script>
 export default {
   name: 'ComponentsOverview',
+  props: {
+    framework: String,
+  },
   filters: {
     adjustToSvgUrl: componentName => {
       return `/images/components/overview/${componentName}.svg`;
@@ -24,13 +27,22 @@ export default {
   },
   computed: {
     componentList: function () {
-      if (this.$site && this.$site.themeConfig && this.$site.themeConfig.sidebar) {
-        const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === 'Components');
+      if (this.framework) {
+        if (this.$site && this.$site.themeConfig && this.$site.themeConfig.sidebar) {
+          const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === this.framework);
 
-        if (componentsSection) {
-          return componentsSection.children.slice(1);
+          if (componentsSection) {
+            return componentsSection.children.slice(1).filter(item => item.title !== 'Get Started');
+          }
         }
       }
+      // if (this.$site && this.$site.themeConfig && this.$site.themeConfig.sidebar) {
+      //   const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === 'Angular Components');
+      //
+      //   if (componentsSection) {
+      //     return componentsSection.children.slice(1);
+      //   }
+      // }
 
       return [];
     },

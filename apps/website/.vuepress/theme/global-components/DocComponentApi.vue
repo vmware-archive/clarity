@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import Api from '../../../data/api.json';
+import Api from '../../../data/angular-api.json';
 
 export default {
   name: 'DocComponentApi',

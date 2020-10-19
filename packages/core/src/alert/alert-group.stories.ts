@@ -30,7 +30,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-alert-group ...="${spreadProps(getElementStorybookArgs(args))}">
       <cds-alert closable @closeChange=${action('closeChange')}>
@@ -42,9 +42,10 @@ export const API = (args: any) => {
       </cds-alert>
     </cds-alert-group>
   `;
-};
+}
 
-export const alertGroup = () => {
+/** @website */
+export function alertGroup() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group status="info" aria-label="This is an example info alert group">
@@ -142,9 +143,10 @@ export const alertGroup = () => {
       </cds-alert-group>
     </div>
   `;
-};
+}
 
-export const bannerGroupStatus = () => {
+/** @website */
+export function bannerGroupStatus() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group
@@ -226,9 +228,10 @@ export const bannerGroupStatus = () => {
       </cds-alert-group>
     </div>
   `;
-};
+}
 
-export const bannerGroup = () => {
+/** @website */
+export function bannerGroup() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group type="banner" aria-label="This is an example banner alert group">
@@ -268,7 +271,7 @@ export const bannerGroup = () => {
       </cds-alert-group>
     </div>
   `;
-};
+}
 
 /*
 export const bannerGroupWithPager = () => {
@@ -328,7 +331,8 @@ export const bannerGroupWithPager = () => {
 };
 */
 
-export const lightweightAlertGroup = () => {
+/** @website */
+export function lightweightAlertGroup() {
   return html`
     <cds-alert-group type="light">
       <cds-alert status="info">
@@ -359,9 +363,10 @@ export const lightweightAlertGroup = () => {
       </cds-alert>
     </cds-alert-group>
   `;
-};
+}
 
-export const compactAlertGroup = () => {
+/** @website */
+export function compactAlertGroup() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group status="info" size="sm">
@@ -481,9 +486,10 @@ export const compactAlertGroup = () => {
       </cds-alert-group>
     </div>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="vertical gap:lg" cds-theme="dark">
       <cds-alert-group type="light">
@@ -602,9 +608,10 @@ export const darkTheme = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const customStyles = () => {
+/** @website */
+export function customStyles() {
   return html`
     <style>
       .alert-group-custom,
@@ -634,4 +641,4 @@ export const customStyles = () => {
       </cds-alert>
     </cds-alert-group>
   `;
-};
+}

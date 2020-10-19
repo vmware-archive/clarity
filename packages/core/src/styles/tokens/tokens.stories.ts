@@ -244,7 +244,7 @@ export const typography = () => getTokenTable('globalTypography');
 
 export const color = () => getTokenTable('globalColor');
 
-export const objectLayers = () => {
+export function objectLayers () {
   return html`
     <style>
       .cds-object-app-demo {
@@ -295,9 +295,9 @@ export const objectLayers = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const objectDemo = () => {
+export function objectDemo () {
   return html`
     <style>
       .cds-card-mock {
@@ -316,9 +316,10 @@ export const objectDemo = () => {
       <cds-button action="outline" cds-layout="align:right">Save</cds-button>
     </div>
   `;
-};
+}
 
-export const interactionMenuDemo = () => {
+/** @website */
+export function interactionMenuDemo() {
   return html`
     <style>
       .cds-menu-mock {
@@ -439,9 +440,10 @@ export const interactionMenuDemo = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const interactionVerticalNavigationDemo = () => {
+/** @website */
+export function interactionVerticalNavigationDemo () {
   return html`
     <style>
       .cds-vertical-nav-mock {
@@ -551,9 +553,10 @@ export const interactionVerticalNavigationDemo = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const interactionSubNavigationDemo = () => {
+/** @website */
+export function interactionSubNavigationDemo() {
   return html`
     <style>
       .cds-sub-nav-mock {
@@ -671,9 +674,10 @@ export const interactionSubNavigationDemo = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const interactionTabsDemo = () => {
+/** @website */
+export function interactionTabsDemo() {
   return html`
     <style>
       .cds-tabs-mock {
@@ -785,9 +789,10 @@ export const interactionTabsDemo = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const interactionVerticalTabsDemo = () => {
+/** @website */
+export function interactionVerticalTabsDemo() {
   return html`
     <style>
       .cds-tabs-mock[vertical] {
@@ -893,9 +898,10 @@ export const interactionVerticalTabsDemo = () => {
       </div>
     </div>
   `;
-};
+}
 
-export const interactionAccordionDemo = () => {
+/** @website */
+export function interactionAccordionDemo() {
   return html`
     <div cds-layout="grid cols@md:4 gap:lg">
       <div cds-layout="vertical gap:md">
@@ -1019,4 +1025,4 @@ export const interactionAccordionDemo = () => {
       </div>
     </div>
   `;
-};
+}

@@ -26,20 +26,23 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+/** @website */
+export function API(args: any) {
   return html` <cds-progress-circle ...="${spreadProps(getElementStorybookArgs(args))}"></cds-progress-circle> `;
-};
+}
 
-export const spinner = () => {
+/** @website */
+export function spinner() {
   return html`
     <cds-progress-circle
       size="xl"
       aria-label="Demonstration of indeterminate progress circle spinning to show work is in progress"
     ></cds-progress-circle>
   `;
-};
+}
 
-export const status = () => {
+/** @website */
+export function status() {
   return html`
     <div cds-layout="horizontal gap:sm">
       <cds-progress-circle size="xl" value="0"></cds-progress-circle>
@@ -55,9 +58,9 @@ export const status = () => {
       </div>
     </div>
   `;
-};
-
-export const darkTheme = () => {
+}
+/** @website */
+export function darkTheme() {
   return html`
     <div cds-layout="horizontal gap:sm" cds-theme="dark">
       <cds-progress-circle size="xl"></cds-progress-circle>
@@ -70,12 +73,12 @@ export const darkTheme = () => {
       <cds-progress-circle size="xl" status="neutral" value="60"></cds-progress-circle>
     </div>
   `;
-};
+}
 
 // this is kept here so we can verify the animation when we need to.
 // to test in screen reader, need to have a long interval.
 // note for future dev, throttle dynamic progress updates so as not to spam the screen reader.
-export const chaos = () => {
+export function chaos() {
   return html`
     <span id="progress-announce" cds-layout="display:screen-reader-only" aria-live="polite"
       >Circular progress example: 12% complete</span
@@ -96,9 +99,9 @@ export const chaos = () => {
       Start Me Up!
     </button>
   `;
-};
+}
 
-export const custom = () => {
+export function custom() {
   return html`
     <style>
       cds-progress-circle.app-custom {
@@ -121,4 +124,4 @@ export const custom = () => {
       <cds-progress-circle class="app-custom-3" size="64" line="6"></cds-progress-circle>
     </div>
   `;
-};
+}

@@ -21,28 +21,31 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-internal-close-button
       ...="${spreadProps(getElementStorybookArgs(args))}"
       aria-label="close"
     ></cds-internal-close-button>
   `;
-};
+}
 
-export const closeButton = () => {
+/** @website */
+export function closeButton() {
   return html` <cds-internal-close-button aria-label="close"></cds-internal-close-button> `;
-};
+}
 
-export const custom = () => {
+/** @website */
+export function custom() {
   return html`
     <cds-internal-close-button icon-size="sm" aria-label="ohai" icon-shape="times-circle"></cds-internal-close-button>
   `;
-};
+}
 
-export const sizes = () => {
+/** @website */
+export function sizes() {
   return html`
     <div><cds-internal-close-button icon-size="48" aria-label="ohai"></cds-internal-close-button> :: numeric size</div>
     <div><cds-internal-close-button icon-size="lg" aria-label="ohai"></cds-internal-close-button> :: t-shirt size</div>
   `;
-};
+}

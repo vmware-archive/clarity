@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-time ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>time</label>
@@ -30,9 +30,10 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-time>
   `;
-};
+}
 
-export const time = () => {
+/** @website */
+export function time() {
   return html`
     <cds-time control-width="shrink">
       <label>time</label>
@@ -40,9 +41,10 @@ export const time = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-time>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-time layout="vertical">
@@ -70,9 +72,10 @@ export const vertical = () => {
       </cds-time>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-time layout="horizontal">
@@ -100,9 +103,10 @@ export const horizontal = () => {
       </cds-time>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-time layout="compact">
@@ -130,9 +134,10 @@ export const compact = () => {
       </cds-time>
     </cds-form-group>
   `;
-};
+}
 
-export const timeDatalist = () => {
+/** @website */
+export function timeDatalist() {
   return html`
     <cds-time>
       <label>time with datalist</label>
@@ -145,9 +150,10 @@ export const timeDatalist = () => {
       <cds-control-message>message text</cds-control-message>
     </cds-time>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-time layout="horizontal">
@@ -175,4 +181,4 @@ export const darkTheme = () => {
       </cds-time>
     </cds-form-group>
   `;
-};
+}

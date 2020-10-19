@@ -22,7 +22,7 @@ export default {
   },
 };
 
-export const API = (args: any) => {
+export function API(args: any) {
   return html`
     <cds-file ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>select files</label>
@@ -30,18 +30,20 @@ export const API = (args: any) => {
       <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-file>
   `;
-};
+}
 
-export const file = () => {
+/** @website */
+export function file() {
   return html`
     <cds-file>
       <label>select files</label>
       <input type="file" multiple />
     </cds-file>
   `;
-};
+}
 
-export const vertical = () => {
+/** @website */
+export function vertical() {
   return html`
     <cds-form-group layout="vertical">
       <cds-file layout="vertical">
@@ -69,9 +71,10 @@ export const vertical = () => {
       </cds-file>
     </cds-form-group>
   `;
-};
+}
 
-export const horizontal = () => {
+/** @website */
+export function horizontal() {
   return html`
     <cds-form-group layout="horizontal">
       <cds-file layout="horizontal">
@@ -99,9 +102,10 @@ export const horizontal = () => {
       </cds-file>
     </cds-form-group>
   `;
-};
+}
 
-export const compact = () => {
+/** @website */
+export function compact() {
   return html`
     <cds-form-group layout="compact">
       <cds-file layout="compact">
@@ -129,9 +133,10 @@ export const compact = () => {
       </cds-file>
     </cds-form-group>
   `;
-};
+}
 
-export const darkTheme = () => {
+/** @website */
+export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">
       <cds-file layout="horizontal">
@@ -159,4 +164,4 @@ export const darkTheme = () => {
       </cds-file>
     </cds-form-group>
   `;
-};
+}

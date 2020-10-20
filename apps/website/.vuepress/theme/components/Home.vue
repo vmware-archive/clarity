@@ -76,6 +76,13 @@
           Clarity is a scalable, customizable, open source design system bolstered by the people that build with it, the
           people we build it for, and the community that makes us who we are.
         </p>
+        <div cds-layout="col:12 m-t:lg">
+          <cds-button>
+            <router-link to="/get-started">
+              Get started using Clarity
+            </router-link>
+          </cds-button>
+        </div>
         <div class="image-wrapper">
           <img
             class="hero-image"

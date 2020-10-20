@@ -3,4 +3,16 @@ title: API
 toc: true
 ---
 
-## Core Input Group API
+<DocWebComponentAPI component="cds-input-group">
+## Button
+<template v-slot:properties>
+
+### Button Properties
+
+</template>
+<template v-slot:slots>
+
+### Button Slots
+
+</template>
+</DocWebComponentAPI>

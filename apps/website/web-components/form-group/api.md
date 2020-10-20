@@ -3,16 +3,16 @@ title: API
 toc: true
 ---
 
-<DocWebComponentAPI component="cds-file">
-## File
+<DocWebComponentAPI component="cds-form-group">
+## Form Group
 <template v-slot:properties>
 
-### File Properties
+### Form Group Properties
 
 </template>
 <template v-slot:slots>
 
-### File Slots
+### Form Group Slots
 
 </template>
 </DocWebComponentAPI>

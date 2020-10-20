@@ -3,4 +3,21 @@ title: API
 toc: true
 ---
 
-## Core Range API
+<DocWebComponentAPI component="cds-range">
+## Range
+<template v-slot:properties>
+
+### Range Properties
+
+</template>
+<template v-slot:cssProperties>
+
+### Range CSS Properties
+
+</template>
+<template v-slot:slots>
+
+### Range Slots
+
+</template>
+</DocWebComponentAPI>

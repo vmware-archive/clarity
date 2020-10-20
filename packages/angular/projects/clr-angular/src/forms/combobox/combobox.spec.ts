@@ -40,7 +40,6 @@ class TestComponent {
   selection: any;
   inputValue: string;
   openState: boolean;
-  placeholder: string;
   disabled = false;
   inputChanged(value: string) {
     this.inputValue = value;
@@ -167,13 +166,6 @@ export default function (): void {
         toggleService.open = true;
         fixture.detectChanges();
         expect(trigger.getAttribute('aria-expanded')).toEqual('true');
-      });
-
-      it('should pass placeholder to internal input', () => {
-        fixture.componentInstance.placeholder = 'hello world';
-        fixture.detectChanges();
-        const combobox: HTMLElement = clarityElement.querySelector('.clr-combobox-input');
-        expect(combobox.getAttribute('placeholder')).toEqual('hello world');
       });
 
       it('should disable openClose button', () =>

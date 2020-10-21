@@ -1,12 +1,9 @@
 # Default build settings
 [build]
+  ignore = "./scripts/netlify-build.sh"
   functions = "dist/netlify"
   publish = "dist/website"
   environment = { CI = "true", NPM_FLAGS = '--no-optional', CYPRESS_INSTALL_BINARY = "false" }
-
-# Override for PRs to deploy the dev app
-[context.deploy-preview]
-  command = "yarn build:libs && yarn angular:dev:preview && yarn website:build && cp -R dist/dev dist/website/dev"
 
 # Legacy Website Redirects
 

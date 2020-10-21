@@ -4,6 +4,9 @@
       <b>{{ item.scope }}</b>
     </td>
     <td class="left">
+      {{ item.project }}
+    </td>
+    <td class="left">
       {{ item.title }} <a href="javascript://" @click="more = !more" v-if="hasMore"><b>Show More</b></a>
       <div class="more-block" v-if="item.more">
         <slot></slot>

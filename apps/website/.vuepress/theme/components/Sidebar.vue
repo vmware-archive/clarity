@@ -11,7 +11,7 @@
                   <cds-icon
                     class="nav-group-trigger-icon"
                     shape="angle"
-                    :dir="states[index] ? 'down' : 'right'"
+                    :direction="states[index] ? 'down' : 'right'"
                   ></cds-icon>
                 </button>
               </div>

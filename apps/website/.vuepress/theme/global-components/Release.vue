@@ -10,19 +10,19 @@
       <p v-if="release.description">{{ release.description }}</p>
       <ReleaseGroup v-if="release.feat" type="feat">
         <template v-for="feat of release.feat">
-          <ReleaseItem v-if="feat.project.toLowerCase() !== 'core'" :item="feat" />
+          <ReleaseItem :item="feat" />
         </template>
       </ReleaseGroup>
 
       <ReleaseGroup v-if="release.fix" type="fix">
         <template v-for="fix of release.fix">
-          <ReleaseItem v-if="fix.project.toLowerCase() !== 'core'" :item="fix" />
+          <ReleaseItem :item="fix" />
         </template>
       </ReleaseGroup>
 
       <ReleaseGroup v-if="release.deprecation" type="deprecation">
         <template v-for="deprecation of release.deprecation">
-          <ReleaseItem v-if="deprecation.project.toLowerCase() !== 'core'" :item="deprecation" />
+          <ReleaseItem :item="deprecation" />
         </template>
       </ReleaseGroup>
     </div>

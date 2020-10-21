@@ -60,7 +60,6 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 
           <button
             class="datagrid-column-title"
-            [attr.aria-label]="commonStrings.keys.sortColumn"
             *ngIf="sortable"
             (click)="sort()"
             type="button">

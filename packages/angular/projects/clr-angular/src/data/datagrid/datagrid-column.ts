@@ -44,13 +44,7 @@ import { DetailService } from './providers/detail.service';
   selector: 'clr-dg-column',
   template: `
     <div class="datagrid-column-flex">
-      <button
-        class="datagrid-column-title"
-        [attr.aria-label]="commonStrings.keys.sortColumn"
-        *ngIf="sortable"
-        (click)="sort()"
-        type="button"
-      >
+      <button class="datagrid-column-title" *ngIf="sortable" (click)="sort()" type="button">
         <ng-container *ngTemplateOutlet="columnTitle"></ng-container>
         <clr-icon *ngIf="sortIcon" [attr.shape]="sortIcon" class="sort-icon"></clr-icon>
       </button>

@@ -324,13 +324,6 @@ export default function (): void {
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
       });
 
-      it('add aria-label to button', function () {
-        context.testComponent.comparator = new TestComparator();
-        context.detectChanges();
-        const title = context.clarityElement.querySelector('.datagrid-column-title');
-        expect(title.attributes['aria-label'].value).toBe(commonStringsDefault.sortColumn);
-      });
-
       it('adds and removes the correct icon when sorting', function () {
         context.clarityDirective.sortBy = new TestComparator();
         context.clarityDirective.sort();

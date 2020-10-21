@@ -8,7 +8,6 @@ import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 
-import { commonStringsDefault } from './../../utils/i18n/common-strings.default';
 import { DatagridPropertyComparator } from './built-in/comparators/datagrid-property-comparator';
 import { DatagridNumericFilterImpl } from './built-in/filters/datagrid-numeric-filter-impl';
 import { DatagridStringFilter } from './built-in/filters/datagrid-string-filter';
@@ -322,13 +321,6 @@ export default function (): void {
         title.click();
         context.detectChanges();
         expect(context.clarityDirective.sortOrder).toBe(ClrDatagridSortOrder.DESC);
-      });
-
-      it('add aria-label to button', function () {
-        context.testComponent.comparator = new TestComparator();
-        context.detectChanges();
-        const title = context.clarityElement.querySelector('.datagrid-column-title');
-        expect(title.attributes['aria-label'].value).toBe(commonStringsDefault.sortColumn);
       });
 
       it('adds and removes the correct icon when sorting', function () {

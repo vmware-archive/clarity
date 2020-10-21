@@ -46,7 +46,6 @@ import { DetailService } from './providers/detail.service';
       <div class="datagrid-column-flex">
           <button
             class="datagrid-column-title"
-            [attr.aria-label]="commonStrings.keys.sortColumn"
             *ngIf="sortable"
             (click)="sort()"
             type="button">

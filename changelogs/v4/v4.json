@@ -2,6 +2,319 @@
   "$schema": "../schema.json",
   "releases": [
     {
+      "version": "4.0.4",
+      "date": "2020-10-15",
+      "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
+      "feat": [
+        {
+          "issue": 5434,
+          "title": "Allow custom icons to be added from icon template",
+          "project": "Core",
+          "scope": "Icon"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 5145,
+          "title": "Update combobox pill design",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5119,
+          "title": "Fix datagrid filtering with ivy off",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5113,
+          "title": "Fix css variables applied to the component",
+          "project": "Angular",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5112,
+          "title": "Improves default core tag implementation",
+          "project": "Core",
+          "scope": "Tag"
+        }
+      ]
+    },
+    {
+      "version": "4.0.3",
+      "date": "2020-10-01",
+      "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
+      "fix": [
+        {
+          "issue": 5099,
+          "title": "Fix clr-input-wrapper max width",
+          "project": "Angular",
+          "scope": "Input"
+        },
+        {
+          "issue": 5080,
+          "title": "Make datagrid header sticky no matter how many rows ",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5072,
+          "title": "Allow className to be passed down to the underlying component",
+          "project": "Core",
+          "scope": "React"
+        },
+        {
+          "issue": 5086,
+          "title": "Fix icon download svg",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5066,
+          "title": "Fix broken link in website documentation",
+          "project": "Website",
+          "scope": "Documentation"
+        }
+      ]
+    },
+    {
+      "version": "4.0.2",
+      "date": "2020-9-17",
+      "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
+      "fix": [
+        {
+          "issue": 5056,
+          "title": "Datagrid: trackBy items by provided trackBy option",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4996,
+          "title": "Datagrid: correct way of assigning clrDgSelectable",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5050,
+          "title": "Range input layout",
+          "project": "Core",
+          "scope": "Range"
+        },
+        {
+          "issue": 5048,
+          "title": "Typo in button react wrapper",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5046,
+          "title": "Double event on selection",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5036,
+          "title": "Pane was losing state when rows update",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5037,
+          "title": "Updated panel property to match stepper panel for TS 4",
+          "project": "Angular",
+          "scope": "Stepper"
+        },
+        {
+          "issue": 5033,
+          "title": "Sync child alerts when slot changes in alert group",
+          "project": "Angular",
+          "scope": "Alert"
+        },
+        {
+          "issue": 5025,
+          "title": "Display the correct error when validating",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4999,
+          "title": "Export form layout enum for strict typing",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 5019,
+          "title": "Fix modal exception",
+          "project": "Core",
+          "scope": "Modal"
+        },
+        {
+          "issue": 5007,
+          "title": "Handle TypeError when calling triggerStatusChange",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4998,
+          "title": "Remove unnecessary position on layout",
+          "project": "Core",
+          "scope": "Token"
+        }
+      ]
+    },
+    {
+      "version": "4.0.1",
+      "date": "",
+      "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
+      "fix": [
+        {
+          "issue": 4083,
+          "title": "Corrected DOM order of close buttons in modals",
+          "project": "Angular",
+          "scope": "Modal"
+        },
+        {
+          "issue": 4525,
+          "title": "Removed unnecessary aria-label on expand/collapse SVG in Stack View",
+          "project": "Angular",
+          "scope": "Stack View"
+        },
+        {
+          "issue": 4977,
+          "title": "Fixed issue with Angular assigning inputs for @clr/angular components that are not ready",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4978,
+          "title": "Removed min-height from datagrid header to prevent overlapping data",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4968,
+          "title": "Added focus trap to @clr/core modal and check for hidden to prevent hidden focus traps",
+          "project": "Core",
+          "scope": "Modal"
+        },
+        {
+          "issue": 4967,
+          "title": "@clr/core documentation improvements",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 4966,
+          "title": "Fixed accessibility issue with @clr/core icon button",
+          "project": "Core",
+          "scope": "Accessibility"
+        },
+        {
+          "issue": 4965,
+          "title": "Fixed issue with close button wrapping in @clr/core modal header",
+          "project": "Core",
+          "scope": "Modal"
+        },
+        {
+          "issue": 4985,
+          "title": "Ensure required property exists before throwing a warning with @clr/core property decorator",
+          "project": "Core",
+          "scope": "Utility"
+        },
+        {
+          "issue": 4964,
+          "title": "Fixed margin issue with @clr/core lists inside of layouts",
+          "project": "Core",
+          "scope": "List"
+        },
+        {
+          "issue": 4974,
+          "title": "Added a disabled state for @clr/core tags",
+          "project": "Core",
+          "scope": "Tag"
+        },
+        {
+          "issue": 4975,
+          "title": "Improved support for anchor tags and @clr/core button elements",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 4980,
+          "title": "Fixes for @clr/angular schematics",
+          "project": "Angular",
+          "scope": "Schematics"
+        }
+      ]
+    },
+    {
+      "version": "4.0.0",
+      "date": "2020-08-19",
+      "description": "This is the official 4.0.0 release, which is fully compatible with Angular 10.",
+      "fix": [
+        {
+          "issue": 4799,
+          "title": "Hide vertical nav helper button from screen readers",
+          "project": "Angular",
+          "scope": "Vertical Nav"
+        },
+        {
+          "issue": 4804,
+          "title": "Fix tab content width in IE11",
+          "project": "Angular",
+          "scope": "Tabs"
+        },
+        {
+          "issue": 4817,
+          "title": "Fix potential undefined error in form control error message",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 4905,
+          "title": "Set aria-current in wizard steps",
+          "project": "Angular",
+          "scope": "Wizard"
+        },
+        {
+          "issue": 4904,
+          "title": "Handle possible exception in stepper with unknown first panel",
+          "project": "Angular",
+          "scope": "Stepper"
+        },
+        {
+          "issue": 4873,
+          "title": "Fix border on last accordion panel when opened",
+          "project": "Angular",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 4888,
+          "title": "Reverted a change in 3.1.5 that tried to fix Ivy compatibility but cause potential memory leak in some uses of Datagrid",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 4851,
+          "title": "Removed unnecessary inline style on wizard button",
+          "project": "Angular",
+          "scope": "Wizard"
+        },
+        {
+          "issue": 4918,
+          "title": "Fix Combobox focus indicator animations",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 4917,
+          "title": "Fix form success and helper messages hiding when they should be visible",
+          "project": "Angular",
+          "scope": "Form"
+        }
+      ]
+    },
+    {
       "version": "4.0.0-rc.1",
       "date": "2020-07-15",
       "description": "Stability was the goal for this release, where a number of bugs have been fixed and everything has been checked before we target a stable release soon!",

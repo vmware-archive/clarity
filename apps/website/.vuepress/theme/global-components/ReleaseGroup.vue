@@ -3,10 +3,12 @@
     <h3>{{ title }}</h3>
     <table class="table">
       <tr>
-        <th class="left" style="width: 100px;">Scope</th>
+        <th class="left fixed-5">Scope</th>
+        <th class="left fixed-5">Project</th>
         <th class="left">Description</th>
-        <th style="width: 125px;"></th>
-        <th class="left" style="width: 100px;">Issue</th>
+        <th></th>
+        <!-- the cells in this col are used when the change needs a breaking badge -->
+        <th class="left fixed-5">Issue</th>
       </tr>
       <slot></slot>
     </table>
@@ -32,4 +34,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.table {
+  table-layout: auto;
+  .fixed-5 {
+    width: 5rem;
+  }
+}
+</style>

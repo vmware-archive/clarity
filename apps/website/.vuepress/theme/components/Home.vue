@@ -26,7 +26,7 @@
 
 .tinted {
   &.action-light {
-    background-color: hsl(198, 41, 90);
+    background-color: hsl(198, 44, 93);
   }
   &.action-dark {
     background-color: hsl(198, 95, 40);
@@ -76,6 +76,13 @@
           Clarity is a scalable, customizable, open source design system bolstered by the people that build with it, the
           people we build it for, and the community that makes us who we are.
         </p>
+        <div cds-layout="col:12 m-t:lg">
+          <cds-button>
+            <router-link to="/get-started">
+              Get started using Clarity
+            </router-link>
+          </cds-button>
+        </div>
         <div class="image-wrapper">
           <img
             class="hero-image"
@@ -212,7 +219,7 @@
           priorities. We are proud of what we have running under the hood. Check out our Github and take a look at our
           priority list, our code, our documentation, and join our community.
         </p>
-        <cds-button cds-layout="m-t:lg">
+        <cds-button cds-layout="m-t:lg" action="outline">
           <router-link to="/get-started">
             Join the community
           </router-link>
@@ -238,12 +245,12 @@
         </p>
 
         <div cds-layout="horizontal gap:lg align:center col:start-2 col:10 m-t:lg">
-          <cds-button>
+          <cds-button action="outline">
             <router-link to="/get-started/design">
               Get started developing
             </router-link>
           </cds-button>
-          <cds-button>
+          <cds-button action="outline">
             <router-link to="/get-started/angular">
               Get started designing
             </router-link>

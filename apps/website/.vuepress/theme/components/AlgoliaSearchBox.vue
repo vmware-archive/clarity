@@ -1,8 +1,8 @@
 <template>
   <form class="search">
-      <label for="algolia-search-input">
-          <input id="algolia-search-input" type="text" placeholder="Search for Components...">
-      </label>
+    <label for="algolia-search-input">
+      <input id="algolia-search-input" type="text" placeholder="Search for Components..." />
+    </label>
   </form>
 </template>
 
@@ -76,6 +76,7 @@ export default {
 <style lang="scss">
 .algolia-autocomplete .ds-dropdown-menu {
   line-height: 1rem;
+  z-index: 5000 !important;
 }
 
 .algolia-autocomplete

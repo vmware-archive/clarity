@@ -93,6 +93,7 @@
         "Datagrid",
         "Datalist",
         "Date Picker",
+        "Documentation",
         "Dropdown",
         "Form",
         "Grid",
@@ -108,6 +109,7 @@
         "Progress Bar",
         "Radio",
         "Range",
+        "React",
         "Schematics",
         "Select",
         "Sidenav",
@@ -117,11 +119,14 @@
         "Stepper",
         "Table",
         "Tabs",
+        "Tag",
         "Textarea",
         "Timeline",
         "Toggle",
+        "Token",
         "Tooltip",
         "Tree View",
+        "Utility",
         "Vertical Nav",
         "Wizard"
       ],
@@ -129,7 +134,7 @@
     },
     "Project": {
       "type": "string",
-      "enum": ["Angular", "Core"],
+      "enum": ["Angular", "Core", "Website"],
       "title": "Project"
     }
   }

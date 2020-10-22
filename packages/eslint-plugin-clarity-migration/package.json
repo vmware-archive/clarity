@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "@typescript-eslint/experimental-utils": "^4.1.1",
-    "node-html-parser": "^1.2.20",
     "htmlparser2": "^5.0.0",
-    "eslint-scope": "^5.1.1"
+    "eslint-scope": "^5.1.1",
+    "jsdom": "^16.4.0"
   },
   "devDependencies": {
     "@types/eslint": "^7.2.2",
@@ -45,7 +45,6 @@
     "@typescript-eslint/typescript-estree": "^4.1.1",
     "conventional-changelog-cli": "^2.0.25",
     "eslint": "^7.9.0",
-    "eslint-html-parser": "^6.8.0",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
     "tslint": "^6.1.3",

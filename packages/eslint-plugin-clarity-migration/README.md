@@ -37,11 +37,13 @@ yarn add -D @typescript-eslint/parser eslint
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 2015
   },
   "plugins": ["@clr/clarity-migration"],
   "rules": {
-    "@clr/clarity-migration/no-clr-button": "warn"
+    "@clr/clarity-migration/no-clr-button": "warn",
+    "@clr/clarity-migration/no-clr-alert": "warn"
   },
   "overrides": [
     {

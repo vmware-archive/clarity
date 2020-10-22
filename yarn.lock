@@ -3314,6 +3314,10 @@
     tslib "^2.0.0"
   optionalDependencies:
     "@clr/city" "^1.1.0"
+    "@webcomponents/custom-elements" "^1.4.2"
+    "@webcomponents/shadycss" "^1.10.1"
+    "@webcomponents/webcomponentsjs" "^2.4.4"
+    css-vars-ponyfill "^2.3.2"
     normalize.css "^8.0.1"
 
 "@clr/react@./packages/react/dist/react":
@@ -8581,6 +8585,16 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@webcomponents/custom-elements@^1.4.2":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.4.3.tgz#1800d49f38bb4425ebfd160b50115e62776109d7"
+  integrity sha512-iD0YW46SreUQANGccywK/eC+gZELNHocZZrY2fGwrIlx/biQOTkAF9IohisibHbrmIHmA9pVCIdGwzfO+W0gig==
+
+"@webcomponents/shadycss@^1.10.1":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.10.2.tgz#40e03cab6dc5e12f199949ba2b79e02f183d1e7b"
+  integrity sha512-9Iseu8bRtecb0klvv+WXZOVZatsRkbaH7M97Z+f+Pt909R4lDfgUODAnra23DOZTpeMTAkVpf4m/FZztN7Ox1A==
+
 "@webcomponents/shadycss@^1.9.4":
   version "1.9.6"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.9.6.tgz#a8c5db867e49200a05cf8d5008029c09b7861979"
@@ -8590,6 +8604,11 @@
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.4.3.tgz#384f4f6d54563ba465fb4df21fe89e78a76fc530"
   integrity sha512-cV4+sAmshf8ysU2USutrSRYQkJzEYKHsRCGa0CkMElGpG5747VHtkfsW3NdVIBV/m2MDKXTDydT4lkrysH7IFA==
+
+"@webcomponents/webcomponentsjs@^2.4.4":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
+  integrity sha512-C0l51MWQZ9kLzcxOZtniOMohpIFdCLZum7/TEHv3XWFc1Fvt5HCpbSX84x8ltka/JuNKcuiDnxXFkiB2gaePcg==
 
 "@wessberg/ts-evaluator@0.0.25":
   version "0.0.25"
@@ -13500,6 +13519,11 @@ css-vars-ponyfill@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.3.1.tgz#34831c8b35c021e940d157cd497ae235f4b4238e"
   integrity sha512-LHLFhKKQChkQz6nItHU1ZA/ABYJbw489eF0APx2a2FvjT32fAnbqriTLzKsl4KXowuVXcwoRWh8iQNO7wNzuGA==
+
+css-vars-ponyfill@^2.3.2:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.1.tgz#c711d71253443b77457ad50a6a21c8cc8a7972fc"
+  integrity sha512-duoN5j10VJPdPUgo/H4PwvxhSxhJWgfymjeIGpTA7+KzQ2AmeFHnlKwrCYC9Ii+HUpC8BrIS5fhwcuaNOs/Hrg==
 
 css-what@2.1:
   version "2.1.3"

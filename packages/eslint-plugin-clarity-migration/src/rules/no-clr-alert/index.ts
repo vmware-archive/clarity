@@ -2,40 +2,42 @@ import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import { JSDOM } from 'jsdom';
 import { calculateLocation, getDecoratorTemplate, DomElementLocation } from '../utils';
 import { HTMLElement } from '../../types';
-import { primaryDisallowedClass, additionalDisallowedClasses, disallowedButtonsSelector } from './disallowed-classes';
+
+const disallowedAlertsSelector = ['.alert', 'clr-alert'];
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
-export type MessageIds = 'clrButtonFailure';
-
-function hasDisallowedClasses(classes: Array<string>): boolean {
-  return classes.includes(primaryDisallowedClass) && additionalDisallowedClasses.some(cls => classes.includes(cls));
-}
-
+export type MessageIds = 'clrAlertFailure';
 export default createESLintRule({
-  name: 'no-clr-button',
+  name: 'no-clr-alert',
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow use of clr-button',
+      description: 'Disallow use of clr-alert',
       category: 'Best Practices',
       recommended: 'warn',
     },
     fixable: 'code',
     messages: {
-      clrButtonFailure: 'Using clr-button is not allowed!',
+      clrAlertFailure: 'Using clr-alert is not allowed!',
     },
     schema: [{}],
   },
   defaultOptions: [{}],
   create(context) {
     return {
-      'HTMLElement[tagName="button"]'(node: HTMLElement): void {
+      'HTMLElement[tagName="clr-alert"]'(node: HTMLElement): void {
+        context.report({
+          node: node as any,
+          messageId: 'clrAlertFailure',
+        });
+      },
+      'HTMLElement[tagName="div"]'(node: HTMLElement): void {
         const classNode = node.attributes?.find(attribute => attribute.attributeName.value === 'class');
         const classes = classNode?.attributeValue?.value?.split(' ') || [];
-        if (hasDisallowedClasses(classes)) {
+        if (classes.includes('alert')) {
           context.report({
             node: node as any,
-            messageId: 'clrButtonFailure',
+            messageId: 'clrAlertFailure',
           });
         }
       },
@@ -50,14 +52,14 @@ export default createESLintRule({
         const dom = new JSDOM(templateContent, {
           includeNodeLocations: true,
         });
-        const clrButtons = dom.window.document.querySelectorAll(disallowedButtonsSelector);
+        const clrAlerts = dom.window.document.querySelectorAll(disallowedAlertsSelector);
 
-        for (const button of clrButtons) {
-          const nodeLocation = dom.nodeLocation(button) as DomElementLocation;
+        for (const alert of clrAlerts) {
+          const nodeLocation = dom.nodeLocation(alert) as DomElementLocation;
           const loc = calculateLocation(templateContentNode, nodeLocation);
           context.report({
             node: templateContentNode,
-            messageId: 'clrButtonFailure',
+            messageId: 'clrAlertFailure',
             loc,
           });
         }

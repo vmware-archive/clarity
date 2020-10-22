@@ -3,9 +3,9 @@ import { JSDOM } from 'jsdom';
 import { SourceLocation } from '@typescript-eslint/eslint-plugin';
 import { getDecoratorPropertyValue } from '../utils';
 import { HTMLElement } from '../../types';
+import { primaryDisallowedClass, additionalDisallowedClasses, disallowedButtonsSelector } from './disallowed-classes';
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
-
 export type MessageIds = 'clrButtonFailure';
 
 function calculateLocation(templateContent: TSESTree.TemplateElement, buttonLocation: any): SourceLocation {
@@ -19,6 +19,10 @@ function calculateLocation(templateContent: TSESTree.TemplateElement, buttonLoca
   };
 
   return { start, end };
+}
+
+function hasDisallowedClasses(classes: Array<string>): boolean {
+  return classes.includes(primaryDisallowedClass) && additionalDisallowedClasses.some(cls => classes.includes(cls));
 }
 
 export default createESLintRule({
@@ -41,8 +45,8 @@ export default createESLintRule({
     return {
       'HTMLElement[tagName="button"]'(node: HTMLElement): void {
         const classNode = node.attributes?.find(attribute => attribute.attributeName.value === 'class');
-        const classes = classNode?.attributeValue?.value?.split(' ');
-        if (classes?.includes('btn') && classes.includes('btn-primary')) {
+        const classes = classNode?.attributeValue?.value?.split(' ') || [];
+        if (hasDisallowedClasses(classes)) {
           context.report({
             node: node as any,
             messageId: 'clrButtonFailure',
@@ -64,7 +68,7 @@ export default createESLintRule({
         const dom = new JSDOM(templateContent, {
           includeNodeLocations: true,
         });
-        const clrButtons = dom.window.document.querySelectorAll('button.btn.btn-primary');
+        const clrButtons = dom.window.document.querySelectorAll(disallowedButtonsSelector);
 
         for (const button of clrButtons) {
           const nodeLocation = dom.nodeLocation(button);

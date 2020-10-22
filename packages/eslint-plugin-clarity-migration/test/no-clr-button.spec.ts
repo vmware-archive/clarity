@@ -3,9 +3,20 @@ import { RuleTester } from './test-helper';
 
 interface InvalidTest {
   code: string;
-  errors: Array<{ messageId: string }>;
+  errors: Array<{
+    messageId: string;
+    line?: number;
+    column?: number;
+  }>;
   output?: string;
 }
+
+interface Location {
+  line: number;
+  column: number;
+}
+
+const buttonFailureMessageId = 'clrButtonFailure';
 
 const tsRuleTester = new RuleTester({
   parserOptions: {
@@ -21,11 +32,29 @@ const htmlRuleTester = new RuleTester({
   parser: '../src/html-parser',
 });
 
-function getInvalidTest(code: string, output?: string): InvalidTest {
+function getInvalidTest(
+  code: string,
+  locations?: Array<Location>,
+  messageIds?: Array<string>,
+  output?: string
+): InvalidTest {
+  if (!messageIds) {
+    messageIds = [buttonFailureMessageId];
+  }
+
   const invalidTest: InvalidTest = {
     code,
-    errors: [{ messageId: 'clrButtonFailure' }],
+    errors: [],
   };
+
+  messageIds.forEach(messageId => {
+    invalidTest.errors.push({ messageId });
+  });
+
+  locations?.forEach((location, index) => {
+    invalidTest.errors[index].line = location.line;
+    invalidTest.errors[index].column = location.column;
+  });
 
   if (output) {
     invalidTest.output = output;
@@ -36,32 +65,59 @@ function getInvalidTest(code: string, output?: string): InvalidTest {
 
 htmlRuleTester.run('no-clr-button', rule, {
   invalid: [
-    getInvalidTest(`
+    getInvalidTest(
+      `
       <button class="btn btn-primary">Shalqlq</button>
-    `),
-    getInvalidTest(`
+    `,
+      [{ line: 2, column: 7 }]
+    ),
+    getInvalidTest(
+      `
       <div>
         <button class="btn btn-primary">Shalqlq</button>
         </div>
-    `),
-    getInvalidTest(`
+    `,
+      [{ line: 3, column: 9 }]
+    ),
+    getInvalidTest(
+      `
       <div></div>
       <button class="btn btn-primary">Shalqlq</button>
-    `),
-    getInvalidTest(`
+    `,
+      [{ line: 3, column: 7 }]
+    ),
+    getInvalidTest(
+      `
       <div></div>
       <button id="#button" class="btn btn-primary">Shalqlq</button>
-    `),
-    getInvalidTest(`
+    `,
+      [{ line: 3, column: 7 }]
+    ),
+    getInvalidTest(
+      `
       <div><ul></ul><button class="btn btn-primary"></button></div>
-    `),
+    `,
+      [{ line: 2, column: 21 }]
+    ),
+    getInvalidTest(
+      `
+      <button class="btn btn-primary">Le button</button>
+      <div><ul></ul><button class="btn btn-primary"></button></div>
+    `,
+      [
+        { line: 2, column: 7 },
+        { line: 3, column: 21 },
+      ],
+      [buttonFailureMessageId, buttonFailureMessageId]
+    ),
   ],
   valid: [`<button class="shalqlq">Le button</button>`, `<div></div>`],
 });
 
 tsRuleTester.run('no-clr-button', rule, {
   invalid: [
-    getInvalidTest(`
+    getInvalidTest(
+      `
       @Component({
         selector: 'app-custom-button',
         template: \`
@@ -72,8 +128,11 @@ tsRuleTester.run('no-clr-button', rule, {
       })
       export class CustomButtonComponent {
       }
-    `),
-    getInvalidTest(`
+    `,
+      [{ line: 6, column: 13 }]
+    ),
+    getInvalidTest(
+      `
       @Component({
         selector: 'app-custom-button',
         template: \`
@@ -82,9 +141,31 @@ tsRuleTester.run('no-clr-button', rule, {
       })
       export class CustomButtonComponent {
       }
-    `),
+    `,
+      [{ line: 5, column: 11 }]
+    ),
+    getInvalidTest(
+      `
+      @Component({
+        selector: 'app-custom-button',
+        template: \`
+          <button class="btn btn-primary custom-class">Primary</button>
+          <div>Text</div>
+          <button class="btn btn-primary custom-class">Primary</button>
+          <div>Text</div><button class="btn btn-primary custom-class">Primary</button><p></p>
+        \`
+      })
+      export class CustomButtonComponent {
+      }
+    `,
+      [
+        { line: 5, column: 11 },
+        { line: 7, column: 11 },
+        { line: 8, column: 26 },
+      ],
+      [buttonFailureMessageId, buttonFailureMessageId, buttonFailureMessageId]
+    ),
   ],
-
   valid: [
     `
       @Component({

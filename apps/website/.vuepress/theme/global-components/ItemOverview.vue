@@ -1,7 +1,7 @@
 <template>
   <a :href="path" :target="target" :aria-label="`Go to ${title} documentation page`">
     <section cds-layout="vertical" role="link" class="item-overview">
-      <h2 cds-text="section">
+      <h2 cds-text="section expanded">
         <div cds-layout="horizontal gap:md p:lg align:center">
           <a :href="path" :target="target"> {{ title }} </a>
           <span role="status" v-if="isNew" class="badge badge-info">new</span>

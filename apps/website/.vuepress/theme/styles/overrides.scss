@@ -252,3 +252,26 @@ h4 .header-anchor cds-icon {
     }
   }
 }
+
+/*
+ * This section is an override for something that doesn't exist in Core yet.
+ * When the expanded is added to core we need to remove this css.
+ * (but leave the html implementing it)
+ *
+ */
+
+[cds-text*='expanded'][cds-text*='title'] {
+  --cds-token-typography-title-line-height: 1.6rem;
+}
+
+[cds-text*='expanded'][cds-text*='section'] {
+  --cds-token-typography-section-line-height: 1.4rem;
+}
+
+[cds-text*='expanded'][cds-text*='subection'] {
+  --cds-token-typography-subsection-line-height: 1.2rem;
+}
+
+[cds-text*='expanded'][cds-text*='body'] {
+  --cds-token-typography-body-line-height: 1.2rem;
+}

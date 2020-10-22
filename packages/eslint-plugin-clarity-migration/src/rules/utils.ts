@@ -1,4 +1,12 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
+import { SourceLocation } from '@typescript-eslint/types/dist/ts-estree';
+
+export interface DomElementLocation {
+  startLine: number;
+  startCol: number;
+  endLine: number;
+  endCol: number;
+}
 
 function isProperty(node: TSESTree.Node): node is TSESTree.Property {
   return node.type === 'Property';
@@ -54,3 +62,41 @@ export const getDecoratorPropertyValue = (
 
   return property.value as any;
 };
+
+export function calculateLocation(
+  templateContent: TSESTree.TemplateElement,
+  elementLocation: DomElementLocation
+): SourceLocation {
+  const start = {
+    line: elementLocation.startLine + templateContent.loc.start.line - 1,
+    column: elementLocation.startCol - 1,
+  };
+  const end = {
+    line: elementLocation.endLine + templateContent.loc.start.line - 1,
+    column: elementLocation.endCol - 1,
+  };
+
+  return { start, end };
+}
+
+export function getDecoratorTemplate(
+  decoratorNode: TSESTree.Decorator
+):
+  | {
+      templateContentNode: TSESTree.TemplateElement;
+      templateContent: string;
+    }
+  | undefined {
+  const template = getDecoratorPropertyValue(decoratorNode, 'template');
+  if (template?.type !== 'TemplateLiteral') {
+    return;
+  }
+
+  const templateContentNode = template.quasis[0];
+  const templateContent = templateContentNode?.value?.raw || '';
+  if (!templateContent) {
+    return;
+  }
+
+  return { templateContentNode, templateContent };
+}

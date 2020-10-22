@@ -102,7 +102,7 @@ htmlRuleTester.run('no-clr-button', rule, {
     getInvalidTest(
       `
       <button class="btn btn-primary">Le button</button>
-      <div><ul></ul><button class="btn btn-primary"></button></div>
+      <div><ul></ul><button class="btn btn-success"></button></div>
     `,
       [
         { line: 2, column: 7 },
@@ -136,7 +136,7 @@ tsRuleTester.run('no-clr-button', rule, {
       @Component({
         selector: 'app-custom-button',
         template: \`
-          <button class="btn btn-primary custom-class">Primary</button>
+          <button class="btn btn-warning custom-class">Primary</button>
         \`
       })
       export class CustomButtonComponent {
@@ -151,8 +151,8 @@ tsRuleTester.run('no-clr-button', rule, {
         template: \`
           <button class="btn btn-primary custom-class">Primary</button>
           <div>Text</div>
-          <button class="btn btn-primary custom-class">Primary</button>
-          <div>Text</div><button class="btn btn-primary custom-class">Primary</button><p></p>
+          <button class="btn btn-danger custom-class">Primary</button>
+          <div>Text</div><button class="btn btn-success custom-class">Primary</button><p></p>
         \`
       })
       export class CustomButtonComponent {

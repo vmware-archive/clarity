@@ -38,14 +38,12 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
     <div
       class="column-switch"
       role="dialog"
+      [attr.aria-label]="commonStrings.keys.showColumnsMenuDescription"
       [id]="popoverId"
       clrFocusTrap
       *clrPopoverContent="openState; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
     >
       <div class="switch-header">
-        <div class="clr-sr-only" tabindex="-1" #menuDescription>
-          {{ commonStrings.keys.showColumnsMenuDescription }}
-        </div>
         <div class="clr-sr-only" tabindex="-1" #allSelected>{{ commonStrings.keys.allColumnsSelected }}</div>
         <ng-container *ngIf="!customToggleTitle">{{ commonStrings.keys.showColumns }}</ng-container>
         <ng-content select="clr-dg-column-toggle-title"></ng-content>
@@ -100,8 +98,6 @@ export class ClrDatagridColumnToggle {
 
   @ContentChild(ClrDatagridColumnToggleTitle) customToggleTitle: ClrDatagridColumnToggleTitle;
   @ContentChild(ClrDatagridColumnToggleButton) customToggleButton: ClrDatagridColumnToggleButton;
-  @ViewChild('menuDescription', { read: ElementRef })
-  private menuDescriptionElement: ElementRef<HTMLElement>;
   @ViewChild('allSelected', { read: ElementRef })
   private allSelectedElement: ElementRef<HTMLElement>;
 
@@ -145,13 +141,6 @@ export class ClrDatagridColumnToggle {
 
   toggleSwitchPanel() {
     this.openState = !this.openState;
-    if (this.openState && isPlatformBrowser(this.platformId) && this.menuDescriptionElement) {
-      this.zone.runOutsideAngular(() => {
-        setTimeout(() => {
-          this.menuDescriptionElement.nativeElement.focus();
-        });
-      });
-    }
   }
 
   allColumnsSelected() {

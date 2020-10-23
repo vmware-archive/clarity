@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, Optional, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+import { Directive, Optional, TemplateRef, ViewContainerRef } from '@angular/core';
 import { NgControlService } from '../providers/ng-control.service';
 import { IfControlStateService, CONTROL_STATE } from './if-control-state.service';
 import { AbstractIfState } from './abstract-if-state';

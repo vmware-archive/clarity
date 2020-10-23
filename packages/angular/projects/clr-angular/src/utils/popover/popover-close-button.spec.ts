@@ -12,7 +12,6 @@ import { ClrPopoverEventsService } from './providers/popover-events.service';
 import { ClrPopoverPositionService } from './providers/popover-position.service';
 import { ClrPopoverCloseButton } from './popover-close-button';
 import { ClrPopoverModuleNext } from './popover.module';
-import { KeyCodes } from '../../utils/enums/key-codes.enum';
 
 @Component({
   selector: 'test-host',

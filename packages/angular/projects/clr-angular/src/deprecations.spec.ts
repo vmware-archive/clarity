@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrForm } from './forms/common/form';
 import { ClrDatagrid } from './data/datagrid/datagrid';
 import { ClrDatagridColumnToggle } from './data/datagrid/datagrid-column-toggle';
 import { ClrDatagridColumnToggleTitle } from './data/datagrid/datagrid-column-toggle-title';

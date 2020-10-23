@@ -5,7 +5,6 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
-import { boolean } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

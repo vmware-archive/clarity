@@ -5,7 +5,7 @@
  */
 
 import { moduleMetadata } from '@storybook/angular';
-import { boolean, select } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs';
 import { ClarityModule } from '@clr/angular';
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 

@@ -17,7 +17,6 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
-import { isPlatformBrowser } from '@angular/common';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 
@@ -39,14 +38,12 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
     <div
       class="column-switch"
       role="dialog"
+      [attr.aria-label]="commonStrings.keys.showColumnsMenuDescription"
       [id]="popoverId"
       clrFocusTrap
       *clrPopoverContent="openState; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
     >
       <div class="switch-header">
-        <div class="clr-sr-only" tabindex="-1" #menuDescription>
-          {{ commonStrings.keys.showColumnsMenuDescription }}
-        </div>
         <div class="clr-sr-only" tabindex="-1" #allSelected>{{ commonStrings.keys.allColumnsSelected }}</div>
         <ng-container *ngIf="!customToggleTitle">{{ commonStrings.keys.showColumns }}</ng-container>
         <ng-content select="clr-dg-column-toggle-title"></ng-content>
@@ -102,8 +99,6 @@ export class ClrDatagridColumnToggle {
 
   @ContentChild(ClrDatagridColumnToggleTitle) customToggleTitle: ClrDatagridColumnToggleTitle;
   @ContentChild(ClrDatagridColumnToggleButton) customToggleButton: ClrDatagridColumnToggleButton;
-  @ViewChild('menuDescription', { read: ElementRef })
-  private menuDescriptionElement: ElementRef<HTMLElement>;
   @ViewChild('allSelected', { read: ElementRef })
   private allSelectedElement: ElementRef<HTMLElement>;
 
@@ -147,13 +142,6 @@ export class ClrDatagridColumnToggle {
 
   toggleSwitchPanel() {
     this.openState = !this.openState;
-    if (this.openState && isPlatformBrowser(this.platformId) && this.menuDescriptionElement) {
-      this.zone.runOutsideAngular(() => {
-        setTimeout(() => {
-          this.menuDescriptionElement.nativeElement.focus();
-        });
-      });
-    }
   }
 
   allColumnsSelected() {

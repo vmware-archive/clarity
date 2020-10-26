@@ -76,7 +76,7 @@ export default {
 <style lang="scss">
 .algolia-autocomplete .ds-dropdown-menu {
   line-height: 1rem;
-  z-index: 5000 !important;
+  z-index: 10000 !important;
 }
 
 .algolia-autocomplete

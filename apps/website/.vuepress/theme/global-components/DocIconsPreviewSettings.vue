@@ -55,6 +55,10 @@ export default {
   display: grid;
   grid-template-columns: 8rem auto;
   padding: 0.75rem 0;
+  position: sticky;
+  top: 133px; // height makes it sticky under search input.
+  background-color: var(--clr-global-app-background);
+  z-index: 5000;
 }
 .control-container-title {
   padding-right: 0.5rem;

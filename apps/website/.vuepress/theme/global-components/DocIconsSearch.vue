@@ -1,16 +1,18 @@
 <template>
-  <label for="search-icons-sticky" class="searchbar-label">
-    <cds-icon class="search-icon" shape="search" size="24"></cds-icon>
-    <button aria-label="close" class="close" type="button" @click="resetSearch()" :class="{ active: !!filterValue }">
-      <cds-icon shape="close" size="24"></cds-icon>
-    </button>
-    <input
-      placeholder="Search for Clarity Icons..."
-      type="text"
-      class="searchbar-input clr-input"
-      v-model.trim="filterValue"
-    />
-  </label>
+  <section class="sticky">
+    <label for="search-icons-sticky" class="searchbar-label">
+      <cds-icon class="search-icon" shape="search" size="24"></cds-icon>
+      <button aria-label="close" class="close" type="button" @click="resetSearch()" :class="{ active: !!filterValue }">
+        <cds-icon shape="close" size="24"></cds-icon>
+      </button>
+      <input
+        placeholder="Search for Clarity Icons..."
+        type="text"
+        class="searchbar-input clr-input"
+        v-model.trim="filterValue"
+      />
+    </label>
+  </section>
 </template>
 
 <script>
@@ -35,6 +37,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.sticky {
+  position: sticky;
+  top: 84px; // height is to make it sticky under the page title.
+}
 .searchbar-label {
   position: relative;
   display: block;

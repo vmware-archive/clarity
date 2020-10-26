@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="release of item.releases">
-      <h2>
+      <h2 class="sticky">
         {{ release.version }}
         <a class="release-date" :href="commitLink" target="_blank">
           Released {{ release.date }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon>
@@ -55,7 +55,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
 .release-date {
   font-size: 0.75rem;
   margin-left: 1rem;

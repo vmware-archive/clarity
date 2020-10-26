@@ -120,6 +120,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  position: sticky;
+  top: 187px;
+  background-color: var(--clr-global-app-background);
+  z-index: 4500;
+}
 .icon {
   margin: 0 0.5rem;
 }

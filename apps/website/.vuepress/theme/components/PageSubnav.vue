@@ -1,5 +1,5 @@
 <template>
-  <div v-if="subnav && subnav.children">
+  <div v-if="subnav && subnav.children" class="sticky">
     <h1>{{ subnav.title }}</h1>
     <ul class="nav page-subnav" role="nav" v-if="subnav.children.length > 1">
       <li role="presentation" class="nav-item" v-for="item of subnav.children">
@@ -16,6 +16,13 @@
 </template>
 
 <style lang="scss">
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: var(--clr-global-app-background);
+  z-index: 5000;
+}
+
 h1 {
   margin: 0rem;
 }

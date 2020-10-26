@@ -27,7 +27,6 @@ export default {
 .page {
   max-width: 48rem;
   width: 100%;
-  height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
   position: relative;

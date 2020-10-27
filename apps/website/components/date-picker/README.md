@@ -89,7 +89,7 @@ For applications that use the ClrDateInput directive and the associated ClrDateC
 
 ### Basic Datepicker
 
-To use the date picker, add the [clrDate](/components/datepicker#clrdate) directive to an input field. Then, place the input inside the clr-date-container container element.
+To use the date picker, add the `clrDate` directive to an input field. Then, place the input inside the clr-date-container container element.
 
 ![Basic Datepicker](/images/components/datepicker/basic-demo.png)
 

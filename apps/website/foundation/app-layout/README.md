@@ -112,7 +112,7 @@ Complex tables and datagrids work best on larger screens.
 </div>
 <div class="clr-col-8">
 
-[Forms](/components/forms) are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
+[Forms](/components/form) are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
 
 A benefit of a form is that users can see what information they must provide. Conversely, too many fields can discourage the user.
 
@@ -129,7 +129,7 @@ Inline forms are better than modals in cases where you don't want to block users
 </div>
 <div class="clr-col-8">
 
-[Tabs](/components/tabs) appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
+[Tabs](/components/tab) appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
 
 Tabs are not appropriate if users need to compare data across views.
 

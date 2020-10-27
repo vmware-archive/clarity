@@ -5,10 +5,6 @@ toc: true
 
 Easily translate internal Clarity text into multiple languages.
 
-<cds-alert-group status="warning" type="default">
-<cds-alert>There is a breaking change required to fix the language support starting in version 2.1.1 and 1.2.1. The original implementation was broken in a way that could not be fixed with the original API, and due to the importance of this service for localization we opted to introduce a different API. If you have an implementation of a custom language strings before this release, <a href="#updating">follow the instructions</a> on how to update your code.</cds-alert>
-</cds-alert-group>
-
 ## Internal language strings
 
 Clarity has a list of text strings that it uses internally for things such as icon alt text or button text. When possible, Clarity avoids using text strings that have to be translated, and rarely changes this list. Any Angular application that needs to support multiple languages can create a different translation and use it for each language.

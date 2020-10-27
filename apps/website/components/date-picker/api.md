@@ -5,7 +5,7 @@ toc: true
 
 ## Angular Components
 
-### ClrDateInput
+### ClrDate
 
 #### Selector & Basic Usage
 
@@ -13,7 +13,10 @@ toc: true
 
 ```html
 <form clrForm>
-  <!-- form controls -->
+  <clr-date-container>
+    <label>My name</label>
+    <input clrDate placeholder="Pick a date" name="today" [(ngModel)]="today" />
+  </clr-date-container>
 </form>
 ```
 
@@ -21,4 +24,4 @@ toc: true
 
 #### Bindings
 
-<DocComponentApi component="ClrForm" item="bindings" />
+<DocComponentApi component="ClrFormCommon" item="bindings" />

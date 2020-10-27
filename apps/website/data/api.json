@@ -2038,7 +2038,62 @@
   "ClrLabel": {
     "bindings": [],
     "methods": [],
-    "css": []
+    "css": [
+      {
+        "name": ".label",
+        "description": "Indicates this element is a label",
+        "host": "span",
+        "required": true
+      },
+      {
+        "name": ".label-info",
+        "description": "Sets the status to info",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-success",
+        "description": "Sets the status to success",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-warning",
+        "description": "Sets the status to warning",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-danger",
+        "description": "Sets the status to danger/error",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".clickable",
+        "description": "Indicates that the label is clickable",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-blue",
+        "description": "Colors the label blue",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-orange",
+        "description": "Colors the label orange",
+        "host": "span",
+        "required": false
+      },
+      {
+        "name": ".label-light-blue",
+        "description": "Colors the label light blue",
+        "host": "span",
+        "required": false
+      }
+    ]
   },
   "ClrList": {
     "bindings": [],
@@ -3310,22 +3365,6 @@
         "options": "true, false",
         "description": "Two way binding to the collapsed/expanded state.",
         "default": "false"
-      }
-    ],
-    "methods": [
-      {
-        "name": "",
-        "parameters": [],
-        "description": "",
-        "returns": ""
-      }
-    ],
-    "css": [
-      {
-        "name": ".alert-text",
-        "description": "Defines the text that is placed into the alert",
-        "host": "div, span",
-        "required": true
       }
     ]
   },

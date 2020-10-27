@@ -80,13 +80,24 @@ This SASS variable defaults to 600. It is used in very small text (p4 and p6).
 Clarity City has clear, simple letters with rounded forms.
 This gives the font a friendly and modern appearance.
 
-<ClrImage title="Metropolis light, regular, medium, and semibold" src="/images/foundation/typography/Typography-A-Z.png" />
+<div class="card" cds-layout="vertical gap:md">
+  <h4 cds-text="heading" cds-layout="m:md">ABCDEFGHIJKLM</h4>
+  <h4 cds-text="heading" cds-layout="m:md">NOPQRSTUVWXYZ</h4>
+  <h4 cds-text="heading" cds-layout="m:md">abcdefghijklm</h4>
+  <h4 cds-text="heading" cds-layout="m:md">nopqrstuvwxyz</h4>
+  <h4 cds-text="heading" cds-layout="m:md">1234567890</h4>
+</div>
 
 ### Font Weights in Clarity
 
 To maintain a light, clean look, Clarity does not use a weight stronger than semibold.
 
-<ClrImage title="Metropolis light, regular, medium, and semibold" src="/images/foundation/typography/Typography-Metropolis.png" />
+<div class="card" cds-layout="vertical gap:md">
+  <h4 cds-text="heading light" cds-layout="m:md">Clarity City Light</h4>
+  <h4 cds-text="heading" cds-layout="m:md">Clarity City Regular</h4>
+  <h4 cds-text="heading medium" cds-layout="m:md">Clarity City Medium</h4>
+  <h4 cds-text="heading semibold" cds-layout="m:md">Clarity City Semibold</h4>
+</div>
 
 ### Use the Built-in Styles
 

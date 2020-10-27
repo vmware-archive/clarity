@@ -68,11 +68,11 @@
 }
 
 .doc-demo-main-container {
-  min-height: unset;
-  height: fit-content;
+  min-height: unset !important;
+  height: fit-content !important;
   .content-container {
     .content-area {
-      height: fit-content;
+      height: fit-content !important;
     }
   }
 }

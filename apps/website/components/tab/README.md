@@ -38,7 +38,8 @@ Use labels to organize the tabs and their content.
 
 ## Types
 
-There are four types of tabs that might be used. Go to the [demo](/components/tab/demo) to see them in action.
+There are four types of tabs that might be used.
+
 For optimization, tabs component uses the \*clrIfActive structural directive to lazy load the content of an active tab.
 If you need two-way binding on the active state of a tab, use the de-sugared syntax for the [ClrIfActive](/components/tab/api/#clrifactive) structural directive shown below in the two way binding example.
 

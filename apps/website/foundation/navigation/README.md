@@ -55,7 +55,7 @@ Conversely, the header supports other items (search and setting) and the navigat
 
 {.custom-container}
 
-Use the <a href="/components/subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
+Use the <a href="/components/header#subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
 
 - You have more links than can fit in the header.
 - The text of your links is too long for the header.
@@ -160,7 +160,8 @@ Clarity has three navigation components: header, subnav, and sidenav. Following 
 ### Header + Subnav
 
 When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/component/header) component with the [subnav](/components/header#subnav) component using the DOM structure shown in code examples.
-// Need code+demo here w/ subnav
+
+<!-- // Need code+demo here w/ subnav -->
 <doc-demo>
 !!!include(.vuepress/public/demos/navigation/header-subnav-css.html)!!!
 </doc-demo>

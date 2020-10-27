@@ -32,6 +32,13 @@
                   >
                     <span class="nav-text">{{ childItem.title }}</span>
                   </router-link>
+                  <a
+                    :href="childItem.path"
+                    :target="childItem.target || '_blank'"
+                    class="nav-link"
+                    v-if="childItem.type === 'external'"
+                    ><span class="nav-text">{{ childItem.title }}</span></a
+                  >
                 </template>
               </div>
             </div>

@@ -24,11 +24,7 @@ toc: true
 
 #### Bindings
 
-<DocComponentApi component="ClrCVerticalNav" item="bindings" />
-
-#### Methods
-
-<DocComponentApi component="ClrCVerticalNav" item="methods" />
+<DocComponentApi component="ClrVerticalNav" item="bindings" />
 
 ### ClrVerticalNavGroup
 
@@ -47,10 +43,6 @@ toc: true
 ```
 
 </doc-code>
-
-#### Bindings
-
-<DocComponentApi component="ClrVerticalNavGroup" item="bindings" />
 
 ### ClrNavGroupChildren
 
@@ -73,14 +65,6 @@ toc: true
 ```
 
 </doc-code>
-
-#### Bindings
-
-<DocComponentApi component="ClrNavGroupChildren" item="bindings" />
-
-#### Methods
-
-<DocComponentApi component="ClrNavGroupChildren" item="methods" />
 
 ## Angular Directives
 

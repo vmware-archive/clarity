@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Expected order of tabs
-const order = ['demo', 'code', 'api', 'accessibility'];
+const order = ['usage', 'code', 'api', 'accessibility'];
 
 function camelCase(str) {
   const parts = str.split('-');
@@ -62,7 +62,22 @@ module.exports = [
         title: 'Introduction',
         path: '/get-started/',
       },
-      ...getChildren('get-started'),
+      {
+        title: 'Start Designing',
+        path: '/get-started/design',
+      },
+      {
+        title: 'Start Building with Angular',
+        path: '/get-started/angular',
+      },
+      {
+        title: 'Start Building with HTML',
+        path: '/get-started/html',
+      },
+      {
+        title: 'Updating Clarity',
+        path: '/get-started/update',
+      },
     ],
   },
   {
@@ -88,8 +103,8 @@ module.exports = [
       ...getChildren('releases'),
       {
         title: 'Older Changelogs',
-        external: true,
-        path: 'https://v3.clarity.design/news',
+        // external: true,
+        path: 'https://clarity.design/news',
         target: '_blank',
       },
     ],

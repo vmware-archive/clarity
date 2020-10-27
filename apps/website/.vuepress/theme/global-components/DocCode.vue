@@ -53,6 +53,7 @@ export default {
 .code-wrapper {
   position: relative;
   padding: 0.6rem;
+  margin-top: 0.25rem;
   border: 1px solid #ccc;
   border-radius: 0.15rem;
   background-color: var(--cds-token-color-neutral-0);

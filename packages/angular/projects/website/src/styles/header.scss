@@ -2,9 +2,25 @@
   margin-top: $clr_baselineRem_1 - $clr_baselineRem_4px;
 }
 
+.docs-changer {
+  margin-top: 12px;
+}
+
+.header .header-nav .nav-link.nav-docs-changer {
+  display: none;
+}
+
 @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
   .github-btn {
     display: none;
+  }
+
+  .docs-changer {
+    display: none;
+  }
+
+  .header .header-nav .nav-link.nav-docs-changer {
+    display: block;
   }
 
   .header-dox {

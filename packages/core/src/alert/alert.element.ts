@@ -213,7 +213,7 @@ export class CdsAlert extends LitElement {
         <span class="alert-icon-wrapper" aria-hidden="true" cds-layout="horizontal">
           ${this.status === 'loading'
             ? html`<cds-progress-circle
-                class="alert-spinner spinner-neutral-0"
+                class="alert-spinner"
                 size="${this.type === 'banner' ? '20' : '18'}"
                 aria-hidden="true"
                 cds-layout="align:horizontal-center"

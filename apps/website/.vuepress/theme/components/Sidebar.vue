@@ -40,6 +40,9 @@
               <span class="nav-text">{{ item.title }}</span>
             </router-link>
           </template>
+          <a href="https://clarity.design" class="nav-link" cds-layout="m-t:md display@md:none">
+            <span class="nav-text">Return to Current Site <cds-icon shape="pop-out"></cds-icon></span>
+          </a>
         </div>
       </nav>
     </div>

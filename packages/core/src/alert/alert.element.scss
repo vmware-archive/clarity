@@ -19,6 +19,11 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height;
   min-height: var(--min-height);
 }
 
+:host([type='default']) .alert-spinner,
+:host([type='banner']) .alert-spinner {
+  --fill-color: var(--icon-color);
+}
+
 :host([type='default']) {
   --font-size: #{$cds-token-typography-font-size-3};
 }
@@ -38,10 +43,6 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height;
 ::slotted(cds-icon) {
   @include equilateral(var(--icon-size));
   --color: var(--icon-color);
-}
-
-.spinner.spinner-inline {
-  @include equilateral(calc(var(--icon-size) - #{$cds-token-space-size-2}));
 }
 
 cds-internal-close-button {
@@ -79,7 +80,7 @@ cds-internal-close-button {
   display: none;
 }
 
-:host([alert-group-type='default']) cds-internal-close-button {
+:host([type='default']) cds-internal-close-button {
   height: #{$cds-token-space-size-8};
 }
 
@@ -103,6 +104,10 @@ cds-internal-close-button {
   --icon-color: #{$cds-token-color-danger-700};
 }
 
+:host([status='loading'][type='default']) .alert-spinner {
+  --ring-color: var(--icon-color);
+}
+
 :host([size='sm']:not([type='banner'])) {
   --font-size: #{$cds-token-typography-font-size-2};
   --letter-spacing: normal;
@@ -122,10 +127,6 @@ cds-internal-close-button {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-}
-
-:host([type='banner']) .alert-icon-wrapper {
-  transform: translateY(#{$cds-token-space-size-2});
 }
 
 :host([type='banner']) .spinner {

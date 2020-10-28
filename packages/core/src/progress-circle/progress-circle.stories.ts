@@ -97,7 +97,7 @@ export const custom = () => {
 
       cds-progress-circle.app-custom-3 {
         --fill-color: limegreen;
-        --ring-color: #011;
+        --ring-opacity: 0;
       }
     </style>
     <div cds-layout="horizontal gap:md">

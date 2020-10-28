@@ -31,6 +31,7 @@ import { styles } from './progress-circle.element.css.js';
  * @beta
  * @element cds-progress-circle
  * @cssprop --ring-color
+ * @cssprop --ring-opacity
  * @cssprop --fill-color
  */
 export class CdsProgressCircle extends LitElement {

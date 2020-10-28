@@ -14,7 +14,7 @@ export default ({
 }) => {
   Vue.use(VueResource);
   Vue.use(Hotjar, {
-    id: '2043683',
+    id: '1762865',
   });
 
   if (!isServer) {

@@ -88,8 +88,8 @@ export const all = () => {
     'lg',
     propertiesGroup
   );
-  const dir = select(
-    'dir',
+  const direction = select(
+    'direction',
     { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
     undefined,
     propertiesGroup
@@ -192,7 +192,7 @@ export const all = () => {
               ?solid=${solid}
               size=${size}
               shape=${i}
-              direction=${ifDefined(dir)}
+              direction=${ifDefined(direction)}
               ?inverse=${inverse}
               flip=${ifDefined(fl)}>
             </cds-icon>

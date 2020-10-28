@@ -16,6 +16,16 @@
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
       <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
     </template>
+
+    <div class="settings">
+      <a
+        href="https://clarity.design"
+        class="btn btn-outline btn-inverse"
+        cds-layout="m-t:md display:none display@md:block"
+      >
+        Return to Current Website <clr-icon shape="pop-out"></clr-icon>
+      </a>
+    </div>
   </header>
 </template>
 
@@ -84,7 +94,6 @@ function css(el, property) {
 .header .logo {
   margin-right: 10px;
 }
-
 .main-container .header .branding {
   max-width: none;
 }

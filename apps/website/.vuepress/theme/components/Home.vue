@@ -222,7 +222,7 @@
       <div cds-layout="grid cols:12" class="home-section">
         <h1 cds-text="subsection uppercase expanded" cds-layout="m-t:lg">Together, we are the Clarity community</h1>
         <h2 cds-text="heading" cds-layout="m-t:lg">Join us and we can build better products together</h2>
-        <p cds-text="section expanded" cds-layout="m-t:lg">
+        <p cds-text="section expanded" cds-layout="m-t:xl">
           Great design systems have a great community behind it. We open sourced Clarity early in our journey because we
           believe in the importance of community. It is foundational to our story. We are open about our roadmap and
           priorities. We are proud of what we have running under the hood. Check out our Github and take a look at our

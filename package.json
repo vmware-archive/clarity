@@ -9,7 +9,6 @@
       "tools/*"
     ],
     "nohoist": [
-      "@clr/core/css-vars-ponyfill",
       "@clr/core/tslib",
       "@clr/core/lit-element",
       "@clr/core/ramda",

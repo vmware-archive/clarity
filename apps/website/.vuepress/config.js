@@ -82,7 +82,8 @@ module.exports = {
     [
       'robots',
       {
-        allowAll: true,
+        disallowAll: true,
+        // allowAll: false,
         host: 'https://clarity.design',
         sitemap: '/sitemap.xml',
         policies: [

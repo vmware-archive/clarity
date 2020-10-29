@@ -120,9 +120,8 @@ import '@clr/core/button/register.js'; // register and use component
 ```
 
 By keeping the component registration as a separate side effect import, we ensure
-proper tree shaking at a component and symbol level. This convention also future
-proofs our API to allow our components to be aliased.
-https://github.com/w3c/webcomponents/issues/716
+proper tree shaking at a component and symbol level. This convention also [future
+proofs our API to allow our components to be aliased](https://github.com/w3c/webcomponents/issues/716).
 
 Overall we try to avoid users from importing anything by direct file
 or with deep import paths as this is reaching into the library internals, which

@@ -16,17 +16,12 @@ html {
 }
 
 [cds-control] ::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
+  /* Chrome/Opera/Safari/Chromium Edge */
   color: $cds-token-color-neutral-700;
 }
 
 [cds-control] ::-moz-placeholder {
   /* Firefox 19+ */
-  color: $cds-token-color-neutral-700;
-}
-
-[cds-control] :-ms-input-placeholder {
-  /* IE 10+ */
   color: $cds-token-color-neutral-700;
 }
 

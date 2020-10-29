@@ -8,35 +8,19 @@ import { getKeycodeFromRegistry, KeyCodeService } from './keycodes.service.js';
 
 describe('Keycode Service Utility Functions – ', () => {
   const registry = KeyCodeService.keycodes;
-  const modernUpCode = registry.get('arrow-up').get('code');
-  const ieUpCode = registry.get('arrow-up').get('ie-code');
-  const modernHomeCode = registry.get('home').get('code');
-  const ieHomeCode = registry.get('home').get('ie-code');
-  const modernEscCode = registry.get('escape').get('code');
-  const ieEscCode = registry.get('escape').get('ie-code');
+  const upCode = registry.get('arrow-up');
+  const homeCode = registry.get('home');
+  const escCode = registry.get('escape');
 
   describe('getKeycodeFromRegistry(): ', () => {
     it('retrieves known keycodes', () => {
-      expect(getKeycodeFromRegistry('arrow-up', 'code')).toBe(modernUpCode);
-      expect(getKeycodeFromRegistry('escape', 'code')).toBe(modernEscCode);
-      expect(getKeycodeFromRegistry('home', 'code')).toBe(modernHomeCode);
-    });
-
-    it('defaults to looking up modern codes', () => {
-      expect(getKeycodeFromRegistry('arrow-up')).toBe(modernUpCode);
-      expect(getKeycodeFromRegistry('escape')).toBe(modernEscCode);
-      expect(getKeycodeFromRegistry('home')).toBe(modernHomeCode);
-    });
-
-    it('correctly retrieves IE11 keycodes', () => {
-      expect(getKeycodeFromRegistry('arrow-up', 'ie-code')).toBe(ieUpCode);
-      expect(getKeycodeFromRegistry('escape', 'ie-code')).toBe(ieEscCode);
-      expect(getKeycodeFromRegistry('home', 'ie-code')).toBe(ieHomeCode);
+      expect(getKeycodeFromRegistry('arrow-up', registry)).toBe(upCode);
+      expect(getKeycodeFromRegistry('escape', registry)).toBe(escCode);
+      expect(getKeycodeFromRegistry('home', registry)).toBe(homeCode);
     });
 
     it('retrieves expected value for spacebar keycode', () => {
-      expect(getKeycodeFromRegistry('space', 'code')).toBe(' ');
-      expect(getKeycodeFromRegistry('space', 'ie-code')).toBe('Spacebar');
+      expect(getKeycodeFromRegistry('space', registry)).toBe(' ');
     });
   });
 
@@ -44,14 +28,8 @@ describe('Keycode Service Utility Functions – ', () => {
     describe('keycodes: ', () => {
       it('retrieves a copy of the keycodes registry', () => {
         const clonedRegistry = KeyCodeService.keycodes;
-        clonedRegistry.set(
-          'ohai',
-          new Map([
-            ['code', 'iello'],
-            ['ie-code', 'nope'],
-          ])
-        );
-        expect(clonedRegistry.has('ohai') && clonedRegistry.get('ohai').get('code') === 'iello').toBe(
+        clonedRegistry.set('ohai', 'iello');
+        expect(clonedRegistry.has('ohai') && clonedRegistry.get('ohai') === 'iello').toBe(
           true,
           'successfully set value on clone'
         );
@@ -64,11 +42,9 @@ describe('Keycode Service Utility Functions – ', () => {
         KeyCodeService.add('mytzlplk', 'wassup');
         expect(KeyCodeService.has('mytzlplk')).toBe(true, 'value added to registry');
         expect(KeyCodeService.getCode('mytzlplk')).toBe('wassup', 'value retrievable from registry');
-        expect(KeyCodeService.getIeCode('mytzlplk')).toBe('', 'unspecified legacy value not added to registry');
-        KeyCodeService.add('mytzlplk', 'ohai', 'thanx');
+        KeyCodeService.add('mytzlplk', 'ohai');
         expect(KeyCodeService.has('mytzlplk')).toBe(true, 'double-add to still be in registry');
         expect(KeyCodeService.getCode('mytzlplk')).toBe('ohai', 'value updated in registry');
-        expect(KeyCodeService.getIeCode('mytzlplk')).toBe('thanx', 'legacy value added to registry');
       });
     });
 
@@ -83,16 +59,6 @@ describe('Keycode Service Utility Functions – ', () => {
       it('looks up modern keycodes in registry', () => {
         expect(KeyCodeService.getCode('arrow-left')).toBe('ArrowLeft', 'finds known values');
         expect(KeyCodeService.getCode('jabberwocky')).toBe(
-          '',
-          'returns empty string if a value is not in the registry'
-        );
-      });
-    });
-
-    describe('getIeCode(): ', () => {
-      it('looks up legacy keycodes in registry', () => {
-        expect(KeyCodeService.getIeCode('arrow-left')).toBe('Left', 'finds known values');
-        expect(KeyCodeService.getIeCode('jabberwocky')).toBe(
           '',
           'returns empty string if a value is not in the registry'
         );

@@ -6,79 +6,19 @@
 
 import { deepClone } from '../utils/identity.js';
 
-const enum KeyCodeTypes {
-  DEFAULT = 'code',
-  IE = 'ie-code',
-}
+export type KeyCodeValues = Map<string, string>;
 
-export type KeyCodeValues = Map<'code' | 'ie-code', string>;
-
-export type KeyCodeHashmap = Map<string, KeyCodeValues>;
-
-const keyCodeRegistry: KeyCodeHashmap = new Map([
-  [
-    'arrow-left',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'ArrowLeft'],
-      [KeyCodeTypes.IE, 'Left'],
-    ]),
-  ],
-  [
-    'arrow-up',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'ArrowUp'],
-      [KeyCodeTypes.IE, 'Up'],
-    ]),
-  ],
-  [
-    'arrow-down',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'ArrowDown'],
-      [KeyCodeTypes.IE, 'Down'],
-    ]),
-  ],
-  [
-    'tab',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'Tab'],
-      [KeyCodeTypes.IE, 'Tab'],
-    ]),
-  ],
-  [
-    'enter',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'Enter'],
-      [KeyCodeTypes.IE, 'Enter'],
-    ]),
-  ],
-  [
-    'escape',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'Escape'],
-      [KeyCodeTypes.IE, 'Esc'],
-    ]),
-  ],
-  [
-    'space',
-    new Map([
-      [KeyCodeTypes.DEFAULT, ' '],
-      [KeyCodeTypes.IE, 'Spacebar'],
-    ]),
-  ],
-  [
-    'home',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'Home'],
-      [KeyCodeTypes.IE, 'Home'],
-    ]),
-  ],
-  [
-    'end',
-    new Map([
-      [KeyCodeTypes.DEFAULT, 'End'],
-      [KeyCodeTypes.IE, 'End'],
-    ]),
-  ],
+const keyCodeRegistry: KeyCodeValues = new Map([
+  ['arrow-left', 'ArrowLeft'],
+  ['arrow-right', 'ArrowRight'],
+  ['arrow-up', 'ArrowUp'],
+  ['arrow-down', 'ArrowDown'],
+  ['tab', 'Tab'],
+  ['enter', 'Enter'],
+  ['escape', 'Escape'],
+  ['space', ' '],
+  ['home', 'Home'],
+  ['end', 'End'],
 ]);
 
 /**
@@ -97,37 +37,23 @@ export class KeyCodeService {
    * Performing actions on the return value of the keycodes getter will not be reflected in the
    * actual keycodes dictionary!
    */
-  static get keycodes(): KeyCodeHashmap {
+  static get keycodes(): KeyCodeValues {
     return deepClone(keyCodeRegistry);
   }
 
-  static add(keycode: string, code: string, legacyCode?: string) {
-    const keycodeHashValueToStore = new Map([[KeyCodeTypes.DEFAULT, code]]);
-
-    if (legacyCode) {
-      keycodeHashValueToStore.set(KeyCodeTypes.IE, legacyCode);
-    }
-
-    keyCodeRegistry.set(keycode, keycodeHashValueToStore);
+  static add(keycode: string, code: string) {
+    keyCodeRegistry.set(keycode, code);
   }
 
   static has(keycode: string): boolean {
     return keyCodeRegistry.has(keycode);
   }
 
-  static getCode(keycode: string): string {
-    return getKeycodeFromRegistry(keycode, KeyCodeTypes.DEFAULT, this.keycodes);
-  }
-
-  static getIeCode(keycode: string): string {
-    return getKeycodeFromRegistry(keycode, KeyCodeTypes.IE, this.keycodes);
+  static getCode(keycode: string, keyCodeRegistry = this.keycodes): string {
+    return getKeycodeFromRegistry(keycode, keyCodeRegistry);
   }
 }
 
-export function getKeycodeFromRegistry(
-  codeToLookup: string,
-  whichCodeType: 'code' | 'ie-code' = KeyCodeTypes.DEFAULT,
-  registry = keyCodeRegistry
-): string {
-  return registry.get(codeToLookup)?.get(whichCodeType) || '';
+export function getKeycodeFromRegistry(codeToLookup: string, registry: KeyCodeValues): string {
+  return registry.get(codeToLookup) || '';
 }

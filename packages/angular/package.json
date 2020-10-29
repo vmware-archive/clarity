@@ -48,7 +48,6 @@
     "@angular/platform-browser": "10.0.2",
     "@angular/platform-browser-dynamic": "10.0.2",
     "@angular/router": "10.0.2",
-    "css-vars-ponyfill": "2.3.1",
     "rxjs": "6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "0.10.3"

@@ -2639,7 +2639,6 @@
     "@webcomponents/custom-elements" "^1.4.2"
     "@webcomponents/shadycss" "^1.10.1"
     "@webcomponents/webcomponentsjs" "^2.4.4"
-    css-vars-ponyfill "^2.3.2"
     normalize.css "^8.0.1"
 
 "@clr/react@./packages/react/dist/react":
@@ -12687,16 +12686,6 @@ css-tree@1.0.0-alpha.39:
   dependencies:
     mdn-data "2.0.6"
     source-map "^0.6.1"
-
-css-vars-ponyfill@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.3.1.tgz#34831c8b35c021e940d157cd497ae235f4b4238e"
-  integrity sha512-LHLFhKKQChkQz6nItHU1ZA/ABYJbw489eF0APx2a2FvjT32fAnbqriTLzKsl4KXowuVXcwoRWh8iQNO7wNzuGA==
-
-css-vars-ponyfill@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.3.2.tgz#688c990d33d7d4651a2a8dd3a99d8e7458f6e20e"
-  integrity sha512-XkZfj0ROhem0Zdv44+LF15COsYmxnqL7Wd/gvwuWAauYoALbt2x94b6dIKF9fB6SIyOMYEQngA82t9RnC6b/aw==
 
 css-what@2.1:
   version "2.1.3"

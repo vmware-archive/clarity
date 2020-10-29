@@ -7,16 +7,9 @@
 @import './tokens/generated/index';
 @import './layout/optimize';
 @import './layout/mixins/mixins';
-@import './layout/shims/grid';
 @import './layout/shims/gap';
 
 // older safari
 @media not all and (min-resolution: 0.001dpcm) {
   @include generateGapShim();
-}
-
-// ie11
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  @include generateGapShim();
-  @include generateGridShim();
 }

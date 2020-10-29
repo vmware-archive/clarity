@@ -1,5 +1,5 @@
 {
-  "current": "4.0.4",
+  "current": "4.0.5",
   "all": {
     "4.0.0": {
       "date": "August 19, 2020",
@@ -21,6 +21,10 @@
       "date": "October 15, 2020",
       "figma": "2.2.0"
     },
+    "4.0.5": {
+      "date": "October 29, 2020",
+      "figma": "2.2.0"
+    },
     "4.0.0-rc.1": {
       "date": "July 15, 2020",
       "figma": "2.2.0"
@@ -33,8 +37,13 @@
       "date": "June 17, 2020",
       "figma": "2.2.0"
     },
+    "3.1.11": {
+      "date": "October 29, 2020",
+      "figma": "2.2.0",
+      "sketch": ""
+    },
     "3.1.10": {
-      "date": "October 115, 2020",
+      "date": "October 15, 2020",
       "figma": "2.2.0",
       "sketch": ""
     },
@@ -155,6 +164,10 @@
       "date": "Oct 3, 2019",
       "figma": "2.2.0",
       "sketch": ""
+    },
+    "2.4.8": {
+      "date": "October 29, 2020",
+      "sketch": "2.2.0"
     },
     "2.4.7": {
       "date": "September 17, 2020",

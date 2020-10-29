@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "private": true,
   "workspaces": {
     "packages": [
@@ -30,7 +30,7 @@
     "clean": "del ./dist",
     "start": "yarn angular:dev:start",
     "build": "npm-run-all build:ci",
-    "build:ci": "npm-run-all clean schematics:clean format lint build:libs core:dev:build react:build test",
+    "build:ci": "npm-run-all clean schematics:clean lint build:libs core:dev:build react:build test",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build react:build",
     "build:apps": "npm-run-all -p angular:dev:build core:dev:build",
     "build:website": "yarn --cwd apps/website run build",

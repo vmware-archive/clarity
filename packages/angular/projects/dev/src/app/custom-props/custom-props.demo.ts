@@ -4,9 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, OnInit } from '@angular/core';
-// import { runCssVarsPolyfill } from '@clr/core';
-// import '@clr/core/test-dropdown';
+import { Component } from '@angular/core';
 
 const themes = {
   default: {
@@ -56,8 +54,6 @@ function switchTheme(toTheme: string): string {
   myStyles.push('}');
   newStyle.innerHTML = myStyles.join('');
 
-  // runCssVarsPolyfill();
-
   return toTheme;
 }
 
@@ -89,14 +85,10 @@ function getNewTheme(oldTheme: string): string {
   templateUrl: 'custom-props.demo.html',
   styleUrls: ['./custom-props.demo.scss'],
 })
-export class CustomPropsDemo implements OnInit {
+export class CustomPropsDemo {
   private _theme = 'default';
 
   cycleThemes(): void {
     this._theme = getNewTheme(this._theme);
-  }
-
-  ngOnInit() {
-    // runCssVarsPolyfill();
   }
 }

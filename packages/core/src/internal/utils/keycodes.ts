@@ -11,7 +11,7 @@ import { KeyCodeService } from '../services/keycodes.service.js';
  */
 export function keyWasEvented(evt: KeyboardEvent, whichKey: string) {
   // evt.key support goes all the way back to IE9; we don't need evt.keyCode for IE support!
-  return KeyCodeService.getCode(whichKey) === evt.key || KeyCodeService.getIeCode(whichKey) === evt.key;
+  return KeyCodeService.getCode(whichKey) === evt.key;
 }
 
 /**

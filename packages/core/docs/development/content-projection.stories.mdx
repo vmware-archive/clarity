@@ -11,10 +11,9 @@ import { Meta } from '@storybook/addon-docs/blocks';
 </cds-alert-group>
 
 Don't use slot selectors in JS or CSS as it's just for marking where the content
-will be projected. Important note IE11 also will remove the `<slot>` element all
-together due to polyfill limitations.
-
-We do not use named slots as a public API but rather provide wrapper components.
+will be projected. We do not use named slots in our public API but rather provide wrapper components.
+This improves developer experience by allowing application developers to learn only our API of
+components as opposed to having to understand named slots and our slot-naming conventions.
 
 ```html
 <cds-modal>

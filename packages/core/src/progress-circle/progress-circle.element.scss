@@ -108,10 +108,3 @@ svg {
     transform: rotate(360deg);
   }
 }
-
-// Hack for IE11
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .private-host {
-    display: block;
-  }
-}

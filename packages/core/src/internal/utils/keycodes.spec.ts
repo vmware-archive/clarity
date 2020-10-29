@@ -17,9 +17,6 @@ describe('Keycodes Helpers – ', () => {
   const testEvent1 = new KeyboardEvent('keyup', { code: 'ArrowLeft', key: 'ArrowLeft' });
   const testEvent2 = new KeyboardEvent('keyup', { code: 'Escape', key: 'Escape' });
   const spaceEvent = new KeyboardEvent('keyup', { code: 'Space', key: ' ' });
-  const spaceEventIe = new KeyboardEvent('keyup', { code: 'Spacebar', key: 'Spacebar' });
-  const ieEvent1 = new KeyboardEvent('keyup', { code: 'Left', key: 'Left' });
-  const ieEvent2 = new KeyboardEvent('keyup', { code: 'Esc', key: 'Esc' });
   const errEvent1 = new KeyboardEvent('keyup', { code: 'KeyA', key: 'a' });
   const errEvent2 = new KeyboardEvent('keyup', { code: 'Jabberwocky', key: 'Jabberwocky' });
 
@@ -30,15 +27,9 @@ describe('Keycodes Helpers – ', () => {
       expect(keyWasEvented(spaceEvent, 'space')).toEqual(true);
     });
 
-    it('correctly identifies IE11 keycodes', () => {
-      expect(keyWasEvented(ieEvent1, 'arrow-left')).toEqual(true);
-      expect(keyWasEvented(ieEvent2, 'escape')).toEqual(true);
-      expect(keyWasEvented(spaceEventIe, 'space')).toEqual(true);
-    });
-
     it('ignores keycodes that it is not looking for', () => {
       expect(keyWasEvented(testEvent1, 'arrow-up')).toEqual(false);
-      expect(keyWasEvented(ieEvent1, 'tab')).toEqual(false);
+      expect(keyWasEvented(testEvent2, 'tab')).toEqual(false);
     });
 
     it('does not die on unknown keycodes', () => {
@@ -67,11 +58,6 @@ describe('Keycodes Helpers – ', () => {
     it('does not execute function if event does not contain key', () => {
       onKey('arrow-left', spaceEvent, fn);
       expect(testme).toBe(0, 'onKey does not execute function when keycode is not in event');
-    });
-
-    it('handles IE codes as expected', () => {
-      onKey('space', spaceEventIe, fn);
-      expect(testme).toBe(1, 'onKey executes with legacy keycodes too');
     });
 
     it('does not execute function if registry does not have keycode', () => {
@@ -104,15 +90,6 @@ describe('Keycodes Helpers – ', () => {
     it('does not execute function if event does not contain any of the keys it is looking for', () => {
       onAnyKey(['arrow-left', 'arrow-down', 'arrow-up', 'arrow-right'], spaceEvent, fn);
       expect(testme).toBe(0, 'onAnyKey does not execute function when keycode is not in event');
-    });
-
-    it('handles IE codes as expected', () => {
-      onAnyKey(['escape', 'space'], testEvent1, fn);
-      expect(testme).toBe(0, 'test reset');
-      onAnyKey(['escape', 'space'], spaceEventIe, fn);
-      expect(testme).toBe(1, 'onAnyKey executes with legacy keycodes pt. 1');
-      onAnyKey(['escape', 'space'], new KeyboardEvent('keyup', { code: 'Esc', key: 'Esc' }), fn);
-      expect(testme).toBe(2, 'onAnyKey executes with legacy keycodes too');
     });
 
     it('does not execute function if registry does not have keycode', () => {

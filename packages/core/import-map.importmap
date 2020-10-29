@@ -18,7 +18,6 @@
     "ramda/es/is": "/base/node_modules/ramda/es/is.js",
     "ramda/es/isEmpty": "/base/node_modules/ramda/es/isEmpty.js",
     "ramda/es/without": "/base/node_modules/ramda/es/without.js",
-    "css-vars-ponyfill": "/base/node_modules/css-vars-ponyfill/dist/css-vars-ponyfill.esm.js",
 
     "@clr/core/icon": "/base/dist/core/icon/index.js",
     "@clr/core/icon/register.js": "/base/dist/core/icon/register.js",

@@ -5,7 +5,7 @@
  */
 
 // we export any non component code such as utilities at the root '@clr/core'
-export { CommonStringsService, ClrCommonStrings, commonStringsDefault, runCssVarsPolyfill } from '@clr/core/internal';
+export { CommonStringsService, ClrCommonStrings, commonStringsDefault } from '@clr/core/internal';
 
 // type global attribute utilities
 declare global {

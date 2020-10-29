@@ -39,10 +39,6 @@
   },
   "optionalDependencies": {
     "@clr/city": "^1.1.0",
-    "@webcomponents/shadycss": "^1.10.1",
-    "@webcomponents/custom-elements": "^1.4.2",
-    "@webcomponents/webcomponentsjs": "^2.4.4",
-    "css-vars-ponyfill": "^2.3.2",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {

@@ -77,11 +77,11 @@
           people we build it for, and the community that makes us who we are.
         </p>
         <div cds-layout="col:12 m-t:lg">
-          <cds-button>
-            <router-link to="/get-started">
-              Get started using Clarity
-            </router-link>
-          </cds-button>
+          <router-link to="/get-started">
+            <cds-button>
+              Get Started using Clarity
+            </cds-button>
+          </router-link>
         </div>
         <div class="image-wrapper">
           <img
@@ -228,11 +228,11 @@
           priorities. We are proud of what we have running under the hood. Check out our Github and take a look at our
           priority list, our code, our documentation, and join our community.
         </p>
-        <cds-button cds-layout="m-t:lg" action="outline">
-          <router-link to="/get-started">
+        <router-link to="/get-started">
+          <cds-button cds-layout="m-t:lg" action="outline">
             Join the community
-          </router-link>
-        </cds-button>
+          </cds-button>
+        </router-link>
         <img src="/images/home/img_join_us.svg" alt="placeholder image" cds-layout="col:start-2 col:10 fill m-t:xl" />
         <div cds-text="center" cds-layout="horizontal gap:lg align:fill col:start-2 col:10 m-t:xl">
           <div>
@@ -254,16 +254,16 @@
         </p>
 
         <div cds-layout="horizontal gap:lg align:center col:start-2 col:10 m-t:lg">
-          <cds-button action="outline">
-            <router-link to="/get-started/angular">
+          <router-link to="/get-started/angular">
+            <cds-button action="outline">
               Get started developing
-            </router-link>
-          </cds-button>
-          <cds-button action="outline">
-            <router-link to="/get-started/design">
+            </cds-button>
+          </router-link>
+          <router-link to="/get-started/design">
+            <cds-button action="outline">
               Get started designing
-            </router-link>
-          </cds-button>
+            </cds-button>
+          </router-link>
         </div>
       </div>
     </section>

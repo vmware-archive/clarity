@@ -48,7 +48,7 @@
     "pretty-quick": "1.11.0",
     "replace": "1.1.0",
     "ts-jest": "^26.1.0",
-    "typescript": "^3.9.3"
+    "typescript": "^4.0.0"
   },
   "optionalDependencies": {
     "@clr/city": "^1.1.0",

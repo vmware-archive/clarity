@@ -10,8 +10,8 @@ import { isHTMLElement } from './dom.js';
 import { createId } from './identity.js';
 
 export interface FocusTrapElement extends HTMLElement {
-  topReboundElement: HTMLElement;
-  bottomReboundElement: HTMLElement;
+  topReboundElement: HTMLElement | undefined;
+  bottomReboundElement: HTMLElement | undefined;
   focusTrapId: string;
 }
 

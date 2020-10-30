@@ -117,16 +117,7 @@ cds-internal-close-button {
 
 :host([type='banner']) .alert-content-wrapper {
   transform: none;
-  overflow: hidden;
-  height: #{$cds-token-space-size-10};
-}
-
-:host([type='banner']) {
-  .alert-content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  min-height: #{$cds-token-space-size-10};
 }
 
 :host([type='banner']) .spinner {

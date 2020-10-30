@@ -3,6 +3,13 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.containers') {
+  // Fix of #5009 and #5146
+  .clr-date-container {
+    .clr-input-wrapper {
+      max-width: fit-content;
+    }
+  }
+
   .clr-form-control {
     margin-top: $clr-forms-baseline * 4;
     display: flex;

@@ -95,6 +95,7 @@ import { ClrControlSuccess } from '../common/success';
     IfControlStateService,
   ],
   host: {
+    '[class.clr-date-container]': 'true',
     '[class.clr-form-control-disabled]': 'isInputDateDisabled',
     '[class.clr-form-control]': 'true',
     '[class.clr-row]': 'addGrid()',

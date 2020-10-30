@@ -67,9 +67,6 @@
     cursor: not-allowed;
   }
   .clr-form-control {
-    .clr-input-wrapper {
-      max-width: fit-content;
-    }
     .datepicker-trigger {
       line-height: $clr_baselineRem_1 - $clr_baselineRem_2px;
       height: $clr_baselineRem_1 - $clr_baselineRem_2px;

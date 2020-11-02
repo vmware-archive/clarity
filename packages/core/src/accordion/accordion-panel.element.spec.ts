@@ -52,4 +52,22 @@ describe('accordion-panel element', () => {
     expect(button).toBeDefined();
     button.click();
   });
+
+  it('should add the open class to the accordion header wrapper when expanded', async () => {
+    await componentIsStable(component);
+    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header');
+    expect(accordionHeaderWrapper.classList.contains('open')).toBe(false);
+    component.expanded = true;
+    await componentIsStable(component);
+    expect(accordionHeaderWrapper.classList.contains('open')).toBe(true);
+  });
+
+  it('should add the disabled class to the accordion header wrapper when disabled', async () => {
+    await componentIsStable(component);
+    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header');
+    expect(accordionHeaderWrapper.classList.contains('disabled')).toBe(false);
+    component.disabled = true;
+    await componentIsStable(component);
+    expect(accordionHeaderWrapper.classList.contains('disabled')).toBe(true);
+  });
 });

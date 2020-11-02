@@ -12,13 +12,13 @@ export default ({
   siteData, // site metadata,
   isServer,
 }) => {
-  Vue.use(VueResource);
-  Vue.use(Hotjar, {
-    id: '1762865',
-  });
-
   if (!isServer) {
     import('./core');
+
+    Vue.use(VueResource);
+    Vue.use(Hotjar, {
+      id: '1762865',
+    });
 
     Sentry.init({
       dsn: 'https://3e41de8eb9e440d6b834fc556ad8e83c@o378402.ingest.sentry.io/5201749',

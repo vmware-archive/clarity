@@ -46,11 +46,6 @@ pre[class*='language-'] {
   min-width: 1.8rem;
 }
 
-.clr-timeline.clr-timeline-vertical span + .clr-timeline-step-body::before {
-  //background: deeppink;
-  //transform: translate(-1.15rem,1.3rem) !important;
-}
-
 // Prism code snippet margin
 div[class^='language-'] pre {
   margin: 1rem 0;

@@ -1,7 +1,14 @@
+/*!
+ * Copyright (c) 2016-2020 VMware, Inc.
+ * All Rights ReserveThis software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
 @import '../../../../../dist/clr-ui/clr-ui.min.css';
 @import '../../../../../dist/core/global.min.css';
-@import './a11y-light.scss';
+@import '../../../../../dist/core/styles/module.shims.min.css';
 
+@import './a11y-light.scss';
 @import './containers';
 @import './spaces';
 @import './layout';

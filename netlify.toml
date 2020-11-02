@@ -16,7 +16,7 @@
 # news -> releases
 [[redirects]]
   from = "/news/*"
-  to = "/releases/v4"
+  to = "/releases/v4/"
   status = 301
 
 # community -> (re-direct to homepage)
@@ -28,239 +28,244 @@
 # Icons
 [[redirects]]
   from = "/icons"
-  to = "/foundation/icons"
+  to = "/foundation/icons/"
   status = 301
 
 # foundation pages
 [[redirects]]
   from = "/documentation/accessibility"
-  to = "/foundation/accessibility"
+  to = "/foundation/accessibility/"
   status = 301
 
 [[redirects]]
   from = "/documentation/app-layout"
-  to = "/foundation/app-layout"
+  to = "/foundation/app-layout/"
   status = 301
 
 [[redirects]]
   from = "/documentation/color"
-  to = "/foundation/color"
+  to = "/foundation/color/"
   status = 301
 
 [[redirects]]
   from = "/documentation/internationalization"
-  to = "/foundation/internationalization"
+  to = "/foundation/internationalization/"
   status = 301
 
 [[redirects]]
   from = "/documentation/navigation"
-  to = "/foundation/navigation"
+  to = "/foundation/navigation/"
   status = 301
 
 [[redirects]]
   from = "/documentation/themes"
-  to = "/foundation/themes"
+  to = "/foundation/themes/"
   status = 301
 
 [[redirects]]
   from = "/documentation/typography"
-  to = "/foundation/typography"
+  to = "/foundation/typography/"
   status = 301
 
 # Redirect components
 [[redirects]]
   from = "/documentation/accordion"
-  to = "/components/accordion"
+  to = "/components/accordion/"
   status = 301
 
 [[redirects]]
   from = "/documentation/alerts"
-  to = "/components/alert"
+  to = "/components/alert/"
   status = 301
 
 [[redirects]]
   from = "/documentation/badges"
-  to = "/components/badge"
+  to = "/components/badge/"
   status = 301
 
 [[redirects]]
   from = "/documentation/buttons"
-  to = "/components/button"
+  to = "/components/button/"
   status = 301
 
 [[redirects]]
   from = "/documentation/button-group"
-  to = "/components/button-group"
+  to = "/components/button-group/"
   status = 301
 
 [[redirects]]
   from = "/documentation/cards"
-  to = "/components/card"
+  to = "/components/card/"
   status = 301
 
 [[redirects]]
   from = "/documentation/checkboxes"
-  to = "/components/checkbox"
+  to = "/components/checkbox/"
   status = 301
 
 [[redirects]]
   from = "/documentation/datagrid/*"
-  to = "/components/datagrid"
+  to = "/components/datagrid/"
   status = 301
 
 [[redirects]]
   from = "/documentation/datalist"
-  to = "/components/datalist"
+  to = "/components/datalist/"
   status = 301
 
 [[redirects]]
   from = "/documentation/datepicker"
-  to = "/components/date-picker"
+  to = "/components/date-picker/"
   status = 301
 
 [[redirects]]
   from = "/documentation/dropdowns"
-  to = "/components/dropdown"
+  to = "/components/dropdown/"
   status = 301
 
 [[redirects]]
   from = "/documentation/forms"
-  to = "/components/form"
+  to = "/components/form/"
   status = 301
 
 [[redirects]]
   from = "/documentation/grid"
-  to = "/components/grid"
+  to = "/components/grid/"
   status = 301
 
 [[redirects]]
   from = "/documentation/header"
-  to = "/components/header"
+  to = "/components/header/"
   status = 301
 
 [[redirects]]
   from = "/documentation/input"
-  to = "/components/input"
+  to = "/components/input/"
   status = 301
 
 [[redirects]]
   from = "/documentation/labels"
-  to = "/components/label"
+  to = "/components/label/"
   status = 301
 
 [[redirects]]
   from = "/documentation/list"
-  to = "/components/list"
+  to = "/components/list/"
   status = 301
 
 [[redirects]]
   from = "/documentation/login"
-  to = "/components/login"
+  to = "/components/login/"
   status = 301
 
 [[redirects]]
   from = "/documentation/modals"
-  to = "/components/modal"
+  to = "/components/modal/"
   status = 301
 
 [[redirects]]
   from = "/documentation/password"
-  to = "/components/password"
+  to = "/components/password/"
   status = 301
 
 [[redirects]]
   from = "/documentation/progress"
-  to = "/components/progress-bar"
+  to = "/components/progress-bar/"
   status = 301
 
 [[redirects]]
   from = "/documentation/radio"
-  to = "/components/radio"
+  to = "/components/radio/"
   status = 301
 
 [[redirects]]
   from = "/documentation/range"
-  to = "/components/range"
+  to = "/components/range/"
   status = 301
 
 [[redirects]]
   from = "/documentation/select"
-  to = "/components/select"
+  to = "/components/select/"
   status = 301
 
 [[redirects]]
   from = "/documentation/sidenav"
-  to = "/components/sidenav"
+  to = "/components/sidenav/"
   status = 301
 
 [[redirects]]
   from = "/documentation/signposts"
-  to = "/components/signpost"
+  to = "/components/signpost/"
   status = 301
 
 [[redirects]]
   from = "/documentation/spinners"
-  to = "/components/spinner"
+  to = "/components/spinner/"
   status = 301
 
 [[redirects]]
   from = "/documentation/stack-view"
-  to = "/components/stack-view"
+  to = "/components/stack-view/"
   status = 301
 
 [[redirects]]
   from = "/documentation/stepper"
-  to = "/components/stepper"
+  to = "/components/stepper/"
   status = 301
 
 [[redirects]]
   from = "/documentation/tables"
-  to = "/components/table"
+  to = "/components/table/"
   status = 301
 
 [[redirects]]
   from = "/documentation/tabs"
-  to = "/components/tab"
+  to = "/components/tab/"
   status = 301
 
 [[redirects]]
   from = "/documentation/textarea"
-  to = "/components/textarea"
+  to = "/components/textarea/"
   status = 301
 
 [[redirects]]
   from = "/documentation/timeline"
-  to = "/components/timeline"
+  to = "/components/timeline/"
   status = 301
 
 [[redirects]]
   from = "/documentation/toggle-switches"
-  to = "/components/toggle"
+  to = "/components/toggle/"
   status = 301
 
 [[redirects]]
   from = "/documentation/tooltips"
-  to = "/components/tooltip"
+  to = "/components/tooltip/"
   status = 301
 
 [[redirects]]
   from = "/documentation/tree-view"
-  to = "/components/tree-view"
+  to = "/components/tree-view/"
   status = 301
 
 [[redirects]]
   from = "/documentation/vertical-nav/*"
-  to = "/components/vertical-nav"
+  to = "/components/vertical-nav/"
   status = 301
 
 [[redirects]]
   from = "/documentation/wizards"
-  to = "/components/wizard"
+  to = "/components/wizard/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation"
+  to = "/components/"
   status = 301
 
 [[redirects]]
   from = "/documentation/*"
-  to = "/components/:splat"
+  to = "/components/:splat/"
   status = 301
 
 # Redirects for all images to CDN
@@ -280,3 +285,9 @@
   for = "/*.json"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+
+# Handle 404s in our app, SPA redirect config
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

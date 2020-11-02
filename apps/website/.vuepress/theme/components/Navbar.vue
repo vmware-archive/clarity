@@ -97,4 +97,9 @@ function css(el, property) {
 .main-container .header .branding {
   max-width: none;
 }
+
+// Search override: hide the divider
+.header .search-box + .settings::after {
+  display: none;
+}
 </style>

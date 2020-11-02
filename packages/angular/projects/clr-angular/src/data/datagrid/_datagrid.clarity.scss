@@ -1001,7 +1001,7 @@
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         @include css-var(
           font-size,
           clr-datagrid-placeholder-font-size,

@@ -23,6 +23,8 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: String }) value: string;
 
+  @property({ type: String }) ariaDisabled: 'true' | 'false' = 'false';
+
   @property({ type: Boolean }) disabled = false;
 
   @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
@@ -83,6 +85,21 @@ export class CdsBaseButton extends LitElement {
   protected updated(props: Map<string, any>) {
     super.updated(props);
     this.updateButtonAttributes();
+
+    // TODO: TESTME!
+    if (props.has('disabled')) {
+      const isDisabled = this.disabled;
+      if (isDisabled !== (this.ariaDisabled === 'true')) {
+        this.ariaDisabled = isDisabled ? 'true' : 'false';
+      }
+    }
+
+    if (props.has('ariaDisabled')) {
+      const isAriaDisabled = this.ariaDisabled === 'true';
+      if (this.disabled !== isAriaDisabled) {
+        this.disabled = isAriaDisabled ? true : false;
+      }
+    }
   }
 
   private setupAnchorFocus() {

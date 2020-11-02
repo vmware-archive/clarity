@@ -54,14 +54,16 @@ describe('button element', () => {
       expect(component.getAttribute('role')).toBe('button');
     });
 
-    it('should remove button from tab index if disabled', async () => {
+    it('should remove button from tab index and set aria-disabled if disabled', async () => {
       await componentIsStable(component);
       expect(component.getAttribute('tabindex')).toBe('0');
+      expect(component.getAttribute('aria-disabled')).toBe('false');
 
       component.disabled = true;
       await componentIsStable(component);
       expect(component.hasAttribute('disabled')).toBe(true);
       expect(component.getAttribute('tabindex')).toBe('-1');
+      expect(component.getAttribute('aria-disabled')).toBe('true');
     });
 
     it('should work with form elements when clicked', async done => {
@@ -88,7 +90,7 @@ describe('button element', () => {
       component.dispatchEvent(event);
     });
 
-    it('should not interact with form elements if disabled', async () => {
+    it('should not interact with form elements if disabled (1)', async () => {
       component.disabled = true;
       await componentIsStable(component);
       const o = {
@@ -101,11 +103,33 @@ describe('button element', () => {
       expect(o.f).not.toHaveBeenCalled();
     });
 
-    it('should prevent click when readonly or disabled', async () => {
+    it('should not interact with form elements if disabled (2)', async () => {
+      component.ariaDisabled = 'true';
+      await componentIsStable(component);
+      const o = {
+        f: () => {
+          // Do nothing
+        },
+      };
+      spyOn(o, 'f');
+      testElement.querySelector('form').addEventListener('submit', o.f);
+      expect(o.f).not.toHaveBeenCalled();
+    });
+
+    it('should prevent click when readonly or disabled (1)', async () => {
       await componentIsStable(component);
       expect(component.getAttribute('disabled')).toBe(null);
 
       component.disabled = true;
+      await componentIsStable(component);
+      expect(component.getAttribute('disabled')).toBe('');
+    });
+
+    it('should prevent click when readonly or disabled (2)', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-disabled')).toBe('false');
+
+      component.ariaDisabled = 'true';
       await componentIsStable(component);
       expect(component.getAttribute('disabled')).toBe('');
     });
@@ -154,6 +178,7 @@ describe('button element', () => {
       component.loadingState = ClrLoadingState.DEFAULT;
       await componentIsStable(component);
       expect(component.hasAttribute('disabled')).toEqual(false);
+      expect(component.getAttribute('aria-disabled')).toEqual('false');
       expect(component.style.getPropertyValue('width')).toBe('');
     });
 
@@ -166,6 +191,7 @@ describe('button element', () => {
       // I'm getting 152.016px and 152.015625px, so the test fails without rounding
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
+      expect(component.getAttribute('aria-disabled')).toEqual('true');
     });
 
     it('should set success state as expected', async () => {
@@ -177,6 +203,7 @@ describe('button element', () => {
 
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
+      expect(component.getAttribute('aria-disabled')).toEqual('true');
     });
 
     it('should set error state as expected', async () => {
@@ -188,6 +215,7 @@ describe('button element', () => {
 
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
+      expect(component.getAttribute('aria-disabled')).toEqual('true');
     });
   });
 

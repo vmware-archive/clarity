@@ -441,7 +441,7 @@
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         font-size: $clr-datagrid-placeholder-font-size;
         color: $clr-datagrid-placeholder-color;
       }

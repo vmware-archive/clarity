@@ -86,7 +86,6 @@ export class CdsBaseButton extends LitElement {
     super.updated(props);
     this.updateButtonAttributes();
 
-    // TODO: TESTME!
     if (props.has('disabled')) {
       const isDisabled = this.disabled;
       if (isDisabled !== (this.ariaDisabled === 'true')) {

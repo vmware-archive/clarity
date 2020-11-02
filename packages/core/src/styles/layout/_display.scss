@@ -40,21 +40,6 @@
   display: inline !important;
 }
 
-[cds-layout~='display:screen-reader-only'] {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-  top: 0;
-  left: 0;
-  display: block !important;
-}
-
 @media (min-width: $cds-token-layout-width-sm-static) {
   @include display('sm');
 }

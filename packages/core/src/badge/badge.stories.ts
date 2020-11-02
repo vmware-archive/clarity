@@ -32,21 +32,54 @@ export const API = (args: any) => {
 
 export const status = () => {
   return html`
-    <cds-badge status="info">2</cds-badge>
-    <cds-badge status="success">3</cds-badge>
-    <cds-badge status="warning">12</cds-badge>
-    <cds-badge status="danger">15</cds-badge>
+    <cds-badge status="info"
+      >2<span cds-layout="display:screen-reader-only"> items in an informational badge.</span></cds-badge
+    >
+    <cds-badge status="success"
+      >3<span cds-layout="display:screen-reader-only"> items in a badge indicating success.</span></cds-badge
+    >
+    <cds-badge status="warning"
+      >12<span cds-layout="display:screen-reader-only"> items in a badge indicating a warning.</span></cds-badge
+    >
+    <cds-badge status="danger"
+      >15<span cds-layout="display:screen-reader-only"> items in a badge indicating an error.</span></cds-badge
+    >
   `;
 };
 
 export const color = () => {
   return html`
     <cds-badge>5</cds-badge>
-    <cds-badge color="gray">1</cds-badge>
-    <cds-badge color="purple">1</cds-badge>
-    <cds-badge color="blue">15</cds-badge>
-    <cds-badge color="orange">2</cds-badge>
-    <cds-badge color="light-blue">3</cds-badge>
+    <cds-badge color="gray"
+      >1<span cds-layout="display:screen-reader-only">
+        item. Item text for screen-readers should be added to badges in elements that will only be read in a
+        screen-reader.</span
+      ></cds-badge
+    >
+    <cds-badge color="purple"
+      >1<span cds-layout="display:screen-reader-only">
+        item. Item text for screen-readers should be added to badges in elements that will only be read in a
+        screen-reader.</span
+      ></cds-badge
+    >
+    <cds-badge color="blue"
+      >15<span cds-layout="display:screen-reader-only">
+        items. Item text for screen-readers should be added to badges in elements that will only be read in a
+        screen-reader.</span
+      ></cds-badge
+    >
+    <cds-badge color="orange"
+      >2<span cds-layout="display:screen-reader-only">
+        items. Item text for screen-readers should be added to badges in elements that will only be read in a
+        screen-reader.</span
+      ></cds-badge
+    >
+    <cds-badge color="light-blue"
+      >3<span cds-layout="display:screen-reader-only">
+        items. Item text for screen-readers should be added to badges in elements that will only be read in a
+        screen-reader.</span
+      ></cds-badge
+    >
   `;
 };
 
@@ -80,8 +113,29 @@ export const colorCustom = () => {
         --padding: 0.1rem 0.3rem;
       }
     </style>
-    <p><cds-badge class="app-custom">2300+</cds-badge></p>
-    <p><cds-badge class="app-custom-2">3</cds-badge></p>
-    <p><cds-badge class="app-custom-3">34,000+</cds-badge></p>
+    <p>
+      <cds-badge class="app-custom"
+        >2300+<span cds-layout="display:screen-reader-only">
+          items. Item text for screen-readers should be added to badges in elements that will only be read in a
+          screen-reader.</span
+        ></cds-badge
+      >
+    </p>
+    <p>
+      <cds-badge class="app-custom-2"
+        >3<span cds-layout="display:screen-reader-only">
+          items. Item text for screen-readers should be added to badges in elements that will only be read in a
+          screen-reader.</span
+        ></cds-badge
+      >
+    </p>
+    <p>
+      <cds-badge class="app-custom-3"
+        >34,000+<span cds-layout="display:screen-reader-only">
+          items. Item text for screen-readers should be added to badges in elements that will only be read in a
+          screen-reader.</span
+        ></cds-badge
+      >
+    </p>
   `;
 };

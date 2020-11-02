@@ -17,7 +17,7 @@ import { styles } from './badge.element.css.js';
  * ```
  *
  * ```html
- * <cds-badge status="info">2</cds-badge>
+ * <cds-badge status="info">2<span cds-layout="display:screen-reader-only"> items. Item text for screen-readers should be added to badges in elements that will only be read in a screen-reader.</span></cds-badge>
  * ```
  * @beta
  * @element cds-badge

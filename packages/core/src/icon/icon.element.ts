@@ -13,7 +13,6 @@ import {
   property,
   internalProperty,
   StatusTypes,
-  id,
 } from '@clr/core/internal';
 import { html, LitElement, query } from 'lit-element';
 import { styles } from './icon.element.css.js';
@@ -83,9 +82,21 @@ export class CdsIcon extends LitElement {
     }
   }
 
-  /** If present, customizes the aria-label for the icon for accessibility. */
+  /**
+   * The aria-label attribute is required for accessibility. The icon
+   * will warn if used without the aria-label being set.
+   *
+   * Ideally, the aria-label will be specific to the icon's purpose. Avoid sharing
+   * generic labels across multiple icons on a page.
+   *
+   * To not announce redundant information through screen-readers, consider using
+   * aria-hidden="true" on the cds-icon
+   */
+  @property({ type: String, required: 'warning' })
+  ariaLabel: string;
+
   @property({ type: String })
-  title: string;
+  role = 'img';
 
   /**
    * @type {up | down | left | right}
@@ -154,19 +165,7 @@ export class CdsIcon extends LitElement {
 
   @query('svg') private svg: SVGElement;
 
-  @id()
-  private idForAriaLabel: string;
-
-  firstUpdated(props: Map<string, any>) {
-    super.firstUpdated(props);
-    this.updateSVGAriaLabel();
-  }
-
   updated(props: Map<string, any>) {
-    if (props.has('title')) {
-      this.updateSVGAriaLabel();
-    }
-
     if (props.has('innerOffset') && this.innerOffset > 0) {
       const dimension = `calc(100% + ${this.innerOffset * 2}px)`;
       this.svg.style.width = dimension;
@@ -175,26 +174,7 @@ export class CdsIcon extends LitElement {
     }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.setAttribute('role', 'none');
-  }
-
   protected render() {
-    return html`
-      <span .innerHTML="${ClarityIcons.registry[this.shape]}"></span>
-      ${this.title
-        ? html`<span id="${this.idForAriaLabel}" cds-layout="display:screen-reader-only">${this.title}</span>`
-        : ''}
-    `;
-  }
-
-  private updateSVGAriaLabel() {
-    if (this.title) {
-      this.svg.removeAttribute('aria-label'); // remove empty label that makes icon decorative by default
-      this.svg.setAttribute('aria-labelledby', this.idForAriaLabel); // use labelledby for better SR support
-    } else {
-      this.svg.removeAttribute('aria-labelledby');
-    }
+    return html` <span aria-hidden="true" .innerHTML="${ClarityIcons.registry[this.shape]}"></span> `;
   }
 }

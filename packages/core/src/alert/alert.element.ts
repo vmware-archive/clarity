@@ -52,21 +52,9 @@ export function iconShapeIsAlertStatusType(shape: string): boolean {
   return statusShapes.indexOf(shape) > -1;
 }
 
-export function iconTitleIsAlertStatusLabel(shape: string): boolean {
-  const statusLabels = ['info', 'success', 'warning', 'danger', 'unknown'].map(s => {
-    return getIconStatusLabel(s);
-  });
-  return statusLabels.indexOf(shape) > -1;
-}
-
 export function getIconStatusShape(status: string): string {
   return getIconStatusTuple(status)[0];
 }
-
-export function getIconStatusLabel(status: string): string {
-  return getIconStatusTuple(status)[1];
-}
-
 export function getAlertContentLayout(
   containerType: 'wrapper' | 'content' | 'actions',
   alertGroupType: AlertGroupTypes,
@@ -222,7 +210,6 @@ export class CdsAlert extends LitElement {
                 ><cds-icon
                   class="alert-status-icon"
                   shape="${getIconStatusShape(this.status)}"
-                  title="${getIconStatusLabel(this.status)}"
                   aria-hidden="true"
                   cds-layout="align:horizontal-center"
                 ></cds-icon

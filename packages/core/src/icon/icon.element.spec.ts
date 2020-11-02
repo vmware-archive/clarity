@@ -131,38 +131,6 @@ describe('icon element', () => {
     });
   });
 
-  describe('title and aria label: ', () => {
-    it('should set aria label when a icon title is provided', async () => {
-      await componentIsStable(component);
-      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(null);
-      expect(component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"')).toBe(null);
-
-      component.title = 'test';
-      await componentIsStable(component);
-
-      const id = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"').getAttribute('id');
-      expect(id.charAt(0)).toBe('_');
-      expect(component.shadowRoot.querySelector('svg').getAttribute('aria-labelledby')).toBe(id);
-    });
-  });
-
-  describe('sr-only: ', () => {
-    it('should contain the sr-only element for screen readers', async () => {
-      await componentIsStable(component);
-      const srOnlyEl = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"]');
-      expect(srOnlyEl).toBeDefined();
-    });
-
-    it('should update sr-only element if title is changed', async () => {
-      const testTitle = 'Title Me';
-      await componentIsStable(component);
-      component.setAttribute('title', testTitle);
-      await componentIsStable(component);
-      const srOnlyEl = component.shadowRoot.querySelector('[cds-layout="display:screen-reader-only"]');
-      expect(srOnlyEl.innerHTML).toContain(testTitle);
-    });
-  });
-
   describe('solid: ', () => {
     it('should default to false', async () => {
       await componentIsStable(component);

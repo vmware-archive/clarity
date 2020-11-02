@@ -7,7 +7,7 @@
 import { html } from 'lit-html';
 import '@clr/core/alert/register.js';
 import '@clr/core/icon/register.js';
-import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType, iconTitleIsAlertStatusLabel } from '@clr/core/alert';
+import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@clr/core/alert';
 import { CdsIcon, infoStandardIcon } from '@clr/core/icon';
 import { CommonStringsService } from '@clr/core/internal';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
@@ -141,11 +141,6 @@ describe('Alert element – ', () => {
       expect(component.status).toBe('default');
       expect(alertStatusIcon.getAttribute('shape')).toBe(iconName);
       expect(alertStatusIcon.getAttribute('shape')).toBe(iconName);
-      expect(
-        alertStatusIcon.shadowRoot
-          .querySelector('[cds-layout="display:screen-reader-only"]')
-          .innerHTML.includes(CommonStringsService.keys.info)
-      ).toBe(true);
     });
 
     it('should allow users to change statuses', async () => {
@@ -154,17 +149,11 @@ describe('Alert element – ', () => {
       expect(component.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('shape')).toBe(
         infoStandardIcon[0]
       );
-      expect(component.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('title')).toBe(
-        CommonStringsService.keys.info
-      );
       component.setAttribute('status', 'warning');
       await componentIsStable(component);
       expect(component.status).toBe('warning');
       expect(component.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('shape')).toBe(
         'warning-standard'
-      );
-      expect(component.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('title')).toBe(
-        CommonStringsService.keys.warning
       );
     });
 
@@ -436,20 +425,5 @@ describe('iconShapeIsAlertStatusType: ', () => {
     expect(iconShapeIsAlertStatusType('info-standard')).toBe(true);
     expect(iconShapeIsAlertStatusType('success-standard')).toBe(true);
     expect(iconShapeIsAlertStatusType('help')).toBe(true);
-  });
-});
-
-describe('iconTitleIsAlertStatusLabel: ', () => {
-  const commonstrings = CommonStringsService.keys;
-
-  it('should return false as expected', async () => {
-    expect(iconTitleIsAlertStatusLabel('chuul')).toBe(false);
-  });
-
-  it('should return true as expected', async () => {
-    expect(iconTitleIsAlertStatusLabel(commonstrings.info)).toBe(true, 'info returns true');
-    expect(iconTitleIsAlertStatusLabel(commonstrings.success)).toBe(true, 'success returns true');
-    expect(iconTitleIsAlertStatusLabel(commonstrings.warning)).toBe(true, 'warning returns true');
-    expect(iconTitleIsAlertStatusLabel(commonstrings.danger)).toBe(true, 'danger returns true');
   });
 });

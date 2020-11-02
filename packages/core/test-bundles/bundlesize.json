@@ -27,7 +27,7 @@
     },
     {
       "path": "./dist/core/styles/module.shims.min.css",
-      "maxSize": "4 kB",
+      "maxSize": "3.5 kB",
       "compression": "brotli"
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "18.5 kB",
+      "maxSize": "17.5 kB",
       "compression": "brotli"
     }
   ]

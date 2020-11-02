@@ -89,7 +89,7 @@ export const all = () => {
     propertiesGroup
   );
   const dir = select(
-    'dir',
+    'direction',
     { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
     undefined,
     propertiesGroup
@@ -185,21 +185,25 @@ export const all = () => {
           <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
             ${iconIndex[k].map(
               i => html`
-            <div class="dc-icon-box" .hidden=${!i.includes(search)}>
-            <cds-icon
-              badge=${badge}
-              status=${iconStatus}
-              ?solid=${solid}
-              size=${size}
-              shape=${i}
-              direction=${ifDefined(dir)}
-              ?inverse=${inverse}
-              flip=${ifDefined(fl)}>
-            </cds-icon>
-            </cds-icon>
-              <p class="dc-icon-name">${i}</p>
-            </div>
-          `
+                <div class="dc-icon-box" .hidden=${!i.includes(search)}>
+                  <cds-icon
+                    aria-label="This is an example of an icon using the ${i} shape"
+                    badge=${badge}
+                    status=${iconStatus}
+                    ?solid=${solid}
+                    size=${size}
+                    shape=${i}
+                    direction=${ifDefined(dir)}
+                    ?inverse=${inverse}
+                    flip=${ifDefined(fl)}
+                  >
+                  </cds-icon>
+                  <span cds-layout="display:screen-reader-only"
+                    >${'The shape needed to display this icon is ' + i}</span
+                  >
+                  <p class="dc-icon-name" aria-hidden="true">${i}</p>
+                </div>
+              `
             )}
           </div>
         </section>
@@ -211,84 +215,208 @@ export const all = () => {
 export const API = (args: any) => {
   return html`
     <cds-demo inline-block>
-      <cds-icon ...="${spreadProps(getElementStorybookArgs(args))}"></cds-icon>
+      <cds-icon
+        ...="${spreadProps(getElementStorybookArgs(args))}"
+        aria-label="This is an icon example that can be used to try out the Clarity icon element's API"
+      ></cds-icon>
     </cds-demo>
   `;
 };
 
 export const icon = () => {
-  return html`<cds-icon shape="user"></cds-icon>`;
+  return html`<cds-icon
+    shape="user"
+    aria-label="This is an icon example that shows how to use the icon element in an application"
+  ></cds-icon>`;
 };
 
 export const sizes = () => {
   return html`
-    <cds-icon size="sm"></cds-icon>
-    <cds-icon size="md"></cds-icon>
-    <cds-icon size="lg"></cds-icon>
-    <cds-icon size="xl"></cds-icon>
-    <cds-icon size="xxl"></cds-icon>
+    <cds-icon size="sm" aria-label="This is an example of an icon using a pre-defined small size"></cds-icon>
+    <cds-icon size="md" aria-label="This is an example of an icon using a pre-defined medium size"></cds-icon>
+    <cds-icon size="lg" aria-label="This is an example of an icon using a pre-defined large size"></cds-icon>
+    <cds-icon size="xl" aria-label="This is an example of an icon using a pre-defined extra large size"></cds-icon>
+    <cds-icon
+      size="xxl"
+      aria-label="This is an example of an icon using a pre-defined extra extra large size"
+    ></cds-icon>
 
-    <cds-icon size="16"></cds-icon>
-    <cds-icon size="24"></cds-icon>
-    <cds-icon size="48"></cds-icon>
-    <cds-icon size="64"></cds-icon>
-    <cds-icon size="128"></cds-icon>
+    <cds-icon
+      size="16"
+      aria-label="This is an example of an icon using a custom size of 16 pixels wide and tall"
+    ></cds-icon>
+    <cds-icon
+      size="24"
+      aria-label="This is an example of an icon using a custom size of 24 pixels wide and tall"
+    ></cds-icon>
+    <cds-icon
+      size="48"
+      aria-label="This is an example of an icon using a custom size of 48 pixels wide and tall"
+    ></cds-icon>
+    <cds-icon
+      size="64"
+      aria-label="This is an example of an icon using a custom size of 64 pixels wide and tall"
+    ></cds-icon>
+    <cds-icon
+      size="128"
+      aria-label="This is an example of an icon using a custom size of 128 pixels wide and tall"
+    ></cds-icon>
   `;
 };
 
 export const badges = () => {
   return html`
-    <cds-icon shape="user" size="lg" badge="info"></cds-icon>
-    <cds-icon shape="user" size="lg" badge="success"></cds-icon>
-    <cds-icon shape="user" size="lg" badge="danger"></cds-icon>
-    <cds-icon shape="user" size="lg" badge="warning"></cds-icon>
-    <cds-icon shape="user" size="lg" badge="warning-triangle"></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      badge="info"
+      aria-label="This is an example of an icon of a user with a blue informational badge"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      badge="success"
+      aria-label="This is an example of an icon of a user with a green badge indicating success"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      badge="danger"
+      aria-label="This is an example of an icon of a user with a red badge indicating danger or an error"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      badge="warning"
+      aria-label="This is an example of an icon of a user with a dark orange badge indicating a warning"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      badge="warning-triangle"
+      aria-label="This is an example of an icon of a user with a dark orange triangle indicating something may be wrong"
+    ></cds-icon>
     <cds-demo inverse inline-block>
-      <cds-icon shape="user" size="lg" badge="inherit-triangle" inverse></cds-icon>
+      <cds-icon
+        shape="user"
+        size="lg"
+        badge="inherit-triangle"
+        inverse
+        aria-label="This is an example of an icon of a user on a dark background with a warning triangle that is the same color as the icon"
+      ></cds-icon>
     </cds-demo>
   `;
 };
 
 export const status = () => {
   return html`
-    <cds-icon shape="user" size="lg"></cds-icon>
-    <cds-icon shape="user" status="info" size="lg"></cds-icon>
-    <cds-icon shape="user" status="success" size="lg"></cds-icon>
-    <cds-icon shape="user" status="warning" size="lg"></cds-icon>
-    <cds-icon shape="user" status="danger" size="lg"></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      aria-label="This is an example of an icon of a user with the default color of the surrounding text"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="info"
+      size="lg"
+      aria-label="This is an example of a blue, informational icon of a user"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="success"
+      size="lg"
+      aria-label="This is an example of a green icon of a user indicating success"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="warning"
+      size="lg"
+      aria-label="This is an example of a dark orange icon of a user indicating a warning"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="danger"
+      size="lg"
+      aria-label="This is an example of a red icon of a user indicating danger or an error"
+    ></cds-icon>
 
-    <cds-icon shape="user" size="lg" solid></cds-icon>
-    <cds-icon shape="user" status="info" size="lg" solid></cds-icon>
-    <cds-icon shape="user" status="success" size="lg" solid></cds-icon>
-    <cds-icon shape="user" status="warning" size="lg" solid></cds-icon>
-    <cds-icon shape="user" status="danger" size="lg" solid></cds-icon>
+    <cds-icon
+      shape="user"
+      size="lg"
+      solid
+      aria-label="This is an example of an icon of a user completely filled in with the default color of the surrounding text"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="info"
+      size="lg"
+      solid
+      aria-label="This is an example of an icon of a user completely filled in with the blue, informational color"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="success"
+      size="lg"
+      solid
+      aria-label="This is an example of an icon of a user completely filled in with a green color indicating success"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="warning"
+      size="lg"
+      solid
+      aria-label="This is an example of an icon of a user completely filled in with a dark orange color indicating warning"
+    ></cds-icon>
+    <cds-icon
+      shape="user"
+      status="danger"
+      size="lg"
+      solid
+      aria-label="This is an example of an icon of a user completely filled in with a red color indicating danger or an error"
+    ></cds-icon>
   `;
 };
 
 export const statusInverse = () => {
   return html`
     <cds-demo inverse inline-block>
-      <cds-icon shape="user" inverse size="lg"></cds-icon>
-      <cds-icon shape="user" inverse status="info" size="lg"></cds-icon>
-      <cds-icon shape="user" inverse status="success" size="lg"></cds-icon>
-      <cds-icon shape="user" inverse status="warning" size="lg"></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg"></cds-icon>
+      <cds-icon shape="user" inverse size="lg" aria-label="This is an example of an icon of a user on a dark background with the default color of the surrounding text"></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg" aria-label="This is an example of a blue, informational icon of a user on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg" aria-label="This is an example of a green icon of a user on a dark background indicating success"></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg" aria-label="This is an example of a dark orange icon of a user on a dark background indicating a warning"></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" aria-label="This is an example of a red icon of a user on a dark background indicating danger or an error"></cds-icon>
 
-      <cds-icon shape="user" inverse size="lg" solid></cds-icon>
-      <cds-icon shape="user" inverse status="info" size="lg" solid></cds-icon>
-      <cds-icon shape="user" inverse status="success" size="lg" solid></cds-icon>
-      <cds-icon shape="user" inverse status="warning" size="lg" solid></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>
+      <cds-icon shape="user" inverse size="lg" solid aria-label="This is an example of an icon of a user completely filled in with the default color of the surrounding text on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg" solid aria-label="This is an example of an icon of a user completely filled in with the blue, informational color on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a green color indicating success"></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a dark orange color indicating warning"></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon>></cds-icon>
     </cds-demo>
   `;
 };
 
 export const direction = () => {
   return html`
-    <cds-icon size="lg" direction="up"></cds-icon>
-    <cds-icon size="lg" direction="left"></cds-icon>
-    <cds-icon size="lg" direction="down"></cds-icon>
-    <cds-icon size="lg" direction="right"></cds-icon>
+    <cds-icon
+      size="lg"
+      direction="up"
+      aria-label="This is an example of an icon whose glyph is directed with its top to point upward. This is the default icon direction."
+    ></cds-icon>
+    <cds-icon
+      size="lg"
+      direction="left"
+      aria-label="This is an example of an icon whose glyph is directed with its top to point to the left."
+    ></cds-icon>
+    <cds-icon
+      size="lg"
+      direction="down"
+      aria-label="This is an example of an icon whose glyph is directed with its top to point downward."
+    ></cds-icon>
+    <cds-icon
+      size="lg"
+      direction="right"
+      aria-label="This is an example of an icon whose glyph is directed with its top to point to the right."
+    ></cds-icon>
   `;
 };
 
@@ -346,84 +474,55 @@ export const customStyles = () => {
       }
     </style>
     <div class="custom-icon-colors a">
-      <cds-icon shape="user" badge class="icon-a"></cds-icon>
+      <cds-icon
+        shape="user"
+        badge
+        class="icon-a"
+        aria-label="This is an example of how an icon can be visually customized."
+      ></cds-icon>
     </div>
     <div class="custom-icon-colors b">
-      <cds-icon shape="user" class="icon-b" badge="warning-triangle"></cds-icon>
+      <cds-icon
+        shape="user"
+        class="icon-b"
+        badge="warning-triangle"
+        aria-label="This is another example of how an icon can be visually customized."
+      ></cds-icon>
     </div>
     <div class="custom-icon-colors c">
-      <cds-icon shape="user" badge class="icon-c"></cds-icon>
+      <cds-icon
+        shape="user"
+        badge
+        class="icon-c"
+        aria-label="This is a third example of how an icon can be visually customized."
+      ></cds-icon>
     </div>
     <p>
-      <i>A should be green with a pink badge</i><br />
-      <i>B should be all pink</i><br />
-      <i>C should be default gray with a yellow badge</i>
+      <i>The first icon should be green with a pink badge</i><br />
+      <i>The second icon should be all pink (even the warning triangle should be pink)</i><br />
+      <i>The third icon should be default gray color with a custom yellow badge</i>
     </p>
   `;
 };
 
 export const flip = () => {
   return html`
-    <cds-icon size="lg" shape="image"></cds-icon>
-    <cds-icon size="lg" flip="vertical" shape="image"></cds-icon>
-    <cds-icon size="lg" flip="horizontal" shape="image"></cds-icon>
-  `;
-};
-
-/** @customElement clr-icon */
-class LegacyIcon extends CdsIcon {}
-registerElementSafely('clr-icon', LegacyIcon);
-
-export const legacy = () => {
-  return html`
-    <h2>Size</h2>
-    <clr-icon shape="info-circle" size="12"></clr-icon>
-    <clr-icon shape="info-circle" size="16"></clr-icon>
-    <clr-icon shape="info-circle" size="36"></clr-icon>
-    <clr-icon shape="info-circle" size="48"></clr-icon>
-    <clr-icon shape="info-circle" size="64"></clr-icon>
-    <clr-icon shape="info-circle" size="72"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 12px; height: 12px;"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 16px; height: 16px;"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 36px; height: 36px;"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 48px; height: 48px;"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 64px; height: 64px;"></clr-icon>
-    <clr-icon shape="info-circle" style="width: 72px; height: 72px;"></clr-icon>
-
-    <h2>Direction</h2>
-    <!-- @ts-ignore -->
-    <div>
-      <clr-icon shape="caret" dir="up"></clr-icon>
-      <clr-icon shape="caret" dir="right"></clr-icon>
-      <clr-icon shape="caret" dir="down"></clr-icon>
-      <clr-icon shape="caret" dir="left"></clr-icon>
-    </div>
-    <clr-icon shape="caret" style="transform: rotate(0deg);"></clr-icon>
-    <clr-icon shape="caret" style="transform: rotate(90deg);"></clr-icon>
-    <clr-icon shape="caret" style="transform: rotate(180deg);"></clr-icon>
-    <clr-icon shape="caret" style="transform: rotate(270deg);"></clr-icon>
-
-    <h2>Flip</h2>
-    <clr-icon shape="floppy"></clr-icon>
-    <clr-icon shape="floppy" flip="horizontal"></clr-icon>
-    <clr-icon shape="floppy" flip="vertical"></clr-icon>
-
-    <h2>Color</h2>
-    <clr-icon shape="info-circle"></clr-icon>
-    <clr-icon shape="info-circle" class="is-highlight"></clr-icon>
-    <clr-icon shape="info-circle" class="is-error"></clr-icon>
-    <clr-icon shape="info-circle" class="is-warning"></clr-icon>
-    <clr-icon shape="info-circle" class="is-success"></clr-icon>
-    <clr-icon shape="info-circle" class="is-info"></clr-icon>
-    <clr-icon shape="info-circle" class="is-inverse"></clr-icon>
-
-    <h2>Badge</h2>
-    <clr-icon shape="user"></clr-icon>
-    <clr-icon shape="user" class="has-alert"></clr-icon>
-    <clr-icon shape="user" class="has-badge"></clr-icon>
-    <clr-icon shape="user" class="is-solid"></clr-icon>
-    <clr-icon shape="user" class="is-solid has-alert"></clr-icon>
-    <clr-icon shape="user" class="is-solid has-badge"></clr-icon>
-    <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon>
+    <cds-icon
+      size="lg"
+      shape="image"
+      aria-label="This is an example of an icon whose glyph is positioned upright. This is the default."
+    ></cds-icon>
+    <cds-icon
+      size="lg"
+      flip="vertical"
+      shape="image"
+      aria-label="This is an example of an icon whose glyph is flipped vertically."
+    ></cds-icon>
+    <cds-icon
+      size="lg"
+      flip="horizontal"
+      shape="image"
+      aria-label="This is an example of an icon whose glyph is flipped horizontally."
+    ></cds-icon>
   `;
 };

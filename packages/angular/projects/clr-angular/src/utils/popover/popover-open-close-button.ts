@@ -29,7 +29,6 @@ export class ClrPopoverOpenCloseButton implements OnDestroy {
   @Output('clrPopoverOpenCloseChange') openCloseChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostListener('click', ['$event'])
-  @HostListener('keydown', ['$event'])
   handleClick(event: MouseEvent) {
     this.smartOpenService.toggleWithEvent(event);
   }

@@ -17,7 +17,6 @@ import { ClrPopoverPositionService } from './providers/popover-position.service'
 import { ClrPopoverToggleService } from './providers/popover-toggle.service';
 import { ClrPopoverPosition } from './interfaces/popover-position.interface';
 import { ClrPopoverModuleNext } from './popover.module';
-import { KeyCodes } from '../../utils/enums/key-codes.enum';
 
 @Component({
   selector: 'test-host',
@@ -177,18 +176,6 @@ export default function (): void {
 
         expect(tick).not.toThrowAnyError();
       }));
-
-      it('prevents event default behavior when open with arrow key', function (this: Context) {
-        const anchorButton = this.eventService.anchorButtonRef.nativeElement;
-        anchorButton.focus();
-        this.fixture.detectChanges();
-        const event = new KeyboardEvent('keydown', { key: KeyCodes.ArrowDown });
-        spyOn(event, 'preventDefault');
-        anchorButton.dispatchEvent(event);
-        this.fixture.detectChanges();
-        expect(this.toggleService.open).toBeTrue();
-        expect(event.preventDefault).toHaveBeenCalled();
-      });
     });
   });
 }

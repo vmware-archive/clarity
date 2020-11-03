@@ -35,7 +35,6 @@ export class ClrPopoverCloseButton implements OnDestroy, AfterViewInit {
   @Output('clrPopoverOnCloseChange') closeChange: EventEmitter<void> = new EventEmitter<void>();
 
   @HostListener('click', ['$event'])
-  @HostListener('keydown', ['$event'])
   handleClick(event: MouseEvent) {
     this.smartOpenService.toggleWithEvent(event);
     this.smartEventsService.setAnchorFocus();

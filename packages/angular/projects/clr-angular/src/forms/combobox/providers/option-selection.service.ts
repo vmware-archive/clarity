@@ -20,6 +20,10 @@ export class OptionSelectionService<T> {
     return this._currentInput;
   }
   set currentInput(input) {
+    // clear value in single selection model when input is empty
+    if (!input && !this.multiselectable) {
+      this.setSelectionValue(null);
+    }
     this._currentInput = input;
     this._inputChanged.next(input);
   }

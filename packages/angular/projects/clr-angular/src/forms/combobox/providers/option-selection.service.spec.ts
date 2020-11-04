@@ -85,5 +85,13 @@ export default function () {
       optionSelectionService.loading = false;
       expect(optionSelectionService.loading).toBeFalse();
     });
+
+    it('clears selection in single selection mode when input empty', () => {
+      optionSelectionService.currentInput = 'Option 1';
+      optionSelectionService.setSelectionValue('Test value');
+      expect(optionSelectionService.selectionModel.isEmpty()).toBeFalse();
+      optionSelectionService.currentInput = '';
+      expect(optionSelectionService.selectionModel.isEmpty()).toBeTrue();
+    });
   });
 }

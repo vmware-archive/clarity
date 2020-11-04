@@ -80,6 +80,8 @@ export class ClrDropdownItem implements AfterViewInit {
   }
 
   ngOnDestroy() {
-    this.unlisten();
+    if (this.unlisten) {
+      this.unlisten();
+    }
   }
 }

@@ -17,7 +17,6 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
 import { ColumnsService } from './providers/columns.service';
 import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
-import { isPlatformBrowser } from '@angular/common';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
 

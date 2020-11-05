@@ -1,9 +1,9 @@
 <template>
   <div class="clr-row">
-    <div class="clr-col">
+    <div class="clr-col-sm-12 clr-col-lg-6" cds-layout="p-b:lg p-b@lg:none">
       <slot></slot>
     </div>
-    <div class="clr-col">
+    <div class="clr-col-sm-12 clr-col-lg-6">
       <slot name="dont"></slot>
     </div>
   </div>

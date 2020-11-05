@@ -1,15 +1,18 @@
+import '@cds/core/accordion/register.js';
 import '@cds/core/alert/register.js';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import '@cds/core/checkbox/register.js';
 import '@cds/core/datalist/register.js';
 import '@cds/core/date/register.js';
+import '@cds/core/divider/register.js';
 import '@cds/core/file/register.js';
 import '@cds/core/forms/register.js';
 import '@cds/core/icon/register.js';
 import '@cds/core/input/register.js';
 import '@cds/core/modal/register.js';
 import '@cds/core/password/register.js';
+import '@cds/core/progress-circle/register.js';
 import '@cds/core/radio/register.js';
 import '@cds/core/range/register.js';
 import '@cds/core/search/register.js';
@@ -38,6 +41,12 @@ import {
   circleIcon,
   successStandardIcon,
   errorStandardIcon,
+  pinIcon,
+  envelopeIcon,
+  uploadIcon,
+  blockIcon,
+  animationIcon,
+  betaIcon,
 } from '@cds/core/icon';
 
 ClarityIcons.addIcons(
@@ -55,7 +64,13 @@ ClarityIcons.addIcons(
   dotCircleIcon,
   circleIcon,
   successStandardIcon,
-  errorStandardIcon
+  errorStandardIcon,
+  pinIcon,
+  envelopeIcon,
+  uploadIcon,
+  blockIcon,
+  animationIcon,
+  betaIcon
 );
 loadCoreIconSet();
 

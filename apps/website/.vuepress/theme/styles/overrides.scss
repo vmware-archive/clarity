@@ -2,6 +2,7 @@
   min-height: 100vh;
   height: auto;
 }
+
 .clr-vertical-nav {
   padding-top: 0;
 
@@ -269,4 +270,66 @@ h4 .header-anchor cds-icon {
 
 [cds-text*='expanded'][cds-text*='body'] {
   --cds-global-typography-body-line-height: 1.2rem;
+}
+
+body .no-clr-ui h1,
+body .no-clr-ui h2,
+body .no-clr-ui h3,
+body .no-clr-ui h4,
+body .no-clr-ui h5,
+body .no-clr-ui h6,
+body .no-clr-ui p {
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.component-subsection p + p {
+  margin-top: var(--cds-token-space-size-7, 0.8rem);
+}
+
+.indent-section + .component-section-title,
+.component-section p + p {
+  margin-top: var(--cds-token-layout-space-lg, 1.2rem);
+}
+
+.clr-row + .component-section-title,
+.indent-section + .component-section-title.level-one,
+.component-subsection + .component-section-title,
+.component-section + .component-section-title {
+  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
+}
+
+.clr-row + .component-section-title.level-one,
+.component-subsection + .component-section-title.level-one,
+.component-section + .component-section-title.level-one {
+  margin-top: var(--cds-token-layout-space-xxl, 4.8rem);
+}
+
+.component-subsection + .inset,
+.component-section + .inset,
+.component-subsection + .inline-code,
+.component-section + .inline-code,
+.component-section + .component-subsection-title,
+.component-subsection + .component-subsection-title,
+.component-section + .component-subsection-title .clr-row + .component-subsection-title {
+  margin-top: var(--cds-token-layout-space-lg, 1.2rem);
+}
+
+.theme-default-content .component-subsection:last-child(),
+.theme-default-content .component-section:last-child() {
+  margin-bottom: var(--cds-token-layout-space-xl, 2.4rem);
+}
+
+.card-like {
+  border-radius: var(----cds-token-global-border-radius, 0.15rem);
+  border-style: solid;
+  border-width: var(----cds-token-global-border-width, 0.05rem);
+  border-color: var(--cds-token-color-neutral-500, #b3b3b3);
+  background: var(--cds-token-color-neutral-0);
 }

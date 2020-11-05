@@ -19,6 +19,132 @@ module.exports = [
       },
     },
   ],
+  // COMPONENT SUMMARY BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-summary',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-summary_open') {
+          return `<div class="component-summary no-clr-ui" cds-text="subsection">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-summary_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 1 TITLE BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-one-title',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-one-title_open') {
+          return `<div class="component-section-title level-one no-clr-ui" cds-text="title" cds-layout="m-b:md">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-one-title_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 1 BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-one',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-one_open') {
+          return `<div class="component-section no-clr-ui" cds-text="body">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-one_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 2 TITLE BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-two-title',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-two-title_open') {
+          return `<div class="component-section-title no-clr-ui" cds-text="section" cds-layout="m-b:md">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-two-title_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 2 BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-two',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-two_open') {
+          return `<div class="component-section no-clr-ui" cds-text="body">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-two_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 3 TITLE BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-three-title',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-three-title_open') {
+          return `<div class="component-subsection-title no-clr-ui" cds-text="subsection" cds-layout="m-b:xs">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-three-title_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
+  // COMPONENT SECTION LVL 3 BLOCK
+  [
+    'vuepress-plugin-container',
+    {
+      type: 'component-section-level-three',
+      render: function (tokens, idx) {
+        const item = tokens[idx];
+
+        if (item.type === 'container_component-section-level-three_open') {
+          return `<div class="component-subsection no-clr-ui" cds-text="body">`;
+        } else if (item.type === 'html_block') {
+          return item.content;
+        } else if (item.type === 'container_component-section-level-three_close') {
+          return `</div>`;
+        }
+      },
+    },
+  ],
   // DO BLOCK
   [
     'vuepress-plugin-container',

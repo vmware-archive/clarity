@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3>{{ title }}</h3>
+  <div cds-layout="vertical gap:md">
+    <h3 cds-text="title">{{ title }}</h3>
     <table class="table">
       <tr>
         <th class="left fixed-5">Scope</th>
@@ -36,6 +36,7 @@ export default {
 
 <style scoped lang="scss">
 .table {
+  margin-top: 0;
   table-layout: auto;
   .fixed-5 {
     width: 5rem;

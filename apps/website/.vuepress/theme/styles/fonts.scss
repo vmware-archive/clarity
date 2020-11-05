@@ -1,0 +1,44 @@
+/* Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under SIL OFL v1.1 license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+/*
+ * Default recommended bundle, optimized for performance and CDN/Bundling tools.
+ */
+
+/* light */
+@font-face {
+  font-family: 'Clarity City';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: local('Clarity City'), url('../../public/fonts/ClarityCity-Light.woff') format('woff');
+}
+
+/* regular */
+@font-face {
+  font-family: 'Clarity City';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('Clarity City'), url('../../public/fonts/ClarityCity-Regular.woff') format('woff');
+}
+
+/* medium */
+@font-face {
+  font-family: 'Clarity City';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('Clarity City'), url('../../public/fonts/ClarityCity-Medium.woff') format('woff');
+}
+
+/* semi bold */
+@font-face {
+  font-family: 'Clarity City';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local('Clarity City'), url('../../public/fonts/ClarityCity-SemiBold.woff') format('woff');
+}

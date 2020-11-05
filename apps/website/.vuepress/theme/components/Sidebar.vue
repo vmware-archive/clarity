@@ -30,7 +30,18 @@
                       active: isItemActive(childItem),
                     }"
                   >
-                    <span class="nav-text">{{ childItem.title }}</span>
+                    <span class="nav-text">
+                      {{ childItem.title }}
+                      <cds-icon
+                        aria-label="beta"
+                        status="info"
+                        solid
+                        v-if="isBeta(childItem) === true"
+                        shape="beta"
+                        size="md"
+                        style="margin-left: -0.15rem; margin-top: -0.75rem;"
+                      ></cds-icon>
+                    </span>
                   </router-link>
                   <a
                     :href="childItem.path"
@@ -163,6 +174,11 @@ export default {
     isItemActive: function (childItem) {
       const childItemPath = removePathExt(childItem.path);
       return childItemPath === this.activePage.path || this.activePage.path.startsWith(childItem.path + '/');
+    },
+    isBeta: function (item) {
+      // use titles; easier for now...
+      const betaItems = ['Progress Circle', 'Accordion', 'Divider'];
+      return item.path.indexOf('web-components') > -1 && betaItems.indexOf(item.title) > -1;
     },
     childActive: function (item) {
       let path = this.$page.path;

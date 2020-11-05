@@ -3,8 +3,8 @@
     <DocInset :height="demoHeight">
       <slot></slot>
     </DocInset>
-    <p class="bar">Do</p>
-    <p class="summary">{{ summary }}</p>
+    <p class="bar" cds-text="body semibold">Do</p>
+    <p class="summary" cds-text="body">{{ summary }}</p>
   </div>
 </template>
 
@@ -20,9 +20,8 @@ export default {
 
 <style scoped>
 .docs-do {
-  padding-top: 1rem;
-  width: 49%;
-  margin: 0 1% 0 0;
+  width: 100%;
+  margin: 0;
   display: inline-block;
 }
 .bar::before {
@@ -32,8 +31,8 @@ export default {
   background: #318500;
   height: 0.4rem;
   position: absolute;
-  top: -1rem;
   left: 0;
+  top: -0.4rem;
 }
 p.bar {
   position: relative;

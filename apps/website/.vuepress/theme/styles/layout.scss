@@ -42,3 +42,15 @@
   height: 100px;
   text-align: center;
 }
+
+[cds-layout*='m-b:md+'] {
+  margin-bottom: var(--cds-token-space-size-7, 0.8rem) !important;
+}
+
+[cds-layout*='m-b:lg+'] {
+  margin-bottom: var(--cds-token-space-size-10, 1.6rem) !important;
+}
+
+[cds-layout*='m-b:xl+'] {
+  margin-bottom: var(--cds-token-space-size-13, 3.6rem) !important;
+}

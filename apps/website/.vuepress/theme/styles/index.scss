@@ -6,7 +6,10 @@
 
 @import '~@clr/ui/clr-ui.min.css';
 @import '~@cds/core/global.min.css';
+@import '~@cds/core/list/list.min.css';
 @import '~@cds/core/styles/module.shims.min.css';
+
+@import './fonts.scss';
 
 @import './a11y-light.scss';
 @import './containers';

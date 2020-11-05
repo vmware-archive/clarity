@@ -6,12 +6,6 @@
       </div>
       <slot></slot>
     </div>
-    <div class="pinbox" cds-layout="horizontal align:vertical-stretch wrap:none" cds-text="body">
-      <div class="pin">
-        <cds-icon shape="pin" class="pin-icon" size="24"></cds-icon>
-      </div>
-      <slot></slot>
-    </div>
   </section>
 </template>
 

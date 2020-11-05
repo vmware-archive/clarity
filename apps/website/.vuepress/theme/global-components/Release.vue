@@ -1,30 +1,33 @@
 <template>
   <div>
-    <div v-for="release of item.releases">
-      <h2 class="sticky">
+    <div v-for="release of item.releases" cds-layout="m-b:xl">
+      <h2 class="sticky" cds-text="title" cds-layout="p-y:lg">
         {{ release.version }}
-        <a class="release-date" :href="commitLink" target="_blank">
+        <a class="release-date" :href="commitLink(release)" target="_blank">
           Released {{ release.date }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon>
         </a>
       </h2>
-      <p v-if="release.description">{{ release.description }}</p>
-      <ReleaseGroup v-if="release.feat" type="feat">
-        <template v-for="feat of release.feat">
-          <ReleaseItem :item="feat" />
-        </template>
-      </ReleaseGroup>
+      <p v-if="release.description" cds-text="body" cds-layout="m-t:xs m-b:lg">{{ release.description }}</p>
 
-      <ReleaseGroup v-if="release.fix" type="fix">
-        <template v-for="fix of release.fix">
-          <ReleaseItem :item="fix" />
-        </template>
-      </ReleaseGroup>
+      <div cds-layout="vertical gap:lg">
+        <ReleaseGroup v-if="release.feat && release.feat.length > 0" type="feat">
+          <template v-for="feat of release.feat">
+            <ReleaseItem :item="feat" />
+          </template>
+        </ReleaseGroup>
 
-      <ReleaseGroup v-if="release.deprecation" type="deprecation">
-        <template v-for="deprecation of release.deprecation">
-          <ReleaseItem :item="deprecation" />
-        </template>
-      </ReleaseGroup>
+        <ReleaseGroup v-if="release.fix && release.fix.length > 0" type="fix">
+          <template v-for="fix of release.fix">
+            <ReleaseItem :item="fix" />
+          </template>
+        </ReleaseGroup>
+
+        <ReleaseGroup v-if="release.deprecation && release.deprecation.length > 0" type="deprecation">
+          <template v-for="deprecation of release.deprecation">
+            <ReleaseItem :item="deprecation" />
+          </template>
+        </ReleaseGroup>
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +48,7 @@ export default {
   props: ['version'],
   methods: {
     commitLink: function (release) {
-      return `https://github.com/vmware/clarity/tree/${release.version}`;
+      return `https://github.com/vmware/clarity/commits/v${release.version}`;
     },
   },
   computed: {
@@ -66,6 +69,7 @@ export default {
   font-size: 0.75rem;
   margin-left: 1rem;
 }
+
 .external-link {
   margin-top: -0.5rem;
 }

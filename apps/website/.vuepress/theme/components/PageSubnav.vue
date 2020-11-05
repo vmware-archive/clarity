@@ -1,6 +1,6 @@
 <template>
   <div v-if="subnav && subnav.children" class="sticky">
-    <h1>{{ subnav.title }}</h1>
+    <h1 cds-text="heading" class="page-header">{{ subnav.title }}</h1>
     <ul class="nav page-subnav" role="nav" v-if="subnav.children.length > 1">
       <li role="presentation" class="nav-item" v-for="item of subnav.children">
         <router-link
@@ -23,9 +23,16 @@
   z-index: 5000;
 }
 
-h1 {
-  margin: 0rem;
+.page-header {
+  margin-top: var(--cds-token-space-size-5, 0.4rem);
+  margin-bottom: var(--cds-token-space-size-7, 0.8rem);
 }
+
+.page-subnav,
+.component-summary {
+  margin-bottom: var(--cds-token-space-size-10, 1.6rem);
+}
+
 .nav .btn.btn-link.nav-link {
   color: var(--cds-global-color-gray-700, #666);
 }

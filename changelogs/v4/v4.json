@@ -2,6 +2,62 @@
   "$schema": "../schema.json",
   "releases": [
     {
+      "version": "4.0.5",
+      "date": "2020-10-29",
+      "description": "This is a bug fix release that addresses issues in Angular components.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5222,
+          "title": "Fix input width issue",
+          "project": "Angular",
+          "scope": "Input"
+        },
+        {
+          "issue": 5220,
+          "title": "Fix accessibility issues with clr-icon involving title and aria-hidden",
+          "project": "Angular",
+          "scope": "Icon"
+        },
+        {
+          "issue": 5139,
+          "title": "Fix placeholder position",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5179,
+          "title": "Remove column a11y name override",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5165,
+          "title": "Put header before contents to fix DOM/a11y tree order",
+          "project": "Angular",
+          "scope": "Signpost"
+        },
+        {
+          "issue": 5163,
+          "title": "Fix disable openClose button",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5159,
+          "title": "Mark only blurred control as touched instead of whole form",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 5157,
+          "title": "Fix skipped change detection cycle on select",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
       "version": "4.0.4",
       "date": "2020-10-15",
       "description": "This is a bug fix release that addresses issues in both Angular and Core components.",

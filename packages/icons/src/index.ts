@@ -24,8 +24,10 @@ if (typeof window !== 'undefined') {
   }
 
   // Defining clr-icon custom element
-  // @ts-ignore
-  customElements.define('clr-icon', ClarityIconElement);
+  if (!customElements.get('clr-icon')) {
+    // @ts-ignore
+    customElements.define('clr-icon', ClarityIconElement);
+  }
 }
 
 export { clarityIcons as ClarityIcons };

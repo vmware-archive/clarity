@@ -207,11 +207,7 @@
             "tsConfig": "projects/dev/tsconfig.app.json",
             "aot": true,
             "assets": ["projects/dev/src/favicon.ico", "projects/dev/src/assets"],
-            "styles": [
-              "projects/dev/src/styles.scss",
-              "projects/clr-angular/src/main.scss",
-              "../icons/src/clr-icons.scss"
-            ],
+            "styles": ["projects/dev/src/styles.scss", "projects/clr-angular/src/main.scss"],
             "scripts": []
           },
           "configurations": {

@@ -3,7 +3,7 @@
     <div v-for="release of item.releases">
       <h2 class="sticky">
         {{ release.version }}
-        <a class="release-date" :href="commitLink" target="_blank">
+        <a class="release-date" :href="commitLink(release)" target="_blank">
           Released {{ release.date }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon>
         </a>
       </h2>
@@ -44,7 +44,7 @@ export default {
   props: ['version'],
   methods: {
     commitLink: function (release) {
-      return `https://github.com/vmware/clarity/tree/${release.version}`;
+      return `https://github.com/vmware/clarity/commits/v${release.version}`;
     },
   },
   computed: {

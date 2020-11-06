@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isTshirtSize, transformToSpacedString, updateElementStyles } from '@clr/core/internal';
+import { isTshirtSize, transformToSpacedString, updateElementStyles } from '@cds/core/internal';
 import isNil from 'ramda/es/isNil';
 import { CdsIcon } from '../icon.element.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';

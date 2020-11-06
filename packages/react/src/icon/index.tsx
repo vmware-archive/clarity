@@ -1,5 +1,5 @@
-import { CdsIcon as Icon } from '@clr/core/icon';
-import '@clr/core/icon/register';
+import { CdsIcon as Icon } from '@cds/core/icon';
+import '@cds/core/icon/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsIconType = Icon;

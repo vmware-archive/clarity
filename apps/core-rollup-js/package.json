@@ -12,8 +12,8 @@
     "bundle-check": "source-map-explorer dist/*.js"
   },
   "dependencies": {
-    "@clr/city": "1.1.0",
-    "@clr/core": "./dist/core",
+    "@cds/city": "1.1.0",
+    "@cds/core": "./dist/core",
     "normalize.css": "8.0.1"
   },
   "devDependencies": {

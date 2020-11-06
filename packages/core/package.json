@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core",
+  "name": "@cds/core",
   "version": "4.0.0",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook:start",
@@ -41,7 +41,7 @@
     "tslib": "^2.0.0"
   },
   "optionalDependencies": {
-    "@clr/city": "^1.1.0",
+    "@cds/city": "^1.1.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {

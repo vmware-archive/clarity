@@ -7,7 +7,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
-    '@clr/(.*)': '<rootDir>/../core/dist/$1',
+    '@cds/(.*)': '<rootDir>/../core/dist/$1',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
@@ -16,5 +16,5 @@ module.exports = {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  transformIgnorePatterns: ['node_modules/(?!@clr/core|lit-element|lit-html|ramda)'],
+  transformIgnorePatterns: ['node_modules/(?!@cds/core|lit-element|lit-html|ramda)'],
 };

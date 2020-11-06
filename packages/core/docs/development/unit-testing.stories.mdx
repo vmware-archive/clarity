@@ -23,8 +23,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 ```json
 // importmap.importmap
 "lit-html": "/base/node_modules/lit-html/lit-html.js",
-"@clr/core/button": "/base/dist/core/button/index.js",
-"@clr/core/button/register.js": "/base/dist/core/button/register.js",
+"@cds/core/button": "/base/dist/core/button/index.js",
+"@cds/core/button/register.js": "/base/dist/core/button/register.js",
 ```
 
 ## Test Utilities
@@ -34,9 +34,9 @@ Here is a basic starter test for a Clarity Web Component.
 
 ```typescript
 import { html } from 'lit-html';
-import '@clr/core/badge/register.js';
-import { CdsBadge } from '@clr/core/badge';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/badge/register.js';
+import { CdsBadge } from '@cds/core/badge';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('badge element', () => {
   let testElement: HTMLElement;

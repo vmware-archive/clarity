@@ -5,18 +5,18 @@
  */
 
 import { html } from 'lit-element';
-import { querySlot, globalStyle } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { angleIcon } from '@clr/core/icon/shapes/angle.js';
+import { querySlot, globalStyle } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import { styles as globalStyles } from './datalist-global.element.css.js';
 
 /**
  * Datalist
  *
  * ```typescript
- * import '@clr/core/datalist/register.js';
+ * import '@cds/core/datalist/register.js';
  * ```
  *
  * ```html

@@ -1,5 +1,4 @@
 {
     "sideEffects": false,
-    "name": "@clr/react/converter"
+    "name": "@cds/react/converter"
   }
-  

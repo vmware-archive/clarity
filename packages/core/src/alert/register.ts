@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/button/register.js';
-import '@clr/core/icon/register.js';
-import '@clr/core/internal-components/close-button/register.js';
-import { registerElementSafely } from '@clr/core/internal';
+import '@cds/core/button/register.js';
+import '@cds/core/icon/register.js';
+import '@cds/core/internal-components/close-button/register.js';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
 import { CdsAlert } from './alert.element.js';

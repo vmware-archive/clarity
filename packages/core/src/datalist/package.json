@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/datalist",
+  "name": "@cds/core/datalist",
   "sideEffects": [
     "./register.js"
   ]

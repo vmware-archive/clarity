@@ -5,11 +5,11 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/modal/register.js';
-import { CommonStringsServiceInternal } from '@clr/core/internal';
-import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
-import { CdsModal } from '@clr/core/modal';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/modal/register.js';
+import { CommonStringsServiceInternal } from '@cds/core/internal';
+import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
+import { CdsModal } from '@cds/core/modal';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
 
 describe('modal element', () => {
   let testElement: HTMLElement;

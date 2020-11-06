@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/internal';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsCheckbox } from './checkbox.element.js';
 import { CdsCheckboxGroup } from './checkbox-group.element.js';
-import '@clr/core/forms/register.js';
+import '@cds/core/forms/register.js';
 
 registerElementSafely('cds-checkbox', CdsCheckbox);
 registerElementSafely('cds-checkbox-group', CdsCheckboxGroup);

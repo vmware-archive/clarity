@@ -1,6 +1,6 @@
-import { CdsSelect as SelectInput } from '@clr/core/select';
+import { CdsSelect as SelectInput } from '@cds/core/select';
 
-import '@clr/core/select/register';
+import '@cds/core/select/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsSelectType = SelectInput;

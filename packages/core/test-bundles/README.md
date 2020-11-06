@@ -4,7 +4,7 @@ These tests check to ensure that Clarity Core properly can be consumed and
 tree shaken by the most commonly used module bundlers.
 
 ```javascript
-import '@clr/core/badge/register.js';
+import '@cds/core/badge/register.js';
 ```
 
 We should expect only the badge component code to included in the final application
@@ -14,8 +14,8 @@ More complex scenarios we want to also tree shake at the symbol level such as wh
 importing icons.
 
 ```javascript
-import '@clr/core/icon/register.js';
-import { ClarityIcons, userIcon, menuIcon } from '@clr/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, userIcon, menuIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(userIcon, menuIcon);
 ```

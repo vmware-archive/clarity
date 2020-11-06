@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { querySlotAll, baseStyles } from '@clr/core/internal';
-import { CdsInternalControlGroup } from '@clr/core/forms';
+import { querySlotAll, baseStyles } from '@cds/core/internal';
+import { CdsInternalControlGroup } from '@cds/core/forms';
 import { styles } from './input-group.element.css.js';
 import { CdsInput } from './input.element.js';
 
@@ -13,7 +13,7 @@ import { CdsInput } from './input.element.js';
  * Input Group
  *
  * ```typescript
- * import '@clr/core/input/register.js';
+ * import '@cds/core/input/register.js';
  * ```
  *
  * ```html

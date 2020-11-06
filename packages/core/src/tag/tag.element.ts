@@ -11,7 +11,7 @@ import {
   property,
   StatusTypes,
   syncDefinedProps,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -20,7 +20,7 @@ import { styles } from './tag.element.css.js';
  * Tags are visually styled to differentiate them from buttons.
  *
  * ```typescript
- * import '@clr/core/tag/register.js';
+ * import '@cds/core/tag/register.js';
  * ```
  *
  * ```html

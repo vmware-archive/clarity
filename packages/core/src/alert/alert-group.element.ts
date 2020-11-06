@@ -5,7 +5,7 @@
  */
 
 import { html, LitElement, query } from 'lit-element';
-import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@clr/core/internal';
+import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@cds/core/internal';
 import { CdsAlert } from './alert.element.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { styles } from './alert-group.element.css.js';
@@ -17,7 +17,7 @@ import { styles } from './alert-group.element.css.js';
  * of alert group containing it.
  *
  * ```typescript
- * import '@clr/core/alert/register.js';
+ * import '@cds/core/alert/register.js';
  * ```
  *
  * ```html

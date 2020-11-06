@@ -5,8 +5,8 @@
  */
 
 import { LitElement, html, css } from 'lit-element';
-import { registerElementSafely } from '@clr/core/internal';
-import { createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { registerElementSafely } from '@cds/core/internal';
+import { createTestElement, removeTestElement } from '@cds/core/test/utils';
 import { globalStyle } from './global-style.js';
 
 declare global {

@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsCheckbox } from '@clr/core/checkbox';
-import '@clr/core/checkbox/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsCheckbox } from '@cds/core/checkbox';
+import '@cds/core/checkbox/register.js';
 
 describe('cds-checkbox', () => {
   let component: CdsCheckbox;

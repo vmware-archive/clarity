@@ -1,7 +1,7 @@
-import { CdsInput as Input } from '@clr/core/input';
-import { CdsInputGroup as InputGroup } from '@clr/core/input';
+import { CdsInput as Input } from '@cds/core/input';
+import { CdsInputGroup as InputGroup } from '@cds/core/input';
 
-import '@clr/core/input/register';
+import '@cds/core/input/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsInputype = Input;

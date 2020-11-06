@@ -122,13 +122,13 @@
 1.  First, install the Clarity Core package from npm.
 
     ```bash
-    npm install @clr/core --save
+    npm install @cds/core --save
     ```
 
 2.  Import desired Web Component into your JavaScript or TypeScript
 
     ```typescript
-    import '@clr/core/modal';
+    import '@cds/core/modal';
     ```
 
 3.  Use Web Component in desired framework template

@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@clr/city": "^1.1.0",
-    "@clr/core": "./dist/core",
+    "@cds/city": "^1.1.0",
+    "@cds/core": "./dist/core",
     "core-js": "^3.6.4",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.11"

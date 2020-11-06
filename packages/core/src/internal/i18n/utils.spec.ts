@@ -5,7 +5,7 @@
  */
 
 import { getElementLanguageDirection } from './utils.js';
-import { createTestElement } from '@clr/core/test/utils';
+import { createTestElement } from '@cds/core/test/utils';
 
 describe('getElementLanguageDirection', () => {
   it('should return the current element level language direction', async () => {

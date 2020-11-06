@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      '@clr/core': path.resolve(__dirname, '../dist/core'),
+      '@cds/core': path.resolve(__dirname, '../dist/core'),
     },
   },
   output: {

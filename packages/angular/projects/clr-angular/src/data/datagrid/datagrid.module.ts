@@ -67,7 +67,7 @@ import {
   timesIcon,
   viewColumnsIcon,
   windowCloseIcon,
-} from '@clr/core/icon';
+} from '@cds/core/icon';
 
 export const CLR_DATAGRID_DIRECTIVES: Type<any>[] = [
   // Core

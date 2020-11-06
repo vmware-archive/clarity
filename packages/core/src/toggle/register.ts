@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/internal';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsToggleGroup } from './toggle-group.element.js';
 import { CdsToggle } from './toggle.element.js';
-import '@clr/core/forms/register.js';
+import '@cds/core/forms/register.js';
 
 registerElementSafely('cds-toggle', CdsToggle);
 registerElementSafely('cds-toggle-group', CdsToggleGroup);

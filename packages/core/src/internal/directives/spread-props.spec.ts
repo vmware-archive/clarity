@@ -6,9 +6,9 @@
 
 import { LitElement, html } from 'lit-element';
 import { render } from 'lit-html';
-import { registerElementSafely, property } from '@clr/core/internal';
+import { registerElementSafely, property } from '@cds/core/internal';
 import { spreadProps } from './spread-props.js';
-import { createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 declare global {
   interface HTMLElementTagNameMap {

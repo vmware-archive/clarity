@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsControl, CdsInternalControlGroup } from '@clr/core/forms';
-import '@clr/core/forms/register.js';
+import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsControl, CdsInternalControlGroup } from '@cds/core/forms';
+import '@cds/core/forms/register.js';
 import { CdsControlMessage } from '../control-message/control-message.element';
 
 let element: HTMLElement;

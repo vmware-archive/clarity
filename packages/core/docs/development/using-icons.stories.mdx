@@ -8,13 +8,13 @@ To get the optimal performance, we only import and register the icons necessary
 within a given component. Consumers of Clarity Icons would use the following:
 
 ```typescript
-import { ClarityIcons, successStandardIcon } from '@clr/core/icon';
+import { ClarityIcons, successStandardIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(successStandardIcon);
 ```
 
 The icon service and icons are all exported in the `index.ts`, the root
-`@clr/core/icon` entry point. This makes it easy to use but breaks certain performance
+`@cds/core/icon` entry point. This makes it easy to use but breaks certain performance
 characteristics internally. If a consumer is using a component via a CDN
 importing the compiled `index.js`, the browser will resolve all imports within
 that file. This means the browser will load hundreds of icons regardless of whether
@@ -25,13 +25,13 @@ to keep our components as compatible as possible with all options internally we
 must use a slightly different import than our typical users.
 
 ```typescript
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { successStandardIcon } from '@cds/core/icon/shapes/success-standard.js';
 ```
 
 By importing the direct path, we bypass the `index .js` file to prevent
 a large module resolution when using native ESM. This is an internal-only
-optimization, and users of the icons should continue to use the root `@clr/core/icon` import.
+optimization, and users of the icons should continue to use the root `@cds/core/icon` import.
 
 We may be able to change this in the future, but since it's possibly a breaking
 change, for now, we import explicitly.
@@ -39,8 +39,8 @@ change, for now, we import explicitly.
 Once imported, we must register the icon within the Constructor of the component.
 
 ```typescript
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { successStandardIcon } from '@cds/core/icon/shapes/success-standard.js';
 
 export class CdsMyComponent {
   constructor() {

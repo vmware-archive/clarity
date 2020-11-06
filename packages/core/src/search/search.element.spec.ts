@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsSearch } from '@clr/core/search';
-import '@clr/core/search/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsSearch } from '@cds/core/search';
+import '@cds/core/search/register.js';
 
 describe('cds-search', () => {
   let component: CdsSearch;

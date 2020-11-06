@@ -1,6 +1,6 @@
-import { CdsRange as RangeInput } from '@clr/core/range';
+import { CdsRange as RangeInput } from '@cds/core/range';
 
-import '@clr/core/range/register';
+import '@cds/core/range/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsRangeInputType = RangeInput;

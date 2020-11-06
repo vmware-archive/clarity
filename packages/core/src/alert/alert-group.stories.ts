@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
-import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@clr/core/icon';
+import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@cds/core/icon';
 import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);

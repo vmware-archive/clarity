@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { CdsButton } from '@clr/react/button';
-import { CdsTag } from '@clr/react/tag';
-import { CdsBadge } from '@clr/react/badge';
-import { CdsAlert, CdsAlertGroup } from '@clr/react/alert';
-import { CdsIcon } from '@clr/react/icon';
-import { ClarityIcons, userIcon } from '@clr/core/icon';
+import { CdsButton } from '@cds/react/button';
+import { CdsTag } from '@cds/react/tag';
+import { CdsBadge } from '@cds/react/badge';
+import { CdsAlert, CdsAlertGroup } from '@cds/react/alert';
+import { CdsIcon } from '@cds/react/icon';
+import { ClarityIcons, userIcon } from '@cds/core/icon';
 import './App.css';
 
 ClarityIcons.addIcons(userIcon);

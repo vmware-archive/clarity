@@ -47,10 +47,10 @@
 
 <script>
 import 'normalize.css/normalize.css';
-import '@clr/core/global.min.css';
-import '@clr/city/css/bundles/default.min.css';
-import '@clr/core/accordion/register.js';
-import '@clr/core/input/register.js';
+import '@cds/core/global.min.css';
+import '@cds/city/css/bundles/default.min.css';
+import '@cds/core/accordion/register.js';
+import '@cds/core/input/register.js';
 
 export default {
   data: function () {

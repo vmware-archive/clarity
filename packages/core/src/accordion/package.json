@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/accordion",
+  "name": "@cds/core/accordion",
   "sideEffects": [
     "./register.js"
   ]

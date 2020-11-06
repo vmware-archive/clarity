@@ -1,5 +1,5 @@
-import { CdsBadge as Badge } from '@clr/core/badge';
-import '@clr/core/badge/register';
+import { CdsBadge as Badge } from '@cds/core/badge';
+import '@cds/core/badge/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsBadgeType = Badge;

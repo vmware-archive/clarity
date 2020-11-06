@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-element';
-import { isVisible } from '@clr/core/internal';
+import { isVisible } from '@cds/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsControl } from '../control/control.element.js';

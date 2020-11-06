@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import { CdsIcon } from './index';
-import { ClarityIcons, userIcon, timesIcon } from '@clr/core/icon';
+import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 

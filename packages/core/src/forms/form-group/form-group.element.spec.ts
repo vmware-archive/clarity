@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsControl } from '@clr/core/forms';
-import '@clr/core/forms/register.js';
+import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsControl } from '@cds/core/forms';
+import '@cds/core/forms/register.js';
 import { CdsFormGroup } from './form-group.element';
 
 let element: HTMLElement;

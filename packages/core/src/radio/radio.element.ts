@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { internalProperty, listenForAttributeChange } from '@clr/core/internal';
-import { CdsInternalControlInline } from '@clr/core/forms';
+import { internalProperty, listenForAttributeChange } from '@cds/core/internal';
+import { CdsInternalControlInline } from '@cds/core/forms';
 import { styles } from './radio.element.css.js';
 
 /**
  * Radio
  *
  * ```typescript
- * import '@clr/core/radio/register.js';
+ * import '@cds/core/radio/register.js';
  * ```
  *
  * ```html

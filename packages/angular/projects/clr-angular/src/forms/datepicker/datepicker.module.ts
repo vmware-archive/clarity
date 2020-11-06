@@ -29,7 +29,7 @@ import {
   exclamationCircleIcon,
   angleIcon,
   calendarIcon,
-} from '@clr/core/icon';
+} from '@cds/core/icon';
 
 export const CLR_DATEPICKER_DIRECTIVES: Type<any>[] = [
   ClrDay,

@@ -5,8 +5,8 @@
  */
 
 import { html } from 'lit-html';
-import { CdsInput } from '@clr/core/input';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { CdsInput } from '@cds/core/input';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
 
 describe('cds-input', () => {
   let component: CdsInput;

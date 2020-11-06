@@ -42,8 +42,8 @@ export const miniCollectionAliases: IconAlias[] = [
  * Function that can be called to load the mini icon set.
  *
  * ```typescript
- * import '@clr/core/icon/register.js';
- * import { loadMiniIconSet } from '@clr/core/icon';
+ * import '@cds/core/icon/register.js';
+ * import { loadMiniIconSet } from '@cds/core/icon';
  *
  * loadMiniIconSet();
  * ```
@@ -54,7 +54,7 @@ export function loadMiniIconSet() {
   ClarityIcons.addAliases(...miniCollectionAliases);
 }
 
-declare module '@clr/core/internal' {
+declare module '@cds/core/internal' {
   interface IconRegistrySources {
     [arrowMiniIconName]: string;
     [calendarMiniIconName]: string;

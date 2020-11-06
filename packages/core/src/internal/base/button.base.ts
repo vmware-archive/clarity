@@ -11,7 +11,7 @@ import { property, internalProperty } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
-import { supportsFlexGap } from '@clr/core/internal';
+import { supportsFlexGap } from '@cds/core/internal';
 
 // @dynamic
 export class CdsBaseButton extends LitElement {

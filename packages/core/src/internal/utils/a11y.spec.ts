@@ -5,7 +5,7 @@
  */
 
 import { describeElementByElements } from './a11y.js';
-import { createTestElement } from '@clr/core/test/utils';
+import { createTestElement } from '@cds/core/test/utils';
 
 describe('a11y utilities', () => {
   it('describeElementByElements', async () => {

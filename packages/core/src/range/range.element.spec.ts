@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsRange } from '@clr/core/range';
-import '@clr/core/range/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsRange } from '@cds/core/range';
+import '@cds/core/range/register.js';
 
 describe('cds-range', () => {
   let component: CdsRange;

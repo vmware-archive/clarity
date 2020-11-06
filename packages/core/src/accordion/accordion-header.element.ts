@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@clr/core/internal';
+import { baseStyles } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './accordion-header.element.css.js';
 
@@ -12,7 +12,7 @@ import { styles } from './accordion-header.element.css.js';
  * Web component accordion to be used inside an accordion
  *
  * ```typescript
- * import '@clr/core/accordion/register.js';
+ * import '@cds/core/accordion/register.js';
  * ```
  *
  * ```html

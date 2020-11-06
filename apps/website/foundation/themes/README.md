@@ -290,14 +290,14 @@ First, you will need to install Clarity Core and its dependencies:
 <doc-code>
 
 ```bash
-npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponents/webcomponentsjs ramda @clr/core
+npm install @webcomponents/custom-elements @webcomponents/shadycss @webcomponents/webcomponentsjs ramda @cds/core
 ```
 
 </doc-code>
 
 ### Using the polyfills
 
-Once the dependencies are in a good place, you will need to import the `runCssVarsPolyfill` helper from `@clr/core`. This is what you will use to update the CSS custom properties in Internet Explorer.
+Once the dependencies are in a good place, you will need to import the `runCssVarsPolyfill` helper from `@cds/core`. This is what you will use to update the CSS custom properties in Internet Explorer.
 
 ### When to call the polyfills
 

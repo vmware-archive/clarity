@@ -5,11 +5,11 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle, internalProperty, listenForAttributeChange } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { angleIcon } from '@clr/core/icon/shapes/angle.js';
+import { globalStyle, internalProperty, listenForAttributeChange } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import { styles as globalStyles } from './select.global.css.js';
 import { styles } from './select.element.css.js';
 
@@ -17,7 +17,7 @@ import { styles } from './select.element.css.js';
  * Select
  *
  * ```typescript
- * import '@clr/core/select';
+ * import '@cds/core/select';
  * ```
  *
  * ```html

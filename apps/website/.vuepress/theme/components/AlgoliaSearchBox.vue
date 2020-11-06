@@ -74,7 +74,7 @@ export default {
 // Note: there is much important here. 🤮
 // I'm not 100% sure how to properly theme the algolia search widget.
 // TODO: properly theme the search widget or re-write it's functionality with cds layouts and tokens
-/* Override @clr/core, @clr/ui && the baked in styles that ship with the search widget for desktop search */
+/* Override @cds/core, @clr/ui && the baked in styles that ship with the search widget for desktop search */
 header .search-box,
 header .search,
 .header .search-box,

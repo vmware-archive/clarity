@@ -7,19 +7,19 @@ Clarity Core is a suite of Web Components from the [Clarity Design System](https
 1.  (Optional): Install the Clarity Core package from npm.
 
     ```bash
-    npm install @clr/core --save
+    npm install @cds/core --save
     ```
 
 2.  Install the Clarity React package from npm.
 
     ```bash
-    npm install @clr/react --save
+    npm install @cds/react --save
     ```
 
 3.  Import desired component into your JavaScript or TypeScript
 
     ```typescript
-    import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from '@clr/react/modal';
+    import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from '@cds/react/modal';
     ```
 
 4.  Use React wrapped Web Component in React
@@ -61,7 +61,7 @@ lifecycle our components provide a way to use refs when the underlying web compo
 
 ```typescript
 import React from 'react';
-import { CdsButton } from '@clr/react/button';
+import { CdsButton } from '@cds/react/button';
 
 export default class App extends React.Component<{}, {}> {
   buttonRef: React.RefObject<CdsButton>;

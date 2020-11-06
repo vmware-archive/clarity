@@ -12,7 +12,7 @@
     "lint": "markdownlint '**/*.md' --ignore 'node_modules'"
   },
   "dependencies": {
-    "@clr/core": "./dist/core",
+    "@cds/core": "./dist/core",
     "@clr/ui": "./dist/clr-ui",
     "@sentry/browser": "5.15.5",
     "@sentry/integrations": "5.15.5",

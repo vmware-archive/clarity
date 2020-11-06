@@ -22,7 +22,7 @@ import {
   exclamationCircleIcon,
   exclamationTriangleIcon,
   windowCloseIcon,
-} from '@clr/core/icon';
+} from '@cds/core/icon';
 
 export const CLR_ALERT_DIRECTIVES: Type<any>[] = [ClrAlert, ClrAlertItem, ClrAlerts, ClrAlertsPager, ClrAlertText];
 

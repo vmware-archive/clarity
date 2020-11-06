@@ -17,7 +17,7 @@ import { ClrStackViewCustomTags } from './stack-view-custom-tags';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrExpandableAnimationModule } from '../../utils/animations/expandable-animation/expandable-animation.module';
 import { ClrStackContentInput } from './stack-content-input';
-import { angleIcon, ClarityIcons } from '@clr/core/icon';
+import { angleIcon, ClarityIcons } from '@cds/core/icon';
 
 export const CLR_STACK_VIEW_DIRECTIVES: Type<any>[] = [
   ClrStackView,

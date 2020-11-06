@@ -5,7 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import { bellIcon, ClarityIcons, cloudIcon, warningStandardIcon } from '@clr/core/icon';
+import { bellIcon, ClarityIcons, cloudIcon, warningStandardIcon } from '@cds/core/icon';
 
 @Component({
   template: `

@@ -6,7 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { circleIcon, ClarityIcons, dotCircleIcon, errorStandardIcon, successStandardIcon } from '@clr/core/icon';
+import { circleIcon, ClarityIcons, dotCircleIcon, errorStandardIcon, successStandardIcon } from '@cds/core/icon';
 
 import { ClrIconModule } from '../icon/icon.module';
 import { ClrSpinnerModule } from '../progress/spinner/spinner.module';

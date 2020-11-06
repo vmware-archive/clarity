@@ -14,14 +14,14 @@ import {
   property,
   id,
   CdsBaseFocusTrap,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { styles } from './modal.element.css.js';
 
 /**
  * Web component modal.
  *
  * ```typescript
- * import '@clr/core/modal/register.js';
+ * import '@cds/core/modal/register.js';
  * ```
  *
  * ```html

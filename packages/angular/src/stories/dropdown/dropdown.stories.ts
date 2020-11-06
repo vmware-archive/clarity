@@ -10,8 +10,8 @@ import { ClarityModule } from '@clr/angular';
 
 const basicTemplate = require('!!raw-loader!./basic.html'); // eslint-disable-line
 
-import '@clr/core/icon/register.js';
-import { ClarityIcons, angleIcon } from '@clr/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, angleIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(angleIcon);
 

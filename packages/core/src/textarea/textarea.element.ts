@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CdsControl } from '@clr/core/forms';
+import { CdsControl } from '@cds/core/forms';
 import { styles } from './textarea.element.css.js';
 
 /**
  * Form
  *
  * ```typescript
- * import '@clr/core/textarea/register.js';
+ * import '@cds/core/textarea/register.js';
  * ```
  *
  * ```html

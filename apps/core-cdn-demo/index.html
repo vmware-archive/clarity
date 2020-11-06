@@ -5,8 +5,8 @@
     <meta name="Description" content="Clarity Design System" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://unpkg.com/normalize.css/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@clr/core@next/global.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@clr/city/css/bundles/default.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@cds/core@next/global.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@cds/city/css/bundles/default.min.css" />
   </head>
   <body>
     <main cds-layout="vertical gap:lg p:lg">
@@ -20,7 +20,7 @@
         <a href="https://clarity.design/storybook/core" cds-text="link">API Documentation</a>
       </p>
     </main>
-    <script type="module" src="https://unpkg.com/@clr/core@next/badge/register.js?module"></script>
+    <script type="module" src="https://unpkg.com/@cds/core@next/badge/register.js?module"></script>
     <script type="module">
       document.querySelector('cds-badge').textContent = `v${window.CDS.getVersion().versions[0]}`;
     </script>

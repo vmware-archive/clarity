@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/internal-components/close-button/register.js';
-import { registerElementSafely } from '@clr/core/internal';
+import '@cds/core/internal-components/close-button/register.js';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsModal } from './modal.element.js';
 import { CdsModalActions } from './modal-actions.element.js';
 import { CdsModalContent } from './modal-content.element.js';

@@ -27,7 +27,7 @@ import {
   loadTechnologyIconSet,
   loadTextEditIconSet,
   loadTravelIconSet,
-} from '@clr/core/icon';
+} from '@cds/core/icon';
 
 if (window) {
   loadChartIconSet();

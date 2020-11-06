@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { isString, transformToUnspacedString } from '@clr/core/internal';
+import { isString, transformToUnspacedString } from '@cds/core/internal';
 import { IconShapeCollection, IconShapeSources } from './interfaces/icon.interfaces.js';
 import { decorateSvgWithClassnames, getIconSvgClosingTag, getIconSvgOpeningTag } from './utils/icon.svg-helpers.js';
 

@@ -4,20 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/checkbox/register.js';
-import '@clr/core/datalist/register.js';
-import '@clr/core/file/register.js';
-import '@clr/core/forms/register.js';
-import '@clr/core/input/register.js';
-import '@clr/core/password/register.js';
-import '@clr/core/radio/register.js';
-import '@clr/core/range/register.js';
-import '@clr/core/search/register.js';
-import '@clr/core/select/register.js';
-import '@clr/core/textarea/register.js';
-import '@clr/core/time/register.js';
-import '@clr/core/toggle/register.js';
-import '@clr/core/button';
+import '@cds/core/checkbox/register.js';
+import '@cds/core/datalist/register.js';
+import '@cds/core/file/register.js';
+import '@cds/core/forms/register.js';
+import '@cds/core/input/register.js';
+import '@cds/core/password/register.js';
+import '@cds/core/radio/register.js';
+import '@cds/core/range/register.js';
+import '@cds/core/search/register.js';
+import '@cds/core/select/register.js';
+import '@cds/core/textarea/register.js';
+import '@cds/core/time/register.js';
+import '@cds/core/toggle/register.js';
+import '@cds/core/button';
 import { html } from 'lit-html';
 import { useEffect } from '@storybook/client-api';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/toggle",
+  "name": "@cds/core/toggle",
   "sideEffects": [
     "./register.js"
   ]

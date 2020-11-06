@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { timesIcon } from '@clr/core/icon/shapes/times.js';
-import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } from '@clr/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { timesIcon } from '@cds/core/icon/shapes/times.js';
+import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -15,7 +15,7 @@ import { styles } from './tag.element.css.js';
  * Tags are visually styled to differentiate them from buttons.
  *
  * ```typescript
- * import '@clr/core/tag/register.js';
+ * import '@cds/core/tag/register.js';
  * ```
  *
  * ```html

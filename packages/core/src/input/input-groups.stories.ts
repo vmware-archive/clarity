@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/input/register.js';
+import '@cds/core/input/register.js';
 
 export default {
   title: 'Forms (Preview)/Input Groups/Stories',

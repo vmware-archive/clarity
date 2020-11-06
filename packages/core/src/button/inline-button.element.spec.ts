@@ -5,11 +5,11 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/button/register.js';
-import '@clr/core/icon/register.js';
-import { CdsInlineButton } from '@clr/core/button';
-import { CdsIcon } from '@clr/core/icon';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/button/register.js';
+import '@cds/core/icon/register.js';
+import { CdsInlineButton } from '@cds/core/button';
+import { CdsIcon } from '@cds/core/icon';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('Inline button element', () => {
   let testElement: HTMLElement;

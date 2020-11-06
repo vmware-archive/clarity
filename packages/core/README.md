@@ -7,13 +7,13 @@ Clarity Core is a suite of Web Components for [Clarity Design System](https://cl
 1.  First, install the Clarity Core package from npm.
 
     ```bash
-    npm install @clr/core --save
+    npm install @cds/core --save
     ```
 
 2.  Import desired Web Component into your JavaScript or TypeScript
 
     ```typescript
-    import '@clr/core/modal/register.js';
+    import '@cds/core/modal/register.js';
     ```
 
 Full installation steps can be found in the [Core Getting Started Guide](https://clarity.design/storybook/core/?path=/story/documentation-getting-started--page).

@@ -12,7 +12,7 @@ import {
   StatusTypes,
   updateEquilateralSizeStyles,
   HTMLAttributeTuple,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import isNil from 'ramda/es/isNil';
 import { styles } from './progress-circle.element.css.js';
@@ -22,7 +22,7 @@ import { styles } from './progress-circle.element.css.js';
  * completion. Circular progress offer a compact way to track progress in a variety of situations.
  *
  * ```typescript
- * import '@clr/core/progress-circle/register.js';
+ * import '@cds/core/progress-circle/register.js';
  * ```
  *
  * ```html

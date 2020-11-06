@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
-import '@clr/core/progress-circle/register.js';
-import { ClarityIcons, homeIcon, nodesIcon, stopIcon, warningStandardIcon } from '@clr/core/icon';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import '@cds/core/icon/register.js';
+import '@cds/core/progress-circle/register.js';
+import { ClarityIcons, homeIcon, nodesIcon, stopIcon, warningStandardIcon } from '@cds/core/icon';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';
 

@@ -1,5 +1,5 @@
-import '@clr/core/button/register.js';
-import '@clr/core/alert/register.js';
+import '@cds/core/button/register.js';
+import '@cds/core/alert/register.js';
 
 const button = document.querySelector('cds-button');
 const alertGroup = document.querySelector('cds-alert-group');

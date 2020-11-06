@@ -61,8 +61,8 @@ export const mediaCollectionAliases: IconAlias[] = [];
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon/register.js';
- * import { loadMediaIconSet } from '@clr/core/icon';
+ * import '@cds/core/icon/register.js';
+ * import { loadMediaIconSet } from '@cds/core/icon';
  *
  * loadMediaIconSet();
  * ```
@@ -73,7 +73,7 @@ export function loadMediaIconSet() {
   ClarityIcons.addAliases(...mediaCollectionAliases);
 }
 
-declare module '@clr/core/internal' {
+declare module '@cds/core/internal' {
   interface IconRegistrySources {
     [cameraIconName]: string;
     [fastForwardIconName]: string;

@@ -1,6 +1,6 @@
-import { CdsPassword as Password } from '@clr/core/password';
+import { CdsPassword as Password } from '@cds/core/password';
 
-import '@clr/core/password/register';
+import '@cds/core/password/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsPasswordType = Password;

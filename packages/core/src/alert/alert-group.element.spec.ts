@@ -5,10 +5,10 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/alert/register.js';
-import '@clr/core/icon/register.js';
-import { CdsAlert, CdsAlertGroup } from '@clr/core/alert';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/alert/register.js';
+import '@cds/core/icon/register.js';
+import { CdsAlert, CdsAlertGroup } from '@cds/core/alert';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
 
 describe('Alert groups – ', () => {
   let testElement: HTMLElement;

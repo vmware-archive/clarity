@@ -42,9 +42,9 @@ read('./dist/react')
 
     if (file === 'dist/react/package.json') {
       ['alias', 'browserslist', 'scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
-      // move @clr/core from dependencies to peerDependencies and assign version number that matches the package.json
-      packageFile.peerDependencies = { '@clr/core': `^${packageFile.version}` };
-      delete packageFile.dependencies['@clr/core'];
+      // move @cds/core from dependencies to peerDependencies and assign version number that matches the package.json
+      packageFile.peerDependencies = { '@cds/core': `^${packageFile.version}` };
+      delete packageFile.dependencies['@cds/core'];
     }
 
     fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });

@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { querySlotAll, id } from '@clr/core/internal';
-import { CdsInternalControlGroup } from '@clr/core/forms';
+import { querySlotAll, id } from '@cds/core/internal';
+import { CdsInternalControlGroup } from '@cds/core/forms';
 import { CdsRadio } from './radio.element.js';
 
 /**
  * Radio Group
  *
  * ```typescript
- * import '@clr/core/radio/register.js';
+ * import '@cds/core/radio/register.js';
  * ```
  *
  * ```html

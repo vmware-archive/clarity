@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/test-dropdown';
-import { CdsTestDropdown } from '@clr/core/test-dropdown';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/test-dropdown';
+import { CdsTestDropdown } from '@cds/core/test-dropdown';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
 
 describe('dropdown test element', () => {
   let testElement: HTMLElement;

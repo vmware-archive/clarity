@@ -13,7 +13,7 @@ import {
   property,
   internalProperty,
   StatusTypes,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { html, LitElement, query } from 'lit-element';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
@@ -25,8 +25,8 @@ import { hasIcon } from './utils/icon.service-helpers.js';
  * To load an icon, import the icon with the icon service.
  *
  * ```typescript
- * import '@clr/core/icon/register.js';
- * import { ClarityIcons, userIcon } from '@clr/core/icon';
+ * import '@cds/core/icon/register.js';
+ * import { ClarityIcons, userIcon } from '@cds/core/icon';
  *
  * ClarityIcons.addIcons(userIcon);
  * ```

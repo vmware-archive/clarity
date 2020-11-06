@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/progress-circle"
+    "name": "@cds/react/progress-circle"
   }
-  

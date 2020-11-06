@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/radio"
+    "name": "@cds/react/radio"
   }
-  

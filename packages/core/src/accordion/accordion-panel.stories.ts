@@ -3,9 +3,9 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import '@clr/core/accordion/register.js';
-import '@clr/core/progress-circle/register.js';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import '@cds/core/accordion/register.js';
+import '@cds/core/progress-circle/register.js';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';

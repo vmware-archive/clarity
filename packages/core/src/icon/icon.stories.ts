@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
-import { ClarityIcons, imageIcon, userIcon } from '@clr/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, imageIcon, userIcon } from '@cds/core/icon';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
@@ -42,8 +42,8 @@ import {
   textEditCollectionIcons,
   travelCollectionAliases,
   travelCollectionIcons,
-} from '@clr/core/icon';
-import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+} from '@cds/core/icon';
+import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 loadChartIconSet();

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/internal-components/close-button/register.js';
-import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@clr/core/icon';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import '@cds/core/internal-components/close-button/register.js';
+import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@cds/core/icon';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit-html';
 import customElements from '../../../dist/core/custom-elements.json';
 

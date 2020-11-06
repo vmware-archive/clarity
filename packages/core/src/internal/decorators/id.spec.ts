@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { id } from '@clr/core/internal';
+import { id } from '@cds/core/internal';
 
 describe('id decorator', () => {
   class Test {

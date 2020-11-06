@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsSelect } from '@clr/core/select';
-import '@clr/core/select/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsSelect } from '@cds/core/select';
+import '@cds/core/select/register.js';
 
 describe('cds-select', () => {
   let component: CdsSelect;

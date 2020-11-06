@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsDate } from '@clr/core/date';
-import '@clr/core/date/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsDate } from '@cds/core/date';
+import '@cds/core/date/register.js';
 
 describe('cds-date', () => {
   let component: CdsDate;

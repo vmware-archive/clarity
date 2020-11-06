@@ -65,8 +65,8 @@ export const socialCollectionAliases: IconAlias[] = [
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon/register.js';
- * import { loadSocialIconSet } from '@clr/core/icon';
+ * import '@cds/core/icon/register.js';
+ * import { loadSocialIconSet } from '@cds/core/icon';
  *
  * loadSocialIconSet();
  * ```
@@ -77,7 +77,7 @@ export function loadSocialIconSet() {
   ClarityIcons.addAliases(...socialCollectionAliases);
 }
 
-declare module '@clr/core/internal' {
+declare module '@cds/core/internal' {
   interface IconRegistrySources {
     [bookmarkIconName]: string;
     [calendarIconName]: string;

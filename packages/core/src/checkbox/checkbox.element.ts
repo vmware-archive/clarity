@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { internalProperty, listenForAttributeChange } from '@clr/core/internal';
-import { CdsInternalControlInline } from '@clr/core/forms';
+import { internalProperty, listenForAttributeChange } from '@cds/core/internal';
+import { CdsInternalControlInline } from '@cds/core/forms';
 import { styles } from './checkbox.element.css.js';
 
 /**
  * Checkbox
  *
  * ```typescript
- * import '@clr/core/checkbox/register.js';
+ * import '@cds/core/checkbox/register.js';
  * ```
  *
  * ```html

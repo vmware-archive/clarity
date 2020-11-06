@@ -1,7 +1,7 @@
-import { CdsRadio as Radio } from '@clr/core/radio';
-import { CdsRadioGroup as RadioGroup } from '@clr/core/radio';
+import { CdsRadio as Radio } from '@cds/core/radio';
+import { CdsRadioGroup as RadioGroup } from '@cds/core/radio';
 
-import '@clr/core/radio/register';
+import '@cds/core/radio/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsRadioType = Radio;

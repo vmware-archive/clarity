@@ -5,10 +5,10 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
-import { CdsAlertActions } from '@clr/core/alert';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/alert/register.js';
+import '@cds/core/button/register.js';
+import { CdsAlertActions } from '@cds/core/alert';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('alert-actions element', () => {
   describe(' - the basics: ', () => {

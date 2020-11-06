@@ -1,6 +1,6 @@
-import { CdsSearch as SearchInput } from '@clr/core/search';
+import { CdsSearch as SearchInput } from '@cds/core/search';
 
-import '@clr/core/search/register';
+import '@cds/core/search/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsSearchInputType = SearchInput;

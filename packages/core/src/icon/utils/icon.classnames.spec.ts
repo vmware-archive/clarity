@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
+import '@cds/core/icon/register.js';
 
 import { html } from 'lit-html';
-import { CdsIcon } from '@clr/core/icon';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { CdsIcon } from '@cds/core/icon';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 import { renderIcon } from '../icon.renderer.js';
 import { ClarityIcons } from '../icon.service.js';
 

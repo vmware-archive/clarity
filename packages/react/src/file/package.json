@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/file"
+    "name": "@cds/react/file"
   }
-  

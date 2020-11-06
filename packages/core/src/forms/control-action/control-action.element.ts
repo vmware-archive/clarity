@@ -5,7 +5,7 @@
  */
 
 import { html, property } from 'lit-element';
-import { CdsIcon } from '@clr/core/icon/icon.element.js';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import {
   assignSlotNames,
   baseStyles,
@@ -13,15 +13,15 @@ import {
   hasAttributeAndIsNotEmpty,
   querySlot,
   setOrRemoveAttribute,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { styles } from './control-action.element.css.js';
-import { LogService } from '@clr/core/internal';
+import { LogService } from '@cds/core/internal';
 
 /**
  * Control Action
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

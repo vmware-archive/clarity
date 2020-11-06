@@ -1,8 +1,8 @@
-import { CdsAccordion as Accordion } from '@clr/core/accordion';
-import { CdsAccordionContent as AccordionContent } from '@clr/core/accordion';
-import { CdsAccordionHeader as AccordionHeader } from '@clr/core/accordion';
-import { CdsAccordionPanel as AccordionPanel } from '@clr/core/accordion';
-import '@clr/core/accordion/register';
+import { CdsAccordion as Accordion } from '@cds/core/accordion';
+import { CdsAccordionContent as AccordionContent } from '@cds/core/accordion';
+import { CdsAccordionHeader as AccordionHeader } from '@cds/core/accordion';
+import { CdsAccordionPanel as AccordionPanel } from '@cds/core/accordion';
+import '@cds/core/accordion/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsAccordionPanelType = AccordionPanel & { onExpandedChange: (e: any) => void };

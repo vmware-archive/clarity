@@ -67,9 +67,9 @@ function updateFileVersions() {
 
 function generateAPIMetaData() {
   // We link/unlink the package so wca can properly follow the root import paths
-  shell(`cd dist/core && yarn link && yarn link @clr/core`);
+  shell(`cd dist/core && yarn link && yarn link @cds/core`);
   shell(`wca analyze './dist/core/**/*.ts' --silent --format=json --outFile ./dist/core/custom-elements.json`);
-  shell(`cd dist/core && yarn unlink @clr/core && yarn unlink --no-save @clr/core`);
+  shell(`cd dist/core && yarn unlink @cds/core && yarn unlink --no-save @cds/core`);
 
   // update empty default slot names to have name 'default'
   const metadata = fs.readJsonSync('./dist/core/custom-elements.json');
@@ -83,7 +83,7 @@ function distributeBuild() {
     cpy(['./core'], '../../../dist', { cwd: './dist', parents: true }),
 
     // copy latest for react wrapper dev app
-    cpy(['./core'], '../../react/node_modules/@clr', { cwd: './dist', parents: true }),
+    cpy(['./core'], '../../react/node_modules/@cds', { cwd: './dist', parents: true }),
 
     // copy latest for demo apps (many tools don't support symlinks so this is a workaround of sorts)
     ...[
@@ -96,7 +96,7 @@ function distributeBuild() {
       'core-rollup-js',
       'core-snowpack',
       'core-vue-cli',
-    ].map(app => cpy(['./core'], `../../../apps/${app}/node_modules/@clr`, { cwd: './dist', parents: true })),
+    ].map(app => cpy(['./core'], `../../../apps/${app}/node_modules/@cds`, { cwd: './dist', parents: true })),
   ]);
 }
 

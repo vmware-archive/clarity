@@ -43,8 +43,8 @@ export const chartCollectionAliases: IconAlias[] = [[lineChartIconName, ['analyt
  * Function that can be called to load the core icon set.
  *
  * ```typescript
- * import '@clr/core/icon/register.js';
- * import { loadChartIconSet } from '@clr/core/icon';
+ * import '@cds/core/icon/register.js';
+ * import { loadChartIconSet } from '@cds/core/icon';
  *
  * loadChartIconSet();
  * ```
@@ -55,7 +55,7 @@ export function loadChartIconSet() {
   ClarityIcons.addAliases(...chartCollectionAliases);
 }
 
-declare module '@clr/core/internal' {
+declare module '@cds/core/internal' {
   interface IconRegistrySources {
     [axisChartIconName]: string;
     [barChartIconName]: string;

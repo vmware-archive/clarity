@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsRadio } from '@clr/core/radio';
-import '@clr/core/radio/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsRadio } from '@cds/core/radio';
+import '@cds/core/radio/register.js';
 
 describe('cds-radio', () => {
   let component: CdsRadio;

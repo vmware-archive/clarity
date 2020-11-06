@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsDatalist } from '@clr/core/datalist';
-import '@clr/core/datalist/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsDatalist } from '@cds/core/datalist';
+import '@cds/core/datalist/register.js';
 
 describe('cds-datalist', () => {
   let component: CdsDatalist;

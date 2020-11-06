@@ -25,7 +25,7 @@ We have four packages:
 - `@clr/icons` - Clarity Icons package, which is a standalone web component library for icons
 - `@clr/ui` - Clarity UI package, which is a standalone CSS library for Clarity styles
 - `@clr/angular` - Clarity Angular package, which depends upon the other two packages to implement a set of Angular components
-- `@clr/core` - Clarity Web Components and common utilities.
+- `@cds/core` - Clarity Web Components and common utilities.
 
 Each package has a slightly different build process, and this guide describes them each separately.
 Many of these commands have a corresponding `watch` command that enables watch
@@ -46,7 +46,7 @@ Build Clarity Angular by running `yarn angular:build`, which calls the following
 - `angular:test` - Run all tests for Clarity Angular
 - `angular:test:watch` - Continually run all tests for Clarity Angular
 
-## `@clr/core`
+## `@cds/core`
 
 Build Clarity Core by running `yarn core:build`, which calls the following tasks to build the package.
 
@@ -95,7 +95,7 @@ The start command starts up our demo app using the Angular CLI on port 4200 and 
 ##### `yarn build`
 
 This script builds npm package candidates for all four packages we currently publish: `@clr/angular`, `@clr/ui`,
-`@clr/icons`, and `@clr/core` under the `/dist` folder.
+`@clr/icons`, and `@cds/core` under the `/dist` folder.
 
 ##### `yarn test` and `yarn angular:test:watch`
 
@@ -129,7 +129,7 @@ This means that running `npm icons:build` by itself does NOT produce a complete 
 
 ##### `yarn core:build`
 
-This script produces the `@clr/core` package that is used to consume the Clarity Core Web Components.
+This script produces the `@cds/core` package that is used to consume the Clarity Core Web Components.
 
 ##### `yarn lint` and `yarn lint:fix`
 

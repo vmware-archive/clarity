@@ -17,14 +17,14 @@ import {
   syncDefinedProps,
   internalProperty,
   id,
-} from '@clr/core/internal';
-import { CdsIcon } from '@clr/core/icon/icon.element.js';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { infoStandardIcon } from '@clr/core/icon/shapes/info-standard.js';
-import { successStandardIcon } from '@clr/core/icon/shapes/success-standard.js';
-import { warningStandardIcon } from '@clr/core/icon/shapes/warning-standard.js';
-import { errorStandardIcon } from '@clr/core/icon/shapes/error-standard.js';
-import { helpIcon } from '@clr/core/icon/shapes/help.js';
+} from '@cds/core/internal';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { infoStandardIcon } from '@cds/core/icon/shapes/info-standard.js';
+import { successStandardIcon } from '@cds/core/icon/shapes/success-standard.js';
+import { warningStandardIcon } from '@cds/core/icon/shapes/warning-standard.js';
+import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
+import { helpIcon } from '@cds/core/icon/shapes/help.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
@@ -110,7 +110,7 @@ export function getAlertContentLayout(
  * the containing app-alert group, although it can be overridden on individual alerts.
  *
  * ```typescript
- * import '@clr/core/alert/register.js';
+ * import '@cds/core/alert/register.js';
  * ```
  *
  * ```html

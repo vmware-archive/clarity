@@ -1,4 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/date"
+    "name": "@cds/react/date"
 }

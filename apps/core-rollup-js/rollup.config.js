@@ -19,7 +19,7 @@ export default {
     copy({
       watch: production ? null : ['src/**/*.html'],
       targets: [
-        { src: 'node_modules/@clr/city/Webfonts', dest: 'dist' },
+        { src: 'node_modules/@cds/city/Webfonts', dest: 'dist' },
         { src: 'src/index.html', dest: 'dist' },
         { src: 'src/favicon.ico', dest: 'dist' },
       ],

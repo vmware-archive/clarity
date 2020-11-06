@@ -45,7 +45,7 @@ export class CommonStringsServiceInternal {
  * I18n service for updating internalized component strings
  *
  * ```typescript
- * import { CommonStringsService } from '@clr/core';
+ * import { CommonStringsService } from '@cds/core';
  *
  * CommonStringsService.keys.success // 'success'
  * ```

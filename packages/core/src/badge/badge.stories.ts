@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/badge/register.js';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import '@cds/core/badge/register.js';
+import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';
 

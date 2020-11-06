@@ -6,7 +6,7 @@
 
 // DO NOT USE for conditionally applying behavior based on the host framework.
 // These utilities are only for detecting host frameworks for debugging and logging.
-// Host framework specific code should exist outside of the @clr/core package.
+// Host framework specific code should exist outside of the @cds/core package.
 
 // Get values once then cache
 let angularVersion: string | undefined;

@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement } from '@cds/core/test/utils';
 import {
   CDS_FOCUS_TRAP_DOCUMENT_ATTR,
   CDS_FOCUS_TRAP_ID_ATTR,

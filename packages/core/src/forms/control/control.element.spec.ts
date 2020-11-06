@@ -5,12 +5,12 @@
  */
 
 import { html } from 'lit-html';
-import { removeTestElement, createTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsIcon } from '@clr/core/icon';
-import { CdsControl } from '@clr/core/forms';
-import '@clr/core/forms/register.js';
+import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsIcon } from '@cds/core/icon';
+import { CdsControl } from '@cds/core/forms';
+import '@cds/core/forms/register.js';
 import { CdsControlMessage } from '../control-message/control-message.element';
-import { listenForAttributeChange } from '@clr/core/internal';
+import { listenForAttributeChange } from '@cds/core/internal';
 
 describe('cds-control', () => {
   let element: HTMLElement;

@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/forms",
+  "name": "@cds/core/forms",
   "sideEffects": [
     "./register.js"
   ]

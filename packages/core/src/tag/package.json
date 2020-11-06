@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/tag",
+  "name": "@cds/core/tag",
   "sideEffects": [
     "./register.js"
   ]

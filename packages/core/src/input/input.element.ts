@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CdsControl } from '@clr/core/forms';
+import { CdsControl } from '@cds/core/forms';
 import { styles } from './input.element.css.js';
 
 /**
  * Input
  *
  * ```typescript
- * import '@clr/core/input/register.js';
+ * import '@cds/core/input/register.js';
  * ```
  *
  * ```html

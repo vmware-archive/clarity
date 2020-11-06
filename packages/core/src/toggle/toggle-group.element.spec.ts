@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsToggleGroup } from '@clr/core/toggle';
-import '@clr/core/toggle/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsToggleGroup } from '@cds/core/toggle';
+import '@cds/core/toggle/register.js';
 
 describe('cds-toggle-group', () => {
   let component: CdsToggleGroup;

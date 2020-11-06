@@ -1,6 +1,6 @@
-import { CdsDate as DateInput } from '@clr/core/date';
+import { CdsDate as DateInput } from '@cds/core/date';
 
-import '@clr/core/date/register';
+import '@cds/core/date/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsDateInputType = DateInput;

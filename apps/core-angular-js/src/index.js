@@ -1,6 +1,6 @@
 import angular from 'angular';
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
+import '@cds/core/alert/register.js';
+import '@cds/core/button/register.js';
 
 angular.module('app', []);
 angular.element(document).ready(() => angular.bootstrap(document, ['app']));

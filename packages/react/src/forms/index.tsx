@@ -1,10 +1,10 @@
-import { CdsControlMessage as ControlMessage } from '@clr/core/forms';
-import { CdsControlAction as ControlAction } from '@clr/core/forms';
-import { CdsInternalControlGroup as ControlGroup } from '@clr/core/forms';
-import { CdsControl as Control } from '@clr/core/forms';
-import { CdsFormGroup as FormGroup } from '@clr/core/forms';
+import { CdsControlMessage as ControlMessage } from '@cds/core/forms';
+import { CdsControlAction as ControlAction } from '@cds/core/forms';
+import { CdsInternalControlGroup as ControlGroup } from '@cds/core/forms';
+import { CdsControl as Control } from '@cds/core/forms';
+import { CdsFormGroup as FormGroup } from '@cds/core/forms';
 
-import '@clr/core/forms/register';
+import '@cds/core/forms/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsControlMessageType = ControlMessage;

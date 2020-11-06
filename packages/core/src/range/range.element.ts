@@ -5,8 +5,8 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
+import { globalStyle } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
 import { styles as globalStyles } from './range.global.css.js';
 import { styles } from './range.element.css.js';
 
@@ -14,7 +14,7 @@ import { styles } from './range.element.css.js';
  * Range
  *
  * ```typescript
- * import '@clr/core/range/register.js';
+ * import '@cds/core/range/register.js';
  * ```
  *
  * ```html

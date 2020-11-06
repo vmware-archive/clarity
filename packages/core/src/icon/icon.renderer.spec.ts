@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isString } from '@clr/core/internal';
+import { isString } from '@cds/core/internal';
 import { getInnerSvgFromShapes, renderIcon } from './icon.renderer.js';
 import { IconShapeSources } from './interfaces/icon.interfaces.js';
 import { IconDecorationClassnames, IconSvgClassnames } from './utils/icon.classnames.js';

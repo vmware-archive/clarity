@@ -5,10 +5,10 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/button/register.js';
-import '@clr/core/icon/register.js';
-import { CdsIconButton, ClrLoadingState } from '@clr/core/button';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/button/register.js';
+import '@cds/core/icon/register.js';
+import { CdsIconButton, ClrLoadingState } from '@cds/core/button';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('Icon button element – ', () => {
   let testElement: HTMLElement;

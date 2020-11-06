@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, StatusTypes } from '@clr/core/internal';
+import { baseStyles, property, StatusTypes } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './badge.element.css.js';
 
@@ -13,7 +13,7 @@ import { styles } from './badge.element.css.js';
  * or inside the element itself.
  *
  * ```typescript
- * import '@clr/core/badge/register.js';
+ * import '@cds/core/badge/register.js';
  * ```
  *
  * ```html

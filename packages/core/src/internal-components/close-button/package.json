@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/internal-components/close-button",
+  "name": "@cds/core/internal-components/close-button",
   "sideEffects": [
     "./register.js"
   ]

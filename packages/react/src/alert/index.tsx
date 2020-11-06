@@ -1,7 +1,7 @@
-import { CdsAlert as Alert } from '@clr/core/alert';
-import { CdsAlertActions as AlertActions } from '@clr/core/alert';
-import { CdsAlertGroup as AlertGroup } from '@clr/core/alert';
-import '@clr/core/alert/register';
+import { CdsAlert as Alert } from '@cds/core/alert';
+import { CdsAlertActions as AlertActions } from '@cds/core/alert';
+import { CdsAlertGroup as AlertGroup } from '@cds/core/alert';
+import '@cds/core/alert/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsAlertType = Alert & { onCloseChange: (e: any) => void };

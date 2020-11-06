@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
-import '@clr/core/tag/register.js';
-import { ClarityIcons, infoStandardIcon, userIcon } from '@clr/core/icon';
-import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
+import '@cds/core/icon/register.js';
+import '@cds/core/tag/register.js';
+import { ClarityIcons, infoStandardIcon, userIcon } from '@cds/core/icon';
+import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

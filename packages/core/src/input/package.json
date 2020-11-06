@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/input",
+  "name": "@cds/core/input",
   "sideEffects": [
     "./register.js"
   ]

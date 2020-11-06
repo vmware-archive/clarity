@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/badge",
+  "name": "@cds/core/badge",
   "sideEffects": [
     "./register.js"
   ]

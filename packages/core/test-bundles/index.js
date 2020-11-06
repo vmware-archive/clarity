@@ -1,8 +1,8 @@
-import '@clr/core/badge/register.js';
-import '@clr/core/icon/register.js';
-import { ClarityIcons, userIcon } from '@clr/core/icon';
-import { CommonStringsService } from '@clr/core';
-import { inputStyles } from '@clr/core/input';
+import '@cds/core/badge/register.js';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, userIcon } from '@cds/core/icon';
+import { CommonStringsService } from '@cds/core';
+import { inputStyles } from '@cds/core/input';
 
 ClarityIcons.addIcons(userIcon);
 console.log(CommonStringsService);

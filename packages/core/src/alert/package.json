@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/alert",
+  "name": "@cds/core/alert",
   "sideEffects": [
     "./register.js"
   ]

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { AlertGroupTypes } from '@clr/core/alert';
-import { CdsButton } from '@clr/core/button';
-import { assignSlotNames, baseStyles, querySlotAll, internalProperty } from '@clr/core/internal';
+import { AlertGroupTypes } from '@cds/core/alert';
+import { CdsButton } from '@cds/core/button';
+import { assignSlotNames, baseStyles, querySlotAll, internalProperty } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './alert-actions.element.css.js';
 
@@ -14,7 +14,7 @@ import { styles } from './alert-actions.element.css.js';
  * Web component alert actions to be used inside default and banner alerts.
  *
  * ```typescript
- * import '@clr/core/alert/register.js';
+ * import '@cds/core/alert/register.js';
  * ```
  *
  * ```html

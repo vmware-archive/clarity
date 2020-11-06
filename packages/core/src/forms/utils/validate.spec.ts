@@ -5,11 +5,11 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsControlMessage } from '@clr/core/forms';
-import { CdsInput } from '@clr/core/input';
-import '@clr/core/input/register.js';
-import '@clr/core/forms/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsControlMessage } from '@cds/core/forms';
+import { CdsInput } from '@cds/core/input';
+import '@cds/core/input/register.js';
+import '@cds/core/forms/register.js';
 
 let element: HTMLElement;
 let control: CdsInput;

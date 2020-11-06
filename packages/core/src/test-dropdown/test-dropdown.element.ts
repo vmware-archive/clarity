@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CommonStringsService, event, EventEmitter, property } from '@clr/core/internal';
+import { baseStyles, CommonStringsService, event, EventEmitter, property } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css.js';
@@ -13,7 +13,7 @@ import { styles } from './test-dropdown.element.css.js';
  * Dropdown, example test component. Do not use in production.
  *
  * ```typescript
- * import '@clr/core/test-dropdown';
+ * import '@cds/core/test-dropdown';
  * ```
  *
  * ```html

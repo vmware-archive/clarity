@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsTextarea } from '@clr/core/textarea';
-import '@clr/core/textarea/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsTextarea } from '@cds/core/textarea';
+import '@cds/core/textarea/register.js';
 
 describe('cds-textarea', () => {
   let component: CdsTextarea;

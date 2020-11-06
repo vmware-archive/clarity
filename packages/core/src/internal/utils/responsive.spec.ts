@@ -5,8 +5,8 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsControl } from '@clr/core/forms/index.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsControl } from '@cds/core/forms/index.js';
 
 describe('responsive utilities', () => {
   let element: HTMLElement;

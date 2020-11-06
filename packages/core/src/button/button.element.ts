@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } from '@clr/core/internal';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { errorStandardIcon } from '@clr/core/icon/shapes/error-standard.js';
+import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } from '@cds/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
 import { html, query } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
@@ -35,7 +35,7 @@ export const enum ClrLoadingState {
  * Buttons allow an application to communicate action and direct user intent.
  *
  * ```typescript
- * import '@clr/core/button/register.js';
+ * import '@cds/core/button/register.js';
  * ```
  *
  * ```html

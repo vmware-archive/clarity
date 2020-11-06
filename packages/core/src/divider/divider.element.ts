@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property } from '@clr/core/internal';
+import { baseStyles, property } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './divider.element.css.js';
 
@@ -13,7 +13,7 @@ import { styles } from './divider.element.css.js';
  * between blocks of content.
  *
  * ```typescript
- * import '@clr/core/divider/register.js';
+ * import '@cds/core/divider/register.js';
  * ```
  *
  * ```html

@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/textarea",
+  "name": "@cds/core/textarea",
   "sideEffects": [
     "./register.js"
   ]

@@ -4964,7 +4964,7 @@
       "baseUrl": "./",
       "rootDir": "./src",
       "paths": {
-        "@clr/core": [
+        "@cds/core": [
           "../../dist/core",
           "../../dist/core/*"
         ]

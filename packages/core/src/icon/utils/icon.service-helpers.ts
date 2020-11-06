@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { existsIn } from '@clr/core/internal';
+import { existsIn } from '@cds/core/internal';
 import has from 'ramda/es/has';
 import { renderIcon } from '../icon.renderer.js';
 import { IconAlias, IconAliasLegacyObject, IconRegistry, IconShapeTuple } from '../interfaces/icon.interfaces.js';

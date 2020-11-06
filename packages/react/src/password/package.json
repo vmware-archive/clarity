@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/password"
+    "name": "@cds/react/password"
   }
-  

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/internal';
+import { registerElementSafely } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
-import { createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement } from '@cds/core/test/utils';
 import { querySlot, querySlotAll } from './query-slot.js';
 
 /** @element test-element */

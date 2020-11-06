@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/search",
+  "name": "@cds/core/search",
   "sideEffects": [
     "./register.js"
   ]

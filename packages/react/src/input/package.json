@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/input"
+    "name": "@cds/react/input"
   }
-  

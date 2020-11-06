@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@clr/core/internal';
+import { baseStyles } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 
 /**
  * Web component modal content to be used inside modal.
  *
  * ```typescript
- * import '@clr/core/modal/register.js';
+ * import '@cds/core/modal/register.js';
  * ```
  *
  * ```html

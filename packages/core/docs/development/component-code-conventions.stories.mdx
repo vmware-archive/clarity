@@ -35,14 +35,14 @@ export class CdsDropdown extends LitElement {}
 
 Properties should only reflect into attributes if expecting primitive values
 like `string`, `number`, or `boolean`. Use the provided `@property` decorator
-from `@clr/core/internal` as this provides the same lit-element decorator with
+from `@cds/core/internal` as this provides the same lit-element decorator with
 our project defaults. All public properties should typically have a default value.
 
 Input properties should use our built-in `@property` decorator which extends
 the lit-element decorator by adding our preferred defaults.
 
 ```typescript
-import { property } from '@clr/core/internal';
+import { property } from '@cds/core/internal';
 
 @property({ type: Boolean }) open = false;
 ```
@@ -51,7 +51,7 @@ Custom events should use our built-in `@event` decorator as it enforces best
 practices as well as providing a generic type interface to the event.
 
 ```typescript
-import { event } from '@clr/core/internal';
+import { event } from '@cds/core/internal';
 
 @event() private closeChange: EventEmitter<boolean>;
 

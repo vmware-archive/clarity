@@ -1,7 +1,7 @@
-import { CdsButton as Button } from '@clr/core/button';
-import { CdsIconButton as IconButton } from '@clr/core/button';
-import { CdsInlineButton as InlineButton } from '@clr/core/button';
-import '@clr/core/button/register';
+import { CdsButton as Button } from '@cds/core/button';
+import { CdsIconButton as IconButton } from '@cds/core/button';
+import { CdsInlineButton as InlineButton } from '@cds/core/button';
+import '@cds/core/button/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 export type CdsButtonType = Button;

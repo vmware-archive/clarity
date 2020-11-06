@@ -5,8 +5,8 @@
  */
 
 import { LitElement, html } from 'lit-element';
-import { event, EventEmitter, registerElementSafely } from '@clr/core/internal';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { event, EventEmitter, registerElementSafely } from '@cds/core/internal';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 /** @element test-event-decorator */
 export class TestElement extends LitElement {

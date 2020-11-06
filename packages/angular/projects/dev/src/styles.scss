@@ -5,6 +5,14 @@
 @import './app/_utils/clarity-variables';
 @import '../../clr-angular/src/utils/variables/variables';
 
+/**
+ * workaround to link clr-icons (uncompiled source) into development app
+ * there is an issue with loading them from outside the root folder
+ * that is set inside angular.json file.
+ * So this is quick and dirty way to link them
+ */
+@import '../../../../icons/src/clr-icons.scss';
+
 :root {
   --clr-test-header-text-color: magenta;
   --clr-test-button-background-color: purple;

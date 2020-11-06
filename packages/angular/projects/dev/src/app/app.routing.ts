@@ -77,10 +77,20 @@ export const APP_ROUTES: Routes = [
     path: 'password',
     loadChildren: () => import('./password/password.demo.module').then(m => m.PasswordDemoModule),
   },
-  {
-    path: 'popovers',
-    loadChildren: () => import('./popovers/popovers.demo.module').then(m => m.PopoversDemoModule),
-  },
+  /**
+   * There are couple of reasons that this demo is disabled after the update to Angular 11+
+   *   - There a few changes on how the import/require are working after updating - this is making the
+   * current use - not suitable anymore
+   *   - The demo is using NON-PUBLIC APIs that are not shipped with NPM Package so they could be misleading
+   * to other people that this could be implemented into other application - The Services are not exported with
+   * the package.
+   *   - We are in process of reworking the popover to be replaced with Smart Popovers - so the demo-code there
+   * is left only for reference.
+   */
+  // {
+  //   path: 'popovers',
+  //   loadChildren: () => import('./popovers/popovers.demo.module').then(m => m.PopoversDemoModule),
+  // },
   {
     path: 'progress-bars',
     loadChildren: () => import('./progress-bars/progress-bars.demo.module').then(m => m.ProgressBarsDemoModule),

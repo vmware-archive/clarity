@@ -83,7 +83,7 @@ export default function (): void {
       beforeEach(() => {
         TestBed.configureTestingModule({
           imports: [ClrIconModule, ClrCommonFormsModule, FormsModule],
-          declarations: [ClrComboboxContainer, ClrCombobox, ReactiveTest, ClrPopoverContent],
+          declarations: [ClrComboboxContainer, ClrCombobox, ReactiveTest, ClrPopoverContent, TemplateDrivenTest],
         });
         fixture = TestBed.createComponent(TemplateDrivenTest);
         containerDE = fixture.debugElement.query(By.directive(ClrComboboxContainer));

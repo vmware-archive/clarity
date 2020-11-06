@@ -1,9 +1,9 @@
-import { CdsModal as Modal } from '@clr/core/modal';
-import { CdsModalActions as ModalActions } from '@clr/core/modal';
-import { CdsModalContent as ModalContent } from '@clr/core/modal';
-import { CdsModalHeader as ModalHeader } from '@clr/core/modal';
-import { CdsModalHeaderActions as ModalHeaderActions } from '@clr/core/modal';
-import '@clr/core/modal/register';
+import { CdsModal as Modal } from '@cds/core/modal';
+import { CdsModalActions as ModalActions } from '@cds/core/modal';
+import { CdsModalContent as ModalContent } from '@cds/core/modal';
+import { CdsModalHeader as ModalHeader } from '@cds/core/modal';
+import { CdsModalHeaderActions as ModalHeaderActions } from '@cds/core/modal';
+import '@cds/core/modal/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsModalType = Modal & { onCloseChange: (e: any) => void };

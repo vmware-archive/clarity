@@ -23,7 +23,7 @@ Clarity is published as four npm packages:
   styles for building HTML components.
 - **[@clr/angular](https://www.npmjs.com/package/@clr/angular)** Contains the
   Angular components. This package depends on @clr/ui for styles.
-- **[@clr/core](https://www.npmjs.com/package/@clr/core).** Contains the Web
+- **[@cds/core](https://www.npmjs.com/package/@cds/core).** Contains the Web
   Components that work in any JavaScript framework.
 
 ## Installing Clarity

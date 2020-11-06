@@ -1,3 +1,3 @@
 @import 'normalize.css/normalize.css';
-@import '@clr/core/global.min';
-@import '@clr/city/css/bundles/default.min';
+@import '@cds/core/global.min';
+@import '@cds/city/css/bundles/default.min';

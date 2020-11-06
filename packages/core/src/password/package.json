@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/password",
+  "name": "@cds/core/password",
   "sideEffects": [
     "./register.js"
   ]

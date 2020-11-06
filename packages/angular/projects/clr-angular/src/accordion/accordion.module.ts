@@ -15,7 +15,7 @@ import { ClrAccordion } from './accordion';
 import { ClrAccordionContent } from './accordion-content';
 import { AccordionOompaLoompa } from './chocolate/accordion-oompa-loompa';
 import { AccordionWillyWonka } from './chocolate/accordion-willy-wonka';
-import { angleIcon, checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@clr/core/icon';
+import { angleIcon, checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@cds/core/icon';
 
 const declarations = [
   ClrAccordion,

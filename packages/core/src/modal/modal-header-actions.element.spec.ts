@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/modal/register.js';
-import { CdsModalHeaderActions } from '@clr/core/modal';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/modal/register.js';
+import { CdsModalHeaderActions } from '@cds/core/modal';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('modal-header-actions element', () => {
   let testElement: HTMLElement;

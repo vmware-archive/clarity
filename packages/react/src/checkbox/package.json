@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/checkbox"
+    "name": "@cds/react/checkbox"
   }
-  

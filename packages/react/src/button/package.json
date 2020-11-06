@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/button"
+    "name": "@cds/react/button"
   }
-  

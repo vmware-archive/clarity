@@ -40,7 +40,7 @@
     "@angular/platform-browser": "11.0.0",
     "@angular/platform-browser-dynamic": "11.0.0",
     "@angular/router": "11.0.0",
-    "@clr/core": "./dist/core",
+    "@cds/core": "./dist/core",
     "@clr/icons": "./dist/clr-icons",
     "@clr/ui": "./dist/clr-ui",
     "css-vars-ponyfill": "2.3.1",

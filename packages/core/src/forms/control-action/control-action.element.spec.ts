@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { CdsControlAction } from '@clr/core/forms';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { LogService } from '@clr/core/internal';
+import { CdsControlAction } from '@cds/core/forms';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { LogService } from '@cds/core/internal';
 
 describe('cds-control-action', () => {
   let controlAction: CdsControlAction;

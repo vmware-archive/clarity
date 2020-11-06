@@ -7,7 +7,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { checkCircleIcon, ClarityIcons, exclamationCircleIcon, eyeHideIcon, eyeIcon } from '@clr/core/icon';
+import { checkCircleIcon, ClarityIcons, exclamationCircleIcon, eyeHideIcon, eyeIcon } from '@cds/core/icon';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrCommonFormsModule } from '../common/common.module';

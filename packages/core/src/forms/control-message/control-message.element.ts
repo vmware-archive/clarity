@@ -5,7 +5,7 @@
  */
 
 import { html, LitElement } from 'lit-element';
-import { baseStyles, property, assignSlotNames, internalProperty } from '@clr/core/internal';
+import { baseStyles, property, assignSlotNames, internalProperty } from '@cds/core/internal';
 import { ControlStatus } from '../utils/interfaces.js';
 import { styles } from './control-message.element.css.js';
 import { ValidityStateKey } from '../utils/validate.js';
@@ -14,7 +14,7 @@ import { ValidityStateKey } from '../utils/validate.js';
  * Control Message
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

@@ -1,7 +1,6 @@
 {
-    "name": "@clr/core/divider",
+    "name": "@cds/core/divider",
     "sideEffects": [
       "./register.js"
     ]
   }
-  

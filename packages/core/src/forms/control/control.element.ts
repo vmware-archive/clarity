@@ -21,10 +21,10 @@ import {
   supportsResizeObserver,
   internalProperty,
   syncProps,
-} from '@clr/core/internal';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { exclamationCircleIcon } from '@clr/core/icon/shapes/exclamation-circle.js';
-import { checkCircleIcon } from '@clr/core/icon/shapes/check-circle.js';
+} from '@cds/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
+import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
 import { styles } from './control.element.css.js';
 import { ControlStatus, ControlLayout, ControlWidth } from './../utils/interfaces.js';
@@ -46,7 +46,7 @@ import { CdsControlAction } from '../control-action/control-action.element.js';
  * Generic Control
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

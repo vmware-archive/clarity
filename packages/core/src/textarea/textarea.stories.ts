@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/textarea/register.js';
+import '@cds/core/textarea/register.js';
 import { html } from 'lit-html';
-import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@clr/core/internal';
+import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@cds/core/internal';
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {

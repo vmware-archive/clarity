@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/internal';
-import { ClarityIcons, timesIcon } from '@clr/core/icon';
+import { registerElementSafely } from '@cds/core/internal';
+import { ClarityIcons, timesIcon } from '@cds/core/icon';
 import { CdsTag } from './tag.element.js';
 
 registerElementSafely('cds-tag', CdsTag);

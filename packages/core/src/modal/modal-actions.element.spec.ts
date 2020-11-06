@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/modal/register.js';
-import { CdsModalActions } from '@clr/core/modal';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/modal/register.js';
+import { CdsModalActions } from '@cds/core/modal';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('modal-actions element', () => {
   let testElement: HTMLElement;

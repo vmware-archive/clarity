@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { CdsInternalControlLabel } from '@clr/core/forms';
-import '@clr/core/forms/register.js';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import { CdsInternalControlLabel } from '@cds/core/forms';
+import '@cds/core/forms/register.js';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('cds-internal-control-label element', () => {
   let testElement: HTMLElement;

@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/forms"
+    "name": "@cds/react/forms"
   }
-  

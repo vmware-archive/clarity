@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/icon/register.js';
-import { registerElementSafely } from '@clr/core/internal';
+import '@cds/core/icon/register.js';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsButton } from './button.element.js';
 import { CdsIconButton } from './icon-button.element.js';
 import { CdsInlineButton } from './inline-button.element.js';

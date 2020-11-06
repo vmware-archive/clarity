@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { IconRegistrySources } from '@clr/core/internal';
+import { IconRegistrySources } from '@cds/core/internal';
 
 type IconSvgString = string;
 type IconNameString = string;
@@ -28,7 +28,7 @@ export interface IconShapeSources {
   [key: string]: IconSvgString | IconShapeCollection;
 }
 
-declare module '@clr/core/internal' {
+declare module '@cds/core/internal' {
   interface IconRegistrySources {
     [key: string]: IconSvgString;
   }

@@ -12,8 +12,8 @@ const imagesTemplate = require('!!raw-loader!./images.html'); // eslint-disable-
 const mediaBlockTemplate = require('!!raw-loader!./media-block.html'); // eslint-disable-line
 const layoutTemplate = require('!!raw-loader!./layout.html'); // eslint-disable-line
 
-import '@clr/core/icon/register.js';
-import { ClarityIcons, windowCloseIcon } from '@clr/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, windowCloseIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(windowCloseIcon);
 

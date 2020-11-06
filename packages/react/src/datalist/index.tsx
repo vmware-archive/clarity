@@ -1,6 +1,6 @@
-import { CdsDatalist as Datalist } from '@clr/core/datalist';
+import { CdsDatalist as Datalist } from '@cds/core/datalist';
 
-import '@clr/core/datalist/register';
+import '@cds/core/datalist/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsDatalistType = Datalist;

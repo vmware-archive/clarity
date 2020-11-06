@@ -21,7 +21,7 @@ import { CdsTag } from './src/tag';
 import { CdsTime } from './src/time';
 import { CdsTextarea } from './src/textarea';
 import { CdsToggle, CdsToggleGroup } from './src/toggle';
-import { ClarityIcons, userIcon, timesIcon } from '@clr/core/icon';
+import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
 import { CdsDivider } from './src/divider';
 
 ClarityIcons.addIcons(userIcon, timesIcon);

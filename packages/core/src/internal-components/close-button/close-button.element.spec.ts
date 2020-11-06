@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/internal-components/close-button/register.js';
-import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/internal-components/close-button/register.js';
+import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('internal close button element', () => {
   let testElement: HTMLElement;

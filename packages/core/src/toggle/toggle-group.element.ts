@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { querySlotAll } from '@clr/core/internal';
-import { CdsInternalControlGroup } from '@clr/core/forms';
+import { querySlotAll } from '@cds/core/internal';
+import { CdsInternalControlGroup } from '@cds/core/forms';
 import { CdsToggle } from './toggle.element.js';
 
 /**
  * Toggle Group
  *
  * ```typescript
- * import '@clr/core/toggle/register.js';
+ * import '@cds/core/toggle/register.js';
  * ```
  *
  * ```html

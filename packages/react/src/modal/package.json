@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/modal"
+    "name": "@cds/react/modal"
   }
-  

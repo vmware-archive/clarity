@@ -6,7 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { angleDoubleIcon, angleIcon, ClarityIcons } from '@clr/core/icon';
+import { angleDoubleIcon, angleIcon, ClarityIcons } from '@cds/core/icon';
 
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';

@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
 import { registerElementSafely } from '../utils/register.js';
 import { CdsBaseFocusTrap } from './focus-trap.base.js';
 

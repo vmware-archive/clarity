@@ -8,16 +8,16 @@
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "@clr/city": "^1.1.0",
-    "@clr/core": "./dist/core"
+    "@cds/city": "^1.1.0",
+    "@cds/core": "./dist/core"
   },
   "devDependencies": {
     "snowpack": "^2.7.6"
   },
   "workspaces": {
     "nohoist": [
-      "@clr/city",
-      "@clr/city/**",
+      "@cds/city",
+      "@cds/city/**",
       "normalize.css",
       "normalize.css/**"
     ]

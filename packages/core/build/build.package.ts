@@ -64,9 +64,9 @@ function updateFileVersions() {
 
 function generateAPIMetaData() {
   // We link/unlink the package so wca can properly follow the root import paths
-  shell(`cd ../dist/core && yarn link && yarn link @clr/core`);
+  shell(`cd ../dist/core && yarn link && yarn link @cds/core`);
   shell(`wca analyze '../dist/core/**/*.ts' --silent --format=json --outFile ../dist/core/custom-elements.json`);
-  shell(`cd ../dist/core && yarn unlink @clr/core && yarn unlink --no-save @clr/core`);
+  shell(`cd ../dist/core && yarn unlink @cds/core && yarn unlink --no-save @cds/core`);
   del.sync('../dist/core/node_modules', { force: true }); // leftover from link
 
   // update empty default slot names to have name 'default'

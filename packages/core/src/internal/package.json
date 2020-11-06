@@ -1,4 +1,4 @@
 {
   "sideEffects": false,
-  "name": "@clr/core/internal"
+  "name": "@cds/core/internal"
 }

@@ -12,7 +12,7 @@ import {
   property,
   childrenUpdateComplete,
   elementResize,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsInternalControlInline } from '../control-inline/control-inline.element.js';
 import { CdsControl } from '../control/control.element.js';
@@ -29,7 +29,7 @@ import { styles } from './form-group.element.css.js';
  * Form
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

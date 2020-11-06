@@ -28,8 +28,8 @@
     "baseUrl": "./",
     "rootDir": "./",
     "paths": {
-      "@clr/core/test/*": ["./src/test/*"],
-      "@clr/core/*": ["./src/*"]
+      "@cds/core/test/*": ["./src/test/*"],
+      "@cds/core/*": ["./src/*"]
     },
     "plugins": [
       {

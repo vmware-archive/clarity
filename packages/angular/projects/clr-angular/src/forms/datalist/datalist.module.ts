@@ -11,7 +11,7 @@ import { ClrInputModule } from '../input/input.module';
 import { ClrDatalistContainer } from './datalist-container';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrDatalist } from './datalist';
-import { checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@clr/core/icon';
+import { checkCircleIcon, ClarityIcons, exclamationCircleIcon } from '@cds/core/icon';
 
 @NgModule({
   imports: [CommonModule, ClrInputModule, ClrIconModule],

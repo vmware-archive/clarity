@@ -12,7 +12,7 @@ import { ClrFocusTrapModule } from '../utils/focus-trap/focus-trap.module';
 import { ClrModal } from './modal';
 import { ClrModalBody } from './modal-body';
 import { ClrFocusOnViewInitModule } from '../utils/focus/focus-on-view-init/focus-on-view-init.module';
-import { ClarityIcons, windowCloseIcon } from '@clr/core/icon';
+import { ClarityIcons, windowCloseIcon } from '@cds/core/icon';
 
 export const CLR_MODAL_DIRECTIVES: Type<any>[] = [ClrModal, ClrModalBody];
 

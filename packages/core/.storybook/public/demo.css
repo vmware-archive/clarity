@@ -1,5 +1,5 @@
 @import '~normalize.css/normalize.css';
-@import '~@clr/city/css/bundles/default.min.css';
+@import '~@cds/city/css/bundles/default.min.css';
 @import './../../dist/core/global.min.css';
 @import './../../dist/core/styles/module.shims.min.css';
 @import './../../dist/core/styles/theme.dark.min.css';

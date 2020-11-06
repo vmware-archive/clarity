@@ -36,21 +36,21 @@ import path remains consistent throughout the library.
 ```
 
 ```typescript
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
-import '@clr/core/modal/register.js';
-import '@clr/core/input/register.js';
-import '@clr/core/radio/register.js';
+import '@cds/core/alert/register.js';
+import '@cds/core/button/register.js';
+import '@cds/core/modal/register.js';
+import '@cds/core/input/register.js';
+import '@cds/core/radio/register.js';
 ```
 
 ## Shared Component Code
 
-Any common shared code between component entry points should exist within the `@clr/core/internal` module.
+Any common shared code between component entry points should exist within the `@cds/core/internal` module.
 
 ```typescript
 // cool-widget.element.ts
-import { SharedUtil } from '@clr/core/internal';
-import { CdsButton } from '@clr/core/button';
+import { SharedUtil } from '@cds/core/internal';
+import { CdsButton } from '@cds/core/button';
 
 export class CdsCoolWidget {}
 ```
@@ -60,8 +60,8 @@ be referenced with a local path ending with `.js`.
 
 ```typescript
 // cool-widget.element.ts
-import { SharedUtil } from '@clr/core/internal';
-import { CdsButton } from '@clr/core/button';
+import { SharedUtil } from '@cds/core/internal';
+import { CdsButton } from '@cds/core/button';
 import { componentSpecificUtil } from './utils.js';
 
 export class CdsCoolWidget {}
@@ -94,9 +94,9 @@ for an example to get started with.
 ```
 
 ```typescript
-import '@clr/core/alert/register.js';
-import '@clr/core/button/register.js';
-import '@clr/core/internal-components/close-button/register.js';
+import '@cds/core/alert/register.js';
+import '@cds/core/button/register.js';
+import '@cds/core/internal-components/close-button/register.js';
 ```
 
 ```html

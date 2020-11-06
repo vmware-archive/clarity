@@ -156,7 +156,7 @@ cds-alert-actions {
   flex-wrap: nowrap;
 }
 
-// Side efects from combining @clr/core layout tokens and legacy @clr/ui
+// Side efects from combining @cds/core layout tokens and legacy @clr/ui
 .content-area {
   height: calc(100vh - 3rem); // Grow from the bottom of the header to the bottom of the viewport.
 }
@@ -173,7 +173,7 @@ cds-alert-actions {
 }
 
 .nav-content {
-  width: 100%; // this container in @clr/ui is not fully expanding with the @clr/core layout
+  width: 100%; // this container in @clr/ui is not fully expanding with the @cds/core layout
 }
 
 .min-height-demo {

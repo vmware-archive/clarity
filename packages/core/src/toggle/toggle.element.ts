@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { internalProperty } from '@clr/core/internal';
-import { CdsInternalControlInline } from '@clr/core/forms';
+import { internalProperty } from '@cds/core/internal';
+import { CdsInternalControlInline } from '@cds/core/forms';
 import { styles } from './toggle.element.css.js';
 
 /**
  * Toggle
  *
  * ```typescript
- * import '@clr/core/toggle/register.js';
+ * import '@cds/core/toggle/register.js';
  * ```
  *
  * ```html

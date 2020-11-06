@@ -19,7 +19,7 @@ import { ClrTabLink } from './tab-link.directive';
 import { ClrTabOverflowContent } from './tab-overflow-content';
 import { ClrTabs } from './tabs';
 import { ClrKeyFocusModule } from '../../utils/focus/key-focus/key-focus.module';
-import { ClarityIcons, ellipsisHorizontalIcon } from '@clr/core/icon';
+import { ClarityIcons, ellipsisHorizontalIcon } from '@cds/core/icon';
 
 export const CLR_TABS_DIRECTIVES: Type<any>[] = [
   ClrTabContent,

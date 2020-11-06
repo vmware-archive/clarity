@@ -18,3 +18,4 @@ apps/core-create-react-app
 .cache
 apps/website/.vuepress/config.js
 apps/core-snowpack/build
+.netlify

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { propertiesGroup } from '@clr/core/internal';
+import { propertiesGroup } from '@cds/core/internal';
 import { select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 

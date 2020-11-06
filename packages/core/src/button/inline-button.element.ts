@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { addClassnames, baseStyles, CdsBaseButton } from '@clr/core/internal';
+import { addClassnames, baseStyles, CdsBaseButton } from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './inline-button.element.css.js';
 
@@ -13,7 +13,7 @@ import { styles } from './inline-button.element.css.js';
  * They give action buttons a less prominent, yet familiar, visual presence.
  *
  * ```typescript
- * import '@clr/core/button/register.js';
+ * import '@cds/core/button/register.js';
  * ```
  *
  * ```html

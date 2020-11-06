@@ -5,13 +5,13 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/alert/register.js';
-import '@clr/core/icon/register.js';
-import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@clr/core/alert';
-import { CdsIcon, infoStandardIcon } from '@clr/core/icon';
-import { CommonStringsService } from '@clr/core/internal';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
-import { CdsInternalCloseButton } from '@clr/core/internal-components/close-button';
+import '@cds/core/alert/register.js';
+import '@cds/core/icon/register.js';
+import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
+import { CdsIcon, infoStandardIcon } from '@cds/core/icon';
+import { CommonStringsService } from '@cds/core/internal';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
+import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 
 describe('Alert element – ', () => {
   let testElement: HTMLElement;

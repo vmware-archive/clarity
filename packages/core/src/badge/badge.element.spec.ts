@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { html } from 'lit-html';
-import '@clr/core/badge/register.js';
-import { CdsBadge } from '@clr/core/badge';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/badge/register.js';
+import { CdsBadge } from '@cds/core/badge';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('badge element', () => {
   let testElement: HTMLElement;

@@ -5,10 +5,10 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsButton } from '@clr/core/button';
-import { CdsFile } from '@clr/core/file';
-import '@clr/core/file/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsButton } from '@cds/core/button';
+import { CdsFile } from '@cds/core/file';
+import '@cds/core/file/register.js';
 
 describe('cds-file', () => {
   let component: CdsFile;

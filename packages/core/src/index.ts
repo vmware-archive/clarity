@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-// we export any non component code such as utilities at the root '@clr/core'
-export { CommonStringsService, ClrCommonStrings, commonStringsDefault } from '@clr/core/internal';
+// we export any non component code such as utilities at the root '@cds/core'
+export { CommonStringsService, ClrCommonStrings, commonStringsDefault } from '@cds/core/internal';
 
 // type global attribute utilities
 declare global {

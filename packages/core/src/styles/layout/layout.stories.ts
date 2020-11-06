@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/divider/register.js';
+import '@cds/core/divider/register.js';
 
 export default {
   title: 'Stories/Layout',

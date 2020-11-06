@@ -5,18 +5,18 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { calendarIcon } from '@clr/core/icon/shapes/calendar.js';
+import { globalStyle } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { calendarIcon } from '@cds/core/icon/shapes/calendar.js';
 import { styles as globalStyles } from './date.global.css.js';
 
 /**
  * Date
  *
  * ```typescript
- * import '@clr/core/date/register.js';
+ * import '@cds/core/date/register.js';
  * ```
  *
  * ```html

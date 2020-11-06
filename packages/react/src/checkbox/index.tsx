@@ -1,7 +1,7 @@
-import { CdsCheckbox as Checkbox } from '@clr/core/checkbox';
-import { CdsCheckboxGroup as CheckboxGroup } from '@clr/core/checkbox';
+import { CdsCheckbox as Checkbox } from '@cds/core/checkbox';
+import { CdsCheckboxGroup as CheckboxGroup } from '@cds/core/checkbox';
 
-import '@clr/core/checkbox/register';
+import '@cds/core/checkbox/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsCheckboxType = Checkbox;

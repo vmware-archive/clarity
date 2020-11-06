@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { html } from 'lit-html';
-import '@clr/core/accordion/register.js';
-import { CdsAccordionContent } from '@clr/core/accordion';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/accordion/register.js';
+import { CdsAccordionContent } from '@cds/core/accordion';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('accordion-content element', () => {
   let testElement: HTMLElement;

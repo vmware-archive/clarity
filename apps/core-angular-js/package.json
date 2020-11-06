@@ -12,7 +12,7 @@
   "targets": {
     "browserModern": {
       "engines": {
-        "browsers": [
+        "browserslist": [
           "last 1 Chrome version"
         ]
       }
@@ -20,8 +20,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@clr/city": "^1.1.0",
-    "@clr/core": "./dist/core",
+    "@cds/city": "^1.1.0",
+    "@cds/core": "./dist/core",
     "angular": "^1.8.0",
     "normalize.css": "^8.0.1"
   },

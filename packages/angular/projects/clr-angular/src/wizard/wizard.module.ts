@@ -6,7 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ClarityIcons, errorStandardIcon } from '@clr/core/icon';
+import { ClarityIcons, errorStandardIcon } from '@cds/core/icon';
 
 import { ClrAlertModule } from '../emphasis/alert/alert.module';
 import { ClrModalModule } from '../modal/modal.module';

@@ -5,18 +5,18 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { clockIcon } from '@clr/core/icon/shapes/clock.js';
+import { globalStyle } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { clockIcon } from '@cds/core/icon/shapes/clock.js';
 import { styles as globalStyles } from './time.global.css.js';
 
 /**
  * Time Input
  *
  * ```typescript
- * import '@clr/core/time/register.js';
+ * import '@cds/core/time/register.js';
  * ```
  *
  * ```html

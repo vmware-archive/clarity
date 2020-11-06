@@ -5,10 +5,10 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/tag/register.js';
-import '@clr/core/icon/register.js';
-import { CdsTag } from '@clr/core/tag';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/tag/register.js';
+import '@cds/core/icon/register.js';
+import { CdsTag } from '@cds/core/tag';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('tag element', () => {
   let testElement: HTMLElement;

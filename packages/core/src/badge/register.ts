@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@clr/core/internal';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsBadge } from './badge.element.js';
 
 registerElementSafely('cds-badge', CdsBadge);

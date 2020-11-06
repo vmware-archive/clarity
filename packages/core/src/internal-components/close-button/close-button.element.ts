@@ -4,17 +4,17 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property, CdsBaseButton } from '@clr/core/internal';
+import { baseStyles, property, CdsBaseButton } from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { timesIcon } from '@clr/core/icon/shapes/times.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { timesIcon } from '@cds/core/icon/shapes/times.js';
 
 /**
  * Standard close button for Clarity Components
  *
  * ```typescript
- * import '@clr/core/internal-components/close-button/register.js';
+ * import '@cds/core/internal-components/close-button/register.js';
  * ```
  *
  * ```html

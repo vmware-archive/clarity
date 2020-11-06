@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/forms/register.js';
+import '@cds/core/forms/register.js';
 
 export default {
   title: 'Stories/Forms Control',

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 import { Route } from '@angular/router';
 import { APP_ROUTES } from './app.routing';
 
-import '@clr/core/icon/register.js';
+import '@cds/core/icon/register.js';
 import {
   bellIcon,
   boltIcon,
@@ -30,7 +30,7 @@ import {
   thermometerIcon,
   userIcon,
   warningStandardIcon,
-} from '@clr/core/icon';
+} from '@cds/core/icon';
 
 @Component({
   selector: 'app-root',

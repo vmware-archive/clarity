@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@clr/core/test/utils';
-import { CdsPassword } from '@clr/core/password';
-import '@clr/core/password/register.js';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { CdsPassword } from '@cds/core/password';
+import '@cds/core/password/register.js';
 
 describe('cds-password', () => {
   let component: CdsPassword;

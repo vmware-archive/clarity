@@ -11,9 +11,9 @@ that only this file has side effects, and the rest is safe to tree shake. We do
 this by setting the `sideEffects` key in the `package.json` of the component.
 
 ```json
-// @clr/core/alert/package.json
+// @cds/core/alert/package.json
 {
-  "name": "@clr/core/alert",
+  "name": "@cds/core/alert",
   "sideEffects": ["./register.js"]
 }
 ```
@@ -22,11 +22,11 @@ In the `register.ts` file we import any other component dependencies including
 other core component side effect registrations.
 
 ```typescript
-// @clr/core/alert/register.js
-import '@clr/core/button/register.js';
-import '@clr/core/icon/register.js';
-import '@clr/core/internal-components/close-button/register.js';
-import { registerElementSafely } from '@clr/core/internal';
+// @cds/core/alert/register.js
+import '@cds/core/button/register.js';
+import '@cds/core/icon/register.js';
+import '@cds/core/internal-components/close-button/register.js';
+import { registerElementSafely } from '@cds/core/internal';
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
 import { CdsAlert } from './alert.element.js';

@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/checkbox",
+  "name": "@cds/core/checkbox",
   "sideEffects": [
     "./register.js"
   ]

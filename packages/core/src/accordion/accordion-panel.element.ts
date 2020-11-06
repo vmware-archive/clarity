@@ -5,14 +5,14 @@
  */
 
 import { html, LitElement } from 'lit-element';
-import { baseStyles, event, property, EventEmitter } from '@clr/core/internal';
+import { baseStyles, event, property, EventEmitter } from '@cds/core/internal';
 import { styles } from './accordion-panel.element.css.js';
 
 /**
  * Web component accordion panel to be used inside an accordion
  *
  * ```typescript
- * import '@clr/core/accordion/register.js';
+ * import '@cds/core/accordion/register.js';
  * ```
  *
  * ```html

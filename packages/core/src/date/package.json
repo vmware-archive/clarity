@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/date",
+  "name": "@cds/core/date",
   "sideEffects": [
     "./register.js"
   ]

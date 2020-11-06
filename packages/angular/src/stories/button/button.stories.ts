@@ -8,8 +8,8 @@ import { moduleMetadata } from '@storybook/angular';
 import { boolean, select } from '@storybook/addon-knobs';
 import { ClarityModule, ClrLoadingState, ClrIconModule } from '@clr/angular';
 
-import '@clr/core/icon/register.js';
-import { ClarityIcons, homeIcon } from '@clr/core/icon';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, homeIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(homeIcon);
 

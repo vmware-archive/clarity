@@ -1,5 +1,5 @@
-import { CdsProgressCircle as ProgressCircle } from '@clr/core/progress-circle';
-import '@clr/core/progress-circle/register';
+import { CdsProgressCircle as ProgressCircle } from '@cds/core/progress-circle';
+import '@cds/core/progress-circle/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsProgressCircleType = ProgressCircle;

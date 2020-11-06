@@ -5,14 +5,14 @@
  */
 
 import { html, LitElement } from 'lit-element';
-import { baseStyles, property } from '@clr/core/internal';
+import { baseStyles, property } from '@cds/core/internal';
 import { styles } from './control-label.element.css.js';
 
 /**
  * Label
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

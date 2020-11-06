@@ -12,9 +12,9 @@
     "resolveJsonModule": true,
     "baseUrl": "../",
     "paths": {
-      "@clr/core": ["./dist/core"],
-      "@clr/core/*": ["./dist/core/*"],
-      "@clr/core/*/register": ["./dist/core/*/register"]
+      "@cds/core": ["./dist/core"],
+      "@cds/core/*": ["./dist/core/*"],
+      "@cds/core/*/register": ["./dist/core/*/register"]
     }
   }
 }

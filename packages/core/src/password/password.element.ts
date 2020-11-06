@@ -5,18 +5,18 @@
  */
 
 import { internalProperty, html } from 'lit-element';
-import { CommonStringsService } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { eyeIcon } from '@clr/core/icon/shapes/eye.js';
-import { eyeHideIcon } from '@clr/core/icon/shapes/eye-hide.js';
+import { CommonStringsService } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { eyeIcon } from '@cds/core/icon/shapes/eye.js';
+import { eyeHideIcon } from '@cds/core/icon/shapes/eye-hide.js';
 
 /**
  * Password
  *
  * ```typescript
- * import '@clr/core/password/register.js';
+ * import '@cds/core/password/register.js';
  * ```
  *
  * ```html

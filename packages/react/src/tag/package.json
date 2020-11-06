@@ -1,5 +1,4 @@
 {
     "sideEffects": true,
-    "name": "@clr/react/tag"
+    "name": "@cds/react/tag"
   }
-  

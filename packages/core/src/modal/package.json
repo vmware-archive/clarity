@@ -1,5 +1,5 @@
 {
-  "name": "@clr/core/modal",
+  "name": "@cds/core/modal",
   "sideEffects": [
     "./register.js"
   ]

@@ -4,15 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { querySlotAll } from '@clr/core/internal';
-import { CdsInternalControlGroup } from '@clr/core/forms';
+import { querySlotAll } from '@cds/core/internal';
+import { CdsInternalControlGroup } from '@cds/core/forms';
 import { CdsCheckbox } from './checkbox.element.js';
 
 /**
  * Checkbox Group
  *
  * ```typescript
- * import '@clr/core/checkbox';
+ * import '@cds/core/checkbox';
  * ```
  *
  * ```html

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@clr/core/checkbox/register.js';
+import '@cds/core/checkbox/register.js';
 import { html } from 'lit-html';
-import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@clr/core/internal';
+import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@cds/core/internal';
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {

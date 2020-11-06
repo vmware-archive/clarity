@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import '@clr/core/progress-circle/register.js';
-import { CdsProgressCircle } from '@clr/core/progress-circle';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
+import '@cds/core/progress-circle/register.js';
+import { CdsProgressCircle } from '@cds/core/progress-circle';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
 
 describe('progress circle element – ', () => {
   let testElementUnset: HTMLElement;

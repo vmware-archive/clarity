@@ -5,7 +5,7 @@
  */
 
 import { html, internalProperty } from 'lit-element';
-import { property } from '@clr/core/internal';
+import { property } from '@cds/core/internal';
 import { styles } from './control-inline.element.css.js';
 import { CdsControl } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/index.js';
@@ -14,7 +14,7 @@ import { getStatusIcon } from '../utils/index.js';
  * Internal Control Inline
  *
  * ```typescript
- * import '@clr/core/forms/register.js';
+ * import '@cds/core/forms/register.js';
  * ```
  *
  * ```html

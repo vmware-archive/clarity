@@ -1,7 +1,7 @@
-import { CdsToggleGroup as ToggleGroup } from '@clr/core/toggle';
-import { CdsToggle as Toggle } from '@clr/core/toggle';
+import { CdsToggleGroup as ToggleGroup } from '@cds/core/toggle';
+import { CdsToggle as Toggle } from '@cds/core/toggle';
 
-import '@clr/core/toggle/register';
+import '@cds/core/toggle/register';
 import { createReactComponent } from '../converter/react-wrapper';
 
 type CdsToggleGroupType = ToggleGroup;

@@ -5,9 +5,9 @@
  */
 
 import { html } from 'lit-html';
-import { CdsDivider } from '@clr/core/divider';
-import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
-import '@clr/core/divider/register.js';
+import { CdsDivider } from '@cds/core/divider';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
+import '@cds/core/divider/register.js';
 
 describe('divider element', () => {
   describe('render: ', () => {

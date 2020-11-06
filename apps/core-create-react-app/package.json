@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@clr/city": "^1.1.0",
-    "@clr/core": "./dist/core",
-    "@clr/react": "./dist/react",
+    "@cds/city": "^1.1.0",
+    "@cds/core": "./dist/core",
+    "@cds/react": "./dist/react",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",

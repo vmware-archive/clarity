@@ -10,7 +10,7 @@ import {
   CommonStringsService,
   property,
   registerElementSafely,
-} from '@clr/core/internal';
+} from '@cds/core/internal';
 import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
 
@@ -89,7 +89,7 @@ export const lazyLoading = () => {
     }
 
     load() {
-      import('@clr/core/test-dropdown').then(() => (this.loaded = true));
+      import('@cds/core/test-dropdown').then(() => (this.loaded = true));
     }
   }
 

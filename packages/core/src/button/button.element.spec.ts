@@ -5,11 +5,11 @@
  */
 
 import { html } from 'lit-html';
-import { CdsButton, ClrLoadingState } from '@clr/core/button';
-import '@clr/core/badge/register.js';
-import '@clr/core/button/register.js';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
-import { listenForAttributeChange } from '@clr/core/internal';
+import { CdsButton, ClrLoadingState } from '@cds/core/button';
+import '@cds/core/badge/register.js';
+import '@cds/core/button/register.js';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
+import { listenForAttributeChange } from '@cds/core/internal';
 
 describe('button element', () => {
   let testElement: HTMLElement;

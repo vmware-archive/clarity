@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { existsIn } from '@clr/core/internal';
+import { existsIn } from '@cds/core/internal';
 import anyPass from 'ramda/es/anyPass';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
 

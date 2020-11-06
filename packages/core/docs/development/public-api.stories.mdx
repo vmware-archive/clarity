@@ -148,9 +148,9 @@ Utilities are only exported through the top-level import path. To register a
 component to use, we export a stand-alone `register.js` side effect import.
 
 ```typescript
-import { CommonStrings } from '@clr/core'; // utilities
-import { CdsButton } from '@clr/core/button'; // component class
-import '@clr/core/button/register.js'; // register and use component
+import { CommonStrings } from '@cds/core'; // utilities
+import { CdsButton } from '@cds/core/button'; // component class
+import '@cds/core/button/register.js'; // register and use component
 ```
 
 By keeping the component registration as a separate side effect import, we ensure
@@ -159,5 +159,5 @@ proofs our API to allow our components to be aliased](https://github.com/w3c/web
 
 Overall we try to avoid users from importing anything by direct file
 or with deep import paths as this is reaching into the library internals, which
-can change. The `@clr/core/internal` module is an internal private module for shared
+can change. The `@cds/core/internal` module is an internal private module for shared
 utilities between components.

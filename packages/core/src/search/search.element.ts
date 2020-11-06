@@ -5,18 +5,18 @@
  */
 
 import { html } from 'lit-element';
-import { globalStyle } from '@clr/core/internal';
-import { CdsControl } from '@clr/core/forms';
-import { inputStyles } from '@clr/core/input';
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { searchIcon } from '@clr/core/icon/shapes/search.js';
+import { globalStyle } from '@cds/core/internal';
+import { CdsControl } from '@cds/core/forms';
+import { inputStyles } from '@cds/core/input';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { searchIcon } from '@cds/core/icon/shapes/search.js';
 import { styles as globalStyles } from './search.global.css.js';
 
 /**
  * Search
  *
  * ```typescript
- * import '@clr/core/search/register.js';
+ * import '@cds/core/search/register.js';
  * ```
  *
  * ```html

@@ -8,7 +8,7 @@ import { html, LitElement } from 'lit-element';
 ### 1. Install the Clarity Core package from npm
 
 ```bash
-npm install @clr/core @clr/city --save
+npm install @cds/core @cds/city --save
 ```
 
 ### 2. Global Styles
@@ -23,16 +23,16 @@ Preprocessor like Sass/Less or reference the CSS directly in your HTML.
 
 ```scss
 @import '~normalize.css/normalize.css'; // css reset
-@import '~@clr/core/global.min'; // clarity global styles
-@import '~@clr/core/styles/module.shims.min'; // non-evergreen browser shims
-@import '~@clr/city/css/bundles/default.min'; // load base font
+@import '~@cds/core/global.min'; // clarity global styles
+@import '~@cds/core/styles/module.shims.min'; // non-evergreen browser shims
+@import '~@cds/city/css/bundles/default.min'; // load base font
 ```
 
 ```html
 <link href="/node_modules/normalize.css/normalize.css" rel="stylesheet" />
-<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet" />
-<link href="/node_modules/@clr/core/styles/module.shims.min.css" rel="stylesheet" />
-<link href="/node_modules/@clr/city/css/bundles/default.min.css" rel="stylesheet" />
+<link href="/node_modules/@cds/core/global.min.css" rel="stylesheet" />
+<link href="/node_modules/@cds/core/styles/module.shims.min.css" rel="stylesheet" />
+<link href="/node_modules/@cds/city/css/bundles/default.min.css" rel="stylesheet" />
 ```
 
 Add the following to your HTML to set the default Clarity body typography.
@@ -53,7 +53,7 @@ soon for no build step prototyping.
 To use a component, import the component into your JavaScript or TypeScript.
 
 ```typescript
-import '@clr/core/button/register.js';
+import '@cds/core/button/register.js';
 ```
 
 Once imported, the component is automatically registered and ready to use in your HTML and JavaScript.
@@ -117,10 +117,10 @@ across browsers.
 
 ```scss
 @import '~normalize.css/normalize.css';
-@import '@clr/core/styles/module.reset.min.css';
-@import '@clr/core/styles/module.tokens.min.css';
-@import '@clr/core/styles/module.layout.min.css';
-@import '@clr/core/styles/module.typography.min.css';
-@import '@clr/core/styles/module.shims.min.css';
-@import '@clr/city/css/bundles/default.min.css';
+@import '@cds/core/styles/module.reset.min.css';
+@import '@cds/core/styles/module.tokens.min.css';
+@import '@cds/core/styles/module.layout.min.css';
+@import '@cds/core/styles/module.typography.min.css';
+@import '@cds/core/styles/module.shims.min.css';
+@import '@cds/city/css/bundles/default.min.css';
 ```

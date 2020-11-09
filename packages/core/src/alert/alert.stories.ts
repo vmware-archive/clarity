@@ -92,11 +92,12 @@ export const status = () => {
       <cds-alert status="loading">This is an alert with a status of "loading"</cds-alert>
       <cds-alert status="unknown">This is an alert with a status of "unknown"</cds-alert>
       <cds-alert status="danger"
-        ><cds-icon shape="times-circle" solid></cds-icon>This is an alert with a status of "danger" and a custom
-        icon</cds-alert
+        ><cds-icon shape="times-circle" aria-label="Warning" role="img" solid></cds-icon>This is an alert with a status
+        of "danger" and a custom icon</cds-alert
       >
       <cds-alert
-        ><cds-icon shape="user" solid badge></cds-icon>This is an alert with a badged, solid custom icon</cds-alert
+        ><cds-icon shape="user" aria-label="User" role="img" solid badge></cds-icon>This is an alert with a badged,
+        solid custom icon</cds-alert
       >
     </div>
   `;

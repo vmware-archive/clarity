@@ -42,13 +42,14 @@ export const API = (args: any) => {
 export const alertGroup = () => {
   return html`
     <div cds-layout="vertical gap:sm">
-      <cds-alert-group status="info">
+      <cds-alert-group status="info" aria-label="This is an example info alert group">
         <cds-alert closable>
-          This example is a closable alert inside an alert group with a status of "info".
+          This example is an alert a user may be able to close inside an alert group with a status of "info".
         </cds-alert>
         <cds-alert closable>
-          <cds-icon shape="node-group" aria-hidden="true"></cds-icon>
-          This example is a closable alert with a custom icon shape inside an alert group with a status of "info".
+          <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
+          This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
+          status of "info".
         </cds-alert>
         <cds-alert status="loading" closable>
           This example is an alert with a "loading" status and alert action buttons inside an alert group with a status
@@ -62,12 +63,13 @@ export const alertGroup = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group status="success">
+      <cds-alert-group status="success" aria-label="This is an example success alert group">
         <cds-alert closable>
-          This example is a closable alert inside an alert group with a status of "success".
+          This example is an alert a user may be able to close inside an alert group with a status of "success".
         </cds-alert>
         <cds-alert closable>
-          This example is a closable alert with alert action buttons inside an alert group with a status of "success".
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "success".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <cds-button>
@@ -77,12 +79,13 @@ export const alertGroup = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group status="warning">
+      <cds-alert-group status="warning" aria-label="This is an example warning alert group">
         <cds-alert closable>
-          This example is a closable alert inside an alert group with a status of "warning".
+          This example is an alert a user may be able to close inside an alert group with a status of "warning".
         </cds-alert>
         <cds-alert closable>
-          This example is a closable alert with alert action buttons inside an alert group with a status of "warning".
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "warning".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <cds-button>
@@ -92,12 +95,13 @@ export const alertGroup = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group status="danger">
+      <cds-alert-group status="danger" aria-label="This is an example error or danger alert group">
         <cds-alert closable>
-          This example is a closable alert inside an alert group with a status of "danger".
+          This example is an alert a user may be able to close inside an alert group with a status of "danger".
         </cds-alert>
         <cds-alert closable>
-          This example is a closable alert with alert action buttons inside an alert group with a status of "danger".
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "danger".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <cds-button>
@@ -107,15 +111,15 @@ export const alertGroup = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group>
+      <cds-alert-group aria-label="This is an example alert group">
         <cds-alert>
           This example is an alert inside an alert group.
         </cds-alert>
         <cds-alert closable>
-          This example is a closable alert inside an alert group.
+          This example is an alert a user may be able to close inside an alert group.
         </cds-alert>
         <cds-alert>
-          <cds-icon shape="headphones" aria-hidden="true"></cds-icon>
+          <cds-icon shape="headphones" aria-label="Headphones" role="img"></cds-icon>
           This example is an alert with alert action buttons and a custom icon shape inside an alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
@@ -125,13 +129,13 @@ export const alertGroup = () => {
           </cds-alert-actions>
         </cds-alert>
         <cds-alert closable>
-          This example is a closable alert with alert action buttons and multiple lines of text inside an alert group. A
-          block of lorem ipsum sample text follows: Drake Equation take root and flourish culture rings of Uranus quasar
-          hundreds of thousands? Cambrian explosion gathered by gravity of brilliant syntheses vanquish the impossible
-          finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two ghostly white figures in coveralls
-          and helmets are soflty dancing something incredible is waiting to be known vanquish the impossible vastness is
-          bearable only through love concept of the number one and billions upon billions upon billions upon billions
-          upon billions upon billions upon billions.
+          This example is an alert a user may be able to close with alert action buttons and multiple lines of text
+          inside an alert group. A block of lorem ipsum sample text follows: Drake Equation take root and flourish
+          culture rings of Uranus quasar hundreds of thousands? Cambrian explosion gathered by gravity of brilliant
+          syntheses vanquish the impossible finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two
+          ghostly white figures in coveralls and helmets are soflty dancing something incredible is waiting to be known
+          vanquish the impossible vastness is bearable only through love concept of the number one and billions upon
+          billions upon billions upon billions upon billions upon billions upon billions.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
           </cds-alert-actions>
@@ -144,21 +148,21 @@ export const alertGroup = () => {
 export const bannerGroupStatus = () => {
   return html`
     <div cds-layout="vertical gap:sm">
-      <cds-alert-group type="banner" status="info">
+      <cds-alert-group type="banner" status="info" aria-label="This is an example banner alert group with a status of info">
         <cds-alert closable>
-          This example is a closable banner alert inside a banner alert group with a status of "info".
+          This example is a banner alert a user may be able to close inside a banner alert group with a status of "info".
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="success">
+      <cds-alert-group type="banner" status="success" aria-label="This is an example banner alert group with a status of success"></cds-alert-group>
         <cds-alert closable>
-          This example is a closable alert with a status of "success" inside a banner alert group.
+          This example is an alert a user may be able to close with a status of "success" inside a banner alert group.
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="warning">
+      <cds-alert-group type="banner" status="warning" aria-label="This is an example banner alert group with a status of warning">
         <cds-alert closable>
-          This example is a closable alert with alert action buttons and a status of "warning" inside a banner alert
+          This example is an alert a user may be able to close with alert action buttons and a status of "warning" inside a banner alert
           group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
@@ -169,9 +173,9 @@ export const bannerGroupStatus = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="danger">
+      <cds-alert-group type="banner" status="danger" aria-label="This is an example banner alert group with a status of danger or error">
         <cds-alert closable>
-          This example is a closable alert with a status of "danger" inside a banner alert group.
+          This example is an alert a user may be able to close with a status of "danger" inside a banner alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <cds-button>
@@ -181,7 +185,7 @@ export const bannerGroupStatus = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="unknown">
+      <cds-alert-group type="banner" status="unknown" aria-label="This is an example banner alert group with an unknown or undetermined status">
         <cds-alert>
           This example is a non-closable alert with alert actions and a status of "unknown" inside a banner alert group.
           <cds-alert-actions>
@@ -193,7 +197,7 @@ export const bannerGroupStatus = () => {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="info">
+      <cds-alert-group type="banner" status="info" aria-label="This is an example banner alert group with a status of info and a loading alert within it">
         <cds-alert status="loading">
           This example is an alert with alert actions and a status of "loading" inside a banner alert group.
           <cds-alert-actions>
@@ -208,30 +212,33 @@ export const bannerGroupStatus = () => {
 export const bannerGroup = () => {
   return html`
     <div cds-layout="vertical gap:sm">
-      <cds-alert-group type="banner">
+      <cds-alert-group type="banner" aria-label="This is an example banner alert group">
         <cds-alert closable>
-          <cds-icon shape="node-group" aria-hidden="true"></cds-icon>
-          This example is a closable alert with a custom icon shape inside a banner alert group.
+          <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
+          This example is an alert a user may be able to close with a custom icon shape inside a banner alert group.
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner">
+      <cds-alert-group
+        type="banner"
+        aria-label="This is an example banner alert group with an alert whose text is really long"
+      >
         <cds-alert closable>
-          <cds-icon shape="headphones" aria-hidden="true"></cds-icon>
-          This example is a closable alert with alert action buttons, a custom icon, and multiple lines of text inside a
-          banner alert group. A block of lorem ipsum sample text follows: Drake Equation take root and flourish culture
-          rings of Uranus quasar hundreds of thousands? Cambrian explosion gathered by gravity of brilliant syntheses
-          vanquish the impossible finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two ghostly
-          white figures in coveralls and helmets are soflty dancing something incredible is waiting to be known vanquish
-          the impossible vastness is bearable only through love concept of the number one and billions upon billions
-          upon billions upon billions upon billions upon billions upon billions.
+          <cds-icon shape="headphones" aria-label="Headphones" role="img"></cds-icon>
+          This example is an alert a user may be able to close with alert action buttons, a custom icon, and multiple
+          lines of text inside a banner alert group. A block of lorem ipsum sample text follows: Drake Equation take
+          root and flourish culture rings of Uranus quasar hundreds of thousands? Cambrian explosion gathered by gravity
+          of brilliant syntheses vanquish the impossible finite but unbounded not a sunrise but a galaxyrise.
+          Intelligent beings two ghostly white figures in coveralls and helmets are soflty dancing something incredible
+          is waiting to be known vanquish the impossible vastness is bearable only through love concept of the number
+          one and billions upon billions upon billions upon billions upon billions upon billions upon billions.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group size="sm" type="banner">
+      <cds-alert-group size="sm" type="banner" aria-label="This is an example banner alert group">
         <cds-alert>
           This example shows that a banner alert group should ignore compact sizing.
           <cds-alert-actions>
@@ -345,7 +352,7 @@ export const compactAlertGroup = () => {
           This example is a closable alert inside a compact alert group with a status of "info".
         </cds-alert>
         <cds-alert closable>
-          <cds-icon shape="node-group" aria-hidden="true"></cds-icon>
+          <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
           This example is a closable alert with alert actions and a custom icon shape inside a compact alert group with
           a status of "info".
           <cds-alert-actions>
@@ -378,7 +385,7 @@ export const compactAlertGroup = () => {
           This example is a closable alert inside a compact alert group with a status of "warning".
         </cds-alert>
         <cds-alert closable>
-          <cds-icon shape="headphones" aria-hidden="true"></cds-icon>
+          <cds-icon shape="headphones" aria-label="Headphones" role="img"></cds-icon>
           This example is a closable alert with alert actions and a custom icon shape inside a compact alert group with
           a status of "warning".
           <cds-alert-actions>

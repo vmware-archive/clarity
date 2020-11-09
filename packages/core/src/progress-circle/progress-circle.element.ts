@@ -116,17 +116,19 @@ export class CdsProgressCircle extends LitElement {
 
   private setAriaAttributes() {
     const currentValue = this.value;
-    const ariaAttrs: HTMLAttributeTuple[] = [
+    const ariaAttrsIfValue: HTMLAttributeTuple[] = [
       ['role', 'progressbar'],
       ['aria-valuemin', '0'],
       ['aria-valuemax', '100'],
       ['aria-valuenow', currentValue + ''],
     ];
-
-    const attrsToSet: HTMLAttributeTuple[] = ariaAttrs.map(valTuple => {
-      // remove progressbar aria when value is nil; it's a spinner not a progressbar
-      return isNil(currentValue) ? ([valTuple[0], false] as HTMLAttributeTuple) : (valTuple as HTMLAttributeTuple);
-    });
+    const ariaAttrsNoValue: HTMLAttributeTuple[] = [
+      ['role', 'img'],
+      ['aria-valuemin', false],
+      ['aria-valuemax', false],
+      ['aria-valuenow', false],
+    ];
+    const attrsToSet = isNil(currentValue) ? ariaAttrsNoValue : ariaAttrsIfValue;
 
     setAttributes(this, ...attrsToSet);
   }

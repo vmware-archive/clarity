@@ -80,7 +80,7 @@ describe('progress circle element – ', () => {
     it('should not have aria attrs if value is not set', async () => {
       await componentIsStable(componentUnset);
       expect(componentUnset.hasAttribute('aria-valuenow')).toBe(false, 'aria-valuenow should not be present');
-      expect(componentUnset.hasAttribute('role')).toBe(false, 'role should not be present');
+      expect(componentUnset.getAttribute('role')).toBe('img', 'role should be set to "img"');
       expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false, 'aria-valuenow should not be present');
       expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false, 'aria-valuenow should not be present');
     });
@@ -118,7 +118,7 @@ describe('progress circle element – ', () => {
       component.value = undefined;
       await componentIsStable(component);
       expect(component.hasAttribute('aria-valuenow')).toBe(false, 'aria-valuenow should not be present');
-      expect(component.hasAttribute('role')).toBe(false, 'role should not be present');
+      expect(component.getAttribute('role')).toBe('img', 'role should be "img"');
       expect(component.hasAttribute('aria-valuemin')).toBe(false, 'aria-valuenow should not be present');
       expect(component.hasAttribute('aria-valuemax')).toBe(false, 'aria-valuenow should not be present');
     });

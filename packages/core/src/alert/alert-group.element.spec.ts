@@ -34,6 +34,11 @@ describe('Alert groups – ', () => {
       removeTestElement(testElement);
     });
 
+    it('should have an aria role of "region" by default', async () => {
+      await componentIsStable(alertGroup);
+      expect(alertGroup.getAttribute('role')).toBe('region');
+    });
+
     it('should sync alerts to alert group when rendered', async () => {
       await componentIsStable(alertGroup);
       const alertGroupSize = alertGroup.size;

@@ -357,17 +357,17 @@ describe('Alert element – ', () => {
       expect(component.getAttribute('role')).toBe('region', 'role is set to "region" on alert element');
     });
 
-    it('should use "aria-hidden" on the alert icon', async () => {
+    it('should use "aria-label" on the alert icon', async () => {
       await componentIsStable(component);
       let alertIcon = component.shadowRoot.querySelector('cds-icon.alert-status-icon');
-      expect(alertIcon.getAttribute('aria-hidden')).toBe('true', 'default alert has aria-hidden true');
+      expect(alertIcon.getAttribute('aria-label')).toBe('Info', 'default alert has aria-label "Info"');
 
       component.setAttribute('status', 'danger');
       await componentIsStable(component);
       expect(alertIcon.getAttribute('shape')).toBe('error-standard', 'verify status has changed');
-      expect(alertIcon.getAttribute('aria-hidden')).toBe(
-        'true',
-        'icon shapes have aria-hidden true after status change'
+      expect(alertIcon.getAttribute('aria-label')).toBe(
+        'Error',
+        'icon shapes have aria-label "Error" after status change'
       );
 
       component.setAttribute('status', 'loading');
@@ -375,9 +375,9 @@ describe('Alert element – ', () => {
       alertIcon = component.shadowRoot.querySelector('.alert-spinner');
       expect(component.shadowRoot.querySelector('cds-icon.alert-icon')).toBeNull('verify loading status pt. 1');
       expect(alertIcon).not.toBeNull('verify loading status pt. 2');
-      expect(alertIcon.getAttribute('aria-hidden')).toBe(
-        'true',
-        'loading spinner has aria-hidden true after status changed to loading'
+      expect(alertIcon.getAttribute('aria-label')).toBe(
+        'Loading',
+        'loading spinner has aria-label "Loading" after status changed to loading'
       );
     });
   });

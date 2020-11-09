@@ -52,9 +52,14 @@ export function iconShapeIsAlertStatusType(shape: string): boolean {
   return statusShapes.indexOf(shape) > -1;
 }
 
+export function getIconStatusLabel(status: string): string {
+  return getIconStatusTuple(status)[1];
+}
+
 export function getIconStatusShape(status: string): string {
   return getIconStatusTuple(status)[0];
 }
+
 export function getAlertContentLayout(
   containerType: 'wrapper' | 'content' | 'actions',
   alertGroupType: AlertGroupTypes,
@@ -164,6 +169,10 @@ export class CdsAlert extends LitElement {
   @property({ type: String })
   status: AlertStatusTypes = 'default';
 
+  /**
+   * @deprecated
+   * TODO: replace this with commonstrings when that work is ready
+   */
   @property({ type: String })
   closeIconTitle = CommonStringsService.keys.alertCloseButtonAriaLabel;
 
@@ -198,19 +207,21 @@ export class CdsAlert extends LitElement {
         ${this.type === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
           : html``}
-        <span class="alert-icon-wrapper" aria-hidden="true" cds-layout="horizontal">
+        <span class="alert-icon-wrapper" cds-layout="horizontal">
           ${this.status === 'loading'
             ? html`<cds-progress-circle
                 class="alert-spinner"
                 size="${this.type === 'banner' ? '20' : '18'}"
-                aria-hidden="true"
+                aria-label="${getIconStatusLabel(this.status)}"
+                role="img"
                 cds-layout="align:horizontal-center"
               ></cds-progress-circle>`
             : html`<slot name="alert-icon"
                 ><cds-icon
                   class="alert-status-icon"
                   shape="${getIconStatusShape(this.status)}"
-                  aria-hidden="true"
+                  role="img"
+                  aria-label="${getIconStatusLabel(this.status)}"
                   cds-layout="align:horizontal-center"
                 ></cds-icon
               ></slot>`}

@@ -39,3 +39,20 @@ html {
   left: 0;
   display: block !important;
 }
+
+fieldset[cds-layout] {
+  padding: 0 !important;
+  border: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+
+  & > legend {
+    display: contents;
+    padding-inline-end: 0;
+    padding-inline-start: 0;
+  }
+}

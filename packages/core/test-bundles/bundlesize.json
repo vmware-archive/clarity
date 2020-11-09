@@ -12,7 +12,7 @@
     },
     {
       "path": "./dist/core/styles/module.reset.min.css",
-      "maxSize": "0.25 kB",
+      "maxSize": "0.3 kB",
       "compression": "brotli"
     },
     {

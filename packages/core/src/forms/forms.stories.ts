@@ -37,7 +37,7 @@ export const nativeHTML5ValidationSingle = () => {
   return html`
     <cds-input validate>
       <label>text input (required)</label>
-      <input placeholder="placeholder text" required />
+      <input placeholder="place holder text" required />
       <cds-control-message error="valueMissing">required</cds-control-message>
     </cds-input>
   `;
@@ -99,7 +99,7 @@ export const form = () => {
       <cds-form-group control-width="shrink">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -114,7 +114,7 @@ export const form = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -149,8 +149,18 @@ export const form = () => {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
-              <cds-icon shape="cloud" badge="success"></cds-icon>
+            <cds-control-action
+              action="suffix"
+              readonly
+              aria-label="Icon indicating that the selected host status is stable"
+              title="Icon indicating that the selected host status is stable"
+            >
+              <cds-icon
+                shape="cloud"
+                badge="success"
+                role="img"
+                aria-label="Icon of host cloud with green badge"
+              ></cds-icon>
             </cds-control-action>
           </cds-input>
           <cds-control-message>Host ID: 123456</cds-control-message>
@@ -241,7 +251,7 @@ export const vertical = () => {
       <cds-form-group layout="vertical">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -256,7 +266,7 @@ export const vertical = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -383,7 +393,7 @@ export const verticalInline = () => {
       <cds-form-group layout="vertical-inline">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -398,7 +408,7 @@ export const verticalInline = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -525,7 +535,7 @@ export const horizontal = () => {
       <cds-form-group layout="horizontal">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -540,7 +550,7 @@ export const horizontal = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -667,7 +677,7 @@ export const horizontalInline = () => {
       <cds-form-group layout="horizontal-inline">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -682,7 +692,7 @@ export const horizontalInline = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -809,7 +819,7 @@ export const compact = () => {
       <cds-form-group layout="compact">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -824,7 +834,7 @@ export const compact = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -953,7 +963,7 @@ export const compactShrink = () => {
       <cds-form-group layout="compact" control-width="shrink">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -968,7 +978,7 @@ export const compactShrink = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -1097,7 +1107,7 @@ export const controlWidth = () => {
       <cds-form-group control-width="shrink">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
         </cds-input>
 
         <cds-select>
@@ -1112,7 +1122,7 @@ export const controlWidth = () => {
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -1428,7 +1438,7 @@ export const responsive = () => {
       <cds-form-group layout="horizontal-inline">
         <cds-input>
           <label>text label</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message>message text</cds-control-message>
         </cds-input>
 
@@ -1500,7 +1510,7 @@ export const longText = () => {
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</label
           >
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
@@ -1538,7 +1548,7 @@ export const longText = () => {
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</label
           >
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
@@ -1576,7 +1586,7 @@ export const longText = () => {
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</label
           >
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message status="error"
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
@@ -1611,7 +1621,7 @@ export const longText = () => {
       <cds-form-group layout="vertical">
         <cds-input>
           <label>Lorem ipsum</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message>Lorem ipsum</cds-control-message>
         </cds-input>
 
@@ -1637,7 +1647,7 @@ export const longText = () => {
       <cds-form-group layout="horizontal">
         <cds-input>
           <label>Lorem ipsum</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message>Lorem ipsum</cds-control-message>
         </cds-input>
 
@@ -1663,7 +1673,7 @@ export const longText = () => {
       <cds-form-group layout="compact">
         <cds-input>
           <label>Lorem ipsum</label>
-          <input placeholder="placeholder text" />
+          <input placeholder="place holder text" />
           <cds-control-message>Lorem ipsum</cds-control-message>
         </cds-input>
 
@@ -1723,125 +1733,130 @@ export const multiColumn = () => {
 export const checkoutForm = () => {
   return html`
     <cds-form-group layout="vertical" cds-layout="container:sm">
-      <p cds-text="section">Billing Address</p>
+      <div cds-layout="vertical gap:xl">
+        <fieldset cds-layout="vertical gap:md">
+          <legend cds-text="section">Billing Address</legend>
 
-      <div cds-layout="grid cols@xs:6 gap:lg">
-        <cds-input>
-          <label>first name</label>
-          <input type="text" />
-        </cds-input>
+          <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
+            <cds-input>
+              <label>first name</label>
+              <input type="text" />
+            </cds-input>
 
-        <cds-input>
-          <label>last name</label>
-          <input type="text" />
-        </cds-input>
+            <cds-input>
+              <label>last name</label>
+              <input type="text" />
+            </cds-input>
+          </div>
+
+          <cds-input>
+            <label>email</label>
+            <input type="email" placeholder="you@example.com" />
+          </cds-input>
+
+          <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
+            <cds-input>
+              <label>address</label>
+              <input type="text" placeholder="1234 Main St." />
+            </cds-input>
+
+            <cds-input>
+              <label>address 2</label>
+              <input type="text" placeholder="Apartment or Suite" />
+              <cds-control-message>(optional)</cds-control-message>
+            </cds-input>
+          </div>
+
+          <div cds-layout="grid gap:lg p-t:sm">
+            <cds-select cds-layout="col@xs:6 col@sm:5">
+              <label>Country</label>
+              <select>
+                <option>choose...</option>
+                <option>United States</option>
+              </select>
+            </cds-select>
+
+            <cds-select cds-layout="col@xs:6 col@sm:4">
+              <label>State</label>
+              <select>
+                <option>choose...</option>
+                <option>California</option>
+              </select>
+            </cds-select>
+
+            <cds-input cds-layout="col@sm:3">
+              <label>Postal Code</label>
+              <input type="text" placeholder="" />
+            </cds-input>
+          </div>
+        </fieldset>
+
+        <fieldset cds-layout="vertical gap:md">
+          <legend cds-text="section">Payment</legend>
+          <cds-radio-group cds-layout="p-t:sm">
+            <label>payment type</label>
+            <cds-radio>
+              <label>credit card</label>
+              <input type="radio" value="1" checked />
+            </cds-radio>
+            <cds-radio>
+              <label>debt card</label>
+              <input type="radio" value="2" />
+            </cds-radio>
+            <cds-radio>
+              <label>paypal</label>
+              <input type="radio" value="3" />
+            </cds-radio>
+          </cds-radio-group>
+
+          <cds-checkbox-group cds-layout="p-t:md">
+            <label>Shipping Details</label>
+            <cds-checkbox>
+              <label>Shipping address is the same as my billing address</label>
+              <input type="checkbox" />
+            </cds-checkbox>
+            <cds-checkbox>
+              <label>Save this information for next time</label>
+              <input type="checkbox" />
+            </cds-checkbox>
+          </cds-checkbox-group>
+
+          <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
+            <cds-input>
+              <label>name on card</label>
+              <input type="text" />
+              <cds-control-message>full name as displayed on card</cds-control-message>
+            </cds-input>
+
+            <cds-input>
+              <label>credit card number</label>
+              <input type="number" />
+            </cds-input>
+          </div>
+
+          <div cds-layout="grid gap:lg p-t:md">
+            <cds-input cds-layout="cols@xs:6 col@sm:4">
+              <label>expiration</label>
+              <input type="text" />
+            </cds-input>
+
+            <cds-input cds-layout="cols@xs:6 col@sm:3">
+              <label>CVV</label>
+              <input type="number" />
+            </cds-input>
+
+            <cds-input cds-layout="col@sm:5">
+              <label>promo code</label>
+              <input type="text" />
+              <cds-control-action action="suffix" aria-label="add promo code">
+                <cds-icon shape="add"></cds-icon>
+              </cds-control-action>
+            </cds-input>
+          </div>
+        </fieldset>
+
+        <cds-button cds-layout="m-t:lg">continue to checkout</cds-button>
       </div>
-
-      <cds-input>
-        <label>email</label>
-        <input type="email" placeholder="you@example.com" />
-      </cds-input>
-
-      <div cds-layout="grid cols@xs:6 gap:lg">
-        <cds-input>
-          <label>address</label>
-          <input type="text" placeholder="1234 Main St." />
-        </cds-input>
-
-        <cds-input>
-          <label>address 2</label>
-          <input type="text" placeholder="Apartment or Suite" />
-          <cds-control-message>(optional)</cds-control-message>
-        </cds-input>
-      </div>
-
-      <div cds-layout="grid gap:lg">
-        <cds-select cds-layout="col@xs:6 col@sm:5">
-          <label>Country</label>
-          <select>
-            <option>choose...</option>
-            <option>United States</option>
-          </select>
-        </cds-select>
-
-        <cds-select cds-layout="col@xs:6 col@sm:4">
-          <label>State</label>
-          <select>
-            <option>choose...</option>
-            <option>California</option>
-          </select>
-        </cds-select>
-
-        <cds-input cds-layout="col@sm:3">
-          <label>Postal Code</label>
-          <input type="text" placeholder="" />
-        </cds-input>
-      </div>
-
-      <p cds-text="section" cds-layout="m-t:xl">Payment</p>
-
-      <cds-radio-group>
-        <label>payment type</label>
-        <cds-radio>
-          <label>credit card</label>
-          <input type="radio" value="1" checked />
-        </cds-radio>
-        <cds-radio>
-          <label>debt card</label>
-          <input type="radio" value="2" />
-        </cds-radio>
-        <cds-radio>
-          <label>paypal</label>
-          <input type="radio" value="3" />
-        </cds-radio>
-      </cds-radio-group>
-
-      <cds-checkbox-group>
-        <label>Shipping Details</label>
-        <cds-checkbox>
-          <label>Shipping address is the same as my billing address</label>
-          <input type="checkbox" />
-        </cds-checkbox>
-        <cds-checkbox>
-          <label>Save this information for next time</label>
-          <input type="checkbox" />
-        </cds-checkbox>
-      </cds-checkbox-group>
-
-      <div cds-layout="grid cols@xs:6 gap:lg">
-        <cds-input>
-          <label>name on card</label>
-          <input type="text" />
-          <cds-control-message>full name as displayed on card</cds-control-message>
-        </cds-input>
-
-        <cds-input>
-          <label>credit card number</label>
-          <input type="number" />
-        </cds-input>
-      </div>
-
-      <div cds-layout="grid gap:lg">
-        <cds-input cds-layout="cols@xs:6 col@sm:4">
-          <label>expiration</label>
-          <input type="text" />
-        </cds-input>
-
-        <cds-input cds-layout="cols@xs:6 col@sm:3">
-          <label>CVV</label>
-          <input type="number" />
-        </cds-input>
-
-        <cds-input cds-layout="col@sm:5">
-          <label>promo code</label>
-          <input type="text" />
-          <cds-control-action action="suffix" aria-label="add promo code">
-            <cds-icon shape="add"></cds-icon>
-          </cds-control-action>
-        </cds-input>
-      </div>
-
-      <cds-button>continue to checkout</cds-button>
     </cds-form-group>
   `;
 };

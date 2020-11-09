@@ -32,6 +32,17 @@ export function hasAttributeAndIsNotEmpty(element: HTMLElement | null, attribute
   return !!element && element.hasAttribute(attribute) && isStringAndNotNilOrEmpty(element.getAttribute(attribute));
 }
 
+// TODO: TESTME!
+export function setOrRemoveAttribute(element: HTMLElement, attrTuple: HTMLAttributeTuple, test: () => boolean) {
+  const [attribute, value] = attrTuple;
+  console.log('ohai: element = ', element, '; tuple = ', attribute, ', ', value, '; did i pass my test? ', test());
+  if (test()) {
+    setAttributes(element, [attribute, value]);
+  } else {
+    removeAttributes(element, attribute);
+  }
+}
+
 export function setAttributes(element: HTMLElement, ...attributeTuples: HTMLAttributeTuple[]) {
   if (element) {
     attributeTuples.forEach(([attr, val]) => {

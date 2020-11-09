@@ -6,7 +6,14 @@
 
 import { html, property } from 'lit-element';
 import { CdsIcon } from '@clr/core/icon/icon.element.js';
-import { baseStyles, CdsBaseButton, querySlot, setAttributes, assignSlotNames } from '@clr/core/internal';
+import {
+  assignSlotNames,
+  baseStyles,
+  CdsBaseButton,
+  hasAttributeAndIsNotEmpty,
+  querySlot,
+  setOrRemoveAttribute,
+} from '@clr/core/internal';
 import { styles } from './control-action.element.css.js';
 import { LogService } from '@clr/core/internal';
 
@@ -30,6 +37,10 @@ export class CdsControlAction extends CdsBaseButton {
   /** Set the action type placement within the supporting input control */
   @property({ type: String }) action: 'label' | 'prefix' | 'suffix';
 
+  @property({ type: Boolean }) readonly = false;
+
+  @property({ type: String }) ariaLabel = '';
+
   @querySlot('cds-icon') protected icon: CdsIcon;
 
   static get styles() {
@@ -47,7 +58,16 @@ export class CdsControlAction extends CdsBaseButton {
 
   connectedCallback() {
     super.connectedCallback();
-    setAttributes(this, ['aria-hidden', 'true']);
+    this.syncAria();
+  }
+
+  // TODO: TESTME
+  private syncAria() {
+    const iAmReadonly = this.readonly;
+    const iHaveAriaLabel = hasAttributeAndIsNotEmpty(this, 'aria-label');
+    setOrRemoveAttribute(this, ['aria-hidden', 'true'], () => {
+      return iAmReadonly && !iHaveAriaLabel;
+    });
   }
 
   updated(props: Map<string, any>) {
@@ -56,8 +76,9 @@ export class CdsControlAction extends CdsBaseButton {
       this.setSlotLocation();
     }
 
-    if (props.has('readonly')) {
+    if (props.has('readonly') || props.has('ariaLabel')) {
       this.validateAriaLabel();
+      this.syncAria();
     }
   }
 

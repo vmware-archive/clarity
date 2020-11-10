@@ -19,6 +19,7 @@ import {
   setAttributes,
   listenForAttributeChange,
   isVisible,
+  setOrRemoveAttribute,
   spanWrapper,
 } from './dom.js';
 
@@ -230,6 +231,40 @@ describe('Functional Helper: ', () => {
     });
   });
 
+  describe('setOrRemoveAttribute() ', () => {
+    let testElement: HTMLElement;
+
+    const attrToTest: HTMLAttributeTuple = ['data-attr', 'stringified data goes here'];
+    const [attrToTestName, attrToTestValue] = attrToTest;
+
+    beforeEach(async () => {
+      testElement = await createTestElement();
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('sets attribute if test function returns true', () => {
+      setOrRemoveAttribute(testElement, attrToTest, () => {
+        return true;
+      });
+      expect(testElement.hasAttribute(attrToTestName)).toBe(true);
+      expect(testElement.getAttribute(attrToTestName)).toBe(attrToTestValue as string);
+    });
+
+    it('removes attribute value if function returns false', () => {
+      setAttributes(testElement, attrToTest);
+      expect(testElement.hasAttribute(attrToTestName)).toBe(true);
+      expect(testElement.getAttribute(attrToTestName)).toBe(attrToTestValue as string);
+      setOrRemoveAttribute(testElement, attrToTest, () => {
+        return false;
+      });
+      expect(testElement.hasAttribute(attrToTestName)).toBe(false);
+      expect(testElement.getAttribute(attrToTestName)).toBe(null);
+    });
+  });
+
   describe('assignSlotNames() ', () => {
     let testElement: HTMLElement;
     let testDiv1: HTMLElement;
@@ -344,6 +379,9 @@ describe('Functional Helper: ', () => {
 
       element.setAttribute('hidden', '');
       expect(isVisible(element)).toBe(false);
+
+      removeAttributes(element, 'hidden');
+      expect(isVisible(element)).toBe(true);
 
       removeTestElement(element);
       expect(isVisible(element)).toBe(false);

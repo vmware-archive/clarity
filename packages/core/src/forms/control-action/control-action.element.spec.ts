@@ -39,4 +39,31 @@ describe('cds-control-action', () => {
     await componentIsStable(controlAction);
     expect(LogService.warn).toHaveBeenCalled();
   });
+
+  describe('syncAria: ', () => {
+    it('should set aria-hidden on read-only', async () => {
+      const testElement = await createTestElement(html` <cds-control-action readonly>test</cds-control-action>`);
+      const testControlAction = testElement.querySelector<CdsControlAction>('cds-control-action');
+      expect(testControlAction.getAttribute('aria-hidden')).toBe('true');
+      removeTestElement(testElement);
+    });
+
+    it('should not set aria-hidden when aria-label is present', async () => {
+      const testElement = await createTestElement(
+        html` <cds-control-action aria-label="ohai">test</cds-control-action>`
+      );
+      const testControlAction = testElement.querySelector<CdsControlAction>('cds-control-action');
+      expect(testControlAction.hasAttribute('aria-hidden')).toBe(false);
+      removeTestElement(testElement);
+    });
+
+    it('should not set aria-hidden when aria-label is present, even if read-only', async () => {
+      const testElement = await createTestElement(
+        html` <cds-control-action readonly aria-label="ohai">test</cds-control-action>`
+      );
+      const testControlAction = testElement.querySelector<CdsControlAction>('cds-control-action');
+      expect(testControlAction.hasAttribute('aria-hidden')).toBe(false);
+      removeTestElement(testElement);
+    });
+  });
 });

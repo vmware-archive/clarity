@@ -61,7 +61,6 @@ export class CdsControlAction extends CdsBaseButton {
     this.syncAria();
   }
 
-  // TODO: TESTME
   private syncAria() {
     const iAmReadonly = this.readonly;
     const iHaveAriaLabel = hasAttributeAndIsNotEmpty(this, 'aria-label');

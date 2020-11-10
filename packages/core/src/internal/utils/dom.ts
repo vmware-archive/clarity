@@ -32,10 +32,8 @@ export function hasAttributeAndIsNotEmpty(element: HTMLElement | null, attribute
   return !!element && element.hasAttribute(attribute) && isStringAndNotNilOrEmpty(element.getAttribute(attribute));
 }
 
-// TODO: TESTME!
 export function setOrRemoveAttribute(element: HTMLElement, attrTuple: HTMLAttributeTuple, test: () => boolean) {
   const [attribute, value] = attrTuple;
-  console.log('ohai: element = ', element, '; tuple = ', attribute, ', ', value, '; did i pass my test? ', test());
   if (test()) {
     setAttributes(element, [attribute, value]);
   } else {
@@ -117,7 +115,7 @@ export function listenForAttributeChange(
 }
 
 export function isVisible(element: HTMLElement) {
-  return element?.offsetHeight > 0 && element?.hasAttribute('hidden') === false;
+  return !!element && element?.offsetHeight > 0 && element?.hasAttribute('hidden') === false;
 }
 
 export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {

@@ -1732,132 +1732,129 @@ export const multiColumn = () => {
 // https://getbootstrap.com/docs/4.5/examples/checkout/
 export const checkoutForm = () => {
   return html`
-    <cds-form-group layout="vertical" cds-layout="container:sm">
-      <div cds-layout="vertical gap:xl">
-        <fieldset cds-layout="vertical gap:md">
-          <legend cds-text="section">Billing Address</legend>
+    <div cds-layout="vertical gap:xl container:sm" role="region" aria-labelledby="checkout-form-title">
+      <p id="checkout-form-title" cds-text="title">Example Payment Form</p>
 
-          <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
-            <cds-input>
-              <label>first name</label>
-              <input type="text" />
-            </cds-input>
-
-            <cds-input>
-              <label>last name</label>
-              <input type="text" />
-            </cds-input>
-          </div>
-
+      <cds-form-group layout="vertical" cds-layout="vertical" role="group" aria-labelledby="billing-group-title">
+        <p id="billing-group-title" cds-text="section">Billing Information</p>
+        <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
           <cds-input>
-            <label>email</label>
-            <input type="email" placeholder="you@example.com" />
+            <label>first name</label>
+            <input type="text" />
           </cds-input>
 
-          <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
-            <cds-input>
-              <label>address</label>
-              <input type="text" placeholder="1234 Main St." />
-            </cds-input>
+          <cds-input>
+            <label>last name</label>
+            <input type="text" />
+          </cds-input>
+        </div>
 
-            <cds-input>
-              <label>address 2</label>
-              <input type="text" placeholder="Apartment or Suite" />
-              <cds-control-message>(optional)</cds-control-message>
-            </cds-input>
-          </div>
+        <cds-input>
+          <label>email</label>
+          <input type="email" placeholder="you@example.com" />
+        </cds-input>
 
-          <div cds-layout="grid gap:lg p-t:sm">
-            <cds-select cds-layout="col@xs:6 col@sm:5">
-              <label>Country</label>
-              <select>
-                <option>choose...</option>
-                <option>United States</option>
-              </select>
-            </cds-select>
+        <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
+          <cds-input>
+            <label>address</label>
+            <input type="text" placeholder="1234 Main St." />
+          </cds-input>
 
-            <cds-select cds-layout="col@xs:6 col@sm:4">
-              <label>State</label>
-              <select>
-                <option>choose...</option>
-                <option>California</option>
-              </select>
-            </cds-select>
+          <cds-input>
+            <label>address 2</label>
+            <input type="text" placeholder="Apartment or Suite" />
+            <cds-control-message>(optional)</cds-control-message>
+          </cds-input>
+        </div>
 
-            <cds-input cds-layout="col@sm:3">
-              <label>Postal Code</label>
-              <input type="text" placeholder="" />
-            </cds-input>
-          </div>
-        </fieldset>
+        <div cds-layout="grid gap:lg p-t:sm">
+          <cds-select cds-layout="col@xs:6 col@sm:5">
+            <label>Country</label>
+            <select>
+              <option>choose...</option>
+              <option>United States</option>
+            </select>
+          </cds-select>
 
-        <fieldset cds-layout="vertical gap:md">
-          <legend cds-text="section">Payment</legend>
-          <cds-radio-group cds-layout="p-t:sm">
-            <label>payment type</label>
-            <cds-radio>
-              <label>credit card</label>
-              <input type="radio" value="1" checked />
-            </cds-radio>
-            <cds-radio>
-              <label>debt card</label>
-              <input type="radio" value="2" />
-            </cds-radio>
-            <cds-radio>
-              <label>paypal</label>
-              <input type="radio" value="3" />
-            </cds-radio>
-          </cds-radio-group>
+          <cds-select cds-layout="col@xs:6 col@sm:4">
+            <label>State</label>
+            <select>
+              <option>choose...</option>
+              <option>California</option>
+            </select>
+          </cds-select>
 
-          <cds-checkbox-group cds-layout="p-t:md">
-            <label>Shipping Details</label>
-            <cds-checkbox>
-              <label>Shipping address is the same as my billing address</label>
-              <input type="checkbox" />
-            </cds-checkbox>
-            <cds-checkbox>
-              <label>Save this information for next time</label>
-              <input type="checkbox" />
-            </cds-checkbox>
-          </cds-checkbox-group>
+          <cds-input cds-layout="col@sm:3">
+            <label>Postal Code</label>
+            <input type="text" placeholder="" />
+          </cds-input>
+        </div>
+      </cds-form-group>
 
-          <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
-            <cds-input>
-              <label>name on card</label>
-              <input type="text" />
-              <cds-control-message>full name as displayed on card</cds-control-message>
-            </cds-input>
+      <cds-form-group layout="vertical" cds-layout="vertical m-t:md" role="group" aria-labelledby="payment-group-title">
+        <p id="payment-group-title" cds-text="section">Payment</p>
+        <cds-radio-group cds-layout="p-t:sm">
+          <label>payment type</label>
+          <cds-radio>
+            <label>credit card</label>
+            <input type="radio" value="1" checked />
+          </cds-radio>
+          <cds-radio>
+            <label>debt card</label>
+            <input type="radio" value="2" />
+          </cds-radio>
+          <cds-radio>
+            <label>paypal</label>
+            <input type="radio" value="3" />
+          </cds-radio>
+        </cds-radio-group>
 
-            <cds-input>
-              <label>credit card number</label>
-              <input type="number" />
-            </cds-input>
-          </div>
+        <cds-checkbox-group cds-layout="p-t:md">
+          <label>Shipping Details</label>
+          <cds-checkbox>
+            <label>Shipping address is the same as my billing address</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+          <cds-checkbox>
+            <label>Save this information for next time</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+        </cds-checkbox-group>
 
-          <div cds-layout="grid gap:lg p-t:md">
-            <cds-input cds-layout="cols@xs:6 col@sm:4">
-              <label>expiration</label>
-              <input type="text" />
-            </cds-input>
+        <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
+          <cds-input>
+            <label>name on card</label>
+            <input type="text" />
+            <cds-control-message>full name as displayed on card</cds-control-message>
+          </cds-input>
 
-            <cds-input cds-layout="cols@xs:6 col@sm:3">
-              <label>CVV</label>
-              <input type="number" />
-            </cds-input>
+          <cds-input>
+            <label>credit card number</label>
+            <input type="number" />
+          </cds-input>
+        </div>
+        <div cds-layout="grid gap:lg p-t:md">
+          <cds-input cds-layout="cols@xs:6 col@sm:4">
+            <label>expiration</label>
+            <input type="text" />
+          </cds-input>
 
-            <cds-input cds-layout="col@sm:5">
-              <label>promo code</label>
-              <input type="text" />
-              <cds-control-action action="suffix" aria-label="add promo code">
-                <cds-icon shape="add"></cds-icon>
-              </cds-control-action>
-            </cds-input>
-          </div>
-        </fieldset>
+          <cds-input cds-layout="cols@xs:6 col@sm:3">
+            <label>CVV</label>
+            <input type="number" />
+          </cds-input>
 
-        <cds-button cds-layout="m-t:lg">continue to checkout</cds-button>
-      </div>
-    </cds-form-group>
+          <cds-input cds-layout="col@sm:5">
+            <label>promo code</label>
+            <input type="text" />
+            <cds-control-action action="suffix" aria-label="add promo code">
+              <cds-icon shape="add"></cds-icon>
+            </cds-control-action>
+          </cds-input>
+        </div>
+      </cds-form-group>
+      <cds-button cds-layout="m-t:lg">continue to checkout</cds-button>
+    </div>
   `;
 };
 

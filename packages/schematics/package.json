@@ -16,7 +16,7 @@
     "clean": "del src/**/*.{js,js.map}",
     "schematics:build:ts": "tsc -p tsconfig.json",
     "schematics:build:collection": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/clr-angular/schematics",
-    "test": "yarn run build:test && jasmine **/*_spec.js"
+    "test": "yarn run build:test && jasmine **/*.spec.js"
   },
   "keywords": [
     "angular",

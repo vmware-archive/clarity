@@ -101,6 +101,19 @@ To use RTL add the `<html dir="rtl">` to the HTML root element. Learn more at
   <Story id="forms-preview-forms-stories--internationalization" />
 </Preview>
 
+## Fieldsets, Form Groupings, and Accessibility
+
+<cds-alert status="danger">Use of the `fieldset` and `legend` HTML elements inside a form group is discouraged.</cds-alert>
+
+The use of the `fieldset` HTML element and its corresponding `legend` element inside a `cds-form-group` component or inside another element using the `cds-layout` attribute is not recommended.
+
+The `fieldset` element responds erratically to flex and grid CSS layouts. This is a browser rendering issue and not an issue in Clarity.
+
+A recommended workaround is to use the `group` aria role and associate an `aria-labelledby` value with an existing header in the form group.
+
+An example of how this would work <a href="iframe.html?id=forms-preview-forms-stories--checkout-form&amp%3BviewMode=story&viewMode=story" target="_blank">
+can be found in this example form</a>.
+
 ## Form API
 
 <Props of={'cds-form-group'} />

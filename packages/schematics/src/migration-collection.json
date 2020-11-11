@@ -10,6 +10,11 @@
       "version": "3.0.0",
       "factory": "./update/update-3.0.0",
       "description": "Updates for Clarity 3.0.0"
+    },
+    "migration-5.0": {
+      "version": "5.0.0",
+      "factory": "./update/update-5.0.0",
+      "description": "Updates for Clarity 5.0.0"
     }
   }
 }

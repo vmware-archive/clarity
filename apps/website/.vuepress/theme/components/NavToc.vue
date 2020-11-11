@@ -56,10 +56,16 @@ export default {
 
 <style lang="scss">
 .nav-toc-container {
-  width: 100%;
-  padding: 0 0 var(--cds-token-space-size-9);
+  --nav-toc-width: 12rem;
+  width: var(--nav-toc-width);
+  position: absolute;
+  top: 0;
+  right: calc(-1 * var(--nav-toc-width));
 
-  // Do not show on Mobile for now
+  .nav-toc {
+    position: fixed;
+    top: 8.1rem;
+  }
 
   .nav-toc {
     max-height: 100%;
@@ -70,28 +76,10 @@ export default {
     max-width: inherit;
   }
 
-  // We don't want this to wrap and display below the footer
-  // TODO: implement responsive TOC navigation strategy
-  @media all and (max-width: 992px) {
+  // Show toc on iPad sizes and up, do not display below footer when smaller
+  @media (max-width: 767px) {
     display: none;
   }
-
-  // From OG footer implementation
-  //@media (min-width: 992px) {
-  //  --nav-toc-width: 12rem;
-  //  width: var(--nav-toc-width);
-  //  position: absolute;
-  //  top: 0;
-  //  right: calc(-1 * var(--nav-toc-width));
-  //  border-bottom: none;
-  //  background-color: transparent;
-  //
-  //  .nav-toc {
-  //    position: fixed;
-  //    top: 8.1rem;
-  //    padding-bottom: 8.1rem;
-  //  }
-  //}
 
   .title {
     padding-left: 6px;

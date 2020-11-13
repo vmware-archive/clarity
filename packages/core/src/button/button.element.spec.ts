@@ -9,6 +9,7 @@ import { CdsButton, ClrLoadingState } from '@clr/core/button';
 import '@clr/core/badge/register.js';
 import '@clr/core/button/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@clr/core/test/utils';
+import { listenForAttributeChange } from '@clr/core/internal';
 
 describe('button element', () => {
   let testElement: HTMLElement;
@@ -311,5 +312,67 @@ describe('buttonSlots: ', () => {
     const component = elem.querySelector<CdsButton>('cds-button');
     const slots = getComponentSlotContent(component);
     expect(slots.default).toContain('Text slot');
+  });
+});
+
+describe('button keyboard interaction: ', () => {
+  it('should add active attr on click', async done => {
+    const element = await createTestElement(html`<cds-button>Text slot</cds-button>`);
+    const component = element.querySelector('cds-button');
+    expect(component.hasAttribute('active')).toBe(false);
+
+    listenForAttributeChange(component, 'active', () => {
+      expect(true).toBe(true, 'active attr was added on click');
+      done();
+    });
+
+    component.click();
+    removeTestElement(element);
+  });
+
+  it('should NOT add active attr if button is disabled', async done => {
+    const element = await createTestElement(html`<cds-button>Text slot</cds-button>`);
+    const component = element.querySelector('cds-button');
+    expect(component.hasAttribute('active')).toBe(false);
+    component.disabled = true;
+    await componentIsStable(component);
+
+    listenForAttributeChange(component, 'active', () => {
+      expect(false).toBe(true, 'active attr should not be added on click');
+      done();
+    });
+
+    listenForAttributeChange(component, 'id', () => {
+      expect(component.hasAttribute('active')).toBe(false, 'active attr was not be added');
+      done();
+    });
+
+    component.click();
+    await componentIsStable(component);
+    component.setAttribute('id', 'ohai');
+    removeTestElement(element);
+  });
+
+  it('should NOT add active attr if button is readonly', async done => {
+    const element = await createTestElement(html`<cds-button readonly>Text slot</cds-button>`);
+    const component = element.querySelector('cds-button');
+    await componentIsStable(component);
+    expect(component.hasAttribute('active')).toBe(false);
+    expect(component.hasAttribute('readonly')).toBe(true);
+
+    listenForAttributeChange(component, 'active', () => {
+      expect(false).toBe(true, 'active attr should not be added on click');
+      done();
+    });
+
+    listenForAttributeChange(component, 'id', () => {
+      expect(component.hasAttribute('active')).toBe(false, 'active attr was not be added');
+      done();
+    });
+
+    component.click();
+    await componentIsStable(component);
+    component.setAttribute('id', 'ohai');
+    removeTestElement(element);
   });
 });

@@ -98,6 +98,7 @@
   --color: #{$cds-token-color-neutral-600} !important;
   --border-color: #{$cds-token-color-neutral-600} !important;
 
+  &:host([active]),
   &:host(:active) {
     .private-host {
       box-shadow: none !important;
@@ -111,12 +112,14 @@
 
 :host(:not([readonly])),
 :host([is-anchor]) {
-  &:host(:focus),
+  &:host([active]),
   &:host(:hover),
+  &:host(:focus),
   &:host(:active) {
     --background: #{$cds-token-color-neutral-200};
   }
 
+  &:host([active]),
   &:host(:active) {
     .private-host {
       box-shadow: 0 #{$cds-token-space-size-1-static} 0 0 var(--border-color) inset;
@@ -196,8 +199,9 @@
 
 :host(:not([readonly])),
 :host([is-anchor]) {
-  &:host([status='info']:focus),
+  &:host([status='info'][active]),
   &:host([status='info']:hover),
+  &:host([status='info']:focus),
   &:host([status='info']:active) {
     --background: #{$cds-token-color-action-100};
   }
@@ -221,8 +225,9 @@
 
 :host(:not([readonly])),
 :host([is-anchor]) {
-  &:host([status='success']:focus),
+  &:host([status='success'][active]),
   &:host([status='success']:hover),
+  &:host([status='success']:focus),
   &:host([status='success']:active) {
     --background: #{$cds-token-color-success-100};
   }
@@ -246,8 +251,9 @@
 
 :host(:not([readonly])),
 :host([is-anchor]) {
-  &:host([status='warning']:focus),
+  &:host([status='warning'][active]),
   &:host([status='warning']:hover),
+  &:host([status='warning']:focus),
   &:host([status='warning']:active) {
     --background: #{$cds-token-color-warning-200};
     --border-color: #{$cds-token-color-warning-500};
@@ -283,8 +289,9 @@
 
 :host(:not([readonly])),
 :host([is-anchor]) {
-  &:host([status='danger']:focus),
+  &:host([status='danger'][active]),
   &:host([status='danger']:hover),
+  &:host([status='danger']:focus),
   &:host([status='danger']:active) {
     --background: #{$cds-token-color-danger-200};
     --border-color: #{$cds-token-color-danger-400};

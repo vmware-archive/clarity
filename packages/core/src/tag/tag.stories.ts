@@ -91,65 +91,43 @@ export const clickable = () => {
   return html`
     <div cds-layout="vertical gap:sm">
       <div cds-layout="horizontal gap:sm">
-        <cds-tag aria-label="Clickable example of a default tag" color="gray">Default</cds-tag>
-        <cds-tag aria-label="Clickable example of a purple tag" color="purple">Purple</cds-tag>
-        <cds-tag aria-label="Clickable example of a blue tag" color="blue">Blue</cds-tag>
-        <cds-tag aria-label="Clickable example of an orange tag" color="orange">Orange</cds-tag>
-        <cds-tag aria-label="Clickable example of a light blue tag" color="light-blue">Light Blue</cds-tag>
+        <cds-tag aria-label="Default" color="gray">Default</cds-tag>
+        <cds-tag aria-label="Purple" color="purple">Purple</cds-tag>
+        <cds-tag aria-label="Blue" color="blue">Blue</cds-tag>
+        <cds-tag aria-label="Orange" color="orange">Orange</cds-tag>
+        <cds-tag aria-label="Light blue" color="light-blue">Light Blue</cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
-        <cds-tag aria-label="Clickable example of a tag with the info status" status="info"
-          >Info <cds-badge status="info">1</cds-badge></cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a tag with the success status" status="success"
+        <cds-tag aria-label="Info 1 item" status="info">Info <cds-badge status="info">1</cds-badge></cds-tag>
+        <cds-tag aria-label="Success 2 items" status="success"
           >Success <cds-badge status="success">2</cds-badge></cds-tag
         >
-        <cds-tag aria-label="Clickable example of a tag with the warning status" status="warning"
-          >Warning <cds-badge status="warning">3</cds-badge>
-        </cds-tag>
-        <cds-tag aria-label="Clickable example of a tag with the danger status" status="danger"
-          >Danger <cds-badge status="danger">12</cds-badge></cds-tag
-        >
+        <cds-tag aria-label="Warning 3 items">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
+        <cds-tag aria-label="Danger 12 items" status="danger">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
-        <cds-tag aria-label="Clickable example of a default tag with a badge" color="gray"
-          >Default <cds-badge>A</cds-badge></cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a purple tag with a badge" color="purple"
-          >Purple <cds-badge>B</cds-badge></cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a blue tag with a badge" color="blue"
-          >Blue <cds-badge>C</cds-badge></cds-tag
-        >
-        <cds-tag aria-label="Clickable example of an orange tag with a badge" color="orange"
-          >Orange <cds-badge>D</cds-badge></cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a light-blue tag with a badge" color="light-blue"
-          >Light Blue <cds-badge>E</cds-badge></cds-tag
-        >
+        <cds-tag aria-label="Default with letter A" color="gray">Default <cds-badge>A</cds-badge></cds-tag>
+        <cds-tag aria-label="Purple with letter B" color="purple">Purple <cds-badge>B</cds-badge></cds-tag>
+        <cds-tag aria-label="Blue with letter C" color="blue">Blue <cds-badge>C</cds-badge></cds-tag>
+        <cds-tag aria-label="Orange with letter D" color="orange">Orange <cds-badge>D</cds-badge></cds-tag>
+        <cds-tag aria-label="Light blue with letter E" color="light-blue">Light Blue <cds-badge>E</cds-badge></cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
-        <cds-tag aria-label="Clickable example of a gray tag with an icon and a badge" color="gray"
+        <cds-tag aria-label="User image, default, with letter A" color="gray"
           ><cds-icon shape="user"></cds-icon>Default <cds-badge>A</cds-badge></cds-tag
         >
-        <cds-tag aria-label="Clickable example of a purple tag with an icon and a badge" color="purple"
-          ><cds-icon shape="user"></cds-icon>Purple</cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a blue tag with an icon and a badge" color="blue"
+        <cds-tag aria-label="User image, purple" color="purple"><cds-icon shape="user"></cds-icon>Purple</cds-tag>
+        <cds-tag aria-label="User image, blue, with letter B" color="blue"
           ><cds-icon shape="user"></cds-icon>Blue <cds-badge>B</cds-badge></cds-tag
         >
-        <cds-tag aria-label="Clickable example of an orange tag with an icon and a badge" color="orange"
-          ><cds-icon shape="user"></cds-icon>Orange</cds-tag
-        >
-        <cds-tag aria-label="Clickable example of a light-blue tag with an icon and a badge" color="light-blue"
+        <cds-tag aria-label="User image, orange" color="orange"><cds-icon shape="user"></cds-icon>Orange</cds-tag>
+        <cds-tag aria-label="User image, light blue, with letter C" color="light-blue"
           ><cds-icon shape="user"></cds-icon>Light Blue <cds-badge>C</cds-badge></cds-tag
         >
-        <cds-tag aria-label="Clickable example of a tag with an icon and a badge and a status of info" status="info"
+        <cds-tag aria-label="Info image, Info, 12,000 items" status="info"
           ><cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">12,000</cds-badge></cds-tag
         >
-        <cds-tag
-          aria-label="Clickable example of a tag with an icon and a badge and a status of success"
-          status="success"
+        <cds-tag aria-label="Info image, Success, 23 plus items" status="success"
           ><cds-icon shape="info-standard"></cds-icon>Success <cds-badge status="success">23+</cds-badge></cds-tag
         >
       </div>
@@ -160,21 +138,21 @@ export const clickable = () => {
 export const links = () => {
   return html`
     <div cds-layout="horizontal gap:sm p-b:lg">
-      <a href="javascript:void(0)" aria-label="example of a tag component using an anchor">
+      <a href="javascript:void(0)" aria-label="Link">
         <cds-tag status="info">link</cds-tag>
       </a>
 
-      <a href="javascript:void(0)" aria-label="example of a tag component using an anchor">
+      <a href="javascript:void(0)" aria-label="Link, 1 item">
         <cds-tag status="success">link <cds-badge status="info">1</cds-badge></cds-tag>
       </a>
 
-      <a href="javascript:void(0)" aria-label="example of a tag component using an anchor">
+      <a href="javascript:void(0)" aria-label="User image, link, 1 item">
         <cds-tag status="warning"
           ><cds-icon shape="user"></cds-icon> link <cds-badge status="info">1</cds-badge></cds-tag
         >
       </a>
 
-      <a href="javascript:void(0)" aria-label="example of a tag component using an anchor">
+      <a href="javascript:void(0)" aria-label="Link">
         <cds-tag status="danger">link</cds-tag>
       </a>
     </div>
@@ -189,20 +167,20 @@ export const links = () => {
 export const closable = () => {
   return html`
     <div>
-      <cds-tag aria-label="Closable example of a tag" color="gray" closable>Default</cds-tag>
-      <cds-tag aria-label="Closable example of a purple tag" color="purple" closable>Purple</cds-tag>
-      <cds-tag aria-label="Closable example of a blue tag" color="blue" closable>Blue</cds-tag>
-      <cds-tag aria-label="Closable example of an orange tag" color="orange" closable>Orange</cds-tag>
-      <cds-tag aria-label="Closable example of a light-blue tag" color="light-blue" closable>Light Blue</cds-tag>
+      <cds-tag aria-label="default" color="gray" closable>Default</cds-tag>
+      <cds-tag aria-label="purple" color="purple" closable>Purple</cds-tag>
+      <cds-tag aria-label="blue" color="blue" closable>Blue</cds-tag>
+      <cds-tag aria-label="orange" color="orange" closable>Orange</cds-tag>
+      <cds-tag aria-label="light blue" color="light-blue" closable>Light Blue</cds-tag>
     </div>
     <div>
-      <cds-tag aria-label="Closable example of a tag with an icon" color="gray" closable
+      <cds-tag aria-label="user image, default, close image" color="gray" closable
         ><cds-icon shape="user"></cds-icon>Default</cds-tag
       >
-      <cds-tag aria-label="Closable example of a blue tag with an icon" color="blue" closable
+      <cds-tag aria-label="user image, blue, close image" color="blue" closable
         ><cds-icon shape="user"></cds-icon>Blue</cds-tag
       >
-      <cds-tag aria-label="Closable example of an orange tag with an icon" color="orange" closable
+      <cds-tag aria-label="user image, orange, close image" color="orange" closable
         ><cds-icon shape="user"></cds-icon>Orange</cds-tag
       >
     </div>
@@ -215,42 +193,42 @@ export const tagsAndIcons = () => {
   return html`
     <div cds-layout="vertical gap:sm">
       <div cds-layout="horizontal gap:xs">
-        <cds-tag readonly>No Icon</cds-tag>
-        <cds-tag readonly><cds-icon shape="user"></cds-icon>No Badge</cds-tag>
-        <cds-tag readonly color="gray"
+        <cds-tag readonly aria-label="no icon">No Icon</cds-tag>
+        <cds-tag readonly aria-label="user image, no badge"><cds-icon shape="user"></cds-icon>No Badge</cds-tag>
+        <cds-tag readonly color="gray" aria-label="user image, default, 1 item"
           ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Default <cds-badge>1</cds-badge></cds-tag
         >
-        <cds-tag readonly color="purple"
+        <cds-tag readonly color="purple" aria-label="user image, purple, 2 items"
           ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Purple <cds-badge>2</cds-badge></cds-tag
         >
-        <cds-tag readonly color="blue"
+        <cds-tag readonly color="blue" aria-label="user image, blue, 3 items"
           ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Blue <cds-badge>3</cds-badge></cds-tag
         >
-        <cds-tag readonly color="orange"
+        <cds-tag readonly color="orange" aria-label="user image, orange, 12 items"
           ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Orange <cds-badge>12</cds-badge></cds-tag
         >
-        <cds-tag readonly color="light-blue"
+        <cds-tag readonly color="light-blue" aria-label="user image, light blue, 15 items"
           ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Light Blue <cds-badge>15</cds-badge></cds-tag
         >
       </div>
       <div cds-layout="horizontal gap:xs">
-        <cds-tag readonly status="info">No Icon</cds-tag>
-        <cds-tag readonly status="info"
+        <cds-tag readonly status="info" aria-label="no icon">No Icon</cds-tag>
+        <cds-tag readonly status="info" aria-label="info image, no badge"
           ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>No Badge</cds-tag
         >
-        <cds-tag readonly status="info"
+        <cds-tag readonly status="info" aria-label="info image, info, 1 item"
           ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Info
           <cds-badge status="info">1</cds-badge></cds-tag
         >
-        <cds-tag readonly status="success"
+        <cds-tag readonly status="success" aria-label="info image, success, 2 items"
           ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Success
           <cds-badge status="success">2</cds-badge></cds-tag
         >
-        <cds-tag readonly status="warning"
+        <cds-tag readonly status="warning" aria-label="info image, warning, 3 items"
           ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Warning
           <cds-badge status="warning">3</cds-badge>
         </cds-tag>
-        <cds-tag readonly status="danger"
+        <cds-tag readonly status="danger" aria-label="info image, danger, 12 items"
           ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Danger
           <cds-badge status="danger">12</cds-badge></cds-tag
         >

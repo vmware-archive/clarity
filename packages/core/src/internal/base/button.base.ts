@@ -31,6 +31,8 @@ export class CdsBaseButton extends LitElement {
 
   @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
 
+  @internalProperty({ type: Boolean, reflect: true }) protected active = false;
+
   @internalProperty({ type: String, reflect: true }) protected role: string | null = 'button';
 
   /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
@@ -108,6 +110,23 @@ export class CdsBaseButton extends LitElement {
     }
   }
 
+  /** This mimics the mouse-click visual behavior for keyboard only users and screen readers.
+   * Browsers do not apply the CSS psuedo-selector :active in those instances. So we need this
+   * for our :active styles to show.
+   *
+   * Make sure to update a component's CSS to account for the presence of the [active] attribute
+   * in all instance where :active is defined.
+   *
+   * @private
+   */
+  private showClick() {
+    this.active = true;
+    const clickTimer = setTimeout(() => {
+      this.active = false;
+      clearTimeout(clickTimer);
+    }, 300);
+  }
+
   /**
    * We have to append a hidden button outside the web component in the light DOM
    * This allows us to trigger native submit events within a form element.
@@ -122,8 +141,11 @@ export class CdsBaseButton extends LitElement {
     if (!this.readonly) {
       if (this.disabled) {
         stopEvent(event);
-      } else if (event.target === this && !event.defaultPrevented) {
-        this.hiddenButton.dispatchEvent(new MouseEvent('click', { relatedTarget: this, composed: true }));
+      } else {
+        this.showClick();
+        if (event.target === this && !event.defaultPrevented) {
+          this.hiddenButton.dispatchEvent(new MouseEvent('click', { relatedTarget: this, composed: true }));
+        }
       }
     }
   }

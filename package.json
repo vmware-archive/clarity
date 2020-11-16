@@ -92,8 +92,8 @@
     "website:functions": "netlify-lambda build scripts/netlify",
     "tool:audit-website": "yarn --cwd tools/audit-website run start",
     "tool:link-checker": "yarn --cwd tools/link-checker run start",
-    "eslint-rule:lint": "yarn --cwd packages/eslint-plugin-clarity-migration lint",
-    "eslint-rule:test": "yarn --cwd packages/eslint-plugin-clarity-migration test"
+    "eslint-rule:lint": "yarn --cwd packages/eslint-plugin-clarity-adoption lint",
+    "eslint-rule:test": "yarn --cwd packages/eslint-plugin-clarity-adoption test"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",

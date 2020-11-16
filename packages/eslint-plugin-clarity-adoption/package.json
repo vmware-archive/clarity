@@ -1,7 +1,7 @@
 {
-  "name": "@clr/eslint-plugin-clarity-migration",
+  "name": "@clr/eslint-plugin-clarity-adoption",
   "version": "0.0.0",
-  "description": "A set of ESLint rules for Clarity migration.",
+  "description": "A set of ESLint rules for Clarity Core adoption.",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "keywords": [

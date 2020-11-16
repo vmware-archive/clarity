@@ -1,4 +1,4 @@
-# Clarity Migration ESLint Plugin
+# Clarity Adoption ESLint Plugin
 
 # Testing the plugin in a local project
 
@@ -20,7 +20,7 @@ yarn link
 ```bash
 ng new linter-test-project
 cd linter-test-project
-yarn link @clr/eslint-plugin-clarity-migration
+yarn link @clr/eslint-plugin-clarity-adoption
 ```
 
 4. Install the other linter dependencies
@@ -40,15 +40,15 @@ yarn add -D @typescript-eslint/parser eslint
     "sourceType": "module",
     "ecmaVersion": 2015
   },
-  "plugins": ["@clr/clarity-migration"],
+  "plugins": ["@clr/clarity-adoption"],
   "rules": {
-    "@clr/clarity-migration/no-clr-button": "warn",
-    "@clr/clarity-migration/no-clr-alert": "warn"
+    "@clr/clarity-adoption/no-clr-button": "warn",
+    "@clr/clarity-adoption/no-clr-alert": "warn"
   },
   "overrides": [
     {
       "files": ["*.html"],
-      "parser": "@clr/eslint-plugin-clarity-migration/src/dist/eslint-html-parser"
+      "parser": "@clr/eslint-plugin-clarity-adoption/dist/src/html-parser"
     }
   ]
 }

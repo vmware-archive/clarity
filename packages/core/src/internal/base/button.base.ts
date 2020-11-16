@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 import { property, internalProperty } from '../decorators/property.js';
@@ -23,9 +23,12 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: String }) value: string;
 
-  @property({ type: String }) ariaDisabled: 'true' | 'false' = 'false';
-
   @property({ type: Boolean }) disabled = false;
+
+  @internalProperty({ type: String, attribute: 'aria-disabled', reflect: true }) protected ariaDisabled:
+    | 'true'
+    | 'false'
+    | null = 'false';
 
   @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
 
@@ -35,13 +38,7 @@ export class CdsBaseButton extends LitElement {
 
   @internalProperty({ type: String, reflect: true }) protected role: string | null = 'button';
 
-  /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
-  @internalProperty({ type: Boolean, reflect: true }) protected containsAnchor = false;
-
   @internalProperty({ type: Boolean, reflect: true }) protected hasFlexGapSupport: boolean = supportsFlexGap();
-
-  /** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
-  @querySlot('a') protected anchor: HTMLAnchorElement;
 
   @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
 
@@ -49,28 +46,8 @@ export class CdsBaseButton extends LitElement {
 
   @querySlot('cds-badge') protected badge: HTMLElement;
 
-  protected get hiddenButtonTemplate() {
-    return this.readonly
-      ? html``
-      : html`<button
-          aria-hidden="true"
-          ?disabled="${this.disabled}"
-          tabindex="-1"
-          style="display: none"
-          value="${ifDefined(this.value)}"
-          name="${ifDefined(this.name)}"
-          type="${ifDefined(this.type)}"
-        ></button>`;
-  }
-
-  @query('button') private templateButton: HTMLButtonElement;
-  private hiddenButton: HTMLButtonElement;
-
   protected render() {
-    return html`
-      <slot></slot>
-      ${this.hiddenButtonTemplate}
-    `;
+    return html` <slot></slot> `;
   }
 
   connectedCallback() {
@@ -80,34 +57,12 @@ export class CdsBaseButton extends LitElement {
 
   protected firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-    this.setupAnchorFocus();
     this.setupNativeButtonBehavior();
   }
 
   protected updated(props: Map<string, any>) {
     super.updated(props);
     this.updateButtonAttributes();
-
-    if (props.has('disabled')) {
-      const isDisabled = this.disabled;
-      if (isDisabled !== (this.ariaDisabled === 'true')) {
-        this.ariaDisabled = isDisabled ? 'true' : 'false';
-      }
-    }
-
-    if (props.has('ariaDisabled')) {
-      const isAriaDisabled = this.ariaDisabled === 'true';
-      if (this.disabled !== isAriaDisabled) {
-        this.disabled = isAriaDisabled ? true : false;
-      }
-    }
-  }
-
-  private setupAnchorFocus() {
-    if (this.anchor) {
-      this.anchor.addEventListener('focusin', () => (this.focused = true));
-      this.anchor.addEventListener('focusout', () => (this.focused = false));
-    }
   }
 
   /** This mimics the mouse-click visual behavior for keyboard only users and screen readers.
@@ -132,7 +87,6 @@ export class CdsBaseButton extends LitElement {
    * This allows us to trigger native submit events within a form element.
    */
   private setupNativeButtonBehavior() {
-    this.appendHiddenButton();
     this.addEventListener('click', this.triggerNativeButtonBehavior);
     this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
   }
@@ -141,26 +95,28 @@ export class CdsBaseButton extends LitElement {
     if (!this.readonly) {
       if (this.disabled) {
         stopEvent(event);
-      } else {
+      } else if (!event.defaultPrevented) {
+        const buttonTemplate = html`<button
+          class="cds-hidden-button"
+          aria-hidden="true"
+          ?disabled="${this.disabled}"
+          tabindex="-1"
+          style="display: none !important"
+          value="${ifDefined(this.value)}"
+          name="${ifDefined(this.name)}"
+          type="${ifDefined(this.type)}"
+        ></button>`;
+
         this.showClick();
-        if (event.target === this && !event.defaultPrevented) {
-          this.hiddenButton.dispatchEvent(new MouseEvent('click', { relatedTarget: this, composed: true }));
-        }
+        this.appendChild(buttonTemplate.getTemplateElement().content.cloneNode(true) as HTMLElement);
+        const button = this.querySelector('.cds-hidden-button') as HTMLButtonElement;
+        button.dispatchEvent(new MouseEvent('click', { relatedTarget: this, composed: true }));
+        button.remove();
       }
     }
   }
 
-  private appendHiddenButton() {
-    if (!this.hiddenButton && this.templateButton) {
-      this.hiddenButton = this.appendChild(this.templateButton);
-    }
-  }
-
   private emulateKeyBoardEventBehavior(evt: KeyboardEvent) {
-    if (this.anchor) {
-      return;
-    }
-
     onAnyKey(['enter', 'space'], evt, () => {
       this.click();
       stopEvent(evt);
@@ -168,7 +124,6 @@ export class CdsBaseButton extends LitElement {
   }
 
   private updateButtonAttributes() {
-    this.containsAnchor = !!this.anchor;
     this.isAnchor = this.parentElement?.tagName === 'A';
 
     if (this.isAnchor && this.parentElement) {
@@ -176,13 +131,15 @@ export class CdsBaseButton extends LitElement {
       this.parentElement.style.textDecoration = 'none'; // fixes issue when style is applied to text node
     }
 
-    this.readonly = this.readonly || this.containsAnchor || this.isAnchor;
+    this.readonly = this.readonly || this.isAnchor;
     this.role = this.readonly ? null : 'button';
 
     if (this.readonly) {
       this.tabIndexAttr = null;
+      this.ariaDisabled = null;
     } else {
       this.tabIndexAttr = this.disabled ? -1 : 0;
+      this.ariaDisabled = this.disabled ? 'true' : 'false';
     }
   }
 }

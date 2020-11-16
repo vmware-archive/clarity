@@ -52,7 +52,6 @@ export class CdsControlAction extends CdsBaseButton {
       <div class="private-host">
         <slot></slot>
       </div>
-      ${this.hiddenButtonTemplate}
     `;
   }
 

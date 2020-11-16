@@ -308,7 +308,7 @@ describe('Alert element – ', () => {
         done();
       });
 
-      const button = getCloseButton().querySelector('button');
+      const button = getCloseButton();
       expect(button).toBeDefined();
       button.click();
     });

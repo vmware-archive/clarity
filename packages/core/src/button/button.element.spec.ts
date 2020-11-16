@@ -38,14 +38,6 @@ describe('button element', () => {
   });
 
   describe('Button Behaviors', () => {
-    it('should render a hidden button', async () => {
-      await componentIsStable(component);
-      const button = component.querySelector('button');
-      expect(button).toBeDefined();
-      expect(button.hasAttribute('aria-hidden')).toBe(true);
-      expect(button.getAttribute('aria-hidden')).toBe('true');
-    });
-
     it('should have a tab index of 0 to be able to focus', async () => {
       expect(component.getAttribute('tabindex')).toBe('0');
     });
@@ -105,7 +97,7 @@ describe('button element', () => {
     });
 
     it('should not interact with form elements if disabled (2)', async () => {
-      component.ariaDisabled = 'true';
+      component.disabled = true;
       await componentIsStable(component);
       const o = {
         f: () => {
@@ -130,9 +122,9 @@ describe('button element', () => {
       await componentIsStable(component);
       expect(component.getAttribute('aria-disabled')).toBe('false');
 
-      component.ariaDisabled = 'true';
+      component.disabled = true;
       await componentIsStable(component);
-      expect(component.getAttribute('disabled')).toBe('');
+      expect(component.getAttribute('aria-disabled')).toBe('true');
     });
   });
 
@@ -222,23 +214,14 @@ describe('button element', () => {
 
   describe('Button link', () => {
     let testLinkElement: HTMLElement;
-    let componentLink: CdsButton;
-    let componentButton: CdsButton;
     let anchor: HTMLAnchorElement;
-    let anchorButton: HTMLAnchorElement;
+    let anchorButton: HTMLButtonElement;
 
     beforeEach(async () => {
-      testLinkElement = await createTestElement(html`
-        <cds-button><a href="about">About</a></cds-button>
-        <!-- deprecated 4.0 in favor of wrapping -->
-        <cds-button>About</cds-button>
-        <a href="about"><cds-button>About</cds-button></a>
-      `);
+      testLinkElement = await createTestElement(html` <a href="about"><cds-button>About</cds-button></a> `);
 
-      componentLink = testLinkElement.querySelectorAll<CdsButton>('cds-button')[0];
-      componentButton = testLinkElement.querySelectorAll<CdsButton>('cds-button')[1];
-      anchor = componentLink.querySelector<HTMLAnchorElement>('a');
-      anchorButton = testLinkElement.querySelectorAll<HTMLAnchorElement>('a')[1];
+      anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
+      anchorButton = testLinkElement.querySelector<HTMLButtonElement>('cds-button');
     });
 
     afterEach(() => {
@@ -246,53 +229,29 @@ describe('button element', () => {
     });
 
     it('should render a link properly', async () => {
-      await componentIsStable(componentLink);
-      expect(componentLink).toBeTruthy();
-      expect(componentLink.innerText).toBe('ABOUT');
-
-      expect(anchorButton.style.lineHeight).toBe('0');
-      expect(anchorButton.style.textDecoration).toBe('none');
+      await componentIsStable(anchorButton);
+      expect(anchor.style.lineHeight).toBe('0');
+      expect(anchor.style.textDecoration).toBe('none');
     });
 
     it('should set button to be readonly', async () => {
-      await componentIsStable(componentLink);
-      expect(componentLink.readonly).toBe(true);
-      expect(anchorButton.querySelector('cds-button').readonly).toBe(true);
-    });
-
-    it('should apply host focus styles when link is in focus', async () => {
-      anchor.dispatchEvent(new Event('focusin'));
-      await componentIsStable(componentLink);
-      expect(componentLink.getAttribute('focused')).toBe('');
-
-      anchor.dispatchEvent(new Event('focusout'));
-      await componentIsStable(componentLink);
-      expect(componentLink.getAttribute('focused')).toBe(null);
+      await componentIsStable(anchorButton);
+      expect(anchor.querySelector('cds-button').readonly).toBe(true);
     });
 
     it('should not trigger button click if link', async () => {
-      await componentIsStable(componentLink);
+      await componentIsStable(anchorButton);
       const o = {
         f: () => {
           // Do nothing
         },
       };
       spyOn(o, 'f');
-      componentLink.addEventListener('click', o.f);
-
-      testLinkElement.focus();
-      testLinkElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+      anchorButton.addEventListener('click', o.f);
+      anchor.focus();
+      anchor.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
       expect(o.f).not.toHaveBeenCalled();
-    });
-
-    it('should render link same size as regular button', async () => {
-      await componentIsStable(componentLink);
-      await componentIsStable(componentButton);
-      const borderWidth = 2; // 1px on each side
-      expect(componentLink.querySelector('a').getBoundingClientRect().width).toBe(
-        componentButton.getBoundingClientRect().width - borderWidth
-      );
     });
   });
 });

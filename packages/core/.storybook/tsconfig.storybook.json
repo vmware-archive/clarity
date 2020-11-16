@@ -10,11 +10,6 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "baseUrl": "../",
-    "paths": {
-      "@clr/core": ["./dist/core"],
-      "@clr/core/*": ["./dist/core/*"],
-      "@clr/core/*/register": ["./dist/core/*/register"]
-    }
+    "baseUrl": "../"
   }
 }

@@ -4963,12 +4963,6 @@
       "composite": true,
       "baseUrl": "./",
       "rootDir": "./src",
-      "paths": {
-        "@clr/core": [
-          "../../dist/core",
-          "../../dist/core/*"
-        ]
-      },
       "traceResolution": true,
       "configFilePath": "./tsconfig.json"
     },

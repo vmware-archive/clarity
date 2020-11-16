@@ -17,9 +17,11 @@
     "clean": "del ./dist .parcel-cache"
   },
   "dependencies": {
-    "@clr/core": "./packages/core/dist/core",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "peerDependencies": {
+    "@clr/core": "latest"
   },
   "devDependencies": {
     "@babel/core": "7.10.2",

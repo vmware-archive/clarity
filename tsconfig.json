@@ -25,12 +25,6 @@
     "target": "es2015",
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
-    "paths": {
-      "@clr/angular": ["packages/angular/projects/clr-angular/src"],
-      "@clr/core/*": ["packages/core/src", "packages/core/src/*"],
-      "@clr/icons": ["packages/icons/src"],
-      "@clr/icons/shapes/*": ["packages/icons/src/shapes", "packages/icons/src/shapes/*"]
-    },
     "lib": ["es2018", "dom"]
   },
   "exclude": ["**/node_modules/**", "dist/**"],

@@ -38,7 +38,6 @@ export class CdsInternalCloseButton extends CdsBaseButton {
     return html`
       <div class="private-host">
         <cds-icon shape="${this.iconShape}" size="${this.iconSize}"></cds-icon>
-        ${this.hiddenButtonTemplate}
       </div>
     `;
   }

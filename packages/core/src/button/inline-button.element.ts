@@ -40,7 +40,7 @@ export class CdsInlineButton extends CdsBaseButton {
   }
 
   render() {
-    return html`<span class="private-host"><slot></slot>${this.hiddenButtonTemplate}</span>`;
+    return html`<span class="private-host"><slot></slot></span>`;
   }
 
   static get styles() {

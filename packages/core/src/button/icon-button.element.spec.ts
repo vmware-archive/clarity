@@ -7,7 +7,6 @@
 import { html } from 'lit-html';
 import '@clr/core/button/register.js';
 import '@clr/core/icon/register.js';
-import { CdsIcon } from '@clr/core/icon';
 import { CdsIconButton, ClrLoadingState } from '@clr/core/button';
 import { componentIsStable, createTestElement, removeTestElement } from '@clr/core/test/utils';
 
@@ -89,36 +88,5 @@ describe('Icon button element – ', () => {
       await componentIsStable(component);
       expect(component.getAttribute('role')).toBe('button');
     });
-  });
-});
-
-describe('Anchor Tags in Buttons: ', () => {
-  let testElement: HTMLElement;
-  let component: CdsIconButton;
-  let anchor: HTMLElement;
-  let icon: CdsIcon;
-
-  beforeEach(async () => {
-    testElement = await createTestElement(html`
-      <form>
-        <cds-icon-button
-          ><a href="javascript:void(0)"><cds-icon></cds-icon></a
-        ></cds-icon-button>
-      </form>
-    `);
-
-    component = testElement.querySelector<CdsIconButton>('cds-icon-button');
-    anchor = component.querySelector('a');
-    icon = component.querySelector('cds-icon');
-  });
-
-  afterEach(() => {
-    removeTestElement(testElement);
-  });
-
-  it('should set anchored icon class', async () => {
-    expect(anchor).toBeDefined();
-    expect(icon).toBeDefined();
-    expect(icon.classList.contains('anchored-icon')).toBe(true);
   });
 });

@@ -274,7 +274,3 @@ svg {
 :host([badge='inherit-triangle'][inverse]) {
   --badge-color: inherit;
 }
-
-:host(.anchored-icon) {
-  --color: inherit;
-}

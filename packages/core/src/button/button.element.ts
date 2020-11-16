@@ -138,7 +138,7 @@ export class CdsButton extends CdsBaseButton {
         ${loadingState === ClrLoadingState.LOADING ? iconSpinner(this.size) : ''}
         ${loadingState === ClrLoadingState.DEFAULT
           ? html`<slot @slotchange=${() => spanWrapper(this.childNodes)}></slot>`
-          : ''}${this.hiddenButtonTemplate}
+          : ''}
       </div>
     </div>`;
   }

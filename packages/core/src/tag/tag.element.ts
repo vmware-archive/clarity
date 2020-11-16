@@ -87,7 +87,6 @@ export class CdsTag extends CdsBaseButton {
           : html`<span class="tag-badge empty"></span>`}
         ${this.closable ? html`<span class="tag-close-icon"><cds-icon shape="times"></cds-icon></span>` : html``}
       </div>
-      ${this.hiddenButtonTemplate}
     `;
   }
 

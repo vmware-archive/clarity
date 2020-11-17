@@ -9,8 +9,8 @@
     "url": "git@github.com:vmware/clarity.git"
   },
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
     "@clr/ui": "@VERSION"
   },
   "author": "Clarity Design System",

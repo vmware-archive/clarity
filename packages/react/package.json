@@ -4,9 +4,10 @@
   "scripts": {
     "start": "npm-run-all core:build dev:start",
     "dev:start": "yarn run clean && parcel index.html --cache-dir=./.parcel-cache",
-    "build": "npm-run-all -s build:ts build:package build:copy",
-    "build:copy": "cpy './react' '../../../dist' --cwd=./dist --parents",
-    "build:package": "cpy '**/package.json' '../dist/react/' --cwd=./src --parents && cpy ./package.json ./dist/react/ && cpy ./README.md ./dist/react/ && node ./package.js",
+    "build": "npm-run-all -s build:ts build:package build:update",
+    "build:preinstall": "mkdir -p ../../dist/react/ && cp ./package.json ../../dist/react/",
+    "build:update": "node ../../scripts/update-local-packages.js /packages/react/dist/react/package.json",
+    "build:package": "node ./package.js",
     "build:ts": "tsc --b ./tsconfig.project.json --force",
     "core:build": "yarn --cwd ../core run build",
     "lint": "eslint \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
@@ -17,9 +18,11 @@
     "clean": "del ./dist .parcel-cache"
   },
   "dependencies": {
-    "@clr/core": "./packages/core/dist/core",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "peerDependencies": {
+    "@clr/core": "./dist/core"
   },
   "devDependencies": {
     "@babel/core": "7.10.2",

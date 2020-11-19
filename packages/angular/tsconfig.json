@@ -19,10 +19,8 @@
     "lib": ["es2018", "dom"],
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@clr/angular": ["./projects/clr-angular/src/index.ts"],
-      "@clr/angular/*": ["./projects/clr-angular/src/*"],
-      "@clr/icons": ["../../dist/clr-icons"],
-      "@clr/icons/shapes/*": ["../../dist/clr-icons/shapes/*"]
+      "@clr/angular": ["dist/clr-angular"],
+      "@clr/angular/*": ["dist/clr-angular/*"]
     }
   },
   "angularCompilerOptions": {

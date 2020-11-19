@@ -7,7 +7,7 @@
 import '@clr/icons';
 import { addDecorator, addParameters } from '@storybook/angular';
 import { withCssResources } from '@storybook/addon-cssresources';
-import darkTheme from '../dist/clr-ui/clr-ui-dark.min.css';
+import darkTheme from '@clr/ui/clr-ui-dark.min.css';
 import '!style-loader!css-loader!sass-loader!../src/styles.scss';
 
 addDecorator(withCssResources); // Not sure why this is still needed. I thought SB6 got rid of need for decorators.

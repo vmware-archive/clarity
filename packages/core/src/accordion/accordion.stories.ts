@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import '@clr/core/accordion/register.js';
+import { CdsAccordionPanel } from '@clr/core/accordion';
 import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@clr/core/internal';
 import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';

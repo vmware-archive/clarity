@@ -39,7 +39,7 @@ module.exports = {
     'shapes/text-edit-shapes.min': './src/shapes/text-edit-shapes.ts',
   },
   output: {
-    path: path.resolve(__dirname, './../../dist/clr-icons'),
+    path: path.resolve(__dirname, './dist/clr-icons'),
     filename: '[name].js',
     libraryTarget: 'umd',
     globalObject: 'this',

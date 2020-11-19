@@ -65,12 +65,12 @@ export const Basic = () => {
       validateDemo: () => {
         {
           // submitBtnState = ClrLoadingState.LOADING;
-          setTimeout(() => (this.submitBtnState = ClrLoadingState.DEFAULT), 1500);
+          setTimeout(() => ((this as any).submitBtnState = ClrLoadingState.DEFAULT), 1500);
         }
       },
       submitDemo: () => {
         // validateBtnState = ClrLoadingState.LOADING;
-        setTimeout(() => (this.validateBtnState = ClrLoadingState.SUCCESS), 1500);
+        setTimeout(() => ((this as any).validateBtnState = ClrLoadingState.SUCCESS), 1500);
       },
     },
   };

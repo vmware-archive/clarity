@@ -1,15 +1,7 @@
 {
   "extends": "../projects/dev/tsconfig.app.json",
   "compilerOptions": {
-    "types": ["node"],
-    "paths": {
-      "@clr/core": ["./dist/core"],
-      "@clr/core/*": ["./dist/core/*"],
-      "@clr/icons": ["./dist/clr-icons"],
-      "@clr/icons/*": ["./dist/clr-icons/*"],
-      "@clr/angular": ["./dist/clr-angular"],
-      "@clr/angular/*": ["./dist/clr-angular/*"]
-    }
+    "types": ["node"]
   },
   "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../projects/**/*.spec.ts"],
   "include": ["../src/stories/**/*"],

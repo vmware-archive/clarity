@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@clr/city": "^1.1.0",
-    "@clr/core": "./packages/core/dist/core",
+    "@clr/core": "./dist/core",
     "core-js": "^3.6.4",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.11"

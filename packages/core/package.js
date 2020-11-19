@@ -78,26 +78,7 @@ function generateAPIMetaData() {
 }
 
 function distributeBuild() {
-  return Promise.all([
-    // make copy into root dist for publishing
-    cpy(['./core'], '../../../dist', { cwd: './dist', parents: true }),
-
-    // copy latest for react wrapper dev app
-    cpy(['./core'], '../../react/node_modules/@clr', { cwd: './dist', parents: true }),
-
-    // copy latest for demo apps (many tools don't support symlinks so this is a workaround of sorts)
-    ...[
-      'core-angular-cli',
-      'core-angular-js',
-      'core-angular-universal',
-      'core-create-react-app',
-      'core-ie',
-      'core-parcel-js',
-      'core-rollup-js',
-      'core-snowpack',
-      'core-vue-cli',
-    ].map(app => cpy(['./core'], `../../../apps/${app}/node_modules/@clr`, { cwd: './dist', parents: true })),
-  ]);
+  return cpy(['./core'], '../../../dist', { cwd: './dist', parents: true });
 }
 
 (async () => {

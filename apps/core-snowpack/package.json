@@ -9,7 +9,7 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "@clr/city": "^1.1.0",
-    "@clr/core": "./packages/core/dist/core"
+    "@clr/core": "./dist/core"
   },
   "devDependencies": {
     "snowpack": "^2.7.6"

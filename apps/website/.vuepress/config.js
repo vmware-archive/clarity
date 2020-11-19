@@ -102,46 +102,5 @@ module.exports = {
         changeOrigin: true,
       },
     },
-  },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        // Note: paths to dist/core/register.js are from website root, not .vuepress/register.js
-        // Mono repo constraints mak us reference these assets that aren't installed directly in project node_modules
-        '@clr/core': path.resolve('../../dist/core'),
-        '@clr/core/alert': path.resolve('../../dist/core/alert'),
-        '@clr/core/badge': path.resolve('../../dist/core/badge'),
-        '@clr/core/button': path.resolve('../../dist/core/button'),
-        '@clr/core/checkbox': path.resolve('../../dist/core/checkbox'),
-        '@clr/core/datalist': path.resolve('../../dist/core/datalist'),
-        '@clr/core/date': path.resolve('../../dist/core/date'),
-        '@clr/core/file': path.resolve('../../dist/core/file'),
-        '@clr/core/forms': path.resolve('../../dist/core/forms'),
-        '@clr/core/icon': path.resolve('../../dist/core/icon'),
-        '@clr/core/input': path.resolve('../../dist/core/input'),
-        '@clr/core/modal': path.resolve('../../dist/core/modal'),
-        '@clr/core/password': path.resolve('../../dist/core/password'),
-        '@clr/core/radio': path.resolve('../../dist/core/radio'),
-        '@clr/core/range': path.resolve('../../dist/core/range'),
-        '@clr/core/search': path.resolve('../../dist/core/search'),
-        '@clr/core/select': path.resolve('../../dist/core/select'),
-        '@clr/core/tag': path.resolve('../../dist/core/tag'),
-        '@clr/core/textarea': path.resolve('../../dist/core/textarea'),
-        '@clr/core/time': path.resolve('../../dist/core/time'),
-        '@clr/core/toggle': path.resolve('../../dist/core/toggle'),
-        // @TODO Would like to be able to remove these
-        'ramda': path.resolve('../../packages/core/node_modules/ramda'),
-        'ramda/es/anyPass': path.resolve('../../packages/core/node_modules/ramda/es/anyPass.js'),
-        'ramda/es/equals': path.resolve('../../packages/core/node_modules/ramda/es/equals.js'),
-        'ramda/es/isNil': path.resolve('../../packages/core/node_modules/ramda/es/isNil.js'),
-        'ramda/es/includes': path.resolve('../../packages/core/node_modules/ramda/es/includes.js'),
-        'ramda/es/curryN': path.resolve('../../packages/core/node_modules/ramda/es/curryN.js'),
-        'ramda/es/path': path.resolve('../../packages/core/node_modules/ramda/es/path.js'),
-        'ramda/es/has': path.resolve('../../packages/core/node_modules/ramda/es/has.js'),
-        'ramda/es/is': path.resolve('../../packages/core/node_modules/ramda/es/is.js'),
-        'ramda/es/isEmpty': path.resolve('../../packages/core/node_modules/ramda/es/isEmpty.js'),
-        'ramda/es/without': path.resolve('../../packages/core/node_modules/ramda/es/without.js'),
-      },
-    },
-  },
+  }
 };

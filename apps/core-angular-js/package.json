@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@clr/city": "^1.1.0",
-    "@clr/core": "./packages/core/dist/core",
+    "@clr/core": "./dist/core",
     "angular": "^1.8.0",
     "normalize.css": "^8.0.1"
   },

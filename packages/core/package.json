@@ -12,7 +12,8 @@
     "test:unit": "tsc --b ./tsconfig.spec.json --force && karma start ./karma.conf.js && yarn run build:package",
     "test:performance": "webpack --config ./test-bundles/webpack.config.js && bundlesize --config ./test-bundles/bundlesize.json",
     "test:bundles": "source-map-explorer dist/test-bundles/webpack.bundle.js",
-    "build": "npm-run-all -s build:tokens build:sass build:ts build:package",
+    "build": "npm-run-all -s build:tokens build:sass build:ts build:package build:distribute",
+    "build:distribute": "cd ../../scripts/ && node ./package-distribute.js @clr/core",
     "build:watch": "npm-run-all -p build:sass:watch build:ts:watch",
     "build:package": "node ./package-css.js && node ./package.js",
     "build:ts": "tsc --b ./tsconfig.project.json --force",
@@ -21,7 +22,8 @@
     "build:sass": "npm-run-all 'build:sass:modules' -p 'build:sass:components'",
     "build:sass:watch": "npm-run-all 'build:sass' -p 'build:sass:components -- -w' 'build:sass:modules -- --watch' & chokidar './dist/core/**/*.css' -c 'node ./package-css.js' -i './dist/core/**/*.min.css'",
     "build:sass:modules": "sass --no-source-map ./src/styles:./dist/core/styles ./src/styles/global.scss:./dist/core/global.css ./src/list:./dist/core/list",
-    "build:sass:components": "sass-render --q --suffix '.css.ts' -t ./sass-template.js './**/*.element.scss' './**/*.global.scss'"
+    "build:sass:components": "sass-render --q --suffix '.css.ts' -t ./sass-template.js './**/*.element.scss' './**/*.global.scss'",
+    "build:preinstall": "mkdir -p ../../dist/core/ && cp ./package.json ../../dist/core/"
   },
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",

@@ -3323,7 +3323,7 @@
   resolved "https://registry.yarnpkg.com/@clr/city/-/city-1.1.0.tgz#4a444cd12c626d66ffadab27e9d09bb3c8eca352"
   integrity sha512-R+C4uywmXoTD01LINOt3O0cBRviQdbAVNxdVvOyuO3+rM9bvFroF7UZY0R1ue/xvKXlqJrEkNKZQODeKjzaAhA==
 
-"@clr/core@./packages/core/dist/core":
+"@clr/core@./dist/core":
   version "4.0.0"
   dependencies:
     "@types/resize-observer-browser" "^0.1.3"
@@ -3335,7 +3335,7 @@
     "@clr/city" "^1.1.0"
     normalize.css "^8.0.1"
 
-"@clr/react@./packages/react/dist/react":
+"@clr/react@./dist/react":
   version "4.0.0"
   dependencies:
     react "^16.13.1"

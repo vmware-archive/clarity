@@ -126,7 +126,11 @@ export class ClrOptions<T> implements AfterViewInit, LoadingListener, OnDestroy 
 
     this.subscriptions.push(
       fromEvent(this.document, 'scroll', { capture: true }).subscribe(event => {
-        if (this.toggleService.open && (event as Event).target !== this.el.nativeElement) {
+        if (
+          this.toggleService.open &&
+          (event as Event).target !== this.el.nativeElement &&
+          (event as Event).target !== this.focusHandler.textInput
+        ) {
           this.toggleService.open = false;
         }
       })

@@ -113,7 +113,11 @@ export class ComboboxFocusHandler<T> {
       switch (key) {
         case KeyCodes.Enter:
           if (this.toggleService.open && this.pseudoFocus.model) {
-            this.selectionService.select(this.pseudoFocus.model.value);
+            if (this.selectionService.multiselectable) {
+              this.selectionService.toggle(this.pseudoFocus.model.value);
+            } else {
+              this.selectionService.select(this.pseudoFocus.model.value);
+            }
             preventDefault = true;
           }
           break;
@@ -137,7 +141,8 @@ export class ComboboxFocusHandler<T> {
           // Any other keypress
           if (
             event.key !== KeyCodes.Tab &&
-            !(this.selectionService.multiselectable && event.key === KeyCodes.Backspace)
+            !(this.selectionService.multiselectable && event.key === KeyCodes.Backspace) &&
+            !this.toggleService.open
           ) {
             this.toggleService.open = true;
           }

@@ -252,13 +252,10 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   private initializeSubscriptions(): void {
     this.subscriptions.push(
       this.optionSelectionService.selectionChanged.subscribe((newSelection: ComboboxModel<T>) => {
-        if (!this.multiSelect) {
-          this.searchText = this.getDisplayNames(newSelection.model)[0];
-          if (this.searchText) {
-            this.optionSelectionService.currentInput = this.searchText;
-          }
+        this.updateInputValue(newSelection);
+        if (!this.multiSelect && newSelection && !newSelection.isEmpty()) {
+          this.toggleService.open = false;
         }
-        this.toggleService.open = false;
 
         this.updateControlValue();
         if (this.control && this.control.control) {
@@ -311,6 +308,15 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     this.focusHandler.focusFirstActive();
   }
 
+  private updateInputValue(model: ComboboxModel<T>) {
+    if (!this.multiSelect) {
+      this.searchText = model.model ? this.getDisplayNames(model.model)[0] : '';
+      if (this.searchText) {
+        this.optionSelectionService.currentInput = this.searchText;
+      }
+    }
+  }
+
   private updateControlValue() {
     if (this.control && this.control.control) {
       this.control.control.setValue(this.optionSelectionService.selectionModel.model);
@@ -319,7 +325,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
 
   // ControlValueAccessor implementation methods
   writeValue(value: T | T[]): void {
-    this.optionSelectionService.setSelectionValue(value);
+    this.optionSelectionService.selectionModel.model = value;
+    this.updateInputValue(this.optionSelectionService.selectionModel);
   }
 
   registerOnChange(onChange: any): void {
@@ -358,6 +365,11 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   // Lifecycle methods
   ngAfterContentInit() {
     this.initializeSubscriptions();
+
+    // Initialize with preselected value
+    if (!this.optionSelectionService.selectionModel.isEmpty()) {
+      this.updateInputValue(this.optionSelectionService.selectionModel);
+    }
   }
 
   ngAfterViewInit() {

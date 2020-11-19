@@ -70,16 +70,13 @@ export class ClrOption<T> implements OnInit {
     }
   }
 
-  /**
-   * This behavior is only for single select. Multi select will keep the menu open on option click.
-   * We will handle that later.
-   */
   @HostListener('click')
   onClick() {
-    // We call render here without checking the value because even if the user hasn't
-    // assigned a value to the option, we should at least display the selection on the input.
-    // This is what the native select does.
-    this.optionSelectionService.select(this.value);
+    if (this.optionSelectionService.multiselectable) {
+      this.optionSelectionService.toggle(this.value);
+    } else {
+      this.optionSelectionService.select(this.value);
+    }
   }
 
   @HostBinding('class.clr-focus')

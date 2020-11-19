@@ -3,13 +3,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 const del = require('del');
+const cpy = require('cpy');
 
-// Temporary script needed to remove cache files and
-// files Angular CLI leaves in referenced dependencies
-// https://github.com/ng-packagr/ng-packagr/pull/1372
-// https://github.com/ng-packagr/ng-packagr/issues/1318
-// https://github.com/angular/angular/issues/33395
-// https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm/
 const read = dir =>
   fs
     .readdirSync(dir)
@@ -21,31 +16,43 @@ const read = dir =>
       []
     );
 
-del.sync(
-  [
-    './dist/react/**/*.{tsbuildinfo,test.js,test.js.map,test.d.ts,.snap}',
-    './dist/react/*.{tsbuildinfo,test.js,test.js.map,test.d.ts,.snap}',
-  ],
-  { force: true }
-);
+function removeCacheFiles() {
+  del.sync(
+    [
+      './dist/react/**/*.{tsbuildinfo,test.js,test.js.map,test.d.ts,.snap}',
+      './dist/react/*.{tsbuildinfo,test.js,test.js.map,test.d.ts,.snap}',
+    ],
+    { force: true }
+  );
+}
 
-read('./dist/react')
-  .filter(f => f.includes('package.json'))
-  .forEach(file => {
-    const packageFile = fs.readJsonSync(file);
-    const metaData = {
-      main: './index.js',
-      module: './index.js',
-      typings: './index.d.ts',
-      type: 'module',
-    };
+function copyAssets() {
+  return Promise.all([
+    cpy(['./**/package.json'], './../dist/react/', { cwd: './src', parents: true }),
+    cpy(['./package.json'], './dist/react/', { cwd: './', parents: true }),
+    cpy(['./README.md'], './dist/react/', { cwd: './', parents: true }),
+  ]);
+}
 
-    if (file === 'dist/react/package.json') {
+function cleanPackageFiles() {
+  read('./dist/react')
+    .filter(f => f.includes('package.json'))
+    .forEach(file => {
+      const packageFile = fs.readJsonSync(file);
       ['alias', 'browserslist', 'scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
-      // move @clr/core from dependencies to peerDependencies and assign version number that matches the package.json
-      packageFile.peerDependencies = { '@clr/core': `^${packageFile.version}` };
-      delete packageFile.dependencies['@clr/core'];
-    }
 
-    fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
-  });
+      const metaData = {
+        main: './index.js',
+        module: './index.js',
+        typings: './index.d.ts',
+        type: 'module',
+      };
+      fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
+    });
+}
+
+(async () => {
+  await copyAssets();
+  removeCacheFiles();
+  cleanPackageFiles();
+})();

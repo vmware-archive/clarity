@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-@import '../../../../../dist/clr-ui/clr-ui.min.css';
-@import '../../../../../dist/core/global.min.css';
-@import '../../../../../dist/core/styles/module.shims.min.css';
+@import '~@clr/ui/clr-ui.min.css';
+@import '~@clr/core/global.min.css';
+@import '~@clr/core/styles/module.shims.min.css';
 
 @import './a11y-light.scss';
 @import './containers';

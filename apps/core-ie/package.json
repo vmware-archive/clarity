@@ -7,7 +7,7 @@
     "start": "lite-server"
   },
   "dependencies": {
-    "@clr/core": "./packages/core/dist/core"
+    "@clr/core": "./dist/core"
   },
   "devDependencies": { }
 }

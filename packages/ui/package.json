@@ -1,16 +1,22 @@
 {
-  "name": "ui",
+  "name": "@clr/ui",
   "private": true,
   "version": "4.0.0",
   "scripts": {
-    "build": "npm-run-all build:css build:prefix build:src build:optimize build:package",
-    "build:css": "sass --precision=8 src/main.scss ../../dist/clr-ui/clr-ui.css; sass --precision=8 src/dark-theme.scss ../../dist/clr-ui/clr-ui-dark.css",
-    "build:prefix": "postcss ../../dist/clr-ui/clr-ui.css -o ../../dist/clr-ui/clr-ui.css; postcss ../../dist/clr-ui/clr-ui-dark.css -o ../../dist/clr-ui/clr-ui-dark.css",
-    "build:src": "cpy --parents --cwd='../angular/projects/clr-angular/src/' '**/*.scss' ../../../../../dist/clr-ui/src/",
-    "build:optimize": "csso -i ../../dist/clr-ui/clr-ui.css -o ../../dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ../../dist/clr-ui/clr-ui-dark.css -o ../../dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
-    "build:package": "cpy npm.json README.md ../../dist/clr-ui/; mv ../../dist/clr-ui/npm.json ../../dist/clr-ui/package.json; replace '@VERSION' $npm_package_version ../../dist/clr-ui/package.json; "
+    "build": "npm-run-all build:css build:prefix build:optimize build:package build:update",
+    "build:watch": "chokidar \"src/**/*.scss\" \"../angular/projects/clr-angular/src/**/*.scss\" -c \"yarn run build\"",
+    "build:preinstall": "mkdir -p ../../dist/clr-ui/ && cp ./package.json ../../dist/clr-ui/",
+    "build:update": "node ../../scripts/update-local-packages.js /packages/ui/dist/clr-ui/package.json",
+    "build:css": "sass --precision=8 src/main.scss ./dist/clr-ui/clr-ui.css; sass --precision=8 src/dark-theme.scss ./dist/clr-ui/clr-ui-dark.css",
+    "build:prefix": "postcss ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.css; postcss ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.css",
+    "build:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
+    "build:package": "cpy npm.json README.md ./dist/clr-ui/; mv ./dist/clr-ui/npm.json ./dist/clr-ui/package.json; replace '@VERSION' $npm_package_version ./dist/clr-ui/package.json; "
+  },
+  "peerDependencies": {
+    "@clr/icons": "./dist/icons"
   },
   "devDependencies": {
+    "chokidar-cli": "2.1.0",
     "cpy-cli": "^3.1.0",
     "csso-cli": "^3.0.0",
     "npm-run-all": "^4.1.5",

@@ -4,14 +4,13 @@
 *.element.css.ts
 *.global.css.ts
 packages/core/src/styles/tokens/generated
-packages/core/dist
 packages/react/.cache
 packages/react/coverage
-packages/react/dist
 .parcel-cache
 
 # compiled output
 /dist
+/packages/**/dist
 /tmp
 /out-tsc
 /.ng_build

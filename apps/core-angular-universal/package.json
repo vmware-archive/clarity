@@ -25,7 +25,7 @@
     "@angular/platform-server": "~10.0.3",
     "@angular/router": "~10.0.3",
     "@clr/city": "^1.1.0",
-    "@clr/core": "./packages/core/dist/core",
+    "@clr/core": "./dist/core",
     "@nguniversal/express-engine": "^10.0.1",
     "normalize.css": "^8.0.1",
     "express": "^4.15.2",

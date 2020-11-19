@@ -64,7 +64,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -118,43 +117,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "styles": ["projects/clr-angular/src/main.scss"],
-            "main": "projects/clr-angular/src/test.ts",
-            "tsConfig": "projects/clr-angular/tsconfig.spec.json",
-            "karmaConfig": "projects/clr-angular/karma.conf.js"
-          }
-        }
-      }
-    },
-    "clr-angular-dev": {
-      "projectType": "library",
-      "root": "projects/clr-angular",
-      "sourceRoot": "projects/clr-angular/src",
-      "prefix": "clr",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/clr-angular/tsconfig.lib.json",
-            "project": "projects/clr-angular/ng-package.dev.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/clr-angular/tsconfig.lib.prod.json"
-            }
-          },
-          "options": {
-            "sourceMap": {
-              "scripts": true,
-              "styles": true,
-              "vendor": true
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "styles": ["projects/clr-angular/src/main.scss"],
+            "styles": ["node_modules/@clr/ui/clr-ui.min.css"],
             "main": "projects/clr-angular/src/test.ts",
             "tsConfig": "projects/clr-angular/tsconfig.spec.json",
             "karmaConfig": "projects/clr-angular/karma.conf.js"
@@ -207,7 +170,11 @@
             "tsConfig": "projects/dev/tsconfig.app.json",
             "aot": true,
             "assets": ["projects/dev/src/favicon.ico", "projects/dev/src/assets"],
-            "styles": ["projects/dev/src/styles.scss", "projects/clr-angular/src/main.scss"],
+            "styles": [
+              "projects/dev/src/styles.scss",
+              "node_modules/@clr/ui/clr-ui.min.css",
+              "node_modules/@clr/icons/clr-icons.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -221,7 +188,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, async, fakeAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -103,6 +103,43 @@ export default function (): void {
       it('has associated form control', () => {
         expect(clarityDirective.control).toBeTruthy();
       });
+
+      it('does not close panel on clear', () => {
+        toggleService.open = true;
+        clarityDirective.writeValue(null);
+        expect(clarityDirective.openState).toBeTrue();
+      });
+
+      it('closes panel on selection', () => {
+        toggleService.open = true;
+        selectionService.select('test');
+        expect(clarityDirective.openState).toBeFalse();
+      });
+
+      it('does not close panel on selection if multiselect', () => {
+        clarityDirective.multiSelect = true;
+        toggleService.open = true;
+        selectionService.select('test');
+        expect(clarityDirective.openState).toBeTrue();
+      });
+
+      // The forms framework has some inner asychronisity, which requires the async/whenStable
+      // approach in the following tests
+      it('sets selection model based on selection binding', async(() => {
+        fixture.componentInstance.selection = 'test';
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(selectionService.selectionModel.containsItem('test')).toBeTrue();
+        });
+      }));
+
+      it('clears selection model', async(() => {
+        fixture.componentInstance.selection = null;
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(selectionService.selectionModel.isEmpty()).toBeTrue();
+        });
+      }));
     });
 
     describe('Template API', function () {

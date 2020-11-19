@@ -53,6 +53,20 @@ export default function () {
       subscription.unsubscribe();
     });
 
+    it('can toggle an option and emits selection events', () => {
+      let selectedOption: string;
+      const subscription: Subscription = optionSelectionService.selectionChanged.subscribe(
+        (option: ComboboxModel<string>) => {
+          selectedOption = option.model as string;
+        }
+      );
+      optionSelectionService.toggle('Option 1');
+      expect(selectedOption).toBe('Option 1');
+      optionSelectionService.toggle('Option 1');
+      expect(selectedOption).toBeNull();
+      subscription.unsubscribe();
+    });
+
     it('does not notify when the value remains the same', () => {
       let count = 0;
       const sub: Subscription = optionSelectionService.inputChanged.subscribe(() => {

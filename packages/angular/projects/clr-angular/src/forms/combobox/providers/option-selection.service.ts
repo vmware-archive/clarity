@@ -46,6 +46,18 @@ export class OptionSelectionService<T> {
     this._selectionChanged.next(this.selectionModel);
   }
 
+  toggle(item: T) {
+    if (!item) {
+      return;
+    }
+    if (this.selectionModel.containsItem(item)) {
+      this.selectionModel.unselect(item);
+    } else {
+      this.selectionModel.select(item);
+    }
+    this._selectionChanged.next(this.selectionModel);
+  }
+
   unselect(item: T) {
     if (!item || !this.selectionModel.containsItem(item)) {
       return;

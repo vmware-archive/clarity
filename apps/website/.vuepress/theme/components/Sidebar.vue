@@ -177,7 +177,7 @@ export default {
     },
     isBeta: function (item) {
       // use titles; easier for now...
-      const betaItems = ['Progress Circle', 'Accordion', 'Divider'];
+      const betaItems = ['Progress Circle', 'Accordion', 'Divider', 'File', 'Search', 'Time'];
       return item.path.indexOf('web-components') > -1 && betaItems.indexOf(item.title) > -1;
     },
     childActive: function (item) {

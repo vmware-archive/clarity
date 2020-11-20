@@ -84,21 +84,21 @@ export default {
   li {
     position: relative;
     list-style: none;
-    color: var(--cds-token-color-neutral-1000, #000);
+    color: var(--cds-global-color-gray-1000, #000);
   }
 
   li.in-dark-mode {
-    color: var(--cds-token-color-neutral-0, #fff);
+    color: var(--cds-global-color-gray-0, #fff);
   }
 
   .copy-icon {
     opacity: 0;
     transition: opacity 0.2s ease-out;
-    --color: var(--cds-token-color-neutral-1000, #000);
+    --color: var(--cds-global-color-gray-1000, #000);
   }
 
   .in-dark-mode .copy-icon {
-    --color: var(--cds-token-color-neutral-0, #fff);
+    --color: var(--cds-global-color-gray-0, #fff);
   }
 
   .color {

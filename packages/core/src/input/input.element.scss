@@ -5,22 +5,21 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-action-600} 0) no-repeat;
   --background-size: 0% 100%;
+  --background-color: #{$cds-alias-object-opacity-0};
+  --background: linear-gradient(180deg, var(--background-color) 95%, var(--border-color) 0) no-repeat;
+  --border-color: #{$cds-alias-object-border-color};
   --border: 0;
-  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
+  --border-bottom: #{$cds-alias-object-border-width-100} solid var(--border-color);
+  --border-radius: 0;
   --outline: none;
-  --padding: 0 #{$cds-token-space-size-4};
-  --font-size: #{$cds-token-typography-font-size-3};
-  --color: #{$cds-token-color-neutral-1000};
-  --line-height: #{$cds-token-space-size-9};
+  --padding: 0 #{$cds-global-space-4};
+  --font-size: #{$cds-global-typography-font-size-3};
+  --color: #{$cds-global-typography-color-500};
+  --line-height: #{$cds-global-space-9};
   --transition: background-size 0.2s ease;
   display: block;
   width: 100%;
-}
-
-.private-host {
-  --private-border-color: var(--border-bottom);
 }
 
 ::slotted([slot='input']:not([multiple])) {
@@ -32,14 +31,14 @@
   color: var(--color) !important;
   line-height: var(--line-height) !important;
   height: var(--line-height) !important;
+  border-radius: var(--border-radius) !important;
   width: 100% !important;
   -webkit-appearance: none !important;
-  border-radius: 0 !important;
-  background: transparent !important;
+  background: #{$cds-alias-object-opacity-0} !important;
   box-shadow: none !important;
 
   &::placeholder {
-    --color: $cds-token-color-neutral-600 !important;
+    --color: $cds-global-typography-color-200 !important;
   }
 }
 
@@ -48,10 +47,11 @@
 }
 
 .input-container {
-  transition: var(--transition) !important;
-  background: var(--background) !important;
-  background-size: var(--background-size) !important;
-  border-bottom: var(--border-bottom) !important;
+  transition: var(--transition);
+  background: var(--background);
+  background-size: var(--background-size);
+  border-bottom: var(--border-bottom);
+  border-radius: var(--border-radius) !important;
   position: relative;
 }
 
@@ -86,26 +86,26 @@
   }
 }
 
-:host([focused]) .input-container {
+:host([focused]) {
   --background-size: 100% 100%;
-  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-action-600};
+  --border-color: #{$cds-alias-status-info};
 }
 
 ::slotted([slot='input']:not([multiple])[readonly]) {
-  --border: 0;
   --border-bottom: 0;
   --background-size: 0% 100%;
-  --background: transparent;
+  --background: #{$cds-alias-object-opacity-0};
 }
 
-:host([status='error']) .input-container,
-:host([status='error'][focused]) .input-container {
-  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-danger-800} 0) no-repeat;
-  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-danger-800};
+:host([status='error']),
+:host([status='error'][focused]) {
+  --border-color: #{$cds-alias-status-danger};
 }
 
-:host([status='success']) .input-container,
-:host([status='success']) .input-container {
-  --background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 95%, #{$cds-token-color-success-800} 0) no-repeat;
-  --border-bottom: #{$cds-token-space-size-1} solid #{$cds-token-color-success-800};
+:host([status='success']) {
+  --border-color: #{$cds-alias-status-success};
+}
+
+:host([disabled]) {
+  --border-color: #{$cds-alias-status-disabled};
 }

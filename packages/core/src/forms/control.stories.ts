@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import '@clr/core/forms/register.js';
 
 export default {
-  title: 'Forms (Preview)/Control/Stories',
+  title: 'Stories/Forms Control',
   component: 'cds-control',
   parameters: {
     options: { showPanel: true },

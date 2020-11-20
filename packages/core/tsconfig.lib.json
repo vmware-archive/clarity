@@ -6,5 +6,5 @@
     "rootDir": "./src"
   },
   "allowSyntheticDefaultImports": false,
-  "exclude": ["**/test/*.ts", "**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts"]
+  "exclude": ["**/test/*.ts", "**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts", "./build"]
 }

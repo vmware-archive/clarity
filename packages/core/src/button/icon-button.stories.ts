@@ -17,7 +17,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(userIcon);
 
 export default {
-  title: 'Components/Icon Button/Stories',
+  title: 'Stories/Icon Button',
   component: 'cds-icon-button',
   argTypes: getElementStorybookArgTypes('cds-icon-button', customElements),
   parameters: {
@@ -124,6 +124,39 @@ export const loading = () => {
       <cds-icon-button loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button action="outline" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button size="sm" loading-state="loading"><cds-icon shape="user"></cds-icon></cds-icon-button>
+    </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:sm" cds-theme="dark">
+      <div cds-layout="horizontal gap:sm">
+        <cds-icon-button aria-label="icon button demo"><cds-icon shape="user"></cds-icon></cds-icon-button>
+        <cds-icon-button status="success" aria-label="icon button success demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button status="danger" aria-label="icon button danger demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button status="danger" aria-label="icon button disabled demo" disabled
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+      </div>
+      <div cds-layout="horizontal gap:sm">
+        <cds-icon-button action="outline" aria-label="icon button outline demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button action="outline" status="success" aria-label="icon button outline success demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button action="outline" status="danger" aria-label="icon button outline danger demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button action="outline" disabled aria-label="icon button outline disabled demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+      </div>
     </div>
   `;
 };

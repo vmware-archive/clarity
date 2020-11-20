@@ -42,10 +42,4 @@ p.bar {
 p.summary {
   margin-top: 0.4rem;
 }
-@media (max-width: var(--cds-token-layout-width-sm, 568px)) {
-  .docs-do {
-    width: 100%;
-    margin: 0;
-  }
-}
 </style>

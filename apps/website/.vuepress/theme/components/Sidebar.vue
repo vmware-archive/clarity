@@ -101,7 +101,7 @@
 }
 
 .nav-content {
-  padding: var(--cds-token-space-size-8) 0;
+  padding: var(--cds-global-space-8) 0;
 }
 .nav-group-children {
   overflow-y: hidden;

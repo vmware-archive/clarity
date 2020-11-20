@@ -269,6 +269,7 @@ export class CdsControl extends LitElement {
   updated(props: Map<string, any>) {
     super.updated(props);
     syncProps(this.inputControl, this, { disabled: props.has('disabled') });
+    this.messages.forEach(message => syncProps(message, this, { disabled: props.has('disabled') }));
   }
 
   disconnectedCallback() {

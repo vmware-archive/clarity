@@ -20,6 +20,15 @@ addons.register('storybook/ga-analytics', api => {
   }
 });
 
+addons.register('theme/reset', api => {
+  api.on(STORY_CHANGED, () => {
+    const body = document.querySelector('#storybook-preview-iframe').contentWindow.document.body;
+    body.removeAttribute('cds-theme');
+    body.classList.remove('cds-theme-light');
+    body.classList.remove('cds-theme-dark');
+  });
+});
+
 setTimeout(() => {
   addons.elements.panel['addon-controls'].title = () => 'API Options';
   addons.elements.panel['storybook/cssresources/panel'].title = 'Theme';

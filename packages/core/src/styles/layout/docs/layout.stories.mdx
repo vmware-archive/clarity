@@ -2,7 +2,7 @@ import '@clr/core/alert/register.js';
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Foundation/Layout/Get Started" />
+<Meta title="Layout/Get Started" />
 
 # Layout
 
@@ -14,7 +14,7 @@ predictable and consistent.
 The `cds-layout` attribute includes three layout types. Each is designed to
 handle particular layout senario.
 
-<Story id="foundation-layout-stories--layout-types" />
+<Story id="stories-layout--layout-types" />
 
 ## Installation
 
@@ -34,7 +34,7 @@ The horizontal layout type enables horizontal rows of items that can wrap automa
 Spacing, alignments and gap between items can all be configured with the component.
 [Read More: Horizontal Layout](?path=/docs/experimental-layout-horizontal--page)
 
-<Story id="foundation-layout-stories--horizontal-layout" />
+<Story id="stories-layout--horizontal-layout" />
 
 ```html
 <div cds-layout="horizontal gap:md">
@@ -51,7 +51,7 @@ cards, content and other block level items. Spacing, alignments and gap between
 stacked items can all be configured with the component.
 [Read More: Vertical Layout](?path=/docs/experimental-layout-vertical--page)
 
-<Story id="foundation-layout-stories--vertical-layout" />
+<Story id="stories-layout--vertical-layout" />
 
 ```html
 <div cds-layout="vertical gap:md">
@@ -68,7 +68,7 @@ for controlling the spacing of items within a container as well as responsive
 layout. Spacing, alignments and gap between items can all be configured with
 the component. [Read More: Grid Layout](?path=/docs/experimental-layout-grid--page)
 
-<Story id="foundation-layout-stories--grid-layout-columns-responsive" />
+<Story id="stories-layout--grid-layout-columns-responsive" />
 
 ```html
 <div cds-layout="grid cols@sm:6 cols@md:3 gap:md">
@@ -83,8 +83,6 @@ the component. [Read More: Grid Layout](?path=/docs/experimental-layout-grid--pa
 
 The layout system provides many built-in responsive utilities to make it easy to
 manage layouts on many different screen sizes. All responsive utilities follow the same set of breakpoints.
-
-<Story id="foundation-design-tokens-stories--layout" />
 
 ```scss
 @media (min-width: 576px) {
@@ -112,3 +110,7 @@ manage layouts on many different screen sizes. All responsive utilities follow t
 
 The layout system includes a suite of utilities for controlling spacing and visibility.
 [Read More: Layout Utilities](?path=/docs/experimental-layout-utilities--page)
+
+## Tokens
+
+<Story id="stories-design-tokens--layout" />

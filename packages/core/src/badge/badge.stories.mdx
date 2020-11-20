@@ -1,7 +1,7 @@
 import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Components/Badge/Getting Started" />
+<Meta title="Components/Badge" />
 
 # Badge
 
@@ -17,30 +17,37 @@ import '@clr/core/badge/register.js';
 ```
 
 ```html
-<cds-badge status="info"
-  >2<span cds-layout="display:screen-reader-only">
-    items. Item text for screen-readers should be added to badges in elements that will only be read in a
+<cds-badge status="info">
+  2
+  <span cds-layout="display:screen-reader-only"
+    >items. Item text for screen-readers should be added to badges in elements that will only be read in a
     screen-reader.</span
-  ></cds-badge
->
+  >
+</cds-badge>
 ```
 
 ## Status
 
 <Preview>
-  <Story id="components-badge-stories--status" />
+  <Story id="stories-badge--status" />
 </Preview>
 
 ## Color
 
 <Preview>
-  <Story id="components-badge-stories--color" />
+  <Story id="stories-badge--color" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-badge--dark-theme" />
 </Preview>
 
 ## Color Custom
 
 <Preview>
-  <Story id="components-badge-stories--color-custom" />
+  <Story id="stories-badge--color-custom" />
 </Preview>
 
 ## API

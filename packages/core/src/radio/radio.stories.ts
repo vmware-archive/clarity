@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Radio/Stories',
+  title: 'Stories/Radio',
   component: 'cds-radio',
   argTypes: getElementStorybookArgTypes('cds-radio', customElements),
   parameters: {
@@ -466,6 +466,92 @@ export const compactGroup = () => {
       </cds-radio-group>
 
       <cds-radio-group layout="compact" status="success">
+        <label>success</label>
+        <cds-radio>
+          <label>radio 1</label>
+          <input type="radio" checked />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 2</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 3</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-radio-group>
+    </cds-form-group>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal-inline" cds-theme="dark">
+      <cds-radio-group layout="horizontal-inline">
+        <label>label</label>
+        <cds-radio>
+          <label>radio 1</label>
+          <input type="radio" checked />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 2</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 3</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-control-message>message text</cds-control-message>
+      </cds-radio-group>
+
+      <cds-radio-group layout="horizontal-inline" disabled>
+        <label>disabled</label>
+        <cds-radio>
+          <label>radio 1</label>
+          <input type="radio" checked />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 2</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 3</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-radio-group>
+
+      <cds-radio-group layout="horizontal-inline" status="error">
+        <label>error</label>
+        <cds-radio>
+          <label>radio 1</label>
+          <input type="radio" checked />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 2</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-radio>
+          <label>radio 3</label>
+          <input type="radio" />
+        </cds-radio>
+
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-radio-group>
+
+      <cds-radio-group layout="horizontal-inline" status="success">
         <label>success</label>
         <cds-radio>
           <label>radio 1</label>

@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @mixin generateColumnsAndRows($breakpoint: null) {
-  @for $i from 1 through $cds-token-layout-grid-cols-static {
+  @for $i from 1 through $cds-global-layout-grid-cols-static {
     // implicit columns/rows
     [#{$layout}*='#{$cols}#{$breakpoint}:#{$i}'] > * {
       grid-column: span $i / span $i;
@@ -16,7 +16,7 @@
 }
 
 @mixin generateExplicitColumnAndRow($breakpoint: null) {
-  @for $i from 1 through $cds-token-layout-grid-cols-static {
+  @for $i from 1 through $cds-global-layout-grid-cols-static {
     // explicit column/row positions
     [#{$layout}*='#{$col}#{$breakpoint}:#{$i}'] {
       grid-column: span $i / span $i !important;
@@ -30,7 +30,7 @@
 
 @mixin generatePositions($breakpoint: null) {
   // +1 for grid cols/rows which end at beginning of next item
-  @for $i from 1 through $cds-token-layout-grid-cols-static + 1 {
+  @for $i from 1 through $cds-global-layout-grid-cols-static + 1 {
     [#{$layout}*='#{$col}#{$breakpoint}:start-#{$i}'] {
       grid-column-start: $i !important;
     }
@@ -107,7 +107,7 @@
   display: grid;
   align-items: start;
   align-content: start;
-  grid-template-columns: repeat($cds-token-layout-grid-cols, 1fr);
+  grid-template-columns: repeat($cds-global-layout-grid-cols, 1fr);
   width: 100%;
 
   &[#{$layout}*='#{$rows}'] {
@@ -125,7 +125,7 @@
 }
 
 [#{$layout}*='#{$cols}\@'] > * {
-  grid-column: span $cds-token-layout-grid-cols;
+  grid-column: span $cds-global-layout-grid-cols;
 }
 
 [#{$layout}*='#{$col}\@'] {

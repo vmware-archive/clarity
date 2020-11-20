@@ -6,8 +6,8 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --font-weight: #{$cds-token-typography-font-weight-semibold};
-  --font-family: #{$cds-token-typography-font-family};
+  --font-weight: #{$cds-global-typography-font-weight-semibold};
+  --font-family: #{$cds-global-typography-font-family};
   --text-transform: uppercase;
   --letter-spacing: 0.12em;
 }
@@ -25,34 +25,53 @@
 
 :host([action='flat']) ::slotted(cds-badge),
 :host([action='outline']) ::slotted(cds-badge) {
-  --border-color: #{$cds-token-color-action-600};
-  --background: #{$cds-token-color-action-600};
-  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-alias-status-info};
+  --background: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-color-100};
 }
 
 :host([action='outline'][status='success']) ::slotted(cds-badge) {
-  --border-color: #{$cds-token-color-success-700};
-  --background: #{$cds-token-color-success-700};
-  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-alias-status-success};
+  --background: #{$cds-alias-status-success};
+  --color: #{$cds-global-typography-color-100};
 }
 
 :host([action='outline'][status='danger']) ::slotted(cds-badge) {
-  --border-color: #{$cds-token-color-danger-700};
-  --background: #{$cds-token-color-danger-700};
-  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-alias-status-danger};
+  --background: #{$cds-alias-status-danger};
+  --color: #{$cds-global-typography-color-100};
 }
 
 :host(:not([action='outline']):not([action='flat'])) ::slotted(cds-badge) {
-  --background: transparent;
-  --border-color: #{$cds-token-color-neutral-0};
-  --color: #{$cds-token-color-neutral-0};
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-global-typography-color-100};
+  --color: #{$cds-global-typography-color-100};
+}
+
+:host([action='flat'][disabled]) ::slotted(cds-badge) {
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-alias-status-neutral};
+  --color: #{$cds-alias-status-neutral};
 }
 
 :host([status='inverse']) ::slotted(cds-badge) {
-  --border-color: #{$cds-token-color-neutral-0} !important;
-  --background: #{$cds-token-color-neutral-0} !important;
-  --color: #{$cds-token-color-neutral-900} !important;
-  --font-weight: #{$cds-token-typography-font-weight-semibold} !important;
+  --border-color: #{$cds-global-typography-color-100} !important;
+  --background: #{$cds-alias-object-opacity-0} !important;
+  --color: #{$cds-global-typography-color-100} !important;
+  --font-weight: #{$cds-global-typography-font-weight-semibold} !important;
+}
+
+:host([disabled][status='inverse']),
+:host([disabled][action='outline']) {
+  --background: #{$cds-alias-object-opacity-0} !important;
+  --color: #{$cds-alias-status-disabled-tint} !important;
+  --border-color: #{$cds-alias-status-disabled-tint} !important;
+
+  ::slotted(cds-badge) {
+    --background: #{$cds-alias-object-opacity-0} !important;
+    --border-color: #{$cds-alias-status-disabled-tint} !important;
+    --color: #{$cds-alias-status-disabled-tint} !important;
+  }
 }
 
 ::slotted(span) {

@@ -1,0 +1,56 @@
+import '@clr/core/alert/register.js';
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing
+
+Spacing is managed by two spacing scales. One scale manages space at a application
+level determining space between components on a page. The second scale determines
+the space within a component.
+
+## Installation
+
+To use the spacing utils import the global CSS.
+
+```scss
+// import into sass or css
+@import '~@clr/core/global.min';
+
+// or import in html
+<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
+```
+
+All spacing tokens on the Web platform are set with `rem` which is a scale value
+of the base font size. For Clarity this is 20px so `1rem` == `20px`. This can be
+adjusted back to the default browser of `16px` by setting the following:
+
+```html
+<html lang="en" cds-base-font="16"></html>
+```
+
+## Application Layout Spacing
+
+The layout space tokens are used with the [layout system](.?path=/docs/experimental-layout-get-started--page)
+and provide a larger value set for page level layouts. This allows content
+density to be controlled consistently. Use the layout spacing tokens when working
+with page or view level layouts. Example: adjusting the space between form inputs.
+
+<Story id="stories-design-tokens--layout-spacing" />
+
+## Component Spacing
+
+The space tokens provide a set of smaller values used for adjusting
+space within a component. These values allow more control for detailed alignments
+within a component and are used within Clarity components. Do not use these values
+when designing the layout of an overal page or view. Example: adjusting space between
+the form input and its label.
+
+```css
+.my-element {
+  padding: var(--cds-global-space-3);
+}
+```
+
+<Story id="stories-design-tokens--spacing" />

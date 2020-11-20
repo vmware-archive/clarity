@@ -2,6 +2,7 @@
 @import '~@clr/city/css/bundles/default.min.css';
 @import './../../dist/core/global.min.css';
 @import './../../dist/core/styles/module.shims.min.css';
+@import './../../dist/core/styles/theme.dark.min.css';
 @import './../../dist/core/list/list.min.css';
 
 html {
@@ -9,8 +10,8 @@ html {
 }
 
 body {
-  padding: var(--cds-token-space-size-9) !important;
   box-sizing: border-box !important; /* storybook v6 inline to initial */
+  background: var(--cds-alias-color-gray-50) !important;
 }
 
 .docblock-propstable-body li {
@@ -24,7 +25,7 @@ cds-demo {
 
 cds-demo[layout],
 .layout-demo {
-  background: hsl(91, 56%, 78%);
+  background: var(--cds-global-color-cool-gray-200);
   overflow: hidden;
   display: inline-block;
 }
@@ -35,7 +36,7 @@ cds-demo[layout][tall] > [cds-layout],
 }
 
 cds-demo[popover] {
-  min-height: 500px;
+  min-height: 400px;
   position: relative;
 }
 
@@ -50,13 +51,14 @@ cds-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: hsl(198, 14%, 92%);
+  background: var(--cds-global-color-cool-gray-700);
+  color: var(--cds-global-color-gray-0);
   min-width: 50px;
   min-height: 50px;
 }
 
 cds-demo[inverse] {
-  background: var(--cds-token-color-neutral-800);
+  background: var(--cds-global-color-gray-800);
 }
 
 cds-demo[inline-block] {
@@ -107,6 +109,31 @@ cds-card {
 
 .sbdocs.sbdocs-wrapper {
   padding-top: 30px !important;
+  min-height: 100vh;
+}
+
+.sbdocs.sbdocs-preview > div > div {
+  padding: 0 !important;
+}
+
+[id*='story--'] {
+  background: var(--cds-alias-object-app-background) !important;
+  padding: 36px 24px;
+}
+
+[id*='--dark-theme'],
+[cds-theme='dark'] {
+  background: var(--cds-global-color-construction-1000) !important;
+}
+
+.cds-theme-light [id*='--dark-theme'],
+.cds-theme-dark [id*='--dark-theme'] {
+  background: var(--cds-alias-object-app-background) !important;
+}
+
+.sb-inline-icon {
+  width: 16px;
+  color: #ccc;
 }
 
 .sbdocs-title,
@@ -144,38 +171,39 @@ cds-card {
 }
 
 .demo-divider {
-  --color: var(--cds-token-color-neutral-500);
+  --color: var(--cds-global-color-gray-500);
 }
 
 .demo-header {
-  background: var(--cds-token-color-action-1000);
-  color: var(--cds-token-color-neutral-0);
+  background: var(--cds-global-color-blue-1000);
+  color: var(--cds-global-color-gray-0);
 }
 
 .demo-sidenav,
 .demo-content {
-  background: var(--cds-token-color-neutral-200);
+  background: var(--cds-global-color-gray-200);
 }
 
-.demo-subnav,
-.demo-footer,
-.demo-alt-content,
-.demo-alt-content-header {
-  background: var(--cds-token-color-neutral-0);
-}
-
-.demo-footer,
-.demo-alt-content-header {
-  color: var(--cds-token-color-neutral-700);
+.demo-footer {
+  background: var(--cds-global-color-gray-0);
+  color: var(--cds-global-color-gray-700);
+  box-shadow: 0 0.05rem 0 hsl(198, 0%, 70%) inset;
 }
 
 .demo-sidenav {
+  background: var(--cds-global-color-gray-200);
+  box-shadow: -0.05rem 0 0 rgba(0, 0, 0, 0.2) inset;
   width: 25%;
 }
 
 .demo-sidebar {
-  background: var(--cds-token-color-neutral-100);
+  background: var(--cds-global-color-gray-100);
   width: 25%;
+}
+
+.demo-subnav {
+  background: var(--cds-global-color-gray-0);
+  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
 }
 
 .demo-alt-header cds-icon,
@@ -201,6 +229,33 @@ cds-card {
   width: 60px !important;
 }
 
+.demo-alt-header cds-icon,
+.demo-alt-header-2 cds-icon {
+  --color: var(--cds-global-color-gray-0);
+}
+
 .demo-alt-header-2 {
-  background: var(--cds-token-color-neutral-900);
+  background: var(--cds-global-color-gray-900);
+}
+
+.demo-alt-content {
+  background: var(--cds-global-color-gray-0);
+}
+
+.demo-alt-content-header {
+  background: var(--cds-global-color-gray-0);
+  color: var(--cds-global-color-gray-700);
+  box-shadow: 0 -0.05rem 0 hsl(198, 0%, 70%) inset;
+}
+
+#story--stories-themes--dynamic-theme > div {
+  min-height: 650px !important;
+}
+
+#story--foundation-design-tokens-stories--interaction > div {
+  min-height: 450px !important;
+}
+
+#story--stories-clarity--core {
+  background: var(--cds-global-color-gray-0) !important;
 }

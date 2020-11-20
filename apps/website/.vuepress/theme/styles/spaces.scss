@@ -1,6 +1,6 @@
 .vertical-margin-6 {
-  margin-top: var(--cds-token-space-size-6);
-  margin-bottom: var(--cds-token-space-size-6);
+  margin-top: var(--cds-global-space-6);
+  margin-bottom: var(--cds-global-space-6);
 }
 
 .top-margin-wrapper {
@@ -13,13 +13,13 @@
 
 .content__default > ul,
 ol {
-  margin-top: var(--cds-token-space-size-6);
+  margin-top: var(--cds-global-space-6);
 }
 
 cds-alert-group {
-  margin-top: var(--cds-token-space-size-9);
+  margin-top: var(--cds-global-space-9);
 }
 
 .clr-row {
-  margin-top: var(--cds-token-space-size-9);
+  margin-top: var(--cds-global-space-9);
 }

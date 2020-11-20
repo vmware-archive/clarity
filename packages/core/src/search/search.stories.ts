@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Search/Stories',
+  title: 'Stories/Search',
   component: 'cds-search',
   argTypes: getElementStorybookArgTypes('cds-search', customElements),
   parameters: {
@@ -142,5 +142,35 @@ export const datalist = () => {
         <option value="Item 3"></option>
       </datalist>
     </cds-search>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-search layout="horizontal">
+        <label>label</label>
+        <input type="search" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-search>
+
+      <cds-search layout="horizontal">
+        <label>disabled</label>
+        <input type="search" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-search>
+
+      <cds-search layout="horizontal" status="error">
+        <label>error</label>
+        <input type="search" />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-search>
+
+      <cds-search layout="horizontal" status="success">
+        <label>success</label>
+        <input type="search" />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-search>
+    </cds-form-group>
   `;
 };

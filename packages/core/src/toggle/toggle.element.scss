@@ -5,15 +5,15 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --background: #{$cds-token-color-neutral-600};
-  --border: #{$cds-token-space-size-2} solid #{$cds-token-color-neutral-600};
-  --border-radius: calc(#{$cds-token-space-size-5} + #{$cds-token-space-size-1});
-  --height: #{$cds-token-space-size-8};
-  --width: calc(#{$cds-token-space-size-10} + #{$cds-token-space-size-1});
-  --anchor-background: #{$cds-token-color-neutral-50};
-  --anchor-border-radius: 50%;
-  --anchor-width: calc(#{$cds-token-space-size-6} + #{$cds-token-space-size-2});
-  --anchor-height: calc(#{$cds-token-space-size-6} + #{$cds-token-space-size-2});
+  --background: #{$cds-alias-status-neutral-tint};
+  --border: #{$cds-alias-object-border-width-200} solid var(--background);
+  --border-radius: #{$cds-alias-object-border-radius-200};
+  --height: #{$cds-global-space-8};
+  --width: calc(#{$cds-global-space-10} + #{$cds-global-space-1});
+  --anchor-background: #{$cds-global-color-gray-50};
+  --anchor-border-radius: #{$cds-alias-object-border-radius-200};
+  --anchor-width: calc(#{$cds-global-space-6} + #{$cds-global-space-2});
+  --anchor-height: calc(#{$cds-global-space-6} + #{$cds-global-space-2});
 }
 
 .input {
@@ -45,13 +45,12 @@
   transition-property: transform;
 }
 
-:host([checked]) .input {
-  border: $cds-token-space-size-2 solid $cds-token-color-success-500;
-  background: $cds-token-color-success-500;
+:host([checked]) {
+  --background: #{$cds-alias-status-success};
 }
 
 :host([checked]) .input:after {
-  transform: translate(calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-1}), 0);
+  transform: translate(calc(#{$cds-global-space-7} - #{$cds-global-space-1}), 0);
 }
 
 :host([disabled]) .input {

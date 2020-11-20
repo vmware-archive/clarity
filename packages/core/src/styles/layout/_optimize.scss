@@ -7,22 +7,22 @@
 
 :root,
 :host {
-  --cxxs: var(--cds-token-layout-space-xxs, #{$cds-token-layout-space-xxs-static});
-  --cxs: var(--cds-token-layout-space-xs, #{$cds-token-layout-space-xs-static});
-  --csm: var(--cds-token-layout-space-sm, #{$cds-token-layout-space-sm-static});
-  --cmd: var(--cds-token-layout-space-md, #{$cds-token-layout-space-md-static});
-  --clg: var(--cds-token-layout-space-lg, #{$cds-token-layout-space-lg-static});
-  --cxl: var(--cds-token-layout-space-xl, #{$cds-token-layout-space-xl-static});
-  --cxxl: var(--cds-token-layout-space-xxl, #{$cds-token-layout-space-xxl-static});
+  --cxxs: var(--cds-global-layout-space-xxs, #{$cds-global-layout-space-xxs-static});
+  --cxs: var(--cds-global-layout-space-xs, #{$cds-global-layout-space-xs-static});
+  --csm: var(--cds-global-layout-space-sm, #{$cds-global-layout-space-sm-static});
+  --cmd: var(--cds-global-layout-space-md, #{$cds-global-layout-space-md-static});
+  --clg: var(--cds-global-layout-space-lg, #{$cds-global-layout-space-lg-static});
+  --cxl: var(--cds-global-layout-space-xl, #{$cds-global-layout-space-xl-static});
+  --cxxl: var(--cds-global-layout-space-xxl, #{$cds-global-layout-space-xxl-static});
 }
 
-$cds-token-layout-space-xxs: var(--cxxs);
-$cds-token-layout-space-xs: var(--cxs);
-$cds-token-layout-space-sm: var(--csm);
-$cds-token-layout-space-md: var(--cmd);
-$cds-token-layout-space-lg: var(--clg);
-$cds-token-layout-space-xl: var(--cxl);
-$cds-token-layout-space-xxl: var(--cxxl);
+$cds-global-layout-space-xxs: var(--cxxs);
+$cds-global-layout-space-xs: var(--cxs);
+$cds-global-layout-space-sm: var(--csm);
+$cds-global-layout-space-md: var(--cmd);
+$cds-global-layout-space-lg: var(--clg);
+$cds-global-layout-space-xl: var(--cxl);
+$cds-global-layout-space-xxl: var(--cxxl);
 
 // selectors one location to make it easier to test for shorthand optimizations
 // this is also helpful for tools like AMP that require data-* prefix on all attrs

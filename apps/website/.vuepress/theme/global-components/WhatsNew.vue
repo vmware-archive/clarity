@@ -53,6 +53,6 @@ export default {
 
 <style scoped>
 .action-text {
-  color: var(--cds-token-color-action-600);
+  color: var(--cds-global-color-blue-600);
 }
 </style>

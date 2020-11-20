@@ -6,6 +6,7 @@
 
 import { baseStyles } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
+import { styles } from './accordion-header.element.css.js';
 
 /**
  * Web component accordion to be used inside an accordion
@@ -33,6 +34,10 @@ import { html, LitElement } from 'lit-element';
  *
  * @beta
  * @element cds-accordion-header
+ * @cssprop --color
+ * @cssprop --font-size
+ * @cssprop --font-weight
+ * @cssprop --background
  */
 export class CdsAccordionHeader extends LitElement {
   connectedCallback() {
@@ -41,10 +46,13 @@ export class CdsAccordionHeader extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="private-host" cds-layout="horizontal gap:md align:vertical-center">
+      <cds-icon class="accordion-angle" shape="angle" size="9" inner-offset="2"></cds-icon>
+      <span cds-text="secondary"><slot></slot></span>
+    </div>`;
   }
 
   static get styles() {
-    return [baseStyles];
+    return [baseStyles, styles];
   }
 }

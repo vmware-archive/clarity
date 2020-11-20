@@ -46,7 +46,41 @@ set the property.
 Lit-element will automatically sync attributes and properties together unless
 specified otherwise. While attributes are always string values in HTML, lit-element
 and the `@property` decorator will attempt to convert the attribute value based
-on the value type that was set on the `@property` decorator. [This includes shallow objects and arrays.](https://lit-element.polymer-project.org/guide/properties#initialize-markup)
+on the value type that was set on the `@property` decorator.
+
+### Primititve Values Only
+
+While lit-element keeps both properties and attributes in sync we do not use
+complex object types like `object` and `array` on the API. Since HTML cannot represent
+JavaScript objects, lit-element must JSON parse attributes and reflect them anytime
+there is a change to ensure the JavaScript property and HTML attribute are in sync.
+This can be expensive to parse when using `object` or `array` and cause unexpected
+behaviors such as lost object references for the user.
+
+#### Use
+
+- `string`
+- `number`
+- `boolean`
+
+#### Avoid
+
+- `object`
+- `array`
+
+Using `object` and `array` also causes compatibility and usablity issues as it
+now requires the developer to use JavaScript to render content. This can make it
+difficult for user generated content like CMS systems or SSR (Server Side Rendering)
+that may only be able to easily render static HTML.
+
+The **only** exception to this practice is the `i18n` API. This API requires
+JavaScript property usage or object parsing in the HTML. This is primarily due to
+the number of dynamic internal strings which can change on a component. When
+using the `i18n` API we encourage developers to bind to the propery instead of
+the attribute to bypass any of the downsides or unexpected behaviors of attr
+object parsing as described above.
+
+Learn more about examples and best practices here https://developers.google.com/web/fundamentals/web-components/best-practices#attributes-properties
 
 ## Example APIs
 

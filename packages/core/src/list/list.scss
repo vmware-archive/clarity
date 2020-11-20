@@ -4,7 +4,7 @@
 
 @import './../styles/tokens/generated/index';
 
-$list-indent: $cds-token-space-size-9;
+$list-indent: $cds-global-space-9;
 $list-default-ordered-type: decimal;
 $list-default-unordered-type: disc;
 
@@ -27,6 +27,10 @@ $list-default-unordered-type: disc;
   // zero-width blank space added to help VoiceOver screen reader read a list-style-type none list
   list-style: '\200B' !important;
   list-style-position: inside !important;
+}
+
+[cds-list] {
+  color: $cds-global-typography-color-300;
 }
 
 ol[cds-list] {

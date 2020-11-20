@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import { withDesign } from 'storybook-addon-designs';
 
 export default {
-  title: 'Foundation/Typography/Stories',
+  title: 'Stories/Typography',
   decorators: [withDesign],
   parameters: {
     options: { showPanel: true },
@@ -182,5 +182,26 @@ export const disableLineHightRemover = () => {
         <p cds-text="subsection">The five boxing wizards jump quickly (subsection)</p>
       </cds-card>
     </cds-demo>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:lg" cds-theme="dark">
+      <div cds-layout="vertical gap:md">
+        <p cds-text="display">The five boxing wizards jump quickly (display)</p>
+        <p cds-text="heading">The five boxing wizards jump quickly (heading)</p>
+        <p cds-text="title">The five boxing wizards jump quickly (title)</p>
+        <p cds-text="section">The five boxing wizards jump quickly (section)</p>
+        <p cds-text="subsection">The five boxing wizards jump quickly (subsection)</p>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <p cds-text="body">The quick brown fox jumps over the lazy dog. (body)</p>
+        <p cds-text="message">The quick brown fox jumps over the lazy dog. (message)</p>
+        <p cds-text="secondary">The quick brown fox jumps over the lazy dog. (secondary)</p>
+        <p cds-text="caption">The quick brown fox jumps over the lazy dog. (caption)</p>
+        <p cds-text="smallcaption">The quick brown fox jumps over the lazy dog. (smallcaption)</p>
+      </div>
+    </div>
   `;
 };

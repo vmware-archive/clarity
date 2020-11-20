@@ -64,7 +64,7 @@ export default {
 }
 .footer-wrapper {
   position: relative;
-  padding: var(--cds-token-space-size-9) 0 var(--cds-token-space-size-12);
+  padding: var(--cds-global-space-9) 0 var(--cds-global-space-12);
   &:before {
     content: '';
     position: absolute;

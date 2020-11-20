@@ -2,87 +2,92 @@ import '@clr/core/alert/register.js';
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Foundation/Design Tokens/Getting Started" />
+<Meta title="Foundation/Design Tokens" />
 
 # Design Tokens
 
-Design Tokens are global variables to configure the foundation of the
-design system. Changes to a design token will propagate throughout the entire system.
-Tokens are broken down into five categories:
+Design Tokens are variables that represent the foundation of the design system.
+Changes to a design token will propagate visual changes throughout the entire system.
+Tokens are organized into three categories:
 
-- [Spacing](./?path=/docs/foundation-spacing-getting-started--page)
-- [Layout](./?path=/docs/experimental-layout-get-started--page)
-- [Typography](./?path=/docs/experimental-typography-getting-started--page)
-- [Color](./?path=/docs/experimental-color-getting-started--page)
-- Global
+- **Global**: global primitives (color, space, typography)
+- **Alias**: values describing intent (status, success, error)
+- **Component**: component specific values
 
-## Installation
-
-To use the design token system via CSS, import the global CSS file.
+Global tokens provide design primitives such as [Spacing](./?path=/docs/foundation-spacing-getting-started--page),
+[Layout](./?path=/docs/experimental-layout-get-started--page), [Typography](./?path=/docs/experimental-typography-getting-started--page),
+and [Color](./?path=/docs/experimental-color-getting-started--page). Alias tokens
+are variables with described intent, concept or abstraction. Alias values should
+always be prefered over global and component tokens. Component tokens are values
+that are highly specific to a component instance. These values should be rarely
+changed in the system.
 
 ```scss
-// import into sass or css
-@import '~@clr/core/global.min';
+// raw value
+hsl(93, 80, 23)
 
-// or import in html
-<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
-```
+// global token
+--cds-global-color-green-800 
 
-## Usage
+// alias token
+--cds-alias-color-status-success
 
-Tokens can be adjusted by setting the values on the `:root` selector.
-
-```css
-:root {
-  --cds-token-typography-body-color: rgb(26, 26, 26);
+// component token
+my-element {
+  --background: some-color;
 }
 ```
 
-## Base Font
+When using Tokens with Clarity on the Web we represent the design tokens using
+CSS Custom Properties. CSS Custom Properties are variables that allow us to
+dynamically change CSS values in the browser.
 
-By default, Clarity has a base font size of 20px on the document. All CSS px values
-are relative to this base font. If your application is already using a base 16px font
-size you can set the following:
+## Usage
 
-```html
-<html lang="en" cds-base-font="16"></html>
+Tokens can be adjusted by setting the values on the `:root` CSS selector.
+
+```css
+:root {
+  --cds-global-typography-body-color: hsl(...);
+}
 ```
 
-Adding `cds-base-font="16"` to the root html tag will adjust all spacing and px
-values in Clarity to be relative to a base 16px instead of base 20px.
+## Global Layout Space
 
-## Spacing
+Layout space tokens describe the space betweeen objects and components within an application.
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--space" />
+  <Story id="stories-design-tokens--layout-spacing" />
 </Preview>
 
-## Layout Spacing
+## Global Space Token
+
+Space tokens describe the size and space within objects/components of a UI.
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--layout-space" />
+  <Story id="stories-design-tokens--spacing" />
 </Preview>
 
-## Layout
+## Alias Objects
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--layout" />
+  <Story id="stories-design-tokens--objects" />
 </Preview>
 
-## Typography
+## Alias Status Colors
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--typography" />
+  <Story id="stories-design-tokens--status-color" />
 </Preview>
 
-## Global
+## Global Typography
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--global" />
+  <Story id="stories-design-tokens--typography" />
 </Preview>
 
-## Color
+## Global Color Palette
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--color" />
+  <Story id="stories-design-tokens--color" />
 </Preview>

@@ -1,0 +1,50 @@
+import '@clr/core/alert/register.js';
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Themes/Dynamic Themes" />
+
+# Dynamic Themes
+
+You can dynamically toggle the theme with JavaScript by adding or removing
+the theme attribute. With CSS Custom Properties and Clarity Core Design tokens
+you can make system level adjustments all within the browser.
+
+```javascript
+document.body.style.setProperty('--cds-alias-status-info', value);
+```
+
+Dynamic CSS Custom Properties with system level design tokens provide advanced
+theme opportunities such as accessibility contrast and spacing themes. You can
+automatically change themes based on user preferences.
+
+```javascript
+// automatatically switch to dark theme based on host OS https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  body.setAttribute('cds-theme', 'dark');
+}
+
+// automatically set high contrast styles based on OS (Edge/Firefox only) https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast
+if (window.matchMedia('(-ms-high-contrast: active)')).matches || window.matchMedia('(prefers-contrast: high)')).matches) {
+  document.body.style.setProperty('--cds-global-color-blue-600', value);
+}
+
+// automatically set inverted colors based on browser preferences https://developer.mozilla.org/en-US/docs/Web/CSS/@media/inverted-colors
+if (window.matchMedia('(inverted-colors: inverted)')).matches) {
+  // invert css colors
+}
+
+// automatically disable CSS animations based on browser preferences https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)')).matches) {
+  // disabled css timing properties
+}
+
+// automatically adjust spacing based on the type of pointer input https://developer.mozilla.org/en-US/docs/Web/CSS/@media/any-pointer
+if (window.matchMedia('(any-pointer: coarse)')).matches) {
+  document.body.style.setProperty('--cds-global-space-1', 'calc(var(--cds-global-space-1) * 1.1');
+}
+```
+
+<Preview>
+  <Story id="stories-themes--dynamic-theme" inline={false} />
+</Preview>

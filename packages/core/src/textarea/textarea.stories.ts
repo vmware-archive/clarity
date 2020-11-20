@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Textarea/Stories',
+  title: 'Stories/Textarea',
   component: 'cds-textarea',
   argTypes: getElementStorybookArgTypes('cds-textarea', customElements),
   parameters: {
@@ -84,7 +84,7 @@ export const horizontal = () => {
       <cds-textarea layout="horizontal">
         <label>disabled</label>
         <textarea disabled></textarea>
-        <cds-control-message status="success">disabled message</cds-control-message>
+        <cds-control-message>disabled message</cds-control-message>
       </cds-textarea>
 
       <cds-textarea layout="horizontal" status="error">
@@ -124,6 +124,36 @@ export const compact = () => {
       </cds-textarea>
 
       <cds-textarea layout="compact" status="success">
+        <label>success status</label>
+        <textarea></textarea>
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-textarea>
+    </cds-form-group>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-textarea layout="horizontal">
+        <label>label</label>
+        <textarea></textarea>
+        <cds-control-message>message text</cds-control-message>
+      </cds-textarea>
+
+      <cds-textarea layout="horizontal">
+        <label>disabled</label>
+        <textarea disabled></textarea>
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-textarea>
+
+      <cds-textarea layout="horizontal" status="error">
+        <label>error status</label>
+        <textarea></textarea>
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-textarea>
+
+      <cds-textarea layout="horizontal" status="success">
         <label>success status</label>
         <textarea></textarea>
         <cds-control-message status="success">success message</cds-control-message>

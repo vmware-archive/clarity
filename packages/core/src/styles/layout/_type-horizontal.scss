@@ -79,37 +79,29 @@
 @mixin generateHorizontalItemAlignment($breakpoint: null) {
   [#{$layout}~='#{$horizontal}'] {
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
       align-self: center;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
       margin-left: auto !important;
       margin-right: auto !important;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
       align-self: flex-start;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
       align-self: flex-end;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
       margin-left: auto !important;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
       margin-right: auto !important;
     }
   }

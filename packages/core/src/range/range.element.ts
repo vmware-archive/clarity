@@ -28,6 +28,7 @@ import { styles } from './range.element.css.js';
  * @element cds-range
  * @slot - For projecting range input
  * @cssprop --background
+ * @cssprop --border-radius
  * @cssprop --track-background
  * @cssprop --track-fill-background
  * @cssprop --track-height

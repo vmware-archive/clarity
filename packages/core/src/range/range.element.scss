@@ -5,13 +5,13 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --track-background: #{$cds-token-color-neutral-200};
-  --track-fill-background: #{$cds-token-color-action-600};
-  --track-height: #{$cds-token-space-size-3};
+  --track-background: #{$cds-alias-object-border-color};
+  --track-fill-background: #{$cds-alias-status-info};
+  --track-height: #{$cds-alias-object-border-width-400};
   --track-width: 50%;
-  --thumb-background: #{$cds-token-color-action-600};
-  --thumb-width: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-2});
-  --thumb-height: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-2});
+  --thumb-background: #{$cds-alias-status-info};
+  --thumb-width: calc(#{$cds-alias-object-border-width-400} + calc(#{$cds-global-space-5} + #{$cds-global-space-1}));
+  --thumb-height: calc(#{$cds-alias-object-border-width-400} + calc(#{$cds-global-space-5} + #{$cds-global-space-1}));
   display: block;
   width: 100%;
 }
@@ -24,27 +24,29 @@
   -webkit-appearance: none;
   width: 100%;
   height: var(--track-height);
-  margin: $cds-token-space-size-5 0 $cds-token-space-size-4 0;
+  margin: $cds-global-space-5 0 $cds-global-space-4 0;
   position: relative;
   padding: 0 !important;
-  padding: $cds-token-space-size-4 0;
+  padding: $cds-global-space-4 0;
   cursor: pointer;
 }
 
 .input-track {
   position: absolute;
-  top: $cds-token-space-size-6;
+  top: $cds-global-space-6;
   left: 0;
   width: var(--track-width);
   height: var(--track-height);
   background: var(--track-fill-background);
+  border-radius: var(--border-radius, #{$cds-alias-object-border-radius-100});
   pointer-events: none;
   z-index: 999;
 }
 
 :host([disabled]) {
-  --track-fill-background: #{$cds-token-color-neutral-500};
-  --thumb-background: #{$cds-token-color-neutral-500};
+  --track-background: #{$cds-alias-status-disabled-shade};
+  --track-fill-background: #{$cds-alias-status-disabled};
+  --thumb-background: #{$cds-alias-status-disabled};
 
   ::slotted(input),
   .input {
@@ -59,5 +61,5 @@
 
 // aligns control to 24px standard height
 .input-container {
-  padding: $cds-token-space-size-6 0 $cds-token-space-size-5 0;
+  padding: $cds-global-space-6 0 $cds-global-space-5 0;
 }

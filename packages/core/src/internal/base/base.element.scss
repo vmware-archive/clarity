@@ -15,7 +15,7 @@
 :host {
   all: initial;
   display: block;
-  font-family: $cds-token-typography-font-family;
+  font-family: $cds-global-typography-font-family;
   contain: layout; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
   box-sizing: border-box !important;
   -webkit-appearance: none !important;
@@ -28,7 +28,7 @@
 }
 
 slot {
-  font-family: $cds-token-typography-font-family;
+  font-family: $cds-global-typography-font-family;
   display: contents !important;
 }
 
@@ -58,8 +58,8 @@ slot {
 :host([tabindex='0']:focus),
 :host([focused][contains-anchor]),
 :host([focused]) .input {
-  outline: Highlight solid $cds-token-space-size-2;
-  outline-offset: $cds-token-space-size-1;
+  outline: Highlight solid $cds-global-space-2;
+  outline-offset: $cds-global-space-1;
 }
 
 @media (-webkit-min-device-pixel-ratio: 0) {

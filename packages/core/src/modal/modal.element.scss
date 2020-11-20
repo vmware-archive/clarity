@@ -2,28 +2,23 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --backdrop-opacity: 0.85;
-  --backdrop-background: #{$cds-token-color-neutral-900};
-  --box-shadow-color: #{$cds-token-color-action-500};
-  --border-radius: #{$cds-token-global-border-radius};
-  --border: #{$cds-token-color-action-600};
-  --background: #{$cds-token-color-neutral-0};
-  --close-icon-color: #{$cds-token-color-neutral-600};
-  --close-icon-color-hover: #{$cds-token-color-neutral-700};
-  --content-box-shadow-color: rgba(0, 0, 0, 0.2);
-  --width: calc(8 * #{$cds-token-space-size-13});
+  --backdrop-background: #{$cds-alias-object-overlay-backdrop-background};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --background: #{$cds-alias-object-overlay-background};
+  --box-shadow: #{$cds-alias-object-shadow-100};
+  --width: calc(8 * #{$cds-global-space-13});
 }
 
 :host([size='sm']) {
-  --width: calc(4 * #{$cds-token-space-size-13});
+  --width: calc(4 * #{$cds-global-space-13});
 }
 
 :host([size='lg']) {
-  --width: calc(12 * #{$cds-token-space-size-13});
+  --width: calc(12 * #{$cds-global-space-13});
 }
 
 :host([size='xl']) {
-  --width: calc(16 * #{$cds-token-space-size-13});
+  --width: calc(16 * #{$cds-global-space-13});
 }
 
 :host,
@@ -40,14 +35,6 @@
   position: absolute;
 }
 
-cds-internal-close-button {
-  --color: var(--close-icon-color-hover);
-
-  &:hover {
-    --color: var(--close-icon-color-hover);
-  }
-}
-
 .modal-dialog {
   position: relative;
   z-index: 1050; // TODO: restore using map-get to get the z-index
@@ -59,7 +46,7 @@ cds-internal-close-button {
   background: var(--background);
   border: var(--border-radius);
   border-radius: var(--border-radius);
-  box-shadow: 0 $cds-token-space-size-1 $cds-token-space-size-2 $cds-token-space-size-2 var(--content-box-shadow-color);
+  box-shadow: var(--box-shadow);
 }
 
 .modal-backdrop {
@@ -69,7 +56,6 @@ cds-internal-close-button {
   right: 0;
   left: 0;
   background: var(--backdrop-background);
-  opacity: var(--backdrop-opacity);
   z-index: 1040; // TODO: restore using map-get to get the z-index
 }
 
@@ -81,13 +67,13 @@ cds-internal-close-button {
   overflow-x: hidden;
 }
 
-@media screen and (max-width: $cds-token-layout-width-sm) and (orientation: landscape) {
+@media screen and (max-width: $cds-global-layout-width-sm) and (orientation: landscape) {
   .modal-body {
     max-height: 55vh;
   }
 }
 
-@media screen and (max-width: $cds-token-layout-width-xs) {
+@media screen and (max-width: $cds-global-layout-width-xs) {
   .modal-body {
     max-height: 55vh;
   }

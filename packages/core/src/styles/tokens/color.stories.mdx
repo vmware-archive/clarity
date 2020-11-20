@@ -1,0 +1,34 @@
+import '@clr/core/alert/register.js';
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Foundation/Color" />
+
+# Color
+
+Clarity provides several color options when building your applications. The global
+palette provides a large selection of Clarity themed colors. The alias tokens provides
+a set of semantic purpose defined tokens for different UI interactions and states.
+
+## Status
+
+Status colors provide a palette of colors for conveying status information. Our
+status colors consist of info (default), warning, danger, and success. There are
+two sets of status colors, primary and secondary statuses.
+
+Primary statuses are used for interactions that should be the users primary
+attention (button, banner alerts). Secondary statuses are secondary interactions
+and do not draw as much attention visually (outline button, tag, lighweight alerts).
+
+<Preview>
+  <Story id="stories-design-tokens--status-color" />
+</Preview>
+
+## Global Palette
+
+The Clarity global color palette is a full spectrum of bold hues and neutrals to
+meet all your design needs.
+
+<Preview>
+  <Story id="stories-design-tokens--color" />
+</Preview>

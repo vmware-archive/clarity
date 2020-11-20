@@ -4,9 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClarityIcons } from '@clr/core/icon/icon.service.js';
-import { timesIcon } from '@clr/core/icon/shapes/times.js';
-import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes } from '@clr/core/internal';
+import {
+  assignSlotNames,
+  baseStyles,
+  CdsBaseButton,
+  property,
+  StatusTypes,
+  syncDefinedProps,
+} from '@clr/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -44,6 +49,7 @@ export class CdsTag extends CdsBaseButton {
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })
   color: 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
+
   static get styles() {
     return [baseStyles, styles];
   }
@@ -73,25 +79,18 @@ export class CdsTag extends CdsBaseButton {
     if (!this.readonly && !this.getAttribute('aria-label')) {
       console.warn('Clickable and closable tags need aria-labels.');
     }
+
+    syncDefinedProps(props, this, [this.badge]);
   }
 
   render() {
     return html`
-      <div class="private-host" cds-layout="horizontal">
-        ${this.icon
-          ? html`<span class="tag-icon"><slot name="tag-icon"></slot></span>`
-          : html`<span class="tag-icon empty"></span>`}
-        <span class="tag-content"><slot></slot></span>
-        ${this.badge
-          ? html`<span class="tag-badge"><slot name="tag-badge"></slot></span>`
-          : html`<span class="tag-badge empty"></span>`}
-        ${this.closable ? html`<span class="tag-close-icon"><cds-icon shape="times"></cds-icon></span>` : html``}
+      <div class="private-host" cds-layout="horizontal align:vertical-center">
+        <slot name="tag-icon"></slot>
+        <span class="tag-content" cds-text="lhe"><slot></slot></span>
+        <slot name="tag-badge"></slot>
+        ${this.closable ? html`<cds-icon shape="times"></cds-icon>` : html``}
       </div>
     `;
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(timesIcon);
   }
 }

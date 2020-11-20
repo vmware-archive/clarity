@@ -30,7 +30,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: var(--cds-token-space-size-9) var(--cds-token-space-size-9) 0;
+  padding: var(--cds-global-space-9) var(--cds-global-space-9) 0;
 
   @media (min-width: 768px) {
     width: calc(100% - 10rem);
@@ -39,7 +39,7 @@ export default {
 .nav-toc-container {
   li {
     ul li {
-      padding-top: var(--cds-token-space-size-4);
+      padding-top: var(--cds-global-space-4);
     }
   }
 }

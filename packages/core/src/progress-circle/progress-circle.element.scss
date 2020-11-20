@@ -2,9 +2,9 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --ring-color: #{$cds-token-color-neutral-1000};
-  --ring-opacity: 0.15;
-  --fill-color: #{$cds-token-color-action-800};
+  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-info-shade};
+  --fill-color: #{$cds-alias-status-info};
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -34,24 +34,24 @@ svg {
 
 :host,
 :host([size='sm']) {
-  @include equilateral(#{$cds-token-space-size-7});
+  @include equilateral(#{$cds-global-space-7});
 }
 
 :host([size='md']) {
-  @include equilateral(#{$cds-token-space-size-9});
+  @include equilateral(#{$cds-global-space-9});
 }
 
 :host([size='lg']) {
-  @include equilateral(#{$cds-token-space-size-11});
+  @include equilateral(#{$cds-global-space-11});
 }
 
 :host([size='xl']) {
-  @include equilateral(#{$cds-token-space-size-12});
+  @include equilateral(#{$cds-global-space-12});
 }
 
 :host([size='xxl']) {
   // 64px
-  @include equilateral(calc(#{$cds-token-space-size-13} - #{$cds-token-space-size-5}));
+  @include equilateral(calc(#{$cds-global-space-13} - #{$cds-global-space-5}));
 }
 
 :host([value='0']) .fillstroke,
@@ -64,39 +64,34 @@ svg {
 }
 
 :host([status='info']) {
-  --ring-color: #{$cds-token-color-action-50};
-  --fill-color: #{$cds-token-color-action-800};
-  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-info-shade};
+  --fill-color: #{$cds-alias-status-info};
 }
 
 :host([status='success']) {
-  --ring-color: #{$cds-token-color-success-50};
-  --fill-color: #{$cds-token-color-success-800};
-  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-success-shade};
+  --fill-color: #{$cds-alias-status-success};
 }
 
 :host([status='warning']) {
-  --ring-color: #{$cds-token-color-warning-100};
-  --fill-color: #{$cds-token-color-warning-900};
-  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-warning-shade};
+  --fill-color: #{$cds-alias-status-warning};
 }
 
 :host([status='danger']) {
-  --ring-color: #{$cds-token-color-danger-50};
-  --fill-color: #{$cds-token-color-danger-900};
-  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-danger-shade};
+  --fill-color: #{$cds-alias-status-danger};
 }
 
-:host([status='unknown']) {
-  --ring-color: #{$cds-token-color-secondary-action-50};
-  --fill-color: #{$cds-token-color-secondary-action-900};
-  --ring-opacity: 1;
+:host([status='alt']) {
+  --ring-color: #{$cds-alias-status-secondary-alt-shade};
+  --fill-color: #{$cds-alias-status-alt};
 }
 
+:host([status='neutral']),
 :host([inverse]) {
-  --ring-color: #{$cds-token-color-neutral-700};
-  --fill-color: #{$cds-token-color-neutral-0};
-  --ring-opacity: 1;
+  --ring-color: #{$cds-alias-status-secondary-neutral-shade};
+  --fill-color: #{$cds-alias-status-neutral};
 }
 
 @keyframes spin {

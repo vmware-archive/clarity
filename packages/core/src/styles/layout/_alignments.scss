@@ -19,13 +19,11 @@
 }
 
 @mixin generateHorizontalVerticalItemStretchShrink($breakpoint: null) {
-  [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'],
-  ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}']) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
     flex-grow: 1 !important;
   }
 
-  [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'],
-  ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}']) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$shrink}'] {
     flex-shrink: 1 !important;
     flex-grow: 0 !important;
   }

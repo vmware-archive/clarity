@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Range/Stories',
+  title: 'Stories/Range',
   component: 'cds-range',
   argTypes: getElementStorybookArgTypes('cds-range', customElements),
   parameters: {
@@ -139,5 +139,35 @@ export const minMax = () => {
       <input type="range" min="20" max="80" step="10" value="40" />
       <cds-control-message>message text</cds-control-message>
     </cds-range>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-range layout="horizontal">
+        <label>label</label>
+        <input type="range" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-range>
+
+      <cds-range layout="horizontal">
+        <label>disabled</label>
+        <input type="range" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-range>
+
+      <cds-range layout="horizontal" status="error">
+        <label>error</label>
+        <input type="range" />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-range>
+
+      <cds-range layout="horizontal" status="success">
+        <label>success</label>
+        <input type="range" />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-range>
+    </cds-form-group>
   `;
 };

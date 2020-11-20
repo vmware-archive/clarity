@@ -6,9 +6,9 @@
 @import './../../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-token-color-neutral-700};
-  --font-size: #{$cds-token-typography-font-size-1};
-  --font-weight: #{$cds-token-typography-font-weight-regular};
+  --color: #{$cds-global-typography-color-300};
+  --font-size: #{$cds-global-typography-font-size-1};
+  --font-weight: #{$cds-global-typography-font-weight-regular};
 }
 
 .private-host {
@@ -20,13 +20,17 @@
 }
 
 :host([status='error']) {
-  --color: #{$cds-token-color-danger-800};
+  --color: #{$cds-alias-status-danger};
 }
 
 :host([status='success']) {
-  --color: #{$cds-token-color-success-800};
+  --color: #{$cds-alias-status-success};
+}
+
+:host([disabled]) {
+  --color: #{$cds-alias-status-disabled};
 }
 
 ::slotted(cds-control-action) {
-  margin-bottom: calc(-1 * #{$cds-token-space-size-5});
+  margin-bottom: calc(-1 * #{$cds-global-space-5});
 }

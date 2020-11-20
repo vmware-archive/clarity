@@ -1,11 +1,11 @@
 // Style code used to make @clr/core containers scrollable
 .doc-wrapper {
-  background-color: var(--cds-token-color-neutral-200);
+  background-color: var(--cds-global-color-gray-200);
   position: relative;
-  padding: var(--cds-token-layout-space-md) var(--cds-token-layout-space-sm);
-  margin-bottom: var(--cds-token-space-size-10);
+  padding: var(--cds-global-layout-space-md) var(--cds-global-layout-space-sm);
+  margin-bottom: var(--cds-global-space-10);
   width: 100%;
-  min-height: calc(var(--cds-token-space-size-13) * 2);
+  min-height: calc(var(--cds-global-space-13) * 2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,11 +18,11 @@
     &:after {
       content: 'Do';
       position: absolute;
-      color: var(--cds-token-color-success-600);
-      bottom: calc(-1 * var(--cds-token-space-size-11));
-      border-top: var(--cds-token-space-size-4) solid currentColor;
-      height: var(--cds-token-space-size-11);
-      line-height: var(--cds-token-space-size-9);
+      color: var(--cds-global-color-green-600);
+      bottom: calc(-1 * var(--cds-global-space-11));
+      border-top: var(--cds-global-space-4) solid currentColor;
+      height: var(--cds-global-space-11);
+      line-height: var(--cds-global-space-9);
       width: 100%;
       left: 0;
       font-weight: bolder;
@@ -34,7 +34,7 @@
   @extend .doc-do;
   .doc-example:after {
     content: "Don't";
-    color: var(--cds-token-color-danger-600);
+    color: var(--cds-global-color-red-600);
   }
 }
 

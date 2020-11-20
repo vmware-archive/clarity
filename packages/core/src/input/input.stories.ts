@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Input/Stories',
+  title: 'Stories/Input',
   component: 'cds-input',
   argTypes: getElementStorybookArgTypes('cds-input', customElements),
   parameters: {
@@ -185,5 +185,66 @@ export const supportedTextTypes = () => {
         <input type="color" placeholder="color" value="#179BD3" />
       </cds-input>
     </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-input layout="horizontal">
+        <label>label</label>
+        <input placeholder="name" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-input>
+
+      <cds-input layout="horizontal">
+        <label>disabled</label>
+        <input placeholder="name" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-input>
+
+      <cds-input layout="horizontal" status="error">
+        <label>error</label>
+        <input placeholder="name" />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-input>
+
+      <cds-input layout="horizontal" status="success">
+        <label>success</label>
+        <input placeholder="name" />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-input>
+    </cds-form-group>
+  `;
+};
+
+export const box = () => {
+  return html`
+    <style>
+      [box] cds-input {
+        --background: var(--cds-alias-object-container-background);
+        --border-radius: var(--cds-alias-object-border-radius-100);
+        --border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color);
+        --border-bottom: 0;
+        --padding: var(--cds-global-space-2) var(--cds-global-space-4) 0 var(--cds-global-space-4);
+      }
+
+      [box] cds-input input:focus {
+        --border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-status-info);
+      }
+    </style>
+    <cds-form-group layout="vertical" box>
+      <cds-input box>
+        <label>box style</label>
+        <input placeholder="name" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-input>
+
+      <cds-textarea box>
+        <label>textarea</label>
+        <textarea></textarea>
+        <cds-control-message>message text</cds-control-message>
+      </cds-textarea>
+    </cds-form-group>
   `;
 };

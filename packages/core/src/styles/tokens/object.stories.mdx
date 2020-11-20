@@ -1,0 +1,70 @@
+import '@clr/core/alert/register.js';
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Object Styles" />
+
+# Object Styles
+
+Object style tokens are token values that construct most components in Clarity.
+These values define common background colors, borders, shadows and containers.
+
+## Object Border Width
+
+Border width are controlled by a scale of four values. Each increasing width.
+
+<Story id="stories-design-tokens--object-border-width" />
+
+## Object Border Radius
+
+Border radius values in Clarity fall under three values. Most container style elements
+have the default `0.15rem` while interaction elements such as tags have a higher
+radius with `0.6rem`. The third token is for elements which are full circles such
+as the `cds-badge` component.
+
+<Story id="stories-design-tokens--object-border-radius" />
+
+## Object Border Color
+
+All border colors fall under three values. Most container elements default to the
+default border color tokens and may adjust tint or shade dependent on the usage.
+
+<Story id="stories-design-tokens--object-border-color" />
+
+## Object Opacity
+
+Object opacity colors can be used to define overlay background on elements. Do
+not use opacity as text color values as it can cause accessibility contrast issues.
+
+<Story id="stories-design-tokens--object-opacity" />
+
+## Shadow
+
+Shadows provide depth and layering to an application. Clarity has three shadow layers
+to choose from. Shadows become lighter as the element using them is elevated. Example,
+inline components like cards would use `shadow-100` while mid elevation components
+like datepickers, dropdowns, and popovers use `shadow-200`. Components such as
+the modal and wizard at the highest elevation level use `shadow-300`.
+
+<Story id="stories-design-tokens--object-shadow" />
+
+## Object Layers
+
+Object layers define visual boundaries between content. Clarity consists of three
+layer types.
+
+- **App**: (body) default background of an applicaiton
+- **Container**: most components to contrast to the base background (cards, dropdowns, accordion)
+- **Overlay**: elements which define full screen overlays (modals, wizards)
+
+<Story id="stories-design-tokens--object-layers" />
+
+## Custom Object Demo
+
+By using provided object tokens and aliases we can build custom components that
+have the look and feel of Clarity while automatically staying in sync with dark theme.
+Click the <svg viewBox="0 0 1024 1024" className="sb-inline-icon"><path d="M920 64h-816c-22.092 0-40 17.91-40 40v816c0 22.094 17.908 40 40 40h816c22.092 0 40-17.906 40-40v-816c0-22.090-17.908-40-40-40zM880 144v449.782l-235.39-235.392c-7.502-7.5-17.676-11.714-28.286-11.714s-20.784 4.214-28.286 11.716l-169.804 169.804-40.958-40.958c-15.622-15.622-40.95-15.622-56.57 0l-176.708 176.708v-519.946h736.002zM144 880v-102.914l204.992-204.994 215.972 215.974c7.81 7.81 18.048 11.714 28.286 11.714s20.474-3.904 28.286-11.714c15.62-15.622 15.62-40.95 0-56.57l-146.732-146.73 141.522-141.524 263.676 263.68v173.078h-736.002zM356.174 400.542c52.466 0 95-42.536 95-95s-42.534-95-95-95-95 42.536-95 95 42.534 95 95 95zM356.174 250.542c30.326 0 55 24.672 55 55s-24.674 55-55 55-55-24.672-55-55 24.674-55 55-55z"></path></svg>
+button in the top navigation to toggle the current theme.
+
+<Preview>
+  <Story id="stories-design-tokens--object-demo" />
+</Preview>

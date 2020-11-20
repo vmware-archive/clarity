@@ -42,12 +42,6 @@ import { styles } from './accordion-panel.element.css.js';
  * @cssprop --color
  * @cssprop --font-size
  * @cssprop --font-weight
- * @cssprop --header-background
- * @cssprop --header-color
- * @cssprop --header-font-size
- * @cssprop --header-font-weight
- * @cssprop --header-open-background
- * @cssprop --transition-duration
  */
 export class CdsAccordionPanel extends LitElement {
   @property({ type: Boolean }) disabled = false;
@@ -56,42 +50,25 @@ export class CdsAccordionPanel extends LitElement {
 
   @event() protected expandedChange: EventEmitter<boolean>;
 
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
   private toggle() {
     this.expandedChange.emit(!this.expanded);
   }
 
   render() {
-    return html` <div class="private-host" role="group">
-      <div class="accordion-header${this.expanded ? ' open' : ''}${this.disabled ? ' disabled' : ''}">
-        <button
-          cds-layout="horizontal p-x:md p-y:sm"
-          type="button"
-          @click="${() => this.toggle()}"
-          class="accordion-header-button"
-          ?disabled="${this.disabled}"
-          aria-disabled="${this.disabled}"
-          aria-expanded="${this.expanded}"
-        >
-          <span class="accordion-status" cds-layout="vertical align:vertical-center p-r:sm">
-            <span class="accordion-angle-wrapper">
-              <cds-icon class="accordion-angle" shape="angle" direction="right" size="14"></cds-icon>
-            </span>
-          </span>
-          <slot name="accordion-header" cds-layout="vertical align:vertical-center"></slot>
-        </button>
-      </div>
-      <div
-        role="region"
-        aria-hidden="${!this.expanded}"
-        class="accordion-content-wrapper${this.expanded ? ' open' : ''}"
+    return html`<div class="private-host" role="group">
+      <button
+        class="accordion-header-button"
+        cds-layout="horizontal align:vertical-center gap:md"
+        type="button"
+        @click="${() => this.toggle()}"
+        ?disabled="${this.disabled}"
+        aria-disabled="${this.disabled}"
+        aria-expanded="${this.expanded}"
       >
-        <div class="accordion-content" cds-layout="horizontal p-x:lg p-y:sm">
-          <slot name="accordion-content"></slot>
-        </div>
+        <slot name="accordion-header"></slot>
+      </button>
+      <div role="region" aria-hidden="${!this.expanded}" class="accordion-content">
+        <slot name="accordion-content"></slot>
       </div>
     </div>`;
   }

@@ -35,7 +35,7 @@ export default {
 }
 
 .item-overview {
-  border: 0.0625rem solid var(--cds-token-color-neutral-400); // 1px
+  border: 0.0625rem solid var(--cds-global-color-gray-400); // 1px
   border-radius: 0.1875rem;
 
   :hover {

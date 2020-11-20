@@ -56,7 +56,7 @@ export default {
   margin-top: 0.25rem;
   border: 1px solid #ccc;
   border-radius: 0.15rem;
-  background-color: var(--cds-token-color-neutral-0);
+  background-color: var(--cds-global-color-gray-0);
 
   &.expanded:after {
     display: none;
@@ -82,7 +82,7 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    color: var(--cds-token-color-neutral-800);
+    color: var(--cds-global-color-gray-800);
     margin: 0;
     padding: 0;
     outline: none 0;
@@ -122,7 +122,7 @@ export default {
 
       code {
         // prism theme color override
-        color: var(--cds-token-color-neutral-700);
+        color: var(--cds-global-color-gray-700);
       }
     }
   }

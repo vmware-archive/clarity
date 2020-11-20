@@ -11,7 +11,7 @@ import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Components (Preview)/Divider/Stories',
+  title: 'Stories/Divider',
   component: 'cds-divider',
   argTypes: getElementStorybookArgTypes('cds-divider', customElements),
   parameters: {
@@ -43,7 +43,10 @@ export const horizontal = () => {
 
 export const vertical = () => {
   return html`
-    <div cds-layout="horizontal gap:md align:vertical-center p-x:md" style="background:#f9f9f9">
+    <div
+      cds-layout="horizontal gap:md align:vertical-center p-x:md"
+      style="background: var(--cds-alias-app-background-color)"
+    >
       <cds-button size="sm" action="outline">Demo Button 1</cds-button>
       <cds-button size="sm" action="outline">Demo Button 1</cds-button>
       <cds-divider orientation="vertical"></cds-divider>
@@ -60,7 +63,7 @@ export const vertical = () => {
 
 export const verticalFill = () => {
   return html`
-    <div style="background:#f9f9f9; width: 100%; height: 80px; padding: 0 49%">
+    <div style="background: var(--cds-alias-app-background-color); width: 100%; height: 80px; padding: 0 49%">
       <cds-divider orientation="vertical"></cds-divider>
     </div>
     <p cds-text="body" cds-layout="m-y:lg">
@@ -112,6 +115,16 @@ export const custom = () => {
       <div cds-layout="align:stretch">
         <p cds-text="body disable-lhe">The thickness (size) and color of dividers can be customized.</p>
       </div>
+    </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:md" cds-theme="dark">
+      <p cds-text="body">It is often preferable to use dividers inside of layouts.</p>
+      <cds-divider></cds-divider>
+      <p cds-text="body">This allows them to span the dimensions of their containers as expected.</p>
     </div>
   `;
 };

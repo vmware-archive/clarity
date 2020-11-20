@@ -6,5 +6,5 @@
     "types": ["jasmine", "@types/resize-observer-browser"],
     "strictNullChecks": false
   },
-  "exclude": ["dist", "node_modules", "./storybook", "**/*.stories.ts"]
+  "exclude": ["dist", "node_modules", "./storybook", "**/*.stories.ts", "build"]
 }

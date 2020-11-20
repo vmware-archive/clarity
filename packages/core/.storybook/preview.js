@@ -1,6 +1,7 @@
 import '!style-loader!css-loader!./public/demo.css';
 import { setCustomElements } from '@storybook/web-components';
 import { applyPolyfill } from 'custom-elements-hmr-polyfill';
+import { withCssResources } from '@storybook/addon-cssresources';
 import customElements from '../dist/core/custom-elements.json';
 
 window.HMR_SKIP_DEEP_PATCH = true;
@@ -13,27 +14,43 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
       order: [
-        'Welcome',
         'Documentation',
-        ['Getting Started', 'Angular', 'Vue', 'React', 'Preact', 'AngularJS', 'Browser Support', 'Changelog'],
+        [
+          'Welcome',
+          'Getting Started',
+          'Angular',
+          'Vue',
+          'React',
+          'Preact',
+          'AngularJS',
+          'Browser Support',
+          'Changelog',
+        ],
         'Foundation',
         [
           'Design Tokens',
           'Typography',
-          'Color',
           'Spacing',
-          'Layout',
-          ['Get Started', 'Horizontal', 'Vertical', 'Grid', 'Spacing', 'Utilities', 'Patterns', 'All'],
-          ['Getting Started', 'Stories'],
+          'Color',
+          'Object Styles',
+          'Interaction Styles',
+          'Design Tokens Stories',
+          'Typography Stories',
         ],
+        'Themes',
+        ['Getting Started', 'Dark Theme', 'Dynamic Themes'],
+        'Layout',
+        ['Get Started', 'Horizontal', 'Vertical', 'Grid', 'Spacing', 'Utilities', 'Patterns', 'All'],
         'Components',
-        'Forms (Preview)',
+        'Forms',
         [
-          'Forms',
-          ['Getting Started', 'Responsive', 'Validation'],
+          'Getting Started',
+          'Responsive',
+          'Validation',
           'Control',
           'Checkbox',
           'Datalist',
+          'Date',
           'File',
           'Input',
           'Input Groups',
@@ -72,18 +89,23 @@ export const parameters = {
       ],
     },
   },
-  cssresources: [
-    {
-      id: 'darktheme',
-      code: `
-      <style>
-        /* coming soon dark theme demo (will load external dark theme CSS file) */
-        body { background-color: hsl(201, 30%, 15%); }
-      </style>`,
-      picked: false,
+  themes: {
+    list: [
+      { name: 'light', class: 'cds-theme-light', color: 'hsl(0, 0%, 100%)' },
+      { name: 'dark', class: 'cds-theme-dark', color: 'hsl(211, 63%, 14%)' },
+    ],
+    clearable: false,
+    onChange: theme => {
+      const doc = document.querySelector('#storybook-preview-iframe').contentWindow.document;
+      doc.body.setAttribute('cds-theme', theme.name);
+      doc
+        .querySelectorAll(`[id*='story--'], [cds-theme]`)
+        .forEach(story => story.setAttribute('cds-theme', theme.name));
     },
-  ],
+  },
 };
+
+export const decorators = [withCssResources];
 
 // https://github.com/storybookjs/storybook/tree/master/app/web-components
 setCustomElements(customElements);

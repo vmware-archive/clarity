@@ -27,11 +27,11 @@ h1 {
   margin: 0rem;
 }
 .nav .btn.btn-link.nav-link {
-  color: var(--cds-token-color-neutral-700, #666);
+  color: var(--cds-global-color-gray-700, #666);
 }
 
 .nav .btn.nav-link.active {
-  color: var(--cds-token-color-neutral-1000, #000);
+  color: var(--cds-global-color-gray-1000, #000);
 }
 </style>
 

@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Time/Stories',
+  title: 'Stories/Time',
   component: 'cds-time',
   argTypes: getElementStorybookArgTypes('cds-time', customElements),
   parameters: {
@@ -144,5 +144,35 @@ export const timeDatalist = () => {
       </datalist>
       <cds-control-message>message text</cds-control-message>
     </cds-time>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-time layout="horizontal">
+        <label>label</label>
+        <input type="time" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-time>
+
+      <cds-time layout="horizontal">
+        <label>disabled</label>
+        <input type="time" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-time>
+
+      <cds-time layout="horizontal" status="error">
+        <label>error</label>
+        <input type="time" />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-time>
+
+      <cds-time layout="horizontal" status="success">
+        <label>success</label>
+        <input type="time" />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-time>
+    </cds-form-group>
   `;
 };

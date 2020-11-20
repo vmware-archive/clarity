@@ -44,7 +44,6 @@ import { styles } from './modal.element.css.js';
  * @slot cds-modal-header
  * @slot cds-modal-actions
  * @event closeChange - notify when the user has clicked the close button
- * @cssprop --backdrop-opacity
  * @cssprop --backdrop-background
  * @cssprop --box-shadow-color
  * @cssprop --border-radius
@@ -52,7 +51,7 @@ import { styles } from './modal.element.css.js';
  * @cssprop --background
  * @cssprop --close-icon-color
  * @cssprop --close-icon-color-hover
- * @cssprop --content-box-shadow-color
+ * @cssprop --box-shadow
  * @cssprop --width
  */
 export class CdsModal extends CdsBaseFocusTrap {

@@ -5,24 +5,25 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --color: #{$cds-token-color-neutral-400};
-  --check-color: #{$cds-token-color-neutral-0};
-  --background: transparent;
-  --border-radius: #{$cds-token-global-border-radius};
+  --color: #{$cds-alias-object-opacity-0};
+  --check-color: #{$cds-global-typography-color-100};
+  --background: #{$cds-alias-object-opacity-0};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
 }
 
 .input {
-  width: #{$cds-token-space-size-7};
-  height: #{$cds-token-space-size-7};
+  width: #{$cds-global-space-7};
+  height: #{$cds-global-space-7};
   position: relative;
   cursor: pointer;
 }
 
 .input::before {
   background: var(--background);
-  width: #{$cds-token-space-size-7};
-  height: #{$cds-token-space-size-7};
-  border: #{$cds-token-space-size-1} solid var(--color);
+  width: #{$cds-global-space-7};
+  height: #{$cds-global-space-7};
+  border: var(--border);
   border-radius: var(--border-radius);
   display: inline-block;
   position: absolute;
@@ -33,22 +34,22 @@
   position: absolute;
   content: '';
   display: none;
-  height: calc(#{$cds-token-space-size-3} + #{$cds-token-space-size-1});
-  width: $cds-token-space-size-5;
-  top: $cds-token-space-size-1;
-  left: $cds-token-space-size-3;
-  border-left: $cds-token-space-size-2 solid;
-  border-bottom: $cds-token-space-size-2 solid;
+  height: calc(#{$cds-global-space-3} + #{$cds-global-space-1});
+  width: $cds-global-space-5;
+  top: $cds-global-space-1;
+  left: $cds-global-space-3;
+  border-left: $cds-global-space-2 solid;
+  border-bottom: $cds-global-space-2 solid;
   border-color: var(--check-color);
   border-left-color: var(--check-color);
   border-bottom-color: var(--check-color);
   border-right-color: var(--check-color);
   border-top-color: var(--check-color);
-  transform: translateY($cds-token-space-size-3-static) rotate(-45deg);
+  transform: translateY($cds-global-space-3-static) rotate(-45deg);
 }
 
 :host([indeterminate]) {
-  --color: #{$cds-token-color-action-600};
+  --color: #{$cds-alias-status-neutral};
 }
 
 :host([indeterminate]) .input::after {
@@ -59,8 +60,9 @@
 }
 
 :host([checked]) {
-  --color: #{$cds-token-color-action-600};
+  --color: #{$cds-alias-status-info};
   --background: var(--color);
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-info};
 
   .input::after {
     display: inline-block;
@@ -68,11 +70,13 @@
 }
 
 :host([status='error']:not([checked])) {
-  --color: #{$cds-token-color-danger-800};
+  --color: #{$cds-alias-status-danger};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger};
 }
 
 :host([disabled]) {
-  --color: #{$cds-token-color-neutral-400};
+  --color: #{$cds-alias-status-disabled-tint};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
 
   .input {
     cursor: not-allowed;

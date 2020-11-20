@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Select/Stories',
+  title: 'Stories/Select',
   component: 'cds-select',
   argTypes: getElementStorybookArgTypes('cds-select', customElements),
   parameters: {
@@ -201,5 +201,51 @@ export const multiple = () => {
       </select>
       <cds-control-message>message text</cds-control-message>
     </cds-select>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-select layout="horizontal">
+        <label>label</label>
+        <select>
+          <option>option one</option>
+          <option>option two</option>
+          <option>option three</option>
+        </select>
+        <cds-control-message>message text</cds-control-message>
+      </cds-select>
+
+      <cds-select layout="horizontal">
+        <label>disabled</label>
+        <select disabled>
+          <option>option one</option>
+          <option>option two</option>
+          <option>option three</option>
+        </select>
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-select>
+
+      <cds-select layout="horizontal" status="error">
+        <label>error</label>
+        <select>
+          <option>option one</option>
+          <option>option two</option>
+          <option>option three</option>
+        </select>
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-select>
+
+      <cds-select layout="horizontal" status="success">
+        <label>success</label>
+        <select>
+          <option>option one</option>
+          <option>option two</option>
+          <option>option three</option>
+        </select>
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-select>
+    </cds-form-group>
   `;
 };

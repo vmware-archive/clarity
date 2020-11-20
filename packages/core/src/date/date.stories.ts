@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Date (Internal)/Stories',
+  title: 'Stories/Date',
   component: 'cds-date',
   argTypes: getElementStorybookArgTypes('cds-date', customElements),
   parameters: {
@@ -144,5 +144,35 @@ export const datalist = () => {
       </datalist>
       <cds-control-message>message text</cds-control-message>
     </cds-date>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-date layout="horizontal">
+        <label>label</label>
+        <input type="date" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-date>
+
+      <cds-date layout="horizontal">
+        <label>disabled</label>
+        <input type="date" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-date>
+
+      <cds-date layout="horizontal" status="error">
+        <label>error status</label>
+        <input type="date" />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-date>
+
+      <cds-date layout="horizontal" status="success">
+        <label>success status</label>
+        <input type="date" />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-date>
+    </cds-form-group>
   `;
 };

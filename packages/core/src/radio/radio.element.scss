@@ -5,9 +5,9 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --width: #{$cds-token-space-size-7};
-  --height: #{$cds-token-space-size-7};
-  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
+  --width: #{$cds-global-space-7};
+  --height: #{$cds-global-space-7};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
   --fill-box-shadow: none;
 }
 
@@ -18,7 +18,7 @@
   border: var(--border);
   box-shadow: var(--fill-box-shadow);
   display: inline-block;
-  border-radius: 50%;
+  border-radius: #{$cds-alias-object-border-radius-300};
   content: '';
   cursor: pointer;
 }
@@ -26,23 +26,23 @@
 .input::after {
   width: var(--width);
   height: var(--height);
-  border-radius: 50%;
+  border-radius: #{$cds-alias-object-border-radius-300};
   content: '';
   position: absolute;
   top: 0;
   left: 0;
 }
 
-:host([status='error']) .input {
-  --border: 0.05rem solid #{$cds-token-color-danger-800};
+:host([status='error']) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger};
 }
 
-:host([checked]) .input {
-  --fill-box-shadow: inset 0 0 0 #{$cds-token-space-size-4} #{$cds-token-color-action-600};
+:host([checked]) {
+  --fill-box-shadow: inset 0 0 0 #{$cds-global-space-4} #{$cds-alias-status-info};
   --border: 0 !important;
 }
 
-:host([checked][disabled]) .input {
-  --fill-box-shadow: inset 0 0 0 #{$cds-token-space-size-4} #{$cds-token-color-neutral-500};
+:host([checked][disabled]) {
+  --fill-box-shadow: inset 0 0 0 #{$cds-global-space-4} #{$cds-alias-status-disabled-tint};
   --border: 0 !important;
 }

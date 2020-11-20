@@ -2,9 +2,9 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --action-hover-text-color: #{$cds-token-color-neutral-1000};
-  --action-text-color: #{$cds-token-color-neutral-700};
-  --action-font-size: #{$cds-token-typography-font-size-3};
+  --action-hover-text-color: #{$cds-global-typography-color-500};
+  --action-text-color: #{$cds-global-typography-color-500};
+  --action-font-size: #{$cds-global-typography-font-size-3};
   white-space: nowrap;
 
   // TODO: add style override for dropdown component inside alert-actions after cds-dropdown is implemented
@@ -21,7 +21,7 @@
     --border-color: var(--action-text-color);
     --background: none;
     --padding: none;
-    --box-shadow-color: transparent;
+    --box-shadow-color: #{$cds-alias-object-opacity-0};
     --text-transform: none;
     --text-decoration: underline;
     --border-width: 0;
@@ -37,15 +37,20 @@
 }
 
 :host([type='default']) {
-  --action-size: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-3});
+  --action-size: calc(#{$cds-global-space-9} - #{$cds-global-space-3});
 }
 
 :host([type='banner']) {
-  --action-size: #{$cds-token-space-size-9};
+  --action-size: #{$cds-global-space-9};
+
+  ::slotted(cds-button) {
+    --color: #{$cds-global-typography-color-100};
+    --border-color: #{$cds-global-typography-color-100};
+  }
 }
 
 :host([type='default']) .private-host {
-  height: calc(var(--action-size) + #{$cds-token-space-size-2});
+  height: calc(var(--action-size) + #{$cds-global-space-2});
 }
 
 :host([type='default']) ::slotted(cds-button) {

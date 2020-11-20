@@ -27,15 +27,15 @@
 }
 
 cds-control-action.status {
-  height: $cds-token-space-size-7;
-  padding-top: $cds-token-space-size-3;
+  height: $cds-global-space-7;
+  padding-top: $cds-global-space-3;
 }
 
 :host([layout='horizontal']),
 :host([layout='horizontal-inline']),
 :host([layout='compact']) {
   cds-internal-control-label[action='primary'] {
-    padding-top: $cds-token-space-size-5;
+    padding-top: $cds-global-space-5;
   }
 }
 
@@ -43,6 +43,6 @@ cds-control-action.status {
 :host([layout='compact'][status='success']),
 :host([layout='compact'][status='error']) {
   .messages {
-    padding-top: $cds-token-space-size-5;
+    padding-top: $cds-global-space-5;
   }
 }

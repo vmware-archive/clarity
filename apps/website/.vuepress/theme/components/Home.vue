@@ -4,7 +4,7 @@
 }
 
 .home-container {
-  row-gap: var(--cds-token-layout-space-xxl);
+  row-gap: var(--cds-global-layout-space-xxl);
 }
 
 .whats-new {
@@ -25,7 +25,7 @@
 
 .home-section {
   max-width: 960px;
-  column-gap: var(--cds-token-layout-space-lg);
+  column-gap: var(--cds-global-layout-space-lg);
 }
 
 .section-column-wrapper {
@@ -40,7 +40,7 @@
 }
 
 .inverse-font {
-  color: var(--cds-token-color-neutral-0);
+  color: var(--cds-global-color-gray-0);
 }
 
 .docs-red {
@@ -323,7 +323,7 @@
 .hero-btn {
   background-color: hsl(198, 69%, 69%);
   height: 2.4rem;
-  color: var(--cds-token-color-neutral-1000);
+  color: var(--cds-global-color-gray-1000);
   margin: 0;
 }
 </style>

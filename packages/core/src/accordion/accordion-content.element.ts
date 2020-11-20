@@ -6,6 +6,7 @@
 
 import { baseStyles } from '@clr/core/internal';
 import { html, LitElement } from 'lit-element';
+import { styles } from './accordion-content.element.css.js';
 
 /**
  * Web component accordion content to be used inside an accordion
@@ -33,6 +34,10 @@ import { html, LitElement } from 'lit-element';
  *
  * @beta
  * @element cds-accordion-content
+ * @cssprop --color
+ * @cssprop --font-size
+ * @cssprop --font-weight
+ * @cssprop --background
  */
 export class CdsAccordionContent extends LitElement {
   connectedCallback() {
@@ -40,10 +45,10 @@ export class CdsAccordionContent extends LitElement {
     this.setAttribute('slot', 'accordion-content');
   }
   render() {
-    return html`<slot></slot>`;
+    return html`<div class="private-host"><slot></slot></div>`;
   }
 
   static get styles() {
-    return [baseStyles];
+    return [baseStyles, styles];
   }
 }

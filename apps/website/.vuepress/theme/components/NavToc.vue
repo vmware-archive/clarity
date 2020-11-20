@@ -71,8 +71,8 @@ export default {
     max-height: 100%;
     overflow-y: auto;
 
-    padding-left: var(--cds-token-space-size-4);
-    padding-right: var(--cds-token-space-size-4);
+    padding-left: var(--cds-global-space-4);
+    padding-right: var(--cds-global-space-4);
     max-width: inherit;
   }
 
@@ -94,17 +94,17 @@ export default {
     list-style: none;
     padding-top: 0.5rem;
     a {
-      padding: 0 var(--cds-token-space-size-4);
+      padding: 0 var(--cds-global-space-4);
       display: inline-block;
-      color: var(--cds-token-color-neutral-700, #666);
+      color: var(--cds-global-color-gray-700, #666);
       &:hover {
         text-decoration: none;
       }
       &:visited {
-        color: var(--cds-token-color-neutral-700, #666);
+        color: var(--cds-global-color-gray-700, #666);
       }
       &.router-link-active {
-        color: var(--cds-token-color-neutral-1000, #000);
+        color: var(--cds-global-color-gray-1000, #000);
       }
     }
   }
@@ -124,7 +124,7 @@ export default {
   li li {
     padding-top: 0;
     a {
-      margin-left: var(--cds-token-space-size-6);
+      margin-left: var(--cds-global-space-6);
     }
   }
 }

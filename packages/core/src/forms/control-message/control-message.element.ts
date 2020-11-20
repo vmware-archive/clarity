@@ -5,7 +5,7 @@
  */
 
 import { html, LitElement } from 'lit-element';
-import { baseStyles, property, assignSlotNames } from '@clr/core/internal';
+import { baseStyles, property, assignSlotNames, internalProperty } from '@clr/core/internal';
 import { ControlStatus } from '../utils/interfaces.js';
 import { styles } from './control-message.element.css.js';
 import { ValidityStateKey } from '../utils/validate.js';
@@ -43,6 +43,8 @@ export class CdsControlMessage extends LitElement {
    * https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
    */
   @property({ type: String }) error: ValidityStateKey;
+
+  @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
 
   render() {
     return html`

@@ -1,8 +1,8 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --color: #{$cds-token-color-neutral-300};
-  --size: #{$cds-token-space-size-1};
+  --color: #{$cds-alias-object-border-color};
+  --size: #{$cds-alias-object-border-width-100};
   --padding: 0;
 
   display: block;

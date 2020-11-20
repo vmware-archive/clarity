@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Toggle/Stories',
+  title: 'Stories/Toggle',
   component: 'cds-toggle',
   argTypes: getElementStorybookArgTypes('cds-toggle', customElements),
   parameters: {
@@ -556,5 +556,91 @@ export const toggleAlign = () => {
         </cds-toggle>
       </cds-toggle-group>
     </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal-inline" cds-theme="dark">
+      <cds-toggle-group layout="horizontal-inline">
+        <label>label</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" checked />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 3</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-control-message>message text</cds-control-message>
+      </cds-toggle-group>
+
+      <cds-toggle-group layout="horizontal-inline" disabled>
+        <label>disabled</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" checked />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 3</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-toggle-group>
+
+      <cds-toggle-group layout="horizontal-inline" status="error">
+        <label>error</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" checked />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 3</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-toggle-group>
+
+      <cds-toggle-group layout="horizontal-inline" status="success">
+        <label>success</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" checked />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 3</label>
+          <input type="checkbox" />
+        </cds-toggle>
+
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-toggle-group>
+    </cds-form-group>
   `;
 };

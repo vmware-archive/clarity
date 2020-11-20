@@ -5,8 +5,10 @@
 @import './../styles/tokens/generated/index';
 
 cds-select option {
-  padding: $cds-token-space-size-4;
-  font-size: $cds-token-typography-font-size-3;
+  background: $cds-alias-object-container-background;
+  color: $cds-global-typography-color-500;
+  padding: $cds-global-space-4;
+  font-size: $cds-global-typography-font-size-3;
 }
 
 cds-select input::-webkit-calendar-picker-indicator {

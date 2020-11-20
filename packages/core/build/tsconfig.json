@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "lib": ["es2017"],
+    "types": ["@types/node"]
+  }
+}

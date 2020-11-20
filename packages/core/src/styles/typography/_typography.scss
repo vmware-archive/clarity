@@ -7,14 +7,14 @@
 @mixin LHE($lh-gap: 0.5em) {
   @include line-height-eraser(
     $lh-gap,
-    $cds-token-global-font-top-gap-height,
-    $cds-token-global-font-ascender-height,
-    $cds-token-global-font-x-height
+    $cds-global-typography-top-gap-height,
+    $cds-global-typography-ascender-height,
+    $cds-global-typography-x-height
   );
 }
 
 [cds-text] {
-  font-family: $cds-token-typography-font-family;
+  font-family: $cds-global-typography-font-family;
   margin-top: 0;
   margin-bottom: 0;
 
@@ -34,7 +34,16 @@
 [cds-text*='title'],
 [cds-text*='section'],
 [cds-text*='subsection'] {
-  font-family: $cds-token-typography-header-font-family;
+  font-family: $cds-global-typography-header-font-family;
+  color: $cds-global-typography-color-400;
+}
+
+[cds-text*='body'],
+[cds-text*='message'],
+[cds-text*='secondary'],
+[cds-text*='caption'],
+[cds-text*='smallcaption'] {
+  color: $cds-global-typography-color-300;
 }
 
 [cds-text*='inline'] {
@@ -42,344 +51,149 @@
   display: inline-block !important;
 }
 
-// LEGACY FONT STYLES
-
-[cds-text*='h0'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h0-line-height-static, $cds-token-typography-h0-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h0-font-size;
-  font-weight: $cds-token-typography-h0-font-weight;
-  color: $cds-token-typography-h0-color;
-  line-height: $cds-token-typography-h0-line-height;
-  letter-spacing: $cds-token-typography-h0-letter-spacing;
-}
-
-[cds-text*='h1'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h1-line-height-static, $cds-token-typography-h1-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h1-font-size;
-  font-weight: $cds-token-typography-h1-font-weight;
-  color: $cds-token-typography-h1-color;
-  line-height: $cds-token-typography-h1-line-height;
-  letter-spacing: $cds-token-typography-h1-letter-spacing;
-}
-
-[cds-text*='h2'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h2-line-height-static, $cds-token-typography-h2-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h2-font-size;
-  font-weight: $cds-token-typography-h2-font-weight;
-  color: $cds-token-typography-h2-color;
-  line-height: $cds-token-typography-h2-line-height;
-  letter-spacing: $cds-token-typography-h2-letter-spacing;
-}
-
-[cds-text*='h3'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h3-line-height-static, $cds-token-typography-h3-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h3-font-size;
-  font-weight: $cds-token-typography-h3-font-weight;
-  color: $cds-token-typography-h3-color;
-  line-height: $cds-token-typography-h3-line-height;
-  letter-spacing: $cds-token-typography-h3-letter-spacing;
-}
-
-[cds-text*='h4'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h4-line-height-static, $cds-token-typography-h4-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h4-font-size;
-  font-weight: $cds-token-typography-h4-font-weight;
-  color: $cds-token-typography-h4-color;
-  line-height: $cds-token-typography-h4-line-height;
-  letter-spacing: $cds-token-typography-h4-letter-spacing;
-}
-
-[cds-text*='h5'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h5-line-height-static, $cds-token-typography-h5-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h5-font-size;
-  font-weight: $cds-token-typography-h5-font-weight;
-  color: $cds-token-typography-h5-color;
-  line-height: $cds-token-typography-h5-line-height;
-  letter-spacing: $cds-token-typography-h5-letter-spacing;
-}
-
-[cds-text*='h6'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-h6-line-height-static, $cds-token-typography-h6-line-height);
-  @include LHE($lh-gap);
-
-  font-family: $cds-token-typography-header-font-family;
-  font-size: $cds-token-typography-h6-font-size;
-  font-weight: $cds-token-typography-h6-font-weight;
-  color: $cds-token-typography-h6-color;
-  line-height: $cds-token-typography-h6-line-height;
-  letter-spacing: $cds-token-typography-h6-letter-spacing;
-}
-
-[cds-text*='p0'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p0-line-height-static, $cds-token-typography-p0-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p0-font-size;
-  font-weight: $cds-token-typography-p0-font-weight;
-  color: $cds-token-typography-p0-color;
-  line-height: $cds-token-typography-p0-line-height;
-  letter-spacing: $cds-token-typography-p0-letter-spacing;
-}
-
-[cds-text*='p1'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p1-line-height-static, $cds-token-typography-p1-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p1-font-size;
-  font-weight: $cds-token-typography-p1-font-weight;
-  color: $cds-token-typography-p1-color;
-  line-height: $cds-token-typography-p1-line-height;
-  letter-spacing: $cds-token-typography-p1-letter-spacing;
-}
-
-[cds-text*='p2'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p2-line-height-static, $cds-token-typography-p2-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p2-font-size;
-  font-weight: $cds-token-typography-p2-font-weight;
-  color: $cds-token-typography-p2-color;
-  line-height: $cds-token-typography-p2-line-height;
-  letter-spacing: $cds-token-typography-p2-letter-spacing;
-}
-
-[cds-text*='p3'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p3-line-height-static, $cds-token-typography-p3-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p3-font-size;
-  font-weight: $cds-token-typography-p3-font-weight;
-  color: $cds-token-typography-p3-color;
-  line-height: $cds-token-typography-p3-line-height;
-  letter-spacing: $cds-token-typography-p3-letter-spacing;
-}
-
-[cds-text*='p4'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p4-line-height-static, $cds-token-typography-p4-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p4-font-size;
-  font-weight: $cds-token-typography-p4-font-weight;
-  color: $cds-token-typography-p4-color;
-  line-height: $cds-token-typography-p4-line-height;
-  letter-spacing: $cds-token-typography-p4-letter-spacing;
-}
-
-[cds-text*='p5'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p5-line-height-static, $cds-token-typography-p5-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p5-font-size;
-  font-weight: $cds-token-typography-p5-font-weight;
-  color: $cds-token-typography-p5-color;
-  line-height: $cds-token-typography-p5-line-height;
-  letter-spacing: $cds-token-typography-p5-letter-spacing;
-}
-
-[cds-text*='p6'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p6-line-height-static, $cds-token-typography-p6-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p6-font-size;
-  font-weight: $cds-token-typography-p6-font-weight;
-  color: $cds-token-typography-p6-color;
-  line-height: $cds-token-typography-p6-line-height;
-  letter-spacing: $cds-token-typography-p6-letter-spacing;
-}
-
-[cds-text*='p7'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p7-line-height-static, $cds-token-typography-p7-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p7-font-size;
-  font-weight: $cds-token-typography-p7-font-weight;
-  color: $cds-token-typography-p7-color;
-  line-height: $cds-token-typography-p7-line-height;
-  letter-spacing: $cds-token-typography-p7-letter-spacing;
-}
-
-[cds-text*='p8'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-p8-line-height-static, $cds-token-typography-p8-line-height);
-  @include LHE($lh-gap);
-
-  font-size: $cds-token-typography-p8-font-size;
-  font-weight: $cds-token-typography-p8-font-weight;
-  color: $cds-token-typography-p8-color;
-  line-height: $cds-token-typography-p8-line-height;
-  letter-spacing: $cds-token-typography-p8-letter-spacing;
-}
-
-// NEW FONT STYLES
-
 [cds-text*='display'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-display-line-height-static,
-    $cds-token-typography-display-line-height
+    $cds-global-typography-display-line-height-static,
+    $cds-global-typography-display-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-display-font-size;
-  font-weight: $cds-token-typography-display-font-weight;
-  color: $cds-token-typography-display-color;
-  line-height: $cds-token-typography-display-line-height;
-  letter-spacing: $cds-token-typography-display-letter-spacing;
+  font-size: $cds-global-typography-display-font-size;
+  font-weight: $cds-global-typography-display-font-weight;
+  line-height: $cds-global-typography-display-line-height;
+  letter-spacing: $cds-global-typography-display-letter-spacing;
 }
 
 [cds-text*='heading'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-heading-line-height-static,
-    $cds-token-typography-heading-line-height
+    $cds-global-typography-heading-line-height-static,
+    $cds-global-typography-heading-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-heading-font-size;
-  font-weight: $cds-token-typography-heading-font-weight;
-  color: $cds-token-typography-heading-color;
-  line-height: $cds-token-typography-heading-line-height;
-  letter-spacing: $cds-token-typography-heading-letter-spacing;
+  font-size: $cds-global-typography-heading-font-size;
+  font-weight: $cds-global-typography-heading-font-weight;
+  line-height: $cds-global-typography-heading-line-height;
+  letter-spacing: $cds-global-typography-heading-letter-spacing;
 }
 
 [cds-text*='title'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-title-line-height-static, $cds-token-typography-title-line-height);
+  $lh-gap: getLineHeightGap($cds-global-typography-title-line-height-static, $cds-global-typography-title-line-height);
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-title-font-size;
-  font-weight: $cds-token-typography-title-font-weight;
-  color: $cds-token-typography-title-color;
-  line-height: $cds-token-typography-title-line-height;
-  letter-spacing: $cds-token-typography-title-letter-spacing;
+  font-size: $cds-global-typography-title-font-size;
+  font-weight: $cds-global-typography-title-font-weight;
+  line-height: $cds-global-typography-title-line-height;
+  letter-spacing: $cds-global-typography-title-letter-spacing;
 }
 
 [cds-text*='section'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-section-line-height-static,
-    $cds-token-typography-section-line-height
+    $cds-global-typography-section-line-height-static,
+    $cds-global-typography-section-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-section-font-size;
-  font-weight: $cds-token-typography-section-font-weight;
-  color: $cds-token-typography-section-color;
-  line-height: $cds-token-typography-section-line-height;
-  letter-spacing: $cds-token-typography-section-letter-spacing;
+  font-size: $cds-global-typography-section-font-size;
+  font-weight: $cds-global-typography-section-font-weight;
+  line-height: $cds-global-typography-section-line-height;
+  letter-spacing: $cds-global-typography-section-letter-spacing;
 }
 
 [cds-text*='subsection'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-subsection-line-height-static,
-    $cds-token-typography-subsection-line-height
+    $cds-global-typography-subsection-line-height-static,
+    $cds-global-typography-subsection-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-subsection-font-size;
-  font-weight: $cds-token-typography-subsection-font-weight;
-  color: $cds-token-typography-subsection-color;
-  line-height: $cds-token-typography-subsection-line-height;
-  letter-spacing: $cds-token-typography-subsection-letter-spacing;
+  font-size: $cds-global-typography-subsection-font-size;
+  font-weight: $cds-global-typography-subsection-font-weight;
+  line-height: $cds-global-typography-subsection-line-height;
+  letter-spacing: $cds-global-typography-subsection-letter-spacing;
 }
 
 [cds-text*='body'] {
-  color: $cds-token-typography-body-color;
-  font-weight: $cds-token-typography-body-font-weight;
-  font-size: $cds-token-typography-body-font-size;
-  letter-spacing: $cds-token-typography-body-letter-spacing;
-  line-height: $cds-token-typography-body-line-height;
-}
-
-[cds-text*='body'] {
-  $lh-gap: getLineHeightGap($cds-token-typography-body-line-height-static, $cds-token-typography-body-line-height);
+  $lh-gap: getLineHeightGap($cds-global-typography-body-line-height-static, $cds-global-typography-body-line-height);
   @include line-height-eraser(
     $lh-gap,
-    $cds-token-global-font-top-gap-height,
-    $cds-token-global-font-ascender-height,
-    $cds-token-global-font-x-height,
+    $cds-global-typography-top-gap-height,
+    $cds-global-typography-ascender-height,
+    $cds-global-typography-x-height,
     0.1em
   );
+
+  font-weight: $cds-global-typography-body-font-weight;
+  font-size: $cds-global-typography-body-font-size;
+  letter-spacing: $cds-global-typography-body-letter-spacing;
+  line-height: $cds-global-typography-body-line-height;
 }
 
 [cds-text*='message'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-message-line-height-static,
-    $cds-token-typography-message-line-height
+    $cds-global-typography-message-line-height-static,
+    $cds-global-typography-message-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-message-font-size;
-  font-weight: $cds-token-typography-message-font-weight;
-  color: $cds-token-typography-message-color;
-  line-height: $cds-token-typography-message-line-height;
-  letter-spacing: $cds-token-typography-message-letter-spacing;
+  font-size: $cds-global-typography-message-font-size;
+  font-weight: $cds-global-typography-message-font-weight;
+  line-height: $cds-global-typography-message-line-height;
+  letter-spacing: $cds-global-typography-message-letter-spacing;
 }
 
 [cds-text*='secondary'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-secondary-line-height-static,
-    $cds-token-typography-secondary-line-height
+    $cds-global-typography-secondary-line-height-static,
+    $cds-global-typography-secondary-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-secondary-font-size;
-  font-weight: $cds-token-typography-secondary-font-weight;
-  color: $cds-token-typography-secondary-color;
-  line-height: $cds-token-typography-secondary-line-height;
-  letter-spacing: $cds-token-typography-secondary-letter-spacing;
+  font-size: $cds-global-typography-secondary-font-size;
+  font-weight: $cds-global-typography-secondary-font-weight;
+  line-height: $cds-global-typography-secondary-line-height;
+  letter-spacing: $cds-global-typography-secondary-letter-spacing;
 }
 
 [cds-text*='caption'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-caption-line-height-static,
-    $cds-token-typography-caption-line-height
+    $cds-global-typography-caption-line-height-static,
+    $cds-global-typography-caption-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-caption-font-size;
-  font-weight: $cds-token-typography-caption-font-weight;
-  color: $cds-token-typography-caption-color;
-  line-height: $cds-token-typography-caption-line-height;
-  letter-spacing: $cds-token-typography-caption-letter-spacing;
+  font-size: $cds-global-typography-caption-font-size;
+  font-weight: $cds-global-typography-caption-font-weight;
+  line-height: $cds-global-typography-caption-line-height;
+  letter-spacing: $cds-global-typography-caption-letter-spacing;
 }
 
 [cds-text*='smallcaption'] {
   $lh-gap: getLineHeightGap(
-    $cds-token-typography-smallcaption-line-height-static,
-    $cds-token-typography-smallcaption-line-height
+    $cds-global-typography-smallcaption-line-height-static,
+    $cds-global-typography-smallcaption-line-height
   );
   @include LHE($lh-gap);
 
-  font-size: $cds-token-typography-smallcaption-font-size;
-  font-weight: $cds-token-typography-smallcaption-font-weight;
-  color: $cds-token-typography-smallcaption-color;
-  line-height: $cds-token-typography-smallcaption-line-height;
-  letter-spacing: $cds-token-typography-smallcaption-letter-spacing;
+  font-size: $cds-global-typography-smallcaption-font-size;
+  font-weight: $cds-global-typography-smallcaption-font-weight;
+  line-height: $cds-global-typography-smallcaption-line-height;
+  letter-spacing: $cds-global-typography-smallcaption-letter-spacing;
 }
 
 [cds-text~='link'] {
-  color: $cds-token-color-action-600 !important;
+  color: $cds-alias-status-info !important;
   text-decoration: underline !important;
   line-height: inherit !important;
   font-size: inherit !important;
+
+  &:hover {
+    color: $cds-alias-status-info-tint !important;
+  }
 }
 
 [cds-text~='code'] {
-  color: $cds-token-color-danger-800;
+  color: $cds-alias-status-danger;
   font-family: monospace;
   font-size: 1.1em;
 }
@@ -387,35 +201,35 @@
 // hr
 [cds-divider] {
   display: block;
-  height: $cds-token-space-size-1;
+  height: $cds-alias-object-border-width-100;
   overflow: hidden;
-  box-shadow: $cds-token-color-neutral-300 0 0 0 $cds-token-space-size-1 inset;
+  box-shadow: $cds-alias-object-border-color 0 0 0 $cds-alias-object-border-width-100 inset;
 }
 
 // font-weight
 
 [cds-text~='extrabold'] {
-  font-weight: $cds-token-typography-font-weight-extrabold !important;
+  font-weight: $cds-global-typography-font-weight-extrabold !important;
 }
 
 [cds-text~='bold'] {
-  font-weight: $cds-token-typography-font-weight-bold !important;
+  font-weight: $cds-global-typography-font-weight-bold !important;
 }
 
 [cds-text~='semibold'] {
-  font-weight: $cds-token-typography-font-weight-semibold !important;
+  font-weight: $cds-global-typography-font-weight-semibold !important;
 }
 
 [cds-text~='medium'] {
-  font-weight: $cds-token-typography-font-weight-medium !important;
+  font-weight: $cds-global-typography-font-weight-medium !important;
 }
 
 [cds-text~='regular'] {
-  font-weight: $cds-token-typography-font-weight-regular !important;
+  font-weight: $cds-global-typography-font-weight-regular !important;
 }
 
 [cds-text~='light'] {
-  font-weight: $cds-token-typography-font-weight-light !important;
+  font-weight: $cds-global-typography-font-weight-light !important;
 }
 
 // transforms
@@ -456,6 +270,26 @@
 
 [cds-text~='center'] {
   text-align: center !important;
+}
+
+// https://seek-oss.github.io/capsize/
+[cds-text~='lhe'] {
+  /* stylelint-disable-next-line meowtec/no-px */
+  padding: 0.05px 0;
+
+  &::before {
+    content: '';
+    margin-top: -0.124em;
+    display: block;
+    height: 0;
+  }
+
+  &::after {
+    content: '';
+    margin-bottom: -0.221em;
+    display: block;
+    height: 0;
+  }
 }
 
 // remove line-height eraser from element

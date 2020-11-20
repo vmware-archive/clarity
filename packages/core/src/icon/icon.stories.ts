@@ -61,7 +61,7 @@ loadTravelIconSet();
 ClarityIcons.addIcons(userIcon, imageIcon);
 
 export default {
-  title: 'Components/Icon/Stories',
+  title: 'Stories/Icon',
   component: 'cds-icon',
   argTypes: getElementStorybookArgTypes('cds-icon', customElements),
   parameters: {
@@ -518,5 +518,93 @@ export const flip = () => {
       shape="image"
       aria-label="This is an example of an icon whose glyph is flipped horizontally."
     ></cds-icon>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:sm" cds-theme="dark">
+      <div cds-layout="horizontal gap:sm">
+        <cds-icon shape="user" size="lg" badge="info"></cds-icon>
+        <cds-icon shape="user" size="lg" badge="success"></cds-icon>
+        <cds-icon shape="user" size="lg" badge="danger"></cds-icon>
+        <cds-icon shape="user" size="lg" badge="warning"></cds-icon>
+        <cds-icon shape="user" size="lg" badge="warning-triangle"></cds-icon>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-icon shape="user" size="lg"></cds-icon>
+        <cds-icon shape="user" status="info" size="lg"></cds-icon>
+        <cds-icon shape="user" status="success" size="lg"></cds-icon>
+        <cds-icon shape="user" status="warning" size="lg"></cds-icon>
+        <cds-icon shape="user" status="danger" size="lg"></cds-icon>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-icon shape="user" inverse size="lg" solid></cds-icon>
+        <cds-icon shape="user" inverse status="info" size="lg" solid></cds-icon>
+        <cds-icon shape="user" inverse status="success" size="lg" solid></cds-icon>
+        <cds-icon shape="user" inverse status="warning" size="lg" solid></cds-icon>
+        <cds-icon shape="user" inverse status="danger" size="lg" solid></cds-icon>
+      </div>
+    </div>
+  `;
+};
+
+/** @customElement clr-icon */
+class LegacyIcon extends CdsIcon {}
+registerElementSafely('clr-icon', LegacyIcon);
+
+export const legacy = () => {
+  return html`
+    <h2>Size</h2>
+    <clr-icon shape="info-circle" size="12"></clr-icon>
+    <clr-icon shape="info-circle" size="16"></clr-icon>
+    <clr-icon shape="info-circle" size="36"></clr-icon>
+    <clr-icon shape="info-circle" size="48"></clr-icon>
+    <clr-icon shape="info-circle" size="64"></clr-icon>
+    <clr-icon shape="info-circle" size="72"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 12px; height: 12px;"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 16px; height: 16px;"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 36px; height: 36px;"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 48px; height: 48px;"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 64px; height: 64px;"></clr-icon>
+    <clr-icon shape="info-circle" style="width: 72px; height: 72px;"></clr-icon>
+
+    <h2>Direction</h2>
+    <!-- @ts-ignore -->
+    <div>
+      <clr-icon shape="caret" dir="up"></clr-icon>
+      <clr-icon shape="caret" dir="right"></clr-icon>
+      <clr-icon shape="caret" dir="down"></clr-icon>
+      <clr-icon shape="caret" dir="left"></clr-icon>
+    </div>
+    <clr-icon shape="caret" style="transform: rotate(0deg);"></clr-icon>
+    <clr-icon shape="caret" style="transform: rotate(90deg);"></clr-icon>
+    <clr-icon shape="caret" style="transform: rotate(180deg);"></clr-icon>
+    <clr-icon shape="caret" style="transform: rotate(270deg);"></clr-icon>
+
+    <h2>Flip</h2>
+    <clr-icon shape="floppy"></clr-icon>
+    <clr-icon shape="floppy" flip="horizontal"></clr-icon>
+    <clr-icon shape="floppy" flip="vertical"></clr-icon>
+
+    <h2>Color</h2>
+    <clr-icon shape="info-circle"></clr-icon>
+    <clr-icon shape="info-circle" class="is-highlight"></clr-icon>
+    <clr-icon shape="info-circle" class="is-error"></clr-icon>
+    <clr-icon shape="info-circle" class="is-warning"></clr-icon>
+    <clr-icon shape="info-circle" class="is-success"></clr-icon>
+    <clr-icon shape="info-circle" class="is-info"></clr-icon>
+    <clr-icon shape="info-circle" class="is-inverse"></clr-icon>
+
+    <h2>Badge</h2>
+    <clr-icon shape="user"></clr-icon>
+    <clr-icon shape="user" class="has-alert"></clr-icon>
+    <clr-icon shape="user" class="has-badge"></clr-icon>
+    <clr-icon shape="user" class="is-solid"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-alert"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-badge"></clr-icon>
+    <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon>
   `;
 };

@@ -1,7 +1,7 @@
 import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Forms (Preview)/Forms/Responsive" parameters={{ inlineStories: false }} />
+<Meta title="Forms/Responsive" parameters={{ inlineStories: false }} />
 
 # Responsive Form Controls
 
@@ -10,7 +10,7 @@ container is no longer wide enough for the current layout. Each control
 determines its layout independenly.
 
 <Preview>
-  <Story id="forms-preview-forms-stories--responsive-checkbox-group" />
+  <Story id="stories-forms--responsive-checkbox-group" />
 </Preview>
 
 ## Responsive Form Groups
@@ -20,7 +20,7 @@ together when changing from vertical and horizontal layouts. Form labels will al
 be automatically set to match the same width for proper alignment.
 
 <Preview>
-  <Story id="forms-preview-forms-stories--responsive" />
+  <Story id="stories-forms--responsive" />
 </Preview>
 
 ## Disabling Responsive Behavior
@@ -29,15 +29,15 @@ To disable the responsive behavior set the `responsive` attribute or property
 to `false`. This will disable auto detection.
 
 <Preview>
-  <Story id="forms-preview-forms-stories--disabled-responsive-checkbox-group" />
+  <Story id="stories-forms--disabled-responsive-checkbox-group" />
 </Preview>
 
 ## Complex Responsive Form layouts
 
 The form control components can be used with the [`cds-layout` system](./?path=/story/foundation-layout-get-started--page)
-to create complex multi column layouts. [Code Example](./?path=/docs/forms-preview-forms-stories--checkout-form#checkout-form)
+to create complex multi column layouts. [Code Example](./?path=/docs/stories-forms--checkout-form#checkout-form)
 
-<Story id="forms-preview-forms-stories--responsive-checkout-form" />
+<Story id="stories-forms--responsive-checkout-form" />
 
 ```html
 <cds-form-group layout="vertical" cds-layout="container:sm">

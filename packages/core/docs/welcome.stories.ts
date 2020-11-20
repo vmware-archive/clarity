@@ -7,7 +7,7 @@
 import { html } from 'lit-html';
 
 export default {
-  title: 'Welcome/Clarity',
+  title: 'Stories/Clarity',
   parameters: {
     options: { showPanel: false },
     a11y: { disable: true }, // disabled for welcome doc to prevent page jump

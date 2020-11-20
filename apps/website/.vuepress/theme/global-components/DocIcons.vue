@@ -39,6 +39,6 @@ export default {
 
 <style lang="scss">
 .all-icons-container {
-  padding-top: var(--cds-token-space-size-9);
+  padding-top: var(--cds-global-space-9);
 }
 </style>

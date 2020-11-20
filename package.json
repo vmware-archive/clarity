@@ -30,7 +30,7 @@
     "clean:modules": "del ./**/node_modules",
     "clean": "del ./dist && yarn run schematics:clean",
     "start": "yarn angular:dev:start",
-    "build": "npm-run-all build:ci build:website build:storybook:angular build:storybook:core angular:dev:build",
+    "build": "npm-run-all build:ci build:website build:storybook:core",
     "build:ci": "npm-run-all clean format lint build:libs test",
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build react:build",
     "build:website": "yarn --cwd apps/website run build",

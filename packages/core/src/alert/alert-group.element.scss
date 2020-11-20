@@ -2,18 +2,18 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-token-color-neutral-700};
-  --icon-color: #{$cds-token-color-neutral-700};
-  --icon-size: #{$cds-token-space-size-8};
-  --font-size: #{$cds-token-typography-body-font-size};
-  --font-weight: #{$cds-token-typography-body-font-weight};
-  --letter-spacing: #{$cds-token-typography-body-letter-spacing};
-  --padding: #{$cds-token-space-size-5} #{$cds-token-space-size-5} #{$cds-token-space-size-4} #{$cds-token-space-size-6};
-  --background: #{$cds-token-color-neutral-100};
-  --border-color: #{$cds-token-color-neutral-700};
-  --border-width: #{$cds-token-global-border-width};
-  --border-radius: #{$cds-token-global-border-radius};
-  --pager-background: #{$cds-token-color-action-800};
+  --color: #{$cds-global-typography-color-500};
+  --icon-color: #{$cds-global-typography-color-500};
+  --icon-size: #{$cds-global-space-8};
+  --font-size: #{$cds-global-typography-body-font-size};
+  --font-weight: #{$cds-global-typography-body-font-weight};
+  --letter-spacing: #{$cds-global-typography-body-letter-spacing};
+  --padding: #{$cds-global-space-5} #{$cds-global-space-5} #{$cds-global-space-4} #{$cds-global-space-6};
+  --background: #{$cds-alias-status-secondary-neutral-tint};
+  --border-color: #{$cds-alias-status-neutral};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --pager-background: #{$cds-alias-status-neutral};
 
   width: 100%;
 }
@@ -32,103 +32,78 @@
 }
 
 :host([status='info']) {
-  --background: #{$cds-token-color-action-50};
-  --color: #{$cds-token-color-neutral-700};
-  --border-color: #{$cds-token-color-action-800};
-
-  ::slotted(cds-alert) {
-    --color: var(--color);
-    --icon-color: var(--border-color);
-  }
+  --background: #{$cds-alias-status-secondary-info-tint};
+  --border-color: #{$cds-alias-status-secondary-info};
 }
 
 :host([status='success']) {
-  --background: #{$cds-token-color-success-50};
-  --color: #{$cds-token-color-neutral-700};
-  --border-color: #{$cds-token-color-success-800};
-
-  ::slotted(cds-alert) {
-    --color: var(--color);
-    --icon-color: var(--border-color);
-  }
+  --background: #{$cds-alias-status-secondary-success-tint};
+  --border-color: #{$cds-alias-status-secondary-success};
 }
 
 :host([status='warning']) {
-  --background: #{$cds-token-color-warning-100};
-  --color: #{$cds-token-color-neutral-900};
-  --border-color: #{$cds-token-color-warning-800};
-
-  ::slotted(cds-alert) {
-    --color: var(--color);
-    --icon-color: var(--border-color);
-  }
+  --background: #{$cds-alias-status-secondary-warning-tint};
+  --border-color: #{$cds-alias-status-secondary-warning};
 }
 
 :host([status='danger']) {
-  --background: #{$cds-token-color-danger-100};
-  --color: #{$cds-token-color-neutral-700};
-  --border-color: #{$cds-token-color-danger-900};
-
-  ::slotted(cds-alert) {
-    --color: var(--color);
-    --icon-color: var(--border-color);
-  }
+  --background: #{$cds-alias-status-secondary-danger-tint};
+  --border-color: #{$cds-alias-status-secondary-danger};
 }
 
-:host([type='default'][size='sm']) .private-host {
-  --padding: #{$cds-token-space-size-3} #{$cds-token-space-size-3} #{$cds-token-space-size-2} #{$cds-token-space-size-4};
+:host([type='default'][size='sm']) {
+  --padding: #{$cds-global-space-3} #{$cds-global-space-3} #{$cds-global-space-2} #{$cds-global-space-4};
 }
 
 // lightweight alert group styles
 
-:host([type='light']) .private-host {
-  --background: transparent;
+:host([type='light']) {
+  --background: #{$cds-alias-object-opacity-0};
   --border-radius: 0;
   --padding: 0;
-  border: 0 none;
-}
 
-// banner alert group styles
-
-:host([type='banner']) {
-  --padding: #{$cds-token-space-size-1} #{$cds-token-space-size-6};
-  --border-width: 0;
-
-  ::slotted(cds-alert) {
-    --color: #{$cds-token-color-neutral-0};
-    --icon-color: #{$cds-token-color-neutral-0};
+  .private-host {
+    border: 0 none;
   }
 }
 
-:host([type='banner']) .private-host {
-  --background: #{$cds-token-color-action-600};
-  --border-color: #{$cds-token-color-action-600};
+// banner alert group styles
+:host([type='banner']) {
+  --border-color: var(--background);
+  --color: #{$cds-global-typography-color-100};
+  --padding: #{$cds-global-space-1} #{$cds-global-space-6};
+  --border-width: 0;
+  --background: #{$cds-alias-status-neutral};
   --border-radius: 0;
+
+  ::slotted(cds-alert) {
+    --icon-color: #{$cds-global-typography-color-100};
+  }
 }
 
-:host([type='banner'][status='warning']) .private-host {
-  // color carried over from clr-angular
-  --background: hsl(26, 100%, 38%);
-  --border-color: hsl(26, 100%, 38%);
-  --pager-background: #{$cds-token-color-warning-1000};
+:host([type='banner'][status='info']) {
+  --background: #{$cds-alias-status-info};
+  --pager-background: #{$cds-alias-status-info-shade};
 }
 
-:host([type='banner'][status='danger']) .private-host {
-  --background: #{$cds-token-color-danger-800};
-  --border-color: #{$cds-token-color-danger-800};
-  --pager-background: #{$cds-token-color-danger-1000};
+:host([type='banner'][status='warning']) {
+  --background: #{$cds-alias-status-warning};
+  --pager-background: #{$cds-alias-status-warning-shade};
 }
 
-:host([type='banner'][status='success']) .private-host {
-  --background: #{$cds-token-color-success-700};
-  --border-color: #{$cds-token-color-success-700};
-  --pager-background: #{$cds-token-color-success-900};
+:host([type='banner'][status='danger']) {
+  --background: #{$cds-alias-status-danger};
+  --pager-background: #{$cds-alias-status-danger-shade};
 }
 
-:host([type='banner'][status='unknown']) .private-host {
-  --background: #{$cds-token-color-secondary-action-700};
-  --border-color: #{$cds-token-color-secondary-action-700};
-  --pager-background: #{$cds-token-color-secondary-action-900};
+:host([type='banner'][status='success']) {
+  --background: #{$cds-alias-status-success};
+  --pager-background: #{$cds-alias-status-success-shade};
+}
+
+:host([type='banner'][status='alt']) {
+  --background: #{$cds-alias-status-alt};
+  --pager-background: #{$cds-alias-status-alt-shade};
 }
 
 .no-pager .pager-wrapper {
@@ -137,19 +112,19 @@
 
 .pager-wrapper {
   background-color: var(--pager-background);
-  padding-top: $cds-token-space-size-2;
-  padding-bottom: $cds-token-space-size-2;
+  padding-top: $cds-global-space-2;
+  padding-bottom: $cds-global-space-2;
 }
 
 :host([type='banner']) .alert-group-wrapper {
-  padding-top: $cds-token-space-size-2;
-  padding-bottom: $cds-token-space-size-2;
+  padding-top: $cds-global-space-2;
+  padding-bottom: $cds-global-space-2;
 }
 
 // TODO: THESE STYLES ARE PLACEHOLDERS TO VERIFY THE ADDITION OF THE BANNER ALERT PAGER!
 ::slotted(.pager) {
-  color: $cds-token-color-neutral-0;
-  width: calc(2 * #{$cds-token-space-size-12});
+  color: $cds-global-typography-color-100;
+  width: calc(2 * #{$cds-global-space-12});
   height: 100%;
   display: inline-flex;
   justify-content: center;

@@ -101,7 +101,7 @@ div[class^='language-'] pre {
 
 // Override for Clarity Core icon colors
 .clr-validate-icon {
-  --color: var(--cds-token-color-danger-800);
+  --color: var(--cds-global-color-red-800);
 }
 
 // Center the tooltip demos
@@ -109,7 +109,7 @@ div[class^='language-'] pre {
 }
 
 p code {
-  color: var(--clr-color-danger-800, #c21d00);
+  color: var(--clr-global-color-red-800, #c21d00);
 }
 
 // From porting grid demos
@@ -192,7 +192,7 @@ h6 {
     cursor: pointer;
     display: inline-block;
     cds-icon {
-      margin-top: calc(-1 * var(--cds-token-space-size-3));
+      margin-top: calc(-1 * var(--cds-global-space-3));
       cursor: pointer;
     }
     &:focus {
@@ -207,23 +207,23 @@ h6 {
 }
 
 h1 .header-anchor cds-icon {
-  width: var(--cds-token-space-size-10);
-  height: var(--cds-token-space-size-10);
+  width: var(--cds-global-space-10);
+  height: var(--cds-global-space-10);
 }
 
 h2 .header-anchor cds-icon {
-  width: var(--cds-token-space-size-10);
-  height: var(--cds-token-space-size-10);
+  width: var(--cds-global-space-10);
+  height: var(--cds-global-space-10);
 }
 
 h3 .header-anchor cds-icon {
-  width: var(--cds-token-space-size-9);
-  height: var(--cds-token-space-size-9);
+  width: var(--cds-global-space-9);
+  height: var(--cds-global-space-9);
 }
 
 h4 .header-anchor cds-icon {
-  width: var(--cds-token-space-size-9);
-  height: var(--cds-token-space-size-9);
+  width: var(--cds-space-space-9);
+  height: var(--cds-space-space-9);
 }
 
 .demo-inverse {
@@ -256,17 +256,17 @@ h4 .header-anchor cds-icon {
  */
 
 [cds-text*='expanded'][cds-text*='title'] {
-  --cds-token-typography-title-line-height: 1.6rem;
+  --cds-global-typography-title-line-height: 1.6rem;
 }
 
 [cds-text*='expanded'][cds-text*='section'] {
-  --cds-token-typography-section-line-height: 1.4rem;
+  --cds-global-typography-section-line-height: 1.4rem;
 }
 
 [cds-text*='expanded'][cds-text*='subection'] {
-  --cds-token-typography-subsection-line-height: 1.2rem;
+  --cds-global-typography-subsection-line-height: 1.2rem;
 }
 
 [cds-text*='expanded'][cds-text*='body'] {
-  --cds-token-typography-body-line-height: 1.2rem;
+  --cds-global-typography-body-line-height: 1.2rem;
 }

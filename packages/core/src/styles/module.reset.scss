@@ -5,7 +5,7 @@
 @import './tokens/generated/index';
 
 html {
-  font-size: $cds-token-global-base-font-size;
+  font-size: $cds-global-typography-base-font-size;
   box-sizing: border-box !important;
 }
 
@@ -17,12 +17,21 @@ html {
 
 [cds-control] ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari/Chromium Edge */
-  color: $cds-token-color-neutral-700;
+  color: $cds-global-typography-color-200;
 }
 
 [cds-control] ::-moz-placeholder {
   /* Firefox 19+ */
-  color: $cds-token-color-neutral-700;
+  color: $cds-global-typography-color-200;
+}
+
+[cds-control] :-ms-input-placeholder {
+  /* IE 10+ */
+  color: $cds-global-typography-color-200;
+}
+
+[cds-control][disabled] {
+  --cds-global-typography-color-200: #{$cds-alias-status-disabled};
 }
 
 [cds-layout~='display:screen-reader-only'] {

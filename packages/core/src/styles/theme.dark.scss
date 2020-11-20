@@ -1,0 +1,78 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './tokens/generated/index';
+
+[cds-theme~='dark'] {
+  --cds-global-typography-color-500: #{$cds-global-color-gray-0};
+  --cds-global-typography-color-400: #{$cds-global-color-construction-100};
+  --cds-global-typography-color-300: #{$cds-global-color-construction-200};
+  --cds-global-typography-color-200: #{$cds-global-color-construction-600};
+  --cds-global-typography-color-100: #{$cds-global-color-construction-900};
+
+  --cds-alias-object-app-background: #{$cds-global-color-construction-1000};
+  --cds-alias-object-app-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-container-background: #{$cds-global-color-construction-900};
+  --cds-alias-object-container-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-overlay-background: #{$cds-global-color-construction-900};
+  --cds-alias-object-overlay-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-border-color: #{$cds-global-color-construction-500};
+  --cds-alias-object-border-color-tint: #{$cds-global-color-construction-400};
+  --cds-alias-object-border-color-shade: #{$cds-global-color-construction-600};
+  --cds-alias-object-shadow-100: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.5);
+  --cds-alias-object-shadow-200: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.3);
+  --cds-alias-object-shadow-300: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.2);
+  --cds-alias-object-interaction-color: #{$cds-global-color-construction-200};
+  --cds-alias-object-interaction-color-hover: #{$cds-global-color-construction-50};
+  --cds-alias-object-interaction-color-active: #{$cds-global-color-construction-100};
+  --cds-alias-object-interaction-color-selected: #{$cds-global-color-construction-200};
+  --cds-alias-object-interaction-color-disabled: #{$cds-global-color-construction-600};
+  --cds-alias-object-interaction-background: #{$cds-global-color-construction-900};
+  --cds-alias-object-interaction-background-hover: #{$cds-global-color-cool-gray-800};
+  --cds-alias-object-interaction-background-active: #{$cds-global-color-cool-gray-900};
+  --cds-alias-object-interaction-background-selected: #{$cds-global-color-cool-gray-800};
+  --cds-alias-object-interaction-background-disabled: #{$cds-global-color-construction-900};
+  --cds-alias-object-interaction-background-highlight: #{$cds-global-color-blue-400};
+
+  --cds-alias-status-info: #{$cds-global-color-blue-400};
+  --cds-alias-status-info-tint: #{$cds-global-color-blue-300};
+  --cds-alias-status-info-shade: #{$cds-global-color-blue-500};
+  --cds-alias-status-success: #{$cds-global-color-green-500};
+  --cds-alias-status-success-tint: #{$cds-global-color-green-300};
+  --cds-alias-status-success-shade: #{$cds-global-color-green-600};
+  --cds-alias-status-warning: #{$cds-global-color-ochre-400};
+  --cds-alias-status-warning-tint: #{$cds-global-color-ochre-300};
+  --cds-alias-status-warning-shade: #{$cds-global-color-ochre-500};
+  --cds-alias-status-danger: #{$cds-global-color-red-500};
+  --cds-alias-status-danger-tint: #{$cds-global-color-red-300};
+  --cds-alias-status-danger-shade: #{$cds-global-color-red-600};
+  --cds-alias-status-neutral: #{$cds-global-color-construction-400};
+  --cds-alias-status-neutral-tint: #{$cds-global-color-construction-300};
+  --cds-alias-status-neutral-shade: #{$cds-global-color-construction-500};
+  --cds-alias-status-alt: #{$cds-global-color-violet-300};
+  --cds-alias-status-alt-tint: #{$cds-global-color-violet-200};
+  --cds-alias-status-alt-shade: #{$cds-global-color-violet-400};
+  --cds-alias-status-disabled: #{$cds-global-color-construction-600};
+  --cds-alias-status-disabled-tint: #{$cds-global-color-construction-500};
+  --cds-alias-status-disabled-shade: #{$cds-global-color-construction-700};
+  --cds-alias-status-secondary-tint: transparent;
+  --cds-alias-status-secondary-info: #{$cds-global-color-blue-800};
+  --cds-alias-status-secondary-info-tint: #{$cds-global-color-blue-700};
+  --cds-alias-status-secondary-info-shade: #{$cds-global-color-blue-900};
+  --cds-alias-status-secondary-success: #{$cds-global-color-green-800};
+  --cds-alias-status-secondary-success-tint: #{$cds-global-color-green-700};
+  --cds-alias-status-secondary-success-shade: #{$cds-global-color-green-900};
+  --cds-alias-status-secondary-warning: #{$cds-global-color-ochre-900};
+  --cds-alias-status-secondary-warning-tint: #{$cds-global-color-ochre-800};
+  --cds-alias-status-secondary-warning-shade: #{$cds-global-color-ochre-1000};
+  --cds-alias-status-secondary-danger: #{$cds-global-color-red-800};
+  --cds-alias-status-secondary-danger-tint: #{$cds-global-color-red-700};
+  --cds-alias-status-secondary-danger-shade: #{$cds-global-color-red-1000};
+  --cds-alias-status-secondary-neutral: #{$cds-global-color-construction-700};
+  --cds-alias-status-secondary-neutral-tint: #{$cds-global-color-construction-600};
+  --cds-alias-status-secondary-neutral-shade: #{$cds-global-color-construction-800};
+  --cds-alias-status-secondary-alt: #{$cds-global-color-violet-800};
+  --cds-alias-status-secondary-alt-tint: #{$cds-global-color-violet-700};
+  --cds-alias-status-secondary-alt-shade: #{$cds-global-color-violet-1000};
+}

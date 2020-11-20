@@ -14,7 +14,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(homeIcon, nodesIcon, stopIcon, warningStandardIcon);
 
 export default {
-  title: 'Components (Preview)/Circular Progress/Stories',
+  title: 'Stories/Circular Progress',
   component: 'cds-progress-circle',
   argTypes: getElementStorybookArgTypes('cds-progress-circle', customElements),
   parameters: {
@@ -43,16 +43,31 @@ export const status = () => {
   return html`
     <div cds-layout="horizontal gap:sm">
       <cds-progress-circle size="xl" value="0"></cds-progress-circle>
-      <cds-progress-circle size="xl" value="12"></cds-progress-circle>
+      <cds-progress-circle size="xl" value="25"></cds-progress-circle>
       <cds-progress-circle size="xl" value="100"></cds-progress-circle>
       <cds-progress-circle size="xl" status="info" value="48"></cds-progress-circle>
       <cds-progress-circle size="xl" status="success" value="72"></cds-progress-circle>
       <cds-progress-circle size="xl" status="warning" value="36"></cds-progress-circle>
       <cds-progress-circle size="xl" status="danger" value="84"></cds-progress-circle>
-      <cds-progress-circle size="xl" status="unknown" value="60"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="neutral" value="60"></cds-progress-circle>
       <div style="background: #313131">
         <cds-progress-circle size="xl" inverse value="24"></cds-progress-circle>
       </div>
+    </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="horizontal gap:sm" cds-theme="dark">
+      <cds-progress-circle size="xl"></cds-progress-circle>
+      <cds-progress-circle size="xl" value="0"></cds-progress-circle>
+      <cds-progress-circle size="xl" value="100"></cds-progress-circle>
+      <cds-progress-circle size="xl" value="48"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="success" value="72"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="warning" value="36"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="danger" value="84"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="neutral" value="60"></cds-progress-circle>
     </div>
   `;
 };

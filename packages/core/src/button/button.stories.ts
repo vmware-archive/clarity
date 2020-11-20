@@ -16,7 +16,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(downloadCloudIcon, popOutIcon, userIcon);
 
 export default {
-  title: 'Components/Button/Stories',
+  title: 'Stories/Button',
   component: 'cds-button',
   argTypes: getElementStorybookArgTypes('cds-button', customElements),
   parameters: {
@@ -72,6 +72,9 @@ export const status = () => {
       <cds-button status="success">success</cds-button>
       <cds-button status="danger">danger</cds-button>
       <cds-button status="danger" disabled>disabled</cds-button>
+      <div style="background: var(--cds-global-typography-color-500)" cds-layout="p:sm">
+        <cds-button status="inverse">inverse</cds-button>
+      </div>
     </div>
   `;
 };
@@ -238,6 +241,34 @@ export const loading = () => {
         <cds-button size="sm" loading-state="loading">default</cds-button>
         <cds-button size="sm" loading-state="success">default</cds-button>
         <cds-button size="sm" loading-state="error">default</cds-button>
+      </div>
+    </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:sm" cds-theme="dark">
+      <div cds-layout="horizontal gap:sm">
+        <cds-button><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
+        <cds-button status="success"><cds-icon shape="user"></cds-icon>success<cds-badge>10</cds-badge></cds-button>
+        <cds-button status="danger"><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button>
+        <cds-button status="danger" disabled
+          ><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button
+        >
+      </div>
+      <div cds-layout="horizontal gap:sm">
+        <cds-button action="outline"><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
+        <cds-button action="outline" status="success"
+          ><cds-icon shape="user"></cds-icon>success<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="outline" status="danger"
+          ><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="outline" status="danger" disabled
+          ><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="flat"><cds-icon shape="user"></cds-icon>flat<cds-badge>10</cds-badge></cds-button>
       </div>
     </div>
   `;

@@ -5,12 +5,12 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --background: #{$cds-token-color-neutral-0};
-  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500};
-  --padding: #{$cds-token-space-size-5} #{$cds-token-space-size-6};
-  --font-size: #{$cds-token-typography-font-size-3};
-  --color: #{$cds-token-color-neutral-1000};
-  --border-radius: #{$cds-token-global-border-radius};
+  --background: #{$cds-alias-object-container-background};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+  --padding: #{$cds-global-space-5} #{$cds-global-space-6};
+  --font-size: #{$cds-global-typography-font-size-3};
+  --color: #{$cds-global-typography-color-500};
+  --border-radius: #{$cds-alias-object-border-radius-100};
   display: block;
   width: 100%;
 }
@@ -24,15 +24,17 @@
   font-size: var(--font-size) !important;
   resize: vertical !important;
   width: 100% !important;
-  min-height: $cds-token-layout-space-xxl !important;
+  min-height: $cds-global-layout-space-xxl !important;
 }
 
-:host([status='error']),
-:host([status='error']) ::slotted(textarea:focus) {
-  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-danger-800};
+:host([status='error']) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger};
 }
 
-:host([status='success']),
-:host([status='success']) ::slotted(textarea:focus) {
-  --border: #{$cds-token-space-size-1} solid #{$cds-token-color-success-800};
+:host([status='success']) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-success};
+}
+
+:host([disabled]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled};
 }

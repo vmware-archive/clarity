@@ -6,17 +6,17 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --box-shadow-color: #{$cds-token-color-action-900};
-  --border-radius: #{$cds-token-global-border-radius};
-  --border-width: #{$cds-token-global-border-width};
-  --border-color: #{$cds-token-color-action-600};
-  --background: #{$cds-token-color-action-600};
-  --color: #{$cds-token-color-neutral-0};
-  --font-size: #{$cds-token-space-size-6};
-  --padding: calc(#{$cds-token-space-size-6} - var(--border-width, #{$cds-token-global-border-width-static}))
-    calc(#{$cds-token-space-size-7} - var(--border-width, #{$cds-token-global-border-width-static}));
-  --height: #{$cds-token-space-size-11};
-  --min-width: #{$cds-token-space-size-13};
+  --box-shadow-color: #{$cds-alias-object-opacity-100};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --border-color: var(--background);
+  --background: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-color-100};
+  --font-size: #{$cds-global-space-6};
+  --padding: calc(#{$cds-global-space-6} - var(--border-width, #{$cds-alias-object-border-width-100-static}))
+    calc(#{$cds-global-space-7} - var(--border-width, #{$cds-alias-object-border-width-100-static}));
+  --height: #{$cds-global-space-11};
+  --min-width: #{$cds-global-space-13};
   --text-decoration: none;
   display: inline-block;
   height: var(--height); // height is set so button is not distorted when in flex container
@@ -50,7 +50,7 @@
   white-space: nowrap;
 
   &:active {
-    box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+    box-shadow: 0 #{$cds-global-space-1} 0 0 var(--box-shadow-color) inset;
   }
 
   & > span {
@@ -60,16 +60,16 @@
 
   .button-status-icon {
     cds-icon {
-      @include min-equilateral(#{$cds-token-space-size-8});
+      @include min-equilateral(#{$cds-global-space-8});
       fill: var(--color);
     }
 
     cds-icon[shape='error-standard'] {
-      --color: #{$cds-token-color-danger-700};
+      --color: #{$cds-alias-status-danger};
     }
 
     .button-spinner {
-      --ring-color: var(--cds-token-color-neutral-400);
+      --ring-color: #{$cds-global-color-gray-400};
     }
   }
 }
@@ -79,11 +79,11 @@
 }
 
 :host(:active) .private-host {
-  box-shadow: 0 #{$cds-token-space-size-1} 0 0 var(--box-shadow-color) inset;
+  box-shadow: 0 #{$cds-global-space-1} 0 0 var(--box-shadow-color) inset;
 }
 
 :host(:hover) {
-  --background: #{$cds-token-color-action-800};
+  --background: #{$cds-alias-status-info-shade};
 }
 
 ::slotted {
@@ -108,67 +108,61 @@
 
 ::slotted(cds-icon) {
   --color: inherit;
-  @include equilateral(calc(var(--font-size) + (2 * #{$cds-token-space-size-2})));
-}
-
-:host([action='outline']) {
-  --background: transparent;
-  --color: #{$cds-token-color-action-600};
-
-  .private-host:hover {
-    --background: #{$cds-token-color-action-50};
-  }
+  @include equilateral(calc(var(--font-size) + (2 * #{$cds-global-space-2})));
 }
 
 :host([status='success']) {
-  --box-shadow-color: #{$cds-token-color-success-900};
-  --border-color: #{$cds-token-color-success-700};
-  --background: #{$cds-token-color-success-700};
+  --background: #{$cds-alias-status-success};
 
-  .private-host:hover {
-    --background: #{$cds-token-color-success-800};
-  }
-}
-
-:host([status='success'][action='outline']) {
-  --background: transparent;
-  --color: #{$cds-token-color-success-700};
-
-  .private-host:hover {
-    --background: #{$cds-token-color-success-50};
+  &:host(:hover) {
+    --background: #{$cds-alias-status-success-shade};
   }
 }
 
 :host([status='danger']) {
-  --box-shadow-color: #{$cds-token-color-danger-900};
-  --border-color: #{$cds-token-color-danger-700};
-  --background: #{$cds-token-color-danger-700};
+  --background: #{$cds-alias-status-danger};
 
-  .private-host:hover {
-    --background: #{$cds-token-color-danger-800};
+  &:host(:hover) {
+    --background: #{$cds-alias-status-danger-shade};
+  }
+}
+
+:host([action='outline']) {
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: var(--color);
+  --color: #{$cds-alias-status-info};
+
+  &:host(:hover) {
+    --background: #{$cds-alias-status-secondary-info-shade};
+  }
+}
+
+:host([status='success'][action='outline']) {
+  --color: #{$cds-alias-status-success};
+
+  &:host(:hover) {
+    --background: #{$cds-alias-status-secondary-success-shade};
   }
 }
 
 :host([status='danger'][action='outline']) {
-  --background: transparent;
-  --color: #{$cds-token-color-danger-700};
+  --color: #{$cds-alias-status-danger};
 
-  .private-host:hover {
-    --background: #{$cds-token-color-danger-50};
+  &:host(:hover) {
+    --background: #{$cds-alias-status-secondary-danger-shade};
   }
 }
 
 :host([status='inverse']) {
-  --box-shadow-color: rgba(0, 0, 0, 0.25);
-  --border-color: #{$cds-token-color-neutral-0};
-  --background: transparent;
-  --color: #{$cds-token-color-neutral-0};
+  --border-color: #{$cds-global-typography-color-100};
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-global-typography-color-100};
 }
 
 :host([action='flat']) {
-  --background: transparent;
-  --border-color: transparent;
-  --color: #{$cds-token-color-action-600};
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-info};
 
   .private-host {
     box-shadow: none;
@@ -176,46 +170,53 @@
 }
 
 :host([action='flat']) .private-host:hover {
-  --background: transparent;
-  --color: #{$cds-token-color-action-600};
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-info};
 }
 
 :host([size='sm']) {
-  --padding: #{$cds-token-space-size-4} #{$cds-token-space-size-6};
-  --height: calc(#{$cds-token-space-size-9} + #{$cds-token-space-size-1});
+  --padding: #{$cds-global-space-4} #{$cds-global-space-6};
+  --height: calc(#{$cds-global-space-9} + #{$cds-global-space-1});
 }
 
 :host([size='sm']) .private-host {
   .spinner:not(.spinner-check) {
-    @include min-equilateral(#{$cds-token-space-size-6});
+    @include min-equilateral(#{$cds-global-space-6});
   }
 }
 
-:host([disabled]),
-:host([disabled]) .private-host {
-  --color: #{$cds-token-color-neutral-500} !important;
-  --background: #{$cds-token-color-neutral-200} !important;
-  --border-color: #{$cds-token-color-neutral-500} !important;
-  outline: 0;
-}
-
-:host([disabled]) .private-host {
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
 :host([disabled]:active) {
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
-:host([action='outline'][disabled]) {
-  --background: transparent;
+:host([disabled]) {
+  --background: #{$cds-alias-status-disabled} !important;
+  --border-color: #{$cds-alias-status-disabled} !important;
+
+  .private-host {
+    cursor: not-allowed;
+    box-shadow: none;
+    outline: 0;
+  }
+
+  ::slotted(cds-badge) {
+    --background: #{$cds-alias-object-opacity-0} !important;
+    --border-color: #{$cds-alias-status-disabled} !important;
+    --color: #{$cds-alias-status-disabled} !important;
+  }
 }
 
-:host([status='inverse'][disabled]) {
-  --background: transparent;
-  --color: #{$cds-token-color-neutral-0};
-  --border-color: #{$cds-token-color-neutral-0};
+:host([disabled][status='inverse']),
+:host([disabled][action='outline']) {
+  --background: #{$cds-alias-object-opacity-0} !important;
+  --color: #{$cds-alias-status-disabled-tint} !important;
+  --border-color: #{$cds-alias-status-disabled-tint} !important;
+
+  ::slotted(cds-badge) {
+    --background: #{$cds-alias-object-opacity-0} !important;
+    --border-color: #{$cds-alias-status-disabled-tint} !important;
+    --color: #{$cds-alias-status-disabled-tint} !important;
+  }
 }
 
 :host([block]) .private-host {

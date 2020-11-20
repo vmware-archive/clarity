@@ -1,13 +1,13 @@
 import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
 
-<Meta title="Forms (Preview)/Date (Internal)/Getting Started" />
+<Meta title="Forms/Date" />
 
 # Date
 
-<cds-alert-group status="danger" cds-layout="m-b:lg">
+<cds-alert-group status="warning" cds-layout="m-b:lg">
   <cds-alert>
-    This component is experimental, do not use in production! (This documentation is only available during local
-    development)
+    This component is experimental. It provides basic styles for the native HTML5 datepicker but will be updated with
+    support for the Clarity custom datepicker in the future.
   </cds-alert>
 </cds-alert-group>
 
@@ -32,31 +32,37 @@ import '@clr/core/date/register.js';
 ```
 
 <Preview>
-  <Story id="forms-preview-date-internal-stories--date" />
+  <Story id="stories-date--date" />
 </Preview>
 
 ## Vertical
 
 <Preview>
-  <Story id="forms-preview-date-internal-stories--vertical" />
+  <Story id="stories-date--vertical" />
 </Preview>
 
 ## Horizontal
 
 <Preview>
-  <Story id="forms-preview-date-internal-stories--horizontal" />
+  <Story id="stories-date--horizontal" />
 </Preview>
 
 ## Compact
 
 <Preview>
-  <Story id="forms-preview-date-internal-stories--compact" />
+  <Story id="stories-date--compact" />
 </Preview>
 
 ## Datalist
 
 <Preview>
-  <Story id="forms-preview-date-internal-stories--datalist" />
+  <Story id="stories-date--datalist" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-date--dark-theme" />
 </Preview>
 
 ## Date API

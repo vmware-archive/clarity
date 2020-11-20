@@ -13,14 +13,14 @@
 }
 
 cds-control-action.status {
-  height: #{$cds-token-space-size-7};
+  height: #{$cds-global-space-7};
 }
 
 :host([layout='horizontal']),
 :host([layout='horizontal-inline']),
 :host([layout='compact']) {
   cds-internal-control-label[action='primary'] {
-    padding-top: $cds-token-space-size-3;
+    padding-top: $cds-global-space-3;
   }
 }
 
@@ -28,6 +28,6 @@ cds-control-action.status {
 :host([status='success']),
 :host([status='error']) {
   .messages {
-    padding-top: $cds-token-space-size-3;
+    padding-top: $cds-global-space-3;
   }
 }

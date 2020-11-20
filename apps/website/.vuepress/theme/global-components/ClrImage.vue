@@ -18,7 +18,7 @@ export default {
 
 <style scoped lang="scss">
 .image-wrapper {
-  margin-top: var(--cds-token-space-size-6);
+  margin-top: var(--cds-global-space-6);
 }
 img {
   max-width: 100%;

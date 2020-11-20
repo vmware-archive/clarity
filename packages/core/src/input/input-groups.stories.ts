@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import '@clr/core/input/register.js';
 
 export default {
-  title: 'Forms (Preview)/Input Groups/Stories',
+  title: 'Stories/Input Groups',
   component: 'cds-input-group',
   parameters: {
     options: { showPanel: true },

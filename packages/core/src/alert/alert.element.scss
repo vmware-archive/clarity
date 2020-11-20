@@ -1,17 +1,17 @@
 @import './../styles/tokens/generated/index';
 @import './../styles/mixins/mixins';
 
-$lightweight-alert-line-height: $cds-token-typography-body-line-height;
+$lightweight-alert-line-height: $cds-global-typography-body-line-height;
 
 :host {
-  --container-padding: #{$cds-token-space-size-2} 0;
-  --min-height: #{$cds-token-space-size-9};
-  --color: #{$cds-token-color-neutral-1000};
-  --font-size: #{$cds-token-typography-body-font-size};
-  --font-weight: #{$cds-token-typography-body-font-weight};
-  --letter-spacing: #{$cds-token-typography-body-letter-spacing};
-  --icon-size: #{$cds-token-space-size-8};
-  --icon-color: #{$cds-token-color-neutral-700};
+  --container-padding: #{$cds-global-space-2} 0;
+  --min-height: #{$cds-global-space-9};
+  --color: #{$cds-global-typography-color-500};
+  --font-size: #{$cds-global-typography-body-font-size};
+  --font-weight: #{$cds-global-typography-body-font-weight};
+  --letter-spacing: #{$cds-global-typography-body-letter-spacing};
+  --icon-size: #{$cds-global-space-8};
+  --icon-color: #{$cds-global-typography-color-500};
   width: 100%;
 }
 
@@ -25,18 +25,18 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height;
 }
 
 :host([type='default']) {
-  --font-size: #{$cds-token-typography-font-size-3};
+  --font-size: #{$cds-global-typography-font-size-3};
 }
 
 :host([type='default']) ::slotted(cds-alert-actions),
 :host([type='banner']) ::slotted(cds-alert-actions) {
-  --action-size: calc(var(--min-height) - #{$cds-token-space-size-4});
+  --action-size: calc(var(--min-height) - #{$cds-global-space-4});
   white-space: nowrap;
   display: block;
 }
 
 :host([type='banner']) {
-  --icon-size: #{$cds-token-space-size-9};
+  --icon-size: #{$cds-global-space-9};
 }
 
 .alert-status-icon,
@@ -46,13 +46,13 @@ $lightweight-alert-line-height: $cds-token-typography-body-line-height;
 }
 
 cds-internal-close-button {
-  --color: #{$cds-token-color-neutral-700};
+  --color: #{$cds-global-typography-color-500};
 }
 
 .alert-content-wrapper,
 .alert-icon-wrapper {
   display: flex;
-  min-height: #{$cds-token-space-size-6};
+  min-height: #{$cds-global-space-6};
   padding: var(--container-padding);
 }
 
@@ -63,7 +63,7 @@ cds-internal-close-button {
 // default is for lightweight alerts
 .alert-content-wrapper {
   @include vertical-center-content;
-  transform: translateY(#{$cds-token-space-size-1});
+  transform: translateY(#{$cds-global-space-1});
 }
 
 .alert-content-wrapper {
@@ -75,33 +75,33 @@ cds-internal-close-button {
 }
 
 ::slotted(cds-alert-actions) {
-  --action-text-color: #{$cds-token-color-neutral-700};
+  --action-text-color: #{$cds-global-typography-color-500};
   --action-size: #{$lightweight-alert-line-height};
   display: none;
 }
 
 :host([type='default']) cds-internal-close-button {
-  height: #{$cds-token-space-size-8};
+  height: #{$cds-global-space-8};
 }
 
 :host([type='default']) .alert-content-wrapper {
   align-items: self-start;
 }
 
-:host([status='info']) {
-  --icon-color: #{$cds-token-color-action-600};
+:host([type='light'][status='info']) {
+  --icon-color: #{$cds-alias-status-info};
 }
 
-:host([status='success']) {
-  --icon-color: #{$cds-token-color-success-700};
+:host([type='light'][status='success']) {
+  --icon-color: #{$cds-alias-status-success};
 }
 
-:host([status='warning']) {
-  --icon-color: #{$cds-token-color-warning-800};
+:host([type='light'][status='warning']) {
+  --icon-color: #{$cds-alias-status-warning};
 }
 
-:host([status='danger']) {
-  --icon-color: #{$cds-token-color-danger-700};
+:host([type='light'][status='danger']) {
+  --icon-color: #{$cds-alias-status-danger};
 }
 
 :host([status='loading'][type='default']) .alert-spinner {
@@ -109,7 +109,7 @@ cds-internal-close-button {
 }
 
 :host([size='sm']:not([type='banner'])) {
-  --font-size: #{$cds-token-typography-font-size-2};
+  --font-size: #{$cds-global-typography-font-size-2};
   --letter-spacing: normal;
 }
 
@@ -117,23 +117,27 @@ cds-internal-close-button {
 
 :host([type='banner']) .alert-content-wrapper {
   transform: none;
-  min-height: #{$cds-token-space-size-10};
+  min-height: #{$cds-global-space-10};
+}
+
+:host([type='banner']) {
+  --color: #{$cds-global-typography-color-100};
 }
 
 :host([type='banner']) .spinner {
-  @include min-equilateral(calc(#{$cds-token-space-size-8} + #{$cds-token-space-size-2}));
-  margin-top: #{$cds-token-space-size-2};
+  @include min-equilateral(calc(#{$cds-global-space-8} + #{$cds-global-space-2}));
+  margin-top: #{$cds-global-space-2};
 }
 
 :host([type='banner']) cds-internal-close-button {
   --color: var(--icon-color);
-  height: $cds-token-space-size-9;
-  margin-top: $cds-token-space-size-3;
+  height: $cds-global-space-9;
+  margin-top: $cds-global-space-3;
 }
 
 @supports (-moz-appearance: none) and (text-emphasis: none) {
   // nudge for alert text content firefox
   :host(:not([type='banner']):not([size='sm'])) .alert-content {
-    transform: translateY(calc(-1 * #{$cds-token-space-size-2}));
+    transform: translateY(calc(-1 * #{$cds-global-space-2}));
   }
 }

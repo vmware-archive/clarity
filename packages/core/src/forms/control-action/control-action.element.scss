@@ -12,28 +12,35 @@
 
 :host([role='button']) {
   cursor: pointer;
-  min-width: $cds-token-space-size-9;
+  min-width: $cds-global-space-9;
   pointer-events: initial;
 }
 
 .private-host {
-  color: $cds-token-color-neutral-600;
-  font-size: $cds-token-typography-font-size-3;
+  color: $cds-global-typography-color-300;
+  font-size: $cds-global-typography-font-size-3;
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
+  line-height: calc(#{$cds-global-space-9} - #{$cds-global-space-2});
 }
 
 ::slotted(cds-icon) {
-  width: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
-  height: calc(#{$cds-token-space-size-9} - #{$cds-token-space-size-2});
-  margin-bottom: $cds-token-space-size-1;
+  width: calc(#{$cds-global-space-9} - #{$cds-global-space-2});
+  height: calc(#{$cds-global-space-9} - #{$cds-global-space-2});
+  margin-bottom: $cds-global-space-1;
   pointer-events: none;
 }
 
 ::slotted(cds-icon[shape='angle']) {
-  @include equilateral($cds-token-space-size-8);
-  --color: #{$cds-token-color-neutral-500};
-  margin-right: $cds-token-space-size-3;
+  @include equilateral($cds-global-space-8);
+  margin-right: $cds-global-space-3;
+}
+
+:host(:hover) ::slotted(cds-icon) {
+  --color: #{$cds-alias-object-interaction-color-active};
+}
+
+:host([disabled]) ::slotted(cds-icon) {
+  --color: #{$cds-alias-object-interaction-color-disabled};
 }

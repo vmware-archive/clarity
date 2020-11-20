@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Datalist/Stories',
+  title: 'Stories/Datalist',
   component: 'cds-datalist',
   argTypes: getElementStorybookArgTypes('cds-datalist', customElements),
   parameters: {
@@ -188,6 +188,56 @@ export const compact = () => {
       </cds-datalist>
 
       <cds-datalist layout="compact" status="success">
+        <label>success status</label>
+        <input placeholder="name" />
+        <datalist>
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-datalist>
+    </cds-form-group>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-datalist layout="horizontal">
+        <label>label</label>
+        <input placeholder="name" />
+        <datalist>
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+        <cds-control-message>message text</cds-control-message>
+      </cds-datalist>
+
+      <cds-datalist layout="horizontal">
+        <label>disabled</label>
+        <input placeholder="name" disabled />
+        <datalist>
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-datalist>
+
+      <cds-datalist layout="horizontal" status="error">
+        <label>error status</label>
+        <input placeholder="name" />
+        <datalist>
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-datalist>
+
+      <cds-datalist layout="horizontal" status="success">
         <label>success status</label>
         <input placeholder="name" />
         <datalist>

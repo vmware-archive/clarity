@@ -1,120 +1,75 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
 @import './../styles/tokens/generated/index';
 @import './../styles/mixins/mixins';
 
 :host {
-  --background: #{$cds-token-color-neutral-600};
-  --border-color: #{$cds-token-color-neutral-600};
-  --border-width: #{$cds-token-global-border-width};
-  --color: #{$cds-token-color-neutral-0};
-  --font-size: #{$cds-token-typography-p8-font-size};
-  --font-weight: #{$cds-token-typography-font-weight-regular};
-  --size: calc(#{$cds-token-space-size-7} - #{$cds-token-space-size-1});
-  --padding: calc(#{$cds-token-space-size-3} - var(--border-width));
-  --border-radius: calc(var(--size) / 2);
+  --background: #{$cds-alias-status-neutral-shade};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --font-size: #{$cds-global-typography-font-size-1};
+  --font-weight: #{$cds-global-typography-font-weight-regular};
+  --size: #{$cds-global-space-7};
+  --padding: 0 #{$cds-global-space-2};
+  --border-radius: #{$cds-alias-object-border-radius-200};
+  --border-color: var(--background);
+  --color: #{$cds-global-color-gray-0};
   display: inline-block;
-  text-align: center;
-  line-height: 0;
 }
 
 .private-host {
-  @include center-content;
-
+  min-width: var(--size);
+  min-height: var(--size);
   justify-content: center;
-  height: var(--size);
-  line-height: 1em;
   border-radius: var(--border-radius);
-  border-width: var(--border-width);
-  border-style: solid;
-  border-color: var(--border-color);
-  font-size: var(--font-size);
+  border: var(--border-width) solid var(--border-color);
   font-weight: var(--font-weight);
-  letter-spacing: #{$cds-token-typography-body-letter-spacing};
+  letter-spacing: #{$cds-global-typography-body-letter-spacing};
   white-space: nowrap;
   background: var(--background);
   color: var(--color);
   padding: var(--padding);
-
-  & > span {
-    @include center-content;
-
-    height: var(--font-size);
-    min-width: calc(0.8 * var(--font-size));
-
-    & > span {
-      text-align: center;
-      width: 100%;
-      @include line-height-eraser(0em);
-    }
-  }
+  text-align: center;
+  font-size: var(--font-size);
+  display: flex;
+  align-items: center;
 }
 
 :host(:visited) {
-  --color: #{$cds-token-color-neutral-0};
-}
-
-:host([color='gray']) {
-  --background: #{$cds-token-color-neutral-600};
-  --border-color: #{$cds-token-color-neutral-600};
-  --color: #{$cds-token-color-neutral-0};
-}
-
-:host([color='purple']) {
-  --background: #{$cds-token-color-secondary-action-500};
-  --border-color: #{$cds-token-color-secondary-action-500};
-  --color: #{$cds-token-color-neutral-0};
-}
-
-:host([color='blue']) {
-  --background: #{$cds-token-color-action-800};
-  --border-color: #{$cds-token-color-action-800};
-  --color: #{$cds-token-color-neutral-0};
-}
-
-:host([color='orange']) {
-  --background: #{$cds-token-color-warning-1000};
-  --border-color: #{$cds-token-color-warning-1000};
-  --color: #{$cds-token-color-neutral-0};
-}
-
-:host([color='light-blue']) {
-  --background: #{$cds-token-color-action-500};
-  --border-color: #{$cds-token-color-action-500};
-  --color: #{$cds-token-color-neutral-0};
+  color: var(--color);
 }
 
 :host([status='info']) {
-  --background: #{$cds-token-color-action-800};
-  --border-color: #{$cds-token-color-action-800};
-  --color: #{$cds-token-color-neutral-0};
+  --background: #{$cds-alias-status-secondary-info};
 }
 
 :host([status='success']) {
-  --background: #{$cds-token-color-success-800};
-  --border-color: #{$cds-token-color-success-800};
-  --color: #{$cds-token-color-neutral-0};
+  --background: #{$cds-alias-status-secondary-success};
 }
 
 :host([status='warning']) {
-  --background: #{$cds-token-color-warning-1000};
-  --border-color: #{$cds-token-color-warning-1000};
-  --color: #{$cds-token-color-neutral-0};
+  --background: #{$cds-alias-status-secondary-warning};
 }
 
 :host([status='danger']) {
-  --background: #{$cds-token-color-danger-900};
-  --border-color: #{$cds-token-color-danger-900};
-  --color: #{$cds-token-color-neutral-0};
+  --background: #{$cds-alias-status-secondary-danger};
 }
 
-// Hack for Safari; Safari needs badge content to be bold
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    .private-host {
-      font-weight: 600;
+:host([color='blue']) {
+  --background: #{$cds-global-color-blue-800};
+}
 
-      & > span {
-        transform: translateY(calc(-0.06667 * var(--size)));
-      }
-    }
-  }
+:host([color='purple']) {
+  --background: #{$cds-global-color-violet-500};
+}
+
+:host([color='orange']) {
+  --background: #{$cds-global-color-ochre-700};
+  --color: #{$cds-global-color-gray-1000};
+}
+
+:host([color='light-blue']) {
+  --background: #{$cds-global-color-blue-400};
+  --color: #{$cds-global-color-gray-1000};
 }

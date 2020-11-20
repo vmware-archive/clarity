@@ -9,7 +9,7 @@ import { select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Components/List/Stories',
+  title: 'Stories/List',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true },
@@ -462,5 +462,25 @@ export const customSpaceList = () => {
       <li>The five boxing wizards jump quickly</li>
       <li>The five boxing wizards jump quickly</li>
     </ol>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="vertical gap:md" cds-theme="dark">
+      <ol cds-list>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+      </ol>
+
+      <ul cds-list>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+        <li>The five boxing wizards jump quickly</li>
+      </ul>
+    </div>
   `;
 };

@@ -15,7 +15,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(angleIcon, userIcon);
 
 export default {
-  title: 'Components/Inline Button/Stories',
+  title: 'Stories/Inline Button',
   component: 'cds-inline-button',
   argTypes: getElementStorybookArgTypes('cds-inline-button', customElements),
   parameters: {

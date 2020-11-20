@@ -4,29 +4,29 @@
 
 $cds-layout-sizes: (
   'none': 0,
-  'xxs': $cds-token-layout-space-xxs,
-  'xs': $cds-token-layout-space-xs,
-  'sm': $cds-token-layout-space-sm,
-  'md': $cds-token-layout-space-md,
-  'lg': $cds-token-layout-space-lg,
-  'xl': $cds-token-layout-space-xl,
-  'xxl': $cds-token-layout-space-xxl,
+  'xxs': $cds-global-layout-space-xxs,
+  'xs': $cds-global-layout-space-xs,
+  'sm': $cds-global-layout-space-sm,
+  'md': $cds-global-layout-space-md,
+  'lg': $cds-global-layout-space-lg,
+  'xl': $cds-global-layout-space-xl,
+  'xxl': $cds-global-layout-space-xxl,
 );
 
 $cds-layout-breakpoints: (
-  '@xs': $cds-token-layout-width-xs-static,
-  '@sm': $cds-token-layout-width-sm-static,
-  '@md': $cds-token-layout-width-md-static,
-  '@lg': $cds-token-layout-width-lg-static,
-  '@xl': $cds-token-layout-width-xl-static,
+  '@xs': $cds-global-layout-width-xs-static,
+  '@sm': $cds-global-layout-width-sm-static,
+  '@md': $cds-global-layout-width-md-static,
+  '@lg': $cds-global-layout-width-lg-static,
+  '@xl': $cds-global-layout-width-xl-static,
 );
 
 $cds-layout-widths: (
-  'xs': $cds-token-layout-width-xs,
-  'sm': $cds-token-layout-width-sm,
-  'md': $cds-token-layout-width-md,
-  'lg': $cds-token-layout-width-lg,
-  'xl': $cds-token-layout-width-xl,
+  'xs': $cds-global-layout-width-xs,
+  'sm': $cds-global-layout-width-sm,
+  'md': $cds-global-layout-width-md,
+  'lg': $cds-global-layout-width-lg,
+  'xl': $cds-global-layout-width-xl,
 );
 
 $cds-layout-spacing-sides: (

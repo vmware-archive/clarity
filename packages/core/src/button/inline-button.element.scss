@@ -7,7 +7,7 @@
 
 :host {
   --text-decoration: underline;
-  --color: #{$cds-token-color-action-600};
+  --color: #{$cds-alias-status-info};
   --font-size: inherit;
   --line-height: inherit;
   --letter-spacing: inherit;
@@ -34,16 +34,16 @@ slot {
 ::slotted(cds-icon) {
   --color: inherit;
   @include equilateral(1em);
-  margin-top: calc(-1 * #{$cds-token-space-size-1});
+  margin-top: calc(-1 * #{$cds-global-space-1});
   font-size: var(--font-size);
 }
 
 ::slotted(cds-icon:first-child) {
-  margin-right: #{$cds-token-space-size-2};
+  margin-right: #{$cds-global-space-2};
 }
 
 ::slotted(cds-icon:last-child) {
-  margin-left: #{$cds-token-space-size-2};
+  margin-left: #{$cds-global-space-2};
 }
 
 :host([disabled]) ::slotted(a),
@@ -53,6 +53,6 @@ slot {
 
 :host(:active),
 :host(:hover) {
-  --color: #{$cds-token-color-action-900};
+  --color: #{$cds-alias-status-info-tint};
   --text-decoration: underline;
 }

@@ -2,23 +2,18 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --background: none;
-  --color: #{$cds-token-color-neutral-800};
-  --padding: 0 #{$cds-token-space-size-2};
-  --size: #{$cds-token-space-size-8-static + $cds-token-space-size-3-static};
-  --font-size: #{($cds-token-space-size-8-static + $cds-token-space-size-2-static) / 2 + $cds-token-space-size-1-static};
-  --border-radius: calc(var(--size) / 2);
-  --border-color: #{$cds-token-color-neutral-800};
-  --border-width: #{$cds-token-global-border-width};
-
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-global-typography-color-500};
+  --padding: #{$cds-global-space-2};
+  --font-size: #{$cds-global-typography-font-size-0};
+  --border-radius: #{$cds-alias-object-border-radius-200};
+  --border-color: #{$cds-alias-status-secondary-neutral};
+  --border-width: #{$cds-alias-object-border-width-100};
   display: inline-block;
-  height: var(--size);
 }
 
 .private-host {
-  @include vertical-center-content;
-
-  line-height: 1em;
+  --internal-icon-color: var(--color);
   border-radius: var(--border-radius);
   background: var(--background);
   border-width: var(--border-width);
@@ -27,87 +22,19 @@
   color: var(--color);
   font-size: var(--font-size);
   padding: var(--padding);
-  height: var(--size);
   white-space: nowrap;
-
-  .tag-icon,
-  .tag-badge,
-  .tag-content,
-  .tag-close-icon {
-    @include vertical-center-content;
-    height: calc(var(--size) - #{$cds-token-space-size-2});
-  }
-
-  .tag-badge {
-    height: calc(var(--size) - #{$cds-token-space-size-1});
-  }
-
-  ::slotted(cds-badge) {
-    transform: translateY(calc(-1 - #{$cds-token-space-size-2}));
-    --size: #{$cds-token-space-size-7};
-  }
-
-  .tag-badge {
-    transform: translateY(calc(-1 * #{$cds-token-space-size-1}));
-
-    // using empty containers here b/c firefox doesn't align text-only
-    // tags correctly alongside tags with containers in them
-    &.empty {
-      visibility: hidden;
-      width: #{$cds-token-space-size-1};
-    }
-  }
-
-  .tag-content {
-    padding: 0 #{$cds-token-space-size-4};
-  }
-
-  .tag-icon {
-    overflow: hidden;
-    width: calc(var(--size) - (2 * var(--border-width) + (2 * #{$cds-token-space-size-1})));
-
-    // using empty containers here b/c firefox doesn't align text-only
-    // tags correctly alongside tags with containers in them
-    &.empty {
-      visibility: hidden;
-      width: #{$cds-token-space-size-2};
-    }
-  }
-
-  .tag-close-icon {
-    overflow: hidden;
-    width: calc(var(--size) - #{$cds-token-space-size-3});
-
-    cds-icon {
-      cursor: pointer;
-    }
-  }
-
-  .tag-icon + .tag-content {
-    padding-left: calc(#{$cds-token-space-size-4} / 2);
-  }
-}
-
-// style for clickable tag
-:host(:not([readonly])) .private-host {
   text-decoration: none;
+  min-height: calc(#{$cds-global-space-8} + #{$cds-global-space-3});
 }
 
-:host([disabled]) {
-  --background: #{$cds-token-color-neutral-200} !important;
-  --color: #{$cds-token-color-neutral-600} !important;
-  --border-color: #{$cds-token-color-neutral-600} !important;
+.tag-content {
+  padding: 0 #{$cds-global-space-3};
+}
 
-  &:host([active]),
-  &:host(:active) {
-    .private-host {
-      box-shadow: none !important;
-    }
-
-    .tag-content {
-      transform: initial !important;
-    }
-  }
+::slotted(cds-icon),
+cds-icon[shape='times'] {
+  --color: var(--internal-icon-color);
+  cursor: pointer;
 }
 
 :host(:not([readonly])),
@@ -116,17 +43,17 @@
   &:host(:hover),
   &:host(:focus),
   &:host(:active) {
-    --background: #{$cds-token-color-neutral-200};
+    --background: var(--internal-background-hover, #{$cds-alias-status-secondary-neutral-shade});
   }
 
   &:host([active]),
   &:host(:active) {
     .private-host {
-      box-shadow: 0 #{$cds-token-space-size-1-static} 0 0 var(--border-color) inset;
+      box-shadow: 0 #{$cds-global-space-1} 0 0 var(--border-color) inset;
     }
 
     .tag-content {
-      transform: translateY(0.05rem);
+      transform: translateY(#{$cds-global-space-1});
     }
   }
 
@@ -135,174 +62,67 @@
   }
 }
 
-::slotted(cds-icon) {
-  @include equilateral(calc(var(--size) - #{$cds-token-space-size-3}));
-  margin-bottom: 1px;
-  fill: var(--color);
-}
-
-:host([color='purple']) {
-  --border-color: #{$cds-token-color-secondary-action-500};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-secondary-action-500};
-    --border-color: #{$cds-token-color-secondary-action-500};
-    --color: #{$cds-token-color-neutral-0};
-  }
-}
-
-:host([color='blue']) {
-  --border-color: #{$cds-token-color-action-800};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-action-800};
-    --border-color: #{$cds-token-color-action-800};
-    --color: #{$cds-token-color-neutral-0};
-  }
-}
-
-:host([color='orange']) {
-  --border-color: #{$cds-token-color-warning-1000};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-warning-1000};
-    --border-color: #{$cds-token-color-warning-1000};
-    --color: #{$cds-token-color-neutral-0};
-  }
-}
-
-:host([color='light-blue']) {
-  --border-color: #{$cds-token-color-action-500};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-action-500};
-    --border-color: #{$cds-token-color-action-500};
-    --color: #{$cds-token-color-neutral-0};
-  }
-}
-
 :host([status='info']) {
-  --background: #{$cds-token-color-action-50};
-  --border-color: #{$cds-token-color-action-800};
-  --color: #{$cds-token-color-action-800};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-action-800};
-    --border-color: #{$cds-token-color-action-800};
-    --color: #{$cds-token-color-neutral-0};
-  }
-
-  ::slotted(cds-icon) {
-    fill: #{$cds-token-color-action-800};
-  }
-}
-
-:host(:not([readonly])),
-:host([is-anchor]) {
-  &:host([status='info'][active]),
-  &:host([status='info']:hover),
-  &:host([status='info']:focus),
-  &:host([status='info']:active) {
-    --background: #{$cds-token-color-action-100};
-  }
+  --border-color: #{$cds-alias-status-secondary-info};
+  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-info-tint});
+  --internal-background-hover: #{$cds-alias-status-secondary-info-shade};
 }
 
 :host([status='success']) {
-  --background: #{$cds-token-color-success-50};
-  --color: #{$cds-token-color-success-800};
-  --border-color: #{$cds-token-color-success-800};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-success-800};
-    --border-color: #{$cds-token-color-success-800};
-    --color: #{$cds-token-color-neutral-0};
-  }
-
-  ::slotted(cds-icon) {
-    fill: #{$cds-token-color-success-800};
-  }
-}
-
-:host(:not([readonly])),
-:host([is-anchor]) {
-  &:host([status='success'][active]),
-  &:host([status='success']:hover),
-  &:host([status='success']:focus),
-  &:host([status='success']:active) {
-    --background: #{$cds-token-color-success-100};
-  }
+  --border-color: #{$cds-alias-status-secondary-success};
+  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-success-tint});
+  --internal-background-hover: #{$cds-alias-status-secondary-success-shade};
 }
 
 :host([status='warning']) {
-  --background: #{$cds-token-color-warning-100};
-  --color: #{$cds-token-color-neutral-900};
-  --border-color: #{$cds-token-color-warning-800};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-warning-1000};
-    --border-color: #{$cds-token-color-warning-1000};
-    --color: #{$cds-token-color-neutral-0};
-  }
-
-  ::slotted(cds-icon) {
-    fill: #{$cds-token-color-warning-800};
-  }
-}
-
-:host(:not([readonly])),
-:host([is-anchor]) {
-  &:host([status='warning'][active]),
-  &:host([status='warning']:hover),
-  &:host([status='warning']:focus),
-  &:host([status='warning']:active) {
-    --background: #{$cds-token-color-warning-200};
-    --border-color: #{$cds-token-color-warning-500};
-  }
+  --border-color: #{$cds-alias-status-secondary-warning};
+  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-warning-tint});
+  --internal-background-hover: #{$cds-alias-status-secondary-warning-shade};
 }
 
 :host([status='danger']) {
-  --background: #{$cds-token-color-danger-100};
-  --color: #{$cds-token-color-danger-900};
-  --border-color: #{$cds-token-color-danger-900};
+  --border-color: #{$cds-alias-status-secondary-danger};
+  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-danger-tint});
+  --internal-background-hover: #{$cds-alias-status-secondary-danger-shade};
+}
+
+:host([color='purple']) {
+  --border-color: #{$cds-global-color-violet-600};
+}
+
+:host([color='blue']) {
+  --border-color: #{$cds-global-color-blue-800};
+}
+
+:host([color='orange']) {
+  --border-color: #{$cds-global-color-ochre-800};
+}
+
+:host([color='light-blue']) {
+  --border-color: #{$cds-global-color-blue-600};
+}
+
+:host([disabled]) {
+  --color: #{$cds-alias-status-disabled-tint} !important;
+  --border-color: #{$cds-alias-status-disabled-tint} !important;
+  --background: #{$cds-alias-object-opacity-0} !important;
 
   ::slotted(cds-badge) {
-    --background: #{$cds-token-color-danger-900};
-    --border-color: #{$cds-token-color-danger-900};
-    --color: #{$cds-token-color-neutral-0};
+    --background: #{$cds-alias-status-disabled-tint};
+    --color: #{$cds-alias-status-disabled-shade} !important;
   }
 
   ::slotted(cds-icon) {
-    fill: #{$cds-token-color-danger-900};
+    --color: #{$cds-alias-status-disabled-tint} !important;
   }
 }
 
-:host([color='gray']),
 :host([disabled]) {
-  --border-color: #{$cds-token-color-neutral-600};
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-token-color-neutral-600};
-    --border-color: #{$cds-token-color-neutral-600};
-    --color: #{$cds-token-color-neutral-0};
+  .private-host {
+    box-shadow: none !important;
   }
-}
 
-:host(:not([readonly])),
-:host([is-anchor]) {
-  &:host([status='danger'][active]),
-  &:host([status='danger']:hover),
-  &:host([status='danger']:focus),
-  &:host([status='danger']:active) {
-    --background: #{$cds-token-color-danger-200};
-    --border-color: #{$cds-token-color-danger-400};
-  }
-}
-
-// Hack for Safari; It is having a problem with layouts across the shadowDom
-@media not all and (min-resolution: 0.001dpcm) {
-  @supports (-webkit-appearance: none) {
-    ::slotted(cds-badge) {
-      transform: translateY(calc(0.04545 * var(--size)));
-    }
+  .tag-content {
+    transform: initial !important;
   }
 }

@@ -2,32 +2,26 @@ import '@clr/core/alert/register.js';
 import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Foundation/Typography/Getting Started" />
+<Meta title="Foundation/Typography" />
 
 # Typography
-
-<cds-alert-group status="warning" cds-layout="m-b:lg">
-  <cds-alert>
-    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
-    Please be aware that this component or utility may have breaking changes before we finish working on it.
-  </cds-alert>
-</cds-alert-group>
 
 The Clarity Core Typography System provides a flexible API to apply typography
 styles explicitly to elements. This gives full control of the visual styling of
 an element separate from the HTML semantics.
 
-## Installation
+## Base Font
 
-To use the typography system import the global CSS.
+By default, Clarity has a base font size of 20px on the document. All CSS px values
+are relative to this base font. If your application is already using a base 16px font
+size you can set the following:
 
-```scss
-// import into sass or css
-@import '~@clr/core/global.min';
-
-// or import in html
-<link href="/node_modules/@clr/core/global.min.css" rel="stylesheet">
+```html
+<html lang="en" cds-base-font="16"></html>
 ```
+
+Adding `cds-base-font="16"` to the root html tag will adjust all spacing and px
+values in Clarity to be relative to a base 16px instead of base 20px.
 
 ## Usage
 
@@ -42,49 +36,55 @@ create consistent and coherent experiences.
 ## Headings
 
 <Preview>
-  <Story id="foundation-typography-stories--headings" />
+  <Story id="stories-typography--headings" />
 </Preview>
 
 ## Content
 
 <Preview>
-  <Story id="foundation-typography-stories--content" />
+  <Story id="stories-typography--content" />
 </Preview>
 
 ## Links
 
 <Preview>
-  <Story id="foundation-typography-stories--links" />
+  <Story id="stories-typography--links" />
 </Preview>
 
 ## Code
 
 <Preview>
-  <Story id="foundation-typography-stories--code" />
+  <Story id="stories-typography--code" />
 </Preview>
 
 ## Position
 
 <Preview>
-  <Story id="foundation-typography-stories--position" />
+  <Story id="stories-typography--position" />
 </Preview>
 
 ## Transforms
 
 <Preview>
-  <Story id="foundation-typography-stories--transforms" />
+  <Story id="stories-typography--transforms" />
 </Preview>
 
 ## Weights
 
 <Preview>
-  <Story id="foundation-typography-stories--weights" />
+  <Story id="stories-typography--weights" />
 </Preview>
 
 ## Inline
 
 <Preview>
-  <Story id="foundation-typography-stories--inline" />
+  <Story id="stories-typography--inline" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-typography--dark-theme" />
 </Preview>
 
 ## Headings h1-h6
@@ -93,17 +93,17 @@ Core provides the same html tag name based styles that exist in Clarity UI for
 both headings and paragraphs.
 
 <Preview>
-  <Story id="foundation-typography-stories--legacy-headers" />
+  <Story id="stories-typography--legacy-headers" />
 </Preview>
 
 ## Paragraphs p1-p6
 
 <Preview>
-  <Story id="foundation-typography-stories--legacy-paragraphs" />
+  <Story id="stories-typography--legacy-paragraphs" />
 </Preview>
 
 ## Tokens
 
 <Preview>
-  <Story id="foundation-design-tokens-stories--typography" />
+  <Story id="stories-design-tokens--typography" />
 </Preview>

@@ -10,7 +10,7 @@ import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/Checkbox/Stories',
+  title: 'Stories/Checkbox',
   component: 'cds-checkbox',
   argTypes: getElementStorybookArgTypes('cds-checkbox', customElements),
   parameters: {
@@ -507,6 +507,96 @@ export const compactGroup = () => {
 
       <cds-checkbox-group layout="compact" status="success">
         <label>success</label>
+        <cds-checkbox>
+          <label>checkbox 1</label>
+          <input type="checkbox" checked />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 2</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 3</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-checkbox-group>
+    </cds-form-group>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal-inline" cds-theme="dark">
+      <cds-checkbox-group>
+        <label>label</label>
+
+        <cds-checkbox>
+          <label>checkbox 1</label>
+          <input type="checkbox" checked />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 2</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 3</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-control-message>message text</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group disabled>
+        <label>disabled</label>
+
+        <cds-checkbox>
+          <label>checkbox 1</label>
+          <input type="checkbox" checked />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 2</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 3</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group status="error">
+        <label>error</label>
+
+        <cds-checkbox>
+          <label>checkbox 1</label>
+          <input type="checkbox" checked />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 2</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 3</label>
+          <input type="checkbox" />
+        </cds-checkbox>
+
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group status="success">
+        <label>success</label>
+
         <cds-checkbox>
           <label>checkbox 1</label>
           <input type="checkbox" checked />

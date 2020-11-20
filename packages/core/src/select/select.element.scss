@@ -4,16 +4,20 @@
 
 @import './../styles/tokens/generated/index';
 
+:host([multiple]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color} !important;
+}
+
 ::slotted([slot='input']) {
   cursor: pointer;
 }
 
 ::slotted([slot='input'][multiple]) {
   width: 100% !important;
-  border-radius: #{$cds-token-global-border-radius} !important;
-  border: #{$cds-token-space-size-1} solid #{$cds-token-color-neutral-500} !important;
+  border-radius: #{$cds-alias-object-border-radius-100} !important;
+  border: var(--border);
   padding: 0 !important;
-  font-size: $cds-token-typography-font-size-3 !important;
+  font-size: $cds-global-typography-font-size-3 !important;
 }
 
 :host([multiple]) .input-container {

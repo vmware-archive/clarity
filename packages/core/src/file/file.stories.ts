@@ -10,7 +10,7 @@ import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } fro
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Forms (Preview)/File/Stories',
+  title: 'Stories/File',
   component: 'cds-file',
   argTypes: getElementStorybookArgTypes('cds-file', customElements),
   parameters: {
@@ -123,6 +123,36 @@ export const compact = () => {
       </cds-file>
 
       <cds-file layout="compact" status="error">
+        <label>error</label>
+        <input type="file" multiple />
+        <cds-control-message status="error">error message</cds-control-message>
+      </cds-file>
+    </cds-form-group>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-form-group layout="horizontal" cds-theme="dark">
+      <cds-file layout="horizontal">
+        <label>label</label>
+        <input type="file" multiple />
+        <cds-control-message>message text</cds-control-message>
+      </cds-file>
+
+      <cds-file layout="horizontal">
+        <label>disabled</label>
+        <input type="file" disabled />
+        <cds-control-message>disabled message</cds-control-message>
+      </cds-file>
+
+      <cds-file layout="horizontal" status="success">
+        <label>success</label>
+        <input type="file" multiple />
+        <cds-control-message status="success">success message</cds-control-message>
+      </cds-file>
+
+      <cds-file layout="horizontal" status="error">
         <label>error</label>
         <input type="file" multiple />
         <cds-control-message status="error">error message</cds-control-message>

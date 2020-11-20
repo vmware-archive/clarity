@@ -53,21 +53,21 @@ describe('accordion-panel element', () => {
     button.click();
   });
 
-  it('should add the open class to the accordion header wrapper when expanded', async () => {
+  it('should set the expanded aria state accordion header when expanded', async () => {
     await componentIsStable(component);
-    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header');
-    expect(accordionHeaderWrapper.classList.contains('open')).toBe(false);
+    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header-button');
+    expect(accordionHeaderWrapper.getAttribute('aria-expanded')).toBe('false');
     component.expanded = true;
     await componentIsStable(component);
-    expect(accordionHeaderWrapper.classList.contains('open')).toBe(true);
+    expect(accordionHeaderWrapper.getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('should add the disabled class to the accordion header wrapper when disabled', async () => {
+  it('should set the disabled state to the accordion when disabled', async () => {
     await componentIsStable(component);
-    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header');
-    expect(accordionHeaderWrapper.classList.contains('disabled')).toBe(false);
+    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header-button');
+    expect(accordionHeaderWrapper.getAttribute('disabled')).toBe(null);
     component.disabled = true;
     await componentIsStable(component);
-    expect(accordionHeaderWrapper.classList.contains('disabled')).toBe(true);
+    expect(accordionHeaderWrapper.getAttribute('disabled')).toBe('');
   });
 });

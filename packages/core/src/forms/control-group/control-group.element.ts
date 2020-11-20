@@ -18,6 +18,7 @@ import {
   updateComponentLayout,
   supportsResizeObserver,
   setAttributes,
+  syncProps,
 } from '@clr/core/internal';
 import { ClarityIcons } from '@clr/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@clr/core/icon/shapes/exclamation-circle.js';
@@ -199,6 +200,7 @@ export class CdsInternalControlGroup extends LitElement {
     super.updated(props);
     props.set('isControlGroup', true);
     this.controls.forEach((c: any) => (c.isControlGroup = true));
+    this.messages.forEach(message => syncProps(message, this, { disabled: props.has('disabled') }));
     syncDefinedProps(props, this, Array.from(this.controls));
   }
 

@@ -5,10 +5,10 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --padding: calc(#{$cds-token-space-size-6} - var(--border-width, #{$cds-token-global-border-width-static}))
+  --padding: calc(#{$cds-global-space-6} - var(--border-width, #{$cds-alias-object-border-width-100-static}))
     calc(
-      #{$cds-token-space-size-6} - #{$cds-token-space-size-2} -
-        var(--border-width, #{$cds-token-global-border-width-static})
+      #{$cds-global-space-6} - #{$cds-global-space-2} -
+        var(--border-width, #{$cds-alias-object-border-width-100-static})
     );
 }
 

@@ -17,21 +17,21 @@
   cursor: pointer !important;
 
   @include line-height-eraser(
-    getLineHeightGap($cds-token-typography-secondary-line-height-static, $cds-token-typography-secondary-line-height),
-    $cds-token-global-font-top-gap-height,
-    $cds-token-global-font-ascender-height,
-    $cds-token-global-font-x-height
+    getLineHeightGap($cds-global-typography-secondary-line-height-static, $cds-global-typography-secondary-line-height),
+    $cds-global-typography-top-gap-height,
+    $cds-global-typography-ascender-height,
+    $cds-global-typography-x-height
   );
 
-  font-size: $cds-token-typography-secondary-font-size !important;
-  font-weight: $cds-token-typography-secondary-font-weight !important;
-  color: $cds-token-typography-secondary-color !important;
-  line-height: $cds-token-typography-secondary-line-height !important;
-  letter-spacing: $cds-token-typography-secondary-letter-spacing !important;
+  font-size: $cds-global-typography-secondary-font-size !important;
+  font-weight: $cds-global-typography-secondary-font-weight !important;
+  color: $cds-global-typography-color-300 !important;
+  line-height: $cds-global-typography-secondary-line-height !important;
+  letter-spacing: $cds-global-typography-secondary-letter-spacing !important;
 }
 
 :host([disabled]) ::slotted([slot='label']) {
-  color: $cds-token-color-neutral-600 !important;
+  color: $cds-alias-status-disabled !important;
   cursor: not-allowed !important;
 }
 
@@ -40,7 +40,7 @@
 }
 
 ::slotted(cds-control-action) {
-  padding: $cds-token-space-size-4 0 $cds-token-space-size-3 0 !important;
-  margin-bottom: calc(-1 * #{$cds-token-space-size-5}) !important;
-  margin-top: calc(-1 * calc(#{$cds-token-space-size-6} - #{$cds-token-space-size-2})) !important;
+  padding: $cds-global-space-4 0 $cds-global-space-3 0 !important;
+  margin-bottom: calc(-1 * #{$cds-global-space-5}) !important;
+  margin-top: calc(-1 * calc(#{$cds-global-space-6} - #{$cds-global-space-2})) !important;
 }

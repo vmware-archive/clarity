@@ -15,7 +15,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(angleIcon, userIcon, timesCircleIcon);
 
 export default {
-  title: 'Components/Alert/Stories',
+  title: 'Stories/Alert',
   component: 'cds-alert',
   argTypes: getElementStorybookArgTypes('cds-alert', customElements),
   parameters: {
@@ -90,7 +90,7 @@ export const status = () => {
       <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>
       <cds-alert status="danger">This is an alert with a status of "danger"</cds-alert>
       <cds-alert status="loading">This is an alert with a status of "loading"</cds-alert>
-      <cds-alert status="unknown">This is an alert with a status of "unknown"</cds-alert>
+      <cds-alert status="alt">This is an alert with a status of "alt"</cds-alert>
       <cds-alert status="danger"
         ><cds-icon shape="times-circle" aria-label="Warning" role="img" solid></cds-icon>This is an alert with a status
         of "danger" and a custom icon</cds-alert
@@ -127,6 +127,33 @@ export const compact = () => {
       <cds-alert size="sm" status="warning">This is a compact alert with a status of "warning"</cds-alert>
       <cds-alert size="sm" status="danger">This is a compact alert with a status of "danger"</cds-alert>
       <cds-alert size="sm" status="loading">This is a compact alert with a status of "loading"</cds-alert>
+    </div>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-theme="dark">
+      <cds-alert-group type="light">
+        <cds-alert status="info">
+          This example is an alert with a status of "info" inside a lightweight alert group.
+        </cds-alert>
+        <cds-alert status="danger">
+          This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
+          <cds-inline-button>Clickable Action</cds-inline-button>
+        </cds-alert>
+        <cds-alert status="warning">
+          This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert
+          group.
+          <cds-inline-button>Clickable Action</cds-inline-button>
+        </cds-alert>
+        <cds-alert>
+          This example is a multi-line alert with a status of "default" inside a lightweight alert group. A block of
+          lorem ipsum sample text follows: Drake Equation take root and flourish culture rings of Uranus quasar hundreds
+          of thousands? Cambrian explosion gathered by gravity of brilliant syntheses vanquish the impossible finite but
+          unbounded not a sunrise but a galaxyrise.
+        </cds-alert>
+      </cds-alert-group>
     </div>
   `;
 };

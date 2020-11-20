@@ -37,21 +37,21 @@ export class CdsBadge extends LitElement {
    * Sets the color of the badge
    */
   @property({ type: String })
-  color: 'default' | 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue';
+  color: 'default' | 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue' | null = null;
 
   /**
    * @type {default | info | success | warning | danger}
    * Sets the color of the badge
    */
   @property({ type: String })
-  status: StatusTypes;
+  status: StatusTypes | null = null;
 
   render() {
     return html`
       <div class="private-host">
-        <span
-          ><span><slot></slot></span
-        ></span>
+        <span cds-text="lhe">
+          <slot></slot>
+        </span>
       </div>
     `;
   }

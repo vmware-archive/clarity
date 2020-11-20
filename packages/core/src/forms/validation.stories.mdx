@@ -1,16 +1,9 @@
 import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
 import { html, LitElement } from 'lit-element';
 
-<Meta title="Forms (Preview)/Forms/Validation" />
+<Meta title="Forms/Validation" />
 
 # Form Validation
-
-<cds-alert-group status="warning" cds-layout="m-b:lg">
-  <cds-alert>
-    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
-    Please be aware that this component or utility may have breaking changes before we finish working on it.
-  </cds-alert>
-</cds-alert-group>
 
 Clarity Core Forms do not provide a custom validation system. You can use Core Forms
 with any validation library or framework of your choice. Clarity Core Forms can sync
@@ -25,11 +18,11 @@ the HTML5 form validaiton by setting the `error` attr with a [ValidityState](htt
 value on a control message.
 
 <Preview>
-  <Story id="forms-preview-forms-stories--native-html-5-validation-single" />
+  <Story id="stories-forms--native-html-5-validation-single" />
 </Preview>
 
 <Preview>
-  <Story id="forms-preview-forms-stories--native-html-5-validation" />
+  <Story id="stories-forms--native-html-5-validation" />
 </Preview>
 
 ## Disable with `novalidate`
@@ -39,5 +32,5 @@ If you are using a framework level form management system such as [Angular Forms
 the `novalidate` is automatically handled for you.
 
 <Preview>
-  <Story id="forms-preview-forms-stories--novalidate" />
+  <Story id="stories-forms--novalidate" />
 </Preview>

@@ -1,8 +1,10 @@
 'use strict';
-const csso = require('csso');
-const fs = require('fs-extra');
-const path = require('path');
-const { PurgeCSS } = require('purgecss');
+import { default as csso } from 'csso';
+import { default as fs } from 'fs-extra';
+import { default as path } from 'path';
+import { default as PurgeCSSDefault } from 'purgecss';
+
+const PurgeCSS = PurgeCSSDefault.PurgeCSS;
 
 const read = dir =>
   fs
@@ -15,7 +17,7 @@ const read = dir =>
       []
     );
 
-read('./dist/core')
+read('../../dist/core')
   .filter(f => f.endsWith('.css') && !f.endsWith('.min.css'))
   .forEach(file => {
     // remove internal shadow dom selectors from global light dom styles + ie11 fix with error on ::slotted
@@ -32,11 +34,11 @@ read('./dist/core')
 
 // This will remove unused utilities from cds-layout and typography from core components
 async function treeshakeCommonCSS() {
-  const cssFile = fs.readFileSync('./src/internal/base/base.element.css.ts', 'utf8');
+  const cssFile = fs.readFileSync('../../src/internal/base/base.element.css.ts', 'utf8');
   const css = cssFile.match(/`([^`]+)`/)[1];
 
   const purgeCSSResult = await new PurgeCSS().purge({
-    content: ['./src/**/*.element.ts'],
+    content: ['../../src/**/*.element.ts'],
     defaultExtractor: content => content.match(/[\w-\/:@]+(?<!:)/g) || [],
     whitelistPatterns: [/:host$/],
     css: [{ raw: css }],
@@ -44,7 +46,7 @@ async function treeshakeCommonCSS() {
   });
 
   const result = cssFile.replace(/`([^`]+)`/, '`' + purgeCSSResult[0].css + '`');
-  fs.writeFileSync('./dist/core/internal/base/base.element.css.js', result);
+  fs.writeFileSync('../../dist/core/internal/base/base.element.css.js', result);
 }
 
 treeshakeCommonCSS();

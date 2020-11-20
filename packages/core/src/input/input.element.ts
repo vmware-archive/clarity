@@ -26,6 +26,7 @@ import { styles } from './input.element.css.js';
  * @cssprop --background
  * @cssprop --background-size
  * @cssprop --border
+ * @cssprop --border-color
  * @cssprop --border-bottom
  * @cssprop --outline
  * @cssprop --padding

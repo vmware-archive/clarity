@@ -2,9 +2,10 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --border-color: #{$cds-token-color-neutral-500};
-  --border-width: #{$cds-token-global-border-width};
-  --border-radius: #{$cds-token-global-border-radius};
+  --border-color: #{$cds-alias-object-border-color};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  width: 100%;
 }
 
 ::slotted(cds-accordion-panel) {

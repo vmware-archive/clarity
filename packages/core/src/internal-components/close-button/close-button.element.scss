@@ -4,10 +4,9 @@
 @import './../../styles/tokens/generated/index';
 
 :host {
-  --background: transparent;
-  --color: inherit;
-  --opacity: 0.8;
-  --padding: #{$cds-token-space-size-2};
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-object-interaction-color};
+  --padding: #{$cds-global-space-2};
   display: inline-block;
 }
 
@@ -20,11 +19,15 @@
 }
 
 :host(:hover) {
-  --opacity: 1;
+  --color: #{$cds-alias-object-interaction-color-hover};
+}
+
+:host([disabled]) {
+  --color: #{$cds-alias-object-interaction-color-disabled};
 }
 
 :host(:active) cds-icon {
-  transform: translateY(#{$cds-token-space-size-1});
+  transform: translateY(#{$cds-global-space-1});
 }
 
 cds-icon {

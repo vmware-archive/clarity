@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import '@clr/core/divider/register.js';
 
 export default {
-  title: 'Foundation/Layout/Stories',
+  title: 'Stories/Layout',
   parameters: {
     options: { showPanel: true },
     a11y: { disable: true },
@@ -1584,11 +1584,11 @@ export const patternsApplicationVerticalIconLayout = () => {
   return html`
     <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none align:vertical-stretch">
       <header class="demo-header demo-alt-header" cds-layout="vertical gap:lg p:md">
-        <cds-icon shape="applications" size="lg" inverse></cds-icon>
-        <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>
-        <cds-icon shape="bundle" size="lg" inverse></cds-icon>
-        <cds-icon shape="building" size="lg" inverse></cds-icon>
-        <cds-icon shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
+        <cds-icon shape="applications" size="lg"></cds-icon>
+        <cds-icon shape="blocks-group" size="lg"></cds-icon>
+        <cds-icon shape="bundle" size="lg"></cds-icon>
+        <cds-icon shape="building" size="lg"></cds-icon>
+        <cds-icon shape="cog" size="lg" cds-layout="align:bottom"></cds-icon>
       </header>
       <div cds-layout="horizontal gap:none align:vertical-stretch wrap:none">
         <nav class="demo-sidenav" cds-layout="p:md align:shrink">
@@ -1613,11 +1613,11 @@ export const patternsApplicationVerticalIconLayoutHybrid = () => {
   return html`
     <div class="demo-layout demo-app-layout" cds-layout="horizontal wrap:none align:vertical-stretch">
       <header class="demo-header demo-alt-header-2" cds-layout="p:md vertical gap:lg">
-        <cds-icon shape="applications" size="lg" inverse></cds-icon>
-        <cds-icon shape="blocks-group" size="lg" inverse></cds-icon>
-        <cds-icon shape="bundle" size="lg" inverse></cds-icon>
-        <cds-icon shape="building" size="lg" inverse></cds-icon>
-        <cds-icon shape="cog" size="lg" inverse cds-layout="align:bottom"></cds-icon>
+        <cds-icon shape="applications" size="lg"></cds-icon>
+        <cds-icon shape="blocks-group" size="lg"></cds-icon>
+        <cds-icon shape="bundle" size="lg"></cds-icon>
+        <cds-icon shape="building" size="lg"></cds-icon>
+        <cds-icon shape="cog" size="lg" cds-layout="align:bottom"></cds-icon>
       </header>
       <div cds-layout="vertical align:stretch">
         <header class="demo-header" cds-layout="p:md p@md:lg">

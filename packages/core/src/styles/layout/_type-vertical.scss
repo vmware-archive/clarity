@@ -73,37 +73,29 @@
 @mixin generateVerticalItemAlignment($breakpoint: null) {
   [#{$layout}~='#{$vertical}'] {
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}'] {
       margin-top: auto;
       margin-bottom: auto;
     }
 
     & > [#{$layout}*='#{$align}#{$breakpoint}:#{$center}'],
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}'] {
       align-self: center;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$top}'] {
       margin-bottom: auto !important;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}'] {
       margin-top: auto !important;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$right}'] {
       margin-left: auto;
     }
 
-    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'],
-    & > ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
       margin-right: auto;
     }
   }

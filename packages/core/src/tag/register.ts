@@ -5,9 +5,12 @@
  */
 
 import { registerElementSafely } from '@clr/core/internal';
+import { ClarityIcons, timesIcon } from '@clr/core/icon';
 import { CdsTag } from './tag.element.js';
 
 registerElementSafely('cds-tag', CdsTag);
+
+ClarityIcons.addIcons(timesIcon);
 
 declare global {
   interface HTMLElementTagNameMap {

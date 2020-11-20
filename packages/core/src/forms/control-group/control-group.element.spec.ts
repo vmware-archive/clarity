@@ -105,6 +105,12 @@ describe('cds-internal-control-group', () => {
     expect(controlGroup.querySelector('.messages')).toBe(null);
   });
 
+  it('should set the disabled style on all messages if group is disabled', async () => {
+    controlGroup.disabled = true;
+    await componentIsStable(controlGroup);
+    expect(message.getAttribute('disabled')).toBe('');
+  });
+
   it('should determine if layout is stable', async () => {
     await componentIsStable(controlGroup);
     expect(controlGroup.layoutStable).toBe(true);

@@ -10,7 +10,7 @@ import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Components/Badge/Stories',
+  title: 'Stories/Badge',
   component: 'cds-badge',
   argTypes: getElementStorybookArgTypes('cds-badge', customElements),
   parameters: {
@@ -137,5 +137,17 @@ export const colorCustom = () => {
         ></cds-badge
       >
     </p>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <div cds-layout="horizontal gap:sm" cds-theme="dark">
+      <cds-badge>10<span cds-layout="display:screen-reader-only"> items in a dark theme default badge.</span></cds-badge></cds-badge>
+      <cds-badge status="info">20<span cds-layout="display:screen-reader-only"> items in a dark theme info badge.</span></cds-badge></cds-badge>
+      <cds-badge status="success">30<span cds-layout="display:screen-reader-only"> items in a dark theme success badge.</span></cds-badge></cds-badge>
+      <cds-badge status="warning">40<span cds-layout="display:screen-reader-only"> items in a dark theme warning badge.</span></cds-badge></cds-badge>
+      <cds-badge status="danger">50<span cds-layout="display:screen-reader-only"> items in a dark theme danger badge.</span></cds-badge></cds-badge>
+    </div>
   `;
 };

@@ -2,16 +2,18 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-// make the native icon invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker (chrome 80+)
+@import './../styles/tokens/generated/index';
+
+// make the native icon invisible and stretch it over the calendar icon to trigger the native datepicker similar to clarity ng (chrome 80+)
 input[type='date']::-webkit-calendar-picker-indicator {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: auto;
+  top: calc(#{$cds-global-space-1} * -1);
+  right: calc(#{$cds-global-space-2} * -1);
+  bottom: calc(#{$cds-global-space-1} * -1);
+  width: calc(#{$cds-global-space-8} + #{$cds-global-space-2});
   height: auto;
   color: transparent;
   background: transparent;
   z-index: 99;
+  margin: 0;
 }

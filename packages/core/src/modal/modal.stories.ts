@@ -10,7 +10,7 @@ import { html } from 'lit-html';
 import customElements from '../../dist/core/custom-elements.json';
 
 export default {
-  title: 'Components/Modal/Stories',
+  title: 'Stories/Modal',
   component: 'cds-modal',
   argTypes: getElementStorybookArgTypes('cds-modal', customElements),
   parameters: {
@@ -132,6 +132,26 @@ export const focusTrap = () => {
         <cds-button>Ok</cds-button>
       </cds-modal-actions>
     </cds-modal>
+  `;
+};
+
+export const darkTheme = () => {
+  return html`
+    <cds-demo popover cds-theme="dark">
+      <cds-modal __demo-mode>
+        <cds-modal-header>
+          <h3 cds-text="title">My Modal</h3>
+        </cds-modal-header>
+        <cds-modal-content>
+          <p cds-text="body">Lorem Ipsum</p>
+          <p cds-text="body">Lorem Ipsum</p>
+        </cds-modal-content>
+        <cds-modal-actions>
+          <cds-button action="outline">Cancel</cds-button>
+          <cds-button>Ok</cds-button>
+        </cds-modal-actions>
+      </cds-modal>
+    </cds-demo>
   `;
 };
 

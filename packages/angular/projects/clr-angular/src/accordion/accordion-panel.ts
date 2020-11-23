@@ -102,7 +102,9 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   }
 
   private emitPanelChange(panel: AccordionPanelModel) {
-    this.panelOpenChange.emit(panel.open);
+    if (panel.open !== this.panelOpen) {
+      this.panelOpenChange.emit(panel.open);
+    }
 
     if (panel.open) {
       this.ifExpandService.expanded = true;

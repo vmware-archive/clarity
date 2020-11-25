@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, EmbeddedViewRef, TemplateRef, ViewChild } from '@angular/core';
 
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
@@ -15,7 +15,7 @@ import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
         </ng-template>
     `,
 })
-export class WrappedCell implements DynamicWrapper, AfterViewInit, OnDestroy {
+export class WrappedCell implements DynamicWrapper, AfterViewInit {
   _dynamic = false;
   @ViewChild('cellPortal', { static: false })
   templateRef: TemplateRef<void>;
@@ -23,9 +23,5 @@ export class WrappedCell implements DynamicWrapper, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.cellView = this.templateRef.createEmbeddedView(null);
-  }
-
-  ngOnDestroy() {
-    this.cellView.destroy();
   }
 }

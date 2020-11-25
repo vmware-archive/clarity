@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { token, CdsTheme } from './utils.js';
+import { token, CdsTheme } from './token-utils';
 
 const layout = {
   space: {

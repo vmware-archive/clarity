@@ -1,11 +1,11 @@
-import { baseTheme } from './tokens.js';
-import { CdsTheme, Token } from './utils.js';
+import { baseTheme } from './tokens';
+import { Token, CdsTheme } from './token-utils';
 import * as fs from 'fs';
 
-fs.mkdir('../../src/styles/tokens/generated', { recursive: true }, () => console.log('Building Tokens...'));
-fs.writeFileSync('../../src/styles/tokens/generated/tokens.json', JSON.stringify(flattenTheme(baseTheme), null, 2));
-fs.writeFileSync('../../src/styles/tokens/generated/_index.scss', buildSassTokens(baseTheme));
-fs.writeFileSync('../../src/styles/tokens/generated/_public.scss', buildCSSTokens(baseTheme));
+fs.mkdir('../src/styles/tokens/generated', { recursive: true }, () => console.log('Building Tokens...'));
+fs.writeFileSync('../src/styles/tokens/generated/tokens.json', JSON.stringify(flattenTheme(baseTheme), null, 2));
+fs.writeFileSync('../src/styles/tokens/generated/_index.scss', buildSassTokens(baseTheme));
+fs.writeFileSync('../src/styles/tokens/generated/_public.scss', buildCSSTokens(baseTheme));
 
 function buildSassTokens(theme: CdsTheme) {
   return Object.entries(flattenTheme(theme))

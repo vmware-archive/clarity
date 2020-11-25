@@ -1,10 +1,10 @@
 'use strict';
 
-import { default as fs } from 'fs-extra';
-import { default as path } from 'path';
-import { default as del } from 'del';
-import { default as cpy } from 'cpy';
-import { default as shellEx } from 'child_process';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import * as del from 'del';
+import * as cpy from 'cpy';
+import * as shellEx from 'child_process';
 
 const shell = shellEx.execSync;
 
@@ -22,17 +22,17 @@ function read(dir) {
 
 function copyAssets() {
   return Promise.all([
-    cpy(['./**/package.json'], '../dist/core/', { cwd: '../../src', parents: true }),
-    cpy(['./package.json'], './dist/core/', { cwd: '../../', parents: true }),
-    cpy(['./README.md'], './dist/core/', { cwd: '../../', parents: true }),
+    cpy(['./**/package.json'], '../dist/core/', { cwd: '../src', parents: true }),
+    cpy(['./package.json'], './dist/core/', { cwd: '../', parents: true }),
+    cpy(['./README.md'], './dist/core/', { cwd: '../', parents: true }),
   ]);
 }
 
 function removeCacheFiles() {
   del.sync(
     [
-      '../../dist/core/**/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
-      '../../dist/core/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
+      '../dist/core/**/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
+      '../dist/core/*.{tsbuildinfo,spec.js,spec.js.map,spec.d.ts}',
     ],
     { force: true }
   );
@@ -41,7 +41,7 @@ function removeCacheFiles() {
 function cleanPackageFiles() {
   // https://open-wc.org/publishing
   // https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm
-  read('../../dist/core')
+  read('../dist/core')
     .filter(f => f.includes('package.json'))
     .forEach(file => {
       const packageFile = fs.readJsonSync(file);
@@ -59,20 +59,20 @@ function cleanPackageFiles() {
 }
 
 function updateFileVersions() {
-  shell(`replace '@VERSION' $npm_package_version ../../dist/core/internal/utils/global.js`);
+  shell(`replace '@VERSION' $npm_package_version ../dist/core/internal/utils/global.js`);
 }
 
 function generateAPIMetaData() {
   // We link/unlink the package so wca can properly follow the root import paths
-  shell(`cd ../../dist/core && yarn link && yarn link @clr/core`);
-  shell(`wca analyze '../../dist/core/**/*.ts' --silent --format=json --outFile ../../dist/core/custom-elements.json`);
-  shell(`cd ../../dist/core && yarn unlink @clr/core && yarn unlink --no-save @clr/core`);
-  del.sync('../../dist/core/node_modules', { force: true }); // leftover from link
+  shell(`cd ../dist/core && yarn link && yarn link @clr/core`);
+  shell(`wca analyze '../dist/core/**/*.ts' --silent --format=json --outFile ../dist/core/custom-elements.json`);
+  shell(`cd ../dist/core && yarn unlink @clr/core && yarn unlink --no-save @clr/core`);
+  del.sync('../dist/core/node_modules', { force: true }); // leftover from link
 
   // update empty default slot names to have name 'default'
-  const metadata = fs.readJsonSync('../../dist/core/custom-elements.json');
+  const metadata = fs.readJsonSync('../dist/core/custom-elements.json');
   metadata.tags.filter(t => t.slots && t.slots[0].name === '').forEach(t => (t.slots[0].name = 'default'));
-  fs.writeJsonSync('../../dist/core/custom-elements.json', metadata, { spaces: 2 });
+  fs.writeJsonSync('../dist/core/custom-elements.json', metadata, { spaces: 2 });
 }
 
 (async () => {

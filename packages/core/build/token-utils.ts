@@ -18,14 +18,14 @@ export interface Tokens {
   [key: string]: Token | Tokens;
 }
 
-export function token(value, config: any = {}) {
+export function token(value: any, config: any = {}) {
   return new Token(value, config);
 }
 
 export class Token {
-  name: string;
+  name = '';
 
-  constructor(public value, public config: { absolute?: boolean } = {}) {}
+  constructor(public value: any, public config: { absolute?: boolean } = {}) {}
 
   toJSON() {
     if (this.value instanceof Token) {
@@ -35,5 +35,3 @@ export class Token {
     }
   }
 }
-
-// element-[state]-[part]-property-(hover|focus|active)

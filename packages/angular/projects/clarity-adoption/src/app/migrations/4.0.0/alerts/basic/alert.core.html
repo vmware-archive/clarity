@@ -1,0 +1,7 @@
+<cds-alert-group status="warning" *ngIf="warning">
+  <cds-alert closable="true" (closeChange)="warning = false">Try closing this alert.</cds-alert>
+</cds-alert-group>
+
+<button *ngIf="!warning" class="btn primary" (click)="warning = !warning">
+  Show alert
+</button>

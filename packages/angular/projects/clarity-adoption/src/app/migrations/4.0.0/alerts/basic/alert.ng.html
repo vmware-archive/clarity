@@ -1,0 +1,9 @@
+<clr-alert [clrAlertType]="'warning'" *ngIf="warning" (clrAlertClosedChange)="warning = false">
+  <clr-alert-item>
+    <span class="alert-text">Try closing this alert.</span>
+  </clr-alert-item>
+</clr-alert>
+
+<button *ngIf="!warning" class="btn primary" (click)="warning = !warning">
+  Show alert
+</button>

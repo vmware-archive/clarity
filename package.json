@@ -34,6 +34,7 @@
     "build:ci": "npm-run-all clean format lint build:libs test",
     "build:libs": "npm-run-all preinstall ui:build icons:build core:build react:build angular:build schematics:build eslint:build",
     "build:website": "yarn --cwd apps/website run build",
+    "build:adoption": "yarn --cwd packages/angular run build:adoption",
     "build:storybook:angular": "yarn --cwd packages/angular run storybook:build",
     "build:storybook:core": "yarn --cwd packages/core run storybook:build",
     "test": "npm-run-all -p angular:test core:test icons:test react:test eslint-rule:test",

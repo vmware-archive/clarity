@@ -20,7 +20,9 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@clr/angular": ["dist/clr-angular"],
-      "@clr/angular/*": ["dist/clr-angular/*"]
+      "@clr/angular/*": ["dist/clr-angular/*"],
+      "@cds/core/*": ["../../dist/core/*"],
+      "@cds/core": ["../../dist/core"]
     }
   },
   "angularCompilerOptions": {

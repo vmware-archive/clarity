@@ -1,0 +1,75 @@
+<!-- @TODO Refactor for a Core layout -->
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <img
+        cds-layout="p:md"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMTc5YmQzIiBkPSJNMjQuNzAyIDQuNTgzbDExLjI3OCA2LjY3OS0uMDE5IDEzLjU2My0xMS4yNiA2LjY2LTYuNjg0LTMuOTcgMTEuNjUyLTYuNTQxdi01Ljg5OGwtNC43NDctMi42MDQtNi44OS0zLjkzOCIvPjxwYXRoIGZpbGw9IiNGMzhCMDAiIGQ9Ik0xMS4zMzEgNC41ODNMLjA1NCAxMS4yNjJsLjAxOCAxMy41NjMgMTEuMjYgNi42NiA2LjY4NS0zLjk3LTEwLjY2My02LjU0MXYtNS44OThsMTAuNjc4LTYuNTQyIi8+PHBhdGggZmlsbD0iIzAwNjQ4ZiIgZD0iTTE4LjAxNyAyNy41MTVMMTEuNSAyMy41MTZsNi41MjItMy44NDUgNi45MyAzLjk1MiIvPjxwYXRoIGZpbGw9IiM5ODQ0MUUiIGQ9Ik0xOC4wMzEgOC41MzNsLTYuNTA0IDMuOTg1IDYuNTE3IDMuODg0IDYuODYyLTMuOTQiLz48L2c+PC9zdmc+"
+      />
+      <a routerLink="/" class="nav-link"><span class="title">Clarity Adoption</span></a>
+    </div>
+    <div class="header-actions">
+      <a
+        href="https://clarity.design/"
+        class="docs-changer btn btn-outline btn-inverse"
+        aria-label="Clarity Documentation"
+      >
+        Clarity Documentation
+      </a>
+    </div>
+  </header>
+  <div class="content-container">
+    <clr-vertical-nav>
+      <a
+        clrVerticalNavLink
+        routerLink="/getting-started"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <clr-icon shape="help-info" clrVerticalNavIcon></clr-icon> Getting started
+      </a>
+
+      <clr-vertical-nav-group routerLinkActive="active" clrVerticalNavGroupExpanded="true">
+        <clr-icon clrVerticalNavIcon shape="cog"></clr-icon>
+        Components
+        <clr-vertical-nav-group-children>
+          <a routerLink="/alert" routerLinkActive="active" clrVerticalNavLink>Alert</a>
+          <a routerLink="/button" routerLinkActive="active" clrVerticalNavLink>Button</a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+
+      <div class="nav-divider"></div>
+
+      <a class="npm-reference" href="https://www.npmjs.com/package/@clr/angular" target="_blank">
+        <img
+          alt="npm (@clr/angular)"
+          src="https://img.shields.io/npm/v/@clr/angular/latest?label=%40clr%2Fangular&style=flat-square"
+        />
+      </a>
+
+      <a class="npm-reference" href="https://www.npmjs.com/package/@clr/ui" target="_blank">
+        <img
+          alt="npm (@clr/ui)"
+          src="https://img.shields.io/npm/v/@clr/ui/latest?label=%40clr%2Fui&style=flat-square"
+        />
+      </a>
+
+      <a class="npm-reference" href="https://www.npmjs.com/package/@cds/core" target="_blank">
+        <img
+          alt="npm (@cds/core)"
+          src="https://img.shields.io/npm/v/@cds/core/latest?label=%40cds%2Fcore&style=flat-square"
+        />
+      </a>
+
+      <a class="npm-reference" href="https://www.npmjs.com/package/@clr/icons" target="_blank">
+        <img
+          alt="npm (@clr/icons)"
+          src="https://img.shields.io/npm/v/@clr/icons/latest?label=%40clr%2Ficons&style=flat-square"
+        />
+      </a>
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

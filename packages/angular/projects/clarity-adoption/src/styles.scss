@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../clr-angular/src/utils/variables/variables';
+@import '../../../../icons/src/clr-icons.scss';
+
+pre {
+  padding: 0.5rem;
+}
+
+.space-bottom {
+  margin-bottom: 2rem;
+}
+
+.embed-component {
+  margin: 1rem 0 1rem 0;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 1rem;
+}
+.docs-changer {
+  margin-top: 12px;
+}
+.npm-reference {
+  margin-left: 1rem;
+}

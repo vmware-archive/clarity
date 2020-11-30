@@ -29,8 +29,7 @@
     "lint:ts": "eslint -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\"",
     "lint:styles": "stylelint \"src/**/*.scss\" \"projects/**/*.scss\"",
     "lint:fix": "eslint --fix -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\" && stylelint --fix \"src/**/*.scss\" \"projects/**/*.scss\"",
-    "pregolden:fix": "yarn build:golden",
-    "golden:fix": "ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ./dist/clr-angular/index.d.ts"
+    "golden:fix": "yarn run build:lib && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ./dist/clr-angular/index.d.ts"
   },
   "dependencies": {
     "@angular/animations": "11.0.0",

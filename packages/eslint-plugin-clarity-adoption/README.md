@@ -1,6 +1,33 @@
 # Clarity Adoption ESLint Plugin
 
-# Testing the plugin in a local project
+## Installation
+
+To install run `npm install --save-dev @clr/eslint-plugin-clarity-adoption` and then add it to your eslint configuration like you see below. The overrides section is important to enable it to parse HTML files as well.
+
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2015
+  },
+  "plugins": ["@clr/clarity-adoption"],
+  "rules": {
+    "@clr/clarity-adoption/no-clr-button": "warn",
+    "@clr/clarity-adoption/no-clr-alert": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "parser": "eslint-html-parser"
+    }
+  ]
+}
+```
+
+Finally, you'll need to run eslint with the `--ext` flag to enable HTML scanning like `npx eslint --ext=ts,html src/`.
+
+## Testing the plugin in a local project
 
 1. Install the dependencies, run the watch script to build the package and watch for changes:
 
@@ -63,11 +90,11 @@ npx eslint --ext=ts,html src/
 
 7. You can make changes to the plugin and then test them in the demo project without any additional steps!
 
-# Demo app
+## Demo app
 
 - Angular application - https://github.com/sis0k0/clarity-linter-demo
 
-# How it works
+## How it works
 
 Currently, the plugin contains a single rule - `no-clr-button`. This rule reports the usage of `<button class="btn btn-primary"></button>` inside HTML files or inside inlined Angular components templates (TS files).
 
@@ -75,7 +102,7 @@ For parsing the TS files in the project, the plugin uses [`@typescript-eslint/pl
 
 For parsing the HTML files, the plugin uses [eslint-html-parser](https://www.npmjs.com/package/eslint-html-parser).
 
-# Known issues
+## Known issues
 
 The HTML parser that we use - [eslint-html-parser](https://www.npmjs.com/package/eslint-html-parser), cannot handle more than one root element in the HTML file. It doesn't report the rest of the tree. In the example below, only the `div` element will be traversed.
 

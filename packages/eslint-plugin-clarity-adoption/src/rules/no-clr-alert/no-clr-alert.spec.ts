@@ -1,6 +1,6 @@
 import { LineAndColumnData } from '@typescript-eslint/types/dist/ts-estree';
-import rule from '../src/rules/no-clr-alert';
-import { RuleTester } from './test-helper';
+import rule from './index';
+import { RuleTester } from '../../test-helper.spec';
 
 interface InvalidTest {
   code: string;

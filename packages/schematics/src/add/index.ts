@@ -87,11 +87,7 @@ function addClarityDependencies(host: Tree) {
 
     json.dependencies['@clr/angular'] = version;
     json.dependencies['@clr/ui'] = version;
-    json.dependencies['@clr/icons'] = version;
-
-    if (!Object.keys(json.dependencies).includes('@webcomponents/webcomponentsjs')) {
-      json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
-    }
+    json.dependencies['@cds/core'] = version;
   });
 }
 
@@ -122,7 +118,6 @@ function addAssetsToConfigFile(host: Tree) {
     const target = json.projects[project].targets || json.projects[project].architect;
     const pathPrefix = json.apps ? '../' : '';
     updateStyleAssets(target, pathPrefix);
-    updateScriptAssets(target, pathPrefix);
   });
 }
 
@@ -133,31 +128,7 @@ function updateStyleAssets(target: any, pathPrefix: string): void {
     styles.unshift(pathPrefix + 'node_modules/@clr/ui/clr-ui.min.css');
   }
 
-  if (!styles.includes('node_modules/@clr/icons/clr-icons')) {
-    styles.unshift(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.css');
-  }
-
   target.build.options.styles = styles;
-}
-
-function updateScriptAssets(target: any, pathPrefix: string): void {
-  const scripts = target.build.options.scripts || [];
-
-  if (!scripts.includes('node_modules/@clr/icons/clr-icons.min.js')) {
-    scripts.push(pathPrefix + 'node_modules/@clr/icons/clr-icons.min.js');
-  }
-
-  if (!scripts.includes('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js')) {
-    // Want this second
-    scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js');
-  }
-
-  if (!scripts.includes('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js')) {
-    // Want this first
-    scripts.unshift(pathPrefix + 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
-  }
-
-  target.build.options.scripts = scripts;
 }
 
 function runNpmInstall(_tree: Tree, context: SchematicContext) {

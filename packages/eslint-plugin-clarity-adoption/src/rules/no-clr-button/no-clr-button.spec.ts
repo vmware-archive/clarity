@@ -1,5 +1,5 @@
-import rule from '../src/rules/no-clr-button';
-import { RuleTester } from './test-helper';
+import rule from './index';
+import { RuleTester } from '../../test-helper.spec';
 
 interface InvalidTest {
   code: string;

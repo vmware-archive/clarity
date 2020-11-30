@@ -3323,8 +3323,8 @@
   resolved "https://registry.yarnpkg.com/@cds/city/-/city-1.1.0.tgz#5b7323750d3d64671ce2e3a804bcf260fbea1154"
   integrity sha512-S9K+Q39BGOghyLHmR0Wdcmu1i1noSUk8HcvMj+3IaohZw02WFd99aPTQDHJeseXrXZP3CNovaSlePI0R11NcFg==
 
-"@cds/core@./dist/core", "@clr/core@./dist/core":
-  version "4.0.0"
+"@cds/core@./dist/core":
+  version "5.0.0-next.0"
   dependencies:
     "@types/resize-observer-browser" "^0.1.3"
     lit-element "^2.3.1"
@@ -3336,7 +3336,7 @@
     normalize.css "^8.0.1"
 
 "@cds/react@./dist/react":
-  version "4.0.0"
+  version "5.0.0-next.0"
   dependencies:
     react "^16.13.1"
     react-dom "^16.13.1"
@@ -3345,10 +3345,10 @@
     normalize.css "^8.0.1"
 
 "@clr/icons@./dist/clr-icons":
-  version "4.0.0"
+  version "5.0.0-next.0"
 
 "@clr/ui@./dist/clr-ui":
-  version "4.0.0"
+  version "5.0.0-next.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"

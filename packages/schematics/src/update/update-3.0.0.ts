@@ -42,9 +42,7 @@ export default function (options: any): Rule {
     // Add Clarity packages to package.json, if not found
     updateJsonFile('package.json', json => {
       const packages = Object.keys(json.dependencies);
-      if (!packages.includes('@clr/core')) {
-        json.dependencies['@clr/core'] = '^3.0.0';
-      }
+
       if (!packages.includes('@webcomponents/webcomponentsjs')) {
         json.dependencies['@webcomponents/webcomponentsjs'] = '^2.0.0';
       }

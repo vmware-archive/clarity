@@ -17,6 +17,7 @@ const files = [
   'packages/core/package.json',
   'packages/icons/package.json',
   'packages/react/package.json',
+  'packages/eslint-plugin-clarity-adoption/package.json',
   'packages/ui/package.json',
 ];
 

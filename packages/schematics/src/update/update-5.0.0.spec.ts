@@ -9,7 +9,7 @@ import { HostTree } from '@angular-devkit/schematics';
 import { setupProject } from '../utility/setup-project';
 import { getFileContent } from '../utility/get-file-content';
 
-const clarityCorePackageName = '@clr/core';
+const clarityCorePackageName = '@cds/core';
 
 describe('Migration to version 5.0', () => {
   let runner: SchematicTestRunner;
@@ -20,7 +20,7 @@ describe('Migration to version 5.0', () => {
     workspaceTree = await setupProject(new UnitTestTree(new HostTree()), runner, 'foo');
   });
 
-  it('should add the @clr/core package to the project dependencies', async () => {
+  it('should add the @cds/core package to the project dependencies', async () => {
     const packageJsonPath = '/package.json';
     const packageJsonString = workspaceTree.read(packageJsonPath)?.toString();
     if (packageJsonString === undefined) {
@@ -48,7 +48,7 @@ describe('Migration to version 5.0', () => {
     expect(dependencies[clarityCorePackageName]).not.toBeDefined();
   });
 
-  it('should not modify the project dependencies if @clr/core is already a dependency', async () => {
+  it('should not modify the project dependencies if @cds/core is already a dependency', async () => {
     const packageJsonPath = '/package.json';
     const predefinedClarityCoreVersion = 'latest';
     const packageJsonString = workspaceTree.read(packageJsonPath)?.toString();

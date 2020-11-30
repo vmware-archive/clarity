@@ -1,7 +1,7 @@
 {
   "name": "@clr/ui",
   "private": true,
-  "version": "4.0.0",
+  "version": "5.0.0-next.0",
   "scripts": {
     "build": "npm-run-all build:css build:prefix build:optimize build:package build:update",
     "build:watch": "chokidar \"src/**/*.scss\" \"../angular/projects/clr-angular/src/**/*.scss\" -c \"yarn run build\"",

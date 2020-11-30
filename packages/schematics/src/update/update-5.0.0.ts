@@ -8,14 +8,14 @@ import { Rule, Tree, SchematicContext } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { updateJsonFile } from '../utility/update-json-file';
 
-const clarityCorePackageName = '@clr/core';
+const clarityCorePackageName = '@cds/core';
 const clarityAngularPackageName = '@clr/angular';
 const clarityCorePackageUpdateVersion = '^5.0.0';
 
 export default function (): Rule {
   return (host: Tree, context: SchematicContext): void => {
     updateJsonFile(host, 'package.json', json => {
-      // Do nothing if @clr/core is already a dependency
+      // Do nothing if @cds/core is already a dependency
       const deps = json?.dependencies || {};
       if (Object.keys(deps).includes(clarityCorePackageName)) {
         return;
@@ -29,7 +29,7 @@ export default function (): Rule {
       if (!clarityAngularVersion) {
         return;
       }
-      // Add the same version of @clr/core as
+      // Add the same version of @cds/core as
       // the version of @clr/angular that's in the package.json
       json.dependencies[clarityCorePackageName] = clarityCorePackageUpdateVersion;
     });

@@ -5,7 +5,7 @@
   "homepage": "https://clarity.design",
   "repository": {
     "type": "git",
-    "url": "git@github.com:vmware/clarity.git"
+    "url": "https://github.com/vmware/clarity.git"
   },
   "peerDependencies": {
     "@clr/icons": "./dist/icons"

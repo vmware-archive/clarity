@@ -5,7 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "es2015",
-    "outDir": "./dist",
+    "outDir": "../../dist/eslint-plugin-clarity-adoption",
     "typeRoots": ["./node_modules/@types/"],
     "lib": ["es2017"],
     "declaration": true,
@@ -19,5 +19,6 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "exclude": ["./node_modules/*", "./dist/*"]
+  "include": ["src/**/*"],
+  "exclude": ["./node_modules/*", "./dist/*", "**/*.spec.ts"]
 }

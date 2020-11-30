@@ -1,7 +1,7 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import { JSDOM } from 'jsdom';
 import { calculateLocation, getDecoratorTemplate, DomElementLocation } from '../utils';
-import { HTMLElement } from '../../types';
+import { HTMLElement } from '../../types/index';
 
 const disallowedAlertsSelector = ['.alert', 'clr-alert'];
 

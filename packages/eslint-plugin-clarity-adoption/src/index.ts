@@ -1,5 +1,5 @@
-import noClrButton from './rules/no-clr-button';
-import noClrAlert from './rules/no-clr-alert';
+import noClrButton from './rules/no-clr-button/index';
+import noClrAlert from './rules/no-clr-alert/index';
 
 module.exports = {
   rules: {

@@ -1,6 +1,6 @@
 {
   "name": "@cds/core",
-  "version": "4.0.0",
+  "version": "5.0.0-next.0",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook:start",
     "storybook:start": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",
@@ -31,7 +31,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git@github.com:vmware/clarity.git"
+    "url": "https://github.com/vmware/clarity.git"
   },
   "dependencies": {
     "@types/resize-observer-browser": "^0.1.3",

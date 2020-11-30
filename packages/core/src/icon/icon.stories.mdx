@@ -24,6 +24,17 @@ ClarityIcons.addIcons(userIcon);
 <cds-icon shape="user"></cds-icon>
 ```
 
+If using JSX or TSX, import the icon name from `@clr/core/icon` and include it in the `shape` prop to improve type safety:
+
+```tsx
+import { ClarityIcons, userIcon, userIconName } from '@clr/core/icon';
+import { CdsIcon } from '@clr/react/icon';
+
+ClarityIcons.addIcons(userIcon);
+
+<CdsIcon shape={userIconName} />;
+```
+
 ## Icon
 
 <Preview>

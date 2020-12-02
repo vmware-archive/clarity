@@ -16,14 +16,15 @@
 }
 
 :host {
-  --color: #{$cds-alias-object-interaction-color};
+  --color: currentColor;
   display: inline-block;
   @include equilateral(#{$cds-global-space-7});
   margin: 0;
   vertical-align: middle;
   fill: var(--color);
-  color: inherit; // inherit so older clr-icon based themes get currentColor from parent
+  color: var(--color); // See https://github.com/vmware/clarity/issues/5332
   contain: strict;
+  cursor: inherit;
 }
 
 svg {

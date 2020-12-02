@@ -12,8 +12,12 @@
     "build:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
     "build:package": "cpy npm.json README.md ./dist/clr-ui/; mv ./dist/clr-ui/npm.json ./dist/clr-ui/package.json; replace '@VERSION' $npm_package_version ./dist/clr-ui/package.json; "
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/clarity.git"
+  },
   "peerDependencies": {
-    "@clr/icons": "./dist/icons"
+    "@cds/core": "./dist/core"
   },
   "devDependencies": {
     "chokidar-cli": "2.1.0",

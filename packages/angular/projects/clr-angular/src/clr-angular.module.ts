@@ -25,6 +25,9 @@ import { ClrProgressBarModule } from './progress/progress-bars/progress-bar.modu
 import { ClrPopoverModuleNext } from './utils/popover/popover.module';
 import { ClrTimelineModule } from './timeline/timeline.module';
 
+// Register the icon library
+import '@cds/core/icon/register';
+
 @NgModule({
   exports: [
     ClrEmphasisModule,

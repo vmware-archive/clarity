@@ -70,12 +70,7 @@ function getLocalPackages() {
 }
 
 function getSourcePackagePublishPath() {
-  // can be updated for @cds check instead in followup PR
-  const sourcePath =
-    sourcePackage.name.includes('angular') || sourcePackage.name.includes('ui') || sourcePackage.name.includes('icons')
-      ? 'clr-'
-      : '';
-  return path.join(__dirname, '../dist', sourcePackage.name.replace('@clr/', sourcePath));
+  return path.join(__dirname, '../dist', sourcePackage.name.replace('@cds/', '').replace('@clr/', 'clr-'));
 }
 
 function read(dir) {

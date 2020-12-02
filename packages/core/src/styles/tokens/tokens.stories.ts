@@ -244,7 +244,7 @@ export const typography = () => getTokenTable('globalTypography');
 
 export const color = () => getTokenTable('globalColor');
 
-export function objectLayers () {
+export function objectLayers() {
   return html`
     <style>
       .cds-object-app-demo {
@@ -297,7 +297,7 @@ export function objectLayers () {
   `;
 }
 
-export function objectDemo () {
+export function objectDemo() {
   return html`
     <style>
       .cds-card-mock {
@@ -443,7 +443,7 @@ export function interactionMenuDemo() {
 }
 
 /** @website */
-export function interactionVerticalNavigationDemo () {
+export function interactionVerticalNavigationDemo() {
   return html`
     <style>
       .cds-vertical-nav-mock {

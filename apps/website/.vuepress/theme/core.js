@@ -41,6 +41,7 @@ import {
   circleIcon,
   successStandardIcon,
   errorStandardIcon,
+  copyToClipboardIcon,
   pinIcon,
   envelopeIcon,
   uploadIcon,
@@ -70,7 +71,8 @@ ClarityIcons.addIcons(
   uploadIcon,
   blockIcon,
   animationIcon,
-  betaIcon
+  betaIcon,
+  copyToClipboardIcon
 );
 loadCoreIconSet();
 

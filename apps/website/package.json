@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "1.0.0",
+  "version": "5.0.0-next.0",
   "description": "Clarity Website",
   "main": "index.js",
   "author": "VMware Clarity Team",

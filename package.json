@@ -90,7 +90,6 @@
     "website:build": "yarn --cwd apps/website run build",
     "website:storybook": "yarn --cwd packages/angular run start:storybook",
     "website:preview": "lite-server --baseDir=dist/website",
-    "prewebsite:start": "ts-node --project apps/website/build/tsconfig.build.json ./scripts/build/parse/website-demos.ts",
     "website:start": "yarn --cwd apps/website run start",
     "website:lint": "yarn --cwd app/website run lint",
     "website:functions": "netlify-lambda build scripts/netlify",

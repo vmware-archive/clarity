@@ -6,7 +6,7 @@
   "keywords": ["ng-add", "clarity", "angular", "components"],
   "repository": {
     "type": "git",
-    "url": "git@github.com:vmware/clarity.git"
+    "url": "https://github.com/vmware/clarity.git"
   },
   "peerDependencies": {
     "@angular/common": "^11.0.0",

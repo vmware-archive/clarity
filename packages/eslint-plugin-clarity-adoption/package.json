@@ -11,6 +11,10 @@
   ],
   "author": "clarity",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/clarity.git"
+  },
   "scripts": {
     "build": "npm-run-all build:tsc build:package",
     "build:package": "cpy package.json README.md ../../dist/eslint-plugin-clarity-adoption/;",

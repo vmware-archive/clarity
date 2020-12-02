@@ -256,15 +256,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
         if (!this.multiSelect && newSelection && !newSelection.isEmpty()) {
           this.toggleService.open = false;
         }
-
         this.updateControlValue();
-        if (this.control && this.control.control) {
-          this.control.control.updateValueAndValidity();
-        }
-        // for the purposes of validation
-        if (this.onChangeCallback) {
-          this.onChangeCallback(this.optionSelectionService.selectionModel.model);
-        }
       })
     );
 
@@ -318,8 +310,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   }
 
   private updateControlValue() {
-    if (this.control && this.control.control) {
-      this.control.control.setValue(this.optionSelectionService.selectionModel.model);
+    if (this.onChangeCallback) {
+      this.onChangeCallback(this.optionSelectionService.selectionModel.model);
     }
   }
 

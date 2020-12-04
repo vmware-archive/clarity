@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,6 +10,7 @@ import { RecursiveTreeNodeModel } from './models/recursive-tree-node.model';
 import { TreeNodeModel } from './models/tree-node.model';
 import { AsyncArray } from './models/async-array';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 export interface ClrRecursiveForOfContext<T> {
   $implicit: T;
@@ -41,7 +42,7 @@ export class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
       wrapped = [new RecursiveTreeNodeModel(this.nodes, null, this.getChildren, this.featuresService)];
     }
     if (!this.childrenFetchSubscription) {
-      this.childrenFetchSubscription = this.featuresService.childrenFetched.subscribe(() => {
+      this.childrenFetchSubscription = this.featuresService.childrenFetched.pipe(debounceTime(0)).subscribe(() => {
         this.cdr.detectChanges();
       });
     }

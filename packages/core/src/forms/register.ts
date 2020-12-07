@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@cds/core/icon/register.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { CdsControl } from './control/control.element.js';
 import { CdsControlAction } from './control-action/control-action.element.js';

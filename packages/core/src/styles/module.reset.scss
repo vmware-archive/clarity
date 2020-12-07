@@ -15,6 +15,10 @@ html {
   box-sizing: inherit !important;
 }
 
+body[cds-theme] {
+  background: $cds-alias-object-app-background;
+}
+
 [cds-control] ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari/Chromium Edge */
   color: $cds-global-typography-color-200;

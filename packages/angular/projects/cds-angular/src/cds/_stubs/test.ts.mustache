@@ -1,0 +1,44 @@
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { 
+{{#directives}}
+  {{directiveClassName}},
+{{/directives}}
+  CdsModule } from '@cds/angular';
+
+describe('Cds Components', () => {
+  let fixture: ComponentFixture<any>;
+  let instance: TestComponent;
+
+  beforeEach(function () {
+    TestBed.configureTestingModule({
+      imports: [CdsModule],
+      declarations: [TestComponent],
+    });
+
+    fixture = TestBed.createComponent(TestComponent);
+    fixture.detectChanges();
+    instance = fixture.componentInstance;
+  });
+
+  {{#directives}}
+  it('{{directiveTag}} should be defined', () => {
+    expect(instance.vc{{directiveClassName}}).toBeDefined();
+  }); 
+
+  {{/directives}}
+});
+
+@Component({
+  template: `
+    {{#directives}}
+    <{{directiveTag}}></{{directiveTag}}>
+    {{/directives}}
+  `,
+})
+class TestComponent {
+    {{#directives}}
+    @ViewChild({{directiveClassName}}) vc{{directiveClassName}}: {{directiveClassName}};
+    {{/directives}}
+}

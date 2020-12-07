@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+import { Directive, {{#hasProps}} Input {{/hasProps}} } from '@angular/core';
+import { BaseCdsDirective } from '../../cds-base';
+
+@Directive({ selector: '{{tagName}}' })
+export class {{directiveClassName}} extends BaseCdsDirective {
+  {{#props}}
+  get {{name}}() { return this.element['{{name}}']; }
+  @Input() set {{name}}(value) { this.element['{{name}}'] = value; };
+  {{/props}}
+} 

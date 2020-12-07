@@ -23,6 +23,7 @@
     "@angular/router": "~10.0.3",
     "@cds/city": "^1.1.0",
     "@cds/core": "./dist/core",
+    "@cds/angular": "./dist/angular",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

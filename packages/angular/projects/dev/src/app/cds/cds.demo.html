@@ -1,0 +1,169 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<style>
+  cds-alert-group {
+    --background: skyblue;
+    --color: #2d2d2d;
+  }
+</style>
+
+<cds-alert-group status="warning" *ngIf="show">
+  <cds-alert [closable]="true" (closeChange)="show = false">
+    Hello World
+  </cds-alert>
+</cds-alert-group>
+
+<cds-button status="success" (click)="show = true">Open Alert</cds-button>
+
+<section cds-layout="grid cols:6 gap:lg">
+  <form [formGroup]="form" (ngSubmit)="submit()" cds-layout="col@md:8">
+    <cds-form-group layout="horizontal-inline">
+      <cds-input>
+        <label>name</label>
+        <input placeholder="placeholder text" formControlName="name" />
+        <cds-control-message status="error" *ngIf="nameInvalid">required</cds-control-message>
+      </cds-input>
+      <cds-select>
+        <label>select label</label>
+        <select formControlName="select">
+          <option>Option One</option>
+          <option>Option Two</option>
+          <option>Option Three</option>
+        </select>
+        <cds-control-message>message text</cds-control-message>
+      </cds-select>
+
+      <cds-datalist>
+        <label>datalist label</label>
+        <input placeholder="placeholder text" formControlName="datalist" />
+        <datalist>
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+      </cds-datalist>
+
+      <cds-password>
+        <label>password label</label>
+        <input type="password" placeholder="password" formControlName="password" />
+        <cds-control-message status="error" *ngIf="passwordRequired">required</cds-control-message>
+        <cds-control-message status="error" *ngIf="passwordMinLength">
+          must be at least 6 characters
+        </cds-control-message>
+      </cds-password>
+
+      <cds-search>
+        <label>search label</label>
+        <input type="search" placeholder="search" formControlName="search" />
+      </cds-search>
+
+      <cds-time>
+        <label>time label</label>
+        <input type="time" min="09:00" max="18:00" value="11:00" formControlName="time" />
+      </cds-time>
+
+      <cds-input-group>
+        <label>input group label</label>
+        <cds-select cds-layout="align:shrink">
+          <label>Protocol</label>
+          <select formControlName="inputGroupProtocol">
+            <option>http://</option>
+            <option>https://</option>
+          </select>
+        </cds-select>
+        <cds-input>
+          <label>Host Port</label>
+          <input placeholder="localhost:8000" type="url" formControlName="inputGroupPort" />
+          <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-icon shape="cloud" badge="success"></cds-icon>
+          </cds-control-action>
+        </cds-input>
+        <cds-control-message>Host ID: 123456</cds-control-message>
+      </cds-input-group>
+
+      <cds-range>
+        <label>range label</label>
+        <input type="range" min="0" max="100" value="75" step="5" formControlName="range" />
+        <cds-control-message>CPU Utilization</cds-control-message>
+      </cds-range>
+
+      <cds-checkbox-group>
+        <label>checkbox group label</label>
+        <cds-checkbox>
+          <label>checkbox 1</label>
+          <input type="checkbox" formControlName="checkboxGroup1" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 2</label>
+          <input type="checkbox" formControlName="checkboxGroup2" />
+        </cds-checkbox>
+
+        <cds-checkbox>
+          <label>checkbox 3</label>
+          <input type="checkbox" formControlName="checkboxGroup3" />
+        </cds-checkbox>
+      </cds-checkbox-group>
+
+      <cds-radio-group name="region">
+        <label>radio group label</label>
+        <cds-radio>
+          <label>North America</label>
+          <input type="radio" value="north-america" formControlName="radioGroup" />
+        </cds-radio>
+        <cds-radio>
+          <label>South America</label>
+          <input type="radio" value="south-america" formControlName="radioGroup" />
+        </cds-radio>
+        <cds-radio>
+          <label>Europe</label>
+          <input type="radio" value="europe" formControlName="radioGroup" />
+        </cds-radio>
+      </cds-radio-group>
+
+      <cds-toggle-group>
+        <label>toggle group</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" formControlName="toggle1" />
+        </cds-toggle>
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" formControlName="toggle2" />
+        </cds-toggle>
+      </cds-toggle-group>
+
+      <cds-file>
+        <label>file label</label>
+        <input type="file" multiple formControlName="file" />
+      </cds-file>
+
+      <cds-select>
+        <label>select multiple</label>
+        <select multiple formControlName="selectMultiple">
+          <option>Option One</option>
+          <option>Option Two</option>
+          <option>Option Three</option>
+          <option>Option Four</option>
+          <option>Option Five</option>
+        </select>
+      </cds-select>
+
+      <cds-textarea>
+        <label>textarea label</label>
+        <textarea formControlName="textarea"></textarea>
+      </cds-textarea>
+
+      <cds-button>save</cds-button>
+    </cds-form-group>
+  </form>
+
+  <pre cds-layout="col@md:4">
+{{ formValue | json }}
+    </pre
+  >
+</section>

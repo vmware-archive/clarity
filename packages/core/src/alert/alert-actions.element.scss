@@ -34,6 +34,16 @@
     --color: var(--action-hover-text-color);
     --border-color: var(--action-hover-text-color);
   }
+
+  ::slotted([cds-text~='link']) {
+    color: var(--action-text-color) !important;
+    font-size: var(--action-font-size) !important;
+    font-weight: #{$cds-global-typography-font-weight-medium};
+  }
+
+  ::slotted([cds-text~='link']:hover) {
+    color: var(--action-hover-text-color) !important;
+  }
 }
 
 :host([type='default']) {
@@ -46,6 +56,13 @@
   ::slotted(cds-button) {
     --color: #{$cds-global-typography-color-100};
     --border-color: #{$cds-global-typography-color-100};
+  }
+}
+
+:host([type='default']),
+:host([type='banner']) {
+  &::slotted(a) {
+    color: var(--cds-global-typography-color-100);
   }
 }
 

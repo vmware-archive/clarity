@@ -21,6 +21,8 @@
     "paths": {
       "@clr/angular": ["dist/clr-angular"],
       "@clr/angular/*": ["dist/clr-angular/*"],
+      "@cds/angular": ["dist/cds-angular"],
+      "@cds/angular/*": ["dist/cds-angular/*"],
       "@cds/core/*": ["../../dist/core/*"],
       "@cds/core": ["../../dist/core"]
     }

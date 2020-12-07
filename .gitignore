@@ -8,6 +8,9 @@ packages/react/.cache
 packages/react/coverage
 .parcel-cache
 
+# auto-generated ng-core components
+packages/angular/projects/cds-angular/src/cds/components
+
 # compiled output
 /dist
 /packages/**/dist

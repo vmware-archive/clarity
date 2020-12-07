@@ -22,6 +22,7 @@ export const APP_ROUTES: Routes = [
   },
   { path: 'buttons', loadChildren: () => import('./buttons/buttons.demo.module').then(m => m.ButtonsDemoModule) },
   { path: 'card', loadChildren: () => import('./card/card.demo.module').then(m => m.CardDemoModule) },
+  { path: 'cds', loadChildren: () => import('./cds/cds.demo.module').then(m => m.CdsDemoModule) },
   {
     path: 'checkboxes',
     loadChildren: () => import('./checkboxes/checkboxes.demo.module').then(m => m.CheckboxesDemoModule),

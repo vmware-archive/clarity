@@ -1,0 +1,23 @@
+{
+  "name": "@cds/angular",
+  "version": "@VERSION",
+  "description": "Core component modules for Clarity Angular",
+  "keywords": ["ng-add", "clarity", "angular", "components", "core"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/clarity.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0",
+    "@cds/core": "@VERSION"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "author": "clarity",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  }
+}

@@ -236,6 +236,41 @@
         }
       }
     },
+    "cds-angular": {
+      "projectType": "library",
+      "root": "projects/cds-angular",
+      "sourceRoot": "projects/cds-angular/src",
+      "prefix": "cds",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/cds-angular/tsconfig.lib.json",
+            "project": "projects/cds-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cds-angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cds-angular/src/test.ts",
+            "tsConfig": "projects/cds-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/cds-angular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["projects/cds-angular/tsconfig.lib.json", "projects/cds-angular/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
     "clarity-adoption": {
       "projectType": "application",
       "schematics": {

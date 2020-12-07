@@ -7,6 +7,7 @@
 import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
+import { checkIcon } from '@cds/core/icon/shapes/check.js';
 import { html, query } from 'lit-element';
 import { styles as baseButtonStyles } from './base-button.element.css.js';
 import { styles } from './button.element.css.js';
@@ -104,7 +105,7 @@ export class CdsButton extends CdsBaseButton {
 
   constructor() {
     super();
-    ClarityIcons.addIcons(errorStandardIcon);
+    ClarityIcons.addIcons(errorStandardIcon, checkIcon);
   }
 
   firstUpdated(props: Map<string, any>) {
@@ -116,10 +117,6 @@ export class CdsButton extends CdsBaseButton {
     if (this.loadingState !== ClrLoadingState.DEFAULT) {
       this.updateLoadingState();
     }
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
   }
 
   update(props: Map<string, any>) {

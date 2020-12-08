@@ -1,7 +1,14 @@
 <template>
-  <form id="search" class="algolia-search-wrapper search-box" role="search">
+  <form id="search" class="algolia-search-wrapper search-box" role="search" :class="{ focused: focused }">
     <label for="algolia-search-input" cds-layout="display:screen-reader-only">Search Clarity</label>
-    <input id="algolia-search-input" class="search-query" :placeholder="placeholder" />
+    <cds-icon shape="search"></cds-icon>
+    <input
+      id="algolia-search-input"
+      v-on:focus="focused = true"
+      v-on:blur="focused = false"
+      class="search-query"
+      :placeholder="placeholder"
+    />
   </form>
 </template>
 
@@ -14,6 +21,7 @@ export default {
   data() {
     return {
       placeholder: undefined,
+      focused: false,
     };
   },
 
@@ -71,6 +79,8 @@ export default {
 </script>
 
 <style lang="scss">
+// THIS IS ALL A HACKY WAY CUZ ALGOLIA WIDGET IS NOT EASY TO CUSTOMIZE FULLY. WE WILL EVENTUALLY REPLACE THIS WITH OUR OWN IMPLEMENTATION.
+
 // Note: there is much important here. 🤮
 // I'm not 100% sure how to properly theme the algolia search widget.
 // TODO: properly theme the search widget or re-write it's functionality with cds layouts and tokens
@@ -83,6 +93,24 @@ header .search,
   opacity: 1;
 }
 
+.header .search-box {
+  height: 1.4rem !important;
+  border-bottom: 1px var(--cds-global-color-gray-0) solid;
+  margin-top: 0.7rem;
+
+  background: linear-gradient(to bottom, transparent 95%, var(--cds-global-color-gray-0) 95%) no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.2s ease;
+}
+
+.header .search-box.focused {
+  background-size: 100% 100%;
+}
+
+.search-box cds-icon {
+  --color: var(--cds-global-color-gray-0);
+}
+
 .search-box input {
   // Get rid of the default borders and backgrounds
   // Make it look / behave close to Clarity forms
@@ -90,15 +118,15 @@ header .search,
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
-  border-bottom: 0.05rem solid #acbac3;
-  background: #00364d url(/assets/img/search.83621669.svg) 0.6rem 0.5rem no-repeat !important;
+  // border-bottom: 0.05rem solid #acbac3;
+  border-bottom: 0 !important;
+  background: #00364d !important;
   background-size: 1rem !important;
   color: #eaedf0 !important;
   min-width: 10rem;
-  &:focus {
-    border-bottom-color: #4aaed9 !important;
-    border-bottom-width: 0.1rem;
-  }
+  margin-left: 0.2rem;
+  height: 1rem !important;
+  padding: 0 !important;
 }
 
 .header .branding + .search-box::after {
@@ -109,6 +137,10 @@ header .search,
 
 /* Overrides for mobile search */
 @media all and (max-width: 768px) {
+  .header .search-box {
+    display: none;
+  }
+
   header .search-box,
   header .search,
   .header .search-box,

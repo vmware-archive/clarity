@@ -100,7 +100,14 @@ module.exports = [
     title: 'Releases',
     path: '/releases/',
     children: [
-      ...getChildren('releases'),
+      {
+        title: 'v5 Changelog',
+        path: '/releases/v5',
+      },
+      {
+        title: 'v4 Changelog',
+        path: '/releases/v4',
+      },
       {
         title: 'Older Changelogs',
         // external: true,

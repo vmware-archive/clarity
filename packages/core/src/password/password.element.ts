@@ -69,5 +69,6 @@ export class CdsPassword extends CdsControl {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.inputControl.type = this.showPassword ? 'text' : 'password';
+    this.inputControl.focus();
   }
 }

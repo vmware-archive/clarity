@@ -19,18 +19,15 @@ export interface IconShapeCollection {
   solidAlerted?: IconSvgString;
 }
 
-type IconShapeTupleAsString = [IconNameString, IconSvgString];
-type IconShapeTupleAsObject = [IconNameString, IconSvgString];
-
-export type IconShapeTuple = IconShapeTupleAsString | IconShapeTupleAsObject;
+export type IconShapeTuple = [IconNameString, IconSvgString | IconShapeCollection];
 
 export interface IconShapeSources {
-  [key: string]: IconSvgString | IconShapeCollection;
+  [key: string]: IconShapeTuple;
 }
 
 declare module '@cds/core/internal' {
   interface IconRegistrySources {
-    [key: string]: IconSvgString;
+    [key: string]: IconSvgString | IconShapeCollection;
   }
 }
 

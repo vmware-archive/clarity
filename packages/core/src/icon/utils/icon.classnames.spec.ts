@@ -12,58 +12,9 @@ import { componentIsStable, createTestElement, removeTestElement } from '@cds/co
 import { renderIcon } from '../icon.renderer.js';
 import { ClarityIcons } from '../icon.service.js';
 
-import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
-import {
-  getIconSvgClasses,
-  getUpdateSizeStrategy,
-  IconSvgClassnames,
-  SizeUpdateStrategies,
-  updateIconSizeStyle,
-} from './icon.classnames.js';
-import { testIcons } from './test-icons.js';
+import { getUpdateSizeStrategy, SizeUpdateStrategies, updateIconSizeStyle } from './icon.classnames.js';
 
 describe('Icon classname helpers: ', () => {
-  describe('getIconSvgClasses: ', () => {
-    const stringHasClassname = (classnames: string) => (stringToTest: string) => {
-      return classnames.indexOf(stringToTest) > -1;
-    };
-    it('should not add classes to only outline shape', () => {
-      const [, testShape] = testIcons.justOutline;
-      const test = stringHasClassname(getIconSvgClasses(testShape as IconShapeCollection));
-      expect(test(IconSvgClassnames.Alerted)).toEqual(false);
-      expect(test(IconSvgClassnames.Badged)).toEqual(false);
-      expect(test(IconSvgClassnames.Solid)).toEqual(false);
-    });
-    it('should add solid class when expected', () => {
-      const [, testShape] = testIcons.solidIcon;
-      const test = stringHasClassname(getIconSvgClasses(testShape as IconShapeCollection));
-      expect(test(IconSvgClassnames.Alerted)).toEqual(false);
-      expect(test(IconSvgClassnames.Badged)).toEqual(false);
-      expect(test(IconSvgClassnames.Solid)).toEqual(true);
-    });
-    it('should add badged class when expected', () => {
-      const [, testShape] = testIcons.nonAlertedIcon;
-      const test = stringHasClassname(getIconSvgClasses(testShape as IconShapeCollection));
-      expect(test(IconSvgClassnames.Alerted)).toEqual(false);
-      expect(test(IconSvgClassnames.Badged)).toEqual(true);
-      expect(test(IconSvgClassnames.Solid)).toEqual(false);
-    });
-    it('should add alerted class when expected', () => {
-      const [, testShape] = testIcons.nonBadgedIcon;
-      const test = stringHasClassname(getIconSvgClasses(testShape as IconShapeCollection));
-      expect(test(IconSvgClassnames.Alerted)).toEqual(true);
-      expect(test(IconSvgClassnames.Badged)).toEqual(false);
-      expect(test(IconSvgClassnames.Solid)).toEqual(false);
-    });
-    it('should be able to add all three', () => {
-      const [, testShape] = testIcons.allIcon;
-      const test = stringHasClassname(getIconSvgClasses(testShape as IconShapeCollection));
-      expect(test(IconSvgClassnames.Alerted)).toEqual(true);
-      expect(test(IconSvgClassnames.Badged)).toEqual(true);
-      expect(test(IconSvgClassnames.Solid)).toEqual(true);
-    });
-  });
-
   describe('getUpdateSizeStrategy', () => {
     it('should return "value-is-string" if passed a string that is also a recognized t-shirt size', () => {
       expect(getUpdateSizeStrategy('xs')).toEqual(SizeUpdateStrategies.ValidSizeString);

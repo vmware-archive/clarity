@@ -4,95 +4,84 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
+import { html } from 'lit-element';
+import { ClarityIcons } from '../icon.service.js';
+import { CdsIcon } from '../index.js';
 import { IconShapeCollection } from '../interfaces/icon.interfaces.js';
-import { decorateSvgWithClassnames, getAlertSvg, getBadgeSvg } from './icon.svg-helpers.js';
-import { dummyIconShape, testIcons } from './test-icons.js';
+import { hasAlertBadge } from './icon.svg-helpers.js';
 
-describe('SVG render helpers: ', () => {
-  describe(' - SVG render helpers - ', () => {
-    describe('getBadgeSvg:', () => {
-      it('should contain the badge classname', () => {
-        expect(getBadgeSvg('ohai')).toContain('clr-i-badge');
-      });
-      it('should contain the classname passed to it', () => {
-        expect(getBadgeSvg('ohai')).toContain('ohai');
-      });
-    });
+const testIcon: IconShapeCollection = {
+  outline: '<path d="outline-svg"></path>',
+  solid: '<path d="solid-svg"></path>',
+  outlineBadged: '<path d="outline-badged-svg"></path>',
+  outlineAlerted: '<path d="outline-alerted-svg"></path>',
+  solidBadged: '<path d="solid-badged-svg"></path>',
+  solidAlerted: '<path d="solid-alerted-svg"></path>',
+};
 
-    describe('getAlertSvg:', () => {
-      it('should contain the alert classname', () => {
-        expect(getAlertSvg('ohai')).toContain('clr-i-alert');
-      });
-      it('should contain the classname passed to it', () => {
-        expect(getAlertSvg('ohai')).toContain('ohai');
-      });
-    });
+describe('icon svg helpers:', () => {
+  let testElement: HTMLElement;
+  let component: CdsIcon;
 
-    describe('decorateSvgWithClassnames:', () => {
-      it('should contain same number of path closing tags', () => {
-        const expectedBreaks = dummyIconShape.split('/>').length;
-        const transformedSvg = decorateSvgWithClassnames('outline', dummyIconShape);
-        expect(transformedSvg.split('/>').length).toEqual(expectedBreaks);
-      });
-      it('should contain expected path classnames', () => {
-        const [, shapes] = testIcons.allIcon;
-        expect(decorateSvgWithClassnames('outline', (shapes as IconShapeCollection).outline)).toContain(
-          'class="clr-i-outline"'
-        );
-        expect(decorateSvgWithClassnames('outlineBadged', (shapes as IconShapeCollection).outlineBadged)).toContain(
-          'class="clr-i-outline--badged"'
-        );
-        expect(decorateSvgWithClassnames('outlineAlerted', (shapes as IconShapeCollection).outlineAlerted)).toContain(
-          'class="clr-i-outline--alerted"'
-        );
-        expect(decorateSvgWithClassnames('solid', (shapes as IconShapeCollection).solid)).toContain(
-          'class="clr-i-solid"'
-        );
-        expect(decorateSvgWithClassnames('solidBadged', (shapes as IconShapeCollection).solidBadged)).toContain(
-          'class="clr-i-solid--badged"'
-        );
-        expect(decorateSvgWithClassnames('solidAlerted', (shapes as IconShapeCollection).solidAlerted)).toContain(
-          'class="clr-i-solid--alerted"'
-        );
-      });
-      it('should contain a badge if needed', () => {
-        const [, shapes] = testIcons.allIcon;
-        expect(decorateSvgWithClassnames('outline', (shapes as IconShapeCollection).outline)).not.toContain(
-          'clr-i-badge'
-        );
-        expect(decorateSvgWithClassnames('outlineBadged', (shapes as IconShapeCollection).outlineBadged)).toContain(
-          'clr-i-badge'
-        );
-        expect(
-          decorateSvgWithClassnames('outlineAlerted', (shapes as IconShapeCollection).outlineAlerted)
-        ).not.toContain('clr-i-badge');
-        expect(decorateSvgWithClassnames('solid', (shapes as IconShapeCollection).solid)).not.toContain('clr-i-badge');
-        expect(decorateSvgWithClassnames('solidBadged', (shapes as IconShapeCollection).solidBadged)).toContain(
-          'clr-i-badge'
-        );
-        expect(decorateSvgWithClassnames('solidAlerted', (shapes as IconShapeCollection).solidAlerted)).not.toContain(
-          'clr-i-badge'
-        );
-      });
-      it('should contain an alert if needed', () => {
-        const [, shapes] = testIcons.allIcon;
-        expect(decorateSvgWithClassnames('outline', (shapes as IconShapeCollection).outline)).not.toContain(
-          'clr-i-alert'
-        );
-        expect(decorateSvgWithClassnames('outlineBadged', (shapes as IconShapeCollection).outlineBadged)).not.toContain(
-          'clr-i-alert'
-        );
-        expect(decorateSvgWithClassnames('outlineAlerted', (shapes as IconShapeCollection).outlineAlerted)).toContain(
-          'clr-i-alert'
-        );
-        expect(decorateSvgWithClassnames('solid', (shapes as IconShapeCollection).solid)).not.toContain('clr-i-alert');
-        expect(decorateSvgWithClassnames('solidBadged', (shapes as IconShapeCollection).solidBadged)).not.toContain(
-          'clr-i-alert'
-        );
-        expect(decorateSvgWithClassnames('solidAlerted', (shapes as IconShapeCollection).solidAlerted)).toContain(
-          'clr-i-alert'
-        );
-      });
-    });
+  beforeAll(() => {
+    ClarityIcons.addIcons(['test', testIcon]);
+  });
+
+  beforeEach(async () => {
+    testElement = await createTestElement(html`<cds-icon shape="test"></cds-icon>`);
+    component = testElement.querySelector<CdsIcon>('cds-icon');
+  });
+
+  afterEach(() => {
+    removeTestElement(testElement);
+  });
+
+  it('should check if icon has a alert style badge', async () => {
+    component.badge = 'warning-triangle';
+    await componentIsStable(component);
+    expect(hasAlertBadge(component)).toBe(true);
+  });
+
+  it('should get alert badge svg template', async () => {
+    component.badge = 'warning-triangle';
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain('alert');
+    expect(component.shadowRoot.innerHTML).not.toContain('badge');
+  });
+
+  it('should get circle badge svg template', async () => {
+    component.badge = true;
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain('badge');
+    expect(component.shadowRoot.innerHTML).not.toContain('alert');
+  });
+
+  it('should get icon svg template', async () => {
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.outline);
+
+    component.badge = 'success';
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.outlineBadged);
+
+    component.badge = 'warning-triangle';
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.outlineAlerted);
+
+    component.solid = true;
+    component.badge = false;
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.solid);
+
+    component.solid = true;
+    component.badge = 'success';
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.solidBadged);
+
+    component.solid = true;
+    component.badge = 'warning-triangle';
+    await componentIsStable(component);
+    expect(component.shadowRoot.innerHTML).toContain(testIcon.solidAlerted);
   });
 });

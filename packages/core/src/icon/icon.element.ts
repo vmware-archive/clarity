@@ -13,12 +13,13 @@ import {
   property,
   internalProperty,
   StatusTypes,
+  isString,
 } from '@cds/core/internal';
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement, query, svg } from 'lit-element';
 import { styles } from './icon.element.css.js';
 import { ClarityIcons } from './icon.service.js';
 import { updateIconSizeStyle } from './utils/icon.classnames.js';
-import { hasIcon } from './utils/icon.service-helpers.js';
+import { getIconBadgeSVG, getIconSVG } from './utils/icon.svg-helpers.js';
 
 /**
  * Icon component that renders svg shapes that can be customized.
@@ -44,12 +45,12 @@ export class CdsIcon extends LitElement {
     return [baseStyles, styles];
   }
 
-  private _shape: string;
+  private _shape = 'unknown';
   private _size: string;
 
   @property({ type: String })
   get shape() {
-    return hasIcon(this._shape, ClarityIcons.registry) ? this._shape : 'unknown';
+    return this._shape;
   }
 
   /**
@@ -57,7 +58,7 @@ export class CdsIcon extends LitElement {
    * the specified icon cannot be found in the icon registry.
    */
   set shape(val: string) {
-    if (hasStringPropertyChangedAndNotNil(val, this._shape)) {
+    if (hasStringPropertyChangedAndNotNil(val, this._shape) && ClarityIcons.registry[val]) {
       const oldVal = this._shape;
       this._shape = val;
       this.requestUpdate('shape', oldVal);
@@ -81,22 +82,6 @@ export class CdsIcon extends LitElement {
       this.requestUpdate('size', oldVal);
     }
   }
-
-  /**
-   * The aria-label attribute is required for accessibility. The icon
-   * will warn if used without the aria-label being set.
-   *
-   * Ideally, the aria-label will be specific to the icon's purpose. Avoid sharing
-   * generic labels across multiple icons on a page.
-   *
-   * To not announce redundant information through screen-readers, consider using
-   * aria-hidden="true" on the cds-icon
-   */
-  @property({ type: String, required: 'warning' })
-  ariaLabel: string;
-
-  @property({ type: String })
-  role = 'img';
 
   /**
    * @type {up | down | left | right}
@@ -161,7 +146,7 @@ export class CdsIcon extends LitElement {
    * given a pixel value offset any surrounding whitespace within the svg
    */
   @internalProperty({ type: Number, reflect: true })
-  innerOffset = 0;
+  innerOffset: number; // Performance optimization: default to undefined so attr is not initially rendered
 
   @query('svg') private svg: SVGElement;
 
@@ -175,6 +160,10 @@ export class CdsIcon extends LitElement {
   }
 
   protected render() {
-    return html` <span aria-hidden="true" .innerHTML="${ClarityIcons.registry[this.shape]}"></span> `;
+    return isString(ClarityIcons.registry[this.shape])
+      ? html`<span .innerHTML="${ClarityIcons.registry[this.shape] as string}"></span>`
+      : svg`<svg .innerHTML="${
+          getIconSVG(this) + getIconBadgeSVG(this)
+        }" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>`;
   }
 }

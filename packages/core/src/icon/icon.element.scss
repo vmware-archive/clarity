@@ -74,26 +74,8 @@ svg {
   --color: #{$cds-alias-status-info-shade};
 }
 
-// INVERSE COLORS
-
 :host([inverse]) {
-  --color: #{$cds-global-typography-color-500};
-}
-
-:host([inverse][status='info']) {
-  --color: #{$cds-alias-status-info};
-}
-
-:host([inverse][status='success']) {
-  --color: #{$cds-alias-status-success};
-}
-
-:host([inverse][status='danger']) {
-  --color: #{$cds-alias-status-danger};
-}
-
-:host([inverse][status='warning']) {
-  --color: #{$cds-alias-status-warning};
+  --color: #{$cds-global-color-construction-200};
 }
 
 // directional
@@ -121,91 +103,9 @@ svg {
   @include flipSVGIcon('vertical');
 }
 
-.clr-i-badge,
-.clr-i-alert {
+.badge,
+.alert {
   fill: var(--badge-color, #{$cds-alias-status-danger});
-}
-
-// outlined
-
-:host {
-  .clr-i-solid,
-  .clr-i-solid--badged,
-  .clr-i-solid--alerted {
-    display: none;
-  }
-
-  .clr-i-outline--alerted,
-  .clr-i-outline--badged {
-    &:not(.clr-i-outline) {
-      display: none;
-    }
-  }
-}
-
-:host([badge]) .can-badge {
-  .clr-i-outline--badged {
-    display: block;
-  }
-
-  .clr-i-outline:not(.clr-i-outline--badged) {
-    display: none;
-  }
-}
-
-:host([badge$='triangle']) .can-alert {
-  .clr-i-outline--alerted {
-    display: block;
-  }
-
-  .clr-i-outline--badged,
-  .clr-i-outline:not(.clr-i-outline--alerted) {
-    display: none;
-  }
-}
-
-// solid
-:host([solid]) .has-solid {
-  .clr-i-solid {
-    display: block;
-  }
-
-  .clr-i-outline,
-  .clr-i-outline--badged {
-    display: none;
-  }
-
-  .clr-i-solid--alerted,
-  .clr-i-solid--badged {
-    &:not(.clr-i-solid) {
-      display: none;
-    }
-  }
-}
-
-:host([badge][solid]) .can-badge.has-solid {
-  .clr-i-solid--badged {
-    display: block;
-  }
-
-  .clr-i-outline,
-  .clr-i-outline--badged,
-  .clr-i-solid:not(.clr-i-solid--badged) {
-    display: none;
-  }
-}
-
-:host([solid][badge$='triangle']) .can-alert.has-solid {
-  .clr-i-solid--alerted {
-    display: block;
-  }
-
-  .clr-i-outline,
-  .clr-i-outline--alerted,
-  .clr-i-solid--badged,
-  .clr-i-solid:not(.clr-i-solid--alerted) {
-    display: none;
-  }
 }
 
 // variant badge colors

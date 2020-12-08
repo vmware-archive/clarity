@@ -29,7 +29,7 @@ import {
   loadTravelIconSet,
 } from '@cds/core/icon';
 
-if (window) {
+if (typeof window !== 'undefined') {
   loadChartIconSet();
   loadEssentialIconSet();
   loadCommerceIconSet();

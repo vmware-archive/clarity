@@ -1,5 +1,5 @@
 {
-  "$schema": "../schema.json",
+  "$schema": "./schema.json",
   "releases": [
     {
       "version": "4.0.4",

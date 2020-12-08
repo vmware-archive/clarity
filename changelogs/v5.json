@@ -1,0 +1,118 @@
+{
+  "$schema": "./schema.json",
+  "releases": [
+    {
+      "version": "5.0.0-next.0",
+      "date": "2020-12-02",
+      "description": "This is a beta release for our next major version which contains new components and bug fixes. We will no longer support actively support IE11, and are preparing major features for helping existing Clarity Angular applications adopt Core.",
+      "feat": [
+        {
+          "issue": 5200,
+          "title": "Add accordion components to Core",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 4909,
+          "title": "Add progress and circular progress components to Core",
+          "project": "Core",
+          "scope": "Progress"
+        },
+        {
+          "issue": 5284,
+          "title": "Theming support for Core",
+          "project": "Core",
+          "scope": "Theme"
+        },
+        {
+          "issue": 5190,
+          "title": "Angular updated to use Core icons for tree shaking",
+          "project": "Angular",
+          "scope": "Build"
+        },
+        {
+          "issue": 5225,
+          "title": "Remove support for IE11",
+          "project": "Core",
+          "scope": "Build",
+          "breaking": true
+        }
+      ],
+      "fix": [
+        {
+          "issue": 5230,
+          "title": "Update Core to use TypeScript v4",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 5110,
+          "title": "Remove deprecated icons",
+          "project": "Core",
+          "scope": "Icon"
+        },
+        {
+          "issue": 5090,
+          "title": "Remove base64 code from css to reduce bundle sizes",
+          "project": "Core",
+          "scope": "Progress Bar"
+        },
+        {
+          "issue": 4933,
+          "title": "Add support for right side icons inside of buttons",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5302,
+          "title": "Fix submit buttons to not cause accessibility issues",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5297,
+          "title": "Update tags for accessibility requirements and easier use",
+          "project": "Core",
+          "scope": "Tag"
+        },
+        {
+          "issue": 5283,
+          "title": "Improve how screen readers handle forms and input groups",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5281,
+          "title": "Improve screen reader support for alerts and alert groups",
+          "project": "Core",
+          "scope": "Alert"
+        },
+        {
+          "issue": 5281,
+          "title": "Improve the accessibility of badges and buttons",
+          "project": "Core",
+          "scope": "Badge"
+        },
+        {
+          "issue": 5233,
+          "title": "Remove the height restrictions and truncation of text in alerts",
+          "project": "Core",
+          "scope": "Alert"
+        },
+        {
+          "issue": 5250,
+          "title": "Remove legacy dir attribute on icons for better accessibility support, use direction attribute instead",
+          "project": "Core",
+          "scope": "Icon",
+          "breaking": true
+        },
+        {
+          "issue": 5214,
+          "title": "Fix alignment and color consistency of icons and spinners",
+          "project": "Core",
+          "scope": "Icon"
+        }
+      ]
+    }
+  ]
+}

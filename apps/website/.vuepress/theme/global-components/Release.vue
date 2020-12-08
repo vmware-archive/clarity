@@ -30,13 +30,14 @@
 </template>
 
 <script>
-import v4 from '../../../../../changelogs/v4/v4.json';
+import v4 from '../../../../../changelogs/v4.json';
+import v5 from '../../../../../changelogs/v5.json';
 import ReleaseGroup from './ReleaseGroup';
 import ReleaseItem from './ReleaseItem';
 
 // To make this reusable, we have to load data from different JSON files and merge them here as one object.
 // Any new versions would need to be added and referenced as part of this in future releases.
-const data = { v4 };
+const data = { v4, v5 };
 
 export default {
   name: 'Release',

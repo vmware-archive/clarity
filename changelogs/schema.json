@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/Welcome",
   "definitions": {
     "Root": {
       "type": "object",

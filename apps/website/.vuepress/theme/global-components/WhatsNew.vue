@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import v4 from '../../../../../changelogs/v4/v4.json';
+import v4 from '../../../../../changelogs/v4.json';
 
 export default {
   name: 'WhatsNew',

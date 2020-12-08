@@ -49,4 +49,17 @@ describe('cds-password', () => {
     expect(component.inputControl.type).toBe('password');
     expect(component.shadowRoot.querySelector('cds-icon').shape).toBe('eye');
   });
+
+  it('should focus back on input when show/hide is clicked', async () => {
+    await componentIsStable(component);
+    expect(document.activeElement).not.toEqual(component.inputControl);
+
+    component.shadowRoot.querySelector('cds-control-action').click();
+    await componentIsStable(component);
+    expect(document.activeElement).toEqual(component.inputControl);
+
+    component.shadowRoot.querySelector('cds-control-action').click();
+    await componentIsStable(component);
+    expect(document.activeElement).toEqual(component.inputControl);
+  });
 });

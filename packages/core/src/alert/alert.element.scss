@@ -19,10 +19,6 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
   min-height: var(--min-height);
 }
 
-::slotted([cds-text~='link']) {
-  color: var(--color) !important;
-}
-
 :host([type='default']) .alert-spinner,
 :host([type='banner']) .alert-spinner {
   --fill-color: var(--icon-color);

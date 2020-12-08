@@ -8,6 +8,7 @@
     "lit-html/lib/shady-render.js": "/base/node_modules/lit-html/lib/shady-render.js",
     "lit-html/directives/if-defined": "/base/node_modules/lit-html/directives/if-defined.js",
     "lit-html/directives/unsafe-html": "/base/node_modules/lit-html/directives/unsafe-html.js",
+    "lit-html/directives/unsafe-svg": "/base/node_modules/lit-html/directives/unsafe-svg.js",
     "ramda/es/anyPass": "/base/node_modules/ramda/es/anyPass.js",
     "ramda/es/equals": "/base/node_modules/ramda/es/equals.js",
     "ramda/es/isNil": "/base/node_modules/ramda/es/isNil.js",
@@ -38,6 +39,7 @@
     "@cds/core/icon/shapes/eye.js": "/base/dist/core/icon/shapes/eye.js",
     "@cds/core/icon/shapes/eye-hide.js": "/base/dist/core/icon/shapes/eye-hide.js",
     "@cds/core/icon/shapes/check-circle.js": "/base/dist/core/icon/shapes/check-circle.js",
+    "@cds/core/icon/shapes/check.js": "/base/dist/core/icon/shapes/check.js",
 
     "@cds/core/accordion": "/base/dist/core/accordion/index.js",
     "@cds/core/accordion/register.js": "/base/dist/core/accordion/register.js",

@@ -27,12 +27,10 @@ const iconRegistry: IconRegistry = {
 // @dynamic
 export class ClarityIcons {
   /**
-   * registry() returns a clone of the icon registry, not the actual registry itself.
-   * Performing actions on the return value of registry() will not be reflected in the
-   * actual iconsRegistry
+   * Returns a readonly reference of the icon registry.
    */
-  static get registry(): IconRegistry {
-    return { ...iconRegistry };
+  static get registry(): Readonly<IconRegistry> {
+    return iconRegistry;
   }
 
   static addIcons(...shapes: IconShapeTuple[]) {

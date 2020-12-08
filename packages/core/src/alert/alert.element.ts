@@ -7,7 +7,6 @@
 import { html, LitElement } from 'lit-element';
 import {
   baseStyles,
-  CommonStringsService,
   event,
   EventEmitter,
   property,
@@ -17,6 +16,8 @@ import {
   syncDefinedProps,
   internalProperty,
   id,
+  I18nService,
+  i18n,
 } from '@cds/core/internal';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -31,15 +32,13 @@ import { CdsAlertGroup } from './alert-group.element.js';
 import { styles } from './alert.element.css.js';
 
 export function getIconStatusTuple(status: string): [string, string] {
-  const commonstrings = CommonStringsService.keys;
-
   const statusIcons: { [key: string]: [string, string] } = {
-    info: [ClarityIcons.getIconNameFromShape(infoStandardIcon), commonstrings.info],
-    success: [ClarityIcons.getIconNameFromShape(successStandardIcon), commonstrings.success],
-    warning: [ClarityIcons.getIconNameFromShape(warningStandardIcon), commonstrings.warning],
-    danger: [ClarityIcons.getIconNameFromShape(errorStandardIcon), commonstrings.danger],
-    unknown: [ClarityIcons.getIconNameFromShape(helpIcon), commonstrings.info],
-    loading: ['loading', commonstrings.loading],
+    info: [ClarityIcons.getIconNameFromShape(infoStandardIcon), I18nService.keys.alert.info],
+    success: [ClarityIcons.getIconNameFromShape(successStandardIcon), I18nService.keys.alert.success],
+    warning: [ClarityIcons.getIconNameFromShape(warningStandardIcon), I18nService.keys.alert.warning],
+    danger: [ClarityIcons.getIconNameFromShape(errorStandardIcon), I18nService.keys.alert.danger],
+    unknown: [ClarityIcons.getIconNameFromShape(helpIcon), I18nService.keys.alert.info],
+    loading: ['loading', I18nService.keys.alert.loading],
   };
 
   return statusIcons[status] ? statusIcons[status] : statusIcons.info;
@@ -169,12 +168,7 @@ export class CdsAlert extends LitElement {
   @property({ type: String })
   status: AlertStatusTypes = 'default';
 
-  /**
-   * @deprecated
-   * TODO: replace this with commonstrings when that work is ready
-   */
-  @property({ type: String })
-  closeIconTitle = CommonStringsService.keys.alertCloseButtonAriaLabel;
+  @i18n() i18n = I18nService.keys.alert;
 
   @querySlot('cds-alert-actions') private alertActions: CdsAlertActions;
 
@@ -261,7 +255,7 @@ export class CdsAlert extends LitElement {
                 ><cds-internal-close-button
                   icon-size="${this.type === 'banner' ? '20' : '16'}"
                   @click="${() => this.closeAlert()}"
-                  aria-label="${this.closeIconTitle}"
+                  aria-label="${this.i18n.closeButtonAriaLabel}"
                 ></cds-internal-close-button></slot
             ></span>`
           : html``}

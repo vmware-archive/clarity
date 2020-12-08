@@ -4,13 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  ClrCommonStrings,
-  commonStringsDefault,
-  CommonStringsService,
-  property,
-  registerElementSafely,
-} from '@cds/core/internal';
+import { componentStringsDefault, I18nStrings, I18nService, property, registerElementSafely } from '@cds/core/internal';
 import { select } from '@storybook/addon-knobs';
 import { html, LitElement } from 'lit-element';
 
@@ -23,43 +17,25 @@ export default {
 };
 
 export const internationalization = () => {
-  const frenchTranslation: Partial<ClrCommonStrings> = {
-    open: 'Ouvrir',
-    close: 'Fermer',
-    show: 'Montrer',
-    hide: 'Masquer',
-    expand: 'Dérouler',
-    collapse: 'Enrouler',
-    more: 'Plus',
-    select: 'Sélectionner',
-    selectAll: 'Tout sélectionner',
-    previous: 'Précédent',
-    next: 'Suivant',
-    current: "Aujourd'hui",
-    info: 'Info',
-    success: 'Succès',
-    warning: 'Avertissement',
-    danger: 'Erreur',
-    rowActions: 'Actions disponibles',
-    pickColumns: 'Modifier les colonnes',
-    showColumns: 'Afficher les colonnes',
-    sortColumn: 'Colonne de tri',
-    firstPage: 'Première page',
-    lastPage: 'Dernière page',
-    nextPage: 'Page suivante',
-    previousPage: 'Page précédente',
-    currentPage: 'Page actuelle',
-    totalPages: 'Pages totales',
+  const frenchTranslation: Partial<I18nStrings> = {
+    alert: {
+      closeButtonAriaLabel: "fermer l'alerte",
+      info: 'Info',
+      loading: 'Charger',
+      success: 'Succès',
+      warning: 'Avertissement',
+      danger: 'Erreur',
+    },
   };
   const language = select(
     'language',
-    { 'english (default)': commonStringsDefault, 'french (custom)': frenchTranslation },
-    commonStringsDefault as any
+    { 'english (default)': componentStringsDefault, 'french (custom)': frenchTranslation },
+    componentStringsDefault as any
   );
 
   const getValues = () => {
-    CommonStringsService.localize(language);
-    return html`${JSON.stringify(CommonStringsService.keys, null, 2)}`;
+    I18nService.localize(language);
+    return html`${JSON.stringify(I18nService.keys, null, 2)}`;
   };
 
   return html`

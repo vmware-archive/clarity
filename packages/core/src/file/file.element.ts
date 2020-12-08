@@ -5,7 +5,7 @@
  */
 
 import { html, internalProperty } from 'lit-element';
-import { CommonStringsService } from '@cds/core/internal';
+import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { folderIcon } from '@cds/core/icon/shapes/folder.js';
@@ -29,7 +29,9 @@ import { styles } from './file.element.css.js';
  * @slot - For projecting file input and label
  */
 export class CdsFile extends CdsControl {
-  @internalProperty() private buttonLabel = CommonStringsService.keys.browse;
+  @i18n() i18n = I18nService.keys.file;
+
+  @internalProperty() private buttonLabel = this.i18n.browse;
 
   @internalProperty() protected fixedControlWidth = true;
 
@@ -53,10 +55,7 @@ export class CdsFile extends CdsControl {
 
   protected get clearFiles() {
     return this.inputControl.files?.length
-      ? html` <cds-control-action
-          @click="${() => this.updateLabel()}"
-          aria-label="${CommonStringsService.keys.removeFile}"
-        >
+      ? html` <cds-control-action @click="${() => this.updateLabel()}" aria-label="${this.i18n.removeFile}">
           <cds-icon shape="times"></cds-icon>
         </cds-control-action>`
       : html``;
@@ -69,9 +68,9 @@ export class CdsFile extends CdsControl {
 
   private updateLabel(files?: FileList) {
     if (files && files.length) {
-      this.buttonLabel = files.length > 1 ? `${files.length} ${CommonStringsService.keys.files}` : files[0].name;
+      this.buttonLabel = files.length > 1 ? `${files.length} ${this.i18n.files}` : files[0].name;
     } else {
-      this.buttonLabel = CommonStringsService.keys.browse;
+      this.buttonLabel = this.i18n.browse;
       this.inputControl.value = '';
     }
   }

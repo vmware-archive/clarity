@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CommonStringsService, event, EventEmitter, property } from '@cds/core/internal';
+import { baseStyles, I18nService, event, EventEmitter, property } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 
 import { styles } from './test-dropdown.element.css.js';
@@ -63,7 +63,7 @@ export class CdsTestDropdown extends LitElement {
         <button @click="${() => this.toggle()}" class="btn">${this.title}</button>
         ${this.open
           ? html` <div>
-              ${CommonStringsService.keys.open}
+              ${I18nService.keys.dropdown.open}
               <slot></slot>
             </div>`
           : ''}

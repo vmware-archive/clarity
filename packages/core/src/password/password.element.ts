@@ -5,7 +5,7 @@
  */
 
 import { internalProperty, html } from 'lit-element';
-import { CommonStringsService } from '@cds/core/internal';
+import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -43,13 +43,15 @@ import { eyeHideIcon } from '@cds/core/icon/shapes/eye-hide.js';
 export class CdsPassword extends CdsControl {
   @internalProperty() private showPassword = false;
 
+  @i18n() i18n = I18nService.keys.password;
+
   constructor() {
     super();
     ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
   }
 
   private get ariaLabel() {
-    return this.showPassword ? CommonStringsService.keys.hide : CommonStringsService.keys.show;
+    return this.showPassword ? I18nService.keys.hide : I18nService.keys.show;
   }
 
   protected get suffixDefaultTemplate() {

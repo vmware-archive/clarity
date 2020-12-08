@@ -6,7 +6,7 @@
 
 import { html } from 'lit-html';
 import '@cds/core/modal/register.js';
-import { CommonStringsServiceInternal } from '@cds/core/internal';
+import { I18nService } from '@cds/core/internal';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { CdsModal } from '@cds/core/modal';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
@@ -60,13 +60,11 @@ describe('modal element', () => {
   });
 
   it('should set close button aria label using Common Strings Service', async () => {
-    const service = new CommonStringsServiceInternal();
-
     await componentIsStable(component);
     const button = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
     expect(button).not.toBeNull();
     expect(button.hasAttribute('aria-label')).toBe(true);
-    expect(button.getAttribute('aria-label')).toEqual(service.keys.modalCloseButtonAriaLabel);
+    expect(button.getAttribute('aria-label')).toEqual(I18nService.keys.modal.closeButtonAriaLabel);
   });
 
   it('should have text based boundaries for screen readers', async () => {

@@ -9,9 +9,9 @@ import '@cds/core/alert/register.js';
 import '@cds/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
 import { CdsIcon, infoStandardIcon } from '@cds/core/icon';
-import { CommonStringsService } from '@cds/core/internal';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
+import { I18nService } from '@cds/core/internal';
 
 describe('Alert element – ', () => {
   let testElement: HTMLElement;
@@ -283,12 +283,12 @@ describe('Alert element – ', () => {
       expect(getCloseButton()).not.toBe(null);
     });
 
-    it('should set the close button title', async () => {
+    it('should set the close button aria-label', async () => {
       const expectedLabel = 'ohai';
       await componentIsStable(component);
       component.type = 'default';
       component.setAttribute('closable', 'true');
-      component.setAttribute('close-icon-title', expectedLabel);
+      component.setAttribute('cds-i18n', `{ "closeButtonAriaLabel": "${expectedLabel}" }`);
       await componentIsStable(component);
       expect(getCloseButton()).not.toBe(null);
       expect(getCloseButton().getAttribute('aria-label')).toBe(expectedLabel);
@@ -387,28 +387,28 @@ describe('getIconStatusTuple: ', () => {
   it('should return "info" as the default', async () => {
     const [shapeName, title] = getIconStatusTuple('hippogriff');
     expect(shapeName).toBe(infoStandardIcon[0]);
-    expect(title).toBe(CommonStringsService.keys.info);
+    expect(title).toBe(I18nService.keys.alert.info);
   });
 
   it('should return statuses as expected', async () => {
     let [shapeName, title] = getIconStatusTuple('info');
     expect(shapeName).toBe(infoStandardIcon[0]);
-    expect(title).toBe(CommonStringsService.keys.info);
+    expect(title).toBe(I18nService.keys.alert.info);
     [shapeName, title] = getIconStatusTuple('success');
     expect(shapeName).toBe('success-standard');
-    expect(title).toBe(CommonStringsService.keys.success);
+    expect(title).toBe(I18nService.keys.alert.success);
     [shapeName, title] = getIconStatusTuple('warning');
     expect(shapeName).toBe('warning-standard');
-    expect(title).toBe(CommonStringsService.keys.warning);
+    expect(title).toBe(I18nService.keys.alert.warning);
     [shapeName, title] = getIconStatusTuple('danger');
     expect(shapeName).toBe('error-standard');
-    expect(title).toBe(CommonStringsService.keys.danger);
+    expect(title).toBe(I18nService.keys.alert.danger);
     [shapeName, title] = getIconStatusTuple('unknown');
     expect(shapeName).toBe('help');
-    expect(title).toBe(CommonStringsService.keys.info);
+    expect(title).toBe(I18nService.keys.alert.info);
     [shapeName, title] = getIconStatusTuple('loading');
     expect(shapeName).toBe('loading');
-    expect(title).toBe(CommonStringsService.keys.loading);
+    expect(title).toBe(I18nService.keys.alert.loading);
   });
 });
 

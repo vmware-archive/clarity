@@ -4,6 +4,7 @@
     <title>Simple Clarity Core Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./index.css" rel="stylesheet" />
+    <script src="./init.js"></script>
   </head>
   <body cds-text="body" cds-layout="p:md">
     <main>
@@ -48,7 +49,7 @@
         <h3>Default Alerts (Pastel Bubbles)</h3>
         <div cds-layout="vertical gap:sm">
           <cds-alert-group status="info">
-            <cds-alert closable>
+            <cds-alert closable cds-i18n='{ "close": "close my example alert" }'>
               This example is a closable alert inside an alert group with a status of "info".
             </cds-alert>
             <cds-alert closable>

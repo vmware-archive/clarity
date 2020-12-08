@@ -5,12 +5,17 @@
  */
 
 import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { I18nService } from '@cds/core';
 import { action } from '@storybook/addon-actions';
 import { html } from 'lit-html';
 import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@cds/core/icon';
 import customElements from '../../dist/core/custom-elements.json';
 
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
+
+I18nService.localize({
+  alert: { closeButtonAriaLabel: 'close this alert' },
+});
 
 export default {
   title: 'Stories/Alert Group',
@@ -43,8 +48,12 @@ export const alertGroup = () => {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group status="info" aria-label="This is an example info alert group">
-        <cds-alert closable>
-          This example is an alert a user may be able to close inside an alert group with a status of "info".
+        <cds-alert
+          closable
+          aria-label="This is an example info alert group"
+          cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
+        >
+          This example is a closable alert inside an alert group with a status of "info".
         </cds-alert>
         <cds-alert closable>
           <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
@@ -203,7 +212,6 @@ export const bannerGroupStatus = () => {
       </cds-alert-group>
 
       <cds-alert-group type="banner" status="alt" aria-label="This is an example banner alert group with an alt status">
-        <cds-alert>
           This example is a non-closable alert with alert actions and a status of "default" inside a banner alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>

@@ -7,9 +7,10 @@
 import { html } from 'lit-element';
 import {
   baseStyles,
-  CommonStringsService,
   event,
   EventEmitter,
+  i18n,
+  I18nService,
   onKey,
   property,
   id,
@@ -72,11 +73,13 @@ export class CdsModal extends CdsBaseFocusTrap {
   @id()
   private idForAriaLabel: string;
 
+  @i18n() i18n = I18nService.keys.modal;
+
   render() {
     return html`
       <div class="private-host" cds-layout="horizontal p:md p@md:xl align:center">
         <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="${this.idForAriaLabel}">
-          <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentStart}</div>
+          <div cds-layout="display:screen-reader-only">${this.i18n.contentStart}</div>
           <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch p:lg">
             <div cds-layout="horizontal gap:md wrap:none align:vertical-center">
               <div id="${this.idForAriaLabel}">
@@ -90,7 +93,7 @@ export class CdsModal extends CdsBaseFocusTrap {
                     <cds-internal-close-button
                       cds-layout="align:top"
                       @click="${() => this.closeModal()}"
-                      aria-label="${CommonStringsService.keys.modalCloseButtonAriaLabel}"
+                      aria-label="${this.i18n.closeButtonAriaLabel}"
                       .iconSize="${'24'}"
                     ></cds-internal-close-button>
                   `
@@ -103,7 +106,7 @@ export class CdsModal extends CdsBaseFocusTrap {
               <slot name="modal-actions"></slot>
             </div>
           </div>
-          <div cds-layout="display:screen-reader-only">${CommonStringsService.keys.modalContentEnd}</div>
+          <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
         </div>
         <div class="modal-backdrop" aria-hidden="true"></div>
       </div>

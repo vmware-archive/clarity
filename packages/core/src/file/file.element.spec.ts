@@ -62,15 +62,15 @@ describe('cds-file', () => {
     expect(button.innerText.toLocaleLowerCase()).toBe('browse');
 
     // cast to test method as its not possible to trigger file upload in test due to browser security reasons
-    (component as any).updateLabel([{ name: 'test.png' }]);
+    (component as any).updateLabelAndFocus([{ name: 'test.png' }]);
     await componentIsStable(component);
     expect(button.innerText.toLocaleLowerCase()).toBe('test.png');
 
-    (component as any).updateLabel([{ name: 'test.png' }, { name: 'test2.png' }]);
+    (component as any).updateLabelAndFocus([{ name: 'test.png' }, { name: 'test2.png' }]);
     await componentIsStable(component);
     expect(button.innerText.toLocaleLowerCase()).toBe('2 files');
 
-    (component as any).updateLabel();
+    (component as any).updateLabelAndFocus();
     await componentIsStable(component);
     expect(button.innerText.toLocaleLowerCase()).toBe('browse');
   });
@@ -85,5 +85,6 @@ describe('cds-file', () => {
     component.shadowRoot.querySelector('cds-control-action').click();
     await componentIsStable(component);
     expect(button.innerText.toLocaleLowerCase()).toBe('browse');
+    expect(document.activeElement).toBe(component);
   });
 });

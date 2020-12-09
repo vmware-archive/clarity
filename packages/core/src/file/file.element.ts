@@ -55,7 +55,7 @@ export class CdsFile extends CdsControl {
 
   protected get clearFiles() {
     return this.inputControl.files?.length
-      ? html` <cds-control-action @click="${() => this.updateLabel()}" aria-label="${this.i18n.removeFile}">
+      ? html` <cds-control-action @click="${() => this.updateLabelAndFocus()}" aria-label="${this.i18n.removeFile}">
           <cds-icon shape="times"></cds-icon>
         </cds-control-action>`
       : html``;
@@ -63,15 +63,21 @@ export class CdsFile extends CdsControl {
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-    this.inputControl.addEventListener('change', e => this.updateLabel((e.target as any).files));
+    this.inputControl.addEventListener('change', e => this.updateLabelAndFocus((e.target as any).files));
   }
 
-  private updateLabel(files?: FileList) {
+  private updateLabelAndFocus(files?: FileList) {
     if (files && files.length) {
       this.buttonLabel = files.length > 1 ? `${files.length} ${this.i18n.files}` : files[0].name;
     } else {
       this.buttonLabel = this.i18n.browse;
       this.inputControl.value = '';
+
+      const browseButton = this.shadowRoot?.querySelector('cds-button');
+
+      if (browseButton) {
+        browseButton.focus();
+      }
     }
   }
 

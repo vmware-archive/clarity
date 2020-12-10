@@ -158,6 +158,8 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
   @Input() clrDgSingleSelectionAriaLabel: string = this.commonStrings.keys.singleSelectionAriaLabel;
   @Input() clrDgSingleActionableAriaLabel: string = this.commonStrings.keys.singleActionableAriaLabel;
   @Input() clrDetailExpandableAriaLabel: string = this.commonStrings.keys.detailExpandableAriaLabel;
+  // Allows disabling of the auto focus on page/state changes (excludes focus management inside of popups)
+  @Input() clrDgDisablePageFocus = false;
 
   @Input()
   set clrDgPreserveSelection(state: boolean) {
@@ -268,7 +270,9 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
         }
       }),
       this.page.change.subscribe(() => {
-        this.datagridTable.nativeElement.focus();
+        if (!this.clrDgDisablePageFocus) {
+          this.datagridTable.nativeElement.focus();
+        }
       }),
       // A subscription that listens for displayMode changes on the datagrid
       this.displayMode.view.subscribe(viewChange => {

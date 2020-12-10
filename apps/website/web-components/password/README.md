@@ -25,21 +25,6 @@ When setting a password, display the password requirement in the helper text to 
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label (optional)
-2. Input value / placeholder
-3. Eye icon
-4. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

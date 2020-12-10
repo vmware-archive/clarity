@@ -23,20 +23,6 @@ Use a search input when user is expected to perform a search.
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label (optional)
-2. Search input
-3. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

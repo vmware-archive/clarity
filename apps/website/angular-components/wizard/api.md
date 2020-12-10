@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrWizard
 
 #### Selector & Basic Usage

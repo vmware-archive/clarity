@@ -25,7 +25,5 @@ toc: true
 
 #### Bindings
 
-#### Bindings
-
 <DocComponentApi component="ClrRange" item="bindings" />
 <DocComponentApi component="ClrFormCommon" item="bindings" />

@@ -6,7 +6,7 @@
           <template v-for="(item, index) in items">
             <div class="nav-group" v-if="item.children">
               <div class="nav-group-content" v-bind:class="{ active: !states[index] && childActive(item) }">
-                <button class="nav-group-trigger" type="button" @click="toggle(index)">
+                <button id="sidenav" class="nav-group-trigger" type="button" @click="toggle(index)">
                   <span class="nav-group-text">{{ item.title }}</span>
                   <cds-icon
                     class="nav-group-trigger-icon"

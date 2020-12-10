@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrSignpost
 
 A lightweight convenient way to show contextual help without taking the user out of the current context.
@@ -56,8 +54,6 @@ When using ClrSignpost it can be optimized with the CLrIfOpen structural directi
 <DocComponentApi component="ClrSignpostContent" item="methods" />
 
 ## Angular Directives
-
-{.section-header}
 
 ### ClrSignpostTrigger
 

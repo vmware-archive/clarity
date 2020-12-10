@@ -45,21 +45,6 @@ Use radio buttons when you want users to see all available multual exclusive opt
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Group label (optional)
-2. Radio buttons
-3. Radio label
-4. Helper message (optional) - Helper text can be shown with a single radio button or at the bottom of a radio button group. It can be used show regular message, disabled message, success message, or error message.
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

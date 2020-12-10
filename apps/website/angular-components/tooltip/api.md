@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrTooltip
 
 #### Selector & Basic Usage
@@ -44,8 +42,6 @@ toc: true
 <DocComponentApi component="ClrTooltipContent" item="bindings" />
 
 ## Angular Directives
-
-{.section-header}
 
 ### ClrTooltipTrigger
 

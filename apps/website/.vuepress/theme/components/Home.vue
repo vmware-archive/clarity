@@ -121,7 +121,11 @@
           >
         </div>
         <div cds-layout="vertical m-t:md">
-          <img src="/images/home/img_design_w_confidence.svg" alt="placeholder image" cds-layout="fill" />
+          <img
+            src="/images/home/img_design_w_confidence.svg"
+            alt="A confident woman looking at charts with arms folded."
+            cds-layout="fill"
+          />
         </div>
       </div>
     </section>
@@ -154,7 +158,11 @@
           >
         </div>
         <div cds-layout="vertical ">
-          <img src="/images/home/img_build_framework.svg" alt="placeholder image" cds-layout="fill" />
+          <img
+            src="/images/home/img_build_framework.svg"
+            alt="A hand holding icons for Angualr, Vue and React web frameworks."
+            cds-layout="fill"
+          />
         </div>
       </div>
     </section>
@@ -179,7 +187,11 @@
           >
         </div>
         <div cds-layout="vertical ">
-          <img src="/images/home/img_performant_components.svg" alt="placeholder image" cds-layout="fill" />
+          <img
+            src="/images/home/img_performant_components.svg"
+            alt="An image showing the datagrid component, a checkbox form control component and the filter icon component."
+            cds-layout="fill"
+          />
         </div>
       </div>
     </section>
@@ -189,7 +201,7 @@
         <h1 cds-text="heading" cds-layout="m-t:md">Accessible applications start here</h1>
         <img
           src="/images/home/img_accessible_applications.svg"
-          alt="placeholder image"
+          alt="A man looking at a monitor with the Clarity logo on it and icons depicting no sight, no mouse, hearing and cognitive thinkers."
           cds-layout="col:start-2 col:10 fill m-t:xl"
         />
         <p cds-text="section expanded" cds-layout="m-t:xl">
@@ -225,7 +237,11 @@
             Join the community
           </cds-button>
         </router-link>
-        <img src="/images/home/img_join_us.svg" alt="placeholder image" cds-layout="col:start-2 col:10 fill m-t:xl" />
+        <img
+          src="/images/home/img_join_us.svg"
+          alt="A man with an orange hat orgainzing items on the left side with a network of faces in the middle and a woman with a backpack on a moped with an item in her outstretched arm."
+          cds-layout="col:start-2 col:10 fill m-t:xl"
+        />
         <div cds-layout="horizontal gap:xl gap@sm:lg align:horizontal-center wrap@sm:none col:start-2 col:10 m-t:xl">
           <div>
             <h3 cds-text="display center" class="docs-red">2M+</h3>

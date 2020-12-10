@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrModal
 
 #### Selector & Basic Usage

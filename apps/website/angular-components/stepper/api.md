@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrStepper
 
 A Stepper structures a multi-step process into two or more expanding panels.
@@ -123,8 +121,6 @@ ClrStepperPanel extends [ClrAccordionPanel](../accordion/api/#clraccordionpanel)
 **Note:** `clr-step-content` is an overloaded selector and is the same component as [ClrAccordionContent](../accordion/api/#clraccordioncontent)
 
 ## Angular Directives
-
-{.section-header}
 
 ### ClrStepButton
 

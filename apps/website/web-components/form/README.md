@@ -69,7 +69,7 @@ Default Horizontal formats are good for the quick scanning of labels, and can be
 
 :::component-section-level-two-title
 
-### Vertical & Vertical Inline test
+### Vertical & Vertical Inline
 
 :::
 
@@ -103,13 +103,11 @@ For cases with highly limited space, we provide a compact form layout.
 
 :::
 
-::: component-section-level-one
+::: component-section-level-one-title
 
-## Anatomy
+## Form Controls
 
 :::
-
-:::component-section-level-two-title
 
 :::component-section-level-two-title
 

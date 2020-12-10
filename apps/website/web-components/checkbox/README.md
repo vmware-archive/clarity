@@ -50,27 +50,6 @@ Use a toggle for On / Off choices but not for multiple choices
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-<DocInset>
-<div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/anatomy.html)!!!
-</div>
-</DocInset>
-
-1. Group label - describe the list of related checkboxes for user comprehension
-2. Checkbox - users interact to check and uncheck an option
-3. Checbox label - describe a specific option
-4. Supplemental text - additional text to provide context and provide information to the user
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

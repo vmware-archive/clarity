@@ -32,21 +32,6 @@ Use a text field when the expected user input may be more than a single line.
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label
-2. Container
-3. Text content
-4. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

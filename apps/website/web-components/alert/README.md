@@ -185,72 +185,6 @@ In the case there are multiples of each sub-type, group them by sub-type and sho
 
 :::
 
-:::component-section-level-two-title
-
-### Anatomy
-
-:::
-
-:::component-section-level-three-title
-
-1. Container
-
-:::
-
-:::component-section-level-three
-
-The container of standard alerts strectch across the entire content width or component width.
-
-:::
-
-:::component-section-level-three-title
-
-2. Icon
-
-:::
-
-:::component-section-level-three
-
-The container of standard alerts strectch across the entire content width or component width.
-
-:::
-
-:::component-section-level-three-title
-
-3. Message
-
-:::
-
-:::component-section-level-three
-
-The message is left-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-4. Action (optional)
-
-:::
-
-:::component-section-level-three
-
-An alert can have up to two actions. Actions are right-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-5. Dismiss (optional)
-
-:::
-
-:::component-section-level-three
-
-The optional dismiss button is right-aligned.
-
-:::
-
 :::component-section-level-three-title
 
 Sizes
@@ -393,72 +327,6 @@ Provides info to user’s in context. Be careful not to overuse to replace regul
 
 :::component-section-level-two-title
 
-### Anatomy
-
-:::
-
-:::component-section-level-three-title
-
-1. Container
-
-:::
-
-:::component-section-level-three
-
-The container of app-level alerts stretch across the entire global context width.
-
-:::
-
-:::component-section-level-three-title
-
-2. Icon
-
-:::
-
-:::component-section-level-three
-
-The icon shows the severity of the alert. Icons are centered-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-3. Message
-
-:::
-
-:::component-section-level-three
-
-The message is center-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-4. Action (optional)
-
-:::
-
-:::component-section-level-three
-
-An alert can have up to two actions. Actions are center-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-5. Dismiss (optional)
-
-:::
-
-:::component-section-level-three
-
-The dismiss button is right-aligned.
-
-:::
-
-:::component-section-level-two-title
-
 ### Placement
 
 :::
@@ -590,48 +458,6 @@ When a status cannot be detected by the system, unknown is shown.
 In the case there are multiple of each sub-type, show one at a time and start with the highest urgency. Show all of a sub-type together before another type is displayed. For example, show all errors before the first warning is shown.
 
 !!!include(.vuepress/public/core-usage-demos/alert/lightweight-group.html)!!!
-
-:::
-
-:::component-section-level-two-title
-
-### Anatomy
-
-:::
-
-:::component-section-level-three-title
-
-1. Icon
-
-:::
-
-:::component-section-level-three
-
-The icon shows the severity of the alert. The icon is left-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-2. Message
-
-:::
-
-:::component-section-level-three
-
-The message is left-aligned.
-
-:::
-
-:::component-section-level-three-title
-
-3. Action (optional)
-
-:::
-
-:::component-section-level-three
-
-An alert can have up to two actions. Actions are right-aligned.
 
 :::
 

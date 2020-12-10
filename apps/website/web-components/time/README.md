@@ -23,20 +23,6 @@ Use a time input when user is expected to enter a time (hours and minutes, and o
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label (optional)
-2. Time input
-3. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

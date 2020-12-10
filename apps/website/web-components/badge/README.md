@@ -29,36 +29,6 @@ Badges have a colorful, bold, and filled style that makes them stand out when ap
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-three-title
-
-### Container
-
-:::
-
-:::component-section-level-three
-
-Badges have a more rounded border radius, similar to [tags](/web-components/tag), to distinguish them from primary buttons.
-
-:::
-
-::: component-section-level-three-title
-
-### Content
-
-:::
-
-:::component-section-level-three
-
-Use integers within badges.
-
-:::
-
-::: component-section-level-one-title
-
 ## Recommendations
 
 :::

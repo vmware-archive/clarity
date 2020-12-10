@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrSpinner
 
 ClrSpinner is a visual indicator for an ongoing, user-initiated process.

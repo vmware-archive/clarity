@@ -7,8 +7,6 @@ Combobox description here
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrCombobox
 
 #### Selector & Basic Usage
@@ -74,8 +72,6 @@ Combobox description here
 <DocComponentApi component="ClrOptions" item="bindings" />
 
 ## Angular Directives
-
-{.section-header}
 
 ### ClrOptionItems
 

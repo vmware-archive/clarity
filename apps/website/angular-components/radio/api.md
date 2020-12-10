@@ -28,7 +28,5 @@ toc: true
 
 #### Bindings
 
-#### Bindings
-
 <DocComponentApi component="ClrRadio" item="bindings" />
 <DocComponentApi component="ClrFormCommon" item="bindings" />

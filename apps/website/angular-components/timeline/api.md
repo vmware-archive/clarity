@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrTimeline
 
 ClrTimeline component is the container component of all children timeline components. It sets the orientation of the timeline.

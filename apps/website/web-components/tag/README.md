@@ -30,18 +30,6 @@ Use a tag to show the metadata when the space is limited or when you want to cat
 </div>
 </DocIndent>
 
-::: component-section-level-one-title
-
-## Anatomy
-
-:::
-
-:::component-section-level-one
-
-Tags are visually styled to differentiate them from buttons.
-
-:::
-
 ::: component-section-level-two-title
 
 ### Color

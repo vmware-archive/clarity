@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrDatagrid
 
 #### Selector & Basic Usage
@@ -349,8 +347,6 @@ Use this to project the details view when a row has master/detail enabled.
 
 ## Angular Directives
 
-{.section-header}
-
 ### ClrDatagridHideableColumn
 
 This is a structural directive that seperates on the column it is declared on. When at least one column is hidable the
@@ -432,8 +428,6 @@ Use it on the clr-dg-detail element and use the let keyword to declare a templat
 <DocComponentApi component="ClrIfDetail" item="bindings" />
 
 ## Interfaces
-
-{.section-header}
 
 ### ClrDatagridStateInterface
 

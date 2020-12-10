@@ -21,18 +21,6 @@ Third party library's and custom form control components are often created to fu
 
 :::
 
-::: component-section-level-one-title
-
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-Clarity form controls have the same basic anatomy independent of the type of input that is used.
-
-:::
-
 ::: component-section-level-two-title
 
 ### Label

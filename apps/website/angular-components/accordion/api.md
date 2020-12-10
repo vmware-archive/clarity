@@ -7,8 +7,6 @@ An accordion allows generic content to be collapsed and allows users to expand t
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrAccordion
 
 #### Selector & Basic Usage
@@ -101,8 +99,6 @@ ClrAccordionPanel is a child of [ClrAccordion](./api/#clraccordion)
 </doc-code>
 
 ## Angular Directives
-
-{.section-header}
 
 ### \*clrIfExpanded
 

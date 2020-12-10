@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrTabs
 
 Tabs structure content into separate views and allow navigation between.
@@ -73,8 +71,6 @@ ClrTab associates the [ClrTabContent](./api/#clrtabcontent) component with the [
 <DocComponentApi component="ClrTabContent" item="bindings" />
 
 ## Angular Directives
-
-{.section-header}
 
 ### ClrTabLink
 

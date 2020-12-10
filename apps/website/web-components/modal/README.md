@@ -33,29 +33,6 @@ Do not use a modal
 
 :::
 
-::: component-section-level-one-title
-
-Anatomy
-
-:::
-
-:::component-section-level-one
-
-<DocInset style="display: contents">
-<div style="position: relative; height: 400px">
-!!!include(.vuepress/public/core-usage-demos/modal/basic.html)!!!
-</div>
-</DocInset>
-
-1. **Container** holds a title, content and all modal buttons. It sits on top of an overlay.
-2. **Title** summarizes the purpose of the modal.
-3. **Content** - should be concise and clear about the task users must focus on.
-4. **Dismiss button** is in the top right corner of the modal and is an [icon button](/web-components/icon-button/) with the `cds-icon` shape of **times**. It is optional and it will close the modal when clicked.
-5. **Buttons** are right aligned and should include a clear and direct action for users to take. At least one button is required.
-6. **Overlay** is the background a modal container sits on top of. It eliminates distraction and prevents user interaction with content beneath the modal. By default, clicking the background **will not** dismiss the modal but that option can be overridden.
-
-:::
-
 :::component-section-level-one-title
 
 ## Sizes

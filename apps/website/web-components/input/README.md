@@ -51,34 +51,6 @@ Use a select:
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-<DocInset>
-<div>
-!!!include(.vuepress/public/core-usage-demos/datalist/basic.html)!!!
-</div>
-</DocInset>
-
-1. Datalist label - describes the category of options for user choice
-2. Input value - describes the chosen option (or displays placeholder text if no choice is selected)
-3. Input line - outlines the bottom of the input and can use color to show focus, success, error and disabled states
-4. Dropdopwn caret - A browser dependent button that user clicks on to activate the options menu
-5. Focus - the focus event enables several behaviors:
-
-- The input line changes color to indicate focus on the input
-- Keyboard input activates the native filtering behavior of the datalist element
-- Keyboard navigation is enabled and up/down arrow keys open the Dropdown menu
-
-6. Dropdown menu - the list of options that can be filtered and selected
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

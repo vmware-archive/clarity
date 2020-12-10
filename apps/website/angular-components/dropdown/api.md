@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrDropdown
 
 ClrDropdown is the parent container for all child components and projected content. It allows users to choose an option or action from a contextual list. ClrDropdown can be nested inside of other ClrDropdown components.

@@ -23,20 +23,6 @@ Use a file input field when the user needs to choose one or more files from thei
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label (optional)
-2. Browse button
-3. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

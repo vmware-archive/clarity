@@ -43,48 +43,6 @@ Toggle switches take up less space than an “on/off” radio button group and c
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-three-title
-
-### Toggle switch
-
-:::
-
-:::component-section-level-three
-
-Lorem ipsum.
-
-:::
-
-::: component-section-level-three-title
-
-### Label (optional)
-
-:::
-
-:::component-section-level-three
-
-Lorem ipsum.
-
-:::
-
-::: component-section-level-three-title
-
-### Helper message (optional)
-
-:::
-
-:::component-section-level-three
-
-Lorem ipsum.
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

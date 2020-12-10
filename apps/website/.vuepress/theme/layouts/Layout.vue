@@ -1,6 +1,8 @@
 <template>
   <div class="main-container" cds-layout="vertical align:stretch">
     <SkipTo toId="content-area" label="Skip to main content" />
+    <SkipTo toId="sidenav" label="Skip to navigation" />
+    <SkipTo toId="algolia-search-input" label="Skip to search" />
     <Navbar v-if="shouldShowNavbar">
       <template #sidebar-toggle>
         <button

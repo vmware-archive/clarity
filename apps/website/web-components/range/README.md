@@ -32,21 +32,6 @@ This is an imprecise input control that should only be used when the exact value
 
 ::: component-section-level-one-title
 
-## Anatomy
-
-:::
-
-::: component-section-level-one
-
-1. Label
-2. Range slider
-3. Range indicator
-4. Helper message (optional)
-
-:::
-
-::: component-section-level-one-title
-
 ## States
 
 :::

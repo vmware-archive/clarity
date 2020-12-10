@@ -24,8 +24,6 @@ For smaller amounts of data (10 to 20 lines), datagrids are a relatively heavy c
 
 For data sets with a blend of text, images, and data visualizations, or content with mixed formatting, [cards](/angular-components/card/) offer a better layout.
 
-The Clarity datagrid uses 13px ClarityCity REGULAR for content and 11px Clarity City SEMIBOLD for column headers. Consolas (monospaced) is recommended for tabular data where alignment of columns improves legibility.
-
 ## Code & Examples
 
 ### Basic Structure

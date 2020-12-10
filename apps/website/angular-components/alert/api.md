@@ -5,8 +5,6 @@ toc: true
 
 ## Angular Components
 
-{.section-header}
-
 ### ClrAlert
 
 The `ClrAlert` component displays a single alert.

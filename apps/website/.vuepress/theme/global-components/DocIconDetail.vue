@@ -14,6 +14,7 @@
               v-for="variant in variants"
               type="button"
               class="icon-variant"
+              :aria-label="`Demo ${iconName}, button`"
               :class="{ active: variant === activeVariant }"
               @click="activateVariant(variant)"
             >
@@ -23,7 +24,7 @@
         </div>
       </div>
       <div class="card-footer" cds-layout="horizontal">
-        See more usage options in&nbsp;<router-link to="/web-components/icon">How To Use</router-link>
+        See more usage options in&nbsp;<router-link to="/foundation/icons/api/">How To Use</router-link>
         <a :href="fetchIconUrl()" cds-layout="align:right">
           <cds-button size="sm" action="outline">
             <cds-icon class="download-svg-icon" shape="download"></cds-icon> SVG ICON

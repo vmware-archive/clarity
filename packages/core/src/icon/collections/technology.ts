@@ -76,6 +76,7 @@ import { nodeGroupIcon, nodeGroupIconName } from '../shapes/node-group.js';
 import { nodeIcon, nodeIconName } from '../shapes/node.js';
 import { nodesIcon, nodesIconName } from '../shapes/nodes.js';
 import { nvmeIcon, nvmeIconName } from '../shapes/nvme.js';
+import { pdfFileIcon, pdfFileIconName } from '../shapes/pdf-file.js';
 import { phoneHandsetIcon, phoneHandsetIconName } from '../shapes/phone-handset.js';
 import { pluginIcon, pluginIconName } from '../shapes/plugin.js';
 import { podIcon, podIconName } from '../shapes/pod.js';
@@ -87,6 +88,8 @@ import { resistorIcon, resistorIconName } from '../shapes/resistor.js';
 import { resourcePoolIcon, resourcePoolIconName } from '../shapes/resource-pool.js';
 import { routerIcon, routerIconName } from '../shapes/router.js';
 import { rulerPencilIcon, rulerPencilIconName } from '../shapes/ruler-pencil.js';
+import { scriptExecuteIcon, scriptExecuteIconName } from '../shapes/script-execute.js';
+import { scriptScheduleIcon, scriptScheduleIconName } from '../shapes/script-schedule.js';
 import { shieldCheckIcon, shieldCheckIconName } from '../shapes/shield-check.js';
 import { shieldXIcon, shieldXIconName } from '../shapes/shield-x.js';
 import { shieldIcon, shieldIconName } from '../shapes/shield.js';
@@ -105,6 +108,7 @@ import { usbIcon, usbIconName } from '../shapes/usb.js';
 import { vmIcon, vmIconName } from '../shapes/vm.js';
 import { vmwAppIcon, vmwAppIconName } from '../shapes/vmw-app.js';
 import { wifiIcon, wifiIconName } from '../shapes/wifi.js';
+import { xlsFileIcon, xlsFileIconName } from '../shapes/xls-file.js';
 
 export const technologyCollectionIcons: IconShapeTuple[] = [
   administratorIcon,
@@ -176,6 +180,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   nodesIcon,
   noWifiIcon,
   nvmeIcon,
+  pdfFileIcon,
   phoneHandsetIcon,
   pluginIcon,
   podIcon,
@@ -187,6 +192,8 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   resourcePoolIcon,
   routerIcon,
   rulerPencilIcon,
+  scriptExecuteIcon,
+  scriptScheduleIcon,
   shieldIcon,
   shieldCheckIcon,
   shieldXIcon,
@@ -205,6 +212,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   vmIcon,
   vmwAppIcon,
   wifiIcon,
+  xlsFileIcon,
 ];
 
 export const technologyCollectionAliases: IconAlias[] = [
@@ -306,6 +314,7 @@ declare module '@cds/core/internal' {
     [nodesIconName]: string;
     [noWifiIconName]: string;
     [nvmeIconName]: string;
+    [pdfFileIconName]: string;
     [phoneHandsetIconName]: string;
     [pluginIconName]: string;
     [podIconName]: string;
@@ -317,6 +326,8 @@ declare module '@cds/core/internal' {
     [resourcePoolIconName]: string;
     [routerIconName]: string;
     [rulerPencilIconName]: string;
+    [scriptExecuteIconName]: string;
+    [scriptScheduleIconName]: string;
     [shieldIconName]: string;
     [shieldCheckIconName]: string;
     [shieldXIconName]: string;
@@ -335,5 +346,6 @@ declare module '@cds/core/internal' {
     [vmIconName]: string;
     [vmwAppIconName]: string;
     [wifiIconName]: string;
+    [xlsFileIconName]: string;
   }
 }

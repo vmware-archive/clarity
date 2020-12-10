@@ -12,9 +12,11 @@ import { accessibility2Icon, accessibility2IconName } from '../shapes/accessibil
 import { addTextIcon, addTextIconName } from '../shapes/add-text.js';
 import { alarmClockIcon, alarmClockIconName } from '../shapes/alarm-clock.js';
 import { alarmOffIcon, alarmOffIconName } from '../shapes/alarm-off.js';
+import { announcementIcon, announcementIconName } from '../shapes/announcement.js';
 import { asteriskIcon, asteriskIconName } from '../shapes/asterisk.js';
 import { banIcon, banIconName } from '../shapes/ban.js';
 import { betaIcon, betaIconName } from '../shapes/beta.js';
+import { birthdayCakeIcon, birthdayCakeIconName } from '../shapes/birthday-cake.js';
 import { boltIcon, boltIconName } from '../shapes/bolt.js';
 import { bookIcon, bookIconName } from '../shapes/book.js';
 import { briefcaseIcon, briefcaseIconName } from '../shapes/briefcase.js';
@@ -138,9 +140,11 @@ export const essentialCollectionIcons: IconShapeTuple[] = [
   addTextIcon,
   alarmClockIcon,
   alarmOffIcon,
+  announcementIcon,
   asteriskIcon,
   banIcon,
   betaIcon,
+  birthdayCakeIcon,
   boltIcon,
   bookIcon,
   briefcaseIcon,
@@ -301,9 +305,11 @@ declare module '@cds/core/internal' {
     [addTextIconName]: string;
     [alarmClockIconName]: string;
     [alarmOffIconName]: string;
+    [announcementIconName]: string;
     [asteriskIconName]: string;
     [banIconName]: string;
     [betaIconName]: string;
+    [birthdayCakeIconName]: string;
     [boltIconName]: string;
     [bookIconName]: string;
     [briefcaseIconName]: string;

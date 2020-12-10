@@ -474,6 +474,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     get allSelected(): boolean;
     set allSelected(_value: boolean);
     clrDetailExpandableAriaLabel: string;
+    clrDgDisablePageFocus: boolean;
     set clrDgPreserveSelection(state: boolean);
     clrDgSingleActionableAriaLabel: string;
     clrDgSingleSelectionAriaLabel: string;

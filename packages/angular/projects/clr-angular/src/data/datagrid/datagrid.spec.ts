@@ -37,6 +37,7 @@ import { DetailService } from './providers/detail.service';
       *ngIf="!destroy"
       [(clrDgSelected)]="selected"
       [clrDgLoading]="loading"
+      [clrDgDisablePageFocus]="disableFocus"
       (clrDgRefresh)="refresh($event)"
     >
       <clr-dg-column>
@@ -57,6 +58,7 @@ import { DetailService } from './providers/detail.service';
 class FullTest {
   items = [1, 2, 3];
 
+  disableFocus = false;
   loading = false;
   selected: number[];
 
@@ -618,6 +620,20 @@ export default function (): void {
           const page: Page = context.getClarityProvider(Page);
           page.current = 2;
           expect(() => context.detectChanges()).not.toThrow();
+        });
+
+        it('focuses the datagrid on page change', function () {
+          expect(context.clarityDirective.datagridTable.nativeElement).not.toEqual(document.activeElement);
+          context.getClarityProvider(Page).current = 2;
+          expect(context.clarityDirective.datagridTable.nativeElement).toEqual(document.activeElement);
+        });
+
+        it('does not focus the datagrid on page change when disabled', function () {
+          context.testComponent.disableFocus = true;
+          context.detectChanges();
+          expect(context.clarityDirective.datagridTable.nativeElement).not.toEqual(document.activeElement);
+          context.getClarityProvider(Page).current = 2;
+          expect(context.clarityDirective.datagridTable.nativeElement).not.toEqual(document.activeElement);
         });
 
         // Actually not fixed yet, my bad

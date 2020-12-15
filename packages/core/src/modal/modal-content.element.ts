@@ -27,7 +27,7 @@ import { html, LitElement } from 'lit-element';
  *   </cds-modal-actions>
  * </cds-modal>
  * ```
- * @beta
+ *
  * @element cds-modal-content
  */
 export class CdsModalContent extends LitElement {

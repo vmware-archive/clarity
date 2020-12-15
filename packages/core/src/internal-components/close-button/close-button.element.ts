@@ -20,7 +20,7 @@ import { timesIcon } from '@cds/core/icon/shapes/times.js';
  * ```html
  * <cds-internal-close-button></cds-internal-close-button>
  * ```
- * @beta
+ *
  * @element cds-internal-close-button
  * @cssprop --background
  * @cssprop --color

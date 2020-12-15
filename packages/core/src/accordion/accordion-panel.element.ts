@@ -32,6 +32,7 @@ import { styles } from './accordion-panel.element.css.js';
  * </cds-accordion>
  * ```
  *
+ * @beta
  * @element cds-accordion-panel
  * @slot
  * @slot cds-accordion-header

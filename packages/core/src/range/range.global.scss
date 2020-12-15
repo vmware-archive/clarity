@@ -24,6 +24,7 @@ cds-range {
     background: var(--thumb-background);
     -webkit-appearance: none;
     align-self: center;
+    margin-top: calc(#{$cds-global-space-3} * -1);
   }
 
   input[type='range']:focus::-webkit-slider-runnable-track {
@@ -46,43 +47,5 @@ cds-range {
     width: var(--thumb-width);
     border-radius: #{$cds-alias-object-border-radius-200};
     background: var(--thumb-background);
-  }
-
-  input[type='range']::-ms-track {
-    width: 100%;
-    height: var(--track-height);
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-  }
-
-  input[type='range']::-ms-fill-lower {
-    background: var(--track-background);
-    border: 0;
-    border-radius: var(--border-radius, #{$cds-alias-object-border-radius-100});
-    box-shadow: 0;
-  }
-
-  input[type='range']::-ms-fill-upper {
-    background: var(--track-background);
-    border: 0;
-    box-shadow: 0;
-  }
-
-  input[type='range']::-ms-thumb {
-    box-shadow: 0;
-    border: 0;
-    height: var(--thumb-height);
-    width: var(--thumb-width);
-    border-radius: #{$cds-alias-object-border-radius-200};
-    background: var(--thumb-background);
-  }
-
-  input[type='range']:focus::-ms-fill-lower {
-    background: var(--track-background);
-  }
-
-  input[type='range']:focus::-ms-fill-upper {
-    background: var(--track-background);
   }
 }

@@ -21,6 +21,7 @@ import {
   supportsResizeObserver,
   internalProperty,
   syncProps,
+  pxToRem,
 } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
@@ -302,8 +303,8 @@ export class CdsControl extends LitElement {
   private async setActionOffsetPadding() {
     await childrenUpdateComplete(this.controlActions);
     if (this.supportsPrefixSuffixActions) {
-      const start = `${this.prefixAction.getBoundingClientRect().width + 6}px`;
-      const end = `${this.suffixAction.getBoundingClientRect().width + 6}px`;
+      const start = pxToRem(this.prefixAction.getBoundingClientRect().width + 6);
+      const end = pxToRem(this.suffixAction.getBoundingClientRect().width + 6);
       this.inputControl.style.setProperty('padding-left', this.isRTL ? end : start, 'important');
       this.inputControl.style.setProperty('padding-right', this.isRTL ? start : end, 'important');
     }

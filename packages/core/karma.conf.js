@@ -12,7 +12,12 @@ module.exports = config => {
       require('karma-coverage-istanbul-reporter'),
     ],
     client: { clearContext: false },
-    files: glob.sync('dist/core/**/!(test-dropdown.element).spec.js').map(f => ({ pattern: f, type: 'module' })),
+    files: [
+      ...glob.sync('dist/core/**/!(test-dropdown.element).spec.js').map(f => ({ pattern: f, type: 'module' })),
+      'node_modules/normalize.css/normalize.css',
+      'dist/core/global.min.css',
+      'node_modules/@cds/city/css/bundles/default.min.css',
+    ],
     esm: {
       coverage: true,
       importMap: './import-map.importmap',

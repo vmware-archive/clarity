@@ -96,7 +96,7 @@ describe('cds-form-group', () => {
     await componentIsStable(formGroup); // firstUpdated
 
     expect(controls[0].querySelector('label').getBoundingClientRect().width).toBe(200);
-    expect(getComputedStyle(formGroup).getPropertyValue('--internal-label-min-width')).toBe('200px');
+    expect(getComputedStyle(formGroup).getPropertyValue('--internal-label-min-width')).toBe('10rem');
   });
 
   it('should sync layouts when a control overflows', async () => {

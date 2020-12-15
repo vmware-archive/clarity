@@ -14,6 +14,7 @@ import {
   internalProperty,
   StatusTypes,
   isString,
+  pxToRem,
 } from '@cds/core/internal';
 import { html, LitElement, query, svg } from 'lit-element';
 import { styles } from './icon.element.css.js';
@@ -152,10 +153,11 @@ export class CdsIcon extends LitElement {
 
   updated(props: Map<string, any>) {
     if (props.has('innerOffset') && this.innerOffset > 0) {
-      const dimension = `calc(100% + ${this.innerOffset * 2}px)`;
+      const val = pxToRem(this.innerOffset);
+      const dimension = `calc(100% + ${Number(val.replace('rem', '')) * 2}rem)`;
       this.svg.style.width = dimension;
       this.svg.style.height = dimension;
-      this.svg.style.margin = `-${this.innerOffset} 0 0 -${this.innerOffset}`;
+      this.svg.style.margin = `-${val} 0 0 -${val}`;
     }
   }
 

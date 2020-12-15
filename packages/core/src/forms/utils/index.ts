@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-element';
-import { isVisible } from '@cds/core/internal';
+import { isVisible, pxToRem } from '@cds/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsControl } from '../control/control.element.js';
@@ -53,7 +53,7 @@ export function getStatusIcon(status: 'error' | 'success' | 'neutral') {
 export async function getLargestPrimaryLabelWidth(controls: (CdsControl | CdsInternalControlGroup)[]) {
   return Promise.all(controls.map(c => c.updateComplete)).then(() => {
     const primaryLabels = controls.filter(c => c.controlLabel?.action === 'primary');
-    return Math.max(...primaryLabels.map(c => c.controlLabel.getBoundingClientRect().width));
+    return pxToRem(Math.max(...primaryLabels.map(c => c.controlLabel.getBoundingClientRect().width)));
   });
 }
 

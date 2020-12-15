@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isTshirtSize, updateElementStyles } from '@cds/core/internal';
+import { isTshirtSize, pxToRem, updateElementStyles } from '@cds/core/internal';
 import isNil from 'ramda/es/isNil';
 import { CdsIcon } from '../icon.element.js';
 
@@ -24,7 +24,7 @@ export function getUpdateSizeStrategy(size: string) {
     return SizeUpdateStrategies.ValidSizeString;
   }
 
-  if (!isNaN(parseInt(size, 10))) {
+  if (!isNaN(parseInt(size, 10)) && size.match(/^[0-9 ]+$/)) {
     return SizeUpdateStrategies.ValidNumericString;
   }
 
@@ -33,10 +33,11 @@ export function getUpdateSizeStrategy(size: string) {
 
 export function updateIconSizeStyle(el: CdsIcon, size: string) {
   const updateStrategy = getUpdateSizeStrategy(size);
+  const val = pxToRem(parseInt(size));
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
-      updateElementStyles(el, ['width', `${size}px`], ['height', `${size}px`]);
+      updateElementStyles(el, ['width', val], ['height', val]);
       return;
     case SizeUpdateStrategies.ValidSizeString:
       updateElementStyles(el, ['width', ''], ['height', '']);

@@ -8,19 +8,19 @@ import { existsInWindow } from '../utils/exists.js';
 
 export class LogService {
   static log(...args: any) {
-    if (notTestingEnvironment()) {
+    if (notProductionEnvironment() && notTestingEnvironment()) {
       console.log(...args);
     }
   }
 
   static warn(...args: any) {
-    if (notTestingEnvironment()) {
+    if (notProductionEnvironment() && notTestingEnvironment()) {
       console.warn(...args);
     }
   }
 
   static error(...args: any) {
-    if (notTestingEnvironment()) {
+    if (notProductionEnvironment() && notTestingEnvironment()) {
       console.error(...args);
     }
   }
@@ -28,4 +28,8 @@ export class LogService {
 
 function notTestingEnvironment() {
   return !existsInWindow(['jasmine']);
+}
+
+function notProductionEnvironment() {
+  return !window.CDS.environment.production;
 }

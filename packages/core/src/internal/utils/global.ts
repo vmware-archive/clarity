@@ -10,9 +10,13 @@ import { getAngularVersion, getReactVersion, getVueVersion, getAngularJSVersion 
 export interface CDSGlobal {
   _version: string[];
   _loadedElements: string[];
-  _react: { version: string }; // set by @clr/react
+  _react: { version: string }; // set by @cds/react
   getVersion: () => CDSLog;
   logVersion: () => void;
+  environment: {
+    /** Set to true for production env to disable dev time logging and tooling */
+    production: boolean;
+  };
 }
 
 export interface CDSLog {
@@ -23,6 +27,9 @@ export interface CDSLog {
   angularJSVersion?: string | undefined;
   reactVersion?: string | undefined;
   vueVersion?: string | undefined;
+  environment: {
+    production: boolean;
+  };
 }
 
 declare global {
@@ -34,12 +41,13 @@ declare global {
 function getVersion() {
   const log: CDSLog = {
     versions: window.CDS._version,
-    loadedElements: window.CDS._loadedElements,
+    environment: window.CDS.environment,
     userAgent: navigator.userAgent,
     angularVersion: getAngularVersion(false),
     angularJSVersion: getAngularJSVersion(false),
     reactVersion: getReactVersion(false),
     vueVersion: getVueVersion(false),
+    loadedElements: window.CDS._loadedElements,
   };
   return log;
 }
@@ -53,6 +61,9 @@ function initializeCDSGlobal() {
     _version: [],
     _loadedElements: [],
     _react: { version: undefined },
+    environment: {
+      production: false,
+    },
     getVersion,
     logVersion,
   };

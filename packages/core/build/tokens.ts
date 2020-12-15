@@ -339,8 +339,8 @@ const typography = {
   },
   baseFontSize: token('125%'),
   baseFontSizePx: token(20),
-  fontFamily: token("'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif"),
-  headerFontFamily: token("'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif"),
+  fontFamily: token("'Clarity City', Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif"),
+  headerFontFamily: token("'Clarity City', Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif"),
   topGapHeight: token('0.1475em'), // line-height eraser
   ascenderHeight: token('0.1703em'), // line-height eraser
   xHeight: token('0.517em'), // line-height eraser

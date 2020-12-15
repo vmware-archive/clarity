@@ -25,7 +25,7 @@ function buildCSSTokens(theme: CdsTheme) {
 }
 
 [cds-base-font='16'] {
-  --cds-global-base-font-size: 100%;
+  --cds-global-typography-base-font-size: 100%;
   ${tokens
     .filter(tokenEntry => typeof tokenEntry[1].value === 'number')
     .map(tokenEntry => `  --cds-${camelCaseToKebab(tokenEntry[1].name)}: ${convertCSSValue(tokenEntry[1], 16)};\n`)

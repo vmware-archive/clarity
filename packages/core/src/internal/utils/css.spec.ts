@@ -6,7 +6,14 @@
 
 import { html } from 'lit-html';
 import { createTestElement, removeTestElement } from './../../test/utils.js';
-import { addClassnames, hasClassnames, removeClassnames, removeClassnamesUnless, updateElementStyles } from './css.js';
+import {
+  addClassnames,
+  hasClassnames,
+  pxToRem,
+  removeClassnames,
+  removeClassnamesUnless,
+  updateElementStyles,
+} from './css.js';
 
 describe('Css utility functions - ', () => {
   let testElement: HTMLElement;
@@ -82,6 +89,12 @@ describe('Css utility functions - ', () => {
       expect(testMe.style.backgroundColor).toBe('yellow');
       expect(testMe.style.width).toBe('100%');
       expect(testMe.style.fontSize).toBe('28px');
+    });
+  });
+
+  describe('pxToRem: ', () => {
+    it('should convert px to rem values from base font size token', () => {
+      expect(pxToRem(10)).toBe('0.5rem');
     });
   });
 });

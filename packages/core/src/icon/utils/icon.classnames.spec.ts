@@ -37,6 +37,7 @@ describe('Icon classname helpers: ', () => {
     it('should return "bad-value" if passed a string that is not a number and not a t-shirt size', () => {
       expect(getUpdateSizeStrategy('jabberwocky')).toEqual(SizeUpdateStrategies.BadSizeValue);
       expect(getUpdateSizeStrategy('xxxs')).toEqual(SizeUpdateStrategies.BadSizeValue);
+      expect(getUpdateSizeStrategy('4d9rs')).toEqual(SizeUpdateStrategies.BadSizeValue); // test regex as this will pass parseInt
     });
   });
 
@@ -61,16 +62,15 @@ describe('Icon classname helpers: ', () => {
     it('should remove classnames and update size styles if passed a numeric string', async () => {
       updateIconSizeStyle(component, '15');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('15px');
-      expect(component.style.height).toEqual('15px');
+      expect(component.style.width).toEqual('0.75rem');
+      expect(component.style.height).toEqual('0.75rem');
     });
     it('should remove size styles and add classname if passed a t-shirt size', async () => {
-      const myDims = '30';
       await componentIsStable(component);
-      component.size = myDims;
+      component.size = '30';
       await componentIsStable(component);
-      expect(component.style.height).toEqual(`${myDims}px`);
-      expect(component.style.width).toEqual(`${myDims}px`);
+      expect(component.style.height).toEqual('1.5rem');
+      expect(component.style.width).toEqual('1.5rem');
       updateIconSizeStyle(component, 'xl');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -95,8 +95,8 @@ describe('Icon classname helpers: ', () => {
       expect(component.style.height).toEqual('');
       updateIconSizeStyle(component, '48');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('48px');
-      expect(component.style.height).toEqual('48px');
+      expect(component.style.width).toEqual('2.4rem');
+      expect(component.style.height).toEqual('2.4rem');
       updateIconSizeStyle(component, void 0);
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -112,8 +112,8 @@ describe('Icon classname helpers: ', () => {
       expect(component.style.height).toEqual('');
       updateIconSizeStyle(component, '48');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('48px');
-      expect(component.style.height).toEqual('48px');
+      expect(component.style.width).toEqual('2.4rem');
+      expect(component.style.height).toEqual('2.4rem');
       updateIconSizeStyle(component, '');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -127,12 +127,12 @@ describe('Icon classname helpers: ', () => {
       await componentIsStable(component);
       updateIconSizeStyle(component, '24');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('24px');
-      expect(component.style.height).toEqual('24px');
+      expect(component.style.width).toEqual('1.2rem');
+      expect(component.style.height).toEqual('1.2rem');
       updateIconSizeStyle(component, '4d9rs');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('24px');
-      expect(component.style.height).toEqual('24px');
+      expect(component.style.width).toEqual('1.2rem');
+      expect(component.style.height).toEqual('1.2rem');
     });
   });
 });

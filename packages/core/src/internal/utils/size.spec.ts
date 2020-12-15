@@ -71,8 +71,8 @@ describe('Functional Helper: ', () => {
 
     it('updates equilateral styles if passed a numeric string', () => {
       updateEquilateralSizeStyles(testDiv, '100');
-      expect(testDiv.style.width).toBe('100px');
-      expect(testDiv.style.height).toBe('100px');
+      expect(testDiv.style.width).toBe('5rem');
+      expect(testDiv.style.height).toBe('5rem');
     });
 
     it('does nothing if passed a non-numeric string that is not a t-shirt size', () => {

@@ -12,6 +12,7 @@ import {
   property,
   childrenUpdateComplete,
   elementResize,
+  pxToRem,
 } from '@cds/core/internal';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsInternalControlInline } from '../control-inline/control-inline.element.js';
@@ -111,12 +112,9 @@ export class CdsFormGroup extends LitElement {
 
   private async setControlLabelWidths() {
     await childrenUpdateComplete(this.controlsAndGroups);
-    this.style.setProperty(
-      '--internal-label-min-width',
-      `${await getLargestPrimaryLabelWidth(this.controlsAndGroups)}px`
-    );
+    this.style.setProperty('--internal-label-min-width', await getLargestPrimaryLabelWidth(this.controlsAndGroups));
     elementResize(this, () =>
-      this.style.setProperty('--internal-label-max-width', `${this.getBoundingClientRect().width}px`)
+      this.style.setProperty('--internal-label-max-width', pxToRem(this.getBoundingClientRect().width))
     );
   }
 

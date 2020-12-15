@@ -37,3 +37,11 @@ export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, st
   });
   return el;
 }
+
+export function pxToRem(pxValue: number) {
+  const baseProp = window
+    .getComputedStyle(document.body, null)
+    .getPropertyValue('--cds-global-typography-base-font-size');
+  const baseFontSize = (16 * parseInt(baseProp !== '' ? baseProp : '100%')) / 100;
+  return `${pxValue / baseFontSize}rem`;
+}

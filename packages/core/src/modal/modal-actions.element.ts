@@ -28,7 +28,6 @@ import { html, LitElement } from 'lit-element';
  * </cds-modal>
  * ```
  *
- * @beta
  * @element cds-modal-actions
  */
 export class CdsModalActions extends LitElement {

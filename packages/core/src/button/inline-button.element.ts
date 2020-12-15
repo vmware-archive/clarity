@@ -19,7 +19,7 @@ import { styles } from './inline-button.element.css.js';
  * ```html
  * <cds-inline-button>Button text goes here</cds-inline-button>
  * ```
- * @beta
+ *
  * @element cds-inline-button
  * @slot - Content slot for inside the button
  * @cssprop --text-decoration

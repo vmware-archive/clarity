@@ -31,7 +31,7 @@ import { styles } from './accordion.element.css.js';
  *   </cds-accordion-panel>
  * </cds-accordion>
  * ```
- *
+ * @beta
  * @element cds-accordion
  * @slot - Content slot for inside the accordion
  * @cssprop --border-color

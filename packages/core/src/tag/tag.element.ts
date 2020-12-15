@@ -27,7 +27,6 @@ import { styles } from './tag.element.css.js';
  * <cds-tag status="info">Info</cds-tag>
  * ```
  *
- * @beta
  * @element cds-tag
  * @slot - Content slot for inside the tag
  * @cssprop --background

@@ -43,7 +43,6 @@ export const enum ClrLoadingState {
  * <cds-button>submit</cds-button>
  * ```
  *
- * @beta
  * @element cds-button
  * @slot - Content slot for inside the button
  * @cssprop --background

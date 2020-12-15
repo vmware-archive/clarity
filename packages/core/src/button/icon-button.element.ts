@@ -20,7 +20,7 @@ import { CdsButton, ClrLoadingState, iconCheck, iconSpinner } from './button.ele
  * ```html
  * <cds-icon-button><cds-icon shape="download"></cds-icon></cds-icon-button>
  * ```
- * @beta
+ *
  * @element cds-icon-button
  * @slot - Content slot for inside the button
  * @cssprop --background

@@ -47,7 +47,7 @@ Stack views are designed for use in the main content area and modals.
 <DocVideo src="/images/angular-components/stack-view/stackview-basic.mp4" :width="874" :autoplay="true"></DocVideo>
 
 <doc-code>
-<<< .vuepress/public/demos/stack-view/stack-view.html
+<<< .vuepress/code/demos/stack-view/stack-view.html
 </doc-code>
 
 ### Stack View With Editing in a Modal
@@ -55,7 +55,7 @@ Stack views are designed for use in the main content area and modals.
 <DocVideo src="/images/angular-components/stack-view/stackview-editing.mp4" :width="884" :autoplay="true"></DocVideo>
 
 <doc-code>
-<<< .vuepress/public/demos/stack-view/stack-view-editing.html
+<<< .vuepress/code/demos/stack-view/stack-view-editing.html
 </doc-code>
 
 ### Lazy Loading of Children
@@ -63,5 +63,5 @@ Stack views are designed for use in the main content area and modals.
 <DocVideo src="/images/angular-components/stack-view/stackview-lazy.mp4" :width="874" :autoplay="true"></DocVideo>
 
 <doc-code>
-<<< .vuepress/public/demos/stack-view/stack-view-lazy.html
+<<< .vuepress/code/demos/stack-view/stack-view-lazy.html
 </doc-code>

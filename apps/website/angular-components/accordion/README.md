@@ -44,7 +44,7 @@ A basic accordion is made up of a set of panels, each with a title and content.
 <ClrImage src="/images/angular-components/accordion/accordion.png" />
 
 <doc-code>
-<<< .vuepress/public/demos/accordion/basic.html
+<<< .vuepress/code/demos/accordion/basic.html
 </doc-code>
 
 ## Accessibility

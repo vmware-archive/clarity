@@ -54,3 +54,8 @@
 [cds-layout*='m-b:xl+'] {
   margin-bottom: var(--cds-token-space-size-13, 3.6rem) !important;
 }
+
+[cds-theme*='dark'] {
+  background: var(--cds-global-color-construction-1000);
+  padding: var(--cds-global-layout-space-md);
+}

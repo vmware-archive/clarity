@@ -498,11 +498,11 @@ additional context for users unfamiliar with what action your icon button might 
 action.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/accessibility.html)!!!
+!!!include(.vuepress/code/demos/button-group/accessibility.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/accessibility.html
+<<< .vuepress/code/demos/button-group/accessibility.html
 </doc-code>
 
 ## Code & Examples
@@ -518,61 +518,61 @@ Clarity [Buttons](/angular-components/button) primary, outline and flat classes 
 ### Basic Structure
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/basic-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/basic-css.html
+<<< .vuepress/code/demos/button-group/basic-css.html
 </doc-code>
 
 ### Overflow
 
 <doc-demo style="height: 6rem;">
-!!!include(.vuepress/public/demos/button-group/overflow-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/overflow-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/overflow-css.html
+<<< .vuepress/code/demos/button-group/overflow-css.html
 </doc-code>
 
 ### Primary
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/primary-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/primary-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/primary-css.html
+<<< .vuepress/code/demos/button-group/primary-css.html
 </doc-code>
 
 ### Outline
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/outline-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/outline-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/outline-css.html
+<<< .vuepress/code/demos/button-group/outline-css.html
 </doc-code>
 
 ### Flat
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/flat-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/flat-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/flat-css.html
+<<< .vuepress/code/demos/button-group/flat-css.html
 </doc-code>
 
 ### Small
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/small-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/small-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/small-css.html
+<<< .vuepress/code/demos/button-group/small-css.html
 </doc-code>
 
 ### Mixed
@@ -580,11 +580,11 @@ Clarity [Buttons](/angular-components/button) primary, outline and flat classes 
 Override a Button type in a Button Group by extending the Button type class directly on the corresponding Button.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/mixed-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/mixed-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/mixed-css.html
+<<< .vuepress/code/demos/button-group/mixed-css.html
 </doc-code>
 
 ### Icons
@@ -592,50 +592,50 @@ Override a Button type in a Button Group by extending the Button type class dire
 Text wrapped in `.clr-icon-title` is only displayed in the Overflow Menu.
 
 <doc-demo style="min-height: 7rem">
-!!!include(.vuepress/public/demos/button-group/icons-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/icons-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/icons-css.html
+<<< .vuepress/code/demos/button-group/icons-css.html
 </doc-code>
 
 ### Icons with text
 
 <doc-demo style="min-height: 7rem">
-!!!include(.vuepress/public/demos/button-group/icons-with-text-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/icons-with-text-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/icons-with-text-css.html
+<<< .vuepress/code/demos/button-group/icons-with-text-css.html
 </doc-code>
 
 ### Checkbox
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/checkbox-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/checkbox-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/checkbox-css.html
+<<< .vuepress/code/demos/button-group/checkbox-css.html
 </doc-code>
 
 ### Radio
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/radio-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/radio-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/radio-css.html
+<<< .vuepress/code/demos/button-group/radio-css.html
 </doc-code>
 
 ### Angular component
 
 Use the `clrInMenu` input to determine if a Button belongs in the Overflow Menu or not
 <doc-demo>
-!!!include(.vuepress/public/demos/button-group/basic-css.html)!!!
+!!!include(.vuepress/code/demos/button-group/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button-group/basic-ng.html
+<<< .vuepress/code/demos/button-group/basic-ng.html
 </doc-code>

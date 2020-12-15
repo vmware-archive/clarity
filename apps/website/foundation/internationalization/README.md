@@ -16,13 +16,13 @@ In order to improve accessibility of its components, Clarity added a default Eng
 First, you need to make a new object that has a key value pair for each string you want to localize. You only need to define the strings that you need for your application. Then Inject the customized strings into the service.
 
 <doc-code>
-<<< .vuepress/public/demos/i18n/localize-ng.ts
+<<< .vuepress/code/demos/i18n/localize-ng.ts
 </doc-code>
 
 It is possible to call the `ClrCommonStringsService.localize()` method at anytime and change the translation. You could call a backend service to load these translation strings as well and then update them on the fly when a user changes translations in your app.
 
 <doc-code>
-<<< .vuepress/public/demos/i18n/translate-ng.ts
+<<< .vuepress/code/demos/i18n/translate-ng.ts
 </doc-code>
 
 ### Localization Strings
@@ -38,13 +38,13 @@ If you used the original implementation of `ClrCommonStrings` found in versions 
 First, remove the provider from your `AppModule`. It should look something like the following.
 
 <doc-code>
-<<< .vuepress/public/demos/i18n/update-step-1.ts
+<<< .vuepress/code/demos/i18n/update-step-1.ts
 </doc-code>
 
 Second, convert your string service class to an object. This is optional but makes for easier formatting. If you skip this step, you'll have to create a new instance of your class to convert it to an object.
 
 <doc-code>
-<<< .vuepress/public/demos/i18n/update-step-2.ts
+<<< .vuepress/code/demos/i18n/update-step-2.ts
 </doc-code>
 
 Finally, you can now inject the `ClrCommonStringsService` into your `AppComponent` and pass in the localized strings, as shown above.

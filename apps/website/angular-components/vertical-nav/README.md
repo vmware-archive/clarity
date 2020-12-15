@@ -335,7 +335,7 @@ When labels get too long they will be trimmed and followed by an ellipsis (…).
 Use the `clr-vertical-nav` component to create the Vertical Nav. Add the `clrVerticalNavLink` directive on each Nav Link in the Vertical Nav. Use `<div class="nav-divider"></div>` to add a horizonal divider to separate logical groups.
 
 <doc-code>
-<<< .vuepress/public/demos/vertical-nav/basic-ng.html
+<<< .vuepress/code/demos/vertical-nav/basic-ng.html
 </doc-code>
 
 ### Icon links
@@ -343,7 +343,7 @@ Use the `clr-vertical-nav` component to create the Vertical Nav. Add the `clrVer
 Use the `clrVerticalNavIcon` directive on the icon leading the text in a navigation link.
 
 <doc-code>
-<<< .vuepress/public/demos/vertical-nav/icon-links-ng.html
+<<< .vuepress/code/demos/vertical-nav/icon-links-ng.html
 </doc-code>
 
 ### Collapsible navigation
@@ -351,7 +351,7 @@ Use the `clrVerticalNavIcon` directive on the icon leading the text in a navigat
 `[clrVerticalNavCollapsible]` input can be used to toggle the collapsible behavior of the Vertical Nav. The state of the nav can be controlled by the `[(clrVerticalNavCollapsed)]` input.
 
 <doc-code>
-<<< .vuepress/public/demos/vertical-nav/collapsible-ng.html
+<<< .vuepress/code/demos/vertical-nav/collapsible-ng.html
 </doc-code>
 
 ### VerticalNav groups
@@ -363,7 +363,7 @@ Navigation Links can also be added directly inside of the `clr-vertical-nav` wit
 </cds-alert-group>
 
 <doc-code>
-<<< .vuepress/public/demos/vertical-nav/vertical-ng.html
+<<< .vuepress/code/demos/vertical-nav/vertical-ng.html
 </doc-code>
 
 ### Lazy loading nav links
@@ -377,5 +377,5 @@ Navigation Links can also be added directly inside of the `clr-vertical-nav` wit
 </cds-alert-group>
 
 <doc-code>
-<<< .vuepress/public/demos/vertical-nav/lazy-ng.html
+<<< .vuepress/code/demos/vertical-nav/lazy-ng.html
 </doc-code>

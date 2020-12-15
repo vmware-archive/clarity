@@ -20,11 +20,11 @@ Clarity offers three types of forms: horizontal (our recommended default), verti
 Default Horizontal formats are good for the quick scanning of labels, and can be used in cases of limited vertical space. The space between label and input however can slow users down.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/form/horizontal.html)!!!
+!!!include(.vuepress/code/demos/form/horizontal.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/form/horizontal.html
+<<< .vuepress/code/demos/form/horizontal.html
 </doc-code>
 
 ### Vertical
@@ -32,11 +32,11 @@ Default Horizontal formats are good for the quick scanning of labels, and can be
 This option is better for scanning, mobile experiences, accessibility, and localization. While it offers better completion rates, it is less ideal for longer forms.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/form/vertical.html)!!!
+!!!include(.vuepress/code/demos/form/vertical.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/form/vertical.html
+<<< .vuepress/code/demos/form/vertical.html
 </doc-code>
 
 ### Compact
@@ -44,11 +44,11 @@ This option is better for scanning, mobile experiences, accessibility, and local
 For cases with highly limited space, we provide a compact form layout.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/form/compact.html)!!!
+!!!include(.vuepress/code/demos/form/compact.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/form/compact.html
+<<< .vuepress/code/demos/form/compact.html
 </doc-code>
 
 ### Form Length

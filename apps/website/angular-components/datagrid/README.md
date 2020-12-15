@@ -33,7 +33,7 @@ To use our Datagrid, you do not need to pass an array of data or a JSON configur
 <ClrImage title="basic structure" src="/images/angular-components/datagrid/datagrid-basic-structure.png" :align="'center'" :width="864" />
 
 <doc-code>
-<<< .vuepress/public/demos/datagrid/basic-structure.html
+<<< .vuepress/code/demos/datagrid/basic-structure.html
 </doc-code>
 
 ### Custom Cell Rendering
@@ -43,7 +43,7 @@ The contents of datagrid cells or column headers can be as complex as you need t
 Because we use a declarative API, simply projecting your HTML inside our components' templates, you have complete control over what we display. The contents of datagrid cells or column headers can be as complex as you need them to be, with nested components and interpolation.
 
 <doc-code>
-<<< .vuepress/public/demos/datagrid/custom-rendering.html
+<<< .vuepress/code/demos/datagrid/custom-rendering.html
 </doc-code>
 
 ### Smart Iterator
@@ -51,7 +51,7 @@ Because we use a declarative API, simply projecting your HTML inside our compone
 If you want to let us handle all the data processing needed by our various features, you will need to use `*clrDgItems` instead of `*ngFor`. They have the exact syntax and behave the same way, but the former lets us have full control what is actually being displayed. As you can see in the following example it doesn't change anything for our simple case, but it will as soon as we start adding features like sorting, filtering, pagination, etc.,
 
 <doc-code>
-<<< .vuepress/public/demos/datagrid/smart-iterator.html
+<<< .vuepress/code/demos/datagrid/smart-iterator.html
 </doc-code>
 
 ### Binding Properties
@@ -65,7 +65,7 @@ By default, bound columns are assumed to contain string-like contents and the us
 <DocVideo src="/images/angular-components/datagrid/datagrid-binding-properties.mp4" :width="874" :autoplay="true"></DocVideo>
 
 <doc-code>
-<<< .vuepress/public/demos/datagrid/binding-properties.html
+<<< .vuepress/code/demos/datagrid/binding-properties.html
 </doc-code>
 
 <cds-alert-group status="warning" type="default">

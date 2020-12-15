@@ -92,11 +92,11 @@ If you are using Angular, the recommended approach is to always use the `ClrInpu
 This is the most basic way to create an input inside of a form. This is only if you don't have a need for a label or validation. You need to add `clrInput` to your input to wire up the directive. Notice, it is not necessary to add `type="text"` as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/input/basic-css.html)!!!
+!!!include(.vuepress/code/demos/input/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/input/basic-ng.html
+<<< .vuepress/code/demos/input/basic-ng.html
 </doc-code>
 
 ### Labels
@@ -106,11 +106,11 @@ For anything beyond a standalone input field, you'll need to wrap your input wit
 Then you can add a `label` element and it will automatically get laid out correctly in the form.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/input/label-css.html)!!!
+!!!include(.vuepress/code/demos/input/label-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/input/label-ng.html
+<<< .vuepress/code/demos/input/label-ng.html
 </doc-code>
 
 ### Helper and error messages
@@ -120,11 +120,11 @@ The input form control wires up with the validations placed on an input, such as
 Note: the validation only displays an error after the user has left focus on an input. This is for better UX where the user doesn't see an error while they are still typing.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/input/helper-css.html)!!!
+!!!include(.vuepress/code/demos/input/helper-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/input/helper-ng.html
+<<< .vuepress/code/demos/input/helper-ng.html
 </doc-code>
 
 ## Accessibility

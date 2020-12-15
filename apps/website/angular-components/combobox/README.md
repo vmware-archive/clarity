@@ -132,7 +132,7 @@ A basic static combobox can be created by directly nesting <code>clr-option</cod
 </div>
 
 <doc-code>
-<<< .vuepress/public/demos/combobox/basic.html
+<<< .vuepress/code/demos/combobox/basic.html
 </doc-code>
 
 ### Single selection combobox
@@ -151,7 +151,7 @@ A single selection combobox is taking advantage of the <code>*clrOptionItems</co
 </div>
 
 <doc-code>
-<<< .vuepress/public/demos/combobox/single.html
+<<< .vuepress/code/demos/combobox/single.html
 </doc-code>
 
 ### Multi selection combobox
@@ -173,7 +173,7 @@ Pill styling is defined inside <code>ng-container</code> with <code>*clrOptionSe
 </div>
 
 <doc-code>
-<<< .vuepress/public/demos/combobox/multi.html
+<<< .vuepress/code/demos/combobox/multi.html
 </doc-code>
 
 ### Asynchronous combobox
@@ -194,5 +194,5 @@ Using the combobox asynchronously requires to manually bind several event handle
 </div>
 
 <doc-code>
-<<< .vuepress/public/demos/combobox/async.html
+<<< .vuepress/code/demos/combobox/async.html
 </doc-code>

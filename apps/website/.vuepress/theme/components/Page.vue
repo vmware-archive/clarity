@@ -1,7 +1,7 @@
 <template>
   <main class="page" cds-layout="p-l:md p-l@sm:xl">
     <PageSubnav v-bind="{ sidebarItems }" />
-    <Content class="theme-default-content" />
+    <Content class="theme-default-content" :id="pathToId($route.path)" />
     <Footer></Footer>
     <slot name="nav-toc" />
   </main>
@@ -11,6 +11,7 @@
 import PageNav from '@theme/components/PageNav';
 import PageSubnav from '@theme/components/PageSubnav';
 import Footer from '@theme/components/Footer';
+import { pathToId } from '../util/path-to-id';
 
 export default {
   components: { Footer, PageNav, PageSubnav },
@@ -19,6 +20,9 @@ export default {
     shouldShowTOC() {
       return this.$frontmatter.toc ? true : false;
     },
+  },
+  methods: {
+    pathToId,
   },
 };
 </script>

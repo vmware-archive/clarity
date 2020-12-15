@@ -20,7 +20,7 @@ Here is when you might want to use a wizard over just a normal form:
 :::
 
 <doc-code>
-<<< .vuepress/public/demos/wizard/basic-ng.html
+<<< .vuepress/code/demos/wizard/basic-ng.html
 </doc-code>
 
 ## Anatomy

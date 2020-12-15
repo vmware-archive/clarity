@@ -48,7 +48,8 @@ function getTokenValue(token: Token) {
   return token;
 }
 
-export const lightTheme = () => {
+/** @website */
+export function lightTheme() {
   return html`
     <section cds-layout="vertical gap:lg">
       <cds-input layout="vertical" control-width="shrink">
@@ -88,8 +89,9 @@ export const lightTheme = () => {
       </div>
     </section>
   `;
-};
+}
 
+/** @website */
 export function darkTheme() {
   return html`
     <section cds-theme="dark" cds-layout="vertical gap:lg">
@@ -132,7 +134,7 @@ export function darkTheme() {
   `;
 }
 
-export const dynamicTheme = () => {
+export function dynamicTheme() {
   const dynamicTokens: { [key: string]: number | string } = {
     '--cds-alias-status-info': null,
     '--cds-alias-status-info-tint': null,
@@ -378,4 +380,4 @@ export const dynamicTheme = () => {
       <pre id="dynamic-props" cds-layout="col:12"></pre>
     </section>
   `;
-};
+}

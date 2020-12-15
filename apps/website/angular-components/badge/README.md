@@ -101,19 +101,19 @@ Use integers within badges. If you’re attempting to use text, consider using a
 ### Color Options
 
 <doc-demo>
-!!!include(.vuepress/public/demos/badge/colors-css.html)!!!
+!!!include(.vuepress/code/demos/badge/colors-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/badge/colors-ng.html
+<<< .vuepress/code/demos/badge/colors-ng.html
 </doc-code>
 
 ### Status Options
 
 <doc-demo>
-!!!include(.vuepress/public/demos/badge/status-css.html)!!!
+!!!include(.vuepress/code/demos/badge/status-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/badge/status-ng.html
+<<< .vuepress/code/demos/badge/status-ng.html
 </doc-code>

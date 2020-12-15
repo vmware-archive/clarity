@@ -27,11 +27,11 @@ To enable the accessibility behaviors, you'll need to wrap your checkboxes with 
 Checkboxes without a label will not be accessible. So, while it it is possible to create a checkbox by just adding `clrCheckbox` it is not recommended. Notice, it is necessary to add `type="checkbox"`. The basic checkbox control needs to be nested inside both the `clr-checkbox-container` and the `clr-checkbox-wrapper` to enable all of the styles and accessibility behaviors.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/checkbox/basic-css.html)!!!
+!!!include(.vuepress/code/demos/checkbox/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/checkbox/basic-ng.html
+<<< .vuepress/code/demos/checkbox/basic-ng.html
 </doc-code>
 
 ### Helper and error messages
@@ -41,11 +41,11 @@ To leverage helper and validation messages, you'll need to wrap all of the check
 Note: the validation in this example only displays an error after you focus and leave focus without selecting a value. The easiest way to do this is to highlight the text in this paragraph, and hit tab a few times to change the focus.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/checkbox/helper-css.html)!!!
+!!!include(.vuepress/code/demos/checkbox/helper-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/checkbox/helper-ng.html
+<<< .vuepress/code/demos/checkbox/helper-ng.html
 </doc-code>
 
 ### Inline checkboxes
@@ -53,11 +53,11 @@ Note: the validation in this example only displays an error after you focus and 
 Checkbox buttons can be placed inline by default by adding the `clrInline` directive to your checkbox container elements. The checkbox buttons will wrap if there is not enough space.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/checkbox/inline-css.html)!!!
+!!!include(.vuepress/code/demos/checkbox/inline-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/checkbox/inline-ng.html
+<<< .vuepress/code/demos/checkbox/inline-ng.html
 </doc-code>
 
 #### Disabled checkboxes
@@ -65,11 +65,11 @@ Checkbox buttons can be placed inline by default by adding the `clrInline` direc
 A checkbox can be disabled by simply putting the `disabled` attribute on the checkbox input. This does require the checkbox to be inside of a checkbox container. Also, for groups of checkboxes you have to put the disabled attribute on the last checkbox and cannot disable individual ones, as Angular doesn't have support to disable individual checkboxes in a group.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/checkbox/disabled-css.html)!!!
+!!!include(.vuepress/code/demos/checkbox/disabled-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/checkbox/disabled-ng.html
+<<< .vuepress/code/demos/checkbox/disabled-ng.html
 </doc-code>
 
 #### Indeterminate checkboxes
@@ -77,11 +77,11 @@ A checkbox can be disabled by simply putting the `disabled` attribute on the che
 In cases where you want to display a checkbox as indeterminate, meaning it is neither selected or unselected. This can happen in cases where your checkboxes have a hierarchy (such as we have in our Tree View), and a child is selected but not the parent. You can control the indeterminate state by binding a boolean value like `[indeterminate]="true"`.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/checkbox/indeterminate-css.html)!!!
+!!!include(.vuepress/code/demos/checkbox/indeterminate-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/checkbox/indeterminate-ng.html
+<<< .vuepress/code/demos/checkbox/indeterminate-ng.html
 </doc-code>
 
 ## Accessibility

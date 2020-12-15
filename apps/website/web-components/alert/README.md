@@ -44,7 +44,7 @@ There are three types of alerts: standard, app level and lightweight.
 Standard alerts are for use in the context of an application either in the content area itself or within components.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/default-type.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/default-type.html)!!!
 </div>
 
 :::
@@ -60,7 +60,7 @@ Standard alerts are for use in the context of an application either in the conte
 App-level alerts are for use in the global context of an application. Place them at the very top of all content and navigation.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/app-level-type.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/app-level-type.html)!!!
 </div>
 
 :::
@@ -76,7 +76,7 @@ App-level alerts are for use in the global context of an application. Place them
 Lightweight alerts are for use inside containers such as cards and layouts.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-type.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-type.html)!!!
 </div>
 
 :::
@@ -116,7 +116,7 @@ There are four different status of standard alerts: error, warning, info, and su
 Reserved for warnings: a message that needs the user's attention and acknowledgment but might not cause errors.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/standard-error.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/standard-error.html)!!!
 </div>
 
 :::
@@ -132,7 +132,7 @@ Reserved for warnings: a message that needs the user's attention and acknowledgm
 Reserved for warnings: a message that needs the user's attention and acknowledgment but might not cause errors.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/standard-warning.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/standard-warning.html)!!!
 </div>
 
 :::
@@ -148,7 +148,7 @@ Reserved for warnings: a message that needs the user's attention and acknowledgm
 Provides info to user’s in context. Be careful not to overuse to replace regular content.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/standard-info.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/standard-info.html)!!!
 </div>
 
 :::
@@ -164,7 +164,7 @@ Provides info to user’s in context. Be careful not to overuse to replace regul
 Reserved to provide a static persistent success message.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/standard-success.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/standard-success.html)!!!
 </div>
 
 :::
@@ -180,7 +180,7 @@ Reserved to provide a static persistent success message.
 In the case there are multiples of each sub-type, group them by sub-type and show by urgency. For example, show multiple errors before the first warning is.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/standard-group.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/standard-group.html)!!!
 </div>
 
 :::
@@ -196,7 +196,7 @@ Sizes
 There are two sizes of standard alerts: default and compact. Use the compact alert only in places where vertical space is scarce, and information density is needed.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/sizes.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/sizes.html)!!!
 </div>
 
 :::
@@ -225,7 +225,7 @@ Alerts can appear within modals. Clarity recommends that no more than one alert 
 
 <DocInset style="display: contents">
 <div style="position: relative; height: 400px">
-!!!include(.vuepress/public/core-usage-demos/alert/modal-alert.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/modal-alert.html)!!!
 </div>
 </DocInset>
 
@@ -246,7 +246,7 @@ Use an alert at the very top of a card, on top of its title. An alert is meant t
 Using more than one alert within a card distracts the user and dilutes the importance of the alerts displayed.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/alert/card-alert.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/card-alert.html)!!!
 </div>
 
 :::
@@ -293,7 +293,7 @@ App-level alerts are global in nature. Reporting a success of an operation shoul
 
 Reserved for malfunctions, as well as critical issues like license expiration.
 
-!!!include(.vuepress/public/core-usage-demos/alert/app-level-error.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/app-level-error.html)!!!
 
 :::
 
@@ -307,7 +307,7 @@ Reserved for malfunctions, as well as critical issues like license expiration.
 
 Reserved for messages that needs the user’s attention and acknowledgment but might not cause errors.
 
-!!!include(.vuepress/public/core-usage-demos/alert/app-level-warning.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/app-level-warning.html)!!!
 
 :::
 
@@ -321,7 +321,7 @@ Reserved for messages that needs the user’s attention and acknowledgment but m
 
 Provides info to user’s in context. Be careful not to overuse to replace regular content.
 
-!!!include(.vuepress/public/core-usage-demos/alert/app-level-info.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/app-level-info.html)!!!
 
 :::
 
@@ -373,7 +373,7 @@ Lightweight alerts fall into an order of importance, starting with the most impo
 
 Reserved for malfunctions, as well as critical issues such license expiration.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-error.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-error.html)!!!
 
 :::
 
@@ -387,7 +387,7 @@ Reserved for malfunctions, as well as critical issues such license expiration.
 
 Reserved for messages that needs the user’s attention and acknowledgment but might not cause errors.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-warning.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-warning.html)!!!
 
 :::
 
@@ -401,7 +401,7 @@ Reserved for messages that needs the user’s attention and acknowledgment but m
 
 Provides info to user’s in context. Be careful not to overuse to replace regular content.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-info.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-info.html)!!!
 
 :::
 
@@ -415,7 +415,7 @@ Provides info to user’s in context. Be careful not to overuse to replace regul
 
 Reserved to provide to a static persistent success message.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-success.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-success.html)!!!
 
 :::
 
@@ -429,7 +429,7 @@ Reserved to provide to a static persistent success message.
 
 Use the loading status to set the expectation that the action is in progress.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-loading.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-loading.html)!!!
 
 :::
 
@@ -443,7 +443,7 @@ Use the loading status to set the expectation that the action is in progress.
 
 When a status cannot be detected by the system, unknown is shown.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-unknown.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-unknown.html)!!!
 
 :::
 
@@ -457,7 +457,7 @@ When a status cannot be detected by the system, unknown is shown.
 
 In the case there are multiple of each sub-type, show one at a time and start with the highest urgency. Show all of a sub-type together before another type is displayed. For example, show all errors before the first warning is shown.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-group.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-group.html)!!!
 
 :::
 
@@ -471,7 +471,7 @@ In the case there are multiple of each sub-type, show one at a time and start wi
 
 There are two sizes of lightweight alerts: default and compact. Use the compact alert only in places where vertical space is scarce, and information density is needed.
 
-!!!include(.vuepress/public/core-usage-demos/alert/default-vs-compact.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/default-vs-compact.html)!!!
 
 :::
 
@@ -497,7 +497,7 @@ Lightweight alerts are used in the context of an application either in the conte
 
 A lightweight alert can be used in containers like a card to save space while showing important information without too much visual styling.
 
-!!!include(.vuepress/public/core-usage-demos/alert/lightweight-card.html)!!!
+!!!include(.vuepress/code/core-usage-demos/alert/lightweight-card.html)!!!
 
 :::
 

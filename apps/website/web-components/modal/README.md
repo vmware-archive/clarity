@@ -44,7 +44,7 @@ Do not use a modal
 There are multiple sizes for modals. The default size is medium, however other sizes are available. Select the size best suited for the content and screen size displaying the modal. Remember to test responsiveness.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/modal/sizes.html)!!!
+!!!include(.vuepress/code/core-usage-demos/modal/sizes.html)!!!
 </div>
 
 :::

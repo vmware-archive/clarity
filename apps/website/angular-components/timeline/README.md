@@ -27,11 +27,11 @@ There are two types of layouts, horizontal and vertical.
 - Used when all steps can be displayed without wrapping
 
 <doc-demo>
-!!!include(.vuepress/public/demos/timeline/horizontal.html)!!!
+!!!include(.vuepress/code/demos/timeline/horizontal.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/timeline/horizontal-ng.html
+<<< .vuepress/code/demos/timeline/horizontal-ng.html
 </doc-code>
 
 ### Vertical
@@ -40,11 +40,11 @@ There are two types of layouts, horizontal and vertical.
 - Used when timestamps are optional
 
 <doc-demo
-!!!include(.vuepress/public/demos/timeline/vertical.html)!!!
+!!!include(.vuepress/code/demos/timeline/vertical.html)!!!
 </doc-demo>
 
  <doc-code>
- <<< .vuepress/public/demos/timeline/vertical-ng.html
+ <<< .vuepress/code/demos/timeline/vertical-ng.html
  </doc-code>
 
 ## Anatomy

@@ -37,11 +37,11 @@ The sidenav works best in desktop applications. Scroll when the content exceeds 
 Clarity [application layout](/foundation/app-layout/) depends on a specific DOM structure for layout to work properly. SIde nav fits into this and has a specific place in the DOM hierarchy. A Sidenav container is a sibling element of the content area.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/sidenav/structure-css.html)!!!
+!!!include(.vuepress/code/demos/sidenav/structure-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/sidenav/structure-ng.html
+<<< .vuepress/code/demos/sidenav/structure-ng.html
 </doc-code>
 
 ### Navigation Groups
@@ -49,11 +49,11 @@ Clarity [application layout](/foundation/app-layout/) depends on a specific DOM 
 Navigation groups provide a way to group similar or related links together. When grouping links, do not make the heading a link.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/sidenav/nav-groups-css.html)!!!
+!!!include(.vuepress/code/demos/sidenav/nav-groups-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/sidenav/nav-groups-ng.html
+<<< .vuepress/code/demos/sidenav/nav-groups-ng.html
 </doc-code>
 
 ### Icons
@@ -62,9 +62,9 @@ Using Icons
 Include icons when you want to provide a more appealing visual look than just text.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/sidenav/icons-css.html)!!!
+!!!include(.vuepress/code/demos/sidenav/icons-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/sidenav/icons-ng.html
+<<< .vuepress/code/demos/sidenav/icons-ng.html
 </doc-code>

@@ -27,7 +27,7 @@ Do not confuse a datalist element with the select input. Datalist elements usual
 
 <DocPinbox>
 <div cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/datalist/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
 
 Use a datalist:
 
@@ -39,7 +39,7 @@ Use a datalist:
 
 <div class="versus"><div class="versus-bubble">vs</div></div>
 <div style="align-self: flex-start;" cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/select/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
 
 Use a select:
 
@@ -62,7 +62,7 @@ Use a select:
 ::: component-section-level-one
 
 <DocIndent>
-!!!include(.vuepress/public/core-usage-demos/datalist/states.html)!!!
+!!!include(.vuepress/code/core-usage-demos/datalist/states.html)!!!
 </DocIndent>
 
 :::
@@ -76,7 +76,7 @@ Use a select:
 ::: component-section-level-one
 
 <DocIndent>
-!!!include(.vuepress/public/core-usage-demos/datalist/layouts.html)!!!
+!!!include(.vuepress/code/core-usage-demos/datalist/layouts.html)!!!
 </DocIndent>
 
 :::

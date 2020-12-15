@@ -78,7 +78,7 @@ The default signpost is shown to the right of the trigger icon with the content 
 ![Basic Signpost](/images/angular-components/signpost/basic.png)
 
 <doc-code>
-<<< .vuepress/public/demos/signpost/basic-ng.html
+<<< .vuepress/code/demos/signpost/basic-ng.html
 </doc-code>
 
 ### Positions
@@ -105,5 +105,5 @@ To set a position, use the `clrInput` property on the [ClrSignpostContent](/angu
 Clarity provides a default trigger. If needed, a custom trigger can be provided for any icon or element. Adding the [ClrSignpostTrigger](/angular-components/signpost/api/#clrsignposttrigger) directive to any element will turn it into a toggle control for the content.
 
 <doc-code>
-<<< .vuepress/public/demos/signpost/custom-ng.html
+<<< .vuepress/code/demos/signpost/custom-ng.html
 </doc-code>

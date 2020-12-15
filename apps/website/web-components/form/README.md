@@ -61,7 +61,7 @@ Default Horizontal formats are good for the quick scanning of labels, and can be
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/horizontal.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/horizontal.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -79,7 +79,7 @@ This option is better for scanning, mobile experiences, accessibility, and local
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/vertical.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/vertical.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -97,7 +97,7 @@ For cases with highly limited space, we provide a compact form layout.
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/compact.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/compact.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -275,7 +275,7 @@ All fields should be assumed to be required. Clarity does not support a required
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/helper.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/helper.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -291,7 +291,7 @@ All fields should be assumed to be required. Clarity does not support a required
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/error.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/error.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -307,7 +307,7 @@ All fields should be assumed to be required. Clarity does not support a required
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/form/success.html)!!!
+!!!include(.vuepress/code/core-usage-demos/form/success.html)!!!
 </doc-demo>
 </DocIndent>
 

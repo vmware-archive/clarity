@@ -139,31 +139,31 @@ A card consists of a title 18 px Clarity City Light - content is Clarity City Re
 ### Basic card
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/basic-css.html)!!!
+!!!include(.vuepress/code/demos/card/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/basic-css.html
+<<< .vuepress/code/demos/card/basic-css.html
 </doc-code>
 
 ### Clickable cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/clickable-css.html)!!!
+!!!include(.vuepress/code/demos/card/clickable-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/clickable-css.html
+<<< .vuepress/code/demos/card/clickable-css.html
 </doc-code>
 
 ### Image in cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/images-css.html)!!!
+!!!include(.vuepress/code/demos/card/images-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/images-css.html
+<<< .vuepress/code/demos/card/images-css.html
 </doc-code>
 
 ### Dropdown in card
@@ -171,21 +171,21 @@ A card consists of a title 18 px Clarity City Light - content is Clarity City Re
 The footer can contain two actions. For more actions, use a [dropdown](/angular-components/dropdown).
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/dropdown-css.html)!!!
+!!!include(.vuepress/code/demos/card/dropdown-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/dropdown-css.html
+<<< .vuepress/code/demos/card/dropdown-css.html
 </doc-code>
 
 ### Card media block
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/media-block-css.html)!!!
+!!!include(.vuepress/code/demos/card/media-block-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/media-block-css.html
+<<< .vuepress/code/demos/card/media-block-css.html
 </doc-code>
 
 ### Alert in card
@@ -193,59 +193,59 @@ The footer can contain two actions. For more actions, use a [dropdown](/angular-
 Cards can contain [alerts](/angular-components/alert).
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/alert-css.html)!!!
+!!!include(.vuepress/code/demos/card/alert-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/alert-css.html
+<<< .vuepress/code/demos/card/alert-css.html
 </doc-code>
 
 ### Lists in cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/lists-css.html)!!!
+!!!include(.vuepress/code/demos/card/lists-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/lists-css.html
+<<< .vuepress/code/demos/card/lists-css.html
 </doc-code>
 
 ### List group in cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/list-group-css.html)!!!
+!!!include(.vuepress/code/demos/card/list-group-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/list-group-css.html
+<<< .vuepress/code/demos/card/list-group-css.html
 </doc-code>
 
 ### Progress bars in cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/progress-bars-css.html)!!!
+!!!include(.vuepress/code/demos/card/progress-bars-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/progress-bars-css.html
+<<< .vuepress/code/demos/card/progress-bars-css.html
 </doc-code>
 
 ### Cards in a grid
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/grid-css.html)!!!
+!!!include(.vuepress/code/demos/card/grid-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/grid-css.html
+<<< .vuepress/code/demos/card/grid-css.html
 </doc-code>
 
 ### Cards in css columns
 
 <doc-demo>
-!!!include(.vuepress/public/demos/card/columns-css.html)!!!
+!!!include(.vuepress/code/demos/card/columns-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/card/columns-css.html
+<<< .vuepress/code/demos/card/columns-css.html
 </doc-code>

@@ -69,7 +69,7 @@ Complext groups often two or more inputs that need to be combined to look like a
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/input-group/complex.html)!!!
+!!!include(.vuepress/code/core-usage-demos/input-group/complex.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -87,7 +87,7 @@ The input-group can show all of the status and helper text states for the contro
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/input-group/status.html)!!!
+!!!include(.vuepress/code/core-usage-demos/input-group/status.html)!!!
 </doc-demo>
 </DocIndent>
 
@@ -105,7 +105,7 @@ Use `cds-control-action` to place a button that facilitates the user in completi
 
 <DocIndent>
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/input-group/control-actions.html)!!!
+!!!include(.vuepress/code/core-usage-demos/input-group/control-actions.html)!!!
 </doc-demo>
 </DocIndent>
 

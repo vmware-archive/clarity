@@ -25,11 +25,11 @@ Clarity supports a toggle switch without a label but beware, only use this appro
 To use helper messages, wrap all toggle switches inside of the [ClrToggleContainer](/angular-components/toggle/api/#clrtogglecontainer). Helper messages are always visible with one exception. The toggle switch container tracks any validations placed on the toggle switch(es) and will replace helper messages with an error message if there is one.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/toggle/helper-demo-css.html)!!!
+!!!include(.vuepress/code/demos/toggle/helper-demo-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/toggle/helper-demo-ng.html
+<<< .vuepress/code/demos/toggle/helper-demo-ng.html
 </doc-code>
 
 ### Error Message
@@ -37,11 +37,11 @@ To use helper messages, wrap all toggle switches inside of the [ClrToggleContain
 To use error messages, wrap all toggle switches inside of the [ClrToggleContainer](/angular-components/toggle/api/#clrtogglecontainer). The toggle switch container tracks any validations placed on the toggle switch(es) and will display the error message when appropriate.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/toggle/error-demo-css.html)!!!
+!!!include(.vuepress/code/demos/toggle/error-demo-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/toggle/error-demo-ng.html
+<<< .vuepress/code/demos/toggle/error-demo-ng.html
 </doc-code>
 
 ## States
@@ -53,11 +53,11 @@ There are two states that can change the layout and look of a [ClrToggle](/angul
 Toggle switches can be placed inline when the clrInline directive is added to the [ClrToggleContainer](/angular-components/toggle/api/#clrtogglecontainer). The toggle switches will wrap if there is not enough space.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/toggle/inline-demo-css.html)!!!
+!!!include(.vuepress/code/demos/toggle/inline-demo-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/toggle/inline-demo-ng.html
+<<< .vuepress/code/demos/toggle/inline-demo-ng.html
 </doc-code>
 
 ### Disabled
@@ -65,11 +65,11 @@ Toggle switches can be placed inline when the clrInline directive is added to th
 A toggle switch can be disabled by putting the disabled attribute on the checkbox input. This requires that the toggle switch be inside of a [ClrToggleContainer](/angular-components/toggle/api/#clrtogglecontainer). When disabling groups of toggle switches, the last checkbox requires the disabled attribute. Angular doesn't support disabling individual checkboxes in a group.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/toggle/disabled-demo-css.html)!!!
+!!!include(.vuepress/code/demos/toggle/disabled-demo-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/toggle/disabled-demo-ng.html
+<<< .vuepress/code/demos/toggle/disabled-demo-ng.html
 </doc-code>
 
 ## Accessibility

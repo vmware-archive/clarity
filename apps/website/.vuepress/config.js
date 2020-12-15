@@ -30,7 +30,7 @@ module.exports = {
       inputSelector: '#algolia-search-input',
     },
     lastUpdated: false,
-    sidebar,
+    sidebar
   },
   markdown: {
     extendMarkdown: md => {
@@ -42,9 +42,9 @@ module.exports = {
       permalinkBefore: false,
       permalinkSymbol: '<cds-icon shape="link" aria-hidden="false"></cds-icon>',
       permalinkAttrs: (slug) => ({"aria-label": `permalink to ${slug}`})
-    },
+    }
   },
-  extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/blocks.js', '.vuepress/public/**'],
+  extraWatchFiles: ['.vuepress/sidebar.js', '.vuepress/blocks.js', '.vuepress/code/**'],
   plugins: [
     'vuepress-plugin-table-of-contents',
     '@vuepress/active-header-links',

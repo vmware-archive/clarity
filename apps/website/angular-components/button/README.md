@@ -220,91 +220,91 @@ If your icon button is has no text, we recommend adding the `title="` attribute 
 ### Solid Buttons
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/solid-css.html)!!!
+!!!include(.vuepress/code/demos/button/solid-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/solid-css.html
+<<< .vuepress/code/demos/button/solid-css.html
 </doc-code>
 
 ### Outline
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/outline-css.html)!!!
+!!!include(.vuepress/code/demos/button/outline-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/outline-css.html
+<<< .vuepress/code/demos/button/outline-css.html
 </doc-code>
 
 ### Flat Buttons
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/flat-css.html)!!!
+!!!include(.vuepress/code/demos/button/flat-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/flat-css.html
+<<< .vuepress/code/demos/button/flat-css.html
 </doc-code>
 
 ### Types: Primary,Secondary and Tertiary
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/types-css.html)!!!
+!!!include(.vuepress/code/demos/button/types-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/types-css.html
+<<< .vuepress/code/demos/button/types-css.html
 </doc-code>
 
 ### States: Info, Success and Danger Outline Buttons
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/states-css.html)!!!
+!!!include(.vuepress/code/demos/button/states-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/states-css.html
+<<< .vuepress/code/demos/button/states-css.html
 </doc-code>
 
 ### Sizes: Normal, Small, Normal Flat, Small Flat
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/sizes-css.html)!!!
+!!!include(.vuepress/code/demos/button/sizes-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/sizes-css.html
+<<< .vuepress/code/demos/button/sizes-css.html
 </doc-code>
 
 ### Block
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/block-css.html)!!!
+!!!include(.vuepress/code/demos/button/block-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/block-css.html
+<<< .vuepress/code/demos/button/block-css.html
 </doc-code>
 
 ### Inverse
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/inverse-css.html)!!!
+!!!include(.vuepress/code/demos/button/inverse-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/inverse-css.html
+<<< .vuepress/code/demos/button/inverse-css.html
 </doc-code>
 
 ### Icon
 
 <doc-demo>
-!!!include(.vuepress/public/demos/button/icon-css.html)!!!
+!!!include(.vuepress/code/demos/button/icon-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/button/icon-css.html
+<<< .vuepress/code/demos/button/icon-css.html
 </doc-code>
 
 ### Loading
@@ -316,9 +316,9 @@ Use the `clrLoading` directive to change the state of the spinner button. The di
 - `ClrLoadingState.SUCCESS`: briefly shows a check mark, and automatically transition back to the ClrLoadingState.DEFAULT state.
 
 <doc-code>
-<<< .vuepress/public/demos/button/loading-ng.html
+<<< .vuepress/code/demos/button/loading-ng.html
 </doc-code>
 
 <doc-code>
-<<< .vuepress/public/demos/button/loading.ts
+<<< .vuepress/code/demos/button/loading.ts
 </doc-code>

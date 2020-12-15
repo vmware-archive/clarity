@@ -23,7 +23,7 @@ Use inputs in a form as a way to allow the user to enter a value associated with
 
 <DocPinbox>
 <div cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/datalist/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
 
 Use a datalist:
 
@@ -35,7 +35,7 @@ Use a datalist:
 
 <div class="versus"><div class="versus-bubble">vs</div></div>
 <div style="align-self: flex-start;" cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/select/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
 
 Use a select:
 
@@ -58,7 +58,7 @@ Use a select:
 ::: component-section-level-one
 
 <DocIndent>
-!!!include(.vuepress/public/core-usage-demos/datalist/states.html)!!!
+!!!include(.vuepress/code/core-usage-demos/datalist/states.html)!!!
 </DocIndent>
 
 :::
@@ -86,7 +86,7 @@ Form groups can have one of three layouts. Vertical, horizontal or compact. This
 Horizontal is the default if no layout is specified. It displays the Group label to the left of a vertical list of control inputs. The supplemnental text is below the control elements.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/horizontal.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal.html)!!!
 </div>
 
 :::
@@ -102,7 +102,7 @@ Horizontal is the default if no layout is specified. It displays the Group label
 A vertical form group group places the group label above the list of control elements. The supplemental text is below the control elements.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/vertical.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/vertical.html)!!!
 </div>
 
 :::
@@ -118,7 +118,7 @@ A vertical form group group places the group label above the list of control ele
 A compact form group places all control elements on a single line and the supplemental text after the last control element.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/compact.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/compact.html)!!!
 </div>
 
 :::

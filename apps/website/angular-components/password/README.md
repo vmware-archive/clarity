@@ -26,11 +26,11 @@ Use a password field when the user needs to set or input the password. When sett
 This is the default way to define a password field if you don't have a need for a label or validation. You need to add `clrPassword` to your input to wire up the directive. Notice, it is not necessary to add `type="password"` as it is handled automatically. It will only work if you have the control wired up with either a template driven form or reactive form. You must wrap the input inside the `ClrPasswordContainer` element.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/password/basic-css.html)!!!
+!!!include(.vuepress/code/demos/password/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/password/basic-ng.html
+<<< .vuepress/code/demos/password/basic-ng.html
 </doc-code>
 
 ### Helper and error messages
@@ -40,11 +40,11 @@ The password form control wires up with the validations placed on an password co
 Note: the validation only displays an error after the user has left focus on an input. This is for better UX where the user doesn't see an error while they are still typing.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/password/helper-css.html)!!!
+!!!include(.vuepress/code/demos/password/helper-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/password/helper-ng.html
+<<< .vuepress/code/demos/password/helper-ng.html
 </doc-code>
 
 ## Accessibility

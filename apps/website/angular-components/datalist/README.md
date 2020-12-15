@@ -34,11 +34,11 @@ Natively, the `id` for a datailist provides the link to an input via the value g
 ### Basic Example
 
 <doc-demo>
-!!!include(.vuepress/public/demos/datalist/basic-css.html)!!!
+!!!include(.vuepress/code/demos/datalist/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/datalist/basic-ng.html
+<<< .vuepress/code/demos/datalist/basic-ng.html
 </doc-code>
 
 ### Validation
@@ -48,9 +48,9 @@ Datalists in template driven forms implement the same validation attributes that
 As with other Clarity form controls, the datalist and its associated input belong inside a container. In this case it is named `clr-datalist-container`. Besides the required input with the `clrDatalistInput` directive and the datalist element this container takes three other optional elements. An optional element, `clr-control-helper` and the `clr-control-error` elements if there is validation for it.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/datalist/validation-css.html)!!!
+!!!include(.vuepress/code/demos/datalist/validation-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/datalist/validation-ng.html
+<<< .vuepress/code/demos/datalist/validation-ng.html
 </doc-code>

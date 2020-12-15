@@ -94,7 +94,7 @@ To use the date picker, add the [clrDate](/angular-components/datepicker#clrdate
 ![Basic Datepicker](/images/angular-components/datepicker/basic-demo.png)
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/basic-ng.html
+<<< .vuepress/code/demos/datepicker/basic-ng.html
 </doc-code>
 
 ### Min/Max Dates
@@ -108,7 +108,7 @@ The `min` and the `max` attributes can be used alone or together to have both an
 ![Basic Datepicker](/images/angular-components/datepicker/min-max-demo.png)
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/min-max-ng.html
+<<< .vuepress/code/demos/datepicker/min-max-ng.html
 </doc-code>
 
 ### Internationalization
@@ -198,7 +198,7 @@ The following demo shows two date pickers. The first date picker uses the `en-US
 Changing the locale requires its data to be registered first. Afterwards you can simply provide the locale in any Module or Component by the LOCALE_ID token.
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/i18n-ng.ts
+<<< .vuepress/code/demos/datepicker/i18n-ng.ts
 </doc-code>
 
 For more information on setting the locale parameter and loading the locale data, please read the Angular [internationalization](https://angular.io/guide/i18n) documentation.
@@ -220,7 +220,7 @@ You can add a two way binding on clrDate to access the date value. The benefit o
 </cds-alert-group>
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/js-date-object.html
+<<< .vuepress/code/demos/datepicker/js-date-object.html
 </doc-code>
 
 ```javascript
@@ -235,13 +235,13 @@ Template Driven Forms use the `ngModel` directive to create a binding between th
 #### HTML
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/template-driven.html
+<<< .vuepress/code/demos/datepicker/template-driven.html
 </doc-code>
 
 #### TypeScript
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/template-driven.ts
+<<< .vuepress/code/demos/datepicker/template-driven.ts
 </doc-code>
 
 #### Example Output
@@ -263,13 +263,13 @@ Reactive Forms use FormControls to create the binding between the model and the 
 ##### HTML
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/reactive-date.html
+<<< .vuepress/code/demos/datepicker/reactive-date.html
 </doc-code>
 
 ##### TypeScript
 
 <doc-code>
-<<< .vuepress/public/demos/datepicker/reactive-date.ts
+<<< .vuepress/code/demos/datepicker/reactive-date.ts
 </doc-code>
 
 ##### Example Output

@@ -1,4 +1,4 @@
 api/
 dist/
 node_modules/
-.vuepress/public/images
+.vuepress/code/images

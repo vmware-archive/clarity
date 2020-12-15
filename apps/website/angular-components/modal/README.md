@@ -50,7 +50,7 @@ Buttons should include clear and direct action for the user to take. Buttons are
 The background overlay is dark with opacity to provide the feeling of a third dimensional layer. This also eliminates distraction and helps the user focus on the modal content.
 
 <!-- <doc-demo>
-!!!include(.vuepress/public/demos/modal/modal-backdrop.html)!!!
+!!!include(.vuepress/code/demos/modal/modal-backdrop.html)!!!
 </doc-demo> -->
 
 <doc-code>
@@ -66,7 +66,7 @@ The background overlay is dark with opacity to provide the feeling of a third di
 There are multiple sizes for modals. The Clarity modal defaults to medium but different sizes could be used based on the content and screen sizes you are planning to support. Always remember to test responsiveness as you design and use modals.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/modal/modal-sizes.html)!!!
+!!!include(.vuepress/code/demos/modal/modal-sizes.html)!!!
 </doc-demo>
 
 <div class="top-margin-wrapper">

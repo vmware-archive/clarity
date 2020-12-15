@@ -1,12 +1,18 @@
 <template>
   <div v-if="subnav && subnav.children" class="sticky">
     <h1 cds-text="heading" class="page-header">{{ subnav.title }}</h1>
-    <ul class="nav page-subnav" role="nav" v-if="subnav.children.length > 1">
-      <li role="presentation" class="nav-item" v-for="item of subnav.children">
+    <ul class="nav page-subnav" role="tablist" v-if="subnav.children.length > 1">
+      <li
+        role="tab"
+        class="nav-item"
+        v-for="item of subnav.children"
+        :aria-current="isActive(activePagePath, item.path)"
+        :aria-selected="isActive(activePagePath, item.path)"
+        :aria-controls="pathToId(item.path)"
+      >
         <router-link
           :to="item.path"
           class="btn btn-link nav-link"
-          v-bind:aria-selected="isActive(activePagePath, item.path)"
           v-bind:class="{ active: isActive(activePagePath, item.path) }"
           >{{ item.title }}</router-link
         >
@@ -44,6 +50,7 @@
 
 <script>
 import { removePathExt } from '../util/remove-path-ext';
+import { pathToId } from '../util/path-to-id';
 // This whole system is just setup to assume a 3 level navigation pattern, anything else might break this
 export default {
   name: 'PageSubnav',
@@ -51,17 +58,18 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
-    subnav() {
-      return resolveSubnav(this.$page, this.sidebarItems);
-    },
     activePagePath() {
       return this.$page.path;
+    },
+    subnav() {
+      return resolveSubnav(this.$page, this.sidebarItems);
     },
   },
   methods: {
     isActive: function (activePath, itemPath) {
       return activePath === removePathExt(itemPath);
     },
+    pathToId,
   },
 };
 

@@ -26,11 +26,11 @@ The `.content-container` is a horizontal flexbox which wraps the following compo
 - [Sidenav](/components/sidenav)
 
 <doc-demo>
-!!!include(.vuepress/public/demos/app-layout/content-container-css.html)!!!
+!!!include(.vuepress/code/demos/app-layout/content-container-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/app-layout/content-container-ng.html
+<<< .vuepress/code/demos/app-layout/content-container-ng.html
 </doc-code>
 
 ## Basic Structure
@@ -235,7 +235,7 @@ Clarity implemented this workaround to make the transition to 3.0 easier on our 
 Clarity uses [rem units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) for its whitespace and sizing. If the 24px vertical baseline is too large or too small for your needs, you can edit this globally across a Clarity application by changing the `font-size` style of the `html` element, as in the example below.
 
 <doc-code>
-<<< .vuepress/public/demos/app-layout/custom-rem-size.css
+<<< .vuepress/code/demos/app-layout/custom-rem-size.css
 </doc-code>
 
 Note that the declaration on the `html` selector needs to happen _after_ the Clarity CSS has been loaded. Also note that the "grid" for Clarity layouts and components is equal to one-fourth of the baseline. So instead of a 6px grid, the example above will put your application on a 5px grid.

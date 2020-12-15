@@ -29,7 +29,7 @@ We recommend using seven or fewer checkboxes. Keep the label of a checkbox to a 
 
 <DocPinbox>
 <div cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/checkbox/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/basic.html)!!!
 
 Use a checkbox for:
 
@@ -41,7 +41,7 @@ Use a checkbox for:
 
 <div class="versus"><div class="versus-bubble">vs</div></div>
 <div style="align-self: flex-start" cds-layout="p-y:lg">
-!!!include(.vuepress/public/core-usage-demos/toggle/basic.html)!!!
+!!!include(.vuepress/code/core-usage-demos/toggle/basic.html)!!!
 
 Use a toggle for On / Off choices but not for multiple choices
 
@@ -71,7 +71,7 @@ Checkboxes can have a several of states. These stated give the user additional i
 The default state is before a user has interacted with the form and when the checkbox is not (pre) checked by the application.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/default.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/default.html)!!!
 </div>
 
 :::
@@ -87,7 +87,7 @@ The default state is before a user has interacted with the form and when the che
 The selected state occurs when a user interacts with a checkbox and selects it or, when the application selects the option based on specific conditions.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/checked.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/checked.html)!!!
 </div>
 
 :::
@@ -103,7 +103,7 @@ The selected state occurs when a user interacts with a checkbox and selects it o
 The disabled, unselected state occurs when the application disables an un-selected checkbox based on specific conditions.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/disabled-unselected.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/disabled-unselected.html)!!!
 </div>
 
 :::
@@ -119,7 +119,7 @@ The disabled, unselected state occurs when the application disables an un-select
 The disabled, selected state occurs when the application disables the selected checkbox based on specific conditions.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/disabled-selected.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/disabled-selected.html)!!!
 </div>
 
 :::
@@ -135,7 +135,7 @@ The disabled, selected state occurs when the application disables the selected c
 The indeterminate state can only be set by an specific conditions by the application. **Note**: an indeterminate checkbox is a browser specific visual treatment only.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/indeterminate.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/indeterminate.html)!!!
 </div>
 
 :::
@@ -151,7 +151,7 @@ The indeterminate state can only be set by an specific conditions by the applica
 The error state indicates an issue with the checkbox. It could be a requirement of the form before submission or there might be a minimum number of options that must be selected by the user. The error state is indicated visually a red exclamation-circle icon and an error message with as supplemental text.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/error.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/error.html)!!!
 </div>
 
 :::
@@ -167,7 +167,7 @@ The error state indicates an issue with the checkbox. It could be a requirement 
 The success state indicates the=at the checkbox is ok for its selected/unselected or indeterminate state. The success state is indicated visually with green supplemental text and a check in circle icon.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/success.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/success.html)!!!
 </div>
 
 :::
@@ -195,7 +195,7 @@ Checkbox groups can have one of three layouts. Vertical, horizontal or compact. 
 Horizontal is the default if no layout is specified. It displays the Group label to the left of a vertical list of control inputs. The supplemnental text is below the input list.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/horizontal.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal.html)!!!
 </div>
 
 :::
@@ -211,7 +211,7 @@ Horizontal is the default if no layout is specified. It displays the Group label
 A vertical checkbox group places the group label above the list of checkbox inputs. The supplemental text is below the list of checkbox inputs.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/vertical.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/vertical.html)!!!
 </div>
 
 :::
@@ -227,7 +227,7 @@ A vertical checkbox group places the group label above the list of checkbox inpu
 A compact checkbox group places all group elements on a single line.
 
 <div>
-!!!include(.vuepress/public/core-usage-demos/checkbox/compact.html)!!!
+!!!include(.vuepress/code/core-usage-demos/checkbox/compact.html)!!!
 </div>
 
 :::

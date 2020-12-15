@@ -71,13 +71,13 @@ The size attribute takes a string number or one of the standard Clarity t-shirt 
 #### The CDS-ICON size attribute
 
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/icon/size-attr.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/size-attr.html)!!!
 </doc-demo>
 
 #### The style attribute (CSS)
 
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/icon/size-style.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/size-style.html)!!!
 </doc-demo>
 
 ### Rotation:
@@ -87,13 +87,13 @@ The default rotation for every shape in Clarity Icons is 0 degrees. With directi
 #### Use the CDS-ICON direction attribute
 
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/icon/rotate-attr.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/rotate-attr.html)!!!
 </doc-demo>
 
 #### Use the style attribute
 
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/icon/rotate-style.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/rotate-style.html)!!!
 </doc-demo>
 
 ### Flips:
@@ -101,7 +101,7 @@ The default rotation for every shape in Clarity Icons is 0 degrees. With directi
 You can flip icons horizontally or vertically through the use of the flip attribute.
 
 <doc-demo>
-!!!include(.vuepress/public/core-usage-demos/icon/flip.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/flip.html)!!!
 </doc-demo>
 
 ### Icon Colors
@@ -117,7 +117,7 @@ Colors are described as:
 
 <doc-demo>
 
-!!!include(.vuepress/public/core-usage-demos/icon/colors.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/colors.html)!!!
 
 </doc-demo>
 
@@ -125,7 +125,7 @@ There is also `inverse` attribute, which is suitable for icons used on darker ba
 
 <doc-demo>
 
-!!!include(.vuepress/public/core-usage-demos/icon/inverse-color.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/inverse-color.html)!!!
 
 </doc-demo>
 
@@ -146,6 +146,6 @@ Clarity Icons come with variants for badges that add visual indicators to the ba
 
 <doc-demo>
 
-!!!include(.vuepress/public/core-usage-demos/icon/badges.html)!!!
+!!!include(.vuepress/code/core-usage-demos/icon/badges.html)!!!
 
 </doc-demo>

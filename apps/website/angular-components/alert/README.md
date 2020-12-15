@@ -160,11 +160,11 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 - .alert-success
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/types-css.html)!!!
+!!!include(.vuepress/code/demos/alert/types-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/types-ng.html
+<<< .vuepress/code/demos/alert/types-ng.html
 </doc-code>
 
 ### Placement
@@ -172,31 +172,31 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 #### Alerts in the Content Area
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/content-area-css.html)!!!
+!!!include(.vuepress/code/demos/alert/content-area-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/content-area-css.html
+<<< .vuepress/code/demos/alert/content-area-css.html
 </doc-code>
 
 #### Alerts in Cards
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/card-css.html)!!!
+!!!include(.vuepress/code/demos/alert/card-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/card-ng.html
+<<< .vuepress/code/demos/alert/card-ng.html
 </doc-code>
 
 #### Alerts in Modals
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/modal-css.html)!!!
+!!!include(.vuepress/code/demos/alert/modal-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/modal-ng.html
+<<< .vuepress/code/demos/alert/modal-ng.html
 </doc-code>
 
 ### Size
@@ -204,11 +204,11 @@ Clarity has error, warning, information, and success alerts denoted by the follo
 Use the `.alert-sm` class with `.alert` for an alert 24 pixels in height. The default is 36 pixels.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/size-css.html)!!!
+!!!include(.vuepress/code/demos/alert/size-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/size-css.html
+<<< .vuepress/code/demos/alert/size-css.html
 </doc-code>
 
 ### App-Level Alerts
@@ -218,11 +218,11 @@ Use the `.alert-sm` class with `.alert` for an alert 24 pixels in height. The de
 This class must be applied with `.alert` to render an app-level alert.
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/basic-app-level-css.html)!!!
+!!!include(.vuepress/code/demos/alert/basic-app-level-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/basic-app-level-ng.html
+<<< .vuepress/code/demos/alert/basic-app-level-ng.html
 </doc-code>
 
 #### CSS
@@ -230,21 +230,21 @@ This class must be applied with `.alert` to render an app-level alert.
 ##### App-Level Alert in the main-container
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/app-level-main-css.html)!!!
+!!!include(.vuepress/code/demos/alert/app-level-main-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/app-level-main-css.html
+<<< .vuepress/code/demos/alert/app-level-main-css.html
 </doc-code>
 
 ##### Custom Icon in an App-Level Alert
 
 <doc-demo>
-!!!include(.vuepress/public/demos/alert/app-level-icon-css.html)!!!
+!!!include(.vuepress/code/demos/alert/app-level-icon-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/alert/app-level-icon-css.html
+<<< .vuepress/code/demos/alert/app-level-icon-css.html
 </doc-code>
 
 #### Angular
@@ -254,37 +254,37 @@ This class must be applied with `.alert` to render an app-level alert.
 ##### clrAlertClosable set to false. Default value is true.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/closable-false-ng.html
+<<< .vuepress/code/demos/alert/closable-false-ng.html
 </doc-code>
 
 ##### clrAlertType set to alert-success. Default value is alert-info. Accepts values same as the static alert type classes.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/clr-alert-type-ng.html
+<<< .vuepress/code/demos/alert/clr-alert-type-ng.html
 </doc-code>
 
 ##### clrAlertSizeSmall set to true. Default value is false.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/clr-alert-size-small-ng.html
+<<< .vuepress/code/demos/alert/clr-alert-size-small-ng.html
 </doc-code>
 
 ##### Binding to the clrAlertClosedChange event.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/clr-alert-closed-change-ng.html
+<<< .vuepress/code/demos/alert/clr-alert-closed-change-ng.html
 </doc-code>
 
 ##### clrAlertAppLevel set to true. Default is false.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/clr-alert-app-level-ng.html
+<<< .vuepress/code/demos/alert/clr-alert-app-level-ng.html
 </doc-code>
 
 ##### Multiple app level alerts can be displayed with previous and next buttons.
 
 <doc-code>
-<<< .vuepress/public/demos/alert/multiple-app-level-alerts-ng.html
+<<< .vuepress/code/demos/alert/multiple-app-level-alerts-ng.html
 </doc-code>
 
 ## Accessibility

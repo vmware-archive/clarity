@@ -16,31 +16,31 @@ The Range input uses standard HTML5 attributes and can be used with Clarity form
 ### Basic
 
 <doc-demo>
-!!!include(.vuepress/public/demos/range/basic-css.html)!!!
+!!!include(.vuepress/code/demos/range/basic-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/range/basic-ng.html
+<<< .vuepress/code/demos/range/basic-ng.html
 </doc-code>
 
 ### Full Example
 
 <doc-demo>
-!!!include(.vuepress/public/demos/range/helper-css.html)!!!
+!!!include(.vuepress/code/demos/range/helper-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/range/helper-ng.html
+<<< .vuepress/code/demos/range/helper-ng.html
 </doc-code>
 
 ### Disabled
 
 <doc-demo>
-!!!include(.vuepress/public/demos/range/disabled-css.html)!!!
+!!!include(.vuepress/code/demos/range/disabled-css.html)!!!
 </doc-demo>
 
 <doc-code>
-<<< .vuepress/public/demos/range/disabled-ng.html
+<<< .vuepress/code/demos/range/disabled-ng.html
 </doc-code>
 
 ### Value Changes

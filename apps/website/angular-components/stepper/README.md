@@ -67,13 +67,13 @@ While reactive forms and template forms have the same behavior, the implementati
 #### HTML
 
 <doc-code>
-<<< .vuepress/public/demos/stepper/reactive-form.html
+<<< .vuepress/code/demos/stepper/reactive-form.html
 </doc-code>
 
 #### TypeScript
 
 <doc-code>
-<<< .vuepress/public/demos/stepper/reactive-form.ts
+<<< .vuepress/code/demos/stepper/reactive-form.ts
 </doc-code>
 
 ### Template Forms
@@ -81,11 +81,11 @@ While reactive forms and template forms have the same behavior, the implementati
 #### HTML
 
 <doc-code>
-<<< .vuepress/public/demos/stepper/template-form.html
+<<< .vuepress/code/demos/stepper/template-form.html
 </doc-code>
 
 #### TypeScript
 
 <doc-code>
-<<< .vuepress/public/demos/stepper/template-form.ts
+<<< .vuepress/code/demos/stepper/template-form.ts
 </doc-code>

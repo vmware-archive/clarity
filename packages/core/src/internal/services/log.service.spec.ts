@@ -39,4 +39,22 @@ describe('LogService', () => {
 
     window.jasmine = jasmine;
   });
+
+  it('should log when not in a production environment', () => {
+    window.CDS.environment.production = true;
+
+    spyOn(console, 'log');
+    spyOn(console, 'warn');
+    spyOn(console, 'error');
+
+    LogService.log('test log...');
+    LogService.warn('test warn...');
+    LogService.error('test error...');
+
+    expect(console.log).not.toHaveBeenCalled();
+    expect(console.warn).not.toHaveBeenCalled();
+    expect(console.error).not.toHaveBeenCalled();
+
+    window.CDS.environment.production = false;
+  });
 });

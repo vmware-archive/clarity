@@ -18,7 +18,7 @@
               :class="{ active: variant === activeVariant }"
               @click="activateVariant(variant)"
             >
-              <cds-icon :shape="iconName" :class="variant.classes" size="24"></cds-icon>
+              <cds-icon :shape="iconName" :solid="variant.solid" :badge="variant.badge" size="24"></cds-icon>
             </button>
           </div>
         </div>
@@ -39,14 +39,6 @@
 import Prism from 'prismjs';
 import IconInventory from '../../../data/icon-inventory';
 
-const VARIANTS = {
-  OUTLINE: { classes: null },
-  HAS_BADGE: { classes: ['has-badge'] },
-  HAS_ALERT: { classes: ['has-alert'] },
-  SOLID: { classes: ['is-solid'] },
-  SOLID_HAS_BADGE: { classes: ['is-solid', 'has-badge'] },
-  SOLID_HAS_ALERT: { classes: ['is-solid', 'has-alert'] },
-};
 const ICON_DOWNLOAD_URL = '/.netlify/functions/download-icon?';
 
 export default {
@@ -54,11 +46,6 @@ export default {
   props: {
     iconName: String,
     iconSetName: String,
-  },
-  data: function () {
-    return {
-      activeVariant: VARIANTS.OUTLINE,
-    };
   },
   computed: {
     iconSnippet: function () {
@@ -71,58 +58,46 @@ export default {
       return this.iconAliases && !!this.iconAliases.length;
     },
     variants: function () {
-      const variants = [VARIANTS.OUTLINE];
+      const variants = [{}];
 
-      if (this.iconSnippet.indexOf('can-badge') > -1) {
-        variants.push(VARIANTS.HAS_BADGE);
+      this.activeVariant = variants[0];
+
+      if (this.iconSnippet.hasOwnProperty('outlineBadged')) {
+        variants.push({ badge: 'info' });
+        variants.push({ badge: 'success' });
+        variants.push({ badge: 'danger' });
+        variants.push({ badge: 'warning' });
       }
-      if (this.iconSnippet.indexOf('can-alert') > -1) {
-        variants.push(VARIANTS.HAS_ALERT);
+      if (this.iconSnippet.hasOwnProperty('outlineAlerted')) {
+        variants.push({ badge: 'warning-triangle' });
+        variants.push({ badge: 'inherit-triangle' });
       }
-      if (this.iconSnippet.indexOf('has-solid') > -1) {
-        variants.push(VARIANTS.SOLID);
-        if (variants.indexOf(VARIANTS.HAS_BADGE) > -1) {
-          variants.push(VARIANTS.SOLID_HAS_BADGE);
-        }
-        if (variants.indexOf(VARIANTS.HAS_ALERT) > -1) {
-          variants.push(VARIANTS.SOLID_HAS_ALERT);
-        }
+      if (this.iconSnippet.hasOwnProperty('solid')) {
+        variants.forEach(v => {
+          variants.push({ ...v, solid: true });
+        });
       }
 
       return variants;
     },
   },
-  watch: {
-    iconName: function (value) {
-      // when icon name changes, reset the variant to
-      // the default variant
-      this.activeVariant = VARIANTS.OUTLINE;
-    },
+  data: function () {
+    return {
+      activeVariant: null,
+    };
   },
   methods: {
     getIconSnippet: function () {
       let code = `<cds-icon shape="${this.iconName}"`;
-      let classes = [];
 
-      if (this.activeVariant === VARIANTS.HAS_ALERT || this.activeVariant === VARIANTS.SOLID_HAS_ALERT) {
-        classes.push('has-alert');
+      if (this.activeVariant && this.activeVariant.badge) {
+        code += ` badge="${this.activeVariant.badge}"`;
       }
 
-      if (this.activeVariant === VARIANTS.HAS_BADGE || this.activeVariant === VARIANTS.SOLID_HAS_BADGE) {
-        classes.push('has-badge');
+      if (this.activeVariant && this.activeVariant.solid) {
+        code += ' solid';
       }
 
-      if (
-        this.activeVariant === VARIANTS.SOLID ||
-        this.activeVariant === VARIANTS.SOLID_HAS_ALERT ||
-        this.activeVariant === VARIANTS.SOLID_HAS_BADGE
-      ) {
-        classes.push('is-solid');
-      }
-
-      if (classes.length) {
-        code += ` class="${classes.join(' ')}"`;
-      }
       code += `></cds-icon>`;
       return Prism.highlight(code, Prism.languages.html, 'html');
     },
@@ -161,17 +136,17 @@ export default {
       }
     },
     fetchIconUrl: function (activeVariant) {
-      const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
-      if (variants.length === 0) {
-        // not solid, no badge, no alert
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
-      } else if (this.hasSolid(variants)) {
-        // is a solid icon download, may have badge or alert
-        return this.createSolidDownload(variants);
-      } else {
-        // is an outline, has either badge or alert
-        return this.createOutlineDownload(variants);
-      }
+      // const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
+      // if (variants.length === 0) {
+      //   // not solid, no badge, no alert
+      //   return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
+      // } else if (this.hasSolid(variants)) {
+      //   // is a solid icon download, may have badge or alert
+      //   return this.createSolidDownload(variants);
+      // } else {
+      //   // is an outline, has either badge or alert
+      //   return this.createOutlineDownload(variants);
+      // }
     },
   },
 };

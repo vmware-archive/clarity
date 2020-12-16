@@ -8,7 +8,13 @@
           :isActive="icon.iconName === iconDetailFor"
           v-on:show-icon-detail-at="openIconDetailAt($event)"
         >
-          <cds-icon class="icon" :class="previewClasses" :shape="icon.iconName" size="24"></cds-icon>
+          <cds-icon
+            class="icon"
+            :solid="hasSolid(icon)"
+            :badge="canBadge(icon)"
+            :shape="icon.iconName"
+            size="24"
+          ></cds-icon>
         </DocIcon>
         <DocIconDetail
           :iconSetName="setName"
@@ -46,17 +52,14 @@ export default {
       iconDetailAt: null, // Show detail at the given icon name
       iconDetailFor: null,
       filterValue: '',
-      previewClasses: {
-        'is-solid': false,
-        'has-badge': false,
-        'has-alert': false,
-      },
+      isSolid: null,
+      isBadged: null,
     };
   },
   mounted: function () {
     IconSearchService.executeOnFilterValueChange.push(this.onFilterValueChange);
     iconPreviewService.executeOnSolidChange.push(this.isSolidChange);
-    iconPreviewService.executeOnVariationChange.push(this.variationChange);
+    iconPreviewService.executeOnBadgeChange.push(this.isBadgedChange);
 
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', this.closeIconDetail);
@@ -84,24 +87,32 @@ export default {
       this.iconDetailAt = null;
       this.iconDetailFor = null;
     },
-    variationChange: function (value) {
-      if (value === 'none') {
-        this.previewClasses['has-badge'] = false;
-        this.previewClasses['has-alert'] = false;
-      } else if (value === 'alert') {
-        this.previewClasses['has-badge'] = false;
-        this.previewClasses['has-alert'] = true;
-      } else if (value === 'badge') {
-        this.previewClasses['has-badge'] = true;
-        this.previewClasses['has-alert'] = false;
-      }
+    isBadgedChange: function (value) {
+      this.isBadged = value;
     },
     isSolidChange: function (value) {
-      this.previewClasses['is-solid'] = value;
+      this.isSolid = value;
     },
     onFilterValueChange: function (value) {
       this.closeIconDetail();
       this.filterValue = value;
+    },
+    hasSolid: function (icon) {
+      return icon.iconSnippet.hasOwnProperty('solid') && this.isSolid;
+    },
+    canBadge: function (icon) {
+      if (!this.isBadged) {
+        return;
+      }
+      if (this.isBadged.includes('triangle')) {
+        if (icon.iconSnippet.hasOwnProperty('outlineAlerted') || icon.iconSnippet.hasOwnProperty('solidAlerted')) {
+          return this.isBadged;
+        }
+      } else {
+        if (icon.iconSnippet.hasOwnProperty('outlineBadged') || icon.iconSnippet.hasOwnProperty('solidBadged')) {
+          return this.isBadged;
+        }
+      }
     },
     filterIcons: function (icons) {
       return (

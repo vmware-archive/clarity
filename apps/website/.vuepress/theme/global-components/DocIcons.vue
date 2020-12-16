@@ -3,7 +3,7 @@
     <DocIconsSearch v-on:search-input-change="searchInputChange($event)"></DocIconsSearch>
     <DocIconsPreviewSettings
       v-on:is-solid-change="isSolidChange($event)"
-      v-on:variation-change="variationChange($event)"
+      v-on:is-badged-change="isBadgedChange($event)"
     ></DocIconsPreviewSettings>
     <slot></slot>
   </div>
@@ -30,15 +30,9 @@ export default {
     isSolidChange: function (value) {
       IconPreviewService.setSolid(value);
     },
-    variationChange: function (value) {
-      IconPreviewService.setVariation(value);
+    isBadgedChange: function (value) {
+      IconPreviewService.setBadge(value);
     },
   },
 };
 </script>
-
-<style lang="scss">
-.all-icons-container {
-  padding-top: var(--cds-global-space-9);
-}
-</style>

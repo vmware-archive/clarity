@@ -1,32 +1,25 @@
 <template>
   <div class="icons-preview-settings">
-    <div class="clr-control-container clr-control-inline">
-      <span class="control-container-title">
-        Preview:
-      </span>
-      <div class="clr-toggle-wrapper">
-        <input type="checkbox" class="clr-input" id="is-solid-checkbox" v-model="isSolid" />
-        <label for="is-solid-checkbox" class="clr-control-label">Solid</label>
-      </div>
-    </div>
+    <cds-toggle-group cds-layout="m-t:xs">
+      <label>Preview</label>
+      <cds-toggle>
+        <label>Solid</label>
+        <input type="checkbox" v-model="isSolid" />
+      </cds-toggle>
+    </cds-toggle-group>
 
-    <div class="clr-control-container clr-control-inline">
-      <span class="control-container-title">
-        Variations:
-      </span>
-      <div class="clr-radio-wrapper">
-        <input type="radio" class="clr-input" id="is-none-radio" value="none" v-model="variation" />
-        <label for="is-none-radio" class="clr-control-label">none</label>
-      </div>
-      <div class="clr-radio-wrapper">
-        <input type="radio" class="clr-input" id="is-badge-radio" value="badge" v-model="variation" />
-        <label for="is-badge-radio" class="clr-control-label">badge</label>
-      </div>
-      <div class="clr-radio-wrapper">
-        <input type="radio" class="clr-input" id="is-alert-radio" value="alert" v-model="variation" />
-        <label for="is-alert-radio" class="clr-control-label">alert</label>
-      </div>
-    </div>
+    <cds-select>
+      <label>Badge</label>
+      <select v-model="isBadged">
+        <option>none</option>
+        <option>info</option>
+        <option>success</option>
+        <option>danger</option>
+        <option>warning</option>
+        <option>warning-triangle</option>
+        <option>inherit-triangle</option>
+      </select>
+    </cds-select>
   </div>
 </template>
 
@@ -35,13 +28,16 @@ export default {
   name: 'DocIconsPreviewSettings',
   data: function () {
     return {
-      variation: 'none',
+      isBadged: 'none',
       isSolid: false,
     };
   },
   watch: {
-    variation: function (value) {
-      this.$emit('variation-change', value);
+    isBadged: function (value) {
+      if (value === 'none') {
+        value = null;
+      }
+      this.$emit('is-badged-change', value);
     },
     isSolid: function (value) {
       this.$emit('is-solid-change', value);
@@ -53,7 +49,7 @@ export default {
 <style scoped lang="scss">
 .icons-preview-settings {
   display: grid;
-  grid-template-columns: 8rem auto;
+  grid-template-columns: 180px 240px auto;
   padding: 0.75rem 0;
   position: sticky;
   top: 133px; // height makes it sticky under search input.

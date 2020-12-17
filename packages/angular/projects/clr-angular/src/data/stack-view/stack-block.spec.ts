@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -65,6 +65,27 @@ class DynamicBlock {
   expanded = false;
 }
 
+@Component({
+  template: `
+    <clr-stack-block #main [clrSbExpandable]="true" [(clrSbExpanded)]="expanded">
+      <clr-stack-label id="STACK_LABEL_ID">Label</clr-stack-label>
+      <clr-stack-content>Content</clr-stack-content>
+
+      <clr-stack-block>
+        <clr-stack-label>Inner content</clr-stack-label>
+        <clr-stack-content>
+          <input />
+        </clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-block>
+  `,
+})
+class DynamicBlockWithInput {
+  @ViewChild('main') blockInstance: ClrStackBlock;
+
+  expanded = false;
+}
+
 export default function (): void {
   'use strict';
   describe('StackBlock', () => {
@@ -74,7 +95,7 @@ export default function (): void {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [ClrStackViewModule, NoopAnimationsModule, FormsModule],
-        declarations: [BasicBlock, DynamicBlock, NestedBlocks],
+        declarations: [BasicBlock, DynamicBlock, DynamicBlockWithInput, NestedBlocks],
         providers: [ClrStackView],
       });
     });
@@ -292,6 +313,18 @@ export default function (): void {
       fixture.nativeElement.querySelector('clr-stack-label').click();
       fixture.detectChanges();
       expect(fixture.componentInstance.expanded).toBeFalsy();
+    });
+
+    it('should skip children when block is not expanded', () => {
+      fixture = TestBed.createComponent(DynamicBlockWithInput);
+
+      fixture.detectChanges();
+
+      expect(getBlockInstance(fixture).expanded).toBeFalsy();
+
+      const input = fixture.nativeElement.querySelector('input');
+
+      expect(input).toBeNull();
     });
 
     it('sets aria-controls attribute corresponding to stack-children id', () => {

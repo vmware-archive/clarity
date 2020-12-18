@@ -37,7 +37,7 @@
     },
     {
       "path": "./dist/test-bundles/webpack.bundle.js",
-      "maxSize": "15.5 kB",
+      "maxSize": "15.6 kB",
       "compression": "brotli"
     }
   ]

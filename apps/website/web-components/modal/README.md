@@ -19,17 +19,21 @@ Modals inform users about a task and can contain decisive information that requi
 
 Use a modal when required to interrupt the user to address a specific critical task that needs immediate resolution.
 
-Use a modal:
+When to use a modal:
 
-- To grab user’s attention for an important message.
-- To show additional information without losing the context of the parent page.
-- To break down a complex workflow into a series of less complicated steps.
+<ul cds-list cds-text="body" cds-layout="p-t:md p-b:lg">
+    <li>To grab user’s attention for <b>an important message</b>.</li>
+    <li>To show <b>additional information</b> without losing the context of the parent page.</li>
+    <li>To break down <b>a complex workflow</b> into a series of less complicated steps.</li>
+</ul>
 
-Do not use a modal
+When not to use a modal:
 
-- For nonessential information that is not related to the current workflow.
-- For complex workflows that require additional information not contained within the modal.
-- Avoid modal over modal. Context becomes confusing when modals are stacked.
+<ul cds-list cds-text="body" cds-layout="p-t:md">
+    <li>For <b>nonessential information</b> that is not related to the current workflow.</li>
+    <li>For complex workflows that require additional information <b>not contained within the modal</b>.</li>
+    <li><b>Avoid modal over modal</b>. Context becomes confusing when modals are stacked.</li>
+</ul>
 
 :::
 
@@ -43,11 +47,11 @@ Do not use a modal
 
 There are multiple sizes for modals. The default size is medium, however other sizes are available. Select the size best suited for the content and screen size displaying the modal. Remember to test responsiveness.
 
-<div>
+:::
+
+<div cds-layout="p-b:xxl p-t:md">
 !!!include(.vuepress/code/core-usage-demos/modal/sizes.html)!!!
 </div>
-
-:::
 
 ::: component-section-level-one-title
 
@@ -69,22 +73,19 @@ Consider using modals for the following scenarios: alerting the user, confirmati
 
 :::component-section-level-two
 
-A user needs to actively dismiss a modal. A modal should not disappear on its own. Taking any of the actions to either cancel or proceed should eventually dismiss the modal.
+<div cds-layout="horizontal gap:lg align:fill">
+<div cds-layout="vertical">
+<p>A user needs to actively dismiss a modal. A modal should not disappear on its own. Taking any of the actions to either cancel or proceed should eventually dismiss the modal.</p>
 
-:::
-
-:::component-section-level-two
-
-<div cds-layout="horizontal gap:sm align:fill">
-<div cds-layout="vertical align:vertical-center">
 <p>There are multiple ways to dismiss a modal but a user needs to intentionally make that choice.</p>
 
-<p>Clarity Modals are not dismissed when clicking on the background overlay. This prevents losing information or data. An option to override this is available.</p>
+<p>Clarity modals are not dismissed when clicking on the background overlay. This prevents losing information or data. An option to override this is available.</p>
 </div>
 <div>
 <ClrImage title="Image that shows multiple ways to dismiss a modal." src="/images/components/modal/dismissing.png" />
 </div>
 </div>
+
 :::
 
 :::component-section-level-two-title
@@ -93,18 +94,11 @@ A user needs to actively dismiss a modal. A modal should not disappear on its ow
 
 :::
 
-:::component-section-level-two
-
-Modals should not launch other modals. Stacking modals makes it hard to dismiss them and confuses the user on their levels of importance.
-
-:::
-
-:::component-section-level-two
-
-<div cds-layout="horizontal gap:sm align:fill">
-<div cds-layout="vertical align:vertical-center">
+<div cds-layout="horizontal gap:lg align:fill p-b:xxl">
+<div cds-layout="vertical gap:md">
+<p>Modals should not launch other modals. Stacking modals makes it hard to dismiss them and confuses the user on their levels of importance.</p>
 <p>If you see a need to stack modals, you should:</p>
-<ul>
+<ul cds-list cds-text="body">
 <li>Seek alternatives to the second modal such as inline expansion within the first one.</li>
 <li>Seek alternatives to the use of modals in that scenario and explore alternatives such as inline task completion.</li>
 </ul>
@@ -113,4 +107,3 @@ Modals should not launch other modals. Stacking modals makes it hard to dismiss 
 <ClrImage title="Image that shows multiple modals stacked on top of each other as an example for what not to do." src="/images/components/modal/stacking.png" />
 </div>
 </div>
-:::

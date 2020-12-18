@@ -20,6 +20,13 @@
   position: relative;
 }
 
+cds-demo[popover] {
+  min-height: 500px;
+  position: relative;
+  display: block;
+  z-index: 0;
+}
+
 .cds-demo[layout][wide],
 .layout-demo.wide-demo {
   width: 100%;

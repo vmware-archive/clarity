@@ -54,15 +54,15 @@
   --action-size: #{$cds-global-space-9};
 
   ::slotted(cds-button) {
-    --color: #{$cds-global-typography-color-100};
-    --border-color: #{$cds-global-typography-color-100};
+    --color: var(--action-text-color);
+    --border-color: var(--action-text-color);
   }
 }
 
 :host([type='default']),
 :host([type='banner']) {
   &::slotted(a) {
-    color: var(--cds-global-typography-color-100);
+    color: var(--action-text-color);
   }
 }
 

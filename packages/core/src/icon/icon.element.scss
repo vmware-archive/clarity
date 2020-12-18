@@ -118,8 +118,8 @@ svg {
   --badge-color: #{$cds-alias-status-danger};
 }
 
-:host([badge='warning']) {
-  --badge-color: #{$cds-alias-status-warning};
+:host([badge*='warning']) {
+  --badge-color: #{$cds-alias-status-warning-shade};
 }
 
 :host([badge='inherit']) {
@@ -131,10 +131,6 @@ svg {
 }
 
 // alert colors
-:host([badge$='triangle']) {
-  --badge-color: #{$cds-alias-status-warning};
-}
-
 :host([badge='inherit-triangle']) {
   --badge-color: inherit;
 }
@@ -154,18 +150,9 @@ svg {
 }
 
 :host([badge='warning'][inverse]) {
-  --badge-color: #{$cds-alias-status-warning};
+  --badge-color: #{$cds-alias-status-warning-shade};
 }
 
 :host([badge='info'][inverse]) {
   --badge-color: #{$cds-alias-status-info};
-}
-
-// alert colors
-:host([badge$='triangle'][inverse]) {
-  --badge-color: #{$cds-alias-status-warning};
-}
-
-:host([badge='inherit-triangle'][inverse]) {
-  --badge-color: inherit;
 }

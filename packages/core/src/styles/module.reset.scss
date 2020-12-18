@@ -15,8 +15,9 @@ html {
   box-sizing: inherit !important;
 }
 
-body[cds-theme] {
+[cds-theme] {
   background: $cds-alias-object-app-background;
+  color: $cds-global-typography-color-400;
 }
 
 [cds-control] ::-webkit-input-placeholder {

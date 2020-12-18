@@ -3,8 +3,8 @@
 
 :host {
   --ring-opacity: 1;
-  --ring-color: #{$cds-alias-status-secondary-info-shade};
-  --fill-color: #{$cds-alias-status-info};
+  --ring-color: #{$cds-alias-status-neutral-tint};
+  --fill-color: #{$cds-alias-status-neutral};
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -65,33 +65,32 @@ svg {
 }
 
 :host([status='info']) {
-  --ring-color: #{$cds-alias-status-secondary-info-shade};
+  --ring-color: #{$cds-alias-status-info-tint};
   --fill-color: #{$cds-alias-status-info};
 }
 
 :host([status='success']) {
-  --ring-color: #{$cds-alias-status-secondary-success-shade};
+  --ring-color: #{$cds-alias-status-success-tint};
   --fill-color: #{$cds-alias-status-success};
 }
 
 :host([status='warning']) {
-  --ring-color: #{$cds-alias-status-secondary-warning-shade};
+  --ring-color: #{$cds-alias-status-warning-tint};
   --fill-color: #{$cds-alias-status-warning};
 }
 
 :host([status='danger']) {
-  --ring-color: #{$cds-alias-status-secondary-danger-shade};
+  --ring-color: #{$cds-alias-status-danger-tint};
   --fill-color: #{$cds-alias-status-danger};
 }
 
 :host([status='alt']) {
-  --ring-color: #{$cds-alias-status-secondary-alt-shade};
+  --ring-color: #{$cds-alias-status-alt-tint};
   --fill-color: #{$cds-alias-status-alt};
 }
 
-:host([status='neutral']),
 :host([inverse]) {
-  --ring-color: #{$cds-alias-status-secondary-neutral-shade};
+  --ring-color: #{$cds-alias-status-neutral-shade};
   --fill-color: #{$cds-alias-status-neutral};
 }
 

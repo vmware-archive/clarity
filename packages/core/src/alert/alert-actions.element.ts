@@ -59,6 +59,7 @@ export class CdsAlertActions extends LitElement {
     this.buttons.forEach(b => {
       b.status = this.type === 'banner' ? 'inverse' : 'primary';
       b.size = this.type === 'banner' ? 'sm' : 'md';
+      b.style.setProperty('--color', 'inherit');
     });
   }
 

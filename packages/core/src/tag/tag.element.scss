@@ -2,12 +2,12 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --background: #{$cds-alias-object-opacity-0};
+  --background: var(--cds-alias-status-tint, #{$cds-alias-status-neutral-tint});
   --color: #{$cds-global-typography-color-500};
   --padding: #{$cds-global-space-2};
   --font-size: #{$cds-global-typography-font-size-0};
   --border-radius: #{$cds-alias-object-border-radius-200};
-  --border-color: #{$cds-alias-status-secondary-neutral};
+  --border-color: #{$cds-alias-status-neutral};
   --border-width: #{$cds-alias-object-border-width-100};
   display: inline-block;
 }
@@ -25,6 +25,7 @@
   white-space: nowrap;
   text-decoration: none;
   min-height: calc(#{$cds-global-space-8} + #{$cds-global-space-3});
+  transform: translateZ(0px); // used for ::after hover
 }
 
 .tag-content {
@@ -37,13 +38,24 @@ cds-icon[shape='times'] {
   cursor: pointer;
 }
 
-:host(:not([readonly])),
-:host([is-anchor]) {
+:host(:not([readonly])) {
   &:host([active]),
   &:host(:hover),
   &:host(:focus),
   &:host(:active) {
-    --background: var(--internal-background-hover, #{$cds-alias-status-secondary-neutral-shade});
+    .private-host::after {
+      background: var(--background);
+      border-radius: var(--border-radius);
+      filter: brightness(95%);
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      inset: 0; // once safari catches up positions can be deleted for inset
+      z-index: -1;
+    }
   }
 
   &:host([active]),
@@ -63,27 +75,31 @@ cds-icon[shape='times'] {
 }
 
 :host([status='info']) {
-  --border-color: #{$cds-alias-status-secondary-info};
-  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-info-tint});
-  --internal-background-hover: #{$cds-alias-status-secondary-info-shade};
+  --border-color: #{$cds-alias-status-info};
+  --background: var(--cds-alias-status-tint, #{$cds-alias-status-info-tint});
 }
 
 :host([status='success']) {
-  --border-color: #{$cds-alias-status-secondary-success};
-  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-success-tint});
-  --internal-background-hover: #{$cds-alias-status-secondary-success-shade};
+  --border-color: #{$cds-alias-status-success};
+  --background: var(--cds-alias-status-tint, #{$cds-alias-status-success-tint});
 }
 
 :host([status='warning']) {
-  --border-color: #{$cds-alias-status-secondary-warning};
-  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-warning-tint});
-  --internal-background-hover: #{$cds-alias-status-secondary-warning-shade};
+  --border-color: #{$cds-alias-status-warning};
+  --background: var(--cds-alias-status-tint, #{$cds-alias-status-warning-tint});
 }
 
 :host([status='danger']) {
-  --border-color: #{$cds-alias-status-secondary-danger};
-  --background: var(--cds-alias-status-secondary-tint, #{$cds-alias-status-secondary-danger-tint});
-  --internal-background-hover: #{$cds-alias-status-secondary-danger-shade};
+  --border-color: #{$cds-alias-status-danger};
+  --background: var(--cds-alias-status-tint, #{$cds-alias-status-danger-tint});
+}
+
+:host([color]) {
+  --background: #{$cds-alias-object-opacity-0};
+
+  :hover {
+    --background: #{$cds-alias-status-neutral-tint};
+  }
 }
 
 :host([color='purple']) {

@@ -11,12 +11,13 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
   --font-weight: #{$cds-global-typography-body-font-weight};
   --letter-spacing: #{$cds-global-typography-body-letter-spacing};
   --icon-size: #{$cds-global-space-8};
-  --icon-color: #{$cds-global-typography-color-500};
+  --icon-color: var(--color);
   width: 100%;
 }
 
 .private-host {
   min-height: var(--min-height);
+  color: var(--color);
 }
 
 :host([type='default']) .alert-spinner,
@@ -46,7 +47,7 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
 }
 
 cds-internal-close-button {
-  --color: #{$cds-global-typography-color-500};
+  --color: inherit;
 }
 
 .alert-content-wrapper,
@@ -75,7 +76,7 @@ cds-internal-close-button {
 }
 
 ::slotted(cds-alert-actions) {
-  --action-text-color: #{$cds-global-typography-color-500};
+  --action-text-color: var(--color);
   --action-size: #{$lightweight-alert-line-height};
   display: none;
 }
@@ -97,7 +98,7 @@ cds-internal-close-button {
 }
 
 :host([type='light'][status='warning']) {
-  --icon-color: #{$cds-alias-status-warning};
+  --icon-color: #{$cds-alias-status-warning-shade};
 }
 
 :host([type='light'][status='danger']) {
@@ -114,7 +115,6 @@ cds-internal-close-button {
 }
 
 // banner styles
-
 :host([type='banner']) .alert-content-wrapper {
   transform: none;
   min-height: #{$cds-global-space-10};
@@ -124,13 +124,22 @@ cds-internal-close-button {
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([type='default'][status='warning']),
+:host([type='banner'][status='warning']) {
+  --color: #{$cds-global-color-gray-1000};
+
+  cds-alert-actions {
+    --action-hover-text-color: var(--color);
+    --action-text-color: var(--color);
+  }
+}
+
 :host([type='banner']) .spinner {
   @include min-equilateral(calc(#{$cds-global-space-8} + #{$cds-global-space-2}));
   margin-top: #{$cds-global-space-2};
 }
 
 :host([type='banner']) cds-internal-close-button {
-  --color: var(--icon-color);
   height: $cds-global-space-9;
   margin-top: $cds-global-space-3;
 }

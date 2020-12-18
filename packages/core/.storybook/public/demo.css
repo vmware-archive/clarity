@@ -121,13 +121,13 @@ cds-card {
   padding: 36px 24px;
 }
 
-[id*='--dark-theme'],
+[id*='story--'][id*='-dark-theme'],
 [cds-theme='dark'] {
   background: var(--cds-global-color-construction-1000) !important;
 }
 
-.cds-theme-light [id*='--dark-theme'],
-.cds-theme-dark [id*='--dark-theme'] {
+.cds-theme-light [id*='story--'][id*='-dark-theme'],
+.cds-theme-dark [id*='story--'][id*='-dark-theme'] {
   background: var(--cds-alias-object-app-background) !important;
 }
 

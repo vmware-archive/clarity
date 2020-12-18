@@ -2,14 +2,13 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-global-typography-color-500};
   --icon-color: #{$cds-global-typography-color-500};
   --icon-size: #{$cds-global-space-8};
   --font-size: #{$cds-global-typography-body-font-size};
   --font-weight: #{$cds-global-typography-body-font-weight};
   --letter-spacing: #{$cds-global-typography-body-letter-spacing};
   --padding: #{$cds-global-space-5} #{$cds-global-space-5} #{$cds-global-space-4} #{$cds-global-space-6};
-  --background: #{$cds-alias-status-secondary-neutral-tint};
+  --background: #{$cds-alias-status-neutral-tint};
   --border-color: #{$cds-alias-status-neutral};
   --border-width: #{$cds-alias-object-border-width-100};
   --border-radius: #{$cds-alias-object-border-radius-100};
@@ -32,23 +31,23 @@
 }
 
 :host([status='info']) {
-  --background: #{$cds-alias-status-secondary-info-tint};
-  --border-color: #{$cds-alias-status-secondary-info};
+  --background: #{$cds-alias-status-info-tint};
+  --border-color: #{$cds-alias-status-info};
 }
 
 :host([status='success']) {
-  --background: #{$cds-alias-status-secondary-success-tint};
-  --border-color: #{$cds-alias-status-secondary-success};
+  --background: #{$cds-alias-status-success-tint};
+  --border-color: #{$cds-alias-status-success};
 }
 
 :host([status='warning']) {
-  --background: #{$cds-alias-status-secondary-warning-tint};
-  --border-color: #{$cds-alias-status-secondary-warning};
+  --background: #{$cds-alias-status-warning-tint};
+  --border-color: #{$cds-alias-status-warning};
 }
 
 :host([status='danger']) {
-  --background: #{$cds-alias-status-secondary-danger-tint};
-  --border-color: #{$cds-alias-status-secondary-danger};
+  --background: #{$cds-alias-status-danger-tint};
+  --border-color: #{$cds-alias-status-danger};
 }
 
 :host([type='default'][size='sm']) {
@@ -70,15 +69,10 @@
 // banner alert group styles
 :host([type='banner']) {
   --border-color: var(--background);
-  --color: #{$cds-global-typography-color-100};
   --padding: #{$cds-global-space-1} #{$cds-global-space-6};
   --border-width: 0;
   --background: #{$cds-alias-status-neutral};
   --border-radius: 0;
-
-  ::slotted(cds-alert) {
-    --icon-color: #{$cds-global-typography-color-100};
-  }
 }
 
 :host([type='banner'][status='info']) {
@@ -99,6 +93,11 @@
 :host([type='banner'][status='success']) {
   --background: #{$cds-alias-status-success};
   --pager-background: #{$cds-alias-status-success-shade};
+}
+
+:host([type='banner'][status='neutral']) {
+  --background: #{$cds-alias-status-neutral};
+  --pager-background: #{$cds-alias-status-neutral-shade};
 }
 
 :host([type='banner'][status='alt']) {

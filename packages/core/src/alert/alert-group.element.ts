@@ -76,11 +76,11 @@ export class CdsAlertGroup extends LitElement {
   role = 'region';
 
   /**
-   * @type {default | info | success | warning | danger | unknown | loading}
+   * @type {neutral | info | success | warning | danger | alt | loading}
    * Sets the status of the alerts inside the alert group
    */
   @property({ type: String })
-  status: AlertStatusTypes = 'default';
+  status: AlertStatusTypes = 'neutral';
 
   @querySlotAll('cds-alert') private alerts: NodeListOf<CdsAlert>;
 

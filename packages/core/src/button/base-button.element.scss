@@ -44,7 +44,7 @@
   text-align: center;
   text-decoration: var(--text-decoration);
   text-overflow: ellipsis;
-  transform: translateZ(0px); // for chrome rendering bug
+  transform: translateZ(0px); // used for ::after hover
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
@@ -82,8 +82,22 @@
   box-shadow: 0 #{$cds-global-space-1} 0 0 var(--box-shadow-color) inset;
 }
 
-:host(:hover) {
-  --background: #{$cds-alias-status-info-shade};
+:host(:hover),
+:host(:focus),
+:host(:active) {
+  .private-host::after {
+    background: var(--background);
+    border-radius: var(--border-radius);
+    filter: brightness(95%);
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    inset: 0; // once safari catches up positions can be deleted for inset
+    z-index: -1;
+  }
 }
 
 ::slotted {
@@ -113,50 +127,30 @@
 
 :host([status='success']) {
   --background: #{$cds-alias-status-success};
-
-  &:host(:hover) {
-    --background: #{$cds-alias-status-success-shade};
-  }
 }
 
 :host([status='danger']) {
   --background: #{$cds-alias-status-danger};
-
-  &:host(:hover) {
-    --background: #{$cds-alias-status-danger-shade};
-  }
 }
 
 :host([action='outline']) {
   --background: #{$cds-alias-object-opacity-0};
   --border-color: var(--color);
   --color: #{$cds-alias-status-info};
-
-  &:host(:hover) {
-    --background: #{$cds-alias-status-secondary-info-shade};
-  }
 }
 
 :host([status='success'][action='outline']) {
   --color: #{$cds-alias-status-success};
-
-  &:host(:hover) {
-    --background: #{$cds-alias-status-secondary-success-shade};
-  }
 }
 
 :host([status='danger'][action='outline']) {
   --color: #{$cds-alias-status-danger};
-
-  &:host(:hover) {
-    --background: #{$cds-alias-status-secondary-danger-shade};
-  }
 }
 
 :host([status='inverse']) {
-  --border-color: #{$cds-global-typography-color-100};
-  --background: #{$cds-alias-object-opacity-0};
   --color: #{$cds-global-typography-color-100};
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: var(--color);
 }
 
 :host([action='flat']) {
@@ -197,6 +191,10 @@
     cursor: not-allowed;
     box-shadow: none;
     outline: 0;
+
+    &::after {
+      display: none;
+    }
   }
 
   ::slotted(cds-badge) {

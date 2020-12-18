@@ -469,27 +469,27 @@ const aliases = {
   status: {
     info: {
       value: token(color.blue[700]),
-      tint: token(color.blue[600]),
+      tint: token(color.blue[50]),
       shade: token(color.blue[800]),
     },
     success: {
       value: token(color.green[700]),
-      tint: token(color.green[600]),
+      tint: token(color.green[50]),
       shade: token(color.green[800]),
     },
     warning: {
-      value: token(color.ochre[800]),
-      tint: token(color.ochre[700]),
-      shade: token(color.ochre[900]),
+      value: token(color.ochre[500]),
+      tint: token(color.ochre[50]),
+      shade: token(color.ochre[600]),
     },
     danger: {
       value: token(color.red[700]),
-      tint: token(color.red[600]),
+      tint: token(color.red[50]),
       shade: token(color.red[800]),
     },
     neutral: {
       value: token(color.construction[600]),
-      tint: token(color.construction[400]),
+      tint: token(color.construction[50]),
       shade: token(color.construction[700]),
     },
     disabled: {
@@ -501,38 +501,6 @@ const aliases = {
       value: token(color.violet[700]),
       tint: token(color.violet[600]),
       shade: token(color.violet[900]),
-    },
-    secondary: {
-      info: {
-        value: token(color.blue[800]),
-        tint: token(color.blue[50]),
-        shade: token(color.blue[100]),
-      },
-      success: {
-        value: token(color.green[800]),
-        tint: token(color.green[50]),
-        shade: token(color.green[100]),
-      },
-      warning: {
-        value: token(color.ochre[800]),
-        tint: token(color.ochre[50]),
-        shade: token(color.ochre[100]),
-      },
-      danger: {
-        value: token(color.red[800]),
-        tint: token(color.red[50]),
-        shade: token(color.red[100]),
-      },
-      neutral: {
-        value: token(color.construction[600]),
-        tint: token(color.construction[50]),
-        shade: token(color.construction[100]),
-      },
-      alt: {
-        value: token(color.violet[800]),
-        tint: token(color.violet[50]),
-        shade: token(color.violet[100]),
-      },
     },
   },
 };

@@ -162,11 +162,11 @@ export class CdsAlert extends LitElement {
   closable = false;
 
   /**
-   * @type {default | info | success | warning | danger | unknown | loading}
+   * @type {neutral | info | success | warning | danger | alt | loading}
    * Sets the color of the alert from a predefined list of statuses
    */
   @property({ type: String })
-  status: AlertStatusTypes = 'default';
+  status: AlertStatusTypes = 'neutral';
 
   @i18n() i18n = I18nService.keys.alert;
 

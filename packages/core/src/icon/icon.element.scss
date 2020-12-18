@@ -3,15 +3,11 @@
 
 @mixin flipSVGIcon($direction) {
   @if $direction == 'horizontal' {
-    :host {
-      transform: scale(-1) rotateX(180deg);
-    }
+    transform: scale(-1) rotateX(180deg);
     /* stylelint-disable */
   } @else if $direction == 'vertical' {
     /* stylelint-enable */
-    :host {
-      transform: scale(-1) rotateY(180deg);
-    }
+    transform: scale(-1) rotateY(180deg);
   }
 }
 
@@ -145,14 +141,56 @@ svg {
   --badge-color: #{$cds-alias-status-success};
 }
 
-:host([badge='inherit'][inverse]) {
-  --badge-color: inherit;
+:host([badge*='warning'][inverse]) {
+  --badge-color: #{$cds-alias-status-warning-shade};
 }
 
-:host([badge='warning'][inverse]) {
-  --badge-color: #{$cds-alias-status-warning-shade};
+:host([badge*='inherit'][inverse]) {
+  --badge-color: inherit;
 }
 
 :host([badge='info'][inverse]) {
   --badge-color: #{$cds-alias-status-info};
+}
+
+// unknown icon animation
+
+.cds-internal-dot-1 {
+  animation: fadeInAndOut 1.8s ease-in 0s infinite;
+}
+
+.cds-internal-dot-2 {
+  animation: fadeInAndOut 1.8s ease-out 0.422s infinite;
+}
+
+.cds-internal-dot-3 {
+  animation: fadeInAndOut 1.8s ease-out 0.675s infinite;
+}
+
+@keyframes fadeInAndOut {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .cds-internal-dot-1 {
+    animation: none;
+  }
+
+  .cds-internal-dot-2 {
+    animation: none;
+  }
+
+  .cds-internal-dot-3 {
+    animation: none;
+  }
 }

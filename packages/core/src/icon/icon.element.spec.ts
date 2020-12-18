@@ -48,7 +48,7 @@ describe('icon element', () => {
     it('shape should render when a matching shape is updated in the registry', async () => {
       const shape = 'jabberwocky';
       const svg = '<svg>jabberwocky</svg>';
-      const unknown = 'M18,22.61a1,1,0,0';
+      const unknown = 'cds-internal-dot-';
 
       await componentIsStable(component);
       component.shape = shape;

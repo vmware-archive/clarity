@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import v4 from '../../../../../changelogs/v4.json';
+import v5 from '../../../../../changelogs/v5.json';
 
 export default {
   name: 'WhatsNew',
@@ -20,14 +20,7 @@ export default {
   props: ['version', 'component'],
   methods: {
     reduceVersion: function (version) {
-      // handle latest and v4, v3, v2 etc ...
-      if (version === 'latest' || version === 'v4') {
-        return v4.releases[0];
-      }
-      // else if (version === 'v3') {
-      // planning for v3, v2 etc ...
-      // return v4.releases[0];
-      // }
+      return v5.releases[0];
     },
   },
   computed: {

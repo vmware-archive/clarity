@@ -5,6 +5,12 @@ toc: true
 
 The Clarity Icons presents pixel-perfect, scalable SVG-based icons. The icon system gives you complete control over icon color, orientation, and size. Additionally, you can access and customize any SVG graphic elements inside the icon through standard CSS.
 
+<doc-alert status="warning">
+
+**Are you using the old icons?** This only describes the Clarity Core Web Components icon implemenation, which uses the `@cds/core` NPM package. If you are looking for documentation about the original Clarity Icons which uses the `@clr/icons` NPM package, please visit our [old icons documentation](https://v4.clarity.design/icons).
+
+</doc-alert>
+
 ## Usage
 
 Follow the instructions in the web components getting [started page](/web-components/get-started) to install the @cds/core package.

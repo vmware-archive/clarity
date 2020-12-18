@@ -138,14 +138,14 @@ describe('Alert element – ', () => {
       await componentIsStable(component);
       const iconName = infoStandardIcon[0];
       const alertStatusIcon = component.shadowRoot.querySelector(alertStatusIconSelector);
-      expect(component.status).toBe('default');
+      expect(component.status).toBe('neutral');
       expect(alertStatusIcon.getAttribute('shape')).toBe(iconName);
       expect(alertStatusIcon.getAttribute('shape')).toBe(iconName);
     });
 
     it('should allow users to change statuses', async () => {
       await componentIsStable(component);
-      expect(component.status).toBe('default');
+      expect(component.status).toBe('neutral');
       expect(component.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('shape')).toBe(
         infoStandardIcon[0]
       );

@@ -41,19 +41,20 @@
 }
 
 :host([status='info']) {
-  --background: #{$cds-alias-status-secondary-info};
+  --background: #{$cds-alias-status-info-shade};
 }
 
 :host([status='success']) {
-  --background: #{$cds-alias-status-secondary-success};
+  --background: #{$cds-alias-status-success-shade};
 }
 
 :host([status='warning']) {
-  --background: #{$cds-alias-status-secondary-warning};
+  --background: #{$cds-alias-status-warning-shade};
+  --color: #{$cds-global-color-gray-1000};
 }
 
 :host([status='danger']) {
-  --background: #{$cds-alias-status-secondary-danger};
+  --background: #{$cds-alias-status-danger-shade};
 }
 
 :host([color='blue']) {

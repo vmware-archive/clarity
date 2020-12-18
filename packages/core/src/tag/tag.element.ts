@@ -39,11 +39,12 @@ import { styles } from './tag.element.css.js';
  * @cssprop --size
  */
 export class CdsTag extends CdsBaseButton {
-  /** Sets the color of the tag (and badge if present) from the following predefined list of statuses:
-   *  'info', 'success', 'warning', 'danger'
+  /**
+   * @type {neutral | info | success | warning | danger}
+   * Sets the color of the tag (and badge if present) from the following predefined list of statuses:
    */
   @property({ type: String })
-  status: StatusTypes;
+  status: StatusTypes = 'neutral';
 
   /** Sets the color of the tag (and badge if present) from a predefined list of choices */
   @property({ type: String })

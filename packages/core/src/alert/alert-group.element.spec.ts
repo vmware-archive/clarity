@@ -259,8 +259,8 @@ describe('Alert groups – ', () => {
     it('parent alert group does not set status if child alert status is not defined', async () => {
       await componentIsStable(bannerAlertGroupWithNoStatus);
       const childAlert = bannerAlertGroupWithNoStatus.querySelector<CdsAlert>('#statusless');
-      expect(childAlert.status).toBe('default');
-      expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('default');
+      expect(childAlert.status).toBe('neutral');
+      expect(bannerAlertGroupWithNoStatus.getAttribute('status')).toBe('neutral');
     });
   });
 
@@ -292,7 +292,7 @@ describe('Alert groups – ', () => {
       await componentIsStable(alertGroup);
       const customAlertSlotContent = getComponentSlotContent(customAlert);
       const loadingAlertSlotContent = getComponentSlotContent(loadingAlert);
-      expect(alertGroup.status).toBe('default');
+      expect(alertGroup.status).toBe('neutral');
       expect(defaultAlert.shadowRoot.querySelector(alertStatusIconSelector).getAttribute('shape')).toBe(
         'info-standard',
         'does not override child alert icon shapes if status is not defined'

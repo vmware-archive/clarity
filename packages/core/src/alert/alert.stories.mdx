@@ -6,16 +6,10 @@ import { html, LitElement } from 'lit-element';
 
 # Alert
 
-Alerts are banners that communicate a message with a severity attached to it. They grab the user’s attention to provide critical information needed in context.
-
-By default, alerts outside of an alert group have a lightweight look and functionality. This means that:
-
-- `cds-alert-actions` child components will not be displayed inside a lightweight alert
-- lightweight alerts cannot display a close button – they are always considered to be `closable = false`
-
-Lightweight alerts can be placed inside containers such cards and layouts. But if the alerts are dynamic, their container will need to have an `aria-live` attribute set on them so that screen-readers will announce content changes within the container.
-
-Making a lightweight alert dismissible or "closable" will require the use of a `cds-inline-button` and an action on the product side that determines whether or not the alert should be removed from view.
+Alerts communicate a message with a severity attached to it. They grab the user’s
+attention to provide critical information needed in context. If the alerts are dynamic,
+their container will need to have an `aria-live` attribute set on them so that
+screen-readers will announce content changes within the container.
 
 ## Installation
 
@@ -26,43 +20,31 @@ import '@cds/core/alert/register.js';
 ```
 
 ```html
-<!-- dynamic alerts should go inside a container with an aria-live setting. static alerts do not need this. -->
-<cds-alert aria-live="polite">
-  This is an alert. It will display a decorative "info" icon by default. You should set the aria-live attribute on the
-  alert to a level that aligns with the severity of the alert's status.
-</cds-alert>
+<cds-alert-group type="default" status="info">
+  <cds-alert>
+    This is an alert. It will display a decorative "info" icon by default. You should set the aria-live attribute on the
+    alert to a level that aligns with the severity of the alert's status.
+  </cds-alert>
+  <cds-alert>
+    This is a second alert. It will display a decorative "info" icon by default.
+  </cds-alert>
+</cds-alert-group>
 ```
 
-## Alerts
+## Standard Alert
 
 <Preview>
-  <Story id="stories-alert--light-alerts" />
+  <Story id="stories-alert-group--alert-group" />
 </Preview>
 
-## Alert statuses
+## Compact
 
 <Preview>
-  <Story id="stories-alert--status" />
-</Preview>
-
-## Compact alerts
-
-<Preview>
-  <Story id="stories-alert--compact" />
+  <Story id="stories-alert-group--compact-standard-alert-group" />
 </Preview>
 
 ## Dark Theme
 
 <Preview>
-  <Story id="stories-alert--dark-theme" />
+  <Story id="stories-alert-group--dark-theme-standard-alert-group" />
 </Preview>
-
-## Custom alert styles
-
-<Preview>
-  <Story id="stories-alert--custom-styles" />
-</Preview>
-
-## API
-
-<Props of={'cds-alert'} />

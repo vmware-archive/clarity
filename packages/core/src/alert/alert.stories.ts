@@ -93,7 +93,6 @@ export function status() {
       <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>
       <cds-alert status="danger">This is an alert with a status of "danger"</cds-alert>
       <cds-alert status="loading">This is an alert with a status of "loading"</cds-alert>
-      <cds-alert status="alt">This is an alert with a status of "alt"</cds-alert>
       <cds-alert status="danger"
         ><cds-icon shape="times-circle" aria-label="Warning" role="img" solid></cds-icon>This is an alert with a status
         of "danger" and a custom icon</cds-alert
@@ -109,29 +108,17 @@ export function status() {
 /** @website */
 export function compact() {
   return html`
-    <div cds-layout="vertical gap:none">
-      <cds-alert size="sm">
+    <cds-alert-group type="light" size="sm">
+      <cds-alert status="info">
         This compact alert example has only a single line of text.<cds-inline-button
           >Use Inline Buttons in Lightweight Alerts<cds-icon direction="right" shape="angle"></cds-icon
         ></cds-inline-button>
       </cds-alert>
-      <cds-alert size="sm" status="info">
-        This compact alert example has a status of "info" many lines of text. A block of lorem ipsum sample text
-        follows: A very small stage in a vast cosmic arena descended from astronomers tesseract billions upon billions
-        science Flatland. Invent the universe the carbon in our apple pies the only home we've ever known with pretty
-        stories for which there's little good evidence citizens of distant epochs rich in heavy atoms. The carbon in our
-        apple pies muse about from which we spring star stuff harvesting star light courage of our questions paroxysm of
-        global death and billions upon billions upon billions upon billions upon billions upon billions upon
-        billions.<cds-inline-button>Click One</cds-inline-button> <cds-inline-button>Click Two</cds-inline-button
-        ><cds-alert-actions>
-          <cds-button>Buttons inside alert actions should not be visible inside Lightweight Alerts</cds-button>
-        </cds-alert-actions>
-      </cds-alert>
-      <cds-alert size="sm" status="success">This is a compact alert with a status of "success"</cds-alert>
-      <cds-alert size="sm" status="warning">This is a compact alert with a status of "warning"</cds-alert>
-      <cds-alert size="sm" status="danger">This is a compact alert with a status of "danger"</cds-alert>
-      <cds-alert size="sm" status="loading">This is a compact alert with a status of "loading"</cds-alert>
-    </div>
+      <cds-alert status="success">This is a compact alert with a status of "success"</cds-alert>
+      <cds-alert status="warning">This is a compact alert with a status of "warning"</cds-alert>
+      <cds-alert status="danger">This is a compact alert with a status of "danger"</cds-alert>
+      <cds-alert status="loading">This is a compact alert with a status of "loading"</cds-alert>
+    </cds-alert-group>
   `;
 }
 
@@ -143,13 +130,16 @@ export function darkTheme() {
         <cds-alert status="info">
           This example is an alert with a status of "info" inside a lightweight alert group.
         </cds-alert>
-        <cds-alert status="danger">
-          This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+        <cds-alert status="success">
+          This example is an alert with a status of "success" inside a lightweight alert group.
         </cds-alert>
         <cds-alert status="warning">
           This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert
           group.
+          <cds-inline-button>Clickable Action</cds-inline-button>
+        </cds-alert>
+        <cds-alert status="danger">
+          This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
           <cds-inline-button>Clickable Action</cds-inline-button>
         </cds-alert>
         <cds-alert>

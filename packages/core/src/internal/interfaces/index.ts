@@ -12,9 +12,7 @@ type ExtraTShirtSizes = 'xs' | 'xxl';
 export type TShirtSizes = BasicTShirtSizes | ExtraTShirtSizes;
 
 // STATUSES
-export type StoplightStatusTypes = 'success' | 'warning' | 'danger';
-
-export type StatusTypes = 'default' | 'info' | StoplightStatusTypes;
+export type StatusTypes = 'neutral' | 'info' | 'success' | 'warning' | 'danger';
 
 // MISC
 export type AriaLivePolitenessSettings = 'off' | 'polite' | 'assertive';

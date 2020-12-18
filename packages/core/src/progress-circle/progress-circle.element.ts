@@ -38,11 +38,11 @@ export class CdsProgressCircle extends LitElement {
   private _size: string;
 
   /**
-   * @type {default | info | success | warning | danger | unknown}
+   * @type {neutral | info | success | warning | danger}
    * Sets the color of the badge
    */
   @property({ type: String })
-  status: StatusTypes | 'unknown' = 'default';
+  status: StatusTypes = 'neutral';
 
   /**
    * Inverts color of circular progress bar if `true`.

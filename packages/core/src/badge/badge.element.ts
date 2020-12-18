@@ -40,11 +40,11 @@ export class CdsBadge extends LitElement {
   color: 'default' | 'gray' | 'purple' | 'blue' | 'orange' | 'light-blue' | null = null;
 
   /**
-   * @type {default | info | success | warning | danger}
+   * @type {neutral | info | success | warning | danger}
    * Sets the color of the badge
    */
   @property({ type: String })
-  status: StatusTypes | null = null;
+  status: StatusTypes = 'neutral';
 
   render() {
     return html`

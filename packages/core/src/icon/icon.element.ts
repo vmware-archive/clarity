@@ -107,11 +107,11 @@ export class CdsIcon extends LitElement {
   solid = false;
 
   /**
-   * @type {info | success | warning | danger | highlight}
+   * @type {info | success | warning | danger}
    * Changes color of icon fills and outlines
    */
   @property({ type: String })
-  status: StatusTypes | 'highlight' | '' = '';
+  status: StatusTypes;
 
   /**
    * Inverts color of icon fills and outlines if `true`.

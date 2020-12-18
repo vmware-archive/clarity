@@ -4,7 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export type AlertStatusTypes = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'alt' | 'loading';
+import { StatusTypes } from '@cds/core/internal';
+
+export type AlertStatusTypes = StatusTypes | 'alt' | 'loading';
 
 export type AlertGroupTypes = 'default' | 'banner' | 'light';
 

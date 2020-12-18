@@ -1026,3 +1026,443 @@ export function interactionAccordionDemo() {
     </div>
   `;
 }
+
+export const statusColors = () => {
+  return html`
+    <div cds-layout="vertical gap:lg">
+      <div cds-layout="horizontal gap:sm">
+        <cds-badge>10<span cds-layout="display:screen-reader-only"> items in a dark theme default badge.</span></cds-badge></cds-badge>
+        <cds-badge status="info">20<span cds-layout="display:screen-reader-only"> items in a dark theme info badge.</span></cds-badge></cds-badge>
+        <cds-badge status="success">30<span cds-layout="display:screen-reader-only"> items in a dark theme success badge.</span></cds-badge></cds-badge>
+        <cds-badge status="warning">40<span cds-layout="display:screen-reader-only"> items in a dark theme warning badge.</span></cds-badge></cds-badge>
+        <cds-badge status="danger">50<span cds-layout="display:screen-reader-only"> items in a dark theme danger badge.</span></cds-badge></cds-badge>
+      </div>
+
+      <div cds-layout="horizontal gap:md">
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="info"
+          aria-label="This is an example of an icon of a user with a blue informational badge"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="success"
+          aria-label="This is an example of an icon of a user with a green badge indicating success"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="danger"
+          aria-label="This is an example of an icon of a user with a red badge indicating danger or an error"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="warning"
+          aria-label="This is an example of an icon of a user with a dark orange badge indicating a warning"
+        ></cds-icon>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-tag status="info" aria-label="Clickable example of a tag with the info status">Info <cds-badge status="info">1</cds-badge></cds-tag>
+        <cds-tag status="success" aria-label="Clickable example of a tag with the success status">Success <cds-badge status="success">2</cds-badge></cds-tag>
+        <cds-tag status="warning" aria-label="Clickable example of a tag with the warning status">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
+        <cds-tag status="danger" aria-label="Clickable example of a tag with the danger status">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
+        <cds-tag status="neutral" aria-label="Clickable example of a tag with the neutral status">Neutral <cds-badge status="danger">12</cds-badge></cds-tag>
+        <cds-tag disabled status="info" aria-label="Clickable example of a tag with the disabled status">Disabled <cds-badge>12</cds-badge></cds-tag>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-button>primary</cds-button>
+        <cds-button status="success">success</cds-button>
+        <cds-button status="danger">danger</cds-button>
+        <cds-button status="danger" disabled>disabled</cds-button>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-progress-circle size="xl" status="info"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="success"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="warning"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="danger"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="neutral"></cds-progress-circle>
+      </div>
+
+      <cds-form-group layout="horizontal" control-width="shrink">
+        <cds-input layout="horizontal">
+          <label>Default</label>
+          <input placeholder="name" />
+          <cds-control-message>message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal">
+          <label>disabled</label>
+          <input placeholder="name" disabled />
+          <cds-control-message>disabled message</cds-control-message>
+        </cds-input>
+
+        <cds-input focused layout="horizontal">
+          <label>Focused</label>
+          <input placeholder="name" />
+          <cds-control-message>message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal" status="error">
+          <label>error</label>
+          <input placeholder="name" />
+          <cds-control-message status="error">error message</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal" status="success">
+          <label>success</label>
+          <input placeholder="name" />
+          <cds-control-message status="success">success message</cds-control-message>
+        </cds-input>
+      </cds-form-group>
+
+      <cds-alert-group type="light">
+        <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
+        <cds-alert status="success">This is an alert with a status of "success"</cds-alert>
+        <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>
+        <cds-alert status="danger">This is an alert with a status of "danger"</cds-alert>
+        <cds-alert status="neutral">This is an alert with a status of "neutral"</cds-alert>
+      </cds-alert-group>
+
+      <div cds-layout="vertical gap:sm">
+        <cds-alert-group status="info" aria-label="This is an example info alert group">
+          <cds-alert
+            closable
+            aria-label="This is an example info alert group"
+            cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
+          >
+            This example is a closable alert inside an alert group with a status of "info".
+          </cds-alert>
+          <cds-alert closable>
+            <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
+            This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
+            status of "info".
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="success" aria-label="This is an example success alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "success".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "success".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="warning" aria-label="This is an example warning alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "warning".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "warning".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="danger" aria-label="This is an example error or danger alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "danger".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "danger".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "neutral".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "neutral".
+          </cds-alert>
+        </cds-alert-group>
+      </div>
+
+      <div cds-layout="vertical gap:sm">
+        <cds-alert-group type="banner" status="info">
+          <cds-alert closable>
+            This example is a closable banner alert inside a banner alert group with a status of "info".
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="success">
+          <cds-alert closable>
+            This example is a closable alert with a status of "success" inside a banner alert group.
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="warning">
+          <cds-alert closable>
+            This example is a alert with action buttons and a status of "warning".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="danger">
+          <cds-alert closable>
+            This example is a closable alert with a status of "danger" inside a banner alert group.
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="neutral">
+          <cds-alert closable>
+            This example is a closable alert with a status of "neutral" inside a banner alert group.
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+      </div>
+    </div>
+  `;
+};
+
+export const statusColorsDarkTheme = () => {
+  return html`
+    <div cds-theme="dark" cds-layout="vertical gap:lg">
+      <div cds-layout="horizontal gap:sm">
+        <cds-badge>10<span cds-layout="display:screen-reader-only"> items in a dark theme default badge.</span></cds-badge></cds-badge>
+        <cds-badge status="info">20<span cds-layout="display:screen-reader-only"> items in a dark theme info badge.</span></cds-badge></cds-badge>
+        <cds-badge status="success">30<span cds-layout="display:screen-reader-only"> items in a dark theme success badge.</span></cds-badge></cds-badge>
+        <cds-badge status="warning">40<span cds-layout="display:screen-reader-only"> items in a dark theme warning badge.</span></cds-badge></cds-badge>
+        <cds-badge status="danger">50<span cds-layout="display:screen-reader-only"> items in a dark theme danger badge.</span></cds-badge></cds-badge>
+      </div>
+
+      <div cds-layout="horizontal gap:md">
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="info"
+          aria-label="This is an example of an icon of a user with a blue informational badge"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="success"
+          aria-label="This is an example of an icon of a user with a green badge indicating success"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="danger"
+          aria-label="This is an example of an icon of a user with a red badge indicating danger or an error"
+        ></cds-icon>
+        <cds-icon
+          shape="user"
+          size="lg"
+          badge="warning"
+          aria-label="This is an example of an icon of a user with a dark orange badge indicating a warning"
+        ></cds-icon>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-tag status="info" aria-label="Clickable example of a tag with the info status">Info <cds-badge status="info">1</cds-badge></cds-tag>
+        <cds-tag status="success" aria-label="Clickable example of a tag with the success status">Success <cds-badge status="success">2</cds-badge></cds-tag>
+        <cds-tag status="warning" aria-label="Clickable example of a tag with the warning status">Warning <cds-badge status="warning">3</cds-badge> </cds-tag>
+        <cds-tag status="danger" aria-label="Clickable example of a tag with the danger status">Danger <cds-badge status="danger">12</cds-badge></cds-tag>
+        <cds-tag status="neutral" aria-label="Clickable example of a tag with the neutral status">Neutral <cds-badge status="danger">12</cds-badge></cds-tag>
+        <cds-tag disabled status="info" aria-label="Clickable example of a tag with the disabled status">Disabled <cds-badge>12</cds-badge></cds-tag>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-button>primary</cds-button>
+        <cds-button status="success">success</cds-button>
+        <cds-button status="danger">danger</cds-button>
+        <cds-button status="danger" disabled>disabled</cds-button>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-progress-circle size="xl" status="info"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="success"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="warning"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="danger"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="neutral"></cds-progress-circle>
+      </div>
+
+      <cds-form-group layout="horizontal" control-width="shrink">
+        <cds-input layout="horizontal">
+          <label>Default</label>
+          <input placeholder="name" />
+          <cds-control-message>message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal">
+          <label>disabled</label>
+          <input placeholder="name" disabled />
+          <cds-control-message>disabled message</cds-control-message>
+        </cds-input>
+
+        <cds-input focused layout="horizontal">
+          <label>Focused</label>
+          <input placeholder="name" />
+          <cds-control-message>message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal" status="error">
+          <label>error</label>
+          <input placeholder="name" />
+          <cds-control-message status="error">error message</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal" status="success">
+          <label>success</label>
+          <input placeholder="name" />
+          <cds-control-message status="success">success message</cds-control-message>
+        </cds-input>
+      </cds-form-group>
+
+      <cds-alert-group type="light">
+        <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
+        <cds-alert status="success">This is an alert with a status of "success"</cds-alert>
+        <cds-alert status="warning">This is an alert with a status of "warning"</cds-alert>
+        <cds-alert status="danger">This is an alert with a status of "danger"</cds-alert>
+        <cds-alert status="neutral">This is an alert with a status of "neutral"</cds-alert>
+      </cds-alert-group>
+
+      <div cds-layout="vertical gap:sm">
+        <cds-alert-group status="info" aria-label="This is an example info alert group">
+          <cds-alert
+            closable
+            aria-label="This is an example info alert group"
+            cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
+          >
+            This example is a closable alert inside an alert group with a status of "info".
+          </cds-alert>
+          <cds-alert closable>
+            <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
+            This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
+            status of "info".
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="success" aria-label="This is an example success alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "success".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "success".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="warning" aria-label="This is an example warning alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "warning".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "warning".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="danger" aria-label="This is an example error or danger alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "danger".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "danger".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#" cds-text="link">Link 1</a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+
+        <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
+          <cds-alert closable>
+            This example is an alert a user may be able to close inside an alert group with a status of "neutral".
+          </cds-alert>
+          <cds-alert closable>
+            This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+            status of "neutral".
+          </cds-alert>
+        </cds-alert-group>
+      </div>
+
+      <div cds-layout="vertical gap:sm">
+        <cds-alert-group type="banner" status="info">
+          <cds-alert closable>
+            This example is a closable banner alert inside a banner alert group with a status of "info".
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="success">
+          <cds-alert closable>
+            This example is a closable alert with a status of "success" inside a banner alert group.
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="warning">
+          <cds-alert closable>
+            This example is a alert with action buttons and a status of "warning".
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="danger">
+          <cds-alert closable>
+            This example is a closable alert with a status of "danger" inside a banner alert group.
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+        <cds-alert-group type="banner" status="neutral">
+          <cds-alert closable>
+            This example is a closable alert with a status of "neutral" inside a banner alert group.
+            <cds-alert-actions>
+              <cds-button>Button 1</cds-button>
+              <a href="#">
+                <cds-button>Link 1</cds-button>
+              </a>
+            </cds-alert-actions>
+          </cds-alert>
+        </cds-alert-group>
+      </div>
+    </div>
+  `;
+};

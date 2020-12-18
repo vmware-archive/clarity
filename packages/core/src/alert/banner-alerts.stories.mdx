@@ -1,0 +1,58 @@
+import '@cds/core/alert/register.js';
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Alert Banner" />
+
+# Banner Alert
+
+Alerts are communicate a message with a severity attached to it.
+They grab the user’s attention to provide critical information needed in context.
+Lightweight alerts can be placed inside containers such cards and layouts. But
+if the alerts are dynamic, their container will need to have an `aria-live`
+attribute set on them so that screen-readers will announce content changes
+within the container.
+
+## Installation
+
+To use the alert component import the component in your JavaScript.
+
+```typescript
+import '@cds/core/alert/register.js';
+```
+
+```html
+<cds-alert-group type="banner" status="info">
+  <cds-alert>
+    This is an alert. It will display a decorative "info" icon by default. You should set the aria-live attribute on the
+    alert to a level that aligns with the severity of the alert's status.
+  </cds-alert>
+  <cds-alert>
+    This is a second alert. It will display a decorative "info" icon by default.
+  </cds-alert>
+</cds-alert-group>
+```
+
+## Banner Alerts
+
+<Preview>
+  <Story id="stories-alert-group--banner-group-status" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-alert-group--dark-theme-banner-alert-group" />
+</Preview>
+
+## Legacy Warning
+
+<Preview>
+  <Story id="stories-alert-group--legacy-warning-alert-banner" />
+</Preview>
+
+## API
+
+<Props of={'cds-alert'} />
+
+<Props of={'cds-alert-group'} />

@@ -112,38 +112,180 @@ export function alertGroup() {
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
-
-      <cds-alert-group aria-label="This is an example alert group">
-        <cds-alert>
-          This example is an alert inside an alert group.
+      <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "neutral".
         </cds-alert>
         <cds-alert closable>
-          This example is an alert a user may be able to close inside an alert group.
-        </cds-alert>
-        <cds-alert>
-          <cds-icon shape="headphones" aria-label="Headphones" role="img"></cds-icon>
-          This example is an alert with alert action buttons and a custom icon shape inside an alert group.
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "neutral".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <a href="#" cds-text="link">Link 1</a>
-          </cds-alert-actions>
-        </cds-alert>
-        <cds-alert closable>
-          This example is an alert a user may be able to close with alert action buttons and multiple lines of text
-          inside an alert group. A block of lorem ipsum sample text follows: Drake Equation take root and flourish
-          culture rings of Uranus quasar hundreds of thousands? Cambrian explosion gathered by gravity of brilliant
-          syntheses vanquish the impossible finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two
-          ghostly white figures in coveralls and helmets are soflty dancing something incredible is waiting to be known
-          vanquish the impossible vastness is bearable only through love concept of the number one and billions upon
-          billions upon billions upon billions upon billions upon billions upon billions.
-          <cds-alert-actions>
-            <cds-button>Button 1</cds-button>
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
     </div>
   `;
 }
+
+export const compactStandardAlertGroup = () => {
+  return html`
+    <div cds-layout="vertical gap:sm">
+      <cds-alert-group size="sm" status="info" aria-label="This is an example info alert group">
+        <cds-alert
+          closable
+          aria-label="This is an example info alert group"
+          cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
+        >
+          This example is a closable alert inside an alert group with a status of "info".
+        </cds-alert>
+        <cds-alert closable>
+          <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
+          This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
+          status of "info".
+        </cds-alert>
+        <cds-alert status="loading" closable>
+          This example is an alert with a "loading" status and alert action buttons inside an alert group with a status
+          of "info".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group size="sm" status="success" aria-label="This is an example success alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "success".
+        </cds-alert>
+        <cds-alert closable>
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "success".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group size="sm" status="warning" aria-label="This is an example warning alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "warning".
+        </cds-alert>
+        <cds-alert closable>
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "warning".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group size="sm" status="danger" aria-label="This is an example error or danger alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "danger".
+        </cds-alert>
+        <cds-alert closable>
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "danger".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group size="sm" status="neutral" aria-label="This is an example neutral alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "neutral".
+        </cds-alert>
+        <cds-alert closable>
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "neutral".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+    </div>
+  `;
+};
+
+export const darkThemeStandardAlertGroup = () => {
+  return html`
+    <div cds-theme="dark" cds-layout="vertical gap:sm">
+      <cds-alert-group status="info">
+        <cds-alert closable>
+          This example is a closable alert inside an alert group with a status of "info".
+        </cds-alert>
+        <cds-alert closable>
+          <cds-icon shape="node-group" aria-hidden="true"></cds-icon>
+          This example is a closable alert with a custom icon shape inside an alert group with a status of "info".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group status="success">
+        <cds-alert closable>
+          This example is a closable alert inside an alert group with a status of "success".
+        </cds-alert>
+        <cds-alert closable>
+          This example is a closable alert with alert action buttons inside an alert group with a status of "success".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group status="warning">
+        <cds-alert closable>
+          This example is a closable alert inside an alert group with a status of "warning".
+        </cds-alert>
+        <cds-alert closable>
+          This example is a closable alert with alert action buttons inside an alert group with a status of "warning".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group status="danger">
+        <cds-alert closable>
+          This example is a closable alert inside an alert group with a status of "danger".
+        </cds-alert>
+        <cds-alert closable>
+          This example is a closable alert with alert action buttons inside an alert group with a status of "danger".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
+        <cds-alert closable>
+          This example is an alert a user may be able to close inside an alert group with a status of "neutral".
+        </cds-alert>
+        <cds-alert closable>
+          This example is an alert a user may be able to close with alert action buttons inside an alert group with a
+          status of "neutral".
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#" cds-text="link">Link 1</a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+    </div>
+  `;
+};
 
 /** @website */
 export function bannerGroupStatus() {
@@ -203,8 +345,13 @@ export function bannerGroupStatus() {
         </cds-alert>
       </cds-alert-group>
 
-      <cds-alert-group type="banner" status="alt" aria-label="This is an example banner alert group with an alt status">
-          This example is a non-closable alert with alert actions and a status of "default" inside a banner alert group.
+      <cds-alert-group
+        type="banner"
+        status="neutral"
+        aria-label="This is an example banner alert group with a status of neutral"
+      >
+        <cds-alert closable>
+          This example is an alert a user may be able to close with a status of "neutral" inside a banner alert group.
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
             <a href="#">
@@ -273,6 +420,93 @@ export function bannerGroup() {
   `;
 }
 
+export const darkThemeBannerAlertGroup = () => {
+  return html`
+    <div cds-theme="dark" cds-layout="vertical gap:sm">
+      <cds-alert-group type="banner" status="info">
+        <cds-alert closable>
+          This example is a closable banner alert inside a banner alert group with a status of "info".
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group type="banner" status="success">
+        <cds-alert closable>
+          This example is a closable alert with a status of "success" inside a banner alert group.
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group type="banner" status="warning">
+        <cds-alert closable>
+          This example is a closable alert with alert action buttons and a status of "warning" inside a banner alert
+          group.
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#">
+              <cds-button>Link 1</cds-button>
+            </a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group type="banner" status="danger">
+        <cds-alert closable>
+          This example is a closable alert with a status of "danger" inside a banner alert group.
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#">
+              <cds-button>Link 1</cds-button>
+            </a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+
+      <cds-alert-group type="banner" status="neutral">
+        <cds-alert closable>
+          This example is a closable alert with a status of "neutral" inside a banner alert group.
+          <cds-alert-actions>
+            <cds-button>Button 1</cds-button>
+            <a href="#">
+              <cds-button>Link 1</cds-button>
+            </a>
+          </cds-alert-actions>
+        </cds-alert>
+      </cds-alert-group>
+    </div>
+  `;
+};
+
+export const legacyWarningAlertBanner = () => {
+  return html`
+    <style>
+      cds-alert-group[status='warning'][legacy] {
+        --background: hsl(26deg 100% 38%);
+      }
+
+      cds-alert-group[status='warning'][legacy] cds-alert {
+        --color: var(--cds-global-color-gray-0);
+      }
+    </style>
+
+    <cds-alert-group
+      type="banner"
+      status="warning"
+      aria-label="This is an example banner alert group with a status of warning"
+      legacy
+    >
+      <cds-alert closable>
+        This example is an alert a user may be able to close with alert action buttons and a status of "warning" inside
+        a banner alert group.
+        <cds-alert-actions>
+          <cds-button>Button 1</cds-button>
+          <a href="#">
+            <cds-button>Link 1</cds-button>
+          </a>
+        </cds-alert-actions>
+      </cds-alert>
+    </cds-alert-group>
+  `;
+};
+
 /*
 export const bannerGroupWithPager = () => {
   return html`
@@ -338,6 +572,14 @@ export function lightweightAlertGroup() {
       <cds-alert status="info">
         This example is an alert with a status of "info" inside a lightweight alert group.
       </cds-alert>
+      <cds-alert status="success">
+        This example is an alert with a status of "success" and inline action buttons inside a lightweight alert group.
+        <cds-inline-button>Clickable Action</cds-inline-button>
+      </cds-alert>
+      <cds-alert status="warning">
+        This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert group.
+        <cds-inline-button>Clickable Action</cds-inline-button>
+      </cds-alert>
       <cds-alert status="danger">
         This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
         <cds-inline-button>Clickable Action</cds-inline-button>
@@ -347,18 +589,6 @@ export function lightweightAlertGroup() {
         <cds-alert-actions>
           <cds-button>Alert actions should not be viewable in lightweight alerts</cds-button>
           <cds-button>Alert actions should not be viewable in lightweight alerts</cds-button>
-        </cds-alert-actions>
-      </cds-alert>
-      <cds-alert status="default">
-        This example is a multi-line alert with a status of "default" inside a lightweight alert group. A block of lorem
-        ipsum sample text follows: Drake Equation take root and flourish culture rings of Uranus quasar hundreds of
-        thousands? Cambrian explosion gathered by gravity of brilliant syntheses vanquish the impossible finite but
-        unbounded not a sunrise but a galaxyrise. Intelligent beings two ghostly white figures in coveralls and helmets
-        are soflty dancing something incredible is waiting to be known vanquish the impossible vastness is bearable only
-        through love concept of the number one and billions upon billions upon billions upon billions upon billions upon
-        billions upon billions.
-        <cds-alert-actions>
-          <cds-button>Button 1</cds-button>
         </cds-alert-actions>
       </cds-alert>
     </cds-alert-group>
@@ -426,37 +656,15 @@ export function compactAlertGroup() {
           </cds-alert-actions>
         </cds-alert>
       </cds-alert-group>
-
-      <cds-alert-group size="sm">
-        <cds-alert>
-          This example is an alert inside a compact alert group.
-        </cds-alert>
-        <cds-alert closable>
-          This example is a closable alert inside a compact alert group.
-        </cds-alert>
-        <cds-alert>
-          This example is an alert with alert actions inside a compact alert group.
-          <cds-alert-actions>
-            <cds-button>Button 1</cds-button>
-            <a href="#" cds-text="link">Link 1</a>
-          </cds-alert-actions>
-        </cds-alert>
-        <cds-alert closable>
-          This example is a closable alert with multiple lines of text and an alert action inside a compact alert group.
-          A block of lorem ipsum sample text follows: Drake Equation take root and flourish culture rings of Uranus
-          quasar hundreds of thousands? Cambrian explosion gathered by gravity of brilliant syntheses vanquish the
-          impossible finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two ghostly white figures
-          in coveralls and helmets are soflty dancing something incredible is waiting to be known vanquish the
-          impossible vastness is bearable only through love concept of the number one and billions upon billions upon
-          billions upon billions upon billions upon billions upon billions.
-          <cds-alert-actions>
-            <cds-button>Button 1</cds-button>
-          </cds-alert-actions>
-        </cds-alert>
-      </cds-alert-group>
       <cds-alert-group type="light" size="sm">
         <cds-alert status="info">
           This example is an alert with a status of "info" inside a compact, lightweight alert group.
+        </cds-alert>
+        <cds-alert status="success">
+          This example is an alert with a status of "success" inside a compact, lightweight alert group.
+        </cds-alert>
+        <cds-alert status="warning">
+          This example is an alert with a status of "warning" inside a compact, lightweight alert group.
         </cds-alert>
         <cds-alert status="danger">
           This example is an alert with a status of "danger" and an inline action inside a compact, lightweight alert
@@ -469,7 +677,7 @@ export function compactAlertGroup() {
             <cds-button>Alert actions should not be viewable in lightweight alerts</cds-button>
           </cds-alert-actions>
         </cds-alert>
-        <cds-alert status="default">
+        <cds-alert status="neutral">
           This example is a multi-line alert with a status of "default" and two inline actions inside a compact,
           lightweight alert group. A block of lorem ipsum sample text follows: Drake Equation take root and flourish
           culture rings of Uranus quasar hundreds of thousands? Cambrian explosion gathered by gravity of brilliant
@@ -496,13 +704,16 @@ export function darkTheme() {
         <cds-alert status="info">
           This example is an alert with a status of "info" inside a lightweight alert group.
         </cds-alert>
-        <cds-alert status="danger">
-          This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+        <cds-alert status="success">
+          This example is an alert with a status of "success" inside a lightweight alert group.
         </cds-alert>
         <cds-alert status="warning">
           This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert
           group.
+          <cds-inline-button>Clickable Action</cds-inline-button>
+        </cds-alert>
+        <cds-alert status="danger">
+          This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
           <cds-inline-button>Clickable Action</cds-inline-button>
         </cds-alert>
         <cds-alert>

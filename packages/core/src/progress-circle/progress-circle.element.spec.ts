@@ -39,9 +39,9 @@ describe('progress circle element – ', () => {
   });
 
   describe('status:', () => {
-    it('status should initialize as "default" if not set', async () => {
+    it('status should initialize as "neutral" if not set', async () => {
       await componentIsStable(componentUnset);
-      expect(componentUnset.getAttribute('status')).toBe('default');
+      expect(componentUnset.getAttribute('status')).toBe('neutral');
     });
 
     it('status should initialize to set value', async () => {

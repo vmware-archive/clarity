@@ -37,5 +37,6 @@ export * from './utils/responsive.js';
 export * from './utils/size.js';
 export * from './utils/string.js';
 export * from './utils/supports.js';
+export * from './utils/event-subject.js';
 export * from './interfaces/index.js';
 export { styles as baseStyles } from './base/base.element.css.js';

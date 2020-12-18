@@ -4,14 +4,21 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { EventSubject } from '@cds/core/internal';
 import { IconAlias, IconRegistry, IconShapeTuple } from './interfaces/icon.interfaces.js';
 import { unknownIcon } from './shapes/unknown.js';
 
 import { addIcons, setIconAliases } from './utils/icon.service-helpers.js';
 
-const iconRegistry: IconRegistry = {
-  unknown: unknownIcon[1] as string,
-};
+const iconUpdates = new EventSubject<string>();
+const registry: IconRegistry = { unknown: unknownIcon[1] as string };
+const iconRegistry = new Proxy(registry, {
+  set: (target, key: string, value) => {
+    iconUpdates.emit(key);
+    target[key] = value;
+    return true;
+  },
+});
 
 /**
  * ClarityIcons is a static class that gives users the ability to interact with
@@ -26,6 +33,11 @@ const iconRegistry: IconRegistry = {
  */
 // @dynamic
 export class ClarityIcons {
+  /**
+   * Subscribe to receive updates when icons are added or updated
+   */
+  static iconUpdates = iconUpdates.toEventObservable();
+
   /**
    * Returns a readonly reference of the icon registry.
    */

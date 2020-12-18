@@ -45,12 +45,20 @@ describe('icon element', () => {
       expect(component.shape).toBe('testing');
     });
 
-    it('shape should return unknown if the shape is not in the registry', async () => {
-      // only shape in registry is 'unknown'
+    it('shape should render when a matching shape is updated in the registry', async () => {
+      const shape = 'jabberwocky';
+      const svg = '<svg>jabberwocky</svg>';
+      const unknown = 'M18,22.61a1,1,0,0';
+
       await componentIsStable(component);
-      component.shape = 'jabberwocky';
+      component.shape = shape;
       await componentIsStable(component);
-      expect(component.shape).toBe('unknown');
+      expect(component.shape).toBe(shape);
+      expect(component.shadowRoot.innerHTML).toContain(unknown);
+
+      ClarityIcons.addIcons([shape, svg]);
+      await componentIsStable(component);
+      expect(component.shadowRoot.innerHTML).toContain(svg);
     });
 
     it('shape should not run an update if the shape is assigned the value it already has', async () => {

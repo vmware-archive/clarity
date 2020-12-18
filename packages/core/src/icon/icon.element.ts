@@ -15,6 +15,7 @@ import {
   StatusTypes,
   isString,
   pxToRem,
+  EventSubscription,
 } from '@cds/core/internal';
 import { html, LitElement, query, svg } from 'lit-element';
 import { styles } from './icon.element.css.js';
@@ -59,7 +60,7 @@ export class CdsIcon extends LitElement {
    * the specified icon cannot be found in the icon registry.
    */
   set shape(val: string) {
-    if (hasStringPropertyChangedAndNotNil(val, this._shape) && ClarityIcons.registry[val]) {
+    if (hasStringPropertyChangedAndNotNil(val, this._shape)) {
       const oldVal = this._shape;
       this._shape = val;
       this.requestUpdate('shape', oldVal);
@@ -151,6 +152,8 @@ export class CdsIcon extends LitElement {
 
   @query('svg') private svg: SVGElement;
 
+  private subscription: EventSubscription;
+
   updated(props: Map<string, any>) {
     if (props.has('innerOffset') && this.innerOffset > 0) {
       const val = pxToRem(this.innerOffset);
@@ -159,6 +162,20 @@ export class CdsIcon extends LitElement {
       this.svg.style.height = dimension;
       this.svg.style.margin = `-${val} 0 0 -${val}`;
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.subscription = ClarityIcons.iconUpdates.subscribe(shape => {
+      if (shape === this.shape) {
+        this.requestUpdate();
+      }
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.subscription.unsubscribe();
   }
 
   protected render() {

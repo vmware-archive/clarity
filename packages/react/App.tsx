@@ -31,12 +31,19 @@ interface AppState {
   modal2Open: boolean;
 }
 
+let isInd = false;
+
+function toggleIndeterminate(self: React.Component) {
+  isInd = !isInd;
+  self.setState({ isInd: isInd });
+}
+
 export default class App extends React.Component<{}, AppState> {
   buttonRef: React.RefObject<CdsButton>;
 
   constructor(props: any) {
     super(props);
-    this.state = { modalOpen: false, modal2Open: false };
+    this.state = { modalOpen: false, modal2Open: false, isInd: false };
     this.buttonRef = React.createRef<CdsButton>();
   }
 
@@ -282,6 +289,14 @@ export default class App extends React.Component<{}, AppState> {
             <label>checked disabled</label>
             <input type="checkbox" disabled checked />
             <CdsControlMessage>disabled message</CdsControlMessage>
+          </CdsCheckbox>
+
+          <CdsDivider></CdsDivider>
+          <CdsButton onClick={() => toggleIndeterminate(this)}>Toggle Indeterminate</CdsButton>
+          <CdsCheckbox indeterminate={isInd}>
+            <label>Setting indeterminate</label>
+            <input type="checkbox" />
+            <CdsControlMessage>indeterminate message</CdsControlMessage>
           </CdsCheckbox>
         </CdsFormGroup>
 

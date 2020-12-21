@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { internalProperty, listenForAttributeChange } from '@cds/core/internal';
+import { property, listenForAttributeChange, syncProps } from '@cds/core/internal';
 import { CdsInternalControlInline } from '@cds/core/forms';
 import { styles } from './checkbox.element.css.js';
 
@@ -31,12 +31,24 @@ import { styles } from './checkbox.element.css.js';
  * @cssprop --border-radius
  */
 export class CdsCheckbox extends CdsInternalControlInline {
-  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
+  @property({ type: Boolean }) checked = false;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected indeterminate = false;
+  @property({ type: Boolean }) indeterminate = false;
 
   static get styles() {
     return [...super.styles, styles];
+  }
+
+  updated(props: Map<string, any>) {
+    super.updated(props);
+
+    if (props.has('checked') && this.inputControl.checked !== this.checked) {
+      syncProps(this.inputControl, this, { checked: true });
+    }
+
+    if (props.has('indeterminate') && this.inputControl.indeterminate !== this.indeterminate) {
+      syncProps(this.inputControl, this, { indeterminate: true });
+    }
   }
 
   firstUpdated(props: Map<string, any>) {

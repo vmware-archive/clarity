@@ -119,7 +119,7 @@ svg {
 }
 
 :host([badge='inherit']) {
-  --badge-color: inherit;
+  --badge-color: currentColor;
 }
 
 :host([badge='info']) {
@@ -128,7 +128,7 @@ svg {
 
 // alert colors
 :host([badge='inherit-triangle']) {
-  --badge-color: inherit;
+  --badge-color: currentColor;
 }
 
 // inverse + variants
@@ -146,7 +146,7 @@ svg {
 }
 
 :host([badge*='inherit'][inverse]) {
-  --badge-color: inherit;
+  --badge-color: currentColor;
 }
 
 :host([badge='info'][inverse]) {

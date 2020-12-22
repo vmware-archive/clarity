@@ -3,7 +3,7 @@
 1.  Install Clarity Icons package through npm:
 
     ```
-    npm install clr-icons
+    npm install @clr/icons
     ```
 
 2.  Install the polyfill for Custom Elements:

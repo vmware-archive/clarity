@@ -10,6 +10,11 @@
   display: inline-block;
 }
 
+[cds-layout*='container:'] {
+  margin-bottom: var(--cds-token-layout-space-md);
+  background: hsl(91, 56%, 78%);
+}
+
 .cds-demo[layout][tall] > [cds-layout],
 .layout-demo.tall-demo > cds-layout {
   min-height: 300px;

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -7,7 +7,7 @@
 
 @include exports('typography.clarity') {
   //Headings
-  h1 {
+  h1:not([cds-text]) {
     @include css-var(color, clr-h1-color, $clr-h1-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h1-font-weight, $clr-h1-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h1-font-family, $clr-h1-font-family, $clr-use-custom-properties);
@@ -18,7 +18,7 @@
     margin-bottom: $clr-global-typography-margin-bottom;
   }
 
-  h2 {
+  h2:not([cds-text]) {
     @include css-var(color, clr-h2-color, $clr-h2-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h2-font-weight, $clr-h2-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h2-font-family, $clr-h2-font-family, $clr-use-custom-properties);
@@ -29,7 +29,7 @@
     margin-bottom: $clr-global-typography-margin-bottom;
   }
 
-  h3 {
+  h3:not([cds-text]) {
     @include css-var(color, clr-h3-color, $clr-h3-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h3-font-weight, $clr-h3-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h3-font-family, $clr-h3-font-family, $clr-use-custom-properties);
@@ -40,7 +40,7 @@
     margin-bottom: $clr-global-typography-margin-bottom;
   }
 
-  h4 {
+  h4:not([cds-text]) {
     @include css-var(color, clr-h4-color, $clr-h4-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h4-font-weight, $clr-h4-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h4-font-family, $clr-h4-font-family, $clr-use-custom-properties);
@@ -51,7 +51,7 @@
     margin-bottom: $clr-global-typography-margin-bottom;
   }
 
-  h5 {
+  h5:not([cds-text]) {
     @include css-var(color, clr-h5-color, $clr-h5-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h5-font-weight, $clr-h5-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h5-font-family, $clr-h5-font-family, $clr-use-custom-properties);
@@ -62,7 +62,7 @@
     margin-bottom: $clr-global-typography-margin-bottom;
   }
 
-  h6 {
+  h6:not([cds-text]) {
     @include css-var(color, clr-h6-color, $clr-h6-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-h6-font-weight, $clr-h6-font-weight, $clr-use-custom-properties);
     @include css-var(font-family, clr-h6-font-family, $clr-h6-font-family, $clr-use-custom-properties);
@@ -74,7 +74,7 @@
   }
 
   //Body.
-  body {
+  body:not([cds-text]) {
     @include css-var(color, clr-p1-color, $clr-p1-color, $clr-use-custom-properties);
     @include css-var(font-weight, clr-p1-font-weight, $clr-p1-font-weight, $clr-use-custom-properties);
     font-size: $clr-p1-font-size;
@@ -92,7 +92,7 @@
   // that are overriding these styles. i'm using specificity below to try and force the issue.
 
   body {
-    p {
+    p:not([cds-text]) {
       @include css-var(color, clr-p1-color, $clr-p1-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p1-font-weight, $clr-p1-font-weight, $clr-use-custom-properties);
       font-size: $clr-p1-font-size;
@@ -102,8 +102,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p0,
-    p.p0 {
+    .p0:not([cds-text]),
+    p.p0:not([cds-text]) {
       @include css-var(color, clr-p0-color, $clr-p0-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p0-font-weight, $clr-p0-font-weight, $clr-use-custom-properties);
       font-size: $clr-p0-font-size;
@@ -113,8 +113,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p2,
-    p.p2 {
+    .p2:not([cds-text]),
+    p.p2:not([cds-text]) {
       @include css-var(color, clr-p2-color, $clr-p2-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p2-font-weight, $clr-p2-font-weight, $clr-use-custom-properties);
       font-size: $clr-p2-font-size;
@@ -124,8 +124,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p3,
-    p.p3 {
+    .p3:not([cds-text]),
+    p.p3:not([cds-text]) {
       @include css-var(color, clr-p3-color, $clr-p3-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p3-font-weight, $clr-p3-font-weight, $clr-use-custom-properties);
       font-size: $clr-p3-font-size;
@@ -135,8 +135,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p4,
-    p.p4 {
+    .p4:not([cds-text]),
+    p.p4:not([cds-text]) {
       @include css-var(color, clr-p4-color, $clr-p4-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p4-font-weight, $clr-p4-font-weight, $clr-use-custom-properties);
       font-size: $clr-p4-font-size;
@@ -146,8 +146,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p5,
-    p.p5 {
+    .p5:not([cds-text]),
+    p.p5:not([cds-text]) {
       @include css-var(color, clr-p5-color, $clr-p5-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p5-font-weight, $clr-p5-font-weight, $clr-use-custom-properties);
       font-size: $clr-p5-font-size;
@@ -157,8 +157,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p6,
-    p.p6 {
+    .p6:not([cds-text]),
+    p.p6:not([cds-text]) {
       @include css-var(color, clr-p6-color, $clr-p6-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p6-font-weight, $clr-p6-font-weight, $clr-use-custom-properties);
       font-size: $clr-p6-font-size;
@@ -168,8 +168,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p7,
-    p.p7 {
+    .p7:not([cds-text]),
+    p.p7:not([cds-text]) {
       @include css-var(color, clr-p7-color, $clr-p7-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p7-font-weight, $clr-p7-font-weight, $clr-use-custom-properties);
       font-size: $clr-p7-font-size;
@@ -179,8 +179,8 @@
       margin-bottom: $clr-global-typography-margin-bottom;
     }
 
-    .p8,
-    p.p8 {
+    .p8:not([cds-text]),
+    p.p8:not([cds-text]) {
       @include css-var(color, clr-p8-color, $clr-p8-color, $clr-use-custom-properties);
       @include css-var(font-weight, clr-p8-font-weight, $clr-p8-font-weight, $clr-use-custom-properties);
       font-size: $clr-p8-font-size;
@@ -212,7 +212,7 @@
   }
 
   //HTML
-  html {
+  html:not([cds-text]) {
     @include css-var(color, clr-global-font-color, $clr-global-font-color, $clr-use-custom-properties);
     @include css-var(font-family, clr-font, $clr-font, $clr-use-custom-properties);
     font-size: $clr-basefont-size;

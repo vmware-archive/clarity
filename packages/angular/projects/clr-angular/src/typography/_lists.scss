@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -9,8 +9,8 @@
     list-style: none;
   }
 
-  ul,
-  ol {
+  ul:not([cds-list]),
+  ol:not([cds-list]) {
     list-style-position: inside;
     margin-left: 0;
     margin-top: 0;
@@ -18,8 +18,8 @@
     padding-left: 0;
   }
 
-  ul.list,
-  ol.list {
+  ul.list:not([cds-list]),
+  ol.list:not([cds-list]) {
     list-style-position: outside;
     margin-left: $clr-list-style-padding;
 
@@ -39,28 +39,28 @@
   // right now this causes no problems. but watch out in the future because it may
   // cause issues with nested tabs, list-groups of sidenav lists or something.
   // just be aware that this may need to be overridden down the line.
-  ul:not(.list-unstyled),
-  ol {
+  ul:not(.list-unstyled):not([cds-list]),
+  ol:not([cds-list]) {
     & > li > ul.list-unstyled {
       margin-left: $clr-list-style-padding;
     }
   }
 
-  ul.list-unstyled {
+  ul.list-unstyled:not([cds-list]) {
     @extend %kill-list-styles;
   }
 
-  li > ul {
+  li > ul:not([cds-list]) {
     margin-top: 0;
     margin-left: $clr-list-style-padding;
   }
 
-  ul.list-group {
+  ul.list-group:not([cds-list]) {
     margin-top: 0;
   }
 
-  ul,
-  ol {
+  ul:not([cds-list]),
+  ol:not([cds-list]) {
     &.list-spacer {
       margin-top: $clr_baselineRem_1;
     }

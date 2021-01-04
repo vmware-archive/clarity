@@ -90,7 +90,7 @@ svg {
 }
 
 :host([inverse]) {
-  --ring-color: #{$cds-alias-status-neutral-shade};
+  --ring-color: #{$cds-alias-status-neutral-tint};
   --fill-color: #{$cds-alias-status-neutral};
 }
 

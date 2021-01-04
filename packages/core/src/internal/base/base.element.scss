@@ -56,7 +56,6 @@ slot {
 
 // normalize focus styles
 :host([tabindex='0']:focus),
-:host([_focused][contains-anchor]),
 :host([_focused]) .input {
   outline: Highlight solid $cds-global-space-2;
   outline-offset: $cds-global-space-1;

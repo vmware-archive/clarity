@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -95,7 +95,7 @@ export function sizes() {
 /** @website */
 export function block() {
   return html`
-    <div cds-layout="vertical gap:sm align:horizontal-stretch">
+    <div cds-layout="vertical gap:sm">
       <cds-icon-button block><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button block action="outline"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button block size="sm"><cds-icon shape="user"></cds-icon></cds-icon-button>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -79,7 +79,7 @@ export function lightTheme() {
       <cds-button><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
 
       <div cds-layout="horizontal gap:lg align:vertical-center">
-        <cds-progress-circle size="xl"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="info"></cds-progress-circle>
 
         <cds-tag status="info">
           <cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">10</cds-badge>
@@ -122,7 +122,7 @@ export function darkTheme() {
       <cds-button><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
 
       <div cds-layout="horizontal gap:lg align:vertical-center">
-        <cds-progress-circle size="xl"></cds-progress-circle>
+        <cds-progress-circle size="xl" status="info"></cds-progress-circle>
 
         <cds-tag status="info">
           <cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">10</cds-badge>
@@ -326,9 +326,11 @@ export function dynamicTheme() {
 
         <div>
           <div cds-layout="horizontal gap:lg align:vertical-center">
-            <cds-progress-circle size="xl"></cds-progress-circle>
+            <cds-progress-circle status="info" size="xl"></cds-progress-circle>
 
             <cds-button status="primary">button</cds-button>
+
+            <cds-button status="primary" action="outline">button</cds-button>
 
             <cds-tag readonly status="info">
               <cds-icon shape="info-standard"></cds-icon>Info <cds-badge status="info">1</cds-badge>

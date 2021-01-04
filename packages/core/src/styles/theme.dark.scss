@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -45,6 +45,7 @@
   --cds-alias-status-warning: #{$cds-global-color-ochre-400};
   --cds-alias-status-warning-tint: #{$cds-global-color-ochre-500};
   --cds-alias-status-warning-shade: #{$cds-global-color-ochre-500};
+  --cds-alias-status-warning-dark: #{$cds-global-color-ochre-500};
   --cds-alias-status-danger: #{$cds-global-color-red-500};
   --cds-alias-status-danger-tint: #{$cds-global-color-red-700};
   --cds-alias-status-danger-shade: #{$cds-global-color-red-700};
@@ -53,5 +54,5 @@
   --cds-alias-status-neutral-shade: #{$cds-global-color-construction-500};
   --cds-alias-status-disabled: #{$cds-global-color-construction-600};
   --cds-alias-status-disabled-tint: #{$cds-global-color-construction-700};
-  --cds-alias-status-disabled-shade: #{$cds-global-color-construction-700};
+  --cds-alias-status-disabled-shade: #{$cds-global-color-construction-800};
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -52,7 +52,6 @@ export function status() {
       <cds-progress-circle size="xl" status="success" value="72"></cds-progress-circle>
       <cds-progress-circle size="xl" status="warning" value="36"></cds-progress-circle>
       <cds-progress-circle size="xl" status="danger" value="84"></cds-progress-circle>
-      <cds-progress-circle size="xl" status="neutral" value="60"></cds-progress-circle>
       <div style="background: #313131">
         <cds-progress-circle size="xl" inverse value="24"></cds-progress-circle>
       </div>
@@ -65,12 +64,12 @@ export function darkTheme() {
     <div cds-layout="horizontal gap:sm" cds-theme="dark">
       <cds-progress-circle size="xl"></cds-progress-circle>
       <cds-progress-circle size="xl" value="0"></cds-progress-circle>
+      <cds-progress-circle size="xl" value="25"></cds-progress-circle>
       <cds-progress-circle size="xl" value="100"></cds-progress-circle>
-      <cds-progress-circle size="xl" value="48"></cds-progress-circle>
+      <cds-progress-circle size="xl" status="info" value="48"></cds-progress-circle>
       <cds-progress-circle size="xl" status="success" value="72"></cds-progress-circle>
       <cds-progress-circle size="xl" status="warning" value="36"></cds-progress-circle>
       <cds-progress-circle size="xl" status="danger" value="84"></cds-progress-circle>
-      <cds-progress-circle size="xl" status="neutral" value="60"></cds-progress-circle>
     </div>
   `;
 }

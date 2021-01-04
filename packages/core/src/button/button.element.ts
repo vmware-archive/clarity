@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,7 @@ import { styles } from './button.element.css.js';
 
 export const iconSpinner = (size: string) => {
   const spinnerSize = size === 'sm' ? '12' : '18';
-  return html`<span class="button-status-icon" cds-layout="horizontal align:center"><cds-progress-circle class="button-spinner" size="${spinnerSize}"></cds-progress-circle></span></span>`;
+  return html`<span class="button-status-icon" cds-layout="horizontal align:center"><cds-progress-circle class="button-spinner" size="${spinnerSize}" status="info"></cds-progress-circle></span></span>`;
 };
 
 export const iconCheck = html`<span class="button-status-icon" cds-layout="horizontal align:center"

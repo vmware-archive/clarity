@@ -451,7 +451,7 @@ const aliases = {
         hover: token(color.construction[1000]),
         active: token(color.construction[1000]),
         selected: token(color.construction[700]),
-        disabled: token(color.construction[200]),
+        disabled: token(color.construction[300]),
       },
     },
     app: {
@@ -479,8 +479,9 @@ const aliases = {
     },
     warning: {
       value: token(color.ochre[500]),
-      tint: token(color.ochre[50]),
+      tint: token(color.ochre[100]),
       shade: token(color.ochre[600]),
+      dark: token(color.ochre[800]),
     },
     danger: {
       value: token(color.red[700]),

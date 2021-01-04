@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -1082,6 +1082,13 @@ export const statusColors = () => {
       </div>
 
       <div cds-layout="horizontal gap:sm">
+        <cds-button action="outline">primary</cds-button>
+        <cds-button status="success" action="outline">success</cds-button>
+        <cds-button status="danger" action="outline">danger</cds-button>
+        <cds-button status="danger" action="outline" disabled>disabled</cds-button>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
         <cds-progress-circle size="xl" status="info"></cds-progress-circle>
         <cds-progress-circle size="xl" status="success"></cds-progress-circle>
         <cds-progress-circle size="xl" status="warning"></cds-progress-circle>
@@ -1299,6 +1306,13 @@ export const statusColorsDarkTheme = () => {
         <cds-button status="success">success</cds-button>
         <cds-button status="danger">danger</cds-button>
         <cds-button status="danger" disabled>disabled</cds-button>
+      </div>
+
+      <div cds-layout="horizontal gap:sm">
+        <cds-button action="outline">primary</cds-button>
+        <cds-button status="success" action="outline">success</cds-button>
+        <cds-button status="danger" action="outline">danger</cds-button>
+        <cds-button status="danger" action="outline" disabled>disabled</cds-button>
       </div>
 
       <div cds-layout="horizontal gap:sm">

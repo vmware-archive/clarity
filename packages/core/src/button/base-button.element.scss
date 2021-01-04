@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -26,7 +26,6 @@
   @include vertical-center-content;
 
   -webkit-appearance: none !important;
-  background: var(--background);
   border-color: var(--border-color);
   border-radius: var(--border-radius);
   border-style: solid;
@@ -48,10 +47,7 @@
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-
-  &:active {
-    box-shadow: 0 #{$cds-global-space-1} 0 0 var(--box-shadow-color) inset;
-  }
+  width: 100%;
 
   & > span {
     @include center-content('block');
@@ -74,50 +70,57 @@
   }
 }
 
-:host([contains-anchor]) .private-host {
-  padding: 0;
+:host(:active) .private-host,
+:host(:active) .private-host::after {
+  box-shadow: 0 #{$cds-global-space-2} 0 0 var(--box-shadow-color) inset;
 }
 
-:host(:active) .private-host {
-  box-shadow: 0 #{$cds-global-space-1} 0 0 var(--box-shadow-color) inset;
+.private-host::after {
+  --offset: calc(-1 * #{$cds-global-space-1});
+  background: var(--background);
+  border-radius: var(--border-radius);
+  position: absolute;
+  content: '';
+  top: var(--offset);
+  left: var(--offset);
+  bottom: var(--offset);
+  right: var(--offset);
+  inset: var(--offset); // once safari catches up positions can be deleted for inset
+  z-index: -1;
 }
 
 :host(:hover),
 :host(:focus),
 :host(:active) {
   .private-host::after {
-    background: var(--background);
-    border-radius: var(--border-radius);
-    filter: brightness(95%);
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    inset: 0; // once safari catches up positions can be deleted for inset
-    z-index: -1;
+    filter: brightness(90%);
   }
+}
+
+:host([action='outline']) {
+  .private-host::after {
+    filter: brightness(100%);
+    opacity: 0;
+  }
+}
+
+:host([action='outline']:hover),
+:host([action='outline']:focus),
+:host([action='outline']:active) {
+  .private-host::after {
+    opacity: 0.1;
+  }
+}
+
+:host([status='inverse']:hover),
+:host([status='inverse']:focus),
+:host([status='inverse']:active) {
+  --background: #{$cds-alias-status-disabled-tint};
 }
 
 ::slotted {
   line-height: 1em !important;
   color: inherit !important;
-}
-
-/** @deprecated slotted anchor deprecated in 4.0 in favor of wrapping element */
-::slotted(a) {
-  text-decoration: none !important;
-  display: block !important;
-  color: inherit !important;
-  font-size: inherit !important;
-  font-family: inherit !important;
-  margin: calc(var(--padding) * -1) !important;
-  padding: var(--padding) !important;
-  min-width: var(--min-width) !important;
-  line-height: 1em !important;
-  box-sizing: border-box !important;
-  outline: 0 !important;
 }
 
 ::slotted(cds-icon) {
@@ -134,9 +137,8 @@
 }
 
 :host([action='outline']) {
-  --background: #{$cds-alias-object-opacity-0};
-  --border-color: var(--color);
   --color: #{$cds-alias-status-info};
+  --border-color: var(--color);
 }
 
 :host([status='success'][action='outline']) {
@@ -157,15 +159,7 @@
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-alias-object-opacity-0};
   --color: #{$cds-alias-status-info};
-
-  .private-host {
-    box-shadow: none;
-  }
-}
-
-:host([action='flat']) .private-host:hover {
-  --background: #{$cds-alias-object-opacity-0};
-  --color: #{$cds-alias-status-info};
+  --box-shadow-color: #{$cds-alias-object-opacity-0};
 }
 
 :host([size='sm']) {
@@ -184,39 +178,26 @@
 }
 
 :host([disabled]) {
-  --background: #{$cds-alias-status-disabled} !important;
-  --border-color: #{$cds-alias-status-disabled} !important;
+  --background: #{$cds-alias-status-disabled-tint} !important;
+  --border-color: #{$cds-alias-status-disabled-tint} !important;
+  --box-shadow-color: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-disabled} !important;
 
   .private-host {
     cursor: not-allowed;
-    box-shadow: none;
     outline: 0;
 
     &::after {
-      display: none;
+      filter: brightness(100%) !important;
+      opacity: 1 !important;
     }
   }
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-alias-object-opacity-0} !important;
-    --border-color: #{$cds-alias-status-disabled} !important;
-    --color: #{$cds-alias-status-disabled} !important;
-  }
 }
 
-:host([disabled][status='inverse']),
-:host([disabled][action='outline']) {
-  --background: #{$cds-alias-object-opacity-0} !important;
-  --color: #{$cds-alias-status-disabled-tint} !important;
-  --border-color: #{$cds-alias-status-disabled-tint} !important;
-
-  ::slotted(cds-badge) {
-    --background: #{$cds-alias-object-opacity-0} !important;
-    --border-color: #{$cds-alias-status-disabled-tint} !important;
-    --color: #{$cds-alias-status-disabled-tint} !important;
-  }
+:host([disabled][action='flat']) {
+  --border-color: #{$cds-alias-object-opacity-0} !important;
 }
 
-:host([block]) .private-host {
+:host([block]) {
   width: 100%;
 }

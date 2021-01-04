@@ -1,16 +1,38 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isBrowser } from './exists.js';
+import { camelCaseToKebabCase } from './string.js';
 
-export function supportsResizeObserver() {
-  return isBrowser() && !!window.ResizeObserver;
+export interface FeatureSupportMatrix {
+  js?: boolean;
+  flexGap?: boolean;
 }
 
-export function supportsFlexGap(): boolean {
+class BrowserFeatures {
+  supports = {
+    js: true,
+    flexGap: supportsFlexGap(),
+  };
+
+  constructor() {
+    if (!document.body.hasAttribute('cds-supports') || document.body.getAttribute('cds-supports') === 'no-js') {
+      const supports = camelCaseToKebabCase(
+        Object.keys(this.supports).reduce(
+          (prev, next) => `${prev} ${(this.supports as any)[next] ? next : `no-${next}`}`,
+          ''
+        )
+      ).trim();
+      document.body.setAttribute('cds-supports', supports);
+    }
+  }
+}
+
+export const browserFeatures = new BrowserFeatures();
+
+function supportsFlexGap(): boolean {
   const flex = document.createElement('div');
   flex.style.display = 'flex';
   flex.style.flexDirection = 'column';

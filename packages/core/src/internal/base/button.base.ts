@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,7 +11,7 @@ import { property, internalProperty } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
-import { supportsFlexGap } from '../utils/supports.js';
+import { browserFeatures } from '../utils/supports.js';
 
 // @dynamic
 export class CdsBaseButton extends LitElement {
@@ -38,7 +38,8 @@ export class CdsBaseButton extends LitElement {
 
   @internalProperty({ type: String, reflect: true }) protected role: string | null = 'button';
 
-  @internalProperty({ type: Boolean, reflect: true }) protected hasFlexGapSupport: boolean = supportsFlexGap();
+  @internalProperty({ type: Boolean, reflect: true }) protected hasFlexGapSupport: boolean =
+    browserFeatures.supports.flexGap;
 
   @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
 

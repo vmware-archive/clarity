@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,7 +18,6 @@ import {
   EventEmitter,
   describeElementByElements,
   updateComponentLayout,
-  supportsResizeObserver,
   internalProperty,
   syncProps,
   pxToRem,
@@ -315,7 +314,7 @@ export class CdsControl extends LitElement {
   }
 
   private setupResponsive() {
-    if (supportsResizeObserver() && this.responsive && !this.hiddenLabel && this.controlLabel) {
+    if (this.responsive && !this.hiddenLabel && this.controlLabel) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
       const observer = updateComponentLayout(this, layoutConfig, () =>
         this.layoutChange.emit(this.layout, { bubbles: true })

@@ -1,16 +1,18 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { isBrowser } from './exists.js';
 import { getAngularVersion, getReactVersion, getVueVersion, getAngularJSVersion } from './framework.js';
+import { FeatureSupportMatrix, browserFeatures } from './supports.js';
 
 export interface CDSGlobal {
   _version: string[];
   _loadedElements: string[];
   _react: { version: string }; // set by @cds/react
+  _supports: FeatureSupportMatrix;
   getVersion: () => CDSLog;
   logVersion: () => void;
   environment: {
@@ -23,6 +25,7 @@ export interface CDSLog {
   versions: string[];
   loadedElements: string[];
   userAgent: string;
+  supports: {};
   angularVersion?: string | undefined;
   angularJSVersion?: string | undefined;
   reactVersion?: string | undefined;
@@ -38,11 +41,19 @@ declare global {
   }
 }
 
+export function setupCDSGlobal() {
+  if (isBrowser()) {
+    initializeCDSGlobal();
+    setRunningVersion();
+  }
+}
+
 function getVersion() {
   const log: CDSLog = {
     versions: window.CDS._version,
     environment: window.CDS.environment,
     userAgent: navigator.userAgent,
+    supports: window.CDS._supports,
     angularVersion: getAngularVersion(false),
     angularJSVersion: getAngularJSVersion(false),
     reactVersion: getReactVersion(false),
@@ -61,6 +72,7 @@ function initializeCDSGlobal() {
     _version: [],
     _loadedElements: [],
     _react: { version: undefined },
+    _supports: browserFeatures.supports,
     environment: {
       production: false,
     },
@@ -81,12 +93,5 @@ function setRunningVersion() {
     console.warn(
       'Running more than one version of Clarity can cause unexpected issues. Please ensure only one version is loaded.'
     );
-  }
-}
-
-export function setupCDSGlobal() {
-  if (isBrowser()) {
-    initializeCDSGlobal();
-    setRunningVersion();
   }
 }

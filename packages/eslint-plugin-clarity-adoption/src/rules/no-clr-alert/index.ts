@@ -52,9 +52,9 @@ export default createESLintRule({
         const dom = new JSDOM(templateContent, {
           includeNodeLocations: true,
         });
-        const clrAlerts = dom.window.document.querySelectorAll(disallowedAlertsSelector);
+        const clrAlerts = dom.window.document.querySelectorAll(disallowedAlertsSelector as any);
 
-        for (const alert of clrAlerts) {
+        clrAlerts.forEach(alert => {
           const nodeLocation = dom.nodeLocation(alert) as DomElementLocation;
           const loc = calculateLocation(templateContentNode, nodeLocation);
           context.report({
@@ -62,7 +62,7 @@ export default createESLintRule({
             messageId: 'clrAlertFailure',
             loc,
           });
-        }
+        });
       },
     };
   },

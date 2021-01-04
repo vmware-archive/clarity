@@ -50,9 +50,9 @@ export default createESLintRule({
         const dom = new JSDOM(templateContent, {
           includeNodeLocations: true,
         });
-        const clrButtons = dom.window.document.querySelectorAll(disallowedButtonsSelector);
+        const clrButtons = dom.window.document.querySelectorAll(disallowedButtonsSelector as any);
 
-        for (const button of clrButtons) {
+        clrButtons.forEach(button => {
           const nodeLocation = dom.nodeLocation(button) as DomElementLocation;
           const loc = calculateLocation(templateContentNode, nodeLocation);
           context.report({
@@ -60,7 +60,7 @@ export default createESLintRule({
             messageId: 'clrButtonFailure',
             loc,
           });
-        }
+        });
       },
     };
   },

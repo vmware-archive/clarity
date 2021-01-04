@@ -44,7 +44,7 @@
 }
 
 :host([_disabled]) {
-  --track-background: #{$cds-alias-status-disabled-shade};
+  --track-background: #{$cds-alias-status-disabled-tint};
   --track-fill-background: #{$cds-alias-status-disabled};
   --thumb-background: #{$cds-alias-status-disabled};
 

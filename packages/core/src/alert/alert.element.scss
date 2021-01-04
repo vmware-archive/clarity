@@ -20,11 +20,6 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
   color: var(--color);
 }
 
-:host([_type='default']) .alert-spinner,
-:host([_type='banner']) .alert-spinner {
-  --fill-color: var(--icon-color);
-}
-
 :host([_type='default']) {
   --font-size: #{$cds-global-typography-font-size-3};
 }
@@ -98,7 +93,7 @@ cds-internal-close-button {
 }
 
 :host([_type='light'][status='warning']) {
-  --icon-color: #{$cds-alias-status-warning-shade};
+  --icon-color: #{$cds-alias-status-warning-dark};
 }
 
 :host([_type='light'][status='danger']) {
@@ -106,7 +101,12 @@ cds-internal-close-button {
 }
 
 :host([status='loading'][_type='default']) .alert-spinner {
-  --ring-color: var(--icon-color);
+  --ring-color: #{$cds-alias-object-opacity-200};
+}
+
+:host([status='loading'][_type='banner']) .alert-spinner {
+  --ring-color: #{$cds-alias-object-opacity-200};
+  --fill-color: var(--icon-color);
 }
 
 :host([size='sm']:not([_type='banner'])) {

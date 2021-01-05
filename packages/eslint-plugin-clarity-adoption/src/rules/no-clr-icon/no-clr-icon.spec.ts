@@ -1,6 +1,6 @@
 import { LineAndColumnData } from '@typescript-eslint/types/dist/ts-estree';
-import rule from '../src/rules/no-clr-icon';
-import { RuleTester } from './test-helper';
+import rule from '.';
+import { RuleTester } from '../../test-helper.spec';
 
 const htmlRuleTester = new RuleTester({
   parserOptions: {
@@ -364,6 +364,22 @@ htmlRuleTester.run('no-clr-alert', rule, {
       [{ line: 1, column: 1 }],
       [iconFailureMessageId],
       `<cds-icon shape="angle" direction="up" class="my-class" inverse solid badge="info"></cds-icon>`
+    ),
+
+    /**
+     * Multiple root elements
+     */
+    getInvalidTest(
+      `
+      <div></div>
+      <clr-icon shape="caret up" class="is-inverse my-class is-solid has-badge--info"></clr-icon>
+      `,
+      [{ line: 3, column: 7 }],
+      [iconFailureMessageId],
+      `
+      <div></div>
+      <cds-icon shape="angle" direction="up" class="my-class" inverse solid badge="info"></cds-icon>
+      `
     ),
   ],
   valid: [],

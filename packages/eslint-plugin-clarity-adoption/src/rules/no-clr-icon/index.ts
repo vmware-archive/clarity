@@ -143,11 +143,11 @@ export default createESLintRule({
         const nodeStart = range[0];
         const openingTag = '<clr-icon';
         const openingTagStart = value.indexOf(openingTag) + nodeStart;
-        const openingTagEnd = openingTagStart + openingTag.length + nodeStart;
+        const openingTagEnd = openingTagStart + openingTag.length;
 
         const closingTag = '</clr-icon>';
         const closingTagStart = value.indexOf(closingTag) + nodeStart;
-        const closingTagEnd = closingTagStart + closingTag.length + nodeStart;
+        const closingTagEnd = closingTagStart + closingTag.length;
 
         context.report({
           node: node as any,

@@ -27,61 +27,19 @@
 
 3.  Write your HTML with the Clarity CSS class names and markup.
 
-## Installing Clarity Icons
-
-1.  Install Clarity Icons package through npm:
-
-    ```bash
-    npm install @clr/icons --save
-    ```
-
-2.  Install the polyfill for Custom Elements:
-
-    ```bash
-    npm install @webcomponents/custom-elements --save
-    ```
-
-3.  Include the clr-icons.min.css and clr-icons.min.js in your HTML. As clr-icons.min.js is dependent on the Custom Elements polyfill, make sure to include it before clr-icons.min.js:
-
-    ```html
-    <link rel="stylesheet" href="path/to/node_modules/@clr/icons/clr-icons.min.css" />
-
-    <script src="path/to/node_modules/@webcomponents/custom-elements/custom-elements.min.js"></script>
-    <script src="path/to/node_modules/clr-icons/clr-icons.min.js"></script>
-    ```
-
-    If your site is built with [angular-cli](https://github.com/angular/angular-cli) you can achieve the above by adding the files to the styles array and
-    scripts array in `angular-cli.json`:
-
-    ```js
-    "styles": [
-        ...
-        "../node_modules/@clr/icons/clr-icons.min.css",
-        ...
-    ],
-    "scripts": [
-        ...
-        "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-        "../node_modules/@clr/icons/clr-icons.min.js"
-        ...
-    ]
-    ```
-
 ## Installing Clarity Angular
 
 1.  The easiest way to run a sample Angular application with Clarity is to use
     the Angular CLI and run `ng add @clr/angular`. If you have an existing project
     or are not using the Angular CLI, follow the following steps.
 
-2.  Follow the steps above to install Clarity Icons and Clarity UI.
-
-3.  Install the clarity-angular package through npm:
+2.  Install the clarity-angular package through npm:
 
     ```bash
     npm install @clr/angular --save
     ```
 
-4.  Import the ClarityModule into your Angular application's module. Your
+3.  Import the ClarityModule into your Angular application's module. Your
     application's main module might look like this:
 
     ```typescript
@@ -111,7 +69,6 @@
       map: {
          ...
          '@clr/angular': 'node_modules/@clr/angular/bundles/clr-angular.umd.js',
-         '@clr/icons': 'node_modules/@clr/icons/bundles/clr-icons.umd.js',
       },
       ...
     });

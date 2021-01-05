@@ -2,11 +2,8 @@
 
 # Clarity Design System
 
-[![Build Status](https://travis-ci.com/vmware/clarity.svg?branch=master)](https://travis-ci.com/vmware/clarity)
-
-[![Build Status](https://saucelabs.com/browser-matrix/claritydesignsystem.svg)](https://saucelabs.com/beta/builds/b16110e384ce459ab68f10da6e38a285)
-
-[![npm version](https://badge.fury.io/js/%40clr%2Fcore.svg)](https://badge.fury.io/js/%40clr%2Fcore)
+![Build](https://github.com/vmware/clarity/workflows/Build/badge.svg)
+![Website](https://github.com/vmware/clarity/workflows/Website/badge.svg)
 
 Project Clarity is an open source design system that brings together UX
 guidelines, an HTML/CSS framework, Angular components, and Web Components. This
@@ -17,19 +14,17 @@ Clarity. For complete documentation, visit the [Clarity website](https://clarity
 
 Clarity is published as four npm packages:
 
-- **[@clr/icons](https://www.npmjs.com/package/@clr/icons)** Contains the custom
-  element icons.
-- **[@clr/ui](https://www.npmjs.com/package/@clr/ui)** Contains the static
+- [![npm version ui](https://img.shields.io/npm/v/@clr/ui/latest?label=%40clr%2Fui&style=flat-square)](https://www.npmjs.com/package/@clr/ui) Contains the static
   styles for building HTML components.
-- **[@clr/angular](https://www.npmjs.com/package/@clr/angular)** Contains the
-  Angular components. This package depends on @clr/ui for styles.
-- **[@cds/core](https://www.npmjs.com/package/@cds/core).** Contains the Web
+- [![npm version cds angular](https://img.shields.io/npm/v/@cds/angular/latest?label=%40cds%2Fangular&style=flat-square)](https://www.npmjs.com/package/@cds/angular) Contains the
+  Angular components. This package depends on `@clr/ui` for styles.
+- [![npm version clarity city](https://img.shields.io/npm/v/@cds/city/latest?label=%40cds%2Fcity&style=flat-square)](https://www.npmjs.com/package/@cds/city) Our open source sans-serif typeface.
+- [![npm version core](https://img.shields.io/npm/v/@cds/core/latest?label=%40cds%2Fcore&style=flat-square)](https://www.npmjs.com/package/@cds/core) Contains the Web
   Components that work in any JavaScript framework.
 
 ## Installing Clarity
 
 - **[Install CSS Only](/docs/INSTALLATION.md#installing-clarity-ui)**
-- **[Install Icons](/docs/INSTALLATION.md#installing-clarity-icons)**
 - **[Install Angular Components](/docs/INSTALLATION.md#installing-clarity-angular)**
 - **[Install Web Components](/docs/INSTALLATION.md#installing-clarity-web-components)**
 
@@ -55,3 +50,9 @@ If you find a bug or want to request a new feature, please open a [GitHub issue]
 Include a link to the reproduction scenario you created by forking one of the
 Clarity Stackblitz Templates for the version you are using at
 [Clarity StackBlitz templates](https://stackblitz.com/@clr-team/).
+
+## Support
+
+The team supports up to 2 versions behind the latest one.
+
+For questions, ideas, or just reaching out to the team feel free to open a discussion in our [GitHub Disscussion section](https://github.com/vmware/clarity/discussions).

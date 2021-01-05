@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,7 +14,7 @@ import customElements from '../../dist/core/custom-elements.json';
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
 
 I18nService.localize({
-  alert: { closeButtonAriaLabel: 'close this alert' },
+  alert: { closeButtonAriaLabel: 'close info alert' },
 });
 
 export default {
@@ -49,19 +49,15 @@ export function alertGroup() {
   return html`
     <div cds-layout="vertical gap:sm">
       <cds-alert-group status="info" aria-label="This is an example info alert group">
-        <cds-alert
-          closable
-          aria-label="This is an example info alert group"
-          cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
-        >
+        <cds-alert closable aria-label="This is an example info alert group">
           This example is a closable alert inside an alert group with a status of "info".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close alert with a custom icon"}'>
           <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
           This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
           status of "info".
         </cds-alert>
-        <cds-alert status="loading" closable>
+        <cds-alert status="loading" closable cds-i18n='{ "closeButtonAriaLabel": "close alert with a loading status"}'>
           This example is an alert with a "loading" status and alert action buttons inside an alert group with a status
           of "info".
           <cds-alert-actions>
@@ -72,10 +68,10 @@ export function alertGroup() {
       </cds-alert-group>
 
       <cds-alert-group status="success" aria-label="This is an example success alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close success alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "success".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close success alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "success".
           <cds-alert-actions>
@@ -86,10 +82,10 @@ export function alertGroup() {
       </cds-alert-group>
 
       <cds-alert-group status="warning" aria-label="This is an example warning alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close warning alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "warning".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close warning alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "warning".
           <cds-alert-actions>
@@ -100,10 +96,10 @@ export function alertGroup() {
       </cds-alert-group>
 
       <cds-alert-group status="danger" aria-label="This is an example error or danger alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close danger alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "danger".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close danger alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "danger".
           <cds-alert-actions>
@@ -113,10 +109,10 @@ export function alertGroup() {
         </cds-alert>
       </cds-alert-group>
       <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close neutral alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "neutral".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close neutral alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "neutral".
           <cds-alert-actions>
@@ -136,16 +132,16 @@ export const compactStandardAlertGroup = () => {
         <cds-alert
           closable
           aria-label="This is an example info alert group"
-          cds-i18n='{ "closeButtonAriaLabel": "close my example alert"}'
+          cds-i18n='{ "closeButtonAriaLabel": "close compact info alert"}'
         >
           This example is a closable alert inside an alert group with a status of "info".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact info alert with a custom icon"}'>
           <cds-icon shape="node-group" aria-label="Custom icon of a node group" role="img"></cds-icon>
           This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
           status of "info".
         </cds-alert>
-        <cds-alert status="loading" closable>
+        <cds-alert status="loading" closable cds-i18n='{ "closeButtonAriaLabel": "close compact info alert with a loading status"}'>
           This example is an alert with a "loading" status and alert action buttons inside an alert group with a status
           of "info".
           <cds-alert-actions>
@@ -156,10 +152,10 @@ export const compactStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group size="sm" status="success" aria-label="This is an example success alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact success alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "success".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact success alert with action buttons"}'
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "success".
           <cds-alert-actions>
@@ -170,10 +166,10 @@ export const compactStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group size="sm" status="warning" aria-label="This is an example warning alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact warning alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "warning".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact warning alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "warning".
           <cds-alert-actions>
@@ -184,10 +180,10 @@ export const compactStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group size="sm" status="danger" aria-label="This is an example error or danger alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact danger alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "danger".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact danger alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "danger".
           <cds-alert-actions>
@@ -198,10 +194,10 @@ export const compactStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group size="sm" status="neutral" aria-label="This is an example neutral alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact neutral alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "neutral".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact neutral alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "neutral".
           <cds-alert-actions>
@@ -218,10 +214,10 @@ export const darkThemeStandardAlertGroup = () => {
   return html`
     <div cds-theme="dark" cds-layout="vertical gap:sm">
       <cds-alert-group status="info">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme info alert"}'>
           This example is a closable alert inside an alert group with a status of "info".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme info alert with a custom icon"}'>
           <cds-icon shape="node-group" aria-hidden="true"></cds-icon>
           This example is a closable alert with a custom icon shape inside an alert group with a status of "info".
           <cds-alert-actions>
@@ -232,10 +228,10 @@ export const darkThemeStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group status="success">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme success alert"}'>
           This example is a closable alert inside an alert group with a status of "success".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme success alert with action buttons"}'>
           This example is a closable alert with alert action buttons inside an alert group with a status of "success".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
@@ -245,10 +241,10 @@ export const darkThemeStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group status="warning">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme warning alert"}'>
           This example is a closable alert inside an alert group with a status of "warning".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme warning alert with action buttons"}'>
           This example is a closable alert with alert action buttons inside an alert group with a status of "warning".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
@@ -258,10 +254,10 @@ export const darkThemeStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group status="danger">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme danger alert"}'>
           This example is a closable alert inside an alert group with a status of "danger".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme danger alert with action buttons"}'>
           This example is a closable alert with alert action buttons inside an alert group with a status of "danger".
           <cds-alert-actions>
             <cds-button>Button 1</cds-button>
@@ -271,10 +267,10 @@ export const darkThemeStandardAlertGroup = () => {
       </cds-alert-group>
 
       <cds-alert-group status="neutral" aria-label="This is an example neutral alert group">
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme neutral alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "neutral".
         </cds-alert>
-        <cds-alert closable>
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close dark theme neutral alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "neutral".
           <cds-alert-actions>

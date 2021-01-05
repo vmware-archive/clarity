@@ -2,7 +2,15 @@
 
 ## Installation
 
-To install run `npm install --save-dev @clr/eslint-plugin-clarity-adoption` and then add it to your eslint configuration like you see below. The overrides section is important to enable it to parse HTML files as well.
+```sh
+npm install --save-dev @clr/eslint-plugin-clarity-adoption @typescript-eslint/parser eslint
+```
+
+## Usage
+
+Configure in your ESLint config file like you see below. The overrides section is important to enable it to parse HTML files as well.
+
+**.eslintrc.json**
 
 ```json
 {
@@ -14,16 +22,19 @@ To install run `npm install --save-dev @clr/eslint-plugin-clarity-adoption` and 
   "plugins": ["@clr/clarity-adoption"],
   "rules": {
     "@clr/clarity-adoption/no-clr-button": "warn",
-    "@clr/clarity-adoption/no-clr-alert": "warn"
+    "@clr/clarity-adoption/no-clr-alert": "warn",
+    "@clr/clarity-adoption/no-clr-icon": "warn"
   },
   "overrides": [
     {
       "files": ["*.html"],
-      "parser": "eslint-html-parser"
+      "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
     }
   ]
 }
 ```
+
+**Note:** If you don't have ESLint config file, create a new file named **.eslintrc.json** in the root of your project and copy the content above.
 
 Finally, you'll need to run eslint with the `--ext` flag to enable HTML scanning like `npx eslint --ext=ts,html src/`.
 
@@ -36,9 +47,10 @@ yarn
 yarn run watch
 ```
 
-2. Open another terminal window/tab and execute `yarn link`:
+2. Open another terminal window/tab, navigate to the `dist` directory and execute `yarn link`:
 
 ```
+cd ../../dist/eslint-plugin-clarity-adoption
 yarn link
 ```
 
@@ -70,12 +82,13 @@ yarn add -D @typescript-eslint/parser eslint
   "plugins": ["@clr/clarity-adoption"],
   "rules": {
     "@clr/clarity-adoption/no-clr-button": "warn",
-    "@clr/clarity-adoption/no-clr-alert": "warn"
+    "@clr/clarity-adoption/no-clr-alert": "warn",
+    "@clr/clarity-adoption/no-clr-icon": "warn"
   },
   "overrides": [
     {
       "files": ["*.html"],
-      "parser": "@clr/eslint-plugin-clarity-adoption/dist/src/html-parser"
+      "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
     }
   ]
 }
@@ -100,13 +113,13 @@ Currently, the plugin contains a single rule - `no-clr-button`. This rule report
 
 For parsing the TS files in the project, the plugin uses [`@typescript-eslint/plugin`](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin). Then, it parses the HTML within the component template with [`node-html-parser`](https://www.npmjs.com/package/node-html-parser). Using the AST tree provided from node-html-parser it detects the usage of `<button class="btn btn-primary">`.
 
-For parsing the HTML files, the plugin uses [eslint-html-parser](https://www.npmjs.com/package/eslint-html-parser).
-
-## Known issues
-
-The HTML parser that we use - [eslint-html-parser](https://www.npmjs.com/package/eslint-html-parser), cannot handle more than one root element in the HTML file. It doesn't report the rest of the tree. In the example below, only the `div` element will be traversed.
+For parsing the HTML files, the plugin uses an internalized version of [eslint-html-parser](https://www.npmjs.com/package/eslint-html-parser). The original package is patched to work with HTML files containing more than one root element, such as:
 
 ```html
-<div>First</div>
-<button class="btn btn-primary">Second</button>
+<div>
+  ...
+</div>
+<div>
+  ...
+</div>
 ```

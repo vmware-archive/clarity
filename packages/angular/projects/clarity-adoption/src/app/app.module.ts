@@ -19,6 +19,7 @@ import { EmbedComponent } from './components/dynamic/embed-component.component';
 import { ExampleWrapper } from './components/example-wrapper';
 
 import '@clr/icons/shapes/all-shapes';
+import { IconsPage } from './pages/icons/icons.page';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import '@clr/icons/shapes/all-shapes';
     /* pages */
     GettingStartedPage,
     AlertPage,
+    IconsPage,
     BadgePage,
     ButtonPage,
     LabelPage,

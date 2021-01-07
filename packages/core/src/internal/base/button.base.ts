@@ -11,7 +11,6 @@ import { property, internalProperty } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
-import { browserFeatures } from '../utils/supports.js';
 
 // @dynamic
 export class CdsBaseButton extends LitElement {
@@ -36,10 +35,7 @@ export class CdsBaseButton extends LitElement {
 
   @internalProperty({ type: Boolean, reflect: true }) protected active = false;
 
-  @internalProperty({ type: String, reflect: true }) protected role: string | null = 'button';
-
-  @internalProperty({ type: Boolean, reflect: true }) protected hasFlexGapSupport: boolean =
-    browserFeatures.supports.flexGap;
+  @internalProperty({ type: String, reflect: true, attribute: 'role' }) protected role: string | null = 'button';
 
   @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
 
@@ -70,7 +66,7 @@ export class CdsBaseButton extends LitElement {
    * Browsers do not apply the CSS psuedo-selector :active in those instances. So we need this
    * for our :active styles to show.
    *
-   * Make sure to update a component's CSS to account for the presence of the [active] attribute
+   * Make sure to update a component's CSS to account for the presence of the [_active] attribute
    * in all instance where :active is defined.
    *
    * @private

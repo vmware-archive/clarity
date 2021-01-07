@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -48,33 +48,33 @@
   transform: translateY($cds-global-space-3-static) rotate(-45deg);
 }
 
-:host([indeterminate]) {
+:host([_indeterminate]) {
   --color: #{$cds-alias-status-neutral};
 }
 
-:host([indeterminate]) .input::after {
+:host([_indeterminate]) .input:after {
   border-left: none;
   border-bottom-color: var(--color);
   display: inline-block;
   transform: translateY(0.15rem);
 }
 
-:host([checked]) {
+:host([_checked]) {
   --color: #{$cds-alias-status-info};
   --background: var(--color);
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-info};
 
-  .input::after {
+  .input:after {
     display: inline-block;
   }
 }
 
-:host([status='error']:not([checked])) {
+:host([status='error']:not([_checked])) {
   --color: #{$cds-alias-status-danger};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger};
 }
 
-:host([disabled]) {
+:host([_disabled]) {
   --color: #{$cds-alias-status-disabled-tint};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -59,7 +59,7 @@ export function API(args: any) {
 export function small() {
   return html`
     <cds-demo popover>
-      <cds-modal __demo-mode size="sm">
+      <cds-modal _demo-mode size="sm">
         <cds-modal-header>
           <h3 cds-text="title">Small Modal</h3>
         </cds-modal-header>
@@ -79,7 +79,7 @@ export function small() {
 export function defaultSize() {
   return html`
     <cds-demo popover>
-      <cds-modal __demo-mode>
+      <cds-modal _demo-mode>
         <cds-modal-header>
           <h3 cds-text="title">Modal Example</h3>
         </cds-modal-header>
@@ -99,7 +99,7 @@ export function defaultSize() {
 export function large() {
   return html`
     <cds-demo popover>
-      <cds-modal __demo-mode size="lg">
+      <cds-modal _demo-mode size="lg">
         <cds-modal-header>
           <h3 cds-text="title">Large Modal Example</h3>
         </cds-modal-header>
@@ -119,7 +119,7 @@ export function large() {
 export function extraLarge() {
   return html`
     <cds-demo popover>
-      <cds-modal __demo-mode size="xl">
+      <cds-modal _demo-mode size="xl">
         <cds-modal-header>
           <h3 cds-text="title">Extra Large Modal Example</h3>
         </cds-modal-header>
@@ -139,7 +139,7 @@ export function extraLarge() {
 export function darkTheme() {
   return html`
     <cds-demo popover cds-theme="dark">
-      <cds-modal __demo-mode>
+      <cds-modal _demo-mode>
         <cds-modal-header>
           <h3 cds-text="title">My Modal</h3>
         </cds-modal-header>
@@ -176,7 +176,7 @@ export function customStyles() {
     </style>
 
     <cds-demo popover>
-      <cds-modal __demo-mode class="modal-branding" size="lg">
+      <cds-modal _demo-mode class="modal-branding" size="lg">
         <cds-modal-header>
           <h3 cds-text="title">Customizing Modal Styles</h3>
         </cds-modal-header>

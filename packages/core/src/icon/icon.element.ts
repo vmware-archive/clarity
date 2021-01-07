@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -147,7 +147,7 @@ export class CdsIcon extends LitElement {
    * @private
    * given a pixel value offset any surrounding whitespace within the svg
    */
-  @internalProperty({ type: Number, reflect: true })
+  @internalProperty({ type: Number })
   innerOffset: number; // Performance optimization: default to undefined so attr is not initially rendered
 
   @query('svg') private svg: SVGElement;

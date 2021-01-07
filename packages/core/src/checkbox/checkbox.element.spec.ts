@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,22 +36,22 @@ describe('cds-checkbox', () => {
 
   it('should update the indeterminate attr for host', async () => {
     await componentIsStable(component);
-    expect(component.hasAttribute('indeterminate')).toBe(false);
+    expect(component.hasAttribute('_indeterminate')).toBe(false);
 
     component.inputControl.setAttribute('indeterminate', '');
     await componentIsStable(component);
-    expect(component.hasAttribute('indeterminate')).toBe(true);
+    expect(component.hasAttribute('_indeterminate')).toBe(true);
   });
 
   it('should remove indeterminate state when checked', async () => {
-    component.inputControl.setAttribute('indeterminate', '');
+    component.inputControl.indeterminate = true;
     await componentIsStable(component);
-    expect(component.hasAttribute('checked')).toBe(false);
-    expect(component.hasAttribute('indeterminate')).toBe(true);
+    expect(component.hasAttribute('_checked')).toBe(false);
+    expect(component.hasAttribute('_indeterminate')).toBe(true);
 
-    component.inputControl.click();
+    component.inputControl.checked = true;
     await componentIsStable(component);
-    expect(component.hasAttribute('checked')).toBe(true);
-    expect(component.hasAttribute('indeterminate')).toBe(false);
+    expect(component.hasAttribute('_checked')).toBe(true);
+    expect(component.hasAttribute('_indeterminate')).toBe(false);
   });
 });

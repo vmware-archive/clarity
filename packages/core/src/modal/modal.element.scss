@@ -22,7 +22,7 @@
   --width: calc(16 * #{$cds-global-space-13});
 }
 
-:host([__demo-mode]) {
+:host([_demo-mode]) {
   position: absolute;
 }
 

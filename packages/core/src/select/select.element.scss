@@ -1,11 +1,16 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './../styles/tokens/generated/index';
 
-:host([multiple]) {
+:host([_multiple]) {
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color} !important;
+  --border-bottom: 0;
+
+  cds-control-action {
+    display: none;
+  }
 }
 
 ::slotted([slot='input']) {
@@ -18,12 +23,4 @@
   border: var(--border);
   padding: 0 !important;
   font-size: $cds-global-typography-font-size-3 !important;
-}
-
-:host([multiple]) .input-container {
-  --border-bottom: 0;
-}
-
-:host([multiple]) cds-control-action {
-  display: none;
 }

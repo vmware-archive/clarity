@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, internalProperty } from 'lit-element';
-import { property } from '@cds/core/internal';
+import { html } from 'lit-element';
+import { EventEmitter, property, event, getElementUpdates, internalProperty } from '@cds/core/internal';
 import { styles } from './control-inline.element.css.js';
 import { CdsControl } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/index.js';
@@ -32,6 +32,15 @@ export class CdsInternalControlInline extends CdsControl {
 
   /** @private */
   @internalProperty() isControlGroup: boolean;
+
+  /** @private */
+  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
+
+  /** @private */
+  @internalProperty({ type: Boolean, reflect: true }) protected indeterminate = false;
+
+  /** @private */
+  @event() protected checkedChange: EventEmitter<boolean>;
 
   protected supportsPrefixSuffixActions = false;
 
@@ -67,8 +76,29 @@ export class CdsInternalControlInline extends CdsControl {
     `;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.setAttribute('cds-control-inline', '');
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+    this.inputControl.addEventListener('change', () => (this.checked = this.inputControl.checked));
+    this.observers.push(
+      getElementUpdates(this.inputControl, 'checked', (value: any) => (this.checked = value === '' ? true : value)),
+      getElementUpdates(
+        this.inputControl,
+        'indeterminate',
+        (value: any) => (this.indeterminate = value === '' ? true : value)
+      )
+    );
+  }
+
+  updated(props: Map<string, any>) {
+    super.updated(props);
+
+    if (props.has('indeterminate') && props.get('indeterminate') !== this.indeterminate && this.indeterminate) {
+      this.checked = false;
+    }
+
+    if (props.has('checked') && props.get('checked') !== this.checked && this.checked) {
+      this.indeterminate = false;
+      this.checkedChange.emit(this.checked);
+    }
   }
 }

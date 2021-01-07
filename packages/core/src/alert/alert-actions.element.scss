@@ -10,12 +10,12 @@
   // TODO: add style override for dropdown component inside alert-actions after cds-dropdown is implemented
 }
 
-:host([type='light']) {
+:host([_type='light']) {
   display: none !important;
 }
 
-:host([type='light']),
-:host([type='default']) {
+:host([_type='light']),
+:host([_type='default']) {
   ::slotted(cds-button) {
     --color: var(--action-text-color);
     --border-color: var(--action-text-color);
@@ -46,11 +46,11 @@
   }
 }
 
-:host([type='default']) {
+:host([_type='default']) {
   --action-size: calc(#{$cds-global-space-9} - #{$cds-global-space-3});
 }
 
-:host([type='banner']) {
+:host([_type='banner']) {
   --action-size: #{$cds-global-space-9};
 
   ::slotted(cds-button) {
@@ -59,18 +59,18 @@
   }
 }
 
-:host([type='default']),
-:host([type='banner']) {
+:host([_type='default']),
+:host([_type='banner']) {
   &::slotted(a) {
     color: var(--action-text-color);
   }
 }
 
-:host([type='default']) .private-host {
+:host([_type='default']) .private-host {
   height: calc(var(--action-size) + #{$cds-global-space-2});
 }
 
-:host([type='default']) ::slotted(cds-button) {
+:host([_type='default']) ::slotted(cds-button) {
   --font-size: var(--action-font-size);
   --letter-spacing: normal;
   --height: var(--action-size);

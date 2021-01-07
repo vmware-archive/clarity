@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -65,7 +65,7 @@ export const basic = () => {
       }
     </style>
     <cds-demo popover>
-      <cds-internal-overlay __demo-mode>
+      <cds-internal-overlay _demo-mode>
         <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
           <h3 cds-text="section">An overlay demo</h3>
           <p cds-text="body">I am an overlay.</p>
@@ -260,7 +260,7 @@ export const custom = () => {
     </style>
 
     <cds-demo popover>
-      <cds-internal-overlay __demo-mode id="${purpleOverlayId}" class="purple-overlay">
+      <cds-internal-overlay _demo-mode id="${purpleOverlayId}" class="purple-overlay">
         <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" style="width: 480px">
           <h1 cds-text="section">I am a purple overlay</h1>
           <p cds-text="body">Hello, I am an overlay with a purple backdrop.</p>
@@ -276,7 +276,7 @@ export const custom = () => {
           </div>
         </div>
       </cds-internal-overlay>
-      <cds-internal-overlay __demo-mode hidden id="${whiteOverlayId}" class="white-overlay">
+      <cds-internal-overlay _demo-mode hidden id="${whiteOverlayId}" class="white-overlay">
         <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay">
           <h1 cds-text="section">I am whitish</h1>
           <p cds-text="body">Hello, I am an overlay with a mostly opaque white backdrop!</p>
@@ -301,7 +301,7 @@ export const custom = () => {
           </div>
         </div>
       </cds-internal-overlay>
-      <cds-internal-overlay __demo-mode hidden id="${orangeOverlayId}" class="orange-overlay">
+      <cds-internal-overlay _demo-mode hidden id="${orangeOverlayId}" class="orange-overlay">
         <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay">
           <h1 cds-text="section" id="custom-demo-3-title">I am orange</h1>
           <p cds-text="body">Hello, I am an overlay with an opaque orange backdrop!</p>

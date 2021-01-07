@@ -34,7 +34,7 @@
   background: var(--layered-backdrop-background, var(--backdrop-background));
 }
 
-:host([__demo-mode]) {
+:host([_demo-mode]) {
   position: absolute;
 
   .overlay-backdrop {

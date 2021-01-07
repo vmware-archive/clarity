@@ -1,6 +1,6 @@
 {
   "name": "@cds/core",
-  "version": "5.0.0-next.0",
+  "version": "5.0.0-rc.0",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook:start",
     "storybook:start": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",

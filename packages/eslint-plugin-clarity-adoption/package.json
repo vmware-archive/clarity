@@ -1,6 +1,6 @@
 {
   "name": "@clr/eslint-plugin-clarity-adoption",
-  "version": "5.0.0-next.0",
+  "version": "5.0.0-rc.0",
   "description": "A set of ESLint rules for Clarity Core adoption.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -69,7 +69,9 @@
       "\\.(ts)$": "ts-jest"
     },
     "testRegex": "/src/.*\\.spec\\.ts$",
-    "testPathIgnorePatterns": ["/src/test-helper\\.spec\\.ts"],
+    "testPathIgnorePatterns": [
+      "/src/test-helper\\.spec\\.ts"
+    ],
     "preset": "ts-jest",
     "globals": {
       "ts-jest": {

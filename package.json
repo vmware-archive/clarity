@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "5.0.0-next.0",
+  "version": "5.0.0-rc.0",
   "private": true,
   "workspaces": {
     "packages": [

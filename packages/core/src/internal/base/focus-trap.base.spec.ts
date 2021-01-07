@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -88,7 +88,7 @@ describe('focus trap element', () => {
 
     beforeEach(async () => {
       testElement = await createTestElement(html`
-        <cds-base-focus-trap __demo-mode>
+        <cds-base-focus-trap _demo-mode>
           <cds-button>
             <span>${placeholderText}</span>
           </cds-button>

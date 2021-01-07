@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -27,7 +27,7 @@ export function API(args: any) {
     <cds-checkbox ...="${spreadProps(getElementStorybookArgs(args))}">
       <label>checked</label>
       <input type="checkbox" checked />
-      <cds-control-message .status=${args.status}>message message</cds-control-message>
+      <cds-control-message .status=${args.status}>message text</cds-control-message>
     </cds-checkbox>
   `;
 }
@@ -38,7 +38,7 @@ export function checkbox() {
     <cds-checkbox>
       <label>checkbox</label>
       <input type="checkbox" checked />
-      <cds-control-message>message message</cds-control-message>
+      <cds-control-message>message text</cds-control-message>
     </cds-checkbox>
   `;
 }

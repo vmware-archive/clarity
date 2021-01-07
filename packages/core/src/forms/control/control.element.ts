@@ -11,7 +11,6 @@ import {
   querySlot,
   querySlotAll,
   id,
-  listenForAttributeChange,
   childrenUpdateComplete,
   getElementLanguageDirection,
   event,
@@ -21,6 +20,7 @@ import {
   internalProperty,
   syncProps,
   pxToRem,
+  getElementUpdates,
 } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
@@ -268,7 +268,6 @@ export class CdsControl extends LitElement {
 
   updated(props: Map<string, any>) {
     super.updated(props);
-    syncProps(this.inputControl, this, { disabled: props.has('disabled') });
     this.messages.forEach(message => syncProps(message, this, { disabled: props.has('disabled') }));
   }
 
@@ -287,9 +286,8 @@ export class CdsControl extends LitElement {
   private setupHostAttributes() {
     this.inputControl.addEventListener('focusin', () => (this.focused = true));
     this.inputControl.addEventListener('focusout', () => (this.focused = false));
-    this.disabled = this.inputControl.disabled;
     this.observers.push(
-      listenForAttributeChange(this.inputControl, 'disabled', () => (this.disabled = this.inputControl.disabled))
+      getElementUpdates(this.inputControl, 'disabled', (value: any) => (this.disabled = value === '' ? true : value))
     );
   }
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -86,7 +86,7 @@
   }
 }
 
-:host([focused]) {
+:host([_focused]) {
   --background-size: 100% 100%;
   --border-color: #{$cds-alias-status-info};
 }
@@ -98,7 +98,7 @@
 }
 
 :host([status='error']),
-:host([status='error'][focused]) {
+:host([status='error'][_focused]) {
   --border-color: #{$cds-alias-status-danger};
 }
 
@@ -106,6 +106,6 @@
   --border-color: #{$cds-alias-status-success};
 }
 
-:host([disabled]) {
+:host([_disabled]) {
   --border-color: #{$cds-alias-status-disabled};
 }

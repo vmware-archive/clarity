@@ -97,7 +97,7 @@ export class CdsInternalControlGroup extends LitElement {
   })
   protected label: HTMLLabelElement;
 
-  @querySlotAll('cds-control, [cds-control], [cds-inline-control]', { assign: 'controls' })
+  @querySlotAll('cds-control, [cds-control]', { assign: 'controls' })
   protected controls: NodeListOf<CdsControl | CdsInternalControlInline>;
 
   @querySlotAll('cds-control-message') protected messages: NodeListOf<CdsControlMessage>;

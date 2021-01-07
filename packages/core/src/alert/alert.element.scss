@@ -20,23 +20,23 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
   color: var(--color);
 }
 
-:host([type='default']) .alert-spinner,
-:host([type='banner']) .alert-spinner {
+:host([_type='default']) .alert-spinner,
+:host([_type='banner']) .alert-spinner {
   --fill-color: var(--icon-color);
 }
 
-:host([type='default']) {
+:host([_type='default']) {
   --font-size: #{$cds-global-typography-font-size-3};
 }
 
-:host([type='default']) ::slotted(cds-alert-actions),
-:host([type='banner']) ::slotted(cds-alert-actions) {
+:host([_type='default']) ::slotted(cds-alert-actions),
+:host([_type='banner']) ::slotted(cds-alert-actions) {
   --action-size: calc(var(--min-height) - #{$cds-global-space-4});
   white-space: nowrap;
   display: block;
 }
 
-:host([type='banner']) {
+:host([_type='banner']) {
   --icon-size: #{$cds-global-space-9};
 }
 
@@ -81,51 +81,51 @@ cds-internal-close-button {
   display: none;
 }
 
-:host([type='default']) cds-internal-close-button {
+:host([_type='default']) cds-internal-close-button {
   height: #{$cds-global-space-8};
 }
 
-:host([type='default']) .alert-content-wrapper {
+:host([_type='default']) .alert-content-wrapper {
   align-items: self-start;
 }
 
-:host([type='light'][status='info']) {
+:host([_type='light'][status='info']) {
   --icon-color: #{$cds-alias-status-info};
 }
 
-:host([type='light'][status='success']) {
+:host([_type='light'][status='success']) {
   --icon-color: #{$cds-alias-status-success};
 }
 
-:host([type='light'][status='warning']) {
+:host([_type='light'][status='warning']) {
   --icon-color: #{$cds-alias-status-warning-shade};
 }
 
-:host([type='light'][status='danger']) {
+:host([_type='light'][status='danger']) {
   --icon-color: #{$cds-alias-status-danger};
 }
 
-:host([status='loading'][type='default']) .alert-spinner {
+:host([status='loading'][_type='default']) .alert-spinner {
   --ring-color: var(--icon-color);
 }
 
-:host([size='sm']:not([type='banner'])) {
+:host([size='sm']:not([_type='banner'])) {
   --font-size: #{$cds-global-typography-font-size-2};
   --letter-spacing: normal;
 }
 
 // banner styles
-:host([type='banner']) .alert-content-wrapper {
+:host([_type='banner']) .alert-content-wrapper {
   transform: none;
   min-height: #{$cds-global-space-10};
 }
 
-:host([type='banner']) {
+:host([_type='banner']) {
   --color: #{$cds-global-typography-color-100};
 }
 
-:host([type='default'][status='warning']),
-:host([type='banner'][status='warning']) {
+:host([_type='default'][status='warning']),
+:host([_type='banner'][status='warning']) {
   --color: #{$cds-global-color-gray-1000};
 
   cds-alert-actions {
@@ -134,19 +134,19 @@ cds-internal-close-button {
   }
 }
 
-:host([type='banner']) .spinner {
+:host([_type='banner']) .spinner {
   @include min-equilateral(calc(#{$cds-global-space-8} + #{$cds-global-space-2}));
   margin-top: #{$cds-global-space-2};
 }
 
-:host([type='banner']) cds-internal-close-button {
+:host([_type='banner']) cds-internal-close-button {
   height: $cds-global-space-9;
   margin-top: $cds-global-space-3;
 }
 
 @supports (-moz-appearance: none) and (text-emphasis: none) {
   // nudge for alert text content firefox
-  :host(:not([type='banner']):not([size='sm'])) .alert-content {
+  :host(:not([_type='banner']):not([size='sm'])) .alert-content {
     transform: translateY(calc(-1 * #{$cds-global-space-2}));
   }
 }

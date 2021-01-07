@@ -1,11 +1,11 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './../styles/tokens/generated/index';
 
 :host {
-  --background: #{$cds-alias-status-neutral-tint};
+  --background: #{$cds-alias-status-neutral};
   --border: #{$cds-alias-object-border-width-200} solid var(--background);
   --border-radius: #{$cds-alias-object-border-radius-200};
   --height: #{$cds-global-space-8};
@@ -45,15 +45,16 @@
   transition-property: transform;
 }
 
-:host([checked]) {
+:host([_checked]) {
   --background: #{$cds-alias-status-success};
+  --border: #{$cds-alias-object-border-width-200} solid var(--background);
+
+  .input:after {
+    transform: translate(calc(#{$cds-global-space-7} - #{$cds-global-space-1}), 0);
+  }
 }
 
-:host([checked]) .input:after {
-  transform: translate(calc(#{$cds-global-space-7} - #{$cds-global-space-1}), 0);
-}
-
-:host([disabled]) .input {
+:host([_disabled]) .input {
   opacity: 0.6;
   cursor: not-allowed;
 }

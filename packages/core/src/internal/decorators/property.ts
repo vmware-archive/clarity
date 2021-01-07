@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -151,6 +151,12 @@ export function internalProperty(options?: PropertyConfig) {
 
     if (defaultOptions) {
       defaultOptions.reflect = options?.reflect ? options.reflect : false; // prevent attr reflection by default
+
+      if (defaultOptions.reflect && !options?.attribute) {
+        // mark as internal attr if reflect and no provided attr
+        // see description for more detail https://github.com/vmware/clarity/pull/5431
+        defaultOptions.attribute = `_${camelCaseToKebabCase(name)}`;
+      }
     }
 
     return prop(defaultOptions)(protoOrDescriptor, name);

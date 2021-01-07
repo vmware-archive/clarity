@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,7 +31,7 @@ describe('cds-internal-control-inline', () => {
   });
 
   it('should set identifier attribute', () => {
-    expect(control.getAttribute('cds-control-inline')).toBe('');
+    expect(control.getAttribute('cds-control')).toBe('');
   });
 
   it('should allow inline label to be place left or right of the control', async () => {

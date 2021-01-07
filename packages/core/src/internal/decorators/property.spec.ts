@@ -1,10 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getDefaultOptions, requirePropertyCheck } from './property.js';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
+import { html, LitElement } from 'lit-element';
+import { registerElementSafely } from '../utils/register.js';
+import { getDefaultOptions, requirePropertyCheck, internalProperty } from './property.js';
 
 const prop = 'prop';
 
@@ -96,5 +99,36 @@ describe('@property decorator defaults', () => {
     expect(console.warn).toHaveBeenCalled();
 
     window.jasmine = jasmine;
+  });
+});
+
+/** @element test-internal-prop-decorator */
+export class TestElement extends LitElement {
+  @internalProperty() protected one = 'one';
+  @internalProperty({ type: String, reflect: true }) protected two = 'two';
+  @internalProperty({ type: String, reflect: true, attribute: 'three' }) protected three = 'three';
+}
+
+registerElementSafely('test-internal-prop-decorator', TestElement);
+
+describe('internal property decorator', () => {
+  let testElement: HTMLElement;
+  let component: TestElement;
+
+  beforeEach(async () => {
+    testElement = await createTestElement(html`<test-internal-prop-decorator></test-internal-prop-decorator>`);
+    component = testElement.querySelector<TestElement>('test-internal-prop-decorator');
+  });
+
+  afterEach(() => {
+    removeTestElement(testElement);
+  });
+
+  it('should prefix internal host style attrs', async () => {
+    await componentIsStable(component);
+
+    expect(component.hasAttribute('one')).toBe(false);
+    expect(component.hasAttribute('_two')).toBe(true);
+    expect(component.hasAttribute('three')).toBe(true);
   });
 });

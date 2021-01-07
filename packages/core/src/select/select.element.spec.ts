@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,10 +40,10 @@ describe('cds-select', () => {
 
   it('should sync host multiple attr', async () => {
     await componentIsStable(component);
-    expect(component.hasAttribute('multiple')).toBe(false);
+    expect(component.hasAttribute('_multiple')).toBe(false);
 
     component.inputControl.setAttribute('multiple', '');
     await componentIsStable(component);
-    expect(component.hasAttribute('multiple')).toBe(true);
+    expect(component.hasAttribute('_multiple')).toBe(true);
   });
 });

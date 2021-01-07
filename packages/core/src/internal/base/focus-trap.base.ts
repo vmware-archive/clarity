@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -23,7 +23,7 @@ export class CdsBaseFocusTrap extends LitElement {
   @property({ type: Boolean }) hidden = false;
 
   @internalProperty({ type: Boolean, reflect: true })
-  protected __demoMode = false;
+  protected demoMode = false;
 
   @property({ type: String }) focusTrapId: string;
 
@@ -58,7 +58,7 @@ export class CdsBaseFocusTrap extends LitElement {
   }
 
   private toggleFocusTrap() {
-    if (!this.__demoMode && !this.hasAttribute('hidden')) {
+    if (!this.demoMode && !this.hasAttribute('hidden')) {
       this.focusTrap.enableFocusTrap();
     } else {
       this.focusTrap.removeFocusTrap();

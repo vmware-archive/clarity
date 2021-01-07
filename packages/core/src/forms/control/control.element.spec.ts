@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -73,6 +73,23 @@ describe('cds-control', () => {
     expect(getStatusIcon().status).toBe('success');
   });
 
+  it('should apply disabled styles when native input is disabled', async () => {
+    await componentIsStable(control);
+    expect(input.hasAttribute('disabled')).toBe(false);
+
+    input.setAttribute('disabled', '');
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(true);
+
+    input.removeAttribute('disabled');
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(false);
+
+    input.disabled = true;
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(true);
+  });
+
   it('should allow control of the input width', async () => {
     control.style.width = '500px';
 
@@ -108,19 +125,18 @@ describe('cds-control', () => {
   it('should apply focus style attribute when native element is focused', async () => {
     input.dispatchEvent(new Event('focusin'));
     await componentIsStable(control);
-    expect(control.getAttribute('focused')).toBe('');
+    expect(control.getAttribute('_focused')).toBe('');
 
     input.dispatchEvent(new Event('focusout'));
     await componentIsStable(control);
-    expect(control.getAttribute('focused')).toBe(null);
+    expect(control.getAttribute('_focused')).toBe(null);
   });
 
   it('should apply disabled style attribute when native input is disabled', done => {
     expect(control.getAttribute('disabled')).toBe(null);
-    input.setAttribute('disabled', '');
 
-    listenForAttributeChange(control, 'disabled', () => {
-      expect(control.getAttribute('disabled')).toBe('');
+    listenForAttributeChange(control, '_disabled', () => {
+      expect(control.getAttribute('_disabled')).toBe('');
       done();
     });
 

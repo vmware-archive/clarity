@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,8 @@ const TARGET_PATH = path.join(__dirname, './../packages/angular/projects/cds-ang
 const MUSTACHE_TEMPLTATE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/_stubs');
 const TEST_DIR_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/components');
 
-const IGNORE_DIRECTORY_NAMES = ['index.d.ts', 'internal-components'];
+// TODO: check if a directory is already created for the same tag
+const IGNORE_DIRECTORY_NAMES = ['index.d.ts', 'internal-components', 'icon-shapes'];
 const INTEGRATION_TEST_FILE_NAME = 'all.spec.ts';
 const MODULE_NAME = 'cds-angular.module.ts'; // hard-coded in the root index mustache template
 

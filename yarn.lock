@@ -2616,29 +2616,21 @@
   integrity sha512-R+C4uywmXoTD01LINOt3O0cBRviQdbAVNxdVvOyuO3+rM9bvFroF7UZY0R1ue/xvKXlqJrEkNKZQODeKjzaAhA==
 
 "@clr/core@./packages/core/dist/core":
-  version "4.0.4"
+  version "3.1.0"
   dependencies:
-    "@types/resize-observer-browser" "^0.1.3"
+    css-vars-ponyfill "^2.1.2"
     lit-element "^2.3.1"
-    lit-html "^1.2.1"
-    ramda "^0.27.0"
-    tslib "^2.0.0"
+    lit-html "^1.1.2"
+    ramda "^0.26.1"
+    tslib "^1.10.0"
   optionalDependencies:
     "@clr/city" "^1.1.0"
-    "@webcomponents/custom-elements" "^1.4.2"
-    "@webcomponents/shadycss" "^1.10.1"
-    "@webcomponents/webcomponentsjs" "^2.4.4"
-    css-vars-ponyfill "^2.3.2"
-    normalize.css "^8.0.1"
+    "@webcomponents/custom-elements" "^1.3.1"
+    "@webcomponents/shadycss" "^1.9.3"
+    "@webcomponents/webcomponentsjs" "^2.4.0"
 
 "@clr/react@./packages/react/dist/react":
-  version "4.0.4"
-  dependencies:
-    react "^16.13.1"
-    react-dom "^16.13.1"
-  optionalDependencies:
-    "@clr/city" "^1.1.0"
-    normalize.css "^8.0.1"
+  version "0.0.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -7983,6 +7975,11 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@webcomponents/custom-elements@^1.3.1":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.4.3.tgz#1800d49f38bb4425ebfd160b50115e62776109d7"
+  integrity sha512-iD0YW46SreUQANGccywK/eC+gZELNHocZZrY2fGwrIlx/biQOTkAF9IohisibHbrmIHmA9pVCIdGwzfO+W0gig==
+
 "@webcomponents/custom-elements@^1.4.2":
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.4.2.tgz#a6fe80325c2b09e88e988c712144bc667c565499"
@@ -7992,6 +7989,11 @@
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.10.1.tgz#6f377b313c96a93a690f25206b32a20eada4b2a9"
   integrity sha512-XEVDA7oH6o4Au9apyRDucjcIzvP44Ur4sqTMGRKCcE6sCAeKiOkRE03TCYNJAFkzckMWWT8Xx3IxG3iwjAcsRQ==
+
+"@webcomponents/shadycss@^1.9.3":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.10.2.tgz#40e03cab6dc5e12f199949ba2b79e02f183d1e7b"
+  integrity sha512-9Iseu8bRtecb0klvv+WXZOVZatsRkbaH7M97Z+f+Pt909R4lDfgUODAnra23DOZTpeMTAkVpf4m/FZztN7Ox1A==
 
 "@webcomponents/shadycss@^1.9.4":
   version "1.9.6"
@@ -12666,6 +12668,11 @@ css-vars-ponyfill@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.3.1.tgz#34831c8b35c021e940d157cd497ae235f4b4238e"
   integrity sha512-LHLFhKKQChkQz6nItHU1ZA/ABYJbw489eF0APx2a2FvjT32fAnbqriTLzKsl4KXowuVXcwoRWh8iQNO7wNzuGA==
+
+css-vars-ponyfill@^2.1.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.4.2.tgz#2ae8ea0ea5dfeb0afb5ac8f5c3b4247615a5ff69"
+  integrity sha512-kp8Ufs7jJDoaSym1hw/deawtakLJJTAQMB4ZgkdyOwCTJHqEClbpXI910ovQU4Guxt37EcdRiqppG9ihFyCjPQ==
 
 css-vars-ponyfill@^2.3.2:
   version "2.3.2"
@@ -20992,6 +20999,11 @@ lit-html@1.2.1, lit-html@^1.1.1, lit-html@^1.2.1:
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.2.1.tgz#1fb933dc1e2ddc095f60b8086277d4fcd9d62cc8"
   integrity sha512-GSJHHXMGLZDzTRq59IUfL9FCdAlGfqNp/dEa7k7aBaaWD+JKaCjsAk9KYm2V12ItonVaYx2dprN66Zdm1AuBTQ==
 
+lit-html@^1.1.2:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.3.0.tgz#c80f3cc5793a6dea6c07172be90a70ab20e56034"
+  integrity sha512-0Q1bwmaFH9O14vycPHw8C/IeHMk/uSDldVLIefu/kfbTBGIc44KGH6A8p1bDfxUfHdc8q6Ct7kQklWoHgr4t1Q==
+
 lite-server@2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/lite-server/-/lite-server-2.5.4.tgz#f1c1b25bb70ce0f83eb1ab0b08ef32c08accf4e2"
@@ -26081,6 +26093,11 @@ ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
+
+ramda@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
+  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
 
 ramda@^0.27.0:
   version "0.27.0"

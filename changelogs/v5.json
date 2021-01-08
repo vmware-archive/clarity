@@ -4,7 +4,7 @@
     {
       "version": "5.0.0-rc.0",
       "date": "2021-01-07",
-      "description": "This is a release candidate for our next major version which contains new features and bug fixes. We've also added a package that provides Angular modules for Core package's web componnets.",
+      "description": "This is a release candidate for our next major version, which contains new features and bug fixes. We've also added a package that provides Angular modules for Core components.",
       "feat": [
         {
           "issue": 5337,

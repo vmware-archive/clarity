@@ -2,6 +2,52 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.9",
+      "date": "2021-01-07",
+      "description": "This is a bug fix release that addresses issues in Angular components.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5413,
+          "title": "Fix looping progress bar in firefox",
+          "project": "Angular",
+          "scope": "Progress bar"
+        },
+        {
+          "issue": 5416,
+          "title": "Display placeholder text",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5386,
+          "title": "Allow apps to disable focus management on page change",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
+      "version": "4.0.8",
+      "date": "2020-12-07",
+      "description": "This is a bug fix release that addresses issues in Angular components.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5362,
+          "title": "Consolidate cdr for simultaneous children",
+          "project": "Angular",
+          "scope": "Tree view"
+        },
+        {
+          "issue": 5347,
+          "title": "Simplified control state management",
+          "project": "Angular",
+          "scope": "Combobox"
+        }
+      ]
+    },
+    {
       "version": "4.0.7",
       "date": "2020-11-26",
       "description": "This is a bug fix release that addresses issues in Angular components.",

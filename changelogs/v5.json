@@ -2,6 +2,156 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.0-rc.0",
+      "date": "2021-01-07",
+      "description": "This is a release candidate for our next major version which contains new features and bug fixes. We've also added a package that provides Angular modules for Core package's web componnets.",
+      "feat": [
+        {
+          "issue": 5337,
+          "title": "Export icon names from the entrypoint of @clr/core/icon",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5288,
+          "title": "Angular modules for Core components",
+          "project": "Angular",
+          "scope": "Build"
+        },
+        {
+          "issue": 4839,
+          "title": "Volume 18 icons",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 4502,
+          "title": "Core i18n",
+          "project": "Core",
+          "scope": "i18n",
+          "breaking": true
+        },
+        {
+          "issue": 5389,
+          "title": "Allow env flag set for core logging",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 5200,
+          "title": "Overlay component",
+          "project": "Core",
+          "scope": "Modal",
+          "breaking": true
+        },
+        {
+          "issue": 5267,
+          "title": "Add eslint rule for detecting and fixing clr icons",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        },
+        {
+          "issue": 5400,
+          "title": "Core themes",
+          "project": "Core",
+          "scope": "Themes",
+          "breaking": true
+        }
+      ],
+      "fix": [
+        {
+          "issue": 5428,
+          "title": "Positioning of overlay backdrop in demos in safari",
+          "project": "Core",
+          "scope": "Modal"
+        },
+        {
+          "issue": 5424,
+          "title": "Improve alert examples aria label",
+          "project": "Core",
+          "scope": "Alerts"
+        },
+        {
+          "issue": 5423,
+          "title": "Make the eslint rule for icons work with multiple root elements",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        },
+        {
+          "issue": 5409,
+          "title": "Prevent Core and UI text collisions",
+          "project": "Core",
+          "scope": "UI"
+        },
+        {
+          "issue": 5405,
+          "title": "Fix inherit styles",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5355,
+          "title": "Fix not found icon loading state",
+          "project": "Core",
+          "scope": "Icons",
+          "breaking": true
+        },
+        {
+          "issue": 5396,
+          "title": "Core icon service sync",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5388,
+          "title": "Core form alignment with range and input icon",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5374,
+          "title": "Allow apps to disable focus management on page change",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5370,
+          "title": "Core v5 fixes",
+          "project": "Core"
+        },
+        {
+          "issue": 5373,
+          "title": "File input a11y improvement",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5372,
+          "title": "Password input a11y improvement",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5332,
+          "title": "Inherit icon color from `currentColor`",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5101,
+          "title": "Simplify control state management",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5101,
+          "title": "Consolidate cdr for simultaneous children updates",
+          "project": "Angular",
+          "scope": "Treeview"
+        }
+      ]
+    },
+    {
       "version": "5.0.0-next.0",
       "date": "2020-12-02",
       "description": "This is a beta release for our next major version which contains new components and bug fixes. We will no longer support actively support IE11, and are preparing major features for helping existing Clarity Angular applications adopt Core.",

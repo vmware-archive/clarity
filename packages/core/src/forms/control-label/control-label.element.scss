@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -10,7 +10,7 @@
 }
 
 ::slotted([slot='label']) {
-  font-family: 'Clarity City', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !important;
+  font-family: $cds-global-typography-font-family !important;
   max-width: var(--internal-label-max-width, initial) !important;
   display: inline-block !important;
   text-transform: capitalize !important;

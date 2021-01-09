@@ -21,7 +21,7 @@ The default font intended for use with Clarity is [Clarity City](https://github.
 Clarity Angular uses Metropolis as the base font, which you can download below. Clarity City is an improved version of Metropolis, but has not been updated in Clarity Angular due to the potential for breaking changes.
 
 <div cds-layout="m-t:md">
-<a class="btn btn-primary asset-download-btn" target="_blank" href="https://github.com/vmware/clarity/files/5425574/Metropolis.zip"><cds-icon shape="download"></cds-icon> Clarity City (1.0.0)</a>
+<a class="btn btn-primary asset-download-btn" target="_blank" href="https://github.com/vmware/clarity/files/5425574/Metropolis.zip"><cds-icon shape="download"></cds-icon> Metropolis (M8)</a>
 </div>
 
 </div>
@@ -32,7 +32,7 @@ Clarity Angular uses Metropolis as the base font, which you can download below. 
 
 We provide a convenient zip of all icon files. This download includes all svg files for the icons available in the library.
 
-<div  cds-layout="m-t:md">
+<div cds-layout="m-t:md">
 <a class="btn btn-primary asset-download-btn" target="_blank" href="https://github.com/vmware/clarity-assets/archive/master.zip"><cds-icon shape="download"></cds-icon> Icon Files (svg)</a>
 </div>
 
@@ -48,7 +48,7 @@ We provide a convenient zip of all icon files. This download includes all svg fi
 
 Clarity uses the popular design tool [Figma](https://www.figma.com/) when designing and documenting components and foundations. Bookmark these resources to re-use Clarity assets in your design process.
 
-<div  cds-layout="m-t:md">
+<div cds-layout="m-t:md">
 <a class="btn btn-primary asset-download-btn" target="_blank" href="https://www.figma.com/@vmware"><cds-icon shape="download"></cds-icon> Clarity Figma Libraries</a>
 </div>
 

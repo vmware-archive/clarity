@@ -7,8 +7,9 @@
     "storybook:build": "build-storybook -s .storybook/public -c .storybook -o ../../dist/website/storybook/core --quiet",
     "lint": "eslint \"**/*.ts\" --ignore-pattern \"dist\" && stylelint \"./**/*.scss\" && lit-analyzer ./src",
     "lint:fix": "eslint --fix \"./**/*.ts\" && stylelint --fix \"./**/*.scss\"",
-    "test": "npm-run-all -s test:unit test:performance",
+    "test": "npm-run-all -s test:unit test:performance test:package",
     "test:watch": "karma start ./karma.conf.js --auto-watch=true --single-run=false --coverage=false",
+    "test:package": "yarn run package-check --cwd ./dist/core",
     "test:unit": "tsc --b ./tsconfig.spec.json --force && karma start ./karma.conf.js && yarn run build:package",
     "test:performance": "webpack --config ./test-bundles/webpack.config.js && bundlesize --config ./test-bundles/bundlesize.json",
     "test:bundles": "source-map-explorer dist/test-bundles/webpack.bundle.js",
@@ -26,6 +27,8 @@
     "build:sass:modules": "sass --no-source-map --load-path=./src ./src/styles:./dist/core/styles ./src/styles/global.scss:./dist/core/global.css ./src/list:./dist/core/list",
     "build:sass:components": "sass-render --q --suffix '.css.ts' -t ./build/sass-template.ts './**/*.element.scss' './**/*.global.scss'"
   },
+  "files": ["*"],
+  "keywords": ["web component", "design system", "clarity", "ui"],
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
   "sideEffects": false,
@@ -46,6 +49,7 @@
   },
   "devDependencies": {
     "@open-wc/karma-esm": "2.16.17",
+    "@skypack/package-check": "0.2.2",
     "@storybook/addon-a11y": "6.0.21",
     "@storybook/addon-actions": "6.0.21",
     "@storybook/addon-backgrounds": "6.0.21",

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@ import '@cds/core/icon/register.js';
 import { ClarityIcons, imageIcon, userIcon } from '@cds/core/icon';
 import { boolean, select, text } from '@storybook/addon-knobs';
 import { html } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import customElements from '../../dist/core/custom-elements.json';
 
 import {
@@ -44,7 +44,7 @@ import {
   travelCollectionIcons,
 } from '@cds/core/icon';
 import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { IconShapeTuple } from './interfaces/icon.interfaces.js';
 
 loadChartIconSet();

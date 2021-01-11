@@ -38,7 +38,7 @@ function removeCacheFiles() {
   );
 }
 
-function cleanPackageFiles() {
+function createPackageFiles() {
   // https://open-wc.org/publishing
   // https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm
   read('../dist/core')
@@ -56,6 +56,28 @@ function cleanPackageFiles() {
 
       fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
     });
+}
+
+function createPackageExports() {
+  // https://docs.skypack.dev/package-authors/package-checks
+  // https://nodejs.org/api/packages.html#packages_subpath_exports
+  const packageFile = fs.readJsonSync('../dist/core/package.json');
+  const packageNames = read('../dist/core')
+    .filter(f => f.includes('package.json'))
+    .map(f => fs.readJsonSync(f).name.replace('@cds/core/', ''))
+    .filter(name => name !== '@cds/core' && !name.includes('internal'));
+
+  const exports = JSON.parse(`{
+    ".": "./index.js",
+    "./icon/shapes/*": "./icon/shapes/*.js",
+    "./icon/icon.service": "./icon/icon.service.js",
+    ${packageNames.map(name => {
+      return `
+      "./${name}": "./${name}/index.js",
+      "./${name}/register": "./${name}/register.js"`;
+    })}
+  }`);
+  fs.writeJsonSync('../dist/core/package.json', { ...packageFile, exports }, { spaces: 2 });
 }
 
 function updateFileVersions() {
@@ -78,7 +100,8 @@ function generateAPIMetaData() {
 (async () => {
   await copyAssets();
   removeCacheFiles();
-  cleanPackageFiles();
+  createPackageFiles();
+  createPackageExports();
   updateFileVersions();
   generateAPIMetaData();
 })();

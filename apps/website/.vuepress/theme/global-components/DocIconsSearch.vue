@@ -39,7 +39,7 @@ export default {
 <style scoped lang="scss">
 .sticky {
   position: sticky;
-  top: 84px; // height is to make it sticky under the page title.
+  top: 4.1rem; // height is to make it sticky under the page title.
 }
 .searchbar-label {
   position: relative;

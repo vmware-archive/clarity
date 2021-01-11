@@ -1,15 +1,15 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, isBrowser, property, setAttributes } from '@cds/core/internal';
+import { baseStyles, isBrowser, property, setAttributes, HTMLAttributeTuple } from '@cds/core/internal';
 import { CdsIconButton } from '@cds/core/button';
 import { html } from 'lit-element';
 import { styles } from './close-button.element.css.js';
-import { ClarityIcons, timesIcon } from '@cds/core/icon';
-import { HTMLAttributeTuple } from '@cds/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { timesIcon } from '@cds/core/icon/shapes/times.js';
 
 export const CdsCloseButtonTagName = 'cds-internal-close-button';
 

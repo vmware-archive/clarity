@@ -49,11 +49,12 @@ export default {
 <style scoped lang="scss">
 .icons-preview-settings {
   display: grid;
-  grid-template-columns: 180px 240px auto;
+  grid-template-columns: 9rem 12rem auto;
   padding: 0.75rem 0;
   position: sticky;
-  top: 133px; // height makes it sticky under search input.
+  top: 6.55rem; // height makes it sticky under search input.
   background-color: var(--clr-global-app-background);
+  overflow: hidden;
   z-index: 5000;
 }
 .control-container-title {

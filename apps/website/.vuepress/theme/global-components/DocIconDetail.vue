@@ -136,17 +136,17 @@ export default {
       }
     },
     fetchIconUrl: function (activeVariant) {
-      // const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
-      // if (variants.length === 0) {
-      //   // not solid, no badge, no alert
-      //   return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
-      // } else if (this.hasSolid(variants)) {
-      //   // is a solid icon download, may have badge or alert
-      //   return this.createSolidDownload(variants);
-      // } else {
-      //   // is an outline, has either badge or alert
-      //   return this.createOutlineDownload(variants);
-      // }
+      const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
+      if (variants.length === 0) {
+        // not solid, no badge, no alert
+        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
+      } else if (this.hasSolid(variants)) {
+        // is a solid icon download, may have badge or alert
+        return this.createSolidDownload(variants);
+      } else {
+        // is an outline, has either badge or alert
+        return this.createOutlineDownload(variants);
+      }
     },
   },
 };

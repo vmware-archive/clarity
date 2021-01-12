@@ -2,6 +2,39 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.0-rc.1",
+      "date": "2021-01-11",
+      "description": "This is a release candidate for our next major version, which contains bug @cds/core fixes.",
+      "fix": [
+        {
+          "title": "Simplify fallback fonts for system fonts.",
+          "project": "Core",
+          "scope": "Typography"
+        },
+        {
+          "title": "Fix CSS Flex Gap fallback support for Safari Technical Preview",
+          "project": "Core",
+          "scope": "Layout"
+        },
+        {
+          "title": "Fix path issues for CDN support.",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "title": "Fix contrast and theme issues.",
+          "project": "Core",
+          "scope": "Themes"
+        },
+        {
+          "issue": 5397,
+          "title": "Fix form state issues when programmatically set.",
+          "project": "Core",
+          "scope": "Forms"
+        }
+      ]
+    },
+    {
       "version": "5.0.0-rc.0",
       "date": "2021-01-07",
       "description": "This is a release candidate for our next major version, which contains new features and bug fixes. We've also added a package that provides Angular modules for Core components.",

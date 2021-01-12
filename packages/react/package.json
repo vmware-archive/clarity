@@ -1,6 +1,6 @@
 {
   "name": "@cds/react",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0-rc.1",
   "scripts": {
     "start": "npm-run-all core:build dev:start",
     "dev:start": "yarn run clean && parcel index.html --cache-dir=./.parcel-cache",

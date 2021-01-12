@@ -1,7 +1,7 @@
 {
   "name": "@clr/icons",
   "private": true,
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0-rc.1",
   "scripts": {
     "build": "npm-run-all build:css build:optimize build:web build:package build:update",
     "build:preinstall": "mkdir -p ../../dist/clr-icons/ && cp ./package.json ../../dist/clr-icons/",

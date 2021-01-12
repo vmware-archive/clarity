@@ -1,6 +1,6 @@
 {
   "name": "@cds/core",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0-rc.1",
   "scripts": {
     "start": "npm-run-all build -p build:watch storybook:start",
     "storybook:start": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",
@@ -27,8 +27,15 @@
     "build:sass:modules": "sass --no-source-map --load-path=./src ./src/styles:./dist/core/styles ./src/styles/global.scss:./dist/core/global.css ./src/list:./dist/core/list",
     "build:sass:components": "sass-render --q --suffix '.css.ts' -t ./build/sass-template.ts './**/*.element.scss' './**/*.global.scss'"
   },
-  "files": ["*"],
-  "keywords": ["web component", "design system", "clarity", "ui"],
+  "files": [
+    "*"
+  ],
+  "keywords": [
+    "web component",
+    "design system",
+    "clarity",
+    "ui"
+  ],
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
   "sideEffects": false,

@@ -17,7 +17,7 @@ Icon buttons are useful where interface space may be limited. If an icon represe
 
 :::component-section-level-one
 
-Icon buttons come in two different types of buttons to use: solid and outlined. This contrasts with [buttons](/web-components/button) which support three different visual variants (solid, outlined, and "flat"). Icon buttons **do not have a flat style** because flat icon buttons would have no visual affordance to differentiate them from a regular icon.
+Icon buttons come in two different types of buttons to use: solid and outlined. This contrasts with [buttons](../button) which support three different visual variants (solid, outlined, and "flat"). Icon buttons **do not have a flat style** because flat icon buttons would have no visual affordance to differentiate them from a regular icon.
 
 :::
 
@@ -153,7 +153,7 @@ Icon buttons have a built-in loading and disabled state.
 
 Use the button's **loading state** when you need to communicate that the application is working on a call-to-action a user has iniated by clicking on the button. Use the **success state** when a call-to-action has completed successfully.A button may remain in the success state if a call-to-action is only intended to be performed once.
 
-Unlike [regular buttons](/web-components/button), icon buttons only support **two loading states**: loading and success.
+Unlike [regular buttons](../button), icon buttons only support **two loading states**: loading and success.
 
 :::
 

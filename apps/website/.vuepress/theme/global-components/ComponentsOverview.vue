@@ -32,7 +32,7 @@ export default {
           const componentsSection = this.$site.themeConfig.sidebar.find(x => x.title === this.framework);
 
           if (componentsSection) {
-            return componentsSection.children.slice(1).filter(item => item.title !== 'Get Started');
+            return componentsSection.children.slice(1).filter(item => item.overview !== false);
           }
         }
       }

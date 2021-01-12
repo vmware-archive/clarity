@@ -228,7 +228,7 @@ Icons can be used inside buttons to decorate the call-to-action with a visual in
 
 Icons can be placed to the left or right of the button text. Icons should only appear on the right of the text if the call-to-action would extend outside of the current context, however. Examples include downloading a file, opening a new window, or navigating the user to a page outside the application.
 
-Buttons should only use icons by themselves if an interface is constrained by space. Using only an icon, and no text, in a button requires the use of the [icon button component](/web-components/icon-button).
+Buttons should only use icons by themselves if an interface is constrained by space. Using only an icon, and no text, in a button requires the use of the [icon button component](../icon-button).
 
 :::
 
@@ -247,7 +247,7 @@ Buttons should only use icons by themselves if an interface is constrained by sp
 
 ::: component-section-level-two
 
-[Badges](/web-components/badge) can be used inside buttons to indicate a known number of items associated with an action. This can help the user understand the impact or severity of the call-to-action. Badges always appear to the right of the text in an ltr presentation.
+[Badges](../badge) can be used inside buttons to indicate a known number of items associated with an action. This can help the user understand the impact or severity of the call-to-action. Badges always appear to the right of the text in an ltr presentation.
 
 :::
 

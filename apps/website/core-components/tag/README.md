@@ -65,7 +65,7 @@ Avoid using too many colors within the same context, displaying too many colors 
 <div class="clr-row">
 <div class="clr-col-sm-12 clr-col-lg-4">
 <div style="height: 100px">
-<div>Tags and <a href="/web-components/badge">badges</a> can be used together to show a count relating to the metadata displayed in the tag.</div>
+<div>Tags and <a href="../badge">badges</a> can be used together to show a count relating to the metadata displayed in the tag.</div>
 </div>
 </div>
 <div class="clr-col-sm-12 clr-col-lg-4">

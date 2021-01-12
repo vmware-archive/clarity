@@ -1,5 +1,5 @@
 <template>
-  <div class="icons-preview-settings">
+  <div class="icons-preview-settings no-clr-ui">
     <cds-toggle-group cds-layout="m-t:xs">
       <label>Preview</label>
       <cds-toggle>

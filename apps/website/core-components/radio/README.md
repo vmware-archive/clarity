@@ -39,7 +39,7 @@ Use radio buttons when you want users to see all available multual exclusive opt
         <option>Option Three</option>
         </select>
     </cds-select>
-    Use a <a href="/web-components/select">select box</a> for more than six options, or a <a href="/web-components/datalist">datalist</a> for more than 13 options. Both prompt users to disclose the options.
+    Use a <a href="../select">select box</a> for more than six options, or a <a href="../datalist">datalist</a> for more than 13 options. Both prompt users to disclose the options.
 </div>
 </DocPinbox>
 

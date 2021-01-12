@@ -24,7 +24,7 @@ Badges have a colorful, bold, and filled style that makes them stand out when ap
 <DocPinbox>
 <div>Use a badge to <b>highlight the count</b>.</div>
 <div class="versus"><div class="versus-bubble">vs</div></div>
-<div>Use a <a href="/web-components/tag">tag</a> to <b>show metadata</b>. It is usually text content. A <a href="/web-components/tag">tag</a> can contain a badge.</div>
+<div>Use a <a href="../tag">tag</a> to <b>show metadata</b>. It is usually text content. A <a href="../tag">tag</a> can contain a badge.</div>
 </DocPinbox>
 
 ::: component-section-level-one-title

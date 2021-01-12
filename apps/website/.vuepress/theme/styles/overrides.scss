@@ -327,9 +327,19 @@ body .no-clr-ui p {
 }
 
 .card-like {
-  border-radius: var(----cds-token-global-border-radius, 0.15rem);
+  border-radius: var(--cds-token-global-border-radius, 0.15rem);
   border-style: solid;
-  border-width: var(----cds-token-global-border-width, 0.05rem);
+  border-width: var(--cds-token-global-border-width, 0.05rem);
   border-color: var(--cds-token-color-neutral-500, #b3b3b3);
   background: var(--cds-token-color-neutral-0);
+}
+
+// Fix footnotes styling
+.footnotes .footnote-item p {
+  display: contents;
+}
+.footnotes-sep {
+  margin: var(--cds-global-space-6) 0;
+  border: 0;
+  border-top: var(--cds-token-space-size-1) solid var(--cds-token-color-neutral-900);
 }

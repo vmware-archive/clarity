@@ -13,13 +13,9 @@ Here you will find general installation process that applies regardless of the f
 
 ### 1. Install the Clarity Core package from npm
 
-<doc-code>
-
 ```bash
 npm install @cds/core @cds/city --save
 ```
-
-</doc-code>
 
 ### 2. Global Styles
 
@@ -32,8 +28,6 @@ To get started quickly you can install our global single bundle which includes
 all our global style modules. To install the global styles you can import via CSS
 Preprocessor like Sass/Less or reference the CSS directly in your HTML.
 
-<doc-code>
-
 ```scss
 @import '~normalize.css/normalize.css'; // css reset
 @import '~@cds/core/global.min'; // clarity global styles
@@ -41,18 +35,12 @@ Preprocessor like Sass/Less or reference the CSS directly in your HTML.
 @import '~@cds/city/css/bundles/default.min'; // load base font
 ```
 
-</doc-code>
-
-<doc-code>
-
 ```html
 <link href="/node_modules/normalize.css/normalize.css" rel="stylesheet" />
 <link href="/node_modules/@cds/core/global.min.css" rel="stylesheet" />
 <link href="/node_modules/@cds/core/styles/module.shims.min.css" rel="stylesheet" />
 <link href="/node_modules/@cds/city/css/bundles/default.min.css" rel="stylesheet" />
 ```
-
-</doc-code>
 
 Add the following to your HTML to set the default Clarity body typography.
 
@@ -87,6 +75,12 @@ Once imported, the component is automatically registered and ready to use in you
 </script>
 ```
 
+<cds-button>
+  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
+    Example Apps
+  </a>
+</cds-button>
+
 ## Frameworks
 
 Core works in most JavaScript frameworks. For detailed install steps for your
@@ -101,22 +95,26 @@ demos will be added in the near future.
 
 ### Angular
 
-To use Clarity Core with Angular follow the package [installation instructions](#installation).
+To use Clarity Core with Angular follow the package [installation instructions](#installation). To work fully with the Angular compiler, we have also created an Angular package specifically to help the Angular compiler understand the custom element bindings. Normally custom elements require you to use the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) which allows non-Angular elements to be processed, but this has the side effect of not supporting strict checks in templates. Our `@cds/angular` package provides Angular component definitions so that you can use Clarity Core components like normal Angular components.
 
-Once installed add <code>CUSTOM_ELEMENTS_SCHEMA</code> to your application
-module.
+```bash
+npm install @cds/angular --save
+```
+
+Then you'll want to add the `CdsModule` to your AppModule, as well as import the component(s) you plan to use.
 
 ```typescript
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CdsModule } from '@cds/angular';
 import { AppComponent } from './app.component';
+
 import '@cds/core/alert/register.js';
 
 @NgModule({
-  imports: [BrowserModule],
+  imports: [BrowserModule, CdsModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
 ```
@@ -137,8 +135,8 @@ To listen to events use the Angular <code>(event)</code> binding syntax.
 ```
 
 <cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
+  <a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-cli" target="_blank" rel="noopener">
+    Example Angular App
   </a>
 </cds-button>
 
@@ -167,8 +165,8 @@ Example of a alert web component in Vue
 ```
 
 <cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
+  <a href="https://github.com/vmware/clarity/tree/master/apps/core-vue-cli" target="_blank" rel="noopener">
+    Example Vue App
   </a>
 </cds-button>
 
@@ -240,8 +238,8 @@ export default class App extends React.Component<{}, {}> {
 ```
 
 <cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
+  <a href="https://github.com/vmware/clarity/tree/master/apps/core-create-react-app" target="_blank" rel="noopener">
+    Example React App
   </a>
 </cds-button>
 
@@ -269,12 +267,6 @@ Example of an alert web component in Preact
   Hello World
 </cds-alert>
 ```
-
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
-  </a>
-</cds-button>
 
 ### AngularJS (> 1.8.0)
 
@@ -325,8 +317,8 @@ To listen to custom events use the [`ng-on` directive](https://docs.angularjs.or
 ```
 
 <cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
+  <a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-js" target="_blank" rel="noopener">
+    Example AngularJS App
   </a>
 </cds-button>
 

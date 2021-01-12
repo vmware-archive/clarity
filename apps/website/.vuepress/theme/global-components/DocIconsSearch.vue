@@ -51,7 +51,6 @@ export default {
     position: absolute;
     left: 0.5rem;
     top: 0.6rem;
-    color: red;
   }
 
   button.close {

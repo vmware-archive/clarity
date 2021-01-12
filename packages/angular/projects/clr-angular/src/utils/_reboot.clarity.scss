@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -416,6 +416,11 @@
     text-decoration: none;
   }
 
+  a:visited {
+    @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
+    text-decoration: none;
+  }
+
   a:hover {
     @include css-var(color, clr-link-hover-color, $clr-link-hover-color, $clr-use-custom-properties);
     text-decoration: underline;
@@ -424,11 +429,5 @@
   a:active {
     @include css-var(color, clr-link-active-color, $clr-link-active-color, $clr-use-custom-properties);
     text-decoration: underline;
-  }
-
-  a:visited {
-    //TODO: Not in the color palette. Will be added soon.
-    @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
-    text-decoration: none;
   }
 }

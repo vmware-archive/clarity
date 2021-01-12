@@ -3,6 +3,8 @@ title: Overview
 toc: true
 ---
 
+<DocAlert :actionPop="true" status="warning" path="/storybook/core/?path=/story/themes-getting-started--page">This content is for the <b>@clr/angular</b> package. Theme information for the <b>@cds/core</b> package can be found in storybook.</DocAlert>
+
 ::: component-summary
 
 Themes help you customize the look and feel of your application.

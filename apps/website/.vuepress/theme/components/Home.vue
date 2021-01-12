@@ -88,7 +88,7 @@
     <!-- release notes -->
     <section cds-layout="p-l:md p-l@sm:xl p-r:md p-r@sm:none p-t:lg p-y@sm:xl" class="tinted action-light">
       <div class="home-section">
-        <WhatsNew version="latest" />
+        <WhatsNew version="v5" />
       </div>
     </section>
     <!-- just like you -->

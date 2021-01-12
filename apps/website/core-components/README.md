@@ -1,3 +1,3 @@
 # Web Components Overview
 
-<ComponentsOverview framework="Web Components"/>
+<ComponentsOverview framework="Core Components"/>

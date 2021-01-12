@@ -3,6 +3,8 @@ title: Typography
 toc: true
 ---
 
+<DocAlert :actionPop="true" status="warning" path="/storybook/core/?path=/story/foundation-typography--page">This content is for the <b>@clr/angular</b> package. Typography information for the <b>@cds/core</b> package can be found in storybook.</DocAlert>
+
 Clarity uses the geometric sans-serif font, Clarity City.
 
 ## Text Styles

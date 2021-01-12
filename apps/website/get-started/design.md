@@ -1,4 +1,4 @@
-# Designing with Clarity
+# Designing
 
 Clarity provides design assets that help designers get started. These assets should be used in a design process that aligns with the Clarity Design System. To jump start your project and align with the Clarity Design System you should download the font resources below and have them installed on your computer. Set up a [free tier Figma](https://www.figma.com/pricing/) account to get started with the Clarity themes, icons and color libraries.
 

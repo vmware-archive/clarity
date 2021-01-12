@@ -1,9 +1,12 @@
-# Updating Clarity Core
+---
+title: Core (@cds/core)
+toc: false
+---
 
-Clarity Core web components can be easily updated using NPM or Yarn. If you are using the React or Angular packages, you will want to update them at the same time.
+Clarity Core web components can be easily updated using NPM or Yarn.
 
 ```bash
-npm install @cds/core@latest # updates to the latest release
+npm install @cds/core@latest # installs the latest release
 ```
 
 If you are using either the React or Angular packages, you should update them at the same time.

@@ -3,6 +3,8 @@ title: Internationalization
 toc: true
 ---
 
+<DocAlert :actionPop="true" status="warning" path="/storybook/core/?path=/story/utilities-preview-utils--internationalization">This content is for the <b>@clr/angular</b> package. Internationalization information for the <b>@cds/core</b> package can be found in storybook.</DocAlert>
+
 Easily translate internal Clarity text into multiple languages.
 
 ## Internal language strings

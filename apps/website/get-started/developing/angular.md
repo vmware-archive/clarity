@@ -1,13 +1,9 @@
 ---
-title: Angular Quickstart
+title: Angular (@clr/angular)
 toc: true
 ---
 
-# Angular Quickstart
-
-Clarity works best with Angular, and we are constantly updating Clarity to work best with the latest version of Angular. If you are not using Angular, then you'll want to review the [HTML/CSS Quickstart](/get-started/html).
-
-Before you begin, make sure that you have all of the prerequisites setup for your computer. You can review the [local environment setup on Angular's documentation](https://angular.io/guide/setup-local).
+We are constantly updating Clarity to work best with the latest version of Angular. Before you begin, make sure that you have all of the prerequisites setup for your computer. You can review the [local environment setup on Angular's documentation](https://angular.io/guide/setup-local).
 
 Clarity has an automated installation process that will work for most projects, but we've also included the manual steps if you need them.
 
@@ -144,5 +140,5 @@ That is all you need to get Clarity installed. To see it running, start your app
 
 1. Add Clarity components wherever they are needed in your application
 1. Explore the component usage, demo and api sections to learn about specific coomponents
-1. Get help by asking a question on [StackOverflow](https://stackoverflow.com/questions/tagged/vmware-clarity) and tagging it with `vmware-clarity`
+1. Get help by asking a question on [Claity discussions](https://github.com/vmware/clarity/discussions)
 1. Follow [Clarity on Twitter](https://twitter.com/vmwareclarity), stay up to date

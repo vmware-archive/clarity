@@ -1,9 +1,7 @@
 ---
-title: Web Component Quickstart
+title: Core (@cds/core)
 toc: true
 ---
-
-# Web Component Quickstart
 
 Clarity Core is a Web Component implementation of the Clarity Design System. Clarity Core provides a set of reusable UI components that work in any JavaScript framework or no framework at all.
 

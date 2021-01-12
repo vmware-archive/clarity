@@ -3,6 +3,8 @@ title: Color
 toc: true
 ---
 
+<DocAlert :actionPop="true" status="warning" path="/storybook/core/?path=/story/foundation-color--page">This content is for the <b>@clr/angular</b> package. Color information for the <b>@cds/core</b> package can be found in storybook.</DocAlert>
+
 The Clarity color palette is a full spectrum of bold hues and neutrals to meet all your design needs.
 
 ## The Clarity Color Palette

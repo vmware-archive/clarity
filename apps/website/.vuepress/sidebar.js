@@ -64,18 +64,7 @@ module.exports = [
         title: 'Introduction',
         path: '/get-started/',
       },
-      {
-        title: 'Start Designing',
-        path: '/get-started/design',
-      },
-      {
-        title: 'Start Developing',
-        path: '/get-started/develop',
-      },
-      {
-        title: 'Support Policies',
-        path: '/get-started/support',
-      },
+      ...getChildren('get-started'),
     ],
   },
   {
@@ -92,16 +81,6 @@ module.exports = [
         path: '/core-components/',
         overview: false,
       },
-      {
-        title: 'Get Started',
-        path: '/core-components/get-started',
-        overview: false,
-      },
-      {
-        title: 'Updating',
-        path: '/core-components/update',
-        overview: false,
-      },
       ...getChildren('core-components'),
     ],
   },
@@ -112,16 +91,6 @@ module.exports = [
       {
         title: 'Overview',
         path: '/angular-components/',
-        overview: false,
-      },
-      {
-        title: 'Get Started',
-        path: '/angular-components/get-started',
-        overview: false,
-      },
-      {
-        title: 'Updating',
-        path: '/angular-components/update',
         overview: false,
       },
       ...getChildren('angular-components'),

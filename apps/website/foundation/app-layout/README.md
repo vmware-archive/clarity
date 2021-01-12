@@ -3,6 +3,8 @@ title: Overview
 toc: true
 ---
 
+<DocAlert :actionPop="true" status="warning" path="/storybook/core/?path=/story/layout-get-started--page">This content is for the <b>@clr/angular</b> package. Layout information for the <b>@cds/core</b> package can be found in storybook.</DocAlert>
+
 A properly structured layout enforces an optimal, consistent experience across applications.
 
 ## Layout

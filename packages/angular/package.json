@@ -7,7 +7,8 @@
     "start:dev": "ng build clr-angular --watch --prod",
     "start:storybook": "stmux -w always -e ERROR -m beep,system [ \"yarn start:dev\" : \"sleep 25 && yarn storybook\" : \"yarn --cwd ../ui run build:watch\" ]",
     "start:adoption": "ng build clarity-adoption --watch --prod",
-    "serve": "ng serve dev",
+    "serve": "npm-run-all -p serve:watch sass:watch",
+    "serve:watch": "ng serve dev",
     "serve:adoption": "ng serve clarity-adoption",
     "serve:dark": "ng serve dev -c dark",
     "storybook": "start-storybook -s .storybook/public -p 6006",
@@ -39,7 +40,8 @@
     "lint:ts": "eslint -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\"",
     "lint:styles": "stylelint \"src/**/*.scss\" \"projects/**/*.scss\"",
     "lint:fix": "eslint --fix -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\" && stylelint --fix \"src/**/*.scss\" \"projects/**/*.scss\"",
-    "golden:fix": "yarn run build:lib:clr && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ./dist/clr-angular/index.d.ts"
+    "golden:fix": "yarn run build:lib:clr && ts-api-guardian --out golden/clr-angular.d.ts --stripExportPattern '^Çlr' ./dist/clr-angular/index.d.ts",
+    "sass:watch": "yarn --cwd ../ui run build:watch"
   },
   "dependencies": {
     "@angular/animations": "11.0.0",

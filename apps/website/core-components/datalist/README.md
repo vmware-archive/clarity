@@ -21,7 +21,7 @@ Use a datalist when the user needs to choose from a list of items that is long e
 
 Use a datalist of you want to provide a standard set of options but also allow the user to enter a custom value that may not be pre-defined.
 
-Do not confuse a datalist element with the select input. Datalist elements usually have more than 13 options that the user will need to filter or narrow down before making a choice. If there are 3-13 options, consider using the [select](//web-components/select/) input.
+Do not confuse a datalist element with the select input. Datalist elements usually have more than 13 options that the user will need to filter or narrow down before making a choice. If there are 3-13 options, consider using the [select](../select/) input.
 
 :::
 

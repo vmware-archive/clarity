@@ -37,7 +37,7 @@ Toggle switches take up less space than an “on/off” radio button group and c
     <label>Remember me</label>
     <input type="checkbox" checked />
     </cds-checkbox>
-    Use a <a href="/web-components/checkbox">checkbox</a> for Yes or No choices.
+    Use a <a href="../checkbox">checkbox</a> for Yes or No choices.
 </div>
 </DocPinbox>
 

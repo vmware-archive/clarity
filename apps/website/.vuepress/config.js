@@ -1,8 +1,5 @@
-const markdownItAttrs = require('markdown-it-attrs');
-const markdownItInclude = require('markdown-it-include');
 const sidebar = require('./sidebar');
 const blocks = require('./blocks');
-const path = require('path');
 
 module.exports = {
   title: 'Clarity Design System',
@@ -34,8 +31,11 @@ module.exports = {
   },
   markdown: {
     extendMarkdown: md => {
-      md.use(markdownItAttrs);
-      md.use(markdownItInclude);
+      md.use(require('markdown-it-attrs'));
+      md.use(require('markdown-it-include'));
+      md.use(require('markdown-it-footnote'));
+
+      md.renderer.rules.footnote_block_open = () => (`<section class="footnotes"><ol class="footnotes-list">`);
     },
     anchor: {
       permalink: true,

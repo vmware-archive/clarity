@@ -13,7 +13,7 @@ The Clarity Icons presents pixel-perfect, scalable SVG-based icons. The icon sys
 
 ## Usage
 
-Follow the instructions in the web components getting [started page](/web-components/get-started) to install the @cds/core package.
+Follow the instructions in the web components getting [started page](../get-started) to install the @cds/core package.
 
 ### Import
 

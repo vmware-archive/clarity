@@ -9,30 +9,8 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 ## How to get started
 
 - [Getting started with Clarity for designers](./design.md)
-- [Getting started with Clarity Core using our Web Components](../angular/components/web-components/get-started.md)
-- [Getting started with Clarity Angular using our Angular Components](../angular/components/angular-components/get-started.md)
-
-## Device and Browser Support
-
-We actively support the following browsers on desktop and mobile devices.
-
-<ClrImage src="/images/get-started/device-support.svg" width="100%" aria-label="Image showing supported browser list that contains icons for: Edge, Chrome, Safari and Firefox."/>
-
-- Chrome
-- Safari
-- Firefox
-- Edge (Chromium based)
-
-_Note that Clarity only actively supports the latest two versions of the listed browsers._
-
-## Screen Reader Support
-
-Clarity is tested across several sets of screen reader and browser combinations against the WCAG 2.1 spec. The testing has identified the two combinations that enable us to provide support when fixing issues related to the various assistive technologies available to users. The following are the primary combinations that we focus on when addressing issues on the Windows and macOS platforms:
-
-- NVDA + Google Chrome (Windows)
-- VoiceOver + Safari (Apple)
-
-_The latest version of both screen reader and browser is used when testing issues and WCAG 2.1 compliance._
+- [Getting started with Clarity Core using our Web Components](../angular-components/get-started.md)
+- [Getting started with Clarity Angular using our Angular Components](../core-components/get-started.md)
 
 ## Contributing to Clarity
 

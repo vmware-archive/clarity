@@ -35,7 +35,7 @@ Common examples include:
 
 :::component-section-level-one
 
-There three types of layouts: horizontal, vertical and compact. See the [layout section](/web-components/form/#layouts) in forms for more information.
+There three types of layouts: horizontal, vertical and compact. See the [layout section](../form/#layouts) in forms for more information.
 
 :::
 
@@ -47,7 +47,7 @@ There three types of layouts: horizontal, vertical and compact. See the [layout 
 
 ::: component-section-level-one
 
-There are three types of help and validation messages: info, error and success. See the [helper and validation](/web-components/form/#helper-and-validation-messages) section in forms for more information.
+There are three types of help and validation messages: info, error and success. See the [helper and validation](../form/#helper-and-validation-messages) section in forms for more information.
 
 :::
 

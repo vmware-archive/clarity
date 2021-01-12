@@ -20,6 +20,7 @@
     "@sentry/integrations": "5.15.5",
     "markdown-it-attrs": "^3.0.3",
     "markdown-it-include": "^2.0.0",
+    "markdown-it-footnote": "^3.0.2",
     "vue-resource": "^1.5.1",
     "vue-hotjar": "^1.2.0"
   },

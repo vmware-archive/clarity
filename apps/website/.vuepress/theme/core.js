@@ -47,6 +47,7 @@ import {
   uploadIcon,
   blockIcon,
   animationIcon,
+  clockIcon,
   betaIcon,
 } from '@cds/core/icon';
 
@@ -71,6 +72,7 @@ ClarityIcons.addIcons(
   uploadIcon,
   blockIcon,
   animationIcon,
+  clockIcon,
   betaIcon,
   copyToClipboardIcon
 );

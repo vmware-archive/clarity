@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -73,8 +73,8 @@ module.exports = [
         path: '/get-started/develop',
       },
       {
-        title: 'Next Steps',
-        path: '/get-started/next',
+        title: 'Support Policies',
+        path: '/get-started/support',
       },
     ],
   },
@@ -84,22 +84,25 @@ module.exports = [
     children: getChildren('foundation'),
   },
   {
-    title: 'Web Components',
-    path: '/web-components/',
+    title: 'Core Components',
+    path: '/core-components/',
     children: [
       {
         title: 'Overview',
-        path: '/web-components/',
+        path: '/core-components/',
+        overview: false,
       },
       {
         title: 'Get Started',
-        path: '/web-components/get-started',
+        path: '/core-components/get-started',
+        overview: false,
       },
       {
         title: 'Updating',
-        path: '/web-components/update',
+        path: '/core-components/update',
+        overview: false,
       },
-      ...getChildren('web-components'),
+      ...getChildren('core-components'),
     ],
   },
   {
@@ -109,14 +112,17 @@ module.exports = [
       {
         title: 'Overview',
         path: '/angular-components/',
+        overview: false,
       },
       {
         title: 'Get Started',
         path: '/angular-components/get-started',
+        overview: false,
       },
       {
         title: 'Updating',
         path: '/angular-components/update',
+        overview: false,
       },
       ...getChildren('angular-components'),
     ],
@@ -125,6 +131,10 @@ module.exports = [
     title: 'Releases',
     path: '/releases/',
     children: [
+      {
+        title: 'Overview',
+        path: '/releases/',
+      },
       {
         title: 'v5 Changelog',
         path: '/releases/v5',

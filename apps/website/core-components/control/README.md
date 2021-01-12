@@ -29,7 +29,7 @@ Third party library's and custom form control components are often created to fu
 
 ::: component-section-level-two
 
-Use the label to benefit screen readers which will read the label aloud when a user focuses on the label element. Use of a label also increases the clickable area when it is a clickable input such as a [radio](/web-components/radio/), [checkbox](/web-components/checkbox/) or [toggle](/web-components/toggle/) input.
+Use the label to benefit screen readers which will read the label aloud when a user focuses on the label element. Use of a label also increases the clickable area when it is a clickable input such as a [radio](../radio/), [checkbox](../checkbox/) or [toggle](../toggle/) input.
 
 :::
 

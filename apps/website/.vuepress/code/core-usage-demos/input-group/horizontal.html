@@ -1,0 +1,20 @@
+<cds-form-group layout="vertical">
+  <cds-input-group layout="horizontal">
+    <label>Label</label>
+    <cds-select cds-layout="align:shrink">
+      <label>Protocol</label>
+      <select>
+        <option>http://</option>
+        <option>https://</option>
+      </select>
+    </cds-select>
+    <cds-input>
+      <label>Host Port</label>
+      <input placeholder="Placeholder" type="url" />
+      <cds-control-action action="suffix">
+        .com
+      </cds-control-action>
+    </cds-input>
+    <cds-control-message>Helper message</cds-control-message>
+  </cds-input-group>
+</cds-form-group>

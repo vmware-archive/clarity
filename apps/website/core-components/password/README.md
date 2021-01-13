@@ -55,3 +55,69 @@ When setting a password, display the password requirement in the helper text to 
     </cds-form-group>
 </div>
 </DocIndent>
+
+::: component-section-level-one-title
+
+## Layouts
+
+:::
+
+::: component-section-level-one
+
+Passwords are available in vertical, horizontal, and compact layout. Vertical Password layouts can have improved usability in addition to the general guidelines when the message text is used to display requirements. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/compact.html)!!!
+</div>
+
+:::
+
+</div>

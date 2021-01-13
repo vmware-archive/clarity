@@ -70,25 +70,11 @@ Use a select:
 
 ::: component-section-level-one
 
-Form groups can have one of three layouts. Vertical, horizontal or compact. This layout will apply to all control inputs in the group.
+Inputs are available in vertical, horizontal, compact, and controlled-width layout. Controlled-width layout is an additional option for setting the width in cases where the control may be unattractive or less usable if the underline is allowed to fill the full width of its container. Example: The text the user will input is of a known character count or within a small range. See more layout guidelines on the [form page](/web-components/form/).
 
 :::
 
-::: component-section-level-two-title
-
-### Horizontal
-
-:::
-
-::: component-section-level-two
-
-Horizontal is the default if no layout is specified. It displays the Group label to the left of a vertical list of control inputs. The supplemnental text is below the control elements.
-
-<div>
-!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal.html)!!!
-</div>
-
-:::
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
 ::: component-section-level-two-title
 
@@ -98,13 +84,33 @@ Horizontal is the default if no layout is specified. It displays the Group label
 
 ::: component-section-level-two
 
-A vertical form group group places the group label above the list of control elements. The supplemental text is below the control elements.
-
 <div>
-!!!include(.vuepress/code/core-usage-demos/checkbox/vertical.html)!!!
+!!!include(.vuepress/code/core-usage-demos/input/vertical.html)!!!
 </div>
 
 :::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
 ::: component-section-level-two-title
 
@@ -114,10 +120,28 @@ A vertical form group group places the group label above the list of control ele
 
 ::: component-section-level-two
 
-A compact form group places all control elements on a single line and the supplemental text after the last control element.
-
 <div>
-!!!include(.vuepress/code/core-usage-demos/checkbox/compact.html)!!!
+!!!include(.vuepress/code/core-usage-demos/input/compact.html)!!!
 </div>
 
 :::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Controlled width
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input/controlled-width.html)!!!
+</div>
+
+:::
+
+</div>

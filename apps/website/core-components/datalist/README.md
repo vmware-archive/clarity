@@ -75,11 +75,63 @@ Use a select:
 
 ::: component-section-level-one
 
-<DocIndent>
-!!!include(.vuepress/code/core-usage-demos/datalist/layouts.html)!!!
-</DocIndent>
+Datalists are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
 
 :::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/compact.html)!!!
+</div>
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 

@@ -83,3 +83,87 @@ A common strategy is to combine an input field with a select box so that a user 
     </cds-form-group>
     </div>
 </DocIndent>
+
+::: component-section-level-one-title
+
+## Layouts
+
+:::
+
+::: component-section-level-one
+
+Select elements are available in vertical, horizontal, compact, and multiple layout. Select elements with the multiple attribute enables the user to select and view several items at once. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/compact.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Multiple
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/multiple.html)!!!
+</div>
+
+:::
+
+</div>

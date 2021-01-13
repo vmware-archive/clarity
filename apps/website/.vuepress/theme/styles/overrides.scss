@@ -338,8 +338,26 @@ body .no-clr-ui p {
 .footnotes .footnote-item p {
   display: contents;
 }
+
 .footnotes-sep {
   margin: var(--cds-global-space-6) 0;
   border: 0;
   border-top: var(--cds-token-space-size-1) solid var(--cds-token-color-neutral-900);
+}
+
+.component-section-horizontal {
+  display: grid;
+  grid-template-columns: 12rem 18rem;
+
+  &.full-wrap {
+    grid-template-columns: 12rem auto;
+  }
+
+  .component-section-title {
+    margin-top: var(--cds-token-space-size-9, 1.2rem);
+  }
+
+  .component-section {
+    margin-top: var(--cds-token-space-size-9, 1.2rem);
+  }
 }

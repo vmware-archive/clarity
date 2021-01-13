@@ -96,3 +96,105 @@ Use a <a href="../select">select box</a> for more than six options, or a <a href
     </cds-form-group>
 </div>
 </DocIndent>
+
+::: component-section-level-one-title
+
+## Layouts
+
+:::
+
+::: component-section-level-one
+
+Radio buttons are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical Inline
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/vertical-inline.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal Inline
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/horizontal-inline.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/compact.html)!!!
+</div>
+
+:::
+
+</div>

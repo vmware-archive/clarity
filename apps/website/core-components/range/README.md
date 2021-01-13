@@ -62,3 +62,69 @@ This is an imprecise input control that should only be used when the exact value
     </cds-form-group>
 </div>
 </DocIndent>
+
+::: component-section-level-one-title
+
+## Layouts
+
+:::
+
+::: component-section-level-one
+
+Range inputs are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/range/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/range/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/range/compact.html)!!!
+</div>
+
+:::
+
+</div>

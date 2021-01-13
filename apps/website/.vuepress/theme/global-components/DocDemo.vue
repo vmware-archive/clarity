@@ -21,6 +21,7 @@ export default {
   // overflow: hidden;
   margin: 0.6rem 0 1.2rem;
   padding: 0.2rem;
+  overflow: auto;
 
   &.center {
     text-align: center;

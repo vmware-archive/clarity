@@ -53,3 +53,69 @@ Use a time input when user is expected to enter a time (hours and minutes, and o
     </cds-form-group>
 </div>
 </DocIndent>
+
+::: component-section-level-one-title
+
+## Layouts
+
+:::
+
+::: component-section-level-one
+
+Time picker is available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/vertical.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Compact
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/compact.html)!!!
+</div>
+
+:::
+
+</div>

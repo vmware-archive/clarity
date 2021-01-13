@@ -29,18 +29,6 @@ Common examples include:
 
 ::: component-section-level-one-title
 
-## Layouts
-
-:::
-
-:::component-section-level-one
-
-There three types of layouts: horizontal, vertical and compact. See the [layout section](../form/#layouts) in forms for more information.
-
-:::
-
-::: component-section-level-one-title
-
 ## Helper and validation messages
 
 :::
@@ -110,3 +98,33 @@ Use `cds-control-action` to place a button that facilitates the user in completi
 </DocIndent>
 
 :::
+
+::: component-section-level-one-title
+
+## Layout
+
+:::
+
+::: component-section-level-one
+
+Input groups only provide a horizontal layout because their content has linear continuity. See more layout guidelines on the [form page](/web-components/form/).
+
+:::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/horizontal.html)!!!
+</div>
+
+:::
+
+</div>

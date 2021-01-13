@@ -180,25 +180,11 @@ The success state indicates the=at the checkbox is ok for its selected/unselecte
 
 ::: component-section-level-one
 
-Checkbox groups can have one of three layouts. Vertical, horizontal or compact. This layout will apply to all checkbox inputs in the group.
+Checkboxes are available in vertical, vertical inline, horizontal, horizontal inline, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
 
 :::
 
-::: component-section-level-two-title
-
-### Horizontal
-
-:::
-
-::: component-section-level-two
-
-Horizontal is the default if no layout is specified. It displays the Group label to the left of a vertical list of control inputs. The supplemnental text is below the input list.
-
-<div>
-!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal.html)!!!
-</div>
-
-:::
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
 ::: component-section-level-two-title
 
@@ -208,13 +194,69 @@ Horizontal is the default if no layout is specified. It displays the Group label
 
 ::: component-section-level-two
 
-A vertical checkbox group places the group label above the list of checkbox inputs. The supplemental text is below the list of checkbox inputs.
-
 <div>
 !!!include(.vuepress/code/core-usage-demos/checkbox/vertical.html)!!!
 </div>
 
 :::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Vertical Inline
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/checkbox/vertical-inline.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+### Horizontal Inline
+
+:::
+
+::: component-section-level-two
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/checkbox/horizontal-inline.html)!!!
+</div>
+
+:::
+
+</div>
+
+<div class="component-section-horizontal full-wrap" cds-layout="m-t:md">
 
 ::: component-section-level-two-title
 
@@ -224,10 +266,10 @@ A vertical checkbox group places the group label above the list of checkbox inpu
 
 ::: component-section-level-two
 
-A compact checkbox group places all group elements on a single line.
-
 <div>
 !!!include(.vuepress/code/core-usage-demos/checkbox/compact.html)!!!
 </div>
 
 :::
+
+</div>

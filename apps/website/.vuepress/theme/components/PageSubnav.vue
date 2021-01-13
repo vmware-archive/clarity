@@ -27,6 +27,10 @@
   top: 0;
   background-color: var(--clr-global-app-background);
   z-index: 5000;
+
+  @media (max-width: 1024px) {
+    margin-bottom: var(--cds-global-space-5);
+  }
 }
 
 .page-header {

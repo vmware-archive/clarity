@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,7 +28,7 @@ import { preventArrowKeyScroll, keyValidator } from './util';
 })
 export class ClrKeyFocus {
   constructor(private elementRef: ElementRef) {}
-  @Input('clrDirection') direction = ClrFocusDirection.VERTICAL;
+  @Input('clrDirection') direction: ClrFocusDirection | string = ClrFocusDirection.VERTICAL;
   @Input('clrFocusOnLoad') focusOnLoad = false;
   @Output('clrFocusChange') private focusChange: EventEmitter<number> = new EventEmitter<number>();
   @ContentChildren(ClrKeyFocusItem, { descendants: true })
@@ -36,12 +36,16 @@ export class ClrKeyFocus {
 
   private _focusableItems: Array<FocusableItem>;
   @Input('clrKeyFocus')
-  set focusableItems(elements: Array<FocusableItem>) {
+  /**
+   * Here we use `any` cause any other type require reworking all methods below and a lot of more ifs.
+   * this method will only work with array with FocusableItems anyway so any other value will be ignored.
+   */
+  set focusableItems(elements: Array<FocusableItem> | any) {
     // We accept a list of focusable elements (HTMLElements or existing Directives) or auto query for clrKeyFocusItem
     // We accept a list reference in the cases where we cannot use ContentChildren to query
     // ContentChildren can be unavailable if content is projected outside the scope of the component (see tabs).
-    if (elements && elements.length) {
-      this._focusableItems = elements;
+    if (Array.isArray(elements) && elements.length) {
+      this._focusableItems = elements as Array<FocusableItem>;
       this.initializeFocus();
     }
   }

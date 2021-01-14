@@ -1,5 +1,5 @@
 <!--
-    ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+    ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
     ~ This software is released under MIT license.
     ~ The full license information can be found in LICENSE in the root directory of this project.
 -->
@@ -7,7 +7,7 @@
 <form clrForm (submit)="noop()" [formGroup]="presetSwitcher" [clrLayout]="layout" style="padding: 0;">
   <clr-select-container>
     <label>{{label}}</label>
-    <select clrSelect formControlName="preset" name="formSwitcherSelect" (change)="switchFont($event.target.value)">
+    <select clrSelect formControlName="preset" name="formSwitcherSelect" (change)="handleSwitchFont($event)">
       <option [value]="">-- None --</option>
       <option *ngFor="let preset of presets" [value]="preset">{{preset}}</option>
     </select>

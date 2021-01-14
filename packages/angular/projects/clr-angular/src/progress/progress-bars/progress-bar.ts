@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -29,16 +29,23 @@ export class ClrProgressBar {
   }
 
   // Progress
-  @Input('clrMax') max = 100;
+  @Input('clrMax') max: number | string = 100;
   @Input('clrDisplayval') displayval: string;
 
-  private _value = 0;
+  private _value: number | string = 0;
   @Input('clrValue')
   get value() {
     return this._value;
   }
 
-  set value(value) {
+  set value(value: number | string) {
+    /**
+     * No need to convert to `number` cause we could have
+     * floating point and parseInt will round the numbers
+     *
+     * working with string won't have any side-effects,
+     * we don't do any math so string will do the job.
+     */
     this._value = value;
   }
 

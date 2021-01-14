@@ -65,7 +65,7 @@ export declare abstract class ClrAbstractContainer implements DynamicWrapper, On
 }
 
 export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-    multiPanel: boolean;
+    multiPanel: boolean | string;
     panels: QueryList<ClrAccordionPanel>;
     subscriptions: Subscription[];
     constructor(accordionService: AccordionService);
@@ -299,8 +299,8 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     get id(): string;
     protected index: number;
     invalid: boolean;
-    set multiSelect(value: boolean);
-    get multiSelect(): boolean;
+    set multiSelect(value: boolean | string);
+    get multiSelect(): boolean | string;
     get openState(): boolean;
     optionSelected: ClrOptionSelected<T>;
     optionSelectionService: OptionSelectionService<T>;
@@ -649,7 +649,7 @@ export declare class ClrDatagridHideableColumn implements OnDestroy {
     set clrDgHidden(hidden: boolean);
     set clrDgHideableColumn(value: {
         hidden: boolean;
-    });
+    } | string);
     hiddenChange: EventEmitter<boolean>;
     constructor(titleTemplateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, columnsService: ColumnsService, columnState: BehaviorSubject<ColumnState>);
     ngOnDestroy(): void;
@@ -858,7 +858,7 @@ export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, Afte
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
     protected control: NgControl;
-    set date(date: Date);
+    set date(date: Date | string);
     dateChange: EventEmitter<Date>;
     set disabled(value: boolean | string);
     get disabled(): boolean | string;
@@ -876,7 +876,7 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     onValueChange(target: HTMLInputElement): void;
     setFocusStates(): void;
     triggerValidation(): void;
-    static ngAcceptInputType_date: Date | null;
+    static ngAcceptInputType_date: Date | null | string;
 }
 
 export declare class ClrDatepickerModule {
@@ -1035,7 +1035,7 @@ export declare class ClrExpandableAnimation {
 }
 
 export declare class ClrFocusOnViewInit implements AfterViewInit {
-    set isEnabled(value: boolean);
+    set isEnabled(value: boolean | string);
     constructor(el: ElementRef, platformId: any, focusOnViewInit: boolean, document: any, renderer: Renderer2);
     ngAfterViewInit(): void;
     onFocusout(): void;
@@ -1083,8 +1083,8 @@ export declare class ClrIconModule {
 }
 
 export declare class ClrIfActive implements OnDestroy {
-    set active(value: boolean);
-    get active(): boolean;
+    set active(value: boolean | string);
+    get active(): boolean | string;
     activeChange: EventEmitter<boolean>;
     constructor(ifActiveService: IfActiveService, id: number, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
@@ -1111,8 +1111,8 @@ export declare class ClrIfError extends AbstractIfState {
 }
 
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
-    get expanded(): boolean;
-    set expanded(value: boolean);
+    get expanded(): boolean | string;
+    set expanded(value: boolean | string);
     expandedChange: EventEmitter<boolean>;
     constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: IfExpandService);
     ngOnDestroy(): void;
@@ -1155,7 +1155,7 @@ export declare class ClrLabel implements OnInit, OnDestroy {
 }
 
 export declare class ClrLayout implements OnInit {
-    layout: ClrFormLayout;
+    layout: ClrFormLayout | string;
     layoutService: LayoutService;
     constructor(layoutService: LayoutService);
     ngOnInit(): void;
@@ -1165,11 +1165,11 @@ export declare class ClrLayoutModule {
 }
 
 export declare class ClrLoading implements OnDestroy {
-    get loadingState(): boolean | ClrLoadingState;
-    set loadingState(value: boolean | ClrLoadingState);
+    get loadingState(): boolean | string | ClrLoadingState;
+    set loadingState(value: boolean | string | ClrLoadingState);
     constructor(listener: LoadingListener);
     ngOnDestroy(): void;
-    static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null;
+    static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null | string;
 }
 
 export declare class ClrLoadingButton implements LoadingListener {
@@ -1427,11 +1427,11 @@ export declare class ClrProgressBar {
     get id(): string;
     get labeledClass(): boolean;
     get loopClass(): boolean;
-    max: number;
+    max: number | string;
     get progressClass(): boolean;
     get successClass(): boolean;
-    get value(): number;
-    set value(value: number);
+    get value(): number | string;
+    set value(value: number | string);
     displayStringValue(): boolean;
 }
 
@@ -1714,8 +1714,8 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     get isCurrentInOverflow(): boolean;
     get isVertical(): boolean;
     keyFocus: ClrKeyFocus;
-    set layout(layout: TabsLayout);
-    get layout(): TabsLayout;
+    set layout(layout: TabsLayout | string);
+    get layout(): TabsLayout | string;
     get tabIds(): string;
     get tabLinkDirectives(): ClrTabLink[];
     tabLinkElements: HTMLElement[];
@@ -2029,7 +2029,7 @@ export declare class ClrWizardPage implements OnInit {
     pageNavTitle: ClrWizardPageNavTitle;
     pageOnCancel: EventEmitter<ClrWizardPage>;
     pageTitle: ClrWizardPageTitle;
-    preventDefault: boolean;
+    preventDefault: boolean | string;
     previousButtonClicked: EventEmitter<ClrWizardPage>;
     get previousCompleted(): boolean;
     get previousStepDisabled(): boolean;
@@ -2184,7 +2184,7 @@ export declare const IS_TOGGLE_PROVIDER: {
 export declare function isToggleFactory(): BehaviorSubject<boolean>;
 
 export declare abstract class LoadingListener {
-    abstract loadingStateChange(state: ClrLoadingState): void;
+    abstract loadingStateChange(state: ClrLoadingState | string): void;
 }
 
 export declare class MainContainerWillyWonka extends WillyWonka {

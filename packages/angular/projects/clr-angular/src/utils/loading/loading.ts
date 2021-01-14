@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,19 +16,19 @@ export enum ClrLoadingState {
 
 @Directive({ selector: '[clrLoading]' })
 export class ClrLoading implements OnDestroy {
-  public static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null;
+  public static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null | string;
 
   // We find the first parent that handles something loading
   constructor(@Optional() private listener: LoadingListener) {}
 
-  private _loadingState: ClrLoadingState = ClrLoadingState.DEFAULT;
+  private _loadingState: ClrLoadingState | string = ClrLoadingState.DEFAULT;
 
   public get loadingState() {
     return this._loadingState;
   }
 
   @Input('clrLoading')
-  public set loadingState(value: boolean | ClrLoadingState) {
+  public set loadingState(value: boolean | string | ClrLoadingState) {
     if (value === true) {
       value = ClrLoadingState.LOADING;
     } else if (!value) {

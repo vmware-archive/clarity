@@ -25,5 +25,10 @@
     {
       "path": "./projects/website/tsconfig.app.json"
     }
-  ]
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true
+  }
 }

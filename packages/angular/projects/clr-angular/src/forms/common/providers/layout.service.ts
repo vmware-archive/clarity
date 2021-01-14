@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,7 @@ export enum ClrFormLayout {
 export class LayoutService {
   readonly minLabelSize = 1;
   readonly maxLabelSize = 12;
-  layout: ClrFormLayout = ClrFormLayout.HORIZONTAL;
+  layout: ClrFormLayout | string = ClrFormLayout.HORIZONTAL;
 
   // This is basically a replacement for Object.values(), which IE11 and Node <9 don't support :(
   // String enums cannot be reverse-mapped, meaning ClrFormLayout['COMPACT'] does not return 'compact' so

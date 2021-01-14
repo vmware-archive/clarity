@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -39,7 +39,11 @@ export class FontSwitcher {
     this.switchFont(val);
   }
 
-  switchFont(presetToLoad: string) {
+  public handleSwitchFont(event: Event) {
+    this.switchFont((event.target as HTMLInputElement).value);
+  }
+
+  private switchFont(presetToLoad: string) {
     if (checkForExistingPresetName(presetToLoad)) {
       this.presetSwitcher.setValue({ preset: presetToLoad });
       this.sendFontSwitch(presetToLoad);

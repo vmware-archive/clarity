@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -54,18 +54,18 @@ import { isBooleanAttributeSet } from '../../utils/component/is-boolean-attribut
   providers: [DatepickerFocusService],
 })
 export class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
-  public static ngAcceptInputType_date: Date | null;
+  public static ngAcceptInputType_date: Date | null | string;
 
   @Input() placeholder: string;
   @Output('clrDateChange') dateChange: EventEmitter<Date> = new EventEmitter<Date>(false);
   @Input('clrDate')
-  set date(date: Date) {
+  set date(date: Date | string) {
     if (this.previousDateChange !== date) {
-      this.updateDate(this.getValidDateValueFromDate(date));
+      this.updateDate(this.getValidDateValueFromDate(date as Date));
     }
 
     if (!this.initialClrDateInputValue) {
-      this.initialClrDateInputValue = date;
+      this.initialClrDateInputValue = date as Date;
     }
   }
 

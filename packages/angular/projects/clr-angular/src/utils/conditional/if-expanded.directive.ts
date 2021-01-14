@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,12 +24,12 @@ import { IfExpandService } from './if-expanded.service';
 export class ClrIfExpanded implements OnInit, OnDestroy {
   private _expanded = false;
 
-  get expanded(): boolean {
+  get expanded(): boolean | string {
     return this._expanded;
   }
 
   @Input('clrIfExpanded')
-  set expanded(value: boolean) {
+  set expanded(value: boolean | string) {
     if (typeof value === 'boolean') {
       this.expand.expanded = value;
       this._expanded = value;

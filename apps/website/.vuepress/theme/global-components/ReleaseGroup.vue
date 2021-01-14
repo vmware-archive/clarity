@@ -35,6 +35,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+h3 {
+  @media (max-width: 1024px) {
+    margin: var(--cds-global-space-7) 0;
+  }
+}
 .table {
   margin-top: 0;
   table-layout: auto;

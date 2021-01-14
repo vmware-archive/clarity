@@ -2,11 +2,8 @@
   <div class="nav-toc-container">
     <nav aria-label="Table of content navigation" class="nav-toc" cds-layout="align:fill">
       <div class="asset-download-btn-wrapper" cds-layout="m-b:md" v-if="isOnIconsPage">
-        <a
-          class="btn btn-outline asset-download-btn"
-          target="_blank"
-          href="https://github.com/vmware/clarity-assets/archive/master.zip"
-          >download svg icons</a
+        <a target="_blank" href="https://github.com/vmware/clarity-assets/archive/master.zip">
+          <cds-button action="outline" size="sm">download svg icons</cds-button></a
         >
       </div>
       <b class="title">Content</b>

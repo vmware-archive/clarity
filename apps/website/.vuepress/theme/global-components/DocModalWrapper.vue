@@ -49,6 +49,17 @@ export default {
   position: relative;
   padding: 1.2rem;
   margin: 1.2rem 0;
+
+  @media (max-width: 1024px) {
+    .modal-footer {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        margin: var(--cds-global-space-3) 0;
+      }
+    }
+  }
 }
 
 .modal.static {

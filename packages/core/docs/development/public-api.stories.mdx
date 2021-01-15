@@ -15,7 +15,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
   present tense verb + `change`. Example, property `open` and event `openChange`.
 
 These component conventions allow frameworks to consume the Web easily. The convention
-is also needed so extend libraries like our React wrappers `@clr/react` can parse
+is also needed so extend libraries like our React wrappers `@cds/react` can parse
 and set up the React version of the event. `closeChange` => `onCloseChange`.
 
 Components primarily communicate the following ways:
@@ -119,11 +119,11 @@ To listen to an event use the `@event` syntax.
 </cds-modal>
 ```
 
-### React + @clr/react wrappers
+### React + @cds/react wrappers
 
 <cds-alert-group status="danger" cds-layout="m-y:lg">
   <cds-alert>
-    React requires use of the @clr/react package to workaround
+    React requires use of the @cds/react package to workaround
     <a cds-text="link" href="https://custom-elements-everywhere.com/#react">
       several open issues
     </a>.

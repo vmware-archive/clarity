@@ -1,10 +1,12 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import {
+  Animatable,
+  animate,
   baseStyles,
   createId,
   CdsBaseFocusTrap,
@@ -14,12 +16,26 @@ import {
   internalProperty,
   onKey,
   property,
+  AnimationModalEnterName,
+  reverseAnimation,
 } from '@cds/core/internal';
 import { html, query } from 'lit-element';
 import { styles } from './overlay.element.css.js';
 
-export function isNestedOverlay(myId: string, overlayPrefix: string, trapIds: string[]): boolean {
+export function isNestedOverlay(
+  myId: string,
+  overlayPrefix: string,
+  trapIds: string[],
+  previousValue?: boolean
+): boolean {
   const overlayIds = trapIds.filter(id => id.indexOf(overlayPrefix) > -1);
+
+  if (previousValue === true && trapIds.indexOf(myId) < 0) {
+    // handling situation where focusTrapIds remove our overlay from the list and we still need to consider
+    // this overlay as nested. this happens when an overlay is being closed/hidden
+    return true;
+  }
+
   return overlayIds.indexOf(myId) > 0; // id is present and not the first one...
 }
 
@@ -56,8 +72,25 @@ type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-c
  * @event closeChange - Notify user when close event has occurred
  * @cssprop --backdrop-background
  * @cssprop --layered-backdrop-background
+ * @cssprop --animation-duration
+ * @cssprop --animation-easing
+ *
+ * KNOWN ISSUE: Safari jumps through the exit animation but only when the ESC key is pressed.
+ *
  */
-export class CdsInternalOverlay extends CdsBaseFocusTrap {
+@animate({
+  hidden: {
+    true: reverseAnimation(AnimationModalEnterName),
+    false: AnimationModalEnterName,
+  },
+})
+export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
+  @property({ type: String })
+  cdsMotion = 'on';
+
+  @event()
+  cdsMotionChange: EventEmitter<string>;
+
   @property({ type: String })
   ariaModal = 'true';
 
@@ -87,8 +120,12 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap {
   updated(props: Map<string, any>) {
     super.updated(props);
     const oldLayered = this.isLayered;
-    const isNested = isNestedOverlay(this.focusTrapId, this.overlayIdPrefix, FocusTrapTracker.getTrapIds());
-    const newLayered = this.focusTrap.active && isNested;
+    const newLayered = isNestedOverlay(
+      this.focusTrapId,
+      this.overlayIdPrefix,
+      FocusTrapTracker.getTrapIds(),
+      oldLayered
+    );
 
     if (oldLayered !== newLayered) {
       this.isLayered = newLayered;

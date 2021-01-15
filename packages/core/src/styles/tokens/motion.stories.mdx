@@ -1,0 +1,34 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Foundation/Motion" />
+
+# Motion
+
+Clarity provides several options for customizing animations when building your applications. In the global space, Clarity has a number of animation timing and easing options while still allowing timing and easing customizations at the component level through CSS custom properties like `--animation-duration` and `--animation-easing`.
+
+## Duration
+
+The duration of an animation determines how long the animation runs from start to finish. Setting an animation duration to zero or `0s` has the same effect as turning an animation off.
+
+<Preview>
+  <Story id="stories-design-tokens--animation-duration" />
+</Preview>
+
+## Easing
+
+Easing provides a timing "curve" to change how the animation runs. The effect is to make animations seem snappier, more prolonged, or more natural.
+
+<Preview>
+  <Story id="stories-design-tokens--animation-easing" />
+</Preview>
+
+## Motion and Clarity Components
+
+There are several Clarity components that use Clarity Motion's property-driven, transition-focused animations. Components like modals and accordions ship with built in animations. From the standpoint of a product using Clarity components, animations can be turned "on" or "off" by setting the `cds-motion` attribute on the component as demonstrated in the example below.
+
+More advanced configuration and customization is possible through the [internal Clarity Motion utilities and services](./?path=/story/internal-apis-motion-getting-started--page).
+
+<Preview>
+  <Story id="stories-accordion--interactive" />
+</Preview>

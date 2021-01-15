@@ -3,6 +3,7 @@
 @import './../../dist/core/global.min.css';
 @import './../../dist/core/styles/module.shims.min.css';
 @import './../../dist/core/styles/theme.dark.min.css';
+@import './../../dist/core/styles/theme.low-motion.min.css';
 @import './../../dist/core/list/list.min.css';
 
 html {

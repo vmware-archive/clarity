@@ -45,5 +45,5 @@ cds-icon {
   --color: var(--icon-color);
   cursor: inherit;
   transform: var(--icon-transform);
-  transition: transform var(--transition-duration);
+  transition: transform var(--animation-duration);
 }

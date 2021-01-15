@@ -5,7 +5,7 @@
  */
 
 import { LitElement, html, css } from 'lit-element';
-import { registerElementSafely } from '@cds/core/internal';
+import { registerElementSafely, getCssPropertyValue } from '@cds/core/internal';
 import { createTestElement, removeTestElement } from '@cds/core/test';
 import { globalStyle } from './global-style.js';
 
@@ -47,6 +47,6 @@ describe('globalStyle decorator', () => {
   });
 
   it('should append a style tag to element', () => {
-    expect(window.getComputedStyle(testElement).getPropertyValue('--color').trim()).toBe('blue');
+    expect(getCssPropertyValue('--color', testElement)).toBe('blue');
   });
 });

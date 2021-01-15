@@ -7,6 +7,7 @@
 import is from 'ramda/es/is.js';
 import isEmpty from 'ramda/es/isEmpty.js';
 import isNil from 'ramda/es/isNil.js';
+import { convertStringPropValuePairsToTuple } from './string.js';
 
 export function isNilOrEmpty(val: any): boolean {
   return isNil(val) || isEmpty(val);
@@ -80,4 +81,44 @@ export function deepClone(obj: any) {
   // be careful using this carelessly b/c it CAN have performance implications!
 
   return isMap(obj) ? cloneMap(obj) : JSON.parse(JSON.stringify(obj));
+}
+
+export function anyOrAllPropertiesPass(obj: any, propValuePairs: string, anyOrAll: 'any' | 'all'): boolean {
+  if (!propValuePairs) {
+    return true;
+  }
+
+  const tests = convertStringPropValuePairsToTuple(propValuePairs);
+
+  if (!obj) {
+    return false;
+  }
+
+  if (tests.length < 1) {
+    return true;
+  } else {
+    const testResults = tests.filter(pvArry => {
+      const [propname, expectedVal] = pvArry;
+
+      if (expectedVal === false) {
+        return !obj[propname];
+      }
+
+      return obj[propname] === expectedVal;
+    });
+
+    return anyOrAll === 'all' ? testResults.length === tests.length : testResults.length > 0;
+  }
+}
+
+export function allPropertiesPass(obj: any, propValuePairs: string): boolean {
+  return anyOrAllPropertiesPass(obj, propValuePairs, 'all');
+}
+
+export function anyPropertiesPass(obj: any, propValuePairs: string): boolean {
+  return anyOrAllPropertiesPass(obj, propValuePairs, 'any');
+}
+
+export function getMillisecondsFromSeconds(sec: number): number {
+  return isNil(sec) ? 0 : Number(sec) * 1000;
 }

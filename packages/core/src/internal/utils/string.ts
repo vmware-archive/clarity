@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
+import { isNilOrEmpty, isNumericString } from './identity.js';
 
 export function transformToString(delimiter: string, fns: any[], ...args: any[]): string {
   return fns
@@ -66,3 +68,103 @@ export const cssGroup = 'CSS Custom Properties';
 
 /** Used for Storybook docs to define knob group for JavaScript properties */
 export const propertiesGroup = 'Default Properties';
+
+export function getNumericValueFromCssSecondsStyleValue(styleValueInSeconds: string): number {
+  const secondsStringChecker = /(\d+)?\.?(\d+)?s/g;
+  if (!styleValueInSeconds || !styleValueInSeconds.match(secondsStringChecker)) {
+    return 0; // validate expected input
+  }
+  const copyVal = styleValueInSeconds.substr(0, styleValueInSeconds.length - 1); // cut off trailing 's'
+
+  return isNumericString(copyVal) ? Number(copyVal) : 0;
+}
+
+export function isPrefixedOrSuffixedBy(str: string, stringFix: string, prefixOrSuffix = 'prefix'): boolean {
+  if (isNilOrEmpty(stringFix) || isNilOrEmpty(str)) {
+    return false;
+  }
+  const myFixToTest = prefixOrSuffix === 'prefix' ? str.substr(0, stringFix.length) : str.substr(-1 * stringFix.length);
+  return myFixToTest === stringFix;
+}
+
+export function isPrefixedBy(str: string, prefix: string): boolean {
+  return isPrefixedOrSuffixedBy(str, prefix, 'prefix');
+}
+
+export function isSuffixedBy(str: string, suffix: string): boolean {
+  return isPrefixedOrSuffixedBy(str, suffix, 'suffix');
+}
+
+export function removePrefixOrSuffix(str: string, stringFix: string, prefixOrSuffix = 'prefix'): string {
+  if (isNilOrEmpty(str)) {
+    return '';
+  }
+
+  if (isNilOrEmpty(stringFix) || !isPrefixedOrSuffixedBy(str, stringFix, prefixOrSuffix)) {
+    return str;
+  }
+
+  switch (prefixOrSuffix) {
+    case 'prefix':
+      return str.substr(stringFix.length);
+    case 'suffix':
+      return str.substr(0, str.length - stringFix.length);
+    default:
+      return str;
+  }
+}
+
+export function removePrefix(str: string, prefix: string): string {
+  return removePrefixOrSuffix(str, prefix, 'prefix');
+}
+
+export function removeSuffix(str: string, suffix: string): string {
+  return removePrefixOrSuffix(str, suffix, 'suffix');
+}
+
+type ObjectPropertyNameAndValueTuples =
+  | [string, string]
+  | [string, true]
+  | [string, false]
+  | [string, null]
+  | [string, undefined]
+  | [string, number];
+
+// this utility is a little restrictive on its inputs. it expects a specific format.
+// going outside of that format (like passing an object or function as the value) can yield unintended results.
+// this does NOT eval anything. that would be bad.
+// 'isValid:true status:success': string =>
+// [['isValid', true], ['status', 'success']]: [string, string | number | boolean][]
+export function convertStringPropValuePairsToTuple(propValString: string): ObjectPropertyNameAndValueTuples[] {
+  // starts as a string like... "isValid:true status:success"
+  return propValString
+    .split(' ')
+    .map(str => str.split(':'))
+    .map(pv => {
+      const [propname, propValAsString] = pv;
+
+      if (propValAsString === 'true') {
+        return [propname, true];
+      }
+
+      if (propValAsString === 'false') {
+        return [propname, false];
+      }
+
+      if (propValAsString === 'null') {
+        return [propname, null];
+      }
+
+      if (propValAsString === 'undefined') {
+        return [propname, undefined];
+      }
+
+      if (isNumericString(propValAsString)) {
+        return [propname, +propValAsString];
+      }
+
+      // else it's a string and that's ok
+      return [propname, propValAsString];
+    });
+  // returns as [['isValide', true], ['status', 'success']]
+}

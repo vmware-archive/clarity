@@ -10,6 +10,7 @@ export interface CdsTheme {
     space: Tokens;
     color: Tokens;
     typography: Tokens;
+    animation: Tokens;
   };
   aliases: Tokens;
 }

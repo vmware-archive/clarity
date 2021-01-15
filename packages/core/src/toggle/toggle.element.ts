@@ -32,6 +32,7 @@ import { styles } from './toggle.element.css.js';
  * @cssprop --anchor-border-radius
  * @cssprop --anchor-width
  * @cssprop --anchor-height
+ * @cssprop --toggle-speed
  */
 export class CdsToggle extends CdsInternalControlInline {
   static get styles() {

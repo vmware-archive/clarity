@@ -1,11 +1,20 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html, LitElement } from 'lit-element';
-import { baseStyles, event, property, EventEmitter } from '@cds/core/internal';
+import {
+  AnimationAccordionPanelOpenName,
+  reverseAnimation,
+  Animatable,
+  animate,
+  baseStyles,
+  event,
+  property,
+  EventEmitter,
+} from '@cds/core/internal';
 import { styles } from './accordion-panel.element.css.js';
 
 /**
@@ -40,11 +49,22 @@ import { styles } from './accordion-panel.element.css.js';
  * @event expandedChange - notify when the user has clicked the panel header
  * @cssprop --border-color
  * @cssprop --border-width
- * @cssprop --color
- * @cssprop --font-size
- * @cssprop --font-weight
+ * @cssprop --animation-duration
+ * @cssprop --animation-easing
  */
-export class CdsAccordionPanel extends LitElement {
+@animate({
+  expanded: {
+    true: AnimationAccordionPanelOpenName,
+    false: reverseAnimation(AnimationAccordionPanelOpenName),
+  },
+})
+export class CdsAccordionPanel extends LitElement implements Animatable {
+  @property({ type: String })
+  cdsMotion = 'on';
+
+  @event()
+  cdsMotionChange: EventEmitter<string>;
+
   @property({ type: Boolean }) disabled = false;
 
   @property({ type: Boolean }) expanded = false;

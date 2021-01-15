@@ -16,7 +16,7 @@ describe('accordion element', () => {
   beforeEach(async () => {
     testElement = await createTestElement(html`
       <cds-accordion>
-        <cds-accordion-panel>${placeholderContent}</cds-accordion-panel>
+        <cds-accordion-panel cds-motion="off">${placeholderContent}</cds-accordion-panel>
       </cds-accordion>
     `);
     component = testElement.querySelector<CdsAccordion>('cds-accordion');
@@ -29,6 +29,7 @@ describe('accordion element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots.default).toBe(`<cds-accordion-panel><!---->${placeholderContent}<!----></cds-accordion-panel>`);
+    expect(slots.default).toContain('<cds-accordion-panel ');
+    expect(slots.default).toContain('</cds-accordion-panel>');
   });
 });

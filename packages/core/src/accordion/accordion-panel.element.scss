@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,32 +8,52 @@
 :host {
   --border-color: #{$cds-alias-object-border-color};
   --border-width: #{$cds-alias-object-border-width-100};
-  --transition-duration: 200ms;
+  --animation-duration: #{$cds-global-animation-duration-secondary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
 }
 
 .accordion-header-button {
   background: #{$cds-alias-object-opacity-0};
-  border: 0;
+  border: 0 none;
   padding: 0;
   width: 100%;
 }
 
 .accordion-content {
-  height: 0;
-  transition: transform height var(--transition-duration);
-  transition-timing-function: cubic-bezier(0, 0.99, 0, 0.99);
   overflow-y: hidden;
+  box-shadow: 0 calc(-1 * var(--border-width)) 0 0 var(--border-color);
+  margin-top: var(--border-width); // this helps with a browser issue that hides the top border above in some cases
+}
+
+:host([cds-motion='off']) {
+  .accordion-content {
+    height: 0;
+  }
+}
+
+:host([cds-motion='off'][expanded]) {
+  .accordion-content {
+    height: auto;
+  }
+}
+
+:host([cds-motion][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  .accordion-content {
+    height: 0;
+  }
+}
+
+:host([cds-motion][expanded][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  .accordion-content {
+    height: auto !important;
+    transform: none;
+  }
 }
 
 :host([expanded]) {
   ::slotted(cds-accordion-header) {
     --background: #{$cds-alias-object-interaction-background-selected};
     --icon-transform: rotate(180deg);
-  }
-
-  .accordion-content {
-    height: auto;
-    border-top: var(--border-width) solid var(--border-color);
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,8 @@ import {
   isString,
   isStringOrNil,
   isStringAndNotNilOrEmpty,
+  anyOrAllPropertiesPass,
+  getMillisecondsFromSeconds,
 } from './identity.js';
 
 enum TestEnum {
@@ -268,6 +270,73 @@ describe('Functional Helper: ', () => {
       const expectedPrefix = 'OHAI_';
       const testMe = createId('OHAI_').substr(0, 5);
       expect(testMe).toBe(expectedPrefix);
+    });
+  });
+
+  describe('anyOrAllPropertiesPass(): ', () => {
+    const propValStringToCheck = 'isValid:true status:success currentPage:3';
+
+    it('handles "any" case as expected', () => {
+      expect(anyOrAllPropertiesPass({ isValid: true }, propValStringToCheck, 'any')).toBe(true);
+      expect(anyOrAllPropertiesPass({ status: 'success' }, propValStringToCheck, 'any')).toBe(true);
+      expect(anyOrAllPropertiesPass({ currentPage: 3 }, propValStringToCheck, 'any')).toBe(true);
+      expect(
+        anyOrAllPropertiesPass({ isValid: true, status: 'loading', currentPage: 6 }, propValStringToCheck, 'any')
+      ).toBe(true);
+    });
+
+    it('handles "all" case as expected', () => {
+      expect(anyOrAllPropertiesPass({ isValid: true }, propValStringToCheck, 'all')).toBe(false);
+      expect(anyOrAllPropertiesPass({ status: 'success' }, propValStringToCheck, 'all')).toBe(false);
+      expect(anyOrAllPropertiesPass({ currentPage: 3 }, propValStringToCheck, 'all')).toBe(false);
+      expect(
+        anyOrAllPropertiesPass({ isValid: true, status: 'loading', currentPage: 6 }, propValStringToCheck, 'all')
+      ).toBe(false);
+      expect(
+        anyOrAllPropertiesPass({ isValid: true, status: 'success', currentPage: 3 }, propValStringToCheck, 'all')
+      ).toBe(true);
+    });
+
+    it('returns true if propValue string is empty', () => {
+      expect(anyOrAllPropertiesPass({ isValid: true }, '', 'all')).toBe(true);
+      expect(anyOrAllPropertiesPass({ isValid: true }, null, 'all')).toBe(true);
+      expect(anyOrAllPropertiesPass({ isValid: true }, undefined, 'all')).toBe(true);
+      expect(anyOrAllPropertiesPass({ isValid: true }, '', 'any')).toBe(true);
+      expect(anyOrAllPropertiesPass({ isValid: true }, null, 'any')).toBe(true);
+      expect(anyOrAllPropertiesPass({ isValid: true }, undefined, 'any')).toBe(true);
+    });
+
+    it('returns false if object to check is empty', () => {
+      expect(anyOrAllPropertiesPass({}, propValStringToCheck, 'any')).toBe(false);
+      expect(anyOrAllPropertiesPass({}, propValStringToCheck, 'all')).toBe(false);
+      expect(anyOrAllPropertiesPass({}, propValStringToCheck, 'any')).toBe(false);
+      expect(anyOrAllPropertiesPass({}, propValStringToCheck, 'all')).toBe(false);
+    });
+
+    it('returns false if object to check is nil', () => {
+      expect(anyOrAllPropertiesPass(null, propValStringToCheck, 'any')).toBe(false);
+      expect(anyOrAllPropertiesPass(null, propValStringToCheck, 'all')).toBe(false);
+      expect(anyOrAllPropertiesPass(undefined, propValStringToCheck, 'any')).toBe(false);
+      expect(anyOrAllPropertiesPass(undefined, propValStringToCheck, 'all')).toBe(false);
+    });
+  });
+
+  describe('getMillisecondsFromSeconds(): ', () => {
+    it('converts seconds to milliseconds as expected', () => {
+      expect(getMillisecondsFromSeconds(0.1)).toBe(100);
+      expect(getMillisecondsFromSeconds(2)).toBe(2000);
+      expect(getMillisecondsFromSeconds(0.025)).toBe(25);
+    });
+
+    it('converts falsy value to 0 as expected', () => {
+      expect(getMillisecondsFromSeconds(null)).toBe(0);
+      expect(getMillisecondsFromSeconds(undefined)).toBe(0);
+      expect(getMillisecondsFromSeconds(0)).toBe(0);
+    });
+
+    it('converts negative values as expected', () => {
+      expect(getMillisecondsFromSeconds(-1)).toBe(-1000);
+      expect(getMillisecondsFromSeconds(-0.5)).toBe(-500);
     });
   });
 });

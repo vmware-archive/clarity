@@ -288,6 +288,10 @@ export const typography = () => getTokenTable('globalTypography');
 
 export const color = (_args: any, { globals }: any) => getTokenTable('globalColor', globals);
 
+export const animationDuration = () => getTokenTable('globalAnimationDuration');
+
+export const animationEasing = () => getTokenTable('globalAnimationEasing');
+
 export function objectLayers() {
   return html`
     <style>

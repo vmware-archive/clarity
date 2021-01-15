@@ -6,9 +6,10 @@
 
 import { html } from 'lit-html';
 import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
+import { getCssPropertyValue } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import '@cds/core/forms/register.js';
-import { CdsFormGroup } from './form-group.element';
+import { CdsFormGroup } from './form-group.element.js';
 
 let element: HTMLElement;
 let formGroup: CdsFormGroup;
@@ -96,7 +97,7 @@ describe('cds-form-group', () => {
     await componentIsStable(formGroup); // firstUpdated
 
     expect(controls[0].querySelector('label').getBoundingClientRect().width).toBe(200);
-    expect(getComputedStyle(formGroup).getPropertyValue('--internal-label-min-width')).toBe('10rem');
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('10rem');
   });
 
   it('should sync layouts when a control overflows', async () => {

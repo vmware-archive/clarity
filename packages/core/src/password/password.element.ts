@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -51,7 +51,7 @@ export class CdsPassword extends CdsControl {
   }
 
   private get ariaLabel() {
-    return this.showPassword ? I18nService.keys.hide : I18nService.keys.show;
+    return this.showPassword ? this.i18n.hideButtonAriaLabel : this.i18n.showButtonAriaLabel;
   }
 
   protected get suffixDefaultTemplate() {

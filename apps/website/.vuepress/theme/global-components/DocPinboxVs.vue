@@ -1,9 +1,3 @@
-<!--
-  - Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
-  - This software is released under MIT license.
-  - The full license information can be found in LICENSE in the root directory of this project.
-  -->
-
 <template>
   <section>
     <div class="pinbox" cds-layout="horizontal align:vertical-stretch wrap:none" cds-text="body">
@@ -11,7 +5,11 @@
         <cds-icon shape="pin" class="pin-icon" size="24"></cds-icon>
       </div>
       <div cds-layout="p:lg align:top">
-        <slot></slot>
+        <slot name="left">Left</slot>
+      </div>
+      <div class="versus" cds-layout="align:center"><div class="versus-bubble">vs</div></div>
+      <div cds-layout=" p:lg align:top">
+        <slot name="right">Right</slot>
       </div>
     </div>
   </section>
@@ -19,7 +17,7 @@
 
 <script>
 export default {
-  name: 'DocPinbox',
+  name: 'DocPinboxVs',
 };
 </script>
 
@@ -38,7 +36,7 @@ div.pinbox {
 div.pinbox > div {
   //align-self: center;
   padding: var(--cds-token-layout-space-md, 0.6rem) var(--cds-token-layout-space-lg, 1.2rem);
-  //flex-basis: 50%;
+  flex-basis: 50%;
 }
 
 div.pinbox > div.pin {

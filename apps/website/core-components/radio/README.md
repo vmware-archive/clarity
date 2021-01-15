@@ -21,16 +21,18 @@ Use radio buttons when you want users to see all available multual exclusive opt
 
 :::
 
-<DocPinbox>
-<div style="align-self: flex-start;ga && gs ">
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
     <cds-radio>
         <label>Radio label</label>
         <input type="radio" checked />
     </cds-radio>
-    Use radio buttons for six or fewer options.
-</div>
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div style="align-self: flex-start;ga && gs ">
+
+Use radio buttons for six or fewer options.
+
+  </template>
+  <template #right>
     <cds-select control-width="shrink">
         <label>Select</label>
         <select>
@@ -39,9 +41,11 @@ Use radio buttons when you want users to see all available multual exclusive opt
         <option>Option Three</option>
         </select>
     </cds-select>
-    Use a <a href="../select">select box</a> for more than six options, or a <a href="../datalist">datalist</a> for more than 13 options. Both prompt users to disclose the options.
-</div>
-</DocPinbox>
+
+Use a <a href="../select">select box</a> for more than six options, or a <a href="../datalist">datalist</a> for more than 13 options. Both prompt users to disclose the options.
+
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-one-title
 

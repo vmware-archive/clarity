@@ -23,11 +23,17 @@ A common strategy is to combine an input field with a select box so that a user 
 
 :::
 
-<DocPinbox>
-<div>Select presents a list of options that the user can choose from and apply to an input field.</div>
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div>Dropdown presents a list of options that take an immediate action or navigate the user outside of the current context.</div>
-</DocPinbox>
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+  Select presents a list of options that the user can choose from and apply to an input field.
+
+  </template>
+  <template #right>
+  Dropdown presents a list of options that take an immediate action or navigate the user outside of the current context.
+
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-one-title
 

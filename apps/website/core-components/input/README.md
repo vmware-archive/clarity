@@ -21,9 +21,10 @@ Use inputs in a form as a way to allow the user to enter a value associated with
 
 :::
 
-<DocPinbox>
-<div cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+    !!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
 
 Use a datalist:
 
@@ -31,19 +32,17 @@ Use a datalist:
 - When there are pre-defined options but the user needs the ability to input a custom calue
 - With more than 13 options
 
-</div>
-
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div style="align-self: flex-start;" cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
+  </template>
+  <template #right>
+  !!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
 
 Use a select:
 
 - When a custom input value is not allowed
 - With 3-13 options
 
-</div>
-</DocPinbox>
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-two
 

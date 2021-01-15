@@ -27,9 +27,10 @@ We recommend using seven or fewer checkboxes. Keep the label of a checkbox to a 
 
 :::
 
-<DocPinbox>
-<div cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/checkbox/basic.html)!!!
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+  !!!include(.vuepress/code/core-usage-demos/checkbox/basic.html)!!!
 
 Use a checkbox for:
 
@@ -37,16 +38,14 @@ Use a checkbox for:
 - For binary choices
 - For selecting multiple choices
 
-</div>
-
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div style="align-self: flex-start" cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/toggle/basic.html)!!!
+  </template>
+  <template #right>
+  !!!include(.vuepress/code/core-usage-demos/toggle/basic.html)!!!
 
 Use a toggle for On / Off choices but not for multiple choices
 
-</div>
-</DocPinbox>
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-one-title
 

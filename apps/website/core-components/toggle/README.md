@@ -22,24 +22,28 @@ Use a toggle switch when you need the sole options of “on” and “off.”
 Toggle switches take up less space than an “on/off” radio button group and communicate their intended purpose better than a checkbox that toggles functionality.
 
 :::
+<doc-pinbox-vs>
 
-<DocPinbox>
-<div>
-    <cds-toggle>
-        <label>Airplane mode</label>
-        <input type="checkbox" checked />
-    </cds-toggle>
-    Use a toggle for On or Off choices.
-</div>
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+  <cds-toggle>
+      <label>Airplane mode</label>
+      <input type="checkbox" checked />
+  </cds-toggle>
+
+Use a toggle for On or Off choices.
+
+  </template>
+  <template #right>
     <cds-checkbox>
     <label>Remember me</label>
     <input type="checkbox" checked />
     </cds-checkbox>
-    Use a <a href="../checkbox">checkbox</a> for Yes or No choices.
-</div>
-</DocPinbox>
+
+Use a <a href="../checkbox">checkbox</a> for Yes or No choices.
+
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-one-title
 

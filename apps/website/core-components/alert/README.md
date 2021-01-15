@@ -274,13 +274,12 @@ Use app-level alerts in the global context of an application. Place them at the 
 There are three different statuses of app-level alerts: error, warning, and error.
 App-level alerts follow the same urgency order as standard alerts: error, warning, and info.
 
-<ClrSummary>
-
+<doc-pinbox>
 **Why no success app-level alert?**
 
 App-level alerts are global in nature. Reporting a success of an operation should either be communicated within context or as a notification message
 
-</ClrSummary>
+</doc-pinbox>
 :::
 
 :::component-section-level-three-title

@@ -51,12 +51,10 @@ When a badge needs to display a number above 99, use “99+” instead of the nu
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:xs">
+<div cds-layout="horizontal gap:xs m-y:md">
     <cds-tag readonly status="info">Info <cds-badge status="info">99+<span cds-layout="display:screen-reader-only">item.</span></cds-badge></cds-tag>
     <cds-tag readonly status="warning">Warning <cds-badge status="warning">99+<span cds-layout="display:screen-reader-only">items.</span></cds-badge></cds-tag>
 </div>
-</DocIndent>
 
 ::: component-section-level-three-title
 
@@ -70,8 +68,7 @@ Badges can contain a variety of colors. Use traffic-light colors to display a se
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:xs">
+<div cds-layout="horizontal gap:xs m-y:md">
     <cds-badge color="gray">1<span cds-layout="display:screen-reader-only">item.</span></cds-badge>
     <cds-badge color="purple">1<span cds-layout="display:screen-reader-only">item.</span></cds-badge>
     <cds-badge color="blue">15<span cds-layout="display:screen-reader-only">items.</span></cds-badge>
@@ -82,4 +79,3 @@ Badges can contain a variety of colors. Use traffic-light colors to display a se
     <cds-badge status="warning"><span cds-layout="display:screen-reader-only">Warning</span>12<span cds-layout="display:screen-reader-only">items.</span></cds-badge>
     <cds-badge status="danger"><span cds-layout="display:screen-reader-only">Danger</span>15<span cds-layout="display:screen-reader-only">items.</span></cds-badge>
 </div>
-</DocIndent>

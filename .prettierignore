@@ -20,3 +20,8 @@ apps/website/.vuepress/config.js
 apps/core-snowpack/build
 .netlify
 apps/website/data/core-demos.json
+
+# Markdown files that break rendering when prettier forats them
+apps/website/core-components/datalist/README.md
+apps/website/core-components/checkbox/README.md
+apps/website/core-components/input/README.md

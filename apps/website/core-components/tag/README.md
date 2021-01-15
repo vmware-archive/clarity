@@ -21,14 +21,12 @@ Use a tag to show the metadata when the space is limited or when you want to cat
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:xs">
+<div cds-layout="horizontal gap:xs m-y:md">
     <cds-tag readonly color="purple">Fruit</cds-tag>
     <cds-tag readonly color="blue">Meat</cds-tag>
     <cds-tag readonly color="orange">Drink</cds-tag>
     <cds-tag readonly color="light-blue">Vegetable</cds-tag>
 </div>
-</DocIndent>
 
 ::: component-section-level-two-title
 
@@ -46,15 +44,13 @@ Avoid using too many colors within the same context, displaying too many colors 
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:xs">
+<div cds-layout="horizontal gap:xs m-y:md">
     <cds-tag readonly>Seattle</cds-tag>
     <cds-tag readonly color="purple">Austin</cds-tag>
     <cds-tag readonly color="blue">Los Angeles</cds-tag>
     <cds-tag readonly color="orange">Palo Alto</cds-tag>
     <cds-tag readonly color="light-blue">St. Louis</cds-tag>
 </div>
-</DocIndent>
 
 ::: component-section-level-two-title
 
@@ -86,7 +82,7 @@ Avoid using too many colors within the same context, displaying too many colors 
 
 ::: component-section-level-two
 
-Differentiate tags from [buttons](web-components/button).
+Differentiate tags from [buttons](core-components/button).
 
 :::
 

@@ -59,11 +59,9 @@ Clarity offers three types of forms: horizontal (our recommended default), verti
 TODO turn this into a core form.
 Default Horizontal formats are good for the quick scanning of labels, and can be used in cases of limited vertical space. The space between label and input however can slow users down.
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/horizontal.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 
@@ -77,11 +75,9 @@ Default Horizontal formats are good for the quick scanning of labels, and can be
 
 This option is better for scanning, mobile experiences, accessibility, and localization. While it offers better completion rates, it is less ideal for longer forms.
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/vertical.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 
@@ -95,11 +91,9 @@ This option is better for scanning, mobile experiences, accessibility, and local
 
 For cases with highly limited space, we provide a compact form layout.
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/compact.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 
@@ -273,11 +267,9 @@ All fields should be assumed to be required. Clarity does not support a required
 
 :::component-section-level-two
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/helper.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 
@@ -289,11 +281,9 @@ All fields should be assumed to be required. Clarity does not support a required
 
 :::component-section-level-two
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/error.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 
@@ -305,11 +295,9 @@ All fields should be assumed to be required. Clarity does not support a required
 
 :::component-section-level-two
 
-<DocIndent>
 <doc-demo>
 !!!include(.vuepress/code/core-usage-demos/form/success.html)!!!
 </doc-demo>
-</DocIndent>
 
 :::
 

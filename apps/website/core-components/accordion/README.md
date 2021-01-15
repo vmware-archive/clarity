@@ -25,8 +25,7 @@ Accordions can make information processing and discovering more effective. Howev
 
 :::
 
-<DocIndent>
-<div cds-layout="vertical gap:sm align:horizontal-stretch">
+<div cds-layout="vertical gap:sm align:horizontal-stretch m-y:md">
 <cds-accordion>
   <cds-accordion-panel class="demo-accordion" expanded>
     <cds-accordion-header>Header for panel #1</cds-accordion-header>
@@ -58,7 +57,6 @@ Accordions can make information processing and discovering more effective. Howev
         panel.expanded = !panel.expanded;
     }
 </script>
-</DocIndent>
 
 ::: component-section-level-two-title
 
@@ -94,7 +92,6 @@ Accordions expand and collapse showing / hiding the data in a section when the u
 
 Accordion panels can be **expanded**, **disabled**, and **collapsed**.
 
-<DocIndent>
 <div cds-layout="vertical gap:sm align:horizontal-stretch">
 <cds-accordion>
   <cds-accordion-panel expanded>
@@ -117,6 +114,5 @@ Accordion panels can be **expanded**, **disabled**, and **collapsed**.
   </cds-accordion-panel>
 </cds-accordion>
 </div>
-</DocIndent>
 
 :::

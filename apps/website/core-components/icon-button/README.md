@@ -157,12 +157,10 @@ Unlike [regular buttons](../button), icon buttons only support **two loading sta
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:sm">
+<div cds-layout="horizontal gap:sm m-y:md">
     <cds-icon-button aria-label="this is loading" title="this is loading" loading-state="loading"><cds-icon aria-label="user" shape="user"></cds-icon></cds-icon-button>
     <cds-icon-button aria-label="success!" title="success!" loading-state="success"><cds-icon aria-label="user" shape="user"></cds-icon></cds-icon-button>
 </div>
-</DocIndent>
 
 ::: component-section-level-two-title
 
@@ -176,9 +174,7 @@ Icon buttons may be disabled to indicate to a user that the call-to-action is un
 
 :::
 
-<DocIndent>
-<cds-icon-button aria-label="disabled user button" title="disabled button" disabled><cds-icon aria-label="user" shape="user"></cds-icon></cds-icon-button>
-</DocIndent>
+<cds-icon-button cds-layout="m-y:md" aria-label="disabled user button" title="disabled button" disabled><cds-icon aria-label="user" shape="user"></cds-icon></cds-icon-button>
 
 ::: component-section-level-one-title
 

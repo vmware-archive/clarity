@@ -8,7 +8,7 @@
         <slot name="left">Left</slot>
       </div>
       <div class="versus" cds-layout="align:center"><div class="versus-bubble">vs</div></div>
-      <div cds-layout=" p:lg align:top">
+      <div cds-layout="p:lg align:top">
         <slot name="right">Right</slot>
       </div>
     </div>
@@ -34,7 +34,6 @@ div.pinbox {
 }
 
 div.pinbox > div {
-  //align-self: center;
   padding: var(--cds-token-layout-space-md, 0.6rem) var(--cds-token-layout-space-lg, 1.2rem);
   flex-basis: 50%;
 }

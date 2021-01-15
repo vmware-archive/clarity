@@ -41,48 +41,105 @@ A common strategy is to combine an input field with a select box so that a user 
 
 :::
 
-<DocIndent>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
 <div>
-    <cds-form-group layout="horizontal">
-      <cds-select layout="horizontal">
-        <label>label</label>
-        <select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </select>
-        <cds-control-message>message text</cds-control-message>
-      </cds-select>
-      <cds-select layout="horizontal">
-        <label>disabled</label>
-        <select disabled>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </select>
-        <cds-control-message>disabled message</cds-control-message>
-      </cds-select>
-      <cds-select layout="horizontal" status="error">
-        <label>error</label>
-        <select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </select>
-        <cds-control-message status="error">error message</cds-control-message>
-      </cds-select>
-      <cds-select layout="horizontal" status="success">
-        <label>success</label>
-        <select>
-          <option>option one</option>
-          <option>option two</option>
-          <option>option three</option>
-        </select>
-        <cds-control-message status="success">success message</cds-control-message>
-      </cds-select>
-    </cds-form-group>
-    </div>
-</DocIndent>
+!!!include(.vuepress/code/core-usage-demos/select/enabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive and ready for input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/active.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Active
+
+Use when selected by a user with an input method, such as mouse or keyboard.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/select/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -92,7 +149,7 @@ A common strategy is to combine an input field with a select box so that a user 
 
 ::: component-section-level-one
 
-Select elements are available in vertical, horizontal, compact, and multiple layout. Select elements with the multiple attribute enables the user to select and view several items at once. See more layout guidelines on the [form page](/web-components/form/).
+Select elements are available in vertical, horizontal, compact, and multiple layout. Select elements with the multiple attribute enables the user to select and view several items at once. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

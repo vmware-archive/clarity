@@ -25,29 +25,28 @@ Do not confuse a datalist element with the select input. Datalist elements usual
 
 :::
 
-<DocPinbox>
-<div cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+  !!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
 
-Use a datalist:
+  Use a datalist:
 
-- When the user needs to choose from a long list of items to be filtered before selection
-- When there are pre-defined options but the user needs the ability to input a custom calue
-- With more than 13 options
+  - When the user needs to choose from a long list of items to be filtered before selection
+  - When there are pre-defined options but the user needs the ability to input a custom calue
+  - With more than 13 options
 
-</div>
+  </template>
+  <template #right>
+  !!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
 
-<div class="versus"><div class="versus-bubble">vs</div></div>
-<div style="align-self: flex-start;" cds-layout="p-y:lg">
-!!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
+  Use a select:
 
-Use a select:
+  - When a custom input value is not allowed
+  - With 3-13 options
 
-- When a custom input value is not allowed
-- With 3-13 options
-
-</div>
-</DocPinbox>
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-two
 
@@ -59,13 +58,107 @@ Use a select:
 
 :::
 
-::: component-section-level-one
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
-<DocIndent>
-!!!include(.vuepress/code/core-usage-demos/datalist/states.html)!!!
-</DocIndent>
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/enabled.html)!!!
+</div>
 
 :::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/active.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Active
+
+Use when selected by a user with an input method, such as mouse or keyboard.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permission to change specific settings.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the datalist or after attempting to submit a form. For example, to remind the user of a missing selection.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/datalist/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input.
+
+:::
+
+</div>
+
+
 
 ::: component-section-level-one-title
 
@@ -75,7 +168,7 @@ Use a select:
 
 ::: component-section-level-one
 
-Datalists are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+Datalists are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

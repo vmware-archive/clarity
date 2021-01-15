@@ -27,32 +27,85 @@ Use a file input field when the user needs to choose one or more files from thei
 
 :::
 
-<DocIndent>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
 <div>
-    <cds-form-group layout="horizontal">
-        <cds-file layout="horizontal">
-            <label>Default</label>
-            <input type="file" multiple />
-            <cds-control-message>Helper message</cds-control-message>
-        </cds-file>
-        <cds-file layout="horizontal">
-            <label>Disabled</label>
-            <input type="file" disabled />
-            <cds-control-message>Disabled message</cds-control-message>
-        </cds-file>
-        <cds-file layout="horizontal" status="success">
-            <label>success</label>
-            <input type="file" multiple />
-            <cds-control-message status="success">Success message</cds-control-message>
-        </cds-file>
-        <cds-file layout="horizontal" status="error">
-            <label>Error</label>
-            <input type="file" multiple />
-            <cds-control-message status="error">Error message</cds-control-message>
-        </cds-file>
-    </cds-form-group>
+!!!include(.vuepress/code/core-usage-demos/file/enabled.html)!!!
 </div>
-</DocIndent>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive. The helper message can be used to specify the supported file formats or maximun size.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/file/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to upload files.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/file/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use when one or more files have been selected.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/file/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use when one or more files have been selected.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -62,7 +115,7 @@ Use a file input field when the user needs to choose one or more files from thei
 
 ::: component-section-level-one
 
-File inputs are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+File inputs are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

@@ -53,49 +53,85 @@ Use a <a href="../select">select box</a> for more than six options, or a <a href
 
 :::
 
-<DocIndent>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
 <div>
-<cds-form-group layout="horizontal">
-      <cds-radio-group layout="horizontal">
-        <label>Default</label>
-        <cds-radio>
-          <label>Radio label</label>
-          <input type="radio" />
-        </cds-radio>
-      </cds-radio-group>
-      <cds-radio-group layout="horizontal">
-        <label>Selected</label>
-        <cds-radio>
-          <label>Radio label</label>
-          <input type="radio" checked />
-        </cds-radio>
-      </cds-radio-group>
-      <cds-radio-group layout="horizontal" disabled>
-        <label>Disabled</label>
-        <cds-radio>
-          <label>Radio label</label>
-          <input type="radio" />
-        </cds-radio>
-      </cds-radio-group>
-      <cds-radio-group layout="horizontal" status="error">
-        <label>Error</label>
-        <cds-radio>
-          <label>Radio label</label>
-          <input type="radio" />
-        </cds-radio>
-        <cds-control-message status="error">Error message</cds-control-message>
-      </cds-radio-group>
-      <cds-radio-group layout="horizontal" status="success">
-        <label>Success</label>
-        <cds-radio>
-          <label>Radio label</label>
-          <input type="radio" />
-        </cds-radio>
-        <cds-control-message status="success">Success message</cds-control-message>
-      </cds-radio-group>
-    </cds-form-group>
+!!!include(.vuepress/code/core-usage-demos/radio/enabled.html)!!!
 </div>
-</DocIndent>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive and ready for input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/radio/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -105,7 +141,7 @@ Use a <a href="../select">select box</a> for more than six options, or a <a href
 
 ::: component-section-level-one
 
-Radio buttons are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+Radio buttons are available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

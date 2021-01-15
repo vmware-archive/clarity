@@ -61,7 +61,7 @@ Full installation steps can be found in the [Core Getting Started Guide](https:/
 </cds-modal>
 ```
 
-### React via `@clr/react` package
+### React via `@cds/react` package
 
 ```jsx
 /*

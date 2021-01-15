@@ -62,21 +62,29 @@ function createPackageExports() {
   // https://docs.skypack.dev/package-authors/package-checks
   // https://nodejs.org/api/packages.html#packages_subpath_exports
   const packageFile = fs.readJsonSync('../dist/core/package.json');
-  const packageNames = read('../dist/core')
+  const packageComponentNames = read('../dist/core')
     .filter(f => f.includes('package.json'))
     .map(f => fs.readJsonSync(f).name.replace('@cds/core/', ''))
-    .filter(name => name !== '@cds/core' && !name.includes('internal'));
+    .filter(name => name !== '@cds/core' && name !== 'internal');
 
   const exports = JSON.parse(`{
     ".": "./index.js",
-    "./icon/shapes/*": "./icon/shapes/*.js",
-    "./icon/icon.service": "./icon/icon.service.js",
-    ${packageNames.map(name => {
+    "./package.json": "./package.json",
+    "./custom-elements.json": "./custom-elements.json",
+    "./global.css": "./global.css",
+    "./global.min.css": "./global.min.css",
+    "./styles/*": "./styles/*",
+    "./list/*": "./list/*",
+    "./internal": "./internal/index.js",
+    "./icon/shapes/*": "./icon/shapes/*",
+    "./icon/icon.service.js": "./icon/icon.service.js",
+    ${packageComponentNames.map(name => {
       return `
       "./${name}": "./${name}/index.js",
-      "./${name}/register": "./${name}/register.js"`;
+      "./${name}/register.js": "./${name}/register.js"`;
     })}
   }`);
+
   fs.writeJsonSync('../dist/core/package.json', { ...packageFile, exports }, { spaces: 2 });
 }
 

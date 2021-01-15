@@ -1,11 +1,21 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html } from 'lit-element';
-import { baseStyles, i18n, I18nService, HTMLAttributeTuple, property } from '@cds/core/internal';
+import {
+  animate,
+  Animatable,
+  AnimationModalEnterName,
+  baseStyles,
+  i18n,
+  I18nService,
+  HTMLAttributeTuple,
+  property,
+  reverseAnimation,
+} from '@cds/core/internal';
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
 import { appendCloseButton, removeCloseButton } from '@cds/core/internal-components/close-button';
 import { styles } from './modal.element.css.js';
@@ -46,7 +56,13 @@ import { styles } from './modal.element.css.js';
  * @cssprop --box-shadow
  * @cssprop --width
  */
-export class CdsModal extends CdsInternalOverlay {
+@animate({
+  hidden: {
+    true: reverseAnimation(AnimationModalEnterName),
+    false: AnimationModalEnterName,
+  },
+})
+export class CdsModal extends CdsInternalOverlay implements Animatable {
   static get styles() {
     return [baseStyles, ...super.styles, styles];
   }
@@ -88,28 +104,26 @@ export class CdsModal extends CdsInternalOverlay {
   render() {
     return html`
       ${this.backdropTemplate}
-      <div cds-layout="horizontal p:md p@md:xl align:center">
-        <div class="modal-dialog private-host" tabindex="-1">
-          <div cds-layout="display:screen-reader-only">${this.i18n.contentStart}</div>
-          <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch">
-            <div cds-layout="horizontal gap:md wrap:none align:vertical-center p-x:lg p-t:lg">
-              <div>
-                <slot name="modal-header"></slot>
-              </div>
-              <div cds-layout="align:right">
-                <slot name="modal-header-actions"></slot>
-              </div>
-              <slot name="close-button"></slot>
+      <div class="modal-dialog private-host" tabindex="-1" cds-layout="m:md m@md:xl">
+        <div cds-layout="display:screen-reader-only">${this.i18n.contentStart}</div>
+        <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch">
+          <div cds-layout="horizontal gap:md wrap:none align:vertical-center p-x:lg p-t:lg">
+            <div>
+              <slot name="modal-header"></slot>
             </div>
-            <div class="modal-body" tabindex="0" aria-label="${this.i18n.contentBox}" cds-layout="p-x:lg">
-              <slot></slot>
+            <div cds-layout="align:right">
+              <slot name="modal-header-actions"></slot>
             </div>
-            <div cds-layout="align-stretch p-x:lg p-b:lg">
-              <slot name="modal-actions"></slot>
-            </div>
+            <slot name="close-button"></slot>
           </div>
-          <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
+          <div class="modal-body" tabindex="0" aria-label="${this.i18n.contentBox}" cds-layout="p-x:lg">
+            <slot></slot>
+          </div>
+          <div cds-layout="align-stretch p-x:lg p-b:lg">
+            <slot name="modal-actions"></slot>
+          </div>
         </div>
+        <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
       </div>
     `;
   }

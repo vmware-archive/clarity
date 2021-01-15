@@ -6,12 +6,15 @@
 
 import '@cds/core/internal-components/overlay/register.js';
 import '@cds/core/button/register.js';
+import { ClarityMotion, AnimationHingeConfig, AnimationHingeName } from '@cds/core/internal';
 
 import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit-html';
 import customElements from '../../../dist/core/custom-elements.json';
 
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay/index.js';
+
+ClarityMotion.add(AnimationHingeName, AnimationHingeConfig);
 
 export default {
   title: 'Internal/APIs/Overlay/Stories',
@@ -47,7 +50,7 @@ export const API = (args: any) => {
 
     if (!initted) {
       myOverlay.addEventListener('closeChange', () => {
-        myOverlay.setAttribute('hidden', 'true');
+        myOverlay.setAttribute('hidden', '');
       });
       initted = true;
     }
@@ -85,7 +88,10 @@ export const interactive = () => {
 
     if (!initted) {
       myOverlay.addEventListener('closeChange', () => {
-        myOverlay.setAttribute('hidden', 'true');
+        myOverlay.setAttribute('hidden', '');
+      });
+      myOverlay.addEventListener('cdsMotionChange', (e: any) => {
+        console.log(e.detail);
       });
       initted = true;
     }
@@ -127,12 +133,12 @@ export const multiple = () => {
     if (!initted) {
       const parentOverlay = document.getElementById(multiOverlayId) as CdsInternalOverlay;
       parentOverlay.addEventListener('closeChange', () => {
-        parentOverlay.setAttribute('hidden', 'true');
+        parentOverlay.setAttribute('hidden', '');
       });
 
       const childOverlay = document.getElementById(multiChildOverlayId) as CdsInternalOverlay;
       childOverlay.addEventListener('closeChange', () => {
-        childOverlay.setAttribute('hidden', 'true');
+        childOverlay.setAttribute('hidden', '');
       });
 
       initted = true;
@@ -199,7 +205,7 @@ export const firstFocus = () => {
 
     if (!initted) {
       myOverlay.addEventListener('closeChange', () => {
-        myOverlay.setAttribute('hidden', 'true');
+        myOverlay.setAttribute('hidden', '');
       });
       initted = true;
     }
@@ -330,13 +336,13 @@ export const custom = () => {
       const whiteOverlay = document.getElementById(whiteOverlayId) as CdsInternalOverlay;
       whiteOverlay.shadowRoot.querySelector('.overlay-backdrop').classList.add('layered');
       whiteOverlay.addEventListener('closeChange', () => {
-        whiteOverlay.setAttribute('hidden', 'true');
+        whiteOverlay.setAttribute('hidden', '');
       });
 
       const orangeOverlay = document.getElementById(orangeOverlayId) as CdsInternalOverlay;
       orangeOverlay.shadowRoot.querySelector('.overlay-backdrop').classList.add('layered');
       orangeOverlay.addEventListener('closeChange', () => {
-        orangeOverlay.setAttribute('hidden', 'true');
+        orangeOverlay.setAttribute('hidden', '');
       });
 
       initted = true;
@@ -353,4 +359,92 @@ export const custom = () => {
       (getOverlayByColor(color) as CdsInternalOverlay).closeOverlay();
     });
   }
+};
+
+export const overrideAnimation = () => {
+  let initted = false;
+  const overlayId = 'overlay-motion-override';
+
+  function showOverrideOverlay() {
+    const myOverlay = document.getElementById(overlayId) as CdsInternalOverlay;
+    myOverlay.removeAttribute('hidden');
+
+    if (!initted) {
+      myOverlay.addEventListener('closeChange', () => {
+        myOverlay.setAttribute('hidden', '');
+      });
+      myOverlay.addEventListener('cdsMotionChange', (e: any) => {
+        console.log(e.detail);
+      });
+      initted = true;
+    }
+  }
+
+  function hideOverrideOverlay() {
+    const myOverlay = document.getElementById(overlayId) as CdsInternalOverlay;
+    myOverlay.closeOverlay();
+  }
+
+  return html` <style>
+      .my-overlay {
+        background: white;
+        border: 1px solid #565656;
+        width: 480px;
+        height: auto;
+      }
+    </style>
+    <cds-button status="primary" type="button" @click=${showOverrideOverlay}>Show Custom Exit</cds-button>
+    <cds-internal-overlay hidden id="${overlayId}" cds-motion='{ "hidden": { "true": "cds-modal-hinge-exit" } }'>
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+        <h1 cds-text="section">An overlay demo</h1>
+        <p cds-text="body">I am an overlay.</p>
+        <cds-button block status="danger" type="button" @click=${hideOverrideOverlay}>Close Overlay Demo</cds-button>
+      </div>
+    </cds-internal-overlay>`;
+};
+
+export const lowMotion = () => {
+  let initted = false;
+  const overlayId = 'overlay-low-motion';
+
+  function showLowMotionOverlay() {
+    const myOverlay = document.getElementById(overlayId) as CdsInternalOverlay;
+    myOverlay.removeAttribute('hidden');
+
+    if (!initted) {
+      myOverlay.addEventListener('closeChange', () => {
+        myOverlay.setAttribute('hidden', '');
+      });
+      myOverlay.addEventListener('cdsMotionChange', (e: any) => {
+        console.log(e.detail);
+      });
+      initted = true;
+    }
+  }
+
+  function hideLowMotionOverlay() {
+    const myOverlay = document.getElementById(overlayId) as CdsInternalOverlay;
+    myOverlay.closeOverlay();
+  }
+
+  return html` <style>
+      .my-overlay {
+        background: white;
+        border: 1px solid #565656;
+        width: 480px;
+        height: auto;
+      }
+    </style>
+    <div cds-theme="low-motion">
+      <cds-button status="primary" type="button" @click=${showLowMotionOverlay}>Show Low Motion</cds-button>
+      <cds-internal-overlay hidden id="${overlayId}" cds-motion="on">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+          <h1 cds-text="section">An overlay demo</h1>
+          <p cds-text="body">I am an overlay.</p>
+          <cds-button block status="danger" type="button" @click=${hideLowMotionOverlay}
+            >Close Low Motion Demo</cds-button
+          >
+        </div>
+      </cds-internal-overlay>
+    </div>`;
 };

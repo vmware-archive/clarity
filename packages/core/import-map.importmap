@@ -8,6 +8,7 @@
     "lit-html/lib/shady-render.js": "/base/node_modules/lit-html/lib/shady-render.js",
     "lit-html/directives/if-defined.js": "/base/node_modules/lit-html/directives/if-defined.js",
     "ramda/es/anyPass.js": "/base/node_modules/ramda/es/anyPass.js",
+    "ramda/es/clone.js": "/base/node_modules/ramda/es/clone.js",
     "ramda/es/equals.js": "/base/node_modules/ramda/es/equals.js",
     "ramda/es/isNil.js": "/base/node_modules/ramda/es/isNil.js",
     "ramda/es/includes.js": "/base/node_modules/ramda/es/includes.js",

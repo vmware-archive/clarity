@@ -17,7 +17,7 @@
   --font-size: #{$cds-global-typography-font-size-3};
   --color: #{$cds-global-typography-color-500};
   --line-height: #{$cds-global-space-9};
-  --transition: background-size 0.2s ease;
+  --transition: background-size #{$cds-global-animation-duration-quick} ease;
   display: block;
   width: 100%;
 }

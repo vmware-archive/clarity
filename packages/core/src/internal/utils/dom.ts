@@ -158,3 +158,11 @@ export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {
       spanWrapper.appendChild(node);
     });
 }
+
+export function queryChildFromLightOrShadowDom(hostEl: Element, selector?: string): Element | null {
+  if (!selector) {
+    return null;
+  }
+
+  return hostEl.querySelector(selector) || hostEl?.shadowRoot?.querySelector(selector) || null;
+}

@@ -1,0 +1,17 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './tokens/generated/index';
+
+[cds-theme~='low-motion'] {
+  --cds-global-animation-duration-instant: 0;
+  --cds-global-animation-duration-quickest: 0;
+  --cds-global-animation-duration-quicker: 0;
+  --cds-global-animation-duration-quick: 0;
+  --cds-global-animation-duration-secondary: 0;
+  --cds-global-animation-duration-primary: 0;
+  --cds-global-animation-duration-slow: 2s;
+  --cds-global-animation-duration-slower: 2s;
+  --cds-global-animation-duration-slowest: 2s;
+}

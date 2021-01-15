@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "./dist/core/global.min.css",
-      "maxSize": "7.8 kB",
+      "maxSize": "8 kB",
       "compression": "brotli"
     },
     {

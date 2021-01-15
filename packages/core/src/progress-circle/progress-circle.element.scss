@@ -5,6 +5,7 @@
   --ring-opacity: 1;
   --ring-color: #{$cds-alias-status-neutral-tint};
   --fill-color: #{$cds-alias-status-neutral};
+  --fill-speed: #{$cds-global-animation-duration-secondary};
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -29,7 +30,7 @@ svg {
 
   .arcstroke {
     stroke: var(--fill-color);
-    transition: stroke-dashoffset 300ms ease-in-out;
+    transition: stroke-dashoffset var(--fill-speed) #{$cds-global-animation-easing-loop};
   }
 }
 
@@ -61,7 +62,7 @@ svg {
 }
 
 :host(:not([value])) .progress-wrapper {
-  animation: spin 0.8s cubic-bezier(0.17, 0.4, 0.8, 0.79) infinite;
+  animation: spin #{$cds-global-animation-duration-slowest} #{$cds-global-animation-easing-loop} infinite;
 }
 
 :host([status='info']) {

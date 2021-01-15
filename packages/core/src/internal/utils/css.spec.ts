@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,6 +13,8 @@ import {
   removeClassnames,
   removeClassnamesUnless,
   updateElementStyles,
+  isCssPropertyName,
+  getCssPropertyValue,
 } from './css.js';
 
 describe('Css utility functions - ', () => {
@@ -95,6 +97,46 @@ describe('Css utility functions - ', () => {
   describe('pxToRem: ', () => {
     it('should convert px to rem values from base font size token', () => {
       expect(pxToRem(10)).toBe('0.5rem');
+    });
+  });
+
+  describe('isCssPropertyName: ', () => {
+    it('should work as expected', () => {
+      expect(isCssPropertyName('--color')).toBe(true);
+      expect(isCssPropertyName('--border-color')).toBe(true);
+      expect(isCssPropertyName('border-color')).toBe(false);
+    });
+    it('should handle falsy values', () => {
+      expect(isCssPropertyName('')).toBe(false);
+      expect(isCssPropertyName(null)).toBe(false);
+      expect(isCssPropertyName(void 0)).toBe(false);
+    });
+    it('should handle bad inputs', () => {
+      expect(isCssPropertyName(500)).toBe(false);
+      expect(isCssPropertyName([])).toBe(false);
+      expect(isCssPropertyName({})).toBe(false);
+    });
+  });
+
+  describe('getCssPropertyValue: ', () => {
+    it('should work as expected', async () => {
+      const el = await createTestElement(
+        html`<style>
+            .ohai {
+              --ohai: green;
+            }
+          </style>
+          <div class="ohai">ohai</div>`
+      );
+      expect(getCssPropertyValue('--ohai', el.querySelector('.ohai'))).toBe('green');
+      removeTestElement(el);
+    });
+    it('should handle falsy values', () => {
+      const newStyle = document.createElement('style');
+      document.head.appendChild(newStyle);
+      newStyle.innerHTML = ':root { --ohai: green; }';
+      expect(getCssPropertyValue('--ohai')).toBe('green');
+      document.head.removeChild(newStyle);
     });
   });
 });

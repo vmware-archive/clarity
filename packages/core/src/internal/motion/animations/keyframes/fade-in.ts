@@ -3,8 +3,5 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { getCssPropertyValue } from '../utils/css.js';
 
-export function getElementLanguageDirection(element: HTMLElement) {
-  return getCssPropertyValue('direction', element);
-}
+export const fadeInKeyframes = [{ opacity: 0 }, { opacity: 1 }];

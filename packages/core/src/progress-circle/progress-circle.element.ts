@@ -33,6 +33,7 @@ import { styles } from './progress-circle.element.css.js';
  * @cssprop --ring-color
  * @cssprop --ring-opacity
  * @cssprop --fill-color
+ * @cssprop --fill-speed
  */
 export class CdsProgressCircle extends LitElement {
   private _size: string;

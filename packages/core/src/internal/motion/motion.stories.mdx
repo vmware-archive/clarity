@@ -1,0 +1,468 @@
+import '@cds/core/alert/register.js';
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Internal/APIs/Motion/Getting Started" />
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API.</cds-alert>
+</cds-alert-group>
+
+# Motion
+
+Clarity Motion provides a configurable animation API that can be used to manage animated transitions based on changes in a component's property values.
+
+Clarity Motion is customizable at several levels:
+
+#### Through the @animate decorator
+
+- New animation configurations can be added to the Clarity Motion registry and triggered from components with the `@animate()` decorator
+- Animated components can be extended and their `@animate()` definition can be replaced with new animations or new property triggers
+
+#### Through the ClarityMotion service
+
+- Animations can be overridden globally by replacing them in the Clarity Motion registry
+
+#### Through custom properties
+
+- Animation easing and duration can be configured on existing Clarity Core components through CSS custom properties like `--animation-easing` and `--animation-duration`
+- A component's animation can also be disabled by setting a component's `--animation-duration` custom property to "0" or "0s"
+
+#### Through the cds-motion attribute
+
+- Animations for a component can be disabled by setting a component's `cds-motion` attribute to "off"
+- Animations for a single component can be overridden by passing an animation configuration as a string through the `cds-motion` attribute
+
+## Installation
+
+To animate a component with ClarityMotion, import the `animate` decorator and `Animatable` interface in your JavaScript. The `Animatable` interface will require the animated component to have a `cdsMotion` property and `motionChange` event emitter.
+
+```typescript
+// custom-animated-component/custom-animated-component.element.ts
+
+import {
+  Animatable,
+  animate,
+  event,
+  property,
+  ...
+} from '@cds/core/internal';
+import { LitElement } from 'lit-element';
+
+@animate({
+  isValid: {
+    false: 'shake-me'
+  },
+})
+export class CustomAnimatedComponent extends LitElement implements Animatable {
+  @property({ type: String })
+  cdsMotion = 'on';
+
+  @event()
+  motionChange: EventEmitter<string>;
+
+  @property({ type: Boolean })
+  isValid = true;
+
+  ...
+}
+
+```
+
+Import the `ClarityMotion` service to the file you will use to register your component and add any animations you plan to use to the ClarityMotion service.
+
+```typescript
+// custom-animated-component/register.ts
+
+import { ClarityMotion, AnimationShakeConfig, registerElementSafely } from '@cds/core/internal';
+import { CustomAnimatedComponent } from './custom-animated-component.element.js';
+
+ClarityMotion.add('shake-me', AnimationShakeConfig);
+
+registerElementSafely('custom-animated-component', CustomAnimatedComponent);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'custom-animated-component': CustomAnimatedComponent;
+  }
+}
+```
+
+Animations can be disabled by setting the cds-motion attribute to "off" in the HTML.
+
+```html
+<custom-animated-component cds-motion="on"></custom-animated-component>
+<custom-animated-component cds-motion="off"></custom-animated-component>
+```
+
+## An Animated Component
+
+The `@animate()` decorator is passed an object that defines which values on which properties will trigger an animation. In the following example, we see an overlay which has been told to do an entrance and exit animation when the `hidden` property is set to `true` or `false`.
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--interactive" />
+</Preview>
+
+## Property-Driven Animations
+
+Saying an animation is _property-driven_ means that the thing which makes the animation execute is a change in the value of a property that is defined on a component. This can be limited to specific values like animating on the `status` property only when its value is set to `"error"`.
+
+```typescript
+// custom-animated-component/custom-animated-component.element.ts
+
+import {
+  Animatable,
+  animate,
+  event,
+  property,
+  ...
+} from '@cds/core/internal';
+import { LitElement } from 'lit-element';
+
+/**
+ * The @animate() decorator expects a 'property-driven' animation. This is the
+ * basic format it is looking for:
+ * @animate({
+ *   // the property name goes here
+ *   propertyName: {
+ *     // any value can be used as an object key; the value associated with it
+ *     // must be an animation loaded into ClarityMotion. If not, then no
+ *     // animation will run.
+ *     "property-value": "name-of-animation-config-loaded-into-clarity-motion"
+ *   },
+ *   // multiple properties can be defined
+ *   anotherPropertyName: {
+ *      // and properties can be boolean too!
+ *      true: "name-of-another-animation",
+ *      false: "name-of-yet-another-animation"
+ *   }
+ * })
+ */
+@animate({
+  isValid: {
+    false: 'shake-me'
+  },
+})
+export class CustomAnimatedComponent extends LitElement implements Animatable {
+  @property({ type: Boolean })
+  isValid = true; // This is the property that will trigger the shake animation
+
+  ...
+}
+
+```
+
+### Reversing an Animation
+
+Animations in the `ClarityMotion` service can be _reversed_ by adding `-reverse` to the end of their name in the `@animate()` decorator. This is an easy way to create entrance and exit animation with only one animation configuration.
+
+We can see an example of this in the Clarity Core modal:
+
+```typescript
+// @cds/core/modal/modal.element.ts
+
+@animate({
+  hidden: {
+    true: reverseAnimation(AnimationModalEnterName),
+    false: AnimationModalEnterName,
+  },
+})
+
+```
+
+...which is equivalent to...
+
+```typescript
+// @cds/core/modal/modal.element.ts
+
+@animate({
+  hidden: {
+    true: "modal-enter-reverse",
+    false: "modal-enter",
+  },
+})
+
+```
+
+### Caveats to animating components
+
+Animating components with the `@animate()` decorator requires an object with a set of properties and property values assigned to the names of animations that have been added to the ClarityMotion service. That said, there are a couple of constraints related to class inheritance and CSS that may or may not apply to a component's use case.
+
+#### Animate decorators are not inherited
+
+Subclasses of animated components _do not inherit_ their super-class' animations. This is due to how decorators work today. Animations are added to class instances when they are created.
+
+This means that you will need to define the `@animate()` decorator – perhaps an exact copy of it – if you are extending an animated component. The Clarity Core modal extends the overlay component in just this way.
+
+This only applies when extending a component that is animated with the `@animate()` directive.
+
+#### Start and end states may need CSS
+
+In `overlay.element.scss` and `accordion-panel.element.scss`, you will see a few lines of CSS related to hiding or showing the animated component or some part of it.
+
+This is needed because you may find the component gets in an odd state before or after an animation has run. You may see it flash on or off the screen and then the animation takes place. This means you may need some supplemental CSS to support the active, beginning, or end states of the animation.
+
+```scss
+// @cds/core/internal-components/overlay/overlay.element.scss
+
+// animation related styles
+
+:host([cds-motion][_cds-animation-status='active']) {
+  display: inline-flex !important;
+}
+```
+
+Here the `_cds-animation-status` attribute is added and managed by Clarity Motion. The possible values for `_cds-animation-status` are "start", "active", "end", and "ready" in the order in which they are set.
+
+- A component that has animations but is in a non-animated state is set to "ready".
+
+This kind of CSS is most often needed for components that hide/show or expand/collapse. A component that, say, shakes when a form inside it becomes invalid would not need extra CSS.
+
+It's also possible for this CSS to be inherited by a subclass. This means that you may need to override these styles if you are extending an existing, animated component with a new animation and using its styles as part of your subclass.
+
+## Creating Your Own Animations
+
+To bring components to life with Clarity Motion, two types of objects are required:
+
+- **A property-driven animation definition**: This is what is passed to the `@animate()` decorator we covered before.
+- **A (targeted) animation configuration**: This is what is added to `ClarityMotion` and assigned a name. It is also what `ClarityMotion` retrieves when you ask it to `ClarityMotion.get()` an animation.
+
+### Property-Driven Animation Definition
+
+Property-driven animations consist of an object with the names of component properties as keys. Their values are another object with potential values of that property as a keys. Names of animations in `ClarityMotion` are assigned to those "value keys".
+
+Animations only run if a component property is changed to a listed value. If you only define a "wiggle" animation for the `true` value of an `isComplete` property, it will only run when the component's `isComplete` property is set to `true`. No animation will run if the `isComplete` property is set to `false` or any other value.
+
+The types of values that could trigger an animation from a component property include strings, numbers, and booleans.
+
+Only properties assigned to a LitElement component will trigger animations.
+
+### Animation Configs
+
+Animation configurations are stored in `ClarityMotion` and associated with a name so that components can retrieve them. On their own, animation configurations are standard [Web Animation API configurations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API) with a few new enhancements.
+
+- **target**: Clarity Motion animation configs can be assigned a CSS selector through the `target` property. If the selector matches an element in the component's Shadow DOM or Light DOM, the animation will be applied to the matched element. If no selector is defined or an element is not found, the animation will run on the component itself.
+- **onlyIf**: Clarity Motion animation configs can be ignored if the property/value pair defined in the `onlyIf` property is true. The format of this property value syntax is `<propertyName>:<value>`. If a component animation has `onlyIf` defined as `isValid:false`, then the animation will only run on a component where the `isValid` property is `false`. `onlyIf` can take multiple property/value pairs separated by a space as in the following example: `status:error isEdited:true`. In that case, the animation would only run on a component with a `status` of "error" and an `isEdited` property that is `true`.
+- **duration** and **easing**: Clarity Motion animation configs follow the Web Animations API standard but extend it in a couple of useful ways. One way is allowing the `duration` and `easing` properties of a Web Animation's `options` config to take CSS custom property names in addition to the normal string values (for easing) and time in milliseconds (for duration). The normal values still work as expected. If the component cannot find a computed value for a CSS custom property in `duration` or `easing`, it falls back to 300 ms and "linear" respectively.
+- **dimensions based on a child element**: One more extension Clarity Motion has added to the Web Animations API is allowing a CSS selector to be passed into a `width` or `height` property of an array of keyframe objects. The format of this selector should be `from:<selector>` as in `from:.my-child-element-classname` or `from:[my-attribute-selector]`. If the selector matches an element in the component's light or shadow DOM, the animation will derive its width or height from that child element's width or height. This feature is useful for animations that expand or collapse a component because they can read the dimensions of the child for which the component is expanding.
+
+Here is an example using all four extensions to the Web Animations API:
+
+```typescript
+import { ClarityMotion, TargetedAnimation } from '@cds/core/internal`;
+
+const PanelOpener: TargetedAnimation[] = [
+  {
+    target: '.panel-content',
+    onlyIf: 'isDisabled:false',
+    animation: [
+      { opacity: 0, width: '0' },
+      { opacity: 1, width: 'from:[my-panel-sizer]' },
+    ],
+    options: {
+      duration: '--animation-duration',
+      easing: '--animation-easing',
+      fill: 'forwards',
+    },
+  },
+];
+
+ClarityMotion.add('open-panel', PanelOpener);
+```
+
+## Customizing Animations
+
+Clarity Motion is a versatile framework for adding animated transitions to LitElement-based components. Levels of customization can vary based on a product's use cases and requirements. Clarity Motion supports this by offering five ways to customize property-driven animations on a component.
+
+This variety of customization points is designed to support product teams at all levels — from simply speeding up or slowing down an animation to introducing complex or unique animations unrelated to anything that exists in Clarity.
+
+The five pathways for customizing Clarity Motion are:
+
+- Overriding an animation value in the Clarity Motion registry
+- Assigning animations to a component by subclassing an existing component
+- Overriding a component animation with an inline override
+- Customizing the timing or easing of an animation with CSS custom properties
+- Customizing the timing or easing of all animations with a theme
+
+### Override Animation Definition in Clarity Motion
+
+An animation in the Clarity Motion registry can be overridden anywhere in your application where you would add an icon to Clarity Core or add a new animation to Clarity Motion.
+
+The steps for doing so involve assigning a new _animation configuration_ object (see above) to a known key in the Clarity Motion registry.
+
+```typescript
+import { AnimationModalEnterName, ClarityMotion, TargetedAnimation } from '@cds/core/internal';
+
+const newModalEnterAnimation: TargetedAnimation[] = [
+  {
+    target: '.overlay-backdrop',
+    onlyIf: 'isLayered:false',
+    animation: [{ opacity: 0 }, { opacity: 1 }],
+    options: {
+      duration: '--animation-duration',
+      easing: '--animation-easing',
+      fill: 'forwards',
+    },
+  },
+  {
+    target: '.private-host',
+    animation: [
+      { opacity: 0, transform: 'translateX(-30rem)' },
+      { opacity: 1, transform: 'translateX(0)' },
+    ],
+    options: {
+      duration: '--animation-duration',
+      easing: '--animation-easing',
+      fill: 'forwards',
+    },
+  },
+];
+
+// "re-adding" an animation by assigning a new configuration to a known name
+// will override that value in Clarity Motion
+ClarityMotion.add(AnimationModalEnterName, newModalEnterAnimation);
+```
+
+In the example above, we have created a new animation configuration that will slide in a modal from the left. We have then taken our custom animation and overridden the default modal entrance with it.
+
+As a result:
+
+- All modals in this application will now slide in from the left.
+- Because the modal reverses its entrance animation when exiting, all modals will now exit by sliding out to the left.
+
+#### Caveats to overriding named animations
+
+- This approach overrides animations across an entire application.
+- We must be mindful where we override Clarity Motion so that the override remains consistent across the product's UI.
+- This approach requires a deep understanding of Animation Configuration objects. This includes familiarity with the Web Animations API and the extensions listed above that have been added by Clarity.
+
+### Assign new animation through subclassing
+
+If a product needs to override an animation but not globally, it may be a better to subclass a component. This gives a product team full control over the animations that apply to that component without running the risk of disrupting similar components in other areas of the UI.
+
+In the example above that shows how to import and apply the `@animate` decorator, we show an example of creating a new component that uses Clarity Motion. Extending an existing Clarity Core component, yet overriding the animations, follows a similar path.
+
+First, extend the Clarity component to create your own. Then apply your animations through the `@animate` decorator. Note that animations defined in the `@animate` decorator are not inherited. The only animations that will apply to your subclass are the ones defined here.
+
+In the next example, we have extended the modal so that it will slide in and out from the left side of the screen.
+
+```typescript
+// custom-sliding-modal/custom-sliding-modal.element.ts
+
+import {
+  Animatable,
+  animate,
+  event,
+  property
+} from '@cds/core/internal';
+import { CdsModal } from '@cds/core/modal';
+
+@animate({
+  hidden: {
+    true: 'modal-slide-left-reverse',
+    false: 'modal-slide-left',
+  },
+})
+export class CustomSlidingModal extends CdsModal implements Animatable {
+  @property({ type: String })
+  cdsMotion = 'on';
+
+  @event()
+  motionChange: EventEmitter<string>;
+
+  ...
+}
+```
+
+In the following example, we are defining our custom animation in the same file where we register our custom component. This allows us to manage the side effects of assigning a new animation to the `ClarityMotion` service and registering a new component in one file.
+
+```typescript
+// custom-sliding-modal/register.ts
+
+import { ClarityMotion, TargetedAnimation, registerElementSafely } from '@cds/core/internal';
+import { CustomSlidingModal } from './custom-sliding-modal.element.js';
+
+const newModalEnterAnimation: TargetedAnimation[] = [
+  {
+    target: '.overlay-backdrop',
+    onlyIf: 'isLayered:false',
+    animation: [{ opacity: 0 }, { opacity: 1 }],
+    options: {
+      duration: '--animation-duration',
+      easing: '--animation-easing',
+      fill: 'forwards',
+    },
+  },
+  {
+    target: '.private-host',
+    animation: [
+      { opacity: 0, transform: 'translateX(-30rem)' },
+      { opacity: 1, transform: 'translateX(0)' },
+    ],
+    options: {
+      duration: '--animation-duration',
+      easing: '--animation-easing',
+      fill: 'forwards',
+    },
+  },
+];
+
+ClarityMotion.add('modal-slide-left', newModalEnterAnimation);
+
+registerElementSafely('custom-sliding-modal', CustomSlidingModal);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'custom-sliding-modal': CustomSlidingModal;
+  }
+}
+```
+
+#### Caveats to extending components to apply custom animations
+
+- This offers the most control and flexibility of all the customization options.
+- This approach requires the greatest depth of understanding of both animations and Clarity components.
+
+### Assign new animation through inline override
+
+If a use case requires customizing an animation in a single instance or under very specific circumstances, an application can override any property animation in a component's `@animate` decorator with any animation that has been defined in Clarity Motion by using an _inline override_.
+
+An inline override allows a product to specify part of a property-driven animation object like the object passed into the `@animate` decorator. This is passed into the `cds-motion` attribute as a string. But is then interpreted to override defined property animations on the component.
+
+In the next example, we have replaced an overlay's exit animation so that it falls through the bottom of the screen instead of sliding up:
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--override-animation" />
+</Preview>
+
+#### Caveats to inline overrides
+
+- Inline overrides are the most convenient customization path. They require very little knowledge of the inner workings of Clarity Motion.
+- An inline override can only override a property-driven animation that has already been defined in the component's `@animate` decorator. An inline override cannot be used to add new animations to a component.
+- The only valid values for this object override string are strings for the keys and strings for the values. The code that manages this override will not allow any other values through.
+
+### Customize existing animations through CSS custom properties
+
+Components in Clarity Core that use Clarity Motion have CSS custom properties that allow you to speed up, slow down, or adjust the easing of a component's animation so that it is snappier or looks more natural.
+
+Because these are CSS custom properties used within the components, overriding them is straightforward and easy to isolate to just a few components if you need to.
+
+Animated Clarity Core components have `--animation-duration` and `--animation-easing` custom properties. These can be overridden in CSS just like any other custom property.
+
+#### Caveats to overriding component CSS custom properties
+
+- Make sure the component has the custom property you want to override by looking at the component's API documentation.
+- This customization can be applied to any component that matches a corresponding CSS selector. This makes it a useful and flexible way to customize components. But make sure that the selector you use falls where you need it to in the CSS cascade.
+
+### Customize global animation settings via theming
+
+Global overrides are useful when a product needs to change timing or easing for all components in an application. Overriding the global animation tokens can be done through theming or just through CSS. But here we are just demonstrating theming with the Clarity Core "low-motion" theme.
+
+<Preview>
+  <Story id="internal-apis-overlay-stories--low-motion" />
+</Preview>
+
+#### Caveats to overriding animation tokens
+
+- Check the documentation on design tokens to get a sense of what tokens are available.
+- Modifying duration or easing at a theme level could change all Clarity Core components that use those tokens. This may have unintended consequences. Make sure you have a good understanding of where an animation token is being used and where your override will apply.

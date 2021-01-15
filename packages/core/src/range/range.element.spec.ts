@@ -6,6 +6,7 @@
 
 import { html } from 'lit-html';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
+import { getCssPropertyValue } from '@cds/core/internal';
 import { CdsRange } from '@cds/core/range';
 import '@cds/core/range/register.js';
 
@@ -36,7 +37,7 @@ describe('cds-range', () => {
 
   it('should set the track width style', async () => {
     await componentIsStable(component);
-    expect(getComputedStyle(component).getPropertyValue('--track-width')).toBe('50%');
+    expect(getCssPropertyValue('--track-width', component)).toBe('50%');
 
     component.inputControl.min = '1';
     component.inputControl.max = '10';
@@ -44,6 +45,6 @@ describe('cds-range', () => {
     component.inputControl.dispatchEvent(new Event('input'));
 
     await componentIsStable(component);
-    expect(getComputedStyle(component).getPropertyValue('--track-width')).toBe('77%');
+    expect(getCssPropertyValue('--track-width', component)).toBe('77%');
   });
 });

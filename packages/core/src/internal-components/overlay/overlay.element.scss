@@ -2,9 +2,11 @@
 @import './../../styles/mixins/mixins';
 
 :host {
-  // TODO: backdrop appearing needs transitions; what should they be?
   --backdrop-background: #{$cds-alias-object-overlay-backdrop-background};
   --layered-backdrop-background: #{$cds-alias-object-opacity-0};
+  // these CSS custom properties are read the Clarity animation
+  --animation-duration: #{$cds-global-animation-duration-primary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
 
   position: fixed;
   top: 0;
@@ -36,10 +38,21 @@
 
 :host([_demo-mode]) {
   position: absolute;
+  z-index: 100000;
 
   .overlay-backdrop {
     // we need this here because safari doesn't understand what to do with
     // position: fixed inside of a constrained demo box...
     position: absolute;
   }
+}
+
+// animation related styles
+
+:host([cds-motion][_cds-animation-status='active']) {
+  display: inline-flex !important;
+}
+
+:host([hidden]) {
+  --animation-duration: #{$cds-global-animation-duration-secondary};
 }

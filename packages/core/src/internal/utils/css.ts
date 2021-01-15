@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { LogService } from '../services/log.service.js';
+import { isString } from './identity.js';
 
 export function hasClassnames(el: HTMLElement, ...classNames: string[]) {
   return classNames.filter((cn: string) => el.classList.contains(cn)).length === classNames.length;
@@ -39,9 +41,24 @@ export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, st
 }
 
 export function pxToRem(pxValue: number) {
-  const baseProp = window
-    .getComputedStyle(document.body, null)
-    .getPropertyValue('--cds-global-typography-base-font-size');
+  const baseProp = getCssPropertyValue('--cds-global-typography-base-font-size');
   const baseFontSize = (16 * parseInt(baseProp !== '' ? baseProp : '100%')) / 100;
   return `${pxValue / baseFontSize}rem`;
+}
+
+export function getCssPropertyValue(
+  propertyName: string,
+  el: Element = document.body,
+  pseudoSelectorModifier: string | null = null
+) {
+  try {
+    return getComputedStyle(el, pseudoSelectorModifier).getPropertyValue(propertyName).trim();
+  } catch (e) {
+    LogService.warn('Container element passed to getCustomPropertyValue must be an element.');
+    return '';
+  }
+}
+
+export function isCssPropertyName(str: any): boolean {
+  return !!str && isString(str) && str.slice(0, 2) === '--';
 }

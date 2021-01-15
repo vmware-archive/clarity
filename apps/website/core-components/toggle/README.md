@@ -51,40 +51,85 @@ Use a <a href="../checkbox">checkbox</a> for Yes or No choices.
 
 :::
 
-<DocIndent>
-<div cds-layout="vertical gap:lg">
-    <cds-toggle>
-        <label>Enabled, unselected</label>
-        <input type="checkbox" />
-        <cds-control-message>Helper message</cds-control-message>
-    </cds-toggle>
-    <cds-toggle>
-        <label>Enabled, selected</label>
-        <input type="checkbox" checked />
-        <cds-control-message>Helper message</cds-control-message>
-    </cds-toggle>
-    <cds-toggle>
-        <label>Disabled, unselected</label>
-        <input type="checkbox" disabled />
-        <cds-control-message>Disabled message</cds-control-message>
-    </cds-toggle>
-          <cds-toggle>
-        <label>Disabled, selected</label>
-        <input type="checkbox" disabled checked />
-        <cds-control-message>Disabled message</cds-control-message>
-    </cds-toggle>
-    <cds-toggle status="error">
-        <label>error</label>
-        <input type="checkbox" />
-        <cds-control-message status="error">Error message</cds-control-message>
-    </cds-toggle>
-    <cds-toggle status="success">
-        <label>success</label>
-        <input type="checkbox" />
-        <cds-control-message status="success">Success message</cds-control-message>
-    </cds-toggle>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/toggle/enabled.html)!!!
 </div>
-</DocIndent>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive and ready for input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/toggle/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/toggle/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/toggle/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -94,7 +139,7 @@ Use a <a href="../checkbox">checkbox</a> for Yes or No choices.
 
 ::: component-section-level-one
 
-Toggle is available in vertical, vertical inline, horizontal, horizontal inline, and compact layout. The align options for Toggle are useful for creating continuity with other UI elements that are related to the toggle selection. See more layout guidelines on the form page. [form page](/web-components/form/).
+Toggle is available in vertical, vertical inline, horizontal, horizontal inline, and compact layout. The align options for Toggle are useful for creating continuity with other UI elements that are related to the toggle selection. See more layout guidelines on the form page. [form page](/core-components/form/).
 
 :::
 

@@ -29,32 +29,105 @@ When setting a password, display the password requirement in the helper text to 
 
 :::
 
-<DocIndent>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
 <div>
-    <cds-form-group layout="horizontal">
-    <cds-password layout="horizontal">
-        <label>Default</label>
-        <input type="password" value="123456" />
-        <cds-control-message>Helper message</cds-control-message>
-    </cds-password>
-    <cds-password layout="horizontal">
-        <label>Disabled</label>
-        <input type="password" value="123456" disabled />
-        <cds-control-message>Disabled message</cds-control-message>
-    </cds-password>
-    <cds-password layout="horizontal" status="error">
-        <label>Error</label>
-        <input type="password" value="123456" />
-        <cds-control-message status="error">Error message</cds-control-message>
-    </cds-password>
-    <cds-password layout="horizontal" status="success">
-        <label>Success</label>
-        <input type="password" value="123456" />
-        <cds-control-message status="success">Success message</cds-control-message>
-    </cds-password>
-    </cds-form-group>
+!!!include(.vuepress/code/core-usage-demos/password/enabled.html)!!!
 </div>
-</DocIndent>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive and ready for input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/active.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Active
+
+Use when selected by a user with an input method, such as mouse or keyboard.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/password/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -64,7 +137,7 @@ When setting a password, display the password requirement in the helper text to 
 
 ::: component-section-level-one
 
-Passwords are available in vertical, horizontal, and compact layout. Vertical Password layouts can have improved usability in addition to the general guidelines when the message text is used to display requirements. See more layout guidelines on the [form page](/web-components/form/).
+Passwords are available in vertical, horizontal, and compact layout. Vertical Password layouts can have improved usability in addition to the general guidelines when the message text is used to display requirements. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

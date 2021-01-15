@@ -277,13 +277,11 @@ All three states (loading, error, and success) prevent further execution of the 
 
 :::
 
-<DocIndent>
-<div cds-layout="horizontal gap:sm">
+<div cds-layout="horizontal gap:sm m-y:md">
     <cds-button loading-state="loading">default</cds-button>
     <cds-button loading-state="success">default</cds-button>
     <cds-button loading-state="error">default</cds-button>
 </div>
-</DocIndent>
 
 ::: component-section-level-two-title
 
@@ -297,6 +295,4 @@ Buttons may be disabled to indicate to a user that the call-to-action is unavail
 
 :::
 
-<DocIndent>
-<cds-button disabled>a disabled button</cds-button>
-</DocIndent>
+<cds-button cds-layout="m-y:md" disabled>a disabled button</cds-button>

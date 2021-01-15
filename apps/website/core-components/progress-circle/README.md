@@ -35,14 +35,12 @@ Progress circles are compact and can indicate progress in areas that cannot acco
 
 :::
 
-<DocIndent>
-<div cds-layout="gap:md horizontal">
+<div cds-layout="gap:md horizontal m-y:md">
     <cds-progress-circle size="xl" value="23"></cds-progress-circle>
     <cds-progress-circle size="xl" value="48"></cds-progress-circle>
     <cds-progress-circle size="xl" value="82"></cds-progress-circle>
     <cds-progress-circle size="xl" value="100"></cds-progress-circle>
 </div>
-</DocIndent>
 
 ::: component-section-level-one-title
 
@@ -56,11 +54,9 @@ In its **indeterminate** state, the progress circle functions as a "spinner" whi
 
 :::
 
-<DocIndent>
-<div cds-layout="gap:md horizontal">
+<div cds-layout="gap:md horizontal m-y:md">
     <cds-progress-circle size="xl"></cds-progress-circle>
 </div>
-</DocIndent>
 
 ::: component-section-level-one-title
 

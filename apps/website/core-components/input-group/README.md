@@ -17,87 +17,139 @@ An input-group combines closely related input controls into a single visual cont
 
 ::: component-section-level-one
 
-Use an input group when there are multiple, related text inputs that a user needs to provide input into.
+Use an input group when the user needs to submit complex information comprised of separate components such as a location consisting of a prefix such as: ftp / http / https, a domain, and a suffix. An input group provides a way for the user to supply these connceted pieces of information while treating them as one.
 
-Common examples include:
-
-- protocol + url
-- currency + amount
-- date + time
+Input groups may use any textual input controls including input, select, datalist, and date picker.
 
 :::
 
 ::: component-section-level-one-title
 
-## Helper and validation messages
+## Behavior
 
 :::
 
 ::: component-section-level-one
 
-There are three types of help and validation messages: info, error and success. See the [helper and validation](../form/#helper-and-validation-messages) section in forms for more information.
+An input group can behave in all the ways a standard single input will. It may be configured to validate its contents while the use if supplying the input, on blur or eneter, or it may be used a part of a form and included in the forms validation and submission process.
 
 :::
+
+</div>
 
 ::: component-section-level-one-title
 
-## Examples
+## States
 
 :::
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
 ::: component-section-level-two-title
 
-### Complex Groups
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/enabled.html)!!!
+</div>
 
 :::
 
-:::component-section-level-two
+::: component-section-level-two
 
-Complext groups often two or more inputs that need to be combined to look like a single unified field. Use them to group input control togehter in the same context for things like date and time or currency and value.
+### Enabled
 
-<DocIndent>
-<doc-demo>
-!!!include(.vuepress/code/core-usage-demos/input-group/complex.html)!!!
-</doc-demo>
-</DocIndent>
+Use when interactive and ready for input.
 
 :::
 
-:::component-section-level-two-title
+</div>
 
-### Status
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
-:::
+::: component-section-level-two-title
 
-:::component-section-level-two
-
-The input-group can show all of the status and helper text states for the controls inside.
-
-<DocIndent>
-<doc-demo>
-!!!include(.vuepress/code/core-usage-demos/input-group/status.html)!!!
-</doc-demo>
-</DocIndent>
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/active.html)!!!
+</div>
 
 :::
 
-:::component-section-level-two-title
+</div>
 
-### Control actions - buttons & icons
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two
+
+### Active
+
+Use when selected by a user with an input method, such as mouse or keyboard.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/disabled.html)!!!
+</div>
 
 :::
 
-:::component-section-level-two
+</div>
 
-Use `cds-control-action` to place a button that facilitates the user in completing the data input process. Common problems this solves for users is clearing an input or opening a dialog that will offer them a choice to populate the input control. Or, for password fields offering both a clear and a hide/show button helps the user complete the input accurately.
+<div class="component-section-horizontal" cds-layout="m-t:md">
 
-<DocIndent>
-<doc-demo>
-!!!include(.vuepress/code/core-usage-demos/input-group/control-actions.html)!!!
-</doc-demo>
-</DocIndent>
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
 
 :::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/input-group/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -107,7 +159,7 @@ Use `cds-control-action` to place a button that facilitates the user in completi
 
 ::: component-section-level-one
 
-Input groups only provide a horizontal layout because their content has linear continuity. See more layout guidelines on the [form page](/web-components/form/).
+Input groups only provide a horizontal layout because their content has linear continuity. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

@@ -1,0 +1,25 @@
+<div cds-layout="p-r:md">
+  <cds-input-group control-width="shrink" responsive>
+    <label>Domain</label>
+    <cds-select>
+      <label>Protocol</label>
+      <select>
+        <option>http://</option>
+        <option>https://</option>
+      </select>
+    </cds-select>
+    <cds-input style="max-width: 3rem;">
+      <label>Domain name</label>
+      <input placeholder="name" type="text" value="clarity" />
+    </cds-input>
+    <cds-select>
+      <label>tld</label>
+      <select>
+        <option>.dev</option>
+        <option>.com</option>
+        <option>.net</option>
+      </select>
+    </cds-select>
+    <cds-control-message status="error">Unreachable domain</cds-control-message>
+  </cds-input-group>
+</div>

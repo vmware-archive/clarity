@@ -27,32 +27,105 @@ Use a time input when user is expected to enter a time (hours and minutes, and o
 
 :::
 
-<DocIndent>
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
 <div>
-    <cds-form-group layout="horizontal">
-      <cds-time layout="horizontal">
-        <label>Default</label>
-        <input type="time" />
-        <cds-control-message>Helper message</cds-control-message>
-      </cds-time>
-      <cds-time layout="horizontal">
-        <label>Disabled</label>
-        <input type="time" disabled />
-        <cds-control-message>Disabled message</cds-control-message>
-      </cds-time>
-      <cds-time layout="horizontal" status="error">
-        <label>Error</label>
-        <input type="time" />
-        <cds-control-message status="error">Error message</cds-control-message>
-      </cds-time>
-      <cds-time layout="horizontal" status="success">
-        <label>Success</label>
-        <input type="time" />
-        <cds-control-message status="success">Success message</cds-control-message>
-      </cds-time>
-    </cds-form-group>
+!!!include(.vuepress/code/core-usage-demos/time/enabled.html)!!!
 </div>
-</DocIndent>
+
+:::
+
+::: component-section-level-two
+
+### Enabled
+
+Use when interactive and ready for input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/active.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Active
+
+Use when selected by a user with an input method, such as mouse or keyboard.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/disabled.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Disabled
+
+Use when not interactive. For example, when a user does not have permissions to edit the input.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/error.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Error
+
+Use to communicate a user or system error. This validation can happen when the user moves away from the input or after attempting to submit a form. For example, invalid input or username already taken.
+
+:::
+
+</div>
+
+<div class="component-section-horizontal" cds-layout="m-t:md">
+
+::: component-section-level-two-title
+
+<div>
+!!!include(.vuepress/code/core-usage-demos/time/success.html)!!!
+</div>
+
+:::
+
+::: component-section-level-two
+
+### Success
+
+Use to provide real-time feedback immediately after a user’s input. For example, username available.
+
+:::
+
+</div>
 
 ::: component-section-level-one-title
 
@@ -62,7 +135,7 @@ Use a time input when user is expected to enter a time (hours and minutes, and o
 
 ::: component-section-level-one
 
-Time picker is available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/web-components/form/).
+Time picker is available in vertical, horizontal, and compact layout. See more layout guidelines on the [form page](/core-components/form/).
 
 :::
 

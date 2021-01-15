@@ -45,14 +45,12 @@ Use an unordered list when the order does not matter.
 
 :::
 
-<DocIndent>
-<ul cds-list>
+<ul cds-list cds-layout="m-y:md">
     <li>Chicken Breast</li>
     <li>Flour</li>
     <li>Garlic</li>
     <li>Honey</li>
 </ul>
-</DocIndent>
 
 ::: component-section-level-three-title
 
@@ -66,14 +64,12 @@ Use an ordered list when you need to convey a priority, hierarchy, or sequence b
 
 :::
 
-<DocIndent>
-<ol cds-list>
+<ol cds-list cds-layout="m-y:md">
     <li>Split chicken breast in half</li>
     <li>Dust chicken with flour</li>
     <li>Sear chicken, add butter, garlic, vinegar, soy sauce, honey</li>
     <li>Simmer until the sauce thickens</li>
 </ol>
-</DocIndent>
 
 ::: component-section-level-three-title
 
@@ -87,14 +83,12 @@ Use an unstyled list when styling is unecessary to improve comprehension or hier
 
 :::
 
-<DocIndent>
-<ul cds-list>
+<ul cds-list cds-layout="m-y:md">
     <li>Calories: 323 cal</li>
     <li>Carbohydrates: 23g</li>
     <li>Protein: 28g</li>
     <li>Fat: 13g</li>
 </ul>
-</DocIndent>
 
 ::: component-section-level-three-title
 
@@ -108,8 +102,7 @@ You can also mix and match list styles based on your use cases.
 
 :::
 
-<DocIndent>
-<ul cds-list>
+<ul cds-list cds-layout="m-y:md">
     <li>Gluten free</li>
     <li>Soy sauce</li>
     <li>Other proteins
@@ -121,7 +114,6 @@ You can also mix and match list styles based on your use cases.
     </li>
     <li>Nutrition</li>
 </ul>
-</DocIndent>
 
 ::: component-section-level-three-title
 
@@ -135,11 +127,9 @@ You can also mix and match list styles based on your use cases.
 
 :::
 
-<DocIndent>
-<ul cds-list cds-layout="vertical gap:none" cds-text="body">
+<ul cds-list cds-layout="vertical gap:none m-y:md" cds-text="body">
     <li>Chicken Breast</li>
     <li>Flour</li>
     <li>Garlic</li>
     <li>Honey</li>
 </ul>
-</DocIndent>

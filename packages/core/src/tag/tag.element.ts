@@ -1,17 +1,10 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  assignSlotNames,
-  baseStyles,
-  CdsBaseButton,
-  property,
-  StatusTypes,
-  syncDefinedProps,
-} from '@cds/core/internal';
+import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes, syncProps } from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -76,11 +69,9 @@ export class CdsTag extends CdsBaseButton {
       this.readonly = false;
     }
 
-    if (!this.readonly && !this.getAttribute('aria-label')) {
-      console.warn('Clickable and closable tags need aria-labels.');
+    if (this.badge) {
+      syncProps(this.badge, this, { status: props.has('status'), color: props.has('color') });
     }
-
-    syncDefinedProps(props, this, [this.badge]);
   }
 
   render() {

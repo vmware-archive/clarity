@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -81,28 +81,5 @@ describe('tag element', () => {
     component.closable = true;
     await componentIsStable(component);
     expect(!!component.readonly).toBe(false);
-  });
-
-  it('should warn if closable but there is no aria-label', async () => {
-    await createTestElement(html`
-      <cds-tag class="${readonlyClassname}" readonly>Readonly Tag</cds-tag>
-      <cds-tag class="${closableClassname}" closable>Closable Tag</cds-tag>
-    `);
-    expect(console.warn).toHaveBeenCalledTimes(1);
-  });
-
-  it('should warn if clickable but there is no aria-label', async () => {
-    await createTestElement(html`
-      <cds-tag class="${readonlyClassname}" readonly>Readonly Tag</cds-tag>
-      <cds-tag class="${closableClassname}">Clickable Tag</cds-tag>
-    `);
-    expect(console.warn).toHaveBeenCalledTimes(1);
-  });
-
-  it('should NOT warn if aria-labels are present', async () => {
-    const component = getTagComponentFromElement(testElement, 'closable');
-    await componentIsStable(component);
-
-    expect(console.warn).not.toHaveBeenCalled();
   });
 });

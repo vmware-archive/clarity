@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/file",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

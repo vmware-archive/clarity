@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/test-dropdown",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

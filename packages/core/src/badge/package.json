@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/badge",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

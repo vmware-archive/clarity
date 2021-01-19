@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/datalist",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

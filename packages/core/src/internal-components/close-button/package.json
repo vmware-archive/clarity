@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/internal-components/close-button",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

@@ -32,6 +32,7 @@ module.exports = {
 
     config.resolve.extensions.push('.ts');
     config.resolve.plugins = [new TsConfigPathsPlugin({ configFile: '.storybook/tsconfig.storybook.json' })];
+    config.resolve.alias['@cds/core'] = path.resolve(__dirname, '../dist/core');
 
     // https://github.com/storybookjs/storybook/blob/next/app/web-components/README.md
     const webComponentsRule = config.module.rules.find(

@@ -38,34 +38,15 @@ function removeCacheFiles() {
   );
 }
 
-function createPackageFiles() {
+function createPackageFile() {
   // https://open-wc.org/publishing
   // https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm
-  read('../dist/core')
-    .filter(f => f.includes('package.json'))
-    .forEach(file => {
-      const packageFile = fs.readJsonSync(file);
-      ['scripts', 'devDependencies'].forEach(p => delete packageFile[p]);
-
-      const metaData = {
-        main: './index.js',
-        module: './index.js',
-        typings: './index.d.ts',
-        type: 'module',
-      };
-
-      fs.writeJsonSync(file, { ...packageFile, ...metaData }, { spaces: 2 });
-    });
-}
-
-function createPackageExports() {
   // https://docs.skypack.dev/package-authors/package-checks
   // https://nodejs.org/api/packages.html#packages_subpath_exports
   const packageFile = fs.readJsonSync('../dist/core/package.json');
   const packageComponentNames = read('../dist/core')
-    .filter(f => f.includes('package.json'))
-    .map(f => fs.readJsonSync(f).name.replace('@cds/core/', ''))
-    .filter(name => name !== '@cds/core' && name !== 'internal');
+    .filter(f => f.endsWith('register.js'))
+    .map(f => f.replace('../dist/core/', '').replace('/register.js', ''));
 
   const exports = JSON.parse(`{
     ".": "./index.js",
@@ -81,11 +62,28 @@ function createPackageExports() {
     ${packageComponentNames.map(name => {
       return `
       "./${name}": "./${name}/index.js",
+      "./${name}/register": "./${name}/register.js",
       "./${name}/register.js": "./${name}/register.js"`;
     })}
   }`);
 
-  fs.writeJsonSync('../dist/core/package.json', { ...packageFile, exports }, { spaces: 2 });
+  const sideEffects = packageComponentNames.map(name => `./${name}/register.js`);
+
+  fs.writeJsonSync(
+    '../dist/core/package.json',
+    {
+      ...packageFile,
+      main: './index.js',
+      module: './index.js',
+      typings: './index.d.ts',
+      type: 'module',
+      sideEffects,
+      exports,
+      scripts: undefined,
+      devDependencies: undefined,
+    },
+    { spaces: 2 }
+  );
 }
 
 function updateFileVersions() {
@@ -108,8 +106,7 @@ function generateAPIMetaData() {
 (async () => {
   await copyAssets();
   removeCacheFiles();
-  createPackageFiles();
-  createPackageExports();
+  createPackageFile();
   updateFileVersions();
   generateAPIMetaData();
 })();

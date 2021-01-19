@@ -6,6 +6,7 @@
   },
   "include": ["./"],
   "references": [
+    { "path": "./src/accordion/entrypoint.tsconfig.json" },
     { "path": "./src/alert/entrypoint.tsconfig.json" },
     { "path": "./src/badge/entrypoint.tsconfig.json" },
     { "path": "./src/button/entrypoint.tsconfig.json" },

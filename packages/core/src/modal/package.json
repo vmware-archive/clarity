@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/modal",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

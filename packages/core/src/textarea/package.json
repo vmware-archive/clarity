@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/textarea",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

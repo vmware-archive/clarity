@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/checkbox",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

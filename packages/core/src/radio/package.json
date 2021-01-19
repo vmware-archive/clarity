@@ -1,6 +1,0 @@
-{
-  "name": "@cds/core/radio",
-  "sideEffects": [
-    "./register.js"
-  ]
-}

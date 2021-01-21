@@ -73,11 +73,9 @@ Once imported, the component is automatically registered and ready to use in you
 </script>
 ```
 
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
-    Example Apps
-  </a>
-</cds-button>
+<a href="https://github.com/vmware/clarity/tree/master/apps" target="_blank" rel="noopener">
+  <cds-button status="primary" size="md">Example Apps</cds-button>
+</a>
 
 ## Frameworks
 
@@ -132,11 +130,9 @@ To listen to events use the Angular <code>(event)</code> binding syntax.
 </cds-alert>
 ```
 
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-cli" target="_blank" rel="noopener">
-    Example Angular App
-  </a>
-</cds-button>
+<a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-cli" target="_blank" rel="noopener">
+  <cds-button status="primary" size="md">Example Angular App</cds-button>
+</a>
 
 ### Vue
 
@@ -162,11 +158,9 @@ Example of a alert web component in Vue
 <cds-alert status="info" :closable="true" @closeChange="log"> Hello World </cds-alert>`
 ```
 
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps/core-vue-cli" target="_blank" rel="noopener">
-    Example Vue App
-  </a>
-</cds-button>
+<a href="https://github.com/vmware/clarity/tree/master/apps/core-vue-cli" target="_blank" rel="noopener">
+  <cds-button status="primary" size="md">Example Vue App</cds-button>
+</a>
 
 ### React
 
@@ -235,11 +229,9 @@ export default class App extends React.Component<{}, {}> {
 }
 ```
 
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps/core-create-react-app" target="_blank" rel="noopener">
-    Example React App
-  </a>
-</cds-button>
+<a href="https://github.com/vmware/clarity/tree/master/apps/core-create-react-app" target="_blank" rel="noopener">
+  <cds-button status="primary" size="md">Example React App</cds-button>
+</a>
 
 ### Preact
 
@@ -314,11 +306,9 @@ To listen to custom events use the [`ng-on` directive](https://docs.angularjs.or
 </cds-alert>
 ```
 
-<cds-button>
-  <a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-js" target="_blank" rel="noopener">
-    Example AngularJS App
-  </a>
-</cds-button>
+<a href="https://github.com/vmware/clarity/tree/master/apps/core-angular-js" target="_blank" rel="noopener">
+  <cds-button status="primary" size="md">Example AngularJS App</cds-button>
+</a>
 
 ## Advanced Installation (Optional)
 

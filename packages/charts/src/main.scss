@@ -1,0 +1,123 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../core/src/styles/tokens/generated/index';
+
+:root {
+  --cds-charts-1-color-100: #{$cds-global-color-cool-gray-800};
+  --cds-charts-1-color-200: #{$cds-global-color-slate-600};
+  --cds-charts-1-color-300: #{$cds-global-color-tan-800};
+  --cds-charts-1-color-400: #{$cds-global-color-slate-400};
+  --cds-charts-1-color-500: #{$cds-global-color-azure-800};
+  --cds-charts-1-color-600: #{$cds-global-color-tan-600};
+  --cds-charts-1-color-700: #{$cds-global-color-cool-gray-500};
+  --cds-charts-1-color-800: #{$cds-global-color-tan-1000};
+  --cds-charts-1-color-900: #{$cds-global-color-warm-gray-600};
+  --cds-charts-1-color-1000: #{$cds-global-color-ice-500};
+  --cds-charts-1-color-1100: #{$cds-global-color-slate-700};
+  --cds-charts-1-color-1200: #{$cds-global-color-tan-500};
+
+  --cds-charts-2-color-100: #{$cds-global-color-violet-900};
+  --cds-charts-2-color-200: #{$cds-global-color-cool-gray-500};
+  --cds-charts-2-color-300: #{$cds-global-color-cool-gray-800};
+  --cds-charts-2-color-400: #{$cds-global-color-aqua-800};
+  --cds-charts-2-color-500: #{$cds-global-color-violet-400};
+  --cds-charts-2-color-600: #{$cds-global-color-jade-900};
+  --cds-charts-2-color-700: #{$cds-global-color-blue-600};
+  --cds-charts-2-color-800: #{$cds-global-color-azure-800};
+  --cds-charts-2-color-900: #{$cds-global-color-aqua-600};
+  --cds-charts-2-color-1000: #{$cds-global-color-violet-700};
+  --cds-charts-2-color-1100: #{$cds-global-color-azure-700};
+  --cds-charts-2-color-1200: #{$cds-global-color-green-600};
+
+  --cds-charts-3-color-100: #{$cds-global-color-lavender-500};
+  --cds-charts-3-color-200: #{$cds-global-color-cool-gray-500};
+  --cds-charts-3-color-300: #{$cds-global-color-red-800};
+  --cds-charts-3-color-400: #{$cds-global-color-aqua-600};
+  --cds-charts-3-color-500: #{$cds-global-color-lavender-400};
+  --cds-charts-3-color-600: #{$cds-global-color-cool-gray-800};
+  --cds-charts-3-color-700: #{$cds-global-color-magenta-500};
+  --cds-charts-3-color-800: #{$cds-global-color-aqua-800};
+
+  --cds-charts-4-color-100: #{$cds-global-color-pink-700};
+  --cds-charts-4-color-200: #{$cds-global-color-warm-gray-900};
+  --cds-charts-4-color-300: #{$cds-global-color-pink-300};
+  --cds-charts-4-color-400: #{$cds-global-color-jade-900};
+  --cds-charts-4-color-500: #{$cds-global-color-warm-gray-500};
+  --cds-charts-4-color-600: #{$cds-global-color-pink-600};
+  --cds-charts-4-color-700: #{$cds-global-color-warm-gray-800};
+  --cds-charts-4-color-800: #{$cds-global-color-jade-600};
+
+  --cds-charts-5-color-100: #{$cds-global-color-aqua-800};
+  --cds-charts-5-color-200: #{$cds-global-color-red-700};
+  --cds-charts-5-color-300: #{$cds-global-color-warm-gray-800};
+  --cds-charts-5-color-400: #{$cds-global-color-red-600};
+  --cds-charts-5-color-500: #{$cds-global-color-aqua-900};
+  --cds-charts-5-color-600: #{$cds-global-color-warm-gray-500};
+  --cds-charts-5-color-700: #{$cds-global-color-red-900};
+  --cds-charts-5-color-800: #{$cds-global-color-aqua-600};
+
+  --cds-charts-6-color-100: #{$cds-global-color-azure-800};
+  --cds-charts-6-color-200: #{$cds-global-color-tangerine-700};
+  --cds-charts-6-color-300: #{$cds-global-color-azure-700};
+  --cds-charts-6-color-400: #{$cds-global-color-warm-gray-500};
+  --cds-charts-6-color-500: #{$cds-global-color-tangerine-800};
+  --cds-charts-6-color-600: #{$cds-global-color-tangerine-500};
+  --cds-charts-6-color-700: #{$cds-global-color-warm-gray-800};
+  --cds-charts-6-color-800: #{$cds-global-color-blue-600};
+
+  --cds-charts-7-color-100: #{$cds-global-color-lavender-800};
+  --cds-charts-7-color-200: #{$cds-global-color-ochre-900};
+  --cds-charts-7-color-300: #{$cds-global-color-aqua-800};
+  --cds-charts-7-color-400: #{$cds-global-color-lavender-400};
+  --cds-charts-7-color-500: #{$cds-global-color-warm-gray-800};
+  --cds-charts-7-color-600: #{$cds-global-color-lavender-500};
+  --cds-charts-7-color-700: #{$cds-global-color-yellow-700};
+  --cds-charts-7-color-800: #{$cds-global-color-aqua-600};
+
+  --cds-charts-8-color-100: #{$cds-global-color-violet-900};
+  --cds-charts-8-color-200: #{$cds-global-color-violet-400};
+  --cds-charts-8-color-300: #{$cds-global-color-jade-900};
+  --cds-charts-8-color-400: #{$cds-global-color-cool-gray-500};
+  --cds-charts-8-color-500: #{$cds-global-color-violet-700};
+  --cds-charts-8-color-600: #{$cds-global-color-blue-600};
+  --cds-charts-8-color-700: #{$cds-global-color-azure-800};
+  --cds-charts-8-color-800: #{$cds-global-color-green-600};
+
+  --cds-charts-9-color-100: #{$cds-global-color-pink-600};
+  --cds-charts-9-color-200: #{$cds-global-color-aqua-900};
+  --cds-charts-9-color-300: #{$cds-global-color-cool-gray-500};
+  --cds-charts-9-color-400: #{$cds-global-color-lavender-500};
+  --cds-charts-9-color-500: #{$cds-global-color-pink-400};
+  --cds-charts-9-color-600: #{$cds-global-color-aqua-600};
+  --cds-charts-9-color-700: #{$cds-global-color-lavender-800};
+  --cds-charts-9-color-800: #{$cds-global-color-lavender-400};
+
+  --cds-charts-10-color-100: #{$cds-global-color-lavender-800};
+  --cds-charts-10-color-200: #{$cds-global-color-tangerine-700};
+  --cds-charts-10-color-300: #{$cds-global-color-cool-gray-500};
+  --cds-charts-10-color-400: #{$cds-global-color-jade-900};
+  --cds-charts-10-color-500: #{$cds-global-color-lavender-400};
+  --cds-charts-10-color-600: #{$cds-global-color-cool-gray-800};
+  --cds-charts-10-color-700: #{$cds-global-color-tangerine-500};
+  --cds-charts-10-color-800: #{$cds-global-color-jade-600};
+
+  --cds-charts-11-color-100: #{$cds-global-color-cool-gray-800};
+  --cds-charts-11-color-200: #{$cds-global-color-tangerine-700};
+  --cds-charts-11-color-300: #{$cds-global-color-blue-600};
+  --cds-charts-11-color-400: #{$cds-global-color-jade-900};
+  --cds-charts-11-color-500: #{$cds-global-color-cool-gray-500};
+  --cds-charts-11-color-600: #{$cds-global-color-tangerine-500};
+  --cds-charts-11-color-700: #{$cds-global-color-azure-800};
+  --cds-charts-11-color-800: #{$cds-global-color-jade-600};
+
+  --cds-charts-12-color-100: #{$cds-global-color-magenta-600};
+  --cds-charts-12-color-200: #{$cds-global-color-cool-gray-800};
+  --cds-charts-12-color-300: #{$cds-global-color-green-600};
+  --cds-charts-12-color-400: #{$cds-global-color-azure-800};
+  --cds-charts-12-color-500: #{$cds-global-color-cool-gray-500};
+  --cds-charts-12-color-600: #{$cds-global-color-magenta-500};
+  --cds-charts-12-color-700: #{$cds-global-color-jade-900};
+  --cds-charts-12-color-800: #{$cds-global-color-blue-600};
+}

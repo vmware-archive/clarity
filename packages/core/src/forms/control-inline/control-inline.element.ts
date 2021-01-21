@@ -61,7 +61,7 @@ export class CdsInternalControlInline extends CdsControl {
             <slot name="label"></slot>
           </cds-internal-control-label>
         </div>
-        ${!this.isControlGroup
+        ${!this.isControlGroup && this.messages?.length
           ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:sm' : ''}">
               ${getStatusIcon(this.status)}
               <div cds-layout="align:vertical-center" class="messages">

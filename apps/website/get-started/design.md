@@ -49,7 +49,7 @@ We provide a convenient zip of all icon files. This download includes all svg fi
 Clarity uses the popular design tool [Figma](https://www.figma.com/) when designing and documenting components and foundations. Bookmark these resources to re-use Clarity assets in your design process.
 
 <div  cds-layout="m-t:md">
-<a class="btn btn-primary asset-download-btn" target="_blank" href="https://www.figma.com/files/667807410136546364/project/337681/Libraries"><cds-icon shape="download"></cds-icon>Clarity Figma Libraries</a>
+<a class="btn btn-primary asset-download-btn" target="_blank" href="https://www.figma.com/files/667807410136546364/project/337681/Libraries"><cds-icon shape="download"></cds-icon> Clarity Figma Libraries</a>
 </div>
 
 </div>

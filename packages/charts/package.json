@@ -1,0 +1,29 @@
+{
+  "name": "@cds/charts",
+  "private": true,
+  "version": "5.0.0",
+  "scripts": {
+    "build": "npm-run-all build:css build:optimize build:package build:update",
+    "build:watch": "chokidar \"src/**/*.scss\" -c \"yarn run build\"",
+    "build:preinstall": "mkdir -p ../../dist/charts/ && cp ./package.json ../../dist/charts/",
+    "build:update": "node ../../scripts/update-local-packages.js /packages/charts/dist/charts/package.json",
+    "build:css": "sass --precision=8 src/main.scss ./dist/charts/charts.css; sass --precision=8 src/dark-theme.scss ./dist/charts/charts-dark.css",
+    "build:optimize": "csso -i ./dist/charts/charts.css -o ./dist/charts/charts.min.css -s file --no-restructure; csso -i ./dist/charts/charts-dark.css -o ./dist/charts/charts-dark.min.css -s file --no-restructure",
+    "build:package": "cpy npm.json README.md ./dist/charts/; mv ./dist/charts/npm.json ./dist/charts/package.json; replace '@VERSION' $npm_package_version ./dist/charts/package.json; "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/clarity.git"
+  },
+  "peerDependencies": {
+    "@cds/core": "./dist/core"
+  },
+  "devDependencies": {
+    "chokidar-cli": "2.1.0",
+    "cpy-cli": "^3.1.0",
+    "csso-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "replace": "^1.1.5",
+    "sass": "^1.26.3"
+  }
+}

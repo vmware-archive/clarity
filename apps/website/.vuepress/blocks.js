@@ -28,7 +28,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-summary_open') {
-          return `<div class="component-summary no-clr-ui" cds-text="subsection">`;
+          return `<div class="component-summary" cds-text="subsection">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-summary_close') {
@@ -46,7 +46,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-one-title_open') {
-          return `<div class="component-section-title level-one no-clr-ui" cds-text="title" cds-layout="m-b:md">`;
+          return `<div class="component-section-title level-one" cds-text="title" cds-layout="m-b:md">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-one-title_close') {
@@ -64,7 +64,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-one_open') {
-          return `<div class="component-section no-clr-ui" cds-text="body">`;
+          return `<div class="component-section" cds-text="body">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-one_close') {
@@ -82,7 +82,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-two-title_open') {
-          return `<div class="component-section-title no-clr-ui" cds-text="section" cds-layout="m-b:md">`;
+          return `<div class="component-section-title" cds-text="section" cds-layout="m-y:lg">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-two-title_close') {
@@ -100,7 +100,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-two_open') {
-          return `<div class="component-section no-clr-ui" cds-text="body">`;
+          return `<div class="component-section" cds-text="body">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-two_close') {
@@ -118,7 +118,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-three-title_open') {
-          return `<div class="component-subsection-title no-clr-ui" cds-text="subsection" cds-layout="m-b:xs">`;
+          return `<div class="component-subsection-title" cds-text="subsection" cds-layout="m-b:xs">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-three-title_close') {
@@ -136,7 +136,7 @@ module.exports = [
         const item = tokens[idx];
 
         if (item.type === 'container_component-section-level-three_open') {
-          return `<div class="component-subsection no-clr-ui" cds-text="body">`;
+          return `<div class="component-subsection" cds-text="body">`;
         } else if (item.type === 'html_block') {
           return item.content;
         } else if (item.type === 'container_component-section-level-three_close') {

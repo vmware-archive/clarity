@@ -16,7 +16,7 @@
 # news -> releases
 [[redirects]]
   from = "/news/*"
-  to = "/releases/v4/"
+  to = "/releases/"
   status = 301
 
 # community -> (re-direct to homepage)
@@ -34,7 +34,7 @@
 # foundation pages
 [[redirects]]
   from = "/documentation/accessibility"
-  to = "/foundation/accessibility/"
+  to = "/"
   status = 301
 
 [[redirects]]

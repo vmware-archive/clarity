@@ -22,8 +22,10 @@ module.exports = {
   dest: '../../dist/website',
   themeConfig: {
     algolia: {
-      apiKey: '88df2445b3dc4bf5e8bc4caafa9fbc50',
-      indexName: 'next_clarity',
+      // apiKey: '88df2445b3dc4bf5e8bc4caafa9fbc50', // https://next.clarity.design index
+      // indexName: 'next_clarity',
+      apiKey: 'cdc1fe663034bd168b004e2f23e10ef6',    // https://clarity.design index
+      indexName: 'clarity',
       inputSelector: '#algolia-search-input',
     },
     lastUpdated: false,

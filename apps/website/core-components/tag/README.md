@@ -110,7 +110,7 @@ Differentiate tags from [buttons](core-components/button).
 
 :::
 
-<div class="clr-row">
+<div class="clr-row" cds-layout="m-b:xxl">
 <div class="clr-col-sm-12 clr-col-lg-4" cds-layout="p-b@lg:none p-b:lg">
 <div style="height: 100px">
 <div><p cds-text="body">Tags may be clickable. In this case, clicking on a tag should perform an action related to that tag. Clicking on a location tag used as a tag, for example, could serve to filter the results in a nearby list by that location. Clicking a tag could also display more information about the metadata described by that tag.</p></div>

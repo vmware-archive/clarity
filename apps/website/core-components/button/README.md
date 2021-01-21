@@ -181,7 +181,7 @@ Clarity buttons have a border radius of 3px.
 
 :::
 
-<div class="clr-row" cds-layout="m-t:md m-b:lg">
+<div class="clr-row">
 <div class="clr-col-sm-12 clr-col-lg-6" cds-layout="p-b:lg p-b@lg:none">
 <div cds-layout="vertical gap:lg">
 <p cds-text="body">Clarity offers two button sizes:</p>
@@ -215,7 +215,7 @@ A primary color provides consistency across an application. It trains the user t
 
 :::
 
-<DocInset height="100" cds-layout="m-b:lg">
+<DocInset height="100" cds-layout="m-y:lg">
 <div cds-layout="horizontal gap:sm align:center">
     <cds-button action="outline" status="danger"><cds-icon shape="times"></cds-icon> cancel</cds-button>
     <cds-button>download <cds-icon shape="download"></cds-icon></cds-button>
@@ -238,7 +238,7 @@ Buttons should only use icons by themselves if an interface is constrained by sp
 
 :::
 
-<DocInset height="100" cds-layout="m-b:lg">
+<DocInset height="100" cds-layout="m-y:lg">
 <div cds-layout="horizontal gap:sm align:center">
     <cds-button status="danger" action="outline">Archive Items <cds-badge>10<span cds-layout="display:screen-reader-only">items</span></cds-badge></cds-button>
     <cds-button><cds-icon shape="envelope" badge></cds-icon> Mark As Read <cds-badge>99+<span cds-layout="display:screen-reader-only">items</span></cds-badge></cds-button>

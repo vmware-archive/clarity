@@ -41,7 +41,7 @@ A common strategy is to combine an input field with a select box so that a user 
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -61,7 +61,7 @@ Use when interactive and ready for input.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -81,7 +81,7 @@ Use when selected by a user with an input method, such as mouse or keyboard.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -101,7 +101,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -121,7 +121,7 @@ Use to communicate a user or system error. This validation can happen when the u
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -153,7 +153,7 @@ Select elements are available in vertical, horizontal, compact, and multiple lay
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -171,7 +171,7 @@ Select elements are available in vertical, horizontal, compact, and multiple lay
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -189,7 +189,7 @@ Select elements are available in vertical, horizontal, compact, and multiple lay
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -207,7 +207,7 @@ Select elements are available in vertical, horizontal, compact, and multiple lay
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 

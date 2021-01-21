@@ -53,7 +53,7 @@ Use a <a href="../select">select box</a> for more than six options, or a <a href
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -73,7 +73,7 @@ Use when interactive and ready for input.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -93,7 +93,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -113,7 +113,7 @@ Use to communicate a user or system error. This validation can happen when the u
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -145,7 +145,7 @@ Radio buttons are available in vertical, horizontal, and compact layout. See mor
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -163,7 +163,7 @@ Radio buttons are available in vertical, horizontal, and compact layout. See mor
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -181,7 +181,7 @@ Radio buttons are available in vertical, horizontal, and compact layout. See mor
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -199,7 +199,7 @@ Radio buttons are available in vertical, horizontal, and compact layout. See mor
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -217,7 +217,7 @@ Radio buttons are available in vertical, horizontal, and compact layout. See mor
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 

@@ -141,7 +141,11 @@ export const compactStandardAlertGroup = () => {
           This example is an alert a user may be able to close with a custom icon shape inside an alert group with a
           status of "info".
         </cds-alert>
-        <cds-alert status="loading" closable cds-i18n='{ "closeButtonAriaLabel": "close compact info alert with a loading status"}'>
+        <cds-alert
+          status="loading"
+          closable
+          cds-i18n='{ "closeButtonAriaLabel": "close compact info alert with a loading status"}'
+        >
           This example is an alert with a "loading" status and alert action buttons inside an alert group with a status
           of "info".
           <cds-alert-actions>
@@ -155,7 +159,7 @@ export const compactStandardAlertGroup = () => {
         <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact success alert"}'>
           This example is an alert a user may be able to close inside an alert group with a status of "success".
         </cds-alert>
-        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact success alert with action buttons"}'
+        <cds-alert closable cds-i18n='{ "closeButtonAriaLabel": "close compact success alert with action buttons"}'>
           This example is an alert a user may be able to close with alert action buttons inside an alert group with a
           status of "success".
           <cds-alert-actions>

@@ -52,4 +52,9 @@ describe('cds-internal-control-inline', () => {
     control.shadowRoot.querySelector<HTMLElement>('.input').click();
     expect(clicked).toBe(true);
   });
+
+  it('to prevent empty gap space it should not render messages slot wrapper when no messages are provided', async () => {
+    await componentIsStable(control);
+    expect(control.shadowRoot.querySelector('slot[message]')).toEqual(null);
+  });
 });

@@ -2,6 +2,20 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.10",
+      "date": "2021-01-21",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5259,
+          "title": "Fix color for status badge-warning",
+          "project": "Angular",
+          "scope": "Badge"
+        }
+      ]
+    },
+    {
       "version": "4.0.9",
       "date": "2021-01-07",
       "description": "This is a bug fix release that addresses issues in Angular components.",

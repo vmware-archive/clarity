@@ -2,6 +2,49 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.0",
+      "date": "2021-01-21",
+      "description": "This is the official 5.0.0 release.",
+      "fix": [
+        {
+          "issue": 5469,
+          "title": "Fix core package exports",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 5259,
+          "title": "Fix color for status badge-warning",
+          "project": "Angular",
+          "scope": "Badge"
+        },
+        {
+          "issue": 5452,
+          "title": "Fix tag a11y",
+          "project": "Core",
+          "scope": "a11y"
+        },
+        {
+          "issue": 5449,
+          "title": "Fix password input aria-label",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5454,
+          "title": "Fix core package exports",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 4718,
+          "title": "Fix tab navigation inside stack-block",
+          "project": "Angular",
+          "scope": "Stack View"
+        }
+      ]
+    },
+    {
       "version": "5.0.0-rc.1",
       "date": "2021-01-11",
       "description": "This is a release candidate for our next major version, which contains bug @cds/core fixes.",

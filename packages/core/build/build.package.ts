@@ -22,7 +22,6 @@ function read(dir) {
 
 function copyAssets() {
   return Promise.all([
-    cpy(['./**/package.json'], '../dist/core/', { cwd: '../src', parents: true }),
     cpy(['./package.json'], './dist/core/', { cwd: '../', parents: true }),
     cpy(['./README.md'], './dist/core/', { cwd: '../', parents: true }),
   ]);
@@ -45,7 +44,7 @@ function createPackageFile() {
   // https://nodejs.org/api/packages.html#packages_subpath_exports
   const packageFile = fs.readJsonSync('../dist/core/package.json');
   const packageComponentNames = read('../dist/core')
-    .filter(f => f.endsWith('register.js'))
+    .filter(f => f.endsWith('register.js') && !f.includes('/internal/'))
     .map(f => f.replace('../dist/core/', '').replace('/register.js', ''));
 
   const exports = JSON.parse(`{

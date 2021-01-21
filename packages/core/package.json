@@ -2,6 +2,7 @@
   "name": "@cds/core",
   "version": "5.0.0",
   "scripts": {
+    "clean": "del ./dist",
     "start": "npm-run-all build -p build:watch storybook:start",
     "storybook:start": "start-storybook -s .storybook/public -p 6006 --config-dir=.storybook",
     "storybook:build": "build-storybook -s .storybook/public -c .storybook -o ../../dist/website/storybook/core --quiet",
@@ -13,7 +14,7 @@
     "test:unit": "tsc --b ./tsconfig.spec.json --force && karma start ./karma.conf.js && yarn run build:package",
     "test:performance": "webpack --config ./test-bundles/webpack.config.js && bundlesize --config ./test-bundles/bundlesize.json",
     "test:bundles": "source-map-explorer dist/test-bundles/webpack.bundle.js",
-    "build": "npm-run-all -s build:tokens build:sass build:ts build:package build:sass:optimize build:update",
+    "build": "npm-run-all -s clean build:tokens build:sass build:ts build:package build:sass:optimize build:update",
     "build:preinstall": "mkdir -p ../../dist/core/ && cp ./package.json ../../dist/core/",
     "build:update": "node ../../scripts/update-local-packages.js /packages/core/dist/core/package.json",
     "build:watch": "npm-run-all -p build:sass:watch build:ts:watch",

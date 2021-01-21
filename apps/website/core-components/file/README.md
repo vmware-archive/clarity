@@ -27,7 +27,7 @@ Use a file input field when the user needs to choose one or more files from thei
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -47,7 +47,7 @@ Use when interactive. The helper message can be used to specify the supported fi
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -67,7 +67,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -87,7 +87,7 @@ Use when one or more files have been selected.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -119,7 +119,7 @@ File inputs are available in vertical, horizontal, and compact layout. See more 
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -137,7 +137,7 @@ File inputs are available in vertical, horizontal, and compact layout. See more 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -155,7 +155,7 @@ File inputs are available in vertical, horizontal, and compact layout. See more 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 

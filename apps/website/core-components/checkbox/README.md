@@ -57,7 +57,7 @@ Checkboxes can have a several of states. These stated give the user additional i
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -77,7 +77,7 @@ Use when interactive. The checkboxes can be selected by the user or system.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -97,7 +97,7 @@ Use when not interactive. For example, when a user does not have permission to c
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -117,7 +117,7 @@ Use in tree selection as a parent node with a mix of selected and unselected chi
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -137,7 +137,7 @@ Use to communicate a user or system error. This validation can happen when the u
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -169,7 +169,7 @@ Checkboxes are available in vertical, vertical inline, horizontal, horizontal in
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -187,7 +187,7 @@ Checkboxes are available in vertical, vertical inline, horizontal, horizontal in
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -205,7 +205,7 @@ Checkboxes are available in vertical, vertical inline, horizontal, horizontal in
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -223,7 +223,7 @@ Checkboxes are available in vertical, vertical inline, horizontal, horizontal in
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -241,7 +241,7 @@ Checkboxes are available in vertical, vertical inline, horizontal, horizontal in
 
 </div>
 
-<div class="component-section-horizontal full-wrap" cds-layout="m-t:md">
+<div class="component-section-horizontal full-wrap">
 
 ::: component-section-level-two-title
 

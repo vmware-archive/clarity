@@ -43,7 +43,7 @@ An input group can behave in all the ways a standard single input will. It may b
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -63,7 +63,7 @@ Use when interactive and ready for input.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -75,7 +75,7 @@ Use when interactive and ready for input.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two
 
@@ -87,7 +87,7 @@ Use when selected by a user with an input method, such as mouse or keyboard.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -99,7 +99,7 @@ Use when selected by a user with an input method, such as mouse or keyboard.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two
 
@@ -111,7 +111,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -131,7 +131,7 @@ Use to communicate a user or system error. This validation can happen when the u
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -163,7 +163,7 @@ Input groups only provide a horizontal layout because their content has linear c
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 

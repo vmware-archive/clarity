@@ -285,8 +285,8 @@ body .no-clr-ui p {
   font-size: inherit;
   letter-spacing: inherit;
   line-height: inherit;
-  margin-top: 0;
-  margin-bottom: 0;
+  //margin-top: 0;
+  //margin-bottom: 0;
 }
 
 .component-subsection p + p {
@@ -298,17 +298,21 @@ body .no-clr-ui p {
   margin-top: var(--cds-token-layout-space-lg, 1.2rem);
 }
 
-.clr-row + .component-section-title,
-.indent-section + .component-section-title.level-one,
-.component-subsection + .component-section-title,
-.component-section + .component-section-title {
-  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
-}
+//.clr-row + .component-section-title,
+//.indent-section + .component-section-title.level-one,
+//.component-subsection + .component-section-title,
+//.component-section + .component-section-title {
+//  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
+//}
 
 .clr-row + .component-section-title.level-one,
 .component-subsection + .component-section-title.level-one,
 .component-section + .component-section-title.level-one {
-  margin-top: var(--cds-token-layout-space-xxl, 4.8rem);
+  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
+}
+
+.level-one {
+  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
 }
 
 .component-subsection + .inset,
@@ -323,7 +327,7 @@ body .no-clr-ui p {
 
 .theme-default-content .component-subsection:last-child,
 .theme-default-content .component-section:last-child {
-  margin-bottom: var(--cds-token-layout-space-xl, 2.4rem);
+  //margin-bottom: var(--cds-token-layout-space-xl, 2.4rem);
 }
 
 .card-like {
@@ -352,16 +356,34 @@ body .no-clr-ui p {
 .component-section-horizontal {
   display: grid;
   grid-template-columns: 12rem 18rem;
+  justify-items: stretch;
+  margin-top: var(--cds-token-layout-space-xl, 2.4rem);
 
   &.full-wrap {
     grid-template-columns: 12rem auto;
   }
 
-  .component-section-title {
-    margin-top: var(--cds-token-space-size-9, 1.2rem);
+  .component-section-title,
+  h3 {
+    margin-top: 0 !important;
   }
 
   .component-section {
-    margin-top: var(--cds-token-space-size-9, 1.2rem);
+    margin-top: 0;
   }
+}
+
+// the day before v5 launch overrides
+.component-section-title {
+  h2 {
+    margin-top: var(--cds-token-layout-space-xl, 2.4rem);
+  }
+
+  h3 {
+    margin-top: var(--cds-token-layout-space-lg, 1.2rem);
+  }
+}
+
+p:not([cds-text]) {
+  margin-top: var(--cds-token-layout-space-md, 0.6rem) !important;
 }

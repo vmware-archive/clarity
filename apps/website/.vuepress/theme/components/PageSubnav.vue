@@ -41,8 +41,7 @@
 .page-subnav,
 .component-summary {
   margin-top: var(--cds-token-space-size-10, 1.6rem);
-  margin-bottom: var(--cds-token-space-size-10, 1.6rem);
-  margin-top: var(--cds-token-space-size-10, 1.6rem);
+  //margin-bottom: var(--cds-token-space-size-10, 1.6rem);
 }
 
 .nav .btn.btn-link.nav-link {

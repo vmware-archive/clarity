@@ -24,22 +24,23 @@ Use inputs in a form as a way to allow the user to enter a value associated with
 <doc-pinbox-vs>
   <div>unused div that is never rendered but gets passed an error</div>
   <template #left>
-    !!!include(.vuepress/code/core-usage-demos/datalist/basic.html)!!!
+    <cds-input layout="vertical">
+      <label>Input label</label>
+      <input type="text" placeholder="Input value" />
+    </cds-input>
 
-  Use a datalist:
-
-  - When the user needs to choose from a long list of items to be filtered before selection
-  - When there are pre-defined options but the user needs the ability to input a custom calue
-  - With more than 13 options
+  Use an input to support the text information of a single sentence or less.
 
   </template>
   <template #right>
-  !!!include(.vuepress/code/core-usage-demos/select/basic.html)!!!
+  <cds-form-group layout="vertical">
+     <cds-textarea layout="vertical">
+        <label>Textarea label</label>
+        <textarea rows="2"></textarea>
+      </cds-textarea>
+  </cds-form-group>
 
-  Use a select:
-
-  - When a custom input value is not allowed
-  - With 3-13 options
+  Use an textarea to support the text information of a multiple lines.
 
   </template>
 </doc-pinbox-vs>
@@ -54,7 +55,7 @@ Use inputs in a form as a way to allow the user to enter a value associated with
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -74,7 +75,7 @@ Use when interactive and ready for input.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -94,7 +95,7 @@ Use when selected by a user with an input method, such as mouse or keyboard.
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -114,7 +115,7 @@ Use when not interactive. For example, when a user does not have permissions to 
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -134,7 +135,7 @@ Use to communicate a user or system error. This validation can happen when the u
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -166,7 +167,7 @@ Inputs are available in vertical, horizontal, compact, and controlled-width layo
 
 :::
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -184,7 +185,7 @@ Inputs are available in vertical, horizontal, compact, and controlled-width layo
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -202,7 +203,7 @@ Inputs are available in vertical, horizontal, compact, and controlled-width layo
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 
@@ -220,7 +221,7 @@ Inputs are available in vertical, horizontal, compact, and controlled-width layo
 
 </div>
 
-<div class="component-section-horizontal" cds-layout="m-t:md">
+<div class="component-section-horizontal">
 
 ::: component-section-level-two-title
 

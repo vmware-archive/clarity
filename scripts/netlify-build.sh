@@ -5,5 +5,6 @@
 # The full license information can be found in LICENSE in the root directory of this project.
 #
 
-echo "Clarity Netlify Build Script"
-exit 0
+# echo "Clarity Netlify Build Script"
+# exit 0
+yarn build:website:v4

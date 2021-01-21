@@ -34,6 +34,7 @@
     "build:libs": "npm-run-all -p ui:build icons:build core:build -s angular:build schematics:build react:build",
     "build:apps": "npm-run-all -p angular:dev:build core:dev:build",
     "build:website": "yarn --cwd apps/website run build",
+    "build:website:v4": "yarn --cwd packages/angular/projects run website:build",
     "build:storybook:angular": "yarn --cwd packages/angular run build-storybook",
     "build:storybook:core": "yarn --cwd packages/core run dev:build",
     "test": "npm-run-all -p angular:test core:test icons:test react:test",

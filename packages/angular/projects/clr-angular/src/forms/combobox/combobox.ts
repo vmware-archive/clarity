@@ -268,7 +268,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
         if (this.multiSelect) {
           this.searchText = '';
         } else {
-          this.searchText = this.getDisplayNames(this.optionSelectionService.selectionModel.model)[0];
+          this.searchText = this.getDisplayNames(this.optionSelectionService.selectionModel.model)[0] || '';
         }
       })
     );

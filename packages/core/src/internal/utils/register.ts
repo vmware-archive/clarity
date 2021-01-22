@@ -8,12 +8,13 @@ import curryN from 'ramda/es/curryN.js';
 import { elementExists, existsInWindow, isBrowser } from './exists.js';
 import { setupCDSGlobal } from './global.js';
 import { isStorybook } from './framework.js';
+import { LogService } from '../services/log.service.js';
 
 const addElementToRegistry = curryN(
   3,
   (tagName: string, elementClass: any, registry: { define: (a: string, b: any) => {} }) => {
     if (elementExists(tagName) && !isStorybook()) {
-      console.warn(`${tagName} has already been registered`);
+      LogService.warn(`${tagName} has already been registered`);
     } else {
       registry.define(tagName, elementClass);
       setupCDSGlobal();

@@ -7,6 +7,7 @@
 import { isBrowser } from './exists.js';
 import { getAngularVersion, getReactVersion, getVueVersion, getAngularJSVersion } from './framework.js';
 import { FeatureSupportMatrix, browserFeatures } from './supports.js';
+import { LogService } from '../services/log.service.js';
 
 export interface CDSGlobal {
   _version: string[];
@@ -90,7 +91,7 @@ function setRunningVersion() {
   (document.querySelector('body') as HTMLElement).setAttribute('cds-version', window.CDS._version[0]);
 
   if (window.CDS._version.length > 1) {
-    console.warn(
+    LogService.warn(
       'Running more than one version of Clarity can cause unexpected issues. Please ensure only one version is loaded.'
     );
   }

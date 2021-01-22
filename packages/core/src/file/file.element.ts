@@ -9,6 +9,7 @@ import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { folderIcon } from '@cds/core/icon/shapes/folder.js';
+import { timesIcon } from '@cds/core/icon/shapes/times.js';
 import { styles } from './file.element.css.js';
 
 /**
@@ -83,6 +84,6 @@ export class CdsFile extends CdsControl {
 
   constructor() {
     super();
-    ClarityIcons.addIcons(folderIcon);
+    ClarityIcons.addIcons(folderIcon, timesIcon);
   }
 }

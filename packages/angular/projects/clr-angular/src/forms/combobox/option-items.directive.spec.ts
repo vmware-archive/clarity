@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -197,6 +197,13 @@ export default function (): void {
         const optionService: OptionSelectionService<any> = TestBed.get(OptionSelectionService);
         expect(this.clarityDirective._filterField).toEqual('a');
         expect(optionService.displayField).toEqual('a');
+      });
+
+      it('handles null values', function () {
+        expect(() => {
+          this.testComponent.numbers = [{ a: null }, ...this.testComponent.numbers];
+          this.fixture.detectChanges();
+        }).not.toThrow();
       });
     });
   });

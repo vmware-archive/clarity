@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -72,9 +72,7 @@ export class ClrOptionItems<T> implements DoCheck, OnDestroy {
     if (this._filterField) {
       this.filteredItems = this._rawItems.filter(item => {
         const objValue = (item as any)[this._filterField];
-        return objValue !== undefined
-          ? objValue.toString().toLowerCase().indexOf(this.filter.toLowerCase().toString()) > -1
-          : false;
+        return objValue ? objValue.toString().toLowerCase().indexOf(this.filter.toLowerCase().toString()) > -1 : false;
       });
     } else {
       // Filter by all item object values
@@ -83,7 +81,7 @@ export class ClrOptionItems<T> implements DoCheck, OnDestroy {
           return item.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1;
         }
         const objValues = Object.values(item).filter(value => {
-          return value.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1;
+          return value ? value.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1 : false;
         });
         return objValues.length > 0;
       });

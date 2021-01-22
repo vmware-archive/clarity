@@ -18,7 +18,6 @@ jobs:
       - run: yarn angular:website:news
       - run: yarn angular:website:build
       - run: yarn angular:website:functions
-      - run: yarn build:storybook:angular
       - run: yarn build:storybook:core
       - run: npm run website:deploy # Use NPM as a workaround for npx executing
 

@@ -9,12 +9,12 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 ## How to get started
 
 - [Getting started with Clarity for designers](./design.md)
-- [Getting started with Clarity Core using our Web Components](../angular-components/get-started.md)
-- [Getting started with Clarity Angular using our Angular Components](../core-components/get-started.md)
+- [Getting started with Clarity Core using our Web Components](/get-started/developing/)
+- [Getting started with Clarity Angular using our Angular Components](/get-started/developing/angular/)
 
 ## Contributing to Clarity
 
-The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware/clarity//blob/master/CONTRIBUTING.md) on GitHub.
+The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md) on GitHub.
 
 ## Clarity Blog
 

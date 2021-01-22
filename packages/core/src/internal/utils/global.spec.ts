@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -22,14 +22,15 @@ describe('CDS global', () => {
     });
 
     it('should log a warning if more than one version was detected', () => {
-      const consoleSpy = spyOn(console, 'warn').and.callFake(() => {
-        // Do nothing
-      });
+      const jasmine = window.jasmine;
+      window.jasmine = undefined;
+      spyOn(console, 'warn');
       setupCDSGlobal();
       window.CDS._version.push('1.0.0');
       window.CDS._version.push('2.0.0');
       setupCDSGlobal();
-      expect(consoleSpy).toHaveBeenCalled();
+      expect(console.warn).toHaveBeenCalled();
+      window.jasmine = jasmine;
     });
 
     it('should log all registered elements', () => {

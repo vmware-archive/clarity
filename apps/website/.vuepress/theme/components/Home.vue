@@ -68,7 +68,7 @@
             the people we build it for, and the community that makes us who we are.
           </p>
         </div>
-        <router-link to="/get-started" cds-layout="m-t:lg">
+        <router-link to="/get-started/" cds-layout="m-t:lg">
           <cds-button>
             Get Started using Clarity
           </cds-button>
@@ -149,7 +149,7 @@
             Vue. Our latest web components provide support for them all. Clarity provides code examples and detailed API
             documentation that guide you as you build your next application.
           </p>
-          <router-link to="angular-components/get-started/" cds-layout="m-t:lg" cds-text="subsection expanded"
+          <router-link to="/get-started/" cds-layout="m-t:lg" cds-text="subsection expanded"
             >Get started with Angular</router-link
           >
           <a target="_blank" href="/storybook/core" cds-layout="m-t:md">Get started with web components</a>
@@ -232,7 +232,7 @@
           priorities. We are proud of what we have running under the hood. Check out our Github and take a look at our
           priority list, our code, our documentation, and join our community.
         </p>
-        <router-link to="/get-started">
+        <router-link to="/get-started/">
           <cds-button cds-layout="m-t:lg" action="outline">
             Join the community
           </cds-button>
@@ -269,7 +269,7 @@
               Get started developing
             </cds-button>
           </router-link>
-          <router-link to="/get-started/design">
+          <router-link to="/get-started/design/">
             <cds-button action="outline">
               Get started designing
             </cds-button>

@@ -172,7 +172,7 @@ export class CdsInternalControlGroup extends LitElement {
           <slot name="label"></slot>
         </cds-internal-control-label>
         <div cds-layout="${this.controlMessageLayout}">
-          ${this.controlsTemplate} ${this.messagesTemplate}
+          ${this.controlsTemplate} ${this.messages?.length ? this.messagesTemplate : ''}
         </div>
       </div>
     `;

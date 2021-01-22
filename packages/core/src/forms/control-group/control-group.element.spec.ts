@@ -115,4 +115,9 @@ describe('cds-internal-control-group', () => {
     await componentIsStable(controlGroup);
     expect(controlGroup.layoutStable).toBe(true);
   });
+
+  it('to prevent empty gap space it should not render messages slot wrapper when no messages are provided', async () => {
+    await componentIsStable(controlGroup);
+    expect(controlGroup.shadowRoot.querySelector('slot[message]')).toEqual(null);
+  });
 });

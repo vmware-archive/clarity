@@ -24,7 +24,7 @@ module.exports = {
     algolia: {
       // apiKey: '88df2445b3dc4bf5e8bc4caafa9fbc50', // https://next.clarity.design index
       // indexName: 'next_clarity',
-      apiKey: 'cdc1fe663034bd168b004e2f23e10ef6',    // https://clarity.design index
+      apiKey: 'd3349af25a19e3824cb48e57fe88fdcb',    // https://clarity.design index
       indexName: 'clarity',
       inputSelector: '#algolia-search-input',
     },

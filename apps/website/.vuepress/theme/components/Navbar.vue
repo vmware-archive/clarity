@@ -12,10 +12,10 @@
 
     <div class="header-nav"></div>
 
-    <!--    <template>-->
-    <!--      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />-->
-    <!--      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />-->
-    <!--    </template>-->
+    <template>
+      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
+    </template>
 
     <!--    <div class="settings">-->
     <!--      <a-->

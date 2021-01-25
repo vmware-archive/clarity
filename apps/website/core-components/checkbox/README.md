@@ -104,6 +104,15 @@ Use when not interactive. For example, when a user does not have permission to c
 <div>
 !!!include(.vuepress/code/core-usage-demos/checkbox/indeterminate.html)!!!
 </div>
+<ClientOnly>
+<script type="text/javascript">
+    // Putting this here fixes a build time error with the script in the include
+    // It was blocking the plugins for sitemap, service worker etc
+    var indy = document.getElementById('indeterminate');
+    indy ? (indy.indeterminate = true) : null;
+</script>
+</ClientOnly>
+
 
 :::
 

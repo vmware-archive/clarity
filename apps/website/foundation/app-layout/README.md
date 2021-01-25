@@ -14,8 +14,8 @@ A properly structured layout enforces an optimal, consistent experience across a
 The `.main-container` is a vertical flexbox which wraps the following components:
 
 - [App-Level Alert](/components/alert)
-- [Header](/components/header)
-- [Subnav](/components/header)
+- [Header](/angular-components/header)
+- [Subnav](/angular-components/header)
 - Content Container
 
 **Note:** Although Clarity does not have a footer component, a custom footer can be added in the main-container.
@@ -25,7 +25,7 @@ The `.main-container` is a vertical flexbox which wraps the following components
 The `.content-container` is a horizontal flexbox which wraps the following components:
 
 - Content Area
-- [Sidenav](/components/sidenav)
+- [Sidenav](/angular-components/sidenav/)
 
 <doc-demo>
 !!!include(.vuepress/code/demos/app-layout/content-container-css.html)!!!
@@ -47,7 +47,7 @@ Two constants of an app built in Clarity are the header and content area. These 
 
 ### Header
 
-The [header](/components/header) is for branding and app-level elements such as navigation, search, and account settings.
+The [header](/angular-components/header) is for branding and app-level elements such as navigation, search, and account settings.
 
 ### Content Area
 
@@ -61,7 +61,7 @@ The content area is where users focus their attention most of the time, gatherin
 Your layout should reflect the information or workflow of the selected [navigation](/foundation/navigation). When laying out the content, keep the following in mind:
 
 - The flow of content–how to create a hierarchy and layout that draws attention to the areas of importance
-- The importance of designing to the [grid](/components/grid)
+- The importance of designing to the [grid](/angular-components/grid)
 - How to aid users in completing their tasks
 - How to handle large amounts of data
 - Responsive design (if that is part of your product’s goals)
@@ -78,7 +78,7 @@ Content can consist of any of the [Clarity components](/components), or no compo
 </div>
 <div class="clr-col-8">
 
-[Cards](/components/card) are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
+[Cards](/angular-components/card) are for presenting high-level information and guiding users to related actions and details. Cards might include a combination of text, images, and data visualizations.
 
 Benefits of using cards include:
 
@@ -97,7 +97,7 @@ Benefits of using cards include:
 </div>
 <div class="clr-col-8">
 
-[Tables](/components/table) and datagrids are for good for managing large amounts of data. These layouts work well when users need to compare data and perform batch operations.
+[Tables](/angular-components/table) and datagrids are for good for managing large amounts of data. These layouts work well when users need to compare data and perform batch operations.
 
 A table is a static view. A datagrid provides users flexibility in viewing the data, including filtering and sorting.
 
@@ -131,7 +131,7 @@ Inline forms are better than modals in cases where you don't want to block users
 </div>
 <div class="clr-col-8">
 
-[Tabs](/components/tab) appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
+[Tabs](/angular-components/tab) appear in a single, non-scrollable row, at the top of the content area. They are good for breaking content into separate, related views.
 
 Tabs are not appropriate if users need to compare data across views.
 

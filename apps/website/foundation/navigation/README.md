@@ -9,9 +9,9 @@ A sound navigation layout offers a high degree of discoverability and feedback, 
 
 Clarity Navigation depends on a specific DOM structure. Consult an appropriate demo to see the code and structure needed for the styles and layout to work. Clarity provides three levels of navigation represented by the following classnames.
 
-- `.header-nav` in the application [header](/components/header).
+- `.header-nav` in the application [header](/angular-components/header).
 - `.subnav` immediately below the header.
-- `.sidenav` inside the content container. See [sidenav](/components/sidenav).
+- `.sidenav` inside the content container. See [sidenav](/angular-components/sidenav).
 
 ### Designing Navigation Patterns
 
@@ -159,7 +159,7 @@ Clarity has three navigation components: header, subnav, and sidenav. Following 
 
 ### Header + Subnav
 
-When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/component/header) component with the [subnav](/components/header#subnav) component using the DOM structure shown in code examples.
+When Header is the primary navigation and subnav is the secondary navigation combine the [Header](/angular-components/header) component with the [subnav](/angular-components/header#subnav) component using the DOM structure shown in code examples.
 
 <!-- // Need code+demo here w/ subnav -->
 <doc-demo>
@@ -172,7 +172,7 @@ When Header is the primary navigation and subnav is the secondary navigation com
 
 ### Header + Sidenav
 
-When header is the primary navigation and sidenav is the secondary navigation combine the [Header](/component/header) component with the [sidenav](/components/sidenav) component using the DOM structure shown in code examples.
+When header is the primary navigation and sidenav is the secondary navigation combine the [Header](/angular-components/header) component with the [sidenav](/angular-components/sidenav) component using the DOM structure shown in code examples.
 <doc-demo>
 !!!include(.vuepress/code/demos/navigation/header-sidenav-css.html)!!!
 </doc-demo>

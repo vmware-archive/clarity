@@ -33,13 +33,12 @@ If you can already build an Angular app, then you need to install Clarity onto y
 
 ### Step 1: Install packages
 
-Clarity is published as three separate packages on NPM, as well as one dependency. You will need to install these into your project to have access to them at build time.
+Clarity is published as several separate packages on NPM. You will need to install these into your project to have access to them at build time.
 
 - **@clr/icons.** The library that provides the custom element icons.
 - **@clr/ui.** Contains the static styles for building HTML components.
-- **@cds/core.** Contains a shared core library of web components.
+- **@cds/core.** Contains the Core components.
 - **@clr/angular.** Contains the Angular components. This package depends on @clr/ui for styles.
-- **@webcomponents/webcomponentsjs.** A polyfill for web components for older browsers, which Clarity depends upon.
 
 Install them all by running the following command with `npm` or `yarn`.
 

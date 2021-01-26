@@ -113,10 +113,10 @@
             interactions. As a result, you can rely on Clarity for 30+ components and over 200 icons so you can focus on
             product-specific user problems.
           </p>
-          <router-link to="/get-started/design" cds-layout="m-t:lg" cds-text="subsection expanded"
+          <router-link to="/get-started/design/" cds-layout="m-t:lg" cds-text="subsection expanded"
             >Get Started</router-link
           >
-          <router-link to="/get-started/design#figma-libraries" cds-layout="m-t:md" cds-text="subsection expanded"
+          <router-link to="/get-started/design/#figma-libraries" cds-layout="m-t:md" cds-text="subsection expanded"
             >Browse our Figma libraries</router-link
           >
         </div>
@@ -146,13 +146,15 @@
           <p cds-text="section expanded" cds-layout="m-t:xl">
             The first folx that built Clarity from scratch were a scrappy team of developers, designers, and content
             creators. Clarity has continued to grow on that strong start by supporting the big three: Angular, React and
-            Vue. Our latest web components provide support for them all. Clarity provides code examples and detailed API
-            documentation that guide you as you build your next application.
+            Vue. Our latest Core components provide support for them all. Clarity provides code examples and detailed
+            API documentation that guide you as you build your next application.
           </p>
-          <router-link to="/get-started/" cds-layout="m-t:lg" cds-text="subsection expanded"
-            >Get started with Angular</router-link
+          <router-link to="/get-started/developing/angular/" cds-layout="m-t:lg" cds-text="subsection expanded"
+            >Get started with Angular components</router-link
           >
-          <a target="_blank" href="/storybook/core" cds-layout="m-t:md">Get started with web components</a>
+          <router-link to="/get-started/developing/" cds-layout="m-t:md" cds-text="subsection expanded"
+            >Get started with Core components</router-link
+          >
           <a target="_blank" href="https://github.com/vmware/clarity" cds-layout="m-t:md" cds-text="subsection expanded"
             >Explore our Github</a
           >
@@ -182,8 +184,11 @@
             than a dozen features and handle thousands of data entries. Let us build performant components so you can
             focus on building applications.
           </p>
-          <router-link to="/components/" cds-layout="m-t:lg" cds-text="subsection expanded"
-            >Browse all components</router-link
+          <router-link to="/angular-components/" cds-layout="m-t:lg" cds-text="subsection expanded"
+            >Browse Angular components</router-link
+          >
+          <router-link to="/core-components/" cds-layout="m-t:lg" cds-text="subsection expanded"
+            >Browse Core components</router-link
           >
         </div>
         <div cds-layout="vertical ">
@@ -264,7 +269,7 @@
         </p>
 
         <div cds-layout="horizontal gap:lg align:center col:start-2 col:10 m-t:xl m-t@sm:lg">
-          <router-link to="/angular/get-started/">
+          <router-link to="/get-started/developing/angular/">
             <cds-button action="outline">
               Get started developing
             </cds-button>

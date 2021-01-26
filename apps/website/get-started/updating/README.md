@@ -3,7 +3,7 @@ title: Core (@cds/core)
 toc: false
 ---
 
-Clarity Core web components can be easily updated using NPM or Yarn.
+Clarity Core components can be easily updated using NPM or Yarn.
 
 ```bash
 npm install @cds/core@latest # installs the latest release

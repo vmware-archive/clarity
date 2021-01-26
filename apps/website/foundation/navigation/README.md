@@ -33,7 +33,7 @@ When establishing your navigation model, consider:
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 
-The <a href="/components/header">header</a> is for primary navigation. Benefits of this navigation pattern are:
+The <a href="/angular-components/header/">header</a> is for primary navigation. Benefits of this navigation pattern are:
 
 - Users often look for navigation in the header.
 - Top-level navigation is kept simple–the recommended number of links is 2 to 4.
@@ -55,7 +55,7 @@ Conversely, the header supports other items (search and setting) and the navigat
 
 {.custom-container}
 
-Use the <a href="/components/header#subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
+Use the <a href="/angular-components/header/#subnav">subnav</a> for primary navigation when you need the sidebar for secondary navigation and any of the following apply:
 
 - You have more links than can fit in the header.
 - The text of your links is too long for the header.
@@ -75,7 +75,7 @@ Use the <a href="/components/header#subnav">subnav</a> for primary navigation wh
 
 {.custom-container}
 
-Benefits of the <a href="/components/sidenav">sidenav</a> are that it:
+Benefits of the <a href="/angular-components/sidenav/">sidenav</a> are that it:
 
 - Is a familiar navigation pattern for users.
 - Accommodates a large number of links, becoming vertically scrollable when content exceeds the view port.

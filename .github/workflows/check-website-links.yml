@@ -1,0 +1,30 @@
+name: CheckLinks
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every day at midnight
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CLARITY_BUILD_WEBHOOK_URL }}
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install
+        run: yarn init -y && yarn add broken-link-checker
+      - name: Check production links
+        id: link-check
+        run: npx blc https://clarity.design -ore
+      - name: Link-report
+        if: always()
+        uses: adamkdean/simple-slack-notify@master
+        with:
+          channel: '#clarity-build'
+          status: ${{ job.status }}
+          success_text: 'Website Link Check completed successfully'
+          failure_text: 'Website Link Check failed'
+          cancelled_text: 'Website Link Check was cancelled'
+          fields: |
+            [{ "title": "Job", "value": "${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}", "short": true},
+             { "title": "Results", "value": "... coming soon", "short": true}]

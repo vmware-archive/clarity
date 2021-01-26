@@ -2,9 +2,9 @@
 
 Clarity is an open-source, enterprise-focused design system with a core design principle of inclusion.
 
-Clarity’s designs stem from continuous exploration and research. These designs are built into our web components and can be used any web application, regardless of the underlying JavaScript framework. Clarity also offers a set of well-designed and implemented data-bound components built on top of Angular, one of the most popular JavaScript frameworks in the industry.
+Clarity’s designs stem from continuous exploration and research. These designs are built into our Core components and can be used any web application, regardless of the underlying JavaScript framework. Clarity also offers a set of well-designed and implemented data-bound components built on top of Angular, one of the most popular JavaScript frameworks in the industry.
 
-If you are new to Clarity, we suggest using Clarity's web component implemenation, as this version of our components is the long term vision for Clarity. The existing Clarity Angular components are still stable and supported, but are no longer receiving feature enhancements as we work towards fully realizing the Clarity Core web components as the replacement the Clarity Angular component implementations.
+If you are new to Clarity, we suggest using Clarity's web component implemenation, as this version of our components is the long term vision for Clarity. The existing Clarity Angular components are still stable and supported, but are no longer receiving feature enhancements as we work towards fully realizing the Clarity Core components as the replacement for the Clarity Angular component implementations.
 
 ## How to get started
 

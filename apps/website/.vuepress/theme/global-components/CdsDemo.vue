@@ -45,6 +45,7 @@
 
 <script>
 import Prism from 'prismjs';
+import { html } from 'js-beautify';
 
 const COLLAPSED_HEIGHT = 75;
 
@@ -65,8 +66,7 @@ export default {
   },
   computed: {
     prismText: function () {
-      const trimmedCode = this.code.trim();
-      return Prism.highlight(trimmedCode, Prism.languages.html, 'html');
+      return Prism.highlight(html(this.code), Prism.languages.html, 'html');
     },
   },
   methods: {
@@ -165,6 +165,7 @@ export default {
     position: relative;
     overflow: hidden;
     pre {
+      white-space: inherit;
       line-height: 1.2rem;
       margin: 0;
       padding: 0;

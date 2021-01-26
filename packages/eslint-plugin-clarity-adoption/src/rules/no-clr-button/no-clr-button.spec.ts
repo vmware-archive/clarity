@@ -1,123 +1,65 @@
 import rule from './index';
-import { RuleTester } from '../../test-helper.spec';
+import { getHtmlRuleTester, getInvalidTestFactory, getTsRuleTester } from '../../test-helper.spec';
 
-interface InvalidTest {
-  code: string;
-  errors: Array<{
-    messageId: string;
-    line?: number;
-    column?: number;
-  }>;
-  output?: string;
-}
+const tsRuleTester = getTsRuleTester();
+const htmlRuleTester = getHtmlRuleTester();
 
-interface Location {
-  line: number;
-  column: number;
-}
-
-const buttonFailureMessageId = 'clrButtonFailure';
-
-const tsRuleTester = new RuleTester({
-  parserOptions: {
-    sourceType: 'module',
-  },
-  parser: '@typescript-eslint/parser',
-});
-
-const htmlRuleTester = new RuleTester({
-  parserOptions: {
-    sourceType: 'module',
-  },
-  parser: '../src/html-parser',
-});
-
-function getInvalidTest(
-  code: string,
-  locations?: Array<Location>,
-  messageIds?: Array<string>,
-  output?: string
-): InvalidTest {
-  if (!messageIds) {
-    messageIds = [buttonFailureMessageId];
-  }
-
-  const invalidTest: InvalidTest = {
-    code,
-    errors: [],
-  };
-
-  messageIds.forEach(messageId => {
-    invalidTest.errors.push({ messageId });
-  });
-
-  locations?.forEach((location, index) => {
-    invalidTest.errors[index].line = location.line;
-    invalidTest.errors[index].column = location.column;
-  });
-
-  if (output) {
-    invalidTest.output = output;
-  }
-
-  return invalidTest;
-}
+const getInvalidButtonTest = getInvalidTestFactory('clrButtonFailure');
 
 htmlRuleTester.run('no-clr-button', rule, {
   invalid: [
-    getInvalidTest(
-      `
+    getInvalidButtonTest({
+      code: `
       <button class="btn btn-primary">Shalqlq</button>
-    `,
-      [{ line: 2, column: 7 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 2, column: 7 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       <div>
         <button class="btn btn-primary">Shalqlq</button>
         </div>
-    `,
-      [{ line: 3, column: 9 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 3, column: 9 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       <div></div>
       <button class="btn btn-primary">Shalqlq</button>
-    `,
-      [{ line: 3, column: 7 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 3, column: 7 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       <div></div>
       <button id="#button" class="btn btn-primary">Shalqlq</button>
-    `,
-      [{ line: 3, column: 7 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 3, column: 7 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       <div><ul></ul><button class="btn btn-primary"></button></div>
-    `,
-      [{ line: 2, column: 21 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 2, column: 21 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       <button class="btn btn-primary">Le button</button>
       <div><ul></ul><button class="btn btn-success"></button></div>
-    `,
-      [
+      `,
+      locations: [
         { line: 2, column: 7 },
         { line: 3, column: 21 },
       ],
-      [buttonFailureMessageId, buttonFailureMessageId]
-    ),
+    }),
   ],
   valid: [`<button class="shalqlq">Le button</button>`, `<div></div>`],
 });
 
 tsRuleTester.run('no-clr-button', rule, {
   invalid: [
-    getInvalidTest(
-      `
+    getInvalidButtonTest({
+      code: `
       @Component({
         selector: 'app-custom-button',
         template: \`
@@ -128,11 +70,11 @@ tsRuleTester.run('no-clr-button', rule, {
       })
       export class CustomButtonComponent {
       }
-    `,
-      [{ line: 6, column: 13 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 6, column: 13 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       @Component({
         selector: 'app-custom-button',
         template: \`
@@ -141,11 +83,11 @@ tsRuleTester.run('no-clr-button', rule, {
       })
       export class CustomButtonComponent {
       }
-    `,
-      [{ line: 5, column: 11 }]
-    ),
-    getInvalidTest(
-      `
+      `,
+      locations: [{ line: 5, column: 11 }],
+    }),
+    getInvalidButtonTest({
+      code: `
       @Component({
         selector: 'app-custom-button',
         template: \`
@@ -157,29 +99,28 @@ tsRuleTester.run('no-clr-button', rule, {
       })
       export class CustomButtonComponent {
       }
-    `,
-      [
+      `,
+      locations: [
         { line: 5, column: 11 },
         { line: 7, column: 11 },
         { line: 8, column: 26 },
       ],
-      [buttonFailureMessageId, buttonFailureMessageId, buttonFailureMessageId]
-    ),
+    }),
   ],
   valid: [
     `
-      @Component({
-        selector: 'app-custom-button',
-        template: \`
-          <div></div>
-        \`
-        })
-        export class CustomButtonComponent {
-          // Should we catch that case?
-          const myButton = \`
-            <button class="btn btn-primary custom-class">Primary</button>
-          \`;
-        }
-      `,
+    @Component({
+      selector: 'app-custom-button',
+      template: \`
+        <div></div>
+      \`
+      })
+      export class CustomButtonComponent {
+        // Should we catch that case?
+        const myButton = \`
+          <button class="btn btn-primary custom-class">Primary</button>
+        \`;
+      }
+    `,
   ],
 });

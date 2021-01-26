@@ -1,18 +1,45 @@
 import { TSESLint } from '@typescript-eslint/experimental-utils';
+import { InvalidTestCase } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 
 import * as path from 'path';
+interface Location {
+  line: number;
+  column: number;
+}
+
+interface TestOptions {
+  code: string;
+  output?: string;
+  locations?: Array<Location>;
+}
 
 const parser = '@typescript-eslint/parser';
-
-function getFixturesRootDir(): string {
-  return path.join(process.cwd(), 'tests/fixtures/');
-}
 
 type RuleTesterConfig = Omit<TSESLint.RuleTesterConfig, 'parser'> & {
   parser: string;
 };
 
-export class RuleTester extends TSESLint.RuleTester {
+export function getHtmlRuleTester() {
+  return new RuleTester({
+    parserOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2015,
+    },
+    parser: '../src/html-parser',
+  });
+}
+
+export function getTsRuleTester() {
+  return new RuleTester({
+    parserOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2015,
+    },
+    parser: '@typescript-eslint/parser',
+  });
+}
+
+class RuleTester extends TSESLint.RuleTester {
   private filename: string | undefined = undefined;
 
   // as of eslint 6 you have to provide an absolute path to the parser
@@ -74,4 +101,33 @@ export class RuleTester extends TSESLint.RuleTester {
 
     super.run(name, rule, tests);
   }
+}
+
+export function getInvalidTestFactory(messageId: string) {
+  return ({ code, output, locations }: TestOptions) =>
+    getInvalidTest(code, output, locations, Array(locations?.length).fill(messageId));
+}
+
+function getFixturesRootDir(): string {
+  return path.join(process.cwd(), 'tests/fixtures/');
+}
+
+function getInvalidTest(
+  code: string,
+  output?: string,
+  locations: Array<Location> = [],
+  messageIds: Array<string> = []
+): InvalidTestCase<any, any> {
+  return {
+    code,
+
+    errors: messageIds.map((messageId, index) => ({
+      messageId,
+      line: locations[index]?.line || 1,
+      column: locations[index]?.column || 1,
+    })),
+
+    // Set the output property if provided as argument
+    ...(output ? { output } : {}),
+  };
 }

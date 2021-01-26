@@ -67,6 +67,16 @@ export function actions() {
   `;
 }
 
+export function disabled() {
+  return html`
+    <div cds-layout="horizontal gap:sm">
+      <cds-button disabled>solid</cds-button>
+      <cds-button disabled action="outline">outline</cds-button>
+      <cds-button disabled action="flat">flat</cds-button>
+    </div>
+  `;
+}
+
 /** @website */
 export function status() {
   return html`

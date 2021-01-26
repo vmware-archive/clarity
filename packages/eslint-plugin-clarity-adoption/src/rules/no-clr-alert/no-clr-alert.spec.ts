@@ -1,68 +1,15 @@
-import { LineAndColumnData } from '@typescript-eslint/types/dist/ts-estree';
 import rule from './index';
-import { RuleTester } from '../../test-helper.spec';
+import { getHtmlRuleTester, getInvalidTestFactory, getTsRuleTester } from '../../test-helper.spec';
 
-interface InvalidTest {
-  code: string;
-  errors: Array<{
-    messageId: string;
-    line?: number;
-    column?: number;
-  }>;
-  output?: string;
-}
+const tsRuleTester = getTsRuleTester();
+const htmlRuleTester = getHtmlRuleTester();
 
-const alertFailureMessageId = 'clrAlertFailure';
-
-const tsRuleTester = new RuleTester({
-  parserOptions: {
-    sourceType: 'module',
-  },
-  parser: '@typescript-eslint/parser',
-});
-
-const htmlRuleTester = new RuleTester({
-  parserOptions: {
-    sourceType: 'module',
-  },
-  parser: '../src/html-parser',
-});
-
-function getInvalidTest(
-  code: string,
-  locations?: Array<LineAndColumnData>,
-  messageIds?: Array<string>,
-  output?: string
-): InvalidTest {
-  if (!messageIds) {
-    messageIds = [alertFailureMessageId];
-  }
-
-  const invalidTest: InvalidTest = {
-    code,
-    errors: [],
-  };
-
-  messageIds.forEach(messageId => {
-    invalidTest.errors.push({ messageId });
-  });
-
-  locations?.forEach((location, index) => {
-    invalidTest.errors[index].line = location.line;
-    invalidTest.errors[index].column = location.column;
-  });
-
-  if (output) {
-    invalidTest.output = output;
-  }
-
-  return invalidTest;
-}
+const getInvalidAlertTest = getInvalidTestFactory('clrAlertFailure');
 
 htmlRuleTester.run('no-clr-alert', rule, {
   invalid: [
-    getInvalidTest(
-      `
+    getInvalidAlertTest({
+      code: `
       <clr-alert [clrAlertType]="'danger'" [clrAlertAppLevel]="true">
         <clr-alert-item>
           <span class="alert-text">
@@ -74,11 +21,11 @@ htmlRuleTester.run('no-clr-alert', rule, {
         </clr-alert-item>
       </clr-alert>
       `,
-      [{ line: 2, column: 7 }]
-    ),
+      locations: [{ line: 2, column: 7 }],
+    }),
 
-    getInvalidTest(
-      `
+    getInvalidAlertTest({
+      code: `
       <clr-alerts>
         <clr-alert [clrAlertType]="'info'" [clrAlertAppLevel]="true">
           <clr-alert-item>
@@ -102,14 +49,13 @@ htmlRuleTester.run('no-clr-alert', rule, {
         </clr-alert>
       </clr-alerts>
       `,
-      [
+      locations: [
         { line: 3, column: 9 },
         { line: 13, column: 9 },
       ],
-      [alertFailureMessageId, alertFailureMessageId]
-    ),
-    getInvalidTest(
-      `
+    }),
+    getInvalidAlertTest({
+      code: `
       <div class="alert alert-danger" role="alert">
         <div class="alert-items">
             <div class="alert-item static"></div>
@@ -144,12 +90,11 @@ htmlRuleTester.run('no-clr-alert', rule, {
         </button>
       </div>
       `,
-      [
+      locations: [
         { line: 2, column: 7 },
         { line: 9, column: 7 },
       ],
-      [alertFailureMessageId, alertFailureMessageId]
-    ),
+    }),
   ],
   valid: [
     `
@@ -166,8 +111,8 @@ htmlRuleTester.run('no-clr-alert', rule, {
 
 tsRuleTester.run('no-clr-alert', rule, {
   invalid: [
-    getInvalidTest(
-      `
+    getInvalidAlertTest({
+      code: `
       @Component({
         template: \`
           <clr-alert [clrAlertType]="'warning'">
@@ -183,10 +128,10 @@ tsRuleTester.run('no-clr-alert', rule, {
 
       }
       `,
-      [{ line: 4, column: 11 }]
-    ),
-    getInvalidTest(
-      `
+      locations: [{ line: 4, column: 11 }],
+    }),
+    getInvalidAlertTest({
+      code: `
       @Component({
         template: \`
           <div class="alert alert-danger" role="alert">
@@ -201,8 +146,8 @@ tsRuleTester.run('no-clr-alert', rule, {
 
       }
       `,
-      [{ line: 4, column: 11 }]
-    ),
+      locations: [{ line: 4, column: 11 }],
+    }),
   ],
   valid: [
     `

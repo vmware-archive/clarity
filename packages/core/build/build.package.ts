@@ -1,24 +1,10 @@
-'use strict';
-
 import * as fs from 'fs-extra';
-import * as path from 'path';
 import * as del from 'del';
 import * as cpy from 'cpy';
 import * as shellEx from 'child_process';
+import { read } from './utils';
 
 const shell = shellEx.execSync;
-
-function read(dir) {
-  return fs
-    .readdirSync(dir)
-    .reduce(
-      (files, file) =>
-        fs.statSync(path.join(dir, file)).isDirectory()
-          ? files.concat(read(path.join(dir, file)))
-          : files.concat(path.join(dir, file)),
-      []
-    );
-}
 
 function copyAssets() {
   return Promise.all([

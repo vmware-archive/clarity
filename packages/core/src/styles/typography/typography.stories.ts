@@ -49,7 +49,15 @@ export function content() {
 /** @website */
 export function links() {
   return html`
-    <p cds-text="body">The <a href="#" cds-text="link">quick brown fox</a> jumps over the lazy dog. (link)</p>
+    <cds-demo cds-layout="vertical gap:lg">
+      <p cds-text="body">The <a href="#" cds-text="link">quick brown fox</a> jumps over the lazy dog. (link)</p>
+      <p cds-text="body">
+        The <a href="#" cds-text="link visited">quick brown fox</a> jumps over the lazy dog. (link visited)
+      </p>
+      <p cds-text="body">
+        The <a href="#" cds-text="link static">quick brown fox</a> jumps over the lazy dog. (link static)
+      </p>
+    </cds-demo>
   `;
 }
 

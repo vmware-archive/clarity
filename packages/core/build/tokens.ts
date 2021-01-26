@@ -56,7 +56,7 @@ const color = {
     600: token([93, 80, 37]),
     700: token([93, 80, 28]),
     800: token([93, 80, 23]),
-    900: token([93, 80, 14]),
+    900: token([93, 80, 17]),
     1000: token([93, 80, 12]),
   },
   blue: {
@@ -96,7 +96,7 @@ const color = {
     700: token([9, 100, 44]),
     800: token([9, 100, 38]),
     900: token([9, 100, 28]),
-    1000: token([9, 100, 16]),
+    1000: token([9, 100, 22]),
   },
   ochre: {
     50: token([41, 100, 96]),
@@ -311,19 +311,20 @@ const color = {
 
 const typography = {
   color: {
-    100: token(color.gray[0]), // white
-    200: token(color.gray[700]), // placeholders
-    300: token(color.gray[800]), // content
-    400: token(color.gray[900]), // headings
-    500: token(color.gray[1000]), // black
+    100: token(color.gray[0]),
+    200: token(color.construction[600]), // placeholders
+    300: token(color.construction[800]), // labels
+    400: token(color.construction[900]), // headings
+    500: token(color.gray[1000]), // content
   },
   fontWeight: {
-    light: token('200'),
+    // Clarity City is limited to 400-500, tokens provide hooks for customization
+    light: token('400'),
     regular: token('400'),
     medium: token('500'),
     semibold: token('500'),
-    bold: token('600'),
-    extrabold: token('600'),
+    bold: token('500'),
+    extrabold: token('500'),
   },
   fontSize: {
     0: token(10),
@@ -344,6 +345,16 @@ const typography = {
   topGapHeight: token('0.1475em'), // line-height eraser
   ascenderHeight: token('0.1703em'), // line-height eraser
   xHeight: token('0.517em'), // line-height eraser
+  link: {
+    color: {
+      value: token(color.blue[800]),
+      hover: token(color.blue[900]),
+      visited: {
+        value: token(color.lavender[600]),
+        hover: token(color.lavender[700]),
+      },
+    },
+  },
   body: {
     fontSize: token(14),
     lineHeight: token('1.42857em'),
@@ -410,7 +421,7 @@ const aliases = {
   object: {
     border: {
       radius: {
-        100: token(3),
+        100: token(4),
         200: token(12),
         300: token('50%'),
       },
@@ -427,9 +438,9 @@ const aliases = {
       },
     },
     shadow: {
-      100: token('0 1px 3px 0 rgba(27, 43, 50, 0.5)'),
-      200: token('0 1px 3px 0 rgba(27, 43, 50, 0.3)'),
-      300: token('0 1px 3px 0 rgba(27, 43, 50, 0.2)'),
+      100: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.5)'),
+      200: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.3)'),
+      300: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.2)'),
     },
     opacity: {
       0: token('hsla(0, 0%, 0%, 0)'),
@@ -440,8 +451,8 @@ const aliases = {
     interaction: {
       background: {
         value: token(color.gray[0]),
-        hover: token(color.gray[100]),
-        active: token(color.gray[200]),
+        hover: token(color.blue[50]),
+        active: token(color.blue[100]),
         selected: token(color.blue[50]),
         disabled: token(color.gray[0]),
         highlight: token(color.blue[700]),

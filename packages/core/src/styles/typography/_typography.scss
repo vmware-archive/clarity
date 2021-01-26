@@ -43,7 +43,7 @@
 [cds-text*='secondary'],
 [cds-text*='caption'],
 [cds-text*='smallcaption'] {
-  color: $cds-global-typography-color-300;
+  color: $cds-global-typography-color-500;
 }
 
 [cds-text*='inline'] {
@@ -182,13 +182,22 @@
 }
 
 [cds-text~='link'] {
-  color: $cds-alias-status-info !important;
+  color: $cds-global-typography-link-color !important;
   text-decoration: underline !important;
   line-height: inherit !important;
   font-size: inherit !important;
 
   &:hover {
-    color: $cds-alias-status-info-shade !important;
+    color: $cds-global-typography-link-color-hover !important;
+  }
+
+  &:visited:not([cds-text~='static']),
+  &[cds-text~='visited'] {
+    color: $cds-global-typography-link-color-visited !important;
+
+    &:hover {
+      color: $cds-global-typography-link-color-visited-hover !important;
+    }
   }
 }
 

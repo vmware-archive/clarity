@@ -58,7 +58,7 @@ cds-placeholder {
 }
 
 cds-demo[inverse] {
-  background: var(--cds-global-color-gray-800);
+  background: var(--cds-global-color-construction-800);
 }
 
 cds-demo[inline-block] {

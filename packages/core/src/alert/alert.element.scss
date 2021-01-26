@@ -110,7 +110,7 @@ cds-internal-close-button {
 }
 
 :host([size='sm']:not([_type='banner'])) {
-  --font-size: #{$cds-global-typography-font-size-2};
+  --font-size: #{$cds-global-typography-font-size-1};
   --letter-spacing: normal;
 }
 

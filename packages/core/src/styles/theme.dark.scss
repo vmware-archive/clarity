@@ -10,6 +10,10 @@
   --cds-global-typography-color-300: #{$cds-global-color-construction-200};
   --cds-global-typography-color-200: #{$cds-global-color-construction-600};
   --cds-global-typography-color-100: #{$cds-global-color-construction-900};
+  --cds-global-typography-link-color: #{$cds-global-color-blue-400};
+  --cds-global-typography-link-color-hover: #{$cds-global-color-blue-500};
+  --cds-global-typography-link-color-visited: #{$cds-global-color-lavender-300};
+  --cds-global-typography-link-color-visited-hover: #{$cds-global-color-lavender-400};
 
   --cds-alias-object-app-background: #{$cds-global-color-construction-1000};
   --cds-alias-object-app-border-color: #{$cds-global-color-gray-1000};

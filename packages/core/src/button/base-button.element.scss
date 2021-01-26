@@ -194,8 +194,13 @@
   }
 }
 
+:host([disabled][action='outline']) {
+  --background: #{$cds-alias-object-opacity-0} !important;
+}
+
 :host([disabled][action='flat']) {
   --border-color: #{$cds-alias-object-opacity-0} !important;
+  --background: #{$cds-alias-object-opacity-0} !important;
 }
 
 :host([block]) {

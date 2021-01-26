@@ -15,7 +15,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}-${{ github.base_ref }}
       - run: yarn install
       - run: yarn build:libs && yarn angular:dev:build
       - run: yarn angular:dev:deploy

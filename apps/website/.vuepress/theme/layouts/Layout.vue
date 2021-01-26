@@ -20,7 +20,11 @@
       <Sidebar :items="sidebarItems" :isSidebarOpen="isSidebarOpen" @isSidebarOpenChange="toggleSidebar()" />
       <div id="content-area" tabindex="-1" :class="{ 'content-area': true, 'home-page': $page.frontmatter.home }">
         <Home v-if="$page.frontmatter.home" class="make-it-scrollable" />
-        <div v-if="is404" class="make-it-scrollable" cds-layout="horizontal gap:md align:horizontal-center">
+        <div
+          v-if="is404"
+          class="make-it-scrollable"
+          cds-layout="horizontal gap:md p-t@sm:xl p-t:sm align:horizontal-center"
+        >
           <slot></slot>
         </div>
         <div class="page-wrapper" v-if="!$page.frontmatter.home && !is404">

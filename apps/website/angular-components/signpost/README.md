@@ -85,7 +85,7 @@ The default signpost is shown to the right of the trigger icon with the content 
 
 There are twelve signpost positions to help place popover content in an appropriate position when it is shown. Control the position and direction by declaring a position that orients the Signpost content in one of these positions.
 
-To set a position, use the `clrInput` property on the [ClrSignpostContent](/angular-components/signposts/api/#clrsignpostcontent) element:
+To set a position, use the `clrInput` property on the [ClrSignpostContent](/angular-components/signpost/api/#clrsignpostcontent) element:
 
 - top-left
 - top-middle

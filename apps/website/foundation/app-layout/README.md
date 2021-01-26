@@ -13,7 +13,7 @@ A properly structured layout enforces an optimal, consistent experience across a
 
 The `.main-container` is a vertical flexbox which wraps the following components:
 
-- [App-Level Alert](/components/alert)
+- [App-Level Alert](/angular-components/alert/)
 - [Header](/angular-components/header)
 - [Subnav](/angular-components/header)
 - Content Container
@@ -68,7 +68,7 @@ Your layout should reflect the information or workflow of the selected [navigati
 
 ## Common Layout Patterns
 
-Content can consist of any of the [Clarity components](/components), or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav, and sidenav, see [Navigation](/foundation/navigation).
+Content can consist of any of the [Clarity components](/angular-components/), or no components and just information. Following are common layout patterns and recommended usage. For information on navigation components, header, subnav, and sidenav, see [Navigation](/foundation/navigation).
 
 ### Cards
 
@@ -114,7 +114,7 @@ Complex tables and datagrids work best on larger screens.
 </div>
 <div class="clr-col-8">
 
-[Forms](/components/form) are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
+[Forms](/angular-components/form/) are for collecting data from users. Forms are comprised of other components, including labels, input fields, labels, checkboxes, radio buttons, and text.
 
 A benefit of a form is that users can see what information they must provide. Conversely, too many fields can discourage the user.
 

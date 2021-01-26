@@ -3,23 +3,29 @@ import { Token, CdsTheme } from './token-utils';
 import * as fs from 'fs';
 
 fs.mkdir('../src/styles/tokens/generated', { recursive: true }, () => console.log('Building Tokens...'));
-fs.writeFileSync('../src/styles/tokens/generated/tokens.json', JSON.stringify(flattenTheme(baseTheme), null, 2));
+fs.writeFileSync('../src/styles/tokens/generated/tokens.json', buildJSONTokens(baseTheme));
+fs.writeFileSync('../src/styles/tokens/generated/tokens.css', buildCSSTokens(baseTheme));
 fs.writeFileSync('../src/styles/tokens/generated/_index.scss', buildSassTokens(baseTheme));
-fs.writeFileSync('../src/styles/tokens/generated/_public.scss', buildCSSTokens(baseTheme));
+
+function buildJSONTokens(baseTheme) {
+  return JSON.stringify(flattenTokens(baseTheme), null, 2);
+}
 
 function buildSassTokens(theme: CdsTheme) {
-  return Object.entries(flattenTheme(theme))
+  return Object.entries(flattenTokens(theme))
     .map(tokenEntry => `${tokenToSass(tokenEntry[1])}\n`)
     .join('')
     .trim();
 }
 
 function buildCSSTokens(theme: CdsTheme) {
-  const tokens = Object.entries(flattenTheme(theme));
+  const tokens = Object.entries(flattenTokens(theme));
   return `
 :root {
   ${tokens
-    .map(tokenEntry => `  --cds-${camelCaseToKebab(tokenEntry[1].name)}: ${convertCSSValue(tokenEntry[1])};\n`)
+    .map(
+      tokenEntry => `  --cds-${camelCaseToKebab(tokenEntry[1].name)}: ${convertCSSValue(tokenEntry[1], 20, false)};\n`
+    )
     .join('')
     .trim()}
 }
@@ -50,7 +56,7 @@ function tokenToSass(token: Token) {
   return `${dynamicVar}${staticVar}`;
 }
 
-function flattenTheme(theme: any) {
+function flattenTokens(theme: any) {
   function flatten(config: any, parent = ''): { [key: string]: Token } {
     return Object.entries(config)
       .map(([key, value]: [string, any]) => {
@@ -69,7 +75,7 @@ function flattenTheme(theme: any) {
   return flatten(theme);
 }
 
-function convertCSSValue(token: Token, base = 20) {
+function convertCSSValue(token: Token, base = 20, fallback = true) {
   let value = token.value;
 
   if (token.config.absolute) {
@@ -80,7 +86,9 @@ function convertCSSValue(token: Token, base = 20) {
     // hsl
     value = `hsl(${token.value[0]}, ${token.value[1]}%, ${token.value[2]}%)`;
   } else if (token.value instanceof Token) {
-    value = `var(--cds-${camelCaseToKebab(token.value.name)}, ${convertCSSValue(token.value)})`; // reference
+    value = `var(--cds-${camelCaseToKebab(token.value.name)}${
+      fallback ? `, ${convertCSSValue(token.value, 20, fallback)}` : ''
+    })`; // reference
   }
 
   return value;

@@ -1,21 +1,9 @@
-'use strict';
 import * as csso from 'csso';
 import * as fs from 'fs-extra';
-import * as path from 'path';
 import * as PurgeCSSDefault from 'purgecss';
+import { read } from './utils';
 
 const PurgeCSS = PurgeCSSDefault.PurgeCSS;
-
-const read = dir =>
-  fs
-    .readdirSync(dir)
-    .reduce(
-      (files, file) =>
-        fs.statSync(path.join(dir, file)).isDirectory()
-          ? files.concat(read(path.join(dir, file)))
-          : files.concat(path.join(dir, file)),
-      []
-    );
 
 read('../dist/core')
   .filter(f => f.endsWith('.css') && !f.endsWith('.min.css'))

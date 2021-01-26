@@ -1,6 +1,6 @@
 import { ESLintUtils } from '@typescript-eslint/experimental-utils';
-import { HTMLElement, HTMLAttributeName, HTMLAttribute } from '../../types';
 import { RuleFixer, RuleFix } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import { HTMLElement, HTMLAttributeName, HTMLAttribute } from '../../types';
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
 

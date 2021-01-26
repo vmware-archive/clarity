@@ -1,5 +1,7 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
+import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 import { SourceLocation } from '@typescript-eslint/types/dist/ts-estree';
+import { JSDOM } from 'jsdom';
 
 export interface DomElementLocation {
   startLine: number;
@@ -24,7 +26,7 @@ function isObjectExpression(node: TSESTree.Node): node is TSESTree.ObjectExpress
   return node.type === 'ObjectExpression';
 }
 
-export const getDecoratorArgument = (decorator: TSESTree.Decorator): TSESTree.ObjectExpression | undefined => {
+const getDecoratorArgument = (decorator: TSESTree.Decorator): TSESTree.ObjectExpression | undefined => {
   const { expression } = decorator;
   if (!isCallExpression(expression) || !expression.arguments || expression.arguments.length === 0) {
     return undefined;
@@ -34,7 +36,7 @@ export const getDecoratorArgument = (decorator: TSESTree.Decorator): TSESTree.Ob
   return isObjectExpression(arg) && arg.properties ? arg : undefined;
 };
 
-export const getDecoratorProperty = (decorator: TSESTree.Decorator, name: string): TSESTree.Property | undefined => {
+const getDecoratorProperty = (decorator: TSESTree.Decorator, name: string): TSESTree.Property | undefined => {
   const arg = getDecoratorArgument(decorator);
 
   if (!arg || !isObjectExpression(arg)) {
@@ -51,7 +53,7 @@ export const getDecoratorProperty = (decorator: TSESTree.Decorator, name: string
   return property;
 };
 
-export const getDecoratorPropertyValue = (
+const getDecoratorPropertyValue = (
   decorator: TSESTree.Decorator,
   name: string
 ): TSESTree.Expression | TSESTree.Literal | undefined => {
@@ -63,7 +65,7 @@ export const getDecoratorPropertyValue = (
   return property.value as any;
 };
 
-export function calculateLocation(
+function calculateLocation(
   templateContent: TSESTree.TemplateElement,
   elementLocation: DomElementLocation
 ): SourceLocation {
@@ -79,7 +81,7 @@ export function calculateLocation(
   return { start, end };
 }
 
-export function getDecoratorTemplate(
+function getDecoratorTemplate(
   decoratorNode: TSESTree.Decorator
 ):
   | {
@@ -99,4 +101,34 @@ export function getDecoratorTemplate(
   }
 
   return { templateContentNode, templateContent };
+}
+
+export function lintDecoratorTemplate(
+  context: RuleContext<any, any>,
+  node: TSESTree.Decorator,
+  disallowedElementSelector: string | Array<string>,
+  messageId: string
+): void {
+  const templateResult = getDecoratorTemplate(node);
+  if (!templateResult) {
+    return;
+  }
+
+  const { templateContentNode, templateContent } = templateResult;
+
+  const dom = new JSDOM(templateContent, {
+    includeNodeLocations: true,
+  });
+  const disallowedElements = dom.window.document.querySelectorAll(disallowedElementSelector as any);
+
+  disallowedElements.forEach(element => {
+    const nodeLocation = dom.nodeLocation(element) as DomElementLocation;
+    const loc = calculateLocation(templateContentNode, nodeLocation);
+
+    context.report({
+      node: templateContentNode,
+      messageId,
+      loc,
+    });
+  });
 }

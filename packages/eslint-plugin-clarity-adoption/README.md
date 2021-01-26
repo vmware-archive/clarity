@@ -21,8 +21,9 @@ Configure in your ESLint config file like you see below. The overrides section i
   },
   "plugins": ["@clr/clarity-adoption"],
   "rules": {
-    "@clr/clarity-adoption/no-clr-button": "warn",
     "@clr/clarity-adoption/no-clr-alert": "warn",
+    "@clr/clarity-adoption/no-clr-badge": "warn",
+    "@clr/clarity-adoption/no-clr-button": "warn",
     "@clr/clarity-adoption/no-clr-icon": "warn"
   },
   "overrides": [
@@ -81,8 +82,9 @@ yarn add -D @typescript-eslint/parser eslint
   },
   "plugins": ["@clr/clarity-adoption"],
   "rules": {
-    "@clr/clarity-adoption/no-clr-button": "warn",
     "@clr/clarity-adoption/no-clr-alert": "warn",
+    "@clr/clarity-adoption/no-clr-badge": "warn",
+    "@clr/clarity-adoption/no-clr-button": "warn",
     "@clr/clarity-adoption/no-clr-icon": "warn"
   },
   "overrides": [

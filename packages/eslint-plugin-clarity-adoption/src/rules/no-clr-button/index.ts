@@ -1,8 +1,7 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
-import { JSDOM } from 'jsdom';
-import { calculateLocation, getDecoratorTemplate, DomElementLocation } from '../utils';
 import { HTMLElement } from '../../types/index';
 import { primaryDisallowedClass, additionalDisallowedClasses, disallowedButtonsSelector } from './disallowed-classes';
+import { lintDecoratorTemplate } from '../decorator-template-helper';
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
 export type MessageIds = 'clrButtonFailure';
@@ -40,27 +39,7 @@ export default createESLintRule({
         }
       },
       'ClassDeclaration > Decorator'(node: TSESTree.Decorator): void {
-        const templateResult = getDecoratorTemplate(node);
-        if (!templateResult) {
-          return;
-        }
-
-        const { templateContentNode, templateContent } = templateResult;
-
-        const dom = new JSDOM(templateContent, {
-          includeNodeLocations: true,
-        });
-        const clrButtons = dom.window.document.querySelectorAll(disallowedButtonsSelector as any);
-
-        clrButtons.forEach(button => {
-          const nodeLocation = dom.nodeLocation(button) as DomElementLocation;
-          const loc = calculateLocation(templateContentNode, nodeLocation);
-          context.report({
-            node: templateContentNode,
-            messageId: 'clrButtonFailure',
-            loc,
-          });
-        });
+        lintDecoratorTemplate(context, node, disallowedButtonsSelector, 'clrButtonFailure');
       },
     };
   },

@@ -14,13 +14,14 @@ Clarity. For complete documentation, visit the [Clarity website](https://clarity
 
 Clarity is published as four npm packages:
 
-- [![npm version ui](https://img.shields.io/npm/v/@clr/ui/latest?label=%40clr%2Fui&style=flat-square)](https://www.npmjs.com/package/@clr/ui) Contains the static
-  styles for building HTML components.
-- [![npm version cds angular](https://img.shields.io/npm/v/@cds/angular/latest?label=%40cds%2Fangular&style=flat-square)](https://www.npmjs.com/package/@cds/angular) Contains the
-  Angular components. This package depends on `@clr/ui` for styles.
-- [![npm version clarity city](https://img.shields.io/npm/v/@cds/city/latest?label=%40cds%2Fcity&style=flat-square)](https://www.npmjs.com/package/@cds/city) Our open source sans-serif typeface.
 - [![npm version core](https://img.shields.io/npm/v/@cds/core/latest?label=%40cds%2Fcore&style=flat-square)](https://www.npmjs.com/package/@cds/core) Contains the Web
   Components that work in any JavaScript framework.
+- [![npm version cds angular](https://img.shields.io/npm/v/@cds/angular/latest?label=%40cds%2Fangular&style=flat-square)](https://www.npmjs.com/package/@cds/angular) Contains shims for core usage in Angular environment
+- [![npm version ui](https://img.shields.io/npm/v/@clr/ui/latest?label=%40clr%2Fui&style=flat-square)](https://www.npmjs.com/package/@clr/ui) Contains the static
+  styles for building HTML components.
+- [![npm version clr angular](https://img.shields.io/npm/v/@clr/angular/latest?label=%40clr%2Fangular&style=flat-square)](https://www.npmjs.com/package/@clr/angular) Contains the
+  Angular components. This package depends on `@clr/ui` for styles.
+- [![npm version clarity city](https://img.shields.io/npm/v/@cds/city/latest?label=%40cds%2Fcity&style=flat-square)](https://www.npmjs.com/package/@cds/city) Our open source sans-serif typeface.
 
 ## Installing Clarity
 

@@ -309,6 +309,6 @@ All fields should be assumed to be required. Clarity does not support a required
 
 :::component-section-level-one
 
-Applications often have form controls that are not supported by Clarity directly. To make these controls work nicely with Clarity, you can wrap them in a [generic control](/core-component/control/) container. Regardless if you make your own form controls or import a third party control, the generic container should help make your controls more consistent.
+Applications often have form controls that are not supported by Clarity directly. To make these controls work nicely with Clarity, you can wrap them in a [generic control](/core-components/control/) container. Regardless if you make your own form controls or import a third party control, the generic container should help make your controls more consistent.
 
 :::

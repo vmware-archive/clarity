@@ -8,7 +8,7 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 
 ## How to get started
 
-- [Getting started with Clarity for designers](./design.md)
+- [Getting started with Clarity for designers](/get-started/design/)
 - [Getting started with Clarity Core using our Web Components](/get-started/developing/)
 - [Getting started with Clarity Angular using our Angular Components](/get-started/developing/angular/)
 

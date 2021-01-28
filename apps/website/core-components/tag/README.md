@@ -82,7 +82,7 @@ Avoid using too many colors within the same context, displaying too many colors 
 
 ::: component-section-level-two
 
-Differentiate tags from [buttons](core-components/button).
+Differentiate tags from [buttons](/core-components/button).
 
 :::
 

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { assignSlotNames, baseStyles, CdsBaseButton, property, StatusTypes, syncProps } from '@cds/core/internal';
+import { assignSlotNames, baseStyles, CdsBaseButton, id, property, StatusTypes, syncProps } from '@cds/core/internal';
 import { html } from 'lit-element';
 import { styles } from './tag.element.css.js';
 
@@ -57,6 +57,8 @@ export class CdsTag extends CdsBaseButton {
   @property({ type: Boolean })
   closable = false;
 
+  @id() private groupLabelId: string;
+
   connectedCallback() {
     super.connectedCallback();
     assignSlotNames([this.icon, 'tag-icon'], [this.badge, 'tag-badge']);
@@ -76,9 +78,14 @@ export class CdsTag extends CdsBaseButton {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="horizontal align:vertical-center">
+      <div
+        class="private-host"
+        role="group"
+        aria-labelledby="${this.groupLabelId}"
+        cds-layout="horizontal align:vertical-center"
+      >
         <slot name="tag-icon"></slot>
-        <span class="tag-content" cds-text="lhe"><slot></slot></span>
+        <span id="${this.groupLabelId}" class="tag-content" cds-text="lhe"><slot></slot></span>
         <slot name="tag-badge"></slot>
         ${this.closable ? html`<cds-icon shape="times"></cds-icon>` : html``}
       </div>

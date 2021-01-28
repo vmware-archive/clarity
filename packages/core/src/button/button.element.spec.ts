@@ -127,6 +127,23 @@ describe('button element', () => {
       expect(component.getAttribute('aria-disabled')).toBe('true');
     });
 
+    it('should add or remove button event listeners when readonly updates ', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('readonly')).toBe(null);
+
+      spyOn(component, 'removeEventListener').and.callThrough();
+      component.readonly = true;
+      await componentIsStable(component);
+      expect(component.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function));
+      expect(component.removeEventListener).toHaveBeenCalledWith('keydown', jasmine.any(Function));
+
+      spyOn(component, 'addEventListener').and.callThrough();
+      component.readonly = false;
+      await componentIsStable(component);
+      expect(component.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function));
+      expect(component.addEventListener).toHaveBeenCalledWith('keydown', jasmine.any(Function));
+    });
+
     it('should keep disabled and aria-disabled in sync', async () => {
       await componentIsStable(component);
       expect(component.getAttribute('aria-disabled')).toBe('false');

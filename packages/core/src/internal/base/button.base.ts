@@ -52,14 +52,9 @@ export class CdsBaseButton extends LitElement {
     this.tabIndex = 0; // initialize immediately so button can be focused synchronously
   }
 
-  protected firstUpdated(props: Map<string, any>) {
-    super.firstUpdated(props);
-    this.setupNativeButtonBehavior();
-  }
-
   protected updated(props: Map<string, any>) {
     super.updated(props);
-    this.updateButtonAttributes();
+    this.updateButtonAttributes(props);
   }
 
   /** This mimics the mouse-click visual behavior for keyboard only users and screen readers.
@@ -79,15 +74,20 @@ export class CdsBaseButton extends LitElement {
     }, 300);
   }
 
+  private setupNativeButtonBehavior(readonly: boolean) {
+    if (readonly) {
+      this.removeEventListener('click', this.triggerNativeButtonBehavior);
+      this.removeEventListener('keydown', this.emulateKeyBoardEventBehavior);
+    } else {
+      this.addEventListener('click', this.triggerNativeButtonBehavior);
+      this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
+    }
+  }
+
   /**
    * We have to append a hidden button outside the web component in the light DOM
    * This allows us to trigger native submit events within a form element.
    */
-  private setupNativeButtonBehavior() {
-    this.addEventListener('click', this.triggerNativeButtonBehavior);
-    this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
-  }
-
   private triggerNativeButtonBehavior(event: Event) {
     if (!this.readonly) {
       if (this.disabled) {
@@ -120,7 +120,7 @@ export class CdsBaseButton extends LitElement {
     });
   }
 
-  private updateButtonAttributes() {
+  private updateButtonAttributes(props: Map<string, any>) {
     this.isAnchor = this.parentElement?.tagName === 'A';
 
     if (this.isAnchor && this.parentElement) {
@@ -129,14 +129,19 @@ export class CdsBaseButton extends LitElement {
     }
 
     this.readonly = this.readonly || this.isAnchor;
-    this.role = this.readonly ? null : 'button';
 
     if (this.readonly) {
+      this.role = null;
       this.tabIndexAttr = null;
       this.ariaDisabled = null;
     } else {
+      this.role = 'button';
       this.tabIndexAttr = this.disabled ? -1 : 0;
       this.ariaDisabled = this.disabled ? 'true' : 'false';
+    }
+
+    if (props.has('readonly')) {
+      this.setupNativeButtonBehavior(this.readonly);
     }
   }
 }

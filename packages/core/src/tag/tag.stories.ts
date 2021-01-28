@@ -50,7 +50,6 @@ export function status() {
       <cds-tag readonly status="success">Success</cds-tag>
       <cds-tag readonly status="warning">Warning</cds-tag>
       <cds-tag readonly status="danger">Danger</cds-tag>
-      <cds-tag disabled status="info">Disabled</cds-tag>
     </div>
   `;
 }
@@ -82,7 +81,6 @@ export function badgesStatus() {
       <cds-tag readonly status="danger"
         >Danger <cds-badge aria-label="notification 12" status="danger">12</cds-badge></cds-tag
       >
-      <cds-tag disabled status="info">Disabled <cds-badge aria-label="notification 12">12</cds-badge></cds-tag>
     </div>
   `;
 }
@@ -125,36 +123,38 @@ export function clickable() {
         <cds-tag status="danger">Danger <cds-badge aria-label="notification 12" status="danger">12</cds-badge></cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
-        <cds-tag status="info" disabled><cds-icon shape="info-standard"></cds-icon>Disabled</cds-tag>
-        <cds-tag><cds-icon shape="info-standard"></cds-icon>Default</cds-tag>
-        <cds-tag status="info"><cds-icon shape="info-standard"></cds-icon>Info</cds-tag>
-        <cds-tag status="success"><cds-icon shape="info-standard"></cds-icon>Success</cds-tag>
-        <cds-tag status="warning"><cds-icon shape="info-standard"></cds-icon>Warning</cds-tag>
-        <cds-tag status="danger"><cds-icon shape="info-standard"></cds-icon>Danger</cds-tag>
+        <cds-tag status="info" disabled
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Disabled</cds-tag
+        >
+        <cds-tag><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Default</cds-tag>
+        <cds-tag status="info"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Info</cds-tag>
+        <cds-tag status="success"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Success</cds-tag>
+        <cds-tag status="warning"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Warning</cds-tag>
+        <cds-tag status="danger"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Danger</cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-tag status="info" disabled
-          ><cds-icon shape="info-standard"></cds-icon>Disabled
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Disabled
           <cds-badge aria-label="notification 0">0</cds-badge></cds-tag
         >
         <cds-tag
-          ><cds-icon shape="info-standard"></cds-icon>Default
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Default
           <cds-badge aria-label="notification 0">0</cds-badge></cds-tag
         >
         <cds-tag status="info"
-          ><cds-icon shape="info-standard"></cds-icon>Info
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Info
           <cds-badge aria-label="notification 1" status="info">1</cds-badge></cds-tag
         >
         <cds-tag status="success"
-          ><cds-icon shape="info-standard"></cds-icon>Success
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Success
           <cds-badge aria-label="notification 2" status="success">2</cds-badge></cds-tag
         >
         <cds-tag status="warning"
-          ><cds-icon shape="info-standard"></cds-icon>Warning
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Warning
           <cds-badge aria-label="notification 3" status="warning">3</cds-badge></cds-tag
         >
         <cds-tag status="danger"
-          ><cds-icon shape="info-standard"></cds-icon>Danger
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Danger
           <cds-badge aria-label="notification 12" status="danger">12</cds-badge></cds-tag
         >
       </div>
@@ -172,23 +172,29 @@ export function clickable() {
         <cds-tag color="light-blue">Light Blue <cds-badge aria-label="notification E">E</cds-badge></cds-tag>
       </div>
       <div cds-layout="horizontal gap:sm">
-        <cds-tag color="purple"><cds-icon shape="info-standard"></cds-icon>Purple</cds-tag>
-        <cds-tag color="blue"><cds-icon shape="info-standard"></cds-icon>Blue</cds-tag>
-        <cds-tag color="orange"><cds-icon shape="info-standard"></cds-icon>Orange</cds-tag>
-        <cds-tag color="light-blue"><cds-icon shape="info-standard"></cds-icon>Light Blue</cds-tag>
+        <cds-tag color="purple"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Purple</cds-tag>
+        <cds-tag color="blue"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Blue</cds-tag>
+        <cds-tag color="orange"><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Orange</cds-tag>
+        <cds-tag color="light-blue"
+          ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Light Blue</cds-tag
+        >
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-tag color="purple">
-          <cds-icon shape="info-standard"></cds-icon>Purple <cds-badge aria-label="notification 1">1</cds-badge>
+          <cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Purple
+          <cds-badge aria-label="notification 1">1</cds-badge>
         </cds-tag>
         <cds-tag color="blue">
-          <cds-icon shape="info-standard"></cds-icon>Blue <cds-badge aria-label="notification 1">1</cds-badge>
+          <cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Blue
+          <cds-badge aria-label="notification 1">1</cds-badge>
         </cds-tag>
         <cds-tag color="orange">
-          <cds-icon shape="info-standard"></cds-icon>Orange <cds-badge aria-label="notification 1">1</cds-badge>
+          <cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Orange
+          <cds-badge aria-label="notification 1">1</cds-badge>
         </cds-tag>
         <cds-tag color="light-blue">
-          <cds-icon shape="info-standard"></cds-icon>Light Blue <cds-badge aria-label="notification 1">1</cds-badge>
+          <cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Light Blue
+          <cds-badge aria-label="notification 1">1</cds-badge>
         </cds-tag>
       </div>
     </div>
@@ -209,7 +215,7 @@ export function links() {
 
       <a href="javascript:void(0)">
         <cds-tag status="warning"
-          ><cds-icon shape="user"></cds-icon> link
+          ><cds-icon shape="user" role="img" alt="user"></cds-icon> link
           <cds-badge aria-label="notification 1" status="info">1</cds-badge></cds-tag
         >
       </a>
@@ -237,9 +243,9 @@ export function closable() {
       <cds-tag color="light-blue" closable>Light Blue</cds-tag>
     </div>
     <div>
-      <cds-tag color="gray" closable><cds-icon shape="user"></cds-icon>Default</cds-tag>
-      <cds-tag color="blue" closable><cds-icon shape="user"></cds-icon>Blue</cds-tag>
-      <cds-tag color="orange" closable><cds-icon shape="user"></cds-icon>Orange</cds-tag>
+      <cds-tag color="gray" closable><cds-icon shape="user" role="img" alt="user"></cds-icon>Default</cds-tag>
+      <cds-tag color="blue" closable><cds-icon shape="user" role="img" alt="user"></cds-icon>Blue</cds-tag>
+      <cds-tag color="orange" closable><cds-icon shape="user" role="img" alt="user"></cds-icon>Orange</cds-tag>
     </div>
   `;
 }
@@ -252,56 +258,56 @@ export function tagsAndIcons() {
     <div cds-layout="vertical gap:sm">
       <div cds-layout="horizontal gap:xs">
         <cds-tag readonly>No Icon</cds-tag>
-        <cds-tag readonly><cds-icon shape="user"></cds-icon>No Badge</cds-tag>
+        <cds-tag readonly><cds-icon shape="user" role="img" alt="user"></cds-icon>No Badge</cds-tag>
         <cds-tag readonly color="gray"
-          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Default
+          ><cds-icon shape="user" role="img" alt="user" ?solid=${solidIcon}></cds-icon>Default
           <cds-badge aria-label="notification 1">1</cds-badge></cds-tag
         >
         <cds-tag readonly color="purple"
-          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Purple
+          ><cds-icon shape="user" role="img" alt="user" ?solid=${solidIcon}></cds-icon>Purple
           <cds-badge aria-label="notification 2">2</cds-badge></cds-tag
         >
         <cds-tag readonly color="blue"
-          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Blue
+          ><cds-icon shape="user" role="img" alt="user" ?solid=${solidIcon}></cds-icon>Blue
           <cds-badge aria-label="notification 3">3</cds-badge></cds-tag
         >
         <cds-tag readonly color="orange"
-          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Orange
+          ><cds-icon shape="user" role="img" alt="user" ?solid=${solidIcon}></cds-icon>Orange
           <cds-badge aria-label="notification 12">12</cds-badge></cds-tag
         >
         <cds-tag readonly color="light-blue"
-          ><cds-icon shape="user" ?solid=${solidIcon}></cds-icon>Light Blue
+          ><cds-icon shape="user" role="img" alt="user" ?solid=${solidIcon}></cds-icon>Light Blue
           <cds-badge aria-label="notification 15">15</cds-badge></cds-tag
         >
       </div>
       <div cds-layout="horizontal gap:xs">
         <cds-tag readonly status="info">No Icon</cds-tag>
         <cds-tag readonly status="info"
-          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>No Badge</cds-tag
+          ><cds-icon shape="info-standard" role="img" alt="info" ?solid=${solidIcon}></cds-icon>No Badge</cds-tag
         >
         <cds-tag readonly status="info"
-          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Info<cds-badge
+          ><cds-icon shape="info-standard" role="img" alt="info" ?solid=${solidIcon}></cds-icon>Info<cds-badge
             aria-label="notification 1"
             status="info"
             >1</cds-badge
           ></cds-tag
         >
         <cds-tag readonly status="success"
-          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Success<cds-badge
+          ><cds-icon shape="info-standard" role="img" alt="info" ?solid=${solidIcon}></cds-icon>Success<cds-badge
             aria-label="notification 2"
             status="success"
             >2</cds-badge
           ></cds-tag
         >
         <cds-tag readonly status="warning"
-          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Warning<cds-badge
+          ><cds-icon shape="info-standard" role="img" alt="info" ?solid=${solidIcon}></cds-icon>Warning<cds-badge
             aria-label="notification 3"
             status="warning"
             >3</cds-badge
           ></cds-tag
         >
         <cds-tag readonly status="danger"
-          ><cds-icon shape="info-standard" ?solid=${solidIcon}></cds-icon>Danger<cds-badge
+          ><cds-icon shape="info-standard" role="img" alt="info" ?solid=${solidIcon}></cds-icon>Danger<cds-badge
             aria-label="notification 12"
             status="danger"
             >12</cds-badge
@@ -317,30 +323,30 @@ export function darkTheme() {
   return html`
     <div cds-layout="horizontal gap:sm" cds-theme="dark">
       <cds-tag status="info"
-        ><cds-icon shape="info-standard"></cds-icon>Info
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Info
         <cds-badge aria-label="notification 10" status="info">10</cds-badge></cds-tag
       >
       <cds-tag status="success"
-        ><cds-icon shape="info-standard"></cds-icon>Success
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Success
         <cds-badge aria-label="notification 20" status="success">20</cds-badge></cds-tag
       >
       <cds-tag status="warning"
-        ><cds-icon shape="info-standard"></cds-icon>Warning
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Warning
         <cds-badge aria-label="notification 30" status="warning">30</cds-badge></cds-tag
       >
       <cds-tag status="danger"
-        ><cds-icon shape="info-standard"></cds-icon>Danger
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Danger
         <cds-badge aria-label="notification 40" status="danger">40</cds-badge></cds-tag
       >
       <cds-tag
-        ><cds-icon shape="info-standard"></cds-icon>Default
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Default
         <cds-badge aria-label="notification 50">50</cds-badge></cds-tag
       >
       <cds-tag disabled
-        ><cds-icon shape="info-standard"></cds-icon>Disabled
+        ><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Disabled
         <cds-badge aria-label="notification 60">60</cds-badge></cds-tag
       >
-      <cds-tag closable><cds-icon shape="info-standard"></cds-icon>Closable</cds-tag>
+      <cds-tag closable><cds-icon shape="info-standard" role="img" alt="info"></cds-icon>Closable</cds-tag>
     </div>
   `;
 }

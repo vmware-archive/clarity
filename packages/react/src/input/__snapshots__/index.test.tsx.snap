@@ -3,33 +3,55 @@
 exports[`CdsInput snapshot 1`] = `
 <div>
   <CdsInputGroup>
-    <cds-input-group>
-      <CdsInput
-        layout="vertical"
+    <cds-input-group(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-input-group
+        __forwardedRef={null}
       >
-        <cds-input>
-          <label>
-            label
-          </label>
-          <input
-            placeholder="name"
-          />
-        </cds-input>
-      </CdsInput>
-      <CdsInput
-        layout="vertical"
-      >
-        <cds-input>
-          <label>
-            disabled
-          </label>
-          <input
-            disabled={true}
-            placeholder="name"
-          />
-        </cds-input>
-      </CdsInput>
-    </cds-input-group>
+        <CdsInput
+          layout="vertical"
+        >
+          <cds-input(CustomElement)
+            __forwardedRef={null}
+            layout="vertical"
+          >
+            <cds-input
+              __forwardedRef={null}
+              layout="vertical"
+            >
+              <label>
+                label
+              </label>
+              <input
+                placeholder="name"
+              />
+            </cds-input>
+          </cds-input(CustomElement)>
+        </CdsInput>
+        <CdsInput
+          layout="vertical"
+        >
+          <cds-input(CustomElement)
+            __forwardedRef={null}
+            layout="vertical"
+          >
+            <cds-input
+              __forwardedRef={null}
+              layout="vertical"
+            >
+              <label>
+                disabled
+              </label>
+              <input
+                disabled={true}
+                placeholder="name"
+              />
+            </cds-input>
+          </cds-input(CustomElement)>
+        </CdsInput>
+      </cds-input-group>
+    </cds-input-group(CustomElement)>
   </CdsInputGroup>
 </div>
 `;

@@ -3,14 +3,11 @@ import { CdsAccordionContent as AccordionContent } from '@cds/core/accordion';
 import { CdsAccordionHeader as AccordionHeader } from '@cds/core/accordion';
 import { CdsAccordionPanel as AccordionPanel } from '@cds/core/accordion';
 import '@cds/core/accordion/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsAccordionPanelType = AccordionPanel & { onExpandedChange: (e: any) => void };
-type CdsAccordionContentType = AccordionContent;
-type CdsAccordionHeaderType = AccordionHeader;
-type CdsAccordionType = Accordion;
-
-export class CdsAccordion extends createReactComponent<CdsAccordionType>('cds-accordion') {}
-export class CdsAccordionPanel extends createReactComponent<CdsAccordionPanelType>('cds-accordion-panel') {}
-export class CdsAccordionHeader extends createReactComponent<CdsAccordionHeaderType>('cds-accordion-header') {}
-export class CdsAccordionContent extends createReactComponent<CdsAccordionContentType>('cds-accordion-content') {}
+export const CdsAccordion = createComponent('cds-accordion', Accordion);
+export const CdsAccordionPanel = createComponent('cds-accordion-panel', AccordionPanel, {
+  onExpandedChange: 'expandedChange',
+});
+export const CdsAccordionHeader = createComponent('cds-accordion-header', AccordionHeader);
+export const CdsAccordionContent = createComponent('cds-accordion-content', AccordionContent);

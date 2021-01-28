@@ -3,14 +3,20 @@
 exports[`CdsCheckbox snapshot 1`] = `
 <div>
   <CdsCheckbox>
-    <cds-checkbox>
-      <label>
-        Hello
-      </label>
-      <input
-        type="checkbox"
-      />
-    </cds-checkbox>
+    <cds-checkbox(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-checkbox
+        __forwardedRef={null}
+      >
+        <label>
+          Hello
+        </label>
+        <input
+          type="checkbox"
+        />
+      </cds-checkbox>
+    </cds-checkbox(CustomElement)>
   </CdsCheckbox>
 </div>
 `;

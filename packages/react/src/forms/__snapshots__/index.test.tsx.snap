@@ -7,59 +7,105 @@ exports[`CdsControl snapshot 1`] = `
   <CdsControl
     layout="compact"
   >
-    <cds-control>
-      <label>
-        label
-      </label>
-      <input
-        placeholder="some custom control"
-      />
-      <CdsControlMessage>
-        <cds-control-message>
-          message text
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-control>
+    <cds-control(CustomElement)
+      __forwardedRef={null}
+      layout="compact"
+    >
+      <cds-control
+        __forwardedRef={null}
+        layout="compact"
+      >
+        <label>
+          label
+        </label>
+        <input
+          placeholder="some custom control"
+        />
+        <CdsControlMessage>
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              message text
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-control>
+    </cds-control(CustomElement)>
   </CdsControl>
   <CdsControl
     layout="compact"
     status="error"
   >
-    <cds-control>
-      <label>
-        label
-      </label>
-      <input
-        placeholder="some custom control"
-      />
-      <CdsControlMessage
-        status="error"
+    <cds-control(CustomElement)
+      __forwardedRef={null}
+      layout="compact"
+      status="error"
+    >
+      <cds-control
+        __forwardedRef={null}
+        layout="compact"
       >
-        <cds-control-message>
-          error message
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-control>
+        <label>
+          label
+        </label>
+        <input
+          placeholder="some custom control"
+        />
+        <CdsControlMessage
+          status="error"
+        >
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+            status="error"
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              error message
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-control>
+    </cds-control(CustomElement)>
   </CdsControl>
   <CdsControl
     layout="compact"
     status="success"
   >
-    <cds-control>
-      <label>
-        label
-      </label>
-      <input
-        placeholder="some custom control"
-      />
-      <CdsControlMessage
-        status="success"
+    <cds-control(CustomElement)
+      __forwardedRef={null}
+      layout="compact"
+      status="success"
+    >
+      <cds-control
+        __forwardedRef={null}
+        layout="compact"
       >
-        <cds-control-message>
-          success message
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-control>
+        <label>
+          label
+        </label>
+        <input
+          placeholder="some custom control"
+        />
+        <CdsControlMessage
+          status="success"
+        >
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+            status="success"
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              success message
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-control>
+    </cds-control(CustomElement)>
   </CdsControl>
 </div>
 `;

@@ -8,119 +8,178 @@ exports[`CdsSelect snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group>
-      <CdsSelect>
-        <cds-select>
-          <label>
-            label
-          </label>
-          <select>
-            <option>
-              option one
-            </option>
-            <option>
-              option two
-            </option>
-            <option>
-              option three
-            </option>
-          </select>
-          <CdsControlMessage>
-            <cds-control-message>
-              message text
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-select>
-      </CdsSelect>
-      <CdsSelect
-        status="error"
+    <cds-form-group(CustomElement)
+      __forwardedRef={null}
+      layout="horizontal"
+    >
+      <cds-form-group
+        __forwardedRef={null}
       >
-        <cds-select>
-          <label>
-            error
-          </label>
-          <select>
-            <option>
-              option one
-            </option>
-            <option>
-              option two
-            </option>
-            <option>
-              option three
-            </option>
-          </select>
-          <CdsControlMessage
+        <CdsSelect>
+          <cds-select(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-select
+              __forwardedRef={null}
+            >
+              <label>
+                label
+              </label>
+              <select>
+                <option>
+                  option one
+                </option>
+                <option>
+                  option two
+                </option>
+                <option>
+                  option three
+                </option>
+              </select>
+              <CdsControlMessage>
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    message text
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-select>
+          </cds-select(CustomElement)>
+        </CdsSelect>
+        <CdsSelect
+          status="error"
+        >
+          <cds-select(CustomElement)
+            __forwardedRef={null}
             status="error"
           >
-            <cds-control-message>
-              error message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-select>
-      </CdsSelect>
-      <CdsSelect
-        status="success"
-      >
-        <cds-select>
-          <label>
-            success
-          </label>
-          <select>
-            <option>
-              option one
-            </option>
-            <option>
-              option two
-            </option>
-            <option>
-              option three
-            </option>
-          </select>
-          <CdsControlMessage
+            <cds-select
+              __forwardedRef={null}
+            >
+              <label>
+                error
+              </label>
+              <select>
+                <option>
+                  option one
+                </option>
+                <option>
+                  option two
+                </option>
+                <option>
+                  option three
+                </option>
+              </select>
+              <CdsControlMessage
+                status="error"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="error"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    error message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-select>
+          </cds-select(CustomElement)>
+        </CdsSelect>
+        <CdsSelect
+          status="success"
+        >
+          <cds-select(CustomElement)
+            __forwardedRef={null}
             status="success"
           >
-            <cds-control-message>
-              success message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-select>
-      </CdsSelect>
-    </cds-form-group>
+            <cds-select
+              __forwardedRef={null}
+            >
+              <label>
+                success
+              </label>
+              <select>
+                <option>
+                  option one
+                </option>
+                <option>
+                  option two
+                </option>
+                <option>
+                  option three
+                </option>
+              </select>
+              <CdsControlMessage
+                status="success"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="success"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    success message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-select>
+          </cds-select(CustomElement)>
+        </CdsSelect>
+      </cds-form-group>
+    </cds-form-group(CustomElement)>
   </CdsFormGroup>
   <h3>
     Multi-selects
   </h3>
   <CdsSelect>
-    <cds-select>
-      <label>
-        label
-      </label>
-      <select
-        multiple={true}
+    <cds-select(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-select
+        __forwardedRef={null}
       >
-        <option>
-          Option One
-        </option>
-        <option>
-          Option Two
-        </option>
-        <option>
-          Option Three
-        </option>
-        <option>
-          Option Four
-        </option>
-        <option>
-          Option Five
-        </option>
-      </select>
-      <CdsControlMessage>
-        <cds-control-message>
-          message text
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-select>
+        <label>
+          label
+        </label>
+        <select
+          multiple={true}
+        >
+          <option>
+            Option One
+          </option>
+          <option>
+            Option Two
+          </option>
+          <option>
+            Option Three
+          </option>
+          <option>
+            Option Four
+          </option>
+          <option>
+            Option Five
+          </option>
+        </select>
+        <CdsControlMessage>
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              message text
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-select>
+    </cds-select(CustomElement)>
   </CdsSelect>
 </div>
 `;

@@ -1,16 +1,13 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 import TestComponent from './test-component.mock';
-import { createReactComponent } from './react-wrapper';
+import { createComponent } from './react-wrapper';
 
 describe('CdsTestComponent', () => {
   let CdsTestComponent: any;
 
   beforeEach(() => {
-    type baseType = { nativeElement: Promise<typeof TestComponent> };
-    type CdsTestComponentType = TestComponent &
-      baseType & { onEvent1: (e: any) => string; onEvent2: (e: any) => number };
-    CdsTestComponent = createReactComponent<CdsTestComponentType>('cds-test-component');
+    CdsTestComponent = createComponent('cds-test-component', TestComponent, { onEvent1: 'event1', onEvent2: 'event2' });
   });
 
   afterEach(() => {
@@ -23,7 +20,7 @@ describe('CdsTestComponent', () => {
         <CdsTestComponent>Hello World</CdsTestComponent>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsTestComponent');
     expect(renderedComponent.html()).toMatch(/Hello World/);
   });
 
@@ -35,7 +32,7 @@ describe('CdsTestComponent', () => {
         </CdsTestComponent>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsTestComponent');
 
     expect(renderedComponent.prop('prop1')).toEqual('val1');
     expect(renderedComponent.prop('prop2')).toEqual(3);
@@ -52,7 +49,7 @@ describe('CdsTestComponent', () => {
         </CdsTestComponent>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsTestComponent');
 
     const eventHandler1 = renderedComponent.prop('onEvent1');
     const eventHandler2 = renderedComponent.prop('onEvent2');
@@ -67,7 +64,7 @@ describe('CdsTestComponent', () => {
         <CdsTestComponent>Hello World</CdsTestComponent>
       </div>
     );
-    const renderedComponent = wrapper.find('ReactWrapperComponent');
+    const renderedComponent = wrapper.find('CdsTestComponent');
     renderedComponent;
   });
 
@@ -87,7 +84,7 @@ describe('CdsTestComponent', () => {
       </div>
     );
 
-    const { classList } = wrapper.find('ReactWrapperComponent').getDOMNode();
+    const { classList } = wrapper.find('CdsTestComponent').getDOMNode();
     expect(classList).toHaveLength(1);
     expect(classList).toContain('test-classname');
   });

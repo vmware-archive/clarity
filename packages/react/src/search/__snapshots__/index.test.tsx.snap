@@ -8,61 +8,108 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="vertical"
   >
-    <cds-form-group>
-      <CdsSearch>
-        <cds-search>
-          <label>
-            label
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage>
-            <cds-control-message>
-              message text
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        status="error"
+    <cds-form-group(CustomElement)
+      __forwardedRef={null}
+      layout="vertical"
+    >
+      <cds-form-group
+        __forwardedRef={null}
       >
-        <cds-search>
-          <label>
-            error
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+        <CdsSearch>
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-search
+              __forwardedRef={null}
+            >
+              <label>
+                label
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage>
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    message text
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          status="error"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
             status="error"
           >
-            <cds-control-message>
-              error message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        status="success"
-      >
-        <cds-search>
-          <label>
-            success
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+            <cds-search
+              __forwardedRef={null}
+            >
+              <label>
+                error
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="error"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="error"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    error message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          status="success"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
             status="success"
           >
-            <cds-control-message>
-              success message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-    </cds-form-group>
+            <cds-search
+              __forwardedRef={null}
+            >
+              <label>
+                success
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="success"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="success"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    success message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+      </cds-form-group>
+    </cds-form-group(CustomElement)>
   </CdsFormGroup>
   <h3>
     Horizontal
@@ -70,65 +117,118 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group>
-      <CdsSearch
-        layout="horizontal"
+    <cds-form-group(CustomElement)
+      __forwardedRef={null}
+      layout="horizontal"
+    >
+      <cds-form-group
+        __forwardedRef={null}
       >
-        <cds-search>
-          <label>
-            label
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage>
-            <cds-control-message>
-              message text
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        layout="horizontal"
-        status="error"
-      >
-        <cds-search>
-          <label>
-            error
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+        <CdsSearch
+          layout="horizontal"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="horizontal"
+          >
+            <cds-search
+              __forwardedRef={null}
+              layout="horizontal"
+            >
+              <label>
+                label
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage>
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    message text
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          layout="horizontal"
+          status="error"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="horizontal"
             status="error"
           >
-            <cds-control-message>
-              error message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        layout="horizontal"
-        status="success"
-      >
-        <cds-search>
-          <label>
-            success
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+            <cds-search
+              __forwardedRef={null}
+              layout="horizontal"
+            >
+              <label>
+                error
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="error"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="error"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    error message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          layout="horizontal"
+          status="success"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="horizontal"
             status="success"
           >
-            <cds-control-message>
-              success message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-    </cds-form-group>
+            <cds-search
+              __forwardedRef={null}
+              layout="horizontal"
+            >
+              <label>
+                success
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="success"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="success"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    success message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+      </cds-form-group>
+    </cds-form-group(CustomElement)>
   </CdsFormGroup>
   <h3>
     Compact
@@ -136,65 +236,118 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="compact"
   >
-    <cds-form-group>
-      <CdsSearch
-        layout="compact"
+    <cds-form-group(CustomElement)
+      __forwardedRef={null}
+      layout="compact"
+    >
+      <cds-form-group
+        __forwardedRef={null}
       >
-        <cds-search>
-          <label>
-            label
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage>
-            <cds-control-message>
-              message text
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        layout="compact"
-        status="error"
-      >
-        <cds-search>
-          <label>
-            error
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+        <CdsSearch
+          layout="compact"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="compact"
+          >
+            <cds-search
+              __forwardedRef={null}
+              layout="compact"
+            >
+              <label>
+                label
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage>
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    message text
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          layout="compact"
+          status="error"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="compact"
             status="error"
           >
-            <cds-control-message>
-              error message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-      <CdsSearch
-        layout="compact"
-        status="success"
-      >
-        <cds-search>
-          <label>
-            success
-          </label>
-          <input
-            type="search"
-          />
-          <CdsControlMessage
+            <cds-search
+              __forwardedRef={null}
+              layout="compact"
+            >
+              <label>
+                error
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="error"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="error"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    error message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+        <CdsSearch
+          layout="compact"
+          status="success"
+        >
+          <cds-search(CustomElement)
+            __forwardedRef={null}
+            layout="compact"
             status="success"
           >
-            <cds-control-message>
-              success message
-            </cds-control-message>
-          </CdsControlMessage>
-        </cds-search>
-      </CdsSearch>
-    </cds-form-group>
+            <cds-search
+              __forwardedRef={null}
+              layout="compact"
+            >
+              <label>
+                success
+              </label>
+              <input
+                type="search"
+              />
+              <CdsControlMessage
+                status="success"
+              >
+                <cds-control-message(CustomElement)
+                  __forwardedRef={null}
+                  status="success"
+                >
+                  <cds-control-message
+                    __forwardedRef={null}
+                  >
+                    success message
+                  </cds-control-message>
+                </cds-control-message(CustomElement)>
+              </CdsControlMessage>
+            </cds-search>
+          </cds-search(CustomElement)>
+        </CdsSearch>
+      </cds-form-group>
+    </cds-form-group(CustomElement)>
   </CdsFormGroup>
 </div>
 `;

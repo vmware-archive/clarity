@@ -3,7 +3,13 @@
 exports[`CdsDivider snapshot 1`] = `
 <div>
   <CdsDivider>
-    <cds-divider />
+    <cds-divider(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-divider
+        __forwardedRef={null}
+      />
+    </cds-divider(CustomElement)>
   </CdsDivider>
   <div
     style={
@@ -16,9 +22,16 @@ exports[`CdsDivider snapshot 1`] = `
     <CdsDivider
       orientation="vertical"
     >
-      <cds-divider>
-        1
-      </cds-divider>
+      <cds-divider(CustomElement)
+        __forwardedRef={null}
+        orientation="vertical"
+      >
+        <cds-divider
+          __forwardedRef={null}
+        >
+          1
+        </cds-divider>
+      </cds-divider(CustomElement)>
     </CdsDivider>
   </div>
 </div>

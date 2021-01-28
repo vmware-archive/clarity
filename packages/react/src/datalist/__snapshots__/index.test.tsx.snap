@@ -3,25 +3,31 @@
 exports[`CdsDatalist snapshot 1`] = `
 <div>
   <CdsDatalist>
-    <cds-datalist>
-      <label>
-        datalist
-      </label>
-      <input
-        placeholder="placeholder text"
-      />
-      <datalist>
-        <option
-          value="Item 1"
+    <cds-datalist(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-datalist
+        __forwardedRef={null}
+      >
+        <label>
+          datalist
+        </label>
+        <input
+          placeholder="placeholder text"
         />
-        <option
-          value="Item 2"
-        />
-        <option
-          value="Item 3"
-        />
-      </datalist>
-    </cds-datalist>
+        <datalist>
+          <option
+            value="Item 1"
+          />
+          <option
+            value="Item 2"
+          />
+          <option
+            value="Item 3"
+          />
+        </datalist>
+      </cds-datalist>
+    </cds-datalist(CustomElement)>
   </CdsDatalist>
 </div>
 `;

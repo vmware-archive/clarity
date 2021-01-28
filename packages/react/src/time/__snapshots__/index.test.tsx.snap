@@ -5,22 +5,36 @@ exports[`CdsTime snapshot 1`] = `
   <CdsTime
     control-width="shrink"
   >
-    <cds-time>
-      <label>
-        Time input
-      </label>
-      <input
-        defaultValue="11:00"
-        max="18:00"
-        min="09:00"
-        type="time"
-      />
-      <CdsControlMessage>
-        <cds-control-message>
-          message text
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-time>
+    <cds-time(CustomElement)
+      __forwardedRef={null}
+      control-width="shrink"
+    >
+      <cds-time
+        __forwardedRef={null}
+        control-width="shrink"
+      >
+        <label>
+          Time input
+        </label>
+        <input
+          defaultValue="11:00"
+          max="18:00"
+          min="09:00"
+          type="time"
+        />
+        <CdsControlMessage>
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              message text
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-time>
+    </cds-time(CustomElement)>
   </CdsTime>
 </div>
 `;

@@ -1,24 +1,22 @@
 <template>
   <div>
-    <div class="clr-form-control">
-      <label class="clr-control-label">Preview colors in: </label>
-      <div class="clr-control-container clr-control-inline">
-        <div class="clr-radio-wrapper">
-          <input type="radio" :id="'hsl-radio-' + listSetId" value="hsl" class="clr-radio" v-model="picked" />
-          <label :for="'hsl-radio-' + listSetId" class="clr-control-label">HSL</label>
-        </div>
-        <div class="clr-radio-wrapper">
-          <input type="radio" :id="'hex-radio-' + listSetId" value="hex" class="clr-radio" v-model="picked" />
-          <label :for="'hex-radio-' + listSetId" class="clr-control-label">HEX</label>
-        </div>
-      </div>
-    </div>
-    <div v-bind:class="{ 'in-dark-mode': colorListInMode === 'dark' }">
-      <div class="clr-row">
-        <ClrColorList v-for="colorListData in colorListSet" :colorCode="picked" :colorData="colorListData">
-          <h5 class="color-list-title">{{ colorListData.name }}</h5>
-        </ClrColorList>
-      </div>
+    <cds-radio-group layout="horizontal-inline" cds-layout="m-t:md">
+      <label>Preview colors in:</label>
+      <cds-radio>
+        <label>HSL</label>
+        <input type="radio" value="hsl" v-model="picked" />
+      </cds-radio>
+
+      <cds-radio>
+        <label>HEX</label>
+        <input type="radio" value="hex" class="clr-radio" v-model="picked" />
+      </cds-radio>
+    </cds-radio-group>
+
+    <div v-bind:class="{ 'in-dark-mode': colorListInMode === 'dark' }" cds-layout="horizontal">
+      <ClrColorList v-for="colorListData in colorListSet" :colorCode="picked" :colorData="colorListData">
+        <h5 class="color-list-title">{{ colorListData.name }}</h5>
+      </ClrColorList>
     </div>
   </div>
 </template>

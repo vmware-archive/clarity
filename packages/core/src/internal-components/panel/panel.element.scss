@@ -1,0 +1,32 @@
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --width: 100%;
+  --height: 100%;
+  --color: initial;
+  --overflow: visible; // default html behaviour
+  --overflow-x: visible; // default html behaviour
+  --overflow-y: visible; // default html behaviour
+  --background: #{$cds-alias-object-container-background};
+  --border: #{$cds-alias-object-border-width-100} solid initial;
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --padding: #{$cds-global-space-0};
+  --box-shadow: none;
+
+  width: var(--width);
+  height: var(--height);
+}
+
+.private-host {
+  overflow: var(--overflow);
+  overflow-x: var(--overflow-x);
+  overflow-y: var(--overflow-y);
+  width: var(--width);
+  height: var(--height);
+  background: var(--background);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+  box-shadow: var(--box-shadow);
+  color: var(--color);
+}

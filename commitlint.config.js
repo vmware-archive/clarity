@@ -46,6 +46,7 @@ const scopes = [
   'icons',
   'range',
   'website',
+  'panel',
 ];
 
 module.exports = {

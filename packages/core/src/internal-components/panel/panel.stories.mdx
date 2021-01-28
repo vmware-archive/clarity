@@ -1,14 +1,20 @@
 import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
 
-<Meta title="Components(Preview)/Panel/Proposal" />
+<Meta title="Internal/APIs/Panel/Getting Started" />
 
-# Panel proposal
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
 
-## Basic Usage
+# Panel
+
+## Installation
 
 ```typescript
-import '@clr/core/internal-components/panel/register.js';
+import '@cds/core/internal-components/panel/register.js';
 ```
+
+## Usage
 
 ```html
 <cds-internal-panel>
@@ -16,35 +22,10 @@ import '@clr/core/internal-components/panel/register.js';
 </cds-internal-panel>
 ```
 
+<Preview>
+  <Story id="internal-apis-panel-stories--basic" />
+</Preview>
+
 ## API
 
-### Template
-
-```html
-<!-- By default -->
-<div class="private-host" cds-layout="vertical">
-  <slot></slot>
-</div>
-
-<!-- with cds-layout -->
-<slot></slot>
-```
-
-### Element
-
-- `cds-internal-panel`
-
-## Slots
-
-- default: defines panel content section
-
-### CSS Custom Properties
-
-- `--background`
-- `--color`
-- `--border-color`
-- `--border-width`
-- `--border-radius`
-- `--padding-horizontal`
-- `--padding-vertical`
-- `--box-shadow`
+<Props of={'cds-internal-panel'} />

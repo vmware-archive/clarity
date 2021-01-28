@@ -5,45 +5,92 @@ exports[`CdsAlert snapshot 1`] = `
   <CdsAlert
     status="success"
   >
-    <cds-alert>
-      Foo
-    </cds-alert>
+    <cds-alert(CustomElement)
+      __forwardedRef={null}
+      status="success"
+    >
+      <cds-alert
+        __forwardedRef={null}
+      >
+        Foo
+      </cds-alert>
+    </cds-alert(CustomElement)>
   </CdsAlert>
   <CdsAlertGroup
     status="info"
   >
-    <cds-alert-group>
-      <CdsAlert
-        closable={true}
+    <cds-alert-group(CustomElement)
+      __forwardedRef={null}
+      status="info"
+    >
+      <cds-alert-group
+        __forwardedRef={null}
       >
-        <cds-alert>
-          Bar
-          <CdsAlertActions>
-            <cds-alert-actions>
-              Baz
-            </cds-alert-actions>
-          </CdsAlertActions>
-        </cds-alert>
-      </CdsAlert>
-    </cds-alert-group>
+        <CdsAlert
+          closable={true}
+        >
+          <cds-alert(CustomElement)
+            __forwardedRef={null}
+            closable={true}
+          >
+            <cds-alert
+              __forwardedRef={null}
+            >
+              Bar
+              <CdsAlertActions>
+                <cds-alert-actions(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-alert-actions
+                    __forwardedRef={null}
+                  >
+                    Baz
+                  </cds-alert-actions>
+                </cds-alert-actions(CustomElement)>
+              </CdsAlertActions>
+            </cds-alert>
+          </cds-alert(CustomElement)>
+        </CdsAlert>
+      </cds-alert-group>
+    </cds-alert-group(CustomElement)>
   </CdsAlertGroup>
   <CdsAlertGroup
     type="banner"
   >
-    <cds-alert-group>
-      <CdsAlert
-        status="info"
+    <cds-alert-group(CustomElement)
+      __forwardedRef={null}
+      type="banner"
+    >
+      <cds-alert-group
+        __forwardedRef={null}
       >
-        <cds-alert>
-          Foobar
-          <CdsAlertActions>
-            <cds-alert-actions>
-              Test
-            </cds-alert-actions>
-          </CdsAlertActions>
-        </cds-alert>
-      </CdsAlert>
-    </cds-alert-group>
+        <CdsAlert
+          status="info"
+        >
+          <cds-alert(CustomElement)
+            __forwardedRef={null}
+            status="info"
+          >
+            <cds-alert
+              __forwardedRef={null}
+            >
+              Foobar
+              <CdsAlertActions>
+                <cds-alert-actions(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-alert-actions
+                    __forwardedRef={null}
+                  >
+                    Test
+                  </cds-alert-actions>
+                </cds-alert-actions(CustomElement)>
+              </CdsAlertActions>
+            </cds-alert>
+          </cds-alert(CustomElement)>
+        </CdsAlert>
+      </cds-alert-group>
+    </cds-alert-group(CustomElement)>
   </CdsAlertGroup>
 </div>
 `;

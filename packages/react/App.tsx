@@ -32,18 +32,20 @@ interface AppState {
 }
 
 export default class App extends React.Component<{}, AppState> {
-  buttonRef: React.RefObject<CdsButton>;
+  buttonRef: React.RefObject<typeof CdsButton & HTMLButtonElement>;
 
   constructor(props: any) {
     super(props);
     this.state = { modalOpen: false, modal2Open: false };
-    this.buttonRef = React.createRef<CdsButton>();
+    this.buttonRef = React.createRef<typeof CdsButton & HTMLButtonElement>();
   }
 
   componentDidMount() {
-    this.buttonRef.current.nativeElement.then(element => {
-      element.focus();
-    });
+    // (this.buttonRef.current as any).nativeElement.then((element: any) => {
+    //   element.focus();
+    // });
+
+    this.buttonRef.current.focus();
   }
 
   handleOnCloseChange(e: any) {
@@ -123,7 +125,7 @@ export default class App extends React.Component<{}, AppState> {
           <br />
         )}
         <h2>Light Alerts</h2>
-        <CdsAlert status="info" onCloseChange={e => this.handleOnCloseChange(e)}>
+        <CdsAlert status="info" onCloseChange={(e: any) => this.handleOnCloseChange(e)}>
           Foobar
         </CdsAlert>
         <CdsAlert status="success">Foo</CdsAlert>

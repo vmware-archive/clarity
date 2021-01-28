@@ -1,8 +1,7 @@
 import { CdsIcon as Icon } from '@cds/core/icon';
 import '@cds/core/icon/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsIconType = Icon;
 /**
  * If using JSX or TSX, import the icon name from `@cds/core/icon` and include it in the `shape` prop to improve type safety:
  *
@@ -15,4 +14,4 @@ type CdsIconType = Icon;
  * <CdsIcon shape={userIconName} />
  * ```
  */
-export class CdsIcon extends createReactComponent<CdsIconType>('cds-icon') {}
+export const CdsIcon = createComponent('cds-icon', Icon);

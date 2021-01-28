@@ -6,35 +6,89 @@ exports[`CdsIcon snapshot 1`] = `
     shape="user"
     size="lg"
   >
-    <cds-icon />
+    <cds-icon(CustomElement)
+      __forwardedRef={null}
+      shape="user"
+      size="lg"
+    >
+      <cds-icon
+        __forwardedRef={null}
+        shape="user"
+        size="lg"
+      />
+    </cds-icon(CustomElement)>
   </CdsIcon>
   <CdsIcon
     badge="info"
     shape="user"
     size="lg"
   >
-    <cds-icon />
+    <cds-icon(CustomElement)
+      __forwardedRef={null}
+      badge="info"
+      shape="user"
+      size="lg"
+    >
+      <cds-icon
+        __forwardedRef={null}
+        shape="user"
+        size="lg"
+      />
+    </cds-icon(CustomElement)>
   </CdsIcon>
   <CdsIcon
     badge="success"
     shape="user"
     size="lg"
   >
-    <cds-icon />
+    <cds-icon(CustomElement)
+      __forwardedRef={null}
+      badge="success"
+      shape="user"
+      size="lg"
+    >
+      <cds-icon
+        __forwardedRef={null}
+        shape="user"
+        size="lg"
+      />
+    </cds-icon(CustomElement)>
   </CdsIcon>
   <CdsIcon
     badge="danger"
     shape="user"
     size="lg"
   >
-    <cds-icon />
+    <cds-icon(CustomElement)
+      __forwardedRef={null}
+      badge="danger"
+      shape="user"
+      size="lg"
+    >
+      <cds-icon
+        __forwardedRef={null}
+        shape="user"
+        size="lg"
+      />
+    </cds-icon(CustomElement)>
   </CdsIcon>
   <CdsIcon
     badge="warning-triangle"
     shape="user"
     size="lg"
   >
-    <cds-icon />
+    <cds-icon(CustomElement)
+      __forwardedRef={null}
+      badge="warning-triangle"
+      shape="user"
+      size="lg"
+    >
+      <cds-icon
+        __forwardedRef={null}
+        shape="user"
+        size="lg"
+      />
+    </cds-icon(CustomElement)>
   </CdsIcon>
 </div>
 `;

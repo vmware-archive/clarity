@@ -1,6 +1,5 @@
 import { CdsTag as Tag } from '@cds/core/tag';
 import '@cds/core/tag/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsTagType = Tag;
-export class CdsTag extends createReactComponent<CdsTagType>('cds-tag') {}
+export const CdsTag = createComponent('cds-tag', Tag);

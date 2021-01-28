@@ -3,39 +3,63 @@
 exports[`CdsModal snapshot 1`] = `
 <div>
   <CdsModal>
-    <cds-modal>
-      <CdsModalHeader>
-        <cds-modal-header>
-          <h3
-            cds-text="title"
+    <cds-modal(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-modal
+        __forwardedRef={null}
+      >
+        <CdsModalHeader>
+          <cds-modal-header(CustomElement)
+            __forwardedRef={null}
           >
-            My Modal
-          </h3>
-        </cds-modal-header>
-      </CdsModalHeader>
-      <CdsModalContent>
-        <cds-modal-content>
-          <div
-            cds-layout="vertical gap:md p-y:xs"
-          >
-            <p
-              cds-text="body"
+            <cds-modal-header
+              __forwardedRef={null}
             >
-              Lorem Ipsum
-            </p>
-          </div>
-        </cds-modal-content>
-      </CdsModalContent>
-      <CdsModalActions>
-        <cds-modal-actions>
-          <div
-            cds-layout="horizontal gap:sm align:right"
+              <h3
+                cds-text="title"
+              >
+                My Modal
+              </h3>
+            </cds-modal-header>
+          </cds-modal-header(CustomElement)>
+        </CdsModalHeader>
+        <CdsModalContent>
+          <cds-modal-content(CustomElement)
+            __forwardedRef={null}
           >
-            Foo
-          </div>
-        </cds-modal-actions>
-      </CdsModalActions>
-    </cds-modal>
+            <cds-modal-content
+              __forwardedRef={null}
+            >
+              <div
+                cds-layout="vertical gap:md p-y:xs"
+              >
+                <p
+                  cds-text="body"
+                >
+                  Lorem Ipsum
+                </p>
+              </div>
+            </cds-modal-content>
+          </cds-modal-content(CustomElement)>
+        </CdsModalContent>
+        <CdsModalActions>
+          <cds-modal-actions(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-modal-actions
+              __forwardedRef={null}
+            >
+              <div
+                cds-layout="horizontal gap:sm align:right"
+              >
+                Foo
+              </div>
+            </cds-modal-actions>
+          </cds-modal-actions(CustomElement)>
+        </CdsModalActions>
+      </cds-modal>
+    </cds-modal(CustomElement)>
   </CdsModal>
 </div>
 `;

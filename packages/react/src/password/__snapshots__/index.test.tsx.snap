@@ -5,15 +5,23 @@ exports[`CdsPassword snapshot 1`] = `
   <CdsPassword
     layout="vertical"
   >
-    <cds-password>
-      <label>
-        label
-      </label>
-      <input
-        defaultValue="123456"
-        type="password"
-      />
-    </cds-password>
+    <cds-password(CustomElement)
+      __forwardedRef={null}
+      layout="vertical"
+    >
+      <cds-password
+        __forwardedRef={null}
+        layout="vertical"
+      >
+        <label>
+          label
+        </label>
+        <input
+          defaultValue="123456"
+          type="password"
+        />
+      </cds-password>
+    </cds-password(CustomElement)>
   </CdsPassword>
 </div>
 `;

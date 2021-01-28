@@ -5,31 +5,60 @@ exports[`CdsButton snapshot 1`] = `
   <CdsButton
     status="primary"
   >
-    <cds-button>
-      primary
-    </cds-button>
+    <cds-button(CustomElement)
+      __forwardedRef={null}
+      status="primary"
+    >
+      <cds-button
+        __forwardedRef={null}
+      >
+        primary
+      </cds-button>
+    </cds-button(CustomElement)>
   </CdsButton>
   <CdsButton
     status="success"
   >
-    <cds-button>
-      success
-    </cds-button>
+    <cds-button(CustomElement)
+      __forwardedRef={null}
+      status="success"
+    >
+      <cds-button
+        __forwardedRef={null}
+      >
+        success
+      </cds-button>
+    </cds-button(CustomElement)>
   </CdsButton>
   <CdsButton
     status="danger"
   >
-    <cds-button>
-      danger
-    </cds-button>
+    <cds-button(CustomElement)
+      __forwardedRef={null}
+      status="danger"
+    >
+      <cds-button
+        __forwardedRef={null}
+      >
+        danger
+      </cds-button>
+    </cds-button(CustomElement)>
   </CdsButton>
   <CdsButton
     disabled={true}
     status="danger"
   >
-    <cds-button>
-      disabled
-    </cds-button>
+    <cds-button(CustomElement)
+      __forwardedRef={null}
+      disabled={true}
+      status="danger"
+    >
+      <cds-button
+        __forwardedRef={null}
+      >
+        disabled
+      </cds-button>
+    </cds-button(CustomElement)>
   </CdsButton>
 </div>
 `;

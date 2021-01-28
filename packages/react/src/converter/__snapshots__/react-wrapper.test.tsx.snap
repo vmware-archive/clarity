@@ -1,12 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CdsTestComponent snapshot 1`] = `
-<ReactWrapperComponent
+<CdsTestComponent
   prop1="val1"
   prop2={3}
 >
-  <cds-test-component>
-    Hello World
-  </cds-test-component>
-</ReactWrapperComponent>
+  <cds-test-component(CustomElement)
+    __forwardedRef={null}
+    prop1="val1"
+    prop2={3}
+  >
+    <cds-test-component
+      __forwardedRef={null}
+      prop1="val1"
+      prop2={3}
+    >
+      Hello World
+    </cds-test-component>
+  </cds-test-component(CustomElement)>
+</CdsTestComponent>
 `;

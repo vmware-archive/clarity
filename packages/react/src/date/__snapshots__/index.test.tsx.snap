@@ -6,22 +6,38 @@ exports[`CdsDate snapshot 1`] = `
     control-width="shrink"
     layout="horizontal"
   >
-    <cds-date>
-      <label>
-        Date input
-      </label>
-      <input
-        defaultValue="2018-07-22"
-        max="2019-12-31"
-        min="2018-01-01"
-        type="date"
-      />
-      <CdsControlMessage>
-        <cds-control-message>
-          message text
-        </cds-control-message>
-      </CdsControlMessage>
-    </cds-date>
+    <cds-date(CustomElement)
+      __forwardedRef={null}
+      control-width="shrink"
+      layout="horizontal"
+    >
+      <cds-date
+        __forwardedRef={null}
+        control-width="shrink"
+        layout="horizontal"
+      >
+        <label>
+          Date input
+        </label>
+        <input
+          defaultValue="2018-07-22"
+          max="2019-12-31"
+          min="2018-01-01"
+          type="date"
+        />
+        <CdsControlMessage>
+          <cds-control-message(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-control-message
+              __forwardedRef={null}
+            >
+              message text
+            </cds-control-message>
+          </cds-control-message(CustomElement)>
+        </CdsControlMessage>
+      </cds-date>
+    </cds-date(CustomElement)>
   </CdsDate>
 </div>
 `;

@@ -1,19 +1,15 @@
-import { CdsModal as Modal } from '@cds/core/modal';
-import { CdsModalActions as ModalActions } from '@cds/core/modal';
-import { CdsModalContent as ModalContent } from '@cds/core/modal';
-import { CdsModalHeader as ModalHeader } from '@cds/core/modal';
-import { CdsModalHeaderActions as ModalHeaderActions } from '@cds/core/modal';
+import {
+  CdsModal as Modal,
+  CdsModalActions as ModalActions,
+  CdsModalContent as ModalContent,
+  CdsModalHeader as ModalHeader,
+  CdsModalHeaderActions as ModalHeaderActions,
+} from '@cds/core/modal';
 import '@cds/core/modal/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsModalType = Modal & { onCloseChange: (e: any) => void };
-type CdsModalActionsType = ModalActions;
-type CdsModalContentType = ModalContent;
-type CdsModalHeaderType = ModalHeader;
-type CdsModalHeaderActionsType = ModalHeaderActions;
-
-export class CdsModal extends createReactComponent<CdsModalType>('cds-modal') {}
-export class CdsModalActions extends createReactComponent<CdsModalActionsType>('cds-modal-actions') {}
-export class CdsModalContent extends createReactComponent<CdsModalContentType>('cds-modal-content') {}
-export class CdsModalHeader extends createReactComponent<CdsModalHeaderType>('cds-modal-header') {}
-export class CdsModalHeaderActions extends createReactComponent<CdsModalHeaderActionsType>('cds-modal-header-action') {}
+export const CdsModal = createComponent('cds-modal', Modal, { onCloseChange: 'closeChange' });
+export const CdsModalActions = createComponent('cds-modal-actions', ModalActions);
+export const CdsModalContent = createComponent('cds-modal-content', ModalContent);
+export const CdsModalHeader = createComponent('cds-modal-header', ModalHeader);
+export const CdsModalHeaderActions = createComponent('cds-modal-header-action', ModalHeaderActions);

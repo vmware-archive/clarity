@@ -3,24 +3,49 @@
 exports[`CdsAccordion snapshot 1`] = `
 <div>
   <CdsAccordion>
-    <cds-accordion>
-      <CdsAccordionPanel
-        expanded={true}
+    <cds-accordion(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-accordion
+        __forwardedRef={null}
       >
-        <cds-accordion-panel>
-          <CdsAccordionHeader>
-            <cds-accordion-header>
-              Item 1
-            </cds-accordion-header>
-          </CdsAccordionHeader>
-          <CdsAccordionContent>
-            <cds-accordion-content>
-              Content 1
-            </cds-accordion-content>
-          </CdsAccordionContent>
-        </cds-accordion-panel>
-      </CdsAccordionPanel>
-    </cds-accordion>
+        <CdsAccordionPanel
+          expanded={true}
+        >
+          <cds-accordion-panel(CustomElement)
+            __forwardedRef={null}
+            expanded={true}
+          >
+            <cds-accordion-panel
+              __forwardedRef={null}
+            >
+              <CdsAccordionHeader>
+                <cds-accordion-header(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-accordion-header
+                    __forwardedRef={null}
+                  >
+                    Item 1
+                  </cds-accordion-header>
+                </cds-accordion-header(CustomElement)>
+              </CdsAccordionHeader>
+              <CdsAccordionContent>
+                <cds-accordion-content(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-accordion-content
+                    __forwardedRef={null}
+                  >
+                    Content 1
+                  </cds-accordion-content>
+                </cds-accordion-content(CustomElement)>
+              </CdsAccordionContent>
+            </cds-accordion-panel>
+          </cds-accordion-panel(CustomElement)>
+        </CdsAccordionPanel>
+      </cds-accordion>
+    </cds-accordion(CustomElement)>
   </CdsAccordion>
 </div>
 `;

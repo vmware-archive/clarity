@@ -1,11 +1,6 @@
-import { CdsCheckbox as Checkbox } from '@cds/core/checkbox';
-import { CdsCheckboxGroup as CheckboxGroup } from '@cds/core/checkbox';
-
+import { CdsCheckbox as Checkbox, CdsCheckboxGroup as CheckboxGroup } from '@cds/core/checkbox';
 import '@cds/core/checkbox/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsCheckboxType = Checkbox;
-type CdsCheckboxGroupType = CheckboxGroup;
-
-export class CdsCheckbox extends createReactComponent<CdsCheckboxType>('cds-checkbox') {}
-export class CdsCheckboxGroup extends createReactComponent<CdsCheckboxGroupType>('cds-checkbox-group') {}
+export const CdsCheckbox = createComponent('cds-checkbox', Checkbox);
+export const CdsCheckboxGroup = createComponent('cds-checkbox-group', CheckboxGroup);

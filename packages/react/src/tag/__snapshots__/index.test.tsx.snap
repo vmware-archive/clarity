@@ -6,17 +6,33 @@ exports[`CdsTag snapshot 1`] = `
     readonly={true}
     status="info"
   >
-    <cds-tag>
-      Info
-    </cds-tag>
+    <cds-tag(CustomElement)
+      __forwardedRef={null}
+      readonly={true}
+      status="info"
+    >
+      <cds-tag
+        __forwardedRef={null}
+      >
+        Info
+      </cds-tag>
+    </cds-tag(CustomElement)>
   </CdsTag>
   <CdsTag
     readonly={true}
     status="success"
   >
-    <cds-tag>
-      Success
-    </cds-tag>
+    <cds-tag(CustomElement)
+      __forwardedRef={null}
+      readonly={true}
+      status="success"
+    >
+      <cds-tag
+        __forwardedRef={null}
+      >
+        Success
+      </cds-tag>
+    </cds-tag(CustomElement)>
   </CdsTag>
 </div>
 `;

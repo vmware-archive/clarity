@@ -1,11 +1,6 @@
-import { CdsToggleGroup as ToggleGroup } from '@cds/core/toggle';
-import { CdsToggle as Toggle } from '@cds/core/toggle';
-
+import { CdsToggleGroup as ToggleGroup, CdsToggle as Toggle } from '@cds/core/toggle';
 import '@cds/core/toggle/register';
-import { createReactComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper';
 
-type CdsToggleGroupType = ToggleGroup;
-type CdsToggleType = Toggle;
-
-export class CdsToggleGroup extends createReactComponent<CdsToggleGroupType>('cds-toggle-group') {}
-export class CdsToggle extends createReactComponent<CdsToggleType>('cds-toggle') {}
+export const CdsToggleGroup = createComponent('cds-toggle-group', ToggleGroup);
+export const CdsToggle = createComponent('cds-toggle', Toggle);

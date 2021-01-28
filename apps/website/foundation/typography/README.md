@@ -107,4 +107,4 @@ The Clarity team determined the optimal height and weight of the text for each c
 
 ### Use Text Links for Navigation
 
-Don’t use text links for a call to action. [Buttons](/angular-components/buttons/) are better.
+Don’t use text links for a call to action. [Buttons](/angular-components/button/) are better.

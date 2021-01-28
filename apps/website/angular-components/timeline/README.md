@@ -138,7 +138,7 @@ When steps one and two are complete, step three gets highlighted.
 
 ## Angular Component
 
-Besides a static HTML/CSS Timeline component, we also offer a fully interactive Angular version of the component. So if you are using Angular, you can use the `ClrTimeline` component. By using `ClrTimeline`, you'll be able to leverage its interactive behavior and features out-of-the-box. If you would like to learn more about how to customize its default interactive behavior, please refer to [the API tab](./api.html).
+Besides a static HTML/CSS Timeline component, we also offer a fully interactive Angular version of the component. So if you are using Angular, you can use the `ClrTimeline` component. By using `ClrTimeline`, you'll be able to leverage its interactive behavior and features out-of-the-box. If you would like to learn more about how to customize its default interactive behavior, please refer to [the API tab](/angular-components/timeline/api/).
 
 <doc-code>
 

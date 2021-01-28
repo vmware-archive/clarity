@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -73,7 +73,7 @@ export function status() {
 
       <cds-toggle status="success">
         <label>success</label>
-        <input type="checkbox" />
+        <input type="checkbox" checked />
         <cds-control-message status="success">success text</cds-control-message>
       </cds-toggle>
     </div>

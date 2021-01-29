@@ -46,4 +46,4 @@ Angular button component used only with [ClrButtonGroup](./api/#clrbuttongroup).
 
 ## CSS
 
-Button group buttons have all of the same classes, states, types and sizes that stand alone [Buttons](../button/api.md) do.
+Button group buttons have all of the same classes, states, types and sizes that stand alone [Buttons](/angular-components/button/api/) do.

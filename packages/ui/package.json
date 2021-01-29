@@ -3,10 +3,12 @@
   "private": true,
   "version": "5.0.0",
   "scripts": {
-    "build": "npm-run-all build:css build:prefix build:optimize build:package build:update",
+    "clean": "del ./dist",
+    "build": "npm-run-all clean build:css build:prefix build:optimize build:package build:src build:update",
     "build:watch": "chokidar \"src/**/*.scss\" \"../angular/projects/clr-angular/src/**/*.scss\" -c \"yarn run build\"",
     "build:preinstall": "mkdir -p ../../dist/clr-ui/ && cp ./package.json ../../dist/clr-ui/",
     "build:update": "node ../../scripts/update-local-packages.js /packages/ui/dist/clr-ui/package.json",
+    "build:src": "cpy '**/*.scss' '../../../ui/dist/clr-ui' --cwd='../angular/projects/clr-angular/' --parents",
     "build:css": "sass --precision=8 src/main.scss ./dist/clr-ui/clr-ui.css; sass --precision=8 src/dark-theme.scss ./dist/clr-ui/clr-ui-dark.css",
     "build:prefix": "postcss ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.css; postcss ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.css",
     "build:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",

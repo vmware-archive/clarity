@@ -381,7 +381,6 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     // This assignment is needed by the wrapper, so it can set
     // the aria properties on the input element, not on the component.
     this.el = this.textbox;
-    super.ngAfterViewInit();
   }
 
   ngOnDestroy() {

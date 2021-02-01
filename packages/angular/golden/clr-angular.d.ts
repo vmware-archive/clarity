@@ -308,6 +308,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     invalid: boolean;
     set multiSelect(value: boolean | string);
     get multiSelect(): boolean | string;
+    get multiSelectModel(): T[];
     get openState(): boolean;
     optionSelected: ClrOptionSelected<T>;
     optionSelectionService: OptionSelectionService<T>;
@@ -537,8 +538,8 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     customFilter: boolean;
     get field(): string;
     set field(field: string);
-    get filterValue(): string | [number, number];
-    set filterValue(newValue: string | [number, number]);
+    get filterValue(): string | [number, number] | any;
+    set filterValue(newValue: string | [number, number] | any);
     filterValueChange: EventEmitter<any>;
     set projectedFilter(custom: any);
     showSeparator: boolean;

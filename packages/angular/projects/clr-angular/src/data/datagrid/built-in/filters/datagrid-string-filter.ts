@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -106,7 +106,7 @@ export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, Da
   }
   @Input('clrFilterValue')
   public set value(value: string) {
-    if (this.filter) {
+    if (this.filter && typeof value === 'string') {
       if (!value) {
         value = '';
       }

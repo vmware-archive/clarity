@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,11 +21,11 @@ export class ClrRovingTabindex extends ClrKeyFocus {
 
   // Proxy the input, as the selector name from parent class will still be "clrKeyFocus".
   @Input('clrRovingTabindex')
-  set rovingIndexItems(elements: Array<FocusableItem>) {
-    this.focusableItems = elements;
+  set rovingIndexItems(elements: Array<FocusableItem> | string) {
+    this.focusableItems = elements as Array<FocusableItem>;
   }
 
-  get rovingIndexItems(): Array<FocusableItem> {
+  get rovingIndexItems(): Array<FocusableItem> | string {
     return this.focusableItems;
   }
 

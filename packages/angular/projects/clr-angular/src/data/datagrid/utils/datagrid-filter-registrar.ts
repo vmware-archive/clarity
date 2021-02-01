@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,7 +11,10 @@ import { FiltersProvider, RegisteredFilter } from '../providers/filters';
 export abstract class DatagridFilterRegistrar<T, F extends ClrDatagridFilterInterface<T>> implements OnDestroy {
   constructor(private filters: FiltersProvider<T>) {}
 
-  public registered: RegisteredFilter<T, F>;
+  /**
+   * @NOTEe Type `any` is set here to be able to pass templateStrictMode
+   */
+  public registered: RegisteredFilter<T, F> | any;
 
   public get filter(): F {
     return this.registered && this.registered.filter;

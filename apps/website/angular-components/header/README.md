@@ -21,7 +21,7 @@ Include both your application’s name and logo if available. Clicking on the ap
 <header class="header-6" style="min-width: 96%; flex: none">
   <div class="branding">
       <a class="logo-and-title">
-          <clr-icon shape="file"></clr-icon>
+          <cds-icon shape="file"></cds-icon>
           <span class="title">Note App</span>
       </a>
   </div>
@@ -46,7 +46,7 @@ If you’re using icons on their own in the header, using tooltips will help use
 <header class="header-6" style="min-width: 96%; flex: none">
   <div class="branding">
       <a class="logo-and-title">
-          <clr-icon shape="file"></clr-icon>
+          <cds-icon shape="file"></cds-icon>
           <span class="title">Note App</span>
       </a>
   </div>
@@ -72,16 +72,16 @@ Use Text for navigational items.
 <header class="header-6" style="min-width: 96%; flex: none">
   <div class="branding">
       <a class="logo-and-title">
-          <clr-icon shape="file"></clr-icon>
+          <cds-icon shape="file"></cds-icon>
           <span class="title">Note App</span>
       </a>
   </div>
   <div class="header-nav">
     <a href="javascript://" class="nav-link">
-      <clr-icon shape="pencil" style="position: static; transform: translate3d(0, 0, 0);"></clr-icon> Composer
+      <cds-icon shape="pencil" style="position: static; transform: translate3d(0, 0, 0);"></cds-icon> Composer
     </a>
     <a href="javascript://" class="active nav-link">
-      <clr-icon shape="folder"></clr-icon>
+      <cds-icon shape="folder"></cds-icon>
     </a>
   </div>
 </header>
@@ -115,7 +115,7 @@ There are many different ways to include search in the header. Which way you cho
 <header class="header-6" style="min-width: 100%; flex: none">
   <div class="branding">
     <a class="logo-and-title">
-      <clr-icon shape="file"></clr-icon>
+      <cds-icon shape="file"></cds-icon>
       <span class="title">Note App</span>
     </a>
   </div>
@@ -127,8 +127,8 @@ There are many different ways to include search in the header. Which way you cho
   <div class="header-actions">
     <div class="dropdown">
       <button class="nav-icon dropdown-toggle" aria-label="toggle settings menu">
-        <clr-icon shape="cog"></clr-icon>
-        <clr-icon shape="caret" direction="down"></clr-icon>
+        <cds-icon shape="cog"></cds-icon>
+        <cds-icon shape="angle" direction="down"></cds-icon>
       </button>
       <div class="dropdown-menu">
         <a href="javascript://">About</a>
@@ -147,7 +147,7 @@ Use search as a prominent navigation item in the header if you are building a se
 <header class="header-6" style="min-width: 100%; flex: none">
   <div class="branding">
     <a class="logo-and-title">
-      <clr-icon shape="file"></clr-icon>
+      <cds-icon shape="file"></cds-icon>
       <span class="title">Note App</span>
     </a>
   </div>
@@ -167,8 +167,8 @@ Use search as a prominent navigation item in the header if you are building a se
   <div class="header-actions">
     <div class="dropdown">
       <button class="nav-icon dropdown-toggle" aria-label="toggle settings menu">
-        <clr-icon shape="cog"></clr-icon>
-        <clr-icon shape="caret" direction="down"></clr-icon>
+        <cds-icon shape="cog"></cds-icon>
+        <cds-icon shape="angle" direction="down"></cds-icon>
       </button>
       <div class="dropdown-menu">
         <a href="javascript://">About</a>
@@ -187,7 +187,7 @@ Use search as a secondary item to the right of the header if search is not core 
 <header class="header-6" style="min-width: 100%; flex: none">
   <div class="branding">
     <a class="logo-and-title">
-      <clr-icon shape="file"></clr-icon>
+      <cds-icon shape="file"></cds-icon>
       <span class="title">Note App</span>
     </a>
   </div>
@@ -201,12 +201,12 @@ Use search as a secondary item to the right of the header if search is not core 
   </div>
   <div class="header-actions">
     <a href="javascript:void(0)" class="nav-icon nav-icon-text">
-      <clr-icon shape="search" style="position: relative; top: 0.8rem; left: auto; transform: none; margin-left: 1rem"></clr-icon>
+      <cds-icon shape="search" style="position: relative; top: 0.8rem; left: auto; transform: none; margin-left: 1rem"></cds-icon>
     </a>
     <div class="dropdown">
       <button class="nav-icon dropdown-toggle" aria-label="toggle settings menu">
-        <clr-icon shape="cog"></clr-icon>
-        <clr-icon shape="caret" direction="down"></clr-icon>
+        <cds-icon shape="cog"></cds-icon>
+        <cds-icon shape="angle" direction="down"></cds-icon>
       </button>
       <div class="dropdown-menu">
         <a href="javascript://">About</a>
@@ -241,7 +241,7 @@ The header and subnav support app-level information and navigation links.
 
 #### .branding
 
-`.branding` contains the product logo and the product title. The logo extends the `.clr-icon` class and the title extends the `.title` class.
+`.branding` contains the product logo and the product title. The logo extends the `.cds-icon` class and the title extends the `.title` class.
 
 #### .header-nav
 

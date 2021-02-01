@@ -53,6 +53,6 @@ slot {
 
 :host(:active),
 :host(:hover) {
-  --color: #{$cds-alias-status-info-tint};
+  --color: #{$cds-alias-status-info-shade};
   --text-decoration: underline;
 }

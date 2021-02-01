@@ -3,27 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import {
-  Component,
-  OnDestroy,
-  Optional,
-  ContentChild,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-  Input,
-  AfterContentInit,
-} from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { Component, Optional, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
 
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
-import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 import { ControlClassService } from '../common/providers/control-class.service';
 import { ControlIdService } from '../common/providers/control-id.service';
 import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
-import { ClrLabel } from '../common/label';
 
 import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
@@ -36,17 +23,9 @@ import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-posit
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ViewManagerService } from './providers/view-manager.service';
-import { Subscription } from 'rxjs';
-import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
-import { ClrControlSuccess } from '../common/success';
-import { ClrControlError } from '../common/error';
-import { ClrControlHelper } from '../common/helper';
+import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
+import { ClrAbstractContainer } from '../common/abstract-container';
 
-/**
- * @TODO
- * this container could be overwritten to use ClrAbstractContainer - to minimize the duplicate
- * of code and logic.
- */
 @Component({
   selector: 'clr-date-container',
   template: `
@@ -116,42 +95,8 @@ import { ClrControlHelper } from '../common/helper';
     '[class.clr-row]': 'addGrid()',
   },
 })
-export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit, AfterContentInit {
-  _dynamic = false;
-
+export class ClrDateContainer extends ClrAbstractContainer implements AfterViewInit {
   focus = false;
-  state: CONTROL_STATE;
-  control: NgControl;
-
-  @ContentChild(ClrLabel) label: ClrLabel;
-  @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
-  @ContentChild(ClrControlError) controlErrorComponent: ClrControlError;
-  @ContentChild(ClrControlHelper) controlHelperComponent: ClrControlHelper;
-
-  /* More information on showHelper could be found into `abstract-container` */
-  get showHelper(): boolean {
-    // without existence of helper component there is no need of additional checks.
-    if (!!this.controlHelperComponent === false) {
-      return false;
-    }
-
-    return (
-      /* Helper Component exist and the state of the form is NONE (not touched) */
-      (!!this.controlHelperComponent && this.state === CONTROL_STATE.NONE) ||
-      /* or there is no success component but the state of the form is VALID - show helper information */
-      (!!this.controlSuccessComponent === false && this.state === CONTROL_STATE.VALID) ||
-      /* or there is no error component but the state of the form is INVALID - show helper information */
-      (!!this.controlErrorComponent === false && this.state === CONTROL_STATE.INVALID)
-    );
-  }
-
-  get showValid(): boolean {
-    return this.state === CONTROL_STATE.VALID && !!this.controlSuccessComponent;
-  }
-
-  get showInvalid(): boolean {
-    return this.state === CONTROL_STATE.INVALID && !!this.controlErrorComponent;
-  }
 
   @Input('clrPosition')
   set clrPosition(position: string) {
@@ -173,8 +118,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     this.toggleButton = button;
   }
 
-  private subscriptions: Subscription[] = [];
-
   constructor(
     private toggleService: ClrPopoverToggleService,
     private dateNavigationService: DateNavigationService,
@@ -183,20 +126,16 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
     public commonStrings: ClrCommonStringsService,
     private focusService: FocusService,
     private viewManagerService: ViewManagerService,
-    private controlClassService: ControlClassService,
-    @Optional() private layoutService: LayoutService,
-    private ngControlService: NgControlService,
-    private ifControlStateService: IfControlStateService
+    protected controlClassService: ControlClassService,
+    @Optional() protected layoutService: LayoutService,
+    protected ngControlService: NgControlService,
+    protected ifControlStateService: IfControlStateService
   ) {
+    super(ifControlStateService, layoutService, controlClassService, ngControlService);
+
     this.subscriptions.push(
       this.focusService.focusChange.subscribe(state => {
         this.focus = state;
-      })
-    );
-
-    this.subscriptions.push(
-      this.ngControlService.controlChanges.subscribe(control => {
-        this.control = control;
       })
     );
 
@@ -205,22 +144,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
         this.dateFormControlService.markAsTouched();
       })
     );
-  }
-
-  ngOnInit() {
-    this.subscriptions.push(
-      this.ifControlStateService.statusChanges.subscribe((state: CONTROL_STATE) => {
-        this.state = state;
-        this.updateHelpers();
-      })
-    );
-  }
-
-  /**
-   * Unsubscribe from subscriptions.
-   */
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   ngAfterViewInit(): void {
@@ -233,38 +156,6 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
         }
       })
     );
-  }
-
-  ngAfterContentInit() {
-    /**
-     * We gonna set the helper control state, after all or most of the components
-     * are ready - also this will trigger some intial flows into wrappers and controls,
-     * like locating IDs  and setting  attributes.
-     */
-    this.updateHelpers();
-  }
-
-  /**
-   * Returns the classes to apply to the control
-   */
-  controlClass() {
-    /**
-     * When there is no controlSuccessComponent and the state is VALID,
-     * we won't add `clr-success` control class. This way we won't change the styling
-     * of the helper text if present.
-     */
-    if (!this.controlSuccessComponent && this.state === CONTROL_STATE.VALID) {
-      return this.controlClassService.controlClass(CONTROL_STATE.NONE, this.addGrid());
-    }
-
-    return this.controlClassService.controlClass(this.state, this.addGrid());
-  }
-
-  /**
-   * Determines if the control needs to add grid classes
-   */
-  addGrid() {
-    return this.layoutService && !this.layoutService.isVertical();
   }
 
   /**
@@ -289,16 +180,5 @@ export class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewIni
    */
   private initializeCalendar(): void {
     this.dateNavigationService.initializeCalendar();
-  }
-
-  private updateHelpers() {
-    if (this.ngControlService) {
-      this.ngControlService.setHelpers({
-        show: this.showInvalid || this.showHelper || this.showValid,
-        showInvalid: this.showInvalid,
-        showHelper: this.showHelper,
-        showValid: this.showValid,
-      });
-    }
   }
 }

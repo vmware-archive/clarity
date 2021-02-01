@@ -55,6 +55,7 @@ export default function () {
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
     let toggleService: ClrPopoverToggleService;
+    let container: any;
 
     beforeEach(function () {
       TestBed.configureTestingModule({
@@ -71,6 +72,7 @@ export default function () {
       enabledService = context.getClarityProvider(DatepickerEnabledService) as MockDatepickerEnabledService;
       dateFormControlService = context.getClarityProvider(DateFormControlService);
       toggleService = context.getClarityProvider(ClrPopoverToggleService);
+      container = context.clarityDirective;
     });
 
     // @deprecated these tests refer to the old forms layout only and can be removed when its removed
@@ -179,13 +181,13 @@ export default function () {
 
       it('should add/remove success icon and text', () => {
         /* valid */
-        context.clarityDirective.state = CONTROL_STATE.VALID;
+        container.state = CONTROL_STATE.VALID;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeTruthy();
         expect(context.clarityElement.querySelector('cds-icon[shape=check-circle]')).toBeTruthy();
 
         /* invalid */
-        context.clarityDirective.state = CONTROL_STATE.INVALID;
+        container.state = CONTROL_STATE.INVALID;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeNull();
         expect(context.clarityElement.querySelector('cds-icon[shape=check-circle]')).toBeNull();
@@ -203,12 +205,12 @@ export default function () {
         expect(context.clarityDirective.controlClass()).toContain('clr-col-md-10');
         expect(context.clarityDirective.controlClass()).toContain('clr-col-12');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
-        context.clarityDirective.state = CONTROL_STATE.INVALID;
+        container.state = CONTROL_STATE.INVALID;
         expect(context.clarityDirective.controlClass()).toContain('clr-error');
         const controlClassService = context.getClarityProvider(ControlClassService);
         const layoutService = context.getClarityProvider(LayoutService);
         layoutService.layout = ClrFormLayout.VERTICAL;
-        context.clarityDirective.state = CONTROL_STATE.VALID;
+        container.state = CONTROL_STATE.VALID;
         expect(context.clarityDirective.controlClass()).not.toContain('clr-error');
         expect(context.clarityDirective.controlClass()).not.toContain('clr-col-md-10');
         controlClassService.className = 'clr-col-2';

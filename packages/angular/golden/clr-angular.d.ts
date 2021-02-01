@@ -859,32 +859,21 @@ export declare class ClrDatalistModule {
 export declare class ClrDataModule {
 }
 
-export declare class ClrDateContainer implements DynamicWrapper, OnDestroy, AfterViewInit, AfterContentInit {
-    _dynamic: boolean;
+export declare class ClrDateContainer extends ClrAbstractContainer implements AfterViewInit {
     set actionButton(button: ElementRef);
     set clrPosition(position: string);
     commonStrings: ClrCommonStringsService;
-    control: NgControl;
-    controlErrorComponent: ClrControlError;
-    controlHelperComponent: ClrControlHelper;
-    controlSuccessComponent: ClrControlSuccess;
+    protected controlClassService: ControlClassService;
     focus: boolean;
+    protected ifControlStateService: IfControlStateService;
     get isEnabled(): boolean;
     get isInputDateDisabled(): boolean;
-    label: ClrLabel;
+    protected layoutService: LayoutService;
+    protected ngControlService: NgControlService;
     get open(): boolean;
     get popoverPosition(): ClrPopoverPosition;
-    get showHelper(): boolean;
-    get showInvalid(): boolean;
-    get showValid(): boolean;
-    state: CONTROL_STATE;
     constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
-    addGrid(): boolean;
-    controlClass(): string;
-    ngAfterContentInit(): void;
     ngAfterViewInit(): void;
-    ngOnDestroy(): void;
-    ngOnInit(): void;
 }
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {

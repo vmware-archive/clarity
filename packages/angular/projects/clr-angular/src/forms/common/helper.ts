@@ -1,10 +1,12 @@
 /**
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component, Optional } from '@angular/core';
+import { ClrAbstractControl, CONTROL_SUFFIX } from './abstract-control';
+import { ContainerIdService } from './providers/container-id.service';
 import { ControlIdService } from './providers/control-id.service';
 
 @Component({
@@ -12,9 +14,16 @@ import { ControlIdService } from './providers/control-id.service';
   template: ` <ng-content></ng-content> `,
   host: {
     '[class.clr-subtext]': 'true',
-    '[id]': 'controlIdService?.id + "-helper"',
+    '[attr.id]': 'id',
   },
 })
-export class ClrControlHelper {
-  constructor(@Optional() public controlIdService: ControlIdService) {}
+export class ClrControlHelper extends ClrAbstractControl {
+  controlIdSuffix = CONTROL_SUFFIX.HELPER;
+
+  constructor(
+    @Optional() protected controlIdService: ControlIdService,
+    @Optional() protected containerIdService: ContainerIdService
+  ) {
+    super(controlIdService, containerIdService);
+  }
 }

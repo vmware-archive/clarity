@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,12 +19,14 @@ export class ControlClassService {
 
   controlClass(state: CONTROL_STATE = CONTROL_STATE.NONE, grid = false, additional = '') {
     const controlClasses = [this.className, additional];
-    if (state === CONTROL_STATE.VALID) {
-      controlClasses.push(CLASS_SUCCESS);
-    }
 
-    if (state === CONTROL_STATE.INVALID) {
-      controlClasses.push(CLASS_ERROR);
+    switch (state) {
+      case CONTROL_STATE.VALID:
+        controlClasses.push(CLASS_SUCCESS);
+        break;
+      case CONTROL_STATE.INVALID:
+        controlClasses.push(CLASS_ERROR);
+        break;
     }
 
     if (grid && this.layoutService && this.className.indexOf('clr-col') === -1) {

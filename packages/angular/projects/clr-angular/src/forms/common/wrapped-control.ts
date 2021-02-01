@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,27 +16,28 @@ import {
   ElementRef,
   OnDestroy,
   Directive,
-  AfterViewInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { filter, distinctUntilChanged, startWith } from 'rxjs/operators';
 
 import { HostWrapper } from '../../utils/host-wrapping/host-wrapper';
 import { DynamicWrapper } from '../../utils/host-wrapping/dynamic-wrapper';
 
 import { ControlIdService } from './providers/control-id.service';
-import { NgControlService } from './providers/ng-control.service';
+import { Helpers, NgControlService } from './providers/ng-control.service';
 import { NgControl } from '@angular/forms';
 import { ControlClassService } from './providers/control-class.service';
 import { MarkControlService } from './providers/mark-control.service';
-import { IfControlStateService, CONTROL_STATE } from './if-control-state/if-control-state.service';
+import { IfControlStateService } from './if-control-state/if-control-state.service';
+import { ContainerIdService } from './providers/container-id.service';
+import { CONTROL_SUFFIX } from './abstract-control';
 
 @Directive()
-export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, AfterViewInit, OnDestroy {
+export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, OnDestroy {
   protected ngControlService: NgControlService;
   private ifControlStateService: IfControlStateService;
   private controlClassService: ControlClassService;
   private markControlService: MarkControlService;
+  private containerIdService: ContainerIdService;
   protected renderer: Renderer2;
   protected el: ElementRef<any>;
 
@@ -74,6 +75,14 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
       this.subscriptions.push(
         this.markControlService.touchedChange.subscribe(() => {
           this.markAsTouched();
+        })
+      );
+    }
+
+    if (this.ngControlService) {
+      this.subscriptions.push(
+        this.ngControlService.helpersChange.subscribe((state: Helpers) => {
+          this.setAriaDescribedBy(state);
         })
       );
     }
@@ -128,6 +137,15 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
     this._containerInjector = new HostWrapper(this.wrapperType, this.vcr, this.index);
     this.controlIdService = this._containerInjector.get(ControlIdService);
 
+    try {
+      this.containerIdService = this._containerInjector.get(ContainerIdService);
+    } catch (_injectorError) {
+      /**
+       * We suppress error, not all containers will provide `ContainerIdService` so
+       * there could be exception that is not provided.
+       */
+    }
+
     if (this._id) {
       this.controlIdService.id = this._id;
     } else {
@@ -139,49 +157,43 @@ export class WrappedFormControl<W extends DynamicWrapper> implements OnInit, Aft
     }
   }
 
-  ngAfterViewInit() {
-    this.listenForErrorStateChanges();
-  }
-
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  private listenForErrorStateChanges() {
-    if (this.ifControlStateService) {
-      this.subscriptions.push(
-        this.ifControlStateService.statusChanges
-          .pipe(
-            startWith(CONTROL_STATE.NONE),
-            filter(() => this.renderer && !!this.el),
-            distinctUntilChanged()
-          )
-          .subscribe(state => this.setAriaDescribedBy(state))
-      );
+  private setAriaDescribedBy(helpers: Helpers) {
+    if (helpers.show) {
+      const ariaDescribedBy = this.getAriaDescribedById(helpers);
+      if (ariaDescribedBy !== null) {
+        this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', ariaDescribedBy);
+        return;
+      }
     }
+
+    this.renderer.removeAttribute(this.el.nativeElement, 'aria-describedby');
   }
 
-  private setAriaDescribedBy(state: CONTROL_STATE) {
-    this.renderer.setAttribute(this.el.nativeElement, 'aria-describedby', this.getAriaDescribedById(state));
-  }
+  private getAriaDescribedById(helpers: Helpers): string | null {
+    let suffix = CONTROL_SUFFIX.HELPER;
 
-  private getAriaDescribedById(state: CONTROL_STATE): string {
-    if (!this.controlIdService) {
-      return '';
+    if (helpers.showInvalid) {
+      suffix = CONTROL_SUFFIX.ERROR;
+    } else if (helpers.showValid) {
+      suffix = CONTROL_SUFFIX.SUCCESS;
     }
 
-    let suffix;
-
-    switch (state) {
-      case CONTROL_STATE.INVALID:
-        suffix = '-error';
-        break;
-      case CONTROL_STATE.VALID:
-        suffix = '-success';
-        break;
-      default:
-        suffix = '-helper';
+    if (this.containerIdService) {
+      return this.containerIdService.id.concat('-', suffix);
     }
-    return this.controlIdService.id.concat(suffix);
+
+    if (this.controlIdService) {
+      return this.controlIdService.id.concat('-', suffix);
+    }
+
+    /**
+     * If ContainerIdService or ControlIdService are missing don't try to guess
+     * Don't set anything.
+     */
+    return null;
   }
 }

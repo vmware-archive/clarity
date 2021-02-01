@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,6 +19,10 @@ import { MarkControlService } from './providers/mark-control.service';
 import { WrappedFormControl } from './wrapped-control';
 import { LayoutService } from './providers/layout.service';
 import { IfControlStateService } from './if-control-state/if-control-state.service';
+import { ClrControlError } from './error';
+import { ClrControlHelper } from './helper';
+import { ClrControlSuccess } from './success';
+import { ClrAbstractContainer } from './abstract-container';
 
 /*
  * Components using the WrappedFormControl we want to test.
@@ -57,7 +61,7 @@ class TestControl2 extends WrappedFormControl<TestWrapper2> {
   template: `<div id="wrapper"><ng-content></ng-content></div>`,
   providers: [ControlIdService, NgControlService, IfControlStateService, ControlClassService],
 })
-class TestWrapper3 implements DynamicWrapper {
+class TestWrapper3 extends ClrAbstractContainer implements DynamicWrapper {
   _dynamic = false;
 }
 
@@ -103,7 +107,9 @@ class WithMultipleNgContent {}
 
 @Component({
   template: ` <form-wrapper>
-    <test-wrapper3><input testControl3 [(ngModel)]="model" required /></test-wrapper3>
+    <test-wrapper3>
+      <input testControl3 [(ngModel)]="model" required />
+    </test-wrapper3>
   </form-wrapper>`,
 })
 class WithControl {
@@ -119,6 +125,42 @@ class WithControl {
   `,
 })
 class WithNumberControl {
+  model = '';
+}
+
+@Component({
+  template: ` <form-wrapper>
+    <test-wrapper3>
+      <input testControl3 [(ngModel)]="model" required />
+      <clr-control-helper>Helper</clr-control-helper>
+    </test-wrapper3>
+  </form-wrapper>`,
+})
+class WithControlAndHelper {
+  model = '';
+}
+
+@Component({
+  template: ` <form-wrapper>
+    <test-wrapper3>
+      <input testControl3 [(ngModel)]="model" required />
+      <clr-control-error>Error</clr-control-error>
+    </test-wrapper3>
+  </form-wrapper>`,
+})
+class WithControlAndError {
+  model = '';
+}
+
+@Component({
+  template: ` <form-wrapper>
+    <test-wrapper3>
+      <input testControl3 [(ngModel)]="model" required />
+      <clr-control-success>Success</clr-control-success>
+    </test-wrapper3>
+  </form-wrapper>`,
+})
+class WithControlAndSuccess {
   model = '';
 }
 
@@ -140,7 +182,7 @@ export default function (): void {
     function setupTest<T>(testContext: TestContext, testComponent: Type<T>, testControl: any) {
       TestBed.configureTestingModule({
         imports: [WrappedFormControlTestModule, FormsModule],
-        declarations: [testComponent],
+        declarations: [testComponent, ClrControlError, ClrControlHelper, ClrControlSuccess],
       });
       testContext.fixture = TestBed.createComponent(testComponent);
       testContext.fixture.detectChanges();
@@ -270,18 +312,55 @@ export default function (): void {
 
     describe('aria roles', function () {
       it('adds the aria-describedby for helper', function () {
-        setupTest(this, WithControl, TestControl3);
+        setupTest(this, WithControlAndHelper, TestControl3);
+        this.ifControlStateService.triggerStatusChange(); // Manually trigger ngModel to sync which doesn't want to do because internal async
         expect(this.input.getAttribute('aria-describedby')).toContain('-helper');
       });
 
-      it('adds the aria-describedby for error messages', fakeAsync(function (this: TestContext) {
+      it('does not set aria-describedby unless helper is present', function () {
+        setupTest(this, WithControl, TestControl3);
+        this.ifControlStateService.triggerStatusChange(); // Manually trigger ngModel to sync which doesn't want to do because internal async
+        expect(this.input.getAttribute('aria-describedby')).toBe(null);
+      });
+
+      it('adds the aria-describedby for error messages', function (this: TestContext) {
+        setupTest(this, WithControlAndError, TestControl3);
+        this.input.focus();
+        this.input.blur();
+        this.fixture.detectChanges();
+
+        expect(this.input.getAttribute('aria-describedby')).toContain('-error');
+      });
+
+      it('does not set aria-describedby unless error helper is present', function () {
         setupTest(this, WithControl, TestControl3);
         this.input.focus();
         this.input.blur();
         this.fixture.detectChanges();
 
+        expect(this.input.getAttribute('aria-describedby')).toBe(null);
+      });
+
+      it('adds the aria-describedby for success messages', fakeAsync(function (this: TestContext) {
+        setupTest(this, WithControlAndSuccess, TestControl3);
+        this.input.focus();
+        this.fixture.componentInstance.model = 'test';
+        this.input.blur();
+        this.fixture.detectChanges();
         tick();
-        expect(this.input.getAttribute('aria-describedby')).toContain('-error');
+
+        expect(this.input.getAttribute('aria-describedby')).toContain('-success');
+      }));
+
+      it('does not set aria-describedby unless success helper is present', fakeAsync(function () {
+        setupTest(this, WithControl, TestControl3);
+        this.input.focus();
+        this.fixture.componentInstance.model = 'test';
+        this.input.blur();
+        this.fixture.detectChanges();
+        tick();
+
+        expect(this.input.getAttribute('aria-describedby')).toBe(null);
       }));
     });
   });

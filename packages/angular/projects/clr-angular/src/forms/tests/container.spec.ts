@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,12 +47,12 @@ export function ContainerNoLabelSpec(testContainer, testControl, testComponent):
       expect(Array.prototype.filter.call(labels, label => label.textContent === '').length).toBe(0);
     });
 
-    it('should display helper text when no success-component is present', () => {
+    it('should display helper text when both error and success text are not implemented', () => {
       fixture.detectChanges();
       expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();
       container.state = CONTROL_STATE.INVALID;
       fixture.detectChanges();
-      expect(containerEl.querySelector('clr-control-helper')).toBeFalsy();
+      expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();
       container.state = CONTROL_STATE.VALID;
       fixture.detectChanges();
       expect(containerEl.querySelector('clr-control-helper')).toBeTruthy();

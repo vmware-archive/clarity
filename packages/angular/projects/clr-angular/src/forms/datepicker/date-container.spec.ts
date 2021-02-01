@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -179,15 +179,13 @@ export default function () {
 
       it('should add/remove success icon and text', () => {
         /* valid */
-        context.clarityDirective.showValid = true;
-        context.clarityDirective.showInvalid = false;
+        context.clarityDirective.state = CONTROL_STATE.VALID;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeTruthy();
         expect(context.clarityElement.querySelector('clr-icon[shape=check-circle]')).toBeTruthy();
 
         /* invalid */
-        context.clarityDirective.showValid = false;
-        context.clarityDirective.showInvalid = true;
+        context.clarityDirective.state = CONTROL_STATE.INVALID;
         context.detectChanges();
         expect(context.clarityElement.querySelector('clr-control-success')).toBeNull();
         expect(context.clarityElement.querySelector('clr-icon[shape=check-circle]')).toBeNull();

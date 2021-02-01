@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -403,7 +403,7 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   // This property holds filter value temporarily while this.filter property is not yet registered
   // When this.filter is registered, this property value would be used update this.filter.value
-  private initFilterValue: string | [number, number];
+  private initFilterValue: string | [number, number] | any;
 
   public get filterValue() {
     if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
@@ -412,7 +412,13 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
     return null;
   }
 
-  public set filterValue(newValue: string | [number, number]) {
+  /**
+   * @NOTE type `any` here is to let us pass templateStrictMode, because in our code we try to handle
+   * two types of filters String and Number with the same variable but both of them work with different
+   * format we got an error for casting. We could not cast anything inside the template so to not mess the
+   * casting, the last type is set to `any`
+   */
+  public set filterValue(newValue: string | [number, number] | any) {
     if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
       this.updateFilterValue = newValue;
       this.filterValueChange.emit(this.filter.value);

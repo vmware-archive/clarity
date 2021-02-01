@@ -148,6 +148,13 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     return this._searchText;
   }
 
+  get multiSelectModel(): T[] {
+    if (!this.multiSelect) {
+      throw Error('multiSelectModel is not available in single selection context');
+    }
+    return (this.optionSelectionService.selectionModel as MultiSelectComboboxModel<T>).model;
+  }
+
   public smartPosition: ClrPopoverPosition = {
     axis: ClrAxis.VERTICAL,
     side: ClrSide.AFTER,

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ContentChild, Directive, OnDestroy, Optional } from '@angular/core';
+import { AfterContentInit, ContentChild, Directive, OnDestroy, Optional } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 import { NgControlService } from './providers/ng-control.service';
@@ -15,9 +15,11 @@ import { ControlClassService } from './providers/control-class.service';
 import { Subscription } from 'rxjs';
 import { IfControlStateService, CONTROL_STATE } from './if-control-state/if-control-state.service';
 import { ClrControlSuccess } from './success';
+import { ClrControlError } from './error';
+import { ClrControlHelper } from './helper';
 
 @Directive()
-export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy {
+export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy, AfterContentInit {
   protected subscriptions: Subscription[] = [];
   _dynamic = false;
   @ContentChild(ClrLabel, { static: false })
@@ -26,12 +28,35 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
   private state: CONTROL_STATE;
 
   /**
-   * Search for `ClrSuccessComponent` to know do we want to display clr-success or not
+   * Find Success, Error and Helper control components.
    */
   @ContentChild(ClrControlSuccess) controlSuccessComponent: ClrControlSuccess;
+  @ContentChild(ClrControlError) controlErrorComponent: ClrControlError;
+  @ContentChild(ClrControlHelper) controlHelperComponent: ClrControlHelper;
 
+  /**
+   * @NOTE
+   * Helper control is a bit different than the others, it must be visible most of the time:
+   *   - Helper must NOT be visible when CONTROL_STATE is not NONE and Success or Error components are \
+   * defined.
+   *
+   * For example user implement only Error control then if CONTROL_STATE is VALID then helper
+   * control must be visible.
+   */
   get showHelper(): boolean {
-    return this.state === CONTROL_STATE.NONE || (!this.showInvalid && !this.controlSuccessComponent);
+    // without existence of helper component there is no need of additional checks.
+    if (!!this.controlHelperComponent === false) {
+      return false;
+    }
+
+    return (
+      /* Helper Component exist and the state of the form is NONE (not touched) */
+      (!!this.controlHelperComponent && this.state === CONTROL_STATE.NONE) ||
+      /* or there is no success component but the state of the form is VALID - show helper information */
+      (!!this.controlSuccessComponent === false && this.state === CONTROL_STATE.VALID) ||
+      /* or there is no error component but the state of the form is INVALID - show helper information */
+      (!!this.controlErrorComponent === false && this.state === CONTROL_STATE.INVALID)
+    );
   }
 
   get showValid(): boolean {
@@ -39,7 +64,7 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
   }
 
   get showInvalid(): boolean {
-    return this.state === CONTROL_STATE.INVALID;
+    return this.state === CONTROL_STATE.INVALID && !!this.controlErrorComponent;
   }
 
   constructor(
@@ -51,6 +76,7 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
     this.subscriptions.push(
       this.ifControlStateService.statusChanges.subscribe((state: CONTROL_STATE) => {
         this.state = state;
+        this.updateHelpers();
       })
     );
 
@@ -61,17 +87,30 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
     );
   }
 
+  ngAfterContentInit() {
+    /**
+     * We gonna set the helper control state, after all or most of the components
+     * are ready - also this will trigger some initial flows into wrappers and controls,
+     * like locating IDs  and setting  attributes.
+     */
+    this.updateHelpers();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
   controlClass() {
     /**
      * Decide what subtext to display:
-     *   - element is valid but no success component is implemented - show helper
-     *   - element is valid and success component is implemented - show success
+     *   - container is valid but no success component is implemented - use helper class
+     *   - container is valid and success component is implemented - use success class
      */
     if (!this.controlSuccessComponent && this.state === CONTROL_STATE.VALID) {
       return this.controlClassService.controlClass(CONTROL_STATE.NONE, this.addGrid());
     }
     /**
-     * Pass form control state and return string of classes to be applyed to the container.
+     * Pass form control state and return string of classes to be applied to the container.
      */
     return this.controlClassService.controlClass(this.state, this.addGrid());
   }
@@ -80,7 +119,14 @@ export abstract class ClrAbstractContainer implements DynamicWrapper, OnDestroy 
     return this.layoutService && !this.layoutService.isVertical();
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  private updateHelpers() {
+    if (this.ngControlService) {
+      this.ngControlService.setHelpers({
+        show: this.showInvalid || this.showHelper || this.showValid,
+        showInvalid: this.showInvalid,
+        showHelper: this.showHelper,
+        showValid: this.showValid,
+      });
+    }
   }
 }

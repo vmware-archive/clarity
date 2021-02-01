@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -19,9 +19,15 @@
     </clr-input-container>
 
     <clr-input-container>
-      <label>Input with only helper text</label>
+      <label>Input (Only Helper)</label>
       <input clrInput placeholder="Input control" name="input-help" formControlName="input-help" />
       <clr-control-helper>Helper text</clr-control-helper>
+    </clr-input-container>
+
+    <clr-input-container>
+      <label>Input (Only Success)</label>
+      <input clrInput placeholder="Input control" name="input" formControlName="input" />
+      <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
     </clr-input-container>
 
     <clr-date-container>
@@ -36,6 +42,12 @@
       <label>Date Picker (Only Helper)</label>
       <input type="date" clrDate name="date-helper" formControlName="date-helper" />
       <clr-control-helper>Helper text</clr-control-helper>
+    </clr-date-container>
+
+    <clr-date-container>
+      <label>Date Picker (Only Success)</label>
+      <input type="date" clrDate name="date-helper" formControlName="date-helper" />
+      <clr-control-success *clrIfSuccess>The date was set</clr-control-success>
     </clr-date-container>
 
     <clr-textarea-container>

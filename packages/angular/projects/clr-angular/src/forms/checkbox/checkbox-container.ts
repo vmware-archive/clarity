@@ -1,16 +1,18 @@
 /**
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Input, Optional } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, Optional, QueryList } from '@angular/core';
 
 import { ControlClassService } from '../common/providers/control-class.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 import { ClrAbstractContainer } from '../common/abstract-container';
 import { LayoutService } from '../common/providers/layout.service';
 import { IfControlStateService } from '../common/if-control-state/if-control-state.service';
+import { ContainerIdService } from '../common/providers/container-id.service';
+import { ClrCheckbox } from './checkbox';
 
 @Component({
   selector: 'clr-checkbox-container,clr-toggle-container',
@@ -44,11 +46,15 @@ import { IfControlStateService } from '../common/if-control-state/if-control-sta
     '[class.clr-form-control]': 'true',
     '[class.clr-form-control-disabled]': 'control?.disabled',
     '[class.clr-row]': 'addGrid()',
+    '[attr.role]': 'role',
   },
-  providers: [IfControlStateService, NgControlService, ControlClassService],
+  providers: [IfControlStateService, NgControlService, ControlClassService, ContainerIdService],
 })
-export class ClrCheckboxContainer extends ClrAbstractContainer {
+export class ClrCheckboxContainer extends ClrAbstractContainer implements AfterContentInit {
   private inline = false;
+  public role: string;
+
+  @ContentChildren(ClrCheckbox, { descendants: true }) checkboxes: QueryList<ClrCheckbox>;
 
   constructor(
     @Optional() protected layoutService: LayoutService,
@@ -75,5 +81,13 @@ export class ClrCheckboxContainer extends ClrAbstractContainer {
   }
   get clrInline() {
     return this.inline;
+  }
+
+  ngAfterContentInit() {
+    this.setAriaRoles();
+  }
+
+  private setAriaRoles() {
+    this.role = this.checkboxes.length ? 'group' : null;
   }
 }

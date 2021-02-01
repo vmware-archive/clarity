@@ -65,10 +65,7 @@ const getDecoratorPropertyValue = (
   return property.value as any;
 };
 
-function calculateLocation(
-  templateContent: TSESTree.TemplateElement,
-  elementLocation: DomElementLocation
-): SourceLocation {
+function calculateLocation(templateContent: TSESTree.BaseNode, elementLocation: DomElementLocation): SourceLocation {
   const start = {
     line: elementLocation.startLine + templateContent.loc.start.line - 1,
     column: elementLocation.startCol - 1,
@@ -81,15 +78,10 @@ function calculateLocation(
   return { start, end };
 }
 
-function getDecoratorTemplate(
-  decoratorNode: TSESTree.Decorator
-):
-  | {
-      templateContentNode: TSESTree.TemplateElement;
-      templateContent: string;
-    }
-  | undefined {
-  const template = getDecoratorPropertyValue(decoratorNode, 'template');
+export function parseDecoratorTemplate(
+  node: TSESTree.Decorator
+): undefined | { dom: JSDOM; templateContentNode: TSESTree.TemplateElement } {
+  const template = getDecoratorPropertyValue(node, 'template');
   if (template?.type !== 'TemplateLiteral') {
     return;
   }
@@ -100,7 +92,32 @@ function getDecoratorTemplate(
     return;
   }
 
-  return { templateContentNode, templateContent };
+  const dom = new JSDOM(templateContent, {
+    includeNodeLocations: true,
+  });
+
+  return { dom, templateContentNode };
+}
+
+export function reportNestedDisallowedElements(
+  disallowedElementSelector: string | Array<string>,
+  context: RuleContext<any, any>,
+  dom: JSDOM,
+  parentNode: TSESTree.Node,
+  messageId: string
+): void {
+  const disallowedElements = dom.window.document.querySelectorAll(disallowedElementSelector as any);
+
+  disallowedElements.forEach(element => {
+    const nodeLocation = dom.nodeLocation(element) as DomElementLocation;
+    const loc = calculateLocation(parentNode, nodeLocation);
+
+    context.report({
+      node: parentNode,
+      messageId,
+      loc,
+    });
+  });
 }
 
 export function lintDecoratorTemplate(
@@ -109,26 +126,12 @@ export function lintDecoratorTemplate(
   disallowedElementSelector: string | Array<string>,
   messageId: string
 ): void {
-  const templateResult = getDecoratorTemplate(node);
-  if (!templateResult) {
+  const parsedTemplate = parseDecoratorTemplate(node);
+  if (!parsedTemplate) {
     return;
   }
 
-  const { templateContentNode, templateContent } = templateResult;
+  const { dom, templateContentNode } = parsedTemplate;
 
-  const dom = new JSDOM(templateContent, {
-    includeNodeLocations: true,
-  });
-  const disallowedElements = dom.window.document.querySelectorAll(disallowedElementSelector as any);
-
-  disallowedElements.forEach(element => {
-    const nodeLocation = dom.nodeLocation(element) as DomElementLocation;
-    const loc = calculateLocation(templateContentNode, nodeLocation);
-
-    context.report({
-      node: templateContentNode,
-      messageId,
-      loc,
-    });
-  });
+  reportNestedDisallowedElements(disallowedElementSelector, context, dom, templateContentNode, messageId);
 }

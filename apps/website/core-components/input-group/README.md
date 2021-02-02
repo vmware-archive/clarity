@@ -35,8 +35,6 @@ An input group can behave in all the ways a standard single input will. It may b
 
 :::
 
-</div>
-
 ::: component-section-level-one-title
 
 ## States
@@ -73,10 +71,6 @@ Use when interactive and ready for input.
 
 :::
 
-</div>
-
-<div class="component-section-horizontal">
-
 ::: component-section-level-two
 
 ### Active
@@ -96,10 +90,6 @@ Use when selected by a user with an input method, such as mouse or keyboard.
 </div>
 
 :::
-
-</div>
-
-<div class="component-section-horizontal">
 
 ::: component-section-level-two
 

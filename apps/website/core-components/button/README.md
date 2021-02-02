@@ -67,7 +67,7 @@ While buttons and links can both be given similar visual treatments, it is impor
     <cds-button>button</cds-button>
 </div>
 </DocInset>
-<p cds-text="body" cds-layout="p-t:lg p-b:md">Use  buttons when a user is expected to <span cds-text="semibold">take an action</span>.</p>
+<p cds-text="body" cds-layout="p-t:lg p-b:md">Use the <span cds-text="code">cds-button</span> element on its own when a user is expected to <span cds-text="semibold">take an action</span>.</p>
 </div>
 <div class="clr-col-sm-12 clr-col-lg-6">
 <DocInset height="72">
@@ -75,7 +75,7 @@ While buttons and links can both be given similar visual treatments, it is impor
     <a href="javascript:void(0)"><cds-button>link</cds-button></a>
 </div>
 </DocInset>
-<p cds-text="body" cds-layout="p-t:lg p-b:md">Use a link when a user is expected to be <span cds-text="semibold">taken to a different page.</span>.</p>
+<p cds-text="body" cds-layout="p-t:lg p-b:md">Wrap a <span cds-text="code">cds-button</span> inside an anchor element and use a link when a user is expected to be <span cds-text="semibold">taken to a different page.</span>.</p>
 </div>
 </div>
 

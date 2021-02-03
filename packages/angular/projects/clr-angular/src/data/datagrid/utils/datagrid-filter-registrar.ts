@@ -14,7 +14,7 @@ export abstract class DatagridFilterRegistrar<T, F extends ClrDatagridFilterInte
   /**
    * @NOTEe Type `any` is set here to be able to pass templateStrictMode
    */
-  public registered: RegisteredFilter<T, F> | any;
+  public registered: any;
 
   public get filter(): F {
     return this.registered && this.registered.filter;

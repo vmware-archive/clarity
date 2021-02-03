@@ -538,8 +538,8 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     customFilter: boolean;
     get field(): string;
     set field(field: string);
-    get filterValue(): string | [number, number] | any;
-    set filterValue(newValue: string | [number, number] | any);
+    get filterValue(): any;
+    set filterValue(newValue: any);
     filterValueChange: EventEmitter<any>;
     set projectedFilter(custom: any);
     showSeparator: boolean;

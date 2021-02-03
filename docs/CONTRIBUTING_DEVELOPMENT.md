@@ -5,6 +5,8 @@ process to reduce the risk of significant changes being requested when you
 submit your pull request. We'll work with you on every step and try to be as
 responsive as possible.
 
+**_Windows OS_**: Windows users can face issues with running some scripts in this repository so we recommend installing and using a [linux distribution](https://docs.microsoft.com/en-us/windows/wsl/install-win10) before going further.
+
 ## I. Proposal template
 
 Before you start coding anything, please fill out the following proposal
@@ -87,7 +89,7 @@ First, make sure you:
 When we post on the issue to approve your proposal, the person on the team
 who'll be your primary contact will post a link to a topic branch against which
 you will submit your pull requests. The topic branch will be branched from the
-latest `master` and named `topic/{feature-name}`. To merge any pull request into
+latest `next` and named `topic/{feature-name}`. To merge any pull request into
 this branch, it will need 2 approvals from team members.
 
 Start by [forking](https://help.github.com/articles/fork-a-repo/) the main
@@ -143,13 +145,10 @@ files which track our public API surface.
 To update the Golden files follow these steps:
 
 1.  Make public API change
-2.  Run `angular:build` or `build:ci`
+2.  Run `build:ci`
 3.  Run `angular:golden:test` this should fail
 4.  Run `angular:golden:fix`
 5.  Run `angular:golden:test` this should now pass
-
-If you are making a public change to the Web Components swap the `angular`
-command for `core`. Example `angular:build` => `core:build`.
 
 ### Commits
 
@@ -218,12 +217,12 @@ These documents provide guidance creating a well-crafted commit message:
 As you implement your contribution, make sure all work stays on your local topic
 branch. When an isolated part of the feature is complete with unit tests, make
 sure to submit your pull request **against the topic branch** on the main
-Clarity repository instead of `master`. This will allow us to accept and merge
+Clarity repository instead of `next`. This will allow us to accept and merge
 partial changes that shouldn't make it into a production release of Clarity yet.
 We expect every pull request to come with exhaustive unit tests for the
 submitted code.
 
-**Do not, at any point, rebase your local topic branch on newer versions of `master` while your work is still in progress!**
+**Do not, at any point, rebase your local topic branch on newer versions of `next` while your work is still in progress!**
 This will create issues both for you, the reviewers, and maybe even other
 developers who might submit additional commits to your topic branch if you
 requested some help.
@@ -262,11 +261,11 @@ as soon as possible.
 ### Shipping it
 
 Once your contribution is fully implemented, reviewed, and ready, we will rebase
-the topic branch on the newest `master` and squash down to fewer commits if
+the topic branch on the newest `next` and squash down to fewer commits if
 needed (keeping you as the author, obviously).
 
 ```bash
-$ git rebase -i master
+$ git rebase -i next
 
 # Rebase commits and resolve conflict, if any.
 
@@ -275,7 +274,7 @@ $ git push origin branch -f
 
 Chances are, we will be more familiar with potential conflicts that might happen,
 but we can work with you if you want to solve some conflicts yourself. Once
-rebased, we will merge the topic branch into `master`, which involves a quick
+rebased, we will merge the topic branch into `next`, which involves a quick
 internal pull request you don't have to worry about, and we will finally delete
 the topic branch.
 

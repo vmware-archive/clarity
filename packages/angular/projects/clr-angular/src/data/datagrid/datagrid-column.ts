@@ -403,7 +403,8 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
 
   // This property holds filter value temporarily while this.filter property is not yet registered
   // When this.filter is registered, this property value would be used update this.filter.value
-  private initFilterValue: string | [number, number] | any;
+  //
+  private initFilterValue: string | [number, number];
 
   public get filterValue() {
     if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
@@ -417,8 +418,10 @@ export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDa
    * two types of filters String and Number with the same variable but both of them work with different
    * format we got an error for casting. We could not cast anything inside the template so to not mess the
    * casting, the last type is set to `any`
+   *
+   * Orignial types: string | [number, number]
    */
-  public set filterValue(newValue: string | [number, number] | any) {
+  public set filterValue(newValue: any) {
     if (this.filter instanceof DatagridStringFilterImpl || this.filter instanceof DatagridNumericFilterImpl) {
       this.updateFilterValue = newValue;
       this.filterValueChange.emit(this.filter.value);

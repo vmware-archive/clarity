@@ -1,7 +1,7 @@
 {
   "name": "icons",
   "private": true,
-  "version": "4.0.10",
+  "version": "4.0.11",
   "scripts": {
     "build": "npm-run-all build:css build:optimize build:web build:package",
     "build:web": "webpack --config webpack.config.js",

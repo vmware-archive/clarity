@@ -203,6 +203,14 @@ export class CdsControl extends LitElement {
     return html``;
   }
 
+  private get hasControlActions() {
+    return (
+      this.controlActions.length ||
+      this.prefixDefaultTemplate.getHTML().length ||
+      this.suffixDefaultTemplate.getHTML().length
+    );
+  }
+
   private get primaryLabelTemplate() {
     return html`
       ${!this.hiddenLabel
@@ -266,6 +274,7 @@ export class CdsControl extends LitElement {
     this.setActionOffsetPadding();
     this.setupResponsive();
     this.setupDescribedByUpdates();
+    this.setupHiddenLabel();
   }
 
   updated(props: Map<string, any>) {
@@ -302,7 +311,7 @@ export class CdsControl extends LitElement {
 
   private async setActionOffsetPadding() {
     await childrenUpdateComplete(this.controlActions);
-    if (this.supportsPrefixSuffixActions) {
+    if (this.supportsPrefixSuffixActions && this.hasControlActions) {
       const start = pxToRem(this.prefixAction.getBoundingClientRect().width + 6);
       const end = pxToRem(this.suffixAction.getBoundingClientRect().width + 6);
       this.inputControl.style.setProperty('padding-left', this.isRTL ? end : start, 'important');
@@ -321,6 +330,12 @@ export class CdsControl extends LitElement {
         this.layoutChange.emit(this.layout, { bubbles: true })
       );
       this.observers.push(observer);
+    }
+  }
+
+  private setupHiddenLabel() {
+    if (this.label.getAttribute('cds-layout')?.includes('display:screen-reader-only')) {
+      this.hiddenLabel = true;
     }
   }
 }

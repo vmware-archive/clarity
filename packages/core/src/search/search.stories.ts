@@ -135,6 +135,15 @@ export function compact() {
   `;
 }
 
+export function searchInline() {
+  return html`
+    <cds-search>
+      <label cds-layout="display:screen-reader-only">search</label>
+      <input type="search" placeholder="search" />
+    </cds-search>
+  `;
+}
+
 /** @website */
 export function datalist() {
   return html`

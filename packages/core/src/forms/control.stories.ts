@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -91,5 +91,17 @@ export function controlCompact() {
         <cds-control-message status="success">success message</cds-control-message>
       </cds-control>
     </div>
+  `;
+}
+
+export function genericContent() {
+  return html`
+    <cds-control>
+      <label>label</label>
+      <p cds-text="body" cds-control cds-layout="m-t:sm">
+        Use the <code cds-text="code">cds-control</code> attribute to place generic content into a control layout.
+      </p>
+      <cds-control-message>control message</cds-control-message>
+    </cds-control>
   `;
 }

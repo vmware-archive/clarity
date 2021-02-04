@@ -91,7 +91,7 @@
   --border-color: #{$cds-alias-status-info};
 }
 
-::slotted([slot='input']:not([multiple])[readonly]) {
+:host([_readonly]) {
   --border-bottom: 0;
   --background-size: 0% 100%;
   --background: #{$cds-alias-object-opacity-0};

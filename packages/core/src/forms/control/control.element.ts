@@ -104,6 +104,8 @@ export class CdsControl extends LitElement {
 
   @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
 
+  @internalProperty({ type: Boolean, reflect: true }) protected readonly = false;
+
   @internalProperty() protected fixedControlWidth = false;
 
   @internalProperty() protected supportsPrefixSuffixActions = true;
@@ -287,7 +289,8 @@ export class CdsControl extends LitElement {
     this.inputControl.addEventListener('focusin', () => (this.focused = true));
     this.inputControl.addEventListener('focusout', () => (this.focused = false));
     this.observers.push(
-      getElementUpdates(this.inputControl, 'disabled', (value: any) => (this.disabled = value === '' ? true : value))
+      getElementUpdates(this.inputControl, 'disabled', (value: any) => (this.disabled = value === '' ? true : value)),
+      getElementUpdates(this.inputControl, 'readonly', (value: any) => (this.readonly = value === '' ? true : value))
     );
   }
 

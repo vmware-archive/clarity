@@ -135,6 +135,15 @@ export function compact() {
   `;
 }
 
+export function readonly() {
+  return html`
+    <cds-input layout="vertical" control-width="shrink">
+      <label>readonly input</label>
+      <input placeholder="name" readonly />
+    </cds-input>
+  `;
+}
+
 /** @website */
 export function inputWidth() {
   return html`

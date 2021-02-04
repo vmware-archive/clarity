@@ -16,14 +16,17 @@ export const getElementUpdates = (element: HTMLElement, propertyKey: string, cal
     (element as any)[propertyKey] !== undefined ? (element as any)[propertyKey] : element.getAttribute(propertyKey)
   );
 
-  const updatedProp = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, propertyKey) as any;
-  Object.defineProperty(element, propertyKey, {
-    get: updatedProp.get,
-    set: val => {
-      callback(val);
-      updatedProp.set.call(element, val);
-    },
-  });
+  const updatedProp = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), propertyKey) as any;
+
+  if (updatedProp) {
+    Object.defineProperty(element, propertyKey, {
+      get: updatedProp.get,
+      set: val => {
+        callback(val);
+        updatedProp.set.call(element, val);
+      },
+    });
+  }
 
   return listenForAttributeChange(element, propertyKey, val => callback(val));
 };

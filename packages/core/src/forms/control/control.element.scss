@@ -13,7 +13,7 @@
   line-height: 0;
 }
 
-:host([_disabled]) .input {
+:host([_disabled]) ::slotted([slot='input']) {
   cursor: not-allowed;
 }
 

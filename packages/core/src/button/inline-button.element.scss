@@ -16,7 +16,6 @@
   font-size: inherit;
 }
 
-::slotted(a),
 .private-host {
   display: inline;
   color: var(--color) !important;
@@ -46,7 +45,6 @@ slot {
   margin-left: #{$cds-global-space-2};
 }
 
-:host([disabled]) ::slotted(a),
 :host([disabled]) .private-host {
   cursor: not-allowed !important;
 }

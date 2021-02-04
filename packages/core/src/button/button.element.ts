@@ -128,7 +128,7 @@ export class CdsButton extends CdsBaseButton {
   render() {
     const loadingState = this.loadingState;
     return html`<div class="private-host">
-      <div cds-layout="horizontal gap:md wrap:none align:center">
+      <div cds-layout="horizontal gap:sm wrap:none align:center">
         ${loadingState === ClrLoadingState.SUCCESS ? iconCheck : ''}
         ${loadingState === ClrLoadingState.ERROR ? iconError : ''}
         ${loadingState === ClrLoadingState.LOADING ? iconSpinner(this.size) : ''}

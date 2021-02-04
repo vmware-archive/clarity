@@ -15,9 +15,3 @@
 .private-host {
   min-width: 0;
 }
-
-::slotted(a) {
-  --color: inherit;
-  display: inline-block;
-  height: auto;
-}

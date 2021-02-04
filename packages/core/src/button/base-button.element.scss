@@ -106,16 +106,13 @@
 
 :host([action='outline']:hover),
 :host([action='outline']:focus),
-:host([action='outline']:active) {
-  .private-host::after {
-    opacity: 0.1;
-  }
-}
-
+:host([action='outline']:active),
 :host([status='inverse']:hover),
 :host([status='inverse']:focus),
 :host([status='inverse']:active) {
-  --background: #{$cds-alias-status-disabled-tint};
+  .private-host::after {
+    opacity: 0.1;
+  }
 }
 
 ::slotted {
@@ -177,11 +174,12 @@
   pointer-events: none !important;
 }
 
-:host([disabled]) {
-  --background: #{$cds-alias-status-disabled-tint} !important;
-  --border-color: #{$cds-alias-status-disabled-tint} !important;
+:host([disabled]),
+:host([disabled][action='outline']) {
+  --background: #{$cds-alias-status-disabled-tint};
+  --border-color: #{$cds-alias-status-disabled-tint};
   --box-shadow-color: #{$cds-alias-object-opacity-0};
-  --color: #{$cds-alias-status-disabled} !important;
+  --color: #{$cds-alias-status-disabled};
 
   .private-host {
     cursor: not-allowed;
@@ -195,12 +193,12 @@
 }
 
 :host([disabled][action='outline']) {
-  --background: #{$cds-alias-object-opacity-0} !important;
+  --background: #{$cds-alias-object-opacity-0};
 }
 
 :host([disabled][action='flat']) {
-  --border-color: #{$cds-alias-object-opacity-0} !important;
-  --background: #{$cds-alias-object-opacity-0} !important;
+  --border-color: #{$cds-alias-object-opacity-0};
+  --background: #{$cds-alias-object-opacity-0};
 }
 
 :host([block]) {

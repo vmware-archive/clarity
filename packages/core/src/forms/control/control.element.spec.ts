@@ -143,6 +143,17 @@ describe('cds-control', () => {
     input.setAttribute('disabled', '');
   });
 
+  it('should apply readonly style attribute when native input is readonly', done => {
+    expect(control.getAttribute('readonly')).toBe(null);
+
+    listenForAttributeChange(control, '_readonly', () => {
+      expect(control.getAttribute('_readonly')).toBe('');
+      done();
+    });
+
+    input.setAttribute('readonly', '');
+  });
+
   it('should convert form layout types to control layout types', () => {
     (control.layout as any) = 'horizontal-inline';
     expect(control.layout).toBe('horizontal');

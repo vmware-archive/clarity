@@ -42,16 +42,21 @@
           [ngClass]="{ 'clr-form-control-disabled': !clrDgSelectable }"
           role="gridcell"
         >
-          <input
-            clrCheckbox
-            type="checkbox"
-            [ngModel]="selected"
-            (ngModelChange)="toggle($event)"
-            [id]="checkboxId"
-            [attr.disabled]="clrDgSelectable ? null : true"
-            [attr.aria-disabled]="clrDgSelectable ? null : true"
-            [attr.aria-label]="commonStrings.keys.select"
-          />
+          <div class="clr-checkbox-wrapper">
+            <input
+              type="checkbox"
+              [ngModel]="selected"
+              (ngModelChange)="toggle($event)"
+              [id]="checkboxId"
+              [attr.disabled]="clrDgSelectable ? null : true"
+              [attr.aria-disabled]="clrDgSelectable ? null : true"
+              [attr.aria-label]="commonStrings.keys.select"
+            />
+            <!-- Usage of class clr-col-null here prevents clr-col-* classes from being added when a datagrid is wrapped inside clrForm -->
+            <label [for]="checkboxId" class="clr-control-label clr-col-null">
+              <span class="clr-sr-only">{{commonStrings.keys.select}}</span>
+            </label>
+          </div>
         </div>
         <div
           *ngIf="selection.selectionType === SELECTION_TYPE.Single"

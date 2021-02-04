@@ -494,6 +494,7 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     set rowSelectionMode(value: boolean);
     rows: QueryList<ClrDatagridRow<T>>;
     scrollableColumns: ViewContainerRef;
+    selectAllId: string;
     set selected(value: T[]);
     selectedChanged: EventEmitter<T[]>;
     selection: Selection<T>;

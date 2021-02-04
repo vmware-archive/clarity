@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -72,6 +72,7 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
   },
 })
 export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
+  public selectAllId: string;
   constructor(
     private organizer: DatagridRenderOrganizer,
     public items: Items<T>,
@@ -87,6 +88,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
     private page: Page,
     public commonStrings: ClrCommonStringsService
   ) {
+    this.selectAllId = 'clr-dg-select-all-' + datagridId;
     this.detailService.id = datagridId;
   }
 

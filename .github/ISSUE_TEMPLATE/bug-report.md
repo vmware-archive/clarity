@@ -7,8 +7,6 @@ about: Create a report to help us fix or improve an issue
 
 _A clear and concise description of what the bug is, and the conditions when it occurs._
 
-_If this is an accessibility related report, please use the correct template at https://github.com/vmware/clarity/issues/new?template=accessibility-report.md_
-
 ## How to reproduce
 
 _Please provide a link to a reproduction scenario using one of the [Clarity Stackblitz templates](https://stackblitz.com/@clr-team). Reports without a clear reproduction may not be prioritized until one is provided._
@@ -26,11 +24,26 @@ _A clear and concise description of what you expected to happen._
 
 ## Versions
 
-**App**
+**Clarity project:**
 
-- Angular: [e.g. 6]
-- Node: [e.g. 8.10.0]
-- Clarity: [e.g. 0.12.5]
+- [ ] Clarity Core
+- [ ] Clarity Angular/UI
+
+**Clarity version:**
+
+- [ ] v3.x
+- [ ] v4.x
+- [ ] v5.x
+
+**Framework:**
+
+- [ ] Angular
+- [ ] React
+- [ ] Vue
+- [ ] Other:
+
+**Framework version:**
+_ie: Angular 11_
 
 **Device:**
 

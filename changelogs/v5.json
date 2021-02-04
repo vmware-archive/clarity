@@ -2,6 +2,73 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.1",
+      "date": "2021-02-04",
+      "description": "This is a bug fix release.",
+      "fix": [
+        {
+          "issue": 5533,
+          "title": "Tag a11y enhancement",
+          "project": "Core",
+          "scope": "Tag"
+        },
+        {
+          "issue": 5545,
+          "title": "(inline-button) use same color on hover as regular links",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5518,
+          "title": "Core disabled outline/flat button",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5510,
+          "title": "Core code snippets code formatting",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5489,
+          "title": "Combobox no list reset on blur",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5492,
+          "title": "Core storybook links, invalid html demo",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5487,
+          "title": "Combobox options exception on null values",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5439,
+          "title": "Reorder link styles so :hover will have effect even on visited links",
+          "project": "Angular",
+          "scope": "Utility"
+        },
+        {
+          "issue": 5448,
+          "title": "Turn-on strictTemplates for Angular",
+          "project": "Angular",
+          "scope": "Utility"
+        },
+        {
+          "issue": 5482,
+          "title": "Visited links styling",
+          "project": "Angular",
+          "scope": "Utility"
+        }
+      ]
+    },
+    {
       "version": "5.0.0",
       "date": "2021-01-21",
       "description": "This is the official 5.0.0 release.",

@@ -2,6 +2,38 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.11",
+      "date": "2021-02-04",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5490,
+          "title": "Combobox no list reset on blur",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5488,
+          "title": "fix: combobox options exception on null values",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5466,
+          "title": "Reorder link styles so :hover will have effect even on visited links",
+          "project": "Angular",
+          "scope": "Utility"
+        },
+        {
+          "issue": 5465,
+          "title": "Turn-on strictTemplates for Angular",
+          "project": "Angular",
+          "scope": "Utility"
+        }
+      ]
+    },
+    {
       "version": "4.0.10",
       "date": "2021-01-21",
       "description": "This is a bug fix release.",

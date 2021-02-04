@@ -1,7 +1,7 @@
 {
   "name": "@clr/ui",
   "private": true,
-  "version": "5.0.0",
+  "version": "5.0.1",
   "scripts": {
     "clean": "del ./dist",
     "build": "npm-run-all clean build:css build:prefix build:optimize build:package build:src build:update",

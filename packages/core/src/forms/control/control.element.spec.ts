@@ -166,6 +166,11 @@ describe('cds-control', () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('.rtl')).toBeTruthy();
   });
+
+  it('should not set input inline padding style if no control actions are used', async () => {
+    await componentIsStable(control);
+    expect(control.inputControl.hasAttribute('style')).toBe(false);
+  });
 });
 
 describe('cds-control validation', () => {

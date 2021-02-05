@@ -1,5 +1,7 @@
 <template>
-  <div cds-layout="fill" ref="chartContainer"></div>
+  <div cds-layout="fill" class="highchart-container">
+    <div :cds-layout="chartContainerCdsLayoutAttribute" ref="chartContainer" class="chart-container"></div>
+  </div>
 </template>
 
 <script>
@@ -10,11 +12,20 @@
  *
  * Chart type depends on the options.type value via options prop.
  * Applies default clarity theme first, then the list of colors based on the "themeId" and
- * passed object of options on top of that.
+ * passes object of options (from props) on top of that.
+ *
+ * Has two views: chart and table. For the table view hides the chart itself.
  */
 
-import { chart, merge, setOptions } from 'highcharts';
+import Highcharts from 'highcharts';
+import Exporting from 'highcharts/modules/exporting';
+import ExportData from 'highcharts/modules/export-data';
 import { varCustomCssProperty } from '../../../util/var-custom-css-property';
+
+Exporting(Highcharts);
+ExportData(Highcharts);
+
+const { chart, merge, setOptions } = Highcharts;
 
 const fontFamily = '--cds-global-typography-font-family';
 const noColor = '--cds-alias-object-opacity-0'; // transparent
@@ -23,7 +34,6 @@ const titleFontSize = '--cds-global-typography-section-font-size';
 // mockup color: const titleFontColor = '--cds-global-color-construction-900';
 const titleFontColor = '--cds-global-typography-color-400';
 const titleFontWeight = '--cds-global-typography-font-weight-medium';
-const titleBottomMargin = '--cds-global-space-12';
 
 const axisTitleFontSize = '--cds-global-typography-secondary-font-size';
 // mockup color: const axisTitleFontColor = '--cds-global-color-construction-1000';
@@ -91,18 +101,42 @@ const axisOptions = {
   gridLineWidth: varCustomCssProperty(axisLineWidth), // doesn't match TS type (number) but works
 };
 
+/**
+ * Event handler for upon table view rendering.
+ * Applies clr-ui "table" class to the table element.
+ * Table is rendered by Highcharts library based on the series data.
+ **/
+function onTableViewShow() {
+  const { dataTableDiv: tableWrapperElement } = this;
+  const tableNode = tableWrapperElement.querySelector('table');
+
+  const { className } = tableNode;
+
+  if (!className) {
+    tableNode.className = 'table';
+  } else if (!className.includes('table')) {
+    // check above is to avoid "class='table table table'" situation on subsequent table renderings
+    tableNode.className += ' table'; // crl-ui class
+  }
+}
+
 const theme = {
   chart: {
     style: {
       fontFamily: varCustomCssProperty(fontFamily),
     },
     backgroundColor: varCustomCssProperty(noColor),
+    events: {
+      afterViewData: onTableViewShow,
+    },
   },
+  colors: [], // to be populated by the component based on themeId provided
   title: {
     style: chartTitleStyle,
   },
   legend: {
     itemStyle: legendStyle,
+    itemHoverStyle: legendStyle,
   },
   xAxis: merge({}, axisOptions), // not sure if deep cloning is required
   yAxis: merge({}, axisOptions),
@@ -110,7 +144,9 @@ const theme = {
   credits: false,
   plotOptions: {
     series: {
-      animation: false,
+      animation: {
+        duration: 0, // turn off the initial rendering animation
+      },
     },
     pie: {
       dataLabels: {
@@ -120,6 +156,9 @@ const theme = {
         ),
       },
     },
+  },
+  exporting: {
+    enabled: false, // hide export menu button
   },
 };
 
@@ -158,9 +197,14 @@ export default {
       type: Number,
       default: 1,
     },
+    tableView: {
+      // table vs chart view
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
-    mergedOptions() {
+    fullChartOptionsSet() {
       const colorOptions = {
         colors: this.themeColors,
       };
@@ -170,23 +214,73 @@ export default {
     themeColors() {
       return getChartThemeColors(this.theme);
     },
+    chartContainerCdsLayoutAttribute() {
+      return this.tableView ? 'display:none' : null;
+    },
   },
   watch: {
     theme() {
-      this.updateChartTheme();
+      this.updateChartColorTheme();
+    },
+    tableView() {
+      this.toggleView();
     },
   },
   mounted() {
-    const { $refs, mergedOptions } = this;
+    const { $refs, fullChartOptionsSet } = this;
 
-    setOptions(theme); // applying the clarity chart theme
+    setOptions(theme); // apply the "clarity chart" theme
 
-    this.chart = chart($refs.chartContainer, mergedOptions);
+    this.chart = chart($refs.chartContainer, fullChartOptionsSet);
+
+    this.toggleView();
   },
   methods: {
-    updateChartTheme() {
+    updateChartColorTheme() {
       this.chart.update({ colors: this.themeColors });
+    },
+    // uses highcharts API to render and hide table view of the chart's data
+    toggleView() {
+      const { tableView, chart } = this;
+
+      if (tableView) {
+        chart.viewData();
+      } else {
+        chart.hideData();
+      }
     },
   },
 };
 </script>
+
+<style scoped lang="scss">
+// container of "chart-container" and table view when rendered
+.highchart-container {
+  padding: var(--cds-global-layout-space-md);
+  padding-bottom: 0;
+}
+
+.chart-container {
+  margin-top: calc(-1 * var(--cds-global-space-2)); // so that title doesn't jump on view switch
+}
+</style>
+
+<style lang="scss">
+// need to have this unscoped cause these elements are rendered by HighCharts and
+// it is not aware of data-v attribute scoping
+.highchart-container {
+  .highcharts-data-table {
+    .highcharts-table-caption {
+      font-size: var(--cds-global-typography-section-font-size);
+      font-weight: var(--cds-global-typography-font-weight-medium);
+      color: var(--cds-global-typography-color-400);
+      margin-top: var(--cds-global-space-5);
+      margin-bottom: var(--cds-global-space-8);
+    }
+  }
+
+  .table {
+    margin-top: 0;
+  }
+}
+</style>

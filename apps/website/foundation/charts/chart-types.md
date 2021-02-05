@@ -89,11 +89,12 @@ pie_chart_options:
   chart:
     type: pie
   series:
-    - name: Fruits
+    - name: Share
       colorByPoint: true
       data:
         - name: Apples
           y: 61.41
+          sliced: true
         - name: Oranges
           y: 11.84
         - name: Pears
@@ -121,14 +122,15 @@ pie_chart_options:
 ::: component-section-level-two
 
 <div>
-  <doc-charts-ChartThemeSelector>
-    <template v-slot="{ themeId, darkTheme }">
+  <doc-charts-HighChartCard>
+    <template v-slot="{ themeId, darkTheme, tableView }">
         <doc-charts-HighChart
           :options="$frontmatter.area_chart_options"
           :theme="themeId"
+          :tableView="tableView"
         />
     </template>
-  </doc-charts-ChartThemeSelector>
+  </doc-charts-HighChartCard>
 </div>
 
 An area chart is basically a line chart, but the space between the x-axis and
@@ -161,15 +163,16 @@ a year. It helps you analyze both overall and individual trend information.
 ::: component-section-level-two
 
 <div>
-  <doc-charts-ChartThemeSelector>
-    <template v-slot="{ themeId, darkTheme }">
+  <doc-charts-HighChartCard>
+    <template v-slot="{ themeId, darkTheme, tableView }">
         <doc-charts-HighChart
           :options="$frontmatter.bar_chart_options"
           :theme="themeId"
           :darkTheme="darkTheme"
+          :tableView="tableView"
         />
     </template>
-  </doc-charts-ChartThemeSelector>
+  </doc-charts-HighChartCard>
 </div>
 
 A bar graph, basically a horizontal column chart, should be used to avoid
@@ -204,15 +207,16 @@ compare. This type of visualization can also be used to display negative numbers
 ::: component-section-level-two
 
 <div>
-  <doc-charts-ChartThemeSelector>
-    <template v-slot="{ themeId, darkTheme }">
+  <doc-charts-HighChartCard>
+    <template v-slot="{ themeId, darkTheme, tableView }">
         <doc-charts-HighChart
           :options="$frontmatter.pie_chart_options"
           :theme="themeId"
           :darkTheme="darkTheme"
+          :tableView="tableView"
         />
     </template>
-  </doc-charts-ChartThemeSelector>
+  </doc-charts-HighChartCard>
 </div>
 
 A pie chart shows a static number and how categories represent part of a whole.

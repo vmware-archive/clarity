@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -138,7 +138,8 @@
         padding: 0 $clr_baselineRem_8px 0 $clr_baselineRem_4px;
       }
 
-      cds-icon[shape='window-close'] {
+      cds-icon[shape='window-close'],
+      clr-icon[shape='window-close'] {
         @include css-var(
           color,
           clr-combobox-pill-font-color,
@@ -175,7 +176,8 @@
     cursor: pointer;
     outline: none;
 
-    cds-icon[shape='angle'] {
+    cds-icon[shape='angle'],
+    clr-icon[shape='angle'] {
       @include css-var(color, clr-combobox-pill-font-color, $clr-combobox-pill-font-color, $clr-use-custom-properties);
     }
   }

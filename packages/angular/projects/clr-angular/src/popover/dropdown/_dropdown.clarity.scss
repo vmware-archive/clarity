@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -28,7 +28,8 @@
         margin: 0;
       }
 
-      cds-icon[shape^='angle'] {
+      cds-icon[shape^='angle'],
+      clr-icon[shape^='angle'] {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -40,7 +41,8 @@
         padding-right: $clr-btn-horizontal-padding + $clr-dropdown-caret-icon-dimension +
           $clr-dropdown-caret-left-margin;
 
-        cds-icon[shape^='angle'] {
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
           right: $clr-btn-horizontal-padding;
         }
       }
@@ -53,7 +55,8 @@
           $clr-dropdown-active-text-color,
           $clr-use-custom-properties
         );
-        cds-icon[shape^='angle'] {
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
           right: 0;
         }
       }

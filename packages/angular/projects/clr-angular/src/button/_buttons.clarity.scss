@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -87,7 +87,8 @@
   @include button-css-var($button-type, background-color, bg-color, $clr-use-custom-properties);
   @include button-css-var($button-type, color, color, $clr-use-custom-properties);
 
-  cds-icon {
+  cds-icon,
+  clr-icon {
     @include button-css-var($button-type, color, color, $clr-use-custom-properties);
   }
 
@@ -261,7 +262,8 @@
   //Clarity Buttons
   .btn-group > .btn,
   .btn {
-    cds-icon {
+    cds-icon,
+    clr-icon {
       transform: translate3d(0, -1 * $clr_baselineRem_2px, 0);
     }
   }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -79,7 +79,8 @@
     }
 
     .clr-icon,
-    cds-icon {
+    cds-icon,
+    clr-icon {
       flex-grow: 0;
       flex-shrink: 0;
       @include equilateral($clr-logo-width);
@@ -118,7 +119,8 @@
       font-weight: 500;
     }
 
-    cds-icon {
+    cds-icon,
+    clr-icon {
       @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
     }
 
@@ -139,7 +141,8 @@
         font-size: $clr-nav-icon-size;
       }
 
-      cds-icon {
+      cds-icon,
+      clr-icon {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -148,7 +151,8 @@
       }
 
       &.nav-icon-text {
-        cds-icon {
+        cds-icon,
+        clr-icon {
           position: relative;
           top: auto;
           left: auto;
@@ -238,24 +242,31 @@
         @include header-nav-appearance();
       }
 
-      .dropdown-toggle.nav-icon cds-icon:not([shape^='angle']) {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        // Dropdown icons are 2px smaller
-        @include equilateral($clr_baselineRem_0_916);
-        right: $clr_baselineRem_1;
+      .dropdown-toggle.nav-icon {
+        cds-icon:not([shape^='angle']),
+        clr-icon:not([shape^='angle']) {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          // Dropdown icons are 2px smaller
+          @include equilateral($clr_baselineRem_0_916);
+          right: $clr_baselineRem_1;
+        }
       }
 
-      .dropdown-toggle.nav-icon cds-icon[shape^='angle'] {
-        right: $clr-header-action-caret-icon-right-position;
+      .dropdown-toggle.nav-icon {
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: $clr-header-action-caret-icon-right-position;
+        }
       }
 
       $dropdown-nav-text-dist: $clr_baselineRem_1_5;
       .dropdown-toggle.nav-text {
         padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
 
-        cds-icon[shape^='angle'] {
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
           right: $clr-header-nav-text-horizontal-padding;
         }
       }

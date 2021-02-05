@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -325,7 +325,8 @@
           //TODO: deprecate .clr-icon, .logo
           .clr-icon,
           .logo,
-          cds-icon {
+          cds-icon,
+          clr-icon {
             display: none;
           }
         }
@@ -423,11 +424,13 @@
             //deprecate .clr-icon, .logo
             .clr-icon,
             .logo,
-            cds-icon {
+            cds-icon,
+            clr-icon {
               display: inline-block;
             }
 
             cds-icon[shape='vm-bug'],
+            clr-icon[shape='vm-bug'],
             .clr-vmw-logo {
               background-color: $clr-color-neutral-600;
               border-radius: $clr-global-borderradius;

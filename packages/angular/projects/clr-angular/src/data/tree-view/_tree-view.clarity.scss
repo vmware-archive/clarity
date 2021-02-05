@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -45,7 +45,8 @@
     );
     line-height: $clr-tree-node-touch-target;
 
-    cds-icon {
+    cds-icon,
+    clr-icon {
       @include equilateral($clr-tree-caret-size);
       margin-right: $clr-tree-node-content-icon-margin-right;
       vertical-align: middle;

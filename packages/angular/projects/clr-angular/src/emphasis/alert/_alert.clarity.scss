@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -98,7 +98,8 @@
       $clr-use-custom-properties
     );
 
-    cds-icon {
+    cds-icon,
+    clr-icon {
       @include css-var(fill, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
     }
 
@@ -267,7 +268,8 @@
       order: 100;
       padding-right: $closeBtnNudge;
 
-      cds-icon {
+      cds-icon,
+      clr-icon {
         $alert-close-icon-dims: $clr_baselineRem_1 - $clr-alert-borderwidth;
         margin-top: -1 * $clr_baselineRem_0_125;
         @include equilateral($alert-close-icon-dims);
@@ -340,7 +342,8 @@
       height: $clr_baselineRem_1_5;
       overflow: hidden;
 
-      cds-icon {
+      cds-icon,
+      clr-icon {
         margin-top: -1 * $clr_baselineRem_5px;
       }
     }
@@ -396,7 +399,8 @@
       height: $clr_baselineRem_1;
       line-height: $clr_baselineRem_1;
 
-      cds-icon {
+      cds-icon,
+      clr-icon {
         $smallAlertCloseIconDims: $clr_baselineRem_0_83;
         margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
         margin-right: -1 * $clr_baselineRem_1px;
@@ -512,7 +516,8 @@
     @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
     cursor: pointer;
 
-    cds-icon {
+    cds-icon,
+    clr-icon {
       @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
     }
   }

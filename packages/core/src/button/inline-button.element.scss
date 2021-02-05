@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -7,7 +7,7 @@
 
 :host {
   --text-decoration: underline;
-  --color: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-link-color};
   --font-size: inherit;
   --line-height: inherit;
   --letter-spacing: inherit;
@@ -51,6 +51,6 @@ slot {
 
 :host(:active),
 :host(:hover) {
-  --color: #{$cds-alias-status-info-shade};
+  --color: #{$cds-global-typography-link-color-hover};
   --text-decoration: underline;
 }

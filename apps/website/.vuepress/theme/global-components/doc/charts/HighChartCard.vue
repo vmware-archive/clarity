@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       themeId: 12,
-      darkTheme: false, // only one of these can be true
+      darkTheme: false, // only one of these can be true at any moment
       tableView: false,
       themeOptions,
     };

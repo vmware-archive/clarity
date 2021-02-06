@@ -4,6 +4,30 @@
 
 @import '../../core/src/styles/tokens/generated/index';
 
+// need to define aliases(!) under root AND theme selector attribute (wo value)
+// otherwise computed values won't pick up "pure" prop values redefined on the theme selector
+// there is smth like css property definition scoping kicking in
+:root,
+[cds-theme] {
+  --cds-charts-title-font-size: var(--cds-global-typography-section-font-size);
+  --cds-charts-title-font-color: var(--cds-global-typography-color-400);
+  --cds-charts-title-font-weight: var(--cds-global-typography-font-weight-medium);
+
+  --cds-charts-axis-title-font-size: var(--cds-global-typography-secondary-font-size);
+  --cds-charts-axis-title-font-color: var(--cds-global-typography-color-500);
+  --cds-charts-axis-title-font-weight: var(--cds-global-typography-font-weight-medium);
+
+  --cds-charts-axis-value-font-size: var(--cds-global-typography-secondary-font-size);
+  --cds-charts-axis-value-font-color: var(--cds-global-typography-color-500);
+  --cds-charts-axis-value-font-weight: var(--cds-global-typography-font-weight-regular);
+
+  --cds-charts-axis-line-width: var(--cds-global-space-1);
+  --cds-charts-axis-line-color: var(--cds-alias-status-neutral-shade);
+
+  --cds-charts-grid-line-width: var(--cds-global-space-1);
+  --cds-charts-grid-line-color: var(--cds-alias-status-neutral);
+}
+
 :root {
   --cds-charts-1-color-100: #{$cds-global-color-cool-gray-800};
   --cds-charts-1-color-200: #{$cds-global-color-slate-600};

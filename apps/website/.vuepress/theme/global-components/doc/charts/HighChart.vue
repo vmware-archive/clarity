@@ -30,29 +30,26 @@ const { chart, merge, setOptions } = Highcharts;
 const fontFamily = '--cds-global-typography-font-family';
 const noColor = '--cds-alias-object-opacity-0'; // transparent
 
-const titleFontSize = '--cds-global-typography-section-font-size';
-// mockup color: const titleFontColor = '--cds-global-color-construction-900';
-const titleFontColor = '--cds-global-typography-color-400';
-const titleFontWeight = '--cds-global-typography-font-weight-medium';
+const titleFontSize = '--cds-charts-title-font-size';
+const titleFontColor = '--cds-charts-title-font-color';
+const titleFontWeight = '--cds-charts-title-font-weight';
 
-const axisTitleFontSize = '--cds-global-typography-secondary-font-size';
-// mockup color: const axisTitleFontColor = '--cds-global-color-construction-1000';
-const axisTitleFontColor = '--cds-global-typography-color-500';
-const axisTitleFontWeight = titleFontWeight;
+const axisTitleFontSize = '--cds-charts-axis-title-font-size';
+const axisTitleFontColor = '--cds-charts-axis-title-font-color';
+const axisTitleFontWeight = '--cds-charts-axis-title-font-weight';
 
-const axisLabelsFontSize = axisTitleFontSize;
-const axisLabelsFontColor = axisTitleFontColor;
-const axisLabelsFontWeight = '--cds-global-typography-font-weight-regular';
+const axisLabelsFontSize = '--cds-charts-axis-value-font-size';
+const axisLabelsFontColor = '--cds-charts-axis-value-font-color';
+const axisLabelsFontWeight = '--cds-charts-axis-value-font-weight';
 
 const legendFontSize = axisLabelsFontSize;
 const legendFontColor = axisLabelsFontColor;
 const legendFontWeight = axisLabelsFontWeight;
 
-// mockup color: const gridLineColor = '--cds-global-color-construction-500';
-const gridLineColor = '--cds-alias-status-neutral';
-// mockup color: const axisLineColor = '--cds-global-color-construction-600';
-const axisLineColor = '--cds-alias-status-neutral-shade';
-const axisLineWidth = '--cds-global-space-1';
+const axisLineColor = '--cds-charts-axis-line-color';
+const axisLineWidth = '--cds-charts-axis-line-width';
+
+const gridLineColor = '--cds-charts-grid-line-color';
 
 const chartTitleStyle = {
   fontSize: titleFontSize,
@@ -98,7 +95,7 @@ const axisOptions = {
   },
   gridLineColor: varCustomCssProperty(gridLineColor),
   lineColor: varCustomCssProperty(axisLineColor),
-  gridLineWidth: varCustomCssProperty(axisLineWidth), // doesn't match TS type (number) but works
+  gridLineWidth: varCustomCssProperty(axisLineWidth), // doesn't match TS type (number) but works ;)
 };
 
 /**
@@ -118,6 +115,7 @@ function onTableViewShow() {
     // check above is to avoid "class='table table table'" situation on subsequent table renderings
     tableNode.className += ' table'; // crl-ui class
   }
+  // no need to re-add anything on subsequent table renderings for the same chart
 }
 
 const theme = {

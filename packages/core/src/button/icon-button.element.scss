@@ -1,15 +1,12 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @import './../styles/tokens/generated/index';
 
 :host {
-  --padding: calc(#{$cds-global-space-6} - var(--border-width, #{$cds-alias-object-border-width-100-static}))
-    calc(
-      #{$cds-global-space-6} - #{$cds-global-space-2} -
-        var(--border-width, #{$cds-alias-object-border-width-100-static})
-    );
+  --padding: calc(#{$cds-global-space-6} - var(--border-width))
+    calc(#{$cds-global-space-6} - #{$cds-global-space-2} - var(--border-width));
 }
 
 .private-host {

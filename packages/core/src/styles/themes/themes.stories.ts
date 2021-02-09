@@ -5,7 +5,7 @@
  */
 
 import { html, TemplateResult } from 'lit-html';
-import { default as tokenData } from '../tokens/generated/tokens.json';
+import { default as tokenData } from '@cds/core/tokens/tokens.json';
 
 export default {
   title: 'Stories/Themes',

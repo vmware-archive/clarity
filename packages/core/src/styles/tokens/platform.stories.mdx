@@ -1,0 +1,106 @@
+import '@cds/core/alert/register.js';
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Platforms" />
+
+# Design Token Platform Support
+
+The design tokens for Clarity are shipped by default as CSS Custom Properties for the Web.
+However, we do provide experimental formats for other various platforms.
+
+```css
+@import '@cds/core/styles/module.tokens.css'; /* automatically included if using global.css */
+
+div {
+  background: var(--cds-global-color-blue-50);
+}
+```
+
+## Experimental Token Formats
+
+<cds-alert-group status="warning" cds-layout="m-y:md">
+  <cds-alert>This feature is experimental and may change in the future.</cds-alert>
+</cds-alert-group>
+
+### Sass (scss)
+
+The exported Scss variables will enable build-time errors. The variables refer
+to the native CSS custom properties and require the global CSS or tokens to be
+loaded in the document.
+
+```scss
+@import '@cds/core/tokens/tokens';
+
+div {
+  background: $cds-global-color-blue-50; // 'var(--cds-global-color-blue-50)'
+}
+```
+
+### JavaScript / TypeScript
+
+The JavaScript tokens export a variable for each token value. These can be used
+to provide build-time type checking of token values in JSX and template literals.
+The variables refer to the native CSS custom properties and require the global
+CSS or tokens to be loaded in the document.
+
+```typescript
+import { globalColorBlue50 } from '@cds/core/tokens/tokens.js';
+
+console.log(globalColorBlue50); // 'var(--cds-global-color-blue-50)'
+```
+
+### JSON
+
+JSON format provides a raw data format that enables easy type transformations into
+other formats. The JSON format also provides the metadata of the alias relationships
+between tokens. If using JavaScript to apply styles, use the `tokens.js` option as
+it will allow unused tokens to tree shake out of the final build and inherit theme styles.
+
+```typescript
+import * as tokens from '@cds/core/tokens/tokens.json';
+```
+
+### Android
+
+For Android, we provide an XML theme file. If the token is an alias, it will provide
+the token that is being aliased.
+
+```xml
+<!-- Sample of @cds/core/tokens/tokens.android.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="globalLayoutSpaceSm">6dp</dimen>
+  <dimen name="globalLayoutSpaceMd">12dp</dimen>
+  <dimen name="globalLayoutSpaceLg">24dp</dimen>
+  <color name="globalColorGreen50">#eefce3</color>
+  <color name="globalColorBlue50">#e5f7ff</color>
+  <property name="globalTypographyHeadingFontSize">32</property>
+  <property name="aliasObjectBorderRadius100">4</property>
+  <property name="aliasObjectShadow300">0 1px 3px 0 hsla(198, 30%, 15%, 0.2)</property>
+  <property name="aliasObjectOpacity0">hsla(0, 0%, 0%, 0)</property>
+  <color name="aliasObjectInteractionBackground" alias="globalColorGray0">#ffffff</color>
+  <color name="aliasObjectAppBackground" alias="globalColorGray50">#fafafa</color>
+  <color name="aliasStatusInfo" alias="globalColorBlue700">#0079ad</color>
+  <color name="aliasStatusSuccess" alias="globalColorGreen700">#42810e</color>
+</resources>
+```
+
+### iOS
+
+For iOS, we provide a swift theme file that defines each token as a variable.
+
+```swift
+// Sample of @cds/core/tokens/tokens.ios.swift
+let globalLayoutSpaceSm = CGFloat(6.00);
+let globalLayoutSpaceMd = CGFloat(12.00);
+let globalLayoutSpaceLg = CGFloat(24.00);
+let globalColorGreen50 = UIColor(red: 238, green: 252, blue: 227, alpha: 1.0);
+let globalColorBlue50 = UIColor(red: 229, green: 247, blue: 255, alpha: 1.0);
+let globalColorRed50 = UIColor(red: 255, green: 242, blue: 240, alpha: 1.0);
+let globalTypographyHeadingFontSize = CGFloat(32.00);
+let aliasObjectShadow100 = "0 1px 3px 0 hsla(198, 30%, 15%, 0.5)";
+let aliasObjectInteractionColor = UIColor(red: 58, green: 77, blue: 85, alpha: 1.0);
+let aliasStatusInfo = UIColor(red: 0, green: 121, blue: 173, alpha: 1.0);
+let aliasStatusWarning = UIColor(red: 255, green: 185, blue: 46, alpha: 1.0);
+let aliasStatusDanger = UIColor(red: 224, green: 34, blue: 0, alpha: 1.0);
+```

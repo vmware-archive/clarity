@@ -10,6 +10,7 @@ import { CdsAccordionContent } from './accordion-content.element.js';
 import { CdsAccordionHeader } from './accordion-header.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { angleIcon } from '@cds/core/icon/shapes/angle.js';
+import '@cds/core/icon/register.js';
 
 registerElementSafely('cds-accordion', CdsAccordion);
 registerElementSafely('cds-accordion-panel', CdsAccordionPanel);

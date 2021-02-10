@@ -20,10 +20,14 @@
 import Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 import ExportData from 'highcharts/modules/export-data';
+import PatternFill from 'highcharts/modules/pattern-fill';
+
 import { varCustomCssProperty } from '../../../util/var-custom-css-property';
 
-Exporting(Highcharts);
-ExportData(Highcharts);
+// modules instantiation/registration
+const highChartModules = [Exporting, ExportData, PatternFill];
+
+highChartModules.forEach(module => module(Highcharts));
 
 const { chart, merge, setOptions } = Highcharts;
 
@@ -98,6 +102,28 @@ const axisOptions = {
   gridLineWidth: varCustomCssProperty(axisLineWidth), // doesn't match TS type (number) but works ;)
 };
 
+// copied from highcharts source code
+// https://github.com/highcharts/highcharts/blob/cc1adf69558e1aea9b731c27e7c46d0a17911981/js/Extensions/PatternFill.js#L135-L144
+/** @type {Highcharts.PatternOptionsObject} */
+const patterns = [
+  'M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
+  'M 0 10 L 10 0 M -1 1 L 1 -1 M 9 11 L 11 9',
+  'M 3 0 L 3 10 M 8 0 L 8 10',
+  'M 0 3 L 10 3 M 0 8 L 10 8',
+  'M 0 3 L 5 3 L 5 0 M 5 10 L 5 7 L 10 7',
+  'M 3 3 L 8 3 L 8 8 L 3 8 Z',
+  'M 5 5 m -4 0 a 4 4 0 1 1 8 0 a 4 4 0 1 1 -8 0',
+  'M 10 3 L 5 3 L 5 0 M 5 10 L 5 7 L 0 7',
+  'M 2 5 L 5 2 L 8 5 L 5 8 Z',
+  'M 0 0 L 5 10 L 10 0',
+  'M 0 0 L 5 10 L 10 0', // need to replace with custom one (so that we have 12 - one per color)
+  'M 0 0 L 5 10 L 10 0', // also need to replace with the custom one
+].map(path => ({
+  path,
+  width: 10,
+  height: 10,
+}));
+
 /**
  * Event handler for upon table view rendering.
  * Applies clr-ui "table" class to the table element.
@@ -154,6 +180,9 @@ const theme = {
         ),
       },
     },
+    bar: {
+      borderWidth: 0,
+    },
   },
   exporting: {
     enabled: false, // hide export menu button
@@ -200,14 +229,64 @@ export default {
       type: Boolean,
       default: false,
     },
+    textures: {
+      // textures instead of solid colors
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
-    fullChartOptionsSet() {
-      const colorOptions = {
-        colors: this.themeColors,
-      };
+    /**
+     * Returns partial highcharts "options" object bases on chart theme and textures switch props.
+     * @return {{colors: string[], series: Highcharts.Series[]}}
+     */
+    interactiveChartOptions() {
+      const { themeColors: colors, interactiveChartSeries: series } = this;
 
-      return merge(colorOptions, this.options);
+      return {
+        colors,
+        series,
+      };
+    },
+    /**
+     * Adds/overwrites color and pattern series settings based on chart settings props.
+     * Series cloning is not really necessary but wanted to keep this method as a getter.
+     * @return {Highcharts.Series[]}
+     */
+    interactiveChartSeries() {
+      const {
+        options: {
+          series: originalSeries,
+          chart: { type },
+        },
+      } = this;
+
+      switch (type) {
+        case 'area':
+        case 'bar': {
+          return originalSeries.map((originalSeries, index) => {
+            const series = merge({}, originalSeries);
+
+            series.color = this.getSeriesColorByIndex(index);
+
+            return series;
+          });
+        }
+
+        // pie has a different series structure
+        case 'pie': {
+          // only first "series" matters for the pie chart
+          const clonedSeries = merge({}, originalSeries[0]);
+
+          clonedSeries.data.forEach((series, index) => {
+            series.color = this.getSeriesColorByIndex(index);
+          });
+
+          return [clonedSeries];
+        }
+      }
+
+      return originalSeries;
     },
     themeColors() {
       return getChartThemeColors(this.theme);
@@ -218,24 +297,36 @@ export default {
   },
   watch: {
     theme() {
-      this.updateChartColorTheme();
+      this.updateChart();
+    },
+    textures() {
+      this.updateChart();
     },
     tableView() {
       this.toggleView();
     },
   },
   mounted() {
-    const { $refs, fullChartOptionsSet } = this;
+    const { $refs, interactiveChartOptions, options } = this;
 
     setOptions(theme); // apply the "clarity chart" theme
+
+    // it doesn't really make sense to override updated "series" with the default one
+    // but it works since we are adding new properties in "interactiveChartOptions"
+    const fullChartOptionsSet = merge(interactiveChartOptions, options);
 
     this.chart = chart($refs.chartContainer, fullChartOptionsSet);
 
     this.toggleView();
   },
   methods: {
-    updateChartColorTheme() {
-      this.chart.update({ colors: this.themeColors });
+    /**
+     * Updates chart based on interactive options passed via props.
+     */
+    updateChart() {
+      const { interactiveChartOptions } = this;
+
+      this.chart.update(interactiveChartOptions);
     },
     // uses highcharts API to render and hide table view of the chart's data
     toggleView() {
@@ -246,6 +337,30 @@ export default {
       } else {
         chart.hideData();
       }
+    },
+    /**
+     * Returns either custom CSS property with the color or object with pattern property. Pattern
+     * property values has path defined as well as it's color.
+     * @param {number} index - Index of the series - from 0 to 11.
+     * @return {string|Highcharts.PatternOptionsObject}
+     */
+    getSeriesColorByIndex(index) {
+      const { themeColors, textures } = this;
+
+      const color = themeColors[index];
+
+      if (!textures) {
+        return color;
+      }
+
+      const pattern = {
+        color,
+        ...patterns[index],
+      };
+
+      return {
+        pattern,
+      };
     },
   },
 };

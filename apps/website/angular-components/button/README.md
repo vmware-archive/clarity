@@ -34,21 +34,22 @@ Flat buttons are used in multiple scenarios. They are used as **tertiary buttons
 
 While buttons and links can both be given similar visual treatments, it is important that you use a link (or anchor element) for anytime clicking the element will _navigate_ you to a different page. Buttons are for interaction in the current page, such as refreshing the content or submitting a form.
 
-<div class="clr-row" cds-layout="m-t:md">
-<div class="clr-col-sm-12 clr-col-lg-6">
-<DocInset><button class="btn btn-link">Flat Button</button></DocInset>
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+    <div cds-layout="horizontal align:center">
+        <button class="btn btn-link">Flat Button</button>
+    </div>
+    Use flat buttons when a user is expected to **take an action**.
+  </template>
+  <template #right>
+    <div cds-layout="horizontal align:center">
+        <a href="javascript://" class="btn btn-link">Anchor Link</a>
+    </div>
+    Use a link when a user is expected to be **taken to a different page**.
 
-Use flat buttons when a user is expected to **take an action**.
-
-</div>
-
-<div class="clr-col-sm-12 clr-col-lg-6">
-<DocInset><a href="javascript://" class="btn btn-link">Anchor Link</a></DocInset>
-
-Use a link when a user is expected to be **taken to a different page**.
-
-</div>
-</div>
+  </template>
+</doc-pinbox-vs>
 
 ## Placement
 

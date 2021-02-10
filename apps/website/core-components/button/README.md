@@ -60,24 +60,22 @@ While buttons and links can both be given similar visual treatments, it is impor
 
 :::
 
-<div class="clr-row">
-<div class="clr-col-sm-12 clr-col-lg-6" cds-layout="p-b:lg p-b@lg:none">
-<DocInset height="72">
-<div cds-layout="horizontal align:center">
-    <cds-button>button</cds-button>
-</div>
-</DocInset>
-<p cds-text="body" cds-layout="p-t:lg p-b:md">Use the <span cds-text="code">cds-button</span> element on its own when a user is expected to <span cds-text="semibold">take an action</span>.</p>
-</div>
-<div class="clr-col-sm-12 clr-col-lg-6">
-<DocInset height="72">
-<div cds-layout="horizontal align:center">
-    <a href="javascript:void(0)"><cds-button>link</cds-button></a>
-</div>
-</DocInset>
-<p cds-text="body" cds-layout="p-t:lg p-b:md">Wrap a <span cds-text="code">cds-button</span> inside an anchor element and use a link when a user is expected to be <span cds-text="semibold">taken to a different page.</span>.</p>
-</div>
-</div>
+<doc-pinbox-vs>
+  <div>unused div that is never rendered but gets passed an error</div>
+  <template #left>
+    <div cds-layout="horizontal align:center">
+        <cds-button action="flat">button</cds-button>
+    </div>
+    Use the <span cds-text="code">cds-button</span> element on its own when a user is expected to <span cds-text="semibold">take an action</span>.
+  </template>
+  <template #right>
+    <div cds-layout="horizontal align:center">
+        <a href="javascript:void(0)"><cds-button action="flat">link</cds-button></a>
+    </div>
+    Wrap a <span cds-text="code">cds-button</span> inside an anchor element and use a link when a user is expected to be <span cds-text="semibold">taken to a different page</span>.
+
+  </template>
+</doc-pinbox-vs>
 
 ::: component-section-level-one-title
 

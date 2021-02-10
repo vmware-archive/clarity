@@ -123,11 +123,12 @@ pie_chart_options:
 
 <div>
   <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView }">
+    <template v-slot="{ themeId, darkTheme, tableView, textures }">
         <doc-charts-HighChart
           :options="$frontmatter.area_chart_options"
           :theme="themeId"
           :tableView="tableView"
+          :textures="textures"
         />
     </template>
   </doc-charts-HighChartCard>
@@ -164,12 +165,13 @@ a year. It helps you analyze both overall and individual trend information.
 
 <div>
   <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView }">
+    <template v-slot="{ themeId, darkTheme, tableView, textures }">
         <doc-charts-HighChart
           :options="$frontmatter.bar_chart_options"
           :theme="themeId"
           :darkTheme="darkTheme"
           :tableView="tableView"
+          :textures="textures"
         />
     </template>
   </doc-charts-HighChartCard>
@@ -208,12 +210,13 @@ compare. This type of visualization can also be used to display negative numbers
 
 <div>
   <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView }">
+    <template v-slot="{ themeId, darkTheme, tableView, textures }">
         <doc-charts-HighChart
           :options="$frontmatter.pie_chart_options"
           :theme="themeId"
           :darkTheme="darkTheme"
           :tableView="tableView"
+          :textures="textures"
         />
     </template>
   </doc-charts-HighChartCard>

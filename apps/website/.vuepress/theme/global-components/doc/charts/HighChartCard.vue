@@ -1,7 +1,7 @@
 <template>
   <div cds-layout="vertical">
     <div cds-layout="horizontal align:right m-b:md">
-      <cds-button action="flat" cds-layout="align:left" @click="toggleView" :disabled="darkTheme">
+      <cds-button action="flat" cds-layout="align:left" @click="toggleTableView" :disabled="darkTheme">
         {{ viewToggleButtonLabel }}
       </cds-button>
       <cds-select layout="compact" control-width="shrink">
@@ -11,12 +11,16 @@
         </select>
       </cds-select>
       <cds-toggle cds-layout="m-l:lg">
+        <label>Textures</label>
+        <input type="checkbox" v-model="textures" :disabled="tableView" />
+      </cds-toggle>
+      <cds-toggle cds-layout="m-l:lg">
         <label>Dark Theme</label>
         <input type="checkbox" v-model="darkTheme" :disabled="tableView" />
       </cds-toggle>
     </div>
     <div class="card" cds-layout="horizontal p:none" :cds-theme="darkThemeAttributeValue">
-      <slot :themeId="themeId" :darkTheme="darkTheme" :tableView="tableView"></slot>
+      <slot :themeId="themeId" :darkTheme="darkTheme" :tableView="tableView" :textures="textures"></slot>
     </div>
   </div>
 </template>
@@ -41,8 +45,9 @@ export default {
   data() {
     return {
       themeId: 12,
-      darkTheme: false, // only one of these can be true at any moment
+      darkTheme: false, // only one of darkTheme/tableView could be set to true at any moment
       tableView: false,
+      textures: false,
       themeOptions,
     };
   },
@@ -55,7 +60,7 @@ export default {
     },
   },
   methods: {
-    toggleView() {
+    toggleTableView() {
       this.tableView = !this.tableView;
     },
   },

@@ -31,29 +31,25 @@ highChartModules.forEach(module => module(Highcharts));
 
 const { chart, merge, setOptions } = Highcharts;
 
-const fontFamily = '--cds-global-typography-font-family';
-const noColor = '--cds-alias-object-opacity-0'; // transparent
-
-const titleFontSize = '--cds-charts-title-font-size';
-const titleFontColor = '--cds-charts-title-font-color';
-const titleFontWeight = '--cds-charts-title-font-weight';
-
-const axisTitleFontSize = '--cds-charts-axis-title-font-size';
-const axisTitleFontColor = '--cds-charts-axis-title-font-color';
-const axisTitleFontWeight = '--cds-charts-axis-title-font-weight';
-
-const axisLabelsFontSize = '--cds-charts-axis-value-font-size';
-const axisLabelsFontColor = '--cds-charts-axis-value-font-color';
-const axisLabelsFontWeight = '--cds-charts-axis-value-font-weight';
-
-const legendFontSize = axisLabelsFontSize;
-const legendFontColor = axisLabelsFontColor;
-const legendFontWeight = axisLabelsFontWeight;
-
-const axisLineColor = '--cds-charts-axis-line-color';
-const axisLineWidth = '--cds-charts-axis-line-width';
-
-const gridLineColor = '--cds-charts-grid-line-color';
+import {
+  fontFamily,
+  noColor,
+  titleFontColor,
+  titleFontSize,
+  titleFontWeight,
+  axisTitleFontSize,
+  axisTitleFontColor,
+  axisTitleFontWeight,
+  axisLabelFontSize,
+  axisLabelFontWeight,
+  axisLabelFontColor,
+  legendFontSize,
+  legendFontColor,
+  legendFontWeight,
+  axisLineColor,
+  axisLineWidth,
+  gridLineColor,
+} from './chart-custom-css-props';
 
 const chartTitleStyle = {
   fontSize: titleFontSize,
@@ -68,9 +64,9 @@ const axisTitleStyle = {
 };
 
 const axisLabelsStyle = {
-  fontSize: axisLabelsFontSize,
-  fontWeight: axisLabelsFontWeight,
-  color: axisLabelsFontColor,
+  fontSize: axisLabelFontSize,
+  fontWeight: axisLabelFontWeight,
+  color: axisLabelFontColor,
 };
 
 const legendStyle = {
@@ -102,23 +98,9 @@ const axisOptions = {
   gridLineWidth: varCustomCssProperty(axisLineWidth), // doesn't match TS type (number) but works ;)
 };
 
-// copied from highcharts source code
-// https://github.com/highcharts/highcharts/blob/cc1adf69558e1aea9b731c27e7c46d0a17911981/js/Extensions/PatternFill.js#L135-L144
-/** @type {Highcharts.PatternOptionsObject} */
-const patterns = [
-  'M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
-  'M 0 10 L 10 0 M -1 1 L 1 -1 M 9 11 L 11 9',
-  'M 3 0 L 3 10 M 8 0 L 8 10',
-  'M 0 3 L 10 3 M 0 8 L 10 8',
-  'M 0 3 L 5 3 L 5 0 M 5 10 L 5 7 L 10 7',
-  'M 3 3 L 8 3 L 8 8 L 3 8 Z',
-  'M 5 5 m -4 0 a 4 4 0 1 1 8 0 a 4 4 0 1 1 -8 0',
-  'M 10 3 L 5 3 L 5 0 M 5 10 L 5 7 L 0 7',
-  'M 2 5 L 5 2 L 8 5 L 5 8 Z',
-  'M 0 0 L 5 10 L 10 0',
-  'M 0 0 L 5 10 L 10 0', // need to replace with custom one (so that we have 12 - one per color)
-  'M 0 0 L 5 10 L 10 0', // also need to replace with the custom one
-].map(path => ({
+import { patternSvgPaths } from './chart-pattern-paths';
+
+const patterns = patternSvgPaths.map(path => ({
   path,
   width: 10,
   height: 10,
@@ -219,7 +201,7 @@ export default {
       type: Object,
       required: true,
     },
-    theme: {
+    themeId: {
       // theme id: from 1 to 12
       type: Number,
       default: 1,
@@ -262,7 +244,10 @@ export default {
       } = this;
 
       switch (type) {
+        // having textures as opt-in feature in case data structure is different not only for the pie chart
+        case 'column':
         case 'area':
+        case 'line':
         case 'bar': {
           return originalSeries.map((originalSeries, index) => {
             const series = merge({}, originalSeries);
@@ -289,14 +274,14 @@ export default {
       return originalSeries;
     },
     themeColors() {
-      return getChartThemeColors(this.theme);
+      return getChartThemeColors(this.themeId);
     },
     chartContainerCdsLayoutAttribute() {
       return this.tableView ? 'display:none' : null;
     },
   },
   watch: {
-    theme() {
+    themeId() {
       this.updateChart();
     },
     textures() {
@@ -311,9 +296,7 @@ export default {
 
     setOptions(theme); // apply the "clarity chart" theme
 
-    // it doesn't really make sense to override updated "series" with the default one
-    // but it works since we are adding new properties in "interactiveChartOptions"
-    const fullChartOptionsSet = merge(interactiveChartOptions, options);
+    const fullChartOptionsSet = merge({}, options, interactiveChartOptions);
 
     this.chart = chart($refs.chartContainer, fullChartOptionsSet);
 

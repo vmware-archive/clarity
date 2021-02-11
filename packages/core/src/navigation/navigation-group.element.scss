@@ -1,0 +1,48 @@
+/*!
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --animation-duration: #{$cds-global-animation-duration-secondary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
+  --background: inherit;
+}
+
+.navigation-group-items {
+  height: 0;
+  overflow-y: hidden;
+}
+
+:host([cds-motion='off']) {
+  .navigation-group-items {
+    height: 0;
+  }
+}
+
+:host([cds-motion='off'][expanded]) {
+  .navigation-group-items {
+    height: auto;
+  }
+}
+
+:host([cds-motion][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  .navigation-group-items {
+    height: 0;
+  }
+}
+
+:host([cds-motion][expanded][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  .navigation-group-items {
+    height: auto !important;
+    transform: none;
+  }
+}
+
+.group-items-container,
+.group-items-wrapper {
+  width: 100%;
+}

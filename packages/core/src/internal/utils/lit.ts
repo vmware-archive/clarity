@@ -41,3 +41,11 @@ export function syncProps(
     .filter(c => conditions[c])
     .forEach(c => (target[c] = source[c]));
 }
+
+export function syncPropsForAllItems(
+  targets: { [prop: string]: any }[],
+  source: { [prop: string]: any },
+  conditions: { [prop: string]: boolean }
+) {
+  targets.forEach(target => syncProps(target, source, conditions));
+}

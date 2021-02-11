@@ -1,0 +1,67 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --animation-duration: #{$cds-global-animation-duration-secondary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
+  --background: #{$cds-alias-object-container-background};
+  --color: #{$cds-global-typography-color-500};
+  --collapsed-width: #{$cds-global-layout-space-xl};
+  --expanded-width: calc(#{$cds-global-space-6} * 20);
+  --line-height: #{$cds-global-space-11};
+  --font-size: #{$cds-global-typography-font-size-4};
+  --font-weight: #{$cds-global-typography-font-weight-regular};
+  --letter-spacing: #{$cds-global-typography-body-letter-spacing};
+  --nested-padding: #{$cds-global-space-4};
+  --padding: 0 #{$cds-global-space-4};
+  // Note: putting height property on .private host doesn't affect component behavior in DOM.
+  // We need to inherit the explicit height of the parent container to get scrolling / cds-layout
+  // behaviors to work.
+  height: inherit;
+}
+
+:host(:focus) {
+  outline: none !important;
+}
+
+:host([expanded]) {
+  .private-host {
+    width: var(--expanded-width);
+    min-width: var(--expanded-width);
+  }
+}
+
+:host([cds-motion='off']) {
+  width: var(--collapsed-width);
+}
+
+:host([cds-motion='off'][expanded]) {
+  width: var(--expanded-width);
+}
+
+:host([cds-motion][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  width: var(--collapsed-width);
+}
+
+:host([cds-motion][expanded][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  width: var(--expanded-width);
+  transform: none;
+}
+
+.private-host {
+  color: var(--color);
+  background: var(--background);
+  height: inherit;
+  width: var(--collapsed-width);
+  min-width: var(--collapsed-width);
+}
+
+.navigation-body {
+  height: 100%;
+}
+
+.navigation-body-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}

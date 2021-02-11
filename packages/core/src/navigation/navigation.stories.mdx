@@ -1,0 +1,117 @@
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit';
+import '@cds/core/navigation/register.js';
+
+<Meta title="Components/Navigation" />
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+# Navigation
+
+A sound navigation layout offers a high degree of discoverability and feedback, letting users know where they are at all
+times and ensuring they can easily get to where they want to go.
+
+Navigation enables discoverability and feedback from users. It lets them know where they are at all times and ensures
+they can easily get where they want to go.
+
+Core navigation provides vertical navigation elements with the following features that can be used to organize
+application navigation patterns before users to find application content.
+
+## Installation
+
+To use the navigation component, import the component in your JavaScript.
+
+```typescript
+import '@cds/core/navigation/register.js';
+```
+
+```html
+<cds-navigation>
+  <cds-navigation-item>
+    <a href="/about">About</a>
+  </cds-navigation-item>
+  <cds-navigation-item>
+    <a href="/account">Account</a>
+  </cds-navigation-item>
+  <cds-navigation-item>
+    <a href="/settings">Settings</a>
+  </cds-navigation-item>
+</cds-navigation>
+```
+
+## Basic
+
+<Preview>
+  <Story id="stories-navigation--vertical-basic" />
+</Preview>
+
+## Icon Link
+
+<Preview>
+  <Story id="stories-navigation--vertical-icon-link" />
+</Preview>
+
+## Collapsible Navigation
+
+<Preview>
+  <Story id="stories-navigation--collapsible-vertical-navigation" />
+</Preview>
+
+## Vertical sub-start slot
+
+<Preview>
+  <Story id="stories-navigation--vertical-basic-sub-start" />
+</Preview>
+
+## Vertical align:bottom
+
+Note that when the parent of vertical navigation has a height, it is implemented to expand to the height of its parent.
+This allows consumers to place cds-layout token align:bottom on an item and push it to the bottom.
+
+<Preview>
+  <Story id="stories-navigation--vertical-align-bottom" />
+</Preview>
+
+## Vertical end
+
+Note that when the parent of vertical navigation has a height, it is implemented to expand to the height of its parent.
+This give consumers a _box_ to place content at the bottom of the navigation element.
+
+<Preview>
+  <Story id="stories-navigation--vertical-end" />
+</Preview>
+
+## Vertical navigation group
+
+<Preview>
+  <Story id="stories-navigation--navigation-groups" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-navigation--dark-theme" />
+</Preview>
+
+## API
+
+### cds-navigation
+
+<Props of={'cds-navigation'} />
+
+### cds-navigation-group
+
+<Props of={'cds-navigation-group'} />
+
+### cds-navigation-start
+
+<Props of={'cds-navigation-start'} />
+
+### cds-navigation-item
+
+<Props of={'cds-navigation-item'} />

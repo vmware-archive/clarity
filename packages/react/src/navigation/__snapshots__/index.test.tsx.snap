@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsNavigation snapshot 1`] = `
+<div>
+  <CdsNavigation>
+    <cds-navigation(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-navigation
+        __forwardedRef={null}
+      >
+        <CdsNavigationStart>
+          <cds-navigation-start(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-navigation-start
+              __forwardedRef={null}
+            >
+              Root start
+            </cds-navigation-start>
+          </cds-navigation-start(CustomElement)>
+        </CdsNavigationStart>
+        <CdsNavigationItem>
+          <cds-navigation-item(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-navigation-item
+              __forwardedRef={null}
+            >
+              <a>
+                Root item
+              </a>
+            </cds-navigation-item>
+          </cds-navigation-item(CustomElement)>
+        </CdsNavigationItem>
+        <CdsNavigationGroup>
+          <cds-navigation-group(CustomElement)
+            __forwardedRef={null}
+          >
+            <cds-navigation-group
+              __forwardedRef={null}
+            >
+              <CdsNavigationStart>
+                <cds-navigation-start(CustomElement)
+                  __forwardedRef={null}
+                >
+                  <cds-navigation-start
+                    __forwardedRef={null}
+                  >
+                    <CdsNavigationStart>
+                      <cds-navigation-start(CustomElement)
+                        __forwardedRef={null}
+                      >
+                        <cds-navigation-start
+                          __forwardedRef={null}
+                        >
+                          Group start
+                        </cds-navigation-start>
+                      </cds-navigation-start(CustomElement)>
+                    </CdsNavigationStart>
+                    <CdsNavigationItem>
+                      <cds-navigation-item(CustomElement)
+                        __forwardedRef={null}
+                      >
+                        <cds-navigation-item
+                          __forwardedRef={null}
+                        >
+                          <a>
+                            Group item
+                          </a>
+                        </cds-navigation-item>
+                      </cds-navigation-item(CustomElement)>
+                    </CdsNavigationItem>
+                  </cds-navigation-start>
+                </cds-navigation-start(CustomElement)>
+              </CdsNavigationStart>
+            </cds-navigation-group>
+          </cds-navigation-group(CustomElement)>
+        </CdsNavigationGroup>
+      </cds-navigation>
+    </cds-navigation(CustomElement)>
+  </CdsNavigation>
+</div>
+`;

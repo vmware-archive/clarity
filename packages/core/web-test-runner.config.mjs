@@ -1,7 +1,7 @@
 /**
  * Web Test Runner
- * 
- * This configures Core unit tests to run using @web/test-runner 
+ *
+ * This configures Core unit tests to run using @web/test-runner
  */
 
 import { playwrightLauncher } from '@web/test-runner-playwright';
@@ -20,7 +20,14 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   coverageConfig: {
     require: ['ts-node/register'],
     extension: ['.ts'],
-    exclude: ['**/*.d.ts', '**/*.scss.js', '**/node_modules/**', '**/test/**', '**/dist/core/**/index.js', '**/dist/core/**/register.js'],
+    exclude: [
+      '**/*.d.ts',
+      '**/*.scss.js',
+      '**/node_modules/**',
+      '**/test/**',
+      '**/dist/core/**/index.js',
+      '**/dist/core/**/register.js',
+    ],
     report: true,
     reportDir: 'dist/coverage',
     threshold: {
@@ -34,7 +41,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   plugins: [
     ...baseConfig.plugins,
     esbuildPlugin({ ts: true, json: true, target: 'auto' }),
-    fromRollup(execute)({ commands: [`tsc --noEmit src/**/*.spec.ts`], hook: 'writeBundle' })
+    fromRollup(execute)({ commands: [`tsc --noEmit src/**/*.spec.ts`], hook: 'writeBundle' }),
   ],
   testRunnerHtml: (testRunnerImport, config) => `<html>
     <head>
@@ -45,5 +52,5 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       <script type="module" src="./web-test-runner.jasmine.js"></script>
     </head>
     <body></body>
-  </html>`
+  </html>`,
 });

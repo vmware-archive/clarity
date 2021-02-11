@@ -1,0 +1,67 @@
+/*!
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --color: inherit;
+  --line-height: inherit;
+  --font-size: inherit;
+  --font-weight: inherit;
+  --letter-spacing: inherit;
+  --padding: inherit;
+}
+
+:host(:hover:not([disabled])),
+:host([_has-focus]) {
+  background: #{$cds-alias-object-interaction-background-hover};
+}
+
+:host(:active),
+:host([active]) {
+  background: #{$cds-alias-object-interaction-background-active};
+}
+
+:host([selected]) {
+  background: #{$cds-alias-object-interaction-background-selected};
+}
+
+:host([disabled]) {
+  --color: #{$cds-alias-object-interaction-color-disabled};
+
+  // disabled items should not respond to hover
+  &:hover {
+    --background: inherit;
+  }
+
+  ::slotted(a) {
+    cursor: not-allowed;
+  }
+}
+
+:host([_group-item]) {
+  padding: var(--padding);
+}
+
+::slotted(cds-icon) {
+  color: inherit;
+}
+
+// These are not our elements and the consumer can easily override us here.
+::slotted(a) {
+  color: var(--color) !important;
+  padding: var(--padding) !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.private-host {
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
+  width: 100%;
+}

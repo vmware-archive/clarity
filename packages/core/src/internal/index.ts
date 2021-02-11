@@ -56,3 +56,8 @@ export {
 } from './motion/animations/cds-accordion-panel-open.js';
 export { AnimationHingeConfig, AnimationHingeName } from './motion/animations/cds-overlay-hinge-example.js';
 export { AnimationShakeConfig, AnimationShakeName } from './motion/animations/cds-component-shake.js';
+export {
+  AnimationNavigationGroupOpenConfig,
+  AnimationNavigationGroupOpenName,
+} from './motion/animations/cds-navigation-group-open.js';
+export { AnimationNavigationOpenConfig, AnimationNavigationOpenName } from './motion/animations/cds-navigation-open.js';

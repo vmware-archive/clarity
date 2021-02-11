@@ -58,6 +58,12 @@ export const componentStringsDefault = {
     contentBox: 'Scrollable Modal Body',
     contentEnd: 'End of Modal Content',
   },
+  navigation: {
+    navigationElement: 'navigation',
+    navigationLabel: 'navigation menu',
+    navigationAbridgedText: 'View abridged menu',
+    navigationUnabridgedText: 'View unabridged menu',
+  },
   password: {
     showButtonAriaLabel: 'Show password',
     hideButtonAriaLabel: 'Hide password',

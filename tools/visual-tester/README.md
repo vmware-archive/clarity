@@ -13,13 +13,13 @@ $ yarn start
 To run it with CLI options
 
 ```bash
-$ node index.js
+$ node index.ts
 ```
 
 For example to change the base address
 
 ```bash
-$ node index.js --baseUrl=http://localhost:8080
+$ node index.ts --baseUrl=http://localhost:8080
 ```
 
 ### Runner

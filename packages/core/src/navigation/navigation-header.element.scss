@@ -1,0 +1,15 @@
+/*!
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --cds-navigation-bg-color: var(--cds-global-color-gray-200, #{--cds-global-color-gray-200});
+  // Icon only width is default
+  width: 100%;
+  border: 1px deepskyblue;
+}

@@ -1,0 +1,54 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  background-color: var(--cds-global-color-gray-200, #{--cds-global-color-gray-200});
+  display: flex;
+  flex-direction: column;
+  //flex-grow: 1;
+  height: inherit;
+  width: inherit !important; // Why so important??
+  //overflow-y: auto;
+}
+
+:host(:not([expanded])) {
+  max-width: 4rem;
+}
+
+:host([expanded]:not([layout='horizontal'])) {
+  --border-color: deepskyblue;
+  // expanded width is 12 rem when expanded attr
+  --width: calc(5 * #{$cds-global-space-12}); // 12rem
+  width: var(--width) !important;
+  max-width: var(--width) !important;
+  min-width: var(--width) !important;
+  //border: 4px solid var(--border-color);
+}
+
+:host([layout='horizontal']) {
+  height: 2rem !important;
+  overflow: unset;
+  width: inherit !important;
+  max-width: unset;
+}
+
+.private-host {
+  height: inherit;
+  overflow: auto;
+}
+
+.navigation-body {
+  flex: 1;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+::slotted([cds-layout~='align:bottom']) {
+  margin-top: auto !important;
+  border: 1px solid deepskyblue;
+}
+
+::slotted([cds-layout~='align:right']) {
+  margin-left: auto !important;
+}

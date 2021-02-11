@@ -49,6 +49,7 @@ const config = {
       './src/internal-components/overlay',
       './src/internal-components/panel',
       './src/modal',
+      './src/navigation',
       './src/pagination',
       './src/password',
       './src/progress-circle',

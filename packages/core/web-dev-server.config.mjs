@@ -127,6 +127,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/internal-components/panel/register.js': '/dist/core/internal-components/panel/register.js',
             '@cds/core/modal': '/dist/core/modal/index.js',
             '@cds/core/modal/register.js': '/dist/core/modal/register.js',
+            '@cds/core/navigation': '/dist/core/navigation/index.js',
+            '@cds/core/navigation/register.js': '/dist/core/navigation/register.js',
             '@cds/core/pagination': '/dist/core/pagination/index.js',
             '@cds/core/pagination/register.js': '/dist/core/pagination/register.js',
             '@cds/core/password': '/dist/core/password/index.js',

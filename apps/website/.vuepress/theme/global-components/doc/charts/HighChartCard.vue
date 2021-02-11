@@ -67,7 +67,10 @@ export default {
       required: true,
     },
   },
-  mounted() {
+  // beforeMount is used instead of mounted cause on subsequent page
+  // visits chart's 'mounted' event happens before(!) card 'mounted' event
+  // while on the initial rendering it works as expected: cart mounted first, chart mounted second
+  beforeMount() {
     const { chartId } = this;
 
     if (chartId && chartOptionsMap.has(chartId)) {

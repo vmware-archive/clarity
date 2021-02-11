@@ -20,7 +20,13 @@
       </cds-toggle>
     </div>
     <div class="card" cds-layout="horizontal p:none" :cds-theme="darkThemeAttributeValue">
-      <slot :themeId="themeId" :darkTheme="darkTheme" :tableView="tableView" :textures="textures"></slot>
+      <slot
+        :themeId="themeId"
+        :darkTheme="darkTheme"
+        :tableView="tableView"
+        :textures="textures"
+        :chartOptions="chartOptions"
+      ></slot>
     </div>
   </div>
 </template>
@@ -30,6 +36,8 @@
  * @file
  * HighChart wrapper component with charts theme, light/dark theme and table/chart view selectors.
  */
+
+import { chartOptionsMap } from './chart-options';
 
 const themeOptions = [];
 
@@ -49,7 +57,22 @@ export default {
       tableView: false,
       textures: false,
       themeOptions,
+      chartOptions: null, //to be populated from the data file
     };
+  },
+  props: {
+    chartId: {
+      // key to look up chart's data (options)
+      type: String,
+      required: true,
+    },
+  },
+  mounted() {
+    const { chartId } = this;
+
+    if (chartId && chartOptionsMap.has(chartId)) {
+      this.chartOptions = chartOptionsMap.get(chartId);
+    }
   },
   computed: {
     darkThemeAttributeValue() {

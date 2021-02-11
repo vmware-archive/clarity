@@ -1,110 +1,6 @@
 ---
 title: Chart Types
 toc: true
-
-area_chart_options:
-  title:
-    text: Area chart with negative values
-  chart:
-    type: area
-  xAxis:
-    categories:
-      - Apples
-      - Oranges
-      - Pears
-      - Grapes
-      - Bananas
-    gridLineWidth: 0
-  series:
-    - name: John
-      data:
-        - 5
-        - 3
-        - 4
-        - 7
-        - 2
-    - name: Joe
-      data:
-        - 3
-        - 4
-        - 4
-        - -2
-        - 5
-    - name: Jane
-      data:
-        - 2
-        - -2
-        - -3
-        - 2
-        - 1
-
-bar_chart_options:
-  title:
-    text: Stacked bar chart
-  chart:
-    type: bar
-  xAxis:
-    categories:
-      - Apples
-      - Oranges
-      - Pears
-      - Grapes
-      - Bananas
-    gridLineWidth: 0
-  yAxis:
-    min: 0
-    title:
-      text: Total fruit consumption
-  plotOptions:
-    series:
-      stacking: normal
-  legend:
-    - reversed: true
-  series:
-    - name: John
-      data:
-        - 5
-        - 3
-        - 4
-        - 7
-        - 2
-    - name: Jane
-      data:
-        - 2
-        - 2
-        - 3
-        - 2
-        - 1
-    - name: Joe
-      data:
-        - 3
-        - 4
-        - 4
-        - 2
-        - 5
-
-pie_chart_options:
-  title:
-    text: Pie Chart
-  chart:
-    type: pie
-  series:
-    - name: Share
-      colorByPoint: true
-      data:
-        - name: Apples
-          y: 61.41
-          sliced: true
-        - name: Oranges
-          y: 11.84
-        - name: Pears
-          y: 10.85
-        - name: Grapes
-          y: 4.67
-        - name: Bananas
-          y: 4.18
-        - name: Others
-          y: 7.05
 ---
 
 ::: component-section-level-one-title
@@ -122,11 +18,13 @@ pie_chart_options:
 ::: component-section-level-two
 
 <div>
-  <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView, textures }">
+  <doc-charts-HighChartCard
+    :chartId="'area-chart-1'"
+  >
+    <template v-slot="{ themeId, darkTheme, tableView, textures, chartOptions: options }">
         <doc-charts-HighChart
-          :options="$frontmatter.area_chart_options"
-          :theme="themeId"
+          :options="options"
+          :themeId="themeId"
           :tableView="tableView"
           :textures="textures"
         />
@@ -164,11 +62,13 @@ a year. It helps you analyze both overall and individual trend information.
 ::: component-section-level-two
 
 <div>
-  <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView, textures }">
+  <doc-charts-HighChartCard
+    :chartId="'bar-chart-1'"
+  >
+    <template v-slot="{ themeId, darkTheme, tableView, textures, chartOptions: options }">
         <doc-charts-HighChart
-          :options="$frontmatter.bar_chart_options"
-          :theme="themeId"
+          :options="options"
+          :themeId="themeId"
           :darkTheme="darkTheme"
           :tableView="tableView"
           :textures="textures"
@@ -209,11 +109,13 @@ compare. This type of visualization can also be used to display negative numbers
 ::: component-section-level-two
 
 <div>
-  <doc-charts-HighChartCard>
-    <template v-slot="{ themeId, darkTheme, tableView, textures }">
+  <doc-charts-HighChartCard
+    :chartId="'pie-chart-1'"
+  >
+    <template v-slot="{ themeId, darkTheme, tableView, textures, chartOptions: options }">
         <doc-charts-HighChart
-          :options="$frontmatter.pie_chart_options"
-          :theme="themeId"
+          :options="options"
+          :themeId="themeId"
           :darkTheme="darkTheme"
           :tableView="tableView"
           :textures="textures"
@@ -251,6 +153,22 @@ A pie chart represents numbers in percentages, and the total sum of all segments
 
 ::: component-section-level-two
 
+<div>
+  <doc-charts-HighChartCard
+    :chartId="'column-chart-1'"
+  >
+    <template v-slot="{ themeId, darkTheme, tableView, textures, chartOptions: options }">
+        <doc-charts-HighChart
+          :themeId="themeId"
+          :darkTheme="darkTheme"
+          :tableView="tableView"
+          :textures="textures"
+          :options="options"
+        />
+    </template>
+  </doc-charts-HighChartCard>
+</div>
+
 A column chart is used to show a comparison among different items, or it can
 show a comparison of items over time. You could use this format to see the
 revenue per landing page or customers by close date.
@@ -280,10 +198,34 @@ revenue per landing page or customers by close date.
 
 ::: component-section-level-two
 
+<div>
+  <doc-charts-HighChartCard
+    :chartId="'line-chart-1'"
+  >
+    <template v-slot="{ themeId, darkTheme, tableView, textures, chartOptions: options }">
+        <doc-charts-HighChart
+          :options="options"
+          :themeId="themeId"
+          :darkTheme="darkTheme"
+          :tableView="tableView"
+          :textures="textures"
+        />
+    </template>
+  </doc-charts-HighChartCard>
+</div>
+
 A line graph reveals trends or progress over time and can be used to
 show many different categories of data. You should use it when you chart a continuous data set.
 
-Design Best Practices for Line Graphs:
+:::
+
+::: component-section-level-two-title
+
+### Design Best Practices for Line Graphs:
+
+:::
+
+::: component-section-level-two
 
 - Use solid lines only.
 - Don't plot more than four lines to avoid visual distractions.

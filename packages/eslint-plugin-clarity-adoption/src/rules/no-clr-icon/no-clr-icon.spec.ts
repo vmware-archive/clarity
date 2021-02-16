@@ -287,6 +287,20 @@ htmlRuleTester.run('no-clr-icon', rule, {
       `,
       locations: [{ line: 3, column: 7 }],
     }),
+
+    /**
+     * Persisting extra attributes
+     */
+    getInvalidAlertTest({
+      code: `<clr-icon *ngIf="true"></clr-icon>`,
+      output: `<cds-icon *ngIf="true"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidAlertTest({
+      code: `<clr-icon dir="left" *ngIf="true"></clr-icon>`,
+      output: `<cds-icon direction="left" *ngIf="true"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
   ],
   valid: [],
 });

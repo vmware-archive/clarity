@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "npm-run-all build:tsc build:package",
-    "build:package": "cpy package.json README.md ../../dist/eslint-plugin-clarity-adoption/;",
+    "build:package": "cpy package.json README.md ../../dist/eslint-plugin-clarity-adoption/; cpy docs/ ../../dist/eslint-plugin-clarity-adoption/docs/",
     "build:tsc": "tsc",
     "watch": "tsc -w",
     "lint": "npm run lint:src && npm run lint:test",

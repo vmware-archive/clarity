@@ -1,6 +1,6 @@
-# Disallows usage of Clarity Angular icons (no-clr-icon)
+# Disallows usage of Clarity Angular icon (no-clr-icon)
 
-The use of Clarity Angular icons is discouraged. Use Clarity Core icons instead.
+The use of Clarity Angular icon is discouraged. Use Clarity Core icon instead.
 
 ## Rule Details
 

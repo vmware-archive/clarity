@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -99,7 +99,7 @@ export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
   }
 
   @Input('clrVerticalNavGroupExpanded')
-  set userExpandedInput(value: boolean) {
+  set userExpandedInput(value: boolean | string) {
     value = !!value;
     if (this.expanded !== value) {
       // We have to call toggleExpand because some cases require animations to occur first

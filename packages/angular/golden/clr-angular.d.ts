@@ -741,8 +741,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     get clrDgDetailCloseLabel(): string;
     set clrDgDetailOpenLabel(label: string);
     get clrDgDetailOpenLabel(): string;
-    set clrDgSelectable(value: boolean);
-    get clrDgSelectable(): boolean;
+    set clrDgSelectable(value: boolean | string);
+    get clrDgSelectable(): boolean | string;
     commonStrings: ClrCommonStringsService;
     detailButton: HTMLButtonElement;
     detailService: DetailService;
@@ -752,8 +752,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     expandAnimation: ClrExpandableAnimation;
     expandAnimationTrigger: boolean;
     expandableId: string;
-    get expanded(): boolean;
-    set expanded(value: boolean);
+    get expanded(): boolean | string;
+    set expanded(value: boolean | string);
     expandedChange: EventEmitter<boolean>;
     globalExpandable: ExpandableRowsCount;
     id: string;
@@ -761,8 +761,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     radioId: string;
     replaced: boolean;
     rowActionService: RowActionService;
-    get selected(): boolean;
-    set selected(value: boolean);
+    get selected(): boolean | string;
+    set selected(value: boolean | string);
     selectedChanged: EventEmitter<boolean>;
     selection: Selection<T>;
     constructor(selection: Selection<T>, rowActionService: RowActionService, globalExpandable: ExpandableRowsCount, expand: DatagridIfExpandService, detailService: DetailService, displayMode: DisplayModeService, vcr: ViewContainerRef, renderer: Renderer2, el: ElementRef, commonStrings: ClrCommonStringsService);
@@ -1136,8 +1136,8 @@ export declare class ClrIfExpanded implements OnInit, OnDestroy {
 }
 
 export declare class ClrIfOpen implements OnDestroy {
-    set open(value: boolean);
-    get open(): boolean;
+    set open(value: boolean | string);
+    get open(): boolean | string;
     openChange: EventEmitter<boolean>;
     constructor(toggleService: ClrPopoverToggleService, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
@@ -1892,10 +1892,10 @@ export declare class ClrTreeViewModule {
 
 export declare class ClrVerticalNav implements OnDestroy {
     get ariaExpanded(): string;
-    get collapsed(): boolean;
-    set collapsed(value: boolean);
-    get collapsible(): boolean;
-    set collapsible(value: boolean);
+    get collapsed(): boolean | string;
+    set collapsed(value: boolean | string);
+    get collapsible(): boolean | string;
+    set collapsible(value: boolean | string);
     commonStrings: ClrCommonStringsService;
     get hasIcons(): boolean;
     get hasNavGroups(): boolean;
@@ -1911,7 +1911,7 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     get expanded(): boolean;
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
-    set userExpandedInput(value: boolean);
+    set userExpandedInput(value: boolean | string);
     constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStringsService);
     collapseGroup(): void;
     expandAnimationDone($event: AnimationEvent): void;

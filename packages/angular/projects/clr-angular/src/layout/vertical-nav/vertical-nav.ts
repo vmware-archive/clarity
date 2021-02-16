@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,22 +24,22 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
   },
 })
 export class ClrVerticalNav implements OnDestroy {
-  get collapsible(): boolean {
+  get collapsible(): boolean | string {
     return this._navService.collapsible;
   }
 
   @Input('clrVerticalNavCollapsible')
-  set collapsible(value: boolean) {
-    this._navService.collapsible = value;
+  set collapsible(value: boolean | string) {
+    this._navService.collapsible = value as boolean;
   }
 
-  get collapsed(): boolean {
+  get collapsed(): boolean | string {
     return this._navService.collapsed;
   }
 
   @Input('clrVerticalNavCollapsed')
-  set collapsed(value: boolean) {
-    this._navService.collapsed = value;
+  set collapsed(value: boolean | string) {
+    this._navService.collapsed = value as boolean;
   }
 
   @Output('clrVerticalNavCollapsedChange')

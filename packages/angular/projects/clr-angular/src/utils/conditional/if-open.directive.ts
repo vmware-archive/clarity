@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -33,8 +33,8 @@ export class ClrIfOpen implements OnDestroy {
    * @param value
    */
   @Input('clrIfOpen')
-  public set open(value: boolean) {
-    this.toggleService.open = value;
+  public set open(value: boolean | string) {
+    this.toggleService.open = value as boolean;
   }
 
   /********

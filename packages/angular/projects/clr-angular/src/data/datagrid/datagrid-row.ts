@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -124,17 +124,17 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   }
 
   @Input('clrDgSelected')
-  public set selected(value: boolean) {
+  public set selected(value: boolean | string) {
     if (this.selection.selectionType === SelectionType.None) {
-      this._selected = value;
+      this._selected = value as boolean;
     } else {
-      this.selection.setSelected(this.item, value);
+      this.selection.setSelected(this.item, value as boolean);
     }
   }
 
   // By default every item is selectable; it becomes not selectable only if it's explicitly set to false
   @Input('clrDgSelectable')
-  public set clrDgSelectable(value: boolean) {
+  public set clrDgSelectable(value: boolean | string) {
     this.selection.lockItem(this.item, value === false);
   }
 
@@ -156,8 +156,8 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   }
 
   @Input('clrDgExpanded')
-  public set expanded(value: boolean) {
-    this.expand.expanded = value;
+  public set expanded(value: boolean | string) {
+    this.expand.expanded = value as boolean;
   }
 
   @Output('clrDgExpandedChange') expandedChange = new EventEmitter<boolean>(false);

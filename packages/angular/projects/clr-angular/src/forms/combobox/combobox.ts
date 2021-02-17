@@ -22,6 +22,7 @@ import {
   EventEmitter,
   AfterContentInit,
   Inject,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
@@ -106,7 +107,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     @Optional() private containerService: ComboboxContainerService,
     @Inject(PLATFORM_ID) private platformId: any,
     private ariaService: AriaService,
-    private focusHandler: ComboboxFocusHandler<T>
+    private focusHandler: ComboboxFocusHandler<T>,
+    private cdr: ChangeDetectorRef
   ) {
     super(vcr, ClrComboboxContainer, injector, control, renderer, el);
     if (control) {
@@ -123,6 +125,10 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   // Otherwise the label/component connection does not work and screen readers do not read the label.
   get id() {
     return this.controlIdService.id + '-combobox';
+  }
+
+  set id(id: string) {
+    super.id = id;
   }
 
   inputId(): string {
@@ -365,6 +371,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   }
 
   ngAfterViewInit() {
+    this.focusHandler.componentCdRef = this.cdr;
     this.focusHandler.textInput = this.textbox.nativeElement;
     this.focusHandler.trigger = this.trigger.nativeElement;
     // The text input is the actual element we are wrapping

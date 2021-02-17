@@ -297,6 +297,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     focused: boolean;
     focusedPill: any;
     get id(): string;
+    set id(id: string);
     protected index: number;
     invalid: boolean;
     set multiSelect(value: boolean | string);
@@ -311,7 +312,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     smartPosition: ClrPopoverPosition;
     textbox: ElementRef;
     trigger: ElementRef;
-    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, optionSelectionService: OptionSelectionService<T>, commonStrings: ClrCommonStringsService, toggleService: ClrPopoverToggleService, positionService: ClrPopoverPositionService, controlStateService: IfControlStateService, containerService: ComboboxContainerService, platformId: any, ariaService: AriaService, focusHandler: ComboboxFocusHandler<T>);
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, optionSelectionService: OptionSelectionService<T>, commonStrings: ClrCommonStringsService, toggleService: ClrPopoverToggleService, positionService: ClrPopoverPositionService, controlStateService: IfControlStateService, containerService: ComboboxContainerService, platformId: any, ariaService: AriaService, focusHandler: ComboboxFocusHandler<T>, cdr: ChangeDetectorRef);
     focusFirstActive(): void;
     focusInput(): void;
     getActiveDescendant(): string;

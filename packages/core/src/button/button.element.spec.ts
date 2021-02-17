@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import { CdsButton, ClrLoadingState, iconSpinner } from '@cds/core/button';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 import { listenForAttributeChange } from '@cds/core/internal';
 
 describe('button element', () => {

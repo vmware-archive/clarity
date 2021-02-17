@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { CdsCheckbox } from '@cds/core/checkbox';
 import '@cds/core/checkbox/register.js';
 

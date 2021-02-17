@@ -5,7 +5,7 @@
  */
 
 import { LitElement, html } from 'lit-element';
-import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { applyCSSGapShim } from './css-gap.base.js';
 import { browserFeatures } from '../utils/supports.js';
 

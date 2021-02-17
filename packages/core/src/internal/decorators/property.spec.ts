@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { html, LitElement } from 'lit-element';
 import { registerElementSafely } from '../utils/register.js';
 import { getDefaultOptions, requirePropertyCheck, internalProperty } from './property.js';

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,7 +24,7 @@ export function removeTestElement(element: HTMLElement) {
 }
 
 export function getComponentSlotContent(component: HTMLElement): { [name: string]: string } {
-  return Array.from(component.shadowRoot.querySelectorAll('slot')).reduce(
+  return Array.from(component.shadowRoot?.querySelectorAll('slot') as NodeListOf<HTMLSlotElement>).reduce(
     (acc: { [name: string]: string }, slot: HTMLSlotElement) => {
       const name = slot.name.length > 0 ? slot.name : 'default';
       acc[name] = (slot.assignedNodes() as any[]).reduce((p, n) => {
@@ -38,12 +38,16 @@ export function getComponentSlotContent(component: HTMLElement): { [name: string
   );
 }
 
-function retry(fn: any, maxTries = 10, promise?: Promise<any>, promiseObject?: { resolve: any; reject: any }) {
-  maxTries--;
-  promiseObject = promiseObject || {
+function retry(
+  fn: any,
+  maxTries = 10,
+  promise?: Promise<any>,
+  promiseObject: { resolve: any; reject: any } = {
     resolve: null,
     reject: null,
-  };
+  }
+) {
+  maxTries--;
 
   promise =
     promise ||

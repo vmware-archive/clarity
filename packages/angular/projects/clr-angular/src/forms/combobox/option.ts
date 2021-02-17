@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -77,6 +77,11 @@ export class ClrOption<T> implements OnInit {
     } else {
       this.optionSelectionService.select(this.value);
     }
+    // As the popover stays open in multi-select mode now, we have to take focus back to the input
+    // This way we achieve two things:
+    // - do not lose focus
+    // - we're still able to use onBlur for "outside-click" handling
+    this.focusHandler.focusInput();
   }
 
   @HostBinding('class.clr-focus')

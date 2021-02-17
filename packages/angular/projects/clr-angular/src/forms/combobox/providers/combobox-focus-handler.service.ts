@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID, Renderer2, ApplicationRef, RendererFactory2 } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, Renderer2, RendererFactory2, ChangeDetectorRef } from '@angular/core';
 import { customFocusableItemProvider } from '../../../utils/focus/focusable-item/custom-focusable-item-provider';
 import { UNIQUE_ID } from '../../../utils/id-generator/id-generator.service';
 import { ArrowKeyDirection } from '../../../utils/focus/arrow-key-direction.enum';
@@ -23,13 +23,16 @@ export class ComboboxFocusHandler<T> {
     rendererFactory: RendererFactory2,
     private toggleService: ClrPopoverToggleService,
     private selectionService: OptionSelectionService<T>,
-    private appRef: ApplicationRef,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.handleFocusSubscription();
     // Direct renderer injection can be problematic and leads to failing tests at least
     this.renderer = rendererFactory.createRenderer(null, null);
   }
+
+  // We need a Change Detector from the related component, so we can update it on Blur
+  // (which is needed because of Edge specific lifecycle mis-behavior)
+  componentCdRef: ChangeDetectorRef;
 
   private renderer: Renderer2;
 
@@ -142,6 +145,7 @@ export class ComboboxFocusHandler<T> {
           if (
             event.key !== KeyCodes.Tab &&
             !(this.selectionService.multiselectable && event.key === KeyCodes.Backspace) &&
+            !(event.key === KeyCodes.Escape) &&
             !this.toggleService.open
           ) {
             this.toggleService.open = true;
@@ -169,7 +173,9 @@ export class ComboboxFocusHandler<T> {
         if (this.focusOutOfComponent(event)) {
           this.toggleService.open = false;
           // Workaround for popover close-on-outside-click timing issues in Edge browser
-          this.appRef.tick();
+          if (this.componentCdRef) {
+            this.componentCdRef.detectChanges();
+          }
         }
       });
     }

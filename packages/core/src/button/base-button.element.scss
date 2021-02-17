@@ -13,7 +13,7 @@
   --background: #{$cds-alias-status-info};
   --color: #{$cds-global-typography-color-100};
   --font-size: #{$cds-global-space-6};
-  --padding: calc(#{$cds-global-space-6} - var(--border-width)) calc(#{$cds-global-space-7} - var(--border-width));
+  --padding: calc(#{$cds-global-space-6} - var(--border-width));
   --height: #{$cds-global-space-11};
   --min-width: #{$cds-global-space-13};
   --text-decoration: none;

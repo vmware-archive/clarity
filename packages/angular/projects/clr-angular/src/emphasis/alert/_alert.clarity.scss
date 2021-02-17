@@ -152,7 +152,7 @@
   }
 
   .alert-items {
-    $vertPadding: $clr_baselineRem_8px;
+    $vertPadding: $clr_baselineRem_10px;
     $horizPadding: $clr_baselineRem_0_5 - $clr-alert-borderwidth;
     flex: 1 1 auto;
     flex-flow: column nowrap;

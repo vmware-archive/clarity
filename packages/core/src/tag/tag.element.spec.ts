@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 import '@cds/core/tag/register.js';
 import '@cds/core/icon/register.js';
 import { CdsTag } from '@cds/core/tag';
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test/utils';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
 describe('tag element', () => {
   let testElement: HTMLElement;

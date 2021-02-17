@@ -84,7 +84,7 @@
     "@cds/core/tag/register.js": "/base/dist/core/tag/register.js",
     "@cds/core/test-dropdown": "/base/dist/core/test-dropdown/index.js",
     "@cds/core/test-dropdown/register.js": "/base/dist/core/test-dropdown/register.js",
-    "@cds/core/test/utils": "/base/dist/core/test/utils.js",
+    "@cds/core/test": "/base/dist/core/test/index.js",
     "@cds/core/textarea": "/base/dist/core/textarea/index.js",
     "@cds/core/textarea/register.js": "/base/dist/core/textarea/register.js",
     "@cds/core/time": "/base/dist/core/time/index.js",

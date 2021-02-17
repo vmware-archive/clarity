@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { CdsControl } from '@cds/core/forms/index.js';
 
 describe('responsive utilities', () => {

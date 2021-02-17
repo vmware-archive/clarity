@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test/utils';
+import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
 import { CdsIcon } from '@cds/core/icon';
 import { CdsControl } from '@cds/core/forms';
 import '@cds/core/forms/register.js';

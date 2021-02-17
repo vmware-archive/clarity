@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test/utils';
+import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
 import { CdsControl, CdsInternalControlGroup } from '@cds/core/forms';
 import '@cds/core/forms/register.js';
 import { CdsControlMessage } from '../control-message/control-message.element';

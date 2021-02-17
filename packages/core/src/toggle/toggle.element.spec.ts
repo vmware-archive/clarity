@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit-html';
-import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test/utils';
+import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { CdsToggle } from '@cds/core/toggle';
 import '@cds/core/toggle/register.js';
 

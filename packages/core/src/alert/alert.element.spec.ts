@@ -9,7 +9,7 @@ import '@cds/core/alert/register.js';
 import '@cds/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
 import { CdsIcon, infoStandardIcon } from '@cds/core/icon';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test/utils';
+import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { I18nService } from '@cds/core/internal';
 

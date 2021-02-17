@@ -28,7 +28,6 @@
     "baseUrl": "./",
     "rootDir": "./",
     "paths": {
-      "@cds/core/test/*": ["./src/test/*"],
       "@cds/core/*": ["./src/*"]
     },
     "plugins": [

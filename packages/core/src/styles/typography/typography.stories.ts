@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -107,10 +107,10 @@ export function inline() {
 export function position() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
-      <p cds-text="body left">Text Left (left)</p>
-      <p cds-text="body right">Text Right (right)</p>
-      <p cds-text="body center">Text Center (center)</p>
-      <p cds-text="body justify" style="width: 200px; background: lightgreen">
+      <p cds-text="body left" style="width: 12rem">Text Left (left)</p>
+      <p cds-text="body right" style="width: 12rem">Text Right (right)</p>
+      <p cds-text="body center" style="width: 12rem">Text Center (center)</p>
+      <p cds-text="body justify" style="width: 10rem; background: lightgreen">
         Text Justify: (justify) – The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy
         dog.
       </p>

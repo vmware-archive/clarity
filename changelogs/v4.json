@@ -2,6 +2,32 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.12",
+      "date": "2021-02-18",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5618,
+          "title": "Combobox fixes - set id, prevent double event on Esc, fix click-to-close, prevent focus-error",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5622,
+          "title": "Vertically center text in alert",
+          "project": "Angular",
+          "scope": "Alert"
+        },
+        {
+          "issue": 5587,
+          "title": "Fix issue with datagrids in forms with checkboxes",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
       "version": "4.0.11",
       "date": "2021-02-04",
       "description": "This is a bug fix release.",

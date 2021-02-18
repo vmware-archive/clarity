@@ -2,6 +2,91 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.2",
+      "date": "2021-02-18",
+      "description": "This is a bug fix release.",
+      "fix": [
+        {
+          "issue": 5616,
+          "title": "Fix strictTemplates errors",
+          "project": "Angular",
+          "scope": "Utility"
+        },
+        {
+          "issue": 5624,
+          "title": "Update docs for progress circle and dividers",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5623,
+          "title": "Fix Core button padding",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5617,
+          "title": "Combobox fixes - set id, prevent double event on Esc, fix click-to-close, prevent focus-error",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5620,
+          "title": "Vertically center text in alert",
+          "project": "Angular",
+          "scope": "Alert"
+        },
+        {
+          "issue": 5594,
+          "title": "Fix Core accordion register icon element",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5590,
+          "title": "Fix accordion Safari flex gap issue overflow",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5574,
+          "title": "Fix datagrids in forms with checkboxes",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5577,
+          "title": "Fix Core inline button color",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5571,
+          "title": "Fix Core input control spacing",
+          "project": "Core",
+          "scope": "Input"
+        },
+        {
+          "issue": 5570,
+          "title": "Fix Core input control disabled style",
+          "project": "Core",
+          "scope": "Input"
+        },
+        {
+          "issue": 5567,
+          "title": "Fix Core button space and inverse style",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5569,
+          "title": "Fix Core input control readonly style",
+          "project": "Core",
+          "scope": "Input"
+        }
+      ]
+    },
+    {
       "version": "5.0.1",
       "date": "2021-02-04",
       "description": "This is a bug fix release.",

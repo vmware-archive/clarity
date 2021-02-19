@@ -43,17 +43,4 @@ export class AlertPage {
       },
     },
   ];
-
-  eslintSetup = `
-"plugins": ["@clr/clarity-migration"],
-"rules": {
-  "@clr/clarity-migration/no-clr-alert": "warn",
-},
-"overrides": [
-  {
-    "files": ["*.html"],
-    "parser": "@clr/eslint-plugin-clarity-migration/dist/src/html-parser"
-  }
-]
-`;
 }

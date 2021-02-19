@@ -55,17 +55,4 @@ export class IconsPage {
       },
     },
   ];
-
-  eslintSetup = `
-"plugins": ["@clr/clarity-migration"],
-"rules": {
-  "@clr/clarity-adoption/no-clr-icon": "warn",
-},
-"overrides": [
-  {
-    "files": ["*.html"],
-    "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
-  }
-]
-`;
 }

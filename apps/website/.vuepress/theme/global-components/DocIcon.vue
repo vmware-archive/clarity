@@ -8,17 +8,28 @@
       :class="{ 'is-active': isActive }"
       :aria-label="`Demo ${iconName}, button`"
     >
-      <slot></slot> {{ iconName }}
+      <slot></slot> {{ iconName }} &nbsp;&nbsp;<cds-icon
+        shape="new"
+        size="24"
+        style="--color: var(--cds-alias-status-alt);"
+        v-if="isNew"
+      ></cds-icon>
     </button>
   </div>
 </template>
 
 <script>
+import IconInventory from '../../../data/icon-inventory';
 export default {
   name: 'DocIcon',
   props: {
     iconName: String,
     isActive: Boolean,
+  },
+  computed: {
+    isNew: function () {
+      return IconInventory.isNew(this.iconName);
+    },
   },
   methods: {
     openDetail: function (event, iconName) {

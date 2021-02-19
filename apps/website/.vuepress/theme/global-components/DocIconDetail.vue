@@ -1,9 +1,11 @@
 <template>
-  <div class="clr-col-12">
+  <div cds-layout="vertical">
     <div class="card">
       <div class="card-block">
-        <h4 class="card-title">
-          {{ iconName }} <span class="aliases" v-if="hasAliases">aliases: {{ iconAliases }}</span>
+        <h4 class="card-title" cds-layout="horizontal gap:sm">
+          <div>{{ iconName }}</div>
+          <div class="aliases" v-if="hasAliases">aliases: {{ iconAliases }}</div>
+          <cds-tag cds-layout="align:right" readonly>Since {{ version }}</cds-tag>
         </h4>
         <div class="card-text">
           <div class="icon-snippet">
@@ -79,6 +81,17 @@ export default {
       }
 
       return variants;
+    },
+    version: function () {
+      // We look up the icons added since v1, if we find it use that version, otherwise send v1
+      const version = Object.entries(IconInventory.versionMap).find(entry => {
+        if (entry[1].indexOf(this.iconName) > -1) {
+          return entry[0];
+        }
+        return false;
+      });
+
+      return version ? version[0] : 'v1.0.0';
     },
   },
   data: function () {

@@ -12,7 +12,7 @@ Clarity. For complete documentation, visit the [Clarity website](https://clarity
 
 ## Getting Started
 
-Clarity is published as four npm packages:
+Clarity is published as five npm packages:
 
 - [![npm version core](https://img.shields.io/npm/v/@cds/core/latest?label=%40cds%2Fcore&style=flat-square)](https://www.npmjs.com/package/@cds/core) Contains the Web
   Components that work in any JavaScript framework.

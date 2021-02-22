@@ -74,7 +74,7 @@
           </cds-button>
         </router-link>
         <div cds-layout="grid">
-          <div cds-layout="col@sm:start-4 col@sm:end-12">
+          <div cds-layout="col@sm:start-2 col@sm:end-12">
             <img
               style="max-width: 720px;"
               cds-layout="fill"

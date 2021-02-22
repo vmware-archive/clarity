@@ -10,42 +10,52 @@ htmlRuleTester.run('no-clr-list', rule, {
   invalid: [
     getInvalidListTest({
       code: `<ul class="list"></ul>`,
+      output: `<ul cds-list></ul>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ul class="list-unstyled"></ul>`,
+      output: `<ul cds-list="unstyled"></ul>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ul class="list list-unstyled"></ul>`,
+      output: `<ul cds-list="unstyled"></ul>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ul class="list compact"></ul>`,
+      output: `<ul class="compact" cds-list></ul>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ul class="compact list-unstyled"></ul>`,
+      output: `<ul class="compact" cds-list="unstyled"></ul>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ol class="list"></ol>`,
+      output: `<ol cds-list></ol>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ol class="list-unstyled"></ol>`,
+      output: `<ol cds-list="unstyled"></ol>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ol class="list list-unstyled"></ol>`,
+      output: `<ol cds-list="unstyled"></ol>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ol class="list compact"></ol>`,
+      output: `<ol class="compact" cds-list></ol>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidListTest({
       code: `<ol class="compact list-unstyled"></ol>`,
+      output: `<ol class="compact" cds-list="unstyled"></ol>`,
       locations: [{ line: 1, column: 1 }],
     }),
   ],

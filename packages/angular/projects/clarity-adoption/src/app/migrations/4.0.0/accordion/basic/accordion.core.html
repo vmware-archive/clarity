@@ -1,0 +1,16 @@
+<cds-accordion>
+  <cds-accordion-panel expanded>
+    <cds-accordion-header>Item 1</cds-accordion-header>
+    <cds-accordion-content>Content 1</cds-accordion-content>
+  </cds-accordion-panel>
+
+  <cds-accordion-panel [expanded]="expandedPanel" (expandedChange)="expandedChange()">
+    <cds-accordion-header>Item 2 Expandable</cds-accordion-header>
+    <cds-accordion-content>Content 2</cds-accordion-content>
+  </cds-accordion-panel>
+
+  <cds-accordion-panel disabled>
+    <cds-accordion-header>Item 3</cds-accordion-header>
+    <cds-accordion-content>Content 3</cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>

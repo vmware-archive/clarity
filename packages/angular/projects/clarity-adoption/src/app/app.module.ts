@@ -19,7 +19,10 @@ import { EmbedComponent } from './components/dynamic/embed-component.component';
 import { ExampleWrapper } from './components/example-wrapper';
 
 import '@clr/icons/shapes/all-shapes';
+import '@cds/core/divider/register.js';
 import { IconsPage } from './pages/icons/icons.page';
+import { AccordionPage } from './pages/accordion/accordion.page';
+import { CheckboxPage } from './pages/checkbox/checkbox.page';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import { IconsPage } from './pages/icons/icons.page';
 
     /* pages */
     GettingStartedPage,
+    AccordionPage,
     AlertPage,
-    IconsPage,
     BadgePage,
     ButtonPage,
+    CheckboxPage,
+    IconsPage,
     LabelPage,
     ListPage,
 

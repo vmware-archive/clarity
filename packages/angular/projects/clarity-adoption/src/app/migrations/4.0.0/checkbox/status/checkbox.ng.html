@@ -1,0 +1,68 @@
+<form clrForm>
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox value="option1" name="unchecked" />
+      <label>Un-checked</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+
+  <br />
+
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox value="option1" name="checked" checked />
+      <label>Checked</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+
+  <br />
+
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="optionError" required value="error" ngModel />
+      <label>Error</label>
+    </clr-checkbox-wrapper>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-checkbox-container>
+
+  <br />
+
+  <div cds-layout="horizontal gap:md align:vertical">
+    <clr-checkbox-container cds-layout="align:vertical-center">
+      <label>Indeterminate</label>
+      <clr-checkbox-wrapper>
+        <input
+          type="checkbox"
+          clrCheckbox
+          name="indeterminate"
+          value="indeterminate"
+          (change)="indeterminateState = false"
+          [indeterminate]="indeterminateState"
+        />
+        <label>Option 1</label>
+      </clr-checkbox-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-checkbox-container>
+    <button cds-layout="align:vertical-center" class="btn btn-sm" (click)="indeterminateState = true">
+      Reset indeterminate state
+    </button>
+  </div>
+
+  <br />
+
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox value="disabled" [(ngModel)]="disabled" name="disabledCheckbox" disabled />
+      <label>Disabled</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+
+  <br />
+
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox value="option1" name="disabledCheck" [(ngModel)]="disabledCheck" disabled />
+      <label>Checked Disabled</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+</form>

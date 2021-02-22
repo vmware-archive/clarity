@@ -163,10 +163,13 @@ export function parseForESLint(code: string, options = {}): ESLintHtmlParseResul
       tagName: name,
       parent: currentElement,
       value: '',
-      range: [htmlParser.startIndex, -1],
+      // @ts-ignore
+      range: [htmlParser.tokenizer.sectionStart - 1, -1],
       loc: {
-        start: getLineAndColumn(htmlParser.startIndex),
-        end: getLineAndColumn(htmlParser.startIndex),
+        // @ts-ignore
+        start: getLineAndColumn(htmlParser.tokenizer.sectionStart),
+        // @ts-ignore
+        end: getLineAndColumn(htmlParser.tokenizer.sectionStart),
       },
     };
 
@@ -232,9 +235,12 @@ export function parseForESLint(code: string, options = {}): ESLintHtmlParseResul
     },
 
     onclosetag: () => {
-      currentElement.range[1] = (htmlParser.endIndex || 0) + 1;
-      currentElement.loc.end = getLineAndColumn((htmlParser.endIndex || 0) + 1);
-      currentElement.value = code.substr(currentElement.range[0], currentElement.range[1] - currentElement.range[0]);
+      const startIndex = currentElement.range[0];
+      const endIndex = htmlParser.endIndex || 0;
+
+      currentElement.loc.end = getLineAndColumn(endIndex);
+      currentElement.value = code.substr(startIndex, endIndex - startIndex + 1);
+      currentElement.range[1] = endIndex;
 
       currentElement = currentElement.parent as HTMLElement;
     },

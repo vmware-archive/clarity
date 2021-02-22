@@ -61,25 +61,28 @@ yarn
 yarn run watch
 ```
 
-2. Open another terminal window/tab, navigate to the `dist` directory and execute `yarn link`:
+2. Open another terminal window/tab, navigate to the `dist` directory and execute `npm link`:
 
 ```
 cd ../../dist/eslint-plugin-clarity-adoption
-yarn link
+npm link
 ```
+
+**NB:** `yarn link` doesn't work properly for linking the plugin. Please use `npm link` instead.
 
 3. Create a demo project, navigate to it and link the ESLint plugin:
 
 ```bash
 ng new linter-test-project
 cd linter-test-project
-yarn link @clr/eslint-plugin-clarity-adoption
+npm link @clr/eslint-plugin-clarity-adoption
 ```
 
 4. Install the other linter dependencies
 
 ```bash
-yarn add -D @typescript-eslint/parser eslint
+npm i -D @typescript-eslint/parser eslint
+npm i
 ```
 
 5. Add ESLint configuration for TypeScript and HTML.

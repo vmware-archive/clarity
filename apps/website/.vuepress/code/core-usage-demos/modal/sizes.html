@@ -1,21 +1,3 @@
-<script type="text/javascript">
-  var smModal = document.getElementById('sm-modal');
-  var mdModal = document.getElementById('md-modal');
-  var lgModal = document.getElementById('lg-modal');
-  var xlModal = document.getElementById('xl-modal');
-  function toggleSm() {
-    smModal.hidden = !smModal.hidden;
-  }
-  function toggleMd() {
-    mdModal.hidden = !mdModal.hidden;
-  }
-  function toggleLg() {
-    lgModal.hidden = !lgModal.hidden;
-  }
-  function toggleXl() {
-    xlModal.hidden = !xlModal.hidden;
-  }
-</script>
 <div cds-layout="horizontal gap:sm align:fill m-y:md">
   <div cds-layout="horizontal wrap:none">
     <div
@@ -124,7 +106,7 @@
       <span cds-text="subsection semibold" cds-layout="m-t:sm">X-Large Modal</span>
       <span cds-text="secondary" cds-layout="p-b:xs">Width: 1152px</span>
       <cds-button onclick="toggleXl()" size="sm" action="outline">Launch</cds-button>
-      <cds-modal id="xl-modal" size="sm" hidden closable="false">
+      <cds-modal id="xl-modal" size="xl" hidden closable="false">
         <cds-modal-header>
           <h3 cds-text="heading">X-large Modal</h3>
         </cds-modal-header>
@@ -138,3 +120,21 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var smModal = document.getElementById('sm-modal');
+  var mdModal = document.getElementById('md-modal');
+  var lgModal = document.getElementById('lg-modal');
+  var xlModal = document.getElementById('xl-modal');
+  function toggleSm() {
+    smModal.hidden = !smModal.hidden;
+  }
+  function toggleMd() {
+    mdModal.hidden = !mdModal.hidden;
+  }
+  function toggleLg() {
+    lgModal.hidden = !lgModal.hidden;
+  }
+  function toggleXl() {
+    xlModal.hidden = !xlModal.hidden;
+  }
+</script>

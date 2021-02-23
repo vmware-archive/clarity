@@ -57,4 +57,23 @@ describe('cds-internal-control-inline', () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('slot[message]')).toEqual(null);
   });
+
+  // https://stackoverflow.com/questions/23892547/what-is-the-best-way-to-trigger-onchange-event-in-react-js?answertab=active#tab-top
+  it('should trigger a click event when checked or indeterminate changes for React issue', async () => {
+    await componentIsStable(control);
+
+    let eventTriggered = false;
+    control.inputControl.addEventListener('click', () => (eventTriggered = true));
+
+    control.inputControl.checked = true;
+    await componentIsStable(control);
+
+    const prior = (window as any).CDS._react.version;
+    (window as any).CDS._react.version = '1.1.1';
+    control.inputControl.checked = false;
+
+    await componentIsStable(control);
+    (window as any).CDS._react.version = prior;
+    expect(eventTriggered).toEqual(true);
+  });
 });

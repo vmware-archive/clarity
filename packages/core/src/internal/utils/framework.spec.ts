@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,7 @@ describe('framework utils for logging and debugging', () => {
   });
 
   it('should getReactVersion', () => {
-    expect(getReactVersion()).toBe(undefined);
+    expect(getReactVersion()).not.toBe('0.0.0'); // check for test specific version in case of parallel test overriding version
     document.body.setAttribute('data-reactroot', '');
     expect(getReactVersion(false)).toBe('unknown version');
     document.body.removeAttribute('data-reactroot');

@@ -183,6 +183,11 @@ export const createComponent = <I extends HTMLElement, E>(
      */
     componentDidMount() {
       this._updateElement();
+
+      // cory: log react version to Core global service
+      if ((window as any).CDS && !(window as any).CDS._react.version) {
+        (window as any).CDS._react.version = React.version;
+      }
     }
 
     /**

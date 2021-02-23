@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -155,56 +155,56 @@ export class ClrDatagridPagination implements OnDestroy, OnInit {
   /**
    * Page size
    */
-  public get pageSize(): number {
+  public get pageSize(): number | string {
     return this.page.size;
   }
 
   @Input('clrDgPageSize')
-  public set pageSize(size: number) {
+  public set pageSize(size: number | string) {
     if (typeof size === 'number') {
-      this.page.size = size;
+      this.page.size = size as number;
     }
   }
 
   /**
    * Total items (needed to guess the last page)
    */
-  public get totalItems(): number {
+  public get totalItems(): number | string {
     return this.page.totalItems;
   }
 
   @Input('clrDgTotalItems')
-  public set totalItems(total: number) {
+  public set totalItems(total: number | string) {
     if (typeof total === 'number') {
-      this.page.totalItems = total;
+      this.page.totalItems = total as number;
     }
   }
 
   /**
    * Last page
    */
-  public get lastPage(): number {
+  public get lastPage(): number | string {
     return this.page.last;
   }
 
   @Input('clrDgLastPage')
-  public set lastPage(last: number) {
+  public set lastPage(last: number | string) {
     if (typeof last === 'number') {
-      this.page.last = last;
+      this.page.last = last as number;
     }
   }
 
   /**
    * Current page
    */
-  public get currentPage(): number {
+  public get currentPage(): number | string {
     return this.page.current;
   }
 
   @Input('clrDgPage')
-  public set currentPage(page: number) {
+  public set currentPage(page: number | string) {
     if (typeof page === 'number') {
-      this.page.current = page;
+      this.page.current = page as number;
     }
   }
 

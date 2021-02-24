@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,8 +18,10 @@ export const defaultFormLayout = 'horizontal';
 export const defaultControlWidth = 'stretch';
 
 export function associateInputAndLabel(input: HTMLInputElement, label: HTMLLabelElement, id: string) {
-  input.id = id;
-  label.setAttribute('for', input.id);
+  if (input && label) {
+    input.id = id;
+    label.setAttribute('for', input.id);
+  }
 }
 
 export function associateInputToDatalist(input: HTMLInputElement, datalist: HTMLDataListElement) {
@@ -61,7 +63,7 @@ export function controlIsWrapped(input: HTMLElement, label: HTMLElement, layout:
   return (
     layout !== 'vertical' &&
     layout !== 'vertical-inline' &&
-    input.getBoundingClientRect().top > label.getBoundingClientRect().top + 12 // 12px buffer for rounding and inputs that are thin like the range input
+    input.getBoundingClientRect().top > label?.getBoundingClientRect().top + 12 // 12px buffer for rounding and inputs that are thin like the range input
   );
 }
 

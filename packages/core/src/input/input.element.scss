@@ -18,6 +18,7 @@
   --color: #{$cds-global-typography-color-500};
   --line-height: #{$cds-global-space-9};
   --transition: background-size #{$cds-global-animation-duration-quick} ease;
+  --text-align: inherit;
   display: block;
   width: 100%;
 }
@@ -36,6 +37,7 @@
   -webkit-appearance: none !important;
   background: #{$cds-alias-object-opacity-0} !important;
   box-shadow: none !important;
+  text-align: var(--text-align) !important;
 
   &::placeholder {
     --color: $cds-global-typography-color-200 !important;

@@ -1,0 +1,80 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Pagination" />
+
+# Pagination
+
+Pagination component is used when data items need to be presented into several pages, and only one page (it can contain one or more items) will be loaded at a time. The component must allow users to browse the pages.
+
+## Installation
+
+To use the Pagination component import the component in your JavaScript.
+
+```typescript
+import '@cds/core/pagination/register.js';
+```
+
+```html
+<cds-pagination aria-label="pagination">
+  <cds-pagination-button action="first" aria-label="go to first" disabled></cds-pagination-button>
+  <cds-pagination-button action="prev" aria-label="go to previous" disabled></cds-pagination-button>
+  <span aria-label="current page">1 / 3</span>
+  <cds-pagination-button action="next" aria-label="go to next"></cds-pagination-button>
+  <cds-pagination-button action="last" aria-label="go to last"></cds-pagination-button>
+</cds-pagination>
+```
+
+To meet a11y standards, we strongly recommend using `aria-label` for each pagination elements.
+
+## Basic Pagination
+
+<Preview>
+  <Story id="stories-pagination--basic" />
+</Preview>
+
+## Basic Pagination with a pagination number
+
+<Preview>
+  <Story id="stories-pagination--basic-pagination-number" />
+</Preview>
+
+## Pagination with First and Last
+
+<Preview>
+  <Story id="stories-pagination--first-and-last" />
+</Preview>
+
+## Editable pagination number
+
+<Preview>
+  <Story id="stories-pagination--editable-pagination-number" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-pagination--dark-theme" />
+</Preview>
+
+## API
+
+### cds-pagination
+
+<Props of={'cds-pagination'} />
+
+### cds-pagination-button
+
+<Props of={'cds-pagination-button'} />
+
+## Custom pagination styles
+
+<Preview>
+  <Story id="stories-pagination--custom-pagination-styles" />
+</Preview>
+
+## Custom pagination content
+
+<Preview>
+  <Story id="stories-pagination--custom-pagination-content" />
+</Preview>

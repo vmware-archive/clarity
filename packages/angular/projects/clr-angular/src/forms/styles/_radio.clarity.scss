@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -72,23 +72,31 @@
       }
     }
 
-    &.disabled {
-      input[type='radio']:checked + label::before {
-        // 'dot' color
-        @include css-var(
-          background-color,
-          clr-forms-radio-disabled-background-color,
-          $clr-forms-radio-disabled-background-color,
-          $clr-use-custom-properties
-        );
-        //background-color around the dot
-        @include css-var(
-          box-shadow,
-          clr-forms-radio-disabled-shadow,
-          $clr-forms-radio-disabled-shadow,
-          $clr-use-custom-properties
-        );
-      }
+    input[type='radio']:disabled + label::before {
+      border: 0;
+      //background-color around the dot
+      @include css-var(
+        box-shadow,
+        $clr-forms-radio-disabled-shadow,
+        $clr-forms-radio-disabled-shadow,
+        $clr-use-custom-properties
+      );
+    }
+
+    input[type='radio']:checked:disabled + label::before {
+      @include css-var(
+        background-color,
+        $clr-forms-radio-disabled-background-color,
+        $clr-forms-radio-disabled-background-color,
+        $clr-use-custom-properties
+      );
+      //background-color around the dot
+      @include css-var(
+        box-shadow,
+        $clr-forms-radio-checked-disabled-shadow,
+        $clr-forms-radio-checked-disabled-shadow,
+        $clr-use-custom-properties
+      );
     }
   }
 

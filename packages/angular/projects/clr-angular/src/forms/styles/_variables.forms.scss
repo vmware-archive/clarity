@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -74,7 +74,7 @@ $clr-forms-checkbox-mark-border-size: ($clr-forms-checkbox-height / 8);
 
 // Radio
 $clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;
-$clr-forms-radio-disabled-background-color: $clr-form-disabled-background-color !default;
+$clr-forms-radio-disabled-background-color: $clr-color-neutral-700 !default;
 $clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color !default;
 
 $clr-forms-radio-size: $clr-forms-checkbox-size;
@@ -84,7 +84,8 @@ $clr-forms-radio-padding-left: $clr-forms-checkbox-padding-left;
 $clr-forms-radio-top: $clr-forms-checkbox-top;
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
 $clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
-$clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
+$clr-forms-radio-disabled-shadow: inset 0 0 0 $clr_baselineRem_0_5 $clr-color-neutral-200;
+$clr-forms-radio-checked-disabled-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-color-neutral-200;
 
 // Range
 $clr-forms-range-progress-fill-color: $clr-color-action-600 !default;

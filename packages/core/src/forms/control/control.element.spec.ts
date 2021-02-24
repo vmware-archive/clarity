@@ -261,3 +261,28 @@ describe('cds-control responsive', () => {
     // expect(control.layout).toBe('vertical');
   });
 });
+
+describe('cds-control with aria-label', () => {
+  let element: HTMLElement;
+  let control: CdsControl;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-control layout="compact">
+        <input type="text" aria-label="control" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-control>
+    `);
+
+    control = element.querySelector<CdsControl>('cds-control');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should not enable hidden label', async () => {
+    await componentIsStable(control);
+    expect(control.hiddenLabel).toBe(false);
+  });
+});

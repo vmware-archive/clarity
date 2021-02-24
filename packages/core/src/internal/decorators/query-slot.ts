@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { LitElement } from 'lit-element';
-import { LogService } from '../services/log.service.js';
+import { LogService, notProductionEnvironment } from '../services/log.service.js';
 
 // Slot Query decorators are similar to the query decorator in lit-element.
 // Instead of querying the component template they query the content slot of the component.
@@ -26,6 +26,11 @@ export interface QuerySlotConfig {
   requiredMessage?: string;
   /** auto assign found element to a particular slot */
   assign?: string;
+  /* 
+    A callback function to determine whether to exempt it from required; 
+    @param {self} refers to the component element itself here.
+  */
+  exemptOn?: (self: any) => boolean;
 }
 
 /**
@@ -41,7 +46,9 @@ export function querySlot(selector: string, config?: QuerySlotConfig) {
     function firstUpdated(this: any): void {
       const ref = this.querySelector(selector);
 
-      if (!ref && config?.required) {
+      const shouldExempt = config?.exemptOn && config?.exemptOn(this);
+
+      if (!ref && notProductionEnvironment() && config?.required && !shouldExempt) {
         const message =
           config.requiredMessage ||
           `The <${selector}> element is required to use <${this.tagName.toLocaleLowerCase()}>`;

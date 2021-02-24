@@ -100,6 +100,8 @@ export class CdsControl extends LitElement {
 
   private _layout: ControlLayout = defaultFormLayout;
 
+  private inputHasAriaLabel = false;
+
   @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
 
   @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
@@ -128,8 +130,11 @@ export class CdsControl extends LitElement {
 
   @querySlot('label', {
     required: 'error',
-    requiredMessage: 'To meet a11y standards a <label> should be provided.',
+    requiredMessage: 'To meet a11y standards either a <label> or input[aria-label] should be provided.',
     assign: 'label',
+    exemptOn: _this => {
+      return _this.inputControl?.hasAttribute('aria-label');
+    },
   })
   protected label: HTMLLabelElement;
 
@@ -213,7 +218,7 @@ export class CdsControl extends LitElement {
 
   private get primaryLabelTemplate() {
     return html`
-      ${!this.hiddenLabel
+      ${!this.inputHasAriaLabel && !this.hiddenLabel
         ? html` <cds-internal-control-label
             .disabled="${this.disabled}"
             cds-layout="align:shrink align:top"
@@ -275,6 +280,7 @@ export class CdsControl extends LitElement {
     this.setupResponsive();
     this.setupDescribedByUpdates();
     this.setupHiddenLabel();
+    this.setupInputAriaLabel();
     this.assignSlotIfInControlGroup();
   }
 
@@ -337,8 +343,15 @@ export class CdsControl extends LitElement {
   }
 
   private setupHiddenLabel() {
-    if (this.label.getAttribute('cds-layout')?.includes('display:screen-reader-only')) {
+    if (this.label?.getAttribute('cds-layout')?.includes('display:screen-reader-only')) {
       this.hiddenLabel = true;
+    }
+  }
+
+  private setupInputAriaLabel() {
+    if (this.inputControl) {
+      this.inputHasAriaLabel =
+        typeof this.inputControl.hasAttribute === 'function' && this.inputControl.hasAttribute('aria-label');
     }
   }
 

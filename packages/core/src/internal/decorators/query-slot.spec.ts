@@ -99,6 +99,72 @@ describe('query slot decorator', () => {
     }
   });
 
+  it('should NOT throw if element is required but has exempt callback that returns true', () => {
+    class Proto {
+      @querySlot('#errorMessage', {
+        required: 'error',
+        requiredMessage: 'test message',
+        exemptOn: () => {
+          return true;
+        },
+      })
+      testErrorWithMessage: HTMLDivElement;
+
+      firstUpdated() {
+        // do nothing
+      }
+
+      querySelector() {
+        // do nothing
+      }
+    }
+
+    const proto = new Proto();
+
+    let errorMessage: string;
+
+    try {
+      proto.firstUpdated();
+    } catch (e) {
+      errorMessage = e.toString();
+    }
+
+    expect(errorMessage).toBeUndefined('The exempt condition has been met - thus no errors must be thrown.');
+  });
+
+  it('should throw if element is required but has exempt callback that returns false', () => {
+    class Proto {
+      @querySlot('#errorMessage', {
+        required: 'error',
+        requiredMessage: 'test message',
+        exemptOn: () => {
+          return false;
+        },
+      })
+      testErrorWithMessage: HTMLDivElement;
+
+      firstUpdated() {
+        // do nothing
+      }
+
+      querySelector() {
+        // do nothing
+      }
+    }
+
+    const proto = new Proto();
+
+    let errorMessage: string;
+
+    try {
+      proto.firstUpdated();
+    } catch (e) {
+      errorMessage = e.toString();
+    }
+
+    expect(errorMessage).toBe('Error: test message');
+  });
+
   it('should support native decorator API proposal', () => {
     const proto = { key: 'testEvent' };
     const conf = querySlot('#test')(proto, undefined);

@@ -176,16 +176,16 @@ function flattenTokens(theme: any) {
 function convertCSSValue(token: Token, base = 20, fallback = true) {
   let value = token.value;
 
-  if (token.config.absolute) {
+  if (token.alias instanceof Token) {
+    value = `var(--cds-${camelCaseToKebab(token.alias.name)}${
+      fallback ? `, ${convertCSSValue(token.alias, 20, fallback)}` : ''
+    })`;
+  } else if (token.config.absolute) {
     value = token.value;
   } else if (typeof token.value === 'number') {
     value = `${(token.value / base).toFixed(base === 20 ? 2 : 4)}rem`;
   } else if (isHSL(token.value)) {
     value = `hsl(${token.value[0]}, ${token.value[1]}%, ${token.value[2]}%)`;
-  } else if (token.value instanceof Token) {
-    value = `var(--cds-${camelCaseToKebab(token.value.name)}${
-      fallback ? `, ${convertCSSValue(token.value, 20, fallback)}` : ''
-    })`;
   }
 
   return value;

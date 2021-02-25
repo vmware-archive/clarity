@@ -259,6 +259,9 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     this.subscriptions.push(
       this.optionSelectionService.selectionChanged.subscribe((newSelection: ComboboxModel<T>) => {
         this.updateInputValue(newSelection);
+        if (this.multiSelect) {
+          this.positionService.realign();
+        }
         if (!this.multiSelect && newSelection && !newSelection.isEmpty()) {
           this.toggleService.open = false;
         }

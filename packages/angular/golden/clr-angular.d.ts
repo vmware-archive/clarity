@@ -1247,10 +1247,9 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     open(): void;
 }
 
-export declare class ClrModalBody {
-    tabindex: number;
-    mouseDown(): void;
-    mouseUp(): void;
+export declare class ClrModalBody implements OnDestroy {
+    constructor(ngZone: NgZone, renderer: Renderer2, host: ElementRef<HTMLElement>);
+    ngOnDestroy(): void;
 }
 
 export declare class ClrModalModule {

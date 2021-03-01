@@ -1,7 +1,6 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
-import { RuleFix, RuleFixer } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
+import { RuleContext, RuleFix, RuleFixer } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 import { HTMLAttribute } from 'eslint-html-parser';
-import { Context } from 'vm';
 import { HTMLElement } from '../../types/index';
 import { lintDecoratorTemplate } from '../decorator-template-helper';
 import { getDeprecatedClassFixes } from '../html-fixer-helpers';
@@ -31,7 +30,7 @@ function getClassFixes(fixer: RuleFixer, classNode: HTMLAttribute | undefined, c
   return getDeprecatedClassFixes(fixer, classNode, fixerMap);
 }
 
-function lintListElement(context: Context, node: HTMLElement): void {
+function lintListElement(context: RuleContext<any, any>, node: HTMLElement): void {
   const classNode = node.attributes?.find(attribute => attribute.attributeName.value === 'class');
   const classes = classNode?.attributeValue?.value?.split(' ') || [];
   if (hasDisallowedClass(classes)) {

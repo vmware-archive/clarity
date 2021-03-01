@@ -7,6 +7,7 @@ import noClrDatalist from './rules/no-clr-datalist';
 import noClrForm from './rules/no-clr-form';
 import noClrIcon from './rules/no-clr-icon';
 import noClrInput from './rules/no-clr-input';
+import noClrLabel from './rules/no-clr-label';
 import noClrList from './rules/no-clr-list';
 import noClrModal from './rules/no-clr-modal';
 import noClrPassword from './rules/no-clr-password';
@@ -27,6 +28,7 @@ module.exports = {
     'no-clr-form': noClrForm,
     'no-clr-icon': noClrIcon,
     'no-clr-input': noClrInput,
+    'no-clr-label': noClrLabel,
     'no-clr-list': noClrList,
     'no-clr-modal': noClrModal,
     'no-clr-password': noClrPassword,

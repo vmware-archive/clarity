@@ -1,20 +1,40 @@
 import { RuleFixer, RuleFix } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
 import { HTMLAttribute, HTMLElement } from '../types';
 
+export function insertTextAfterNode(node: HTMLAttribute | HTMLElement, text: string, fixer: RuleFixer): RuleFix {
+  return fixer.insertTextAfter(node as any, ` ${text}`);
+}
+
+export function removeAttribute(attributeToRemove: HTMLAttribute, fixer: RuleFixer): RuleFix {
+  const attributeText = attributeToRemove.value;
+  const parentText = attributeToRemove.parent.value;
+  const startIndex = parentText.indexOf(attributeText);
+  const endIndex = startIndex + attributeText.length;
+
+  const symbolBefore = parentText[startIndex - 1] || '';
+  const symbolAfter = parentText[endIndex + 1] || '';
+  let [removeRangeStart, removeRangeEnd] = attributeToRemove.range;
+  if (symbolBefore === ' ') {
+    removeRangeStart -= 1;
+  } else if (symbolAfter === ' ') {
+    removeRangeEnd += 1;
+  }
+
+  return fixer.removeRange([removeRangeStart, removeRangeEnd]);
+}
+
 function getSingleDeprecatedClassFix(
   oldStatus: string,
   classAttribute: HTMLAttribute,
   deprecatedClassToAttributeMap: any,
   fixer: RuleFixer
 ): RuleFix | undefined {
-  const statusAttribute = deprecatedClassToAttributeMap[oldStatus];
-  if (!statusAttribute) {
+  const newValue = deprecatedClassToAttributeMap[oldStatus];
+  if (!newValue) {
     return;
   }
 
-  const newAttributeFixer = fixer.insertTextAfter(classAttribute as any, ` ${statusAttribute}`);
-
-  return newAttributeFixer;
+  return insertTextAfterNode(classAttribute, newValue, fixer);
 }
 
 export function isDeprecatedClassFactory(deprecatedClassToAttributeMap): (value: string) => boolean {
@@ -86,11 +106,26 @@ export function getTagFixes(fixer: RuleFixer, node: HTMLElement, oldTag: string,
   const openingTagEnd = openingTagStart + openingTag.length;
 
   const closingTagStart = value.lastIndexOf(closingTag) + openingTagStart;
-
   const closingTagEnd = closingTagStart + closingTag.length - 1;
 
   return [
     fixer.replaceTextRange([openingTagStart, openingTagEnd], `<${newTag}`),
     fixer.replaceTextRange([closingTagStart, closingTagEnd], `</${newTag}`),
+  ];
+}
+
+export function encloseNode(
+  node: HTMLElement,
+  openingEnclosingTag: string,
+  closingEnclosingTag: string,
+  fixer: RuleFixer
+): Array<RuleFix> {
+  const {
+    range: [start, end],
+  } = node;
+
+  return [
+    fixer.insertTextBeforeRange([start, end], openingEnclosingTag),
+    fixer.insertTextAfterRange([start, end + 1], closingEnclosingTag),
   ];
 }

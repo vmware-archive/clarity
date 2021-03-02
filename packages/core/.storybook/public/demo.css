@@ -11,11 +11,34 @@ html {
 
 body {
   box-sizing: border-box !important; /* storybook v6 inline to initial */
-  background: var(--cds-alias-color-gray-50) !important;
+  background: transparent !important;
 }
 
 .docblock-propstable-body li {
   list-style-position: outside;
+}
+
+table {
+  color: var(--cds-global-typography-color-500) !important;
+  background: var(--cds-alias-object-app-background) !important;
+}
+
+table tr,
+table tr td,
+table th,
+table td svg {
+  color: var(--cds-global-typography-color-500) !important;
+  background: transparent !important;
+}
+
+table tr {
+  border-top-color: var(--cds-alias-object-border-color) !important;
+}
+
+table td button {
+  color: var(--cds-global-typography-color-400) !important;
+  font-weight: 400 !important;
+  background: var(--cds-alias-object-interaction-background) !important;
 }
 
 /* Demo Components */
@@ -25,7 +48,7 @@ cds-demo {
 
 cds-demo[layout],
 .layout-demo {
-  background: var(--cds-global-color-cool-gray-200);
+  background: var(--cds-global-color-cool-gray-300);
   overflow: hidden;
   display: inline-block;
 }
@@ -53,6 +76,7 @@ cds-placeholder {
   align-items: center;
   background: var(--cds-global-color-cool-gray-700);
   color: var(--cds-global-color-gray-0);
+  font-size: var(--cds-global-typography-body-font-size);
   min-width: 50px;
   min-height: 50px;
 }
@@ -93,47 +117,78 @@ iframe[resizable] {
 }
 
 cds-card {
-  background: hsl(0, 0%, 100%);
-  padding: 1rem;
-  border: 1px solid hsl(0, 0%, 87%);
-  border-radius: 3px;
+  background: var(--cds-alias-object-container-background);
+  border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
+  border-radius: var(--cds-alias-object-border-radius-100);
+  box-shadow: var(--cds-alias-object-shadow-100);
+  padding: var(--cds-global-space-8);
+  color: var(--cds-global-typography-color-500);
   display: block;
   width: 100%;
 }
 
-.space-demo {
-  height: 20px;
-  display: inline-block;
-  background: #2d2d2d;
+.docs-story {
+  background: var(--cds-alias-object-app-background) !important;
+}
+
+.docblock-source {
+  background: var(--cds-global-color-gray-50) !important;
 }
 
 .sbdocs.sbdocs-wrapper {
   padding-top: 30px !important;
   min-height: 100vh;
+  background: transparent !important;
 }
 
 .sbdocs.sbdocs-preview > div > div {
   padding: 0 !important;
 }
 
-[id*='story--'] {
-  background: var(--cds-alias-object-app-background) !important;
+.sbdocs-preview {
+  background: transparent !important;
+}
+
+.sbdocs p code,
+.sbdocs li code {
+  color: var(--cds-global-typography-color-500) !important;
+  background-color: var(--cds-alias-object-app-background) !important;
+  border: 0 !important;
+}
+
+.docs-story > div:last-child button {
+  background: var(--cds-alias-object-container-background) !important;
+  color: var(--cds-global-typography-color-500) !important;
+  border-radius: 0;
+}
+
+.docs-story [id*='story--'],
+[id*='--dark-theme'] [cds-theme] {
   padding: 36px 24px;
 }
 
-[id*='story--'][id*='-dark-theme'],
-[cds-theme='dark'] {
-  background: var(--cds-global-color-construction-1000) !important;
-}
-
-.cds-theme-light [id*='story--'][id*='-dark-theme'],
-.cds-theme-dark [id*='story--'][id*='-dark-theme'] {
-  background: var(--cds-alias-object-app-background) !important;
+[id*='--dark-theme'] {
+  padding: 0;
 }
 
 .sb-inline-icon {
   width: 16px;
   color: #ccc;
+}
+
+.sbdocs-title,
+.sbdocs-h1,
+.sbdocs-h2,
+.sbdocs-h3,
+.sbdocs-p,
+.sbdocs-li {
+  color: var(--cds-global-typography-color-500) !important;
+  border-color: var(--cds-alias-object-border-color-tint) !important;
+  line-height: 1.5em;
+}
+
+.sbdocs a[aria-hidden='true'] > svg {
+  fill: var(--cds-global-typography-color-500) !important;
 }
 
 .sbdocs-title,
@@ -146,7 +201,7 @@ cds-card {
 }
 
 .sbdocs-h1 {
-  margin: 0 0 24px 0 !important;
+  margin: 12px 0 24px 0 !important;
 }
 
 .sbdocs-img,
@@ -157,7 +212,7 @@ cds-card {
 }
 
 .demo-layout {
-  margin: -1rem;
+  margin: -20px;
 }
 
 .sbdocs .demo-layout {
@@ -254,8 +309,4 @@ cds-card {
 
 #story--foundation-design-tokens-stories--interaction > div {
   min-height: 450px !important;
-}
-
-#story--stories-clarity--core {
-  background: var(--cds-global-color-gray-0) !important;
 }

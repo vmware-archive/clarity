@@ -22,17 +22,17 @@ always be prefered over global and component tokens. Component tokens are values
 that are highly specific to a component instance. These values should be rarely
 changed in the system.
 
-```scss
-// raw value
+```css
+/* raw value */
 hsl(93, 80, 23)
 
-// global token
+/* global token */
 --cds-global-color-green-800 
 
-// alias token
+/* alias token */
 --cds-alias-color-status-success
 
-// component token
+/* component token */
 my-element {
   --background: some-color;
 }

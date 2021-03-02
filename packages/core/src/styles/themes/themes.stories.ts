@@ -11,7 +11,6 @@ export default {
   title: 'Stories/Themes',
   parameters: {
     options: { showPanel: true },
-    a11y: { disable: true },
   },
 };
 

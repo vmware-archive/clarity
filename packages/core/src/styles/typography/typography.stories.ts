@@ -12,7 +12,6 @@ export default {
   decorators: [withDesign],
   parameters: {
     options: { showPanel: true },
-    a11y: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=0%3A2677',

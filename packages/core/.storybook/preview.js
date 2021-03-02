@@ -1,7 +1,7 @@
+import { document } from 'global';
 import '!style-loader!css-loader!./public/demo.css';
 import { setCustomElements } from '@storybook/web-components';
 import { applyPolyfill } from 'custom-elements-hmr-polyfill';
-import { withCssResources } from '@storybook/addon-cssresources';
 import customElements from '../dist/core/custom-elements.json';
 
 window.HMR_SKIP_DEEP_PATCH = true;
@@ -105,7 +105,52 @@ export const parameters = {
   },
 };
 
-export const decorators = [withCssResources];
+const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : '';
+export const globalTypes = {
+  theme: {
+    name: 'Themes',
+    description: 'Available built in Clarity themes',
+    defaultValue: defaultTheme,
+    toolbar: {
+      items: [
+        { value: '', title: 'Light Theme' },
+        { value: 'dark', title: 'Dark Theme' },
+      ],
+    },
+  },
+  baseFont: {
+    name: 'Base Font',
+    description: 'Base Font for Document',
+    defaultValue: '125%',
+    toolbar: {
+      items: [
+        { value: '125%', title: 'Base 20px (Default)' },
+        { value: '100%', title: 'Base 16px' },
+      ],
+    },
+  },
+  // motion: {
+  //   name: 'Motion',
+  //   description: 'Clarity Animations',
+  //   defaultValue: '',
+  //   toolbar: {
+  //     items: [
+  //       { value: '', title: 'Enable Animations' },
+  //       { value: 'low-motion', title: 'Disable Animations' },
+  //     ],
+  //   },
+  // },
+};
+
+const themeDecorator = (story, { globals }) => {
+  const themes = `${globals.theme ? globals.theme : ''} ${globals.motion ? globals.motion : ''}`;
+  document.body.setAttribute('cds-theme', `${themes}`);
+  window.parent.document.body.setAttribute('cds-theme', `${themes}`);
+  document.documentElement.setAttribute('cds-base-font', `${globals.baseFont === '100%' ? '16' : ''}`);
+  return story();
+};
+
+export const decorators = [themeDecorator];
 
 // https://github.com/storybookjs/storybook/tree/master/app/web-components
 setCustomElements(customElements);
@@ -113,4 +158,3 @@ setCustomElements(customElements);
 // We have this here since storybook does not have a easy way to set the <html> element in demos
 // The token system generates a base 16px set of variables for apps that may not be able to easily set the base font to 125%
 document.body.setAttribute('cds-text', 'body');
-// document.querySelector('html').setAttribute('cds-base-font', '16');

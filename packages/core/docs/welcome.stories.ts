@@ -10,14 +10,18 @@ export default {
   title: 'Stories/Clarity',
   parameters: {
     options: { showPanel: false },
-    a11y: { disable: true }, // disabled for welcome doc to prevent page jump
   },
 };
 
 export const core = () => {
   return html`
     <section cds-layout="vertical gap:xl align:center m-t:xxl" cds-text="center">
-      <img src="./assets/images/clarity-logo.svg" alt="Clarity Core" cds-layout="fill" style="max-width: 8rem" />
+      <img
+        src="./assets/images/clarity-logo.svg"
+        alt="Clarity Core"
+        cds-layout="fill"
+        style="max-width: calc(var(--cds-global-layout-space-xl) * 3)"
+      />
       <h1 cds-text="display">
         Clarity Core
       </h1>
@@ -56,4 +60,9 @@ export const core = () => {
       </div>
     </section>
   `;
+};
+
+// empty story is used to trigger the toolbar options for doc only pages
+export const themeSwitcher = () => {
+  return html`<div></div>`;
 };

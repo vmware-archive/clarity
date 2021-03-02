@@ -11,7 +11,6 @@ export default {
   title: 'Stories/Design Tokens',
   parameters: {
     options: { showPanel: true },
-    a11y: { disable: true },
   },
 };
 
@@ -20,20 +19,25 @@ interface Token {
   alias: string;
   value: string | number | number[];
   formattedValue?: string | TemplateResult;
+  computedValue?: string;
   demo?: string | TemplateResult;
 }
 
-function getTokenTable(key: string) {
+function getTokenTable(key: string, globals: any = {}) {
   return html` <style>
       .token-table {
         width: 100%;
       }
 
       .token-table tr {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid var(--cds-alias-object-border-color-tint);
         line-height: 0;
         min-height: 45px;
         width: 100%;
+      }
+
+      .token-table tr:last-child {
+        border-bottom: 0;
       }
 
       .token-table td {
@@ -41,12 +45,12 @@ function getTokenTable(key: string) {
       }
     </style>
     <table class="token-table">
-      <tr cds-layout="grid gap:lg p-y:md align:horizontal-stretch align:vertical-center" cds-text="left">
+      <tr cds-layout="grid gap:lg p:md align:horizontal-stretch align:vertical-center" cds-text="left">
         <th cds-layout="col:5">Token</th>
         <th cds-layout="col:3">Value</th>
         <th cds-layout="col:4">Demo</th>
       </tr>
-      ${getTokens(key).map(token => {
+      ${getTokens(key, globals).map(token => {
         return html`<tr cds-layout="grid gap:md p:md align:horizontal-stretch align:vertical-center">
           <td cds-layout="col:5">
             <span cds-text="body">${token.name}</span>
@@ -60,20 +64,58 @@ function getTokenTable(key: string) {
     </table>`;
 }
 
-function getTokens(val: string) {
+let currentTheme = getThemeStyleMap(':root');
+const priorTheme = ':root';
+
+function getTokens(val: string, globals: any) {
+  if (priorTheme !== globals.theme) {
+    currentTheme = getThemeStyleMap(globals.theme ? `[cds-theme~="${globals.theme}"]` : ':root');
+  }
+
   return Object.entries(tokenData)
     .filter(([key]) => key.includes(val))
     .map((token: [string, any]) => {
-      return createToken({
-        name: tokenToCssProp(token[0]),
-        alias: token[1].alias ? tokenToCssProp(token[1].alias) : '',
-        value: token[1].value,
-      });
+      return createToken(
+        {
+          name: tokenToCssProp(token[0]),
+          alias: token[1].alias ? tokenToCssProp(token[1].alias) : '',
+          value: token[1].value,
+        },
+        globals,
+        currentTheme
+      );
     });
 }
 
-function createToken(token: Token) {
-  token.formattedValue = html`<span cds-text="code">${token.value}</span>`;
+function getComputedTokenValue(token: Token, globals: any) {
+  const el = document.createElement('div');
+  el.setAttribute('cds-theme', globals.theme);
+  document.body.appendChild(el);
+  const value = getComputedStyle(el).getPropertyValue(token.name);
+  document.body.removeChild(el);
+  return value;
+}
+
+function getThemeStyleMap(themeSelector: string) {
+  const sheet = Array.from(document.styleSheets)
+    .filter(sheet => sheet.href === null || sheet.href.startsWith(window.location.origin))
+    .filter(sheet => Array.from(sheet.cssRules).find((rule: any) => rule.selectorText === themeSelector))[0];
+
+  return sheet.cssRules[0].cssText
+    .replace(`${themeSelector} {`, '')
+    .replace('}', '')
+    .split(';')
+    .filter((r: any) => r.length > 1)
+    .reduce((prev: any, next: string) => {
+      const rule = next.split(':');
+      return { ...prev, [rule[0].trim()]: rule[1].trim() };
+    }, {});
+}
+
+function createToken(token: Token, globals: any, currentTheme: any) {
+  token.computedValue = getComputedTokenValue(token, globals);
+  token.formattedValue = html`<span cds-text="code">${token.computedValue}</span>`;
+  token.alias = token.alias ? currentTheme[token.name] : undefined;
 
   if (isColorToken(token)) {
     setColorToken(token);
@@ -144,21 +186,23 @@ function isSpaceToken(token: Token) {
 function setNumberToken(token: Token) {
   token.formattedValue = html` <div cds-layout="vertical gap:md">
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
-    <p cds-text="secondary">Web: <span cds-text="code">${((token.value as number) / 20).toFixed(2)}rem</span></p>
+    <p cds-text="secondary">Web: <span cds-text="code">${token.computedValue}</span></p>
     <p cds-text="secondary">Android: <span cds-text="code">${token.value}dp</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">${token.value}pt</span></p>
   </div>`;
 }
 
 function setColorToken(token: Token) {
-  const value = token.value as number[];
-  const hsl = `hsl(${value[0]}, ${value[1]}%, ${value[2]}%)`;
-  const rgb = hslToRgb(value[0], value[1], value[2]);
+  const hsl = /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/g
+    .exec(token.computedValue)
+    .slice(1)
+    .map(v => parseInt(v.replace('%', '')));
+  const rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
   const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
 
   token.formattedValue = html` <div cds-layout="vertical gap:md">
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
-    <p cds-text="secondary">Web: <span cds-text="code">${hsl}</span></p>
+    <p cds-text="secondary">Web: <span cds-text="code">hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})</span></p>
     <p cds-text="secondary">Android: <span cds-text="code">${hex}</span></p>
   </div>`;
@@ -171,7 +215,7 @@ function setColorToken(token: Token) {
 function setSpaceToken(token: Token) {
   setNumberToken(token);
   token.demo = html`<div
-    style="height: 20px; background: var(--cds-global-color-cool-gray-900); width: ${token.value}px"
+    style="height: 20px; background: var(--cds-global-typography-color-200); width: var(${token.name})"
   ></div>`;
 }
 
@@ -222,7 +266,7 @@ export const objectBorderRadius = () => getTokenTable('aliasObjectBorderRadius')
 
 export const objectBorderWidth = () => getTokenTable('aliasObjectBorderWidth');
 
-export const objectBorderColor = () => getTokenTable('aliasObjectBorderColor');
+export const objectBorderColor = (_args: any, { globals }: any) => getTokenTable('aliasObjectBorderColor', globals);
 
 export const objectShadow = () => getTokenTable('aliasObjectShadow');
 
@@ -230,7 +274,7 @@ export const objectOpacity = () => getTokenTable('aliasObjectOpacity');
 
 export const objectTransparency = () => getTokenTable('aliasObjectTransparency');
 
-export const statusColor = () => getTokenTable('aliasStatus');
+export const statusColor = (_args: any, { globals }: any) => getTokenTable('aliasStatus', globals);
 
 export const aliases = () => getTokenTable('alias');
 
@@ -242,7 +286,7 @@ export const spacing = () => getTokenTable('globalSpace');
 
 export const typography = () => getTokenTable('globalTypography');
 
-export const color = () => getTokenTable('globalColor');
+export const color = (_args: any, { globals }: any) => getTokenTable('globalColor', globals);
 
 export function objectLayers() {
   return html`
@@ -276,7 +320,7 @@ export function objectLayers() {
       }
     </style>
 
-    <div class="cds-object-app-demo" cds-layout="vertical gap:lg align:stretch">
+    <div class="cds-object-app-demo" cds-layout="vertical gap:lg align:stretch p:lg">
       <h3 cds-text="section">App</h3>
       <p cds-text="body">--cds-alias-object-app-background</p>
       <div class="cds-object-container-demo" cds-layout="vertical gap:lg p:lg">

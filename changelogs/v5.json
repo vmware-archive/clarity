@@ -2,6 +2,61 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.0.3",
+      "date": "2021-03-04",
+      "description": "This is a bug fix release.",
+      "fix": [
+        {
+          "issue": 5675,
+          "title": "Core storybook theme switcher",
+          "project": "Core",
+          "scope": "Utility"
+        },
+        {
+          "issue": 5656,
+          "title": "Core global css token reference",
+          "project": "Core",
+          "scope": "Design Tokens"
+        },
+        {
+          "issue": 5648,
+          "title": "Static errors inside datagrid-pagination",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5646,
+          "title": "React input native input event change",
+          "project": "Core",
+          "scope": "Input"
+        },
+        {
+          "issue": 5653,
+          "title": "Combobox popover not repositioned after selection",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5647,
+          "title": "Disabled radio button style",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 5638,
+          "title": "Landing first image on super wide screen",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5639,
+          "title": "Website modal demos not working",
+          "project": "Website",
+          "scope": "Documentation"
+        }
+      ]
+    },
+    {
       "version": "5.0.2",
       "date": "2021-02-18",
       "description": "This is a bug fix release.",

@@ -2,6 +2,32 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.13",
+      "date": "2021-03-04",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5655,
+          "title": "Tab navigation skipped for children when stack-block is not expanded",
+          "project": "Angular",
+          "scope": "Stack View"
+        },
+        {
+          "issue": 5654,
+          "title": "Combobox popover not repositioned after selection",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5652,
+          "title": "Disabled radio button style",
+          "project": "Angular",
+          "scope": "Form"
+        }
+      ]
+    },
+    {
       "version": "4.0.12",
       "date": "2021-02-18",
       "description": "This is a bug fix release.",

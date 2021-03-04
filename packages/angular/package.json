@@ -13,7 +13,7 @@
     "serve:dark": "ng serve dev -c dark",
     "storybook": "start-storybook -s .storybook/public -p 6006",
     "storybook:build": "build-storybook -s .storybook/public -c .storybook -o ../../dist/website/storybook/angular --quiet",
-    "postinstall": "ngcc --create-ivy-entry-points && node ../../scripts/ngcc-clean",
+    "postinstall": "ngcc && node ../../scripts/ngcc-clean",
     "build": "npm-run-all build:lib:cds build:lib:clr build:package:cds build:package:clr build:update:cds build:update:clr",
     "build:preinstall": "yarn run build:preinstall:cds && yarn run build:preinstall:clr",
     "build:preinstall:cds": "mkdir -p ../../dist/angular/",

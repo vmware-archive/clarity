@@ -17,9 +17,9 @@ Datalist is a type of list that becomes contextualized through the selection of 
 
 :::component-section-level-one
 
-Use a datalist when the user needs to choose from a list of items that is long enough for it to be filtered it before selection. Or, there are pre-defined options but the user needs the ability to input a custom value for their use case.
+Use a datalist when the user needs to choose from a list of items that are long enough for it to be filtered before selection. Or, there are pre-defined options but the user needs the ability to input a custom value for their use case.
 
-Use a datalist of you want to provide a standard set of options but also allow the user to enter a custom value that may not be pre-defined.
+Use a datalist to provide a standard set of options but also allow the user to enter a custom value that may not be pre-defined.
 
 Do not confuse a datalist element with the select input. Datalist elements usually have more than 13 options that the user will need to filter or narrow down before making a choice. If there are 3-13 options, consider using the [select](../select/) input.
 

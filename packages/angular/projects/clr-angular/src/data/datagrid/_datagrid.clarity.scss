@@ -1398,11 +1398,14 @@
       }
     }
     .datagrid-cell {
-      cds-icon,
       clr-icon {
         margin-top: (-1 * $clr_baselineRem_0_125) - $clr_baselineRem_1px;
         margin-bottom: -1 * $clr_baselineRem_0_125;
         transform: translateY(-1 * $clr_baselineRem_1px);
+      }
+      cds-icon {
+        margin-top: (-1 * $clr_baselineRem_0_125) - $clr_baselineRem_1px;
+        margin-bottom: -1 * $clr_baselineRem_0_125;
       }
       .badge {
         margin-top: -1 * $clr_baselineRem_0_125;

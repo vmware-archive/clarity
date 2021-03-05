@@ -41,9 +41,17 @@ export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, st
 }
 
 export function pxToRem(pxValue: number) {
-  const baseProp = getCssPropertyValue('--cds-global-typography-base-font-size');
-  const baseFontSize = (16 * parseInt(baseProp !== '' ? baseProp : '100%')) / 100;
-  return `${pxValue / baseFontSize}rem`;
+  let base = parseInt(document.documentElement.getAttribute('cds-base-font') as string);
+
+  if (!base) {
+    const prop = window
+      .getComputedStyle(document.body, null)
+      .getPropertyValue('--cds-global-typography-base-font-size');
+    base = (16 * parseInt(prop !== '' ? prop : '100%')) / 100;
+    document.documentElement.setAttribute('cds-base-font', `${base}`);
+  }
+
+  return `${pxValue / base}rem`;
 }
 
 export function getCssPropertyValue(

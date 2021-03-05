@@ -33,10 +33,11 @@ export function getUpdateSizeStrategy(size: string) {
 
 export function updateIconSizeStyle(el: CdsIcon, size: string) {
   const updateStrategy = getUpdateSizeStrategy(size);
-  const val = pxToRem(parseInt(size));
+  let val = '';
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
+      val = pxToRem(parseInt(size)); // set val in block to run expensive call only when needed
       updateElementStyles(el, ['width', val], ['height', val]);
       return;
     case SizeUpdateStrategies.ValidSizeString:

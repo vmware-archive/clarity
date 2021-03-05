@@ -472,7 +472,7 @@ const aliases = {
         value: token(color.gray[0]),
         hover: token(color.blue[50]),
         active: token(color.blue[100]),
-        selected: token(color.blue[50]),
+        selected: token(color.blue[200]),
         disabled: token(color.gray[0]),
         highlight: token(color.blue[700]),
       },

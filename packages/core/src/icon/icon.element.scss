@@ -55,11 +55,11 @@ svg {
 
 // colors
 :host([status='success']) {
-  --color: #{$cds-alias-status-success-shade};
+  --color: #{$cds-alias-status-success};
 }
 
 :host([status='danger']) {
-  --color: #{$cds-alias-status-danger-shade};
+  --color: #{$cds-alias-status-danger};
 }
 
 :host([status='warning']) {

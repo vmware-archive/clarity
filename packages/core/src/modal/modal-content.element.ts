@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@cds/core/internal';
+import { baseStyles, internalProperty } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 
 /**
@@ -31,6 +31,8 @@ import { html, LitElement } from 'lit-element';
  * @element cds-modal-content
  */
 export class CdsModalContent extends LitElement {
+  @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr = -1; // don't override native prop as it stops native focus behavior
+
   render() {
     return this.hasAttribute('cds-layout')
       ? html`<slot></slot>`

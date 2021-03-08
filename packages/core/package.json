@@ -110,6 +110,10 @@
     "typescript": "^4.0.0",
     "wc-sass-render": "1.2.3",
     "web-component-analyzer": "1.1.6",
-    "webpack-cli": "3.3.11"
+    "webpack-cli": "3.3.11",
+    "webpack":"^4.0.0",
+    "babel-loader": "^8.0.0",
+    "style-loader": "^1.2.1",
+    "css-loader": "^3.5.0"
   }
 }

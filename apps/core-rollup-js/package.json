@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cds/city": "1.1.0",
-    "@cds/core": "./dist/core",
+    "@cds/core": "../../dist/core",
     "normalize.css": "8.0.1"
   },
   "devDependencies": {

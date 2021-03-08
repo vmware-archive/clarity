@@ -12,8 +12,8 @@
   "targets": {
     "browserModern": {
       "engines": {
-        "browserslist": [
-          "last 1 Chrome version"
+        "browsers": [
+          "last 2 Chrome versions"
         ]
       }
     }
@@ -21,12 +21,13 @@
   "license": "MIT",
   "dependencies": {
     "@cds/city": "^1.1.0",
-    "@cds/core": "./dist/core",
+    "@cds/core": "../../dist/core",
     "angular": "^1.8.0",
+    "del-cli": "^3.0.1",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "parcel": "^2.0.0-beta.1",
+    "parcel": "2.0.0-beta.1",
     "source-map-explorer": "^2.1.2"
   }
 }

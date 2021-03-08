@@ -42,6 +42,8 @@
     "vuepress-plugin-smooth-scroll": "^0.0.10",
     "vuepress-plugin-table-of-contents": "^1.1.7",
     "vuepress-plugin-robots": "^1.0.1",
-    "vuepress-plugin-sitemap": "^2.3.1"
+    "vuepress-plugin-sitemap": "^2.3.1",
+    "webpack": "^4.0.0",
+    "ts-node": "8.2.0"
   }
 }

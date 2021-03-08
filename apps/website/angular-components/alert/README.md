@@ -58,14 +58,16 @@ Order standard alerts by the urgency in which the user needs to pay attention to
 <div class="clr-row">
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Info Alerts" src="/images/angular-components/alert/info-alert.png" />
+<!-- Seems like we did switch the images names for `success` with `info` and `info` with `success` Amazon S3 -->
+<ClrImage title="Info Alerts" src="/images/angular-components/alert/success-alert.png" />
 </DocInset>
 <h4>Info</h4>
 <p>Reserved for errors, malfunctions, as well as critical issues like license expiration.</p>
 </div>
 <div class="clr-col">
 <DocInset>
-<ClrImage title="Success Alert" src="/images/angular-components/alert/success-alert.png" />
+<!-- Seems like we did switch the images names for `success` with `info` and `info` with `success` in Amazon S3 -->
+<ClrImage title="Success Alert" src="/images/angular-components/alert/info-alert.png" />
 </DocInset>
 <h4>Success</h4>
 <p>Reserved to provide to a static persistent success message.</p>
@@ -74,7 +76,7 @@ Order standard alerts by the urgency in which the user needs to pay attention to
 
 ### Anatomy
 
-A standard alert consist of an icon, a message, and optional actions in a container. -Left align the icon and message. Right aligned the actions.
+A standard alert consists of an icon, a message, and optional actions in a container. Left-align the icon and message. Right-aligned the actions.
 
 ### Size
 
@@ -97,7 +99,7 @@ Standard alerts are used in the context of an application either in the content 
 
 <ClrImage title="Alert in modal" src="/images/angular-components/alert/modal.png" align="center" />
 
-Alerts could appear within modals. It is recommended that no more than one alert appear within a modal. Their function should not be to validate, validation should be done inline and closer to the error itself.
+Alerts could appear within modals. It is recommended that no more than one alert appears within a modal. Their function should not be to validate, validation should be done inline and closer to the error itself.
 
 #### In Cards
 
@@ -128,11 +130,11 @@ There are three different sub-types of app-level alerts info, warning, and error
 App-level alerts follow the same urgency order as standard alerts: error, warning, and info.
 
 **Why no success app-level alert?**
-App-level alerts are global in nature. Reporting a success of an operation should either be communicated within context or as a notification message.
+App-level alerts are global in nature. Reporting a success of an operation should either be communicated within a context or as a notification message.
 
 ### Anatomy
 
-An app-level alert consist of an icon, a message, and optional actions in a container. - All elements are centered-aligned. -Add anatomy for inline alerts - Need to add pagination
+An app-level alert consists of an icon, a message, and optional actions in a container. - All elements are centered-aligned. -Add anatomy for inline alerts - Need to add pagination
 
 ## Placement
 
@@ -290,7 +292,7 @@ This class must be applied with `.alert` to render an app-level alert.
 ## Accessibility
 
 <cds-alert-group status="warning" type="default">
-   <cds-alert>Actionable controls inside dynamically generated alerts are not accessible to screen reader users! For this reason Clarity does not recommend using dropdowns, buttons, links inside alerts that appear as dynamic notifications.</cds-alert>
+   <cds-alert>Actionable controls inside dynamically generated alerts are not accessible to screen reader users! For this reason, Clarity does not recommend using dropdowns, buttons, links inside alerts that appear as dynamic notifications.</cds-alert>
 </cds-alert-group>
 
 Accessibility problems related to using actionable controls inside dynamically generated alerts:
@@ -301,7 +303,7 @@ Accessibility problems related to using actionable controls inside dynamically g
 
 It is acceptable to use actions in static alerts. The following guidelines are recommended:
 
-- Controls can be dropdown, button or link elements.
+- Controls can be a dropdown, button, or link elements.
 - Buttons should be used for actions, links for navigation.
 - The text for these controls should be as descriptive as possible.
   <cds-alert-group type="default" status="warning">

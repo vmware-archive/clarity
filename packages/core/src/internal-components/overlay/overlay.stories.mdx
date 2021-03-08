@@ -21,6 +21,10 @@ Until an overlay is closed, interaction is limited to the contents of the overla
 
 An overlay can be closed by pressing the escape key, clicking on the backdrop behind the overlays content, or defining a custom trigger that fires the `closeOverlay()` method.
 
+### Selecting Text Inside an Overlay
+
+To enable copy-and-paste of the text inside an overlay, make sure to add `tabindex="-1"` on the wrapper element around the content. Multiple examples are given below. Note that modals do this for you already. But you will need to this for any custom overlays built using this internal component in your own application.
+
 ## Installation
 
 To use the internal component add the register import to the `register.ts` of

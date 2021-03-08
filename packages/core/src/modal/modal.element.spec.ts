@@ -37,7 +37,9 @@ describe('modal element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots.default).toBe(`<cds-modal-content><p><!---->${placeholderContent}<!----></p></cds-modal-content>`);
+    expect(slots.default).toBe(
+      `<cds-modal-content tabindex="-1"><p><!---->${placeholderContent}<!----></p></cds-modal-content>`
+    );
     expect(slots['modal-header']).toBe(
       `<cds-modal-header slot="modal-header"><!---->${placeholderHeader}<!----></cds-modal-header>`
     );

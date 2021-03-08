@@ -37,9 +37,7 @@ export const API = (args: any) => {
     <cds-demo popover>
       <cds-button status="primary" type="button" @click=${showApiOverlay}>Show Overlay</cds-button>
       <cds-internal-overlay ...="${spreadProps(getElementStorybookArgs(args))}" hidden id="${overlayId}">
-        <div cds-layout="p:lg" style="background: white">
-          ${args.default}
-        </div>
+        <div cds-layout="p:lg" style="background: white">${args.default}</div>
       </cds-internal-overlay>
     </cds-demo>
   `;
@@ -112,7 +110,7 @@ export const interactive = () => {
     </style>
     <cds-button status="primary" type="button" @click=${showOverlay}>Show Overlay Demo</cds-button>
     <cds-internal-overlay hidden id="${overlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
         <h1 cds-text="section">An overlay demo</h1>
         <p cds-text="body">I am an overlay.</p>
         <cds-button block status="danger" type="button" @click=${hideOverlay}>Close Overlay Demo</cds-button>
@@ -166,8 +164,8 @@ export const multiple = () => {
     </style>
     <cds-button status="primary" type="button" @click=${showMultiOverlay}>Show Layered Overlays</cds-button>
     <cds-internal-overlay hidden id="${multiOverlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay">
-        <h1 cds-text="section">A demo of layered overlays</h1>
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
+        <h1 cds-text="section" tabindex="-1">A demo of layered overlays</h1>
         <p cds-text="body">
           I am a demo showing how overlays can be placed or layered on top of one another. I am the overlay on the
           bottom layer.
@@ -186,8 +184,8 @@ export const multiple = () => {
       </div>
     </cds-internal-overlay>
     <cds-internal-overlay hidden id="${multiChildOverlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" style="width: 300px">
-        <h1 cds-text="section">An overlay on top of another overlay</h1>
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" style="width: 300px" tabindex="-1">
+        <h1 cds-text="section" tabindex="-1">An overlay on top of another overlay</h1>
         <p cds-text="body">I am a demo of an overlay layered over another overlay!</p>
         <cds-button block status="danger" type="button" @click=${hideChildOverlay}>Close Top Overlay</cds-button>
       </div>
@@ -226,8 +224,8 @@ export const firstFocus = () => {
     </style>
     <cds-button status="primary" type="button" @click=${showOverlay}>Show Overlay With Managed Focus</cds-button>
     <cds-internal-overlay hidden id="${overlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
-        <h1 cds-text="section" tabindex="0" cds-first-focus>Overlay with first-focus</h1>
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
+        <h1 cds-text="section">Overlay with <span tabindex="-1" cds-first-focus>first-focus</span></h1>
         <p cds-text="body">
           I am an overlay with focus assigned to an element inside me. I assigned first focus to my header. It is
           assigned focus when I am opened.
@@ -267,7 +265,12 @@ export const custom = () => {
 
     <cds-demo popover>
       <cds-internal-overlay _demo-mode id="${purpleOverlayId}" class="purple-overlay">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" style="width: 480px">
+        <div
+          cds-layout="vertical gap:lg p:lg align:stretch"
+          class="my-multi-overlay"
+          style="width: 480px"
+          tabindex="-1"
+        >
           <h1 cds-text="section">I am a purple overlay</h1>
           <p cds-text="body">Hello, I am an overlay with a purple backdrop.</p>
           <div cds-layout="horizontal gap:md wrap:none align:stretch">
@@ -283,7 +286,7 @@ export const custom = () => {
         </div>
       </cds-internal-overlay>
       <cds-internal-overlay _demo-mode hidden id="${whiteOverlayId}" class="white-overlay">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
           <h1 cds-text="section">I am whitish</h1>
           <p cds-text="body">Hello, I am an overlay with a mostly opaque white backdrop!</p>
           <div cds-layout="horizontal gap:md wrap:none align:stretch">
@@ -308,7 +311,7 @@ export const custom = () => {
         </div>
       </cds-internal-overlay>
       <cds-internal-overlay _demo-mode hidden id="${orangeOverlayId}" class="orange-overlay">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
           <h1 cds-text="section" id="custom-demo-3-title">I am orange</h1>
           <p cds-text="body">Hello, I am an overlay with an opaque orange backdrop!</p>
           <cds-button
@@ -395,7 +398,7 @@ export const overrideAnimation = () => {
     </style>
     <cds-button status="primary" type="button" @click=${showOverrideOverlay}>Show Custom Exit</cds-button>
     <cds-internal-overlay hidden id="${overlayId}" cds-motion='{ "hidden": { "true": "cds-modal-hinge-exit" } }'>
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
         <h1 cds-text="section">An overlay demo</h1>
         <p cds-text="body">I am an overlay.</p>
         <cds-button block status="danger" type="button" @click=${hideOverrideOverlay}>Close Overlay Demo</cds-button>
@@ -438,7 +441,7 @@ export const lowMotion = () => {
     <div cds-theme="low-motion">
       <cds-button status="primary" type="button" @click=${showLowMotionOverlay}>Show Low Motion</cds-button>
       <cds-internal-overlay hidden id="${overlayId}" cds-motion="on">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
           <h1 cds-text="section">An overlay demo</h1>
           <p cds-text="body">I am an overlay.</p>
           <cds-button block status="danger" type="button" @click=${hideLowMotionOverlay}

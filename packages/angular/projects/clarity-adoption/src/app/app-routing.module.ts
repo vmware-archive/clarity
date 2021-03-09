@@ -9,6 +9,7 @@ import { ListPage } from './pages/list/list.page';
 import { IconsPage } from './pages/icons/icons.page';
 import { AccordionPage } from './pages/accordion/accordion.page';
 import { CheckboxPage } from './pages/checkbox/checkbox.page';
+import { AdoptionToolingPage } from './pages/adoption-tooling/adoption-tooling.page';
 
 const routes: Routes = [
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'button', component: ButtonPage },
   { path: 'label', component: LabelPage },
   { path: 'list', component: ListPage },
+  { path: 'adoption-tooling', component: AdoptionToolingPage },
 ];
 
 @NgModule({

@@ -9,7 +9,6 @@ import {
   animate,
   Animatable,
   AnimationModalEnterName,
-  baseStyles,
   i18n,
   I18nService,
   HTMLAttributeTuple,
@@ -64,7 +63,7 @@ import { styles } from './modal.element.css.js';
 })
 export class CdsModal extends CdsInternalOverlay implements Animatable {
   static get styles() {
-    return [baseStyles, ...super.styles, styles];
+    return [...super.styles, styles];
   }
 
   @i18n() i18n = I18nService.keys.modal;

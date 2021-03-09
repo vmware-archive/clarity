@@ -8,7 +8,10 @@ import {
 import '@cds/core/modal/register';
 import { createComponent } from '../converter/react-wrapper';
 
-export const CdsModal = createComponent('cds-modal', Modal, { onCloseChange: 'closeChange' });
+export const CdsModal = createComponent('cds-modal', Modal, {
+  onCloseChange: 'closeChange',
+  onCdsMotionChange: 'cdsMotionChange',
+});
 export const CdsModalActions = createComponent('cds-modal-actions', ModalActions);
 export const CdsModalContent = createComponent('cds-modal-content', ModalContent);
 export const CdsModalHeader = createComponent('cds-modal-header', ModalHeader);

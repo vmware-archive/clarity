@@ -114,3 +114,9 @@ cds-badge.product-badge {
 ```html
 <cds-badge class="product-badge">1</cds-badge>
 ```
+
+## Notes
+
+There are numerous of `!important` property usage inside our components styles.
+
+We use `!important` for slotted elements because the `::slotted` selector has very low specificity and without it a simple CSS reset can break the component styles.

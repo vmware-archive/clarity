@@ -23,6 +23,7 @@ import '@cds/core/divider/register.js';
 import { IconsPage } from './pages/icons/icons.page';
 import { AccordionPage } from './pages/accordion/accordion.page';
 import { CheckboxPage } from './pages/checkbox/checkbox.page';
+import { AdoptionToolingPage } from './pages/adoption-tooling/adoption-tooling.page';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CheckboxPage } from './pages/checkbox/checkbox.page';
     IconsPage,
     LabelPage,
     ListPage,
+    AdoptionToolingPage,
 
     /* helpers */
     SourceCodeComponent,

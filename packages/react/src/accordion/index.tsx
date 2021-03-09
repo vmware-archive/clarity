@@ -8,6 +8,7 @@ import { createComponent } from '../converter/react-wrapper';
 export const CdsAccordion = createComponent('cds-accordion', Accordion);
 export const CdsAccordionPanel = createComponent('cds-accordion-panel', AccordionPanel, {
   onExpandedChange: 'expandedChange',
+  onCdsMotionChange: 'cdsMotionChange',
 });
 export const CdsAccordionHeader = createComponent('cds-accordion-header', AccordionHeader);
 export const CdsAccordionContent = createComponent('cds-accordion-content', AccordionContent);

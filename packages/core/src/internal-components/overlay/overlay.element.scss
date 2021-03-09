@@ -56,3 +56,8 @@
 :host([hidden]) {
   --animation-duration: #{$cds-global-animation-duration-secondary};
 }
+
+// we need the check against hidden='false' here because React is pushing string through instead of adding/removing the boolean attribute
+:host([hidden*='false']) {
+  display: inline-flex !important;
+}

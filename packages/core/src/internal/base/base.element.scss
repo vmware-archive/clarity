@@ -50,9 +50,14 @@ slot {
   }
 }
 
-// https://developers.google.com/web/fundamentals/web-components/best-practices#add-a-:host-display-style-that-respects-the-hidden-attribute.
+// https://developers.google.com/web/fundamentals/web-components/best-practices#add-a-:host-display-style-that-respects-the-hidden-attribute
+// we need the check against hidden='false' here because React is pushing string through instead of adding/removing the boolean attribute
 :host([hidden]) {
   display: none !important;
+}
+
+:host([hidden*='false']) {
+  display: block !important;
 }
 
 // normalize focus styles

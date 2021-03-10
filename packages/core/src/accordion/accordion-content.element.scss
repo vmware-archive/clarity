@@ -11,6 +11,7 @@
   --font-weight: #{$cds-global-typography-font-weight-semibold};
   --background: #{$cds-alias-object-interaction-background};
   width: 100%;
+  contain: inherit;
 }
 
 .private-host {

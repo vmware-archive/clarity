@@ -10,6 +10,7 @@
   --border-width: #{$cds-alias-object-border-width-100};
   --animation-duration: #{$cds-global-animation-duration-secondary};
   --animation-easing: #{$cds-global-animation-easing-primary};
+  contain: inherit;
 }
 
 .accordion-header-button {

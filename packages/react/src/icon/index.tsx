@@ -1,6 +1,6 @@
 import { CdsIcon as Icon } from '@cds/core/icon';
 import '@cds/core/icon/register';
-import { createComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper.js';
 
 /**
  * If using JSX or TSX, import the icon name from `@cds/core/icon` and include it in the `shape` prop to improve type safety:

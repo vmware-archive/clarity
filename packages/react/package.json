@@ -2,19 +2,20 @@
   "name": "@cds/react",
   "version": "5.0.3",
   "scripts": {
-    "start": "npm-run-all core:build dev:start",
-    "dev:start": "yarn run clean && parcel index.html --cache-dir=./.parcel-cache",
+    "start": "npm-run-all core:build build -p build:ts:watch dev:start",
+    "dev:start": "parcel index.html --cache-dir=./.parcel-cache",
     "build": "npm-run-all -s build:ts build:package build:update",
     "build:preinstall": "mkdir -p ../../dist/react/ && cp ./package.json ../../dist/react/",
     "build:update": "node ../../scripts/update-local-packages.js /packages/react/dist/react/package.json",
     "build:package": "node ./package.js",
     "build:ts": "tsc --b ./tsconfig.project.json --force",
+    "build:ts:watch": "tsc --b ./tsconfig.project.json -w",
     "core:build": "yarn --cwd ../core run build",
     "lint": "eslint \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
     "lint:fix": "eslint --fix \"*/**/*.{ts,tsx}\" --ignore-pattern \"dist\"",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "test:snap:update": "jest --updateSnapshot",
+    "test:snap:update": "yarn run build && jest --updateSnapshot",
     "clean": "del ./dist .parcel-cache"
   },
   "repository": {

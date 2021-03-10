@@ -6,7 +6,7 @@ import {
   CdsModalHeaderActions as ModalHeaderActions,
 } from '@cds/core/modal';
 import '@cds/core/modal/register';
-import { createComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper.js';
 
 export const CdsModal = createComponent('cds-modal', Modal, {
   onCloseChange: 'closeChange',

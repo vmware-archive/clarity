@@ -8,6 +8,7 @@ module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     '@cds/(.*)': '<rootDir>/../core/dist/$1',
+    '../converter/react-wrapper.js': '<rootDir>/dist/react/converter/react-wrapper.js',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

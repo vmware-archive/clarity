@@ -6,7 +6,7 @@ import {
   CdsFormGroup as FormGroup,
 } from '@cds/core/forms';
 import '@cds/core/forms/register';
-import { createComponent } from '../converter/react-wrapper';
+import { createComponent } from '../converter/react-wrapper.js';
 
 export const CdsControlMessage = createComponent('cds-control-message', ControlMessage);
 export const CdsControlAction = createComponent('cds-control-action', ControlAction);

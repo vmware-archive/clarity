@@ -1,28 +1,33 @@
 import React from 'react';
-import { CdsAccordion, CdsAccordionPanel, CdsAccordionHeader, CdsAccordionContent } from './src/accordion';
-import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './src/alert';
-import { CdsButton } from './src/button';
-import { CdsBadge } from './src/badge';
-import { CdsCheckbox } from './src/checkbox';
-import { CdsControl, CdsControlMessage, CdsFormGroup } from './src/forms';
-import { CdsDatalist } from './src/datalist';
-import { CdsDate } from './src/date';
-import { CdsFile } from './src/file';
-import { CdsIcon } from './src/icon';
-import { CdsInput } from './src/input';
-import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from './src/modal';
-import { CdsPassword } from './src/password';
-import { CdsProgressCircle } from './src/progress-circle';
-import { CdsRadio, CdsRadioGroup } from './src/radio';
-import { CdsRange } from './src/range';
-import { CdsSearch } from './src/search';
-import { CdsSelect } from './src/select';
-import { CdsTag } from './src/tag';
-import { CdsTime } from './src/time';
-import { CdsTextarea } from './src/textarea';
-import { CdsToggle, CdsToggleGroup } from './src/toggle';
+import {
+  CdsAccordion,
+  CdsAccordionPanel,
+  CdsAccordionHeader,
+  CdsAccordionContent,
+} from './dist/react/accordion/index.js';
+import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './dist/react/alert/index.js';
+import { CdsButton } from './dist/react/button/index.js';
+import { CdsBadge } from './dist/react/badge/index.js';
+import { CdsCheckbox } from './dist/react/checkbox/index.js';
+import { CdsControl, CdsControlMessage, CdsFormGroup } from './dist/react/forms/index.js';
+import { CdsDatalist } from './dist/react/datalist/index.js';
+import { CdsDate } from './dist/react/date/index.js';
+import { CdsFile } from './dist/react/file/index.js';
+import { CdsIcon } from './dist/react/icon/index.js';
+import { CdsInput } from './dist/react/input/index.js';
+import { CdsModal, CdsModalActions, CdsModalContent, CdsModalHeader } from './dist/react/modal/index.js';
+import { CdsPassword } from './dist/react/password/index.js';
+import { CdsProgressCircle } from './dist/react/progress-circle/index.js';
+import { CdsRadio, CdsRadioGroup } from './dist/react/radio/index.js';
+import { CdsRange } from './dist/react/range/index.js';
+import { CdsSearch } from './dist/react/search/index.js';
+import { CdsSelect } from './dist/react/select/index.js';
+import { CdsTag } from './dist/react/tag/index.js';
+import { CdsTime } from './dist/react/time/index.js';
+import { CdsTextarea } from './dist/react/textarea/index.js';
+import { CdsToggle, CdsToggleGroup } from './dist/react/toggle/index.js';
 import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
-import { CdsDivider } from './src/divider';
+import { CdsDivider } from './dist/react/divider/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 

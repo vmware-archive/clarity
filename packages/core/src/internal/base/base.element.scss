@@ -16,6 +16,7 @@
 :host {
   all: initial;
   display: block;
+  visibility: inherit;
   font-family: $cds-global-typography-font-family;
   contain: layout; // https://developer.mozilla.org/en-US/docs/Web/CSS/contain
   box-sizing: border-box !important;

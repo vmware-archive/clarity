@@ -16,12 +16,8 @@ export default {
 
 <style lang="scss">
 .demo-wrapper {
-  // @TODO Why did we have these? They break tooltips
-  // position: relative;
-  // overflow: hidden;
   margin: 0.6rem 0 1.2rem;
   padding: 0.2rem;
-  overflow: auto;
 
   &.center {
     text-align: center;

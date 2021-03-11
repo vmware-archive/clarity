@@ -16,6 +16,13 @@ export const getElementUpdates = (element: HTMLElement, propertyKey: string, cal
     (element as any)[propertyKey] !== undefined ? (element as any)[propertyKey] : element.getAttribute(propertyKey)
   );
 
+  // React: disable input tracker to setup property observer. React re-creates tracker on input changes
+  // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/inputValueTracking.js#L51
+  // https://github.com/vmware/clarity/issues/5625
+  if ((element as any)._valueTracker && (propertyKey === 'checked' || propertyKey === 'value')) {
+    (element as any)._valueTracker = null;
+  }
+
   const updatedProp = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(element), propertyKey) as any;
 
   if (updatedProp) {

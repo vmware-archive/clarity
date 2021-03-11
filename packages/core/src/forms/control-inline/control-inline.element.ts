@@ -5,14 +5,7 @@
  */
 
 import { html } from 'lit-element';
-import {
-  EventEmitter,
-  property,
-  event,
-  getElementUpdates,
-  internalProperty,
-  getReactVersion,
-} from '@cds/core/internal';
+import { EventEmitter, property, event, getElementUpdates, internalProperty } from '@cds/core/internal';
 import { styles } from './control-inline.element.css.js';
 import { CdsControl } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/index.js';
@@ -106,11 +99,6 @@ export class CdsInternalControlInline extends CdsControl {
     if (props.has('checked') && props.get('checked') !== this.checked && this.checked) {
       this.indeterminate = false;
       this.checkedChange.emit(this.checked);
-    }
-
-    // workaround to trigger property updates in React https://stackoverflow.com/questions/23892547/what-is-the-best-way-to-trigger-onchange-event-in-react-js?answertab=active#tab-top
-    if (getReactVersion() && (props.has('checked') || props.has('indeterminate'))) {
-      this.inputControl.dispatchEvent(new Event('click', { bubbles: true }));
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/cds-angular",
+  "dest": "../../dist/angular",
   "lib": {
     "entryFile": "src/public-api.ts",
     "flatModuleFile": "cds-angular"

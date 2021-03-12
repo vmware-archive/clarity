@@ -27,22 +27,32 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-.badge
-  display inline-block
-  font-size 14px
-  height 18px
-  line-height 18px
-  border-radius 3px
-  padding 0 6px
-  color white
-  background-color #42b983
-  &.tip, &.green
-    background-color $badgeTipColor
-  &.error
-    background-color $badgeErrorColor
-  &.warning, &.warn, &.yellow
-    background-color $badgeWarningColor
-  & + &
-    margin-left 5px
+<style lang="scss" scoped>
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 3px;
+  padding: 0 6px;
+  color: #fff;
+  background-color: #42b983;
+
+  &.tip,
+  &.green {
+    background-color: var(--cds-global-status-success);
+  }
+  &.error {
+    background-color: var(--cds-global-status-danger);
+  }
+  &.warning,
+  &.warn,
+  &.yellow {
+    background-color: var(--cds-global-status-warning);
+  }
+}
+
+.badge + .badge {
+  margin-left: 5px;
+}
 </style>

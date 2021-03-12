@@ -21,7 +21,6 @@ import {
   removePrefix,
   removeSuffix,
   removePrefixOrSuffix,
-  convertStringPropValuePairsToTuple,
 } from './string.js';
 
 describe('Functional Helper: ', () => {
@@ -233,39 +232,6 @@ describe('Functional Helper: ', () => {
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', '')).toBe('yep_ohai');
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', null)).toBe('yep_ohai');
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', 'sufix')).toBe('yep_ohai');
-    });
-  });
-
-  describe('convertStringPropValuePairsToTuple', () => {
-    it('returns string value as expected', () => {
-      expect(convertStringPropValuePairsToTuple('status:error')).toEqual([['status', 'error']]);
-    });
-
-    it('returns number value as expected', () => {
-      expect(convertStringPropValuePairsToTuple('numberOfPages:6 valueOfPi:3.14159')).toEqual([
-        ['numberOfPages', 6],
-        ['valueOfPi', 3.14159],
-      ]);
-    });
-
-    it('returns boolean value as expected', () => {
-      expect(convertStringPropValuePairsToTuple('isValid:true')).toEqual([['isValid', true]]);
-
-      // also handles falsy values
-      expect(
-        convertStringPropValuePairsToTuple('hereIsFalse:false hereIsUndefined:undefined hereIsNull:null hereIsEmpty:')
-      ).toEqual([
-        ['hereIsFalse', false],
-        ['hereIsUndefined', undefined],
-        ['hereIsNull', null],
-        ['hereIsEmpty', ''],
-      ]);
-    });
-
-    it('returns any other value (but not objects) as string', () => {
-      expect(convertStringPropValuePairsToTuple('hereIsJunk:#[["ohai","howdy","hello"]]**{}')).toEqual([
-        ['hereIsJunk', '#[["ohai","howdy","hello"]]**{}'],
-      ]);
     });
   });
 });

@@ -10,8 +10,7 @@
     "e2e": "ng e2e",
     "dev:ssr": "ng run core-angular-universal:serve-ssr",
     "serve:ssr": "node dist/core-angular-universal/server/main.js",
-    "prerender": "ng run core-angular-universal:prerender",
-    "postinstall": "ngcc && node ../../scripts/ngcc-clean"
+    "prerender": "ng run core-angular-universal:prerender"
   },
   "private": true,
   "dependencies": {

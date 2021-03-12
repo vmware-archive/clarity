@@ -8,8 +8,7 @@
     "source-map": "cd dist/ng-app && source-map-explorer *.js",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ngcc && node ../../scripts/ngcc-clean"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

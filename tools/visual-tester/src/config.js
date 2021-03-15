@@ -24,4 +24,7 @@ module.exports = {
   basePath: '',
   currentPath: '',
   diffPath: '',
+  openBrowser: false,
+  disableIncognito: false,
+  testGroups: ''
 };

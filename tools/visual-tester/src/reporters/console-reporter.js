@@ -9,7 +9,7 @@ module.exports = class ConsoleReporter extends BaseReporter {
     console.log(`${test} passed.`);
   }
   fail(test, options) {
-    console.error(`${test} faild. ${options.mismatch}`);
+    console.error(`${test} failed. ${options.mismatch}`);
   }
   retry(test, times) {
     console.warn(`${test} retries ${times} times`);
@@ -25,14 +25,22 @@ module.exports = class ConsoleReporter extends BaseReporter {
     if (errors.length) {
       errors.forEach(error => {
         if (error.type === 'fail-to-match') {
-          console.log(`\n${error.test} fail:`);
+          console.log(`\n${error.name || error.test} fail:`);
           console.log(`\t base    : ${path.join(this.config.basePath, error.filename)}`);
           console.log(`\t current : ${path.join(this.config.currentPath, error.filename)}`);
           console.log(`\t diff    : ${path.join(this.config.diffPath, error.filename)}`);
         }
       });
-      console.log(`\n\t${errors.length} faild tests\n`);
+      console.log(`\n\t${errors.length} failed tests\n`);
     }
+
+    process.stdout.write(
+      `Summary:
+      Total   tests: ${info.total}
+      Focused tests: ${info.focused}
+      Failed  tests: ${info.failed}
+      Passed  tests: ${info.passed}\n`
+    );
     console.log(`\n everything is OK no failing tests`);
   }
 };

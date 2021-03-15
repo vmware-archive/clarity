@@ -35,7 +35,7 @@ module.exports = class DotReporter extends BaseReporter {
       errors.forEach(test => {
         if (test.type === 'fail-to-match') {
           process.stdout.write(
-            `❌ ${test.test} is not comparable with base image (${round(test.mismatch, 4)}% mismatch)\n`
+            `❌ '${test.name || test.test}' is not comparable with base image (${round(test.mismatch, 4)}% mismatch)\n`
           );
           process.stdout.write(`\t base    : ${path.join(this.config.basePath, test.filename)}\n`);
           process.stdout.write(`\t current : ${path.join(this.config.currentPath, test.filename)}\n`);
@@ -44,10 +44,17 @@ module.exports = class DotReporter extends BaseReporter {
         }
       });
 
-      process.stdout.write(`\n\t${errors.length} faild tests\n`);
+      process.stdout.write(`\n\t${errors.length} failed tests\n`);
 
       return;
     }
+    process.stdout.write(
+      `Summary:
+      Total   tests: ${info.total}
+      Focused tests: ${info.focused}
+      Failed  tests: ${info.failed}
+      Passed  tests: ${info.passed}\n`
+    );
     process.stdout.write(`\n${this.mascot} everything is OK no failing tests`);
   }
 

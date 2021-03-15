@@ -13,12 +13,13 @@ const path = require('path');
 const pkg = require('../package.json');
 
 const files = [
-  'packages/angular/package.json',
+  'packages/angular/projects/clr-angular/package.json',
+  'packages/angular/projects/cds-angular/package.json',
   'packages/core/package.json',
-  'packages/icons/package.json',
   'packages/react/package.json',
   'packages/eslint-plugin-clarity-adoption/package.json',
-  'packages/ui/package.json',
+  'packages/icons/npm.json',
+  'packages/ui/npm.json',
 ];
 
 files.forEach(file => {

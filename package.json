@@ -39,8 +39,6 @@
     "lint": "npm-run-all core:lint angular:lint react:lint eslint-rule:lint",
     "lint:fix": "npm-run-all core:lint:fix angular:lint:fix react:lint:fix eslint-rule:lint:fix",
     "license:fix": "node scripts/update-license",
-    "ngcc:check": "node scripts/ngcc-check",
-    "ngcc:fix": "node scripts/ngcc-clean",
     "lock:check": "node scripts/lock-check",
     "lock:fix": "node scripts/lock-fix",
     "format": "prettier --list-different './**/*.{js,json,md,ts,scss}'",
@@ -105,7 +103,8 @@
     "conventional-changelog-cli": "2.0.23",
     "cpy-cli": "3.0.0",
     "cross-env": "5.2.0",
-    "del-cli": "1.1.0",
+    "del": "6.0.0",
+    "del-cli": "3.0.1",
     "detect-browser": "4.1.0",
     "dotenv": "8.1.0",
     "eslint": "6.8.0",
@@ -135,7 +134,7 @@
     "typescript": "3.7.5"
   },
   "engines": {
-    "node": ">=12 <13",
+    "node": ">=14 <15",
     "yarn": ">=1.22.4 <2",
     "npm": "     PLEASE USE YARN     "
   },

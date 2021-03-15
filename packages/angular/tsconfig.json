@@ -17,15 +17,7 @@
     "moduleResolution": "node",
     "target": "es2017",
     "lib": ["es2018", "dom"],
-    "typeRoots": ["node_modules/@types"],
-    "paths": {
-      "@clr/angular": ["dist/clr-angular"],
-      "@clr/angular/*": ["dist/clr-angular/*"],
-      "@cds/angular": ["dist/cds-angular"],
-      "@cds/angular/*": ["dist/cds-angular/*"],
-      "@cds/core/*": ["../../dist/core/*"],
-      "@cds/core": ["../../dist/core"]
-    }
+    "typeRoots": ["node_modules/@types", "../../node_modules/@types"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

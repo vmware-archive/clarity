@@ -21,6 +21,7 @@ import {
   isStringAndNotNilOrEmpty,
   anyOrAllPropertiesPass,
   getMillisecondsFromSeconds,
+  convertStringPropValuePairsToTuple,
 } from './identity.js';
 
 enum TestEnum {
@@ -337,6 +338,39 @@ describe('Functional Helper: ', () => {
     it('converts negative values as expected', () => {
       expect(getMillisecondsFromSeconds(-1)).toBe(-1000);
       expect(getMillisecondsFromSeconds(-0.5)).toBe(-500);
+    });
+  });
+
+  describe('convertStringPropValuePairsToTuple', () => {
+    it('returns string value as expected', () => {
+      expect(convertStringPropValuePairsToTuple('status:error')).toEqual([['status', 'error']]);
+    });
+
+    it('returns number value as expected', () => {
+      expect(convertStringPropValuePairsToTuple('numberOfPages:6 valueOfPi:3.14159')).toEqual([
+        ['numberOfPages', 6],
+        ['valueOfPi', 3.14159],
+      ]);
+    });
+
+    it('returns boolean value as expected', () => {
+      expect(convertStringPropValuePairsToTuple('isValid:true')).toEqual([['isValid', true]]);
+
+      // also handles falsy values
+      expect(
+        convertStringPropValuePairsToTuple('hereIsFalse:false hereIsUndefined:undefined hereIsNull:null hereIsEmpty:')
+      ).toEqual([
+        ['hereIsFalse', false],
+        ['hereIsUndefined', undefined],
+        ['hereIsNull', null],
+        ['hereIsEmpty', ''],
+      ]);
+    });
+
+    it('returns any other value (but not objects) as string', () => {
+      expect(convertStringPropValuePairsToTuple('hereIsJunk:#[["ohai","howdy","hello"]]**{}')).toEqual([
+        ['hereIsJunk', '#[["ohai","howdy","hello"]]**{}'],
+      ]);
     });
   });
 });

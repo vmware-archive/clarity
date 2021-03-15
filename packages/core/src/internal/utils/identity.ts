@@ -7,7 +7,6 @@
 import is from 'ramda/es/is.js';
 import isEmpty from 'ramda/es/isEmpty.js';
 import isNil from 'ramda/es/isNil.js';
-import { convertStringPropValuePairsToTuple } from './string.js';
 
 export function isNilOrEmpty(val: any): boolean {
   return isNil(val) || isEmpty(val);
@@ -81,6 +80,53 @@ export function deepClone(obj: any) {
   // be careful using this carelessly b/c it CAN have performance implications!
 
   return isMap(obj) ? cloneMap(obj) : JSON.parse(JSON.stringify(obj));
+}
+
+type ObjectPropertyNameAndValueTuples =
+  | [string, string]
+  | [string, true]
+  | [string, false]
+  | [string, null]
+  | [string, undefined]
+  | [string, number];
+
+// this utility is a little restrictive on its inputs. it expects a specific format.
+// going outside of that format (like passing an object or function as the value) can yield unintended results.
+// this does NOT eval anything. that would be bad.
+// 'isValid:true status:success': string =>
+// [['isValid', true], ['status', 'success']]: [string, string | number | boolean][]
+export function convertStringPropValuePairsToTuple(propValString: string): ObjectPropertyNameAndValueTuples[] {
+  // starts as a string like... "isValid:true status:success"
+  return propValString
+    .split(' ')
+    .map(str => str.split(':'))
+    .map(pv => {
+      const [propname, propValAsString] = pv;
+
+      if (propValAsString === 'true') {
+        return [propname, true];
+      }
+
+      if (propValAsString === 'false') {
+        return [propname, false];
+      }
+
+      if (propValAsString === 'null') {
+        return [propname, null];
+      }
+
+      if (propValAsString === 'undefined') {
+        return [propname, undefined];
+      }
+
+      if (isNumericString(propValAsString)) {
+        return [propname, +propValAsString];
+      }
+
+      // else it's a string and that's ok
+      return [propname, propValAsString];
+    });
+  // returns as [['isValide', true], ['status', 'success']]
 }
 
 export function anyOrAllPropertiesPass(obj: any, propValuePairs: string, anyOrAll: 'any' | 'all'): boolean {

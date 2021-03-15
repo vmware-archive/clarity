@@ -44,10 +44,18 @@ module.exports = class DotReporter extends BaseReporter {
         }
       });
 
-      process.stdout.write(`\n\t${errors.length} faild tests\n`);
+      process.stdout.write(`\n\t${errors.length} failed tests\n`);
 
       return;
     }
+    process.stdout.write(
+      `Summary:
+      Total   tests: ${info.total}
+      Skipped tests: ${info.skipped}
+      Focused tests: ${info.focused}
+      Failed  tests: ${info.failed}
+      Passed  tests: ${info.passed}\n`
+    );
     process.stdout.write(`\n${this.mascot} everything is OK no failing tests`);
   }
 

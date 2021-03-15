@@ -17,12 +17,14 @@ module.exports = class Runner {
   config = CONFIG;
 
   globalOptions = {};
+  customSpecOptions = {}
 
   _tests = [];
   _focusTests = [];
   _ignoreTests = [];
 
   puppet = undefined;
+  incognitoContext = undefined;
   retries = 0;
 
   // reporter
@@ -31,6 +33,9 @@ module.exports = class Runner {
 
   // Run TYPE
   overwrite = false;
+
+  // Run in incognito mode
+  incognito = true;
 
   /** Setup instance */
   constructor(props = {}) {
@@ -44,6 +49,14 @@ module.exports = class Runner {
     if (this.config.overwrite) {
       this.overwrite = this.config.overwrite;
     }
+
+    if (this.config.openBrowser) {
+      this.config.puppeteerConfig.headless = false;
+    }
+
+    if(this.config.disableIncognito) {
+      this.incognito = false;
+    }
   }
 
   /**
@@ -52,6 +65,17 @@ module.exports = class Runner {
    * @param {function|object} setup
    */
   it(url, setup) {
+    if (Object.keys(this.customSpecOptions)) {
+      if (typeof setup === 'function') setup = setup()
+      if (typeof setup === 'undefined') setup = {}
+      for (const [key, value] of Object.entries(this.customSpecOptions)) {
+        if (Object.keys(setup).includes(key) && Array.isArray(setup[key])) {
+          setup[key].push(value);
+        } else {
+          setup[key] = value
+        }
+      }
+    }
     this._tests.push(this._prepareTest(url, setup));
   }
 
@@ -75,6 +99,10 @@ module.exports = class Runner {
 
   setup(options) {
     this.globalOptions = Object.assign({}, options);
+  }
+
+  specOptions(specOptions) {
+    this.customSpecOptions = Object.assign({}, specOptions);
   }
 
   /**
@@ -144,10 +172,13 @@ module.exports = class Runner {
 
     /* Use one puppet for all */
     this.puppet = await this.spawnPuppet();
+    if (this.incognito) {
+      this.incognitoContext = await this.puppet.createIncognitoBrowserContext();
+    }
   }
 
   async _afterRun() {
-    /* close puppet connection */
+    /* close puppet connections */
     if (this.puppet) {
       await this.puppet.close();
     }
@@ -157,7 +188,7 @@ module.exports = class Runner {
       total: this._tests.length,
       skipped: this._ignoreTests.length,
       focused: this._focusTests.length,
-      faild: this.errors.length,
+      failed: this.errors.length,
       passed: this.tests().length - this.errors.length,
     });
 
@@ -173,7 +204,7 @@ module.exports = class Runner {
    * Create new puppet instance
    */
   async spawnPuppet() {
-    /* make sure that there is no other puppet outthere */
+    /* make sure that there is no other puppet out there */
     if (this.puppet) {
       await this.puppet.close();
     }
@@ -195,8 +226,8 @@ module.exports = class Runner {
      */
     try {
       /* Create new page and navigate to it. */
-      const page = await this.puppet.newPage();
-      await page.goto(`${this.config.baseUrl}${url}`, {
+      const page = this.incognito ? await this.incognitoContext.newPage() : await this.puppet.newPage();
+      await page.goto(`${options.baseUrl ? options.baseUrl : this.config.baseUrl}${url}`, {
         waitUntil: ['load', 'domcontentloaded'],
       });
 
@@ -217,6 +248,16 @@ module.exports = class Runner {
         const query = options.selector || this.globalOptions.selector;
         await page.waitForSelector(query);
         const selector = await page.$(query);
+
+        if (options.removeFromDom && options.removeFromDom !== '') {
+          for (const elToRemove of options.removeFromDom) {
+            await this._removeElementsFromDom(elToRemove, page);
+          }
+        }
+        if (options.hoverOver && options.hoverOver !== '') {
+          const elementToHoverOver = await page.$(options.hoverOver);
+          elementToHoverOver.hover()
+        }
         const clip = await selector.boundingBox();
         await page.screenshot({ path: path.join(this.config.currentPath, this._testImage(url)), clip });
       } else {
@@ -225,6 +266,7 @@ module.exports = class Runner {
       /* make screenshot of the current page */
       /* compare them with base */
       await this.compareSnapshots(url, options);
+      page.close();
     } catch (e) {
       /**
        * Handle retries by reconnecting and trying again.
@@ -236,9 +278,9 @@ module.exports = class Runner {
         return;
       }
       /**
-       * There is nothing more that we could do here so abondon ship !
+       * There is nothing more that we could do here so abandon ship !
        */
-      this.reporter.error(`Faild to run ${url} after ${this.retries} retries with error`, e);
+      this.reporter.error(`Failed to run ${url} after ${this.retries} retries with error`, e);
       this.retries = 0;
       this.errors.push({
         test: url,
@@ -262,7 +304,7 @@ module.exports = class Runner {
     }
 
     /**
-     * Create diff image to agains base and current snapshot
+     * Create a diff image against base and current snapshot
      */
     const diff = await compareImages(
       await fs.readFile(path.join(this.config.basePath, file)),
@@ -329,5 +371,20 @@ module.exports = class Runner {
         }
       `,
     });
+  }
+
+  /**
+   * 'Removes' elements from DOM if such exist by setting theirs opacity to 0
+   *
+   * @param elementSelector
+   * @param page
+   */
+  async _removeElementsFromDom(elementSelector, page) {
+    await page.evaluate((elementSelector) => {
+      const elements = document.querySelectorAll(elementSelector);
+      for (const element of elements) {
+        element.style.opacity = "0";
+      }
+    }, elementSelector);
   }
 };

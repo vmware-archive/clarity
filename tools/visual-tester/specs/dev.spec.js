@@ -1,5 +1,9 @@
 setup({
+
+});
+specOptions({
   selector: 'main.content-area',
+  removeFromDom: ['cds-icon[shape=\'vm-bug\']', 'cds-icon[shape=\'cog\']']
 });
 
 it('accordion');
@@ -51,7 +55,7 @@ it('buttons/icon-buttons');
 it('buttons/buttons-test');
 
 it('card/grid');
-it('card/clickable');
+it('card/clickable', {hoverOver: 'a.card.clickable'});
 it('card/dropdown');
 it('card/images');
 it('card/layout');

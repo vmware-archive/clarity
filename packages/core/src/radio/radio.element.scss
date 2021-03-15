@@ -42,6 +42,12 @@
   --border: 0 !important;
 }
 
+:host([_disabled]) {
+  .input::after {
+    cursor: not-allowed;
+  }
+}
+
 :host([_disabled][_checked]) {
   --fill-box-shadow: inset 0 0 0 #{$cds-global-space-4} #{$cds-alias-status-disabled-tint};
   --border: 0 !important;

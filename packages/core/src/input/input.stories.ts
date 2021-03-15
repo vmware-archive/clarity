@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,6 +36,21 @@ export function API(args: any) {
 export function input() {
   return html`
     <cds-input control-width="shrink">
+      <label>input</label>
+      <input placeholder="placeholder text" required />
+    </cds-input>
+  `;
+}
+
+/** @website */
+export function inputWithLabelTextTranformation() {
+  return html`
+    <style>
+      cds-input#cds-input-with-label-text-transfomration label {
+        --text-transform: lowercase;
+      }
+    </style>
+    <cds-input id="cds-input-with-label-text-transfomration" control-width="shrink">
       <label>input</label>
       <input placeholder="placeholder text" required />
     </cds-input>

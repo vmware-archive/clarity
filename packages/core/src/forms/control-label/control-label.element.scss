@@ -9,6 +9,7 @@
   // contain is set here to manage edge case where people are using clr-angular signposts and tooltips inside core form input groups
   // see: https://github.com/vmware/clarity/issues/5702
   contain: inherit !important;
+  --text-transform: capitalize;
 }
 
 :host([action='primary']) {
@@ -19,7 +20,7 @@
   font-family: $cds-global-typography-font-family !important;
   max-width: var(--internal-label-max-width, initial) !important;
   display: inline-block !important;
-  text-transform: capitalize !important;
+  text-transform: var(--text-transform) !important;
   cursor: pointer !important;
 
   @include line-height-eraser(

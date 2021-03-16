@@ -3219,7 +3219,7 @@
         "type": "input",
         "options": "any valid string",
         "description": "Set the id of a tooltip.",
-        "default": ""
+        "default": "sm"
       },
       {
         "name": "clrPosition",
@@ -3235,7 +3235,7 @@
         "type": "input",
         "options": "xs, sm, md, lg",
         "description": "Set the size of the content element.",
-        "default": "md"
+        "default": "sm"
       }
     ],
     "methods": [],

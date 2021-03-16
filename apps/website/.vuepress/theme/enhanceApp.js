@@ -22,9 +22,11 @@ export default ({
       id: '1762865',
     });
 
-    Sentry.init({
-      dsn: 'https://3e41de8eb9e440d6b834fc556ad8e83c@o378402.ingest.sentry.io/5201749',
-      integrations: [new VueIntegration({ Vue, attachProps: true, logErrors: true })],
-    });
+    if (location.host.indexOf('clarity.design') > -1) {
+      Sentry.init({
+        dsn: 'https://3e41de8eb9e440d6b834fc556ad8e83c@o378402.ingest.sentry.io/5201749',
+        integrations: [new VueIntegration({ Vue, attachProps: true, logErrors: true })],
+      });
+    }
   }
 };

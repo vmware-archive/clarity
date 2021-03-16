@@ -1,5 +1,5 @@
 <template>
-  <div class="clr-col-md-4 clr-col-sm-6 clr-col-12" :id="iconName">
+  <div :id="iconName">
     <button
       type="button"
       class="icon-detail-trigger"
@@ -70,6 +70,7 @@ export default {
   width: 100%;
   padding: 0.75rem 0.25rem;
   text-align: left;
+  z-index: 99;
   &.is-active {
     border-top-left-radius: 0.15rem;
     border-top-right-radius: 0.15rem;

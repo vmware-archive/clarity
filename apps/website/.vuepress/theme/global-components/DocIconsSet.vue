@@ -1,7 +1,7 @@
 <template>
   <section>
     <slot v-if="filterIcons(icons).length"></slot>
-    <div class="clr-row">
+    <div cds-layout="grid cols:4 align:stretch gap:md">
       <template v-for="icon in filterIcons(icons)">
         <DocIcon
           :iconName="icon.iconName"
@@ -63,6 +63,11 @@ export default {
 
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', this.closeIconDetail);
+    }
+  },
+  unmounted: function () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.closeIconDetail);
     }
   },
   methods: {
@@ -133,7 +138,7 @@ export default {
 <style lang="scss" scoped>
 h2 {
   position: sticky;
-  top: 187px;
+  top: 186px;
   background-color: var(--clr-global-app-background);
   z-index: 4500;
 }

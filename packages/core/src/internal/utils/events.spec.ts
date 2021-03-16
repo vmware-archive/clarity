@@ -6,7 +6,7 @@
 
 import { html } from 'lit-html';
 import { removeTestElement, createTestElement } from '@cds/core/test';
-import { getElementUpdates } from './events';
+import { getElementUpdates } from './events.js';
 
 describe('getElementUpdates', () => {
   let element: HTMLElement;
@@ -29,12 +29,22 @@ describe('getElementUpdates', () => {
     expect(checked).toEqual(true);
   });
 
-  it('get notified of attr change', () => {
-    let checked = false;
-    getElementUpdates(input, 'checked', value => (checked = value));
-    input.setAttribute('checked', '');
+  it('get notified of attr changes', async done => {
+    const values: any = [];
+    getElementUpdates(input, 'checked', value => {
+      values.push(value === '');
 
-    expect(checked).toEqual(true);
+      if (values.length === 2) {
+        // initial property value set
+        expect(values[0]).toEqual(false);
+
+        // attribute update set
+        expect(values[1]).toEqual(true);
+        done();
+      }
+    });
+
+    input.setAttribute('checked', '');
   });
 
   it('should reset any React value trackers if input', () => {
@@ -53,7 +63,7 @@ describe('getElementUpdates', () => {
 
     let checked = false;
     getElementUpdates(input, 'checked', value => (checked = value));
-    input.setAttribute('checked', '');
+    input.checked = true;
 
     expect(checked).toEqual(true);
     expect((input as any)._valueTracker).toEqual(null);

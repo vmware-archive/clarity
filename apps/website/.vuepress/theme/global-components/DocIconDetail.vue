@@ -1,5 +1,5 @@
 <template>
-  <div cds-layout="vertical">
+  <div cds-layout="col:12 m-t:none">
     <div class="card">
       <div class="card-block">
         <h4 class="card-title" cds-layout="horizontal gap:sm">
@@ -167,7 +167,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  margin-top: -0.15rem;
+  margin-top: -0.6rem;
 }
 
 .card-footer {

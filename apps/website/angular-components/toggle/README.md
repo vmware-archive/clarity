@@ -72,6 +72,18 @@ A toggle switch can be disabled by putting the disabled attribute on the checkbo
 <<< .vuepress/code/demos/toggle/disabled-demo-ng.html
 </doc-code>
 
+### Right Aligned
+
+Toggle switches be right aligned `clr-toggle-right` class is added to the [ClrToggleContainer](/angular-components/toggle/api/#clrtogglecontainer).
+
+<doc-demo>
+!!!include(.vuepress/code/demos/toggle/right-demo-css.html)!!!
+</doc-demo>
+
+<doc-code>
+<<< .vuepress/code/demos/toggle/right-demo-ng.html
+</doc-code>
+
 ## Accessibility
 
 For applications using the ClrToggle directive and the associated ClrToggleContainer and ClrToggleWrapper components there is built in support adding accessible behavior to the control and its form.

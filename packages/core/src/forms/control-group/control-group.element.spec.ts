@@ -91,6 +91,22 @@ describe('cds-internal-control-group', () => {
     expect(controls[1].status).toBe('error');
   });
 
+  it('should set the disabled style on all cds-controls and native html inputs if group is disabled', async () => {
+    controlGroup.disabled = true;
+
+    await componentIsStable(controlGroup);
+    await componentIsStable(controls[0]);
+    await componentIsStable(controls[1]);
+
+    // cds-control has style hook attr '_disabled'
+    expect(controls[0].hasAttribute('_disabled')).toBe(true);
+    expect(controls[1].hasAttribute('_disabled')).toBe(true);
+
+    // native html input has attr 'disabled'
+    expect(controls[0].inputControl.hasAttribute('disabled')).toBe(true);
+    expect(controls[1].inputControl.hasAttribute('disabled')).toBe(true);
+  });
+
   it('should adjust for compact layouts and messages', async () => {
     controlGroup.layout = 'compact';
     await componentIsStable(controlGroup);

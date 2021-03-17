@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -132,13 +132,12 @@ export default function () {
           sub.unsubscribe();
         });
 
-        it('should refocus input after selecting a date for a11y', () => {
+        it('should refocus input after selecting a date for a11y', async () => {
           const input: HTMLInputElement = context.testElement.querySelector('input');
           expect(document.activeElement).not.toBe(input);
-
           dateNavigationService.notifySelectedDayChanged(new DayModel(2019, 1, 1));
           context.detectChanges();
-
+          await context.fixture.whenStable();
           expect(document.activeElement).toBe(input);
         });
 

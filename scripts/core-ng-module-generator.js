@@ -13,11 +13,9 @@ const Mustache = require('mustache');
 const SOURCE_PATH = path.join(__dirname, './../packages/core/dist/core/custom-elements.json');
 const TARGET_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/components');
 const MUSTACHE_TEMPLTATE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/_stubs');
-const TEST_DIR_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/components');
 
 // TODO: check if a directory is already created for the same tag
 const IGNORE_DIRECTORY_NAMES = ['index.d.ts', 'internal-components', 'icon-shapes'];
-const INTEGRATION_TEST_FILE_NAME = 'all.spec.ts';
 const MODULE_NAME = 'cds-angular.module.ts'; // hard-coded in the root index mustache template
 
 const directiveTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/directive.ts.mustache', 'utf8');
@@ -25,7 +23,6 @@ const moduleTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/module.ts.mus
 const indexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/index.ts.mustache', 'utf8');
 const rootIndexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-index.ts.mustache', 'utf8');
 const rootModuleTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-module.ts.mustache', 'utf8');
-const testTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/test.ts.mustache', 'utf8');
 
 function getDiretoryName(tagPath) {
   return tagPath.split('/')[1];
@@ -160,31 +157,7 @@ function createComponentDirectories() {
   }
 }
 
-function createTests(testFileName, directoryPath) {
-  if (fs.existsSync(SOURCE_PATH)) {
-    const customElementsData = JSON.parse(fs.readFileSync(SOURCE_PATH));
-
-    const tags = [
-      ...new Set(
-        customElementsData.tags
-          .filter(d => d.description && !IGNORE_DIRECTORY_NAMES.includes(getDiretoryName(d.path)))
-          .map(d => d.name)
-      ),
-    ];
-    const templateData = {
-      directives: tags.map(t => ({
-        directiveTag: t,
-        directiveClassName: getDirectiveClassName(t, '', 'Directive'),
-      })),
-    };
-
-    createFileOnTemplate(testTemplate, templateData, testFileName, directoryPath);
-  }
-}
-
 const directories = createComponentDirectories();
 const directives = createDirectives(directories);
 const modules = createModules(directives);
 createIndexes(modules);
-
-createTests(INTEGRATION_TEST_FILE_NAME, TEST_DIR_PATH);

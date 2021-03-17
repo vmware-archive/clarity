@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,7 +8,7 @@
  * when we have the time. This will be very helpful in future refactors due to Angular upgrades, or simply
  * just to avoid leaks since destroying fixtures is automatic with this.
  */
-import { DebugElement, InjectionToken, Type } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement, InjectionToken, Type } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -110,6 +110,7 @@ export function addHelpers(): void {
       TestBed.configureTestingModule({
         imports: [ClarityModule, NoopAnimationsModule],
         declarations: [testComponent, ...extraDirectives],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
         providers: providers,
       });
       return (this._context = new TestContext<D, C>(clarityDirective, testComponent));
@@ -123,6 +124,7 @@ export function addHelpers(): void {
     ) => {
       TestBed.configureTestingModule({
         declarations: [clarityDirective, testComponent, ...extraDirectives],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
         providers: providers,
       });
       return (this._context = new TestContext<D, C>(clarityDirective, testComponent));
@@ -138,6 +140,7 @@ export function addHelpers(): void {
       TestBed.configureTestingModule({
         imports: [ClarityModule, NoopAnimationsModule],
         declarations: [testComponent, ...extraDirectives],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
         providers: providers,
       }).overrideComponent(clarityDirective, {
         set: {
@@ -157,6 +160,7 @@ export function addHelpers(): void {
       TestBed.configureTestingModule({
         imports: [ClarityModule, NoopAnimationsModule],
         declarations: [testComponent, ...extraDirectives],
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
         providers: providers,
       }).overrideDirective(clarityDirective, {
         set: {

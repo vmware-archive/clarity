@@ -5,7 +5,7 @@
 @import '../../dist/core/tokens/tokens';
 
 [cds-theme~='dark'] {
-  --cds-global-typography-color-500: #{$cds-global-color-gray-0};
+  --cds-global-typography-color-500: #{$cds-global-color-white};
   --cds-global-typography-color-400: #{$cds-global-color-construction-100};
   --cds-global-typography-color-300: #{$cds-global-color-construction-200};
   --cds-global-typography-color-200: #{$cds-global-color-construction-600};
@@ -16,11 +16,11 @@
   --cds-global-typography-link-color-visited-hover: #{$cds-global-color-lavender-400};
 
   --cds-alias-object-app-background: #{$cds-global-color-construction-1000};
-  --cds-alias-object-app-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-app-border-color: #{$cds-global-color-black};
   --cds-alias-object-container-background: #{$cds-global-color-construction-900};
-  --cds-alias-object-container-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-container-border-color: #{$cds-global-color-black};
   --cds-alias-object-overlay-background: #{$cds-global-color-construction-900};
-  --cds-alias-object-overlay-border-color: #{$cds-global-color-gray-1000};
+  --cds-alias-object-overlay-border-color: #{$cds-global-color-black};
   --cds-alias-object-border-color: #{$cds-global-color-construction-500};
   --cds-alias-object-border-color-tint: #{$cds-global-color-construction-400};
   --cds-alias-object-border-color-shade: #{$cds-global-color-construction-600};

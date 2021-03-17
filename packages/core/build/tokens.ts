@@ -46,6 +46,8 @@ const space = {
 };
 
 const color = {
+  black: token([0, 0, 0]),
+  white: token([0, 0, 100]),
   green: {
     50: token([93, 80, 94]),
     100: token([93, 80, 83]),
@@ -311,11 +313,11 @@ const color = {
 
 const typography = {
   color: {
-    100: token(color.gray[0]),
+    100: token(color.white),
     200: token(color.construction[600]), // placeholders
     300: token(color.construction[800]), // labels
     400: token(color.construction[900]), // headings
-    500: token(color.gray[1000]), // content
+    500: token(color.black), // content
   },
   fontWeight: {
     // Clarity City is limited to 400-500, tokens provide hooks for customization
@@ -469,11 +471,11 @@ const aliases = {
     },
     interaction: {
       background: {
-        value: token(color.gray[0]),
+        value: token(color.white),
         hover: token(color.blue[50]),
         active: token(color.blue[100]),
-        selected: token(color.blue[200]),
-        disabled: token(color.gray[0]),
+        selected: token(color.blue[50]),
+        disabled: token(color.white),
         highlight: token(color.blue[700]),
       },
       color: {
@@ -488,11 +490,11 @@ const aliases = {
       background: token(color.gray[50]),
     },
     overlay: {
-      background: token(color.gray[0]),
+      background: token(color.white),
       backdropBackground: token('hsla(0, 0%, 0%, 0.6)'),
     },
     container: {
-      background: token(color.gray[0]),
+      background: token(color.white),
       borderColor: token(color.construction[200]),
     },
   },

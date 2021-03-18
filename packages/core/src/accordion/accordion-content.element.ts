@@ -32,7 +32,6 @@ import { styles } from './accordion-content.element.css.js';
  * </cds-accordion>
  * ```
  *
- * @beta
  * @element cds-accordion-content
  * @cssprop --color
  * @cssprop --font-size

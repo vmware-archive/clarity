@@ -44,23 +44,27 @@ function getTokenTable(key: string, globals: any = {}) {
         padding: 0;
       }
     </style>
-    <table class="token-table">
-      <tr cds-layout="grid gap:lg p:md align:horizontal-stretch align:vertical-center" cds-text="left">
-        <th cds-layout="col:5">Token</th>
-        <th cds-layout="col:3">Value</th>
-        <th cds-layout="col:4">Demo</th>
-      </tr>
-      ${getTokens(key, globals).map(token => {
-        return html`<tr cds-layout="grid gap:md p:md align:horizontal-stretch align:vertical-center">
-          <td cds-layout="col:5">
-            <span cds-text="body">${token.name}</span>
-          </td>
-          <td cds-layout="col:4 vertical gap:lg">
-            ${token.formattedValue}
-          </td>
-          <td cds-layout="col:3">${token.demo}</td>
-        </tr>`;
-      })}
+    <table cds-table="b:row b:outside p:lg">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Demo</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${getTokens(key, globals).map(token => {
+          return html`<tr>
+            <td>
+              <span cds-text="body">${token.name}</span>
+            </td>
+            <td>
+              ${token.formattedValue}
+            </td>
+            <td>${token.demo}</td>
+          </tr>`;
+        })}
+      </tbody>
     </table>`;
 }
 
@@ -190,7 +194,7 @@ function isSpaceToken(token: Token) {
 }
 
 function setNumberToken(token: Token) {
-  token.formattedValue = html` <div cds-layout="vertical gap:md">
+  token.formattedValue = html` <div>
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
     <p cds-text="secondary">Web: <span cds-text="code">${token.computedValue}</span></p>
     <p cds-text="secondary">Android: <span cds-text="code">${token.value}dp</span></p>
@@ -221,7 +225,7 @@ function setColorToken(token: Token) {
   const rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
   const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
 
-  token.formattedValue = html` <div cds-layout="vertical gap:md">
+  token.formattedValue = html` <div>
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
     <p cds-text="secondary">Web: <span cds-text="code">hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})</span></p>
@@ -294,6 +298,8 @@ export const objectShadow = () => getTokenTable('aliasObjectShadow');
 export const objectOpacity = () => getTokenTable('aliasObjectOpacity');
 
 export const objectTransparency = () => getTokenTable('aliasObjectTransparency');
+
+export const objectContainerBackground = () => getTokenTable('aliasObjectContainerBackground');
 
 export const statusColor = (_args: any, { globals }: any) => getTokenTable('aliasStatus', globals);
 

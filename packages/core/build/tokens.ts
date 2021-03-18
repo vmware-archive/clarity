@@ -344,6 +344,7 @@ const typography = {
   baseFontSizePx: token(20), // deprecated for removal in 6.0
   fontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
   headerFontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
+  monospaceFontFamily: token('ui-monospace, Consolas, Menlo, Monaco, monospace'),
   topGapHeight: token('0.1475em'), // line-height eraser
   ascenderHeight: token('0.1703em'), // line-height eraser
   xHeight: token('0.517em'), // line-height eraser
@@ -494,7 +495,11 @@ const aliases = {
       backdropBackground: token('hsla(0, 0%, 0%, 0.6)'),
     },
     container: {
-      background: token(color.white),
+      background: {
+        value: token(color.white),
+        tint: token(color.construction[50]),
+        shade: token(color.construction[100]),
+      },
       borderColor: token(color.construction[200]),
     },
   },

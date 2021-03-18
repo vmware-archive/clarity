@@ -282,6 +282,11 @@
   text-align: center !important;
 }
 
+// monospace
+[cds-text~='monospace'] {
+  font-family: $cds-global-typography-monospace-font-family;
+}
+
 // https://seek-oss.github.io/capsize/
 [cds-text~='lhe'] {
   /* stylelint-disable-next-line meowtec/no-px */

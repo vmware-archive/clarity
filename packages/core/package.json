@@ -25,7 +25,7 @@
     "build:sass": "npm-run-all build:sass:modules build:sass:components",
     "build:sass:optimize": "cd build && ts-node ./build.styles.ts",
     "build:sass:watch": "npm-run-all 'build:sass' -p 'build:sass:components -- -w' 'build:sass:modules -- --watch' & chokidar './dist/core/**/*.css' -c 'yarn run build:sass:optimize' -i './dist/core/**/*.min.css'",
-    "build:sass:modules": "sass --no-source-map --load-path=./src ./src/styles:./dist/core/styles ./src/styles/global.scss:./dist/core/global.css ./src/list:./dist/core/list",
+    "build:sass:modules": "sass --no-source-map --load-path=./src ./src/styles:./dist/core/styles ./src/styles/global.scss:./dist/core/global.css ./src/list:./dist/core/list ./src/table:./dist/core/table",
     "build:sass:components": "sass-render --q --suffix '.css.ts' -t ./build/sass-template.ts './**/*.element.scss' './**/*.global.scss'"
   },
   "files": [

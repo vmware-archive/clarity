@@ -135,6 +135,8 @@ function createToken(token: Token, globals: any, currentTheme: any) {
     setFontSizeToken(token);
   } else if (typeof token.value === 'number') {
     setNumberToken(token);
+  } else if (isAnimationToken(token)) {
+    setAnimationToken(token);
   }
 
   return token;
@@ -172,6 +174,10 @@ function rgbToHex(red: number, green: number, blue: number) {
   return `#${r}${g}${b}`;
 }
 
+function isAnimationToken(token: Token) {
+  return token.name.includes('global-animation');
+}
+
 function isColorToken(token: Token) {
   return Array.isArray(token.value) && token.value.length === 3;
 }
@@ -190,6 +196,21 @@ function setNumberToken(token: Token) {
     <p cds-text="secondary">Android: <span cds-text="code">${token.value}dp</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">${token.value}pt</span></p>
   </div>`;
+}
+
+function setAnimationToken(token: Token) {
+  token.demo = html`
+    <div
+      class="animation-demo"
+      style="${token.name.includes('duration') ? '--duration' : '--easing'}: var(${token.name}); ${token.name.includes(
+        'easing'
+      )
+        ? '--duration: var(--cds-global-animation-duration-slower)'
+        : ''}"
+    >
+      <div class="animation"></div>
+    </div>
+  `;
 }
 
 function setColorToken(token: Token) {

@@ -1,0 +1,35 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Themes/Low Motion Theme" />
+
+# Low Motion Theme
+
+Clarity provides a built-in low motion theme for accessibility and users who prefer no animations.
+
+```css
+// import into sass or css
+@import '~@cds/core/styles/theme.low-motion.min.css';
+
+// or import in html
+<link href="/node_modules/@cds/core/styles/theme.low-motion.min.css" rel="stylesheet">
+```
+
+```html
+<body cds-theme="low-motion">
+  ...
+</body>
+```
+
+Dynamic CSS Custom Properties with system-level design tokens provide advanced theme opportunities such as automatically changing themes based on user preferences.
+
+```javascript
+// automatically disable CSS animations based on browser preferences https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)')).matches) {
+  body.setAttribute('cds-theme', 'low-motion');
+}
+```
+
+<Preview>
+  <Story id="stories-themes--low-motion" />
+</Preview>

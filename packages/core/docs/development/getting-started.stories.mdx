@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Internal/Documentation/Getting Started" />
+<Meta title="Internal Documentation/Getting Started" />
 
 # Getting Started - Contributing to Clarity Core
 
@@ -86,7 +86,13 @@ _Describe the intended API_
 To run a full repository build in the root directory run the following:
 
 ```bash
-yarn run build && yarn run build:website
+yarn run build
 ```
 
-This is the same build tasks ran by the CI check-in process.
+Or to run only the CI build locally
+
+```bash
+yarn run build:ci
+```
+
+This is the same build task ran by the Github Actions CI check-in process.

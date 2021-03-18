@@ -1,8 +1,14 @@
 {
   "name": "@cds/angular",
-  "version": "5.0.3",
+  "version": "5.1.0",
   "description": "Core component modules for Clarity Angular",
-  "keywords": ["ng-add", "clarity", "angular", "components", "core"],
+  "keywords": [
+    "ng-add",
+    "clarity",
+    "angular",
+    "components",
+    "core"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/vmware/clarity.git"

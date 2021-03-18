@@ -1,6 +1,6 @@
 {
   "name": "@cds/core",
-  "version": "5.0.3",
+  "version": "5.1.0",
   "scripts": {
     "clean": "del ./dist",
     "start": "npm-run-all build -p build:watch storybook:start",
@@ -111,7 +111,7 @@
     "wc-sass-render": "1.2.3",
     "web-component-analyzer": "1.1.6",
     "webpack-cli": "3.3.11",
-    "webpack":"^4.0.0",
+    "webpack": "^4.0.0",
     "babel-loader": "^8.0.0",
     "style-loader": "^1.2.1",
     "css-loader": "^3.5.0"

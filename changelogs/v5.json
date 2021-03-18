@@ -2,6 +2,165 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.1.0",
+      "date": "2021-03-18",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 5657,
+          "title": "feat: clarity motion",
+          "project": "Core",
+          "scope": "Motion"
+        },
+        {
+          "issue": 5741,
+          "title": "Add text-transformation css prop",
+          "project": "Core",
+          "scope": "Label"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 5751,
+          "title": "Handful of typos and content improvements",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5744,
+          "title": "Update core app alert image",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5750,
+          "title": "Token adjustments for black and white colors",
+          "project": "Core",
+          "scope": "Design Tokens"
+        },
+        {
+          "issue": 5713,
+          "title": "Accordion layout overflow",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5742,
+          "title": "List documentation",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5718,
+          "title": "Value tracker bug",
+          "project": "Core",
+          "scope": "React"
+        },
+        {
+          "issue": 5557,
+          "title": "Assign correct described-by id to form input and control helpers",
+          "project": "Angular",
+          "scope": "Form"
+        },
+        {
+          "issue": 5733,
+          "title": "Cursor of disabled core radio",
+          "project": "Core",
+          "scope": "Radio"
+        },
+        {
+          "issue": 5733,
+          "title": "Tick alignment",
+          "project": "Core",
+          "scope": "Checkbox"
+        },
+        {
+          "issue": 5722,
+          "title": "Remove IE 10 leftover declaration",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5722,
+          "title": "Remove duplicate screen-reader-only layout CSS declaration",
+          "project": "Core",
+          "scope": "Layout"
+        },
+        {
+          "issue": 5720,
+          "title": "Fix css that was hiding tooltips",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5714,
+          "title": "fix: update react-wrapper imports",
+          "project": "Core",
+          "scope": "React"
+        },
+        {
+          "issue": 5711,
+          "title": "Visibility inheritance",
+          "project": "Core",
+          "scope": "Base"
+        },
+        {
+          "issue": 5690,
+          "title": "Icon render performance",
+          "project": "Core",
+          "scope": "Icon"
+        },
+        {
+          "issue": 5712,
+          "title": "Layout contain messing with z-indexes",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 5691,
+          "title": "Core color token values",
+          "project": "Core",
+          "scope": "Design Tokens"
+        },
+        {
+          "issue": 5688,
+          "title": "Arrow icon rotation on compact view",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5705,
+          "title": "React examples to use clarity motion",
+          "project": "Core",
+          "scope": "React"
+        },
+        {
+          "issue": 5699,
+          "title": "allowing for text inside modals and overlays to be selected",
+          "project": "Core",
+          "scope": "Overlay"
+        },
+        {
+          "issue": 5695,
+          "title": "Angular alert images for success and info",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5681,
+          "title": "Datalist and toggle demos",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5682,
+          "title": "angular ngcc postinstall",
+          "project": "Angular",
+          "scope": "Build"
+        }
+      ]
+    },
+    {
       "version": "5.0.3",
       "date": "2021-03-04",
       "description": "This is a bug fix release.",

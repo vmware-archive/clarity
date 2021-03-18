@@ -1,0 +1,42 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Foundation/Internationalization" />
+
+# Internationalization (i18n)
+
+Clarity Core provides an i18n service to to change the text inside components to support different languages or easily customize strings inside the web component. Clarity Core i18n can be controlled in two different ways.
+
+1. Global Scope
+2. Component Scope
+
+## Global Scope
+
+i18n in the global scope uses the `I18nService` service from `@cds/core`. This service can both read and override the default component strings.
+
+```typescript
+import { I18nService } from '@cds/core';
+
+// read values
+I18nService.keys;
+
+// override global value for particular component
+I18nService.localize({ modal: { closeButtonAriaLabel: 'override value' } });
+```
+
+## Component Scope
+
+Often components need to provide better context to the action they are describing for screen readers. For example, an alert that is dismissible can have a more specific close label than simply "close".
+The i18n service provides a component level API using the `cds-i18n` attribute. This attribute/property allows the string to be overridden per component instance rather than across the entire application.
+
+```html
+<cds-alert-group>
+  <cds-alert closable cds-i18n="{ 'closeButtonAriaLabel': 'dismiss usage warning limit'}">
+    Warning, usage limit at 90%. <a href="#">Update Service</a>
+  </cds-alert>
+</cds-alert-group>
+```
+
+<Preview>
+  <Story id="stories-utilities--internationalization" />
+</Preview>

@@ -4,46 +4,63 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { customElement, html, internalProperty, LitElement } from 'lit-element';
 import { componentStringsDefault, I18nStrings, I18nService, property, registerElementSafely } from '@cds/core/internal';
-import { select } from '@storybook/addon-knobs';
-import { html, LitElement } from 'lit-element';
 
 export default {
-  title: 'Utilities (Preview)/utils',
+  title: 'Stories/Utilities',
   parameters: {
     options: { showPanel: true },
   },
 };
 
+const frenchTranslation: Partial<I18nStrings> = {
+  alert: {
+    closeButtonAriaLabel: "fermer l'alerte",
+    info: 'Info',
+    loading: 'Charger',
+    success: 'Succès',
+    warning: 'Avertissement',
+    danger: 'Erreur',
+  },
+};
+
+@customElement('i18n-demo')
+export class I18nDemo extends LitElement {
+  @internalProperty() private i18n = JSON.stringify(I18nService.keys, null, 2);
+
+  render() {
+    return html`
+      <cds-radio-group layout="vertical">
+        <label>language</label>
+
+        <cds-radio>
+          <label>English (default)</label>
+          <input type="radio" value="1" checked @click=${this.setEnglish} />
+        </cds-radio>
+
+        <cds-radio>
+          <label>French (custom)</label>
+          <input type="radio" value="2" @click=${this.setFrench} />
+        </cds-radio>
+      </cds-radio-group>
+      <pre cds-text="message">${this.i18n}</pre>
+    `;
+  }
+
+  setEnglish() {
+    I18nService.localize(componentStringsDefault);
+    this.i18n = JSON.stringify(I18nService.keys, null, 2);
+  }
+
+  setFrench() {
+    I18nService.localize(frenchTranslation);
+    this.i18n = JSON.stringify(I18nService.keys, null, 2);
+  }
+}
+
 export const internationalization = () => {
-  const frenchTranslation: Partial<I18nStrings> = {
-    alert: {
-      closeButtonAriaLabel: "fermer l'alerte",
-      info: 'Info',
-      loading: 'Charger',
-      success: 'Succès',
-      warning: 'Avertissement',
-      danger: 'Erreur',
-    },
-  };
-  const language = select(
-    'language',
-    { 'english (default)': componentStringsDefault, 'french (custom)': frenchTranslation },
-    componentStringsDefault as any
-  );
-
-  const getValues = () => {
-    I18nService.localize(language);
-    return html`${JSON.stringify(I18nService.keys, null, 2)}`;
-  };
-
-  return html`
-    <h2>Internationalization (i18n)</h2>
-    <pre>
-      ${getValues()}
-    </pre
-    >
-  `;
+  return html`<i18n-demo></i18n-demo>`;
 };
 
 export const lazyLoading = () => {

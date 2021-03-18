@@ -17,7 +17,7 @@ import { CdsInternalOverlay } from '@cds/core/internal-components/overlay/index.
 ClarityMotion.add(AnimationHingeName, AnimationHingeConfig);
 
 export default {
-  title: 'Internal/APIs/Overlay/Stories',
+  title: 'Internal Stories/Overlay',
   component: 'cds-internal-overlay',
   argTypes: getElementStorybookArgTypes('cds-internal-overlay', customElements),
   parameters: {

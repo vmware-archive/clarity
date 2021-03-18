@@ -1,0 +1,134 @@
+import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Table" />
+
+# Tables
+
+Tables in Clarity Core come in multiple varieties. Tables are used to display tabular data, and
+you change options with how content is laid out (standard, vertical, compact, left, right) along with
+highlighting cells or rows.
+
+## Installation
+
+To use the table styles import the global CSS and then add the table CSS file.
+
+```scss
+// import into sass or css
+@import '~@cds/core/table/table.min';
+
+// or import in html
+<link href="/node_modules/@cds/core/table/table.min.css" rel="stylesheet">
+```
+
+## API
+
+Tables in Clarity Core are just standard HTML tables, and you can apply modifiers to change the display
+of the table. Each value can be used independently to turn on different styles.
+
+- `<table cds-table>` - Style a table with Clarity styles, but no borders
+- `<table cds-table="border:all">` - Turn on all borders
+- `<table cds-table="border:outside">` - Turn on outside borders
+- `<table cds-table="border:row">` - Turn on row borders
+- `<table cds-table="border:column">` - Turn on col borders
+- `<table cds-table="vertical">` - Display table in vertical layout
+- `<table cds-table="compact">` - Display table in compact layout
+- `<table cds-table="zebra">` - Display table in with alternating background colors
+- `<table cds-table="border:row border:outside zebra">` - Mix and match to turn on both outsidie and row borders with zebra
+
+There are a handful of custom properties that you can set to modify the default styles.
+
+```
+--background: #{$cds-alias-object-container-background}; // Table background
+--color: #{$cds-global-typography-color-400}; // Text color
+--border-radius: #{$cds-alias-object-border-radius-100}; // Border radius for corners of table
+--border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color}; // Outside border style
+
+--header-background: #{$cds-alias-object-container-background-tint}; // Header background
+--header-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color}; // Header border separator style
+
+--row-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint}; // Row border separator style
+
+--cell-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint}; // Column border separator style
+--cell-padding: #{$cds-global-space-5} #{$cds-global-space-6}; // Cell padding
+```
+
+There are some cases you might need to turn on specific display properties, such as when a table uses
+rowspan or colspan. You can apply or change styles for these special cases when default styles might
+not show the way you expect. Below is an example of how you could apply styles to modify two cells that
+have a rowspan, where the styling doesn't quite look right without some work.
+
+````
+<table cds-table="border:all">
+  <caption>
+    Table with col and row spans, have to provide modifier classes to set correct border and radius
+  </caption>
+  <tr>
+    <th colspan="2">Wizard / Allegiance</th>
+    <th colspan="2">Triwizard Champion? / Can Cast Fireball</th>
+  </tr>
+  <tr>
+    <td>Obi-Wan Kenobi</td>
+    <td>Republic/Rebellion</td>
+    <td>No</td>
+    <td rowspan="2" style="border-bottom-right-radius: var(--border-radius); border-bottom: var(--border); border-right: var(--border);">No<br />No<br />No<br />No</td>
+  </tr>
+  <tr>
+    <td>Merlin</td>
+    <td>King Arthur</td>
+    <td style="border-radius: 0; border-right: var(--cell-border)">Probably invented the tournament</td>
+  </tr>
+</table>```
+
+You can also apply `cds-text` modifiers to the table, row, or specific cells for alignment, typography styles, etc.
+
+## Basic Table
+
+<Preview>
+  <Story id="stories-table--api" />
+</Preview>
+
+## Center Aligned Table
+
+<Preview>
+  <Story id="stories-table--center-table" />
+</Preview>
+
+## Right Aligned Table
+
+<Preview>
+  <Story id="stories-table--right-table" />
+</Preview>
+
+## All Borders Table
+
+<Preview>
+  <Story id="stories-table--border-table" />
+</Preview>
+
+## Non-Bordered Tables
+
+<Preview>
+  <Story id="stories-table--noborder-table" />
+</Preview>
+
+## Compact
+
+<Preview>
+  <Story id="stories-table--compact-table" />
+</Preview>
+
+## Vertical
+
+<Preview>
+  <Story id="stories-table--vertical-table" />
+</Preview>
+
+## Modifiers for Table
+
+You can use `cds-text` to modify the properties of individual cells or rows.
+
+<Preview>
+  <Story id="stories-table--modifier-table" />
+</Preview>
+````

@@ -13,6 +13,7 @@ declare global {
     'cds-text': string;
     'cds-layout': string;
     'cds-list': string;
+    'cds-table': string;
   }
 
   interface HTMLElementTagNameMap {

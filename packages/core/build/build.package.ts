@@ -41,6 +41,7 @@ function createPackageFile() {
     "./global.min.css": "./global.min.css",
     "./styles/*": "./styles/*",
     "./list/*": "./list/*",
+    "./table/*": "./table/*",
     "./test": "./test/index.js",
     "./internal": "./internal/index.js",
     "./icon/shapes/*": "./icon/shapes/*",

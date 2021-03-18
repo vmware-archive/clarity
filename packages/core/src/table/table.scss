@@ -1,0 +1,171 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// TODO Fix styles so they work even if you don't explicitly use thead/tbody
+
+@import './../styles/tokens/generated/index';
+
+table[cds-table] {
+  --background: #{$cds-alias-object-container-background};
+  --color: #{$cds-global-typography-color-400};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+
+  --header-background: #{$cds-alias-object-container-background-tint};
+  --header-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+
+  --row-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint};
+
+  --column-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint};
+  --cell-padding: #{$cds-global-space-5} #{$cds-global-space-6};
+}
+
+// Default structure
+table[cds-table] {
+  background: var(--background);
+  color: var(--color);
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+
+  td,
+  th {
+    padding: var(--cell-padding);
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--color);
+    background: var(--header-background);
+  }
+
+  td {
+    background: var(--background);
+  }
+
+  tfoot th {
+    border-top-width: 0;
+  }
+}
+
+// Border variations, are all opt-in
+// Row borders
+table[cds-table~='border:all'],
+table[cds-table~='border:row'] {
+  tr th {
+    border-bottom: var(--header-border);
+  }
+
+  tr td {
+    border-bottom: var(--row-border);
+  }
+}
+// Column borders
+table[cds-table~='border:all'],
+table[cds-table~='border:col'] {
+  tr th:not(:last-child) {
+    border-right: var(--header-border);
+  }
+
+  tr td:not(:last-child) {
+    border-right: var(--column-border);
+  }
+}
+// Outside borders
+table[cds-table~='border:all'],
+table[cds-table~='border:outside'] {
+  & > caption + :nth-child(2) tr:first-of-type,
+  & > :first-child > tr:first-of-type {
+    th,
+    td {
+      border-top: var(--border);
+    }
+  }
+
+  tr th:first-child,
+  tr td:first-child {
+    border-left: var(--border);
+  }
+
+  tr th:last-child,
+  tr td:last-child {
+    border-right: var(--border);
+  }
+
+  tr:last-child td {
+    border-bottom: var(--border);
+  }
+}
+
+// Border radius styles
+table[cds-table] {
+  & > caption + :nth-child(2) tr:first-of-type,
+  & > :first-child > tr:first-of-type {
+    :first-child {
+      border-top-left-radius: var(--border-radius);
+    }
+
+    :last-child {
+      border-top-right-radius: var(--border-radius);
+    }
+  }
+
+  & > *:last-child > tr:last-of-type {
+    :first-child {
+      border-bottom-left-radius: var(--border-radius);
+    }
+
+    :last-child {
+      border-bottom-right-radius: var(--border-radius);
+    }
+  }
+}
+
+table[cds-table] {
+  // Left Alignment options
+  &[cds-text~='left'] th,
+  &[cds-text~='left'] td {
+    text-align: left;
+  }
+  // Right Alignment options
+  &[cds-text~='right'] th,
+  &[cds-text~='right'] td {
+    text-align: right;
+  }
+  // Center alignment options
+  &[cds-text~='center'] th,
+  &[cds-text~='center'] td {
+    text-align: center;
+  }
+}
+
+// Compact options
+table[cds-table~='compact'] {
+  --cell-padding: calc(#{$cds-global-space-5} / 2) calc(#{$cds-global-space-6} / 2);
+}
+
+// Tinted rows
+table[cds-table~='zebra'] {
+  --header-background: #{$cds-alias-object-container-background-shade};
+
+  tbody tr:nth-child(2n) {
+    --background: #{$cds-alias-object-container-background-tint};
+  }
+}
+
+// Vertical options
+table[cds-table~='vertical'] {
+  tr td:first-child,
+  tr th:first-child {
+    background: var(--header-background);
+    border-right: var(--header-border);
+  }
+}
+
+// Typography overrides to avoid creating a new cell when the cds-text attributes are used on a row
+table[cds-table] tr[cds-text]::before {
+  content: none !important;
+}

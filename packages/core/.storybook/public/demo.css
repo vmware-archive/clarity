@@ -5,6 +5,7 @@
 @import './../../dist/core/styles/theme.dark.min.css';
 @import './../../dist/core/styles/theme.low-motion.min.css';
 @import './../../dist/core/list/list.min.css';
+@import './../../dist/core/table/table.min.css';
 
 html {
   overflow-x: hidden;
@@ -20,29 +21,6 @@ body.sb-main-fullscreen {
 
 .docblock-propstable-body li {
   list-style-position: outside;
-}
-
-table {
-  color: var(--cds-global-typography-color-500) !important;
-  background: var(--cds-alias-object-app-background) !important;
-}
-
-table tr,
-table tr td,
-table th,
-table td svg {
-  color: var(--cds-global-typography-color-500) !important;
-  background: transparent !important;
-}
-
-table tr {
-  border-top-color: var(--cds-alias-object-border-color) !important;
-}
-
-table td button {
-  color: var(--cds-global-typography-color-400) !important;
-  font-weight: 400 !important;
-  background: var(--cds-alias-object-interaction-background) !important;
 }
 
 /* Demo Components */

@@ -12,6 +12,9 @@ html {
 
 body {
   box-sizing: border-box !important; /* storybook v6 inline to initial */
+}
+
+body.sb-main-fullscreen {
   background: transparent !important;
 }
 
@@ -107,7 +110,12 @@ iframe[resizable] {
   resize: horizontal;
   overflow: auto;
   padding: 24px;
-  background: linear-gradient(135deg, hsl(0, 100%, 100%) 0, hsl(0, 100%, 100%) 97%, hsl(208, 52%, 85%) 90%);
+  background: linear-gradient(
+    135deg,
+    var(--cds-alias-object-app-background) 0,
+    var(--cds-alias-object-app-background) 97%,
+    hsl(208, 52%, 85%) 90%
+  );
   border: 1px solid hsl(0, 0%, 87%);
   margin-bottom: 48px;
   position: relative;
@@ -181,6 +189,7 @@ cds-card {
 .sbdocs-h1,
 .sbdocs-h2,
 .sbdocs-h3,
+.sbdocs-h4,
 .sbdocs-p,
 .sbdocs-li {
   color: var(--cds-global-typography-color-500) !important;
@@ -310,4 +319,43 @@ cds-card {
 
 #story--foundation-design-tokens-stories--interaction > div {
   min-height: 450px !important;
+}
+
+@keyframes slide-demo {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: calc(100% - 25px);
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.animation {
+  animation: slide-demo var(--duration);
+  animation-timing-function: var(--easing);
+  animation-iteration-count: infinite;
+  animation-delay: 500ms;
+  background: var(--cds-alias-status-neutral);
+  width: 25px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+}
+
+.animation-demo {
+  --duration: var(--cds-global-animation-duration-primary);
+  border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color);
+  width: 200px;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.animation-demo:not(:hover) {
+  --duration: 0 !important;
 }

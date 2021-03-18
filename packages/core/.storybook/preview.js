@@ -39,7 +39,7 @@ export const parameters = {
           'Typography',
         ],
         'Themes',
-        ['Getting Started', 'Dark Theme', 'Dynamic Themes'],
+        ['Getting Started', 'Dark Theme', 'Low Motion Theme', 'Dynamic Themes'],
         'Layout',
         ['Get Started', 'Horizontal', 'Vertical', 'Grid', 'Spacing', 'Utilities', 'Patterns', 'All'],
         'Components',
@@ -90,32 +90,30 @@ export const parameters = {
       ],
     },
   },
-  themes: {
-    list: [
-      { name: 'light', class: 'cds-theme-light', color: 'hsl(0, 0%, 100%)' },
-      { name: 'dark', class: 'cds-theme-dark', color: 'hsl(211, 63%, 14%)' },
-    ],
-    clearable: false,
-    onChange: theme => {
-      const doc = document.querySelector('#storybook-preview-iframe').contentWindow.document;
-      doc.body.setAttribute('cds-theme', theme.name);
-      doc
-        .querySelectorAll(`[id*='story--'], [cds-theme]`)
-        .forEach(story => story.setAttribute('cds-theme', theme.name));
-    },
-  },
 };
 
-const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : '';
 export const globalTypes = {
   theme: {
     name: 'Themes',
     description: 'Available built in Clarity themes',
-    defaultValue: defaultTheme,
+    defaultValue: window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : window.localStorage.getItem('cds-color-theme'),
     toolbar: {
       items: [
         { value: '', title: 'Light Theme' },
         { value: 'dark', title: 'Dark Theme' },
+      ],
+    },
+  },
+  motion: {
+    name: 'Motion',
+    description: 'Clarity Animations',
+    defaultValue: '',
+    toolbar: {
+      items: [
+        { value: '', title: 'Enable Animations' },
+        { value: 'low-motion', title: 'Disable Animations' },
       ],
     },
   },
@@ -130,17 +128,6 @@ export const globalTypes = {
       ],
     },
   },
-  // motion: {
-  //   name: 'Motion',
-  //   description: 'Clarity Animations',
-  //   defaultValue: '',
-  //   toolbar: {
-  //     items: [
-  //       { value: '', title: 'Enable Animations' },
-  //       { value: 'low-motion', title: 'Disable Animations' },
-  //     ],
-  //   },
-  // },
 };
 
 const themeDecorator = (story, { globals }) => {
@@ -148,6 +135,16 @@ const themeDecorator = (story, { globals }) => {
   document.body.setAttribute('cds-theme', `${themes}`);
   window.parent.document.body.setAttribute('cds-theme', `${themes}`);
   document.documentElement.setAttribute('cds-base-font', `${globals.baseFont === '100%' ? '16' : ''}`);
+
+  window.localStorage.setItem('cds-theme', themes);
+
+  window.addEventListener('storage', () => {
+    const updatedTheme = window.localStorage.getItem('cds-theme');
+    if (updatedTheme) {
+      window.document.body.setAttribute('cds-theme', `${updatedTheme}`);
+    }
+  });
+
   return story();
 };
 

@@ -30,6 +30,7 @@ npm install --save-dev @clr/eslint-plugin-clarity-adoption @typescript-eslint/pa
     "@clr/clarity-adoption/no-clr-form": "warn",
     "@clr/clarity-adoption/no-clr-icon": "warn",
     "@clr/clarity-adoption/no-clr-input": "warn",
+    "@clr/clarity-adoption/no-clr-label": "warn",
     "@clr/clarity-adoption/no-clr-list": "warn",
     "@clr/clarity-adoption/no-clr-modal": "warn",
     "@clr/clarity-adoption/no-clr-password": "warn",

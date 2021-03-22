@@ -1,0 +1,140 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// The following styles are the layout alignment utilities adapted for Shadow DOM
+// support. This enables alignments to be used for sloted content. This is limited
+// to only layout alignment utils to prevent excessive code bloat and duplication between
+// global and component stylesheets. Example:
+
+/*
+  <div cds-layout="horizontal gap:lg">
+    <slot></slot>
+  </div>
+
+  <my-element>
+    <button></button>
+    <button></button>
+    <button cds-layout="align:bottom"></button>
+  </my-element>
+*/
+
+@mixin generateShadowDomVerticalStretch($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-stretch}'] {
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+@mixin generateShadowDomVerticalItemAlignment($breakpoint: null) {
+  [#{$layout}~='#{$vertical}'] {
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+      align-self: center;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+      margin-bottom: auto !important;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+      margin-top: auto !important;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+      margin-left: auto;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']),
+    & > [#{$layout}*='#{$align}#{$breakpoint}:#{$left}'] {
+      margin-right: auto;
+    }
+  }
+}
+
+@mixin generateShadowDomHorizontalStretch($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-stretch}'] {
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
+    }
+
+    &[#{$layout}*='#{$align}#{$breakpoint}:#{$stretch}'] {
+      & > ::slotted(*) {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+@mixin generateShadowDomHorizontalItemAlignment($breakpoint: null) {
+  [#{$layout}~='#{$horizontal}'] {
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$vertical-center}']) {
+      align-self: center;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$center}']),
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$horizontal-center}']) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$top}']) {
+      align-self: flex-start;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$bottom}']) {
+      align-self: flex-end;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$right}']) {
+      margin-left: auto !important;
+    }
+
+    ::slotted([#{$layout}*='#{$align}#{$breakpoint}:#{$left}']) {
+      margin-right: auto !important;
+    }
+  }
+}
+
+@mixin generateShadowDomHorizontalVerticalAxisFill($breakpoint: null) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > ::slotted(*) {
+    flex-grow: 1 !important;
+    flex-basis: 0 !important;
+  }
+}
+
+@include generateShadowDomVerticalStretch();
+@include generateShadowDomVerticalItemAlignment();
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateShadowDomVerticalStretch($breakpoint);
+    @include generateShadowDomVerticalItemAlignment($breakpoint);
+  }
+}
+
+@include generateShadowDomHorizontalStretch();
+@include generateShadowDomHorizontalItemAlignment();
+@each $breakpoint, $breakpoint-value in $cds-layout-breakpoints {
+  @media (min-width: $breakpoint-value) {
+    @include generateShadowDomHorizontalStretch($breakpoint);
+    @include generateShadowDomHorizontalItemAlignment($breakpoint);
+  }
+}

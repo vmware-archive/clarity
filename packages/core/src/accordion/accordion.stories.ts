@@ -267,3 +267,60 @@ export function customStyles() {
     </cds-accordion>
   `;
 }
+
+export function stackview() {
+  return html`
+    <style>
+      #stackview-demo cds-divider {
+        margin: 0 calc(var(--cds-global-space-11) * -1);
+        width: calc(100% + calc(var(--cds-global-space-11) * 2));
+      }
+    </style>
+    <cds-accordion id="stackview-demo">
+      <cds-accordion-panel>
+        <cds-accordion-header>
+          <div cds-layout="grid cols:6">
+            <p cds-text="secondary">Panel One</p>
+            <p cds-text="secondary">Content One</p>
+          </div>
+        </cds-accordion-header>
+        <cds-accordion-content></cds-accordion-content>
+      </cds-accordion-panel>
+      <cds-accordion-panel expanded>
+        <cds-accordion-header>
+          <div cds-layout="grid cols:6">
+            <p cds-text="secondary">Panel Two</p>
+            <p cds-text="secondary">Content Two</p>
+          </div>
+        </cds-accordion-header>
+        <cds-accordion-content>
+          <div cds-layout="vertical gap:md">
+            <div cds-layout="grid cols:6 gap:lg">
+              <p cds-text="secondary">Panel Two</p>
+              <p cds-text="secondary">Content Two</p>
+            </div>
+            <cds-divider></cds-divider>
+            <div cds-layout="grid cols:6 gap:lg">
+              <p cds-text="secondary">Panel Two</p>
+              <p cds-text="secondary">Content Two</p>
+            </div>
+            <cds-divider></cds-divider>
+            <div cds-layout="grid cols:6 gap:lg">
+              <p cds-text="secondary">Panel Two</p>
+              <p cds-text="secondary">Content Two</p>
+            </div>
+          </div>
+        </cds-accordion-content>
+      </cds-accordion-panel>
+      <cds-accordion-panel>
+        <cds-accordion-header>
+          <div cds-layout="grid cols:6">
+            <p cds-text="secondary">Panel Three</p>
+            <p cds-text="secondary">Content Three</p>
+          </div>
+        </cds-accordion-header>
+        <cds-accordion-content></cds-accordion-content>
+      </cds-accordion-panel>
+    </cds-accordion>
+  `;
+}

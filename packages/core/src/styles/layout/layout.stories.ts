@@ -4,8 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
 import '@cds/core/divider/register.js';
+import { html, css, customElement, property, LitElement } from 'lit-element';
+import { baseStyles } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Layout',
@@ -1851,6 +1852,58 @@ export function layoutTypes() {
           </div>
         </cds-demo>
       </div>
+    </div>
+  `;
+}
+
+@customElement('layout-shadow-dom-support')
+export class LayoutShadowDomSupport extends LitElement {
+  @property({ type: String }) layout = 'horizontal';
+
+  static get styles() {
+    return [
+      baseStyles,
+      css`
+        div {
+          display: block;
+          border: var(--cds-alias-object-border-width-200) solid var(--cds-alias-object-border-color);
+          padding: var(--cds-global-space-6);
+        }
+
+        :host([layout='horizontal']) div {
+          min-width: 400px;
+        }
+
+        :host([layout='vertical']) div {
+          min-height: 400px;
+        }
+      `,
+    ];
+  }
+
+  render() {
+    return html`
+      <div cds-layout="${this.layout} gap:lg">
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+
+export function shadowDOMSupport() {
+  return html`
+    <div cds-layout="horizontal gap:lg">
+      <layout-shadow-dom-support layout="horizontal">
+        <button>item</button>
+        <button>item</button>
+        <button cds-layout="align:right">item</button>
+      </layout-shadow-dom-support>
+
+      <layout-shadow-dom-support layout="vertical">
+        <button>item</button>
+        <button>item</button>
+        <button cds-layout="align:bottom">item</button>
+      </layout-shadow-dom-support>
     </div>
   `;
 }

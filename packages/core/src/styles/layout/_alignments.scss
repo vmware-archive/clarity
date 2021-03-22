@@ -1,12 +1,11 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
 // common alignment styles shared between vertical and horizontal layouts
 
 @mixin generateHorizontalVerticalAxisFill($breakpoint: null) {
-  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > *,
-  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > ::slotted(*) {
+  [#{$layout}*='#{$align}#{$breakpoint}:#{$fill}'] > * {
     flex-grow: 1 !important;
     flex-basis: 0 !important;
   }

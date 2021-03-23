@@ -29,6 +29,15 @@ describe('getElementUpdates', () => {
     expect(checked).toEqual(true);
   });
 
+  it('get notified of initial attr value', async done => {
+    input.setAttribute('indeterminate', '');
+
+    getElementUpdates(input, 'indeterminate', value => {
+      expect(value).toEqual('');
+      done();
+    });
+  });
+
   it('get notified of attr changes', async done => {
     const values: any = [];
     getElementUpdates(input, 'checked', value => {

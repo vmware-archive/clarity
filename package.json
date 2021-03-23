@@ -29,7 +29,7 @@
     "start": "yarn angular:dev:start",
     "build": "npm-run-all build:ci build:website build:storybook:core angular:dev:build",
     "build:ci": "npm-run-all clean format lint build:libs test",
-    "build:libs": "npm-run-all preinstall ui:build icons:build core:build -p react:build angular:build schematics:build eslint:build",
+    "build:libs": "npm-run-all preinstall core:build icons:build ui:build -p react:build angular:build schematics:build eslint:build",
     "build:website": "yarn --cwd apps/website run build",
     "build:adoption": "yarn --cwd packages/angular run build:adoption",
     "build:storybook:angular": "yarn --cwd packages/angular run storybook:build",

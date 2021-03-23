@@ -12,9 +12,11 @@ export function stopEvent(event: Event) {
 }
 
 export const getElementUpdates = (element: HTMLElement, propertyKey: string, callback: (value: any) => void) => {
-  callback(
-    (element as any)[propertyKey] !== undefined ? (element as any)[propertyKey] : element.getAttribute(propertyKey)
-  );
+  if (element.hasAttribute(propertyKey)) {
+    callback(element.getAttribute(propertyKey));
+  } else if ((element as any)[propertyKey] !== undefined) {
+    callback((element as any)[propertyKey]);
+  }
 
   // React: disable input tracker to setup property observer. React re-creates tracker on input changes
   // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/inputValueTracking.js#L51

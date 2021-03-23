@@ -55,7 +55,8 @@
   border-left: none;
   border-bottom-color: var(--color);
   display: inline-block;
-  transform: translateY(0.15rem);
+  transform: translateY(calc(#{$cds-global-space-1} * 0.15));
+  top: $cds-global-space-3;
 }
 
 :host([_checked]) {

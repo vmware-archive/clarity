@@ -107,3 +107,19 @@ Consider using modals for the following scenarios: alerting the user, confirmati
 <ClrImage title="Image that shows multiple modals stacked on top of each other as an example for what not to do." src="/images/components/modal/stacking.png" />
 </div>
 </div>
+
+:::component-section-level-two-title
+
+### Accessibility and managing focus
+
+:::
+
+:::component-section-level-two
+
+As demonstrated in the examples above, the VMware Accessibility team recommends forcing focus to the title of a modal when it is first opened. This is accomplished by adding the `cds-first-focus` attribute and a `tabindex` of `-1` to the header in the modal.
+
+Note that the `cds-first-focus` attribute can be used to draw focus to any element inside a modal when it is first opened. If the element is not normally focusable (like the header tag mentioned previously), you will also need to assign a `tabindex` to the element.
+
+:::
+
+<p cds-layout="p-x:xl">&nbsp;</p>

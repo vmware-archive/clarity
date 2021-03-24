@@ -44,7 +44,7 @@ export function API(args: any) {
       <cds-button status="primary" type="button" @click=${showApiModal}>Show Modal</cds-button>
       <cds-modal ...="${spreadProps(getElementStorybookArgs(args))}" id="${modalId}">
         <cds-modal-header>
-          <h3 cds-text="title">${args['cds-modal-header']}</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">${args['cds-modal-header']}</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">${args['cds-modal-content']}</p>
@@ -61,7 +61,7 @@ export function small() {
     <cds-demo popover>
       <cds-modal _demo-mode size="sm">
         <cds-modal-header>
-          <h3 cds-text="title">Small Modal</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">Small Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the small modal example.</p>
@@ -81,7 +81,7 @@ export function defaultSize() {
     <cds-demo popover>
       <cds-modal _demo-mode>
         <cds-modal-header>
-          <h3 cds-text="title">Modal Example</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the default sized modal example.</p>
@@ -101,7 +101,7 @@ export function large() {
     <cds-demo popover>
       <cds-modal _demo-mode size="lg">
         <cds-modal-header>
-          <h3 cds-text="title">Large Modal Example</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">Large Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the large modal example.</p>
@@ -121,7 +121,7 @@ export function extraLarge() {
     <cds-demo popover>
       <cds-modal _demo-mode size="xl">
         <cds-modal-header>
-          <h3 cds-text="title">Extra Large Modal Example</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">Extra Large Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the extra large modal example.</p>
@@ -141,7 +141,7 @@ export function darkTheme() {
     <cds-demo popover cds-theme="dark">
       <cds-modal _demo-mode>
         <cds-modal-header>
-          <h3 cds-text="title">My Modal</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Lorem Ipsum</p>
@@ -178,7 +178,7 @@ export function customStyles() {
     <cds-demo popover>
       <cds-modal _demo-mode class="modal-branding" size="lg">
         <cds-modal-header>
-          <h3 cds-text="title">Customizing Modal Styles</h3>
+          <h3 cds-text="title" cds-first-focus tabindex="-1">Customizing Modal Styles</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">This example shows how modal visual styles can be changed and customized.</p>
@@ -220,7 +220,7 @@ export function focus() {
         <h3 cds-text="title" cds-first-focus tabindex="-1">Managing Focus in a Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
-        <p cds-text="body">This example shows how focus can be managed inside a modal.</p>
+        <p cds-text="body">This example shows how cds-first-focus should be used to manage focus inside a modal.</p>
       </cds-modal-content>
       <cds-modal-actions>
         <cds-button @click=${hideFocusModal}>Ok</cds-button>
@@ -254,7 +254,7 @@ export function scrollContent() {
     <cds-button status="primary" type="button" @click=${showDefaultModal}>Show Modal</cds-button>
     <cds-modal hidden id="${modalId}">
       <cds-modal-header>
-        <h3 cds-text="title">Default-Sized Modal</h3>
+        <h3 cds-text="title" cds-first-focus tabindex="-1">Default-Sized Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
         <p>Demo to show how to scroll through a modal content area with a lot of content.</p>

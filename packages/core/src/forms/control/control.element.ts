@@ -275,6 +275,7 @@ export class CdsControl extends LitElement {
     this.setupResponsive();
     this.setupDescribedByUpdates();
     this.setupHiddenLabel();
+    this.assignSlotIfInControlGroup();
   }
 
   updated(props: Map<string, any>) {
@@ -338,6 +339,12 @@ export class CdsControl extends LitElement {
   private setupHiddenLabel() {
     if (this.label.getAttribute('cds-layout')?.includes('display:screen-reader-only')) {
       this.hiddenLabel = true;
+    }
+  }
+
+  private assignSlotIfInControlGroup() {
+    if (this.parentElement?.hasAttribute('cds-control-group')) {
+      this.setAttribute('slot', 'controls');
     }
   }
 }

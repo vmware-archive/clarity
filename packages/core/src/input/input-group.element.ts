@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,7 +38,7 @@ import { CdsInput } from './input.element.js';
  * @slot - For projecting inputs
  */
 export class CdsInputGroup extends CdsInternalControlGroup {
-  @querySlotAll('cds-input, cds-select, cds-time, cds-date, cds-control, [cds-control]', { assign: 'controls' })
+  @querySlotAll('cds-input, cds-select, cds-time, cds-date, cds-control, [cds-control]')
   protected controls: NodeListOf<CdsInput>;
 
   protected isInlineControlGroup = true;

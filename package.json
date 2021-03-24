@@ -34,7 +34,7 @@
     "build:adoption": "yarn --cwd packages/angular run build:adoption",
     "build:storybook:angular": "yarn --cwd packages/angular run storybook:build",
     "build:storybook:core": "yarn --cwd packages/core run storybook:build",
-    "test": "npm-run-all -p angular:test core:test icons:test react:test eslint-rule:test",
+    "test": "npm-run-all core:test -p angular:test icons:test react:test eslint-rule:test",
     "test:a11y": "node scripts/axe",
     "lint": "npm-run-all core:lint angular:lint react:lint eslint-rule:lint",
     "lint:fix": "npm-run-all core:lint:fix angular:lint:fix react:lint:fix eslint-rule:lint:fix",

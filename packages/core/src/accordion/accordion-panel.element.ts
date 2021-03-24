@@ -46,8 +46,6 @@ import { styles } from './accordion-panel.element.css.js';
  * @slot cds-accordion-header
  * @slot cds-accordion-content
  * @event expandedChange - notify when the user has clicked the panel header
- * @cssprop --border-color
- * @cssprop --border-width
  * @cssprop --animation-duration
  * @cssprop --animation-easing
  */

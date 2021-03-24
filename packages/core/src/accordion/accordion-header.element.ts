@@ -37,6 +37,7 @@ import { styles } from './accordion-header.element.css.js';
  * @cssprop --font-size
  * @cssprop --font-weight
  * @cssprop --background
+ * @cssprop --icon-color
  * @cssprop --icon-transform
  */
 export class CdsAccordionHeader extends LitElement {

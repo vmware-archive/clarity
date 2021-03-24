@@ -10,13 +10,13 @@
   --font-size: #{$cds-global-typography-font-size-3};
   --font-weight: #{$cds-global-typography-font-weight-semibold};
   --background: #{$cds-alias-object-app-background};
+  --icon-color: var(--color);
   --icon-transform: rotate(90deg);
   cursor: pointer;
   width: 100%;
 }
 
 .private-host {
-  --icon-color: var(--color);
   background: var(--background);
   padding: #{$cds-global-space-6};
   cursor: inherit;

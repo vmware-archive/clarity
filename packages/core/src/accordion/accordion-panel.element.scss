@@ -6,8 +6,6 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --border-color: #{$cds-alias-object-border-color};
-  --border-width: #{$cds-alias-object-border-width-100};
   --animation-duration: #{$cds-global-animation-duration-secondary};
   --animation-easing: #{$cds-global-animation-easing-primary};
   contain: inherit;
@@ -22,8 +20,6 @@
 
 .accordion-content {
   overflow-y: hidden;
-  box-shadow: 0 calc(-1 * var(--border-width)) 0 0 var(--border-color);
-  margin-top: var(--border-width); // this helps with a browser issue that hides the top border above in some cases
 }
 
 :host([cds-motion='off']) {
@@ -52,6 +48,11 @@
 }
 
 :host([expanded]) {
+  .accordion-content {
+    box-shadow: 0 calc(-1 * var(--border-width)) 0 0 var(--border-color);
+    margin-top: var(--border-width); // this helps with a browser issue that hides the top border above in some cases
+  }
+
   ::slotted(cds-accordion-header) {
     --background: #{$cds-alias-object-interaction-background-selected};
     --icon-transform: rotate(180deg);

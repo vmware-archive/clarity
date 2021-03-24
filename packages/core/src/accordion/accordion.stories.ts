@@ -244,23 +244,24 @@ export function customStyles() {
     <style>
       .app-custom {
         --border-color: midnightblue;
-        --header-color: aliceblue;
-        --header-font-weight: bold;
-        --header-background: LightSkyBlue;
-        --header-open-background: CornflowerBlue;
-        --icon-color: midnightblue;
+        --border-radius: 0;
+        --border-width: 2px;
+
+        --cds-alias-object-interaction-background-selected: lightskyblue;
+        --cds-alias-object-interaction-background-hover: lightskyblue;
+        --cds-alias-object-interaction-background-active: cornflowerblue;
       }
     </style>
-    <cds-accordion>
-      <cds-accordion-panel class="app-custom" expanded>
+    <cds-accordion class="app-custom">
+      <cds-accordion-panel expanded>
         <cds-accordion-header>Item 1</cds-accordion-header>
         <cds-accordion-content>Content 1</cds-accordion-content>
       </cds-accordion-panel>
-      <cds-accordion-panel class="app-custom">
+      <cds-accordion-panel>
         <cds-accordion-header>Item 2</cds-accordion-header>
         <cds-accordion-content>Content 2</cds-accordion-content>
       </cds-accordion-panel>
-      <cds-accordion-panel class="app-custom">
+      <cds-accordion-panel>
         <cds-accordion-header>Item 3</cds-accordion-header>
         <cds-accordion-content>Content 3</cds-accordion-content>
       </cds-accordion-panel>

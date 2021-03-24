@@ -15,6 +15,7 @@ import { listenForAttributeChange } from '@cds/core/internal';
 describe('cds-control', () => {
   let element: HTMLElement;
   let control: CdsControl;
+  let controlInGroup: CdsControl;
   let message: CdsControlMessage;
   let label: HTMLLabelElement;
   let input: HTMLInputElement;
@@ -33,9 +34,17 @@ describe('cds-control', () => {
         </datalist>
         <cds-control-message error="valueMissing">message text</cds-control-message>
       </cds-control>
+
+      <div cds-control-group>
+        <cds-control id="control-in-group">
+          <label>control in group</label>
+          <input type="text" />
+        </cds-control>
+      </div>
     `);
 
     control = element.querySelector<CdsControl>('cds-control');
+    controlInGroup = element.querySelector<CdsControl>('#control-in-group');
     label = element.querySelector<HTMLLabelElement>('label');
     input = element.querySelector<HTMLInputElement>('input');
     datalist = element.querySelector<HTMLDataListElement>('datalist');
@@ -181,6 +190,13 @@ describe('cds-control', () => {
   it('should not set input inline padding style if no control actions are used', async () => {
     await componentIsStable(control);
     expect(control.inputControl.hasAttribute('style')).toBe(false);
+  });
+
+  it('should set the control slot if created in a control group element', async () => {
+    await componentIsStable(controlInGroup);
+    await componentIsStable(control);
+    expect(controlInGroup.getAttribute('slot')).toBe('controls');
+    expect(control.getAttribute('slot')).toBe(null);
   });
 });
 

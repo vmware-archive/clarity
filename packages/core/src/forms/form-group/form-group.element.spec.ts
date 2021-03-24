@@ -67,15 +67,27 @@ describe('cds-form-group', () => {
 
   it('should sync controlWidth prop', async () => {
     await componentIsStable(formGroup);
-    expect(formGroup.controlWidth).toBe('stretch');
+    expect(formGroup.controlWidth).toBe(undefined);
     expect(controls[0].controlWidth).toBe('stretch');
     expect(controls[1].controlWidth).toBe('stretch');
 
     formGroup.controlWidth = 'shrink';
     await componentIsStable(formGroup);
+
     expect(formGroup.controlWidth).toBe('shrink');
     expect(controls[0].controlWidth).toBe('shrink');
     expect(controls[1].controlWidth).toBe('shrink');
+  });
+
+  it('should not override initial control width if set by child control and no parent width defined', async () => {
+    controls[1].setAttribute('control-width', 'shrink');
+
+    await componentIsStable(formGroup);
+    await componentIsStable(controls[0]);
+    await componentIsStable(controls[1]);
+
+    expect(controls[0].controlWidth).toBe('stretch');
+    expect(controls[1].getAttribute('control-width')).toBe('shrink');
   });
 
   it('should sync validate prop', async () => {

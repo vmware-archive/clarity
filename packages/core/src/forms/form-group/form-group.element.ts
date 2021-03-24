@@ -8,22 +8,17 @@ import { LitElement, html } from 'lit-element';
 import {
   baseStyles,
   querySlotAll,
-  syncDefinedProps,
   property,
   childrenUpdateComplete,
   elementResize,
   pxToRem,
+  syncDefinedProps,
 } from '@cds/core/internal';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsInternalControlInline } from '../control-inline/control-inline.element.js';
 import { CdsControl } from '../control/control.element.js';
 import { FormLayout, ControlWidth } from '../utils/interfaces.js';
-import {
-  getLargestPrimaryLabelWidth,
-  isVerticalLayout,
-  defaultFormLayout,
-  defaultControlWidth,
-} from '../utils/index.js';
+import { getLargestPrimaryLabelWidth, isVerticalLayout, defaultFormLayout } from '../utils/index.js';
 import { styles } from './form-group.element.css.js';
 
 /**
@@ -62,7 +57,7 @@ export class CdsFormGroup extends LitElement {
    * @type {stretch | shrink}
    * Adjust the control from the default full width or the browser default width
    */
-  @property({ type: String }) controlWidth: ControlWidth = defaultControlWidth;
+  @property({ type: String }) controlWidth: ControlWidth; // no default given so child controls are not overridden unless explicity set by parent form group
 
   /**
    * By default forms will collapse to layout that prevents overflow.
@@ -102,12 +97,11 @@ export class CdsFormGroup extends LitElement {
     super.firstUpdated(props);
     this.syncLayouts();
     this.setControlLabelWidths();
-    syncDefinedProps(props, this, this.controlsAndGroups);
   }
 
   updated(props: Map<string, any>) {
     super.updated(props);
-    syncDefinedProps(props, this, Array.from(this.controlsAndGroups));
+    syncDefinedProps(props, this, this.controlsAndGroups);
   }
 
   private async setControlLabelWidths() {

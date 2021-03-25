@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsBreadcrumb snapshot 1`] = `
+<div>
+  <CdsBreadcrumb>
+    <cds-breadcrumb(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-breadcrumb
+        __forwardedRef={null}
+      >
+        <a
+          href="#"
+        >
+          link 1
+        </a>
+        <a
+          href="#"
+        >
+          link 2
+        </a>
+      </cds-breadcrumb>
+    </cds-breadcrumb(CustomElement)>
+  </CdsBreadcrumb>
+</div>
+`;

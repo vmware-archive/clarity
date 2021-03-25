@@ -29,6 +29,7 @@ import { CdsToggle, CdsToggleGroup } from './dist/react/toggle/index.js';
 import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
 import { CdsDivider } from './dist/react/divider/index.js';
 import { CdsCard } from './dist/react/card/index.js';
+import { CdsBreadcrumb } from './dist/react/breadcrumb/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -81,6 +82,7 @@ export default class App extends React.Component<{}, AppState> {
     return (
       <div>
         <h1>Rendered by React!</h1>
+
         <h2>Accordion</h2>
         <CdsAccordion>
           <CdsAccordionPanel
@@ -139,6 +141,18 @@ export default class App extends React.Component<{}, AppState> {
             <CdsAccordionContent>Content 3</CdsAccordionContent>
           </CdsAccordionPanel>
         </CdsAccordion>
+
+        <h2>Breadcrumb</h2>
+        <CdsBreadcrumb aria-label="breadcrumb">
+          <a href="#" cds-text="link">
+            Home
+          </a>
+          <a href="#" cds-text="link">
+            Parent page
+          </a>
+          <span aria-current="page">Current page</span>
+        </CdsBreadcrumb>
+
         <h2>Modal</h2>
         <div>
           <CdsButton

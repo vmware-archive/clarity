@@ -46,6 +46,8 @@
     "@cds/core/alert/register.js": "/base/dist/core/alert/register.js",
     "@cds/core/badge": "/base/dist/core/badge/index.js",
     "@cds/core/badge/register.js": "/base/dist/core/badge/register.js",
+    "@cds/core/breadcrumb": "/base/dist/core/breadcrumb/index.js",
+    "@cds/core/breadcrumb/register.js": "/base/dist/core/breadcrumb/register.js",
     "@cds/core/button": "/base/dist/core/button/index.js",
     "@cds/core/button/register.js": "/base/dist/core/button/register.js",
     "@cds/core/checkbox/index.js": "/base/dist/core/checkbox/index.js",

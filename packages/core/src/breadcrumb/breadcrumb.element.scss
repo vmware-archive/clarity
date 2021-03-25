@@ -1,0 +1,27 @@
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --font-size: #{$cds-global-typography-caption-font-size};
+  --font-weight: #{$cds-global-typography-caption-font-weight};
+  --letter-spacing: #{$cds-global-typography-caption-letter-spacing};
+  --color: #{$cds-global-typography-color-400};
+  display: inline-block;
+}
+
+.private-host {
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  white-space: nowrap;
+  color: var(--color);
+  font-size: var(--font-size);
+}
+
+ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+li:last-child [part='separator'] {
+  display: none;
+}

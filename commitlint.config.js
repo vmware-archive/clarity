@@ -3,6 +3,7 @@ const scopes = [
   'accordion',
   'alert',
   'badge',
+  'breadcrumb',
   'build',
   'button',
   'card',

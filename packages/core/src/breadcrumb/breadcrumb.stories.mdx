@@ -1,0 +1,52 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit-element';
+
+<Meta title="Components/Breadcrumb" />
+
+# Breadcrumbs
+
+Breadcrumbs are a type of secondary navigation scheme that reveals the user’s location in a site or web app.
+
+## Installation
+
+To use the breadcrumb component import the component in your JavaScript.
+
+```typescript
+import '@cds/core/breadcrumb/register.js';
+```
+
+```html
+<cds-breadcrumb>
+  <a href="#">Home</a>
+  <a href="#">Parent page</a>
+  <span>Current page</span>
+</cds-breadcrumb>
+```
+
+## Default
+
+<Preview>
+  <Story id="stories-breadcrumb--standard" />
+</Preview>
+
+## Custom Separator
+
+<Preview>
+  <Story id="stories-breadcrumb--separator" />
+</Preview>
+
+## Custom Gap
+
+<Preview>
+  <Story id="stories-breadcrumb--gap" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-breadcrumb--dark-theme" />
+</Preview>
+
+## API
+
+<Props of={'cds-breadcrumb'} />

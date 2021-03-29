@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@cds/core/card/register.js';
 import { propertiesGroup } from '@cds/core/internal';
 import { select } from '@storybook/addon-knobs';
 import { html } from 'lit-html';

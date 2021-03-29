@@ -5,6 +5,7 @@
  */
 
 import '@cds/core/divider/register.js';
+import '@cds/core/card/register.js';
 import { html, css, customElement, property, LitElement } from 'lit-element';
 import { baseStyles } from '@cds/core/internal';
 
@@ -1774,9 +1775,9 @@ export function patternsContentSiteSingleRail() {
       </div>
       <div class="demo-content">
         <div cds-layout="grid cols@sm:4 gap:lg p:lg p@md:xxl container:xl container:center" cds-text="center">
-          <cds-card cds-layout="p:xl p@md:xxl">card</cds-card>
-          <cds-card cds-layout="p:xl p@md:xxl">card</cds-card>
-          <cds-card cds-layout="p:xl p@md:xxl">card</cds-card>
+          <cds-card> <div cds-layout="p:xl p@md:xxl">card</div> </cds-card>
+          <cds-card> <div cds-layout="p:xl p@md:xxl">card</div> </cds-card>
+          <cds-card> <div cds-layout="p:xl p@md:xxl">card</div> </cds-card>
         </div>
       </div>
       <footer cds-layout="grid cols@sm:4 gap:md gap@md:xl p:md p@sm:xl container:lg container:center" cds-text="center">

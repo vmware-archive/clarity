@@ -10,6 +10,7 @@
     { "path": "./src/alert/entrypoint.tsconfig.json" },
     { "path": "./src/badge/entrypoint.tsconfig.json" },
     { "path": "./src/button/entrypoint.tsconfig.json" },
+    { "path": "./src/card/entrypoint.tsconfig.json" },
     { "path": "./src/checkbox/entrypoint.tsconfig.json" },
     { "path": "./src/datalist/entrypoint.tsconfig.json" },
     { "path": "./src/date/entrypoint.tsconfig.json" },

@@ -1,0 +1,43 @@
+import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Card" />
+
+# Card
+
+## Installation
+
+```typescript
+import '@cds/core/card/register.js';
+```
+
+## Usage
+
+```html
+<cds-card>
+  <div cds-layout="vertical gap:md">
+    <div cds-text="section" cds-layout="p-y:sm">
+      Card Title
+    </div>
+
+    <cds-divider cds-card-remove-margin></cds-divider>
+
+    <div cds-text="body" cds-layout="p-y:md">
+      Card Content
+    </div>
+
+    <cds-divider cds-card-remove-margin></cds-divider>
+
+    <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <cds-button action="flat-inline">View</cds-button>
+    </div>
+  </div>
+</cds-card>
+```
+
+<Preview>
+  <Story id="stories-card--with-layout-two-dividers-and-button" />
+</Preview>
+
+## API
+
+<Props of={'cds-card'} />

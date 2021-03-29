@@ -125,17 +125,6 @@ iframe[resizable] {
   padding: 0;
 }
 
-cds-card {
-  background: var(--cds-alias-object-container-background);
-  border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
-  border-radius: var(--cds-alias-object-border-radius-100);
-  box-shadow: var(--cds-alias-object-shadow-100);
-  padding: var(--cds-global-space-8);
-  color: var(--cds-global-typography-color-500);
-  display: block;
-  width: 100%;
-}
-
 .docs-story {
   background: var(--cds-alias-object-app-background) !important;
 }

@@ -1,0 +1,20 @@
+@import './../styles/tokens/generated/index';
+
+:host {
+  --width: fit-content;
+  --height: auto;
+  --padding: var(--cds-global-space-6) var(--cds-global-space-8);
+
+  --background: #{$cds-alias-object-container-background};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-container-border-color};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --box-shadow: #{$cds-alias-object-shadow-100};
+
+  --card-remove-margin: var(--cds-global-space-8);
+}
+
+@supports (-moz-appearance: none) {
+  :host {
+    --width: -moz-fit-content;
+  }
+}

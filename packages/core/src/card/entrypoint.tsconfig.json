@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.lib.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "../internal-components/panel/entrypoint.tsconfig.json" },
+    { "path": "../internal/entrypoint.tsconfig.json" }
+  ]
+}

@@ -15,7 +15,6 @@ export const CdsInternalPanelTagName = 'cds-internal-panel';
  *  // content
  * </cds-internal-panel>
  * ```
- *
  * @beta
  * @element cds-internal-panel
  * @slot - Content slot for the content inside the panel

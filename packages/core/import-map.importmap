@@ -50,6 +50,8 @@
     "@cds/core/badge/register.js": "/base/dist/core/badge/register.js",
     "@cds/core/button": "/base/dist/core/button/index.js",
     "@cds/core/button/register.js": "/base/dist/core/button/register.js",
+    "@cds/core/card": "/base/dist/core/card/index.js",
+    "@cds/core/card/register.js": "/base/dist/core/card/register.js",
     "@cds/core/checkbox/index.js": "/base/dist/core/checkbox/index.js",
     "@cds/core/checkbox/register.js": "/base/dist/core/checkbox/register.js",
     "@cds/core/datalist/index.js": "/base/dist/core/datalist/index.js",

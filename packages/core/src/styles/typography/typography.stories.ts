@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@cds/core/card/register.js';
 import { html } from 'lit-html';
 import { withDesign } from 'storybook-addon-designs';
 
@@ -164,7 +165,8 @@ export function disableLineHightRemover() {
   return html`
     <style>
       cds-card[show-padding] {
-        box-shadow: inset 0 0 0 1rem hsl(93, 52%, 88%);
+        --padding: 1rem;
+        --box-shadow: inset 0 0 0 1rem hsl(93, 52%, 88%);
       }
     </style>
     <cds-demo cds-layout="vertical gap:lg">

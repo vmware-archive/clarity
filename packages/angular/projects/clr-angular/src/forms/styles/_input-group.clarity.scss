@@ -15,6 +15,10 @@
       margin-right: 0;
       max-width: 100%;
 
+      &.clr-focus {
+        width: auto;
+      }
+
       &:not([readonly]):focus {
         background-size: 0%;
         border: 0;

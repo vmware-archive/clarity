@@ -9,6 +9,10 @@
     max-width: 100%;
     height: $clr_baselineRem_1;
 
+    &.clr-focus {
+      width: auto;
+    }
+
     .clr-input {
       background: none;
       border: none;

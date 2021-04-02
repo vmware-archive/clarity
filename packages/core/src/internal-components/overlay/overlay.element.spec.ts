@@ -3,11 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import '@cds/core/internal-components/overlay/register.js';
 import { CdsInternalOverlay, isNestedOverlay, overlayIsActive } from '@cds/core/internal-components/overlay';
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { FocusTrapTrackerService } from '@cds/core/internal';
+import { componentIsStable, createTestElement, emulatedClick, onceEvent, removeTestElement } from '@cds/core/test';
+import { customElement, FocusTrapTrackerService, property } from '@cds/core/internal';
 
 describe('Overlay helper functions: ', () => {
   describe('isNestedOverlay() - ', () => {
@@ -48,6 +49,7 @@ describe('Overlay helper functions: ', () => {
       expect(isNestedOverlay('ohai_1', 'ohai_', [])).toBe(false);
     });
   });
+
   describe('overlayIsActive - ', () => {
     let overlayElement: HTMLElement;
     let overlay: CdsInternalOverlay;
@@ -93,19 +95,23 @@ describe('Overlay element: ', () => {
   describe('the basics - ', () => {
     it('should create the component', async () => {
       await componentIsStable(component);
-      expect(component.innerText).toBe(placeholderText);
+      expect(component.innerText.includes(placeholderText)).toBe(true);
+    });
+
+    it('should have a focusTrapId', async () => {
+      await componentIsStable(component);
+      expect(component.getFocusTrapId()).toBeDefined();
     });
 
     it('should have its focusTrapId prefixed', async () => {
       await componentIsStable(component);
-      expect(component.focusTrapId.indexOf('_overlay-') > -1).toBe(true);
+      expect(component.getFocusTrapId().indexOf('_overlay-') > -1).toBe(true);
     });
 
-    it('inner panel should default to aria-modal true', async () => {
+    it('inner panel should exist', async () => {
       await componentIsStable(component);
       const innerPanel = component.shadowRoot.querySelector('.private-host');
       expect(innerPanel).toBeTruthy('inner panel should exist');
-      expect(innerPanel.getAttribute('aria-modal')).toBe('true');
     });
   });
 
@@ -127,6 +133,10 @@ describe('Overlay behaviors: ', () => {
   beforeEach(async () => {
     testElement = await createTestElement(html`<cds-internal-overlay>${placeholderText}</cds-internal-overlay>`);
     component = testElement.querySelector<CdsInternalOverlay>('cds-internal-overlay');
+    await componentIsStable(component);
+    component.closable = true;
+    component.hidden = false;
+    await componentIsStable(component);
   });
 
   afterEach(() => {
@@ -134,57 +144,55 @@ describe('Overlay behaviors: ', () => {
   });
 
   describe('closeOverlay() - ', () => {
-    it('should default to a value of "custom"', async done => {
-      await componentIsStable(component);
-
-      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-        expect(e.detail).toBe('custom');
-        done();
-      });
-
-      await componentIsStable(component);
+    it('should default to a value of "custom"', async () => {
+      const eventPromise = onceEvent(component, 'closeChange');
       component.closeOverlay();
+      await componentIsStable(component);
+      const event = await eventPromise;
+      expect(event.detail).toBe('custom');
     });
   });
 
   describe('escape key - ', () => {
-    it('should alert if escape key pressed', async done => {
-      let value: any;
+    it('should alert if escape key pressed', async () => {
+      const eventPromise = onceEvent(component, 'closeChange');
+      component.dispatchEvent(new KeyboardEvent('keyup', { code: 'Escape' }));
       await componentIsStable(component);
-
-      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe('escape-keypress');
-        done();
-      });
-
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-
-      await componentIsStable(component);
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
+      const event = await eventPromise;
+      expect(event.detail).toBe('escape-keypress');
     });
   });
 
   describe('backdrop click - ', () => {
-    it('should alert if the backdrop was clicked', async done => {
-      let value: any;
+    it('should alert if the backdrop was clicked', async () => {
+      const eventPromise = onceEvent(component, 'closeChange');
+      const backdrop = component.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
+      emulatedClick(backdrop);
       await componentIsStable(component);
-      const backdrop = component.shadowRoot.querySelector('.overlay-backdrop');
-
-      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe('backdrop-click');
-        done();
-      });
-
-      backdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-
-      await componentIsStable(component);
-
-      backdrop.dispatchEvent(new TouchEvent('touchend', { bubbles: true, cancelable: true }));
+      const event = await eventPromise;
+      expect(event.detail).toBe('backdrop-click');
     });
   });
 });
+
+@customElement('nested-overlay-test-component')
+class NestedOverlayTestComponent extends LitElement {
+  @query('cds-internal-overlay') overlay: CdsInternalOverlay;
+
+  @property({ type: String })
+  overlayId: string;
+
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+    this.overlay.addEventListener<any>('closeChange', () => {
+      this.overlay.hidden = true;
+    });
+  }
+
+  render() {
+    return html`<cds-internal-overlay id=${this.overlayId}><slot></slot></cds-internal-overlay>`;
+  }
+}
 
 describe('Nested overlays: ', () => {
   let testElement: HTMLElement;
@@ -195,14 +203,28 @@ describe('Nested overlays: ', () => {
 
   beforeEach(async () => {
     testElement = await createTestElement(
-      html`<cds-internal-overlay id="rootOverlay"
-        >${placeholderText}<cds-internal-overlay id="secondOverlay">Ohai</cds-internal-overlay
-        ><cds-internal-overlay id="thirdOverlay">Kthxbye</cds-internal-overlay></cds-internal-overlay
+      html`<nested-overlay-test-component id="root" overlay-id="rootOverlay"
+        >${placeholderText}<nested-overlay-test-component id="second" overlay-id="secondOverlay"
+          >Ohai</nested-overlay-test-component
+        ><nested-overlay-test-component id="third" overlay-id="thirdOverlay"
+          >Kthxbye</nested-overlay-test-component
+        ></nested-overlay-test-component
       >`
     );
-    firstOverlay = testElement.querySelector<CdsInternalOverlay>('#rootOverlay');
-    secondOverlay = testElement.querySelector<CdsInternalOverlay>('#secondOverlay');
-    thirdOverlay = testElement.querySelector<CdsInternalOverlay>('#thirdOverlay');
+    firstOverlay = testElement.querySelector<NestedOverlayTestComponent>('#root').overlay;
+    secondOverlay = testElement.querySelector<NestedOverlayTestComponent>('#second').overlay;
+    thirdOverlay = testElement.querySelector<NestedOverlayTestComponent>('#third').overlay;
+    await componentIsStable(thirdOverlay);
+
+    // open overlays sequentially
+    firstOverlay.hidden = false;
+    await componentIsStable(firstOverlay);
+
+    secondOverlay.hidden = false;
+    await componentIsStable(secondOverlay);
+
+    thirdOverlay.hidden = false;
+    await componentIsStable(thirdOverlay);
   });
 
   afterEach(() => {
@@ -210,8 +232,7 @@ describe('Nested overlays: ', () => {
   });
 
   describe('backdrops - ', () => {
-    it('non-root overlays should have "layered" classnames on backdrops', async () => {
-      await componentIsStable(thirdOverlay);
+    it('non-root overlays should have "layered" classnames on backdrops', () => {
       const rootBackdrop = firstOverlay.shadowRoot.querySelector('.overlay-backdrop');
       const secondBackdrop = secondOverlay.shadowRoot.querySelector('.overlay-backdrop');
       const thirdBackdrop = thirdOverlay.shadowRoot.querySelector('.overlay-backdrop');
@@ -220,82 +241,98 @@ describe('Nested overlays: ', () => {
       expect(thirdBackdrop.classList.contains('layered')).toBe(true, 'has layered classname (2)');
     });
 
-    it('clicks should only apply to topmost overlay', async done => {
+    it('clicks should only apply to topmost overlay', async () => {
+      let thirdOverlayCheck = 'a';
+      let secondOverlayCheck = 'a';
+      thirdOverlay.addEventListener('closeChange', () => {
+        thirdOverlayCheck = 'b';
+      });
       await componentIsStable(thirdOverlay);
-      const secondBackdrop = secondOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      const thirdBackdrop = thirdOverlay.shadowRoot.querySelector('.overlay-backdrop');
-
-      function backdropClicked(e: CustomEvent) {
-        expect(e.detail).toBe('backdrop-click', 'backdrop click trigger identified');
-        expect(e.target).toBe(thirdOverlay, 'only the expected overlay is here');
-        done();
-      }
-
-      thirdOverlay.addEventListener<any>('closeChange', backdropClicked);
-      secondOverlay.addEventListener<any>('closeChange', backdropClicked);
-      firstOverlay.addEventListener<any>('closeChange', backdropClicked);
-
-      secondBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-
+      secondOverlay.addEventListener('closeChange', () => {
+        secondOverlayCheck = 'b';
+      });
       await componentIsStable(secondOverlay);
 
-      thirdBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      const secondBackdrop = secondOverlay.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
+      const thirdBackdrop = thirdOverlay.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
+
+      const eventPromiseOne = onceEvent(thirdOverlay, 'closeChange');
+      emulatedClick(thirdBackdrop);
+      await componentIsStable(thirdOverlay);
+      const eventOne = await eventPromiseOne;
+      expect(eventOne.detail).toBe('backdrop-click');
+      expect(thirdOverlayCheck).toBe('b', 'top backdrop clicked');
+      expect(secondOverlayCheck).toBe('a', 'other overlay not affected by top backdrop click');
+      const eventPromiseTwo = onceEvent(secondOverlay, 'closeChange');
+      emulatedClick(secondBackdrop);
+      await componentIsStable(secondOverlay);
+      const eventTwo = await eventPromiseTwo;
+      expect(eventTwo.detail).toBe('backdrop-click');
+      expect(secondOverlayCheck).toBe('b', 'next backdrop clicked');
     });
   });
 
   describe('escape key - ', () => {
-    it('should only apply to topmost overlay', async done => {
-      function escKeyPressed(e: CustomEvent) {
-        expect(e.detail).toBe('escape-keypress', 'escape key trigger identified');
-        expect(e.target).toBe(thirdOverlay, 'only the expected overlay is here');
-        done();
-      }
-
-      firstOverlay.addEventListener<any>('closeChange', escKeyPressed);
-      secondOverlay.addEventListener<any>('closeChange', escKeyPressed);
-      thirdOverlay.addEventListener<any>('closeChange', escKeyPressed);
-
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    it('should only apply to topmost overlay', async () => {
+      let thirdOverlayCheck = 'a';
+      let secondOverlayCheck = 'a';
+      let firstOverlayCheck = 'a';
+      thirdOverlay.addEventListener('closeChange', () => {
+        thirdOverlayCheck = 'b';
+      });
+      await componentIsStable(thirdOverlay);
+      secondOverlay.addEventListener('closeChange', () => {
+        secondOverlayCheck = 'b';
+      });
+      await componentIsStable(secondOverlay);
+      firstOverlay.addEventListener('closeChange', () => {
+        firstOverlayCheck = 'b';
+      });
+      await componentIsStable(firstOverlay);
+      const eventPromise = onceEvent(thirdOverlay, 'closeChange');
+      thirdOverlay.dispatchEvent(new KeyboardEvent('keyup', { code: 'Escape' }));
+      await componentIsStable(thirdOverlay);
+      const event = await eventPromise;
+      expect(event.detail).toBe('escape-keypress');
+      expect(thirdOverlayCheck).toBe('b');
+      expect(secondOverlayCheck).toBe('a');
+      expect(firstOverlayCheck).toBe('a');
     });
   });
 
   describe('dismissing - ', () => {
     it('escape key should walk down the layers', async () => {
-      function escKeyPressed(e: CustomEvent) {
-        (e.target as HTMLElement).setAttribute('hidden', 'true');
-      }
-
+      const eventPromiseOne = onceEvent(thirdOverlay, 'closeChange');
+      thirdOverlay.dispatchEvent(new KeyboardEvent('keyup', { code: 'Escape' }));
       await componentIsStable(thirdOverlay);
-
-      firstOverlay.addEventListener<any>('closeChange', escKeyPressed);
-      secondOverlay.addEventListener<any>('closeChange', escKeyPressed);
-      thirdOverlay.addEventListener<any>('closeChange', escKeyPressed);
-
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-
+      const eventOne = await eventPromiseOne;
+      expect(eventOne.detail).toBe('escape-keypress');
+      expect(firstOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (A1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (A2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (A3)');
+      const eventPromiseTwo = onceEvent(secondOverlay, 'closeChange');
+      secondOverlay.dispatchEvent(new KeyboardEvent('keyup', { code: 'Escape' }));
+      await componentIsStable(secondOverlay);
+      const eventTwo = await eventPromiseTwo;
+      expect(eventTwo.detail).toBe('escape-keypress');
+      expect(firstOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (B1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (B2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (B3)');
+      const eventPromiseThree = onceEvent(firstOverlay, 'closeChange');
+      firstOverlay.dispatchEvent(new KeyboardEvent('keyup', { code: 'Escape' }));
       await componentIsStable(firstOverlay);
-      expect(firstOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (A1)');
-      expect(secondOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (A2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (A3)');
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-
-      await componentIsStable(firstOverlay);
-      expect(firstOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (B1)');
-      expect(secondOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (B2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (B3)');
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-
-      await componentIsStable(firstOverlay);
-      expect(firstOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C1)');
-      expect(secondOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C3)');
+      const eventThree = await eventPromiseThree;
+      expect(eventThree.detail).toBe('escape-keypress');
+      expect(firstOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C3)');
     });
 
     it('backdrop click should walk down the layers', async () => {
       await componentIsStable(firstOverlay);
-      const rootBackdrop = firstOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      const secondBackdrop = secondOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      const thirdBackdrop = thirdOverlay.shadowRoot.querySelector('.overlay-backdrop');
+      const rootBackdrop = firstOverlay.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
+      const secondBackdrop = secondOverlay.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
+      const thirdBackdrop = thirdOverlay.shadowRoot.querySelector<HTMLElement>('.overlay-backdrop');
 
       function backdropClick(e: CustomEvent) {
         (e.target as HTMLElement).setAttribute('hidden', 'true');
@@ -305,38 +342,36 @@ describe('Nested overlays: ', () => {
       secondOverlay.addEventListener<any>('closeChange', backdropClick);
       thirdOverlay.addEventListener<any>('closeChange', backdropClick);
 
-      rootBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      emulatedClick(rootBackdrop);
       await componentIsStable(firstOverlay);
-      secondBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      emulatedClick(secondBackdrop);
       await componentIsStable(secondOverlay);
-      thirdBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      emulatedClick(thirdBackdrop);
       await componentIsStable(thirdOverlay);
 
-      expect(firstOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (A1)');
-      expect(secondOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (A2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (A3)');
+      expect(firstOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (A1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (A2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (A3)');
 
-      rootBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      emulatedClick(rootBackdrop);
       await componentIsStable(firstOverlay);
-      secondBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      emulatedClick(secondBackdrop);
       await componentIsStable(secondOverlay);
-      thirdBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+      expect(firstOverlay.hasAttribute('hidden')).toBe(false, 'only top-most overlay is removed (B1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (B2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (B3)');
+
+      emulatedClick(rootBackdrop);
+      await componentIsStable(firstOverlay);
+      emulatedClick(secondBackdrop);
+      await componentIsStable(secondOverlay);
+      emulatedClick(thirdBackdrop);
       await componentIsStable(thirdOverlay);
 
-      expect(firstOverlay.getAttribute('hidden')).toBeNull('only top-most overlay is removed (B1)');
-      expect(secondOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (B2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (B3)');
-
-      rootBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-      await componentIsStable(firstOverlay);
-      secondBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-      await componentIsStable(secondOverlay);
-      thirdBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-      await componentIsStable(thirdOverlay);
-
-      expect(firstOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C1)');
-      expect(secondOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C2)');
-      expect(thirdOverlay.getAttribute('hidden')).toBe('true', 'only top-most overlay is removed (C3)');
+      expect(firstOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C1)');
+      expect(secondOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C2)');
+      expect(thirdOverlay.hasAttribute('hidden')).toBe(true, 'only top-most overlay is removed (C3)');
     });
   });
 });

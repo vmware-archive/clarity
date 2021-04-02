@@ -460,9 +460,15 @@ const aliases = {
       },
     },
     shadow: {
-      100: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.5)'),
-      200: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.3)'),
-      300: token('0 1px 3px 0 hsla(198, 30%, 15%, 0.2)'),
+      100: token(
+        '0 calc((1 / var(--cds-global-base, 20)) * 1rem) calc((3 / var(--cds-global-base, 20)) * 1rem) 0 hsla(198, 30%, 15%, 0.5)'
+      ),
+      200: token(
+        '0 calc((1 / var(--cds-global-base, 20)) * 1rem) calc((3 / var(--cds-global-base, 20)) * 1rem) 0 hsla(198, 30%, 15%, 0.3)'
+      ),
+      300: token(
+        '0 calc((1 / var(--cds-global-base, 20)) * 1rem) calc((3 / var(--cds-global-base, 20)) * 1rem) 0 hsla(198, 30%, 15%, 0.2)'
+      ),
     },
     opacity: {
       0: token('hsla(0, 0%, 0%, 0)'),

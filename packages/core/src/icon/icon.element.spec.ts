@@ -117,6 +117,7 @@ describe('icon element', () => {
       expect(component.requestUpdate).not.toHaveBeenCalled();
     });
     it('should add width/height styles if passed numerical value', async () => {
+      // relies on base 20 font
       await componentIsStable(component);
       expect(component.style.width).toBe('');
       expect(component.style.height).toBe('');

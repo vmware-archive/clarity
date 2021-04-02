@@ -56,16 +56,28 @@ export const API = (args: any) => {
 /** @website */
 export const basic = () => {
   return html` <style>
-      .my-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .basic-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 240px;
         height: auto;
+      }
+
+      @media screen and (max-width: 576px) {
+        .my-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .my-overlay h3,
+        .my-overlay cds-button {
+          flex-grow: 0 !important;
+        }
       }
     </style>
     <cds-demo popover>
       <cds-internal-overlay _demo-mode>
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="basic-overlay">
           <h3 cds-text="section">An overlay demo</h3>
           <p cds-text="body">I am an overlay.</p>
           <cds-button block status="danger" type="button">Button</cds-button>
@@ -99,16 +111,28 @@ export const interactive = () => {
   }
 
   return html` <style>
-      .my-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .int-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 240px;
         height: auto;
+      }
+
+      @media screen and (max-width: 576px) {
+        .my-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .my-overlay h1,
+        .my-overlay cds-button {
+          flex-grow: 0 !important;
+        }
       }
     </style>
     <cds-button status="primary" type="button" @click=${showOverlay}>Show Overlay Demo</cds-button>
     <cds-internal-overlay hidden id="${overlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="int-overlay" tabindex="-1">
         <h1 cds-text="section">An overlay demo</h1>
         <p cds-text="body">I am an overlay.</p>
         <cds-button block status="danger" type="button" @click=${hideOverlay}>Close Overlay Demo</cds-button>
@@ -154,16 +178,28 @@ export const multiple = () => {
   return html`
     <style>
       .my-multi-overlay {
-        background: white;
-        border: 1px solid #565656;
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 480px;
         height: auto;
       }
+
+      @media screen and (max-width: 576px) {
+        .my-multi-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .my-multi-overlay h1,
+        .my-multi-overlay cds-button {
+          flex-grow: 0 !important;
+        }
+      }
     </style>
     <cds-button status="primary" type="button" @click=${showMultiOverlay}>Show Layered Overlays</cds-button>
-    <cds-internal-overlay hidden id="${multiOverlayId}">
+    <cds-internal-overlay hidden id="${multiOverlayId}" aria-labelledby="layered-overlays-1">
       <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
-        <h1 cds-text="section" tabindex="-1">A demo of layered overlays</h1>
+        <h1 cds-text="section" tabindex="-1" id="layered-overlays-1">A demo of layered overlays</h1>
         <p cds-text="body">
           I am a demo showing how overlays can be placed or layered on top of one another. I am the overlay on the
           bottom layer.
@@ -181,9 +217,9 @@ export const multiple = () => {
         </div>
       </div>
     </cds-internal-overlay>
-    <cds-internal-overlay hidden id="${multiChildOverlayId}">
+    <cds-internal-overlay hidden id="${multiChildOverlayId}" aria-labelledby="layered-overlays-2">
       <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" style="width: 300px" tabindex="-1">
-        <h1 cds-text="section" tabindex="-1">An overlay on top of another overlay</h1>
+        <h1 cds-text="section" tabindex="-1" id="layered-overlays-2">An overlay on top of another overlay</h1>
         <p cds-text="body">I am a demo of an overlay layered over another overlay!</p>
         <cds-button block status="danger" type="button" @click=${hideChildOverlay}>Close Top Overlay</cds-button>
       </div>
@@ -213,17 +249,29 @@ export const firstFocus = () => {
   }
 
   return html` <style>
-      .my-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .focus-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 480px;
         height: auto;
       }
+
+      @media screen and (max-width: 576px) {
+        .my-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .my-overlay h1,
+        .my-overlay cds-button {
+          flex-grow: 0 !important;
+        }
+      }
     </style>
     <cds-button status="primary" type="button" @click=${showOverlay}>Show Overlay With Managed Focus</cds-button>
-    <cds-internal-overlay hidden id="${overlayId}">
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
-        <h1 cds-text="section">Overlay with <span tabindex="-1" cds-first-focus>first-focus</span></h1>
+    <cds-internal-overlay hidden id="${overlayId}" aria-labelledby="${overlayId}-title">
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="focus-overlay" tabindex="-1">
+        <h1 cds-text="section" id="${overlayId}-title">Overlay with <span cds-first-focus>first-focus</span></h1>
         <p cds-text="body">
           I am an overlay with focus assigned to an element inside me. I assigned first focus to my header. It is
           assigned focus when I am opened.
@@ -241,9 +289,9 @@ export const custom = () => {
 
   return html`
     <style>
-      .my-multi-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .custom-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 480px;
         height: auto;
       }
@@ -259,17 +307,28 @@ export const custom = () => {
       .orange-overlay {
         --layered-backdrop-background: orange;
       }
-    </style>
 
+      @media screen and (max-width: 576px) {
+        .custom-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .custom-overlay h1,
+        .custom-overlay cds-button {
+          flex-grow: 0 !important;
+        }
+      }
+    </style>
     <cds-demo popover>
-      <cds-internal-overlay _demo-mode id="${purpleOverlayId}" class="purple-overlay">
-        <div
-          cds-layout="vertical gap:lg p:lg align:stretch"
-          class="my-multi-overlay"
-          style="width: 480px"
-          tabindex="-1"
-        >
-          <h1 cds-text="section">I am a purple overlay</h1>
+      <cds-internal-overlay
+        _demo-mode
+        id="${purpleOverlayId}"
+        class="purple-overlay"
+        aria-labelledby="${purpleOverlayId}-title"
+      >
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="custom-overlay" style="width: 480px">
+          <h1 cds-text="section" id="${purpleOverlayId}-title">I am a purple overlay</h1>
           <p cds-text="body">Hello, I am an overlay with a purple backdrop.</p>
           <div cds-layout="horizontal gap:md wrap:none align:stretch">
             <cds-button
@@ -283,9 +342,15 @@ export const custom = () => {
           </div>
         </div>
       </cds-internal-overlay>
-      <cds-internal-overlay _demo-mode hidden id="${whiteOverlayId}" class="white-overlay">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
-          <h1 cds-text="section">I am whitish</h1>
+      <cds-internal-overlay
+        _demo-mode
+        hidden
+        id="${whiteOverlayId}"
+        class="white-overlay"
+        aria-labelledby="${whiteOverlayId}-title"
+      >
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="custom-overlay">
+          <h1 cds-text="section" id="${whiteOverlayId}-title">I am whitish</h1>
           <p cds-text="body">Hello, I am an overlay with a mostly opaque white backdrop!</p>
           <div cds-layout="horizontal gap:md wrap:none align:stretch">
             <cds-button
@@ -308,9 +373,15 @@ export const custom = () => {
           </div>
         </div>
       </cds-internal-overlay>
-      <cds-internal-overlay _demo-mode hidden id="${orangeOverlayId}" class="orange-overlay">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-multi-overlay" tabindex="-1">
-          <h1 cds-text="section" id="custom-demo-3-title">I am orange</h1>
+      <cds-internal-overlay
+        _demo-mode
+        hidden
+        id="${orangeOverlayId}"
+        class="orange-overlay"
+        aria-labelledby="${orangeOverlayId}-title"
+      >
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="custom-overlay">
+          <h1 cds-text="section" id="${orangeOverlayId}-title">I am orange</h1>
           <p cds-text="body">Hello, I am an overlay with an opaque orange backdrop!</p>
           <cds-button
             block
@@ -387,18 +458,35 @@ export const overrideAnimation = () => {
   }
 
   return html` <style>
-      .my-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .anim-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 480px;
         height: auto;
       }
+
+      @media screen and (max-width: 576px) {
+        .anim-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .anim-overlay h1,
+        .anim-overlay cds-button {
+          flex-grow: 0 !important;
+        }
+      }
     </style>
     <cds-button status="primary" type="button" @click=${showOverrideOverlay}>Show Custom Exit</cds-button>
-    <cds-internal-overlay hidden id="${overlayId}" cds-motion='{ "hidden": { "true": "cds-modal-hinge-exit" } }'>
-      <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
-        <h1 cds-text="section">An overlay demo</h1>
-        <p cds-text="body">I am an overlay.</p>
+    <cds-internal-overlay
+      hidden
+      id="${overlayId}"
+      cds-motion='{ "hidden": { "true": "cds-modal-hinge-exit" } }'
+      aria-labelledby="${overlayId}-title"
+    >
+      <div cds-layout="vertical gap:lg p:lg align:stretch" class="anim-overlay" tabindex="-1">
+        <h1 cds-text="section" id="${overlayId}-title">An overlay demo</h1>
+        <p cds-text="body">I am an overlay. Press the escape key to close me.</p>
         <cds-button block status="danger" type="button" @click=${hideOverrideOverlay}>Close Overlay Demo</cds-button>
       </div>
     </cds-internal-overlay>`;
@@ -429,19 +517,31 @@ export const lowMotion = () => {
   }
 
   return html` <style>
-      .my-overlay {
-        background: white;
-        border: 1px solid #565656;
+      .lowm-overlay {
+        background: var(--cds-alias-object-overlay-background);
+        border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color);
         width: 480px;
         height: auto;
+      }
+
+      @media screen and (max-width: 576px) {
+        .lowm-overlay {
+          width: 100%;
+          height: 100%;
+        }
+
+        .lowm-overlay h1,
+        .lowm-overlay cds-button {
+          flex-grow: 0 !important;
+        }
       }
     </style>
     <div cds-theme="low-motion">
       <cds-button status="primary" type="button" @click=${showLowMotionOverlay}>Show Low Motion</cds-button>
-      <cds-internal-overlay hidden id="${overlayId}" cds-motion="on">
-        <div cds-layout="vertical gap:lg p:lg align:stretch" class="my-overlay" tabindex="-1">
-          <h1 cds-text="section">An overlay demo</h1>
-          <p cds-text="body">I am an overlay.</p>
+      <cds-internal-overlay hidden id="${overlayId}" cds-motion="on" aria-labelledby="${overlayId}-title">
+        <div cds-layout="vertical gap:lg p:lg align:stretch" class="lowm-overlay" tabindex="-1">
+          <h1 cds-text="section" id="${overlayId}-title">An overlay demo</h1>
+          <p cds-text="body">I am an overlay. Press the escape key to close me.</p>
           <cds-button block status="danger" type="button" @click=${hideLowMotionOverlay}
             >Close Low Motion Demo</cds-button
           >

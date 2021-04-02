@@ -51,6 +51,6 @@ describe('performance', () => {
       import '@cds/core/toggle/register.js';
       import '@cds/core/tree-view/register.js';`;
 
-    expect((await testBundleSize(bundle)).kb).toBeLessThan(45);
+    expect((await testBundleSize(bundle)).kb).toBeLessThan(45.6);
   });
 });

@@ -7,6 +7,8 @@ import includes from 'ramda/es/includes.js';
 import without from 'ramda/es/without.js';
 
 import { isStringAndNotNilOrEmpty } from './identity.js';
+import { getCssPropertyValue } from './css.js';
+import { pluckPixelValue, transformSpacedStringToArray } from './string.js';
 
 /**
  * We are not going to be opinionated about the use of the disabled attribute here.
@@ -16,13 +18,20 @@ import { isStringAndNotNilOrEmpty } from './identity.js';
  *
  */
 export function isFocusable(element: HTMLElement) {
-  const elementTagName = element.tagName.toLowerCase();
-
-  switch (elementTagName) {
+  /* c8 ignore next 21 */
+  switch (element.tagName.toLowerCase()) {
     case 'input':
+      return (
+        element.getAttribute('type') !== 'hidden' &&
+        !element.hasAttribute('disabled') &&
+        !element.hasAttribute('readonly')
+      );
     case 'button':
     case 'select':
     case 'textarea':
+      return !element.hasAttribute('disabled');
+    case 'iframe':
+    case 'embed':
     case 'object':
       return true;
     case 'a':
@@ -35,9 +44,57 @@ export function isFocusable(element: HTMLElement) {
       // we are not going to get into invalid values sent to the
       // tabindex attr. users have control of that and should avoid
       // setting tabindex to weird/unsupported values.
-      return element.hasAttribute('tabindex');
+      return (
+        element.hasAttribute('tabindex') ||
+        element.getAttribute('contenteditable') === 'true' ||
+        (element.getAttribute('role') === 'button' && !element.hasAttribute('disabled'))
+      );
   }
 }
+
+/* c8 ignore next */
+export function isScrollable(element: HTMLElement) {
+  // there's no great way to determine if something has scrollbars or not
+  // this calculation is... okay at it. it is slightly naive but covers
+  // our current need/use-case. if we need something more robust, we can
+  // update this function to use one of the more complicated checks.
+  const boundingRect = element.getBoundingClientRect();
+  return (
+    boundingRect.top < 0 ||
+    element.scrollHeight > element.offsetHeight ||
+    boundingRect.left < 0 ||
+    element.scrollWidth > element.clientWidth
+  );
+}
+
+/**
+ * Works only on light DOM because that is all we have needed it for thus far
+ *
+ */
+/* c8 ignore next */
+export function queryAllFocusable(element: HTMLElement) {
+  return element.querySelectorAll(tabFlowSelectors.join(', '));
+}
+
+const nonTabIndexFocusableSelectors = [
+  'a[href]',
+  'area[href]',
+  'audio[controls]',
+  'button:not([disabled])',
+  'input:not([type="hidden"]):not([disabled]):not([readonly])',
+  'iframe',
+  'object',
+  'embed',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  'video[controls]',
+  '*[contenteditable=true]',
+  '[role=button]:not([disabled])',
+];
+
+export const focusableSelectors = ['*[tabindex]', ...nonTabIndexFocusableSelectors];
+
+export const tabFlowSelectors = ['*[tabindex]:not([tabindex="-1"])', ...nonTabIndexFocusableSelectors];
 
 export function getElementWidth(element: HTMLElement, unit = 'px') {
   if (element) {
@@ -109,7 +166,7 @@ export function removeAttributeValue(element: HTMLElement, attr: string, value: 
     const currentAttrVal = element.getAttribute(attr);
     if (currentAttrVal) {
       // remove the specified value from the list of values currently set
-      const attrValues: string[] = without([value], currentAttrVal.split(' '));
+      const attrValues: string[] = without([value], transformSpacedStringToArray(currentAttrVal));
       const newAttrValue = attrValues.join(' ');
 
       if (newAttrValue) {
@@ -130,21 +187,6 @@ export function assignSlotNames(...slotTuples: [HTMLElement, string | boolean][]
   });
 }
 
-export function listenForAttributeChange(
-  element: HTMLElement,
-  attrName: string,
-  fn: (attrValue: string | null) => void
-) {
-  const observer = new MutationObserver(mutations => {
-    if (mutations.find(m => m.attributeName === attrName)) {
-      fn(element.getAttribute(attrName));
-    }
-  });
-
-  observer.observe(element, { attributes: true });
-  return observer;
-}
-
 export function isVisible(element: HTMLElement) {
   return !!element && element?.offsetHeight > 0 && element?.hasAttribute('hidden') === false;
 }
@@ -159,10 +201,40 @@ export function spanWrapper(nodeList: NodeListOf<ChildNode>): void {
     });
 }
 
-export function queryChildFromLightOrShadowDom(hostEl: Element, selector?: string): Element | null {
+export function queryChildFromLightOrShadowDom(hostEl: HTMLElement, selector?: string): HTMLElement | null {
   if (!selector) {
     return null;
   }
 
   return hostEl.querySelector(selector) || hostEl?.shadowRoot?.querySelector(selector) || null;
+}
+
+export function createFragment(tagString: string) {
+  return document.createRange().createContextualFragment(tagString);
+}
+
+export function getWindowDimensions(win: Window = window): { width: number; height: number } {
+  const doc = win?.document;
+  const h = win?.innerHeight || doc?.documentElement?.clientHeight || 0;
+  const w = win?.innerWidth || doc?.documentElement?.clientWidth || 0;
+  return { width: w, height: h };
+}
+
+export function windowIsAboveMobileBreakpoint(breakpointAsPixelValue?: string): boolean {
+  const breakpointVal =
+    breakpointAsPixelValue || (getCssPropertyValue('--cds-global-layout-width-xs') as string).trim();
+  return breakpointAsPixelValue?.endsWith('px') ? pluckPixelValue(breakpointVal) >= getWindowDimensions().width : false;
+}
+
+export function makeFocusable(element: HTMLElement, addToTabflow = false): HTMLElement {
+  if (!isFocusable(element)) {
+    setAttributes(element, ['tabindex', addToTabflow ? '0' : '-1']);
+  }
+
+  return element;
+}
+
+export function getShadowRootOrElse(hostEl: HTMLElement, fallbackEl?: HTMLElement): HTMLElement {
+  const fallTo = fallbackEl ? fallbackEl : hostEl;
+  return (hostEl.shadowRoot ? hostEl.shadowRoot : fallTo) as HTMLElement;
 }

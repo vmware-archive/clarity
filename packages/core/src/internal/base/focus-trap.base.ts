@@ -5,15 +5,28 @@
  */
 
 import { html, LitElement } from 'lit';
-import { FocusTrap } from '../utils/focus-trap.js';
 import { state, property } from '../decorators/property.js';
 import { createId } from '../utils/identity.js';
+import { FirstFocusController } from '../controllers/first-focus.controller.js';
+import { ClosableController } from '../controllers/closable.controller.js';
+import { InlineFocusTrapController } from '../controllers/inline-focus-trap.controller.js';
 
 export class CdsBaseFocusTrap extends LitElement {
-  focusTrap: FocusTrap;
+  firstFocusController = new FirstFocusController(this);
 
-  topReboundElement: HTMLElement;
-  bottomReboundElement: HTMLElement;
+  closableController = new ClosableController(this);
+
+  protected inlineFocusTrapController = new InlineFocusTrapController(this);
+
+  @state({ type: Boolean, reflect: true })
+  protected demoMode = false;
+
+  @state({ type: String }) protected focusTrapId: string;
+
+  constructor() {
+    super();
+    this.focusTrapId = createId();
+  }
 
   /**
    * Its recommended to remove or add a focus trap element from the DOM
@@ -22,46 +35,7 @@ export class CdsBaseFocusTrap extends LitElement {
    */
   @property({ type: Boolean }) hidden = false;
 
-  @state({ type: Boolean, reflect: true })
-  protected demoMode = false;
-
-  @property({ type: String }) focusTrapId: string;
-
-  constructor() {
-    super();
-    this.focusTrapId = createId();
-    // if we see issues instantiating here, we should consider moving to
-    // firstUpdated()
-    this.focusTrap = new FocusTrap(this);
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.toggleFocusTrap();
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.focusTrap.removeFocusTrap();
-  }
-
-  attributeChangedCallback(name: string, old: string, value: string) {
-    super.attributeChangedCallback(name, old, value);
-
-    if (name === 'hidden' && old !== value) {
-      this.toggleFocusTrap();
-    }
-  }
-
   protected render() {
     return html`<slot></slot>`;
-  }
-
-  private toggleFocusTrap() {
-    if (!this.demoMode && !this.hasAttribute('hidden')) {
-      this.focusTrap.enableFocusTrap();
-    } else {
-      this.focusTrap.removeFocusTrap();
-    }
   }
 }

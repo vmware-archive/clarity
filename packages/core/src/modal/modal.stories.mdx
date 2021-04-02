@@ -68,6 +68,14 @@ import '@cds/core/modal/register.js';
 
 ## Scrolling Modal Content
 
+Having a modal content area that scrolls is not recommended. Teams should do their best to ensure that their modal is
+large enough accommodate the content within it. Scrolling content areas in modals may present accessibility challenges
+for screen readers.
+
+If scrolling content cannot be avoided in a modal, the accessibility team recommends that form fields be placed at the
+bottom of the content area. This helps to mitigate an issue in NVDA where screen reader users are placed into a "forms
+mode" and may not be aware that there is content below the form.
+
 <Preview>
   <Story id="stories-modal--scroll-content" />
 </Preview>

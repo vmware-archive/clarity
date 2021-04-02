@@ -5,7 +5,7 @@
  */
 
 import {
-  Animatable,
+  AnimatableElement,
   AnimationStatus,
   PropertyDrivenAnimation,
   PRIVATE_ANIMATION_STATUS_ATTR_NAME,
@@ -22,7 +22,7 @@ export function animate(config: PropertyDrivenAnimation) {
       updated(props: Map<string, any>) {
         super.updated(props);
 
-        const self = (this as unknown) as Element & Animatable & { _animations: PropertyDrivenAnimation };
+        const self = (this as unknown) as AnimatableElement & { _animations: PropertyDrivenAnimation };
         self._animations = config || void 0;
 
         if (!self.hasAttribute(PRIVATE_ANIMATION_STATUS_ATTR_NAME)) {

@@ -31,6 +31,16 @@ export interface I18nStrings {
     contentBox: string;
     contentEnd: string;
   };
+  overlay: {
+    closeButtonAriaLabel: string;
+    contentStart: string;
+    contentEnd: string;
+  };
+  popup: {
+    closeButtonAriaLabel: string;
+    contentStart: string;
+    contentEnd: string;
+  };
   password: {
     showButtonAriaLabel: string;
     hideButtonAriaLabel: string;
@@ -63,15 +73,25 @@ export const componentStringsDefault = {
   },
   modal: {
     closeButtonAriaLabel: 'Close modal',
-    contentStart: 'Beginning of Modal Content',
-    contentBox: 'Scrollable Modal Body',
-    contentEnd: 'End of Modal Content',
+    contentStart: 'Beginning of modal content',
+    contentBox: 'Scrollable modal body',
+    contentEnd: 'End of modal content',
   },
   navigation: {
     navigationElement: 'navigation',
     navigationLabel: 'navigation menu',
     navigationAbridgedText: 'View abridged menu',
     navigationUnabridgedText: 'View unabridged menu',
+  },
+  overlay: {
+    closeButtonAriaLabel: 'Close dialog',
+    contentStart: 'Beginning of dialog content',
+    contentEnd: 'End of dialog content',
+  },
+  popup: {
+    closeButtonAriaLabel: 'Close popup',
+    contentStart: 'Beginning of popup content',
+    contentEnd: 'End of popup content',
   },
   password: {
     showButtonAriaLabel: 'Show password',

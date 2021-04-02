@@ -15,7 +15,7 @@ export const AnimationModalEnterConfig: TargetedAnimation[] = [
     onlyIf: 'isLayered:false',
     animation: fadeInKeyframes,
     options: {
-      duration: '--animation-duration',
+      duration: '--backdrop-animation-duration',
       easing: '--animation-easing',
       fill: 'forwards',
     },

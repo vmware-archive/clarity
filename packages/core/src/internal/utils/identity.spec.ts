@@ -4,14 +4,20 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { createTestElement, removeTestElement } from '@cds/core/test';
+import { html } from 'lit';
 import {
+  allAre,
+  allAreDefined,
   createId,
   deepClone,
+  doesPropertyPass,
   getEnumValues,
   hasPropertyChanged,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
   isMap,
+  isNil,
   isNilOrEmpty,
   isNumericString,
   isObject,
@@ -20,8 +26,9 @@ import {
   isStringOrNil,
   isStringAndNotNilOrEmpty,
   anyOrAllPropertiesPass,
-  getMillisecondsFromSeconds,
   convertStringPropValuePairsToTuple,
+  anyPropertiesPass,
+  convertAttributeStringValuesToValue,
 } from './identity.js';
 
 enum TestEnum {
@@ -34,6 +41,17 @@ enum TestEnum {
 }
 
 describe('Functional Helper: ', () => {
+  describe('isNil(): ', () => {
+    it('identifies null and undefined as expected', () => {
+      expect(isNil(void 0)).toEqual(true);
+      expect(isNil(null)).toEqual(true);
+      expect(isNil(0)).toEqual(false);
+      expect(isNil('')).toEqual(false);
+      expect(isNil([])).toEqual(false);
+      expect(isNil({})).toEqual(false);
+    });
+  });
+
   describe('isNilOrEmpty(): ', () => {
     it('identifies null, undefined, and empty items as expected', () => {
       expect(isNilOrEmpty(void 0)).toEqual(true);
@@ -41,6 +59,7 @@ describe('Functional Helper: ', () => {
       expect(isNilOrEmpty('')).toEqual(true);
       expect(isNilOrEmpty([])).toEqual(true);
       expect(isNilOrEmpty({})).toEqual(true);
+      expect(isNilOrEmpty(0)).toEqual(false);
     });
 
     it('identifies non-empty items as expected', () => {
@@ -186,6 +205,28 @@ describe('Functional Helper: ', () => {
     });
   });
 
+  describe('convertAttributeStringValuesToValue(): ', () => {
+    it('should turn "true" to true', () => {
+      expect(convertAttributeStringValuesToValue('true')).toEqual(true);
+    });
+    it('should turn "false" to false', () => {
+      expect(convertAttributeStringValuesToValue('false')).toEqual(false);
+    });
+    it('should turn "null" to null', () => {
+      expect(convertAttributeStringValuesToValue('null')).toEqual(null);
+    });
+    it('should turn "undefined" to undefined', () => {
+      expect(convertAttributeStringValuesToValue('undefined')).toEqual(undefined);
+    });
+    it('should turn "2" to 2', () => {
+      expect(convertAttributeStringValuesToValue('2')).toEqual(2);
+    });
+
+    it('should return the passed string', () => {
+      expect(convertAttributeStringValuesToValue('test')).toEqual('test');
+    });
+  });
+
   describe('hasStringPropertyChangedAndNotNil(): ', () => {
     it('returns false if new value is empty, null, or undefined', () => {
       expect(hasStringPropertyChangedAndNotNil(void 0, 'ohai')).toEqual(false);
@@ -276,6 +317,13 @@ describe('Functional Helper: ', () => {
     });
   });
 
+  describe('anyPropertiesPass(): ', () => {
+    it('handles "any" case as expected', () => {
+      const propValStringToCheck = 'ohai:howdy kthxbye:nope';
+      expect(anyPropertiesPass({ ohai: 'howdy' }, propValStringToCheck)).toBe(true);
+    });
+  });
+
   describe('anyOrAllPropertiesPass(): ', () => {
     const propValStringToCheck = 'isValid:true status:success currentPage:3';
 
@@ -301,6 +349,7 @@ describe('Functional Helper: ', () => {
     });
 
     it('returns true if propValue string is empty', () => {
+      expect(anyOrAllPropertiesPass({}, '', 'all')).toBe(true);
       expect(anyOrAllPropertiesPass({ isValid: true }, '', 'all')).toBe(true);
       expect(anyOrAllPropertiesPass({ isValid: true }, null, 'all')).toBe(true);
       expect(anyOrAllPropertiesPass({ isValid: true }, undefined, 'all')).toBe(true);
@@ -321,25 +370,6 @@ describe('Functional Helper: ', () => {
       expect(anyOrAllPropertiesPass(null, propValStringToCheck, 'all')).toBe(false);
       expect(anyOrAllPropertiesPass(undefined, propValStringToCheck, 'any')).toBe(false);
       expect(anyOrAllPropertiesPass(undefined, propValStringToCheck, 'all')).toBe(false);
-    });
-  });
-
-  describe('getMillisecondsFromSeconds(): ', () => {
-    it('converts seconds to milliseconds as expected', () => {
-      expect(getMillisecondsFromSeconds(0.1)).toBe(100);
-      expect(getMillisecondsFromSeconds(2)).toBe(2000);
-      expect(getMillisecondsFromSeconds(0.025)).toBe(25);
-    });
-
-    it('converts falsy value to 0 as expected', () => {
-      expect(getMillisecondsFromSeconds(null)).toBe(0);
-      expect(getMillisecondsFromSeconds(undefined)).toBe(0);
-      expect(getMillisecondsFromSeconds(0)).toBe(0);
-    });
-
-    it('converts negative values as expected', () => {
-      expect(getMillisecondsFromSeconds(-1)).toBe(-1000);
-      expect(getMillisecondsFromSeconds(-0.5)).toBe(-500);
     });
   });
 
@@ -373,6 +403,112 @@ describe('Functional Helper: ', () => {
       expect(convertStringPropValuePairsToTuple('hereIsJunk:#[["ohai","howdy","hello"]]**{}')).toEqual([
         ['hereIsJunk', '#[["ohai","howdy","hello"]]**{}'],
       ]);
+    });
+  });
+
+  describe('doesPropertyPass(): ', () => {
+    const obj = {
+      test: false,
+      test2: true,
+      test4: 'asdf',
+      test5: 4,
+      test6: null as any,
+      test7: undefined as any,
+    };
+    let testElement: HTMLElement;
+    let element: HTMLElement;
+
+    beforeEach(async () => {
+      testElement = await createTestElement(html`<div test="test">Test</div>`);
+      element = testElement.querySelector<HTMLElement>('div');
+    });
+
+    afterEach(() => {
+      removeTestElement(element);
+    });
+
+    it('should return true', () => {
+      const result = doesPropertyPass(obj, 'test', false);
+
+      expect(result).toBeTruthy();
+    });
+
+    it("should return true for property that doesn't exist in the object", () => {
+      const result = doesPropertyPass(obj, 'test1', false);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return true cause the string is the same', () => {
+      const result = doesPropertyPass(obj, 'test4', 'asdf');
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return true cause the number is the same', () => {
+      const result = doesPropertyPass(obj, 'test5', 4);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return true for null', () => {
+      const result = doesPropertyPass(obj, 'test6', null);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return true for undefined', () => {
+      const result = doesPropertyPass(obj, 'test7', undefined);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return true 2', () => {
+      const result = doesPropertyPass(obj, 'test2', true);
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      const result = doesPropertyPass(obj, 'test', true);
+
+      expect(result).toBeFalsy();
+    });
+
+    it('should return true for attribute in HTML element', () => {
+      const result = doesPropertyPass(element, 'test', 'test');
+
+      expect(result).toBeTruthy();
+    });
+
+    it('should return false for attribute missing in HTML element', () => {
+      const result = doesPropertyPass(element, 'test2', false);
+
+      expect(result).toBeFalsy();
+    });
+  });
+
+  describe('allAre(): ', () => {
+    const greaterThanZero = (num: number) => {
+      return num > 0;
+    };
+
+    it('returns true if all values pass the function it is given', () => {
+      expect(allAre(greaterThanZero, 1, 2, 3, 4, 5)).toBe(true);
+    });
+
+    it('returns false if a value does not pass the function it is given', () => {
+      expect(allAre(greaterThanZero, 0, 1, 2)).toBe(false);
+    });
+  });
+
+  describe('allAreDefined(): ', () => {
+    it('returns true if all values are defined', () => {
+      expect(allAreDefined('ohai', 'howdy', 'svirfneblin')).toBe(true);
+    });
+
+    it('returns false if it is given an undefined value', () => {
+      expect(allAreDefined('ohai', 'howdy', void 0, 'svirfneblin')).toBe(false);
     });
   });
 });

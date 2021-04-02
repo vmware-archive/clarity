@@ -5,41 +5,12 @@
  */
 
 import { html } from 'lit';
-import { CdsBaseButton, baseStyles, isBrowser, property, setAttributes, HTMLAttributeTuple } from '@cds/core/internal';
+import { CdsBaseButton, baseStyles, property } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { timesIcon } from '@cds/core/icon/shapes/times.js';
 import styles from './close-button.element.scss';
 
 export const CdsCloseButtonTagName = 'cds-internal-close-button';
-
-export function appendCloseButton(
-  hostElement: HTMLElement,
-  attributes?: HTMLAttributeTuple[],
-  clickHandler?: () => void
-) {
-  if (isBrowser() && !!hostElement) {
-    const closeBtn = document.createElement(CdsCloseButtonTagName);
-
-    if (attributes && attributes.length > 0) {
-      setAttributes(closeBtn, ...attributes);
-    }
-
-    if (clickHandler) {
-      closeBtn.addEventListener('click', clickHandler.bind(hostElement));
-    }
-    hostElement.appendChild(closeBtn);
-  }
-}
-
-export function removeCloseButton(hostElement: HTMLElement) {
-  if (isBrowser() && !!hostElement) {
-    const closeBtn = hostElement.querySelector(CdsCloseButtonTagName);
-
-    if (closeBtn) {
-      hostElement.removeChild(closeBtn);
-    }
-  }
-}
 
 /**
  * Standard close button for Clarity Components

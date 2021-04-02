@@ -107,7 +107,7 @@ export class CdsTree extends LitElement {
 
   /** @private */
   get visibleChildren() {
-    return Array.from(this.childrenItems).filter(n => isVisible(n));
+    return Array.from(this.childrenItems).filter(n => isVisible(n as any));
   }
 
   private keyboardNavigationHandler = (e: KeyboardEvent) => {
@@ -134,7 +134,7 @@ export class CdsTree extends LitElement {
       onKey('arrow-right', e, () => {
         if (current.expandable) {
           if (current.expanded) {
-            this.setAriaActiveDescendant(nextInArray(current, this.visibleChildren));
+            this.setAriaActiveDescendant(nextInArray(current, this.visibleChildren) as CdsTreeItem);
           } else {
             current.expandedChange.emit(true);
           }
@@ -143,25 +143,25 @@ export class CdsTree extends LitElement {
 
       onKey('arrow-down', e, () => {
         if (current) {
-          this.setAriaActiveDescendant(nextInArray(current, this.visibleChildren));
+          this.setAriaActiveDescendant(nextInArray(current, this.visibleChildren) as CdsTreeItem);
         }
       });
 
       onKey('arrow-up', e, () => {
         if (current) {
-          this.setAriaActiveDescendant(previousInArray(current, this.visibleChildren));
+          this.setAriaActiveDescendant(previousInArray(current, this.visibleChildren) as CdsTreeItem);
         }
       });
 
       onKey('home', e, () => {
         if (current) {
-          this.setAriaActiveDescendant(arrayHead(this.visibleChildren));
+          this.setAriaActiveDescendant(arrayHead(this.visibleChildren as any) as CdsTreeItem);
         }
       });
 
       onKey('end', e, () => {
         if (current) {
-          this.setAriaActiveDescendant(arrayTail(this.visibleChildren));
+          this.setAriaActiveDescendant(arrayTail(this.visibleChildren as any) as CdsTreeItem);
         }
       });
 

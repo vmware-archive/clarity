@@ -128,6 +128,11 @@ iframe[resizable] {
   background: transparent !important;
 }
 
+.docs-story div {
+  /* forcing storybook to not add transforms on their story blocks. it was messing up modal/overlay/dropdown demos */
+  transform: none !important;
+}
+
 .docs-story > div:last-child button {
   background: var(--cds-alias-object-container-background) !important;
   color: var(--cds-global-typography-color-500) !important;

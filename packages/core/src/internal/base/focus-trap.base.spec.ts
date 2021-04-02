@@ -44,68 +44,17 @@ describe('focus trap element', () => {
     it('should create the component', async () => {
       await componentIsStable(component);
       expect(component.innerText).toBe(placeholderText.toUpperCase());
-      expect(component.focusTrapId).toBeDefined('should have a focus trap id');
-      expect(component.focusTrap).toBeDefined('should have a focus trap');
+      expect(component.closableController).toBeDefined('should have closable controller');
+      expect(component.firstFocusController).toBeDefined('should have a first focus controller');
     });
 
     it('should enable focus trap', async () => {
       await componentIsStable(component);
-      expect((component as any).focusTrap).toBeDefined();
-    });
-
-    it('should remove the focus trap if hidden attr is set', async () => {
-      await componentIsStable(component);
-      expect(document.querySelector('.offscreen-focus-rebounder')).toBeTruthy();
-
-      component.setAttribute('hidden', '');
-      await componentIsStable(component);
-      expect(document.querySelector('.offscreen-focus-rebounder')).toBeFalsy();
-    });
-  });
-
-  describe('initialized hidden modal', () => {
-    let testElement: HTMLElement;
-    let component: CdsBaseFocusTrap;
-
-    beforeEach(async () => {
-      testElement = await createTestElement(html`<cds-base-focus-trap hidden></cds-base-focus-trap>`);
-      component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
-    });
-
-    afterEach(() => {
-      removeTestElement(testElement);
-    });
-
-    it('should remove the focus trap if initialized with hidden attr', async () => {
-      await componentIsStable(component);
-      expect(document.querySelector('.offscreen-focus-rebounder')).toBe(null);
-    });
-  });
-
-  describe('demo mode', () => {
-    let testElement: HTMLElement;
-    let component: CdsBaseFocusTrap;
-    const placeholderText = 'Button Placeholder';
-
-    beforeEach(async () => {
-      testElement = await createTestElement(html`
-        <cds-base-focus-trap _demo-mode>
-          <cds-button>
-            <span>${placeholderText}</span>
-          </cds-button>
-        </cds-base-focus-trap>
-      `);
-
-      component = testElement.querySelector<CdsBaseFocusTrap>('cds-base-focus-trap');
-    });
-
-    afterEach(() => {
-      removeTestElement(testElement);
-    });
-
-    it('should not create focus trap if demo mode', async () => {
-      await componentIsStable(component);
-      expect(document.querySelector('.offscreen-focus-rebounder')).toBe(null);
+      expect((component as any).hasAttribute('cds-focus-trap')).toBe(true, 'has focus trap');
+      expect((component as any).shadowRoot.querySelectorAll('[cds-focus-boundary]').length).toBe(
+        2,
+        'has boundary bumpers'
+      );
     });
   });
 });

@@ -45,6 +45,7 @@ describe('Inline button element with icon', () => {
 
     const component = testElement.querySelector<CdsInlineButton>('cds-inline-button');
     const icon = component.querySelector<CdsIcon>('cds-icon');
+    await componentIsStable(component);
 
     expect(icon.classList.contains('anchored-icon'));
     removeTestElement(testElement);

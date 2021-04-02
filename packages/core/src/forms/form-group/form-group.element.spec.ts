@@ -104,6 +104,7 @@ describe('cds-form-group', () => {
   });
 
   it('should sync label widths', async () => {
+    // relies on base20 font
     formGroup.layout = 'horizontal';
     await componentIsStable(formGroup); // connectedCallback
     await componentIsStable(formGroup); // firstUpdated

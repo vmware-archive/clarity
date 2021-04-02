@@ -16,6 +16,7 @@ import {
   updateElementStyles,
   isCssPropertyName,
   getCssPropertyValue,
+  setCssPropertyValue,
 } from './css.js';
 
 describe('Css utility functions - ', () => {
@@ -164,6 +165,51 @@ describe('Css utility functions - ', () => {
       newStyle.innerHTML = ':root { --ohai: green; }';
       expect(getCssPropertyValue('--ohai')).toBe('green');
       document.head.removeChild(newStyle);
+    });
+  });
+
+  describe('setCssPropertyValue: ', () => {
+    it('should work as expected', async () => {
+      const el = await createTestElement(
+        html`<style>
+            .ohai {
+              --ohai: green;
+            }
+          </style>
+          <div class="ohai">ohai</div>`
+      );
+      const testEl = el.querySelector('.ohai');
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('green');
+      setCssPropertyValue('--ohai', 'red', testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('red');
+      removeTestElement(el);
+    });
+
+    it('should handle falsy values', async () => {
+      const el = await createTestElement(html`<div class="ohai">ohai</div>`);
+      const testEl = el.querySelector('.ohai');
+
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('');
+
+      setCssPropertyValue('--ohai', 'blue', testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('blue');
+
+      setCssPropertyValue('--ohai', null, testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('', 'null removes');
+
+      setCssPropertyValue('--ohai', 'orange', testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('orange');
+
+      setCssPropertyValue('--ohai', '', testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('', 'empty string removes');
+
+      setCssPropertyValue('--ohai', 'purple', testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('purple');
+
+      setCssPropertyValue('--ohai', false, testEl);
+      expect(getCssPropertyValue('--ohai', testEl)).toBe('', 'false removes');
+
+      removeTestElement(el);
     });
   });
 });

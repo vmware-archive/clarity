@@ -1,0 +1,31 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/mixins';
+
+:host {
+  --transform: none;
+  --pointer-fill: #{$cds-alias-object-interaction-background};
+  --pointer-outline: #{$cds-alias-object-border-color};
+  display: block;
+
+  .pointer-img {
+    transform: var(--transform);
+    display: block;
+  }
+
+  .pointer-fill {
+    fill: var(--pointer-fill, #{$cds-alias-object-interaction-background});
+  }
+
+  .pointer-border {
+    fill: var(--pointer-outline, #{$cds-alias-object-border-color});
+  }
+}
+
+svg,
+::slotted(*) {
+  display: block;
+}

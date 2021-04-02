@@ -119,6 +119,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/date/register.js': '/dist/core/date/register.js',
             '@cds/core/divider': '/dist/core/divider/index.js',
             '@cds/core/divider/register.js': '/dist/core/divider/register.js',
+            '@cds/core/dropdown': '/dist/core/dropdown/index.js',
+            '@cds/core/dropdown/register.js': '/dist/core/dropdown/register.js',
             '@cds/core/file': '/dist/core/file/index.js',
             '@cds/core/file/register.js': '/dist/core/file/register.js',
             '@cds/core/forms': '/dist/core/forms/index.js',
@@ -136,6 +138,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/internal-components/visual-checkbox': '/dist/core/internal-components/visual-checkbox/index.js',
             '@cds/core/internal-components/visual-checkbox/register.js':
               '/dist/core/internal-components/visual-checkbox/register.js',
+            '@cds/core/internal-components/popup': '/dist/core/internal-components/popup/index.js',
+            '@cds/core/internal-components/popup/register.js': '/dist/core/internal-components/popup/register.js',
             '@cds/core/modal': '/dist/core/modal/index.js',
             '@cds/core/modal/register.js': '/dist/core/modal/register.js',
             '@cds/core/navigation': '/dist/core/navigation/index.js',

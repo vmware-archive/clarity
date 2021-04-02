@@ -6,7 +6,7 @@
 
 import { html } from 'lit';
 import { removeTestElement, createTestElement } from '@cds/core/test';
-import { getElementUpdates } from './events.js';
+import { getElementUpdates, listenForAttributeChange, onChildListMutation, onFirstInteraction } from './events.js';
 
 describe('getElementUpdates', () => {
   let element: HTMLElement;
@@ -61,5 +61,94 @@ describe('getElementUpdates', () => {
 
     expect(checked).toEqual(true);
     expect((input as any)._valueTracker).toEqual(null);
+  });
+});
+
+describe('listenForAttributeChange', () => {
+  it('executes callback when observed attribute changes', async () => {
+    const element = await createTestElement();
+    expect(element.getAttribute('name')).toBe(null);
+    const event = new Promise(resolve => listenForAttributeChange(element, 'name', id => resolve(id)));
+
+    element.setAttribute('name', 'hello world');
+    removeTestElement(element);
+
+    expect(await event).toBe('hello world');
+  });
+});
+
+describe('onFirstInteraction', () => {
+  let element: HTMLElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`<button></button>`);
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should track mouseover interaction', async () => {
+    const event = onFirstInteraction(element);
+    element.dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));
+    await event;
+    expect(true).toBe(true);
+  });
+
+  it('should track mousedown interaction', async () => {
+    const event = onFirstInteraction(element);
+    element.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+    await event;
+    expect(true).toBe(true);
+  });
+
+  it('should track keydown interaction', async () => {
+    const event = onFirstInteraction(element);
+    element.dispatchEvent(new MouseEvent('keydown', { bubbles: true, cancelable: true }));
+    await event;
+    expect(true).toBe(true);
+  });
+
+  it('should track focus interaction', async () => {
+    const event = onFirstInteraction(element);
+    element.dispatchEvent(new MouseEvent('focus', { bubbles: true, cancelable: true }));
+    await event;
+    expect(true).toBe(true);
+  });
+});
+
+describe('onChildListMutation', () => {
+  let element: HTMLElement;
+  let list: HTMLUListElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(
+      html`<ul>
+        <li>one</li>
+      </ul>`
+    );
+    list = element.querySelector('ul');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should track additons to child list', async () => {
+    const mutanten = new Promise(resolve =>
+      onChildListMutation(list, () => resolve(list.querySelectorAll('li').length))
+    );
+    const li = document.createElement('li');
+    li.innerText = 'two';
+    list.appendChild(li);
+    expect(await mutanten).toBe(2);
+  });
+
+  it('should track removals in child list', async () => {
+    const mutanten = new Promise(resolve =>
+      onChildListMutation(list, () => resolve(list.querySelectorAll('li').length))
+    );
+    list.querySelector('li').remove();
+    expect(await mutanten).toBe(0);
   });
 });

@@ -1,0 +1,117 @@
+import '@cds/core/alert/register.js';
+import { Meta, Props, Story, Preview } from '@storybook/addon-docs/blocks';
+import { html, LitElement } from 'lit';
+
+<Meta title="Internal API/Popup" />
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+# Popup
+
+The popup is an internal component that forms the foundation of the dropdown, sign post, and dropdown menu. The
+popup can be used to create your own custom components that position themselves on the screen relative to another
+element.
+
+## Anatomy
+
+The popup and, by extension, all of its sub-classes share a number of common components.
+
+- **Trigger:** The trigger is an element that initiates showing the popup. The trigger element is optional. There
+  is no requirement that all popups have a trigger. Typically, a trigger element is something like a button that
+  opens a drop-down or a form control action button that reveals a list of potential options. A trigger is associated
+  with a popup by passing the popup's id into the trigger's `popup` attribute. If a trigger is defined, the popup will
+  manage its aria attributes so that screen readers will associate the trigger with the popup.
+
+- **Anchor:** The anchor is the element that the popup will be aligned against. When shown, the popup will appear
+  above, below, or on either side of the anchor as space on the screen allows. A popup's trigger and anchor will
+  often be the same element. But this is not always the case. A popup may have a trigger in the navbar but need to
+  align itself below the navbar, not below the button that opened it. Likewise, a form control action may trigger a
+  popup but need to have the popup aligned in relation to the form control block instead of the action button so as
+  to not cover up the form control's label.
+
+- **Pointer:** Popups can include an optional `<cds-internal-pointer>` element. Pointers are used to make the
+  connection between a popup and its anchor more explicit.
+
+- **Popup:** The popup itself is a generic container for content. A popup can contain any content.
+
+## Interaction
+
+A popup is shown most often by a user interacting with a trigger element like a button. When shown, a popup will
+smartly position itself in relation to its anchor. The anchor may be assigned to the popup by passing a string
+element id to its `anchor` attribute in the HTML or by directly assigning an element reference to its JavaScript
+`anchor` property.
+
+### Positioning
+
+A popup will try to show itself in a location relative to the anchor according to the preferences defined in its
+`orientation` attribute. If there is not enough space on the screen, it will intelligently attempt to position
+itself however it can or fallback to _responsive mode_.
+
+### Responsive Positioning
+
+If there is not enough space on the screen for the popup to fit, it will switch to a "responsive mode". This means
+the popup will slide in from the bottom and take the full width of the screen.
+
+### Dismissing
+
+As with overlays, a popup will emit a closeChange event when its backdrop is clicked, an optional close button is
+clicked, the escape key is pressed, or when any custom interaction emits a closeChange event.
+
+### Managing Focus
+
+As with overlays, an element inside the popup can be given the `cds-first-focus` attribute. This will become the
+element that receives immediate focus when the popup is opened.
+
+Accessibility recommends defining a "first focus" element.
+
+Additionally, a popup has a focus trap that prevents focus from moving outside of the bounds of the popup while it
+is active. Note that if the element assigned first focus is not a natively focusable element, the element will
+receive focus but will not be in the tab flow of focusable elements inside the popup's focus trap. This behavior is
+a requirement from the accessibility that works with Clarity.
+
+### Animation
+
+The popup only animates in responsive mode when it slides up from the bottom of the screen. To turn off animations,
+set `cds-motion="off"` on the popup element.
+
+## Installation
+
+To use the internal component add the register import to the `register.ts` of
+the consuming component.
+
+```typescript
+import '@cds/core/internal-components/popup/register.js';
+```
+
+```html
+<cds-internal-popup>
+  <div>
+    <h3 cds-text="section" cds-first-focus>I am a popup</h3>
+    <p cds-text="body">Hello, I am a popup. You can put whatever content you want in me.</p>
+  </div>
+</cds-internal-popup>
+```
+
+## Basic Popup
+
+<Preview>
+  <Story id="internal-stories-popup--test" />
+</Preview>
+
+## Scrolling Popup Content
+
+<Preview>
+  <Story id="internal-stories-popup--scroll-test" />
+</Preview>
+
+## Responsive Popup
+
+<Preview>
+  <Story id="internal-stories-popup--responsive-test" />
+</Preview>
+
+## API
+
+<Props of={'cds-internal-popup'} />

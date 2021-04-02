@@ -31,7 +31,6 @@ describe('cds-internal-control-inline', () => {
     `);
 
     control = element.querySelectorAll<CdsInternalControlInline>('cds-internal-control-inline')[0];
-
     input = element.querySelector<HTMLInputElement>('input');
     inputInControlGroup = element.querySelector<HTMLInputElement>('cds-internal-control-group input');
   });

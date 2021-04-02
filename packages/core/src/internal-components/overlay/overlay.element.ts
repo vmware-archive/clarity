@@ -6,22 +6,26 @@
 
 import {
   Animatable,
+  AnimationModalEnterName,
   animate,
   baseStyles,
-  createId,
   CdsBaseFocusTrap,
+  createId,
   event,
   EventEmitter,
   FocusTrapTrackerService,
+  HTMLAttributeTuple,
+  i18n,
+  I18nService,
+  setAttributes,
   state,
-  onKey,
   property,
-  AnimationModalEnterName,
   reverseAnimation,
 } from '@cds/core/internal';
 import { html } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import styles from './overlay.element.scss';
+import sharedStyles from './shared.element.scss';
 
 export function isNestedOverlay(
   myId: string,
@@ -44,7 +48,141 @@ export function overlayIsActive(overlayId: string, focusTrapService = FocusTrapT
   return focusTrapService.getCurrent()?.focusTrapId === overlayId;
 }
 
-type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
+export type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
+
+/** @private */
+export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
+  @property({ type: Boolean })
+  closable = false;
+
+  @property({ type: Boolean, attribute: 'cds-ignore-focus-trap' })
+  ignoreFocusTrap = false;
+
+  protected get customBumpers(): [HTMLElement, HTMLElement] | [] {
+    return [];
+  }
+
+  @i18n() i18n = I18nService.keys.overlay;
+
+  @property({ type: String })
+  ariaModal = 'true';
+
+  // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
+  // inside an element with aria-modal set to true
+  /** @private */
+  static get shadowRootOptions(): any {
+    // any is used until TS 4.4.x adopted through other @cds/* libraries. Can be removed in 6.0
+    return { ...super.shadowRootOptions, delegatesFocus: true };
+  }
+
+  private overlayIdPrefix = '_overlay-';
+
+  @event() protected closeChange: EventEmitter<CloseChangeSources>;
+
+  @state({ type: Boolean })
+  protected isLayered = false;
+
+  @state({ type: String })
+  protected focusTrapId: string;
+
+  /* @private */
+  getFocusTrapId(): string {
+    // we need this for some unit tests
+    return this.focusTrapId;
+  }
+
+  /* c8 ignore next */
+  @query('.overlay-backdrop') protected backdrop: HTMLElement;
+
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+    this.backdrop.addEventListener('click', this.fireEventOnBackdropClick);
+  }
+
+  updated(props: Map<string, any>) {
+    super.updated(props);
+    const oldLayered = this.isLayered;
+    const newLayered = isNestedOverlay(
+      this.focusTrapId,
+      this.overlayIdPrefix,
+      FocusTrapTrackerService.getTrapElements().map(e => e.focusTrapId),
+      oldLayered
+    );
+
+    if (oldLayered !== newLayered) {
+      this.isLayered = newLayered;
+      this.requestUpdate('isLayered', oldLayered);
+    }
+
+    this.setAriaRole();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.backdrop.removeEventListener('click', this.fireEventOnBackdropClick);
+  }
+
+  // we do this so that screen-readers can make their way through nested/layered overlays.
+  // it sets a virtual cursor trap on the top-most overlay
+  private setAriaRole() {
+    const myRole = FocusTrapTrackerService.getCurrent()?.focusTrapId === this.focusTrapId ? 'dialog' : 'region';
+    setAttributes(this, ['role', myRole]);
+  }
+
+  protected get closeButtonAttrs(): HTMLAttributeTuple[] {
+    return [
+      ['cds-layout', 'align:top'],
+      ['aria-label', this.i18n.closeButtonAriaLabel],
+      ['icon-size', '24'],
+    ];
+  }
+
+  constructor() {
+    super();
+
+    // override focus-trap base id so we know this is an overlay
+    this.focusTrapId = createId(this.overlayIdPrefix);
+  }
+
+  closeOverlay(trigger: CloseChangeSources = 'custom') {
+    this.closableController.close(trigger);
+  }
+
+  protected get closeButtonTemplate() {
+    return html`<cds-internal-close-button
+      cds-layout="align:top"
+      aria-label=${this.i18n.closeButtonAriaLabel}
+      icon-size="24"
+      @click=${() => this.closeOverlay('close-button-click')}
+    ></cds-internal-close-button>`;
+  }
+
+  protected get backdropTemplate() {
+    return html`<div
+      class="${this.isLayered ? 'overlay-backdrop layered' : 'overlay-backdrop'}"
+      aria-hidden="true"
+    ></div>`;
+  }
+
+  protected render() {
+    return html`
+      ${this.backdropTemplate}
+      <div class="private-host" tabindex="-1">
+        <slot></slot>
+      </div>
+    `;
+  }
+
+  protected fireEventOnBackdropClick = () => {
+    if (overlayIsActive(this.focusTrapId)) {
+      this.closeOverlay('backdrop-click');
+    }
+  };
+
+  static get styles() {
+    return [baseStyles, styles, sharedStyles];
+  }
+}
 
 /**
  *
@@ -85,110 +223,10 @@ type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-c
     false: AnimationModalEnterName,
   },
 })
-export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
+export class CdsInternalOverlay extends CdsInternalStaticOverlay implements Animatable {
   @property({ type: String })
   cdsMotion = 'on';
 
   @event()
   cdsMotionChange: EventEmitter<string>;
-
-  @property({ type: String })
-  ariaModal = 'true';
-
-  @property({ type: String })
-  role = 'dialog';
-
-  // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
-  // inside an element with aria-modal set to true
-  /** @private */
-  static get shadowRootOptions(): any {
-    // any is used until TS 4.4.x adopted through other @cds/* libraries. Can be removed in 6.0
-    return { ...super.shadowRootOptions, delegatesFocus: true };
-  }
-
-  private overlayIdPrefix = '_overlay-';
-
-  @event() protected closeChange: EventEmitter<CloseChangeSources>;
-
-  @state({ type: Boolean })
-  protected isLayered = false;
-
-  @query('.overlay-backdrop') protected backdrop: HTMLElement;
-
-  firstUpdated(props: Map<string, any>) {
-    super.firstUpdated(props);
-    this.backdrop.addEventListener('click', this.fireEventOnBackdropClick);
-  }
-
-  updated(props: Map<string, any>) {
-    super.updated(props);
-    const oldLayered = this.isLayered;
-    const newLayered = isNestedOverlay(
-      this.focusTrapId,
-      this.overlayIdPrefix,
-      FocusTrapTrackerService.getTrapElements().map(e => e.focusTrapId),
-      oldLayered
-    );
-
-    if (oldLayered !== newLayered) {
-      this.isLayered = newLayered;
-      this.requestUpdate('isLayered', oldLayered);
-    }
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener('keydown', this.fireEventOnEscape);
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    window.removeEventListener('keydown', this.fireEventOnEscape);
-    this.backdrop.removeEventListener('click', this.fireEventOnBackdropClick);
-  }
-
-  constructor() {
-    super();
-
-    // override focus-trap base id so we know this is an overlay
-    this.focusTrapId = createId(this.overlayIdPrefix);
-  }
-
-  closeOverlay(trigger: CloseChangeSources = 'custom') {
-    this.closeChange.emit(trigger);
-  }
-
-  protected get backdropTemplate() {
-    return html`<div
-      class="${this.isLayered ? 'overlay-backdrop layered' : 'overlay-backdrop'}"
-      aria-hidden="true"
-    ></div>`;
-  }
-
-  protected render() {
-    return html`
-      ${this.backdropTemplate}
-      <div class="private-host" tabindex="-1" aria-modal="true" role="dialog">
-        <slot></slot>
-      </div>
-    `;
-  }
-
-  protected fireEventOnBackdropClick = () => {
-    if (overlayIsActive(this.focusTrapId)) {
-      this.closeOverlay('backdrop-click');
-    }
-  };
-
-  protected fireEventOnEscape = (e: KeyboardEvent) => {
-    if (overlayIsActive(this.focusTrapId)) {
-      onKey('escape', e, () => {
-        this.closeOverlay('escape-keypress');
-      });
-    }
-  };
-
-  static get styles() {
-    return [baseStyles, styles];
-  }
 }

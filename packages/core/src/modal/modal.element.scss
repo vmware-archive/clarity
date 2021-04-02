@@ -52,14 +52,34 @@
   overflow: var(--content-overflow);
 }
 
-@media screen and (max-width: $cds-global-layout-width-sm) and (orientation: landscape) {
+@media screen and (max-width: $cds-global-layout-width-sm-static) and (orientation: landscape) {
   .modal-body {
     max-height: var(--tablet-max-height);
   }
 }
 
-@media screen and (max-width: $cds-global-layout-width-xs) {
+@media screen and (max-width: $cds-global-layout-width-xs-static) {
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+  }
+
   .modal-body {
-    max-height: var(--tablet-max-height);
+    max-height: unset;
+  }
+
+  .modal-content {
+    border-radius: 0;
+    height: 100%;
+
+    > div:not(.modal-body) {
+      flex-grow: 0;
+      margin: 0;
+    }
+  }
+
+  cds-internal-close-button {
+    transform: translate(0.35rem, -0.25rem);
   }
 }

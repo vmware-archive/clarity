@@ -69,4 +69,4 @@ export interface Animatable {
   cdsMotionChange: EventEmitter<string>;
 }
 
-export type AnimatableElement = Element & Animatable & { [key: string]: any; _animations: PropertyDrivenAnimation };
+export type AnimatableElement = HTMLElement & Animatable & { [key: string]: any; _animations: PropertyDrivenAnimation };

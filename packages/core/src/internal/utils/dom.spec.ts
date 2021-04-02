@@ -6,24 +6,30 @@
 
 import { LitElement, html } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
-import { registerElementSafely } from '@cds/core/internal';
+import { registerElementSafely, updateElementStyles } from '@cds/core/internal';
 import {
   addAttributeValue,
   assignSlotNames,
+  createFragment,
   getElementWidth,
   getElementWidthUnless,
+  getShadowRootOrElse,
+  getWindowDimensions,
   hasAttributeAndIsNotEmpty,
   HTMLAttributeTuple,
+  windowIsAboveMobileBreakpoint,
   isHTMLElement,
+  makeFocusable, // <- LEFTOFF
   removeAttributes,
   removeAttributeValue,
   setAttributes,
-  listenForAttributeChange,
   isVisible,
   setOrRemoveAttribute,
   spanWrapper,
   isFocusable,
   queryChildFromLightOrShadowDom,
+  queryAllFocusable,
+  isScrollable,
 } from './dom.js';
 
 /** @element test-dom-spec-element */
@@ -329,7 +335,7 @@ describe('Functional Helper: ', () => {
     });
   });
 
-  describe('removeAttributeValues() ', () => {
+  describe('removeAttributeValue() ', () => {
     let testElement: HTMLElement;
     const attrName = 'myAttr';
     const testAttrs: HTMLAttributeTuple[] = [
@@ -363,19 +369,6 @@ describe('Functional Helper: ', () => {
       testElement.setAttribute(attrName, 'foo');
       removeAttributeValue(testElement, attrName, 'foo');
       expect(testElement.getAttribute(attrName)).toBeNull();
-    });
-  });
-
-  describe('listenForAttributeChange', () => {
-    it('executes callback when observed attribute changes', async () => {
-      const element = await createTestElement();
-      expect(element.getAttribute('name')).toBe(null);
-      const event = new Promise(resolve => listenForAttributeChange(element, 'name', id => resolve(id)));
-
-      element.setAttribute('name', 'hello world');
-      removeTestElement(element);
-
-      expect(await event).toBe('hello world');
     });
   });
 
@@ -426,6 +419,37 @@ describe('Functional Helper: ', () => {
       const element = await createTestElement(html`<div id="ohai" data-test-value>howdy</div>`);
       expect(hasAttributeAndIsNotEmpty(document.getElementById('ohai'), 'data-test-value')).toBe(false);
       removeTestElement(element);
+    });
+  });
+
+  describe('isScrollable() ', () => {
+    it('should verify the element is scrollable', async () => {
+      const element = await createTestElement(html`
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      `);
+
+      // `createTestElement` wraps the text in a `<div>` and we have to add the styles to it
+      updateElementStyles(element, ['width', '20px'], ['height', '20px'], ['overflow', 'scroll']);
+
+      expect(isScrollable(element)).toBe(true);
+    });
+
+    it('should verify the element is not scrollable', async () => {
+      const element = await createTestElement(html`
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      `);
+
+      expect(isScrollable(element)).toBe(false);
     });
   });
 
@@ -493,6 +517,20 @@ describe('Functional Helper: ', () => {
       });
     });
 
+    describe('- iframe and embedded: ', () => {
+      it('iframe return true', async () => {
+        testElement = await createTestElement(html`<iframe title="example" id="${testId}"></iframe>`);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+
+      it('embedded return true', async () => {
+        testElement = await createTestElement(html`
+          <embed type="image/jpg" id="${testId}" src="#" width="300" height="200" />
+        `);
+        expect(isFocusable(testElement.querySelector('#' + testId))).toBe(true);
+      });
+    });
+
     describe('- anchor elements:', () => {
       it('a[href] returns true', async () => {
         testElement = await createTestElement(html`<a href="https://clarity.design" id="${testId}">ohai</a>`);
@@ -552,6 +590,87 @@ describe('Functional Helper: ', () => {
     });
   });
 
+  describe('queryAllFocusable() ', () => {
+    let testElement: HTMLElement;
+
+    it('should get focusable elements', async () => {
+      testElement = await createTestElement(html`
+        <button>Hello</button>
+        <a href="#">Hello</a>
+        <audio controls>
+          <source src="#" type="audio/ogg" />
+          <source src="#" type="audio/mpeg" />
+          Your browser does not support the audio tag.
+        </audio>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+        <textarea id="w3review" name="w3review" rows="4" cols="50">
+         Hello
+        </textarea
+        >
+        <video width="320" height="240" controls>
+          <source src="#" type="video/mp4" />
+          <source src="#" type="video/ogg" />
+          Your browser does not support the video tag.
+        </video>
+        <div role="button">Clickable</div>
+        <div contenteditable="true">Clickable</div>
+        <map name="workmap">
+          <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm" />
+        </map>
+        <!-- <iframe title="hello" src="#"></iframe> -->
+        <!-- <embed type="image/jpg" src="#" width="300" height="200" /> -->
+        <div tabindex="-5"></div>
+        <!-- <object data="#" width="300" height="200"></object> -->
+      `);
+
+      // iframe, embed and object were causing web-test-runner to blow up
+      const expectedListOfInstances = [
+        HTMLButtonElement,
+        HTMLAnchorElement,
+        HTMLAudioElement,
+        HTMLSelectElement,
+        HTMLTextAreaElement,
+        HTMLVideoElement,
+        HTMLDivElement,
+        HTMLDivElement,
+        HTMLAreaElement,
+        // HTMLIFrameElement,
+        // HTMLEmbedElement,
+        HTMLDivElement,
+        // HTMLObjectElement,
+      ];
+
+      const elements = queryAllFocusable(testElement);
+
+      elements.forEach((element, order) => {
+        expect(element instanceof expectedListOfInstances[order]).toBeTruthy();
+      });
+
+      removeTestElement(testElement);
+    });
+
+    it('should not get an not selectable element', async () => {
+      testElement = await createTestElement(html`<div>
+        <div>I AM DIV</div>
+        <span>I AM SPAN</span>
+        <section>I AM SECTION</section>
+        <input type="hidden" />
+        <input disabled />
+        <input readonly />
+        <button>Hello</button>
+      </div>`);
+      const elements = queryAllFocusable(testElement);
+      expect(elements.length).toBe(1);
+      expect(elements[0] instanceof HTMLButtonElement).toBeTruthy();
+      removeTestElement(testElement);
+    });
+  });
+
   describe('queryChildFromLightOrShadowDom', () => {
     let testElement: HTMLElement;
     let component: TestElement;
@@ -590,6 +709,128 @@ describe('Functional Helper: ', () => {
       expect(el).not.toBeNull();
       expect(el.id).toBe('found');
       removeTestElement(nonShadyHost);
+    });
+  });
+
+  describe('getWindowDimensions(): ', () => {
+    it('returns a dimension object with window height and width as expected', () => {
+      const bodyEl = window.document.body;
+      bodyEl.style.height = '100vh';
+      bodyEl.style.width = '100vw';
+
+      const bodyElRect = bodyEl.getBoundingClientRect();
+      const { height, width } = getWindowDimensions(); // defaults to base window object if no arguments sent
+
+      expect(height).toBe(bodyElRect.height, 'height is as expected');
+      expect(width).toBe(bodyElRect.width, 'width is as expected');
+    });
+
+    it('handles bad input', () => {
+      const testWindowWithoutDocument = {} as Window;
+
+      expect(getWindowDimensions(null)).toEqual({ width: 0, height: 0 }, 'handles null');
+      expect(() => {
+        getWindowDimensions(null);
+      }).not.toThrowError('does not die on null');
+
+      expect(getWindowDimensions(testWindowWithoutDocument)).toEqual(
+        { width: 0, height: 0 },
+        'handles a bad window object'
+      );
+      expect(() => {
+        getWindowDimensions(testWindowWithoutDocument);
+      }).not.toThrowError('does not die with a bad window object');
+    });
+  });
+
+  describe('windowIsAboveMobileBreakpoint(): ', () => {
+    it('should break if test suite changes default dimensions', () => {
+      // default window width in tests is 800
+      expect(window.innerWidth).toBe(800, 'width checks out');
+    });
+
+    it('returns as expected', () => {
+      expect(windowIsAboveMobileBreakpoint()).toBe(false, 'defaults to mobile breakpoint (576px)');
+      expect(windowIsAboveMobileBreakpoint('802px')).toBe(true, 'handles px values');
+    });
+  });
+
+  describe('getShadowRootOrElse(): ', () => {
+    let testElement: HTMLElement;
+    let component: TestElement;
+    let div: HTMLElement;
+    let fallback: HTMLElement;
+
+    beforeEach(async () => {
+      testElement = await createTestElement(
+        html`
+          <test-dom-spec-element id="has-shadow">ohai</test-dom-spec-element>
+          <div id="no-shadow">howdy</div>
+          <div id="intended-fallback"></div>
+        `
+      );
+      component = testElement.querySelector<TestElement>('test-dom-spec-element');
+      div = testElement.querySelector('#no-shadow');
+      fallback = testElement.querySelector('#intended-fallback');
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('should return as expected', () => {
+      const returnsShade = getShadowRootOrElse(component, fallback);
+      const returnsHostEl = getShadowRootOrElse(div);
+      const returnsFallbackInstead = getShadowRootOrElse(div, fallback);
+      expect(returnsShade).toBe((component.shadowRoot as unknown) as HTMLElement, 'returns shadow root if exists');
+      expect(returnsHostEl).toBe(div, 'returns host if no shadow root or fallback');
+      expect(returnsFallbackInstead).toBe(fallback, 'returns fallback');
+    });
+  });
+
+  describe('makeFocusable(): ', () => {
+    let testElement: HTMLElement;
+    let alreadyFocusable: HTMLElement;
+    let alreadyTabindexed: HTMLElement;
+    let notFocusable: HTMLElement;
+
+    beforeEach(async () => {
+      testElement = await createTestElement(
+        html`
+          <button id="focusable">ohai</button>
+          <div id="not-focusable">howdy</div>
+          <div id="tab-indexed" tabindex="0">wassup</div>
+        `
+      );
+      alreadyFocusable = testElement.querySelector('#focusable');
+      notFocusable = testElement.querySelector('#not-focusable');
+      alreadyTabindexed = testElement.querySelector('#tab-indexed');
+    });
+
+    afterEach(() => {
+      removeTestElement(testElement);
+    });
+
+    it('should makeFocusable as expected', () => {
+      const returnFocusable = makeFocusable(alreadyFocusable);
+      const returnNotFocusable = makeFocusable(notFocusable);
+      const returnTabIndexed = makeFocusable(alreadyTabindexed);
+      expect(returnFocusable.getAttribute('tabindex')).toBe(null, 'does not tab index focusable items');
+      expect(returnNotFocusable.getAttribute('tabindex')).toBe('-1', 'adds tab index but does not add to tab flow');
+      expect(returnTabIndexed.getAttribute('tabindex')).toBe('0', 'preserves tab index if already set');
+    });
+
+    it('should add to tabflow as expected', () => {
+      const tabFlowed = makeFocusable(notFocusable, true);
+      expect(tabFlowed.getAttribute('tabindex')).toBe('0', 'adds to tab flow');
+    });
+  });
+
+  describe('createFragment(): ', () => {
+    it('returns as expected', () => {
+      const test = createFragment('ohai');
+      expect(test instanceof DocumentFragment).toBe(true, 'we made a fragment');
+      expect(test.textContent).toBe('ohai', 'fragment has our text');
     });
   });
 });

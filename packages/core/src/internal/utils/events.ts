@@ -4,14 +4,16 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { listenForAttributeChange } from './dom.js';
-
 export function stopEvent(event: Event) {
   event.preventDefault();
   event.stopPropagation();
 }
 
-export const getElementUpdates = (element: HTMLElement, propertyKey: string, callback: (value: any) => void) => {
+export const getElementUpdates = (
+  element: HTMLElement,
+  propertyKey: string,
+  callback: (value: any) => void
+): MutationObserver => {
   if (element.hasAttribute(propertyKey)) {
     callback(element.getAttribute(propertyKey));
   } else if ((element as any)[propertyKey] !== undefined) {
@@ -39,3 +41,64 @@ export const getElementUpdates = (element: HTMLElement, propertyKey: string, cal
 
   return listenForAttributeChange(element, propertyKey, val => callback(val));
 };
+
+export function onFirstInteraction(element: HTMLElement): Promise<null> {
+  return new Promise(resolve => {
+    const update = () => {
+      resolve(null);
+      (element as any).__cdsTouched = true;
+    };
+
+    if ((element as any).__cdsTouched) {
+      resolve(null);
+    }
+
+    element.addEventListener('mouseover', update, { once: true });
+    element.addEventListener('mousedown', update, { once: true });
+    element.addEventListener('keydown', update, { once: true });
+    element.addEventListener('focus', update, { once: true });
+  });
+}
+
+export function onChildListMutation(element: HTMLElement, fn: (mutation?: MutationRecord) => void) {
+  const observer = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'childList') {
+        fn(mutation);
+      }
+    }
+  });
+  observer.observe(element, { childList: true });
+  return observer;
+}
+
+export function listenForAttributeChange(
+  element: HTMLElement,
+  attrName: string,
+  fn: (attrValue: string | null) => void
+): MutationObserver {
+  const observer = new MutationObserver(mutations => {
+    if (mutations.find(m => m.attributeName === attrName)) {
+      fn(element.getAttribute(attrName));
+    }
+  });
+
+  observer.observe(element, { attributes: true });
+  return observer;
+}
+
+export function listenForAttributeListChange(
+  element: HTMLElement,
+  attrNames: string[],
+  fn: (attrValue: string | null) => void
+): MutationObserver {
+  const observer = new MutationObserver(mutations => {
+    const mutation = mutations.find(m => attrNames.find(i => m.attributeName === i));
+    if (mutation) {
+      fn(element.getAttribute(mutation.attributeName as string));
+    }
+  });
+
+  observer.observe(element, { attributes: true, attributeFilter: attrNames, subtree: true });
+  return observer;
+}

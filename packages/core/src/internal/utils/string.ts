@@ -70,13 +70,7 @@ export const cssGroup = 'CSS Custom Properties';
 export const propertiesGroup = 'Default Properties';
 
 export function getNumericValueFromCssSecondsStyleValue(styleValueInSeconds: string): number {
-  const secondsStringChecker = /(\d+)?\.?(\d+)?s/g;
-  if (!styleValueInSeconds || !styleValueInSeconds.match(secondsStringChecker)) {
-    return 0; // validate expected input
-  }
-  const copyVal = styleValueInSeconds.substr(0, styleValueInSeconds.length - 1); // cut off trailing 's'
-
-  return isNumericString(copyVal) ? Number(copyVal) : 0;
+  return pluckValueFromStringUnit(styleValueInSeconds, 's');
 }
 
 export function isPrefixedOrSuffixedBy(str: string, stringFix: string, prefixOrSuffix = 'prefix'): boolean {
@@ -129,4 +123,41 @@ export function replaceWord(str: string, wordToReplace: string, replaceWith = ''
       ? words.filter(w => w !== wordToReplace)
       : words.map(w => (w === wordToReplace ? replaceWith : w));
   return returnWords.length > 0 ? returnWords.join(' ') : '';
+}
+
+export function trimExtraWhitespace(str: string): string {
+  return !str ? '' : (str + '').trim().replace(/  +/g, ' ');
+}
+
+export function transformSpacedStringToArray(str: string): string[] {
+  const trimmed = trimExtraWhitespace(str);
+  return trimmed === '' ? [] : trimmed.split(' ');
+}
+
+export function convertStringPropertyToObjectConfig(
+  property: string,
+  defaultConfig: object,
+  converter?: (property?: string) => object
+): object {
+  if (!converter) {
+    return defaultConfig;
+  }
+
+  return Object.assign((defaultConfig as unknown) as object, converter(property));
+}
+
+export function pluckValueFromStringUnit(val: string, unit: string) {
+  const trimmedVal = val ? val.trim() : '';
+
+  if (trimmedVal === '' || !trimmedVal.endsWith(unit)) {
+    return 0;
+  }
+
+  const valueWithoutUnit = trimmedVal.slice(0, -1 * unit.length);
+
+  return isNumericString(valueWithoutUnit) ? +valueWithoutUnit : 0;
+}
+
+export function pluckPixelValue(val: string): number {
+  return !val ? 0 : pluckValueFromStringUnit(val.trim(), 'px');
 }

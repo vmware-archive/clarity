@@ -24,7 +24,8 @@ import clone from 'ramda/es/clone.js';
 import { getCssPropertyValue, isCssPropertyName } from '../utils/css.js';
 import { isPrefixedBy, isSuffixedBy, getNumericValueFromCssSecondsStyleValue, removePrefix } from '../utils/string.js';
 import { queryChildFromLightOrShadowDom } from '../utils/dom.js';
-import { allPropertiesPass, getMillisecondsFromSeconds } from '../utils/identity.js';
+import { allPropertiesPass } from '../utils/identity.js';
+import { getMillisecondsFromSeconds } from '../utils/math.js';
 
 /**
  * runPropertyAnimations() is a utility function called by the @animate(). It is a single point of entry
@@ -38,6 +39,7 @@ import { allPropertiesPass, getMillisecondsFromSeconds } from '../utils/identity
  *
  * @internal
  */
+/* c8 ignore next */
 export async function runPropertyAnimations(props: Map<string, any>, hostEl: AnimatableElement): Promise<boolean> {
   if (!hostEl._animations) {
     LogService.warn(`${hostEl.tagName.toLocaleLowerCase()} is trying to animate but no animations are defined.`);
@@ -107,6 +109,7 @@ export async function runPropertyAnimations(props: Map<string, any>, hostEl: Ani
 
 // --- CONTROL FLOW UTILS ---
 
+/* c8 ignore next */
 export function setAnimationStartStatus(animatedPropertyValueAsString: string, hostEl: AnimatableElement) {
   // accesses and manipulates the private animation status attr;
   if (hostEl.getAttribute('_cds-animation-status') !== AnimationStatus.active) {
@@ -116,6 +119,7 @@ export function setAnimationStartStatus(animatedPropertyValueAsString: string, h
   }
 }
 
+/* c8 ignore next */
 export function resolveAnimationEndStatus(animatedPropertyValueAsString: string, hostEl: AnimatableElement) {
   // sets super secret animation attr back to 'ready'
   hostEl.setAttribute('_cds-animation-status', AnimationStatus.ready); // A
@@ -124,6 +128,7 @@ export function resolveAnimationEndStatus(animatedPropertyValueAsString: string,
   hostEl.cdsMotionChange.emit(`${animatedPropertyValueAsString} animation ${AnimationStatus.end}`); // A
 }
 
+/* c8 ignore next */
 export function setAnimationConfigOptions(
   motionName: string,
   motionForMyValue: TargetedAnimation[],
@@ -151,6 +156,7 @@ export function setAnimationConfigOptions(
   return motionForMyValue;
 }
 
+/* c8 ignore next */
 export function getAnimationPromiseInstructions(
   animatedPropertyValueAsString: string,
   motionConfigs: TargetedAnimation[],
@@ -177,13 +183,15 @@ export function getAnimationPromiseInstructions(
     });
 }
 
-export function getAnimationTarget(hostEl: Element, targetSelector?: string): Element {
+/* c8 ignore next */
+export function getAnimationTarget(hostEl: HTMLElement, targetSelector?: string): Element {
   return queryChildFromLightOrShadowDom(hostEl, targetSelector) || hostEl;
 }
 
+/* c8 ignore next */
 export function getAnimationKeyframesOrPropertyIndexedFrames(
   animationConfig: AnimationKeyframes | PropertyIndexedKeyframes,
-  hostEl: Element
+  hostEl: HTMLElement
 ): AnimationKeyframes | PropertyIndexedKeyframes {
   return !Array.isArray(animationConfig) ? animationConfig : sizeDimensionKeyframes(animationConfig, hostEl);
 }
@@ -191,12 +199,14 @@ export function getAnimationKeyframesOrPropertyIndexedFrames(
 // --- REVERSING UTILS ---
 
 // string -> boolean
+/* c8 ignore next */
 export function animationIsReversed(nameOfAnimation: string) {
   return isSuffixedBy(nameOfAnimation, CLARITY_MOTION_REVERSE_ANIMATION_SUFFIX);
 }
 
 // { target: '.my-selector', animation: [<keyframes>], options: { duration: 500 }} ->
 // { target: '.my-selector', animation: [<keyframes>], options: { duration: 500, direction: 'reverse' }}
+/* c8 ignore next */
 export function reverseAnimationConfig(config: TargetedAnimation[]): TargetedAnimation[] {
   return config.map((anim: TargetedAnimation) => {
     if (anim.options) {
@@ -209,6 +219,7 @@ export function reverseAnimationConfig(config: TargetedAnimation[]): TargetedAni
 }
 
 // 'my-animation' -> 'my-animation-reverse'
+/* c8 ignore next */
 export function reverseAnimation(animationName: string) {
   return [animationName, '-', CLARITY_MOTION_REVERSE_ANIMATION_LABEL].join('');
 }
@@ -218,6 +229,7 @@ export function reverseAnimation(animationName: string) {
 // returns an animation name from a stringified @animate decorator config passed into the
 // cds-motion attr. looks it up by property first and value second. returns empty string
 // if no animation name matches the property and property value.
+/* c8 ignore next */
 export function getInlineOverride(cdsMotionValue: string, propName: string, propValue: string): string {
   if (!cdsMotionValue || !propName || typeof propValue === 'undefined') {
     return '';
@@ -241,11 +253,13 @@ export function getInlineOverride(cdsMotionValue: string, propName: string, prop
 }
 
 // 'i-am-reverse' -> 'i-am'
+/* c8 ignore next */
 export function extractAnimationNameIfReversed(name: string): string {
   return animationIsReversed(name) ? name.slice(0, -1 * CLARITY_MOTION_REVERSE_ANIMATION_SUFFIX.length) : name;
 }
 
 // if the name retrieved from the cds-motion config is present in Clarity Motion, it is returned
+/* c8 ignore next */
 export function getAnimationFromOverrideOrDecorator(decoratorValue: string, overrideValue?: string) {
   if (!overrideValue) {
     return decoratorValue;
@@ -256,7 +270,8 @@ export function getAnimationFromOverrideOrDecorator(decoratorValue: string, over
 
 // ('animation-name') -> ['animation-name', [ { target: '.an-element', animation: [<keyframes>], options: { ... }}]];
 // ('animation-name', 'name-retrieved-from-cds-motion-config') ->
-// ['name-retrieved-from-cds-motion-config', [ { target: ..., animation: [<keyframes>], options: { ... }}]];
+// ['name-retrieved-from-cds-motion-config', [ { target: ..., animation: [<keyframes>], options: { ... }}]];0
+/* c8 ignore next */
 export function getAnimationConfigForPropertyValue(
   nameOfAnimationFromObject: string,
   cdsMotionOverride?: string
@@ -267,17 +282,22 @@ export function getAnimationConfigForPropertyValue(
 
 // --- SETTING ANIMATION CONFIG VALUES ---
 
+/* c8 ignore next */
 export function setAnimationDuration(config: TargetedAnimation[], hostEl: AnimatableElement): TargetedAnimation[] {
   return setAnimationProperty('duration', hostEl, config, CLARITY_MOTION_FALLBACK_DURATION_IN_MS, (val: string) => {
     return getMillisecondsFromSeconds(getNumericValueFromCssSecondsStyleValue(val));
   });
 }
 
+/* c8 ignore next */
 export function setAnimationEasing(config: TargetedAnimation[], hostEl: AnimatableElement): TargetedAnimation[] {
+  /* c8 ignore next */
   return setAnimationProperty('easing', hostEl, config, CLARITY_MOTION_FALLBACK_EASING);
 }
 
+/* c8 ignore next */
 export function zeroOutAnimationConfig(config: TargetedAnimation[]): TargetedAnimation[] {
+  /* c8 ignore next */
   return config.map(anim => {
     if (anim.options) {
       anim.options.duration = 0;
@@ -289,6 +309,7 @@ export function zeroOutAnimationConfig(config: TargetedAnimation[]): TargetedAni
   });
 }
 
+/* c8 ignore next */
 export function setAnimationProperty(
   propertyName: string,
   hostEl: AnimatableElement,
@@ -323,7 +344,12 @@ export function setAnimationProperty(
 }
 
 // -- TRANSFORM PROPERTY-DRIVEN ANIMATION OBJECTS TO ANIMATION CONFIG OBJECTS ---
-export function sizeDimensionKeyframes(animationKeyframes: AnimationKeyframes, hostEl: Element): AnimationKeyframes {
+
+/* c8 ignore next */
+export function sizeDimensionKeyframes(
+  animationKeyframes: AnimationKeyframes,
+  hostEl: HTMLElement
+): AnimationKeyframes {
   if (!Array.isArray(animationKeyframes)) {
     return animationKeyframes;
   }
@@ -343,6 +369,7 @@ export function sizeDimensionKeyframes(animationKeyframes: AnimationKeyframes, h
   });
 }
 
+/* c8 ignore next */
 export function filterAnimationsByUpdatedProperties(
   animations: PropertyDrivenAnimation,
   updatingProps: Map<string, any>
@@ -355,7 +382,10 @@ export function filterAnimationsByUpdatedProperties(
   const returnObject: PropertyDrivenAnimation = {};
 
   Object.getOwnPropertyNames(animations).forEach((prop: string) => {
-    if (updatingProps.has(prop)) {
+    // test here against undefined value because Lit is running initializations
+    // with properties with an "undefined" value. as a result of this change,
+    // animations should only run on explicitly set values...
+    if (updatingProps.has(prop) && updatingProps.get(prop) !== undefined) {
       returnObject[prop] = clone(animations[prop]);
       objectIsEmpty = false;
     }
@@ -366,6 +396,7 @@ export function filterAnimationsByUpdatedProperties(
 
 type TupleOfHiddenAndOtherAnimations = [TargetedAnimationAsPropertyTuple[], TargetedAnimationAsPropertyTuple[]];
 
+/* c8 ignore next */
 export function flattenAndSortAnimations(
   hiddenAndNotAnimationTuple: TupleOfHiddenAndOtherAnimations,
   isHiding: boolean
@@ -389,6 +420,7 @@ export function flattenAndSortAnimations(
   }
 }
 
+/* c8 ignore next */
 export function getHidingAndNonHidingPropertyAnimations(
   animations: PropertyDrivenAnimation
 ): [TargetedAnimationAsPropertyTuple[], TargetedAnimationAsPropertyTuple[]] {
@@ -407,6 +439,7 @@ export function getHidingAndNonHidingPropertyAnimations(
   return [hiddenAnimations, otherAnimations];
 }
 
+/* c8 ignore next */
 export function getPropertyAnimations(
   animations: PropertyDrivenAnimation,
   updatingProps: Map<string, any>

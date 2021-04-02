@@ -5,8 +5,10 @@
  */
 
 import '@cds/core/modal/register.js';
-import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit';
+import '@cds/core/button/register.js';
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { getElementStorybookArgs, property, spreadProps } from '@cds/core/internal';
 import { CdsModal } from '@cds/core/modal';
 
 export default {
@@ -42,7 +44,7 @@ export function API(args: any) {
       <cds-button status="primary" type="button" @click=${showApiModal}>Show Modal</cds-button>
       <cds-modal ...="${spreadProps(getElementStorybookArgs(args))}" id="${modalId}" hidden>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">${args['cds-modal-header']}</h3>
+          <h3 cds-text="section" cds-first-focus>${args['cds-modal-header']}</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">${args['cds-modal-content']}</p>
@@ -53,33 +55,63 @@ export function API(args: any) {
   `;
 }
 
-/** @website */
-export function small() {
-  return html`
-    <cds-demo popover>
-      <cds-modal _demo-mode size="sm">
+@customElement('demo-static-modal')
+class DemoStaticModal extends LitElement {
+  @property({ type: String })
+  size: 'default' | 'sm' | 'lg' | 'xl' = 'default';
+
+  @property({ type: String })
+  labelId = 'default-modal-title';
+
+  get modalDisplaySize() {
+    switch (this.size) {
+      case 'sm':
+        return 'Small';
+      case 'lg':
+        return 'Large';
+      case 'xl':
+        return 'Extra-Large';
+      default:
+        return 'Default';
+    }
+  }
+
+  protected createRenderRoot() {
+    return this;
+  }
+
+  render() {
+    return html` <cds-demo popover>
+      <cds-modal _demo-mode size=${this.size} aria-labelledby=${this.labelId} .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">Small Modal</h3>
+          <h3 cds-text="section" cds-first-focus id=${this.labelId}>${this.modalDisplaySize} Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
-          <p cds-text="body">Place holder text for the small modal example.</p>
+          <p cds-text="body">Place holder text for the ${this.modalDisplaySize.toLowerCase()} modal example.</p>
         </cds-modal-content>
         <cds-modal-actions>
           <cds-button action="outline">Cancel</cds-button>
           <cds-button>Ok</cds-button>
         </cds-modal-actions>
       </cds-modal>
-    </cds-demo>
-  `;
+    </cds-demo>`;
+  }
 }
+
+/** @website */
+export function small() {
+  return html`<demo-static-modal size="sm" labelId="small-modal-title"></demo-static-modal>`;
+}
+
+small.element = DemoStaticModal;
 
 /** @website */
 export function defaultSize() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode>
+      <cds-modal _demo-mode aria-labelledby="default-modal-title" .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">Modal Example</h3>
+          <h3 cds-text="section" cds-first-focus id="default-modal-title">Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the default sized modal example.</p>
@@ -97,9 +129,9 @@ export function defaultSize() {
 export function large() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode size="lg">
+      <cds-modal _demo-mode size="lg" aria-labelledby="large-modal-title" .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">Large Modal Example</h3>
+          <h3 cds-text="section" cds-first-focus id="large-modal-title">Large Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the large modal example.</p>
@@ -117,9 +149,9 @@ export function large() {
 export function extraLarge() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode size="xl">
+      <cds-modal _demo-mode size="xl" aria-labelledby="xl-modal-title" .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">Extra Large Modal Example</h3>
+          <h3 cds-text="section" cds-first-focus id="xl-modal-title">Extra Large Modal Example</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Place holder text for the extra large modal example.</p>
@@ -137,9 +169,9 @@ export function extraLarge() {
 export function darkTheme() {
   return html`
     <cds-demo popover cds-theme="dark">
-      <cds-modal _demo-mode>
+      <cds-modal _demo-mode aria-labelledby="dark-modal-title" .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">My Modal</h3>
+          <h3 cds-text="section" cds-first-focus id="dark-modal-title">My Modal</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">Lorem Ipsum</p>
@@ -166,17 +198,18 @@ export function customStyles() {
         --close-icon-color-hover: #ffffff;
         --content-box-shadow-color: rgba(0, 54, 77, 0.3);
 
-        --cds-global-typography-color-400: #d9d9d9;
+        --cds-global-typography-color-400: #ffffff;
         --cds-global-typography-color-300: #ffffff;
+        --cds-global-typography-color-500: #ffffff;
         --cds-alias-object-interaction-color: #d9d9d9;
         --cds-alias-object-interaction-color-hover: #ffffff;
       }
     </style>
 
     <cds-demo popover>
-      <cds-modal _demo-mode class="modal-branding" size="lg">
+      <cds-modal _demo-mode class="modal-branding" size="lg" aria-labelledby="custom-modal-title" .hidden=${false}>
         <cds-modal-header>
-          <h3 cds-text="section" cds-first-focus tabindex="-1">Customizing Modal Styles</h3>
+          <h3 cds-text="section" cds-first-focus id="custom-modal-title">Customizing Modal Styles</h3>
         </cds-modal-header>
         <cds-modal-content>
           <p cds-text="body">This example shows how modal visual styles can be changed and customized.</p>
@@ -213,9 +246,9 @@ export function focus() {
 
   return html`
     <cds-button status="primary" type="button" @click=${showFocusModal}>Show Focus Demo</cds-button>
-    <cds-modal hidden id="${modalId}">
+    <cds-modal hidden id="${modalId}" aria-labelledby="${modalId}-title">
       <cds-modal-header>
-        <h3 cds-text="section" cds-first-focus tabindex="-1">Managing Focus in a Modal</h3>
+        <h3 cds-text="section" cds-first-focus id="${modalId}-title">Managing Focus in a Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
         <p cds-text="body">This example shows how cds-first-focus should be used to manage focus inside a modal.</p>
@@ -233,11 +266,11 @@ export function scrollContent() {
 
   function showDefaultModal() {
     const myOverlay = document.getElementById(modalId) as CdsModal;
-    myOverlay.removeAttribute('hidden');
+    myOverlay.hidden = false;
 
     if (!initted) {
       myOverlay.addEventListener('closeChange', () => {
-        myOverlay.setAttribute('hidden', 'true');
+        myOverlay.hidden = true;
       });
       initted = true;
     }
@@ -250,13 +283,13 @@ export function scrollContent() {
 
   return html`
     <cds-button status="primary" type="button" @click=${showDefaultModal}>Show Modal</cds-button>
-    <cds-modal hidden id="${modalId}">
+    <cds-modal hidden id="${modalId}" aria-labelledby="${modalId}-title">
       <cds-modal-header>
-        <h3 cds-text="section" cds-first-focus tabindex="-1">Default-Sized Modal</h3>
+        <h3 cds-text="section" cds-first-focus id="${modalId}-title">Default-Sized Modal</h3>
       </cds-modal-header>
       <cds-modal-content>
         <p>Demo to show how to scroll through a modal content area with a lot of content.</p>
-        <p>...</p>
+        <p>Note that you will need to set tabindex to 0 to enable keyboard scrolling.</p>
         <p>...</p>
         <p>...</p>
         <p>...</p>

@@ -34,7 +34,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     threshold: {
       statements: 90,
       branches: 85,
-      functions: 85,
+      functions: 50,
       lines: 90,
     },
   },

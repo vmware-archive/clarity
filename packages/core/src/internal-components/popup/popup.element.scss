@@ -1,0 +1,267 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+@import './../../styles/mixins/mixins';
+
+:host {
+  --backdrop-background: #{$cds-alias-object-opacity-0};
+  --layered-backdrop-background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-alias-object-border-color};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --active-corner-border-radius: 0;
+  --color: #{$cds-global-typography-color-500};
+  --close-button-offset: #{$cds-global-space-1};
+  --background: #{$cds-alias-object-interaction-background};
+  --box-shadow: #{$cds-alias-object-shadow-100};
+  --min-width: 6rem;
+  --max-width: 18rem;
+  --width: fit-content;
+  --height: auto;
+  --max-height: auto;
+  --mobile-max-height: 66vh;
+  --overflow: hidden auto; // overflow x and y settings
+
+  // these CSS custom properties are read the Clarity animation
+  --animation-duration: #{$cds-global-animation-duration-primary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000000;
+}
+
+// -- basic styles for flex layout and backgrounds
+::slotted(cds-internal-pointer) {
+  --pointer-fill: var(--background);
+  --pointer-outline: var(--border-color);
+}
+
+.private-host {
+  display: block;
+  position: relative;
+  // position relative forces overlay content above the backdrop without z-index
+  // shouldn't cause issues with overlays/dropdowns due to onion skinning
+}
+
+.popup-wrapper {
+  // default has the pointer on the bottom
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.popup-content {
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--border-radius);
+  border-color: var(--border-color);
+  border-width: var(--border-width);
+  border-style: solid;
+  box-shadow: var(--box-shadow);
+  min-width: var(--min-width);
+  width: var(--width);
+  max-width: var(--max-width);
+  height: var(--height);
+  max-height: var(--max-height);
+  overflow: var(--overflow);
+}
+
+// -- styles that can square off/customize an active corner
+:host([_position-at='popup-left pointer-top']),
+:host([_position-at='popup-top pointer-left']) {
+  .popup-content {
+    border-top-left-radius: var(--active-corner-border-radius);
+  }
+}
+
+:host([_position-at='popup-top pointer-right']),
+:host([_position-at='popup-right pointer-top']) {
+  .popup-content {
+    border-top-right-radius: var(--active-corner-border-radius);
+  }
+}
+
+:host([_position-at='popup-bottom pointer-right']),
+:host([_position-at='popup-right pointer-bottom']) {
+  .popup-content {
+    border-bottom-right-radius: var(--active-corner-border-radius);
+  }
+}
+
+:host([_position-at='popup-bottom pointer-left']),
+:host([_position-at='popup-left pointer-bottom']) {
+  .popup-content {
+    border-bottom-left-radius: var(--active-corner-border-radius);
+  }
+}
+
+:host([_pointer-type='default']) {
+  --active-corner-border-radius: var(--border-radius);
+}
+
+// -- close button styles
+
+cds-internal-close-button {
+  position: absolute;
+  top: var(--close-button-offset);
+  right: var(--close-button-offset);
+}
+
+// -- pointer position/rotation styles
+
+// on bottom of anchor, pointer left and center aligned
+:host([_position-at*='popup-top']) {
+  .popup-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .popup-pointer {
+    transform: translateY(var(--border-width));
+  }
+}
+
+:host([_position-at*='pointer-mid']),
+:host([_position-at*='pointer-center']) {
+  .popup-wrapper {
+    align-items: center;
+  }
+}
+
+// on bottom of anchor, pointer right aligned
+:host([_position-at='popup-top pointer-right']) {
+  .popup-wrapper {
+    align-items: flex-end;
+  }
+
+  .popup-pointer {
+    transform: scaleX(-1) translateY(var(--border-width));
+  }
+}
+
+// on top of anchor, pointer left and center aligned
+:host([_position-at*='popup-bottom']) {
+  .popup-pointer {
+    transform: scaleY(-1) translateY(var(--border-width));
+  }
+}
+
+:host([_position-at='popup-bottom pointer-right']) {
+  .popup-wrapper {
+    align-items: flex-end;
+  }
+
+  .popup-pointer {
+    transform: scaleY(-1) scaleX(-1) translateY(var(--border-width));
+  }
+}
+
+// to right of anchor, pointer top and mid aligned
+:host([_position-at*='popup-left']) {
+  .popup-wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .popup-pointer {
+    transform-origin: right top;
+    transform: scaleY(-1) rotate(-90deg) translateY(calc(-100% + var(--border-width))) translateX(100%);
+  }
+}
+
+:host([_position-at='popup-left pointer-bottom']) {
+  .popup-wrapper {
+    align-items: flex-end;
+  }
+
+  .popup-pointer {
+    transform: rotate(90deg) scaleY(-1) translateY(var(--border-width));
+    transform-origin: bottom right;
+  }
+}
+
+:host([_position-at='popup-left pointer-bottom'][_pointer-type='angle']) {
+  // very specific styling to match design of the angle pointer in this position...
+  // also a primary reason for the extra div
+  .pointer-wrapper {
+    transform-origin: center center;
+    transform: scaleY(-1);
+  }
+}
+
+// to left of anchor, pointer top and mid aligned
+:host([_position-at*='popup-right']) {
+  .popup-wrapper {
+    flex-direction: row;
+  }
+
+  .popup-pointer {
+    transform-origin: left top;
+    transform: rotate(90deg) translateY(calc(-100% + var(--border-width)));
+  }
+}
+
+:host([_position-at='popup-right pointer-bottom']) {
+  .popup-wrapper {
+    align-items: flex-end;
+  }
+
+  .popup-pointer {
+    transform: rotate(-90deg) scaleY(-1) translateY(var(--border-width));
+    transform-origin: bottom left;
+  }
+}
+
+:host(:not([responsive])) {
+  --backdrop-background: #{$cds-alias-object-opacity-0};
+}
+
+:host([responsive]) {
+  --backdrop-background: #{$cds-alias-object-overlay-backdrop-background};
+
+  cds-internal-pointer {
+    display: none;
+  }
+
+  .private-host,
+  .popup-wrapper,
+  .popup-content {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: var(--mobile-max-height);
+  }
+
+  .private-host {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .popup-content {
+    border-radius: 0;
+  }
+
+  .pointer-wrapper {
+    display: none;
+  }
+}
+
+// animation related styles
+:host([cds-motion][_cds-animation-status='active']) {
+  display: inline-flex !important;
+}
+
+:host([hidden]) {
+  --animation-duration: #{$cds-global-animation-duration-secondary};
+}
+
+// we need the check against hidden='false' here because React is pushing string through instead of adding/removing the boolean attribute
+:host([hidden*='false']) {
+  display: inline-flex !important;
+}

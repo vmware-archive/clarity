@@ -48,9 +48,8 @@ describe('modal-content element', () => {
     });
   });
 
-  it('should have tabindex "0" and delegatesFocus set to true', async () => {
+  it('should have delegatesFocus set to true', async () => {
     await componentIsStable(component);
-    expect(component.getAttribute('tabindex')).toBe('0');
     expect((component.shadowRoot as any).delegatesFocus).toBe(true);
   });
 

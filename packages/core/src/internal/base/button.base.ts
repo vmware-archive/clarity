@@ -7,6 +7,7 @@
 import { html, LitElement, render } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { AriaPopupTriggerController } from '../controllers/aria-popup-trigger.controller.js';
 import { property, state } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
@@ -23,6 +24,10 @@ export class CdsBaseButton extends LitElement {
   @property({ type: String }) value: string;
 
   @property({ type: Boolean }) disabled = false;
+
+  @property({ type: String }) popup: string;
+
+  protected ariaPopupTriggerController = new AriaPopupTriggerController(this);
 
   @state({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
 

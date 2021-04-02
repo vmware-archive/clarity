@@ -1,7 +1,7 @@
 {
-  "extends": "../../tsconfig.lib.json",
+  "extends": "../../../tsconfig.lib.json",
   "compilerOptions": {
     "composite": true
   },
-  "references": [{ "path": "../converter/entrypoint.tsconfig.json" }]
+  "references": [{ "path": "../../utils/entrypoint.tsconfig.json" }]
 }

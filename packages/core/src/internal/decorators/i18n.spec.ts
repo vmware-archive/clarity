@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { registerElementSafely } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { i18n } from '@cds/core/internal';
+import { i18n } from './i18n.js';
 
 const i18nValues = {
   open: 'Open my element',
@@ -15,6 +15,7 @@ const i18nValues = {
 };
 
 /** @element test-18n-element */
+@customElement('test-18n-element')
 class TestI18nElement extends LitElement {
   @i18n() i18n = i18nValues;
 
@@ -22,8 +23,6 @@ class TestI18nElement extends LitElement {
     return html`<slot></slot>`;
   }
 }
-
-registerElementSafely('test-18n-element', TestI18nElement);
 
 describe('i18n decorator', () => {
   let testElement: HTMLElement;

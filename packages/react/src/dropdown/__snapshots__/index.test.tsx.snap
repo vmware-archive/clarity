@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsDropdown snapshot 1`] = `
+<div>
+  <CdsDropdown>
+    <CdsDropdown
+      l={null}
+    >
+      <cds-dropdown
+        l={null}
+      />
+    </CdsDropdown>
+  </CdsDropdown>
+  <div
+    style={
+      Object {
+        "height": "140px",
+        "marginTop": "24px",
+      }
+    }
+  >
+    <CdsDropdown
+      orientation="vertical"
+    >
+      <CdsDropdown
+        l={null}
+        orientation="vertical"
+      >
+        <cds-dropdown
+          l={null}
+        >
+          1
+        </cds-dropdown>
+      </CdsDropdown>
+    </CdsDropdown>
+  </div>
+</div>
+`;

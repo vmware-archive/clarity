@@ -39,7 +39,9 @@ import {
 import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 import { CdsInternalVisualCheckbox } from './dist/react/visual-checkbox/index.js';
 import { CdsInternalCloseButton } from './dist/react/close-button/index.js';
-import { CdsInternalPanel } from 'src/panel/index.js';
+import { CdsDropdown } from './dist/react/dropdown/index.js';
+import { CdsInternalPointer } from './dist/react/popup/index.js';
+import { CdsInternalPanel } from './dist/react/panel/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -48,6 +50,9 @@ interface AppState {
   modal2Open: boolean;
   modalReady: boolean;
   modal2Ready: boolean;
+  dropdownOpen: boolean;
+  pointerDropdownOpen: boolean;
+  responsiveDropdownOpen: boolean;
   panel1Expanded: boolean;
   panel2Expanded: boolean;
   panel3Expanded: boolean;
@@ -72,6 +77,9 @@ export default class App extends React.Component<{}, AppState> {
       panel4Expanded: false,
       navigationOpen: true,
       navigationGroupOpen: true,
+      dropdownOpen: false,
+      pointerDropdownOpen: false,
+      responsiveDropdownOpen: false,
     };
     this.buttonRef = React.createRef<typeof CdsButton & HTMLButtonElement>();
   }
@@ -97,6 +105,9 @@ export default class App extends React.Component<{}, AppState> {
     const isModalOpen = this.state.modalOpen;
     const isModal2Open = this.state.modal2Open;
     const isModalReady = this.state.modalReady;
+    const isDropdownOpen = this.state.dropdownOpen;
+    const isPointerDropdownOpen = this.state.pointerDropdownOpen;
+    const isResponsiveDropdownOpen = this.state.responsiveDropdownOpen;
     const panel1Expanded = this.state.panel1Expanded;
     const panel2Expanded = this.state.panel2Expanded;
     const panel3Expanded = this.state.panel3Expanded;
@@ -199,7 +210,7 @@ export default class App extends React.Component<{}, AppState> {
           </CdsBreadcrumb>
 
           <h2>Modal</h2>
-          <div>
+          <div cds-layout="horizontal gap:lg p-y:md">
             <CdsButton
               ref={this.buttonRef}
               onClick={() => {
@@ -228,7 +239,9 @@ export default class App extends React.Component<{}, AppState> {
                 }}
               >
                 <CdsModalHeader>
-                  <h3 cds-text="title">My Modal</h3>
+                  <h3 cds-text="title" cds-first-focus="">
+                    My Modal
+                  </h3>
                 </CdsModalHeader>
                 <CdsModalContent>
                   <div cds-layout="vertical gap:md p-y:xs">
@@ -266,6 +279,106 @@ export default class App extends React.Component<{}, AppState> {
           ) : (
             <br />
           )}
+
+          <h2>Dropdown &amp; Signpost</h2>
+          <div cds-layout="horizontal gap:lg p-y:md">
+            <CdsButton
+              id="dropdown-btn"
+              popup="my-dropdown"
+              onClick={() => {
+                const timer = setTimeout(() => {
+                  this.setState({ dropdownOpen: true });
+                  clearTimeout(timer);
+                }, 25);
+              }}
+            >
+              Open Dropdown
+            </CdsButton>
+            <CdsButton
+              id="resp-dropdown-btn"
+              popup="my-resp-dropdown"
+              onClick={() => {
+                const timer = setTimeout(() => {
+                  this.setState({ responsiveDropdownOpen: true });
+                  clearTimeout(timer);
+                }, 25);
+              }}
+            >
+              Open Responsive Dropdown
+            </CdsButton>
+            <CdsButton
+              id="ptr-dropdown-btn"
+              popup="my-ptr-dropdown"
+              onClick={() => {
+                const timer = setTimeout(() => {
+                  this.setState({ pointerDropdownOpen: true });
+                  clearTimeout(timer);
+                }, 25);
+              }}
+            >
+              Open Signpost
+            </CdsButton>
+          </div>
+          <div>
+            <CdsDropdown
+              id="my-dropdown"
+              anchor="dropdown-btn"
+              orientation="only:top"
+              hidden={!isDropdownOpen}
+              onCloseChange={() => {
+                this.setState({ dropdownOpen: false });
+              }}
+            >
+              <div cds-layout="p:lg" style={{ height: '150px', width: '150px' }}>
+                <p cds-text="body">Ohai</p>
+              </div>
+            </CdsDropdown>
+          </div>
+
+          <div>
+            <CdsDropdown
+              id="my-resp-dropdown"
+              anchor="resp-dropdown-btn"
+              orientation="none"
+              hidden={!isResponsiveDropdownOpen}
+              onCloseChange={() => {
+                this.setState({ responsiveDropdownOpen: false });
+              }}
+            >
+              <div cds-layout="p:lg vertical gap:md">
+                <h3 cds-first-focus="">Title</h3>
+                <p cds-text="body">
+                  Paroxysm of global death Sea of Tranquility culture science Apollonius of Perga the sky calls to us.
+                  Bits of moving fluff a mote of dust suspended in a sunbeam concept of the number one globular star
+                  cluster with pretty stories for which there's little good evidence made in the interiors of collapsing
+                  stars. Citizens of distant epochs vastness is bearable only through love the ash of stellar alchemy
+                  rich in heavy atoms muse about rich in mystery and billions upon billions upon billions upon billions
+                  upon billions upon billions upon billions.
+                </p>
+                <CdsButton onClick={() => this.setState({ responsiveDropdownOpen: false })}>Close Dropdown</CdsButton>
+              </div>
+            </CdsDropdown>
+          </div>
+
+          <div>
+            <CdsDropdown
+              id="my-ptr-dropdown"
+              anchor="ptr-dropdown-btn"
+              orientation="right bottom"
+              hidden={!isPointerDropdownOpen}
+              closable
+              onCloseChange={() => {
+                this.setState({ pointerDropdownOpen: false });
+              }}
+            >
+              <CdsInternalPointer type="angle"></CdsInternalPointer>
+              <div cds-layout="p:lg" style={{ height: '150px', width: '150px' }}>
+                <h3 cds-first-focus="">Title</h3>
+                <p cds-text="body">Ohai</p>
+              </div>
+            </CdsDropdown>
+          </div>
+
           <h2>Light Alerts</h2>
           <CdsAlert status="info" onCloseChange={(e: any) => this.handleOnCloseChange(e)}>
             Foobar
@@ -275,98 +388,106 @@ export default class App extends React.Component<{}, AppState> {
           <CdsAlert status="danger">Baz</CdsAlert>
 
           <h2>Alert Group</h2>
-          <CdsAlertGroup status="info">
-            <CdsAlert closable>
-              This example is a closable alert inside an alert group with a status of "info".
-            </CdsAlert>
-            <CdsAlert closable>
-              Foobar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
-          <CdsAlertGroup status="success">
-            <CdsAlert closable>
-              This example is a closable alert inside an alert group with a status of "success".
-            </CdsAlert>
-            <CdsAlert closable>
-              Foobar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
-          <CdsAlertGroup status="warning">
-            <CdsAlert closable>
-              This example is a closable alert inside an alert group with a status of "warning".
-            </CdsAlert>
-            <CdsAlert closable>
-              Foobar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
-          <CdsAlertGroup status="danger">
-            <CdsAlert closable>
-              This example is a closable alert inside an alert group with a status of "danger".
-            </CdsAlert>
-            <CdsAlert closable>
-              Foobar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
+          <div cds-layout="vertical gap:sm">
+            <CdsAlertGroup status="info">
+              <CdsAlert closable>
+                This example is a closable alert inside an alert group with a status of "info".
+              </CdsAlert>
+              <CdsAlert closable>
+                Foobar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+            <CdsAlertGroup status="success">
+              <CdsAlert closable>
+                This example is a closable alert inside an alert group with a status of "success".
+              </CdsAlert>
+              <CdsAlert closable>
+                Foobar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+            <CdsAlertGroup status="warning">
+              <CdsAlert closable>
+                This example is a closable alert inside an alert group with a status of "warning".
+              </CdsAlert>
+              <CdsAlert closable>
+                Foobar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+            <CdsAlertGroup status="danger">
+              <CdsAlert closable>
+                This example is a closable alert inside an alert group with a status of "danger".
+              </CdsAlert>
+              <CdsAlert closable>
+                Foobar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+          </div>
 
           <h2>Banner Alerts</h2>
-          <CdsAlertGroup type="banner">
-            <CdsAlert status="info">
-              Foobar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
-          <CdsAlertGroup type="banner">
-            <CdsAlert status="warning">
-              Bar
-              <CdsAlertActions>
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
-          <CdsAlertGroup type="banner">
-            <CdsAlert status="danger">
-              Baz
-              <CdsAlertActions type="banner">
-                <CdsButton>Fix</CdsButton>
-              </CdsAlertActions>
-            </CdsAlert>
-          </CdsAlertGroup>
+          <div cds-layout="vertical gap:sm">
+            <CdsAlertGroup type="banner">
+              <CdsAlert status="info">
+                Foobar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+            <CdsAlertGroup type="banner">
+              <CdsAlert status="warning">
+                Bar
+                <CdsAlertActions>
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+            <CdsAlertGroup type="banner">
+              <CdsAlert status="danger">
+                Baz
+                <CdsAlertActions type="banner">
+                  <CdsButton>Fix</CdsButton>
+                </CdsAlertActions>
+              </CdsAlert>
+            </CdsAlertGroup>
+          </div>
 
           <h2>Buttons</h2>
-          <CdsButton status="primary">primary</CdsButton>
-          <CdsButton status="success">success</CdsButton>
-          <CdsButton status="danger">danger</CdsButton>
-          <CdsButton status="danger" disabled>
-            disabled
-          </CdsButton>
+          <div cds-layout="horizontal gap:md">
+            <CdsButton status="primary">primary</CdsButton>
+            <CdsButton status="success">success</CdsButton>
+            <CdsButton status="danger">danger</CdsButton>
+            <CdsButton status="danger" disabled>
+              disabled
+            </CdsButton>
+          </div>
 
           <h2>Internal Close button</h2>
           <CdsInternalCloseButton />
 
           <h2>Badge</h2>
-          <CdsBadge status="info">2</CdsBadge>
-          <CdsBadge status="success">3</CdsBadge>
-          <CdsBadge status="warning">12</CdsBadge>
-          <CdsBadge status="danger">15</CdsBadge>
-          <CdsBadge color="gray">1</CdsBadge>
-          <CdsBadge color="purple">1</CdsBadge>
-          <CdsBadge color="blue">15</CdsBadge>
-          <CdsBadge color="orange">2</CdsBadge>
-          <CdsBadge color="light-blue">3</CdsBadge>
+          <div cds-layout="horizontal gap:sm">
+            <CdsBadge status="info">2</CdsBadge>
+            <CdsBadge status="success">3</CdsBadge>
+            <CdsBadge status="warning">12</CdsBadge>
+            <CdsBadge status="danger">15</CdsBadge>
+            <CdsBadge color="gray">1</CdsBadge>
+            <CdsBadge color="purple">1</CdsBadge>
+            <CdsBadge color="blue">15</CdsBadge>
+            <CdsBadge color="orange">2</CdsBadge>
+            <CdsBadge color="light-blue">3</CdsBadge>
+          </div>
 
           <h2>Card</h2>
           <div cds-layout="vertical gap:lg">
@@ -581,37 +702,6 @@ export default class App extends React.Component<{}, AppState> {
             </CdsRadio>
           </CdsRadioGroup>
 
-          <h2>Tags</h2>
-          <CdsTag readonly status="info">
-            Info
-          </CdsTag>
-          <CdsTag readonly status="success">
-            Success
-          </CdsTag>
-          <CdsTag readonly status="warning">
-            Warning
-          </CdsTag>
-          <CdsTag readonly status="danger">
-            Danger
-          </CdsTag>
-          <br />
-          <br />
-          <CdsTag readonly color="gray">
-            Austin <CdsBadge>1</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="purple">
-            New York <CdsBadge>2</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="blue">
-            Palo Alto <CdsBadge>3</CdsBadge>{' '}
-          </CdsTag>
-          <CdsTag readonly color="orange">
-            San Francisco <CdsBadge>12</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="light-blue">
-            Seattle <CdsBadge>15</CdsBadge>
-          </CdsTag>
-
           <h2>Icons</h2>
           <CdsIcon size="lg" shape="user"></CdsIcon>
           <CdsIcon size="lg" shape="user" badge="info"></CdsIcon>
@@ -666,35 +756,37 @@ export default class App extends React.Component<{}, AppState> {
           </CdsRadioGroup>
 
           <h2>Tags</h2>
-          <CdsTag readonly status="info">
-            Info
-          </CdsTag>
-          <CdsTag readonly status="success">
-            Success
-          </CdsTag>
-          <CdsTag readonly status="warning">
-            Warning
-          </CdsTag>
-          <CdsTag readonly status="danger">
-            Danger
-          </CdsTag>
-          <br />
-          <br />
-          <CdsTag readonly color="gray">
-            Austin <CdsBadge>1</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="purple">
-            New York <CdsBadge>2</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="blue">
-            Palo Alto <CdsBadge>3</CdsBadge>{' '}
-          </CdsTag>
-          <CdsTag readonly color="orange">
-            San Francisco <CdsBadge>12</CdsBadge>
-          </CdsTag>
-          <CdsTag readonly color="light-blue">
-            Seattle <CdsBadge>15</CdsBadge>
-          </CdsTag>
+          <div cds-layout="horizontal gap:md p-b:md">
+            <CdsTag readonly status="info">
+              Info
+            </CdsTag>
+            <CdsTag readonly status="success">
+              Success
+            </CdsTag>
+            <CdsTag readonly status="warning">
+              Warning
+            </CdsTag>
+            <CdsTag readonly status="danger">
+              Danger
+            </CdsTag>
+          </div>
+          <div cds-layout="horizontal gap:md">
+            <CdsTag readonly color="gray">
+              Austin <CdsBadge>1</CdsBadge>
+            </CdsTag>
+            <CdsTag readonly color="purple">
+              New York <CdsBadge>2</CdsBadge>
+            </CdsTag>
+            <CdsTag readonly color="blue">
+              Palo Alto <CdsBadge>3</CdsBadge>{' '}
+            </CdsTag>
+            <CdsTag readonly color="orange">
+              San Francisco <CdsBadge>12</CdsBadge>
+            </CdsTag>
+            <CdsTag readonly color="light-blue">
+              Seattle <CdsBadge>15</CdsBadge>
+            </CdsTag>
+          </div>
 
           <h2>Tree View</h2>
           <CdsTree multiSelect>
@@ -762,18 +854,20 @@ export default class App extends React.Component<{}, AppState> {
           </CdsTree>
 
           <h2>Icons</h2>
-          <CdsIcon size="lg" shape="user"></CdsIcon>
-          <CdsIcon size="lg" shape="user" badge="info"></CdsIcon>
-          <CdsIcon size="lg" shape="user" badge="success"></CdsIcon>
-          <CdsIcon size="lg" shape="user" badge="danger"></CdsIcon>
-          <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
-          <br />
-          <br />
-          <CdsIcon size="lg" shape="user" solid></CdsIcon>
-          <CdsIcon size="lg" shape="user" solid badge="info"></CdsIcon>
-          <CdsIcon size="lg" shape="user" solid badge="success"></CdsIcon>
-          <CdsIcon size="lg" shape="user" solid badge="danger"></CdsIcon>
-          <CdsIcon size="lg" shape="user" solid badge="warning-triangle"></CdsIcon>
+          <div cds-layout="horizontal gap:md p-b:lg">
+            <CdsIcon size="lg" shape="user"></CdsIcon>
+            <CdsIcon size="lg" shape="user" badge="info"></CdsIcon>
+            <CdsIcon size="lg" shape="user" badge="success"></CdsIcon>
+            <CdsIcon size="lg" shape="user" badge="danger"></CdsIcon>
+            <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
+          </div>
+          <div cds-layout="horizontal gap:md p-b:lg">
+            <CdsIcon size="lg" shape="user" solid></CdsIcon>
+            <CdsIcon size="lg" shape="user" solid badge="info"></CdsIcon>
+            <CdsIcon size="lg" shape="user" solid badge="success"></CdsIcon>
+            <CdsIcon size="lg" shape="user" solid badge="danger"></CdsIcon>
+            <CdsIcon size="lg" shape="user" solid badge="warning-triangle"></CdsIcon>
+          </div>
 
           <h2>Toggles</h2>
           <CdsToggleGroup>

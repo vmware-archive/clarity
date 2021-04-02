@@ -43,6 +43,25 @@
           location.reload();
         }
       };
+
+      let initted = false;
+      const popupId2 = 'ohai';
+      const anchorId = 'yephai';
+
+      function showOverlay() {
+        const myAnchor = document.getElementById(anchorId);
+        const myPopup = document.getElementById(popupId2);
+
+        myPopup.anchor = myAnchor;
+        myPopup.removeAttribute('hidden');
+
+        if (!initted) {
+          myPopup.addEventListener('closeChange', () => {
+            myPopup.setAttribute('hidden', '');
+          });
+          initted = true;
+        }
+      }
     </script>
   </body>
 </html>

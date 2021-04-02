@@ -64,6 +64,18 @@ export function getCssPropertyValue(
   }
 }
 
+export function setCssPropertyValue(propertyName: string, value: string | null | false, el: Element = document.body) {
+  try {
+    if (value === '' || value === null || value === false) {
+      (el as HTMLElement).style.removeProperty(propertyName);
+    } else {
+      (el as HTMLElement).style.setProperty(propertyName, value);
+    }
+  } catch (e) {
+    LogService.warn('Container element passed to getCustomPropertyValue must be an element.');
+  }
+}
+
 export function isCssPropertyName(str: any): boolean {
   return !!str && isString(str) && str.slice(0, 2) === '--';
 }

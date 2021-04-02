@@ -1,0 +1,162 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Components/Dropdown" />
+
+# Dropdowns
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Dropdowns are a generic popup container that can be positioned on the screen. This means thay act as a container for
+anytihng a consumer needs to project into them. They will position themselves relative to another element on the
+page that we call the "anchor".
+
+This dropdown component is a public alias for an internal generic popup component that implements the public API
+demonstrated here. All other components that implement popup behavior will also follow this api.
+
+## Installation
+
+To use the dropdown component import the component in your JavaScript.
+
+```typescript
+import '@cds/core/dropdown/register.js';
+```
+
+```html
+<cds-button popup="my-dropdown" id="my-button" onclick="document.getElementById('my-dropdown').hidden = false"
+  >Open Dropdown</cds-button
+>
+<cds-dropdown anchor="my-button" id="my-dropdown" orientation="right not:top">
+  <div cds-layout="vertical gap:lg p:lg align:stretch">
+    <h3 cds-first-focus cds-text="section" id="basic-dropdown-title">Dropdown Title</h3>
+    <p cds-text="body">Any content can be placed inside a generic dropdown.</p>
+    <p cds-text="body">Here we've placed a title and text in the dropdown.</p>
+    <p cds-text="body">Something should get immediate focus when the dropdown opens. Here it is the title.</p>
+  </div>
+</cds-dropdown>
+```
+
+## Anatomy
+
+The dropdown consists of a number of components, some of which are optional.
+
+- **Trigger (optional)** The trigger is an element that shows the dropdown through user interaction, like a user clicking
+  a button. There is no requirement that all dropdowns have a trigger. A trigger is associated with a dropdown by passing
+  the dropdown's id into the trigger's `popup` attribute. If a trigger is defined, the dropdown will manage its aria
+  attributes so that screen readers will associate the trigger with the dropdown. This will help screen readers identify
+  the connection between the trigger and dropdown, as well as announce when the dropdown is open.
+
+- **Anchor:** The anchor is the element that the dropdown will be positioned against. When shown, the dropdown will appear
+  above, below, or on either side of the anchor as available space allows. Most of the time, a dropdown's trigger and anchor
+  will be the same element. But this does not have to be the case. An implementation may have a trigger in a navbar but want
+  the dropdown to align itself below the navbar, not just the button that opened it. Likewise, a form control action may
+  trigger a dropdown but have it aligned in relation to the entire form control instead of just the action so as to not
+  cover up a form control's label.
+
+- **Pointer:** Dropdowns may include an optional `<cds-internal-pointer>` element. Pointers are used to make the relationship
+  between a dropdown and its anchor more explicit. There are two types of pointers included with the dropdown: a `default`
+  pointer which is a small, equilateral triangle and an `angle` pointer which is a right angled triangle. The type of pointer
+  is defined by passing in `type="angle"` on the `<cds-internal-pointer>` element like so...
+  `<cds-internal-pointer type="angle"></cds-internal-pointer>`. If no type is passed but a pointer is present inside the
+  dropdown, a `default` pointer will be used.
+
+- **dropdown:** The dropdown itself contains content which it is given by the end user to display. A dropdown can contain
+  any content.
+
+## Interaction
+
+A dropdown is most frequently shown by a user interacting with a trigger element. When shown, a dropdown will position itself
+in relation to its anchor. The anchor may be assigned to the dropdown by passing a string element id to its `anchor` attribute
+in HTML or by directly assigning an element reference to its JavaScript `anchor` property.
+
+### Positioning
+
+A dropdown will try to show itself in a location relative to the anchor according to the preferences defined in its
+`orientation` attribute. If there is not enough space on the screen, it will intelligently attempt to position
+itself however it can or fallback to _responsive mode_.
+
+### Responsive Positioning
+
+If there is not enough space on the screen for the dropdown to fit, it will switch to a "responsive mode". This means the
+dropdown will slide in from the bottom and take the full width of the screen.
+
+### Dismissing
+
+As with overlays, a dropdown will emit a closeChange event when its backdrop is clicked, an optional close button is clicked,
+the escape key is pressed, or when any custom interaction emits a closeChange event.
+
+- To reveal the close button inside a dropdown, add the `closable` attribute.
+
+### Managing Focus
+
+An element passed into a dropdown can be given a `cds-first-focus` attribute. This will be the element that receives
+immediate focus when the dropdown is opened. Additionally, a dropdown has a focus trap that prevents focus from moving
+outside of the bounds of the dropdown.
+
+### Animation
+
+The dropdown only animates in responsive mode when it slides up from the bottom of the screen. To turn off animations,
+set `cds-motion="off"` on the dropdown element.
+
+## Dropdown
+
+<Preview>
+  <Story id="stories-dropdown--basic" />
+</Preview>
+
+## Dropdown With Scrollable Content
+
+<Preview>
+  <Story id="stories-dropdown--scrollable" />
+</Preview>
+
+## Dropdown With Pointer
+
+<Preview>
+  <Story id="stories-dropdown--pointer" />
+</Preview>
+
+## Responsive Dropdown
+
+<Preview>
+  <Story id="stories-dropdown--responsive" />
+</Preview>
+
+## Closable Dropdown
+
+<Preview>
+  <Story id="stories-dropdown--closable" />
+</Preview>
+
+## Anchoring
+
+<Preview>
+  <Story id="stories-dropdown--alt-anchored" />
+</Preview>
+
+## Orientation
+
+Orientation preferences that can be passed to the dropdown include.
+
+- **none:** setting `<cds-dropdown orientation="none">` will force the dropdown into responsive mode.
+- **top, right, left, or bottom:** The dropdown will attempt to position itself in the cardinal directions passed to the dropdown's `orientation` attribute. The dropdown will follow the order given. So `<cds-dropdown orientation="right left top">` will try to position the dropdown to the right of the anchor first, then the left, and then above the anchor. It will only try to position below the anchor if all other positions have failed.
+- **not:??** Preceding a position with `not:` will make the dropdown ignore that position. `<cds-dropdown orientation="not:top">` means the dropdown will never appear above the anchor.
+- **only:??** Preceding a position with `only:` means the dropdown will only try to position the dropdown in that one position, ignoring all other positions. If it doesn't have enough space to appear in that position, it will go to responsive mode.
+
+<Preview>
+  <Story id="stories-dropdown--orientation" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-dropdown--dark-theme" />
+</Preview>
+
+## API
+
+<Props of={'cds-dropdown'} />

@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { CdsControlAction } from '@cds/core/forms';
+import { CdsControlAction } from './control-action.element.js';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { LogService } from '@cds/core/internal';
 import '@cds/core/forms/register.js';

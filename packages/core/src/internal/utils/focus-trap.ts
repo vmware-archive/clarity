@@ -5,15 +5,39 @@
  */
 
 import { FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
-import { isHTMLElement, isFocusable } from './dom.js';
+import { anyPassOrAnyFail } from './conditional.js';
+import { isHTMLElement, isFocusable, queryAllFocusable } from './dom.js';
+import { arrayHead, arrayTail } from './array.js';
 import { createId } from './identity.js';
-
 export interface FocusTrapElement extends HTMLElement {
   topReboundElement: HTMLElement | undefined;
   bottomReboundElement: HTMLElement | undefined;
   focusTrapId: string;
 }
 
+/* c8 ignore next 17 */
+/**
+ * @deprecated since version 6.0
+ */
+export function reorderCloseButtonSlot(elements: Element[]): Element[] {
+  const closeButtonIndex = elements.findIndex(el => el.tagName.toLowerCase() === 'cds-internal-close-button');
+
+  if (closeButtonIndex > 0 && elements[closeButtonIndex].hasAttribute('slot')) {
+    // Put in the close button in a slot moves it around in the tab focus flow;
+    // this helps to place it at the top of the modal where it is expected to be
+    return [
+      elements[closeButtonIndex],
+      ...elements.filter(el => el.tagName.toLowerCase() !== 'cds-internal-close-button'),
+    ];
+  } else {
+    return [...elements];
+  }
+}
+
+/* c8 ignore next 27 */
+/**
+ * @deprecated since version 6.0
+ */
 export function refocusIfOutsideFocusTrapElement(
   focusedElement: HTMLElement,
   focusTrapElement: FocusTrapElement,
@@ -23,37 +47,64 @@ export function refocusIfOutsideFocusTrapElement(
   const elementToFocusIsOutsideFocusTrap = elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement);
 
   if (focusTrapIsCurrent && elementToFocusIsOutsideFocusTrap) {
-    elementToRefocus = elementToRefocus || focusTrapElement;
-    elementToRefocus.focus();
+    const isReboundEl = whichReboundElement(focusedElement, focusTrapElement);
+    const focusableChildren = queryAllFocusable(focusTrapElement);
+    const orderedFocusableChildrenAsArray = reorderCloseButtonSlot(Array.from(focusableChildren));
+
+    if (isReboundEl !== null && orderedFocusableChildrenAsArray !== []) {
+      if (isReboundEl === 'top') {
+        elementToRefocus = arrayTail(orderedFocusableChildrenAsArray) as HTMLElement;
+      } else if (isReboundEl === 'bottom') {
+        elementToRefocus = arrayHead(orderedFocusableChildrenAsArray) as HTMLElement;
+      }
+    }
+
+    (elementToRefocus || focusTrapElement).focus();
   } else {
     focusedElement.focus();
   }
 }
 
+/* c8 ignore next 9 */
+/**
+ * @deprecated since version 6.0
+ */
+export function whichReboundElement(el: HTMLElement, focusTrapElement: FocusTrapElement): 'top' | 'bottom' | null {
+  if (el === focusTrapElement.topReboundElement) {
+    return 'top';
+  } else if (el === focusTrapElement.bottomReboundElement) {
+    return 'bottom';
+  } else {
+    return null;
+  }
+}
+
+/* c8 ignore next 13 */
+/**
+ * @deprecated since version 6.0
+ */
 export function elementIsOutsideFocusTrapElement(
   focusedElement: HTMLElement,
   focusTrapElement: FocusTrapElement
 ): boolean {
-  if (
-    focusedElement === focusTrapElement.topReboundElement ||
-    focusedElement === focusTrapElement.bottomReboundElement
-  ) {
-    return true;
-  }
-
-  const elementIsInFocusTrapLightDom = focusTrapElement.contains(focusedElement);
-
-  if (elementIsInFocusTrapLightDom) {
-    return false;
-  }
-
-  if (focusTrapElement.shadowRoot !== null && focusTrapElement.shadowRoot.contains(focusedElement)) {
-    return false;
-  }
-
-  return true;
+  return anyPassOrAnyFail(
+    [
+      () => {
+        return whichReboundElement(focusedElement, focusTrapElement) !== null;
+      },
+    ], // true if true
+    [
+      () => focusTrapElement.contains(focusedElement),
+      () => focusTrapElement.shadowRoot !== null && focusTrapElement.shadowRoot.contains(focusedElement),
+    ], // false if true
+    true // fallthrough
+  );
 }
 
+/* c8 ignore next 6 */
+/**
+ * @deprecated since version 6.0
+ */
 export function createFocusTrapReboundElement() {
   const offScreenSpan = document.createElement('span');
   offScreenSpan.setAttribute('tabindex', '0');
@@ -61,6 +112,9 @@ export function createFocusTrapReboundElement() {
   return offScreenSpan;
 }
 
+/**
+ * @deprecated since version 6.0
+ */
 export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrapElement) {
   if (focusTrapElement && !focusTrapElement.topReboundElement && !focusTrapElement.bottomReboundElement) {
     focusTrapElement.topReboundElement = createFocusTrapReboundElement();
@@ -80,6 +134,9 @@ export function addReboundElementsToFocusTrapElement(focusTrapElement: FocusTrap
   }
 }
 
+/**
+ * @deprecated since version 6.0
+ */
 export function removeReboundElementsFromFocusTrapElement(focusTrapElement: FocusTrapElement) {
   if (focusTrapElement) {
     const parent = focusTrapElement.parentElement;
@@ -104,13 +161,19 @@ export function removeReboundElementsFromFocusTrapElement(focusTrapElement: Focu
 // it's primary concern is to keep TS happy.
 // end users should prefer using the CdsBaseFocusTrap component to this method.
 // but it exists...
+/**
+ * @deprecated since version 6.0
+ */
 export function castHtmlElementToFocusTrapElement(el: HTMLElement): FocusTrapElement {
   return el as FocusTrapElement;
 }
 
+/**
+ * @deprecated since version 6.0
+ */
 export class FocusTrap {
   focusTrapElement: FocusTrapElement;
-  private previousFocus: HTMLElement;
+  previousFocus: HTMLElement;
   private onFocusInEvent: any;
 
   firstFocusElement: HTMLElement | FocusTrapElement;
@@ -137,13 +200,15 @@ export class FocusTrap {
       throw new Error('Focus trap is already enabled for this instance.');
     }
 
+    // Note that first-focus only shows a focus ring when an overlay is first opened
+    // if the overlay is opened via keyboard navigation. This is a browser behavior, not a bug.
     this.firstFocusElement =
       (firstFocusElement as HTMLElement) || (contentWrapper as HTMLElement) || this.focusTrapElement;
 
     addReboundElementsToFocusTrapElement(fte);
 
-    if (!isFocusable(fte)) {
-      fte.setAttribute('tabindex', '-1');
+    if (!isFocusable(this.firstFocusElement)) {
+      this.firstFocusElement.setAttribute('tabindex', '-1');
     }
 
     if (activeEl && isHTMLElement(activeEl)) {
@@ -157,7 +222,7 @@ export class FocusTrap {
     const focusTimer = setTimeout(() => {
       this.firstFocusElement.focus();
       clearTimeout(focusTimer);
-    }, 10);
+    }, 1);
 
     this.onFocusInEvent = this.onFocusIn.bind(this);
     document.addEventListener('focusin', this.onFocusInEvent);
@@ -170,7 +235,11 @@ export class FocusTrap {
     FocusTrapTrackerService.activatePreviousCurrent();
     this.active = false;
     if (this.previousFocus) {
-      this.previousFocus.focus();
+      // timeout here helps screen readers behave more consistently when focus traps are closed
+      const focusTimer = setTimeout(() => {
+        this.previousFocus.focus();
+        clearTimeout(focusTimer);
+      }, 1);
     }
   }
 

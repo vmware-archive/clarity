@@ -6,6 +6,7 @@
 
 import {
   camelCaseToKebabCase,
+  convertStringPropertyToObjectConfig,
   setStyles,
   setPropStyles,
   transformToSpacedString,
@@ -18,10 +19,14 @@ import {
   isPrefixedBy,
   isPrefixedOrSuffixedBy,
   isSuffixedBy,
+  pluckPixelValue,
+  pluckValueFromStringUnit,
   removePrefix,
   removeSuffix,
   removePrefixOrSuffix,
   replaceWord,
+  transformSpacedStringToArray,
+  trimExtraWhitespace,
 } from './string.js';
 
 describe('Functional Helper: ', () => {
@@ -118,6 +123,38 @@ describe('Functional Helper: ', () => {
     it('returns number as expected from a whole-number style value', () => {
       expect(getNumericValueFromCssSecondsStyleValue('34s')).toBe(34);
       expect(getNumericValueFromCssSecondsStyleValue('0s')).toBe(0);
+    });
+  });
+
+  describe('pluckPixelValue: ', () => {
+    it('returns numbers as expected', () => {
+      expect(pluckPixelValue('86.75309px')).toBe(86.75309, 'works for decimals');
+      expect(pluckPixelValue('49px')).toBe(49, 'works for integers');
+      expect(pluckPixelValue('-2020px')).toBe(-2020, 'works for negative numbers');
+      expect(pluckPixelValue('-8675.309px')).toBe(-8675.309, 'works for negative decimals too');
+    });
+
+    it('handles bad input', () => {
+      expect(pluckPixelValue('3rem')).toBe(0, 'needs pixel values');
+      expect(pluckPixelValue('')).toBe(0, 'handles empty strings');
+      expect(pluckPixelValue(void 0)).toBe(0, 'handles undefined');
+    });
+  });
+
+  describe('pluckValueFromStringUnit: ', () => {
+    it('returns numbers as expected', () => {
+      expect(pluckValueFromStringUnit('86.75309str', 'str')).toBe(86.75309, 'works for decimals');
+      expect(pluckValueFromStringUnit('49str', 'str')).toBe(49, 'works for integers');
+      expect(pluckValueFromStringUnit('-2020str', 'str')).toBe(-2020, 'works for negative numbers');
+      expect(pluckValueFromStringUnit('-8675.309str', 'str')).toBe(-8675.309, 'works for negative decimals too');
+    });
+
+    it('handles bad input', () => {
+      expect(pluckValueFromStringUnit('30vh', 'str')).toBe(0, 'needs to find unit');
+      expect(pluckValueFromStringUnit('', 'str')).toBe(0, 'handles empty strings');
+      expect(pluckValueFromStringUnit(void 0, 'str')).toBe(0, 'handles undefined');
+      expect(pluckValueFromStringUnit('      ', 'str')).toBe(0, 'trims to empty string');
+      expect(pluckValueFromStringUnit('  100str   ', 'str')).toBe(100, 'trims to string value');
     });
   });
 
@@ -261,6 +298,95 @@ describe('Functional Helper: ', () => {
       expect(replaceWord('seahawk dog horse seahawk cat seahawk seahawk mouse', 'seahawk', 'niner')).toBe(
         'niner dog horse niner cat niner niner mouse'
       );
+    });
+  });
+
+  describe('convertStringPropertyToObjectConfig()', () => {
+    const defaultConfig = { greeting: 'goodnight', target: 'moon' };
+
+    it('defaults to identity of default config if the converter is not passed', () => {
+      expect(convertStringPropertyToObjectConfig('hello world', defaultConfig)).toEqual(defaultConfig);
+    });
+
+    it('returns default config if the converter is a no-op', () => {
+      const noopConverter = () => {
+        return {};
+      };
+      expect(convertStringPropertyToObjectConfig('hello world', defaultConfig, noopConverter)).toEqual(defaultConfig);
+    });
+
+    it('returns default config values if the converter is not relevant', () => {
+      const irrelevantConverter = (p: string) => {
+        const returnObj = {};
+        if (p === 'supercalifragilisticexpialidocious') {
+          Object.assign(returnObj, { dontDoThis: 'true' });
+        }
+        return returnObj;
+      };
+      const testMe = convertStringPropertyToObjectConfig('hello world', defaultConfig, irrelevantConverter) as any;
+      expect(testMe).toEqual(defaultConfig);
+      expect(testMe.dontDoThis).toBeUndefined();
+    });
+
+    it('converts string values as specified by the converter', () => {
+      const converter = (p: string) => {
+        const returnObj = {};
+        p.split(' ').forEach(p => {
+          switch (p) {
+            case 'hello':
+              (returnObj as any).greeting = 'hello';
+              break;
+            case 'world':
+              (returnObj as any).target = 'world';
+              break;
+            default:
+              break;
+          }
+        });
+        return returnObj;
+      };
+      const testMe = convertStringPropertyToObjectConfig('hello world', defaultConfig, converter) as any;
+      expect(testMe.greeting).toBe('hello');
+      expect(testMe.target).toBe('world');
+    });
+  });
+
+  describe('trimExtraWhitespace()', () => {
+    it('returns empty string with bad input', () => {
+      expect(trimExtraWhitespace(null)).toBe('', 'handles null');
+      expect(trimExtraWhitespace(void 0)).toBe('', 'handles undefined');
+      expect(trimExtraWhitespace('       ')).toBe('', 'handles empty spaces');
+      expect(trimExtraWhitespace('')).toBe('', 'handles empty string');
+    });
+
+    it('returns as expected', () => {
+      const test1 = trimExtraWhitespace('a       b     ');
+      const test2 = trimExtraWhitespace('  c  d   e');
+      expect(test1).toBe('a b');
+      expect(test2).toBe('c d e');
+    });
+
+    it('does not mutate the param', () => {
+      const ohai = ' my    weird     string              ';
+      const testMe = trimExtraWhitespace(ohai);
+      expect(testMe).toBe('my weird string');
+      expect(ohai).toBe(' my    weird     string              ');
+    });
+  });
+
+  describe('transformSpacedStringToArray()', () => {
+    it('returns empty array with bad input', () => {
+      expect(transformSpacedStringToArray(null)).toEqual([], 'handles null');
+      expect(transformSpacedStringToArray(void 0)).toEqual([], 'handles undefined');
+      expect(transformSpacedStringToArray('       ')).toEqual([], 'handles empty spaces');
+      expect(transformSpacedStringToArray('')).toEqual([], 'handles empty string');
+    });
+
+    it('returns array of strings as expected', () => {
+      const testMe = transformSpacedStringToArray('1 2 3');
+      const testMeTrimmed = transformSpacedStringToArray('  4 5   6 ');
+      expect(testMe).toEqual(['1', '2', '3']);
+      expect(testMeTrimmed).toEqual(['4', '5', '6']);
     });
   });
 });

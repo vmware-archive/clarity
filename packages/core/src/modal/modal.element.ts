@@ -4,20 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit';
+import { html, TemplateResult } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import {
   animate,
   Animatable,
   AnimationModalEnterName,
   i18n,
   I18nService,
+  isScrollable,
   HTMLAttributeTuple,
   property,
   reverseAnimation,
+  setAttributes,
+  querySlot,
 } from '@cds/core/internal';
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
-import { appendCloseButton, removeCloseButton } from '@cds/core/internal-components/close-button';
 import styles from './modal.element.scss';
+import { CdsModalHeader } from './modal-header.element';
+import { CdsModalActions } from './modal-actions.element';
 
 /**
  * Web component modal.
@@ -65,6 +70,10 @@ import styles from './modal.element.scss';
   },
 })
 export class CdsModal extends CdsInternalOverlay implements Animatable {
+  protected get customBumpers(): [HTMLElement, HTMLElement] {
+    return [this.modalHeader, this.modalFooter];
+  }
+
   static get styles() {
     return [...super.styles, styles];
   }
@@ -75,31 +84,49 @@ export class CdsModal extends CdsInternalOverlay implements Animatable {
   @property({ type: Boolean })
   closable = true;
 
+  @property({ type: Boolean })
+  hidden = true;
+
   /** Sets the overall height and width of the modal and icon based on value */
   @property({ type: String })
   size: 'default' | 'sm' | 'lg' | 'xl';
 
-  toggleCloseButton() {
-    const closeButtonAttrs: HTMLAttributeTuple[] = [
+  @query('.modal-body') content: HTMLElement;
+  @querySlot('cds-modal-header') modalHeader: CdsModalHeader;
+  @querySlot('cds-modal-actions') modalFooter: CdsModalActions;
+
+  protected get closeButtonAttrs(): HTMLAttributeTuple[] {
+    return [
       ['cds-layout', 'align:top'],
       ['slot', 'close-button'],
       ['aria-label', this.i18n.closeButtonAriaLabel],
       ['icon-size', '24'],
     ];
-    if (this.closable) {
-      appendCloseButton(this, closeButtonAttrs, () => this.closeOverlay('close-button-click'));
-    } else {
-      removeCloseButton(this);
-    }
   }
 
-  // TODO: Document what's going on here with the role dialog and aria modal true
-  // Also document why we have to keep everything in the light Dom
+  protected isScrollable = false;
+
   updated(props: Map<string, any>) {
-    if (props.has('closable')) {
-      this.toggleCloseButton();
+    if (props.has('hidden') && props.get('hidden') === true) {
+      this.isScrollable = isScrollable(this.content);
+      setAttributes(
+        this.content,
+        ['tabindex', this.isScrollable ? '0' : false],
+        ['aria-label', this.isScrollable ? this.i18n.contentBox : false]
+      );
     }
-    super.update(props);
+
+    super.updated(props);
+  }
+
+  private get modalFooterTemplate(): TemplateResult {
+    if (this.modalFooter) {
+      return html`<div cds-layout="align-stretch p-x:lg p-b:lg">
+        <slot name="modal-actions"></slot>
+      </div>`;
+    } else {
+      return html``;
+    }
   }
 
   // modal-body requires a tab index so it can be scrolled
@@ -116,14 +143,12 @@ export class CdsModal extends CdsInternalOverlay implements Animatable {
             <div cds-layout="align:right">
               <slot name="modal-header-actions"></slot>
             </div>
-            <slot name="close-button"></slot>
+            ${this.closable ? this.closeButtonTemplate : ''}
           </div>
-          <div class="modal-body" tabindex="0" aria-label="${this.i18n.contentBox}" cds-layout="p-x:lg">
+          <div class="modal-body" cds-layout="p-x:lg">
             <slot></slot>
           </div>
-          <div cds-layout="align-stretch p-x:lg p-b:lg">
-            <slot name="modal-actions"></slot>
-          </div>
+          ${this.modalFooterTemplate}
         </div>
         <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
       </div>

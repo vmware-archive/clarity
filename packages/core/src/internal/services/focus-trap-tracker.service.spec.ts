@@ -153,4 +153,26 @@ describe('Focus Trap Tracker Service - ', () => {
       expect(filteredIds.length).toBe(1, 'should only have one instance of an id (2)');
     });
   });
+
+  describe('removeTrapElement', () => {
+    // this test is largely for coverage
+    it('handles when there are no trap elements', () => {
+      const myTestElement = { focusTrapId: 'abcd' };
+      const myTrapElements = FocusTrapTrackerService.getTrapElements();
+      expect(myTrapElements.length).toBe(0);
+      const testme = FocusTrapTrackerService.removeTrapElement(myTestElement);
+      expect(testme).toBeUndefined();
+    });
+
+    it('should remove trap elements', () => {
+      const myTestElement = { focusTrapId: 'abcd' };
+      FocusTrapTrackerService.setTrapElements(testTrapElements);
+      expect(FocusTrapTrackerService.getTrapElements().length).toBe(4);
+      FocusTrapTrackerService.removeTrapElement(myTestElement);
+      const elements = FocusTrapTrackerService.getTrapElements();
+      const abcd = elements.filter(e => e.focusTrapId === 'abcd');
+      expect(elements.length).toBe(3);
+      expect(abcd.length).toBe(0);
+    });
+  });
 });

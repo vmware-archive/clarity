@@ -5,6 +5,7 @@
  */
 
 import { arrayTail } from '../utils/array.js';
+import { setAttributes } from '../utils/dom.js';
 import { GlobalStateService } from './global.service.js';
 
 export const CDS_FOCUS_TRAP_DOCUMENT_ATTR = 'cds-focus-trap';
@@ -20,10 +21,20 @@ export class FocusTrapTrackerService {
 
   static setTrapElements(elements: { focusTrapId: string }[]): void {
     const htmlEl = document.querySelector('html');
-    elements.length
-      ? htmlEl?.setAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR, '')
-      : htmlEl?.removeAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR);
+    if (htmlEl !== null) {
+      setAttributes(htmlEl as HTMLElement, [CDS_FOCUS_TRAP_DOCUMENT_ATTR, elements.length ? '' : false]);
+    }
     GlobalStateService.state.focusTrapItems = [...elements];
+  }
+
+  static removeTrapElement(element: { focusTrapId: string }): void {
+    const currentTrapEls = this.getTrapElements();
+
+    if (currentTrapEls.length < 1) {
+      return;
+    }
+
+    this.setTrapElements([...this.getTrapElements().filter(e => e.focusTrapId !== element.focusTrapId)]);
   }
 
   static setCurrent(element: { focusTrapId: string }): void {

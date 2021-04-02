@@ -4,47 +4,97 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
-import { registerElementSafely, sleep } from '@cds/core/internal';
+import { createId, customElement, property, sleep, state } from '@cds/core/internal';
 import {
   addReboundElementsToFocusTrapElement,
   castHtmlElementToFocusTrapElement,
   createFocusTrapReboundElement,
   elementIsOutsideFocusTrapElement,
   FocusTrap,
-  FocusTrapElement,
   refocusIfOutsideFocusTrapElement,
   removeReboundElementsFromFocusTrapElement,
 } from './focus-trap.js';
-import { CdsBaseFocusTrap } from '../base/focus-trap.base.js';
 import { CDS_FOCUS_TRAP_DOCUMENT_ATTR, FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
 
-declare global {
-  interface HTMLElementTagNameMap {
-    'test-focus-trap': CdsBaseFocusTrap;
+@customElement('test-deprecated-focus-trap')
+class DeprecatedFocusTrap extends LitElement {
+  focusTrap: FocusTrap;
+
+  topReboundElement: HTMLElement;
+  bottomReboundElement: HTMLElement;
+
+  /**
+   * Its recommended to remove or add a focus trap element from the DOM
+   * some SSR systems can have technical constraints where the item can
+   * only be removed via CSS/hidden.
+   */
+  @property({ type: Boolean }) hidden = false;
+
+  @state({ type: Boolean, reflect: true })
+  protected demoMode = false;
+
+  @property({ type: String }) focusTrapId: string;
+
+  constructor() {
+    super();
+    this.focusTrapId = createId();
+    // if we see issues instantiating here, we should consider moving to
+    // firstUpdated()
+    this.focusTrap = new FocusTrap(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.toggleFocusTrap();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.focusTrap.removeFocusTrap();
+  }
+
+  attributeChangedCallback(name: string, old: string, value: string) {
+    super.attributeChangedCallback(name, old, value);
+
+    if (name === 'hidden' && old !== value) {
+      this.toggleFocusTrap();
+    }
+  }
+
+  protected render() {
+    return html`<slot></slot>`;
+  }
+
+  private toggleFocusTrap() {
+    if (!this.demoMode && !this.hasAttribute('hidden')) {
+      this.focusTrap.enableFocusTrap();
+    } else {
+      this.focusTrap.removeFocusTrap();
+    }
   }
 }
 
-class TestFocusTrap extends CdsBaseFocusTrap {
+@customElement('test-focus-trap')
+class TestFocusTrap extends DeprecatedFocusTrap {
   render() {
     return html`<button class="shadow-button">my shadow button</button><slot></slot>`;
   }
 }
-registerElementSafely('test-focus-trap', TestFocusTrap);
 
 describe('Focus Trap Utilities: ', () => {
   let focusedElement: HTMLElement;
   let noFocusElement: HTMLElement;
   let testElement: HTMLElement;
-  let focusTrapElement: FocusTrapElement;
+  let focusTrapElement: TestFocusTrap;
 
   beforeEach(async () => {
     testElement = await createTestElement(
       html`<button class="outside-focus">nope</button
         ><test-focus-trap><button class="inside-focus">test focus</button></test-focus-trap>`
     );
-    focusTrapElement = testElement.querySelector('test-focus-trap');
+    focusTrapElement = testElement.querySelector<TestFocusTrap>('test-focus-trap');
     focusedElement = testElement.querySelector('.inside-focus');
     noFocusElement = testElement.querySelector('.outside-focus');
   });
@@ -148,10 +198,10 @@ describe('Focus Trap Utilities: ', () => {
 
     describe('elementIsOutsideFocusTrapElement()', () => {
       let focusedElement: HTMLElement;
-      let focusTrapElement: FocusTrapElement;
+      let focusTrapElement: TestFocusTrap;
 
       beforeEach(async () => {
-        focusTrapElement = (await createTestElement()) as FocusTrapElement;
+        focusTrapElement = (await createTestElement()) as TestFocusTrap;
       });
 
       afterEach(() => {
@@ -188,7 +238,7 @@ describe('Focus Trap Utilities: ', () => {
         const specialTestElement = await createTestElement(
           html`<test-focus-trap><button class="inside-focus">test focus</button></test-focus-trap>`
         );
-        const fte = testElement.querySelector('test-focus-trap');
+        const fte = testElement.querySelector<TestFocusTrap>('test-focus-trap');
         const elToFocus = fte.shadowRoot.querySelector('.shadow-button');
         expect(elementIsOutsideFocusTrapElement(elToFocus as HTMLElement, fte)).toBeFalsy();
         removeTestElement(specialTestElement);
@@ -310,8 +360,8 @@ describe('FocusTrap Class: ', () => {
 });
 
 describe('Nested FocusTraps: ', () => {
-  let outerFocusTrap: CdsBaseFocusTrap;
-  let innerFocusTrap: CdsBaseFocusTrap;
+  let outerFocusTrap: TestFocusTrap;
+  let innerFocusTrap: TestFocusTrap;
   let testElement: HTMLElement;
   let outerFocusButton: HTMLElement;
   let innerFocusButton: HTMLElement;

@@ -298,7 +298,13 @@ This class must be applied with `.alert` to render an app-level alert.
 Accessibility problems related to using actionable controls inside dynamically generated alerts:
 
 - They are announced as part of the alert message, which is out of context and may be confusing. For example, the following alert will be announced as "success acknowledge":
-  TODO Fix core components (maybe it cannot be used in the markdown rendering)
+  <cds-alert-group type="default" status="success">
+  <cds-alert closable>Success
+  <cds-alert-actions>
+  <cds-button>Acknowledge</cds-button>
+  </cds-alert-actions>
+  </cds-alert>
+  </cds-alert-group>
 - There is no way for the user to directly interact with the announced action controls.
 
 It is acceptable to use actions in static alerts. The following guidelines are recommended:

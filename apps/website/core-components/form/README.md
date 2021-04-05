@@ -56,7 +56,6 @@ Clarity offers three types of forms: horizontal (our recommended default), verti
 :::
 
 :::component-section-level-two
-TODO turn this into a core form.
 Default Horizontal formats are good for the quick scanning of labels, and can be used in cases of limited vertical space. The space between label and input however can slow users down.
 
 <doc-demo>

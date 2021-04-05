@@ -22,7 +22,7 @@ Our support policy for Clarity releases is to actively support a major release f
 
 | Version | Status             | Released     | Support Ends                  |
 | ------- | ------------------ | ------------ | ----------------------------- |
-| v5      | Prerelease         | TBD          | 6 months after v6 is released |
+| v5      | Prerelease         | Jan 21, 2021 | 6 months after v6 is released |
 | v4      | Actively Supported | Aug 19, 2020 | 6 months after v5 is released |
 | v3      | Actively Supported | Feb 27, 2020 | Mar 1, 2021                   |
 | v2      | Out of support     | July 6, 2019 | Jan, 2021[^olderversion]      |

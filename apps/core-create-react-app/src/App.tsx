@@ -6,7 +6,6 @@ import { CdsBadge } from '@cds/react/badge';
 import { CdsAlert, CdsAlertGroup } from '@cds/react/alert';
 import { CdsIcon } from '@cds/react/icon';
 import { ClarityIcons, userIcon } from '@cds/core/icon';
-import '@cds/core/progress-circle/register.js';
 import './App.css';
 
 ClarityIcons.addIcons(userIcon);

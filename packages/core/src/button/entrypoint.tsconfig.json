@@ -6,6 +6,7 @@
   "references": [
     { "path": "../internal/entrypoint.tsconfig.json" },
     { "path": "../badge/entrypoint.tsconfig.json" },
-    { "path": "../icon/entrypoint.tsconfig.json" }
+    { "path": "../icon/entrypoint.tsconfig.json" },
+    { "path": "../progress-circle/entrypoint.tsconfig.json" }
   ]
 }

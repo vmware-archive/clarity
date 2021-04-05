@@ -26,10 +26,10 @@ export const iconError = html`<span class="button-status-icon" cds-layout="horiz
 ></span>`;
 
 export const enum ClrLoadingState {
-  DEFAULT = 'default',
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
+  default = 'default',
+  loading = 'loading',
+  success = 'success',
+  error = 'error',
 }
 
 /**
@@ -100,7 +100,7 @@ export class CdsButton extends CdsBaseButton {
    * - `error`: shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)
    */
   @property({ type: String })
-  loadingState = ClrLoadingState.DEFAULT;
+  loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
 
   constructor() {
     super();
@@ -113,7 +113,7 @@ export class CdsButton extends CdsBaseButton {
     // Find and wrap any text nodes into span elements
     spanWrapper(this.childNodes);
 
-    if (this.loadingState !== ClrLoadingState.DEFAULT) {
+    if (this.loadingState !== ClrLoadingState.default) {
       this.updateLoadingState();
     }
   }
@@ -129,10 +129,10 @@ export class CdsButton extends CdsBaseButton {
     const loadingState = this.loadingState;
     return html`<div class="private-host">
       <div cds-layout="horizontal gap:sm wrap:none align:center">
-        ${loadingState === ClrLoadingState.SUCCESS ? iconCheck : ''}
-        ${loadingState === ClrLoadingState.ERROR ? iconError : ''}
-        ${loadingState === ClrLoadingState.LOADING ? iconSpinner(this.size) : ''}
-        ${loadingState === ClrLoadingState.DEFAULT
+        ${loadingState === ClrLoadingState.success ? iconCheck : ''}
+        ${loadingState === ClrLoadingState.error ? iconError : ''}
+        ${loadingState === ClrLoadingState.loading ? iconSpinner(this.size) : ''}
+        ${loadingState === ClrLoadingState.default
           ? html`<slot @slotchange=${() => spanWrapper(this.childNodes)}></slot>`
           : ''}
       </div>
@@ -145,13 +145,13 @@ export class CdsButton extends CdsBaseButton {
 
   private updateLoadingState() {
     switch (this.loadingState) {
-      case ClrLoadingState.LOADING:
+      case ClrLoadingState.loading:
         this.disableButton();
         return;
-      case ClrLoadingState.SUCCESS:
+      case ClrLoadingState.success:
         this.disableButton();
         return;
-      case ClrLoadingState.ERROR:
+      case ClrLoadingState.error:
         this.disableButton();
         return;
       default:
@@ -165,7 +165,7 @@ export class CdsButton extends CdsBaseButton {
   }
 
   private enableButton() {
-    this.loadingState = ClrLoadingState.DEFAULT;
+    this.loadingState = ClrLoadingState.default;
     this.style.removeProperty('width');
     this.disabled = false;
   }

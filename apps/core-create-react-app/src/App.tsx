@@ -6,6 +6,7 @@ import { CdsBadge } from '@cds/react/badge';
 import { CdsAlert, CdsAlertGroup } from '@cds/react/alert';
 import { CdsIcon } from '@cds/react/icon';
 import { ClarityIcons, userIcon } from '@cds/core/icon';
+import '@cds/core/progress-circle/register.js';
 import './App.css';
 
 ClarityIcons.addIcons(userIcon);
@@ -65,6 +66,20 @@ export default class App extends Component<AppProps, AppState> {
           <CdsButton action="flat">flat</CdsButton>
           <CdsButton action="flat" disabled>
             flat disabled
+          </CdsButton>
+        </section>
+        <section cds-layout="horizontal gap:sm">
+          <CdsButton loadingState="default">
+            Default
+          </CdsButton>
+          <CdsButton loadingState="loading">
+            Default
+          </CdsButton>
+          <CdsButton loadingState="success">
+            Default
+          </CdsButton>
+          <CdsButton loadingState="error">
+            Default
           </CdsButton>
         </section>
 

@@ -36,7 +36,7 @@ describe('Icon button element – ', () => {
   describe('LoadingStateChange: ', () => {
     it('should set default state as expected', async () => {
       await componentIsStable(component);
-      component.loadingState = ClrLoadingState.DEFAULT;
+      component.loadingState = ClrLoadingState.default;
       await componentIsStable(component);
       expect(component.hasAttribute('disabled')).toEqual(false);
     });
@@ -44,7 +44,7 @@ describe('Icon button element – ', () => {
     it('should set loading state as expected', async () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
-      component.loadingState = ClrLoadingState.LOADING;
+      component.loadingState = ClrLoadingState.loading;
       await componentIsStable(component);
 
       // I'm getting 152.016px and 152.015625px, so the test fails without rounding
@@ -56,7 +56,7 @@ describe('Icon button element – ', () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
 
-      component.loadingState = ClrLoadingState.SUCCESS;
+      component.loadingState = ClrLoadingState.success;
       await componentIsStable(component);
 
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
@@ -67,7 +67,7 @@ describe('Icon button element – ', () => {
       await componentIsStable(component);
       const size = component.getBoundingClientRect().width;
 
-      component.loadingState = ClrLoadingState.ERROR;
+      component.loadingState = ClrLoadingState.error;
       await componentIsStable(component);
 
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));

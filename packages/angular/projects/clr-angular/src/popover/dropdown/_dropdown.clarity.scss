@@ -28,11 +28,20 @@
         margin: 0;
       }
 
-      cds-icon[shape^='angle'],
       clr-icon[shape^='angle'] {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        color: inherit;
+        @include equilateral($clr-dropdown-caret-icon-dimension);
+      }
+
+      // NOTE: cds-icon handles direction internally.
+      // No need to translate it.
+      // This results in a different top value.
+      cds-icon[shape^='angle'] {
+        position: absolute;
+        top: 45%;
         color: inherit;
         @include equilateral($clr-dropdown-caret-icon-dimension);
       }

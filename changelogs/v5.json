@@ -2,6 +2,122 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.1.1",
+      "date": "2021-04-06",
+      "description": "This is a feature and bug release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5791,
+          "title": "Dropdown toggle CSS for cds-icon direction",
+          "project": "Angular",
+          "scope": "Dropdown"
+        },
+        {
+          "issue": 5678,
+          "title": "Datepicker extend ClrAbstractContainer",
+          "project": "Angular",
+          "scope": "Datepicker"
+        },
+        {
+          "issue": 5800,
+          "title": "Core form label text transform default",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5797,
+          "title": "Register progress-circle component with button component",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5796,
+          "title": "TSX type error with loadingState and CdsButton",
+          "project": "React",
+          "scope": "Button"
+        },
+        {
+          "issue": 5666,
+          "title": "Reduce change detection cycles in Modal",
+          "project": "Angular",
+          "scope": "Modal"
+        },
+        {
+          "issue": 5689,
+          "title": "Core dynamic control group support",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5446,
+          "title": "Fix focus styles for button groups",
+          "project": "UI",
+          "scope": "Button"
+        },
+        {
+          "issue": 5760,
+          "title": "Improved modal focus management examples",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5739,
+          "title": "Core enable control group to disable all children",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5754,
+          "title": "Core storybook i18n doc",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5771,
+          "title": "Core form group control width",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5762,
+          "title": "clr-ui peer dependencies",
+          "project": "UI",
+          "scope": "Build"
+        },
+        {
+          "issue": 5766,
+          "title": "Core indeterminate checkbox",
+          "project": "Core",
+          "scope": "Checkbox"
+        },
+        {
+          "issue": 5753,
+          "title": "Core storybook motion token support",
+          "project": "Core",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5761,
+          "title": "Core accordion header layout",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5743,
+          "title": "Improve layout alignment with slot support",
+          "project": "Core",
+          "scope": "Layouts"
+        },
+        {
+          "issue": 0,
+          "title": "Add `no-clr-label` rule to the Adoption Guide",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        }
+      ]
+    },
+    {
       "version": "5.1.0",
       "date": "2021-03-18",
       "description": "This is a feature and bug release.",

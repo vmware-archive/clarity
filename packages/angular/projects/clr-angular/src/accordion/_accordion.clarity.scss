@@ -158,6 +158,7 @@
 
   .clr-accordion-angle {
     transition: all 200ms ease-in-out;
+    transform: rotate(90);
   }
 
   .clr-accordion-error-icon,
@@ -176,7 +177,7 @@
 
     .clr-accordion-angle {
       visibility: visible;
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
 
     .clr-accordion-header {

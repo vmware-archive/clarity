@@ -35,7 +35,7 @@ const longerContent = `
   `;
 
 export default {
-  title: 'Internal/APIs/Panel/Stories',
+  title: 'Internal Stories /Panel',
   component: 'cds-internal-panel',
   argTypes: getElementStorybookArgTypes('cds-internal-panel', customElements),
   parameters: {

@@ -100,7 +100,7 @@ Animations can be disabled by setting the cds-motion attribute to "off" in the H
 The `@animate()` decorator is passed an object that defines which values on which properties will trigger an animation. In the following example, we see an overlay which has been told to do an entrance and exit animation when the `hidden` property is set to `true` or `false`.
 
 <Preview>
-  <Story id="internal-apis-overlay-stories--interactive" />
+  <Story id="internal-stories-overlay--interactive" />
 </Preview>
 
 ## Property-Driven Animations
@@ -432,7 +432,7 @@ An inline override allows a product to specify part of a property-driven animati
 In the next example, we have replaced an overlay's exit animation so that it falls through the bottom of the screen instead of sliding up:
 
 <Preview>
-  <Story id="internal-apis-overlay-stories--override-animation" />
+  <Story id="internal-stories-overlay--override-animation" />
 </Preview>
 
 #### Caveats to inline overrides
@@ -459,7 +459,7 @@ Animated Clarity Core components have `--animation-duration` and `--animation-ea
 Global overrides are useful when a product needs to change timing or easing for all components in an application. Overriding the global animation tokens can be done through theming or just through CSS. But here we are just demonstrating theming with the Clarity Core "low-motion" theme.
 
 <Preview>
-  <Story id="internal-apis-overlay-stories--low-motion" />
+  <Story id="internal-stories-overlay--low-motion" />
 </Preview>
 
 #### Caveats to overriding animation tokens

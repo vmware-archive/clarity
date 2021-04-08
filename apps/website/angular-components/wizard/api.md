@@ -59,7 +59,7 @@ toc: true
 <clr-wizard #wizardReference>
   <!-- clr-wizard-title -->
   <clr-wizard-header-action>
-    <clr-icon shape="cloud" class="is-solid"></clr-icon>
+    <cds-icon shape="cloud" class="is-solid"></cds-icon>
   </clr-wizard-header-action>
   <!-- clr-wizard-button components as needed -->
 </clr-wizard>

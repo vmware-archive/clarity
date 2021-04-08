@@ -1,9 +1,9 @@
 <template>
   <section class="sticky">
     <label for="search-icons-sticky" class="searchbar-label">
-      <cds-icon class="search-icon" shape="search" size="24"></cds-icon>
+      <cds-icon class="search-icon" shape="search" size="md"></cds-icon>
       <button aria-label="close" class="close" type="button" @click="resetSearch()" :class="{ active: !!filterValue }">
-        <cds-icon shape="close" size="24"></cds-icon>
+        <cds-icon shape="close" size="md"></cds-icon>
       </button>
       <input
         placeholder="Search for Clarity Icons..."

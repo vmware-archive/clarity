@@ -55,7 +55,7 @@ operate on a single row item.
   <clr-dg-row *clrDgItems="let item of items" [clrDgItem]="item">
     <clr-dg-action-overflow (clrDgActionOverflowOpenChange)="openChangeFn($event)">
       <button class="action-item">
-        <clr-icon shape="note"></clr-icon>
+        <cds-icon shape="note"></cds-icon>
         Action
       </button>
     </clr-dg-action-overflow>

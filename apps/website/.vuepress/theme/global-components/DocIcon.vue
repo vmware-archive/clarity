@@ -10,7 +10,7 @@
     >
       <slot></slot> {{ iconName }} &nbsp;&nbsp;<cds-icon
         shape="new"
-        size="24"
+        size="md"
         style="--color: var(--cds-alias-status-alt);"
         v-if="isNew"
       ></cds-icon>

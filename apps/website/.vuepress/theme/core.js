@@ -23,7 +23,6 @@ import '@cds/core/time/register.js';
 import '@cds/core/toggle/register.js';
 
 import {
-  CdsIcon,
   ClarityIcons,
   linkIcon,
   fileIcon,
@@ -77,6 +76,3 @@ ClarityIcons.addIcons(
   copyToClipboardIcon
 );
 loadCoreIconSet();
-
-class LegacyIcon extends CdsIcon {}
-customElements.define('clr-icon', LegacyIcon);

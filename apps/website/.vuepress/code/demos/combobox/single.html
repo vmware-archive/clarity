@@ -3,8 +3,8 @@
   <clr-combobox [(ngModel)]="selection" name="myState" required [disabled]="disabled">
     <clr-options>
       <clr-option *clrOptionItems="let state of states; field:'name'" [clrValue]="state">
-        <clr-icon shape="world" role="img" aria-label="World is turning"></clr-icon> {{state.name}}
-        <clr-icon shape="sun" role="img" aria-label="Sun is shining"></clr-icon>
+        <cds-icon shape="world" role="img" aria-label="World is turning"></cds-icon> {{state.name}}
+        <cds-icon shape="sun" role="img" aria-label="Sun is shining"></cds-icon>
       </clr-option>
     </clr-options>
   </clr-combobox>

@@ -13,7 +13,7 @@
             :solid="hasSolid(icon)"
             :badge="canBadge(icon)"
             :shape="icon.iconName"
-            size="24"
+            size="md"
           ></cds-icon>
         </DocIcon>
         <DocIconDetail

@@ -51,7 +51,7 @@ toc: true
 ```html
 <clr-vertical-nav>
   <clr-vertical-nav-group>
-    <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+    <cds-icon shape="user" clrVerticalNavIcon></cds-icon>
     Users
     <clr-vertical-nav-group-children>
       <!-- clrVerticalNavLink elements as needed -->
@@ -92,11 +92,11 @@ toc: true
 ```html
 <clr-vertical-nav>
   <a clrVerticalNavLink routerLink="./users/1">
-    <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+    <cds-icon shape="user" clrVerticalNavIcon></cds-icon>
     User One
   </a>
   <a clrVerticalNavLink routerLink="./users/2">
-    <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
+    <cds-icon shape="user" clrVerticalNavIcon></cds-icon>
     User Two
   </a>
 </clr-vertical-nav>

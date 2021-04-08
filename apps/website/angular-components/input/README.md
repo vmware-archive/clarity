@@ -33,7 +33,7 @@ Horizontal formats are good for the quick scanning of labels, and can be used in
     <div class="clr-control-container">
       <div class="clr-input-wrapper">
         <input type="text" id="demo7" placeholder="Enter value here" class="clr-input">
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
       </div>
       <span class="clr-subtext">Helper Text</span>
     </div>
@@ -53,7 +53,7 @@ This option is better for scanning, mobile experiences, accessibility, and local
     <div class="clr-control-container">
       <div class="clr-input-wrapper">
         <input type="text" id="demo6" placeholder="Enter value here" class="clr-input">
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
       </div>
       <span class="clr-subtext">Helper Text</span>
     </div>
@@ -73,7 +73,7 @@ For cases with highly limited space, we provide a compact form layout.
     <div class="clr-control-container">
       <div class="clr-input-wrapper">
         <input type="text" id="demo5" placeholder="Enter value here" class="clr-input">
-        <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
       </div>
       <span class="clr-subtext">Helper Text</span>
     </div>

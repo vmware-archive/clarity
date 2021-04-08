@@ -4,7 +4,7 @@
       <h2 class="sticky" cds-text="title" cds-layout="p-y:lg">
         {{ release.version }}
         <a class="release-date" :href="commitLink(release)" target="_blank">
-          Released {{ release.date }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon>
+          Released {{ release.date }} <cds-icon class="external-link" size="sm" shape="pop-out"></cds-icon>
         </a>
       </h2>
       <p v-if="release.description" cds-text="body" cds-layout="m-t:xs m-b:lg">{{ release.description }}</p>

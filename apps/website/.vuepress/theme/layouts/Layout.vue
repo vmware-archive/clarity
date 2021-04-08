@@ -11,7 +11,7 @@
           @click="toggleSidebar()"
           aria-label="Open side navigation"
         >
-          <cds-icon class="hamburger-icon" shape="bars" size="24" inverse></cds-icon>
+          <cds-icon class="hamburger-icon" shape="bars" size="md" inverse></cds-icon>
         </button>
       </template>
     </Navbar>

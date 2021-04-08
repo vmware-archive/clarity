@@ -114,8 +114,7 @@ module.exports = [
       },
       {
         title: 'Older Changelogs',
-        // external: true,
-        path: 'https://clarity.design/news',
+        path: 'https://v4.clarity.design/news',
         target: '_blank',
       },
     ],

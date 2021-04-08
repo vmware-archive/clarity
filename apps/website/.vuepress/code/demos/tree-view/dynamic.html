@@ -1,10 +1,10 @@
 <clr-tree>
   <clr-tree-node *ngFor="let directory of rootDirectory" [(clrExpanded)]="directory.expanded">
-    <clr-icon [attr.shape]="directory.icon"></clr-icon>
+    <cds-icon [attr.shape]="directory.icon"></cds-icon>
     {{directory.name}}
     <clr-tree-node *ngFor="let file of directory.files">
       <button (click)="openFile(directory.name, file.name)" class="clr-treenode-link" [class.active]="file.active">
-        <clr-icon [attr.shape]="file.icon"></clr-icon>
+        <cds-icon [attr.shape]="file.icon"></cds-icon>
         {{file.name}}
       </button>
     </clr-tree-node>

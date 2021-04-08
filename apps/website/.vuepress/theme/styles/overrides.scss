@@ -53,31 +53,31 @@ div[class^='language-'] pre {
 }
 
 // Override icons in header
-.header-1 clr-icon,
-.header-2 clr-icon,
-.header-3 clr-icon,
-.header-4 clr-icon,
-.header-5 clr-icon,
-.header-6 clr-icon {
+.header-1 cds-icon,
+.header-2 cds-icon,
+.header-3 cds-icon,
+.header-4 cds-icon,
+.header-5 cds-icon,
+.header-6 cds-icon {
   --color: var(--clr-header-title-color);
   opacity: 1;
 }
 
 // Override icons in buttons
-.btn-primary.btn-icon clr-icon {
+.btn-primary.btn-icon cds-icon {
   --color: var(--clr-btn-primary-color, #fff);
 }
-.btn-icon clr-icon {
+.btn-icon cds-icon {
   --color: var(--clr-btn-default-color, #0072a3);
 }
-.btn-danger.btn-icon clr-icon,
-.btn-warning.btn-icon clr-icon {
+.btn-danger.btn-icon cds-icon,
+.btn-warning.btn-icon cds-icon {
   --color: var(--clr-btn-default-color, #0072a3);
 }
-.btn-success.btn-icon clr-icon {
+.btn-success.btn-icon cds-icon {
   --color: var(--clr-btn-success-color, #fff);
 }
-.btn-icon[disabled] clr-icon {
+.btn-icon[disabled] cds-icon {
   --color: var(--clr-btn-icon-disabled-color, #666);
 }
 

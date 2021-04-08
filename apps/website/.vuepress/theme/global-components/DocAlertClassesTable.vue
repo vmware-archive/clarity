@@ -32,7 +32,7 @@
               .alert-icon-wrapper
             </th>
             <td class="left">
-              <span>.alert-icon-wrapper</span> contains a <span>clr-icon</span> with the classname
+              <span>.alert-icon-wrapper</span> contains a <span>cds-icon</span> with the classname
               <span>.alert-icon</span> applied to it. The icons used for the different alert types of success, danger,
               warning, and info are, respectively: <span>check-circle</span>, <span>exclamation-circle</span>,
               <span>exclamation-triangle</span>, and <span>info-circle</span>.

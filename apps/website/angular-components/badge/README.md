@@ -28,7 +28,7 @@ Badges have a colorful, bold, and filled style that makes them stand out when ap
 <section class="inline-code">
     <div role="treeitem" tabindex="0" class="clr-tree-node-content-container" aria-expanded="false">
         <button aria-hidden="true" type="button" tabindex="-1" class="clr-treenode-caret">
-            <clr-icon shape="caret" class="clr-treenode-caret-icon" role="none" dir="right"></clr-icon>
+            <cds-icon shape="caret" direction="right" role="none"></cds-icon>
         </button>
         <div class="clr-treenode-content">
         <div class="margin-right-0_25">Inbox&nbsp;</div>
@@ -37,7 +37,7 @@ Badges have a colorful, bold, and filled style that makes them stand out when ap
     </div>
     <div role="treeitem" tabindex="0" class="clr-tree-node-content-container" aria-expanded="false">
         <button aria-hidden="true" type="button" tabindex="-1" class="clr-treenode-caret">
-            <clr-icon shape="caret" class="clr-treenode-caret-icon" role="none" dir="right"></clr-icon>
+            <cds-icon shape="caret" direction="right" role="none"></cds-icon>
         </button>
         <div class="clr-treenode-content">
         <div class="margin-right-0_25">Folders&nbsp;</div>

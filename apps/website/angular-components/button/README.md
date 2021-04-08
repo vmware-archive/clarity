@@ -65,7 +65,7 @@ There are two distinct patterns when it comes to the placement of a button.
 
 The Z-pattern is a natural way for the user to go through content within a **constrained container** and when tasks are oriented from the top-left and ending with a **primary call to action on the right bottom side** of the container. This pattern is reversed for right to left languages.
 
-<cds-icon shape="bookmark" size="24"></cds-icon> Modals and Wizards follow the Z Pattern
+<cds-icon shape="bookmark" size="md"></cds-icon> Modals and Wizards follow the Z Pattern
 
 </div>
 
@@ -78,7 +78,7 @@ The Z-pattern is a natural way for the user to go through content within a **con
 
 The F-pattern is a natural way to go through content in an **unconstrained container**, such as a form on the page itself. The user will go through the content line-by-line, arriving at a call to action at the end.
 
-<cds-icon shape="bookmark" size="24"></cds-icon> Forms and Cards follow the F Pattern
+<cds-icon shape="bookmark" size="md"></cds-icon> Forms and Cards follow the F Pattern
 
 </div>
 </div>
@@ -163,18 +163,18 @@ We recommend you **choose an icon that best describes the action** that the user
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
 <div class="doc-example">
-<button class="btn btn-primary btn-icon" style="margin-right: 0.6rem"><clr-icon shape="check"></clr-icon></button>
-<button class="btn btn-icon" style="margin-right: 0.6rem"><clr-icon shape="folder"></clr-icon></button>
-<button class="btn btn-icon btn-link"><clr-icon shape="cog"></clr-icon></button>
+<button class="btn btn-primary btn-icon" style="margin-right: 0.6rem"><cds-icon shape="check"></cds-icon></button>
+<button class="btn btn-icon" style="margin-right: 0.6rem"><cds-icon shape="folder"></cds-icon></button>
+<button class="btn btn-icon btn-link"><cds-icon shape="cog"></cds-icon></button>
 </div>
 Icon buttons are available in the solid, outline, and flat types. It’s also best to use the normal (36px) sized ones. This makes them easier to recognize and to click.
 </div>
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
 <div class="doc-example">
-<button class="btn btn-sm btn-primary btn-icon" style="margin-right: 0.6rem"><clr-icon shape="check"></clr-icon></button>
-<button class="btn btn-sm btn-icon" style="margin-right: 0.6rem"><clr-icon shape="folder"></clr-icon></button>
-<button class="btn btn-icon btn-sm btn-link"><clr-icon shape="cog"></clr-icon></button>
+<button class="btn btn-sm btn-primary btn-icon" style="margin-right: 0.6rem"><cds-icon shape="check"></cds-icon></button>
+<button class="btn btn-sm btn-icon" style="margin-right: 0.6rem"><cds-icon shape="folder"></cds-icon></button>
+<button class="btn btn-icon btn-sm btn-link"><cds-icon shape="cog"></cds-icon></button>
 </div>
 Use small icon buttons in most cases. They are difficult to see and distinguish what the icon is or represents. They also create smaller click targets, making them harder to click.
 </div>

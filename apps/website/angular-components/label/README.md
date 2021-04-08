@@ -107,8 +107,8 @@ A label can be dismissed. Use a close icon at the right-most side of a label to 
 </div>
 <div class="clr-col">
 <div class="doc-wrapper" cds-layout="m-t:lg">
-<a href="javascript://" class="label label-blue clickable">james@test.com <clr-icon shape="close"></clr-icon></a>
-<a href="javascript://" class="label label-blue clickable">jimmy@test.com <clr-icon shape="close"></clr-icon></a>
+<a href="javascript://" class="label label-blue clickable">james@test.com <cds-icon shape="close"></cds-icon></a>
+<a href="javascript://" class="label label-blue clickable">jimmy@test.com <cds-icon shape="close"></cds-icon></a>
 </div>
 </div>
 </div>

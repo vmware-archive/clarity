@@ -20,7 +20,7 @@
               :class="{ active: variant === activeVariant }"
               @click="activateVariant(variant)"
             >
-              <cds-icon :shape="iconName" :solid="variant.solid" :badge="variant.badge" size="24"></cds-icon>
+              <cds-icon :shape="iconName" :solid="variant.solid" :badge="variant.badge" size="md"></cds-icon>
             </button>
           </div>
         </div>

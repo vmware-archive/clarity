@@ -8,7 +8,7 @@
   <section>
     <div class="pinbox" cds-layout="horizontal align:vertical-stretch wrap:none" cds-text="body">
       <div class="pin" cds-layout="p-x:lg">
-        <cds-icon shape="pin" class="pin-icon" size="24"></cds-icon>
+        <cds-icon shape="pin" class="pin-icon" size="md"></cds-icon>
       </div>
       <div cds-layout="p:lg align:top">
         <slot></slot>

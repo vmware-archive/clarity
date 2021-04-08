@@ -53,7 +53,7 @@ Used to designate the open/close element for [ClrTooltipContent](./api/#clrtoolt
 
 ```html
 <clr-tooltip>
-  <clr-icon shape="help" clrTooltipTrigger></clr-icon>
+  <cds-icon shape="help" clrTooltipTrigger></cds-icon>
   <!-- clr-tooltip-content -->
 </clr-tooltip>
 ```

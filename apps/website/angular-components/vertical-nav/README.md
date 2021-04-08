@@ -95,7 +95,7 @@ Hierarchy is used to show parent-child relationship between links. If a child li
     <div class="alert-items">
         <div class="alert-item static" role="alert">
             <div class="alert-icon-wrapper">
-                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
             </div>
             <span class="alert-text">
                 If you need a summary or overview-type landing page for a link group, we recommend you make it as your first child link.

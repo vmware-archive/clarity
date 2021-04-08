@@ -7,7 +7,7 @@ toc: true
     <div class="alert-items">
         <div class="alert-item static" role="alert">
             <div class="alert-icon-wrapper">
-                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
             </div>
             <span class="alert-text">
                 Sidenav has been deprecated but does not have a targeted version for removal. The recommendation for this pattern is to use the <a href="/angular-components/vertical-nav/">vertical nav</a> component.

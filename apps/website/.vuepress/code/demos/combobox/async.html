@@ -11,12 +11,12 @@
     (clrOpenChange)="$event ? fetchStates() : null"
   >
     <ng-container *clrOptionSelected="let selected"
-      ><clr-icon shape="house" role="img" aria-label="welcome home"></clr-icon> {{selected?.name}}</ng-container
+      ><cds-icon shape="house" role="img" aria-label="welcome home"></cds-icon> {{selected?.name}}</ng-container
     >
     <clr-options>
       <clr-option *clrOptionItems="let state of asyncStates$ | async; field:'name'" [clrValue]="state">
-        <clr-icon shape="world" role="img" aria-label="World is turning"></clr-icon> {{state.name}}
-        <clr-icon shape="sun" role="img" aria-label="Sun is shining"></clr-icon>
+        <cds-icon shape="world" role="img" aria-label="World is turning"></cds-icon> {{state.name}}
+        <cds-icon shape="sun" role="img" aria-label="Sun is shining"></cds-icon>
       </clr-option>
     </clr-options>
   </clr-combobox>

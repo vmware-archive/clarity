@@ -77,11 +77,11 @@ It is optional to have a step description that offers additional information and
 
 Every timeline step has one of five steps. With one exception these steps are represented with a Clarity Icon. The exception is for loading state which uses the clr-spinner component.
 
-- <cds-icon size="36" shape="success-standard" aria-label="Success">Success</cds-icon> Step complete uses the success-standard shape
-- <cds-icon size="36" shape="dot-circle" aria-label="Current step">Success</cds-icon> Current step uses the dot-circle shape
-- <cds-icon size="36" shape="circle" aria-label="Not started">Success</cds-icon> Not started, available to start uses the circle shape
+- <cds-icon size="lg" shape="success-standard" aria-label="Success">Success</cds-icon> Step complete uses the success-standard shape
+- <cds-icon size="lg" shape="dot-circle" aria-label="Current step">Success</cds-icon> Current step uses the dot-circle shape
+- <cds-icon size="lg" shape="circle" aria-label="Not started">Success</cds-icon> Not started, available to start uses the circle shape
 - <span class="spinner demo-spinner">Loading...</span> Processing user initiated action uses the clr-spinner (w/ clrMedium size) component
-- <cds-icon size="36" shape="error-standard" aria-label="Error" class="is-error" role="none">Success</cds-icon> Error completing step uses the error shape
+- <cds-icon size="lg" shape="error-standard" aria-label="Error" class="is-error" role="none">Success</cds-icon> Error completing step uses the error shape
 
 ## Behavior
 

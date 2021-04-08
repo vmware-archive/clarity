@@ -636,20 +636,20 @@ Depending on the role of certain batch actions, you can choose to break button b
   <clr-dg-action-bar>
     <div class="btn-group">
       <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">
-        <clr-icon shape="plus"></clr-icon> Add to group
+        <cds-icon shape="plus"></cds-icon> Add to group
       </button>
       <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()">
-        <clr-icon shape="close"></clr-icon> Delete
+        <cds-icon shape="close"></cds-icon> Delete
       </button>
       <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1">
-        <clr-icon shape="pencil"></clr-icon> Edit
+        <cds-icon shape="pencil"></cds-icon> Edit
       </button>
     </div>
     <div class="btn-group">
       <clr-dropdown>
         <button type="button" class="btn btn-sm btn-secondary" clrDropdownTrigger>
           Export
-          <clr-icon shape="caret down"></clr-icon>
+          <cds-icon shape="caret down"></cds-icon>
         </button>
         <clr-dropdown-menu clrPosition="bottom-left" *clrIfOpen>
           <button type="button" (click)="onExportAll()" clrDropdownItem>Export All</button>

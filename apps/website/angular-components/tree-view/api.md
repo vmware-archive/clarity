@@ -53,7 +53,7 @@ Use our `*clrIfExpanded` structural directive to lazy-load node children.
 ```html
 <clr-tree [clrLazy]="true">
   <clr-tree-node [clrLoading]="loading">
-    <clr-icon shape="building"></clr-icon>
+    <cds-icon shape="building"></cds-icon>
     Office Locations
     <ng-template clrIfExpanded (clrIfExpandedChange)="$event ? fetchLocations() : null">
       <clr-tree-node *ngFor="let location of locations$ | async">

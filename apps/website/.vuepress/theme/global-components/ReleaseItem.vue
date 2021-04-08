@@ -15,7 +15,7 @@
     <td class="breaking"><span class="label label-danger" v-if="item.breaking">Breaking Change</span></td>
     <td class="left">
       <a v-if="item.issue" :href="issueLink" target="_blank"
-        >#{{ item.issue }} <cds-icon class="external-link" size="12" shape="pop-out"></cds-icon
+        >#{{ item.issue }} <cds-icon class="external-link" size="sm" shape="pop-out"></cds-icon
       ></a>
     </td>
   </tr>

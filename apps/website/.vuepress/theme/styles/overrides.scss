@@ -289,6 +289,10 @@ body .no-clr-ui p {
   //margin-bottom: 0;
 }
 
+[cds-text~='body'] li {
+  color: var(--cds-global-color-gray-700);
+}
+
 .component-subsection p + p {
   margin-top: var(--cds-token-space-size-7, 0.8rem);
 }

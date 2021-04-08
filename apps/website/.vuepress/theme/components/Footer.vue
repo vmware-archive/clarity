@@ -3,12 +3,13 @@
     <div :class="{ 'footer-wrapper': true, 'has-separator': !isHomePage }">
       <div class="vmware-source-wrapper">
         <div class="copyright-content-wraper">
-          <div class="powered-by-wrapper">Powered by VMware, Inc &copy; {{ year }}. All rights reserved.</div>
-          <div class="code-license-wrapper">
+          <p class="powered-by-wrapper">
+            Powered by VMware, Inc &copy; {{ year }}. All rights reserved.
+            <br />
             Code licensed by
             <a href="https://opensource.org/licenses/MIT" target="_blank" class="mit-link">MIT License</a>
             <a href="https://www.vmware.com/help/privacy.html" target="_blank">Privacy Policy</a>
-          </div>
+          </p>
         </div>
 
         <div class="social-media-links">

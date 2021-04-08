@@ -22,11 +22,26 @@ Our support policy for Clarity releases is to actively support a major release f
 
 | Version | Status             | Released     | Support Ends                  |
 | ------- | ------------------ | ------------ | ----------------------------- |
-| v5      | Prerelease         | Jan 21, 2021 | 6 months after v6 is released |
-| v4      | Actively Supported | Aug 19, 2020 | 6 months after v5 is released |
-| v3      | Actively Supported | Feb 27, 2020 | Mar 1, 2021                   |
+| v5      | Actively Supported | Jan 21, 2021 | 6 months after v6 is released |
+| v4      | Actively Supported | Aug 19, 2020 | Aug 1, 2021                   |
+| v3      | Out of support     | Feb 27, 2020 | Apr 1, 2021                   |
 | v2      | Out of support     | July 6, 2019 | Jan, 2021[^olderversion]      |
 | v1      | Out of support     | Nov 29, 2018 | Aug, 2020[^olderversion]      |
+
+{ .table }
+
+## Clarity Angular and Angular Compatibility
+
+Our Clarity Angular package is designed to explicitly support specific versions of Angular, since there are often changes in Angular or TypeScript that make it difficult to supporting more than one version.
+
+| Clarity Angular Version | Angular | Status             |
+| ----------------------- | ------- | ------------------ |
+| _release pending_       | v12     | n/a                |
+| v5                      | v11     | Actively Supported |
+| v4                      | v10     | Actively Supported |
+| v3                      | v9      | Out of support     |
+| v2                      | v8      | Out of support     |
+| v1                      | v7      | Out of support     |
 
 { .table }
 
@@ -49,6 +64,8 @@ Clarity is tested across several sets of screen reader and browser combinations 
 - VoiceOver + Safari (Apple)
 
 We have an accessibility team that reviews any accessibility issues and verifies resolutions, to hold Clarity to a high standard for accessibility.
+
+Footnotes:
 
 [^issues]: A severe issue is defined as a security issue or a regression.
 [^olderversion]: Previous versions of Clarity had different support policy that has lapsed.

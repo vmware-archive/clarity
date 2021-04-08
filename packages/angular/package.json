@@ -11,6 +11,7 @@
     "serve:watch": "ng serve dev",
     "serve:adoption": "ng serve clarity-adoption",
     "serve:dark": "ng serve dev -c dark",
+    "start:stmux:dev": "stmux -w always -e ERROR -m beep,system [ \"yarn start:dev\" : \"sleep 25 && yarn serve:watch\" : \"yarn --cwd ../ui run build:watch\" ]",
     "storybook": "start-storybook -s .storybook/public -p 6006",
     "storybook:build": "build-storybook -s .storybook/public -c .storybook -o ../../dist/website/storybook/angular --quiet",
     "build": "npm-run-all build:lib:cds build:lib:clr build:update:cds build:update:clr",

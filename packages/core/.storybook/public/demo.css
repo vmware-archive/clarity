@@ -158,13 +158,6 @@ cds-card {
   background: transparent !important;
 }
 
-.sbdocs p code,
-.sbdocs li code {
-  color: var(--cds-global-typography-color-500) !important;
-  background-color: var(--cds-alias-object-app-background) !important;
-  border: 0 !important;
-}
-
 .docs-story > div:last-child button {
   background: var(--cds-alias-object-container-background) !important;
   color: var(--cds-global-typography-color-500) !important;

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -470,7 +470,7 @@ $clr-combobox-input-background-color: hsl(198, 28%, 18%);
 $clr-combobox-pill-background-color: hsl(201, 30%, 15%);
 $clr-combobox-pill-border-color: hsl(208, 16%, 34%);
 $clr-combobox-pill-font-color: hsl(0, 0%, 75%);
-$clr-combobox-filter-highlight: hsl(198, 16, 93%);
+$clr-combobox-filter-highlight: hsl(198, 16%, 93%);
 
 /**********
   * Header
@@ -555,7 +555,7 @@ $clr-login-background: '%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22
   */
 $clr-modal-close-color: hsl(203, 16%, 72%);
 $clr-modal-bg-color: hsl(198, 28%, 18%);
-$clr-modal-backdrop-color: hsla(0, 0, 0, 0.85);
+$clr-modal-backdrop-color: hsla(0, 0%, 0%, 0.85);
 // END Modal
 
 /***************

@@ -2234,11 +2234,11 @@
       },
       {
         "name": "clrModalSkipAnimation",
-        "accepts": "boolean",
+        "accepts": "string",
         "type": "input",
-        "options": "true, false",
-        "description": "WHen true the modal will not animate opening and closing.",
-        "default": "false"
+        "options": "the strings \"true\" and \"false\"",
+        "description": "When \"true\" the modal will not animate opening and closing.",
+        "default": "\"false\""
       }
     ],
     "methods": [

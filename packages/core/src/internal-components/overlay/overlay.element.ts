@@ -171,10 +171,6 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
     `;
   }
 
-  get overlayIsActive() {
-    return FocusTrapTracker.getCurrentTrapId() === this.focusTrapId;
-  }
-
   protected fireEventOnBackdropClick = () => {
     if (overlayIsActive(this.focusTrapId)) {
       this.closeOverlay('backdrop-click');

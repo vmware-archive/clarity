@@ -412,7 +412,7 @@ export function statusInverse() {
       <cds-icon shape="user" inverse status="info" size="lg" solid aria-label="This is an example of an icon of a user completely filled in with the blue, informational color on a dark background"></cds-icon>
       <cds-icon shape="user" inverse status="success" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a green color indicating success"></cds-icon>
       <cds-icon shape="user" inverse status="warning" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a dark orange color indicating warning"></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon>></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon></cds-icon>
     </cds-demo>
   `;
 }

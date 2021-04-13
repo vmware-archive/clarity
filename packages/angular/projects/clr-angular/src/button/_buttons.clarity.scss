@@ -374,7 +374,8 @@
 
   //Small Icon Button
   .btn-sm:not(.btn-link) {
-    cds-icon {
+    cds-icon,
+    clr-icon {
       @include css-var(width, clr-btn-appearance-standard-icon-size, $clr_baselineRem_0_5, $clr-use-custom-properties);
       @include css-var(height, clr-btn-appearance-standard-icon-size, $clr_baselineRem_0_5, $clr-use-custom-properties);
       transform: translate3d(0, -1 * $clr_baselineRem_1px, 0);

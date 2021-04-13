@@ -5,8 +5,9 @@
  */
 import { html } from 'lit-html';
 import '@cds/core/internal-components/overlay/register.js';
-import { CdsInternalOverlay, isNestedOverlay } from '@cds/core/internal-components/overlay';
+import { CdsInternalOverlay, isNestedOverlay, overlayIsActive } from '@cds/core/internal-components/overlay';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { FocusTrapTracker } from '@cds/core/internal';
 
 describe('Overlay helper functions: ', () => {
   describe('isNestedOverlay() - ', () => {
@@ -45,6 +46,32 @@ describe('Overlay helper functions: ', () => {
 
     it('should return false if list is empty', () => {
       expect(isNestedOverlay('ohai_1', 'ohai_', [])).toBe(false);
+    });
+  });
+  describe('overlayIsActive - ', () => {
+    let overlayElement: HTMLElement;
+    let overlay: CdsInternalOverlay;
+
+    beforeEach(async () => {
+      overlayElement = await createTestElement(
+        html`<cds-internal-overlay id="rootOverlay"
+          >Placeholder<cds-internal-overlay id="secondOverlay">Ohai</cds-internal-overlay
+          ><cds-internal-overlay id="thirdOverlay">Kthxbye</cds-internal-overlay></cds-internal-overlay
+        >`
+      );
+      overlay = overlayElement.querySelector<CdsInternalOverlay>('#thirdOverlay');
+    });
+
+    afterEach(() => {
+      removeTestElement(overlayElement);
+    });
+
+    it('identifies top-most overlay', async () => {
+      const fttIds = FocusTrapTracker.getTrapIds();
+      await componentIsStable(overlay);
+
+      expect(overlayIsActive(fttIds.pop())).toBe(true, 'the top overly is not active');
+      fttIds.forEach(item => expect(overlayIsActive(item)).toBe(false, 'a hidden overlay is active'));
     });
   });
 });
@@ -213,15 +240,6 @@ describe('Nested overlays: ', () => {
       await componentIsStable(secondOverlay);
 
       thirdBackdrop.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
-    });
-  });
-
-  describe('overlayIsActive - ', () => {
-    it('identifies top-most overlay', async () => {
-      await componentIsStable(thirdOverlay);
-      expect(firstOverlay.overlayIsActive).toBe(false, 'root is NOT the top-most overlay');
-      expect(secondOverlay.overlayIsActive).toBe(false, 'second is NOT the top-most overlay');
-      expect(thirdOverlay.overlayIsActive).toBe(true, 'third is the top-most overlay');
     });
   });
 

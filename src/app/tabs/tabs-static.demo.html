@@ -1,0 +1,120 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<p>
+  You cannot switch between tabs in this static demo because it does not contain the JavaScript to handle this behavior.
+  The demo is here to show the look of tabs and the DOM structure.
+</p>
+
+<div class="clr-example">
+  <h3>Static tabs</h3>
+  <div class="demo">
+    <ul class="nav" role="tablist">
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link active" aria-controls="panelDashboard" aria-selected="true" type="button">
+          Dashboard
+        </button>
+      </li>
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link" aria-controls="panelManagement" aria-selected="false" type="button">
+          Management
+        </button>
+      </li>
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link" aria-controls="panelCloud" aria-selected="false" type="button">
+          Cloud
+        </button>
+      </li>
+      <div class="tabs-overflow open bottom-right">
+        <li class="nav-item">
+          <button class="btn btn-link nav-link dropdown-toggle">
+            <cds-icon shape="ellipsis-horizontal" status="info" title="More"></cds-icon>
+          </button>
+        </li>
+        <div class="dropdown-menu">
+          <button class="btn" role="tab" aria-controls="panelInfrastructure">Infrastructure</button>
+          <button class="btn" role="tab" aria-controls="panelSettings">Settings</button>
+        </div>
+      </div>
+    </ul>
+    <section role="tabpanel" aria-labelledby="tabDashboard">
+      <p>Content for Dashboard</p>
+    </section>
+    <section role="tabpanel" aria-labelledby="tabManagement" aria-hidden="true">
+      <p>Content for Management</p>
+    </section>
+    <section role="tabpanel" aria-labelledby="tabCloud" aria-hidden="true">
+      <p>Content for Cloud</p>
+    </section>
+    <section role="tabpanel" aria-labelledby="tabInfrastructure" aria-hidden="true">
+      <p>Content for Infrastructure</p>
+    </section>
+    <section role="tabpanel" aria-labelledby="tabSettings" aria-hidden="true">
+      <p>Content for Settings</p>
+    </section>
+  </div>
+
+  <h3>Vertical tabs</h3>
+  <div class="demo tabs-vertical">
+    <ul class="nav" role="tablist">
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link active" aria-controls="panelDashboard" aria-selected="true" type="button">
+          Dashboard
+        </button>
+      </li>
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link" aria-controls="panelManagement" aria-selected="false" type="button">
+          Management
+        </button>
+      </li>
+      <li role="tab" class="nav-item">
+        <button class="btn btn-link nav-link" aria-controls="panelCloud" aria-selected="false" type="button">
+          Cloud
+        </button>
+      </li>
+    </ul>
+    <section role="tabpanel" aria-labelledby="tabDashboard">
+      <div class="demo">
+        <ul class="nav" role="tablist">
+          <li role="tab" class="nav-item">
+            <button
+              class="btn btn-link nav-link active"
+              aria-controls="panelDashboard"
+              aria-selected="true"
+              type="button"
+            >
+              Nested
+            </button>
+          </li>
+          <li role="tab" class="nav-item">
+            <button class="btn btn-link nav-link" aria-controls="panelManagement" aria-selected="false" type="button">
+              Tabs
+            </button>
+          </li>
+          <li role="tab" class="nav-item">
+            <button class="btn btn-link nav-link" aria-controls="panelCloud" aria-selected="false" type="button">
+              Example
+            </button>
+          </li>
+        </ul>
+        <section role="tabpanel" aria-labelledby="tabDashboard">
+          <p>Content for Nested Tabs</p>
+        </section>
+      </div>
+    </section>
+    <section role="tabpanel" aria-labelledby="tabManagement" aria-hidden="true">
+      Content for Management
+    </section>
+    <section role="tabpanel" aria-labelledby="tabCloud" aria-hidden="true">
+      Content for Cloud
+    </section>
+    <section role="tabpanel" aria-labelledby="tabInfrastructure" aria-hidden="true">
+      Content for Infrastructure
+    </section>
+    <section role="tabpanel" aria-labelledby="tabSettings" aria-hidden="true">
+      Content for Settings
+    </section>
+  </div>
+</div>

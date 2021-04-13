@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Generic Container</h2>
+
+<h3>Template Driven</h3>
+
+<form clrForm #form="ngForm" (submit)="submit()">
+  <input clrControl placeholder="Basic text" name="basic" [(ngModel)]="model.basic" />
+
+  <clr-control-container>
+    <input clrControl placeholder="Basic text" name="basic" [(ngModel)]="model.container" />
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Required</label>
+    <input
+      clrControl
+      placeholder="Input control"
+      name="required"
+      [(ngModel)]="model.required"
+      pattern="asdfasdf"
+      required
+      minlength="5"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+    <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+  </clr-control-container>
+
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+
+<h3>Reactive</h3>
+
+<form clrForm [formGroup]="reactiveModel" (submit)="submit()">
+  <input clrControl placeholder="Basic text" formControlName="basic" />
+
+  <clr-control-container>
+    <input clrControl placeholder="Basic text" formControlName="container" />
+  </clr-control-container>
+
+  <clr-control-container>
+    <label>Required</label>
+    <input clrControl placeholder="Input control" formControlName="required" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+    <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+  </clr-control-container>
+
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+</form>

@@ -1,0 +1,117 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Disabled</h2>
+
+<button class="btn" (click)="disabled = !disabled">Toggle disabled state</button>
+
+<ng-template #fields>
+  <form clrForm>
+    <clr-input-container>
+      <label>Required</label>
+      <input clrInput [disabled]="disabled" name="input" [(ngModel)]="data.input" placeholder="Input control" />
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-input-container>
+
+    <clr-textarea-container>
+      <label>Textarea</label>
+      <textarea clrTextarea [disabled]="disabled" name="textarea" [(ngModel)]="data.textarea"></textarea>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-textarea-container>
+
+    <clr-password-container>
+      <label>Password</label>
+      <input
+        clrPassword
+        [disabled]="disabled"
+        name="password"
+        [(ngModel)]="data.password"
+        placeholder="Password please!"
+      />
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-password-container>
+
+    <clr-radio-container>
+      <label>Radio</label>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio value="option1" [disabled]="disabled" name="radio" [(ngModel)]="data.radio" />
+        <label>Option 1</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio value="option2" [disabled]="disabled" name="radio" [(ngModel)]="data.radio" />
+        <label>Option 2</label>
+      </clr-radio-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-radio-container>
+
+    <clr-checkbox-container>
+      <label>Checkbox</label>
+      <clr-checkbox-wrapper>
+        <input
+          type="checkbox"
+          clrCheckbox
+          value="option1"
+          [disabled]="disabled"
+          name="checkbox"
+          [(ngModel)]="data.checkbox"
+        />
+        <label>Option 1</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input
+          type="checkbox"
+          clrCheckbox
+          value="option2"
+          [disabled]="disabled"
+          name="checkbox"
+          [(ngModel)]="data.checkbox"
+        />
+        <label>Option 2</label>
+      </clr-checkbox-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-checkbox-container>
+
+    <clr-select-container>
+      <label>Select</label>
+      <select clrSelect [disabled]="disabled" name="select" [(ngModel)]="data.select">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-select-container>
+
+    <clr-range-container [clrRangeHasProgress]="true">
+      <label>Range</label>
+      <input type="range" clrRange [disabled]="disabled" name="range" [(ngModel)]="data.range" />
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-range-container>
+
+    <clr-datalist-container>
+      <label>Datalist</label>
+      <input clrDatalistInput [disabled]="disabled" name="datalist" [(ngModel)]="data.datalist" />
+      <datalist>
+        <option *ngFor="let item of items" [value]="item"></option>
+      </datalist>
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-datalist-container>
+  </form>
+</ng-template>
+
+<h3>Vertical</h3>
+<form clrForm #inputSuccessVertical clrLayout="vertical">
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>
+
+<h3>Horizontal</h3>
+<form clrForm #inputSuccessHorizontal clrLayout="horizontal">
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>
+
+<h3>Compact</h3>
+<form clrForm #inputSuccessCompact clrLayout="compact">
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>

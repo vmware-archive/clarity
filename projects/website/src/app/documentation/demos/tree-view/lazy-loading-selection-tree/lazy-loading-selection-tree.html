@@ -1,0 +1,16 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<clr-tree [clrLazy]="true">
+  <clr-tree-node *ngFor="let group of groceries$ | async" [(clrSelected)]="group.selected">
+    {{group.name}}
+    <ng-template clrIfExpanded>
+      <my-grocery-items [group]="group"></my-grocery-items>
+    </ng-template>
+  </clr-tree-node>
+</clr-tree>
+
+<clr-code-snippet [clrCode]="exampleHtml" clrLanguage="html"></clr-code-snippet>
+<clr-code-snippet [clrCode]="exampleTs" clrLanguage="typescript"></clr-code-snippet>

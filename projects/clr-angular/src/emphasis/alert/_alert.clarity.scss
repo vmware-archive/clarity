@@ -1,0 +1,544 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.alert';
+
+@mixin generateAlertType($alertType: 'info') {
+  @include css-var(
+    background,
+    getAlertColor($alertType, bg-color, 'css-var'),
+    getAlertColor($alertType, bg-color),
+    $clr-use-custom-properties
+  );
+  @include css-var(
+    color,
+    getAlertColor($alertType, color, 'css-var'),
+    getAlertColor($alertType, color),
+    $clr-use-custom-properties
+  );
+
+  $border-prop: getAlertColor($alertType, border-color);
+
+  @if $border-prop != 'none' {
+    border: $clr-alert-borderwidth solid;
+    @include css-var(
+      border-color,
+      getAlertColor($alertType, border-color, 'css-var'),
+      $border-prop,
+      $clr-use-custom-properties
+    );
+  } @else {
+    border: none;
+  }
+
+  .alert-icon {
+    @include css-var(
+      color,
+      getAlertColor($alertType, icon, 'css-var'),
+      getAlertColor($alertType, icon),
+      $clr-use-custom-properties
+    );
+  }
+
+  $myActionCssVar: getAlertColor($alertType, action, 'css-var');
+  $myActionSassVar: getAlertColor($alertType, action);
+  $myActionActiveCssVar: getAlertColor($alertType, action-active, 'css-var');
+  $myActionActiveSassVar: getAlertColor($alertType, action-active);
+
+  .alert-actions .dropdown .dropdown-toggle {
+    @include css-var(color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
+    @include css-var(border-color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
+  }
+
+  .alert-action,
+  .dropdown-toggle {
+    @include css-var(color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
+
+    &.btn {
+      @include css-var(border-color, $myActionCssVar, $myActionSassVar, $clr-use-custom-properties);
+
+      &:focus,
+      &:hover,
+      &:active {
+        @include css-var(border-color, $myActionActiveCssVar, $myActionActiveSassVar, $clr-use-custom-properties);
+      }
+
+      &:active {
+        // OldEdge + IE
+        box-shadow: 0 $clr_baselineRem_1px 0 0 $myActionActiveSassVar inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0
+            $clr_baselineRem_1px
+            0
+            0
+            var(css-variablize-string($myActionActiveCssVar), $myActionActiveSassVar)
+            inset;
+        }
+      }
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      @include css-var(color, $myActionActiveCssVar, $myActionActiveSassVar, $clr-use-custom-properties);
+      color: getAlertColor($alertType, action-active);
+    }
+  }
+
+  .close {
+    $myCloseIconSassVar: getAlertColor($alertType, close-icon);
+    $myCloseIconCssVar: getAlertColor($alertType, close-icon, 'css-var');
+
+    @include css-var(color, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
+    @include css-var(
+      opacity,
+      getAlertColor($alertType, close-icon-opacity, 'css-var'),
+      getAlertColor($alertType, close-icon-opacity),
+      $clr-use-custom-properties
+    );
+
+    cds-icon,
+    clr-icon {
+      @include css-var(fill, $myCloseIconCssVar, $myCloseIconSassVar, $clr-use-custom-properties);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      @include css-var(
+        color,
+        getAlertColor($alertType, close-icon-hover, 'css-var'),
+        getAlertColor($alertType, close-icon-hover),
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        opacity,
+        getAlertColor($alertType, close-icon-hover-opacity, 'css-var'),
+        getAlertColor($alertType, close-icon-hover-opacity),
+        $clr-use-custom-properties
+      );
+    }
+  }
+}
+
+@include exports('alert.clarity') {
+  $alertIconWidth: $clr_baselineRem_1 + $clr_baselineRem_1px;
+
+  .alert-icon {
+    $alert-icon-dim: $clr_baselineRem_1;
+    @include equilateral($alert-icon-dim);
+    margin-left: -1 * $clr_baselineRem_0_125;
+    margin-top: -1 * $clr_baselineRem_4px;
+  }
+
+  .alert-icon-wrapper {
+    flex: 0 0 $alertIconWidth;
+    align-self: start;
+    padding-top: $clr_baselineRem_1px;
+    height: $clr_baselineRem_0_75;
+  }
+
+  .alert-item {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: $clr-alert-item-min-height;
+    margin-bottom: $clr_baselineRem_0_25;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .alert-items {
+    $vertPadding: $clr_baselineRem_10px;
+    $horizPadding: $clr_baselineRem_0_5 - $clr-alert-borderwidth;
+    flex: 1 1 auto;
+    flex-flow: column nowrap;
+    padding: $vertPadding $horizPadding;
+    display: flex;
+  }
+
+  //display: inline-block and max-width were specifically added for IE 10.
+  //Flexbox content wouldn't wrap otherwise :(. 98% was just an estimate to distance the text from the
+  //close alert button.
+  .alert-item > span,
+  .alert-text {
+    display: inline-block; //needed for IE11
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 98%; //needed for IE11
+    max-width: 98%; //needed for IE11
+    margin-right: $clr_baselineRem_0_5;
+    text-align: left;
+  }
+
+  .alert {
+    font-size: $clr-alert-font-size;
+    letter-spacing: $clr-alert-letter-spacing;
+
+    line-height: $clr_baselineRem_0_75;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    @include css-var(border-radius, clr-alert-borderradius, $clr-alert-borderradius, $clr-use-custom-properties);
+    margin-top: $clr-alert-top-margin;
+
+    @include generateAlertType(info);
+
+    &.alert-info {
+      @include generateAlertType(info);
+    }
+
+    &.alert-success {
+      @include generateAlertType(success);
+    }
+
+    &.alert-warning {
+      @include generateAlertType(warning);
+    }
+
+    &.alert-danger {
+      @include generateAlertType(danger);
+    }
+
+    .alert-item {
+      .clr-icon {
+        @include equilateral($clr-alert-icon-dimension-sm);
+        margin-right: $clr-icon-margin-right;
+      }
+
+      .clr-icon + .alert-text {
+        padding-left: 0;
+
+        &::before {
+          content: none;
+        }
+      }
+    }
+
+    .alert-actions {
+      flex: 0 0 auto;
+      white-space: nowrap;
+
+      .dropdown:last-child {
+        // used to align far-right dropdown inside an alert
+        margin-right: -1 * $clr_baselineRem_2px;
+      }
+
+      .dropdown-item {
+        @include css-var(color, clr-dropdown-text-color, $clr-dropdown-text-color, $clr-use-custom-properties);
+        font-size: $clr-dropdown-font-size;
+        line-height: $clr-dropdown-line-height;
+        letter-spacing: $clr-dropdown-letter-spacing;
+      }
+    }
+
+    .alert-action:not(:last-child) {
+      margin-right: $clr_baselineRem_0_5;
+    }
+
+    .alert-action,
+    .dropdown-toggle {
+      text-decoration: underline;
+    }
+
+    .alert-action {
+      button.dropdown-toggle:not(.btn) {
+        background: transparent;
+        cursor: pointer;
+        @include css-var(color, clr-dropdown-text-color, $clr-dropdown-text-color, $clr-use-custom-properties);
+      }
+    }
+    .dropdown-toggle:not(.btn) {
+      display: inline-block;
+      background: transparent;
+      border: none;
+    }
+
+    .close {
+      $closeBtnNudge: $clr_baselineRem_4px;
+      width: $clr_baselineRem_1;
+      display: block;
+      height: $clr_baselineRem_1_5;
+      flex: 0 0 ($clr_baselineRem_1 + $closeBtnNudge);
+      order: 100;
+      padding-right: $closeBtnNudge;
+
+      cds-icon,
+      clr-icon {
+        $alert-close-icon-dims: $clr_baselineRem_1 - $clr-alert-borderwidth;
+        margin-top: -1 * $clr_baselineRem_0_125;
+        @include equilateral($alert-close-icon-dims);
+      }
+    }
+
+    .close ~ .alert-item > .alert-actions {
+      padding-right: $clr_baselineRem_0_5;
+
+      & > .alert-action:last-child {
+        margin-right: $clr_baselineRem_0_5;
+      }
+    }
+  }
+
+  .alert-app-level {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+
+    @include generateAlertType(app-info);
+
+    &.alert-info {
+      @include generateAlertType(app-info);
+    }
+
+    &.alert-danger {
+      @include generateAlertType(app-danger);
+    }
+
+    &.alert-warning {
+      @include generateAlertType(app-warning);
+    }
+
+    &.alert-success {
+      @include generateAlertType(app-success);
+    }
+
+    .alert-items {
+      // line-height of 24px on .alert-item inside app-level-alert
+      // blows out the sizing, so we need vert-padding to be 6px, not 8px
+      $appLevelAlertVertPadding: $clr_baselineRem_0_25;
+      padding-top: $appLevelAlertVertPadding;
+      padding-bottom: $appLevelAlertVertPadding;
+    }
+
+    .alert-item {
+      justify-content: center;
+      align-items: center;
+      min-height: $clr_baselineRem_1;
+
+      .btn {
+        @extend .btn-inverse;
+        @extend .btn-sm;
+        margin: 0;
+      }
+    }
+
+    .alert-item > span,
+    .alert-text {
+      flex: 0 1 100%; // IE11 needs 100% here.
+    }
+
+    .alert-icon-wrapper {
+      margin-top: $clr_baselineRem_0_125;
+    }
+
+    .close {
+      height: $clr_baselineRem_1_5;
+      overflow: hidden;
+
+      cds-icon,
+      clr-icon {
+        margin-top: -1 * $clr_baselineRem_5px;
+      }
+    }
+
+    .alert-action,
+    .dropdown-toggle {
+      text-decoration: none;
+    }
+  }
+
+  .alert-sm {
+    $alertSmallLineHeight: $clr_baselineRem_0_667;
+    $alertSmallNudge: $clr_baselineRem_4px;
+
+    // need to use 11 instead of 12 here or else vertical alignment is thrown off
+    // by a pixel due to improper browser rounding; browsers aren't rendering on the
+    // sub-pixel required but rounding up to the nearest whole pixel...
+    font-size: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
+    letter-spacing: normal;
+    line-height: $alertSmallLineHeight;
+
+    .alert-items {
+      padding: ($alertSmallNudge - $clr-alert-borderwidth) ($clr_baselineRem_0_25 - $clr-alert-borderwidth);
+    }
+
+    .alert-item {
+      padding-top: $clr_baselineRem_1px;
+      margin-bottom: $alertSmallNudge;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .alert-icon-wrapper {
+      padding-top: 0;
+      height: $alertSmallLineHeight;
+    }
+
+    .alert-icon {
+      margin-left: -1 * $alertSmallNudge;
+      margin-top: -1 * $alertSmallNudge;
+    }
+
+    .alert-item > span,
+    .alert-text {
+      margin-right: $clr_baselineRem_0_25;
+    }
+
+    .close {
+      padding-right: 0;
+      flex: 0 0 $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
+      line-height: $clr_baselineRem_1;
+
+      cds-icon,
+      clr-icon {
+        $smallAlertCloseIconDims: $clr_baselineRem_0_83;
+        margin-top: -1 * ($alertSmallNudge + $clr_baselineRem_1px);
+        margin-right: -1 * $clr_baselineRem_1px;
+        @include equilateral($smallAlertCloseIconDims);
+        line-height: $smallAlertCloseIconDims + $clr_baselineRem_1px;
+      }
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
+    .alert {
+      .alert-item {
+        flex-wrap: wrap;
+      }
+
+      .alert-text {
+        margin-right: 0;
+        //90% was just an estimate to distance the text from the
+        //close alert button on medium and smaller breakpoints.
+        max-width: 90%;
+        //needed for safari
+        width: 90%;
+        flex-basis: 90%;
+      }
+
+      .alert-actions {
+        flex: 1 0 100%;
+        padding-top: $clr_baselineRem_0_125;
+        // TOCHECK: CALCULATIONS
+        padding-left: $clr-alert-icon-dimension-sm + $clr-icon-margin-right;
+      }
+    }
+
+    .alerts-pager {
+      margin-top: $clr_baselineRem_0_125;
+    }
+
+    .alert-app-level {
+      .alert-actions {
+        margin-left: $clr_baselineRem_1_875;
+      }
+    }
+  }
+
+  .alert-hidden {
+    display: none;
+  }
+
+  //alert padding/margin adjustments
+  //1.cards
+  .card {
+    .alert {
+      $clr-alert-card-horizontal-margin: 0;
+      $clr-alert-card-vertical-margin: $clr_baselineRem_0_25;
+      margin: $clr-alert-card-vertical-margin $clr-alert-card-horizontal-margin;
+    }
+  }
+
+  //2. Modal
+  .modal {
+    .alert + .modal-header {
+      margin-top: $clr_baselineRem_0_5;
+    }
+  }
+
+  //3. Multiple app level alerts
+  .alerts {
+    &.alert-info {
+      @include css-var(
+        background,
+        clr-app-alert-info-pager-bg-color,
+        $clr-color-action-800,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.alert-danger {
+      @include css-var(
+        background,
+        clr-app-alert-danger-pager-bg-color,
+        $clr-color-danger-900,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.alert-warning {
+      @include css-var(
+        background,
+        clr-app-alert-warning-pager-bg-color,
+        $clr-color-warning-900,
+        $clr-use-custom-properties
+      );
+    }
+
+    // deprecated in 3.0 to be removed in 4.0
+    &.alert-success {
+      @include css-var(background, clr-color-success-900, $clr-color-success-900, $clr-use-custom-properties);
+    }
+  }
+
+  .alerts-pager {
+    @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+    font-size: $clr-alert-font-size;
+    letter-spacing: $clr-alert-letter-spacing;
+    float: left;
+    min-height: $clr-alert-min-height;
+    text-align: center;
+    width: $clr_baselineRem_6;
+  }
+
+  .alerts-pager-button {
+    @include clr-no-styles-button();
+    @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+    cursor: pointer;
+
+    cds-icon,
+    clr-icon {
+      @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+    }
+  }
+
+  .alerts-pager-control {
+    display: flex;
+    margin-top: $clr-alert-top-margin;
+    white-space: nowrap;
+  }
+
+  $clr-alerts-pager-item-width: 33.33%;
+  .alerts-page-down {
+    margin-left: $clr-baselineRem_1;
+    width: $clr-alerts-pager-item-width;
+  }
+
+  .alerts-page-up {
+    margin-right: $clr_baselineRem_1;
+    width: $clr-alerts-pager-item-width;
+  }
+  .alerts-pager-text {
+    width: $clr-alerts-pager-item-width;
+  }
+}

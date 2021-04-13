@@ -1,0 +1,53 @@
+<ng-container *ngIf="panel | async; let panel">
+  <div *ngIf="panel.status !== AccordionStatus.Inactive" aria-live="assertive" class="clr-sr-only">
+    <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.keys.danger}}</ng-container>
+  </div>
+
+  <div role="group" [ngClass]="getPanelStateClasses(panel)">
+    <div class="clr-accordion-header">
+      <button
+        type="button"
+        class="clr-accordion-header-button"
+        (click)="togglePanel()"
+        [id]="getAccordionHeaderId(panel.templateId)"
+        [disabled]="isAccordion && panel.disabled"
+        [attr.aria-disabled]="!isAccordion && panel.disabled"
+        [attr.aria-controls]="getAccordionContentId(panel.templateId)"
+        [attr.aria-expanded]="panel.open"
+        [class.clr-accordion-header-has-description]="(accordionDescription.changes | async)?.length || accordionDescription.length"
+        #headerButton
+      >
+        <span class="clr-sr-only">
+          <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.keys.danger}}</ng-container>
+          <ng-container *ngIf="panel.status === AccordionStatus.Complete">{{commonStrings.keys.success}}</ng-container>
+        </span>
+        <span class="clr-accordion-status">
+          <cds-icon shape="angle" direction="right" class="clr-accordion-angle"></cds-icon>
+          <span class="clr-accordion-number"></span>
+          <cds-icon status="danger" shape="exclamation-circle" class="clr-accordion-error-icon"></cds-icon>
+          <cds-icon status="success" shape="check-circle" class="clr-accordion-complete-icon"></cds-icon>
+        </span>
+        <ng-content select="clr-accordion-title, clr-step-title"></ng-content>
+        <ng-content select="clr-accordion-description, clr-step-description"></ng-content>
+      </button>
+    </div>
+    <div
+      @skipInitialRender
+      role="region"
+      [id]="getAccordionContentId(panel.templateId)"
+      [attr.aria-hidden]="!panel.open"
+      [attr.aria-labelledby]="getAccordionHeaderId(panel.templateId)"
+    >
+      <div
+        *ngIf="panel.open"
+        @toggle
+        (@toggle.done)="collapsePanelOnAnimationDone(panel)"
+        class="clr-accordion-content"
+      >
+        <div class="clr-accordion-inner-content">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

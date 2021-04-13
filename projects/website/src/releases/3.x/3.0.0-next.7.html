@@ -1,0 +1,92 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Breaking Changes</h2>
+<ul class="list">
+  <li breaking-change>
+    <h6>
+      Deprecating dir attr in core icons (<a href="https://github.com/vmware/clarity/pull/4194" target="_blank">#4194</a
+      >)
+    </h6>
+    <p>
+      We are replacing <code class="clr-code">dir</code> attribute with <code class="clr-code">direction</code> as we
+      have found that using <code class="clr-code">dir</code> as an attribute confuses ltr localization.
+    </p>
+  </li>
+</ul>
+
+<h2>Highlights</h2>
+<ul class="list">
+  <li new-component>
+    <h6>Volume 17 Icons</h6>
+    <p>
+      Volume 17 icons include: more essential, commerce, and technology icons. (<a
+        href="https://github.com/vmware/clarity/pull/4218"
+        target="_blank"
+        >#4218</a
+      >)
+    </p>
+  </li>
+  <li>
+    <h6>Button group uses smart positioning in overflow menu</h6>
+    <p>
+      This replaces the old popover implementation with the new one that has smarter positioning while retaining
+      backwards compatibility for position configuration. (<a
+        href="https://github.com/vmware/clarity/pull/4191"
+        target="_blank"
+        >#4191</a
+      >)
+    </p>
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="“list”">
+  <li bug-fix>
+    Fixed single action overflow close behavior in Datagrid (<a
+      href="https://github.com/vmware/clarity/pull/4180"
+      target="_blank"
+      >#4180</a
+    >)
+  </li>
+  <li bug-fix>
+    Added guards calling an optional date picker service in Datepicker (<a
+      href="https://github.com/vmware/clarity/pull/4224"
+      target="_blank"
+      >#4224</a
+    >)
+  </li>
+  <li bug-fix>
+    Added a11y attributes to Datagrid filter button (<a
+      href="https://github.com/vmware/clarity/pull/4197"
+      target="_blank"
+      >#4197</a
+    >)
+  </li>
+  <li bug-fix>
+    Added a11y attributes to StackView (<a href="https://github.com/vmware/clarity/pull/4142" target="_blank">#4142</a>)
+  </li>
+  <li bug-fix>
+    Added optional service in Datalist (<a href="https://github.com/vmware/clarity/pull/4198" target="_blank">#4198</a>)
+  </li>
+  <li bug-fix>
+    Fixed core support typed events with @event (<a href="https://github.com/vmware/clarity/pull/4195" target="_blank"
+      >#4195</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed auto update attr for prop decorator (<a href="https://github.com/vmware/clarity/pull/4195" target="_blank"
+      >#4195</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed wrong import path for DynamicWrapper in Datalist (<a
+      href="https://github.com/vmware/clarity/pull/4186"
+      target="_blank"
+      >#4186</a
+    >)
+  </li>
+</ul>

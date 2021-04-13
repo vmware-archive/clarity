@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-modal
+  [clrModalOpen]="_open"
+  [clrModalSize]="size"
+  [clrModalClosable]="closable"
+  [clrModalStaticBackdrop]="true"
+  [clrModalSkipAnimation]="stopModalAnimations"
+  [clrModalOverrideScrollService]="isStatic"
+  [clrModalPreventClose]="true"
+  (clrModalAlternateClose)="modalCancel()"
+>
+  <nav class="modal-nav clr-wizard-stepnav-wrapper">
+    <h1 class="clr-wizard-title"><ng-content select="clr-wizard-title"></ng-content></h1>
+    <clr-wizard-stepnav></clr-wizard-stepnav>
+  </nav>
+
+  <h2 class="modal-title">
+    <span tabindex="-1" #wizardTitle class="modal-title-text">
+      <ng-template [ngTemplateOutlet]="navService.currentPageTitle"></ng-template>
+    </span>
+
+    <div class="modal-header-actions-wrapper" *ngIf="headerActionService.displayHeaderActionsWrapper">
+      <div *ngIf="headerActionService.showWizardHeaderActions">
+        <ng-content select="clr-wizard-header-action"></ng-content>
+      </div>
+      <div *ngIf="headerActionService.currentPageHasHeaderActions">
+        <ng-template [ngTemplateOutlet]="navService.currentPage.headerActions"></ng-template>
+      </div>
+    </div>
+  </h2>
+
+  <div class="modal-body">
+    <main clr-wizard-pages-wrapper class="clr-wizard-content">
+      <ng-content></ng-content>
+    </main>
+  </div>
+  <div class="modal-footer clr-wizard-footer">
+    <div class="clr-wizard-footer-buttons">
+      <div
+        *ngIf="navService.currentPage && !navService.currentPage.hasButtons"
+        class="clr-wizard-footer-buttons-wrapper"
+      >
+        <ng-content select="clr-wizard-button"></ng-content>
+      </div>
+      <div
+        *ngIf="navService.currentPage && navService.currentPage.hasButtons"
+        class="clr-wizard-footer-buttons-wrapper"
+      >
+        <ng-template [ngTemplateOutlet]="navService.currentPage.buttons"></ng-template>
+      </div>
+    </div>
+  </div>
+</clr-modal>

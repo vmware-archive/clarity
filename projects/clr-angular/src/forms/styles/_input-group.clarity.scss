@@ -1,0 +1,86 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.input-group') {
+  .clr-input-group {
+    @include form-fields-appearance();
+    @include input-border-bottom-animation();
+    max-width: 100%;
+    height: $clr_baselineRem_1;
+
+    &.clr-focus {
+      width: auto;
+    }
+
+    .clr-input {
+      background: none;
+      border: none;
+      margin-right: 0;
+      max-width: 100%;
+
+      &:not([readonly]):focus {
+        background-size: 0%;
+        border: 0;
+      }
+    }
+
+    /* handle case when select is used without clr-select-wrapper */
+    select {
+      border: none;
+    }
+
+    .clr-select-wrapper select,
+    .clr-multiselect-wrapper select {
+      border: none;
+    }
+
+    .clr-input-group-addon {
+      @include css-var(color, clr-forms-subtext-color, $clr-forms-subtext-color, $clr-use-custom-properties);
+
+      &:first-child {
+        padding: 0 0 0 ($clr-forms-baseline * 1.5);
+      }
+
+      &:last-child {
+        padding: 0 ($clr-forms-baseline * 1.5) 0 0;
+      }
+    }
+
+    .clr-input-group-icon-action {
+      @include clr-no-styles-button();
+      @include css-var(color, clr-forms-focused-color, $clr-forms-focused-color, $clr-use-custom-properties);
+      padding: 0 $clr-forms-baseline * 1.5;
+
+      cds-icon,
+      clr-icon {
+        @include equilateral($clr_baselineRem_0_75);
+        transform: translate(-1 * $clr_baselineRem_1px, -1 * $clr_baselineRem_1px);
+      }
+    }
+  }
+
+  .clr-form-control-disabled .clr-input-group-icon-action {
+    @include css-var(color, clr-forms-text-disabled-color, $clr-forms-text-disabled-color, $clr-use-custom-properties);
+    cursor: not-allowed;
+  }
+
+  .clr-error .clr-input-group {
+    @include css-var(
+      border-bottom-color,
+      clr-forms-invalid-color,
+      $clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+    @include input-border-bottom-animation(
+      $clr-forms-invalid-color,
+      clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+  }
+
+  .clr-form-horizontal .clr-input-group {
+    max-width: 100%;
+    padding-right: 0;
+  }
+}

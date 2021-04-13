@@ -1,0 +1,73 @@
+<!--
+    ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+    ~ This software is released under MIT license.
+    ~ The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<div class="clr-row">
+  <div class="clr-col-8">
+    <section class="glyph-rulers">
+      <div class="line-height-container"><span class="line-height-measurement">1.000</span></div>
+      <div class="rulers">
+        <div class="top-gap ruler" [style.height]="topGapHeight"></div>
+        <div class="ascender ruler" [style.height]="ascenderHeight"></div>
+        <div class="x-height ruler" [style.height]="xHeightHeight"></div>
+        <div class="descender ruler"></div>
+      </div>
+      <div class="font-glyph" [style.font-family]="model.value.font" [style.font-weight]="model.value.fontWeight">
+        {{model.value.demoLetter}}
+      </div>
+    </section>
+    <div class="descender-overage ruler" [style.height]="descenderOverageHeight"></div>
+  </div>
+  <div class="clr-col">
+    <section class="glyph-editor">
+      <clr-typography-font-switcher
+        [fontName]="fontField"
+        (switchFontPreset)="loadPreset($event)"
+      ></clr-typography-font-switcher>
+
+      <form clrForm (submit)="noop()" [formGroup]="model" clrLayout="vertical">
+        <clr-input-container>
+          <label>Font</label>
+          <input clrInput name="font" formControlName="font" (change)="checkForPreset($event)" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Demo Letter</label>
+          <input clrInput name="demo-letter" formControlName="demoLetter" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Top Gap Height</label>
+          <input clrInput name="top-gap" formControlName="topGap" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Ascender Height</label>
+          <input clrInput name="ascender" formControlName="ascender" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>X-Height</label>
+          <input clrInput name="x-height" formControlName="xHeight" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Descender Height</label>
+          <input clrInput name="descender" readonly [value]="descenderValue" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Descender Overage</label>
+          <input clrInput name="descender-overage" formControlName="descenderOverage" />
+        </clr-input-container>
+
+        <clr-input-container>
+          <label>Font Weight</label>
+          <input clrInput name="font-weight" formControlName="fontWeight" />
+        </clr-input-container>
+      </form>
+    </section>
+  </div>
+</div>

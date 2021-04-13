@@ -1,0 +1,65 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h3>Timeline component <code class="clr-code">&lt;clr-timeline&gt;</code></h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="left">Input/Output</th>
+      <th class="left hidden-xs-down">Values</th>
+      <th class="left hidden-xs-down">Default</th>
+      <th class="left">Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prop of props">
+      <td class="left">
+        <b>{{ prop.name }}</b>
+      </td>
+      <td class="left hidden-xs-down">{{ prop.values }}</td>
+      <td class="left hidden-xs-down">{{ prop.defaultValue }}</td>
+      <td class="left">{{ prop.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>TimelineStep component <code class="clr-code">&lt;clr-timeline-step&gt;</code></h3>
+
+<p>
+  The icon shown in the step is controlled by the <code class="clr-code">[clrState]</code> input. This input receives a
+  <code class="clr-code">ClrTimelineStepState</code> enum values, which can be
+  <code class="clr-code">NOT_STARTED</code>, <code class="clr-code">CURRENT</code>,
+  <code class="clr-code">SUCCESS</code>, <code class="clr-code">ERROR</code> or
+  <code class="clr-code">PROCESSING</code>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="left">Input/Output</th>
+      <th class="left hidden-xs-down">Values</th>
+      <th class="left hidden-xs-down">Default</th>
+      <th class="left">Effect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prop of stepProps">
+      <td class="left">
+        <b>{{ prop.name }}</b>
+      </td>
+      <td class="left hidden-xs-down">{{ prop.values }}</td>
+      <td class="left hidden-xs-down">{{ prop.defaultValue }}</td>
+      <td class="left">{{ prop.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>TimelineStepHeader component <code class="clr-code">&lt;clr-timeline-step-header&gt;</code></h3>
+
+<h3>TimelineStepTitle component <code class="clr-code">&lt;clr-timeline-step-title&gt;</code></h3>
+
+<h3>TimelineStepDescription component <code class="clr-code">&lt;clr-timeline-step-description&gt;</code></h3>

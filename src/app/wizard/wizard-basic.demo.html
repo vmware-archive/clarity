@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open">
+  <clr-wizard-title>Wizard Title</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 1</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 1</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-1">Content for step 1</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit
+      amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum
+      magna. Phasellus tristique posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed
+      venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse
+      fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam
+      et orci hendrerit, consequat purus non, imperdiet ipsum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa sit
+      amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum
+      magna. Phasellus tristique posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices elit, sed
+      venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse
+      fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget venenatis erat est vitae libero. Aliquam
+      et orci hendrerit, consequat purus non, imperdiet ipsum.
+    </p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 2</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 2</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-2">Content for step 2</p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Title for page 3</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Step 3</ng-template>
+    <!-- optional -->
+    <p class="content-for-page-3">Content for step 3</p>
+  </clr-wizard-page>
+</clr-wizard>

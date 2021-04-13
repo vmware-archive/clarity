@@ -1,0 +1,22 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('card.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ../layout/_card.clarity.scss
+      --clr-card-bg-color: var(--clr-color-neutral-0);
+      --clr-card-divider-color: var(--clr-color-neutral-300);
+      --clr-card-title-color: var(--clr-h4-color);
+      --clr-card-title-font-weight: var(--clr-h4-font-weight);
+
+      --clr-card-border-width: var(--clr-global-borderwidth);
+      --clr-card-border-radius: var(--clr-global-borderradius);
+      --clr-card-border-color: var(--clr-color-neutral-300);
+      --clr-card-box-shadow-color: var(--clr-card-border-color);
+      --clr-card-clickable-border-color: var(--clr-color-action-500);
+      --clr-card-clickable-box-shadow-color: var(--clr-card-clickable-border-color);
+    }
+  }
+}

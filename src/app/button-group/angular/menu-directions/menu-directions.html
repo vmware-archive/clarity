@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Setting Menu Position using Angular</h4>
+
+<div class="clr-example space-below">
+  <h6>Position: {{menuPosition}}</h6>
+  <clr-button-group [clrMenuPosition]="menuPosition">
+    <clr-button class="btn">1</clr-button>
+    <clr-button class="btn">2</clr-button>
+    <clr-button class="btn">3</clr-button>
+    <clr-button class="btn">4</clr-button>
+    <clr-button class="btn">5</clr-button>
+    <clr-button class="btn" [clrInMenu]="true">6</clr-button>
+  </clr-button-group>
+  <div>
+    <button class="btn" (click)="flipDirection()">Flip Direction</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<p>
+  <button class="btn btn-primary" (click)="selectedSize = modalSize.small; open = true">Small modal</button>
+  <button class="btn btn-primary" (click)="selectedSize = modalSize.medium; open = true">Medium modal</button>
+  <button class="btn btn-primary" (click)="selectedSize = modalSize.large; open = true">Large modal</button>
+  <button class="btn btn-primary" (click)="selectedSize = modalSize.extraLarge; open = true">Extra large modal</button>
+</p>
+
+<clr-modal [(clrModalOpen)]="open" [clrModalSize]="selectedSize">
+  <h3 class="modal-title">Modal</h3>
+  <div class="modal-body">I am a {{selectedSize}} modal.</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="open = false">Ok</button>
+  </div>
+</clr-modal>

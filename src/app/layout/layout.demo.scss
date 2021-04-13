@@ -1,0 +1,26 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables';
+@import '../_utils/clarity-variables';
+
+.clr-example {
+  .example-aside-section {
+    width: 20%;
+    padding: $clr_baselineRem_1;
+    border: $clr-global-borderwidth solid;
+
+    @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+      display: none;
+    }
+  }
+
+  .example-footer {
+    $example-footer-height: $clr_baselineRem_2_5;
+    height: $example-footer-height;
+    line-height: $example-footer-height;
+    padding: 0 $clr_baselineRem_1;
+    border: $clr-global-borderwidth solid;
+  }
+}

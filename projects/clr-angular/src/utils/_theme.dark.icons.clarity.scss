@@ -1,0 +1,55 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+/**
+ * TODO: Remove after v7 is released
+ *
+ * This one is left for backwards compatibility
+ */
+clr-icon {
+  &.is-green,
+  &.is-success {
+    fill: $clr-icon-color-success;
+  }
+  &.is-red,
+  &.is-danger,
+  &.is-error {
+    fill: $clr-icon-color-error;
+  }
+  &.is-warning {
+    fill: $clr-icon-color-warning;
+  }
+  &.is-blue,
+  &.is-info {
+    fill: $clr-icon-color-info;
+  }
+  &.is-white,
+  &.is-inverse {
+    fill: $clr-icon-color-inverse;
+  }
+  &.is-highlight {
+    fill: $clr-icon-color-highlight;
+  }
+}
+
+cds-icon {
+  &[status='success'] {
+    fill: $clr-icon-color-success;
+  }
+  &[status='danger'] {
+    fill: $clr-icon-color-error;
+  }
+  &[status='warning'] {
+    fill: $clr-icon-color-warning;
+  }
+  &[status='info'] {
+    fill: $clr-icon-color-info;
+  }
+  &[inverse] {
+    fill: $clr-icon-color-inverse;
+  }
+  &[status='highlight'] {
+    fill: $clr-icon-color-highlight;
+  }
+}

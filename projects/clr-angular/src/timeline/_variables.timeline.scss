@@ -1,0 +1,57 @@
+// colors
+$clr-timeline-line-color: $clr-color-neutral-500 !default; // #9a9a9a
+$clr-timeline-step-header-color: $clr-color-neutral-600 !default; // #737373
+$clr-timeline-step-title-color: $clr-color-neutral-700 !default; // #565656
+$clr-timeline-step-description-color: $clr-color-neutral-700 !default; // #565656
+
+$clr-timeline-incomplete-step-color: $clr-color-neutral-600 !default;
+$clr-timeline-current-step-color: $clr-color-action-600 !default;
+$clr-timeline-success-step-color: $clr-color-success-400 !default;
+$clr-timeline-error-step-color: $clr-color-danger-800 !default;
+
+$clr-timeline-incomplete-step-color: $clr-color-neutral-600 !default;
+$clr-timeline-current-step-color: $clr-color-action-600 !default;
+$clr-timeline-success-step-color: $clr-color-success-400 !default;
+$clr-timeline-error-step-color: $clr-color-danger-800 !default;
+
+// 1rem = 24px
+
+// overall
+$clr-timeline-icon-size: $clr_baselineRem_1_5;
+$clr-timeline-icon-inner-padding: $clr_baselineRem_2px;
+$clr-timeline-padding-width: $clr_baselineRem_0_5;
+$clr-timeline-line-thickness: $clr_baselineRem_2px;
+$clr-timeline-gutter-width: $clr_baselineRem_0_5;
+
+// timeline step (horizontal)
+$clr-timeline-step-min-width: $clr_baselineRem_7_29167;
+
+// header (timestamp)
+$clr-timeline-step-header-font-size: $clr-p2-font-size;
+$clr-timeline-step-header-line-height: $clr_baselineRem_0_75;
+$clr-timeline-step-header-padding-bottom: $clr_baselineRem_8px;
+
+// body (title)
+$clr-timeline-step-title-font-size: $clr-p2-font-size;
+$clr-timeline-step-title-font-weight: $clr-p2-font-weight;
+$clr-timeline-step-title-line-height: $clr_baselineRem_0_75;
+$clr-timeline-step-title-padding-top: $clr_baselineRem_8px;
+$clr-timeline-step-title-padding-bottom: $clr_baselineRem_0_25;
+
+// body (description)
+$clr-timeline-step-description-font-size: $clr-p7-font-size;
+$clr-timeline-step-description-line-height: $clr_baselineRem_0_667;
+$clr-timeline-step-description-button-top-margin: $clr_baselineRem_8px;
+$clr-timeline-step-description-img-top-margin: $clr_baselineRem_8px;
+
+// vertical specific
+$clr-timeline-vertical-step-header-min-width: $clr_baselineRem_2_5;
+$clr-timeline-vertical-step-header-top-padding: $clr_baselineRem_0_25;
+$clr-timeline-vertical-step-header-right-padding: $clr_baselineRem_0_5;
+
+$clr-timeline-vertical-step-body-top-padding: $clr_baselineRem_0_25;
+$clr-timeline-vertical-step-body-left-padding: $clr_baselineRem_0_5;
+
+$clr-timeline-vertical-min-width: $clr_baselineRem_13_33;
+$clr-timeline-vertical-step-min-width: $clr_baselineRem_7_33;
+$clr-timeline-vertical-gutter-width: $clr_baselineRem_1_5;

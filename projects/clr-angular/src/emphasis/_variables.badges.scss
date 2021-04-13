@@ -1,0 +1,184 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage:
+// - ./_labels.clarity.scss
+$clr-badge-font-color-light: $clr-color-neutral-0 !default;
+$clr-badge-font-color-dark: $clr-color-neutral-0 !default;
+
+$clr-badge-info-bg-color: $clr-color-action-800 !default;
+$clr-badge-info-color: $clr-color-neutral-0 !default;
+$clr-badge-success-bg-color: $clr-color-success-800 !default;
+$clr-badge-success-color: $clr-color-neutral-0 !default;
+$clr-badge-warning-bg-color: $clr-color-warning-1000 !default;
+$clr-badge-warning-color: $clr-color-neutral-0 !default;
+$clr-badge-danger-bg-color: $clr-color-danger-900 !default;
+$clr-badge-danger-color: $clr-color-neutral-0 !default;
+
+$clr-badge-gray-bg-color: $clr-color-neutral-600 !default;
+$clr-badge-gray-color: $clr-badge-font-color-light !default;
+$clr-badge-purple-bg-color: $clr-color-secondary-action-500 !default;
+$clr-badge-purple-color: $clr-badge-font-color-light !default;
+$clr-badge-blue-bg-color: $clr-color-action-800 !default;
+$clr-badge-blue-color: $clr-badge-font-color-light !default;
+$clr-badge-orange-bg-color: $clr-color-warning-1000 !default;
+$clr-badge-orange-color: $clr-badge-font-color-dark !default;
+$clr-badge-light-blue-bg-color: $clr-color-action-500 !default;
+$clr-badge-light-blue-color: $clr-badge-font-color-dark !default;
+
+@function getBadgeCssVarName($type: gray, $prop: color) {
+  @return #{'clr-badge-' + $type + '-' + $prop};
+}
+
+@function getBadgeColor($type: gray, $property: color, $var-type: 'sass-var') {
+  @if $var-type == 'css-var' {
+    @return getBadgeCssVarName($type, $property);
+  }
+
+  @if $type == gray {
+    @return lookupGrayBadgeColor($property);
+  }
+
+  @if $type == purple {
+    @return lookupPurpleBadgeColor($property);
+  }
+
+  @if $type == blue {
+    @return lookupBlueBadgeColor($property);
+  }
+
+  @if $type == orange {
+    @return lookupOrangeBadgeColor($property);
+  }
+
+  @if $type == light-blue {
+    @return lookupLightBlueBadgeColor($property);
+  }
+
+  @if $type == success {
+    @return lookupSuccessBadgeColor($property);
+  }
+
+  @if $type == warning {
+    @return lookupWarningBadgeColor($property);
+  }
+
+  @if $type == danger {
+    @return lookupDangerBadgeColor($property);
+  }
+
+  @if $type == info {
+    @return lookupInfoBadgeColor($property);
+  }
+
+  @return null;
+}
+
+@function lookupGrayBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-gray-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-gray-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupPurpleBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-purple-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-purple-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupBlueBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-blue-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-blue-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupOrangeBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-orange-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-orange-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupLightBlueBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-light-blue-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-light-blue-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupInfoBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-info-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-info-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupSuccessBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-success-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-success-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupWarningBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-warning-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-warning-bg-color;
+  }
+
+  @return null;
+}
+
+@function lookupDangerBadgeColor($property: color) {
+  @if $property == color {
+    @return $clr-badge-danger-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-badge-danger-bg-color;
+  }
+
+  @return null;
+}

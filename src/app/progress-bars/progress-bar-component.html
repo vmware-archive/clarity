@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <div class="clr-row">
+    <div class="clr-col-12">
+      <h5>Simple example with value 20 and max-limit of 100</h5>
+      <clr-progress-bar clrValue="20" clrMax="100"></clr-progress-bar>
+
+      <h5>Display clrValue</h5>
+      <clr-progress-bar clrValue="35" clrMax="100" clrLabeled></clr-progress-bar>
+
+      <h5>Custom value on the right</h5>
+      <clr-progress-bar clrValue="45" clrMax="100" clrLabeled clrDisplayval="45$"></clr-progress-bar>
+    </div>
+
+    <div class="clr-col-12">
+      <h1>Styles</h1>
+
+      <h5>Success</h5>
+      <clr-progress-bar clrValue="20" clrMax="100" clrSuccess></clr-progress-bar>
+
+      <h5>Danger</h5>
+      <clr-progress-bar clrValue="50" clrMax="100" clrDanger></clr-progress-bar>
+
+      <h1>Animations</h1>
+
+      <h5>Loop</h5>
+      <clr-progress-bar clrLoop></clr-progress-bar>
+
+      <h5>Loop & Success</h5>
+      <clr-progress-bar clrLoop clrSuccess></clr-progress-bar>
+
+      <h5>Loop & Danger</h5>
+      <clr-progress-bar clrLoop clrDanger></clr-progress-bar>
+    </div>
+
+    <div class="clr-col-12">
+      <h1>Flash & Fade Animations</h1>
+
+      <div *ngFor="let example of examples">
+        <h5>{{ example.label }}</h5>
+        <button class="btn btn-primary" (click)="toggle(example.name)">Toggle demo</button>
+        <div *ngIf="example.state">
+          <clr-progress-bar
+            [clrValue]="example.value"
+            [clrFlash]="example.setup.flash"
+            [clrFade]="example.setup.fade"
+          ></clr-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

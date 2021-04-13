@@ -1,0 +1,819 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _layers.clarity.scss here:       */
+/*================================================================================*/
+
+$clr-layers: null;
+
+/*
+    (content: 0,
+    select-box: 2,
+    dropdown-menu: 1000,
+    alert: 1033,
+    sidepanel-bg: 1038,
+    sidepanel: 1039,
+    modal-bg: 1040,
+    modal: 1050,
+    tooltips: 1070);
+*/
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _variables.clarity.scss here:    */
+/*================================================================================*/
+
+// Breakpoints
+$clr-grid-breakpoints: null; // (small: 544px, medium: 768px, large : 992px, xlarge: 1200px);
+
+// Fonts Options
+$clr-font: null; // Metropolis, 'Avenir Next', 'Helvetica Neue', Arial, sans-serif; //Default font stack for Clarity
+$clr-altFont: null; // $clr-font; //TODO: TBD. Alternative font for Clarity
+$clr-global-content-header-font-color: null; // $clr-color-neutral-1000
+$clr-global-font-color: null; // $clr-color-neutral-700
+$clr-font-base-size: null; // 14;
+$clr-font-size: null; // unquote($clr-font-base-size+'px');
+$clr-rem-denominator: null; // $clr-font-base-size;
+$clr-kerning-lotsatext: null; // normal; // 14px, but a lot of it
+$clr-kerning-smalltext: null; // normal; // 14px-12px
+$clr-kerning-bigtext: null; // 0.01em; // some types of 16px over dark background
+$clr-kerning-tinytext: null; // 0.03em; // 11px and lower
+
+$clr-font-weight-light: null; // 200
+$clr-font-weight-regular: null; // 400
+$clr-font-weight-semibold: null; // 500
+$clr-font-weight-bold: null; // 600
+$clr-font-weight-extrabold: null; // 600
+
+// Paragraphs
+$clr-typography-smalltext: null; // 13/$clr-rem-denominator*$clr-font-size;
+$clr-typography-xsmalltext: null; // 12/$clr-rem-denominator*$clr-font-size;
+$clr-typography-xxsmalltext: null; // 11/$clr-rem-denominator*$clr-font-size;
+$clr-typography-tinytext: null; // 10/$clr-rem-denominator*$clr-font-size;
+
+// Navigation
+$clr-sidenav-width: null; // 18%;
+$clr-header-height: null; // $clr-baseline*2.5;
+$clr-subnav-height: null; // $clr-baseline*1.5;
+
+//Content Area Paddings
+$clr-content-area-padding-top: null; // $clr-baseline*1;
+$clr-content-area-padding-right: null; // $clr-baseline*1;
+$clr-content-area-padding-bottom: null; // $clr-baseline*1;
+$clr-content-area-padding-left: null; // $clr-baseline*1;
+
+// Cards
+$clr-card-bg-color: null; // $clr-color-neutral-0
+$clr-card-border-color: null; // $clr-color-neutral-200
+$clr-card-box-shadow: null; // 0 $clr_baselineRem_0_125 0 0 rgba(215, 215, 215, 1)
+$clr-card-divider-color: null; // $clr-color-neutral-200
+$clr-card-text-font-size: null; // $clr-p1-font-size
+$clr-card-title-color: null; // $clr-h4-color
+$clr-card-title-font-size: null; // $clr-h4-font-size
+$clr-card-title-font-weight: null; // $clr-h4-font-weight
+
+// Modal
+$clr-modal-content-padding-top: null; // $clr-baseline*1;
+$clr-modal-content-padding-right: null; // $clr-baseline*1;
+$clr-modal-content-padding-bottom: null; // $clr-baseline*1;
+$clr-modal-content-padding-left: null; // $clr-baseline*1;
+
+//Other Colors
+$clr-links-visited-color: null; // #5659b9;
+$clr-custom-links-hover-color: null; // $clr-color-neutral-200;
+$clr-global-selection-color: null; // #D9E4EA;
+$clr-global-on-selection-color: null; // $clr-color-neutral-1000
+
+// Misc
+$clr-global-borderradius: null; // $clr_baselineRem_3px;
+$clr-global-borderwidth: null; // 1px
+
+// Buttons
+$clr-btn-vertical-margin: null; // $clr-baseline*0.25;
+$clr-btn-horizontal-margin: null; // $clr-baseline*0.5;
+
+// Icons
+$clr-icon-dimension-sm: null; // 16/$clr-rem-denominator*$clr-font-size;
+
+// Close icons
+$clr-close-color--normal: null; // $clr-color-neutral-600 !default;
+$clr-close-color--normal-opacity: null; // 0.2 !default;
+$clr-close-color--hover: null; // $clr-color-neutral-1000 !default;
+$clr-close-color--hover-opacity: null; // 0.5 !default;
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _colors.clarity.scss here:       */
+/*================================================================================*/
+
+// Text and content palette (white-gray-black)
+$clr-color-neutral-0: null; // #fff
+$clr-color-neutral-50: null; // #fafafa
+$clr-color-neutral-100: null; // #f2f2f2
+$clr-color-neutral-200: null; // #eee
+$clr-color-neutral-300: null; // #ddd
+$clr-color-neutral-400: null; // #ccc
+$clr-color-neutral-500: null; // #9a9a9a
+$clr-color-neutral-600: null; // #737373
+$clr-color-neutral-700: null; // #565656
+$clr-color-neutral-800: null; // #444
+$clr-color-neutral-900: null; // #313131
+$clr-color-neutral-1000: null; // #000
+
+$clr-color-on-neutral-0: null; // #000
+$clr-color-on-neutral-50: null; // #000
+$clr-color-on-neutral-100: null; // #000
+$clr-color-on-neutral-200: null; // #000
+$clr-color-on-neutral-300: null; // #000
+$clr-color-on-neutral-400: null; // #000
+$clr-color-on-neutral-500: null; // #000
+$clr-color-on-neutral-600: null; // #fff
+$clr-color-on-neutral-700: null; // #fff
+$clr-color-on-neutral-800: null; // #fff
+$clr-color-on-neutral-900: null; // #fff
+$clr-color-on-neutral-1000: null; // #fff
+
+// Action palette (blue) -- buttons and clickable items
+$clr-color-action-50: null; // #e1f1f6
+$clr-color-action-100: null; // #c5e5ef
+$clr-color-action-200: null; // #a6d8e7
+$clr-color-action-300: null; // #89cbdf
+$clr-color-action-400: null; // #46afd9
+$clr-color-action-500: null; // #0095d3
+$clr-color-action-600: null; // #0079b8
+$clr-color-action-700: null; // #0065ab
+$clr-color-action-800: null; // #004d8a
+$clr-color-action-900: null; // #003d79
+$clr-color-action-1000: null; // #002538
+
+$clr-color-on-action-50: null; // #000
+$clr-color-on-action-100: null; // #000
+$clr-color-on-action-200: null; // #000
+$clr-color-on-action-300: null; // #000
+$clr-color-on-action-400: null; // #000
+$clr-color-on-action-500: null; // #000
+$clr-color-on-action-600: null; // #fff
+$clr-color-on-action-700: null; // #fff
+$clr-color-on-action-800: null; // #fff
+$clr-color-on-action-900: null; // #fff
+$clr-color-on-action-1000: null; // #fff
+
+// Secondary Action palette (purple) -- actions but off-the-beaten-path actions, like drag-and-drop
+$clr-color-secondary-action-50: null; // #f3e6ff
+$clr-color-secondary-action-100: null; // #e1c9f1
+$clr-color-secondary-action-200: null; // #d0ace4
+$clr-color-secondary-action-300: null; // #be90d6
+$clr-color-secondary-action-400: null; // #ad73c8
+$clr-color-secondary-action-500: null; // #9b56bb
+$clr-color-secondary-action-600: null; // #8939ad
+$clr-color-secondary-action-700: null; // #781da0
+$clr-color-secondary-action-800: null; // #660092
+$clr-color-secondary-action-900: null; // #4d007a
+$clr-color-secondary-action-1000: null; // #281336
+
+$clr-color-on-secondary-action-50: null; // #000
+$clr-color-on-secondary-action-100: null; // #000
+$clr-color-on-secondary-action-200: null; // #000
+$clr-color-on-secondary-action-300: null; // #000
+$clr-color-on-secondary-action-400: null; // #000
+$clr-color-on-secondary-action-500: null; // #fff
+$clr-color-on-secondary-action-600: null; // #fff
+$clr-color-on-secondary-action-700: null; // #fff
+$clr-color-on-secondary-action-800: null; // #fff
+$clr-color-on-secondary-action-900: null; // #fff
+$clr-color-on-secondary-action-1000: null; // #fff
+
+// Stoplight Danger color (red)
+$clr-color-danger-50: null; // #fff0ee
+$clr-color-danger-100: null; // #f5dbd9
+$clr-color-danger-200: null; // #f8b7b6
+$clr-color-danger-300: null; // #f89997
+$clr-color-danger-400: null; // #f76f6c
+$clr-color-danger-500: null; // #f54f47
+$clr-color-danger-600: null; // #f52f22
+$clr-color-danger-700: null; // #e12200
+$clr-color-danger-800: null; // #c92100
+$clr-color-danger-900: null; // #a32100
+$clr-color-danger-1000: null; // #642100
+
+$clr-color-on-danger-50: null; // #000
+$clr-color-on-danger-100: null; // #000
+$clr-color-on-danger-200: null; // #000
+$clr-color-on-danger-300: null; // #000
+$clr-color-on-danger-400: null; // #000
+$clr-color-on-danger-500: null; // #000
+$clr-color-on-danger-600: null; // #000
+$clr-color-on-danger-700: null; // #fff
+$clr-color-on-danger-800: null; // #fff
+$clr-color-on-danger-900: null; // #fff
+$clr-color-on-danger-1000: null; // #fff
+
+// Stoplight Warning color (yellow)
+$clr-color-warning-50: null; // #fffce8
+$clr-color-warning-100: null; // #fef3b5
+$clr-color-warning-200: null; // #ffe860
+$clr-color-warning-300: null; // #ffdc0B
+$clr-color-warning-400: null; // #fdd006
+$clr-color-warning-500: null; // #fac400
+$clr-color-warning-600: null; // #edb200
+$clr-color-warning-700: null; // #dfa100
+$clr-color-warning-800: null; // #d28f00
+$clr-color-warning-900: null; // #c47d00
+$clr-color-warning-1000: null; // #601500
+
+$clr-color-on-warning-50: null; // #000
+$clr-color-on-warning-100: null; // #000
+$clr-color-on-warning-200: null; // #000
+$clr-color-on-warning-300: null; // #000
+$clr-color-on-warning-400: null; // #000
+$clr-color-on-warning-500: null; // #000
+$clr-color-on-warning-600: null; // #000
+$clr-color-on-warning-700: null; // #000
+$clr-color-on-warning-800: null; // #000
+$clr-color-on-warning-900: null; // #000
+$clr-color-on-warning-1000: null; // #fff
+
+// Stoplight Success color (green)
+$clr-color-success-50: null; // #dff0d0
+$clr-color-success-100: null; // #c7e59c
+$clr-color-success-200: null; // #aadb1e
+$clr-color-success-300: null; // #85c81a
+$clr-color-success-400: null; // #60b515
+$clr-color-success-500: null; // #62a420
+$clr-color-success-600: null; // #48960c
+$clr-color-success-700: null; // #2f8400
+$clr-color-success-800: null; // #266900
+$clr-color-success-900: null; // #1d5100
+$clr-color-success-1000: null; // #0d4100
+
+$clr-color-on-success-50: null; // #000
+$clr-color-on-success-100: null; // #000
+$clr-color-on-success-200: null; // #000
+$clr-color-on-success-300: null; // #000
+$clr-color-on-success-400: null; // #000
+$clr-color-on-success-500: null; // #000
+$clr-color-on-success-600: null; // #000
+$clr-color-on-success-700: null; // #fff
+$clr-color-on-success-800: null; // #fff
+$clr-color-on-success-900: null; // #fff
+$clr-color-on-success-1000: null; // #fff
+
+/*================================================================================*/
+/* DEPRECATED color variables below:       */
+/*================================================================================*/
+
+$clr-white: null; // $clr-color-neutral-0 -- #fff;
+$clr-black: null; // #000 -- $clr-color-neutral-1000;
+
+$clr-near-white: null; // $clr-color-neutral-50 -- #fafafa;
+$clr-light-gray: null; // #eee -- $clr-color-neutral-200;
+$clr-lighter-midtone-gray: null; // #ddd -- $clr-color-neutral-300;
+$clr-light-midtone-gray: null; // #ccc -- $clr-color-neutral-400;
+$clr-dark-midtone-gray: null; // #9a9a9a -- $clr-color-neutral-500;
+$clr-gray: null; // #747474 -- $clr-color-neutral-600;
+$clr-dark-gray: null; // #565656 -- $clr-color-neutral-700;
+$clr-near-black: null; // #313131 -- $clr-color-neutral-900;
+
+$clr-blue: null; // #006a91 -- $clr-color-action-700;
+$clr-action-blue-lightest: null; // #e1f1f6 -- $clr-color-action-50;
+$clr-action-blue-lighter: null; // #89cbdf -- $clr-color-action-300;
+$clr-action-blue-light: null; // #49afd9 -- $clr-color-action-400;
+$clr-action-blue-light-midtone: null; // #0094d2 -- $clr-color-action-500;
+$clr-action-blue: null; // #0079B8 -- $clr-color-action-600;
+$clr-action-blue-dark-midtone: null; // #0079B8 -- $clr-color-action-600;
+$clr-action-blue-dark: null; // #004a70 -- $clr-color-action-800;
+$clr-action-blue-darker: null; // #003a59 -- $clr-color-action-900;
+$clr-action-blue-darkest: null; // #002538 -- $clr-color-action-1000;
+
+$clr-action-purple-lightest: null; // #f3ecf7 -- $clr-color-secondary-action-50;
+$clr-action-purple-lighter: null; // #e7d9f0 -- $clr-action-purple-lighter;
+$clr-action-purple-light: null; // #b68cd1 -- $clr-color-secondary-action-300;
+$clr-action-purple-light-midtone: null; // #9460b8 -- $clr-color-secondary-action-500;
+$clr-action-purple: null; // #853fb3 -- $clr-color-secondary-action-700;
+$clr-action-purple-dark-midtone: null; // #853fb3 -- $clr-color-secondary-action-700;
+$clr-action-purple-dark: null; // #660092 -- $clr-color-secondary-action-800;
+$clr-action-purple-darker: null; // #50266b -- $clr-color-secondary-action-900;
+$clr-action-purple-darkest: null; // #281336 -- $clr-color-secondary-action-1000;
+
+$clr-red-lightest: null; // #fbf1f2 -- $clr-color-danger-50;
+$clr-red-lighter: null; // #f5dbd9 -- $clr-color-danger-100;
+$clr-red-light: null; // #ebafa6 -- $clr-color-danger-200;
+$clr-red-light-midtone: null; // #e12200 -- $clr-color-danger-700;
+$clr-red: null; // #c92100 -- $clr-color-danger-800;
+$clr-red-dark-midtone: null; // #c92100 -- $clr-color-danger-800;
+$clr-red-dark: null; // #a32100 -- $clr-color-danger-900;
+$clr-red-darker: null; // #642100 -- $clr-color-danger-1000;
+$clr-red-darkest: null; // #642100 -- $clr-color-danger-1000;
+
+$clr-yellow-lightest: null; // #FFFADC -- $clr-color-warning-50;
+$clr-yellow-lighter: null; // #feecb5 -- $clr-color-warning-100;
+$clr-yellow: null; // #ffdc0B -- $clr-color-warning-300;
+$clr-yellow-light-midtone: null; // #eb8d00 -- $clr-color-warning-500;
+$clr-yellow-dark-midtone: null; // #ce5c00 -- $clr-color-warning-700;
+$clr-yellow-dark: null; // #c25400 -- $clr-color-warning-800;
+$clr-yellow-darker: null; // #9e4100 -- $clr-color-warning-900;
+$clr-yellow-darkest: null; // #642100 --$clr-color-warning-1000;
+
+$clr-green-lightest: null; //  #dff0d0 -- $clr-color-success-50;
+$clr-green-lighter: null; //  #c6e4ab -- $clr-green-lighter;
+$clr-green: null; //  #60b515 -- $clr-color-success-400;
+$clr-green-light-midtone: null; //  #62a420 -- $clr-color-success-500;
+$clr-green-dark-midtone: null; //  #2F8400 -- $clr-color-success-700;
+$clr-green-dark: null; //  #266900 -- $clr-color-success-800;
+$clr-green-darker: null; //  #1d5100 -- $clr-color-success-900;
+$clr-green-darkest: null; //  #0f2900 -- $clr-color-success-1000;
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _tooltips.clarity.scss here:     */
+/*================================================================================*/
+
+$clr-tooltip-color: null; // $clr-color-neutral-0;
+$clr-tooltip-background-color: null; // $clr-color-neutral-1000;
+$clr-tooltip-default-width: null; // 10*$clr-baseline;
+$margin-value: null; // $clr-baseline*0.25;
+$arrow-height: null; // $clr-baseline*0.25;
+$arrow-width: null; // 5/24*$clr-baseline;
+$clr-tooltip-adjusted-margin: null; // $margin-value + $arrow-width * 2;
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _tables.clarity.scss here:       */
+/*================================================================================*/
+
+// Backgrounds
+$clr-table-bgcolor: null; // $clr-color-neutral-0;
+$clr-thead-bgcolor: null; // $clr-color-neutral-50;
+
+// Borders
+$clr-tablerow-bordercolor: null; // $clr-color-neutral-200;
+$clr-table-bordercolor: null; // $clr-color-neutral-400;
+$clr-table-borderwidth: null; // 1px;
+$clr-table-borderstyle: null; // $clr-table-borderwidth solid $clr-table-bordercolor;
+$clr-table-border-radius: null; // $clr-global-borderradius
+
+// Etc.
+$clr-table-lineheight: null; // 1*$clr-font-size;
+$clr-table-cellpadding: null; // $clr-baseline*0.5;
+$clr-table-smallpadding: null; // 0.5 * $clr-table-cellpadding;
+
+$clr-table-lineheightPaddingShim: null; // ($clr-baseline*1 - $clr-table-lineheight)/2;
+$clr-table-vertpadding: null; // (($clr-table-cellpadding - $clr-table-borderwidth) * 0.5) +
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _datagrid.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-datagrid-font-color: null; // #adbbc4
+$clr-datagrid-default-border-color: null; // $clr-color-neutral-400
+$clr-datagrid-row-hover: null; // $clr-color-neutral-200
+$clr-datagrid-action-toggle: null; // $clr-color-neutral-700
+$clr-datagrid-pagination-btn-color: null; // $clr-color-neutral-700
+$clr-datagrid-pagination-btn-disabled-color: null; // $clr-color-neutral-600
+$clr-datagrid-pagination-input-border-color: null; // $clr-datagrid-default-border-color
+$clr-datagrid-pagination-input-border-focus-color: null; // $clr-color-action-400
+$clr-datagrid-popover-border-color: null; // $clr-datagrid-default-border-color
+$clr-datagrid-action-popover-hover-color: null; // $clr-color-neutral-200
+$clr-datagrid-row-selected: null; // $clr-color-neutral-1000
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _stack-view.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-stack-view-border-width: null; // $clr-global-borderwidth
+$clr-stack-view-border-radius: null; // $clr-global-borderradius
+$clr-stack-view-border-color: null; // $clr-color-neutral-400
+$clr-stack-view-bg-color: null; // $clr-color-neutral-50
+$clr-stack-view-stack-block-border-bottom: null; // $clr-color-neutral-300
+$clr-stack-view-border-box-color: null; // $clr-color-neutral-300
+$clr-stack-block-changed-border-top-color: null; // $clr-color-action-700
+$clr-stack-view-stack-block-label-and-content-bg-color: null; // $clr-color-neutral-50
+$clr-stack-view-stack-children-stack-block-border-bottom-color: null; // $clr-color-neutral-200
+$clr-stack-view-stack-children-stack-block-label-and-content-bg-color: null; // $clr-color-neutral-0
+$clr-stack-view-stack-block-label-text-color: null; // $clr-color-neutral-900
+$clr-stack-view-stack-block-expanded-bg-color: null; // $clr-global-selection-color
+$clr-stack-view-stack-block-expandable-hover: null; // $clr-color-neutral-200
+$clr-stack-view-stack-block-content-text-color: null; // inherit
+$clr-stack-view-stack-block-expanded-text-color: null; // $clr-color-neutral-1000
+$clr-stack-view-stack-block-caret-color: null; // $clr-color-neutral-500
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _tree-view.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-tree-border-radius: null; // $clr-global-borderradius
+$clr-tree-node-caret-link-hover-color: null; // $clr-color-neutral-1000
+$clr-tree-link-hover-color: null; // $clr-custom-links-hover-color
+$clr-tree-link-selection-color: null; // $clr-global-selection-color
+$clr-tree-link-text-color: null; // $clr-color-neutral-700
+$clr-tree-node-caret-color: null; // $clr-color-neutral-500
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _sidenav.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-sidenav-border-color: null; // $clr-color-neutral-400;
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _modal.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-modal-sm-width: null; // 12*$clr-baseline;
+$clr-modal-md-width: null; // 24*$clr-baseline;
+$clr-modal-lg-width: null; // 36*$clr-baseline;
+$clr-modal-xl-width: null; // 48*$clr-baseline;
+
+$clr-modal-close-color: null; // $clr-color-neutral-600
+$clr-modal-bg-color: null; // $clr-color-neutral-0
+$clr-modal-content-box-shadow-color: null; // #000 at 20% opacity
+$clr-modal-backdrop-color: null; // $clr-color-neutral-900
+$clr-modal-border-radius: null; // $clr-global-borderradius
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _login.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-login-background-color: null; // $clr-color-neutral-0;
+$clr-login-width: null; // 21*$clr-baseline;
+$clr-login-icon-size: null; // $clr-icon-dimension-sm;
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _forms.clarity.scss here:        */
+/*================================================================================*/
+// All
+$clr-form-field-border-color: null; // $clr-color-neutral-500;
+$clr-form-field-background-color: null; // $clr-color-action-500;
+$clr-form-disabled-background-color: null; // $clr-color-neutral-400;
+$clr-form-field-disabled-color: null; // $clr-color-neutral-600;
+$clr-forms-label-color: null; // $clr-color-neutral-800
+$clr-forms-text-color: null; // $clr-color-neutral-1000
+$clr-forms-invalid-color: null; // $clr-color-danger-800
+$clr-forms-valid-color: null; // $clr-color-success-700
+$clr-forms-valid-text-color: null; // $clr-color-success-900
+$clr-forms-subtext-color: null; // $clr-color-neutral-600
+$clr-forms-placeholder-color: null; // $clr-color-neutral-600
+$clr-forms-border-color: null; // $clr-color-neutral-500
+$clr-forms-focused-color: null; // $clr-color-action-600
+$clr-forms-subtext-disabled-color: null;
+$clr-forms-border-disabled-color: null;
+$clr-forms-text-disabled-color: null;
+$clr-forms-label-disabled-color: null;
+
+// Textarea
+$clr-forms-textarea-background-color: null; // $clr-color-neutral-0
+
+// Select
+$clr-forms-select-hover-background: null; // #ddd at 50% opacity
+$clr-forms-select-caret-hover-color: null; // $clr-color-neutral-600
+$clr-forms-select-caret-color: null; // $clr-color-neutral-500
+$clr-forms-select-caret-size: null; // $clr-dropdown-caret-ico
+$clr-forms-select-option-color: null; // $clr-forms-text-color
+$clr-forms-select-multiple-background-color: null; // $clr-forms-textarea-background-color
+$clr-forms-select-multiple-border-color: null; // $clr-color-neutral-400
+$clr-forms-select-multiple-option-color: null; // $clr-forms-text-color
+
+// Checkbox
+$clr-forms-checkbox-label-color: null; // $clr-forms-text-color
+$clr-forms-checkbox-height: null; // $clr-icon-dimension-sm
+$clr-forms-checkbox-background-color: null; // $clr-color-action-600
+$clr-forms-checkbox-indeterminate-border-color: null; // $clr-color-action-600
+$clr-forms-checkbox-mark-color: null; // $clr-color-neutral-0
+$clr-forms-checkbox-disabled-background-color: null; // $clr-form-disabled-background-color
+$clr-forms-checkbox-disabled-mark-color: null; // $clr-color-neutral-1000
+$clr-forms-checkbox-border-radius: null; // $clr-global-borderradius
+
+// Radio
+$clr-forms-radio-label-color: null; // $clr-forms-checkbox-label-color
+$clr-forms-radio-disabled-background-color: null; // $clr-form-disabled-background-color
+$clr-forms-radio-disabled-mark-color: null; // $clr-forms-checkbox-disabled-mark-color
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _buttons.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-btn-font-weight: null; // $clr-font-weight-semibold
+$clr-btn-horizontal-padding: null; // $clr-baseline*0.5;
+$clr-btn-height: null; // $clr-baseline*1.5;
+$clr-btn-height-sm: null; // $clr-baseline;
+$clr-btn-padding: null; // 0 $clr-btn-horizontal-padding;
+$clr-btn-border-radius: null; // $clr-global-borderradius
+$clr-btn-border-width: null; // $clr-global-borderwidth
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _toggles.clarity.scss here:      */
+/*================================================================================*/
+
+$clr-toggle-disabled-default-border-color: null; // $clr-color-neutral-400
+$clr-toggle-disabled-default-handle-color: null; // $clr-color-neutral-0
+$clr-toggle-disabled-off-border-color: null; // $clr-toggle-disabled-default-border-color
+$clr-toggle-disabled-off-bg-color: null; // $clr-toggle-disabled-default-handle-color
+$clr-toggle-disabled-off-handle-border-color: null; // $clr-toggle-disabled-default-border-color
+$clr-toggle-disabled-on-border-color: null; // $clr-toggle-disabled-default-border-color
+$clr-toggle-disabled-on-bg-color: null; // $clr-toggle-disabled-default-border-color
+$clr-toggle-disabled-on-handle-border-color: null; // $clr-toggle-disabled-default-handle-color
+$clr-toggle-bg-color-off: null; // $clr-color-neutral-600
+$clr-toggle-bg-color-on: null; // $clr-color-success-500
+$clr-toggle-handle-bg-color: null; // $clr-color-neutral-50
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _alert.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-icon-margin-right: null; // $clr-baseline*0.25;
+
+$clr-alert-action-color: null; // $clr-color-neutral-700
+$clr-alert-action-active-color: null; // $clr-color-secondary-action-900
+
+$clr-alert-close-icon-color: null; // $clr-alert-action-color
+$clr-alert-close-icon-hover-color: null; // $clr-alert-action-active-color
+$clr-alert-close-icon-opacity: null; // 1.0
+$clr-alert-close-icon-hover-opacity: null; // 1.0
+
+// Close icon colors for APP-LEVEL ALERTS
+$clr-app-level-alert-color: null; // $clr-color-neutral-0
+$clr-app-alert-close-icon-color: null; // $clr-app-level-alert-color
+$clr-app-alert-close-icon-opacity: null; // 0.8
+$clr-app-alert-close-icon-hover-opacity: null; // 1.0
+
+//Regular Alert
+$clr-alert-top-margin: null; // $clr-baseline*0.25;
+$clr-alert-min-height: null; // $clr-baseline*1.5;
+$clr-alert-horizontal-padding: null; // $clr-baseline*0.5;
+$clr-alert-top-padding: null; // $clr_baselineRem_3px;
+$clr-alert-bottom-padding: null; // $clr-baseline*0.375;
+$clr-alert-item-top-margin: null; // $clr-alert-bottom-padding - $clr-alert-top-padding;
+$clr-alert-item-min-height: null; // $clr-icon-dimension-sm;
+
+//Small Alert
+$clr-alert-sm-min-height: null; // $clr-baseline*1;
+$clr-alert-sm-horizontal-padding: null; // $clr-baseline*0.25;
+$clr-alert-sm-top-padding: null; // 0;
+$clr-alert-sm-bottom-padding: null; // $clr_baselineRem_3px;
+$clr-alert-sm-item-top-margin: null; // $clr-alert-sm-bottom-padding - $clr-alert-sm-top-padding;
+$clr-alert-sm-item-min-height: null; // $clr-icon-dimension-sm;
+
+// Alert colors
+// Info type
+$clr-alert-info-bg-color: null; // $clr-color-action-50
+$clr-alert-info-font-color: null; // $clr-color-neutral-700
+$clr-alert-info-border-color: null; // $clr-color-action-400
+$clr-alert-info-icon-color: null; // $clr-color-action-600
+$clr-alert-info-action-color: null; // $clr-alert-action-color
+$clr-alert-info-action-active-color: null; // $clr-alert-action-active-color
+$clr-alert-info-close-icon-color: null; // $clr-alert-close-icon-color
+$clr-alert-info-close-icon-opacity: null; // $clr-alert-close-icon-opacity
+$clr-alert-info-close-icon-hover-color: null; // $clr-alert-close-icon-hover-color
+$clr-alert-info-close-icon-hover-opacity: null; // $clr-alert-close-icon-hover-opacity
+
+// Success type
+$clr-alert-success-bg-color: null; // $clr-color-success-50
+$clr-alert-success-font-color: null; // $clr-color-neutral-700
+$clr-alert-success-border-color: null; // $clr-color-success-400
+$clr-alert-success-icon-color: null; // $clr-color-success-700
+$clr-alert-success-action-color: null; // $clr-alert-action-color
+$clr-alert-success-action-active-color: null; // $clr-alert-action-active-color
+$clr-alert-success-close-icon-color: null; // $clr-alert-close-icon-color
+$clr-alert-success-close-icon-opacity: null; // $clr-alert-close-icon-opacity
+$clr-alert-success-close-icon-hover-color: null; // $clr-alert-close-icon-hover-color
+$clr-alert-success-close-icon-hover-opacity: null; // $clr-alert-close-icon-hover-opacity
+
+// Warning type
+$clr-alert-warning-bg-color: null; // $clr-color-warning-100
+$clr-alert-warning-font-color: null; // $clr-color-neutral-700
+$clr-alert-warning-border-color: null; // $clr-color-warning-300
+$clr-alert-warning-icon-color: null; // $clr-color-neutral-700
+$clr-alert-warning-action-color: null; // $clr-alert-action-color
+$clr-alert-warning-action-active-color: null; // $clr-alert-action-active-color
+$clr-alert-warning-close-icon-color: null; // $clr-alert-close-icon-color
+$clr-alert-warning-close-icon-opacity: null; // $clr-alert-close-icon-opacity
+$clr-alert-warning-close-icon-hover-color: null; // $clr-alert-close-icon-hover-color
+$clr-alert-warning-close-icon-hover-opacity: null; // $clr-alert-close-icon-hover-opacity
+
+// Danger type
+$clr-alert-danger-bg-color: null; // $clr-color-danger-100
+$clr-alert-danger-font-color: null; // $clr-color-neutral-700
+$clr-alert-danger-border-color: null; // $clr-color-danger-200
+$clr-alert-danger-icon-color: null; // $clr-red
+$clr-alert-danger-action-color: null; // $clr-alert-action-color
+$clr-alert-danger-action-active-color: null; // $clr-alert-action-active-color
+$clr-alert-danger-close-icon-color: null; // $clr-alert-close-icon-color
+$clr-alert-danger-close-icon-opacity: null; // $clr-alert-close-icon-opacity
+$clr-alert-danger-close-icon-hover-color: null; // $clr-alert-close-icon-hover-color
+$clr-alert-danger-close-icon-hover-opacity: null; // $clr-alert-close-icon-hover-opacity
+
+// App Info type
+$clr-app-alert-info-bg-color: null; // $clr-color-action-600
+$clr-app-alert-info-font-color: null; // $clr-app-level-alert-color
+$clr-app-alert-info-border-color: null; // none
+$clr-app-alert-info-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-info-action-color: null; // $clr-app-alert-info-font-color
+$clr-app-alert-info-action-active-color: null; // $clr-app-alert-info-font-color
+$clr-app-alert-info-close-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-info-close-icon-opacity: null; // $clr-app-alert-close-icon-opacity
+$clr-app-alert-info-close-icon-hover-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-info-close-icon-hover-opacity: null; // $clr-app-alert-close-icon-hover-opacity
+
+// App Warning type
+$clr-app-alert-warning-bg-color: null; // $clr-color-warning-800
+$clr-app-alert-warning-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-warning-border-color: null; // none
+$clr-app-alert-warning-font-color: null; // $clr-app-level-alert-color
+$clr-app-alert-warning-close-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-warning-action-color: null; // $clr-app-alert-warning-font-color
+$clr-app-alert-warning-action-active-color: null; // $clr-app-alert-warning-font-color
+$clr-app-alert-warning-close-icon-opacity: null; // $clr-app-alert-close-icon-opacity
+$clr-app-alert-warning-close-icon-hover-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-warning-close-icon-hover-opacity: null; // $clr-app-alert-close-icon-hover-opacity
+
+// App Danger type
+$clr-app-alert-danger-bg-color: null; // $clr-red
+$clr-app-alert-danger-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-danger-font-color: null; // $clr-app-level-alert-color
+$clr-app-alert-danger-border-color: null; // none
+$clr-app-alert-danger-close-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-danger-action-color: null; // $clr-app-alert-danger-font-color
+$clr-app-alert-danger-action-active-color: null; // $clr-app-alert-danger-font-color
+$clr-app-alert-danger-close-icon-opacity: null; // $clr-app-alert-close-icon-opacity
+$clr-app-alert-danger-close-icon-hover-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-danger-close-icon-hover-opacity: null; // $clr-app-alert-close-icon-hover-opacity
+
+// App Success type
+$clr-app-alert-success-bg-color: null; // $clr-color-success-500
+$clr-app-alert-success-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-success-font-color: null; // $clr-app-level-alert-color
+$clr-app-alert-success-border-color: null; // none
+$clr-app-alert-success-close-icon-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-success-action-color: null; // $clr-app-alert-success-font-color
+$clr-app-alert-success-action-active-color: null; // $clr-app-alert-success-font-color
+$clr-app-alert-success-close-icon-opacity: null; // $clr-app-alert-close-icon-opacity
+$clr-app-alert-success-close-icon-hover-color: null; // $clr-app-alert-close-icon-color
+$clr-app-alert-success-close-icon-hover-opacity: null; // $clr-app-alert-close-icon-hover-opacity
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _labels.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-label-padding-top-bottom: null; // $clr_baselineRem_0_125
+$clr-label-padding-left-right: null; // $clr_baselineRem_0_5
+$clr-label-borderwidth: null; // $clr-global-borderwidth
+$clr-label-font-color-light: null; // $clr-color-neutral-700
+$clr-label-font-color-dark: null; // $clr-color-neutral-1000
+$clr-label-bg-hover-color: null; // $clr-color-neutral-200
+
+// Label Colors
+// Gray (1)
+$clr-label-gray-bg-color: null; // $clr-color-neutral-600
+$clr-label-gray-color: null; // $clr-label-font-color-light
+
+// Purple (2)
+$clr-label-purple-bg-color: null; // $clr-color-secondary-action-500
+$clr-label-purple-color: null; // $clr-label-font-color-light
+
+// Blue (3)
+$clr-label-blue-bg-color: null; // $clr-color-action-800
+$clr-label-blue-color: null; // $clr-label-font-color-light
+
+// Orange (4)
+$clr-label-orange-bg-color: null; // $clr-color-warning-500
+$clr-label-orange-color: null; // $clr-label-font-color-dark
+
+// Light Blue (5)
+$clr-label-light-blue-bg-color: null; // $clr-color-action-300
+$clr-label-light-blue-color: null; // $clr-label-font-color-dark
+
+// Info
+$clr-label-info-bg-color: null; // $clr-color-action-50
+$clr-label-info-font-color: null; // $clr-color-action-800
+$clr-label-info-border-color: null; // $clr-color-action-400
+
+// Success
+$clr-label-success-bg-color: null; // $clr-color-success-50
+$clr-label-success-font-color: null; // $clr-color-success-800
+$clr-label-success-border-color: null; // $clr-color-success-400
+
+// Warning
+$clr-label-warning-bg-color: null; // $clr-color-warning-100
+$clr-label-warning-font-color: null; // $clr-color-neutral-900
+$clr-label-warning-border-color: null; // $clr-color-warning-300
+
+// Danger
+$clr-label-danger-bg-color: null; // $clr-color-danger-100
+$clr-label-danger-font-color: null; // $clr-color-danger-900
+$clr-label-danger-border-color: null; // $clr-color-danger-200
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _badges.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-badge-font-color-light: null; // $clr-color-neutral-0
+$clr-badge-font-color-dark: null; // $clr-color-neutral-1000
+
+// Badge Colors
+// Info
+$clr-badge-info-bg-color: null; // $clr-color-action-600
+$clr-badge-info-color: null; // $clr-color-neutral-0
+
+// Success
+$clr-badge-success-bg-color: null; // $clr-color-success-700
+$clr-badge-success-color: null; // $clr-color-neutral-0
+
+// Warning
+$clr-badge-warning-bg-color: null; // $clr-color-warning-300
+$clr-badge-warning-color: null; // $clr-color-neutral-0
+
+// Danger
+$clr-badge-danger-bg-color: null; // $clr-color-danger-800
+$clr-badge-danger-color: null; // $clr-color-neutral-0
+
+// Gray (1)
+$clr-badge-gray-bg-color: null; // $clr-color-neutral-600
+$clr-badge-gray-color: null; // $clr-badge-font-color
+
+// Purple (2)
+$clr-badge-purple-bg-color: null; // $clr-color-secondary-action-500
+$clr-badge-purple-color: null; // $clr-badge-font-color
+
+// Blue (3)
+$clr-badge-blue-bg-color: null; // $clr-color-action-800
+$clr-badge-blue-color: null; // $clr-badge-font-color
+
+// Orange (4)
+$clr-badge-orange-bg-color: null; // $clr-color-warning-500
+$clr-badge-orange-color: null; // $clr-badge-font-color-contrast
+
+// Light Blue (5)
+$clr-badge-light-blue-bg-color: null; // $clr-color-action-300
+$clr-badge-light-blue-color: null; // $clr-badge-font-color-contrast
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _dropdown.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-dropdown-caret-icon-dimension: null; // $clr_baselineRem_0_416
+$clr-dropdown-active-text-color: null; // $clr-color-neutral-1000
+$clr-dropdown-bg-color: null; // $clr-color-neutral-0
+$clr-dropdown-text-color: null; // $clr-color-neutral-700
+$clr-dropdown-item-color: null; // $clr-color-neutral-700
+$clr-dropdown-border-color: null; // $clr-color-neutral-400
+$clr-dropdown-divider-color: null; // $clr-color-neutral-200
+$clr-dropdown-child-border-color: null; // $clr-color-neutral-500
+$clr-dropdown-bg-hover-color: null; // $clr-global-hover-color
+$clr-dropdown-selection-color: null; // $clr-global-selection-color
+$clr-dropdown-box-shadow: null; // $clr-popover-box-shadow-color
+$clr-dropdown-header-color: null; // $clr-color-neutral-900
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _signposts.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-signpost-content-bg-color: null; // $clr-color-neutral-0
+$clr-signpost-content-border-color: null; // $clr-color-neutral-500
+$clr-signpost-action-color: null; // $clr-color-neutral-600
+$clr-signpost-action-hover-color: null; // $clr-color-action-700
+$clr-signpost-border-radius: null; // $clr-global-borderradius
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _tooltips.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-tooltip-color: null; // $clr-color-neutral-0
+$clr-tooltip-background-color: null; // $clr-color-neutral-1000
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _progress-bars.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-progress-defaultBarColor: null; // $clr-color-action-600
+$clr-progress-success-color: null; // $clr-color-success-400
+$clr-progress-danger-color: null; // $clr-color-danger-800
+$clr-progress-warning-color: null; // $clr-progress-danger-color
+$clr-progress-bgColor: null; // $clr-color-neutral-200
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _spinner.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-spinner-color: null; // $clr-color-action-600
+$clr-spinner-bg-color: null; // $clr-color-neutral-1000
+$clr-spinner-inverse-bg-color: null; // $clr-color-neutral-0
+$clr-spinner-opacity: null; // 0.15
+
+/*================================================================================*/
+/* Overwrite the default variable assignments in _wizard.clarity.scss here:        */
+/*================================================================================*/
+
+$clr-wizard-main-bgcolor: null; // $clr-color-neutral-0
+$clr-wizard-sidenav-bgcolor: null; // $clr-color-neutral-50
+$clr-wizard-default-space: null; // $clr_baselineRem_1
+$clr-wizard-main-textColor: null; // $clr-color-on-neutral-0
+$clr-wizard-sidenav-text: null; // $clr-color-neutral-900
+$clr-wizard-sidenav-text--active: null; // $clr-global-on-selection-color
+$clr-wizard-title-text: null; // $clr-color-neutral-1000
+$clr-wizard-stepnav-border-size: null; // $clr_baselineRem_4px
+$clr-wizard-stepnav-border-color: null; // $clr-color-neutral-200
+$clr-wizard-stepnav-border-color--active: null; // $clr-color-success-400
+$clr-wizard-footer-height: null; // $clr_baselineRem_3_5
+$clr-wizard-stepnav-active-bgcolor: null; // $clr-global-selection-color
+$clr-wizard-header-action-color: null; // $clr-color-neutral-600
+$clr-wizard-header-action-color--hovered: null; // $clr-color-neutral-1000
+$clr-wizard-step-nav-border-color: null; // #e4e4e4
+$clr-wizard-border-radius: null; // $clr-global-borderradius
+$clr-wizard-stepnav-active-border-radius: null; // $clr-wizard-border-radius

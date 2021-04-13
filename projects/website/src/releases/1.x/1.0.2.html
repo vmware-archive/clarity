@@ -1,0 +1,16 @@
+<h2>Bugfixes</h2>
+<ul class="list-unstyled">
+  <li>
+    <h6 bug-fix>
+      [NG] fix(datagrid): Removes width calculation from datagrid render cycle (<a
+        href="https://github.com/vmware/clarity/pull/2938"
+        target="_blank"
+        >#2938</a
+      >)
+    </h6>
+    <p>
+      The row-width calculation step in the datagrid render cycle was removed to prevent cases where the datagrid can be
+      rendered without <code class="clr-code">resize()</code> being called.
+    </p>
+  </li>
+</ul>

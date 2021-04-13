@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
+  <clr-wizard-title>Header actions</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
+
+  <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="info" title="Link to Clarity">
+    <cds-icon shape="info"></cds-icon>
+  </clr-wizard-header-action>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 1 with default header actions</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Default header actions</ng-template>
+    <!-- optional -->
+
+    <p class="content-for-page-1">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 2 with custom header actions</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Custom header actions</ng-template>
+    <!-- optional -->
+
+    <p class="content-for-page-2">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+
+    <ng-template clrPageHeaderActions>
+      <clr-wizard-header-action (actionClicked)="headerActionClicked($event)" id="user">
+        <cds-icon shape="user" [attr.solid]="userActive" [attr.badge]="userActive"></cds-icon>
+      </clr-wizard-header-action>
+      <clr-wizard-header-action
+        (actionClicked)="headerActionClicked($event)"
+        id="search"
+        title="Search for the meaning of life"
+      >
+        <cds-icon shape="search"></cds-icon>
+      </clr-wizard-header-action>
+    </ng-template>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 3 with default header actions again</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>Default header actions</ng-template>
+    <!-- optional -->
+  </clr-wizard-page>
+</clr-wizard>

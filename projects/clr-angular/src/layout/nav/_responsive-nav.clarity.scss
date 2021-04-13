@@ -1,0 +1,584 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin sliding-nav-positioning($top: 0, $right: auto, $bottom: 0, $left: 0) {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  @include css-var(background, clr-nav-background-color, $clr-nav-background-color, $clr-use-custom-properties);
+  z-index: $clr-sliding-panel-z-index;
+  height: 100vh;
+}
+
+@mixin menu-trigger($right: auto, $left: 0, $transformX: $clr-trigger-position) {
+  position: fixed;
+  top: 0;
+  right: $right;
+  left: $left;
+  z-index: $clr-sliding-panel-z-index;
+  transform: translateX($transformX);
+  transition: $clr-trigger-animation;
+
+  &::after {
+    content: none;
+  }
+}
+
+@mixin hamburger-menu-trigger-animation() {
+  & > span {
+    background: transparent;
+
+    &::before,
+    &::after {
+      left: $clr_baselineRem_0_125;
+      transform-origin: 9%;
+      transition: $clr-trigger-animation;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@mixin overflow-menu-trigger-animation() {
+  & > span {
+    background: transparent;
+
+    &::before,
+    &::after {
+      height: $clr_baselineRem_2px;
+      width: $clr_baselineRem_1;
+      left: -1 * $clr_baselineRem_0_25;
+      transform-origin: -3%;
+      transition: $clr-trigger-animation;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@import './properties.responsive-nav';
+
+@include exports('responsive-nav.clarity') {
+  .header-hamburger-trigger,
+  .header-overflow-trigger {
+    display: none;
+  }
+
+  .header-hamburger-trigger {
+    $trigger-span-psuedo-positioning: -1 * $clr_baselineRem_7px;
+
+    & > span,
+    & > span::before,
+    & > span::after {
+      display: inline-block;
+      height: $clr_baselineRem_2px;
+      width: $clr_baselineRem_1;
+      @include css-var(
+        background,
+        clr-responsive-nav-trigger-bg-color,
+        $clr-color-neutral-0,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-radius,
+        clr-responsive-nav-hamburger-border-radius,
+        $clr-global-borderradius,
+        $clr-use-custom-properties
+      );
+    }
+
+    & > span {
+      position: relative;
+      vertical-align: middle;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+      }
+
+      &::before {
+        top: $trigger-span-psuedo-positioning;
+      }
+
+      &::after {
+        bottom: $trigger-span-psuedo-positioning;
+      }
+    }
+
+    &.active {
+      @include hamburger-menu-trigger-animation();
+    }
+  }
+
+  .header-overflow-trigger {
+    $overflow-trigger-psuedo-positioning: -1 * $clr_baselineRem_8px;
+
+    & > span,
+    & > span::before,
+    & > span::after {
+      display: inline-block;
+      @include equilateral($clr_baselineRem_4px);
+      @include css-var(
+        background,
+        clr-responsive-nav-trigger-bg-color,
+        $clr-color-neutral-0,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-radius,
+        clr-responsive-nav-overflow-border-radius,
+        $clr_baselineRem_4px,
+        $clr-use-custom-properties
+      );
+    }
+
+    & > span {
+      position: relative;
+      vertical-align: middle;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+      }
+
+      &::before {
+        top: $overflow-trigger-psuedo-positioning;
+      }
+
+      &::after {
+        bottom: $overflow-trigger-psuedo-positioning;
+      }
+    }
+
+    &.active {
+      @include overflow-menu-trigger-animation();
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
+    .main-container {
+      .header-hamburger-trigger,
+      .header-overflow-trigger {
+        display: inline-block;
+
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: $clr_baselineRem_1;
+        @include equilateral($clr-header-height);
+        padding: 0 0 $clr_baselineRem_4px 0;
+        //4px to vertically align the trigger lines. display flex was not working on all browsers.
+        text-align: center;
+        white-space: nowrap;
+
+        &:focus {
+          outline-offset: -1 * $clr_baselineRem_5px; //So that the outline styles aren't hidden because of the browser
+        }
+
+        @include header-nav-appearance();
+      }
+
+      .header-nav.clr-nav-level-1,
+      .subnav.clr-nav-level-1,
+      .sub-nav.clr-nav-level-1,
+      .sidenav.clr-nav-level-1,
+      .clr-vertical-nav.clr-nav-level-1 {
+        @include sliding-nav-positioning();
+        transform: translateX(-1 * $clr-sliding-panel-width);
+        transition: $clr-sliding-panel-animation;
+      }
+
+      .header-nav.clr-nav-level-2,
+      .subnav.clr-nav-level-2,
+      .sub-nav.clr-nav-level-2,
+      .sidenav.clr-nav-level-2,
+      .clr-vertical-nav.clr-nav-level-2 {
+        @include sliding-nav-positioning(0, 0, 0, auto);
+        transform: translateX($clr-sliding-panel-width);
+        transition: $clr-sliding-panel-animation;
+      }
+
+      .subnav.clr-nav-level-1,
+      .sub-nav.clr-nav-level-1,
+      .subnav.clr-nav-level-2,
+      .sub-nav.clr-nav-level-2 {
+        .nav,
+        aside {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        aside {
+          justify-content: center;
+          width: 100%;
+        }
+
+        //Such deep nesting is unfortunately required here because we don't want
+        //navs which are not subnav to behave in a similar way.
+        // TODO: more specificity in classname is preferable to nesting...
+        .nav {
+          padding-left: 0;
+
+          .nav-item {
+            height: $clr_baselineRem_1_5;
+            margin-right: 0;
+          }
+
+          .nav-link {
+            padding: 0 $clr_baselineRem_0_5 0 $clr_baselineRem_1;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 0;
+            @include css-var(
+              border-top-left-radius,
+              clr-global-borderradius,
+              $clr-global-borderradius,
+              $clr-use-custom-properties
+            );
+            @include css-var(
+              border-bottom-left-radius,
+              clr-global-borderradius,
+              $clr-global-borderradius,
+              $clr-use-custom-properties
+            );
+
+            @include vertical-nav-link-colors();
+
+            &:hover,
+            &.active {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+
+      .sidenav.clr-nav-level-1,
+      .sidenav.clr-nav-level-2 {
+        .nav-link {
+          &:hover,
+          &.active {
+            color: inherit;
+            // Is the menu that showsup when the viewport is narrow (x-axis)
+            @include css-var(
+              background,
+              clr-responsive-nav-hover-bg,
+              $clr-responsive-nav-hover-bg,
+              $clr-use-custom-properties
+            );
+          }
+        }
+      }
+
+      .sidenav.clr-nav-level-1,
+      .sidenav.clr-nav-level-2,
+      .clr-vertical-nav.clr-nav-level-1,
+      .clr-vertical-nav.clr-nav-level-2 {
+        border-right: none;
+      }
+    }
+
+    .main-container {
+      .header-overflow-trigger {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: '';
+          @include header-section-divider();
+          left: 0;
+        }
+      }
+
+      .header {
+        .branding {
+          max-width: $clr_baselineRem_10;
+          min-width: 0;
+          overflow: hidden;
+        }
+
+        .header-hamburger-trigger + .branding {
+          padding-left: 0;
+
+          //TODO: deprecate .clr-icon, .logo
+          .clr-icon,
+          .logo,
+          cds-icon,
+          clr-icon {
+            display: none;
+          }
+        }
+
+        .branding + .header-overflow-trigger,
+        .header-nav + .header-overflow-trigger {
+          margin-left: auto;
+        }
+      }
+    }
+
+    .main-container {
+      &.open-hamburger-menu,
+      &.open-overflow-menu {
+        .header {
+          .header-backdrop {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            @include css-var(
+              background,
+              clr-responsive-nav-header-backdrop-bg-color,
+              $clr-color-neutral-1000,
+              $clr-use-custom-properties
+            );
+            @include css-var(opacity, clr-responsive-nav-header-backdrop-opacity, 0.85, $clr-use-custom-properties);
+            cursor: pointer;
+            z-index: $clr-sliding-panel-backdrop-z-index;
+          }
+
+          .header-nav.clr-nav-level-1,
+          .header-nav.clr-nav-level-2 {
+            .nav-link {
+              flex: 0 0 auto;
+
+              .nav-icon,
+              .fa {
+                display: none;
+              }
+
+              .nav-text {
+                $nav-text-height: $clr_baselineRem_1;
+
+                display: inline-block;
+                @include css-var(
+                  color,
+                  clr-sliding-panel-text-color,
+                  $clr-sliding-panel-text-color,
+                  $clr-use-custom-properties
+                );
+                line-height: $nav-text-height;
+                padding: $clr_baselineRem_0_25 0 $clr_baselineRem_0_25 $clr_baselineRem_1;
+                white-space: normal;
+                font-weight: normal;
+              }
+
+              opacity: 1;
+
+              .nav-icon + .nav-text {
+                display: inline-block;
+              }
+
+              @include vertical-nav-link-colors();
+
+              &.active > .nav-text {
+                color: inherit;
+              }
+            }
+          }
+        }
+
+        .clr-vertical-nav .nav-trigger {
+          display: none;
+        }
+      }
+
+      &.open-hamburger-menu {
+        .header {
+          .branding {
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            width: $clr-sliding-panel-width;
+            max-width: $clr-sliding-panel-width;
+            z-index: $clr-sliding-panel-z-index + 1;
+            padding-left: $clr_baselineRem_1;
+
+            & > .nav-link {
+              overflow: hidden;
+            }
+
+            //deprecate .clr-icon, .logo
+            .clr-icon,
+            .logo,
+            cds-icon,
+            clr-icon {
+              display: inline-block;
+            }
+
+            cds-icon[shape='vm-bug'],
+            clr-icon[shape='vm-bug'],
+            .clr-vmw-logo {
+              background-color: $clr-color-neutral-600;
+              border-radius: $clr-global-borderradius;
+            }
+
+            .title {
+              @include css-var(
+                color,
+                clr-sliding-panel-text-color,
+                $clr-sliding-panel-text-color,
+                $clr-use-custom-properties
+              );
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+        }
+
+        .header-hamburger-trigger {
+          @include menu-trigger();
+          @include hamburger-menu-trigger-animation();
+        }
+
+        .header-nav.clr-nav-level-1,
+        .subnav.clr-nav-level-1,
+        .sub-nav.clr-nav-level-1,
+        .sidenav.clr-nav-level-1,
+        .clr-vertical-nav.clr-nav-level-1 {
+          padding-top: $clr-header-height + $clr_baselineRem_1;
+          transform: translateX(0);
+          transition: $clr-sliding-panel-animation;
+
+          .sidenav-content {
+            padding-bottom: $clr_baselineRem_1;
+          }
+        }
+      }
+
+      &.open-overflow-menu {
+        .header-nav.clr-nav-level-2,
+        .subnav.clr-nav-level-2,
+        .sub-nav.clr-nav-level-2,
+        .sidenav.clr-nav-level-2,
+        .clr-vertical-nav.clr-nav-level-2 {
+          transform: translateX(0);
+          transition: $clr-sliding-panel-animation;
+        }
+
+        .header-nav.clr-nav-level-2,
+        .subnav.clr-nav-level-2,
+        .sub-nav.clr-nav-level-2 {
+          padding-top: $clr_baselineRem_1;
+        }
+
+        .header-overflow-trigger {
+          @include menu-trigger(0, auto, (-1 * $clr-trigger-position));
+          @include overflow-menu-trigger-animation();
+        }
+      }
+
+      &.open-hamburger-menu {
+        .header-nav.clr-nav-level-1,
+        .subnav.clr-nav-level-1,
+        .sub-nav.clr-nav-level-1,
+        .sidenav.clr-nav-level-1,
+        .clr-vertical-nav.clr-nav-level-1 {
+          width: $clr-sliding-panel-width;
+          max-width: $clr-sliding-panel-width;
+        }
+      }
+
+      &.open-overflow-menu {
+        .header-nav.clr-nav-level-2,
+        .subnav.clr-nav-level-2,
+        .sub-nav.clr-nav-level-2,
+        .sidenav.clr-nav-level-2,
+        .clr-vertical-nav.clr-nav-level-2 {
+          width: $clr-sliding-panel-width;
+          max-width: $clr-sliding-panel-width;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+    .main-container {
+      .header {
+        .branding {
+          max-width: $clr_baselineRem_6;
+          min-width: 0;
+          overflow: hidden;
+        }
+      }
+
+      .header-nav.clr-nav-level-1,
+      .subnav.clr-nav-level-1,
+      .sub-nav.clr-nav-level-1,
+      .sidenav.clr-nav-level-1,
+      .clr-vertical-nav.clr-nav-level-1 {
+        transform: translateX(-1 * $clr-sliding-panel-width-sm);
+      }
+
+      .header-nav.clr-nav-level-2,
+      .subnav.clr-nav-level-2,
+      .sub-nav.clr-nav-level-2,
+      .sidenav.clr-nav-level-2,
+      .clr-vertical-nav.clr-nav-level-2 {
+        transform: translateX($clr-sliding-panel-width-sm);
+      }
+    }
+
+    .main-container {
+      &.open-hamburger-menu {
+        .header {
+          .branding {
+            width: $clr-sliding-panel-width-sm;
+            max-width: $clr-sliding-panel-width-sm;
+          }
+        }
+
+        .header-nav.clr-nav-level-1,
+        .subnav.clr-nav-level-1,
+        .sub-nav.clr-nav-level-1,
+        .sidenav.clr-nav-level-1,
+        .clr-vertical-nav.clr-nav-level-1 {
+          width: $clr-sliding-panel-width-sm;
+          max-width: $clr-sliding-panel-width-sm;
+        }
+
+        .header-hamburger-trigger {
+          @include menu-trigger(auto, 0, $clr-trigger-position-sm);
+        }
+      }
+
+      &.open-overflow-menu {
+        .header-nav.clr-nav-level-2,
+        .subnav.clr-nav-level-2,
+        .sub-nav.clr-nav-level-2,
+        .sidenav.clr-nav-level-2,
+        .clr-vertical-nav.clr-nav-level-2 {
+          width: $clr-sliding-panel-width-sm;
+          max-width: $clr-sliding-panel-width-sm;
+        }
+
+        .header-overflow-trigger {
+          @include menu-trigger(0, auto, (-1 * $clr-trigger-position-sm));
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,213 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<ng-template #fields>
+  <div class="clr-form-control">
+    <label class="clr-control-label">Input standart</label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+  <div class="clr-form-control">
+    <label class="clr-control-label">Input standart (error)</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+  <div class="clr-form-control">
+    <label class="clr-control-label">With icons on both sides</label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusInputGroup }">
+          <span class="clr-input-group-addon"><cds-icon shape="calendar"></cds-icon></span>
+          <input
+            type="text"
+            placeholder="Enter value here"
+            class="clr-input"
+            (focus)="focusInputGroup = true"
+            (blur)="focusInputGroup = false"
+          />
+          <span class="clr-input-group-addon"><cds-icon shape="calendar"></cds-icon></span>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">With icons on both sides (error)</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusInputGroup }">
+          <span class="clr-input-group-addon"><cds-icon shape="calendar"></cds-icon></span>
+          <input
+            type="text"
+            placeholder="Enter value here"
+            class="clr-input"
+            (focus)="focusInputGroup = true"
+            (blur)="focusInputGroup = false"
+          />
+          <span class="clr-input-group-addon"><cds-icon shape="calendar"></cds-icon></span>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">With text prefix + suffix </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusPrefixSuffixGroup }">
+          <span class="clr-input-group-addon">$</span>
+          <input
+            type="number"
+            placeholder="Enter value here"
+            class="clr-input"
+            (focus)="focusPrefixSuffixGroup = true"
+            (blur)="focusPrefixSuffixGroup = false"
+          />
+          <span class="clr-input-group-addon">.00</span>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic input group a select</label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusSelectGroup }">
+          <select>
+            <option>http://</option>
+            <option>https://</option>
+            <option>git://</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Enter value here"
+            class="clr-input"
+            (focus)="focusSelectGroup = true"
+            (blur)="focusSelectGroup = false"
+          />
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">With select at the end (clr-select-wrapper)</label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{ 'clr-focus': focusSelectGroup }">
+          <input
+            type="text"
+            placeholder="Enter value here"
+            class="clr-input"
+            (focus)="focusSelectGroup = true"
+            (blur)="focusSelectGroup = false"
+          />
+          <div class="clr-select-wrapper">
+            <select>
+              <option>http://</option>
+              <option>https://</option>
+              <option>git://</option>
+            </select>
+          </div>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Password with toggle</label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{'clr-focus': focusPasswordGroup }">
+          <input
+            name="password"
+            class="clr-input"
+            placeholder="Enter value here"
+            [(ngModel)]="password"
+            [type]="showPassword ? 'text' : 'password'"
+            (focus)="focusPasswordGroup = true"
+            (blur)="focusPasswordGroup = false"
+          />
+          <button (click)="showPassword = !showPassword" class="clr-input-group-icon-action" type="button">
+            <cds-icon
+              [attr.shape]="showPassword ? 'eye-hide' : 'eye'"
+              [attr.title]="showPassword ? commonStrings.keys.hide : commonStrings.keys.show"
+            ></cds-icon>
+          </button>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Password with toggle (error)</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <div class="clr-input-group" [ngClass]="{'clr-focus': focusPasswordGroup }">
+          <input
+            name="password"
+            class="clr-input"
+            placeholder="Enter value here"
+            [(ngModel)]="password"
+            [type]="showPassword ? 'text' : 'password'"
+            (focus)="focusPasswordGroup = true"
+            (blur)="focusPasswordGroup = false"
+          />
+          <button (click)="showPassword = !showPassword" class="clr-input-group-icon-action" type="button">
+            <cds-icon
+              [attr.shape]="showPassword ? 'eye-hide' : 'eye'"
+              [attr.title]="showPassword ? commonStrings.keys.hide : commonStrings.keys.show"
+            ></cds-icon>
+          </button>
+        </div>
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</ng-template>
+
+<div class="input-group-example">
+  <h2>Input Group</h2>
+
+  <h3>Vertical</h3>
+  <form id="input-group-vertical" class="clr-form">
+    <ng-container *ngTemplateOutlet="fields"></ng-container>
+  </form>
+
+  <h3>Horizontal</h3>
+  <form id="input-group-horizontal" class="clr-form clr-form-horizontal">
+    <ng-container *ngTemplateOutlet="fields"></ng-container>
+  </form>
+
+  <h3>Compact</h3>
+  <form id="input-group-compact" class="clr-form clr-form-compact">
+    <ng-container *ngTemplateOutlet="fields"></ng-container>
+  </form>
+</div>

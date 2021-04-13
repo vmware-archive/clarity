@@ -1,0 +1,41 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../data/datagrid/_datagrid.clarity.scss
+$clr-datagrid-icon-size: $clr_baselineRem_0_583;
+$clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
+$clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
+$clr-datagrid-font-color: hsl(203, 16%, 72%) !default;
+$clr-datagrid-default-border-color: $clr-color-neutral-400 !default;
+
+$clr-datagrid-row-hover: $clr-color-neutral-200 !default;
+$clr-datagrid-row-hover-font-color: $clr-color-neutral-1000 !default;
+$clr-datagrid-action-toggle: $clr-color-neutral-700 !default;
+$clr-datagrid-pagination-btn-color: $clr-color-neutral-700 !default;
+$clr-datagrid-pagination-btn-disabled-color: $clr-color-neutral-600 !default;
+$clr-datagrid-pagination-btn-disabled-opacity: 0.56;
+$clr-datagrid-pagination-input-border-color: $clr-datagrid-default-border-color !default;
+$clr-datagrid-pagination-input-border-focus-color: $clr-color-action-400 !default;
+$clr-datagrid-popover-bg-color: $clr-color-neutral-0 !default;
+$clr-datagrid-popover-border-color: $clr-datagrid-default-border-color !default;
+$clr-datagrid-action-popover-hover-color: $clr-color-neutral-200 !default;
+$clr-datagrid-loading-background: hsla(0, 0%, 100%, 0.6) !default;
+$clr-datagrid-row-selected: $clr-color-neutral-1000 !default;
+
+$clr-datagrid-icon-size: $clr_baselineRem_0_583;
+$clr-datagrid-icon-color: $clr-color-neutral-600 !default;
+$clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
+$clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
+$horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
+$clr-datagrid-column-separator-expandby: $clr_baselineRem_0_5;
+$clr-datagrid-column-switch-header-font-color: $clr-color-neutral-500;
+$clr-datagrid-column-switch-header-font-hover-color: $clr-color-action-600;
+$clr-datagrid-compact-outline-offset: -1 * $clr_baselineRem_4px;
+
+$clr-datagrid-detail-caret-icon-open-bg-color: $clr-color-action-600;
+$clr-datagrid-detail-caret-icon-open-icon-color: $clr-color-neutral-0;
+
+// Placeholder
+$clr-datagrid-placeholder-color: $clr-color-neutral-500 !default;
+$clr-datagrid-placeholder-font-size: $clr-h5-font-size !default;

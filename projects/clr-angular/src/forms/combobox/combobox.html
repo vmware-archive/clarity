@@ -1,0 +1,95 @@
+<!--
+* Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+* This software is released under MIT license.
+* The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<!-- The (click) handler is needed to auto-focus on input field which can not currently occupy the whole
+     width of the component, after being wrapped to a new line -->
+<div
+  class="clr-combobox-wrapper"
+  clrPopoverAnchor
+  (click)="focusInput()"
+  [class.multi]="multiSelect"
+  [class.invalid]="invalid"
+>
+  <span
+    *ngIf="multiSelect && optionSelectionService.selectionModel.model"
+    role="grid"
+    clrRovingTabindex
+    [clrRovingTabindexDisabled]="control?.disabled"
+    clrDirection="both"
+    [attr.aria-label]="getSelectionAriaLabel()"
+    [attr.aria-disabled]="control?.disabled? true: null"
+  >
+    <span *ngFor="let item of multiSelectModel; let i = index" class="label label-combobox-pill" role="row">
+      <span role="gridcell">
+        <span class="clr-combobox-pill-content" clrKeyFocusItem>
+          <ng-container
+            *ngIf="optionSelected"
+            [ngTemplateOutlet]="optionSelected.template"
+            [ngTemplateOutletContext]="{$implicit: optionSelectionService.selectionModel.model[i]}"
+          >
+          </ng-container>
+        </span>
+      </span>
+      <span role="gridcell">
+        <button
+          clrKeyFocusItem
+          type="button"
+          class="clr-combobox-remove-btn"
+          [disabled]="control?.disabled? true: null"
+          [attr.aria-label]="commonStrings.keys.comboboxDelete + ' ' + optionSelectionService.selectionModel.toString(displayField, i)"
+          (click)="unselect(item)"
+        >
+          <cds-icon shape="window-close" size="12"></cds-icon>
+        </button>
+      </span>
+    </span>
+  </span>
+
+  <span class="clr-combobox-input-wrapper">
+    <input
+      #textboxInput
+      type="text"
+      [id]="inputId()"
+      role="combobox"
+      class="clr-input clr-combobox-input"
+      [(ngModel)]="searchText"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      [attr.aria-expanded]="openState"
+      [attr.aria-owns]="ariaOwns"
+      aria-haspopup="listbox"
+      aria-autocomplete="list"
+      autocomplete="off"
+      [attr.aria-invalid]="control?.invalid? true: null"
+      [disabled]="control?.disabled? true: null"
+      [attr.aria-activedescendant]="getActiveDescendant()"
+      [attr.placeholder]="placeholder"
+      aria-multiline="false"
+    />
+  </span>
+
+  <!-- No click handler, as it uses the handler on the .clr-combobox-wrapper -->
+  <button
+    clrPopoverOpenCloseButton
+    #trigger
+    type="button"
+    class="clr-combobox-trigger"
+    tabindex="-1"
+    [disabled]="control?.disabled || null"
+    [attr.aria-label]="commonStrings.keys.comboboxOpen"
+  >
+    <cds-icon shape="angle" direction="down" size="12"></cds-icon>
+  </button>
+
+  <div class="clr-focus-indicator" [class.clr-focus]="focused"></div>
+</div>
+
+<!-- Both close handlers are handled manually due to issues in Edge browser.
+     Additionally 'outsideClickToClose' has complex handling that's necessary
+     to be manual due to the component architecture -->
+<div role="dialog" *clrPopoverContent="openState at smartPosition; outsideClickToClose: false; scrollToClose: false">
+  <ng-content></ng-content>
+</div>

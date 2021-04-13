@@ -1,0 +1,50 @@
+<section class="icons-sets-container" [style.min-height.px]="initialHeight">
+  <fragment-content
+    *ngFor="let setName of setNames"
+    [fragmentLink]="setName"
+    [fragmentOffsetTop]="sets[setName].fragmentOffset"
+  >
+    <section *ngIf="sets[setName].matchedIcons.length > 0">
+      <div class="clr-row">
+        <h2>{{ sets[setName].setTitle }}</h2>
+      </div>
+
+      <div class="clr-row clr-icon-collection">
+        <ng-container *ngFor="let visibleIcon of sets[setName].matchedIcons">
+          <div
+            #visibleIconElRef
+            (click)="showDetailOn = visibleIconElRef; showDetail(setName, visibleIcon.name, visibleIcon.aliases)"
+            class="clr-icon-item clr-col-12 clr-col-sm-6 clr-col-md-4"
+          >
+            <button
+              type="button"
+              class="visible-icon"
+              [class.active]="showDetailInSet === setName && showDetailOnIcon === visibleIcon.name"
+            >
+              <clr-icon
+                size="24"
+                [attr.shape]="visibleIcon.name"
+                class="icon-shape"
+                [ngClass]="previewClasses"
+              ></clr-icon>
+              <span class="icon-shape-name">{{ visibleIcon.name }}</span>
+            </button>
+          </div>
+          <div
+            class="clr-col-lg-12 icon-detail"
+            *ngIf="showDetailBoxAfter === visibleIconElRef"
+            [@showDetail]="showDetailBoxAfter === visibleIconElRef"
+          >
+            <icon-detail-card
+              [clrIcon]="showDetailOnIcon"
+              [clrIconSet]="setName"
+              [clrIconAliases]="showDetailOnIconAliases"
+            ></icon-detail-card>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+  </fragment-content>
+
+  <div class="no-results-found" *ngIf="totalVisibleIcons === 0">No results found for "{{ searchedValue }}"</div>
+</section>

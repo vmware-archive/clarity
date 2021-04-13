@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Loading Buttons</h4>
+<button [clrLoading]="validateState" class="btn btn-primary" (click)="validateDemo()">Validate</button>
+<button [clrLoading]="submitState" type="submit" class="btn btn-success-outline" (click)="submitDemo()">Submit</button>
+
+<h4>Loading Buttons with Disabled Input</h4>
+<button
+  [clrLoading]="disabledState"
+  [disabled]="disabledStateDisabled"
+  type="submit"
+  class="btn btn-primary"
+  (click)="disabledDemo()"
+>
+  Disable After Success
+</button>
+<button
+  [clrLoading]="enabledState"
+  [disabled]="enabledStateDisabled"
+  type="submit"
+  class="btn btn-primary"
+  (click)="enabledDemo()"
+>
+  Enable After Success
+</button>
+
+<h4>Small Loading Buttons</h4>
+<button [clrLoading]="validateSmState" class="btn btn-sm btn-info-outline" (click)="validateSmDemo()">Validate</button>
+<button [clrLoading]="submitSmState" type="submit" class="btn btn-sm btn-success-outline" (click)="submitSmDemo()">
+  Submit
+</button>
+<button [clrLoading]="validateFalsyState" class="btn btn-sm btn-info-outline" (click)="validateFalsyDemo()">
+  Validate
+</button>

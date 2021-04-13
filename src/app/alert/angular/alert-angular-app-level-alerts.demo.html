@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <div class="main-container">
+    <clr-alerts>
+      <clr-alert clrAlertType="info" [clrAlertAppLevel]="true">
+        <clr-alert-item>
+          <span class="alert-text">
+            View additional alerts using the pager
+          </span>
+          <div class="alert-actions">
+            <button class="btn alert-action">Fix</button>
+          </div>
+        </clr-alert-item>
+      </clr-alert>
+      <clr-alert clrAlertType="warning" [clrAlertAppLevel]="true">
+        <clr-alert-item>
+          <span class="alert-text">
+            Application level alerts should only be used for important messages.
+          </span>
+          <div class="alert-actions">
+            <button class="btn alert-action">Fix</button>
+          </div>
+        </clr-alert-item>
+      </clr-alert>
+      <clr-alert clrAlertType [clrAlertAppLevel]="true">
+        <clr-alert-item>
+          <span class="alert-text">
+            Don't add too many of these alerts!
+          </span>
+          <div class="alert-actions">
+            <button class="btn alert-action">Fix</button>
+          </div>
+        </clr-alert-item>
+      </clr-alert>
+    </clr-alerts>
+    <header class="header header-6">
+      <div class="branding">
+        <span class="title">Header</span>
+      </div>
+    </header>
+    <div class="content-container">
+      <div class="content-area">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus non beatae omnis esse quibusdam dolorum
+          voluptatem reiciendis quaerat assumenda optio, porro expedita similique dolore quidem aliquam. Ullam, eaque
+          enim nobis.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

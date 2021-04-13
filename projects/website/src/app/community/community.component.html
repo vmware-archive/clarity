@@ -1,0 +1,114 @@
+<main class="content-area">
+  <section class="community-top-section">
+    <h1 id="community">Community</h1>
+
+    <p>
+      We are passionate about making Clarity the best it can be.&nbsp;Although each team member has a specific role and
+      area of responsibility, we’re all actively engaged in every aspect of the framework.
+    </p>
+  </section>
+
+  <section class="community-social-cards">
+    <h3>Engaging with the Clarity Team</h3>
+
+    <div class="hidden-sm-up">
+      <ul class="list-unstyled indent bump-down">
+        <li><a rel="noopener" target="_blank" href="https://twitter.com/VMwareClarity">Talk with us on Twitter</a></li>
+
+        <li><a rel="noopener" target="_blank" href="https://github.com/vmware/clarity/issues">Report an issue</a></li>
+
+        <li><a rel="noopener" target="_blank" href="https://medium.com/claritydesignsystem">Read our blog</a></li>
+      </ul>
+    </div>
+    <div class="hidden-xs-down clr-row">
+      <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+        <a
+          rel="noopener"
+          target="_blank"
+          href="https://github.com/vmware/clarity/issues"
+          class="social-card social-card-github"
+        >
+          <div class="card clickable">
+            <div class="card-block">
+              <div class="community-social-icon">
+                <img src="assets/images/team/social/github.png" alt="github" />
+              </div>
+              <p class="card-text">File a request/bug</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+        <a
+          target="_blank"
+          href="https://stackoverflow.com/tags/vmware-clarity"
+          class="social-card social-card-stackoverflow"
+        >
+          <div class="card clickable">
+            <div class="card-block">
+              <div class="community-social-icon">
+                <img src="assets/images/team/social/stackoverflow.png" alt="twitter" />
+              </div>
+              <p class="card-text">Ask a question</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+        <a target="_blank" href="https://twitter.com/VMwareClarity" class="social-card social-card-twitter">
+          <div class="card clickable">
+            <div class="card-block">
+              <div class="community-social-icon">
+                <img src="assets/images/team/social/twitter.png" alt="twitter" />
+              </div>
+              <p class="card-text">Chat with us</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
+        <a target="_blank" href="https://medium.com/claritydesignsystem" class="social-card social-card-medium">
+          <div class="card clickable">
+            <div class="card-block">
+              <div class="community-social-icon">
+                <img src="assets/images/team/social/medium.png" alt="medium" />
+              </div>
+              <p class="card-text">Read our blog</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-team-cards">
+    <h3>Clarity Team</h3>
+
+    <div class="clr-row">
+      <div *ngFor="let member of team" class="card clr-col-12 clr-col-md-4">
+        <div class="card-block">
+          <img src="{{ teamImgUrl }}{{ member.img }}" alt="Picture of {{ member.name }}" />
+
+          <div class="card-text">
+            <p class="community-team-name" [ngSwitch]="member.twitter">
+              <span *ngSwitchCase="undefined">{{ member.name }}</span>
+              <a href="https://twitter.com/{{ member.twitter }}" target="_blank" *ngSwitchDefault>{{ member.name }}</a>
+            </p>
+            <p class="community-team-role">{{ member.role }}</p>
+            <p class="community-team-blurb">{{ member.blurb }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-contributors">
+    <h3>Contributors</h3>
+    <ul class="list-unstyled contributor-list">
+      <li *ngFor="let name of contributors">{{ name }}</li>
+    </ul>
+  </section>
+</main>

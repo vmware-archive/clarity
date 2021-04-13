@@ -1,0 +1,49 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables.color';
+@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+
+.selection-preview-settings {
+  max-width: $clr_baselineRem_500px;
+}
+
+.clr-icon-collection {
+  padding: $clr_baselineRem_1;
+
+  .clr-icon-item {
+    padding: $clr_baselineRem_0_5 $clr_baselineRem_0_25;
+    white-space: nowrap;
+
+    cds-icon {
+      width: $clr_baselineRem_1;
+      height: $clr_baselineRem_1;
+      margin: 0 $clr_baselineRem_0_5;
+    }
+
+    span.icon-shape-name {
+      white-space: nowrap;
+    }
+  }
+}
+
+.clr-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  margin: 0;
+  padding: $clr_baselineRem_0_5 0;
+
+  &.inverse {
+    background: hsl(218, 14%, 30%);
+    margin: $clr_baselineRem_0_5 0 0;
+  }
+
+  cds-icon {
+    width: $clr_baselineRem_1_5;
+    height: $clr_baselineRem_1_5;
+    margin: 0 $clr_baselineRem_0_25;
+  }
+}

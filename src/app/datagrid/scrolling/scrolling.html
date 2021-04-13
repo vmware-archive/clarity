@@ -1,0 +1,56 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Vertical scrolling</h2>
+
+<clr-datagrid id="vertical-scrolling">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of manyUsers">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h2>Horizontal scrolling</h2>
+
+<div class="card" style="width: 400px;">
+  <div class="card-header">
+    For instance when in a narrow card.
+  </div>
+  <div class="card-block">
+    <clr-datagrid>
+      <clr-dg-column>User ID</clr-dg-column>
+      <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+      <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+      <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+      <clr-dg-column class="lorem-ipsum">Filler</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let user of users">
+        <clr-dg-cell>{{user.id}}</clr-dg-cell>
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="color-square" [style.backgroundColor]="user.color"></span>
+        </clr-dg-cell>
+        <clr-dg-cell>This is a very wide column.</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

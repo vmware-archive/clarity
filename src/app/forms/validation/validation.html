@@ -1,0 +1,153 @@
+<!--
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Validation</h2>
+
+<ng-template #fields>
+  <form clrForm [formGroup]="model" #inputSuccessVertical>
+    <clr-input-container>
+      <label>Input</label>
+      <input clrInput placeholder="Input control" name="input" formControlName="input" />
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+      <clr-control-error *clrIfError="'minlength'; error as err">Must be at least 5 characters</clr-control-error>
+      <clr-control-error *clrIfError="'pattern'; error as err">It must match 'asdfasdf'</clr-control-error>
+      <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+    </clr-input-container>
+
+    <clr-input-container>
+      <label>Input (Only Helper)</label>
+      <input clrInput placeholder="Input control" name="input-help" formControlName="input-help" />
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-input-container>
+
+    <clr-input-container>
+      <label>Input (Only Success)</label>
+      <input clrInput placeholder="Input control" name="input" formControlName="input" />
+      <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+    </clr-input-container>
+
+    <clr-date-container>
+      <label>Date Picker</label>
+      <input type="date" clrDate name="date" formControlName="date" />
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">We require date</clr-control-error>
+      <clr-control-success *clrIfSuccess>The date was set</clr-control-success>
+    </clr-date-container>
+
+    <clr-date-container>
+      <label>Date Picker (Only Helper)</label>
+      <input type="date" clrDate name="date-helper" formControlName="date-helper" />
+      <clr-control-helper>Helper text</clr-control-helper>
+    </clr-date-container>
+
+    <clr-date-container>
+      <label>Date Picker (Only Success)</label>
+      <input type="date" clrDate name="date-helper" formControlName="date-helper" />
+      <clr-control-success *clrIfSuccess>The date was set</clr-control-success>
+    </clr-date-container>
+
+    <clr-textarea-container>
+      <label>Textarea</label>
+      <textarea clrTextarea name="textarea" formControlName="textarea"></textarea>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+      <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+      <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+      <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+    </clr-textarea-container>
+
+    <clr-password-container>
+      <label>Password</label>
+      <input clrPassword placeholder="Password please!" name="password" formControlName="password" />
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+      <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+      <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+      <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+    </clr-password-container>
+
+    <clr-radio-container>
+      <label>Radio</label>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="options" formControlName="options" required value="option1" />
+        <label>Option 1</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="options" formControlName="options" required value="option2" />
+        <label>Option 2</label>
+      </clr-radio-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+      <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+    </clr-radio-container>
+
+    <clr-checkbox-container>
+      <label>Checkbox</label>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox value="option1" formControlName="checkbox" name="checkbox" required />
+        <label>Option 1</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox value="option2" formControlName="checkbox" name="checkbox" required />
+        <label>Option 2</label>
+      </clr-checkbox-wrapper>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+      <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+    </clr-checkbox-container>
+
+    <clr-select-container>
+      <label>Select</label>
+      <select clrSelect name="select" required formControlName="select">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+      <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+    </clr-select-container>
+
+    <clr-range-container [clrRangeHasProgress]="true">
+      <label>Range</label>
+      <input type="range" clrRange formControlName="range" name="range" />
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+      <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+    </clr-range-container>
+
+    <clr-datalist-container>
+      <label>Datalist</label>
+      <input clrDatalistInput name="datalist" formControlName="datalist" required />
+      <datalist>
+        <option *ngFor="let item of items" [value]="item"></option>
+      </datalist>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+      <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+    </clr-datalist-container>
+  </form>
+</ng-template>
+
+<button class="btn btn-primary" type="button" (click)="validate()">Validate</button>
+<button class="btn btn-primary" type="button" (click)="model.reset()">Reset</button>
+
+<h3>Vertical</h3>
+<form clrForm #inputSuccessVertical>
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>
+
+<h3>Horizontal</h3>
+<form clrForm #inputSuccessHorizontal class="clr-form-horizontal">
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>
+
+<h3>Compact</h3>
+<form clrForm #inputSuccessCompact class="clr-form-compact">
+  <ng-container *ngTemplateOutlet="fields"></ng-container>
+</form>
+No newline at end of file

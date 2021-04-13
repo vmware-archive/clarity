@@ -1,0 +1,18 @@
+<clr-checkbox-container>
+  <label>Indeterminate checkbox example</label>
+  <clr-checkbox-wrapper>
+    <input
+      type="checkbox"
+      clrCheckbox
+      name="test6"
+      value="option1"
+      (change)="indeterminateState = false"
+      [(ngModel)]="options.option1"
+      [indeterminate]="indeterminateState"
+    />
+    <label>Option 1</label>
+  </clr-checkbox-wrapper>
+  <clr-control-helper>Helper text</clr-control-helper>
+</clr-checkbox-container>
+
+<button class="btn btn-sm" (click)="indeterminateState = true">Reset indeterminate state</button>

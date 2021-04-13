@@ -1,0 +1,57 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../_utils/clarity-variables';
+
+.datagrid-nav {
+  column-count: 3;
+}
+
+.color-square {
+  display: inline-block;
+  vertical-align: bottom;
+  height: $clr_baselineRem_13px;
+  width: $clr_baselineRem_13px;
+  border: $clr_baselineRem_1px solid black;
+  border-radius: $clr_baselineRem_4px;
+}
+
+.color-filter {
+  display: block;
+  width: $clr_baselineRem_100px;
+}
+
+.color-selectable {
+  cursor: pointer;
+  margin: $clr_baselineRem_2px;
+  opacity: 0.2;
+
+  &:hover,
+  &.color-selected {
+    opacity: 1;
+  }
+}
+
+.lorem-ipsum {
+  width: $clr_baselineRem_300px;
+}
+
+.username-list {
+  margin-bottom: 0;
+
+  .username:not(:last-child)::after {
+    content: ', ';
+  }
+  .username:last-child::after {
+    content: '.';
+  }
+}
+
+#vertical-scrolling {
+  height: $clr_baselineRem_500px;
+}
+
+.conditional-datagrid {
+  height: $clr_baselineRem_300px;
+}

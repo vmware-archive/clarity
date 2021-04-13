@@ -1,0 +1,187 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.tree-view';
+
+@include exports('tree-view.clarity') {
+  .clr-tree-node {
+    //Display
+    display: block;
+  }
+
+  .clr-tree-node-content-container {
+    //Display
+    display: flex;
+    align-items: center;
+  }
+
+  .clr-treenode-content {
+    //Note to people reviewing: Adding display flex to the content area. You think this might break a few things
+    //on the consumer side?
+    //Display
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+
+    //Dimensions
+    &:first-child {
+      padding-left: $clr-tree-node-touch-target;
+    }
+
+    //Others
+    border-radius: 0;
+    @include css-var(
+      border-top-left-radius,
+      clr-tree-border-radius,
+      $clr-tree-border-radius,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      border-bottom-left-radius,
+      clr-tree-border-radius,
+      $clr-tree-border-radius,
+      $clr-use-custom-properties
+    );
+    line-height: $clr-tree-node-touch-target;
+
+    cds-icon,
+    clr-icon {
+      @include equilateral($clr-tree-caret-size);
+      margin-right: $clr-tree-node-content-icon-margin-right;
+      vertical-align: middle;
+    }
+  }
+
+  .clr-treenode-caret {
+    //Display
+    flex: 0 0 $clr-tree-node-touch-target;
+
+    //Dimensions
+    padding: 0;
+    margin: 0;
+    @include equilateral($clr-tree-node-touch-target);
+
+    //Others
+    background: none;
+    border: none;
+    @include css-var(color, clr-tree-node-caret-color, $clr-tree-node-caret-color, $clr-use-custom-properties);
+
+    cursor: pointer;
+    outline-offset: -1 * $clr_baselineRem_5px; //TODO: Replace with the outline offset mixin after the rem value change.
+
+    &:hover {
+      @include css-var(
+        color,
+        clr-tree-node-caret-link-hover-color,
+        $clr-tree-node-caret-link-hover-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-tree-node-caret-icon {
+    //Dimensions
+    @include equilateral($clr-tree-caret-size);
+
+    //Others
+    vertical-align: middle;
+  }
+
+  .clr-treenode-spinner-container {
+    //Dimensions
+    @include equilateral($clr-tree-node-touch-target);
+    padding: ($clr-tree-node-touch-target - $clr-tree-spinner-size) / 2;
+  }
+
+  .clr-treenode-spinner {
+    //Dimensions
+    @include min-equilateral($clr-tree-spinner-size);
+  }
+
+  .clr-treenode-children {
+    //Dimensions
+    margin-left: $clr-tree-node-children-margin;
+    will-change: height;
+    overflow-y: hidden;
+  }
+
+  .clr-treenode-link {
+    //Display
+    display: inline-block;
+
+    //Dimensions
+    @include equilateral(100%);
+    margin: 0;
+    padding: 0 0 0 $clr-tree-node-link-padding-left;
+
+    //Others
+    background: transparent;
+    border: 0;
+    @include css-var(color, clr-tree-link-text-color, $clr-tree-link-text-color, $clr-use-custom-properties);
+    cursor: pointer;
+    line-height: inherit;
+    text-align: left;
+
+    //States
+    &:link,
+    &:visited,
+    &:active,
+    &:hover {
+      color: inherit;
+    }
+
+    &:hover,
+    &:focus {
+      @include css-var(background, clr-tree-link-hover-color, $clr-tree-link-hover-color, $clr-use-custom-properties);
+      text-decoration: none;
+    }
+
+    &:focus {
+      //Removed only because we provide an alternative style
+      outline: 0;
+    }
+
+    &.active {
+      @include css-var(
+        background,
+        clr-tree-link-selection-color,
+        $clr-tree-link-selection-color,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        color,
+        clr-tree-node-caret-link-hover-color,
+        $clr-tree-node-caret-link-hover-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-tree-node-content-container > .clr-checkbox-wrapper {
+    //Dimensions
+    @include equilateral($clr-tree-node-touch-target);
+    padding-top: $clr-tree-checkbox-padding-top;
+    padding-left: $clr-tree-checkbox-padding-left;
+  }
+
+  .clr-tree-node-content-container > .clr-checkbox-wrapper:first-child {
+    margin-left: $clr-tree-node-touch-target;
+  }
+
+  .clr-treenode-content .label {
+    margin-left: $clr_baselineRem_0_25;
+  }
+
+  @include fixForMsEdge {
+    .clr-treenode-content .label {
+      margin-left: $clr_baselineRem_0_125;
+    }
+  }
+
+  @include fixForIE10AndUp {
+    .clr-treenode-content .label {
+      margin-left: $clr_baselineRem_0_125;
+    }
+  }
+}

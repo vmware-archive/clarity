@@ -1,0 +1,69 @@
+<h2>Clarity Icons Api</h2>
+
+<p>
+  The Clarity Icons library features a namespaced core of functionality that is publicly accessible from the browser's
+  <code class="clr-code">window</code> object. This "API" is available at <code class="clr-code">ClarityIcons</code> and
+  provides three useful pieces of functionality such as retrieving icons, adding new icons, and creating aliases for
+  icons. It's worth noting that you can also access the API from the <code class="clr-code">"@clr/icons"</code> module
+  in Typescript. For example:
+  <clr-code-snippet [clrCode]="apiImports" clrLanguage="typescript"></clr-code-snippet>
+  If you load <code class="clr-code">"@clr/icons"</code> like this make sure that you are not also loading it via a
+  script tag or in some other manner.
+</p>
+
+<h3 class="paragraph-header">Retrieve icons</h3>
+<p>
+  You can retrieve and check the currently available icons in Clarity Icons by calling the
+  <code class="clr-code">ClarityIcons.get()</code> method. The method will return the list of icons, each in a form of
+  key:value. The key being the icon name and the value its template, you can retrieve the specific icon template by
+  passing its name in the method. For example: <code class="clr-code">ClarityIcons.get("check")</code>, which will
+  return the SVG template of the "check" icon:
+
+  <!--<clr-code-snippet [clrCode]="checkIconTemplate"></clr-code-snippet>-->
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/RA7fzKw9KcWqJS3JDgMz/" target="_blank" class="btn btn-primary btn-sm">View example</a>
+</div>
+
+<h3 class="paragraph-header">Naming icons</h3>
+<ul>
+  <li>Must be non-empty string</li>
+  <li>
+    Must not contain any whitespace characters, for example <code class="clr-code">"My Custom Icon"</code> is not valid
+  </li>
+  <li>
+    Names are case-insensitive meaning that
+    <code class="clr-code">"myCustomIcon"</code> and <code class="clr-code">"mycustomicon"</code>
+    will be the same icon
+  </li>
+</ul>
+
+<h3 class="paragraph-header">Add custom icons to ClarityIcons</h3>
+<p>
+  The ClarityIcons API enables you to add your own icons to the publicly available ClarityIcons architecture. Use the
+  following call to add your icon to our library in your application:
+  <clr-code-snippet [clrCode]="addCustomIcon" clrLanguage="typescript"></clr-code-snippet>
+  This API method will assign your SVG markup to the named shape it is sent. The icon can then be used in your
+  application like any other icon in the Clarity Icons library.
+  <clr-code-snippet [clrCode]="addCustomIconResult"></clr-code-snippet>
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/MiRlaQDHIIJd3e3Hgxyj/" target="_blank" class="btn btn-primary btn-sm">View example</a>
+</div>
+
+<h3 class="paragraph-header">Create aliases for icons</h3>
+<p>
+  The Clarity Icons API can create aliases for the icons in your application with a single API call:
+  <clr-code-snippet [clrCode]="aliasIcon" clrLanguage="typescript"></clr-code-snippet>
+
+  The above method call will assign "alarm" and "oh-noehz" names to the existing "bell" icon shape. Now you can use the
+  "bell" icon with any of the new names you have assigned it.
+
+  <clr-code-snippet [clrCode]="aliasIconResult"></clr-code-snippet>
+</p>
+
+<div class="example-btn-wrapper">
+  <a href="https://embed.plnkr.co/7lsRWtqzta0FApicikel/" target="_blank" class="btn btn-primary btn-sm">View example</a>
+</div>

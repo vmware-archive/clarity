@@ -1,0 +1,285 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Angular Input <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="vertical.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="vertical.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="vertical.three"
+      name="three"
+      required
+      minlength="8"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="vertical.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="horizontal.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="horizontal.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="horizontal.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="horizontal.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <input clrInput placeholder="No label, no wrapper" name="one" [(ngModel)]="compact.one" />
+
+  <clr-input-container>
+    <input clrInput placeholder="No label, wrapper" name="two" [(ngModel)]="compact.two" />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Full example</label>
+    <input type="text" placeholder="Full example" clrInput [(ngModel)]="compact.three" name="three" required />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Disabled</label>
+    <input
+      type="text"
+      placeholder="Full example"
+      clrInput
+      [(ngModel)]="compact.four"
+      name="four"
+      required
+      [disabled]="disabled"
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h2>CSS Input</h2>
+
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label for="vertical-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="vertical-basic" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="vertical-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="vertical-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="vertical-error" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label for="horizontal-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="horizontal-basic" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="horizontal-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="horizontal-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="horizontal-error" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label for="compact-basic" class="clr-control-label">
+      Basic input
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input type="text" id="compact-basic" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label for="compact-disabled" class="clr-control-label">
+      Basic input, disabled
+    </label>
+    <div class="clr-control-container">
+      <div class="clr-input-wrapper">
+        <input
+          type="text"
+          id="compact-disabled"
+          placeholder="Enter value here"
+          class="clr-input"
+          value="test value"
+          disabled
+        />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-error" class="clr-control-label"> Basic input, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-input-wrapper">
+        <input type="text" id="compact-error" placeholder="Enter value here" class="clr-input" />
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle" status="danger"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Override grid</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-input-container>
+    <label class="clr-col-12 clr-col-md-4">Full example</label>
+    <input
+      class="clr-col-12 clr-col-md-8"
+      type="text"
+      placeholder="Name"
+      clrInput
+      [(ngModel)]="override"
+      name="three"
+      required
+    />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-input-container>
+</form>
+
+<h4>No form wrapper</h4>
+
+<clr-input-container>
+  <label>No form</label>
+  <input type="text" placeholder="Last Name" clrInput [(ngModel)]="noform" name="three" required />
+  <clr-control-helper>Helper text</clr-control-helper>
+  <clr-control-error>There was an error</clr-control-error>
+</clr-input-container>

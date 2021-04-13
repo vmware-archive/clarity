@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Angular Range <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Standalone</h4>
+
+<input type="range" clrRange />
+
+<input type="range" clrRange id="testing456" />
+
+<clr-range-container>
+  <input type="range" clrRange />
+  <label>Wrapped without id</label>
+</clr-range-container>
+
+<clr-range-container [clrRangeHasProgress]="true">
+  <input type="range" clrRange id="testing123" [(ngModel)]="standalone" />
+  <label for="testing123">Wrapped with id and progress</label>
+</clr-range-container>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <input type="range" clrRange name="one" [(ngModel)]="vertical.one" />
+
+  <clr-range-container>
+    <input type="range" clrRange name="two" [(ngModel)]="vertical.two" />
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Full example</label>
+    <input type="range" clrRange [(ngModel)]="vertical.three" name="three" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange [(ngModel)]="vertical.four" name="four" [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <clr-range-container>
+    <input type="range" clrRange [(ngModel)]="horizontal.one" name="one" />
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Full example</label>
+    <input type="range" clrRange [(ngModel)]="horizontal.two" name="two" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange [(ngModel)]="horizontal.three" name="three" [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <clr-range-container>
+    <input type="range" clrRange [(ngModel)]="compact.one" name="one" (change)="rangeChange($event)" />
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Full example</label>
+    <input type="range" clrRange [(ngModel)]="compact.two" name="two" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange [(ngModel)]="compact.three" name="three" [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+
+<h4>Reactive</h4>
+<form clrForm (submit)="submit()" [formGroup]="model">
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange (change)="rangeChange($event)" formControlName="reactive" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>

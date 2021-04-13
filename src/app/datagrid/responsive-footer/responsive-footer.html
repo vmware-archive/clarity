@@ -1,0 +1,85 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Datagrid: Responsive footer demo</h2>
+
+<button class="btn" (click)="static = !static" id="toggle-static">Toggle static footer</button>
+<button class="btn" (click)="compact = !compact" id="toggle-compact">Toggle compact datagrid</button>
+
+<div [style.width.px]="712">
+  <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
+</div>
+
+<div style="width: 400px; display: inline-block;">
+  <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
+</div>
+
+<div style="width: 300px; display: inline-block; margin-left: 0.5rem;">
+  <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
+</div>
+
+<ng-template #grid let-static="static" let-compact="compact">
+  <clr-datagrid [(clrDgSelected)]="selected" [style.max-height.px]="250" [class.datagrid-compact]="compact">
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        User ID
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <!--Name-->
+      <ng-container *clrDgHideableColumn>
+        Name
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Creation date
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Pokemon
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Favorite color
+      </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+      <clr-dg-cell>
+        {{user.id}}
+      </clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        {{user.pokemon.name}}
+        <clr-signpost>
+          <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+            <cds-icon shape="help-info"></cds-icon>
+          </button>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+            The pokemon is strong.
+          </clr-signpost-content>
+        </clr-signpost>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      <ng-container *ngIf="static">A custom static footer</ng-container>
+      <clr-dg-pagination *ngIf="!static" #pagination [clrDgPageSize]="1">
+        <clr-dg-page-size [clrPageSizeOptions]="[1, 3,5]">Users per page</clr-dg-page-size>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      </clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</ng-template>

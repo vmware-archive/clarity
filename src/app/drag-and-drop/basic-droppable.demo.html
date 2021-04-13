@@ -1,0 +1,178 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Basic Droppable</h4>
+
+<form clrForm>
+  <clr-radio-container>
+    <label>with:</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="basic-draggable" [(ngModel)]="activeDemoVariant" />
+      <label>Basic Draggable</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="custom-ghost" [(ngModel)]="activeDemoVariant" />
+      <label>Custom Ghost</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="droppable-variant" value="drag-handle" [(ngModel)]="activeDemoVariant" />
+      <label>Drag Handle</label>
+    </clr-radio-wrapper>
+  </clr-radio-container>
+</form>
+
+<div class="clr-example" *ngIf="activeDemoVariant==='basic-draggable'">
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBack($event)">
+        <thead>
+          <tr>
+            <th>Files:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="files.length===0">
+            <td>Nothing to drag here...</td>
+          </tr>
+          <tr *ngFor="let file of files">
+            <td><span class="label" [clrDraggable]="file">{{file.name}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUpload($event)">
+        <thead>
+          <tr>
+            <th>Drop here to upload:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="droppedFiles.length===0">
+            <td>Nothing to upload here...</td>
+          </tr>
+          <tr *ngFor="let file of droppedFiles">
+            <td><span class="label" [clrDraggable]="file">{{file.name}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="clr-example" *ngIf="activeDemoVariant==='custom-ghost'">
+  <clr-alert [clrAlertType]="'alert-info'">
+    <clr-alert-item>
+      <span class="alert-text">
+        Dragging a file will show an image icon as a custom ghost.
+      </span>
+    </clr-alert-item>
+  </clr-alert>
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBack($event)">
+        <thead>
+          <tr>
+            <th>Files:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="files.length===0">
+            <td>Nothing to drag here...</td>
+          </tr>
+          <tr *ngFor="let file of files">
+            <td>
+              <span class="label" [clrDraggable]="file"
+                >{{file.name}}
+                <clr-draggable-ghost *clrIfDragged>
+                  <cds-icon shape="image" size="36" solid style="transform: translate3d(-50%, -50%, 0);"></cds-icon>
+                </clr-draggable-ghost>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUpload($event)">
+        <thead>
+          <tr>
+            <th>Drop here to upload:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="droppedFiles.length===0">
+            <td>Nothing to upload here...</td>
+          </tr>
+          <tr *ngFor="let file of droppedFiles">
+            <td>
+              <span class="label" [clrDraggable]="file"
+                >{{file.name}}
+                <clr-draggable-ghost *clrIfDragged>
+                  <cds-icon shape="image" size="36" solid style="transform: translate3d(-50%, -50%, 0);"></cds-icon>
+                </clr-draggable-ghost>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="clr-example" *ngIf="activeDemoVariant==='drag-handle'">
+  <clr-alert [clrAlertType]="'alert-info'">
+    <clr-alert-item>
+      <span class="alert-text">
+        Drag each file by its icon.
+      </span>
+    </clr-alert-item>
+  </clr-alert>
+  <div class="clr-row">
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropBack($event)">
+        <thead>
+          <tr>
+            <th>Files:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="files.length===0">
+            <td>Nothing to drag here...</td>
+          </tr>
+          <tr *ngFor="let file of files">
+            <td>
+              <span class="label" [clrDraggable]="file"
+                ><cds-icon clrDragHandle shape="image" solid></cds-icon> {{file.name}}</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clr-col-4 offset-xs-1">
+      <table class="table" clrDroppable (clrDrop)="onDropToUpload($event)">
+        <thead>
+          <tr>
+            <th>Drop here to upload:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="droppedFiles.length===0">
+            <td>Nothing to upload here...</td>
+          </tr>
+          <tr *ngFor="let file of droppedFiles">
+            <td>
+              <span class="label" [clrDraggable]="file"
+                ><cds-icon clrDragHandle shape="image" solid></cds-icon> {{file.name}}</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled whats-new-highlights">
+  <li>
+    <h6>New implementation for i18n provider</h6>
+    <p breaking-change>
+      The previous i18n service would get removed from a production build in Angular since it wasn't referenced. To
+      address this, there is now a service that Clarity provides itself and you can pass a custom, new localized set of
+      strings into the service instead of trying to use the provider tree in Angular. You can read more
+      <a routerLink="/documentation/internationalization">here</a>.
+    </p>
+  </li>
+  <li new-component>
+    <h6>New clrProgressBar component</h6>
+    <p>
+      Our new <a routerLink="/documentation/progress">progress bar component</a> provides added accessibility support
+      for screen readers
+    </p>
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Add aria-label for alert close button
+    <a href="https://github.com/vmware/clarity/issues/3498" target="_blank">(#3498)</a>
+  </li>
+  <li bug-fix>
+    Make disabled dropdown item focusable
+    <a href="https://github.com/vmware/clarity/issues/3602" target="_blank">(#3602)</a>
+  </li>
+  <li bug-fix>
+    Datagrid: mixed expandable non expandable bug
+    <a href="https://github.com/vmware/clarity/issues/3617" target="_blank">(#3617)</a>
+  </li>
+  <li bug-fix>
+    Wizard: prevent closing non closable wizards
+    <a href="https://github.com/vmware/clarity/issues/3499" target="_blank">(#3499)</a>
+  </li>
+</ul>

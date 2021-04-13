@@ -1,0 +1,43 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.file') {
+  .clr-file-wrapper {
+    @include form-flatten-validate-text();
+    position: relative;
+    margin-top: $clr-forms-baseline;
+
+    .btn {
+      margin: 0;
+    }
+  }
+
+  .clr-file {
+    @include equilateral(0);
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .clr-form-compact .clr-file-wrapper {
+    @include form-flatten-compact-adjustments();
+    margin-top: 0;
+
+    & ~ .clr-validate-icon {
+      line-height: $clr-forms-baseline * 4;
+    }
+    & ~ .clr-subtext {
+      line-height: $clr-forms-baseline * 4;
+      margin-top: 0;
+    }
+    .clr-control-label {
+      margin-top: 0;
+      line-height: $clr_baselineRem_0_9; // Fixes extra height in FF
+    }
+    .btn {
+      height: $clr_baselineRem_1;
+    }
+  }
+}

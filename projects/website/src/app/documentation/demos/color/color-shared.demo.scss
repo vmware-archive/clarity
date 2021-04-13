@@ -1,0 +1,68 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../../styles/clarity-imports';
+
+@mixin clrdemo-colorPaletteLabels {
+  text-transform: uppercase;
+  font-size: $clr_baselineRem_0_8;
+  line-height: $clr_baselineRem_1_1;
+  font-weight: normal;
+  letter-spacing: 0.8;
+}
+
+@mixin clr-colordemo-hexContrastBlockStyles {
+  display: block;
+  line-height: $clr_baselineRem_3_33;
+  font-size: $clr_baselineRem_2;
+}
+
+@mixin clr-colordemo-hexContrastLabelStyles($color: #ffffff, $textcolor: null) {
+  & > .hex-contrast::after {
+    content: '#{$color}';
+    display: block;
+    position: absolute;
+    bottom: $clr_baselineRem_0_416;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    @if $textcolor != null {
+      color: $textcolor;
+    }
+
+    @include clrdemo-colorPaletteLabels;
+  }
+}
+
+@mixin clr-colordemo-sharedContainerStyles {
+  font-size: $clr_baselineRem_0_667;
+  margin: 0;
+  padding: $clr_baselineRem_1_4;
+}
+
+@mixin clr-colordemo-sharedTableStyles {
+  table {
+    border-collapse: collapse;
+    min-width: $clr_baselineRem_47_5;
+    min-width: $clr_baselineRem_40;
+    width: 100%;
+  }
+
+  th {
+    font-weight: normal;
+    text-align: center;
+    color: $clr-color-neutral-400;
+  }
+
+  td {
+    border: $clr-global-borderwidth solid $clr-color-neutral-0;
+    vertical-align: middle;
+    width: 8%;
+    text-align: center;
+    font-weight: 100;
+    color: $clr-color-neutral-1000;
+    position: relative;
+  }
+}

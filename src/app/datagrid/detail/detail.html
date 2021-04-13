@@ -1,0 +1,283 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Detail Pane</h2>
+
+<h3>Simple API</h3>
+
+<clr-datagrid id="simple" [(clrDgSelected)]="selection">
+  <clr-dg-action-bar>
+    <div class="btn-group" role="group" aria-label="Available Actions">
+      <button type="button" class="btn btn-sm btn-secondary">Add to group</button>
+      <button type="button" class="btn btn-sm btn-secondary">Delete</button>
+      <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+    </div>
+  </clr-dg-action-bar>
+
+  <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
+  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+
+  <clr-dg-row
+    *clrDgItems="let user of users"
+    [clrDgItem]="user"
+    [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
+  >
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <!-- This is here but it will not be enabled -->
+    <clr-dg-row-detail *clrIfExpanded>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <!-- Simple API for most cases -->
+  <clr-dg-detail *clrIfDetail="let detail">
+    <clr-dg-detail-header
+      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header
+    >
+    <clr-dg-detail-body>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+    </clr-dg-detail-body>
+  </clr-dg-detail>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Change Event</h3>
+
+<clr-datagrid id="change-event" [(clrDgSingleSelected)]="singleSelection">
+  <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
+  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <!-- This is here but it will not be enabled -->
+    <clr-dg-row-detail *clrIfExpanded>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <!--  Desugared option for change event -->
+  <ng-template clrIfDetail let-detail (clrIfDetailChange)="stateEvent = $event">
+    <clr-dg-detail>
+      <clr-dg-detail-header
+        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header
+      >
+      <clr-dg-detail-body>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+  </ng-template>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Two-way binding</h3>
+
+<clr-datagrid id="two-way">
+  <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
+  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-action-overflow>
+      <button class="action-item">
+        <cds-icon shape="note"></cds-icon>
+        Edit
+      </button>
+      <button class="action-item">
+        <cds-icon shape="trash"></cds-icon>
+        Delete
+      </button>
+    </clr-dg-action-overflow>
+
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <!-- This is here but it will not be enabled -->
+    <clr-dg-row-detail *clrIfExpanded>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam. Proin
+      rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.
+      Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <!--  Desugared option for two way binding -->
+  <ng-template [(clrIfDetail)]="state" let-detail>
+    <clr-dg-detail>
+      <clr-dg-detail-header
+        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header
+      >
+      <clr-dg-detail-body>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+  </ng-template>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Overlay Option</h3>
+
+<clr-datagrid id="overlay" class="datagrid-detail-overlay">
+  <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
+  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+
+  <clr-dg-row
+    *clrDgItems="let user of users"
+    [clrDgItem]="user"
+    [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
+  >
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <!-- Simple API for most cases -->
+  <clr-dg-detail *clrIfDetail="let detail">
+    <clr-dg-detail-header
+      >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+      {{detail.name}} {{detail.name}}</clr-dg-detail-header
+    >
+    <clr-dg-detail-body>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+      <pre>{{detail | json}}</pre>
+    </clr-dg-detail-body>
+  </clr-dg-detail>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Fixed Height</h3>
+
+<clr-datagrid id="simple" [(clrDgSelected)]="selection" style="height: 500px;">
+  <clr-dg-column [clrDgField]="'id'">User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'"><ng-container *clrDgHideableColumn>Name</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'"
+    ><ng-container *clrDgHideableColumn>Creation date</ng-container></clr-dg-column
+  >
+  <clr-dg-column [clrDgField]="'pokemon.name'"><ng-container *clrDgHideableColumn>Pokemon</ng-container></clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'"><ng-container *clrDgHideableColumn>Favorite color</ng-container></clr-dg-column>
+
+  <clr-dg-row
+    *clrDgItems="let user of users | slice:0:4"
+    [clrDgItem]="user"
+    [clrDgDetailOpenLabel]="'Open row details for ' + user.name"
+    [clrDgDetailCloseLabel]="'Open row details for ' + user.name"
+  >
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <!-- Desugared with pre-selection -->
+  <ng-template [(clrIfDetail)]="preState" let-detail>
+    <clr-dg-detail>
+      <clr-dg-detail-header
+        >{{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}} {{detail.name}}
+        {{detail.name}} {{detail.name}}</clr-dg-detail-header
+      >
+      <clr-dg-detail-body>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+        <pre>{{detail | json}}</pre>
+      </clr-dg-detail-body>
+    </clr-dg-detail>
+  </ng-template>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

@@ -1,0 +1,57 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <h4>Pagination + Partial data set is loaded asynchronously.</h4>
+  <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+  <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+  <clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users1">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="7"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<div class="clr-example">
+  <h4>Pagination + Complete data set is loaded asynchronously.</h4>
+  <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
+  <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
+  <clr-datagrid [clrDgLoading]="loading">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="7"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

@@ -1,0 +1,184 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.modal';
+
+@include exports('modal.clarity') {
+  .modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: map-get($clr-layers, modal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $clr_baselineRem_2;
+
+    @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+      padding: $clr_baselineRem_0_5;
+    }
+  }
+
+  .modal-dialog {
+    position: relative;
+    z-index: map-get($clr-layers, modal);
+    width: $clr-modal-md-width;
+    max-width: 100%;
+
+    &.modal-sm {
+      width: $clr-modal-sm-width;
+    }
+
+    &.modal-lg {
+      width: $clr-modal-lg-width;
+    }
+
+    &.modal-xl {
+      width: $clr-modal-xl-width;
+    }
+
+    $modal-boxshadow-y: $clr_baselineRem_1px;
+    $modal-boxshadow-spread: $clr_baselineRem_2px;
+
+    .modal-content {
+      padding: $clr-modal-content-padding-top $clr-modal-content-padding-right $clr-modal-content-padding-bottom
+        $clr-modal-content-padding-left;
+      @include css-var(background-color, clr-modal-bg-color, $clr-modal-bg-color, $clr-use-custom-properties);
+      @include css-var(border-radius, clr-modal-border-radius, $clr-modal-border-radius, $clr-use-custom-properties);
+      // IE/OldEdge
+      box-shadow: 0 $modal-boxshadow-y $modal-boxshadow-spread $modal-boxshadow-spread
+        $clr-modal-content-box-shadow-color;
+      @if $clr-use-custom-properties == true {
+        box-shadow: 0
+          $modal-boxshadow-y
+          $modal-boxshadow-spread
+          $modal-boxshadow-spread
+          var(--clr-modal-content-box-shadow-color);
+      }
+    }
+  }
+
+  .modal-header {
+    border-bottom: none;
+    padding: 0 0 $clr_baselineRem_1 0;
+
+    // TODO: This class is used only in the clr-modal template.
+    // It should be merged this with `.modal-header` in a major version
+    // because this would be breaking for the static modals.
+    &--accessible {
+      @extend .modal-header;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .modal-title {
+      @include css-var(color, clr-modal-title-color, $clr-modal-title-color, $clr-use-custom-properties);
+      font-size: $clr-modal-title-font-size;
+      @include css-var(
+        font-family,
+        clr-modal-title-font-family,
+        $clr-modal-title-font-family,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        font-weight,
+        clr-modal-title-font-weight,
+        $clr-modal-title-font-weight,
+        $clr-use-custom-properties
+      );
+      line-height: $clr-modal-title-line-height;
+      letter-spacing: $clr-modal-title-letter-spacing;
+
+      margin: 0;
+      padding: 0 $clr_baselineRem_0_125;
+    }
+
+    .close {
+      margin-top: -1 * $clr_baselineRem_1px;
+      margin-right: -1 * $clr_baselineRem_5px;
+      font-size: $clr_baselineRem_1_0833;
+      line-height: $clr_baselineRem_1;
+
+      cds-icon,
+      clr-icon {
+        @include css-var(fill, clr-modal-close-color, $clr-modal-close-color, $clr-use-custom-properties);
+
+        // per measurement, this results in an icon that is 16x16...
+        @include equilateral($clr_baselineRem_1);
+      }
+    }
+  }
+
+  .modal-body {
+    // This doesn't do much, but at least with several paragraphs in the content
+    // it doesn't mess up the modal's proportions.
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 $clr_baselineRem_0_125;
+
+    & > :first-child {
+      margin-top: 0;
+    }
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $clr_baselineRem_1 0 0 0;
+
+    .btn {
+      //switched right margin to left because footer is right aligned
+      margin: 0 0 0 $clr_baselineRem_0_5;
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) and (orientation: landscape) {
+    .modal-body {
+      max-height: 55vh;
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+    .modal-content {
+      padding: $clr_baselineRem_0_5 0 $clr_baselineRem_0_5 $clr_baselineRem_1;
+    }
+
+    .modal-header {
+      padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
+    }
+
+    .modal-body {
+      max-height: 55vh;
+    }
+
+    .modal-footer {
+      padding: $clr_baselineRem_0_5 $clr_baselineRem_1 0 0;
+    }
+  }
+
+  .modal-backdrop {
+    $clr-backdrop-opacity: 0.85;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    @include css-var(background-color, clr-modal-backdrop-color, $clr-modal-backdrop-color, $clr-use-custom-properties);
+    @include css-var(opacity, clr-modal-backdrop-opacity, $clr-backdrop-opacity, $clr-use-custom-properties);
+    z-index: map-get($clr-layers, modal-bg);
+  }
+
+  // modal-nav is only used in wizards
+  .modal .modal-nav {
+    display: none;
+  }
+}

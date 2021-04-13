@@ -1,0 +1,61 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './app/_utils/clarity-variables';
+@import '../projects/clr-angular/src/utils/variables/variables';
+
+:root {
+  --clr-test-header-text-color: magenta;
+  --clr-test-button-background-color: purple;
+  --clr-test-button-text-color: white;
+  --clr-test-border-color: magenta;
+}
+
+.clr-example {
+  margin-top: $clr_baselineRem_1;
+
+  .main-container {
+    height: auto;
+    padding-top: 0;
+
+    .content-area {
+      overflow-y: hidden;
+    }
+  }
+
+  &.squeeze {
+    padding: $clr_baselineRem_2;
+  }
+}
+
+.modal.static {
+  position: relative;
+  padding: $clr_baselineRem_3;
+  z-index: map-get($clr-layers, sidepanel-bg) - 1;
+}
+
+.modal-backdrop.static {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: map-get($clr-layers, sidepanel-bg) - 2;
+}
+
+.modal-icon {
+  float: left;
+  color: $clr-color-success-400;
+  font-size: $clr_baselineRem_3;
+  margin-right: $clr_baselineRem_0_5;
+}
+
+.backdrop-example-container {
+  position: relative;
+  padding: $clr_baselineRem_1;
+}
+
+.bump-down {
+  margin-top: $clr_baselineRem_1 !important;
+}

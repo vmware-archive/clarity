@@ -1,0 +1,99 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Reactive Driven</h2>
+
+<form clrForm (submit)="submitReactive()" [formGroup]="reactiveModel">
+  <clr-input-container>
+    <label>Text container</label>
+    <input clrInput placeholder="Example 2" name="text" formControlName="text" />
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'text'">Form error with container</clr-control-error>
+  </clr-input-container>
+
+  <clr-checkbox-container>
+    <label>Checkbox</label>
+    <clr-checkbox-wrapper>
+      <label>Option 1 Checkbox</label>
+      <input type="checkbox" clrCheckbox formControlName="checkbox" required name="checkbox" />
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+
+  <clr-radio-container>
+    <label>Full radio example</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="radio" required value="option1" formControlName="radio" />
+      <label>Option 1 radio</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="radio" required value="option2" formControlName="radio" />
+      <label>Option 2 radio</label>
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-radio-container>
+
+  <clr-password-container>
+    <label>Password</label>
+    <input type="password" clrPassword required formControlName="password" name="password" />
+  </clr-password-container>
+
+  <clr-select-container>
+    <label>Select</label>
+    <select clrSelect formControlName="select" required name="select">
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+  </clr-select-container>
+
+  <clr-textarea-container>
+    <label>Textarea</label>
+    <textarea clrTextarea formControlName="textarea" name="textarea" required></textarea>
+  </clr-textarea-container>
+
+  <clr-date-container>
+    <label>Date picker</label>
+    <input clrDate formControlName="date" name="date" required />
+  </clr-date-container>
+
+  <clr-toggle-container clrInline>
+    <label>Toggle</label>
+    <clr-toggle-wrapper>
+      <input type="checkbox" clrToggle formControlName="toggle" name="toggle" required value="option1" />
+      <label>Toggle</label>
+    </clr-toggle-wrapper>
+  </clr-toggle-container>
+
+  <!--  <button class="btn btn-primary" type="submit" [disabled]="model.invalid">Submit</button>-->
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<h2>Template Driven</h2>
+
+<form clrForm #templateForm="ngForm" (ngSubmit)="submitTemplate()">
+  <input clrInput placeholder="Basic text" name="basic" [(ngModel)]="templateModel.basic" />
+
+  <clr-input-container>
+    <label>Basic</label>
+    <input clrInput placeholder="Basic text" name="container" [(ngModel)]="templateModel.container" required />
+  </clr-input-container>
+
+  <clr-input-container>
+    <label>Required</label>
+    <input
+      clrInput
+      placeholder="Input control"
+      name="required"
+      [(ngModel)]="templateModel.required"
+      pattern="asdfasdf"
+      required
+    />
+    <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+  </clr-input-container>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

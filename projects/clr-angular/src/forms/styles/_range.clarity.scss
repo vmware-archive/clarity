@@ -1,0 +1,181 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.range') {
+  .clr-range-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: $clr-forms-range-thumb-height;
+    white-space: nowrap;
+
+    .fill-input {
+      position: absolute;
+      left: 0;
+      display: inline-block;
+      height: $clr-forms-range-track-height;
+      pointer-events: none; // needed for correct chrome behavior with progress
+      cursor: pointer;
+      z-index: 10;
+
+      @include css-var(
+        background-color,
+        clr-forms-range-progress-fill-color,
+        $clr-forms-range-progress-fill-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-range {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: $clr-forms-range-thumb-height;
+
+    &:disabled,
+    &:disabled + .fill-input {
+      pointer-events: auto; // needed for correct chrome behavior for disabled w/ progress
+      cursor: not-allowed;
+    }
+  }
+
+  input[type='range'] {
+    padding: 0;
+    @include range-style($clr-forms-range-track-height, $clr-forms-range-track-color, clr-forms-range-track-color);
+
+    &::-webkit-slider-runnable-track {
+      @include range-track-style(
+        $clr-forms-range-track-height,
+        $clr-forms-range-track-color,
+        clr-forms-range-track-color
+      );
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      @include range-thumb-style(
+        $clr-forms-range-thumb-margin,
+        $clr-forms-range-thumb-height,
+        $clr-forms-range-progress-fill-color,
+        clr-forms-range-progress-fill-color
+      );
+    }
+
+    &::-moz-range-track {
+      @include range-track-style(
+        $clr-forms-range-track-height,
+        $clr-forms-range-track-color,
+        clr-forms-range-track-color
+      );
+    }
+
+    &::-moz-range-thumb {
+      border: 0;
+      @include range-thumb-style(
+        $clr-forms-range-thumb-margin,
+        $clr-forms-range-thumb-height,
+        $clr-forms-range-progress-fill-color,
+        clr-forms-range-progress-fill-color
+      );
+    }
+  }
+
+  @include fixForMsEdge() {
+    .clr-range-wrapper {
+      .fill-input {
+        display: none;
+      }
+
+      &.progress-fill {
+        input[type='range']::-ms-fill-lower {
+          height: $clr-forms-range-track-height;
+          @include css-var(
+            background-color,
+            clr-forms-range-progress-fill-color,
+            $clr-forms-range-progress-fill-color,
+            $clr-use-custom-properties
+          );
+        }
+      }
+    }
+
+    input[type='range'] {
+      border: 0;
+      margin: 0;
+      @include range-style($clr-forms-range-thumb-height, transparent);
+
+      &::-ms-track {
+        margin: 0;
+        border: 0;
+        @include range-track-style(
+          $clr-forms-range-track-height,
+          $clr-forms-range-track-color,
+          clr-forms-range-track-color
+        );
+      }
+
+      &::-ms-thumb {
+        border: 0;
+        @include range-thumb-style(
+          0,
+          $clr-forms-range-thumb-height,
+          $clr-forms-range-progress-fill-color,
+          clr-forms-range-progress-fill-color
+        );
+      }
+    }
+  }
+
+  @include fixForIE11AndUp() {
+    .clr-range-wrapper {
+      .fill-input {
+        display: none;
+      }
+
+      &.progress-fill {
+        input[type='range']::-ms-fill-lower {
+          height: $clr-forms-range-track-height;
+          @include css-var(
+            background-color,
+            clr-forms-range-progress-fill-color,
+            $clr-forms-range-progress-fill-color,
+            $clr-use-custom-properties
+          );
+        }
+      }
+    }
+
+    input[type='range']::-ms-tooltip {
+      visibility: hidden;
+    }
+
+    input[type='range'] {
+      border: 0;
+      margin: 0;
+      @include range-style($clr-forms-range-thumb-height, transparent);
+
+      &::-ms-track {
+        border: 0;
+        margin: 0;
+        @include range-track-style(
+          $clr-forms-range-track-height,
+          $clr-forms-range-track-color,
+          clr-forms-range-track-color
+        );
+      }
+
+      &::-ms-thumb {
+        border: 0;
+        @include range-thumb-style(
+          0,
+          $clr-forms-range-thumb-height,
+          $clr-forms-range-progress-fill-color,
+          clr-forms-range-progress-fill-color
+        );
+      }
+    }
+  }
+}

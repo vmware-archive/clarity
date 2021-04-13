@@ -1,0 +1,246 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.combobox';
+
+@include exports('combobox.clarity') {
+  // needed for the proper calculation of popover offset that we do to keep label always visible
+  .clr-combobox-form-control {
+    align-items: stretch;
+
+    .clr-error .clr-validate-icon {
+      margin-left: 0;
+    }
+  }
+
+  // Focus indicator, this is a custom implementation compared with other controls due to DOM structure and potential growth of height
+  .clr-focus-indicator {
+    @include css-var(background-color, clr-forms-focused-color, $clr-forms-focused-color, $clr-use-custom-properties);
+    height: $clr_baselineRem_2px;
+    width: 0;
+    transition: width 0.2s ease;
+    position: absolute;
+    bottom: -$clr_baselineRem_1px;
+    left: 0;
+    @include css-var(
+      border-bottom-left-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      border-bottom-right-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
+  }
+  .clr-focus {
+    width: 100%;
+  }
+  .clr-error .clr-focus-indicator {
+    @include css-var(background-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
+  }
+
+  .clr-combobox-wrapper {
+    position: relative;
+
+    //Dimensions
+    padding: 0 $clr-combobox-trigger-right-padding 0 $clr-combobox-trigger-left-padding;
+    min-height: $clr-combobox-min-height;
+    min-width: $clr-combobox-min-width;
+    @include css-var(font-size, clr-combobox-font-size, $clr-combobox-font-size, $clr-use-custom-properties);
+
+    &.multi {
+      min-width: $clr-ng-multiselect-min-width;
+      padding-bottom: $clr_baselineRem_0_125;
+    }
+
+    //Mixins
+    @include form-fields-appearance($clr-forms-border-color);
+
+    // override the above mixin for combobox-specific styles
+    @include css-var(
+      background-color,
+      clr-combobox-input-background-color,
+      $clr-combobox-input-background-color,
+      $clr-use-custom-properties
+    );
+
+    border: $clr-global-borderwidth solid $clr-combobox-border-color;
+    border-bottom: $clr-global-borderwidth solid $clr-forms-border-color;
+    @include css-var(
+      border-radius,
+      clr-combobox-border-radius,
+      $clr-combobox-border-radius,
+      $clr-use-custom-properties
+    );
+
+    // the border color is on the component; we don't want it on the input itself
+    .clr-input.clr-combobox-input:focus {
+      background: none;
+    }
+
+    &.invalid {
+      border-bottom-color: $clr-forms-invalid-color;
+    }
+
+    //Others
+    .clr-combobox-input {
+      background: none;
+      border-bottom: none;
+    }
+
+    .clr-combobox-remove-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: $clr_baselineRem_3px $clr_baselineRem_3px;
+      color: $clr-combobox-pill-font-color;
+    }
+
+    .label-combobox-pill {
+      margin: $clr_baselineRem_0_125 $clr_baselineRem_0_25 0 0;
+      @include css-var(
+        background-color,
+        clr-combobox-pill-background-color,
+        $clr-combobox-pill-background-color,
+        $clr-use-custom-properties
+      );
+      border-width: $clr_baselineRem_1px;
+      border-style: solid;
+      align-items: baseline;
+      @include css-var(
+        border-radius,
+        clr-combobox-pill-border-radius,
+        $clr-combobox-pill-border-radius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-color,
+        clr-combobox-pill-border-color,
+        $clr-combobox-pill-border-color,
+        $clr-use-custom-properties
+      );
+
+      padding: 0 $clr_baselineRem_2px 0 $clr_baselineRem_4px;
+
+      .clr-combobox-pill-content {
+        @include css-var(
+          color,
+          clr-combobox-pill-font-color,
+          $clr-combobox-pill-font-color,
+          $clr-use-custom-properties
+        );
+        font-size: $clr-typography-xxsmalltext;
+        font-weight: $clr-font-weight-regular;
+        padding: 0 $clr_baselineRem_8px 0 $clr_baselineRem_4px;
+      }
+
+      cds-icon[shape='window-close'],
+      clr-icon[shape='window-close'] {
+        @include css-var(
+          color,
+          clr-combobox-pill-font-color,
+          $clr-combobox-pill-font-color,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
+    .clr-combobox-input-wrapper {
+      border: none;
+      background: none;
+    }
+  }
+
+  .clr-combobox-trigger {
+    &:disabled {
+      color: var(--clr-btn-link-disabled-color, #666);
+      opacity: 0.4;
+    }
+
+    //Dimensions
+    width: $clr-combobox-trigger-dimensions;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    //Other
+    background: none;
+    border: none;
+    color: currentColor;
+    cursor: pointer;
+    outline: none;
+
+    cds-icon[shape='angle'],
+    clr-icon[shape='angle'] {
+      @include css-var(color, clr-combobox-pill-font-color, $clr-combobox-pill-font-color, $clr-use-custom-properties);
+    }
+  }
+
+  .clr-combobox-options {
+    @include generate-dropdown-menu();
+    position: static;
+
+    max-height: $clr_baselineRem_10;
+    overflow-y: scroll;
+
+    visibility: visible;
+
+    .clr-combobox-options-loading {
+      padding: $clr_baselineRem_0_125 $clr_baselineRem_1;
+
+      .clr-combobox-options-loading-text {
+        padding-left: $clr_baselineRem_0_25;
+      }
+    }
+
+    .clr-combobox-options-empty-text {
+      padding-left: $clr_baselineRem_0_5;
+    }
+  }
+
+  .clr-combobox-option {
+    @include generate-dropdown-item();
+    // Manual pseudo focus handling
+    &.clr-focus {
+      @include css-var(
+        background-color,
+        clr-dropdown-bg-hover-color,
+        $clr-dropdown-bg-hover-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  //NOTE: Adjust the height of the option only when it's in the options menu
+  .clr-combobox-options .clr-combobox-option {
+    @include generate-dropdown-item-height();
+  }
+
+  .clr-combobox-options .clr-combobox-option {
+    &:hover,
+    &.active {
+      @include css-var(color, clr-dropdown-item-color, $clr-dropdown-item-color, $clr-use-custom-properties);
+    }
+  }
+
+  .clr-combobox-disabled {
+    @include disabled-form-fields();
+
+    .clr-combobox-input,
+    .clr-combobox-remove-btn,
+    .clr-combobox-trigger {
+      cursor: not-allowed;
+    }
+  }
+
+  .clr-filter-highlight b {
+    font-weight: $clr-font-weight-semibold;
+    @include css-var(color, clr-combobox-filter-highlight, $clr-combobox-filter-highlight, $clr-use-custom-properties);
+  }
+}

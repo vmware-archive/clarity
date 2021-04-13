@@ -1,0 +1,28 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('grid.clarity') {
+  .clr-row {
+    @include clr-make-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  .clr-no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .clr-col,
+    > [class*='clr-col-'] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  @include clr-make-grid-columns();
+
+  .clr-break-row {
+    width: 100%;
+  }
+}

@@ -1,0 +1,351 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.accordion';
+
+@include exports('accordion.clarity') {
+  .clr-accordion {
+    display: block;
+    counter-reset: accordion;
+    margin-bottom: $clr_baselineRem_1;
+  }
+
+  .clr-accordion-panel {
+    display: block;
+  }
+
+  .clr-accordion-header {
+    $box-shadow-default: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color;
+    @include css-var(color, clr-accordion-text-color, $clr-accordion-text-color, $clr-use-custom-properties);
+    border: $clr_baselineRem_1px solid;
+    @include css-var(border-color, clr-accordion-border-color, $clr-accordion-border-color, $clr-use-custom-properties);
+    @include css-var(box-shadow, clr-accordion-header-left-indicator, $box-shadow-default, $clr-use-custom-properties);
+    @include css-var(
+      background,
+      clr-accordion-header-background-color,
+      $clr-accordion-header-background-color,
+      $clr-use-custom-properties
+    );
+    transition: all 200ms ease-in-out;
+    border-bottom: 0;
+    width: 100%;
+    @include css-var(font-size, clr-accordion-header-font-size, $clr_baselineRem_0_65, $clr-use-custom-properties);
+    text-align: left;
+
+    &:hover {
+      @include css-var(
+        background-color,
+        clr-accordion-header-background-color,
+        $clr-accordion-header-background-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-accordion-panel:last-child {
+    .clr-accordion-content,
+    .clr-accordion-header {
+      border-bottom-style: solid;
+      @include css-var(
+        border-bottom-width,
+        clr-global-borderwidth,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-bottom-color,
+        clr-accordion-border-color,
+        $clr-accordion-border-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-accordion-number {
+    padding: 0 $clr-accordion-padding;
+    display: none;
+
+    &::before {
+      content: counter(accordion) '.';
+      counter-increment: accordion;
+    }
+  }
+
+  .clr-accordion-header-button {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 1 0%;
+    width: 100%;
+    border: 0;
+    padding: $clr-accordion-padding;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    @include css-var(color, clr-accordion-text-color, $clr-accordion-text-color, $clr-use-custom-properties);
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      flex-flow: row;
+    }
+  }
+
+  .clr-accordion-status {
+    width: $clr_baselineRem_1_5;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .clr-accordion-title {
+    display: inline-block;
+  }
+
+  clr-step-title.clr-accordion-title {
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      min-width: $clr_baselineRem_7_2;
+    }
+  }
+
+  .clr-accordion-header-has-description {
+    .clr-accordion-title {
+      max-width: $clr_baselineRem_11;
+    }
+  }
+
+  .clr-accordion-description {
+    display: inline-block;
+    max-width: $clr_baselineRem_650px;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      margin-left: $clr_baselineRem_1_5;
+    }
+  }
+
+  .clr-accordion-content {
+    @include css-var(
+      background,
+      clr-accordion-content-background-color,
+      $clr-accordion-content-background-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(border-width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
+    border-style: solid;
+    @include css-var(border-color, clr-accordion-border-color, $clr-accordion-border-color, $clr-use-custom-properties);
+    border-bottom: 0;
+    overflow: hidden;
+    padding: $clr_baselineRem_0_75;
+    display: none;
+
+    .clr-form {
+      padding: 0;
+    }
+
+    &.ng-trigger {
+      padding: 0; // inner element/padding to prevent extra hight in ng animation
+    }
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      padding: $clr_baselineRem_0_75 $clr_baselineRem_2_25;
+    }
+  }
+
+  .clr-accordion-inner-content {
+    padding: $clr-accordion-padding;
+
+    @media (min-width: $clr-accordion-responsive-breakpoint) {
+      padding: $clr_baselineRem_0_75 $clr_baselineRem_2_25;
+    }
+  }
+
+  .clr-accordion-angle {
+    transition: all 200ms ease-in-out;
+    transform: rotate(90);
+  }
+
+  .clr-accordion-error-icon,
+  .clr-accordion-complete-icon {
+    @include equilateral($clr_baselineRem_1);
+    display: none;
+    padding: 0;
+    margin: 0 $clr_baselineRem_0_5;
+  }
+
+  // panel states
+  .clr-accordion-panel-open {
+    .clr-accordion-content {
+      display: block;
+    }
+
+    .clr-accordion-angle {
+      visibility: visible;
+      transform: rotate(180deg);
+    }
+
+    .clr-accordion-header {
+      @include css-var(
+        background,
+        clr-accordion-active-background-color,
+        $clr-accordion-active-background-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .clr-accordion-panel-complete {
+    .clr-accordion-complete-icon {
+      display: inline-block;
+      @include css-var(color, clr-accordion-complete-color, $clr-accordion-complete-color, $clr-use-custom-properties);
+    }
+
+    .clr-accordion-angle {
+      visibility: visible;
+    }
+
+    .clr-accordion-header {
+      $box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color-complete;
+      @include css-var(
+        box-shadow,
+        clr-accordion-header-left-complete-indicator,
+        $box-shadow,
+        $clr-use-custom-properties
+      );
+    }
+
+    .ng-trigger.clr-accordion-content {
+      display: block;
+    }
+  }
+
+  .clr-accordion-panel-error {
+    .clr-accordion-header {
+      $box-shadow: inset $clr-accordion-border-left-width 0 0 $clr-accordion-border-left-color-error;
+      border-bottom: $clr-global-borderwidth solid;
+      @include css-var(
+        border-color,
+        clr-accordion-border-left-color-error,
+        $clr-accordion-border-left-color-error,
+        $clr-use-custom-properties
+      );
+      @include css-var(box-shadow, clr-accordion-header-left-error-indicator, $box-shadow, $clr-use-custom-properties);
+      @include css-var(
+        background-color,
+        clr-accordion-active-background-color,
+        $clr-accordion-active-background-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    .clr-accordion-error-icon {
+      display: inline-block;
+      @include css-var(color, clr-accordion-error-color, $clr-accordion-error-color, $clr-use-custom-properties);
+    }
+  }
+
+  .clr-accordion-panel-error .clr-accordion-number,
+  .clr-accordion-panel-complete .clr-accordion-number {
+    @include screen-reader-only();
+  }
+
+  // temporary overrides to match stackview until stepper, accordion and stackview are aligned
+  // https://github.com/vmware/clarity/issues/3471
+  .clr-accordion:not(.clr-stepper-forms) {
+    .clr-accordion-header {
+      box-shadow: none;
+    }
+
+    .clr-accordion-panel:first-child .clr-accordion-header {
+      @include css-var(
+        border-top-left-radius,
+        clr-accordion-border-radius,
+        $clr-accordion-border-radius,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        border-top-right-radius,
+        clr-accordion-border-radius,
+        $clr-accordion-border-radius,
+        $clr-use-custom-properties
+      );
+    }
+
+    .clr-accordion-panel:last-child {
+      .clr-accordion-content,
+      .clr-accordion-header {
+        @include css-var(
+          border-bottom-left-radius,
+          clr-accordion-border-radius,
+          $clr-accordion-border-radius,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          border-bottom-right-radius,
+          clr-accordion-border-radius,
+          $clr-accordion-border-radius,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
+    .clr-accordion-title {
+      @include css-var(font-weight, clr-accordion-title-font-weight, 500, $clr-use-custom-properties);
+      @include css-var(font-size, clr-accordion-title-font-size, $clr_baselineRem_0_5416, $clr-use-custom-properties);
+    }
+
+    .clr-accordion-header-button {
+      @include css-var(
+        font-size,
+        clr-accordion-header-button-font-size,
+        $clr_baselineRem_0_5,
+        $clr-use-custom-properties
+      );
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+    }
+
+    .clr-accordion-content {
+      padding: 0;
+    }
+
+    .clr-accordion-inner-content {
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_1_4583;
+    }
+
+    .clr-accordion-status {
+      width: $clr_baselineRem_0_8;
+
+      cds-icon,
+      clr-icon {
+        @include equilateral($clr_baselineRem_0_583);
+      }
+    }
+  }
+
+  // override the border bottom style when last panel is open
+  .clr-accordion-panel-open .clr-accordion-header {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  // stepper forms mode
+  .clr-stepper-forms {
+    .clr-accordion-panel-inactive .clr-accordion-angle {
+      visibility: hidden;
+    }
+
+    .clr-accordion-panel-open .clr-accordion-angle {
+      visibility: visible;
+    }
+
+    .clr-accordion-status {
+      min-width: $clr_baselineRem_3;
+    }
+
+    .clr-accordion-number {
+      display: inline-block;
+    }
+  }
+
+  .clr-step-button {
+    display: block;
+    margin-top: $clr_baselineRem_1;
+  }
+}

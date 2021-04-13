@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="lhe-test-well">
+  <clr-typography-font-switcher
+    label="Current Font"
+    layout="horizontal"
+    (switchFontPreset)="changeFont($event)"
+  ></clr-typography-font-switcher>
+</div>
+
+<h1 class="title">Visual Tests ({{currentFont}})</h1>
+
+<section class="font-tester">
+  <div class="button-test">
+    <button type="button" class="btn btn-outline test-subject">Clicks just fine</button>
+    <button type="button" class="btn btn-outline test-btn test-subject line-height-eraser">Clicks just fine</button>
+  </div>
+
+  <div class="card-test clr-row">
+    <div class="neutral-card clr-col-3 test-subject">
+      <img src="//placehold.it/100x100" alt="" />
+      <p>Aghfy Sphinx Teutonic jello hybrid goal centered gelatinous cube jackalweres</p>
+    </div>
+    <div class="test-card clr-col-3 test-subject">
+      <img src="//placehold.it/100x100" alt="" />
+      <p class="line-height-eraser">Aghfy Sphinx Teutonic jello hybrid goal centered gelatinous cube jackalweres</p>
+    </div>
+  </div>
+
+  <div class="box-test">
+    <div class="neutral-box test-subject">
+      <p>Testing p tag inside a box of jello</p>
+    </div>
+    <div class="test-box test-subject">
+      <p class="line-height-eraser">Testing p tag inside a box of jello</p>
+    </div>
+  </div>
+
+  <div class="box-test">
+    <div>
+      <div class="just-neutral-box test-subject">Testing gelatinous text in jello</div>
+      <div class="just-text-box line-height-eraser test-subject">Testing gelatinous text in jello</div>
+    </div>
+    <div style="margin-top: 1.2rem;">
+      <div class="just-neutral-box test-subject"><p>Doubling up and judgy</p></div>
+      <div class="just-text-box test-subject"><p class="line-height-eraser">Doubling up and judgy</p></div>
+    </div>
+    <div style="margin-top: 1.2rem;">
+      <div class="just-neutral-box test-subject">
+        <p>Doubling up and judgy</p>
+        <p>Now with multiple juxtaposed lines!</p>
+      </div>
+      <div class="just-text-box test-subject">
+        <p class="line-height-eraser">Doubling up and judgy</p>
+        <p class="line-height-eraser">Now with multiple juxtaposed lines!</p>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="test-subject">Aghfy Sphinx Teutonic jello hybrid goal centered jackalweres</h1>
+  <h1 class="test-subject line-height-eraser">Aghfy Sphinx Teutonic jello hybrid goal centered jackalweres</h1>
+</section>

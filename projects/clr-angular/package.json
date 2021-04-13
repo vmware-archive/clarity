@@ -1,0 +1,39 @@
+{
+  "name": "@clr/angular",
+  "version": "5.1.1",
+  "description": "Angular components for Clarity",
+  "homepage": "https://clarity.design",
+  "keywords": [
+    "ng-add",
+    "clarity",
+    "angular",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmware/clarity.git"
+  },
+  "author": "Clarity Design System",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vmware/clarity/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@cds/core": "^5.0.0",
+    "@clr/ui": "^5.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-update": {
+    "migrations": "./schematics/migration-collection.json",
+    "packageGroup": [
+      "@clr/angular",
+      "@clr/ui",
+      "@cds/core"
+    ]
+  }
+}

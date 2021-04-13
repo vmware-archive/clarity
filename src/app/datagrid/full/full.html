@@ -1,0 +1,166 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Full Datagrid demo</h2>
+
+<form clrForm (submit)="$event.preventDefault(); reset()">
+  <clr-input-container>
+    <label>Number of users</label>
+    <input clrInput type="number" name="total" [(ngModel)]="options.totalUsers" />
+  </clr-input-container>
+
+  <clr-select-container>
+    <label>Rows per page</label>
+    <select clrSelect name="page-size" [(ngModel)]="options.pageSize">
+      <option value="0">No pagination</option>
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="100">100</option>
+    </select>
+  </clr-select-container>
+
+  <clr-checkbox-container clrInline>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.selectable" name="selectable" />
+      <label>Selectable</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.loremIpsum" name="lorem-ipsum" />
+      <label>Multi-line text</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox [(ngModel)]="options.server" name="server" />
+      <label>Server-driven</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+
+  <clr-select-container>
+    <label>Latency</label>
+    <select clrSelect name="latency" [(ngModel)]="options.latency">
+      <option value="0">0 ms</option>
+      <option value="100">100ms</option>
+      <option value="200">200ms</option>
+      <option value="500">500ms</option>
+      <option value="1000">1s</option>
+      <option value="2000">2s</option>
+    </select>
+  </clr-select-container>
+
+  <button class="btn btn-primary">Apply</button>
+</form>
+
+<div *ngIf="!resetting">
+  <div *ngIf="selected" class="card card-block">
+    <p class="card-text username-list">
+      Selected users:
+      <em *ngIf="selected.length == 0">No user selected.</em>
+      <span class="username" *ngFor="let user of selected">{{user.name}}</span>
+    </p>
+  </div>
+
+  <clr-datagrid *ngIf="!isServerDriven" [(clrDgSelected)]="selected">
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        User ID
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">
+      <ng-container *clrDgHideableColumn>
+        Name
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">
+      <ng-container *clrDgHideableColumn>
+        Creation date
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column [clrDgSortBy]="pokemonComparator">
+      <ng-container *clrDgHideableColumn>
+        Pokemon
+      </ng-container>
+      <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">
+      <ng-container *clrDgHideableColumn>
+        Favorite color
+      </ng-container>
+      <clr-dg-filter [clrDgFilter]="colorFilter">
+        <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
+      </clr-dg-filter>
+    </clr-dg-column>
+    <clr-dg-column class="lorem-ipsum" *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
+
+    <clr-dg-placeholder>No users found</clr-dg-placeholder>
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+      <clr-dg-action-overflow (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)">
+        <button class="action-item">
+          <cds-icon shape="note"></cds-icon>
+          Edit
+        </button>
+        <button class="action-item">
+          <cds-icon shape="trash"></cds-icon>
+          Delete
+        </button>
+      </clr-dg-action-overflow>
+
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+      <clr-dg-cell *ngIf="loremIpsumColumn">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie,
+        ullamcorper facilisis lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+
+  <clr-datagrid
+    *ngIf="isServerDriven"
+    [(clrDgSelected)]="selected"
+    (clrDgRefresh)="refresh($event)"
+    [clrDgLoading]="loading"
+  >
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">
+      Favorite color
+      <clr-dg-filter [clrDgFilter]="colorFilter">
+        <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
+      </clr-dg-filter>
+    </clr-dg-column>
+    <clr-dg-column class="lorem-ipsum" *ngIf="loremIpsumColumn">Multi-line text</clr-dg-column>
+
+    <clr-dg-placeholder>No users found</clr-dg-placeholder>
+    <clr-dg-row *ngFor="let user of users; trackBy: trackById" [clrDgItem]="user">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+      <clr-dg-cell *ngIf="loremIpsumColumn">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie,
+        ullamcorper facilisis lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize" [clrDgTotalItems]="total"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>

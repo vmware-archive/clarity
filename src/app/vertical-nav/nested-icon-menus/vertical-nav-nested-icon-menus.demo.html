@@ -1,0 +1,114 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>With Nav Group Text</h4>
+<div class="clr-example">
+  <div class="main-container nav-group-text">
+    <header class="header header-6">
+      <div class="branding">
+        <a href="#">
+          <cds-icon shape="vm-bug"></cds-icon>
+          <span class="title">Project Clarity</span>
+        </a>
+      </div>
+      <form class="search">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Search for keywords..." />
+        </label>
+      </form>
+      <div class="settings">
+        <a href="javascript://" class="nav-link nav-icon">
+          <cds-icon shape="cog" inverse></cds-icon>
+        </a>
+      </div>
+    </header>
+    <div class="content-container">
+      <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
+        <ng-container *ngFor="let item of case.items">
+          <clr-vertical-nav-group *ngIf="item['children']">
+            <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></cds-icon>
+            {{item.label}}
+            <clr-vertical-nav-group-children *clrIfExpanded>
+              <a clrVerticalNavLink href="javascript:void(0)" *ngFor="let childItem of item.children">
+                {{childItem.label}}
+              </a>
+            </clr-vertical-nav-group-children>
+          </clr-vertical-nav-group>
+        </ng-container>
+      </clr-vertical-nav>
+      <div class="content-area">
+        <div>
+          <button class="btn gemini-trigger" (click)="collapse = !collapse">Toggle Collapse</button>
+        </div>
+        <h4>
+          {{case.title}}
+        </h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa
+          sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt
+          elementum magna. Phasellus tristique posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices
+          elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper.
+          Suspendisse fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget venenatis erat est vitae
+          libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>With Nav Group Links</h4>
+<div class="clr-example">
+  <div class="main-container nav-group-links">
+    <header class="header header-6">
+      <div class="branding">
+        <a href="#">
+          <cds-icon shape="vm-bug"></cds-icon>
+          <span class="title">Project Clarity</span>
+        </a>
+      </div>
+      <form class="search">
+        <label for="search_input1">
+          <input id="search_input1" type="text" placeholder="Search for keywords..." />
+        </label>
+      </form>
+      <div class="settings">
+        <a href="javascript://" class="nav-link nav-icon">
+          <cds-icon shape="cog" inverse></cds-icon>
+        </a>
+      </div>
+    </header>
+    <div class="content-container">
+      <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
+        <ng-container *ngFor="let item of case.items">
+          <clr-vertical-nav-group *ngIf="item['children']">
+            <a href="javascript://" clrVerticalNavLink>
+              <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></cds-icon>
+              {{item.label}}
+            </a>
+            <clr-vertical-nav-group-children *clrIfExpanded>
+              <a clrVerticalNavLink href="javascript:void(0)" *ngFor="let childItem of item.children">
+                {{childItem.label}}
+              </a>
+            </clr-vertical-nav-group-children>
+          </clr-vertical-nav-group>
+        </ng-container>
+      </clr-vertical-nav>
+      <div class="content-area">
+        <h4>
+          {{case.title}}
+        </h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi. Vestibulum dignissim eget massa
+          sit amet feugiat. Quisque auctor mattis quam eu suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt
+          elementum magna. Phasellus tristique posuere dui, ut tempus felis sagittis quis. Integer iaculis ultrices
+          elit, sed venenatis eros. Vivamus interdum semper velit eget gravida. Sed finibus eget lacus sed semper.
+          Suspendisse fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget venenatis erat est vitae
+          libero. Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

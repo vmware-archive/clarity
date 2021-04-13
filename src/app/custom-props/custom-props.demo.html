@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Custom Properties - Test</h1>
+
+<section>
+  <h2 id="customPropsTestHeader">This header should never be red or black</h2>
+
+  <p>
+    The button below should change the color of the header above (outside the ShadowDOM) and the custom element at the
+    bottom of the page (inside the ShadowDOM).
+  </p>
+
+  <p><button type="button" class="btn btn-outline" (click)="cycleThemes()">Cycle Theme</button></p>
+</section>
+
+<hr style="margin: 1rem 0;" />
+
+<section>
+  <cds-test-dropdown title="Secret Message?">
+    Try Elm. It's fun!
+  </cds-test-dropdown>
+</section>

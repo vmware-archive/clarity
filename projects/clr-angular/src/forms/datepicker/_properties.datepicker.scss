@@ -1,0 +1,29 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('datepicker.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-calendar-background-color: var(--clr-color-neutral-0);
+      --clr-calendar-border-color: var(--clr-color-neutral-400);
+      --clr-datepicker-trigger-color: var(--clr-color-action-600);
+      --clr-datepicker-trigger-hover-color: var(--clr-color-action-800);
+
+      --clr-calendar-btn-color: var(--clr-color-action-600);
+      --clr-calendar-btn-hover-focus-color: var(--clr-global-hover-color);
+
+      --clr-calendar-picker-btn-font-size: #{$clr_baselineRem_0_75};
+      --clr-calendar-picker-btn-font-weight: 200;
+
+      --clr-calendar-today-date-cell-color: var(--clr-color-neutral-1000);
+      --clr-calendar-today-date-cell-font-weight: 600;
+
+      --clr-calendar-active-cell-background-color: var(--clr-global-selection-color);
+      --clr-calendar-active-focus-cell-background-color: var(--clr-global-selection-color);
+      --clr-calendar-active-cell-color: var(--clr-color-neutral-1000);
+
+      --clr-day-font-size: #{$clr_baselineRem_0_5};
+    }
+  }
+}

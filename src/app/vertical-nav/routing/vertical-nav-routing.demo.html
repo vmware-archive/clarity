@@ -1,0 +1,236 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <div class="main-container">
+    <header class="header header-6">
+      <div class="branding">
+        <a href="#">
+          <cds-icon shape="vm-bug"></cds-icon>
+          <span class="title">Project Clarity</span>
+        </a>
+      </div>
+      <form class="search">
+        <label for="search_input">
+          <input id="search_input" type="text" placeholder="Search for keywords..." />
+        </label>
+      </form>
+      <div class="settings">
+        <a href="javascript://" class="nav-link nav-icon">
+          <cds-icon shape="cog" inverse></cds-icon>
+        </a>
+      </div>
+    </header>
+    <div class="content-container">
+      <clr-vertical-nav
+        *ngIf="option === 'link'"
+        [clrVerticalNavCollapsible]="true"
+        [clrVerticalNavCollapsed]="navCollapsed"
+        (clrVerticalNavCollapsedChange)="updateNavCollapsed($event)"
+      >
+        <clr-vertical-nav-group routerLinkActive="active">
+          <a
+            [routerLink]="['./beatles']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
+            clrVerticalNavLink
+          >
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Beatles
+          </a>
+          <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
+            <clr-vertical-nav-group-children>
+              <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/abbey-road']">
+                Abbey Road
+              </a>
+              <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/revolver']">
+                Revolver
+              </a>
+              <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/rubber-soul']">
+                Rubber Soul
+              </a>
+            </clr-vertical-nav-group-children>
+          </ng-template>
+        </clr-vertical-nav-group>
+
+        <clr-vertical-nav-group routerLinkActive="active">
+          <a
+            [routerLink]="['./killers']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}"
+            clrVerticalNavLink
+          >
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Killers
+          </a>
+          <ng-template clrIfExpanded>
+            <clr-vertical-nav-group-children>
+              <a routerLinkActive="active" [routerLink]="['./killers/hot-fuss']" clrVerticalNavLink>
+                Hot Fuss
+              </a>
+              <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/day-and-age']">
+                Day & Age
+              </a>
+              <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/sams-town']">
+                Sam's Town
+              </a>
+            </clr-vertical-nav-group-children>
+          </ng-template>
+        </clr-vertical-nav-group>
+
+        <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
+          <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
+          Wikipedia
+        </a>
+      </clr-vertical-nav>
+
+      <ng-container *ngIf="option === 'text'">
+        <clr-vertical-nav
+          [clrVerticalNavCollapsible]="true"
+          [clrVerticalNavCollapsed]="navCollapsed"
+          (clrVerticalNavCollapsedChange)="updateNavCollapsed($event)"
+        >
+          <clr-vertical-nav-group routerLinkActive="active">
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Beatles
+            <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
+              <clr-vertical-nav-group-children>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/abbey-road']">
+                  Abbey Road
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/revolver']">
+                  Revolver
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/rubber-soul']">
+                  Rubber Soul
+                </a>
+              </clr-vertical-nav-group-children>
+            </ng-template>
+          </clr-vertical-nav-group>
+
+          <clr-vertical-nav-group routerLinkActive="active">
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Killers
+            <ng-template clrIfExpanded>
+              <clr-vertical-nav-group-children>
+                <a routerLinkActive="active" [routerLink]="['./killers/hot-fuss']" clrVerticalNavLink>
+                  Hot Fuss
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/day-and-age']">
+                  Day & Age
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/sams-town']">
+                  Sam's Town
+                </a>
+              </clr-vertical-nav-group-children>
+            </ng-template>
+          </clr-vertical-nav-group>
+
+          <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
+            <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
+            Wikipedia
+          </a>
+        </clr-vertical-nav>
+      </ng-container>
+
+      <ng-container *ngIf="option === 'lazyText'">
+        <clr-vertical-nav
+          [clrVerticalNavCollapsible]="true"
+          [clrVerticalNavCollapsed]="navCollapsed"
+          (clrVerticalNavCollapsedChange)="updateNavCollapsed($event)"
+        >
+          <clr-vertical-nav-group routerLinkActive="active">
+            <a hidden aria-hidden="true" [routerLink]="['./beatles']"> </a>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Beatles
+            <ng-template [clrIfExpanded]="groupExpand" (clrIfExpandedChange)="updateGroupExpand($event)">
+              <clr-vertical-nav-group-children>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/abbey-road']">
+                  Abbey Road
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/revolver']">
+                  Revolver
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./beatles/rubber-soul']">
+                  Rubber Soul
+                </a>
+              </clr-vertical-nav-group-children>
+            </ng-template>
+          </clr-vertical-nav-group>
+
+          <clr-vertical-nav-group routerLinkActive="active">
+            <a hidden aria-hidden="true" [routerLink]="['./killers']"> </a>
+            <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
+            The Killers
+            <ng-template clrIfExpanded>
+              <clr-vertical-nav-group-children>
+                <a routerLinkActive="active" [routerLink]="['./killers/hot-fuss']" clrVerticalNavLink>
+                  Hot Fuss
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/day-and-age']">
+                  Day & Age
+                </a>
+                <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./killers/sams-town']">
+                  Sam's Town
+                </a>
+              </clr-vertical-nav-group-children>
+            </ng-template>
+          </clr-vertical-nav-group>
+
+          <a routerLinkActive="active" clrVerticalNavLink [routerLink]="['./wikipedia']">
+            <cds-icon shape="certificate" clrVerticalNavIcon></cds-icon>
+            Wikipedia
+          </a>
+        </clr-vertical-nav>
+      </ng-container>
+      <div class="content-area">
+        <div class="example-options">
+          <h6>Options</h6>
+          <div class="btn-group">
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad1" [(ngModel)]="option" value="link" />
+              <label for="rad1">Nav Group Link</label>
+            </div>
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad2" [(ngModel)]="option" value="text" />
+              <label for="rad2">Nav Group Text</label>
+            </div>
+            <div class="radio btn">
+              <input type="radio" name="vertNavRadios" id="rad3" [(ngModel)]="option" value="lazyText" />
+              <label for="rad3">Nav Group Text + Lazy Loading</label>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <h6>Controls</h6>
+          <button class="btn" (click)="toggleNav()">Toggle Nav</button>
+          <button class="btn" (click)="toggleGroup()">Toggle Group</button>
+        </div>
+
+        <clr-alert [clrAlertType]="'alert-danger'" [clrAlertClosable]="false" *ngIf="option === 'text'">
+          <div class="alert-item">
+            <span class="alert-text">
+              Lazy Loading + Nav Group parent text (instead of parent links) will not highlight when a child route is
+              active and the nav group is collapsed. If you don't have a nav group parent link we recommend that you do
+              not use lazy loading.
+            </span>
+          </div>
+        </clr-alert>
+
+        <clr-alert [clrAlertType]="'alert-info'" [clrAlertClosable]="false" *ngIf="option === 'lazyText'">
+          <div class="alert-item">
+            <span class="alert-text">
+              Lazy Loading can work with Nav Group Text but we have to provide a hidden/empty link which is used to
+              detect the parent route and mark the nav group as active when collapsed.
+            </span>
+          </div>
+        </clr-alert>
+
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

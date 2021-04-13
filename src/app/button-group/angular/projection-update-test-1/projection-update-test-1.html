@@ -1,0 +1,22 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example example-min-height">
+  <h6>Toggle from the Button Group View</h6>
+  <clr-button-group>
+    <clr-button class="btn" *ngIf="show">1</clr-button>
+    <clr-button class="btn">2</clr-button>
+    <clr-button class="btn">3</clr-button>
+    <clr-button class="btn">4</clr-button>
+    <clr-button class="btn" [clrInMenu]="true">5</clr-button>
+    <clr-button class="btn" [clrInMenu]="true">6</clr-button>
+  </clr-button-group>
+  <div>
+    <button class="btn" (click)="toggleShow()">
+      Toggle
+    </button>
+  </div>
+</div>

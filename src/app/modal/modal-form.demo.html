@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<p>
+  <button class="btn btn-primary" (click)="basic = true">Show modal</button>
+  <span>Model Info: {{model | json}}</span>
+</p>
+<clr-modal [(clrModalOpen)]="basic">
+  <h3 class="modal-title">I have a nice title</h3>
+  <div class="modal-body">
+    <p>But not much to say...</p>
+    <form clrForm #form="ngForm" (ngSubmit)="onSubmit(model)">
+      <clr-input-container>
+        <label>Contact Info</label>
+        <input clrInput placeholder="Fill me in, scotty!" name="contactInfo" [(ngModel)]="model.contactInfo" />
+      </clr-input-container>
+      <label for="contactInfo">Model Info: {{model | json}}</label>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="basic = false">Ok</button>
+  </div>
+</clr-modal>

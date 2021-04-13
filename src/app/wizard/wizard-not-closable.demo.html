@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardClosable]="false" [clrWizardSize]="'md'">
+  <clr-wizard-title>Wizard, not closable</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 1</ng-template>
+    <!-- mandatory -->
+    <p>Notice there's no close "X" in the top right</p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 2</ng-template>
+    <!-- mandatory -->
+    <p>Notice there's no close "X" in the top right</p>
+  </clr-wizard-page>
+</clr-wizard>

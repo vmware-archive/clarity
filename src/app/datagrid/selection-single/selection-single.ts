@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+import { Component } from '@angular/core';
+
+import { ClrDatagridStateInterface } from '@clr/angular';
+import { FetchResult, Inventory } from '../inventory/inventory';
+import { User } from '../inventory/user';
+
+@Component({
+  selector: 'clr-datagrid-selection-single-demo',
+  providers: [Inventory],
+  templateUrl: 'selection-single.html',
+  styleUrls: ['../datagrid.demo.scss'],
+})
+export class DatagridSelectionSingleDemo {
+  users: User[];
+  singleSelected: User;
+
+  trackByIndexUsers: User[];
+  trackByIndexSingleSelected: User;
+
+  trackByIdUsers: User[];
+  trackByIdSingleSelected: User;
+
+  trackByIdServerUsers: User[];
+  trackByIdServerSingleSelected: User;
+
+  loading = true;
+  total: number;
+
+  constructor(private inventory: Inventory) {
+    this.inventory.size = 100;
+    this.inventory.latency = 500;
+    this.inventory.reset();
+    this.users = this.trackByIndexUsers = this.trackByIdUsers = this.inventory.all;
+  }
+
+  refresh(state: ClrDatagridStateInterface) {
+    // this.loading = true;
+    const filters: { [prop: string]: any[] } = {};
+    if (state.filters) {
+      for (const filter of state.filters) {
+        const { property, value } = filter;
+        filters[property] = [value];
+      }
+    }
+    this.inventory
+      .filter(filters)
+      .sort(state.sort as { by: string; reverse: boolean })
+      .fetch(state.page.size * (state.page.current - 1), state.page.size)
+      .then((result: FetchResult) => {
+        setTimeout(() => {
+          this.trackByIdServerUsers = result.users;
+          this.total = result.length;
+          this.loading = false;
+        });
+      });
+  }
+
+  trackByIndex(index: number, _item: User) {
+    return index;
+  }
+
+  trackById(_index: number, item: User) {
+    return item.id;
+  }
+}

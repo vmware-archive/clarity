@@ -1,0 +1,62 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Clarity Colors (@3.0+)</button>
+    <clr-tab-content *clrIfActive>
+      <div class="clr-row">
+        <div class="clr-col-sm-6 clr-col-12" *ngFor="let palette of clarityPalettes">
+          <div class="card card-block card-swatch-block">
+            <h4>{{palette.name}} color</h4>
+            <ng-container *ngFor="let color of palette.weights">
+              <p class="card-swatch" [style.background]="color.hsl">
+                <span [style.color]="color.on">
+                  $clr-color-{{palette.name}}-{{color.weight}}
+                </span>
+              </p>
+            </ng-container>
+            <h4>{{palette.name}} color ON</h4>
+            <ng-container *ngFor="let color of palette.weights">
+              <p class="card-swatch" [style.background]="color.on">
+                <span [style.color]="color.hsl">
+                  $clr-color-{{palette.name}}-{{color.weight}}
+                </span>
+              </p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink id="link1">Legacy Colors (@2.0 deprecated)</button>
+    <clr-tab-content id="content1" *clrIfActive>
+      <p>Colors that are twice as tall are part of the base color palette.</p>
+
+      <div class="clr-row">
+        <div class="clr-col-sm-6 clr-col-md-4 clr-col-12" *ngFor="let palette of oldPalettes">
+          <div class="card card-block card-swatch-block">
+            <ng-container *ngFor="let color of palette.colors">
+              <div class="card-swatch-divider" *ngIf="color.value === 'divider'"></div>
+              <ng-container *ngIf="color.value !== 'divider'">
+                <p
+                  class="card-swatch"
+                  [style.background-color]="color.value"
+                  [class.dark-text]="color.text === 'dark'"
+                  [class.upsize]="!!color.corePalette"
+                >
+                  <span class="hex-contrast">A<span *ngIf="color.text === 'mid'">A</span></span>
+                  <span class="rgb-value">{{color.value | uppercase}}</span>
+                </p>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

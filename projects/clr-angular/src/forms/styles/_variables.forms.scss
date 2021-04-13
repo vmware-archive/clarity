@@ -1,0 +1,96 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Structure
+$clr-forms-baseline: $clr_baselineRem_0_25;
+$clr-forms-icon-size: $clr_baselineRem_1;
+$clr-form-disabled-background-color: $clr-color-neutral-400 !default;
+
+// Generic
+$clr-forms-label-color: $clr-color-neutral-800 !default;
+$clr-forms-text-color: $clr-color-neutral-1000 !default;
+$clr-forms-invalid-color: $clr-color-danger-800 !default;
+$clr-forms-valid-color: $clr-color-success-700 !default;
+$clr-forms-valid-text-color: $clr-color-success-900 !default;
+$clr-forms-subtext-color: $clr-color-neutral-600 !default;
+$clr-forms-placeholder-color: $clr-color-neutral-600 !default;
+$clr-forms-border-color: $clr-color-neutral-500 !default;
+$clr-forms-focused-color: $clr-color-action-600 !default;
+$clr-forms-subtext-disabled-color: $clr-color-neutral-600 !default;
+$clr-forms-border-disabled-color: $clr-color-neutral-500 !default;
+$clr-forms-text-disabled-color: $clr-color-neutral-500 !default;
+$clr-forms-label-disabled-color: $clr-color-neutral-600 !default;
+
+// Typographic
+$clr-forms-label-font-size: $clr-p2-font-size !default;
+$clr-forms-label-font-weight: $clr-font-weight-bold !default;
+$clr-forms-block-label-font-size: $clr-h5-font-size !default;
+$clr-forms-block-label-font-weight: $clr-h5-font-weight !default;
+$clr-forms-block-label-letter-spacing: $clr-h5-letter-spacing !default;
+$clr-forms-text-font-size: $clr-p3-font-size !default;
+$clr-forms-text-font-weight: $clr-p3-font-weight !default;
+$clr-forms-text-letter-spacing: $clr-p3-letter-spacing !default;
+$clr-forms-subtext-font-size: $clr-p6-font-size !default;
+$clr-forms-subtext-line-height: $clr-p6-line-height !default;
+$clr-forms-field-font-size: $clr-forms-label-font-size !default;
+
+// Textarea
+$clr-forms-textarea-background-color: $clr-color-neutral-0 !default;
+
+// Select
+$clr-forms-select-hover-background: rgba(
+  red($clr-color-neutral-300),
+  green($clr-color-neutral-300),
+  blue($clr-color-neutral-300),
+  0.5
+) !default;
+$clr-forms-select-caret-hover-color: $clr-color-neutral-600 !default;
+$clr-forms-select-caret-color: $clr-color-neutral-500 !default;
+$clr-forms-select-caret-size: $clr-dropdown-caret-icon-dimension;
+$clr-forms-select-option-color: $clr-forms-text-color !default;
+$clr-forms-select-multiple-background-color: $clr-forms-textarea-background-color !default;
+$clr-forms-select-multiple-border-color: $clr-color-neutral-400 !default;
+$clr-forms-select-multiple-option-color: $clr-forms-text-color !default;
+
+// Checkbox
+$clr-forms-checkbox-label-color: $clr-forms-label-color !default;
+$clr-forms-checkbox-height: $clr-icon-dimension-sm !default;
+$clr-forms-checkbox-background-color: $clr-color-action-600 !default;
+$clr-forms-checkbox-indeterminate-border-color: $clr-color-action-600 !default;
+$clr-forms-checkbox-mark-color: $clr-color-neutral-0 !default;
+$clr-forms-checkbox-disabled-background-color: $clr-form-disabled-background-color !default;
+$clr-forms-checkbox-disabled-mark-color: $clr-color-neutral-1000 !default;
+$clr-forms-checkbox-border-radius: $clr-global-borderradius !default;
+
+$clr-forms-checkbox-label-height: $clr-forms-baseline * 4;
+$clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) / 2 !default;
+
+$clr-forms-checkbox-size: $clr_baselineRem_0_667;
+$clr-forms-checkbox-padding-left: $clr-forms-checkbox-height + $clr_baselineRem_0_25;
+$clr-forms-checkbox-checked-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-forms-checkbox-background-color;
+$clr-forms-checkbox-mark-size: $clr-forms-checkbox-height / 2;
+$clr-forms-checkbox-mark-border-size: ($clr-forms-checkbox-height / 8);
+
+// Radio
+$clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;
+$clr-forms-radio-disabled-background-color: $clr-color-neutral-700 !default;
+$clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color !default;
+
+$clr-forms-radio-size: $clr-forms-checkbox-size;
+$clr-forms-radio-label-height: $clr-forms-checkbox-label-height;
+$clr-forms-radio-height: $clr-forms-checkbox-height;
+$clr-forms-radio-padding-left: $clr-forms-checkbox-padding-left;
+$clr-forms-radio-top: $clr-forms-checkbox-top;
+$clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
+$clr-forms-radio-focused-shadow: 0 0 $clr-outline-blur $clr-outline-spread $clr-outline-color;
+$clr-forms-radio-disabled-shadow: inset 0 0 0 $clr_baselineRem_0_5 $clr-color-neutral-200;
+$clr-forms-radio-checked-disabled-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-color-neutral-200;
+
+// Range
+$clr-forms-range-progress-fill-color: $clr-color-action-600 !default;
+$clr-forms-range-track-color: $clr-color-neutral-200 !default;
+$clr-forms-range-track-height: $clr_baselineRem_4px;
+$clr-forms-range-thumb-height: $clr_baselineRem_0_583;
+$clr-forms-range-thumb-margin: -1 * $clr_baselineRem_5px;
+$clr-forms-range-margin: $clr_baselineRem_5px;

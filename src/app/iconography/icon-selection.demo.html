@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h5>Preview Settings</h5>
+
+<form clrForm clrLayout="compact" class="selection-preview-settings">
+  <clr-toggle-wrapper>
+    <input type="checkbox" clrToggle name="solid" [(ngModel)]="solid" id="solidCheckBox" />
+    <label>Solid</label>
+  </clr-toggle-wrapper>
+
+  <clr-radio-container>
+    <label>Decoration</label>
+    <clr-radio-wrapper>
+      <input type="radio" id="noneRadio" clrRadio name="options" value="none" [(ngModel)]="options" />
+      <label>none</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" id="badgeRadio" clrRadio name="options" value="badge" [(ngModel)]="options" />
+      <label>badge</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" id="alertRadio" clrRadio name="options" value="alert" [(ngModel)]="options" />
+      <label>alert</label>
+    </clr-radio-wrapper>
+  </clr-radio-container>
+</form>
+
+<section *ngFor="let set of allShapeSets" class="selection-shapes">
+  <h5>{{ set.name }}</h5>
+  <div class="clr-row cds-icon-collection">
+    <div *ngFor="let shape of set.shapes" class="cds-icon-item clr-col-xs-12 clr-col-sm-6 clr-col-md-4 clr-col-lg-3">
+      <cds-icon [attr.shape]="shape" [attr.title]="shape" [attr.solid]="solid" [attr.badge]="options"></cds-icon>
+      <span class="icon-shape-name">{{ shape }}</span>
+    </div>
+  </div>
+</section>

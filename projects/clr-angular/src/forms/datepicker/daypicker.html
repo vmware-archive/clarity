@@ -1,0 +1,51 @@
+<div class="clr-sr-only">{{commonStrings.keys.modalContentStart}}</div>
+<div class="calendar-header">
+  <div class="calendar-pickers">
+    <button
+      class="calendar-btn monthpicker-trigger"
+      type="button"
+      (click)="changeToMonthView()"
+      [attr.aria-label]="monthAttrString"
+      [attr.title]="monthAttrString"
+    >
+      {{calendarMonth}}
+    </button>
+    <button
+      class="calendar-btn yearpicker-trigger"
+      type="button"
+      (click)="changeToYearView()"
+      [attr.aria-label]="yearAttrString"
+      [attr.title]="yearAttrString"
+    >
+      {{calendarYear}}
+    </button>
+  </div>
+  <div class="calendar-switchers">
+    <button
+      class="calendar-btn switcher"
+      type="button"
+      (click)="previousMonth()"
+      [attr.aria-label]="commonStrings.keys.datepickerPreviousMonth"
+    >
+      <cds-icon shape="angle" direction="left" [attr.title]="commonStrings.keys.datepickerPreviousMonth"></cds-icon>
+    </button>
+    <button
+      class="calendar-btn switcher"
+      type="button"
+      (click)="currentMonth()"
+      [attr.aria-label]="commonStrings.keys.datepickerCurrentMonth"
+    >
+      <cds-icon shape="event" [attr.title]="commonStrings.keys.datepickerCurrentMonth"></cds-icon>
+    </button>
+    <button
+      class="calendar-btn switcher"
+      type="button"
+      (click)="nextMonth()"
+      [attr.aria-label]="commonStrings.keys.datepickerNextMonth"
+    >
+      <cds-icon shape="angle" direction="right"></cds-icon>
+    </button>
+  </div>
+</div>
+<clr-calendar></clr-calendar>
+<div class="clr-sr-only">{{commonStrings.keys.modalContentEnd}}</div>

@@ -1,0 +1,119 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Expandable rows</h2>
+
+<form clrForm>
+  <clr-radio-container>
+    <label>Type of detail</label>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="detail" value="default" [(ngModel)]="detail" />
+      <label>Default</label>
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <input type="radio" clrRadio name="detail" value="columns" [(ngModel)]="detail" />
+      <label>Columns</label>
+    </clr-radio-wrapper>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>This field is required!</clr-control-error>
+  </clr-radio-container>
+
+  <clr-checkbox-container>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="replace" [(ngModel)]="replace" />
+      <label>Replace row</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="fixed-height" [(ngModel)]="fixedHeight" />
+      <label>Fixed height</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="selectable" [(ngModel)]="selectable" />
+      <label>Selectable</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="slow-load" [(ngModel)]="slowLoad" />
+      <label>Slow load</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="date" [(ngModel)]="date" />
+      <label>Hidden Date Column</label>
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <input type="checkbox" clrCheckbox name="remove-row-detail" [(ngModel)]="removeRowDetail" />
+      <label>Remove Row Detail</label>
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+</form>
+
+<clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'creation'">
+    <ng-container *clrDgHideableColumn="{hidden: date}">
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+  <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+
+    <!-- Example using a wrapper component -->
+    <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
+
+    <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
+      <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+        <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+          <ng-template [ngIf]="detail === 'default'">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
+            Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque
+            sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean sagittis nibh
+            lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor. Vestibulum
+            vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere ipsum tincidunt
+            velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis sit amet metus
+            finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo, at suscipit diam.
+          </ng-template>
+
+          <ng-template [ngIf]="detail === 'columns'">
+            <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+            <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+            <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+            <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu.</clr-dg-cell>
+            <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+          </ng-template>
+        </ng-template>
+      </clr-dg-row-detail>
+    </ng-container>
+  </clr-dg-row>
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Mixed expandable and non expandable rows</h3>
+
+<clr-datagrid>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Pokemon</clr-dg-column>
+
+  <clr-dg-row *ngFor="let user of users.slice(0, 4);let i = index">
+    <clr-dg-cell>{{ user.name }}</clr-dg-cell>
+    <clr-dg-cell>{{ user.pokemon.name }}</clr-dg-cell>
+    <ng-container *ngIf="i % 2" ngProjectAs="clr-dg-row-detail">
+      <clr-dg-row-detail *clrIfExpanded>
+        Lorem ipsum...{{user|json}}
+      </clr-dg-row-detail>
+    </ng-container>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{ users.length }} users</clr-dg-footer>
+</clr-datagrid>

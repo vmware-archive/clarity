@@ -1,0 +1,22 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables.color';
+@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+
+.progress-bars-demo {
+  .nav-item {
+    padding: $clr_baselineRem_0_4 0 $clr_baselineRem_0_6;
+  }
+
+  .progbar-examples {
+    margin-bottom: $clr_baselineRem_1_5;
+  }
+}
+
+.progbar-examples {
+  .progress-block {
+    margin-top: $clr_baselineRem_1;
+  }
+}

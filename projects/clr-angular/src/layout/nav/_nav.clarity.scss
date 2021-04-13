@@ -1,0 +1,91 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('nav.clarity') {
+  .nav {
+    display: flex; //For the elements inside the nav
+    height: $clr-subnav-height;
+    list-style-type: none;
+    align-items: center;
+    box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+
+    .nav-item {
+      display: inline-block;
+      margin-right: $clr_baselineRem_1;
+
+      &.active > .nav-link {
+        @include css-var(color, clr-nav-link-active-color, $clr-nav-link-active-color, $clr-use-custom-properties);
+        // OldIE/Edge
+        box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 var(--clr-nav-box-shadow-color, $clr-nav-box-shadow-color) inset;
+        }
+      }
+    }
+
+    .nav-link {
+      @include css-var(color, clr-nav-link-color, $clr-nav-link-color, $clr-use-custom-properties);
+      font-size: $clr-nav-link-font-size;
+      @include css-var(font-weight, clr-nav-link-font-weight, $clr-nav-link-font-weight, $clr-use-custom-properties);
+      letter-spacing: $clr-nav-link-letter-spacing;
+      line-height: $clr-subnav-height;
+      display: inline-block;
+      padding: 0 $clr_baselineRem_0_125;
+      box-shadow: none;
+
+      //Clarity Buttons as .nav-links in .nav
+      &.btn {
+        text-transform: none;
+        margin: 0;
+        margin-bottom: -1 * $clr-global-borderwidth; //-1px to account for the border of the button
+        border-radius: 0;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: inherit;
+      }
+
+      &:hover,
+      &.active {
+        // OldIE/Edge
+        box-shadow: 0 (-1 * $clr_baselineRem_3px) 0 $clr-nav-active-box-shadow-color inset;
+        @if $clr-use-custom-properties == true {
+          box-shadow: 0
+            (-1 * $clr_baselineRem_3px)
+            0
+            var(--clr-nav-active-box-shadow-color, $clr-nav-active-box-shadow-color)
+            inset;
+        }
+        transition: box-shadow 0.2s ease-in;
+      }
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        text-decoration: none;
+      }
+
+      &.active {
+        @include css-var(color, clr-nav-link-active-color, $clr-nav-link-active-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-nav-link-active-font-weight,
+          $clr-nav-link-active-font-weight,
+          $clr-use-custom-properties
+        );
+      }
+
+      // When using clrTabLink directive, DOM has both .nav-link and .nav-item in the same elem
+      &.nav-item {
+        margin-right: $clr_baselineRem_1;
+      }
+    }
+  }
+}

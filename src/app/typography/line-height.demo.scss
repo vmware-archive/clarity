@@ -1,0 +1,155 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables.color';
+@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+
+@function getLineHeightGap($line-height: 1.2) {
+  @if ($line-height < 1) {
+    @return 0;
+  }
+  @return ($line-height - 1) / 2;
+}
+
+@function getDescenderHeight($line-height: 1.2) {
+  $top-gap: 0.147;
+  $ascender: 0.17;
+  $x-height: 0.517;
+  // these constants will become dynamic
+  @return 1 - $top-gap - $ascender - $x-height;
+}
+
+@function pullUp($line-height: 1.2) {
+  $top-gap: 0.147;
+  // these constant will become dynamic
+  @return ($top-gap + getLineHeightGap($line-height)) * -1em;
+}
+
+@function pushDown($line-height: 1.2) {
+  @return (getDescenderHeight() + getLineHeightGap($line-height)) * -1em;
+}
+
+@mixin lhe-test-crop($line-height: 1.2) {
+  line-height: $line-height * 1em;
+
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-bottom: pullUp($line-height);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: pushDown($line-height);
+  }
+}
+
+@mixin lhe-test-box-border() {
+  border-width: var(--clr-global-borderwidth, #{$clr-global-borderwidth});
+  border-style: solid;
+  border-color: var(--clr-color-neutral-300, #{$clr-color-neutral-300});
+}
+
+@mixin lhe-test-box-pad-color() {
+  box-shadow: inset 0 0 0 $clr_baselineRem_0_5 var(--clr-color-success-100, #{$clr-color-success-100});
+}
+
+.title {
+  border-bottom: $clr_baselineRem_2px solid;
+  border-bottom-color: var(--clr-color-neutral-800, #{$clr-color-neutral-800});
+}
+
+.box-test,
+.button-test,
+.card-test {
+  padding-top: $clr_baselineRem_1;
+}
+
+.test-box,
+.neutral-box,
+.just-neutral-box,
+.just-text-box {
+  display: inline-block;
+  padding: $clr_baselineRem_0_5;
+  @include lhe-test-box-pad-color();
+  @include lhe-test-box-border();
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    // NOTE: now we have to set margins between P tags or things get too cozy
+    margin-top: $clr_baselineRem_0_75;
+  }
+}
+
+.neutral-box,
+.just-neutral-box {
+  margin-right: $clr_baselineRem_1;
+}
+
+.test-card,
+.neutral-card {
+  align-items: flex-start;
+  @include lhe-test-box-pad-color();
+  @include lhe-test-box-border();
+  display: flex;
+  margin: 0;
+  margin-left: $clr_baselineRem_1;
+  padding: $clr_baselineRem_0_5;
+  width: 100%;
+
+  img {
+    flex: 0 1 auto;
+    margin-right: $clr_baselineRem_0_75;
+  }
+
+  p {
+    font-size: $clr_baselineRem_1;
+    margin: 0;
+  }
+}
+
+.neutral-card {
+  margin-left: $clr_baselineRem_0_5;
+}
+
+.button-test .btn {
+  @include lhe-test-box-pad-color();
+  font-size: $clr_baselineRem_0_583;
+}
+
+.test-btn {
+  padding: $clr_baselineRem_0_5;
+}
+
+.font-tester {
+  font-family: var(--line-height-eraser-font, 'Metropolis');
+}
+
+.line-height-eraser {
+  @include lhe-test-crop(1.1);
+}
+
+h1.test-subject {
+  box-shadow: inset 0 0 0 $clr_baselineRem_8px var(--clr-color-warning-500, #{$clr-color-warning-500});
+  padding: $clr_baselineRem_8px;
+
+  &.line-height-eraser {
+    @include lhe-test-crop(1.6);
+  }
+}
+
+.lhe-test-well {
+  background: var(--clr-color-neutral-100, #{$clr-color-neutral-100});
+  margin-top: $clr_baselineRem_1;
+  padding: $clr_baselineRem_0_5;
+  border-radius: var(--clr-global-borderradius, #{$clr-global-borderradius});
+}

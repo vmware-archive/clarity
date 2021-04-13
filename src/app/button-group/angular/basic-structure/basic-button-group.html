@@ -1,0 +1,67 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Basic Structure</h4>
+
+<div class="clr-example">
+  <clr-button-group>
+    <clr-button name="button1" id="test">1</clr-button>
+    <clr-button type="button">2</clr-button>
+    <clr-button disabled>3</clr-button>
+    <clr-button disabled="false">4</clr-button>
+    <clr-button disabled="123">5</clr-button>
+    <clr-button>6</clr-button>
+  </clr-button-group>
+</div>
+
+<label
+  >Overflow position:
+  <select [(ngModel)]="position">
+    <option value="bottom-left">bottom-left</option>
+    <option value="bottom-right">bottom-right</option>
+    <option value="top-left">top-left</option>
+    <option value="top-right">top-right</option>
+    <option value="left-top">left-top</option>
+    <option value="left-bottom">left-bottom</option>
+    <option value="right-top">right-top</option>
+    <option value="right-bottom">right-bottom</option>
+  </select>
+</label>
+
+<div class="clr-example">
+  <clr-button-group class="btn-primary" [clrMenuPosition]="position">
+    <clr-button (click)="handleClick(1)">1</clr-button>
+    <clr-button (click)="handleClick(2)">2</clr-button>
+    <clr-button (click)="handleClick(3)">3</clr-button>
+    <clr-button (click)="handleClick(4)">4</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(5)">5</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(6)">6</clr-button>
+    <clr-button [clrInMenu]="true" (click)="handleClick(7)">7</clr-button>
+  </clr-button-group>
+</div>
+
+<div class="clr-example">
+  <clr-button-group class="btn-icon">
+    <clr-button>
+      <cds-icon shape="home"></cds-icon>
+    </clr-button>
+    <clr-button>
+      <cds-icon shape="check"></cds-icon>
+    </clr-button>
+    <clr-button>
+      <cds-icon shape="user"></cds-icon>
+    </clr-button>
+    <clr-button>
+      <cds-icon shape="bell"></cds-icon>
+    </clr-button>
+    <clr-button>
+      <cds-icon shape="search"></cds-icon>
+    </clr-button>
+    <clr-button>
+      <cds-icon shape="image"></cds-icon>
+    </clr-button>
+  </clr-button-group>
+</div>

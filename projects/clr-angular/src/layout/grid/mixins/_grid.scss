@@ -1,0 +1,23 @@
+// Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin clr-make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: ($clr-grid-gutter-width / -2);
+  margin-left: ($clr-grid-gutter-width / -2);
+}
+
+@mixin clr-make-col($size, $columns: $clr-grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($size / $columns);
+}
+
+@mixin clr-make-col-offset($size, $columns: $clr-grid-columns) {
+  $num: $size / $columns;
+  margin-left: if($num == 0, 0, percentage($num));
+}

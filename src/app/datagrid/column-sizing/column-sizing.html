@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Smart column sizing</h2>
+
+<clr-datagrid>
+  <clr-dg-column>This column as a long header but short data</clr-dg-column>
+  <clr-dg-column>Short header</clr-dg-column>
+  <clr-dg-column>Large data</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie,
+      ullamcorper facilisis lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h2>Forcing columns width</h2>
+
+<clr-datagrid>
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column [style.width.px]="200">Style binding to 200px</clr-dg-column>
+  <clr-dg-column>Pokemon</clr-dg-column>
+  <clr-dg-column class="lorem-ipsum">300px specified through CSS</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+    <clr-dg-cell>This column always is 300px wide.</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

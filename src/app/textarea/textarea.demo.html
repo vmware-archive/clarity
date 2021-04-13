@@ -1,0 +1,168 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Angular Textarea <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+
+<h4>Vertical</h4>
+
+<form clrForm clrLayout="vertical">
+  <textarea clrTextarea [(ngModel)]="vertical.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="vertical.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="vertical.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="vertical.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+</form>
+
+<h4>Horizontal</h4>
+
+<form clrForm clrLayout="horizontal">
+  <textarea clrTextarea [(ngModel)]="horizontal.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="horizontal.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="horizontal.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+</form>
+
+<h4>Compact</h4>
+
+<form clrForm clrLayout="compact">
+  <textarea clrTextarea [(ngModel)]="compact.one" name="one" required></textarea>
+
+  <clr-textarea-container>
+    <label>One</label>
+    <textarea clrTextarea [(ngModel)]="compact.two" name="two" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Label</label>
+    <textarea clrTextarea [(ngModel)]="compact.three" name="three" required></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+
+  <clr-textarea-container>
+    <label>Disabled</label>
+    <textarea clrTextarea [(ngModel)]="compact.four" name="four" required [disabled]="disabled"></textarea>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-textarea-container>
+</form>
+
+<h2>CSS Textarea</h2>
+
+<h4>Vertical</h4>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label for="vertical-textarea-basic" class="clr-control-label">Basic textarea</label>
+    <div class="clr-control-container">
+      <div class="clr-textarea-wrapper">
+        <textarea id="vertical-textarea-basic" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-textarea-basic-error" class="clr-control-label">Basic textarea, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-textarea-wrapper">
+        <textarea id="vertical-textarea-basic-error" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Horizontal</h4>
+
+<form class="clr-form clr-form-horizontal">
+  <div class="clr-form-control">
+    <label for="horizontal-textarea-basic" class="clr-control-label">Basic textarea</label>
+    <div class="clr-control-container">
+      <div class="clr-textarea-wrapper">
+        <textarea id="horizontal-textarea-basic" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="horizontal-textarea-basic-error" class="clr-control-label">Basic textarea, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-textarea-wrapper">
+        <textarea id="horizontal-textarea-basic-error" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>
+
+<h4>Compact</h4>
+
+<form class="clr-form clr-form-compact">
+  <div class="clr-form-control">
+    <label for="compact-textarea-basic" class="clr-control-label">Basic textarea</label>
+    <div class="clr-control-container">
+      <div class="clr-textarea-wrapper">
+        <textarea id="compact-textarea-basic" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="compact-textarea-basic-error" class="clr-control-label">Basic textarea, error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-textarea-wrapper">
+        <textarea id="compact-textarea-basic-error" placeholder="Enter value here" class="clr-textarea"></textarea>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+</form>

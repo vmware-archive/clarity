@@ -1,0 +1,344 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.datepicker';
+
+@mixin generate-calendar-button($height: $clr-calendar-click-target, $padding: $clr-calendar-btn-padding) {
+  //Dimensions
+  height: $height;
+  min-width: $height;
+  padding: 0 $padding;
+  margin: 0 !important; //Because stupid forms target buttons directly. We really need to refactor forms.
+
+  //Other Props
+  color: inherit;
+  border: none;
+  @include css-var(border-radius, clr-global-borderradius, $clr-global-borderradius, $clr-use-custom-properties);
+  background: none;
+  cursor: pointer;
+  line-height: $clr-calendar-click-target;
+}
+
+@mixin generate-calendar-focus-style() {
+  &:hover,
+  &:focus {
+    @include css-var(
+      background,
+      clr-calendar-btn-hover-focus-color,
+      $clr-calendar-btn-hover-focus-color,
+      $clr-use-custom-properties
+    );
+  }
+
+  &:focus {
+    //Only because we have defined a background color for focus above
+    outline: 0;
+  }
+}
+
+@include exports('datepicker.clarity') {
+  .date-container {
+    display: inline-flex;
+    align-items: center;
+
+    //Other Props
+    white-space: nowrap;
+  }
+
+  // legacy can be removed when old layout is removed
+  .datepicker-trigger {
+    @include generate-calendar-button();
+
+    .datepicker-trigger-icon {
+      @include css-var(fill, clr-datepicker-trigger-color, $clr-datepicker-trigger-color, $clr-use-custom-properties);
+
+      &:hover {
+        @include css-var(
+          fill,
+          clr-datepicker-trigger-hover-color,
+          $clr-datepicker-trigger-hover-color,
+          $clr-use-custom-properties
+        );
+      }
+    }
+  }
+  .datepicker-trigger:disabled {
+    cursor: not-allowed;
+  }
+  .clr-form-control {
+    .datepicker-trigger {
+      line-height: $clr_baselineRem_1 - $clr_baselineRem_2px;
+      height: $clr_baselineRem_1 - $clr_baselineRem_2px;
+    }
+  }
+
+  .date-input {
+    flex: 1 1 auto;
+  }
+
+  .datepicker {
+    display: flex;
+    flex-direction: column;
+
+    //Dimensions
+    padding: $clr-calendar-padding;
+    margin-top: $clr-calendar-margin-top;
+    width: $clr-calendar-width;
+    height: $clr-calendar-height;
+
+    //Other Props
+    @include css-var(
+      background,
+      clr-calendar-background-color,
+      $clr-calendar-background-color,
+      $clr-use-custom-properties
+    );
+    border: $clr-global-borderwidth solid;
+    @include css-var(border-color, clr-calendar-border-color, $clr-calendar-border-color, $clr-use-custom-properties);
+    @include css-var(border-radius, clr-global-borderradius, $clr-global-borderradius, $clr-use-custom-properties);
+    // OldIE/Edge
+    box-shadow: 0 $clr-global-borderwidth $clr_baselineRem_0_125 $clr-popover-box-shadow-color;
+    @if $clr-use-custom-properties == true {
+      box-shadow: 0
+        $clr-global-borderwidth
+        $clr_baselineRem_0_125
+        var(--clr-popover-box-shadow-color, $clr-popover-box-shadow-color);
+    }
+    overflow: hidden;
+    z-index: map-get($clr-layers, dropdown-menu);
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .calendar-switchers,
+  .year-switchers {
+    transform: translateY(-1 * $clr_baselineRem_2px);
+    display: flex;
+  }
+
+  .year-switchers {
+    flex: 0 0 auto;
+    width: $clr-switcher-width;
+    align-self: center;
+  }
+
+  .calendar-table {
+    flex: 1 1 auto;
+
+    //Dimensions
+    width: 100%;
+  }
+
+  .calendar-cell,
+  .calendar-table .calendar-cell {
+    //Dimensions
+    @include min-equilateral($clr-calendar-click-target);
+    padding: 0;
+
+    //Other Props
+    text-align: center;
+  }
+
+  .day {
+    display: inline-block;
+  }
+
+  .weekdays {
+    flex: 0 0 $clr-calendar-click-target;
+  }
+
+  .weekday {
+    @include css-var(font-size, clr-day-font-size, $clr-day-font-size, $clr-use-custom-properties);
+    font-weight: 600;
+  }
+
+  .calendar-btn {
+    @include generate-calendar-button();
+    @include generate-calendar-focus-style();
+
+    //Other Props
+    @include css-var(
+      font-size,
+      clr-calendar-picker-btn-font-size,
+      $clr-calendar-picker-btn-font-size,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      font-weight,
+      clr-calendar-picker-btn-font-weight,
+      $clr-calendar-picker-btn-font-weight,
+      $clr-use-custom-properties
+    );
+  }
+
+  .day-btn {
+    @include generate-calendar-button($padding: 0);
+    @include generate-calendar-focus-style();
+
+    //Dimensions
+    width: 100%;
+
+    //Other Props
+    color: inherit;
+
+    &.is-today {
+      @include css-var(
+        color,
+        clr-calendar-today-date-cell-color,
+        $clr-calendar-today-date-cell-color,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        font-weight,
+        clr-calendar-today-date-cell-font-weight,
+        $clr-calendar-today-date-cell-font-weight,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.is-excluded {
+      opacity: 0.4; // consistent with disabled drop down items.
+
+      &:hover {
+        background: none;
+      }
+    }
+
+    &.is-selected {
+      @include css-var(
+        background,
+        clr-calendar-active-cell-background-color,
+        $clr-calendar-active-cell-background-color,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        color,
+        clr-calendar-active-cell-color,
+        $clr-calendar-active-cell-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.is-selected:focus {
+      @include css-var(
+        background,
+        clr-calendar-active-focus-cell-background-color,
+        $clr-calendar-active-focus-cell-background-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.is-disabled {
+      opacity: 0.4; // consistent with disabled drop down items.
+      pointer-events: none;
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  .calendar-pickers {
+    display: flex;
+  }
+
+  .switcher {
+    @include css-var(color, clr-calendar-btn-color, $clr-calendar-btn-color, $clr-use-custom-properties);
+
+    cds-icon,
+    clr-icon {
+      @include equilateral($clr_baselineRem_0_75);
+    }
+  }
+
+  .monthpicker-trigger,
+  .yearpicker-trigger {
+    //Dimensions
+    min-width: $clr_baselineRem_2;
+    max-width: $clr_baselineRem_2_5;
+
+    //Other Props
+    @include css-var(color, clr-calendar-btn-color, $clr-calendar-btn-color, $clr-use-custom-properties);
+    text-align: center;
+    @include overflow-ellipsis();
+  }
+
+  .monthpicker,
+  .yearpicker {
+    min-height: $clr-monthpicker-min-height;
+  }
+
+  .monthpicker,
+  .yearpicker,
+  .years {
+    display: flex;
+    flex-direction: column;
+
+    //Other props
+    overflow: hidden;
+  }
+
+  .monthpicker,
+  .years {
+    flex-wrap: wrap;
+  }
+
+  .month,
+  .year {
+    @include generate-calendar-button($clr-calendar-month-cell-height, $clr-calendar-month-cell-padding);
+    @include generate-calendar-focus-style();
+
+    //Dimensions
+    width: $clr-month-year-btn-width;
+
+    //Other Props
+    font-size: $clr-calendar-picker-btn-font-size;
+    font-weight: $clr-calendar-picker-btn-font-weight;
+    outline-offset: -1 * $clr_baselineRem_5px; //needed for chrome
+
+    &.is-disabled {
+      opacity: 0.4;
+      pointer-events: none;
+      &:hover {
+        background: none;
+      }
+    }
+
+    &.is-selected {
+      @include css-var(
+        background,
+        clr-calendar-active-cell-background-color,
+        $clr-calendar-active-cell-background-color,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        color,
+        clr-calendar-active-cell-color,
+        $clr-calendar-active-cell-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    &.is-selected:focus {
+      @include css-var(
+        background,
+        clr-calendar-active-focus-cell-background-color,
+        $clr-calendar-active-focus-cell-background-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  .month {
+    text-align: center;
+    @include overflow-ellipsis();
+  }
+
+  .year {
+    text-align: center;
+  }
+}

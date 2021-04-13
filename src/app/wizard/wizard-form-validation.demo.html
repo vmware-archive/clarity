@@ -1,0 +1,85 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<button class="btn btn-primary" (click)="wizard.open()">Open Wizard</button>
+
+<clr-wizard #wizard [(clrWizardOpen)]="open" [clrWizardSize]="'lg'">
+  <clr-wizard-title>Wizard with form validation</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Done</clr-wizard-button>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
+    <ng-template clrPageTitle>Form with validation</ng-template>
+    <form clrForm #formPageOne="ngForm">
+      <clr-input-container>
+        <label>Name</label>
+        <input clrInput required [(ngModel)]="model.name" name="name" #name="ngModel" id="name" />
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Favorite food</label>
+        <input clrInput [(ngModel)]="model.favorite" name="favorite" id="favorite" />
+      </clr-input-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
+    <ng-template clrPageTitle>We need a number</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>
+      Enter a number
+    </ng-template>
+    <!-- optional -->
+    <form clrForm #formPageTwo="ngForm">
+      <clr-input-container>
+        <label>Please your lucky number!</label>
+        <input clrInput type="number" required [(ngModel)]="model.number" name="number" #number="ngModel" />
+        <clr-control-error>This field cannot be empty!</clr-control-error>
+      </clr-input-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
+    <ng-template clrPageTitle>Title for page 3</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>
+      <span *ngIf="formPageOne.valid && formPageTwo.valid">
+        Ready to go!
+      </span>
+      <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
+        Not ready yet
+      </span>
+    </ng-template>
+    <!-- optional -->
+
+    <div *ngIf="formPageOne.valid && formPageTwo.valid">
+      <p>Congratulations! You are done with this wizard.</p>
+      <label>Your information</label>
+      <section>
+        <p>
+          <label>Your name:</label>
+          <span>{{ this.model.name }}</span>
+        </p>
+        <p>
+          <label>Your favorite food:</label>
+          <span>{{ this.model.favorite }}</span>
+        </p>
+        <p>
+          <label>Your lucky number:</label>
+          <span>{{ this.model.number }}</span>
+        </p>
+      </section>
+    </div>
+
+    <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
+      <p>Not quite there yet.</p>
+    </div>
+  </clr-wizard-page>
+</clr-wizard>

@@ -1,0 +1,92 @@
+<!--
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<ng-content select="clr-dg-action-bar"></ng-content>
+<div class="datagrid-outer-wrapper">
+  <div class="datagrid-inner-wrapper">
+    <div class="datagrid" #datagrid [attr.aria-hidden]="detailService.isOpen ? true : null">
+      <div class="datagrid-table-wrapper">
+        <div role="grid" class="datagrid-table" tabindex="-1" #datagridTable>
+          <div role="rowgroup" class="datagrid-header">
+            <div role="row" class="datagrid-row">
+              <div class="datagrid-row-master datagrid-row-flex">
+                <div class="datagrid-row-sticky">
+                  <!--header for datagrid where you can select multiple rows -->
+                  <div
+                    role="columnheader"
+                    class="datagrid-column datagrid-select datagrid-fixed-column"
+                    *ngIf="selection.selectionType === SELECTION_TYPE.Multi"
+                  >
+                    <div class="clr-checkbox-wrapper">
+                      <input
+                        type="checkbox"
+                        [id]="selectAllId"
+                        [(ngModel)]="allSelected"
+                        [attr.aria-label]="commonStrings.keys.selectAll"
+                      />
+                      <!-- Usage of class clr-col-null here prevents clr-col-* classes from being added when a datagrid is wrapped inside clrForm -->
+                      <label [for]="selectAllId" class="clr-control-label clr-col-null">
+                        <span class="clr-sr-only">{{commonStrings.keys.selectAll}}</span>
+                      </label>
+                    </div>
+
+                    <div class="datagrid-column-separator"></div>
+                  </div>
+                  <!-- header for datagrid where you can select one row only -->
+                  <div
+                    role="columnheader"
+                    class="datagrid-column datagrid-select datagrid-fixed-column"
+                    *ngIf="selection.selectionType === SELECTION_TYPE.Single"
+                    [attr.aria-label]="clrDgSingleSelectionAriaLabel"
+                  >
+                    <div class="datagrid-column-separator"></div>
+                  </div>
+                  <!-- header for single row action; only displayType if we have at least one actionable row in datagrid -->
+                  <div
+                    role="columnheader"
+                    class="datagrid-column datagrid-row-actions datagrid-fixed-column"
+                    *ngIf="rowActionService.hasActionableRow"
+                    [attr.aria-label]="clrDgSingleActionableAriaLabel"
+                  >
+                    <div class="datagrid-column-separator"></div>
+                  </div>
+                  <!-- header for carets; only displayType if we have at least one expandable row in datagrid -->
+                  <div
+                    role="columnheader"
+                    class="datagrid-column datagrid-expandable-caret datagrid-fixed-column"
+                    *ngIf="expandableRows.hasExpandableRow || detailService.enabled"
+                    [attr.aria-label]="clrDetailExpandableAriaLabel"
+                  >
+                    <div class="datagrid-column-separator"></div>
+                  </div>
+                </div>
+                <div class="datagrid-row-scrollable">
+                  <ng-container #projectedDisplayColumns></ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container #displayedRows></ng-container>
+          <!-- Custom placeholder overrides the default empty one -->
+          <ng-content select="clr-dg-placeholder"></ng-content>
+          <clr-dg-placeholder *ngIf="!placeholder"></clr-dg-placeholder>
+        </div>
+      </div>
+    </div>
+    <ng-content select="clr-dg-footer"></ng-content>
+    <div class="datagrid-spinner" *ngIf="loading">
+      <clr-spinner clrMedium>Loading</clr-spinner>
+    </div>
+  </div>
+  <ng-content select="[clrIfDetail],clr-dg-detail"></ng-content>
+</div>
+
+<div class="datagrid-calculation-table">
+  <div class="datagrid-calculation-header">
+    <ng-container #projectedCalculationColumns></ng-container>
+  </div>
+  <ng-container #calculationRows></ng-container>
+</div>

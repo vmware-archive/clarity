@@ -1,0 +1,223 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<h2>Highlights</h2>
+<ul class="list-unstyled">
+  <li>
+    <p>
+      Welcome to Clarity 2.0! We've worked hard to get to this major milestone, and are excited about the future of
+      Clarity! All new features, additions, deprecations and bug-fixes are listed below for an easy summarization of
+      what changed between 1.0 and 2.0.
+    </p>
+    <p>
+      This is the second release to follow the support policy. It follows the Angular LTS support policy as is outlined
+      in the blog post
+      <a href="https://medium.com/claritydesignsystem/updating-the-clarity-release-and-support-strategy-c1e37f7d5a0"
+        >here</a
+      >.
+    </p>
+    <p>
+      There are a few things Clarity consumers should take note of:
+    </p>
+    <ol>
+      <li>
+        We are starting LTS (Long Term Support) for Clarity v1.x and will only be adding security and severe bugfixes
+        during this period
+      </li>
+      <li>We are no longer supporting Clarity v0.13.x with security and severe bugfixes</li>
+      <li>
+        This begins the active development period for Clarity v2.x and we will be adding new features
+        <strong>that are not breaking changes</strong> during this period
+      </li>
+    </ol>
+    <p>
+      To get this update, run <code class="clr-code">ng update @clr/angular</code>. You can use this with any Angular
+      CLI project, even if you've already started to work on it. You may need to run
+      <code class="clr-code">ng update @angular/core @angular/cli</code> first to update to Angular 8.
+    </p>
+
+    <h6 new-component>
+      Added Vertical Tabs (<a href="https://github.com/vmware/clarity/pull/3102" target="_blank">#3102</a>)
+    </h6>
+    <p>
+      The addition of vertical tabs now allows consumers to specify
+      <code class="clr-code">clrLayout ="vertical"</code> on a <code class="clr-code">clr-tabs container</code>. Please
+      refer to the updated <a routerLink="/documentation/tabs">documentation</a> for more info.
+    </p>
+    <h6 new-component>
+      New Accordion Component (<a href="https://github.com/vmware/clarity/pull/3378" target="_blank">#3378</a>)
+    </h6>
+    <p>
+      Accordions are designed for use in the main content area. They allow generic content to be collapsed. Users are
+      able to expand to show more detail. For more details and code examples check out the documentation page
+      <a routerLink="/documentation/accordion">here</a>.
+    </p>
+    <h6 new-component>
+      New Stepper Component (<a href="https://github.com/vmware/clarity/pull/3378" target="_blank">#3378</a>)
+    </h6>
+    <p>
+      A stepper structures multi-step processes into 2 or more expanding panels that break up complex workflows. Under
+      the hood, the stepper is a specialized Accordion. To understand the difference and see examples of code in use
+      check out the documentation <a routerLink="/documentation/stepper">here</a>.
+    </p>
+    <h6 new-component>Figma Design Resources For Clarity (beta)</h6>
+    <p>Jumpstart your Clarity design with one of the Figma libraries available here:</p>
+    <a
+      href="https://www.figma.com/file/nRpy4E8bYy9hiDc8iORxyp/Clarity-UI-Library-light-2.0.0?node-id=262%3A7"
+      target="_blank"
+      class="btn btn-primary btn-sm"
+      rel="noopener"
+      >UI Library - Light ({{sketchVersion}})
+    </a>
+    <a
+      href="https://www.figma.com/file/b0FLd4CGw6JIXZ8kwXKaE6/Clarity-UI-Library-dark-2.0.0?node-id=88%3A0"
+      target="_blank"
+      class="btn btn-primary btn-sm"
+      rel="noopener"
+      >UI Library - Dark ({{sketchVersion}})
+    </a>
+    <a
+      href="https://www.figma.com/file/Ju57cw9zRBQ77OMrbKD5Ko/Clarity-Icons-2.0.0?node-id=54%3A9"
+      target="_blank"
+      class="btn btn-primary btn-sm"
+      rel="noopener"
+      >Icon Library ({{sketchVersion}})
+    </a>
+    <h6>
+      Added keyboard Interaction for a dropdown menu component (<a
+        href="https://github.com/vmware/clarity/pull/3283"
+        target="_blank"
+        >#3283</a
+      >)
+    </h6>
+    <p>
+      Dropdown components now support keyboard interactions as part of these accessibility improvements. The
+      <a routerLink="/documentation/dropdowns">documentation</a> has been updated with a new
+      <strong>accessibility</strong> section containing the details.
+    </p>
+    <h6 breaking-change>
+      Simplifying color variables and removing luminance and contrast maps(<a
+        href="https://github.com/vmware/clarity/pull/3131"
+        target="_blank"
+        >#3131</a
+      >)
+    </h6>
+    <p>
+      We've cleaned up a lot of variables and simplified the CSS theming to make it easier to work with. Custom themes
+      may need to review their themes for any referenced maps and some new variables were added to capture some missing
+      configurations.
+    </p>
+    <h6>
+      Add Datagrid Numeric Filter (<a href="https://github.com/vmware/clarity/pull/3397" target="_blank">#3397</a>)
+    </h6>
+    <p>
+      Datagird columns can now implement a dedicated numeric filter for for numeric values. For details and code
+      examples check out the updated <a routerLink="/documentation/datagrid/built-in-filters">documentation</a>.
+    </p>
+  </li>
+</ul>
+
+<h2>Bugfixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Remove box-shadow on disabled buttons (<a href="https://github.com/vmware/clarity/pull/3228" target="_blank"
+      >#3228</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed missing solid circle svg (<a href="https://github.com/vmware/clarity/pull/3247" target="_blank">#3247 </a>)
+  </li>
+  <li bug-fix>
+    Adds support for inline toggle inputs in datagrid rows (<a
+      href="https://github.com/vmware/clarity/pull/3243"
+      target="_blank"
+      >#3243</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixes premature validation (until after touched) in forms and adds proper styles for disabled radios and checkboxes.
+    (<a href="https://github.com/vmware/clarity/pull/3242" target="_blank">#3242</a>)
+  </li>
+  <li bug-fix>
+    Improves a11y for <code class="clr-code">clr-control-error</code> (<a
+      href="https://github.com/vmware/clarity/pull/3305"
+      target="_blank"
+      >#3305</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed some styles so they compile with the latest Angular CLI which now uses dart-sass. (<a
+      href="https://github.com/vmware/clarity/pull/3323"
+      target="_blank"
+      >#3323</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed styling issues with the Datagrid in last beta release (<a
+      href="https://github.com/vmware/clarity/pull/3311"
+      target="_blank"
+      >#3311</a
+    >)
+  </li>
+  <li bug-fix>
+    Support better pagination template for datagrid to not say 0 of 1 page (<a
+      href="https://github.com/vmware/clarity/pull/2947"
+      target="_blank"
+      >#2947</a
+    >)
+  </li>
+  <li bug-fix>
+    Fixed a lifecycle issue for projected components in tabs (<a
+      href="https://github.com/vmware/clarity/pull/3329"
+      target="_blank"
+      >#3329</a
+    >)
+  </li>
+  <li bug-fix>
+    Support better pagination template for datagrid to not say 0 of 1 page (<a
+      href="https://github.com/vmware/clarity/pull/2947"
+      target="_blank"
+      >#2947</a
+    >)
+  </li>
+  <li bug-fix>
+    Datagrid: fixes active filter icon in IE/Edge browsers (<a
+      href="https://github.com/vmware/clarity/pull/3347"
+      target="_blank"
+      >#3347</a
+    >)
+  </li>
+</ul>
+
+<h2>Deprecations</h2>
+<ul class="list">
+  <li>
+    Deprecated the <code class="clr-code">ClrDgColumnToggle</code> component (<a
+      href="https://github.com/vmware/clarity/pull/3312"
+      target="_blank"
+      >#3312</a
+    >) in favor of using the <code class="clr-code">ClrCommonStrings</code> for internationalization.
+  </li>
+  <li>
+    Deprecated the row selection option for the Datagrid, as it is not accessible (<a
+      href="https://github.com/vmware/clarity/pull/3312"
+      target="_blank"
+      >#3312</a
+    >), should just use regular selection options.
+  </li>
+</ul>
+
+<h2>Other Changes</h2>
+<ul class="list">
+  <li>
+    There were several internal changes to the datagrid related to how internal state is managed: (<a
+      href="https://github.com/vmware/clarity/pull/3124"
+      target="_blank"
+      >#3124)</a
+    >, <a href="https://github.com/vmware/clarity/pull/3217" target="_blank">#3217)</a>,
+    <a href="https://github.com/vmware/clarity/pull/3240" target="_blank">#3240)</a>)
+  </li>
+</ul>

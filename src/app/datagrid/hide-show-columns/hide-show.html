@@ -1,0 +1,147 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Datagrid: Hide-show columns demo</h2>
+
+<button class="btn btn-outline-primary" (click)="toggleId()">
+  {{idControlMessage}}
+</button>
+<button class="btn btn-outline-primary" (click)="toggleName()">
+  {{nameControlMessage}}
+</button>
+<button class="btn btn-outline-primary" (click)="conditionalSignpost = !conditionalSignpost">
+  Toggle Signposts
+</button>
+<button class="btn btn-outline-primary" (click)="shortFormat = !shortFormat">
+  Toggle Date Type
+</button>
+<clr-datagrid>
+  <clr-dg-column *ngIf="!deleteIdColumn" [style.width.px]="100">
+    <ng-container *clrDgHideableColumn>
+      User ID
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <!--Name-->
+    <ng-container *clrDgHideableColumn="{hidden: hideNameColumn}">
+      Name
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [style.width.px]="150">
+    <ng-container *clrDgHideableColumn>
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Pokemon
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell *ngIf="!deleteIdColumn">
+      {{user.id}}
+      <clr-signpost *ngIf="conditionalSignpost">
+        <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'">
+          The user is strong.
+        </clr-signpost-content>
+      </clr-signpost>
+    </clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell *ngIf="shortFormat">{{user.creation | date:'shortDate'}}</clr-dg-cell>
+    <clr-dg-cell *ngIf="!shortFormat">{{user.creation | date:'fullDate'}}</clr-dg-cell>
+    <clr-dg-cell>
+      {{user.pokemon.name}}
+      <clr-signpost>
+        <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+          <cds-icon shape="help-info"></cds-icon>
+        </button>
+        <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+          The pokemon is strong.
+        </clr-signpost-content>
+      </clr-signpost>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h2>Hide-show columns demo with custom buttons</h2>
+
+<clr-datagrid>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      User ID
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <!--Name-->
+    <ng-container *clrDgHideableColumn>
+      Name
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Creation date
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Pokemon
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>
+      {{user.id}}
+    </clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      {{user.pokemon.name}}
+      <clr-signpost>
+        <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+          <cds-icon shape="help-info"></cds-icon>
+        </button>
+        <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+          The pokemon is strong.
+        </clr-signpost-content>
+      </clr-signpost>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-column-toggle>
+      <clr-dg-column-toggle-title>Kolumne Herauschauen!</clr-dg-column-toggle-title>
+      <clr-dg-column-toggle-button>Alle auswählen!</clr-dg-column-toggle-button>
+    </clr-dg-column-toggle>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+    <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

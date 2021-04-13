@@ -1,0 +1,64 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<!-- @deprecated since 3.0, remove in 4.0-->
+<button class="btn btn-primary" (click)="wizard.open()">Inline Wizard</button>
+
+<clr-wizard
+  #wizard
+  [(clrWizardOpen)]="open"
+  [clrWizardSize]="'lg'"
+  [clrWizardPreventModalAnimation]="true"
+  class="clr-wizard--inline clr-wizard--no-shadow clr-wizard--no-title"
+  style="height: 500px;"
+>
+  <clr-wizard-title>Inline Wizard</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Submit</clr-wizard-button>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 1</ng-template>
+    <!-- optional -->
+
+    <p>Content for page 1</p>
+    <p class="content-for-page-1">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 2</ng-template>
+    <!-- mandatory -->
+
+    <p>Content for page 2</p>
+    <p class="content-for-page-2">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minima inventore quia, officiis rem id explicabo
+      incidunt, illum deleniti qui doloremque voluptatem, saepe tenetur quas! Quaerat explicabo expedita placeat vero.
+    </p>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Page 3</ng-template>
+    <!-- mandatory -->
+
+    <p class="content-for-page-3">Content for page 3</p>
+  </clr-wizard-page>
+</clr-wizard>

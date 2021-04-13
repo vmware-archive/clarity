@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example squeeze dropdown-demo">
+  <clr-dropdown [clrCloseMenuOnItemClick]="false">
+    <button clrDropdownTrigger aria-label="dropdown demo button">
+      <cds-icon shape="error" status="danger" size="18"></cds-icon>
+      <cds-icon shape="angle" direction="down" solid></cds-icon>
+    </button>
+    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+      <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+      <div aria-label="Dropdown header Action 1" clrDropdownItem>Action 1</div>
+      <div aria-label="Dropdown header Action 2" clrDropdownItem>Action 2</div>
+      <div aria-label="Dropdown header Disabled Action 1" clrDropdownItem clrDisabled>Disabled Action 1</div>
+      <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+      <div clrDropdownItem>Link 1</div>
+      <div clrDropdownItem>Link 2</div>
+    </clr-dropdown-menu>
+  </clr-dropdown>
+</div>

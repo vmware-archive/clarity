@@ -1,0 +1,169 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Selection</h2>
+
+<p>
+  To allow actions on multiple items at once, we provide the ability for the user to select rows in the datagrid. To
+  make rows selectable in your datagrid, you need to do the following:
+</p>
+<ul>
+  <li>
+    Add a <code class="clr-code">[clrDgItem]</code> input on each
+    <code class="clr-code">&lt;clr-dg-row&gt;</code> component to tell us what model the user is actually selecting.
+    Most of the time, this will simply be the current data object in the iteration.
+  </li>
+  <li>
+    Add a <code class="clr-code">[(clrDgSelected)]</code> two-way binding on the datagrid itself, to have access to the
+    list of currently selected items. Note that by adding items to this list yourself, you can dynamically select
+    elements if you need to.
+  </li>
+</ul>
+
+<p>
+  In the following example, we simply display the names of the selected users, but since we have access to the full
+  objects, we could perform any operation we want on them.
+</p>
+
+<h3>Client side, no trackBy</h3>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected users:
+    <em *ngIf="clientNoTrackBySelected.length == 0">No user selected.</em>
+    <span class="username" *ngFor="let user of clientNoTrackBySelected">{{user.name}}</span>
+  </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="clientNoTrackBySelected">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of clientNoTrackByUsers" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} users
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Client side, trackBy index</h3>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected users:
+    <em *ngIf="clientTrackByIndexSelected.length == 0">No user selected.</em>
+    <span class="username" *ngFor="let user of clientTrackByIndexSelected">{{user.name}}</span>
+  </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="clientTrackByIndexSelected">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of clientTrackByIndexUsers; trackBy: trackByIndex" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} users
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Client side, trackBy item</h3>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected users:
+    <em *ngIf="clientTrackByIdSelected.length == 0">No user selected.</em>
+    <span class="username" *ngFor="let user of clientTrackByIdSelected">{{user.name}}</span>
+  </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="clientTrackByIdSelected">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of clientTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} users
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<h3>Server-driven, trackBy item</h3>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected users:
+    <em *ngIf="serverTrackByIdSelected.length == 0">No user selected.</em>
+    <span class="username" *ngFor="let user of serverTrackByIdSelected">{{user.name}}</span>
+  </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="serverTrackByIdSelected" (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn>
+      Favorite color
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *ngFor="let user of serverTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{total}} users
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total" [clrDgPageSize]="10"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

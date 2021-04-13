@@ -1,0 +1,61 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Basic</h4>
+<form clrForm>
+  <clr-range-container>
+    <input type="range" clrRange name="two" [(ngModel)]="input.one" />
+  </clr-range-container>
+</form>
+<clr-code-snippet [clrCode]="basicExample" clrLanguage="html"></clr-code-snippet>
+
+<h4>Full Example</h4>
+<form clrForm>
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Full example</label>
+    <input type="range" clrRange [(ngModel)]="input.two" name="three" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+<clr-code-snippet [clrCode]="fullExample" clrLanguage="html"></clr-code-snippet>
+
+<h4>Disabled</h4>
+<form clrForm>
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Disabled</label>
+    <input type="range" clrRange [(ngModel)]="input.three" name="four" [disabled]="disabled" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+<clr-code-snippet [clrCode]="disabledExample" clrLanguage="html"></clr-code-snippet>
+
+<h4>Value Changes</h4>
+<p>
+  Applications may need to be aware of the current slider value. They can use the standard Angular
+  <code class="clr-code">(change)</code> output to handle changes to the slider value.
+</p>
+<form clrForm>
+  <clr-range-container [clrRangeHasProgress]="true">
+    <label>Value change example</label>
+    <input type="range" clrRange [(ngModel)]="input.two" name="three" (change)="rangeChange($event)" />
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-range-container>
+</form>
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Tab1</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="rangeChangeHTML" clrLanguage="html"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Tab2</button>
+    <clr-tab-content *clrIfActive>
+      <clr-code-snippet [clrCode]="rangeChangeTS" clrLanguage="typescript"></clr-code-snippet>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

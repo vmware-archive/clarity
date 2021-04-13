@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div clrForm>
+  <h6>ngModel Wrapper Explicit</h6>
+  <p></p>
+  <clr-date-container>
+    <input type="date" [(ngModel)]="model" clrDate [disabled]="disabled" />
+  </clr-date-container>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-12 clr-col-md-10 clr-col-lg-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>[(model)]</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{model}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h6>No ClrForm</h6>
+
+<h6>Control Disabled & Enabled</h6>
+<clr-date-container>
+  <label>Disabled Date Picker</label>
+  <input type="date" [(clrDate)]="date" [disabled]="disabled" />
+</clr-date-container>
+
+<div>
+  <button class="btn" (click)="disabled = !disabled">Toggle Disabled</button>
+</div>
+
+<h6>Disabled and will stay that way</h6>
+<clr-date-container>
+  <label>Disabled Date Picker</label>
+  <input type="date" [(clrDate)]="date" disabled />
+</clr-date-container>

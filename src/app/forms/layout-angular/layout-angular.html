@@ -1,0 +1,64 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Angular - {{layout}} - {{ labelSize ? 'grid' : 'no grid' }}</h1>
+
+<form clrForm [clrLayout]="layout" [clrLabelSize]="labelSize">
+  <clr-checkbox-container>
+    <label>Checkbox</label>
+    <clr-checkbox-wrapper>
+      <label>Option 1 2 3</label>
+      <input type="checkbox" clrCheckbox />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Option 2</label>
+      <input type="checkbox" clrCheckbox />
+    </clr-checkbox-wrapper>
+    <clr-checkbox-wrapper>
+      <label>Option 3</label>
+      <input type="checkbox" clrCheckbox />
+    </clr-checkbox-wrapper>
+  </clr-checkbox-container>
+  <clr-date-container>
+    <label>Date picker</label>
+    <input clrDate />
+  </clr-date-container>
+  <clr-input-container>
+    <label>Input</label>
+    <input clrInput />
+  </clr-input-container>
+  <clr-password-container>
+    <label>Password</label>
+    <input type="password" clrPassword />
+  </clr-password-container>
+  <clr-radio-container>
+    <label>Radio</label>
+    <clr-radio-wrapper>
+      <label>Option 1</label>
+      <input type="radio" clrRadio />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Option 2</label>
+      <input type="radio" clrRadio />
+    </clr-radio-wrapper>
+    <clr-radio-wrapper>
+      <label>Option 3</label>
+      <input type="radio" clrRadio />
+    </clr-radio-wrapper>
+  </clr-radio-container>
+  <clr-select-container>
+    <label>Select</label>
+    <select clrSelect>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+  </clr-select-container>
+  <clr-textarea-container>
+    <label>Textarea</label>
+    <textarea clrTextarea></textarea>
+  </clr-textarea-container>
+</form>

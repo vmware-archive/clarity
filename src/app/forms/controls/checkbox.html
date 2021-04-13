@@ -1,0 +1,193 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Checkbox Input</h2>
+
+<form class="clr-form">
+  <div class="clr-form-control">
+    <label class="clr-control-label">Basic</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="basic" class="clr-checkbox" />
+        <label for="basic" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Multi</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-1" class="clr-checkbox" />
+        <label for="multi-1" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-2" class="clr-checkbox" />
+        <label for="multi-2" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-3" class="clr-checkbox" />
+        <label for="multi-3" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-4" class="clr-checkbox" />
+        <label for="multi-4" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-5" class="clr-checkbox" />
+        <label for="multi-5" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-6" class="clr-checkbox" />
+        <label for="multi-6" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Multi inline</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper clr-checkbox-inline">
+        <input type="checkbox" id="multi-inline-1" class="clr-checkbox" />
+        <label for="multi-inline-1" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-inline-2" class="clr-checkbox" />
+        <label for="multi-inline-2" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Multi wrappers</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-wrappers-1" class="clr-checkbox" />
+        <label for="multi-wrappers-1" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-wrappers-2" class="clr-checkbox" />
+        <label for="multi-wrappers-2" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Multi containers</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-containers-1" class="clr-checkbox" />
+        <label for="multi-containers-1" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+    <div class="clr-control-container clr-error">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="multi-containers-2" class="clr-checkbox" />
+        <label for="multi-containers-2" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Error</label>
+    <div class="clr-control-container clr-error">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="error" class="clr-checkbox" />
+        <label for="error" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label class="clr-control-label">Indeterminate</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="error-indeterminate" class="clr-checkbox clr-indeterminate" />
+        <label for="error-indeterminate" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label class="clr-control-label">Disabled</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="disabled" disabled class="clr-checkbox" />
+        <label for="disabled" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label class="clr-control-label">Disabled checked</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input type="checkbox" id="disabled-checked" disabled class="clr-checkbox" checked />
+        <label for="disabled-checked" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-form-control clr-form-control-disabled">
+    <label class="clr-control-label">Disabled indeterminate checked</label>
+    <div class="clr-control-container">
+      <div class="clr-checkbox-wrapper">
+        <input
+          type="checkbox"
+          id="disabled-indeterminate-checked"
+          disabled
+          class="clr-checkbox clr-indeterminate"
+          checked
+        />
+        <label for="disabled-indeterminate-checked" class="clr-control-label">Label</label>
+      </div>
+      <div class="clr-subtext-wrapper">
+        <cds-icon class="clr-validate-icon" status="danger" shape="exclamation-circle"></cds-icon>
+        <span class="clr-subtext">Helper Text</span>
+      </div>
+    </div>
+  </div>
+</form>

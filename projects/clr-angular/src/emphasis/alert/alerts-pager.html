@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="alerts-pager-control">
+  <div class="alerts-page-down">
+    <button class="alerts-pager-button" (click)="pageDown()">
+      <cds-icon shape="angle" direction="left" [attr.title]="commonStrings.keys.previous"></cds-icon>
+    </button>
+  </div>
+  <div class="alerts-pager-text">
+    {{this.multiAlertService.current+1}} / {{this.multiAlertService.count}}
+  </div>
+  <div class="alerts-page-up">
+    <button class="alerts-pager-button" (click)="pageUp()">
+      <cds-icon shape="angle" direction="right" [attr.title]="commonStrings.keys.next"></cds-icon>
+    </button>
+  </div>
+</div>

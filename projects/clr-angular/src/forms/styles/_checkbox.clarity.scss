@@ -1,0 +1,154 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.checkbox') {
+  $mark-half-size: $clr-forms-checkbox-mark-size / 2;
+
+  // @TODO un-nest the checkbox from the wrapper, after old forms are removed
+  .clr-checkbox-wrapper {
+    @include form-flatten-validate-text();
+    position: relative;
+
+    //Hide the default checkbox behind the pseudo elements
+    //Opacity is set to 0 so that the input remains accessible
+    input[type='checkbox'] {
+      @include checkbox-radio-input-styles($clr-forms-checkbox-size);
+    }
+
+    label {
+      @include checkbox-radio-label-styles(
+        $clr-forms-checkbox-label-height,
+        $clr-forms-checkbox-padding-left,
+        $clr-forms-checkbox-label-color,
+        clr-forms-checkbox-label-color
+      );
+    }
+
+    //Checkbox base
+    input[type='checkbox'] + label::before {
+      @include checkbox-radio-shared-inactive(
+        $clr-forms-checkbox-height,
+        $clr-forms-checkbox-top,
+        0,
+        $clr-forms-border-color,
+        clr-forms-border-color
+      );
+      @include css-var(
+        border-radius,
+        clr-forms-checkbox-border-radius,
+        $clr-forms-checkbox-border-radius,
+        $clr-use-custom-properties
+      );
+    }
+
+    input[type='checkbox']:focus + label::before {
+      @include include-outline-style-form-fields();
+    }
+
+    //Checkmark
+    input[type='checkbox'] + label::after {
+      position: absolute;
+      content: '';
+      display: none;
+      height: $mark-half-size + $clr_baselineRem_1px;
+      width: $clr-forms-checkbox-mark-size;
+      border-left: $clr-forms-checkbox-mark-border-size solid;
+      border-bottom: $clr-forms-checkbox-mark-border-size solid;
+      @include css-var(
+        border-color,
+        clr-forms-checkbox-mark-color,
+        $clr-forms-checkbox-mark-color,
+        $clr-use-custom-properties
+      );
+      top: ($clr-forms-baseline * 4 - $clr-icon-dimension-sm) / 2;
+      left: $mark-half-size;
+      transform: translate(0, $mark-half-size) rotate(-45deg);
+    }
+
+    input[type='checkbox']:checked + label::before {
+      @include css-var(
+        background,
+        clr-forms-checkbox-background-color,
+        $clr-forms-checkbox-background-color,
+        $clr-use-custom-properties
+      );
+      border: none;
+    }
+
+    input[type='checkbox']:checked + label::after {
+      display: inline-block;
+    }
+
+    $indetermSassBrdrColorVar: $clr-forms-checkbox-indeterminate-border-color;
+    $indetermCssBrdrColorVar: clr-forms-checkbox-indeterminate-border-color;
+    input[type='checkbox'].clr-indeterminate + label::before,
+    input[type='checkbox']:indeterminate + label::before {
+      border: $clr-global-borderwidth solid;
+      @include css-var(border-color, $indetermCssBrdrColorVar, $indetermSassBrdrColorVar, $clr-use-custom-properties);
+    }
+
+    input[type='checkbox'].clr-indeterminate + label::after,
+    input[type='checkbox']:indeterminate + label::after {
+      border-left: none;
+      @include css-var(
+        border-bottom-color,
+        $indetermCssBrdrColorVar,
+        $indetermSassBrdrColorVar,
+        $clr-use-custom-properties
+      );
+      display: inline-block;
+      transform: translate(0, $mark-half-size);
+    }
+
+    &.clr-checkbox-inline {
+      @include form-inline-input();
+    }
+  }
+
+  .clr-error .clr-checkbox-wrapper input[type='checkbox'] + label::before {
+    @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
+  }
+
+  .clr-form-control-disabled .clr-checkbox-wrapper {
+    label {
+      cursor: not-allowed;
+    }
+
+    input[type='checkbox'] + label::before,
+    input[type='checkbox']:checked + label::before {
+      @include css-var(
+        background-color,
+        clr-forms-checkbox-disabled-background-color,
+        $clr-forms-checkbox-disabled-background-color,
+        $clr-use-custom-properties
+      );
+      border: none;
+    }
+
+    input[type='checkbox']:checked + label::after {
+      $sassVar: $clr-forms-checkbox-disabled-mark-color;
+      $cssVar: clr-forms-checkbox-disabled-mark-color;
+      $disabled-border-style: ($clr-forms-checkbox-height / 8) solid;
+      border-left: $disabled-border-style;
+      border-bottom: $disabled-border-style;
+      @include css-var(border-left-color, $cssVar, $sassVar, $clr-use-custom-properties);
+      @include css-var(border-bottom-color, $cssVar, $sassVar, $clr-use-custom-properties);
+    }
+
+    input[type='checkbox']:checked.clr-indeterminate + label::after,
+    input[type='checkbox']:checked:indeterminate + label::after {
+      border-left: none;
+    }
+  }
+
+  .clr-form-compact .clr-checkbox-wrapper {
+    @include form-flatten-compact-adjustments();
+    @include form-inline-input();
+    height: $clr-forms-baseline * 4;
+
+    .clr-control-label {
+      margin-top: 0;
+    }
+  }
+}

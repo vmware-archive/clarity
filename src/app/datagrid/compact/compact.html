@@ -1,0 +1,423 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Compact Datagrid</h2>
+
+<p>
+  To increase the information density of your Datagrid, add the
+  <code class="clr-code">datagrid-compact</code> class to it. This class decreases the amount of whitespace in the
+  default Datagrid style so that you can display more rows in the fixed height. Or if your Datagrid doesn't have a fixed
+  height, you could decrease the overall amount of space that it takes.
+</p>
+
+<clr-datagrid class="datagrid-compact" [style.height.px]="288">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Pokemon</clr-dg-column>
+  <clr-dg-row *ngFor="let user of users; let i = index;">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>
+      <cds-icon shape="user"></cds-icon>
+      {{user.name}}
+    </clr-dg-cell>
+    <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Basic Structure</h3>
+<div id="datagrid-compact-basic-structure">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of nonPaginatedUsers">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>
+        <cds-icon shape="user"></cds-icon>
+        {{user.name}}
+      </clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Using smart iterator, property binding, and sorting</h3>
+<div id="datagrid-compact-smart-iterator">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'" [clrDgSortBy]="pokemonComparator" [(clrDgSortOrder)]="sortOrder">
+      Pokemon
+    </clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Filters and pagination</h3>
+<div id="datagrid-compact-filters-pagination">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>
+      Pokemon
+      <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    </clr-dg-column>
+    <clr-dg-column>
+      Favorite color
+      <clr-dg-filter [clrDgFilter]="colorFilter">
+        <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
+      </clr-dg-filter>
+    </clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="8"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Single selection</h3>
+<div id="datagrid-compact-single-selection">
+  <clr-datagrid [(clrDgSingleSelected)]="singleSelected" class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Multi selection</h3>
+<div id="datagrid-compact-multi-selection">
+  <clr-datagrid [(clrDgSelected)]="selected" class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+      <clr-dg-action-overflow>
+        <button class="action-item" (click)="onEdit(user)">
+          <cds-icon shape="note"></cds-icon>
+          Edit
+        </button>
+        <button class="action-item" (click)="onDelete(user)">
+          <cds-icon shape="trash"></cds-icon>
+          Delete
+        </button>
+      </clr-dg-action-overflow>
+
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Placeholder</h3>
+<div id="datagrid-compact-placeholder">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-placeholder>We couldn't find any users!</clr-dg-placeholder>
+    <clr-dg-row *ngFor="let user of []"></clr-dg-row>
+
+    <clr-dg-footer>{{[].length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Vertical scrolling (Rows with badges)</h3>
+<div id="datagrid-compact-vertical-scrolling">
+  <clr-datagrid id="vertical-scrolling" class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell
+        >{{user.pokemon.name}}
+        <span class="badge badge-5">#{{user.pokemon.number}}</span>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Horizontal scrolling</h3>
+<div id="datagrid-compact-horizontal-scrolling">
+  <div class="card" style="width: 400px;" id="horizontal-scrolling">
+    <div class="card-header">
+      For instance when in a narrow card.
+    </div>
+    <div class="card-block">
+      <clr-datagrid class="datagrid-compact">
+        <clr-dg-column>User ID</clr-dg-column>
+        <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+        <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+        <clr-dg-column class="lorem-ipsum">Filler</clr-dg-column>
+
+        <clr-dg-row *clrDgItems="let user of nonPaginatedUsers">
+          <clr-dg-cell>{{user.id}}</clr-dg-cell>
+          <clr-dg-cell>{{user.name}}</clr-dg-cell>
+          <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+          <clr-dg-cell>
+            <span class="color-square" [style.backgroundColor]="user.color"></span>
+          </clr-dg-cell>
+          <clr-dg-cell>This is a very wide column.</clr-dg-cell>
+        </clr-dg-row>
+
+        <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+      </clr-datagrid>
+    </div>
+  </div>
+</div>
+
+<h3>Smart column sizing</h3>
+<div id="datagrid-compact-smart-column-sizing">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>This column as a long header but short data</clr-dg-column>
+    <clr-dg-column>Short header</clr-dg-column>
+    <clr-dg-column>Large data</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor tellus, tincidunt eget mauris molestie,
+        ullamcorper facilisis lacus. Vivamus sagittis suscipit libero, et tristique justo consectetur eget.
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Expandable rows</h3>
+<div id="datagrid-compact-expandable-rows">
+  <form clrForm>
+    <clr-radio-container>
+      <label>Type of detail</label>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="detail" value="default" [(ngModel)]="detail" />
+        <label>Default</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" clrRadio name="detail" required value="columns" [(ngModel)]="detail" />
+        <label>Columns</label>
+      </clr-radio-wrapper>
+    </clr-radio-container>
+
+    <clr-checkbox-container>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="replace" [(ngModel)]="replace" />
+        <label>Replace row</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="fixed-height" [(ngModel)]="fixedHeight" />
+        <label>Fixed height</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="selectable" [(ngModel)]="selectable" />
+        <label>Selectable</label>
+      </clr-checkbox-wrapper>
+      <clr-checkbox-wrapper>
+        <input type="checkbox" clrCheckbox name="slow-load" [(ngModel)]="slowLoad" />
+        <label>Slow load</label>
+      </clr-checkbox-wrapper>
+    </clr-checkbox-container>
+  </form>
+  <clr-datagrid [style.height.px]="fixedHeight ? 458 : null" [(clrDgSelected)]="selected2" class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
+    <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of nonPaginatedUsers" [clrDgItem]="user">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+
+      <!-- Example using a wrapper component -->
+      <!--<detail-wrapper *clrIfExpanded ngProjectAs="clr-dg-row-detail" class="datagrid-row-flex"></detail-wrapper>-->
+
+      <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="replace">
+        <ng-template [clrFakeLoader]="slowLoad" clrLoading>
+          <ng-template [ngIf]="detail === 'default'">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque in ante placerat mattis id sed quam.
+            Proin rhoncus lacus et tempor dignissim. Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque
+            sed arcu. Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra. Aenean sagittis nibh
+            lacus, in eleifend urna ultrices et. Mauris porttitor nisi nec velit pharetra porttitor. Vestibulum
+            vulputate sollicitudin dolor ut tincidunt. Phasellus vitae blandit felis. Nullam posuere ipsum tincidunt
+            velit pellentesque rhoncus. Morbi faucibus ut ipsum at malesuada. Nam vestibulum felis sit amet metus
+            finibus hendrerit. Fusce faucibus odio eget ex vulputate rhoncus. Fusce nec aliquam leo, at suscipit diam.
+          </ng-template>
+
+          <ng-template [ngIf]="detail === 'columns'">
+            <clr-dg-cell>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</clr-dg-cell>
+            <clr-dg-cell>Proin in neque in ante placerat mattis id sed quam.</clr-dg-cell>
+            <clr-dg-cell>Proin rhoncus lacus et tempor dignissim.</clr-dg-cell>
+            <clr-dg-cell>Vivamus sem quam, pellentesque aliquet suscipit eget, pellentesque sed arcu. </clr-dg-cell>
+            <clr-dg-cell>Vivamus in dui lectus. Suspendisse cursus est ac nisl imperdiet viverra.</clr-dg-cell>
+          </ng-template>
+        </ng-template>
+      </clr-dg-row-detail>
+    </clr-dg-row>
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Hide-show columns</h3>
+<div id="datagrid-compact-hide-show-columns">
+  <clr-datagrid [(clrDgSelected)]="selected" class="datagrid-compact">
+    <clr-dg-column *ngIf="showId">
+      <ng-container *clrDgHideableColumn>
+        User ID
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <!--Name-->
+      <ng-container *clrDgHideableColumn>
+        Name
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Creation date
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Pokemon
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn>
+        Favorite color
+      </ng-container>
+    </clr-dg-column>
+
+    <clr-dg-placeholder>No users found</clr-dg-placeholder>
+
+    <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+      <clr-dg-cell *ngIf="showId">{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+      <clr-dg-cell *ngIf="showDate">{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="currentPageSize"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
+
+<h3>Rows with Signpost</h3>
+<div id="datagrid-compact-with-signpost">
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of nonPaginatedUsers">
+      <clr-dg-cell>
+        {{user.id}}
+        <clr-signpost>
+          <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
+            <cds-icon shape="help-info"></cds-icon>
+          </button>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
+            The pokemon is strong.
+          </clr-signpost-content>
+        </clr-signpost>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        {{user.name}}
+        <clr-signpost>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'">
+            The user is strong.
+          </clr-signpost-content>
+        </clr-signpost>
+      </clr-dg-cell>
+      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+      <clr-dg-cell>
+        <span class="color-square" [style.backgroundColor]="user.color"></span>
+      </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{nonPaginatedUsers.length}} users</clr-dg-footer>
+  </clr-datagrid>
+</div>

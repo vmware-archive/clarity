@@ -1,0 +1,145 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables.color';
+@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+
+$full-lh-block-width: $clr_baselineRem_1_5;
+$ruler-highlight-width: $full-lh-block-width/4;
+
+.glyph-rulers {
+  margin-top: $clr_baselineRem_1;
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  background: #{'rgba(176,196,222, 0.5)'};
+}
+
+.line-height-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  background-color: var(--clr-color-action-900, #{$clr-color-action-900});
+  width: $full-lh-block-width;
+}
+
+.line-height-measurement {
+  transform: rotate(-90deg);
+  color: var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  display: block;
+  font-weight: bold;
+  font-size: $clr_baselineRem_1;
+  position: absolute;
+  top: 50%;
+  left: -1 * ($clr_baselineRem_0_5 + $clr_baselineRem_1px);
+  line-height: 1;
+}
+
+.rulers {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - #{$full-lh-block-width});
+  margin-left: $full-lh-block-width;
+  height: 1000px;
+}
+
+.ruler {
+  position: relative;
+  background: var(--clr-color-secondary-action-600, #{$clr-color-secondary-action-600});
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.6;
+
+  &::after {
+    content: 'RULER';
+    font-size: $clr_baselineRem_0_667;
+    color: var(--clr-color-neutral-1000, #{$clr-color-neutral-1000});
+    position: absolute;
+    display: block;
+    line-height: 1;
+    top: 50%;
+    margin-top: -1 * $clr_baselineRem_8px;
+    text-align: center;
+    width: auto;
+    transform: rotate(-90deg);
+    right: -1 * $clr_baselineRem_0_83;
+  }
+
+  &.top-gap {
+    box-shadow: $ruler-highlight-width 0 0 0 inset var(--clr-color-warning-700, #{$clr-color-warning-700});
+    background: var(--clr-color-warning-300, #{$clr-color-warning-300});
+    color: var(--clr-color-on-warning-300, #{$clr-color-on-warning-300});
+    flex: 0 1 auto;
+
+    &::after {
+      content: 'TOP GAP';
+    }
+  }
+
+  &.ascender {
+    box-shadow: $ruler-highlight-width 0 0 0 inset var(--clr-color-success-700, #{$clr-color-success-700});
+    background: var(--clr-color-success-400, #{$clr-color-success-400});
+    color: var(--clr-color-on-success-400, #{$clr-color-on-success-400});
+    flex: 0 1 auto;
+
+    &::after {
+      content: 'ASCENDERS';
+      right: -1 * $clr_baselineRem_1_25;
+    }
+  }
+
+  &.x-height {
+    box-shadow: $ruler-highlight-width 0 0 0 inset var(--clr-color-action-700, #{$clr-color-action-700});
+    background: var(--clr-color-action-400, #{$clr-color-action-400});
+    color: var(--clr-color-on-action-400, #{$clr-color-on-action-400});
+    flex: 0 1 auto;
+
+    &::after {
+      content: 'X-HEIGHT';
+    }
+  }
+
+  &.descender {
+    box-shadow: $ruler-highlight-width 0 0 0 inset
+      var(--clr-color-secondary-action-700, #{$clr-color-secondary-action-700});
+    background: var(--clr-color-secondary-action-300, #{$clr-color-secondary-action-300});
+    color: var(--clr-color-on-secondary-action-300, #{$clr-color-on-secondary-action-300});
+    flex: 1;
+
+    &::after {
+      content: 'DESCENDERS';
+      right: -1 * $clr_baselineRem_1_25;
+    }
+  }
+
+  &.descender-overage {
+    box-shadow: $full-lh-block-width 0 0 0 inset var(--clr-color-danger-800, #{$clr-color-danger-800});
+    background-color: var(--clr-color-danger-200, #{$clr-color-danger-200});
+    color: var(--clr-color-on-danger-200, #{$clr-color-on-danger-200});
+    display: block;
+
+    &::after {
+      content: 'DESCENDER OVERAGE';
+      transform: none;
+      right: auto;
+      width: 100%;
+      text-align: right;
+      padding-right: $clr_baselineRem_0_625;
+    }
+  }
+}
+
+.font-glyph {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1000px;
+  text-align: center;
+  font-size: 1000px;
+  line-height: 1;
+  color: var(--clr-color-neutral-1000, #{$clr-color-neutral-1000});
+  z-index: 0;
+}

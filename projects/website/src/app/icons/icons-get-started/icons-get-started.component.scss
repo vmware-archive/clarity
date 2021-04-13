@@ -1,0 +1,30 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../styles/clarity-imports';
+
+p.lead-header {
+  font-size: 1.2em;
+  font-weight: 200;
+  line-height: 1.8em;
+}
+
+.paragraph-header {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: $clr_baselineRem_1_33 0 $clr_baselineRem_0_667;
+}
+
+clr-code-snippet ::ng-deep pre {
+  margin: $clr_baselineRem_1 0;
+  padding: $clr_baselineRem_0_75;
+}
+
+clr-code-snippet ::ng-deep pre code {
+  line-height: 1.8em;
+}
+
+.example-btn-wrapper {
+  margin: $clr_baselineRem_0_5 0 0;
+}

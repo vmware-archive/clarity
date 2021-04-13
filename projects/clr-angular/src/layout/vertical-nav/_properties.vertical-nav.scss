@@ -1,0 +1,32 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('vertical-nav.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ./_vertical-nav.clarity.scss
+      //Vertical Nav - Divider
+      --clr-vertical-nav-divider-color: var(--clr-color-neutral-700);
+
+      //Vertical Nav - Icons
+      --clr-vertical-nav-icon-active-color: var(--clr-color-action-600);
+
+      //Vertical Nav - Align
+      --clr-vertical-nav-item-color: var(--clr-color-neutral-700);
+      --clr-vertical-nav-item-active-color: var(--clr-color-neutral-700);
+      --clr-vertical-nav-bg-color: var(--clr-color-neutral-200);
+      --clr-vertical-nav-active-bg-color: var(--clr-color-neutral-0);
+      --clr-vertical-nav-hover-bg-color: var(--clr-color-neutral-400);
+
+      //Vertical Nav - Trigger
+      --clr-vertical-nav-toggle-icon-color: var(--clr-color-neutral-1000);
+      --clr-vertical-nav-trigger-divider-border-width: var(--clr-global-borderwidth);
+      // TODO: we need to do better with this here hsla() isn't translating across variables
+      --clr-vertical-nav-trigger-divider-border-color: var(--clr-color-neutral-400);
+
+      // Vertical Nav - Header
+      --clr-vertical-nav-header-font-weight: var(--clr-p4-font-weight);
+    }
+  }
+}

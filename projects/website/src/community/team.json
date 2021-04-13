@@ -1,0 +1,97 @@
+{
+  "members": [
+    {
+      "name": "Jehad Affoneh",
+      "role": "Clarity Lead",
+      "blurb": "Jehad started and continues to lead the Clarity project. He is involved in all stages of Clarity development. He loves engaging with designers and developers to understand their use cases and help them build solutions.",
+      "twitter": "jaffoneh",
+      "img": "affonehj.png",
+      "workstreams": ["UX", "UI"]
+    },
+    {
+      "name": "Scott Mathis",
+      "role": "Manager/Developer",
+      "blurb": "Scott has been with Clarity from the beginning and leads planning and direction of the project. He continues to contribute to research, documentation, user experience, and development.",
+      "twitter": "mathis_scott",
+      "img": "scott.png",
+      "workstreams": ["UX", "UI", "NG"]
+    },
+    {
+      "name": "Jeeyun Lim",
+      "role": "Developer",
+      "blurb": "Jeeyun is working on clarityCORE, which encompasses various tools for building, developing, and shipping Clarity. She's also creating Clarity's Angular components and making sure that the components are beautiful as well as sensible and functional.",
+      "img": "jeeyun.png",
+      "twitter": "jeeyunit",
+      "workstreams": ["CR", "NG"]
+    },
+    {
+      "name": "Lilia Kim",
+      "role": "Visual Designer",
+      "blurb": "Lilia researches what's needed for Clarity and delivers the visual designs.  She works on layout design, component design, and icons.",
+      "img": "lilia.png",
+      "twitter": "lilkim439",
+      "workstreams": ["UX"]
+    },
+    {
+      "name": "Shijir Tsogoo",
+      "role": "Developer",
+      "blurb": "Shijir joined the Clarity team shortly after graduating from the University of Washington. He has built a number of Clarity Angular components and served as the primary developer on the Clarity Icons project.",
+      "img": "shijir.png",
+      "twitter": "ts_shijir",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Matt Hippely",
+      "role": "Developer",
+      "blurb": "As a UI Engineer, Matt's primary focus is collecting feedback and improving components. He also works to improve the tooling and continuous integration of the Clarity project.",
+      "twitter": "hippeelee",
+      "img": "matt.png",
+      "workstreams": ["CR", "NG"]
+    },
+    {
+      "name": "Jeremy Wilken",
+      "role": "Developer",
+      "blurb": "Jeremy is a developer with a passion for all things web and education. He is a Google Developer Expert for Angular, author of the books Angular in Action and Ionic in Action, and regularly speaks at events.",
+      "twitter": "gnomeontherun",
+      "img": "jeremy.png",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Stela Stamenkova",
+      "role": "Visual Designer",
+      "blurb": "Stela’s passion is illustration in a vast majority of styles. She delivers illustrations, icons and small animations.",
+      "img": "stela.png",
+      "workstreams": ["UX"]
+    },
+    {
+      "name": "Ivan Donchev",
+      "role": "Developer",
+      "blurb": "Ivan was part of the community, a user and fan of Clarity. Now he is part of Clarity and a great fan of its community. He likes to find problems and build solutions. Prefers simple solutions even for the complex problems.",
+      "img": "ivan.png",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Colin Miller",
+      "role": "Design Lead",
+      "blurb": "Colin is responsible for leading the evolution and innovation in Clarity, and for the visual and interaction design of the library.",
+      "img": "colin.png",
+      "workstreams": ["UX"]
+    },
+    {
+      "name": "Cory Rylan",
+      "role": "Developer",
+      "blurb": "Cory is a front-end developer and Google Developer Expert for Angular and Web. When not building components he is busy teaching Angular and other web technologies at workshops and conferences.",
+      "twitter": "coryrylan",
+      "img": "cory.png",
+      "workstreams": ["UI", "NG"]
+    },
+    {
+      "name": "Bozhidar Dryanovski",
+      "role": "Developer",
+      "blurb": "Bozhidar is an experienced Software Engineer and JavaScript Developer, worked with almost all ancient and modern frameworks that shaped the World Wide Web the way that we know and love.",
+      "twitter": "dryanovski",
+      "img": "placeholder.png",
+      "workstreams": ["UI", "NG"]
+    }
+  ]
+}

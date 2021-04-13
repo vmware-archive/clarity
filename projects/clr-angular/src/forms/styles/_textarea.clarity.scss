@@ -1,0 +1,82 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.textarea') {
+  // @TODO Fix selectors when old forms are removed to allow better defaults
+  .clr-textarea-wrapper {
+    white-space: nowrap;
+    display: flex;
+    margin-top: $clr-forms-baseline;
+
+    .clr-validate-icon {
+      margin-left: 0;
+    }
+  }
+
+  .clr-textarea {
+    $textarea-vertical-padding: $clr-forms-baseline + $clr_baselineRem_2px;
+    $textarea-horizontal-padding: $clr-forms-baseline * 2;
+
+    max-width: calc(100% - #{$clr-forms-baseline});
+    height: auto;
+
+    resize: vertical;
+    @include css-var(
+      background,
+      clr-forms-textarea-background-color,
+      $clr-forms-textarea-background-color,
+      $clr-use-custom-properties
+    );
+    border: $clr-global-borderwidth solid;
+    @include css-var(border-color, clr-forms-border-color, $clr-forms-border-color, $clr-use-custom-properties);
+    @include css-var(color, clr-forms-text-color, $clr-forms-text-color, $clr-use-custom-properties);
+    border-radius: $clr-forms-baseline / 2;
+    padding: $textarea-vertical-padding $textarea-horizontal-padding;
+    font-size: $clr-forms-field-font-size;
+
+    &:focus {
+      $focused-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-outline-color;
+      outline: 0;
+      // Old IE/Edge
+      box-shadow: $focused-outline;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-forms-textarea-focused-outline, #{$focused-outline});
+      }
+    }
+
+    &:disabled {
+      @include disabled-form-fields();
+    }
+  }
+
+  .clr-error .clr-textarea {
+    @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
+
+    &:focus {
+      $error-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px lighten($clr-forms-invalid-color, 30%);
+      outline: 0;
+      // Old IE/Edge
+      box-shadow: $error-outline;
+      @if $clr-use-custom-properties == true {
+        box-shadow: var(--clr-forms-textarea-invalid-focused-outline, #{$error-outline});
+      }
+    }
+  }
+
+  .clr-control-container textarea {
+    width: auto; // @TODO remove when removing old forms - forced 100% width by old forms
+  }
+
+  .clr-form-control.row .clr-textarea-wrapper {
+    max-width: calc(100% - #{$clr-forms-baseline});
+  }
+
+  .clr-form-compact .clr-textarea-wrapper {
+    margin-top: 0;
+
+    .clr-textarea {
+      @include form-flatten-compact-adjustments();
+    }
+  }
+}

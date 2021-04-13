@@ -1,0 +1,39 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h4>Positions</h4>
+
+<div class="content-container">
+  <div class="content-area">
+    <div class="signpost-demo">
+      <div class="signpost-item" *ngFor="let position of positions">
+        <div class="signpost-positions">
+          <div class="description">
+            <h4>{{ position.description }}</h4>
+          </div>
+          <div class="position">
+            <clr-signpost>
+              <button
+                id="{{ position.id }}"
+                type="button"
+                class="signpost-action btn btn-small btn-link"
+                clrSignpostTrigger
+              >
+                <cds-icon shape="help-info"></cds-icon>
+              </button>
+              <clr-signpost-content *clrIfOpen [clrPosition]="position.position">
+                <p>{{ position.position }}</p>
+                <p>
+                  Lorem Ipsum versions of Lorem Ipsum
+                </p>
+              </clr-signpost-content>
+            </clr-signpost>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

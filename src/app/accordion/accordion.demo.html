@@ -1,0 +1,165 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h1>Accordion</h1>
+
+<h2>Angular - simple accordion</h2>
+
+<clr-accordion>
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 1</clr-accordion-title>
+    <clr-accordion-content>Content 1</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 2</clr-accordion-title>
+    <clr-accordion-content>Content 2</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 3</clr-accordion-title>
+    <clr-accordion-content>Content 3</clr-accordion-content>
+  </clr-accordion-panel>
+</clr-accordion>
+
+<h2>Angular - multi panel</h2>
+
+<clr-accordion clrAccordionMultiPanel="true">
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 1</clr-accordion-title>
+    <clr-accordion-content>Content 1</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 2</clr-accordion-title>
+    <clr-accordion-content>Content 2</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel>
+    <clr-accordion-title>Step 3 - long title should expand when no description is provided</clr-accordion-title>
+    <clr-accordion-content>Content 3</clr-accordion-content>
+  </clr-accordion-panel>
+</clr-accordion>
+
+<h2>Angular - complex multi panel example (first panel {{stepOpen ? 'open' : 'closed'}})</h2>
+
+<button (click)="disableThirdPanel = !disableThirdPanel" class="btn">
+  {{disableThirdPanel ? 'enable' : 'disable'}} third panel
+</button>
+
+<clr-accordion clrAccordionMultiPanel="true">
+  <clr-accordion-panel [(clrAccordionPanelOpen)]="stepOpen">
+    <clr-accordion-title>Step 1</clr-accordion-title>
+    <clr-accordion-description
+      >The full license information can be found in LICENSE in the root directory.</clr-accordion-description
+    >
+    <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel [clrAccordionPanelOpen]="true">
+    <clr-accordion-title>Step 2</clr-accordion-title>
+    <clr-accordion-description
+      >The full license information can be found in LICENSE in the root directory.</clr-accordion-description
+    >
+    <clr-accordion-content *clrIfExpanded>Content 2</clr-accordion-content>
+  </clr-accordion-panel>
+
+  <clr-accordion-panel [clrAccordionPanelDisabled]="disableThirdPanel">
+    <clr-accordion-title>Step 3</clr-accordion-title>
+    <clr-accordion-description
+      >The full license information can be found in LICENSE in the root directory.</clr-accordion-description
+    >
+    <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
+  </clr-accordion-panel>
+</clr-accordion>
+
+<h2>Static HTML/CSS - Accordion</h2>
+
+<div class="clr-accordion">
+  <div class="clr-accordion-panel">
+    <div
+      role="group"
+      class="clr-accordion-panel-inactive clr-accordion-panel-open"
+      aria-labelledby="clr-accordion-header-10"
+    >
+      <div class="clr-accordion-header">
+        <button
+          class="clr-accordion-header-button"
+          type="button"
+          id="clr-accordion-header-10"
+          aria-controls="clr-accordion-content-1"
+          aria-expanded="false"
+        >
+          <div class="clr-accordion-status">
+            <cds-icon class="clr-accordion-angle" direction="right" shape="angle"></cds-icon>
+          </div>
+          <div class="clr-accordion-title">Step 1</div>
+        </button>
+      </div>
+      <div
+        class="clr-accordion-content ng-trigger"
+        role="region"
+        id="clr-accordion-content-10"
+        aria-hidden="true"
+        aria-labelledby="clr-accordion-header-10"
+      >
+        <div class="clr-accordion-inner-content">
+          Content 3
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clr-accordion-panel">
+    <div role="group" class="clr-accordion-panel-inactive" aria-labelledby="clr-accordion-header-20">
+      <div class="clr-accordion-header">
+        <button
+          class="clr-accordion-header-button"
+          type="button"
+          id="clr-accordion-header-20"
+          aria-controls="clr-accordion-content-20"
+          aria-expanded="false"
+        >
+          <div class="clr-accordion-status">
+            <cds-icon class="clr-accordion-angle" direction="right" shape="angle"></cds-icon>
+          </div>
+          <div class="clr-accordion-title">Step 2</div>
+        </button>
+      </div>
+      <div
+        role="region"
+        id="clr-accordion-content-20"
+        aria-hidden="true"
+        aria-labelledby="clr-accordion-header-20"
+      ></div>
+    </div>
+  </div>
+
+  <div class="clr-accordion-panel">
+    <div role="group" class="clr-accordion-panel-inactive" aria-labelledby="clr-accordion-header-30">
+      <div class="clr-accordion-header">
+        <button
+          class="clr-accordion-header-button"
+          type="button"
+          id="clr-accordion-header-30"
+          aria-controls="clr-accordion-content-30"
+          aria-expanded="false"
+        >
+          <div class="clr-accordion-status">
+            <cds-icon class="clr-accordion-angle" direction="right" shape="angle"></cds-icon>
+          </div>
+          <div class="clr-accordion-title">Step 3</div>
+        </button>
+      </div>
+      <div
+        role="region"
+        id="clr-accordion-content-30"
+        aria-hidden="true"
+        aria-labelledby="clr-accordion-header-30"
+      ></div>
+    </div>
+  </div>
+</div>

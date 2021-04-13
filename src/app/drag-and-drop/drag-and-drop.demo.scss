@@ -1,0 +1,30 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../../../projects/clr-angular/src/utils/variables/variables.color';
+@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+
+.droppable-demo {
+  padding: $clr_baselineRem_0_25 0;
+}
+.droppable-feature-variant {
+  & > label {
+    padding-right: $clr_baselineRem_0_25;
+  }
+  .radio-inline {
+    display: inline-block;
+    padding-right: $clr_baselineRem_0_25;
+    &:last-child {
+      padding-right: $clr_baselineRem_0_5;
+    }
+  }
+}
+
+.droppable-tolerance-fields {
+  padding: $clr_baselineRem_0_25 0;
+}
+
+span.label cds-icon {
+  margin-right: $clr_baselineRem_0_125;
+}

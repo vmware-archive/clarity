@@ -1,0 +1,81 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<h2>Selection (Row mode)</h2>
+
+<p>
+  Depending on the use case, you might want to allow selection when clicking anywhere in the grid row.
+</p>
+<p>
+  Note that this is not recommeded when the rows are containing clickable cells. If your cells contain input, buttons,
+  etc. this option is not recommended
+</p>
+<ul>
+  <li>
+    For row selection mode add
+    <code class="clr-code">[(clrDgRowSelection)]</code> and set it to <code class="clr-code">true</code>.
+  </li>
+</ul>
+
+<p>
+  In the following examples, we simply display the names of the selected users
+</p>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected user:
+    <em *ngIf="!singleSelected">No user selected.</em>
+    <span class="username" *ngIf="singleSelected">{{singleSelected.name}}</span>
+  </p>
+</div>
+
+<h3>Single selection</h3>
+
+<clr-datagrid [(clrDgSingleSelected)]="singleSelected" [clrDgRowSelection]="true">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>
+
+<h3>Multi selection</h3>
+
+<div class="card card-block">
+  <p class="card-text username-list">
+    Selected users:
+    <em *ngIf="multiSelected.length == 0">No user selected.</em>
+    <span class="username" *ngFor="let user of multiSelected">{{user.name}}</span>
+  </p>
+</div>
+
+<clr-datagrid [(clrDgSelected)]="multiSelected" [clrDgRowSelection]="true">
+  <clr-dg-column>User ID</clr-dg-column>
+  <clr-dg-column>Name</clr-dg-column>
+  <clr-dg-column>Creation date</clr-dg-column>
+  <clr-dg-column>Favorite color</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
+    <clr-dg-cell>
+      <span class="color-square" [style.backgroundColor]="user.color"></span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+</clr-datagrid>

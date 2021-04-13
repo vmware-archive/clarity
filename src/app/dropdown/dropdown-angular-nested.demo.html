@@ -1,0 +1,61 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example squeeze demo-menu-height dropdown-demo">
+  <clr-dropdown>
+    <button class="btn btn-outline-primary" clrDropdownTrigger id="current">
+      Dropdown
+      <cds-icon shape="angle" direction="down"></cds-icon>
+    </button>
+    <clr-dropdown-menu>
+      <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+      <div aria-label="Drowpdown header Action 1" clrDropdownItem>Action 1</div>
+      <div aria-label="Drowpdown header Disabled Action" clrDropdownItem clrDisabled>Disabled Action</div>
+      <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+      <clr-dropdown>
+        <button clrDropdownTrigger [id]="'sub-menu-1'">Link 1</button>
+        <clr-dropdown-menu>
+          <div clrDropdownItem>Foo</div>
+          <clr-dropdown>
+            <button clrDropdownTrigger [id]="'sub-menu-2'">Bar</button>
+            <clr-dropdown-menu clrPosition="left-bottom">
+              <div clrDropdownItem>Baz</div>
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+      <div clrDropdownItem>Link 2</div>
+    </clr-dropdown-menu>
+  </clr-dropdown>
+</div>
+
+<div class="clr-example squeeze demo-menu-height dropdown-demo">
+  <clr-dropdown>
+    <button class="btn btn-outline-primary" clrDropdownTrigger id="current1">
+      Dropdown
+      <cds-icon shape="angle" direction="down"></cds-icon>
+    </button>
+    <clr-dropdown-menu *clrIfOpen>
+      <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+      <div aria-label="Drowpdown header Action 1" clrDropdownItem>Action 1</div>
+      <div aria-label="Drowpdown header Disabled Action" clrDropdownItem clrDisabled>Disabled Action</div>
+      <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+      <clr-dropdown>
+        <button clrDropdownTrigger [id]="'sub-menu-3'">Link 1</button>
+        <clr-dropdown-menu *clrIfOpen>
+          <div clrDropdownItem>Foo</div>
+          <clr-dropdown>
+            <button clrDropdownTrigger [id]="'sub-menu-4'">Bar</button>
+            <clr-dropdown-menu clrPosition="left-bottom" *clrIfOpen>
+              <div clrDropdownItem>Baz</div>
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+      <div clrDropdownItem>Link 2</div>
+    </clr-dropdown-menu>
+  </clr-dropdown>
+</div>

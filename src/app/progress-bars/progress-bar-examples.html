@@ -1,0 +1,18 @@
+<!--
+  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div class="clr-example">
+  <div *ngFor="let example of examples" class="progbar-examples">
+    <h4>{{example.title}}</h4>
+    <div [ngClass]="example.cssClassnames()">
+      <progress value="{{example.value}}" max="100" [attr.data-displayval]="example.value + '%'"></progress>
+      <span *ngIf="example.isLabeled">{{example.value}}%</span>
+    </div>
+    <p>
+      <button class="btn btn-outline" (click)="example.start()" [ngClass]="example.demoId">Show</button>
+    </p>
+  </div>
+</div>

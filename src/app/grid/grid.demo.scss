@@ -1,0 +1,27 @@
+// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import '../_utils/clarity-variables';
+
+.clr-example {
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $clr_baselineRem_1_5;
+    border-radius: $clr-global-borderradius;
+    background: hsl(195, 13%, 88%);
+    margin: $clr_baselineRem_0_25 0;
+
+    &.clr-example-enable-borders {
+      border: $clr-global-borderwidth solid hsl(218, 14%, 30%);
+    }
+  }
+
+  .clr-example-row {
+    background: hsl(218, 14%, 30%);
+    height: $clr_baselineRem_108px;
+    margin: $clr_baselineRem_0_25 0;
+  }
+}

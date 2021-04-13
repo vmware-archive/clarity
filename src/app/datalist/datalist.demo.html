@@ -1,0 +1,89 @@
+<!--
+  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<h2>Native Datalist (non Clarity)</h2>
+<input list="pasta" />
+<datalist id="pasta">
+  <option>Bavette</option>
+  <option>Cannelloni</option>
+  <option>Fiorentine</option>
+  <option>Gnocchi</option>
+  <option>Pappardelle</option>
+  <option>Penne lisce</option>
+  <option>Pici</option>
+  <option>Rigatoni</option>
+  <option>Spaghetti</option>
+  <option>Tagliatelle</option>
+</datalist>
+
+<h2>Vertical</h2>
+<form clrForm clrLayout="vertical" (submit)="submit()" [formGroup]="model">
+  <clr-datalist-container>
+    <label>Datalist - Reactive Form</label>
+    <input clrDatalistInput placeholder="Option" name="Option" autocomplete="off" formControlName="item" />
+    <datalist id="clr-custom-datalistid-1">
+      <option *ngFor="let item of items" [value]="item + ' dl 1'"></option>
+    </datalist>
+  </clr-datalist-container>
+  <button class="btn btn-primary" type="submit" [disabled]="model.invalid" (click)="logIt()">Submit</button>
+</form>
+
+<h2>Horizontal <button class="btn btn-sm btn-primary" (click)="disabled = !disabled">Toggle Disabled</button></h2>
+<form clrForm clrLayout="horizontal">
+  <clr-datalist-container>
+    <input clrDatalistInput [(ngModel)]="vertical.one" placeholder="No label, wrapper" name="Option2" />
+    <datalist id="clr-custom-datalistid-2">
+      <option *ngFor="let item of items" [value]="item+ ' dl 2'"></option>
+    </datalist>
+  </clr-datalist-container>
+
+  <clr-datalist-container>
+    <label>Full example</label>
+    <input
+      clrDatalistInput
+      [(ngModel)]="vertical.two"
+      placeholder="Full example"
+      required
+      name="Option3"
+      minlength="8"
+    />
+    <datalist id="clr-custom-datalistid-3">
+      <option *ngFor="let item of items" [value]="item + ' dl 3'"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error *clrIfError="'required'">This is required</clr-control-error>
+    <clr-control-error *clrIfError="'minlength'">Must be at least 8 characters</clr-control-error>
+  </clr-datalist-container>
+
+  <clr-datalist-container>
+    <label>Disabled</label>
+    <input
+      clrDatalistInput
+      list="clr-custom-datalistid-4"
+      [(ngModel)]="vertical.three"
+      placeholder="Full example"
+      name="Option4"
+      required
+      [disabled]="disabled"
+    />
+    <datalist id="clr-custom-datalistid-4">
+      <option *ngFor="let item of items" [value]="item + ' dl 4'"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+    <clr-control-error>There was an error</clr-control-error>
+  </clr-datalist-container>
+</form>
+
+<h2>Uniq/default datalist id</h2>
+<form clrForm>
+  <clr-datalist-container>
+    <label>Custom datalist id</label>
+    <input clrDatalistInput [(ngModel)]="vertical.four" placeholder="custom datalist id" name="Option5" />
+    <datalist>
+      <option *ngFor="let item of items" [value]="item+ ' dl 5'"></option>
+    </datalist>
+    <clr-control-helper>Helper text</clr-control-helper>
+  </clr-datalist-container>
+</form>

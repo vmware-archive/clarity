@@ -1,0 +1,322 @@
+// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+.spacious {
+  margin-top: $clr_baselineRem_2;
+}
+
+.cozy {
+  margin-top: $clr_baselineRem_1_5;
+}
+
+.cozy-sm {
+  margin-top: $clr_baselineRem_0_5;
+}
+
+p.cozy + p {
+  margin-top: $clr_baselineRem_4px;
+}
+
+p.squish {
+  margin-top: 0;
+}
+
+ol.indent {
+  padding-left: $clr_baselineRem_2;
+  margin-top: $clr_baselineRem_1;
+  & li {
+    padding-bottom: $clr_baselineRem_0_5;
+  }
+}
+
+h6.indent + p.indent {
+  margin-top: 0;
+}
+
+.fully-wide {
+  padding: $clr_baselineRem_2 0;
+  text-align: center;
+}
+
+%killListStyles {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.list-unstyled {
+  @extend %killListStyles;
+  & > li {
+    @extend %killListStyles;
+  }
+}
+
+.layout-default {
+  .main-container {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.sidenav,
+.slider-nav {
+  .nav-group label > a {
+    color: inherit;
+    text-decoration: none;
+    padding-left: $clr_baselineRem_0_5;
+    &:hover,
+    &:active,
+    &:focus {
+      color: inherit;
+      text-decoration: none;
+      background: $clr-color-neutral-200;
+    }
+    &.active {
+      background: hsl(201, 29%, 88%);
+      &:hover,
+      &:active,
+      &:focus {
+        background: hsl(201, 29%, 88%);
+      }
+    }
+  }
+  a.nav-link {
+    & > .nav-link-tag {
+      color: $clr-color-neutral-900;
+      display: inline-block;
+      padding-left: $clr_baselineRem_8px;
+      font-size: $clr_baselineRem_0_416;
+      font-weight: 400;
+      vertical-align: top;
+      letter-spacing: 0.02em;
+      &.new {
+        color: hsl(282, 100%, 35%);
+      }
+      &.updated {
+        color: hsl(198, 100%, 41%);
+      }
+    }
+  }
+}
+
+.slider-nav .nav-group label > a {
+  display: block;
+  width: auto;
+  margin-left: -1 * $clr_baselineRem_0_5;
+  margin-right: -1 * $clr_baselineRem_0_5;
+  border-radius: $clr-global-borderradius 0 0 $clr-global-borderradius;
+}
+
+.valign {
+  display: table;
+  & > * {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+//Overriding PrismJS styles. This is in code.scss and not in code.clarity.scss because
+//we don't want to override the background in case someone chooses to use
+//another PrismJS theme.
+:not(pre) > code[class*='language-'],
+pre[class*='language-'],
+pre,
+code[class*='language-'] {
+  background: transparent;
+}
+
+@media (max-width: 991px) {
+  .layout-components {
+    .content-area > section {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+}
+
+a.btn-primary {
+  color: $clr-color-neutral-50;
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    color: $clr-color-neutral-0;
+  }
+}
+
+@media (min-width: 577px) {
+  ul#content_tabs {
+    .nav .nav-item {
+      margin-right: $clr_baselineRem_0_25;
+    }
+  }
+}
+
+//Center items in a grid
+//TODO: Remove this when the flex grid supports center and vertical alignment
+//Used in app-layout.md
+.center-demo-grid-item {
+  align-self: center;
+  text-align: center;
+}
+
+:not(.layout-home) {
+  .content-area section:first-of-type h1 :not(.clr-wizard) {
+    margin-top: -1 * $clr_baselineRem_0_25;
+  }
+}
+
+.sidenav .sidenav-content {
+  margin-bottom: 0;
+  padding-bottom: $clr_baselineRem_1;
+}
+
+.header .branding .clarity-logo {
+  background-image: url(/assets/images/clarity-logo.svg);
+  margin-right: $clr_baselineRem_0_5 - $clr_baselineRem_1px;
+  min-width: none;
+  height: $clr_baselineRem_1_5;
+  width: $clr_baselineRem_1_5;
+}
+
+.documentation-vertical-nav {
+  padding-top: 0;
+}
+
+.layout-documentation .sidenav {
+  max-width: $clr_baselineRem_11_33;
+}
+
+@media (min-width: 769px) {
+  .layout-documentation .header .branding {
+    width: 18%;
+    max-width: $clr_baselineRem_11_33;
+  }
+}
+
+@media (max-width: 769px) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+  // landscape iPad
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.layout-documentation,
+.layout-news {
+  .main-container .content-container .content-area {
+    padding-left: $clr_baselineRem_1_5;
+    padding-top: $clr_baselineRem_0_75;
+  }
+}
+
+// custom whitespace changes for website
+.layout-documentation,
+.layout-news {
+  h2,
+  h3 {
+    margin-top: $clr_baselineRem_5;
+  }
+  h2 + h3 {
+    margin-top: $clr_baselineRem_1_5;
+  }
+  h5 {
+    color: $clr-color-neutral-1000;
+    margin-top: $clr_baselineRem_3;
+  }
+  h4 {
+    margin-top: $clr_baselineRem_3;
+  }
+  h6 {
+    margin-top: $clr_baselineRem_2;
+  }
+  h5 + h6 {
+    margin-top: $clr_baselineRem_1_5;
+  }
+  h3 + h5,
+  h2 + h5,
+  h3 + h4,
+  h1 + h5 {
+    margin-top: $clr_baselineRem_1;
+  }
+  h6 + p {
+    margin-top: $clr_baselineRem_0_25;
+  }
+  pre {
+    // TODO: move this into the background style of the code-highlight
+    // component...
+    background: $clr-color-neutral-0 !important;
+  }
+}
+.btn.no-margin {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  min-width: auto;
+}
+
+.margin-top-48 {
+  margin-top: $clr_baselineRem_2 !important;
+}
+
+.margin-top-24 {
+  margin-top: $clr_baselineRem_1 !important;
+}
+
+.margin-top-12 {
+  margin-top: $clr_baselineRem_0_5 !important;
+}
+
+.margin-right-0_25 {
+  // Fix for badges demo in tree-view
+  margin-right: $clr_baselineRem_0_25 !important;
+}
+
+// Global Pages
+.layout-home {
+  .main-container {
+    height: auto;
+
+    .content-area {
+      overflow-x: hidden;
+      padding: 0;
+    }
+  }
+}
+
+.layout-icons {
+  .main-container {
+    display: unset;
+    transform: none;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    /*  translate3d is here for better performance.
+            However, it affects the .headerbackdrop layer order
+            so it should be set to none when the screen is small.   */
+
+    transform: translate3d(0, 0, 0);
+    z-index: map-get($clr-layers, sidepanel);
+  }
+
+  .main-container {
+    &.open-hamburger-menu,
+    &.open-overflow-menu {
+      .header {
+        transform: none;
+      }
+    }
+  }
+}

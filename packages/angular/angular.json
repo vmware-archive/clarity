@@ -208,7 +208,7 @@
             "dark": {
               "styles": [
                 "projects/clr-angular/src/dark-theme.scss",
-                "../icons/src/clr-icons.scss",
+                "node_modules/@clr/icons/clr-icons.min.css",
                 "projects/dev/src/styles.scss"
               ],
               "fileReplacements": [

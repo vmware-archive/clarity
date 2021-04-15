@@ -1147,14 +1147,16 @@ export const statusColors = () => {
         <cds-button>primary</cds-button>
         <cds-button status="success">success</cds-button>
         <cds-button status="danger">danger</cds-button>
-        <cds-button status="danger" disabled>disabled</cds-button>
+        <cds-button status="neutral">neutral</cds-button>
+        <cds-button disabled>disabled</cds-button>
       </div>
 
       <div cds-layout="horizontal gap:sm">
         <cds-button action="outline">primary</cds-button>
         <cds-button status="success" action="outline">success</cds-button>
         <cds-button status="danger" action="outline">danger</cds-button>
-        <cds-button status="danger" action="outline" disabled>disabled</cds-button>
+        <cds-button status="neutral" action="outline">neutral</cds-button>
+        <cds-button action="outline" disabled>disabled</cds-button>
       </div>
 
       <div cds-layout="horizontal gap:sm">
@@ -1374,14 +1376,16 @@ export const statusColorsDarkTheme = () => {
         <cds-button>primary</cds-button>
         <cds-button status="success">success</cds-button>
         <cds-button status="danger">danger</cds-button>
-        <cds-button status="danger" disabled>disabled</cds-button>
+        <cds-button status="neutral">neutral</cds-button>
+        <cds-button disabled>disabled</cds-button>
       </div>
 
       <div cds-layout="horizontal gap:sm">
         <cds-button action="outline">primary</cds-button>
         <cds-button status="success" action="outline">success</cds-button>
         <cds-button status="danger" action="outline">danger</cds-button>
-        <cds-button status="danger" action="outline" disabled>disabled</cds-button>
+        <cds-button status="neutral" action="outline">neutral</cds-button>
+        <cds-button action="outline" disabled>disabled</cds-button>
       </div>
 
       <div cds-layout="horizontal gap:sm">

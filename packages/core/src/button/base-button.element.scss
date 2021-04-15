@@ -132,6 +132,10 @@
   --background: #{$cds-alias-status-danger};
 }
 
+:host([status='neutral']) {
+  --background: #{$cds-alias-status-neutral};
+}
+
 :host([action='outline']) {
   --color: #{$cds-alias-status-info};
   --border-color: var(--color);
@@ -143,6 +147,10 @@
 
 :host([status='danger'][action='outline']) {
   --color: #{$cds-alias-status-danger};
+}
+
+:host([status='neutral'][action='outline']) {
+  --color: #{$cds-alias-status-neutral};
 }
 
 :host([status='inverse']) {

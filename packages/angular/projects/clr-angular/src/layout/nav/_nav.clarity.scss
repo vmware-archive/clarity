@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,10 +8,14 @@
     height: $clr-subnav-height;
     list-style-type: none;
     align-items: center;
-    box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
     margin: 0;
     width: 100%;
     white-space: nowrap;
+    // OldIE/Edge
+    box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 $clr-nav-box-shadow-color inset;
+    @if $clr-use-custom-properties == true {
+      box-shadow: 0 (-1 * $clr_baselineRem_1px) 0 var(--clr-nav-box-shadow-color, $clr-nav-box-shadow-color) inset;
+    }
 
     .nav-item {
       display: inline-block;

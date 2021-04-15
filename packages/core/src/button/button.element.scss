@@ -42,6 +42,12 @@
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='outline'][status='neutral']) ::slotted(cds-badge) {
+  --border-color: #{$cds-alias-status-neutral};
+  --background: #{$cds-alias-status-neutral};
+  --color: #{$cds-global-typography-color-100};
+}
+
 :host(:not([action='outline']):not([action='flat'])) ::slotted(cds-badge) {
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-global-typography-color-100};

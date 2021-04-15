@@ -76,7 +76,7 @@ export class CdsButton extends CdsBaseButton {
    * Sets the color of the button to match the following string statuses
    */
   @property({ type: String })
-  status: 'primary' | 'success' | 'warning' | 'danger' | 'inverse' = 'primary';
+  status: 'primary' | 'success' | 'warning' | 'danger' | 'neutral' | 'inverse' = 'primary';
 
   /**
    * Sets the overall height and width of the button based on the following string values:

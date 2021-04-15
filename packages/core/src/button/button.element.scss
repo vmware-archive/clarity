@@ -36,6 +36,12 @@
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='outline'][status='warning']) ::slotted(cds-badge) {
+  --border-color: #{$cds-alias-status-warning-dark};
+  --background: #{$cds-alias-status-warning-dark};
+  --color: #{$cds-global-typography-color-100};
+}
+
 :host([action='outline'][status='danger']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-danger};
   --background: #{$cds-alias-status-danger};
@@ -52,6 +58,11 @@
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-global-typography-color-100};
   --color: #{$cds-global-typography-color-100};
+}
+
+:host([action='solid'][status='warning']) ::slotted(cds-badge) {
+  --border-color: #{$cds-global-color-construction-900};
+  --color: #{$cds-global-color-construction-900};
 }
 
 :host([action='flat'][disabled]) ::slotted(cds-badge) {

@@ -61,9 +61,9 @@
 }
 
 :host([status='inverse']) ::slotted(cds-badge) {
-  --border-color: #{$cds-global-typography-color-100} !important;
+  --border-color: #{$cds-global-color-white} !important;
   --background: #{$cds-alias-object-opacity-0} !important;
-  --color: #{$cds-global-typography-color-100} !important;
+  --color: #{$cds-global-color-white} !important;
   --font-weight: #{$cds-global-typography-font-weight-semibold} !important;
 }
 

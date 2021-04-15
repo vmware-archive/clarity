@@ -154,7 +154,7 @@
 }
 
 :host([status='inverse']) {
-  --color: #{$cds-global-typography-color-100};
+  --color: #{$cds-global-color-white};
   --background: #{$cds-alias-object-opacity-0};
   --border-color: var(--color);
 }
@@ -206,6 +206,12 @@
 :host([disabled][action='flat']) {
   --border-color: #{$cds-alias-object-opacity-0};
   --background: #{$cds-alias-object-opacity-0};
+}
+
+:host([disabled][status='inverse']) {
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-global-color-construction-700};
+  --color: #{$cds-global-color-construction-600};
 }
 
 :host([block]) {

@@ -86,9 +86,6 @@ export function status() {
       <cds-button status="danger">danger</cds-button>
       <cds-button status="neutral">neutral</cds-button>
       <cds-button disabled>disabled</cds-button>
-      <div style="background: var(--cds-global-typography-color-500)" cds-layout="p:sm">
-        <cds-button status="inverse">inverse</cds-button>
-      </div>
     </div>
   `;
 }
@@ -103,6 +100,16 @@ export function statusOutline() {
       <cds-button action="outline" status="neutral">neutral</cds-button>
       <cds-button action="outline" disabled>disabled</cds-button>
     </div>
+  `;
+}
+
+/** @website */
+export function statusInverse() {
+  return html`
+    <cds-demo cds-layout="horizontal gap:sm p:sm" inverse>
+      <cds-button status="inverse">inverse</cds-button>
+      <cds-button status="inverse" disabled>disabled</cds-button>
+    </cds-demo>
   `;
 }
 
@@ -177,7 +184,7 @@ export function textAndBadge() {
         <cds-button status="neutral">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="neutral" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
-      <div cds-layout="horizontal gap:sm p:xs p-b:none" style="background: #313131">
+      <div cds-layout="horizontal gap:sm p:sm" style="background: var(--cds-global-color-construction-800)">
         <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
@@ -283,6 +290,7 @@ export function darkTheme() {
         <cds-button status="danger"><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button>
         <cds-button status="neutral"><cds-icon shape="user"></cds-icon>neutral<cds-badge>10</cds-badge></cds-button>
         <cds-button disabled><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button>
+        <cds-button status="inverse"><cds-icon shape="user"></cds-icon>inverse<cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button action="outline"><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>

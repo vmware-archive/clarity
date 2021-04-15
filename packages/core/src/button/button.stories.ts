@@ -83,6 +83,7 @@ export function status() {
     <div cds-layout="horizontal gap:sm">
       <cds-button>primary</cds-button>
       <cds-button status="success">success</cds-button>
+      <cds-button status="warning">warning</cds-button>
       <cds-button status="danger">danger</cds-button>
       <cds-button status="neutral">neutral</cds-button>
       <cds-button disabled>disabled</cds-button>
@@ -99,6 +100,7 @@ export function statusOutline() {
     <div cds-layout="horizontal gap:sm">
       <cds-button action="outline">primary</cds-button>
       <cds-button action="outline" status="success">success</cds-button>
+      <cds-button action="outline" status="warning">warning</cds-button>
       <cds-button action="outline" status="danger">danger</cds-button>
       <cds-button action="outline" status="neutral">neutral</cds-button>
       <cds-button action="outline" disabled>disabled</cds-button>
@@ -168,6 +170,10 @@ export function textAndBadge() {
       <div cds-layout="horizontal gap:sm">
         <cds-button status="danger">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="danger" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
+      </div>
+      <div cds-layout="horizontal gap:sm">
+        <cds-button status="warning">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="warning" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button status="success">Click Me <cds-badge>10</cds-badge></cds-button>
@@ -280,6 +286,7 @@ export function darkTheme() {
       <div cds-layout="horizontal gap:sm">
         <cds-button><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
         <cds-button status="success"><cds-icon shape="user"></cds-icon>success<cds-badge>10</cds-badge></cds-button>
+        <cds-button status="warning"><cds-icon shape="user"></cds-icon>warning<cds-badge>10</cds-badge></cds-button>
         <cds-button status="danger"><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button>
         <cds-button status="neutral"><cds-icon shape="user"></cds-icon>neutral<cds-badge>10</cds-badge></cds-button>
         <cds-button disabled><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button>
@@ -288,6 +295,9 @@ export function darkTheme() {
         <cds-button action="outline"><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
         <cds-button action="outline" status="success"
           ><cds-icon shape="user"></cds-icon>success<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="outline" status="warning"
+          ><cds-icon shape="user"></cds-icon>warning<cds-badge>10</cds-badge></cds-button
         >
         <cds-button action="outline" status="danger"
           ><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button

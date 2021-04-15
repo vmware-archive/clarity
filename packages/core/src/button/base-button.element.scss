@@ -128,6 +128,11 @@
   --background: #{$cds-alias-status-success};
 }
 
+:host([status='warning']) {
+  --background: #{$cds-alias-status-warning};
+  --color: #{$cds-global-color-construction-900};
+}
+
 :host([status='danger']) {
   --background: #{$cds-alias-status-danger};
 }
@@ -143,6 +148,10 @@
 
 :host([status='success'][action='outline']) {
   --color: #{$cds-alias-status-success};
+}
+
+:host([status='warning'][action='outline']) {
+  --color: #{$cds-alias-status-warning-dark};
 }
 
 :host([status='danger'][action='outline']) {

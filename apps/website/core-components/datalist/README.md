@@ -33,7 +33,7 @@ Do not confuse a datalist element with the select input. Datalist elements usual
   Use a datalist:
 
   - When the user needs to choose from a long list of items to be filtered before selection
-  - When there are pre-defined options but the user needs the ability to input a custom calue
+  - When there are pre-defined options but the user needs the ability to input a custom value
   - With more than 13 options
 
   </template>

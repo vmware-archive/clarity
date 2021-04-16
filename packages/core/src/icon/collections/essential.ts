@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -111,6 +111,7 @@ import { tagIcon, tagIconName } from '../shapes/tag.js';
 import { tagsIcon, tagsIconName } from '../shapes/tags.js';
 import { targetIcon, targetIconName } from '../shapes/target.js';
 import { thermometerIcon, thermometerIconName } from '../shapes/thermometer.js';
+import { timelineIcon, timelineIconName } from '../shapes/timeline.js';
 import { timesCircleIcon, timesCircleIconName } from '../shapes/times-circle.js';
 import { toolsIcon, toolsIconName } from '../shapes/tools.js';
 import { trashIcon, trashIconName } from '../shapes/trash.js';
@@ -240,6 +241,7 @@ export const essentialCollectionIcons: IconShapeTuple[] = [
   targetIcon,
   thermometerIcon,
   timesCircleIcon,
+  timelineIcon,
   toolsIcon,
   trashIcon,
   treeIcon,
@@ -405,6 +407,7 @@ declare module '@cds/core/internal' {
     [targetIconName]: string;
     [thermometerIconName]: string;
     [timesCircleIconName]: string;
+    [timelineIconName]: string;
     [trashIconName]: string;
     [toolsIconName]: string;
     [treeIconName]: string;

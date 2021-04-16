@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -109,6 +109,10 @@ import { vmIcon, vmIconName } from '../shapes/vm.js';
 import { vmwAppIcon, vmwAppIconName } from '../shapes/vmw-app.js';
 import { wifiIcon, wifiIconName } from '../shapes/wifi.js';
 import { xlsFileIcon, xlsFileIconName } from '../shapes/xls-file.js';
+import { internetOfThingsIcon, internetOfThingsIconName } from '../shapes/internet-of-things.js';
+import { thinClientIcon, thinClientIconName } from '../shapes/thin-client.js';
+import { digitalSignatureIcon, digitalSignatureIconName } from '../shapes/digital-signature.js';
+import { updateIcon, updateIconName } from '../shapes/update.js';
 
 export const technologyCollectionIcons: IconShapeTuple[] = [
   administratorIcon,
@@ -147,6 +151,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   dataClusterIcon,
   deployIcon,
   devicesIcon,
+  digitalSignatureIcon,
   disconnectIcon,
   displayIcon,
   downloadCloudIcon,
@@ -164,6 +169,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   importIcon,
   inductorIcon,
   installIcon,
+  internetOfThingsIcon,
   keyboardIcon,
   layersIcon,
   linkIcon,
@@ -204,9 +210,11 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   tabletIcon,
   tapeDriveIcon,
   terminalIcon,
+  thinClientIcon,
   unarchiveIcon,
   uninstallIcon,
   unlinkIcon,
+  updateIcon,
   uploadCloudIcon,
   usbIcon,
   vmIcon,
@@ -281,6 +289,7 @@ declare module '@cds/core/internal' {
     [dataClusterIconName]: string;
     [deployIconName]: string;
     [devicesIconName]: string;
+    [digitalSignatureIconName]: string;
     [disconnectIconName]: string;
     [displayIconName]: string;
     [downloadCloudIconName]: string;
@@ -298,6 +307,7 @@ declare module '@cds/core/internal' {
     [importIconName]: string;
     [inductorIconName]: string;
     [installIconName]: string;
+    [internetOfThingsIconName]: string;
     [keyboardIconName]: string;
     [layersIconName]: string;
     [linkIconName]: string;
@@ -338,9 +348,11 @@ declare module '@cds/core/internal' {
     [tabletIconName]: string;
     [tapeDriveIconName]: string;
     [terminalIconName]: string;
+    [thinClientIconName]: string;
     [unarchiveIconName]: string;
     [uninstallIconName]: string;
     [unlinkIconName]: string;
+    [updateIconName]: string;
     [uploadCloudIconName]: string;
     [usbIconName]: string;
     [vmIconName]: string;

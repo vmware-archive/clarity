@@ -1,0 +1,1105 @@
+{
+  "program": {
+    "fileInfos": {
+      "../node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "b3584bc5798ed422ce2516df360ffa9cf2d80b5eae852867db9ba3743145f895",
+        "signature": "b3584bc5798ed422ce2516df360ffa9cf2d80b5eae852867db9ba3743145f895",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "dc47c4fa66b9b9890cf076304de2a9c5201e94b740cffdf09f87296d877d71f6",
+        "signature": "dc47c4fa66b9b9890cf076304de2a9c5201e94b740cffdf09f87296d877d71f6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "7a387c58583dfca701b6c85e0adaf43fb17d590fb16d5b2dc0a2fbd89f35c467",
+        "signature": "7a387c58583dfca701b6c85e0adaf43fb17d590fb16d5b2dc0a2fbd89f35c467",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "8a12173c586e95f4433e0c6dc446bc88346be73ffe9ca6eec7aa63c8f3dca7f9",
+        "signature": "8a12173c586e95f4433e0c6dc446bc88346be73ffe9ca6eec7aa63c8f3dca7f9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "feeeb1dd8a80fb76be42b0426e8f3ffa9bdef3c2f3c12c147e7660b1c5ba8b3b",
+        "signature": "feeeb1dd8a80fb76be42b0426e8f3ffa9bdef3c2f3c12c147e7660b1c5ba8b3b",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "46ee15e9fefa913333b61eaf6b18885900b139867d89832a515059b62cf16a17",
+        "signature": "46ee15e9fefa913333b61eaf6b18885900b139867d89832a515059b62cf16a17",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "43fb1d932e4966a39a41b464a12a81899d9ae5f2c829063f5571b6b87e6d2f9c",
+        "signature": "43fb1d932e4966a39a41b464a12a81899d9ae5f2c829063f5571b6b87e6d2f9c",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "cdccba9a388c2ee3fd6ad4018c640a471a6c060e96f1232062223063b0a5ac6a",
+        "signature": "cdccba9a388c2ee3fd6ad4018c640a471a6c060e96f1232062223063b0a5ac6a",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "8b2a5df1ce95f78f6b74f1a555ccdb6baab0486b42d8345e0871dd82811f9b9a",
+        "signature": "8b2a5df1ce95f78f6b74f1a555ccdb6baab0486b42d8345e0871dd82811f9b9a",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "2bb4b3927299434052b37851a47bf5c39764f2ba88a888a107b32262e9292b7c",
+        "signature": "2bb4b3927299434052b37851a47bf5c39764f2ba88a888a107b32262e9292b7c",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "810627a82ac06fb5166da5ada4159c4ec11978dfbb0805fe804c86406dab8357",
+        "signature": "810627a82ac06fb5166da5ada4159c4ec11978dfbb0805fe804c86406dab8357",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "62d80405c46c3f4c527ee657ae9d43fda65a0bf582292429aea1e69144a522a6",
+        "signature": "62d80405c46c3f4c527ee657ae9d43fda65a0bf582292429aea1e69144a522a6",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "3013574108c36fd3aaca79764002b3717da09725a36a6fc02eac386593110f93",
+        "signature": "3013574108c36fd3aaca79764002b3717da09725a36a6fc02eac386593110f93",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "9d122b7e8c1a5c72506eea50c0973cba55b92b5532d5cafa8a6ce2c547d57551",
+        "signature": "9d122b7e8c1a5c72506eea50c0973cba55b92b5532d5cafa8a6ce2c547d57551",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3be5a1453daa63e031d266bf342f3943603873d890ab8b9ada95e22389389006",
+        "signature": "3be5a1453daa63e031d266bf342f3943603873d890ab8b9ada95e22389389006",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "17bb1fc99591b00515502d264fa55dc8370c45c5298f4a5c2083557dccba5a2a",
+        "signature": "17bb1fc99591b00515502d264fa55dc8370c45c5298f4a5c2083557dccba5a2a",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "7ce9f0bde3307ca1f944119f6365f2d776d281a393b576a18a2f2893a2d75c98",
+        "signature": "7ce9f0bde3307ca1f944119f6365f2d776d281a393b576a18a2f2893a2d75c98",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "6a6b173e739a6a99629a8594bfb294cc7329bfb7b227f12e1f7c11bc163b8577",
+        "signature": "6a6b173e739a6a99629a8594bfb294cc7329bfb7b227f12e1f7c11bc163b8577",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "12a310447c5d23c7d0d5ca2af606e3bd08afda69100166730ab92c62999ebb9d",
+        "signature": "12a310447c5d23c7d0d5ca2af606e3bd08afda69100166730ab92c62999ebb9d",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "b0124885ef82641903d232172577f2ceb5d3e60aed4da1153bab4221e1f6dd4e",
+        "signature": "b0124885ef82641903d232172577f2ceb5d3e60aed4da1153bab4221e1f6dd4e",
+        "affectsGlobalScope": true
+      },
+      "../src/index.ts": {
+        "version": "9f08d9901aae721e0d616cde3b6f9af524ef80f4fc6523db15efff160968e365",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/tslib/tslib.d.ts": {
+        "version": "ea7abf23498b7c214c67fc14f22f41983fbb7bf7c4826c7fcdef542b2022545f",
+        "signature": "ea7abf23498b7c214c67fc14f22f41983fbb7bf7c4826c7fcdef542b2022545f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/part.d.ts": {
+        "version": "6f50729be2e6572691c3bc3a048c0590113427949f661c19dc4d9d6b0b002ec8",
+        "signature": "6f50729be2e6572691c3bc3a048c0590113427949f661c19dc4d9d6b0b002ec8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/parts.d.ts": {
+        "version": "462c24ab9ab2d1e4a5e4e39712e4ee0f21f98503f0a47693efd9021ac20de213",
+        "signature": "462c24ab9ab2d1e4a5e4e39712e4ee0f21f98503f0a47693efd9021ac20de213",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/template-processor.d.ts": {
+        "version": "6bfc18f74ce170237dcbe1811fc451777636241c91e8fddafbce965b5b541650",
+        "signature": "6bfc18f74ce170237dcbe1811fc451777636241c91e8fddafbce965b5b541650",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/template-result.d.ts": {
+        "version": "1d5238003ef4188c37bf66a0010426ef80323ae121b4d7fd71b1e4d3f2468072",
+        "signature": "1d5238003ef4188c37bf66a0010426ef80323ae121b4d7fd71b1e4d3f2468072",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/template.d.ts": {
+        "version": "698cd981ae211d8e3a54ac1b7c1294e9d68189f6b0e8c1b130944b9fb5e04706",
+        "signature": "698cd981ae211d8e3a54ac1b7c1294e9d68189f6b0e8c1b130944b9fb5e04706",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/template-factory.d.ts": {
+        "version": "d822163e1046f064067d72c24ef34cfe1d70db63a2fc00cd0c436017da7c637a",
+        "signature": "d822163e1046f064067d72c24ef34cfe1d70db63a2fc00cd0c436017da7c637a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/render-options.d.ts": {
+        "version": "14b525e11e22e192c4f66d4a6ae04ccd30b5859623509d8db0ab1e1333d1d7e7",
+        "signature": "14b525e11e22e192c4f66d4a6ae04ccd30b5859623509d8db0ab1e1333d1d7e7",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/default-template-processor.d.ts": {
+        "version": "fbc836966312d35231137a4a2c471ec153a1e2ad004c18b64622f49028ee5af8",
+        "signature": "fbc836966312d35231137a4a2c471ec153a1e2ad004c18b64622f49028ee5af8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/directive.d.ts": {
+        "version": "37969d2959cc27b71ef094fb68163c4af4cef6df7117f8eb10d6d7c864dd012c",
+        "signature": "37969d2959cc27b71ef094fb68163c4af4cef6df7117f8eb10d6d7c864dd012c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/dom.d.ts": {
+        "version": "07e68e3257ac03612286e959aa0269ea39701caaee6ba00b07efdd8295ffc3f1",
+        "signature": "07e68e3257ac03612286e959aa0269ea39701caaee6ba00b07efdd8295ffc3f1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/render.d.ts": {
+        "version": "681860c201a35c8b30b08dcf2850cd936decea0141c7d3b7021bbf611a8b0102",
+        "signature": "681860c201a35c8b30b08dcf2850cd936decea0141c7d3b7021bbf611a8b0102",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lib/template-instance.d.ts": {
+        "version": "2150ad4f8930ebdbdd90b76b0a82bb6696193515534d7cd4dc7bc1ef3a661f70",
+        "signature": "2150ad4f8930ebdbdd90b76b0a82bb6696193515534d7cd4dc7bc1ef3a661f70",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-html/lit-html.d.ts": {
+        "version": "98a780cce6e0c824539a52b0d983c54bbdd75d06caf8ab2166e90c721458fd8b",
+        "signature": "98a780cce6e0c824539a52b0d983c54bbdd75d06caf8ab2166e90c721458fd8b",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/lit-html/lib/shady-render.d.ts": {
+        "version": "812782c8e9f322040ff874107875d68b9388467df9789d214ce88ec2141bcefa",
+        "signature": "812782c8e9f322040ff874107875d68b9388467df9789d214ce88ec2141bcefa",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-element/lib/updating-element.d.ts": {
+        "version": "e5beee6638b2c39816c8c9cd48357c5c63185c605d8e6c6a27fe9a52d13288b4",
+        "signature": "e5beee6638b2c39816c8c9cd48357c5c63185c605d8e6c6a27fe9a52d13288b4",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/lit-element/lib/decorators.d.ts": {
+        "version": "24f779b457778cd852a0518d06f41cd1031f0e1a3afda5633a3c179fd3a2a961",
+        "signature": "24f779b457778cd852a0518d06f41cd1031f0e1a3afda5633a3c179fd3a2a961",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-element/lib/css-tag.d.ts": {
+        "version": "9b54401ac2630daf241248d55008ba86276c3069319f6b5f76daf0a716bc5ff7",
+        "signature": "9b54401ac2630daf241248d55008ba86276c3069319f6b5f76daf0a716bc5ff7",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/lit-element/lit-element.d.ts": {
+        "version": "d90876b57e5b9eae685e9f9ee526d070b423eeafb4d3ab22f70c9bf82586f099",
+        "signature": "d90876b57e5b9eae685e9f9ee526d070b423eeafb4d3ab22f70c9bf82586f099",
+        "affectsGlobalScope": true
+      },
+      "../src/counter/counter.element.styles.ts": {
+        "version": "8f3632cabe2d065f3bed4dc1c247bcc64b9cdbda45a9cf231e324ca85ff5aa77",
+        "signature": "f1a1d8f20ba1fbbcc596bc708db7bbc4248602f5cbb05e1d2fa650ac9b6b2f5a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/base/button.base.d.ts": {
+        "version": "8a97e515639c37d5d7f7324dbf46184a6bff120c33cd5bf09b704d0e48f68a60",
+        "signature": "8a97e515639c37d5d7f7324dbf46184a6bff120c33cd5bf09b704d0e48f68a60",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/focus-trap.d.ts": {
+        "version": "da863743f47f3333672dcdae0ff38fd970031db441b69c39ee1ab3f16ef79df3",
+        "signature": "da863743f47f3333672dcdae0ff38fd970031db441b69c39ee1ab3f16ef79df3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts": {
+        "version": "5fa5d74d13f41d15bfb3ce5db29724d3938116d4102428c8cfba60f544b50c7f",
+        "signature": "5fa5d74d13f41d15bfb3ce5db29724d3938116d4102428c8cfba60f544b50c7f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/css.d.ts": {
+        "version": "641cf491691cdf2f89200a56b054c0b9c11e7644cb78809363241cb01f7ccfde",
+        "signature": "641cf491691cdf2f89200a56b054c0b9c11e7644cb78809363241cb01f7ccfde",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/dom.d.ts": {
+        "version": "1c2ac816576e5edfe0acb541a89b9ca69b8e74145a5387b5e9f549227663d1f1",
+        "signature": "1c2ac816576e5edfe0acb541a89b9ca69b8e74145a5387b5e9f549227663d1f1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/register.d.ts": {
+        "version": "93763edae40c63cfd16df2d0a5c89af7b5f604f4b866e83b23f2ec6179a51781",
+        "signature": "93763edae40c63cfd16df2d0a5c89af7b5f604f4b866e83b23f2ec6179a51781",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/event.d.ts": {
+        "version": "2d51411c4e9ec2aab2b0d4097b8818195f4d91120e331be8fa5ee01da6489880",
+        "signature": "2d51411c4e9ec2aab2b0d4097b8818195f4d91120e331be8fa5ee01da6489880",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/interfaces.d.ts": {
+        "version": "ebb1fc379e95b1f1b211d1941229d64a73f5d8e95ef5325044d39b959946dc94",
+        "signature": "ebb1fc379e95b1f1b211d1941229d64a73f5d8e95ef5325044d39b959946dc94",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/animate.d.ts": {
+        "version": "b09ad6b12911e2ad99a7821c24490514c7c34ecbe7cec1ac46ba008336d57159",
+        "signature": "b09ad6b12911e2ad99a7821c24490514c7c34ecbe7cec1ac46ba008336d57159",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/query-slot.d.ts": {
+        "version": "a836aa7b60c8eac2418bfcbc83790c74c85b7d952b340350e6b3f5211013b25f",
+        "signature": "a836aa7b60c8eac2418bfcbc83790c74c85b7d952b340350e6b3f5211013b25f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/property.d.ts": {
+        "version": "7190a0efc7039c6f2c77850e312ede808c4cc14083b4ac9e931b2c2b24bbf4db",
+        "signature": "7190a0efc7039c6f2c77850e312ede808c4cc14083b4ac9e931b2c2b24bbf4db",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/directives/spread-props.d.ts": {
+        "version": "f16f6ba9923ac9ac79f74fbdcef5271609bbc067f9f42e222c24215f15d17faf",
+        "signature": "f16f6ba9923ac9ac79f74fbdcef5271609bbc067f9f42e222c24215f15d17faf",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@cds/core/internal/decorators/id.d.ts": {
+        "version": "3540af0fe09eefeed6570653e80043a7a024a587f3bd9775dd97f6d78a067c4a",
+        "signature": "3540af0fe09eefeed6570653e80043a7a024a587f3bd9775dd97f6d78a067c4a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/i18n.d.ts": {
+        "version": "d0961342a3a22f7e1d2d21fd8d8ebd5bbb472191d450b145242f86146c9f46ef",
+        "signature": "d0961342a3a22f7e1d2d21fd8d8ebd5bbb472191d450b145242f86146c9f46ef",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/decorators/global-style.d.ts": {
+        "version": "701c1b2aa3ffcc1f679ed7f6925972ce2ca899ce44d08fc4045f485337f3b947",
+        "signature": "701c1b2aa3ffcc1f679ed7f6925972ce2ca899ce44d08fc4045f485337f3b947",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/motion.service.d.ts": {
+        "version": "26a47e6d64ae344114c50cc232ac447bdaaf0e451bb28a570591aa52d9554c64",
+        "signature": "26a47e6d64ae344114c50cc232ac447bdaaf0e451bb28a570591aa52d9554c64",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/utils.d.ts": {
+        "version": "8e20e29cb294bf1a11729ff2d47d204dbbfbec82bca0e0106a7141cf7982f61f",
+        "signature": "8e20e29cb294bf1a11729ff2d47d204dbbfbec82bca0e0106a7141cf7982f61f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts": {
+        "version": "190d8e5bdcd4345109c2af3b22cb7c28930524e32d9dcdbd82f81bbcf1fda51a",
+        "signature": "190d8e5bdcd4345109c2af3b22cb7c28930524e32d9dcdbd82f81bbcf1fda51a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts": {
+        "version": "35a7558f18cec257a3b79b11333a16c12f327b1f4c3f6bd8cda46829137d7a7c",
+        "signature": "35a7558f18cec257a3b79b11333a16c12f327b1f4c3f6bd8cda46829137d7a7c",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts": {
+        "version": "34448d54e2fb4e9c5df92c794e51722b5c0431793aeb039fd6e727073e9a32df",
+        "signature": "34448d54e2fb4e9c5df92c794e51722b5c0431793aeb039fd6e727073e9a32df",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts": {
+        "version": "855a3bcc1eaa1e4bb3789c708d73bfffa551e35d0dfb9fe3fe9121d7f04b87ee",
+        "signature": "855a3bcc1eaa1e4bb3789c708d73bfffa551e35d0dfb9fe3fe9121d7f04b87ee",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/motion/index.d.ts": {
+        "version": "9216707a48e2f5b50e966bf41272f8a31437dd0d608a6dce821f6c69b20943e6",
+        "signature": "9216707a48e2f5b50e966bf41272f8a31437dd0d608a6dce821f6c69b20943e6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/services/focus-trap-tracker.service.d.ts": {
+        "version": "b3132b20f5df006722e18aad669c2d15d4340c87485aaf146fefc0b7339153aa",
+        "signature": "b3132b20f5df006722e18aad669c2d15d4340c87485aaf146fefc0b7339153aa",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/services/i18n.service.d.ts": {
+        "version": "276933bd0c688d827322138394522e6d9a4c6b956ff6f3479986e85088442b7d",
+        "signature": "276933bd0c688d827322138394522e6d9a4c6b956ff6f3479986e85088442b7d",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/services/log.service.d.ts": {
+        "version": "9597e21890555525528c83cd634e1bc28c1b3e58f3c4693c33faf682eeacd745",
+        "signature": "9597e21890555525528c83cd634e1bc28c1b3e58f3c4693c33faf682eeacd745",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/async.d.ts": {
+        "version": "518a76aac92658d0533d499bf890c0ef8f141c31fcf3cbd425815f60abb6828b",
+        "signature": "518a76aac92658d0533d499bf890c0ef8f141c31fcf3cbd425815f60abb6828b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/a11y.d.ts": {
+        "version": "63550c0444d781c8a96428ee1c3f1abbde901fbbc4c126fea7cb845e1bf31260",
+        "signature": "63550c0444d781c8a96428ee1c3f1abbde901fbbc4c126fea7cb845e1bf31260",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/array.d.ts": {
+        "version": "76b00e226b2e6adcc03e378717389beb00079d49f890e39ba42b42c27ca8fc71",
+        "signature": "76b00e226b2e6adcc03e378717389beb00079d49f890e39ba42b42c27ca8fc71",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/services/keycodes.service.d.ts": {
+        "version": "8bd7115c1469194129ddb955b627e961cf4c5727f4a442ed339206a6516fb8f1",
+        "signature": "8bd7115c1469194129ddb955b627e961cf4c5727f4a442ed339206a6516fb8f1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/conditional.d.ts": {
+        "version": "c78adeb64a7899f1d631adf4acdd7adfa3dc98b400e2521d55c136465c7b0b8f",
+        "signature": "c78adeb64a7899f1d631adf4acdd7adfa3dc98b400e2521d55c136465c7b0b8f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/exists.d.ts": {
+        "version": "52ef30af7d6554d6166eb933ff3e29f529efb1014e424d34a372d0efd8c9bae3",
+        "signature": "52ef30af7d6554d6166eb933ff3e29f529efb1014e424d34a372d0efd8c9bae3",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/framework.d.ts": {
+        "version": "cba409a8f05325e6d104bb9b78297ec1d1810fd16fde0e27d48b97bccb3a6999",
+        "signature": "cba409a8f05325e6d104bb9b78297ec1d1810fd16fde0e27d48b97bccb3a6999",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/i18n/utils.d.ts": {
+        "version": "d98549985dc64521b19bebb9340d2137440445c3fa9ae4fdc7d97630689342bc",
+        "signature": "d98549985dc64521b19bebb9340d2137440445c3fa9ae4fdc7d97630689342bc",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/identity.d.ts": {
+        "version": "4e91ba8c8278fefc56e80c830e9e3e943eea90b092cd430158c2d378b04920b8",
+        "signature": "4e91ba8c8278fefc56e80c830e9e3e943eea90b092cd430158c2d378b04920b8",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/keycodes.d.ts": {
+        "version": "6303e3ffed7159c535c15927d27ee5442516ab1dbf83b3ff232ce34aa82353e2",
+        "signature": "6303e3ffed7159c535c15927d27ee5442516ab1dbf83b3ff232ce34aa82353e2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/lit-element.d.ts": {
+        "version": "ca7be42649e11030087554e76c9ba8ee473fb70fbdf65833a8d03a8682bffca9",
+        "signature": "ca7be42649e11030087554e76c9ba8ee473fb70fbdf65833a8d03a8682bffca9",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/metadata.d.ts": {
+        "version": "56bb288073eae7e900680d20bdff39152c2610daa43d50aeebcbf52c783a8d04",
+        "signature": "56bb288073eae7e900680d20bdff39152c2610daa43d50aeebcbf52c783a8d04",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@types/resize-observer-browser/index.d.ts": {
+        "version": "e4f6d89d21579a37d7246c863bea94c288c60bd3f4dae45b75258c6f473e85e3",
+        "signature": "e4f6d89d21579a37d7246c863bea94c288c60bd3f4dae45b75258c6f473e85e3",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@cds/core/internal/utils/responsive.d.ts": {
+        "version": "6bb50a108f4f3049d551b11a151c778ec34ddaba11fb0c3cbdb44dac78d670d1",
+        "signature": "6bb50a108f4f3049d551b11a151c778ec34ddaba11fb0c3cbdb44dac78d670d1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/size.d.ts": {
+        "version": "3d3f958d4fc4353975e6be9d684ff81113bc0e4ee2f8f25c1e86b03ac737fafb",
+        "signature": "3d3f958d4fc4353975e6be9d684ff81113bc0e4ee2f8f25c1e86b03ac737fafb",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/string.d.ts": {
+        "version": "33c9e241af35f9b5111d4f7a06da962d43a4399da85bb6fcc412be67d3969c4b",
+        "signature": "33c9e241af35f9b5111d4f7a06da962d43a4399da85bb6fcc412be67d3969c4b",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/supports.d.ts": {
+        "version": "fc8d157164d7e163a8f8669dec873f53274eb174c75e9ec4740a7b47c2bc33e6",
+        "signature": "fc8d157164d7e163a8f8669dec873f53274eb174c75e9ec4740a7b47c2bc33e6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/events.d.ts": {
+        "version": "fa9c6df4c0b3d15eacb8ae0abba70a87e8cbe7b7e5cc8cf8bdd2e7ecca824296",
+        "signature": "fa9c6df4c0b3d15eacb8ae0abba70a87e8cbe7b7e5cc8cf8bdd2e7ecca824296",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/utils/event-subject.d.ts": {
+        "version": "1d845fb3a951833b028a525685f39f9fcf4ac01a599ac505d54b063d730e4e49",
+        "signature": "1d845fb3a951833b028a525685f39f9fcf4ac01a599ac505d54b063d730e4e49",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/interfaces/index.d.ts": {
+        "version": "9211a7f9ebc5f8448cb931ae78367c9d6887cdd876c46cd2b2d111163e8e80be",
+        "signature": "9211a7f9ebc5f8448cb931ae78367c9d6887cdd876c46cd2b2d111163e8e80be",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/base/base.element.css.d.ts": {
+        "version": "f1a1d8f20ba1fbbcc596bc708db7bbc4248602f5cbb05e1d2fa650ac9b6b2f5a",
+        "signature": "f1a1d8f20ba1fbbcc596bc708db7bbc4248602f5cbb05e1d2fa650ac9b6b2f5a",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/internal/index.d.ts": {
+        "version": "8869258868af543fcee867c505cebca06d728f457c7e7e92b8f00cb1b6f4375c",
+        "signature": "8869258868af543fcee867c505cebca06d728f457c7e7e92b8f00cb1b6f4375c",
+        "affectsGlobalScope": false
+      },
+      "../src/counter/counter.element.ts": {
+        "version": "6f2603a266192b51d49af1d7681f01b2fb4b3d6e5baafac216f332755015a05a",
+        "signature": "4125d57f3e501dc1b5c02b31e7ebc5e029763d24c6480cd2124802c11fe43a24",
+        "affectsGlobalScope": false
+      },
+      "../src/counter/index.ts": {
+        "version": "eba97f09c0daa384d87e0f864ff3fc75ee8c25ac773ea36f176e028eaf79b8ad",
+        "signature": "eba97f09c0daa384d87e0f864ff3fc75ee8c25ac773ea36f176e028eaf79b8ad",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts": {
+        "version": "d3b50158a99041b703e1c6a8279a3c807f27fba12f59f583579bea259fb79067",
+        "signature": "d3b50158a99041b703e1c6a8279a3c807f27fba12f59f583579bea259fb79067",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/icon.service.d.ts": {
+        "version": "fba74a765e29c5e4a377e2130ba536904da4f9f0fd6772a848697c63a7bd5fa2",
+        "signature": "fba74a765e29c5e4a377e2130ba536904da4f9f0fd6772a848697c63a7bd5fa2",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/shapes/minus.d.ts": {
+        "version": "6169d55a05aca970d030fd48c8339034f2f69b3ba546aa4fc50604b7621905c1",
+        "signature": "6169d55a05aca970d030fd48c8339034f2f69b3ba546aa4fc50604b7621905c1",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/shapes/plus.d.ts": {
+        "version": "5d5d7fbb7aacd25330c9f3a46aa6f6c0826f94e7237be0713acbc8bc5efb6c3e",
+        "signature": "5d5d7fbb7aacd25330c9f3a46aa6f6c0826f94e7237be0713acbc8bc5efb6c3e",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/icon.element.d.ts": {
+        "version": "09d54623b50edc03349065ec8cc9c827b50a2a4243a6d12d5f9a210acb6196c6",
+        "signature": "09d54623b50edc03349065ec8cc9c827b50a2a4243a6d12d5f9a210acb6196c6",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/icon/register.d.ts": {
+        "version": "cadeb178f450a7ee2194f3fe46b4b3de7da155c3c1be265d93311b653580ebcc",
+        "signature": "cadeb178f450a7ee2194f3fe46b4b3de7da155c3c1be265d93311b653580ebcc",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts": {
+        "version": "39f6fe74147f73fc2a24161a31b4d0b0eb3311b4b68c61cb994f8bee2f943019",
+        "signature": "39f6fe74147f73fc2a24161a31b4d0b0eb3311b4b68c61cb994f8bee2f943019",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/progress-circle/register.d.ts": {
+        "version": "a73eae8af47b37c064da5be1e9dc548ab3ee4ee2bb8bff04f6fe2e8ac19e4b3e",
+        "signature": "a73eae8af47b37c064da5be1e9dc548ab3ee4ee2bb8bff04f6fe2e8ac19e4b3e",
+        "affectsGlobalScope": true
+      },
+      "../node_modules/@cds/core/button/button.element.d.ts": {
+        "version": "22c6409e1db6a633a5e73847351bbb8dbd3db4f0ddcc6e30e13f064405700017",
+        "signature": "22c6409e1db6a633a5e73847351bbb8dbd3db4f0ddcc6e30e13f064405700017",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/button/icon-button.element.d.ts": {
+        "version": "f2ad48c74201efe75ce107fd97e55b97761c71aa775eced915bf5b4d768a75b0",
+        "signature": "f2ad48c74201efe75ce107fd97e55b97761c71aa775eced915bf5b4d768a75b0",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/button/inline-button.element.d.ts": {
+        "version": "6f05a85e60be8d78b6dcf5bb5962962fddd5fb902137aa3a16e7ecfb946e7a3f",
+        "signature": "6f05a85e60be8d78b6dcf5bb5962962fddd5fb902137aa3a16e7ecfb946e7a3f",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/@cds/core/button/register.d.ts": {
+        "version": "bc3c0f201741a6fc3247c71631a2d27c544c65d8251b9ad13bb9a20d8d79fdbf",
+        "signature": "bc3c0f201741a6fc3247c71631a2d27c544c65d8251b9ad13bb9a20d8d79fdbf",
+        "affectsGlobalScope": true
+      },
+      "../src/counter/register.ts": {
+        "version": "cae8c374ea33fbef5302286727be4e3582bf6bbaec5ccb0f6671852cfc66551b",
+        "signature": "cb391cb95f0b110344845019da0b2423f480a641fe58a1b2f424ae9f4c1a8445",
+        "affectsGlobalScope": true
+      }
+    },
+    "options": {
+      "target": 5,
+      "module": 99,
+      "moduleResolution": 2,
+      "noEmitOnError": true,
+      "lib": [
+        "lib.es2017.d.ts",
+        "lib.dom.d.ts"
+      ],
+      "strict": true,
+      "esModuleInterop": false,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "importHelpers": true,
+      "outDir": "./",
+      "sourceMap": true,
+      "inlineSources": true,
+      "rootDir": "..",
+      "declaration": true,
+      "incremental": true,
+      "types": [],
+      "watch": true,
+      "configFilePath": "../tsconfig.json"
+    },
+    "referencedMap": {
+      "../node_modules/@cds/core/button/button.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/icon-button.element.d.ts": [
+        "../node_modules/@cds/core/button/button.element.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/inline-button.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/register.d.ts": [
+        "../node_modules/@cds/core/button/button.element.d.ts",
+        "../node_modules/@cds/core/button/icon-button.element.d.ts",
+        "../node_modules/@cds/core/button/inline-button.element.d.ts",
+        "../node_modules/@cds/core/icon/register.d.ts",
+        "../node_modules/@cds/core/progress-circle/register.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/icon.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/icon.service.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts",
+        "../node_modules/@cds/core/internal/index.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/register.d.ts": [
+        "../node_modules/@cds/core/icon/icon.element.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/shapes/minus.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/shapes/plus.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/base.element.css.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/button.base.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts": [
+        "../node_modules/@cds/core/internal/utils/focus-trap.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/decorators/animate.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/index.d.ts": [
+        "../node_modules/@cds/core/internal/base/base.element.css.d.ts",
+        "../node_modules/@cds/core/internal/base/button.base.d.ts",
+        "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts",
+        "../node_modules/@cds/core/internal/decorators/animate.d.ts",
+        "../node_modules/@cds/core/internal/decorators/event.d.ts",
+        "../node_modules/@cds/core/internal/decorators/global-style.d.ts",
+        "../node_modules/@cds/core/internal/decorators/i18n.d.ts",
+        "../node_modules/@cds/core/internal/decorators/id.d.ts",
+        "../node_modules/@cds/core/internal/decorators/property.d.ts",
+        "../node_modules/@cds/core/internal/decorators/query-slot.d.ts",
+        "../node_modules/@cds/core/internal/directives/spread-props.d.ts",
+        "../node_modules/@cds/core/internal/i18n/utils.d.ts",
+        "../node_modules/@cds/core/internal/interfaces/index.d.ts",
+        "../node_modules/@cds/core/internal/motion/index.d.ts",
+        "../node_modules/@cds/core/internal/services/focus-trap-tracker.service.d.ts",
+        "../node_modules/@cds/core/internal/services/i18n.service.d.ts",
+        "../node_modules/@cds/core/internal/services/keycodes.service.d.ts",
+        "../node_modules/@cds/core/internal/services/log.service.d.ts",
+        "../node_modules/@cds/core/internal/utils/a11y.d.ts",
+        "../node_modules/@cds/core/internal/utils/array.d.ts",
+        "../node_modules/@cds/core/internal/utils/async.d.ts",
+        "../node_modules/@cds/core/internal/utils/conditional.d.ts",
+        "../node_modules/@cds/core/internal/utils/css.d.ts",
+        "../node_modules/@cds/core/internal/utils/dom.d.ts",
+        "../node_modules/@cds/core/internal/utils/event-subject.d.ts",
+        "../node_modules/@cds/core/internal/utils/events.d.ts",
+        "../node_modules/@cds/core/internal/utils/exists.d.ts",
+        "../node_modules/@cds/core/internal/utils/focus-trap.d.ts",
+        "../node_modules/@cds/core/internal/utils/framework.d.ts",
+        "../node_modules/@cds/core/internal/utils/identity.d.ts",
+        "../node_modules/@cds/core/internal/utils/keycodes.d.ts",
+        "../node_modules/@cds/core/internal/utils/lit-element.d.ts",
+        "../node_modules/@cds/core/internal/utils/metadata.d.ts",
+        "../node_modules/@cds/core/internal/utils/register.d.ts",
+        "../node_modules/@cds/core/internal/utils/responsive.d.ts",
+        "../node_modules/@cds/core/internal/utils/size.d.ts",
+        "../node_modules/@cds/core/internal/utils/string.d.ts",
+        "../node_modules/@cds/core/internal/utils/supports.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/index.d.ts": [
+        "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts",
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts",
+        "../node_modules/@cds/core/internal/motion/motion.service.d.ts",
+        "../node_modules/@cds/core/internal/motion/utils.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/interfaces.d.ts": [
+        "../node_modules/@cds/core/internal/decorators/event.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/motion.service.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/utils.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/utils/lit-element.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/utils/responsive.d.ts": [
+        "../node_modules/@types/resize-observer-browser/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/progress-circle/register.d.ts": [
+        "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts"
+      ],
+      "../node_modules/lit-element/lib/decorators.d.ts": [
+        "../node_modules/lit-element/lib/updating-element.d.ts"
+      ],
+      "../node_modules/lit-element/lit-element.d.ts": [
+        "../node_modules/lit-element/lib/css-tag.d.ts",
+        "../node_modules/lit-element/lib/decorators.d.ts",
+        "../node_modules/lit-element/lib/updating-element.d.ts",
+        "../node_modules/lit-html/lib/shady-render.d.ts",
+        "../node_modules/lit-html/lit-html.d.ts"
+      ],
+      "../node_modules/lit-html/lib/default-template-processor.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts"
+      ],
+      "../node_modules/lit-html/lib/directive.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts"
+      ],
+      "../node_modules/lit-html/lib/parts.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/render-options.d.ts": [
+        "../node_modules/lit-html/lib/template-factory.d.ts"
+      ],
+      "../node_modules/lit-html/lib/render.d.ts": [
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/shady-render.d.ts": [
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts",
+        "../node_modules/lit-html/lit-html.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-factory.d.ts": [
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-instance.d.ts": [
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-processor.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-result.d.ts": [
+        "../node_modules/lit-html/lib/template-processor.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template.d.ts": [
+        "../node_modules/lit-html/lib/template-result.d.ts"
+      ],
+      "../node_modules/lit-html/lit-html.d.ts": [
+        "../node_modules/lit-html/lib/default-template-processor.d.ts",
+        "../node_modules/lit-html/lib/directive.d.ts",
+        "../node_modules/lit-html/lib/dom.d.ts",
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/render.d.ts",
+        "../node_modules/lit-html/lib/template-factory.d.ts",
+        "../node_modules/lit-html/lib/template-instance.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts",
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../src/counter/counter.element.styles.ts": [
+        "../node_modules/lit-element/lit-element.d.ts",
+        "../node_modules/tslib/tslib.d.ts"
+      ],
+      "../src/counter/counter.element.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts",
+        "../node_modules/tslib/tslib.d.ts",
+        "../src/counter/counter.element.styles.ts"
+      ],
+      "../src/counter/index.ts": [
+        "../node_modules/tslib/tslib.d.ts",
+        "../src/counter/counter.element.ts"
+      ],
+      "../src/counter/register.ts": [
+        "../node_modules/@cds/core/button/register.d.ts",
+        "../node_modules/@cds/core/icon/icon.service.d.ts",
+        "../node_modules/@cds/core/icon/register.d.ts",
+        "../node_modules/@cds/core/icon/shapes/minus.d.ts",
+        "../node_modules/@cds/core/icon/shapes/plus.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts",
+        "../node_modules/tslib/tslib.d.ts",
+        "../src/counter/counter.element.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "../node_modules/@cds/core/button/button.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/icon-button.element.d.ts": [
+        "../node_modules/@cds/core/button/button.element.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/inline-button.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/button/register.d.ts": [
+        "../node_modules/@cds/core/button/button.element.d.ts",
+        "../node_modules/@cds/core/button/icon-button.element.d.ts",
+        "../node_modules/@cds/core/button/inline-button.element.d.ts",
+        "../node_modules/@cds/core/icon/register.d.ts",
+        "../node_modules/@cds/core/progress-circle/register.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/icon.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/icon.service.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts",
+        "../node_modules/@cds/core/internal/index.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/register.d.ts": [
+        "../node_modules/@cds/core/icon/icon.element.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/shapes/minus.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/icon/shapes/plus.d.ts": [
+        "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/base.element.css.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/button.base.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts": [
+        "../node_modules/@cds/core/internal/utils/focus-trap.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/decorators/animate.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/index.d.ts": [
+        "../node_modules/@cds/core/internal/base/base.element.css.d.ts",
+        "../node_modules/@cds/core/internal/base/button.base.d.ts",
+        "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts",
+        "../node_modules/@cds/core/internal/decorators/animate.d.ts",
+        "../node_modules/@cds/core/internal/decorators/event.d.ts",
+        "../node_modules/@cds/core/internal/decorators/global-style.d.ts",
+        "../node_modules/@cds/core/internal/decorators/i18n.d.ts",
+        "../node_modules/@cds/core/internal/decorators/id.d.ts",
+        "../node_modules/@cds/core/internal/decorators/property.d.ts",
+        "../node_modules/@cds/core/internal/decorators/query-slot.d.ts",
+        "../node_modules/@cds/core/internal/directives/spread-props.d.ts",
+        "../node_modules/@cds/core/internal/i18n/utils.d.ts",
+        "../node_modules/@cds/core/internal/interfaces/index.d.ts",
+        "../node_modules/@cds/core/internal/motion/index.d.ts",
+        "../node_modules/@cds/core/internal/services/focus-trap-tracker.service.d.ts",
+        "../node_modules/@cds/core/internal/services/i18n.service.d.ts",
+        "../node_modules/@cds/core/internal/services/keycodes.service.d.ts",
+        "../node_modules/@cds/core/internal/services/log.service.d.ts",
+        "../node_modules/@cds/core/internal/utils/a11y.d.ts",
+        "../node_modules/@cds/core/internal/utils/array.d.ts",
+        "../node_modules/@cds/core/internal/utils/async.d.ts",
+        "../node_modules/@cds/core/internal/utils/conditional.d.ts",
+        "../node_modules/@cds/core/internal/utils/css.d.ts",
+        "../node_modules/@cds/core/internal/utils/dom.d.ts",
+        "../node_modules/@cds/core/internal/utils/event-subject.d.ts",
+        "../node_modules/@cds/core/internal/utils/events.d.ts",
+        "../node_modules/@cds/core/internal/utils/exists.d.ts",
+        "../node_modules/@cds/core/internal/utils/focus-trap.d.ts",
+        "../node_modules/@cds/core/internal/utils/framework.d.ts",
+        "../node_modules/@cds/core/internal/utils/identity.d.ts",
+        "../node_modules/@cds/core/internal/utils/keycodes.d.ts",
+        "../node_modules/@cds/core/internal/utils/lit-element.d.ts",
+        "../node_modules/@cds/core/internal/utils/metadata.d.ts",
+        "../node_modules/@cds/core/internal/utils/register.d.ts",
+        "../node_modules/@cds/core/internal/utils/responsive.d.ts",
+        "../node_modules/@cds/core/internal/utils/size.d.ts",
+        "../node_modules/@cds/core/internal/utils/string.d.ts",
+        "../node_modules/@cds/core/internal/utils/supports.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/index.d.ts": [
+        "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts",
+        "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts",
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts",
+        "../node_modules/@cds/core/internal/motion/motion.service.d.ts",
+        "../node_modules/@cds/core/internal/motion/utils.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/interfaces.d.ts": [
+        "../node_modules/@cds/core/internal/decorators/event.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/motion.service.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/motion/utils.d.ts": [
+        "../node_modules/@cds/core/internal/motion/interfaces.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/utils/lit-element.d.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/internal/utils/responsive.d.ts": [
+        "../node_modules/@types/resize-observer-browser/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts": [
+        "../node_modules/@cds/core/internal/index.d.ts",
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../node_modules/@cds/core/progress-circle/register.d.ts": [
+        "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts"
+      ],
+      "../node_modules/lit-element/lib/decorators.d.ts": [
+        "../node_modules/lit-element/lib/updating-element.d.ts"
+      ],
+      "../node_modules/lit-element/lit-element.d.ts": [
+        "../node_modules/lit-element/lib/css-tag.d.ts",
+        "../node_modules/lit-element/lib/decorators.d.ts",
+        "../node_modules/lit-element/lib/updating-element.d.ts",
+        "../node_modules/lit-html/lib/shady-render.d.ts",
+        "../node_modules/lit-html/lit-html.d.ts"
+      ],
+      "../node_modules/lit-html/lib/default-template-processor.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts"
+      ],
+      "../node_modules/lit-html/lib/directive.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts"
+      ],
+      "../node_modules/lit-html/lib/parts.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/render-options.d.ts": [
+        "../node_modules/lit-html/lib/template-factory.d.ts"
+      ],
+      "../node_modules/lit-html/lib/render.d.ts": [
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/shady-render.d.ts": [
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts",
+        "../node_modules/lit-html/lit-html.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-factory.d.ts": [
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-instance.d.ts": [
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-processor.d.ts": [
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template-result.d.ts": [
+        "../node_modules/lit-html/lib/template-processor.d.ts"
+      ],
+      "../node_modules/lit-html/lib/template.d.ts": [
+        "../node_modules/lit-html/lib/template-result.d.ts"
+      ],
+      "../node_modules/lit-html/lit-html.d.ts": [
+        "../node_modules/lit-html/lib/default-template-processor.d.ts",
+        "../node_modules/lit-html/lib/directive.d.ts",
+        "../node_modules/lit-html/lib/dom.d.ts",
+        "../node_modules/lit-html/lib/part.d.ts",
+        "../node_modules/lit-html/lib/parts.d.ts",
+        "../node_modules/lit-html/lib/render-options.d.ts",
+        "../node_modules/lit-html/lib/render.d.ts",
+        "../node_modules/lit-html/lib/template-factory.d.ts",
+        "../node_modules/lit-html/lib/template-instance.d.ts",
+        "../node_modules/lit-html/lib/template-processor.d.ts",
+        "../node_modules/lit-html/lib/template-result.d.ts",
+        "../node_modules/lit-html/lib/template.d.ts"
+      ],
+      "../src/counter/counter.element.styles.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../src/counter/counter.element.ts": [
+        "../node_modules/lit-element/lit-element.d.ts"
+      ],
+      "../src/counter/index.ts": [
+        "../src/counter/counter.element.ts"
+      ],
+      "../src/counter/register.ts": [
+        "../node_modules/@cds/core/button/register.d.ts",
+        "../node_modules/@cds/core/icon/register.d.ts",
+        "../src/counter/counter.element.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "../node_modules/@cds/core/button/button.element.d.ts",
+      "../node_modules/@cds/core/button/icon-button.element.d.ts",
+      "../node_modules/@cds/core/button/inline-button.element.d.ts",
+      "../node_modules/@cds/core/button/register.d.ts",
+      "../node_modules/@cds/core/icon/icon.element.d.ts",
+      "../node_modules/@cds/core/icon/icon.service.d.ts",
+      "../node_modules/@cds/core/icon/interfaces/icon.interfaces.d.ts",
+      "../node_modules/@cds/core/icon/register.d.ts",
+      "../node_modules/@cds/core/icon/shapes/minus.d.ts",
+      "../node_modules/@cds/core/icon/shapes/plus.d.ts",
+      "../node_modules/@cds/core/internal/base/base.element.css.d.ts",
+      "../node_modules/@cds/core/internal/base/button.base.d.ts",
+      "../node_modules/@cds/core/internal/base/focus-trap.base.d.ts",
+      "../node_modules/@cds/core/internal/decorators/animate.d.ts",
+      "../node_modules/@cds/core/internal/decorators/event.d.ts",
+      "../node_modules/@cds/core/internal/decorators/global-style.d.ts",
+      "../node_modules/@cds/core/internal/decorators/i18n.d.ts",
+      "../node_modules/@cds/core/internal/decorators/id.d.ts",
+      "../node_modules/@cds/core/internal/decorators/property.d.ts",
+      "../node_modules/@cds/core/internal/decorators/query-slot.d.ts",
+      "../node_modules/@cds/core/internal/directives/spread-props.d.ts",
+      "../node_modules/@cds/core/internal/i18n/utils.d.ts",
+      "../node_modules/@cds/core/internal/index.d.ts",
+      "../node_modules/@cds/core/internal/interfaces/index.d.ts",
+      "../node_modules/@cds/core/internal/motion/animations/cds-accordion-panel-open.d.ts",
+      "../node_modules/@cds/core/internal/motion/animations/cds-component-shake.d.ts",
+      "../node_modules/@cds/core/internal/motion/animations/cds-modal-enter.d.ts",
+      "../node_modules/@cds/core/internal/motion/animations/cds-overlay-hinge-example.d.ts",
+      "../node_modules/@cds/core/internal/motion/index.d.ts",
+      "../node_modules/@cds/core/internal/motion/interfaces.d.ts",
+      "../node_modules/@cds/core/internal/motion/motion.service.d.ts",
+      "../node_modules/@cds/core/internal/motion/utils.d.ts",
+      "../node_modules/@cds/core/internal/services/focus-trap-tracker.service.d.ts",
+      "../node_modules/@cds/core/internal/services/i18n.service.d.ts",
+      "../node_modules/@cds/core/internal/services/keycodes.service.d.ts",
+      "../node_modules/@cds/core/internal/services/log.service.d.ts",
+      "../node_modules/@cds/core/internal/utils/a11y.d.ts",
+      "../node_modules/@cds/core/internal/utils/array.d.ts",
+      "../node_modules/@cds/core/internal/utils/async.d.ts",
+      "../node_modules/@cds/core/internal/utils/conditional.d.ts",
+      "../node_modules/@cds/core/internal/utils/css.d.ts",
+      "../node_modules/@cds/core/internal/utils/dom.d.ts",
+      "../node_modules/@cds/core/internal/utils/event-subject.d.ts",
+      "../node_modules/@cds/core/internal/utils/events.d.ts",
+      "../node_modules/@cds/core/internal/utils/exists.d.ts",
+      "../node_modules/@cds/core/internal/utils/focus-trap.d.ts",
+      "../node_modules/@cds/core/internal/utils/framework.d.ts",
+      "../node_modules/@cds/core/internal/utils/identity.d.ts",
+      "../node_modules/@cds/core/internal/utils/keycodes.d.ts",
+      "../node_modules/@cds/core/internal/utils/lit-element.d.ts",
+      "../node_modules/@cds/core/internal/utils/metadata.d.ts",
+      "../node_modules/@cds/core/internal/utils/register.d.ts",
+      "../node_modules/@cds/core/internal/utils/responsive.d.ts",
+      "../node_modules/@cds/core/internal/utils/size.d.ts",
+      "../node_modules/@cds/core/internal/utils/string.d.ts",
+      "../node_modules/@cds/core/internal/utils/supports.d.ts",
+      "../node_modules/@cds/core/progress-circle/progress-circle.element.d.ts",
+      "../node_modules/@cds/core/progress-circle/register.d.ts",
+      "../node_modules/@types/resize-observer-browser/index.d.ts",
+      "../node_modules/lit-element/lib/css-tag.d.ts",
+      "../node_modules/lit-element/lib/decorators.d.ts",
+      "../node_modules/lit-element/lib/updating-element.d.ts",
+      "../node_modules/lit-element/lit-element.d.ts",
+      "../node_modules/lit-html/lib/default-template-processor.d.ts",
+      "../node_modules/lit-html/lib/directive.d.ts",
+      "../node_modules/lit-html/lib/dom.d.ts",
+      "../node_modules/lit-html/lib/part.d.ts",
+      "../node_modules/lit-html/lib/parts.d.ts",
+      "../node_modules/lit-html/lib/render-options.d.ts",
+      "../node_modules/lit-html/lib/render.d.ts",
+      "../node_modules/lit-html/lib/shady-render.d.ts",
+      "../node_modules/lit-html/lib/template-factory.d.ts",
+      "../node_modules/lit-html/lib/template-instance.d.ts",
+      "../node_modules/lit-html/lib/template-processor.d.ts",
+      "../node_modules/lit-html/lib/template-result.d.ts",
+      "../node_modules/lit-html/lib/template.d.ts",
+      "../node_modules/lit-html/lit-html.d.ts",
+      "../node_modules/tslib/tslib.d.ts",
+      "../node_modules/typescript/lib/lib.dom.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "../node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "../node_modules/typescript/lib/lib.es2016.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "../node_modules/typescript/lib/lib.es5.d.ts",
+      "../src/counter/counter.element.styles.ts",
+      "../src/counter/counter.element.ts",
+      "../src/counter/index.ts",
+      "../src/counter/register.ts",
+      "../src/index.ts"
+    ]
+  },
+  "version": "4.2.4"
+}

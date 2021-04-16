@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" cds-base-font="16">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <link href="/node_modules/normalize.css/normalize.css" rel="stylesheet" />
+    <link href="/node_modules/@cds/core/global.min.css" rel="stylesheet" />
+    <link
+      href="/node_modules/@cds/core/styles/theme.dark.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/node_modules/@cds/city/css/bundles/default.min.css"
+      rel="stylesheet"
+    />
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body cds-theme="" cds-text="body" cds-layout="vertical gap:lg p:lg">
+    <!-- cds-theme="dark" to preview in dark theme -->
+
+    <h1 cds-text="heading">Clarity Core Simple Dev Environment</h1>
+
+    <!-- your addon -->
+    <cda-counter></cda-counter>
+
+    <p cds-text="body">Current Count: <span id="current-count"></span></p>
+
+    <script type="module" src="./index.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        if (
+          navigator.userAgent.indexOf('Firefox') &&
+          document.querySelector('body').getBoundingClientRect().width === 0
+        ) {
+          /*
+           *
+           * when the dev-server first launches, Firefox (if the default browser) has a tendency to die
+           * while trying to load the module (index.js). This forces a reload and, voila, Firefox
+           * works fine again.
+           *
+           */
+          location.reload();
+        }
+      };
+    </script>
+  </body>
+</html>

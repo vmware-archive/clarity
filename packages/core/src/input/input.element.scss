@@ -107,5 +107,5 @@
 }
 
 :host([_disabled]) {
-  --border-color: #{$cds-alias-status-disabled};
+  --border-color: #{$cds-alias-object-border-color-tint};
 }

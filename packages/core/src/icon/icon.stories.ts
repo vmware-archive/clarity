@@ -78,7 +78,7 @@ export function all() {
   const search = text('search', '', propertiesGroup);
   const size = select(
     'size',
-    { 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
+    { xs: 'xs', 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
     'lg',
     propertiesGroup
   );
@@ -228,6 +228,11 @@ export function icon() {
 /** @website */
 export function sizes() {
   return html`
+    <cds-icon
+      shape="house"
+      size="xs"
+      aria-label="This is an example of an icon using a pre-defined extra small size"
+    ></cds-icon>
     <cds-icon
       shape="house"
       size="sm"

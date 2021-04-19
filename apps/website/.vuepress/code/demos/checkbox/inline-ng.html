@@ -1,13 +1,13 @@
-<clr-radio-container clrInline>
-  <label>Inline radio example</label>
-  <clr-radio-wrapper>
-    <input type="radio" clrRadio name="options" required value="option1" [(ngModel)]="options" />
+<clr-checkbox-container clrInline>
+  <label>Inline checkbox example</label>
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox name="options" required value="option1" [(ngModel)]="options.option1" />
     <label>Option 1</label>
-  </clr-radio-wrapper>
-  <clr-radio-wrapper>
-    <input type="radio" clrRadio name="options" required value="option2" [(ngModel)]="options" />
+  </clr-checkbox-wrapper>
+  <clr-checkbox-wrapper>
+    <input type="checkbox" clrCheckbox name="options" required value="option2" [(ngModel)]="options.option2" />
     <label>Option 2</label>
-  </clr-radio-wrapper>
+  </clr-checkbox-wrapper>
   <clr-control-helper>Helper text</clr-control-helper>
   <clr-control-error>This field is required!</clr-control-error>
-</clr-radio-container>
+</clr-checkbox-container>

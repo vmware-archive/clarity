@@ -28,6 +28,10 @@ svg {
 }
 
 // sizing
+:host([size='xs']) {
+  @include equilateral(#{$cds-global-space-5});
+}
+
 :host([size='sm']) {
   // weirdly, the default... 16px
   @include equilateral(#{$cds-global-space-7});

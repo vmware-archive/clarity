@@ -72,7 +72,7 @@ export class CdsIcon extends LitElement {
   }
 
   /**
-   * @type {string | sm | md | lg | xl | xxl}
+   * @type {string | xs | sm | md | lg | xl | xxl}
    * Apply numerical width-height or a t-shirt-sized CSS classname
    */
   @property({ type: String })

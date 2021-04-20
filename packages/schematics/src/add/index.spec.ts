@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -44,8 +44,7 @@ describe('ng add @clr/angular', () => {
       expect(dependencies).toBeDefined();
       expect(dependencies['@clr/angular']).toBeDefined();
       expect(dependencies['@clr/ui']).toBeDefined();
-      expect(dependencies['@clr/icons']).toBeDefined();
-      expect(dependencies['@webcomponents/webcomponentsjs']).toBeDefined();
+      expect(dependencies['@cds/core']).toBeDefined();
     });
 
     it('should add Clarity assets in the configuration file', async () => {
@@ -58,15 +57,6 @@ describe('ng add @clr/angular', () => {
       const styles = configFile.projects[PROJECT_NAME].architect.build.options.styles;
 
       expect(styles.includes('node_modules/@clr/ui/clr-ui.min.css')).toBeTruthy();
-      expect(styles.includes('node_modules/@clr/icons/clr-icons.min.css')).toBeTruthy();
-
-      const scripts = configFile.projects[PROJECT_NAME].architect.build.options.scripts;
-      const webcomponentsAdapter = 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
-      const webcomponentsBundle = 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js';
-      expect(scripts.includes(webcomponentsAdapter)).toBeTruthy();
-      expect(scripts.includes(webcomponentsBundle)).toBeTruthy();
-      // The adapter script comes before the bundle scripts
-      expect(scripts.indexOf(webcomponentsAdapter)).toBeLessThan(scripts.indexOf(webcomponentsBundle));
     });
 
     it('should not add Clarity assets in the configuration file if they are already present', async () => {

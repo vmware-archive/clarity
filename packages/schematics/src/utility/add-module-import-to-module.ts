@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
 import { Tree, SchematicsException } from '@angular-devkit/schematics';
 import { InsertChange, Change } from '@schematics/angular/utility/change';
 import { addImportToModule } from '@schematics/angular/utility/ast-utils';
@@ -15,7 +21,7 @@ export function addModuleImportToModule(
   importedModuleName: string,
   importedModulePath: string,
   moduleToImportIn: string
-) {
+): void {
   if (!moduleToImportIn) {
     throw new SchematicsException(`Entry module not found.`);
   }

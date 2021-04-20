@@ -19,6 +19,7 @@
       "**/@angular/*/**",
       "**/@angular-devkit/**",
       "**/@nguniversal/**",
+      "**/jsdom/**",
       "website/**"
     ]
   },

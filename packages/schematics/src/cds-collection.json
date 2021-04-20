@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add Clarity to your project",
+      "factory": "./cds-add",
+      "schema": "./cds-add/schema.json"
+    }
+  }
+}

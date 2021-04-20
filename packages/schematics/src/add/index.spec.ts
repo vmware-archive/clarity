@@ -64,13 +64,8 @@ describe('ng add @clr/angular', () => {
       const configFile = JSON.parse(getFileContent(workspaceTree, configFilePath));
 
       const styles = configFile.projects[PROJECT_NAME].architect.build.options.styles || [];
-      const scripts = configFile.projects[PROJECT_NAME].architect.build.options.scripts || [];
       styles.push('node_modules/@clr/ui/clr-ui');
-      styles.push('node_modules/@clr/icons/clr-icons');
-      scripts.push('node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js');
-      scripts.push('node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js');
       configFile.projects[PROJECT_NAME].architect.build.options.styles = styles;
-      configFile.projects[PROJECT_NAME].architect.build.options.scripts = scripts;
 
       workspaceTree.overwrite(configFilePath, JSON.stringify(configFile, null, 2));
 
@@ -81,15 +76,6 @@ describe('ng add @clr/angular', () => {
       const updatedStyles = updatedConfigFile.projects[PROJECT_NAME].architect.build.options.styles;
       expect(updatedStyles.includes('node_modules/@clr/ui/clr-ui.min.css')).toBeFalsy();
       expect(updatedStyles.includes('node_modules/@clr/icons/clr-icons.min.css')).toBeFalsy();
-
-      const updatedScripts = updatedConfigFile.projects[PROJECT_NAME].architect.build.options.scripts;
-      const webcomponentsAdapter = 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
-      const webcomponentsBundle = 'node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js';
-      // The scripts are still in the array
-      expect(updatedScripts.includes(webcomponentsAdapter)).toBeTruthy();
-      expect(updatedScripts.includes(webcomponentsBundle)).toBeTruthy();
-      // The scripts are in their original order
-      expect(updatedScripts.indexOf(webcomponentsBundle)).toBeLessThan(scripts.indexOf(webcomponentsAdapter));
     });
 
     it('should import ClarityModule to the root module', async () => {

@@ -4,7 +4,4 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export function getMainPath(config: any, projectName: string): string {
-  const project = config.projects[projectName];
-  return project.architect.build.options.main;
-}
+export const configFileName = 'angular.json';

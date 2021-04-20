@@ -4,5 +4,6 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "flatModuleFile": "cds-angular"
-  }
+  },
+  "allowedNonPeerDependencies": ["jsdom"]
 }

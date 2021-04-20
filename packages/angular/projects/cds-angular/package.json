@@ -19,11 +19,13 @@
     "@cds/core": "./dist/core"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "jsdom": "^16.5.3"
   },
   "author": "clarity",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vmware/clarity/issues"
-  }
+  },
+  "schematics": "./schematics/cds-collection.json"
 }

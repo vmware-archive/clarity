@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,6 +40,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   isAccordion = false;
 
+  stepCompleted = false;
+
   @ViewChild('headerButton') headerButton: ElementRef;
   private subscriptions: Subscription[] = [];
 
@@ -72,6 +74,21 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
     this.panel = this.panel.pipe(tap(panel => this.triggerAllFormControlValidationIfError(panel)));
     this.stepperService.disablePanel(this.id, true);
     this.listenToFocusChanges();
+
+    if (this.formGroup) {
+      // not all stepper panels are guaranteed to have a form (i.e. empty template-driven)
+      this.subscriptions.push(
+        this.formGroup.statusChanges.subscribe(status => {
+          const formStatus = (status as string).toLowerCase();
+          if (formStatus === 'invalid' && this.stepCompleted) {
+            this.stepCompleted = false;
+            this.stepperService.navigateToNextPanel(this.id, this.formGroup.valid);
+          } else if (formStatus === 'valid' && !this.stepCompleted) {
+            this.stepCompleted = true;
+          }
+        })
+      );
+    }
   }
 
   ngOnDestroy() {

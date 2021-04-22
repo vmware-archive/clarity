@@ -46,7 +46,7 @@ Combobox description here
 <doc-code>
 
 ```html
-<clroption></clroption>
+<clr-option></clr-option>
 ```
 
 </doc-code>

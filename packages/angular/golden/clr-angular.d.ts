@@ -1690,6 +1690,7 @@ export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit
     get id(): string;
     set id(_value: string);
     isAccordion: boolean;
+    stepCompleted: boolean;
     constructor(platformId: any, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
     ngOnDestroy(): void;
     ngOnInit(): void;

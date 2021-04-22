@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -13,19 +13,22 @@ import { By } from '@angular/platform-browser';
 import { ClrStepperModule } from './stepper.module';
 import { StepperService } from '././providers/stepper.service';
 import { ClrStepper } from './stepper';
+import { ClrStepperPanel } from './stepper-panel';
 
 @Component({
   template: `
     <form clrStepper [formGroup]="form" (ngSubmit)="submit()" [clrInitialStep]="initialStep">
-      <clr-stepper-panel formGroupName="group">
+      <clr-stepper-panel #panel1 formGroupName="group">
         <input formControlName="name" />
       </clr-stepper-panel>
-      <clr-stepper-panel *ngIf="showSecondStep" formGroupName="group2"></clr-stepper-panel>
+      <clr-stepper-panel #panel2 *ngIf="showSecondStep" formGroupName="group2"></clr-stepper-panel>
     </form>
   `,
 })
 class ReactiveFormsTestComponent {
   @ViewChild(ClrStepper) stepper: ClrStepper;
+  @ViewChild('panel1') panel1: ClrStepperPanel;
+  @ViewChild('panel2') panel2: ClrStepperPanel;
   showSecondStep = true;
   initialStep = '';
   form = new FormGroup({
@@ -87,6 +90,29 @@ describe('ClrStepper', () => {
       testComponent.showSecondStep = false;
       fixture.detectChanges();
       expect(stepperService.overrideInitialPanel).toHaveBeenCalled();
+    });
+
+    it('should reset if a previously completed panel is revisited and put into an invalid state', () => {
+      // all setup...
+      spyOn(stepperService, 'navigateToNextPanel');
+      const group1 = testComponent.form.controls.group as FormGroup;
+      group1.controls.name.setValue('lmnop');
+      fixture.detectChanges();
+
+      stepperService.navigateToNextPanel('group', group1.valid);
+      fixture.detectChanges();
+
+      // we navigated to the second panel
+      expect(group1.valid).toBe(true, 'first panel form is now valid');
+      expect(testComponent.panel1.stepCompleted).toBe(true, 'first panel marked as completed');
+
+      group1.controls.name.setValue(''); // set required input to invalid value
+      fixture.detectChanges();
+
+      expect(group1.valid).toBe(false, 'first panel form is now invalid');
+      expect(testComponent.panel1.stepCompleted).toBe(false, 'first panel is set back to incomplete');
+      // making a previously valid form invalid forces navigation; called once earlier and only once after this
+      expect(stepperService.navigateToNextPanel).toHaveBeenCalledTimes(2);
     });
   });
 

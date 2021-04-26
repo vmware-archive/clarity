@@ -75,8 +75,31 @@ describe('cds-file', () => {
     expect(button.innerText.toLocaleLowerCase()).toBe('browse');
   });
 
+  it('clear action should not be visible if there are no files to clear', async () => {
+    await componentIsStable(component);
+    expect(component.inputControl.files.length).toBe(0, 'files length is zero by default');
+    expect(component.shadowRoot.querySelector('cds-control-action')).toBeNull('no files, no clear action');
+
+    Object.defineProperty(component, 'inputControl', {
+      get: () => ({ files: [{ name: 'test.png' }] }),
+      configurable: true,
+    });
+    component.requestUpdate();
+    await componentIsStable(component);
+    expect(component.inputControl.files.length).toBe(1, 'we have files now');
+    expect(component.shadowRoot.querySelector('cds-control-action')).not.toBeNull(
+      'we have files, we have clear action'
+    );
+
+    Object.defineProperty(component, 'inputControl', { get: () => ({ files: void 0 }) });
+    component.requestUpdate();
+    await componentIsStable(component);
+    expect(component.inputControl.files).toBeUndefined('files winding up undefined somehow');
+    expect(component.shadowRoot.querySelector('cds-control-action')).toBeNull('no files, no clear action');
+  });
+
   it('should clear file input', async () => {
-    component.inputControl.dispatchEvent(new Event('change'));
+    (component.inputControl as HTMLInputElement).dispatchEvent(new Event('change'));
 
     Object.defineProperty(component, 'inputControl', { get: () => ({ files: [{ name: 'test.png' }] }) });
     component.requestUpdate();
@@ -84,7 +107,26 @@ describe('cds-file', () => {
 
     component.shadowRoot.querySelector('cds-control-action').click();
     await componentIsStable(component);
-    expect(button.innerText.toLocaleLowerCase()).toBe('browse');
     expect(document.activeElement).toBe(component);
+    expect(button.innerText.trim().toLocaleLowerCase()).toBe('browse');
+  });
+
+  it('should not run an update on a programmatic change event', async () => {
+    spyOn(component, 'updateLabelAndFocus');
+    (component.inputControl as HTMLInputElement).dispatchEvent(new Event('change'));
+    await componentIsStable(component);
+    expect(component.updateLabelAndFocus).not.toHaveBeenCalled();
+  });
+
+  it('should be able to skip change event when clearing out files', async () => {
+    spyOn(component.inputControl, 'dispatchEvent');
+    await componentIsStable(component);
+    component.clearFiles(false); // skip event
+    expect(component.inputControl.dispatchEvent).not.toHaveBeenCalled();
+    await componentIsStable(component);
+    component.clearFiles(true); // hard set to force firing the change event
+    await componentIsStable(component);
+    component.clearFiles(); // defaults to firing the event
+    expect(component.inputControl.dispatchEvent).toHaveBeenCalledTimes(2);
   });
 });

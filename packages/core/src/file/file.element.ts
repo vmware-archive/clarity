@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -49,14 +49,14 @@ export class CdsFile extends CdsControl {
           <cds-icon shape="folder" aria-hidden="true"></cds-icon>
           ${this.buttonLabel}
         </cds-button>
-        ${this.clearFiles}
+        ${this.clearFilesControlTemplate}
       </div>
     `;
   }
 
-  protected get clearFiles() {
-    return this.inputControl.files?.length
-      ? html` <cds-control-action @click="${() => this.updateLabelAndFocus()}" aria-label="${this.i18n.removeFile}">
+  protected get clearFilesControlTemplate() {
+    return this.inputControl.files?.length && !this.disabled
+      ? html` <cds-control-action @click="${() => this.clearFiles()}" aria-label="${this.i18n.removeFile}">
           <cds-icon shape="times"></cds-icon>
         </cds-control-action>`
       : html``;
@@ -64,21 +64,38 @@ export class CdsFile extends CdsControl {
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-    this.inputControl.addEventListener('change', e => this.updateLabelAndFocus((e.target as any).files));
+    (this.inputControl as Element).addEventListener('change', e => {
+      // NOTE: have to distinguish here being user-caused events and programmatic
+      // events (e.isTrusted true/false) so that we don't fire a change event loop
+      if (e.isTrusted) {
+        this.updateLabelAndFocus((e.target as any).files);
+      }
+    });
   }
 
-  private updateLabelAndFocus(files?: FileList) {
+  /** @private */
+  clearFiles(fireEvent = true) {
+    this.buttonLabel = this.i18n.browse;
+    this.inputControl.value = '';
+
+    // when input is reset like this it isn't registering an onchange event
+    // NOTE: tsc + karma is complaining about dispatchEvent being a method on inputControl
+    if (fireEvent && this.inputControl.dispatchEvent) {
+      (this.inputControl as Element).dispatchEvent(new Event('change'));
+    }
+
+    const browseButton = this.shadowRoot?.querySelector('cds-button');
+    if (browseButton) {
+      browseButton.focus();
+    }
+  }
+
+  /** @private */
+  updateLabelAndFocus(files?: FileList) {
     if (files && files.length) {
       this.buttonLabel = files.length > 1 ? `${files.length} ${this.i18n.files}` : files[0].name;
     } else {
-      this.buttonLabel = this.i18n.browse;
-      this.inputControl.value = '';
-
-      const browseButton = this.shadowRoot?.querySelector('cds-button');
-
-      if (browseButton) {
-        browseButton.focus();
-      }
+      this.clearFiles(false);
     }
   }
 

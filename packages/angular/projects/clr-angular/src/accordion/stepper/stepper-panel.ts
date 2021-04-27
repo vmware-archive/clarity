@@ -15,7 +15,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { FormGroupName, NgModelGroup } from '@angular/forms';
-import { tap, filter } from 'rxjs/operators';
+import { tap, filter, pairwise } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
@@ -39,8 +39,6 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   isAccordion = false;
-
-  stepCompleted = false;
 
   @ViewChild('headerButton') headerButton: ElementRef;
   private subscriptions: Subscription[] = [];
@@ -78,13 +76,9 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
     if (this.formGroup) {
       // not all stepper panels are guaranteed to have a form (i.e. empty template-driven)
       this.subscriptions.push(
-        this.formGroup.statusChanges.subscribe(status => {
-          const formStatus = (status as string).toLowerCase();
-          if (formStatus === 'invalid' && this.stepCompleted) {
-            this.stepCompleted = false;
+        this.formGroup.statusChanges.pipe(pairwise()).subscribe(([prevStatus, newStatus]) => {
+          if ('VALID' === prevStatus && 'INVALID' === newStatus) {
             this.stepperService.navigateToNextPanel(this.id, this.formGroup.valid);
-          } else if (formStatus === 'valid' && !this.stepCompleted) {
-            this.stepCompleted = true;
           }
         })
       );

@@ -104,13 +104,11 @@ describe('ClrStepper', () => {
 
       // we navigated to the second panel
       expect(group1.valid).toBe(true, 'first panel form is now valid');
-      expect(testComponent.panel1.stepCompleted).toBe(true, 'first panel marked as completed');
 
       group1.controls.name.setValue(''); // set required input to invalid value
       fixture.detectChanges();
 
       expect(group1.valid).toBe(false, 'first panel form is now invalid');
-      expect(testComponent.panel1.stepCompleted).toBe(false, 'first panel is set back to incomplete');
       // making a previously valid form invalid forces navigation; called once earlier and only once after this
       expect(stepperService.navigateToNextPanel).toHaveBeenCalledTimes(2);
     });

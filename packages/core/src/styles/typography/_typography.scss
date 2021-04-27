@@ -261,6 +261,7 @@
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
+  @include remove-line-height-erasers;
 }
 
 // alignment

@@ -46,6 +46,10 @@
   transition-property: transform;
 }
 
+:host(:not([cds-motion='ready'])) {
+  --toggle-speed: 0;
+}
+
 :host([_checked]) {
   --background: #{$cds-alias-status-success};
   --border: #{$cds-alias-object-border-width-200} solid var(--background);

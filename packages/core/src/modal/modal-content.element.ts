@@ -31,7 +31,14 @@ import { html, LitElement } from 'lit-element';
  * @element cds-modal-content
  */
 export class CdsModalContent extends LitElement {
-  @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr = -1; // don't override native prop as it stops native focus behavior
+  // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
+  // inside modal-content with a tabindex of -1. we need the tabindex so a
+  // modal's content can scroll if it needs to.
+  protected createRenderRoot(): Element | ShadowRoot {
+    return this.attachShadow({ mode: 'open', delegatesFocus: true });
+  }
+
+  @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr = 0; // don't override native prop as it stops native focus behavior
 
   render() {
     return this.hasAttribute('cds-layout')

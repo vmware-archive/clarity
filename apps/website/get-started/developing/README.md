@@ -94,13 +94,47 @@ demos will be added in the near future.
 
 ### Angular
 
-To use Clarity Core with Angular follow the package [installation instructions](#installation). To work fully with the Angular compiler, we have also created an Angular package specifically to help the Angular compiler understand the custom element bindings. Normally custom elements require you to use the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) which allows non-Angular elements to be processed, but this has the side effect of not supporting strict checks in templates. Our `@cds/angular` package provides Angular component definitions so that you can use Clarity Core components like normal Angular components.
+We have created an Angular package that helps the Angular compiler understand the custom element bindings. Normally custom elements require you to use the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) which allows non-Angular elements to be processed, but this has the side effect of not supporting strict checks in templates. Our `@cds/angular` package provides Angular component definitions so that you can use Clarity Core components like normal Angular components.
+
+#### Installing Clarity Core using Angular CLI (recommended)
+
+You can use the Angular CLI to set up Clarity Core in an Angular project.
+
+```bash
+ng add @cds/angular
+```
+
+#### Manually adding Clarity Core to an Angular project
+
+Alternatively, you can set up Clarity Core manually.
+
+First, follow the package [installation instructions](#installation).
+
+Then, install `@cds/angular`.
 
 ```bash
 npm install @cds/angular --save
 ```
 
-Then you'll want to add the `CdsModule` to your AppModule, as well as import the component(s) you plan to use.
+Finally, add the `CdsModule` to your `AppModule`.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { CdsModule } from '@cds/angular';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, CdsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+#### Using Clarity Core components
+
+Once you have Clarity Core set up in your project, import the component(s) you plan to use.
 
 ```typescript
 import { NgModule } from '@angular/core';

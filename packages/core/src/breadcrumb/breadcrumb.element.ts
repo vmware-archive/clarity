@@ -1,4 +1,4 @@
-import { baseStyles, getCssPropertyValue, internalProperty } from '@cds/core/internal';
+import { baseStyles, internalProperty } from '@cds/core/internal';
 import { html, LitElement } from 'lit-element';
 import { styles } from './breadcrumb.element.css.js';
 
@@ -27,25 +27,19 @@ interface ItemEntry {
  * @cssprop --font-size
  * @cssprop --font-weight
  * @cssprop --letter-spacing
- * @cssprop --gap - Gap between items. Valid values: xxs, xs, sm, md, lg, xl, xxl (default: sm)
  * @cssprop --color
  */
 export class CdsBreadcrumb extends LitElement {
   @internalProperty({ type: String, reflect: true, attribute: 'role' })
   protected role = 'navigation';
 
-  get gap() {
-    const gapValue = getCssPropertyValue('--gap', this);
-    return gapValue ? gapValue : 'sm';
-  }
-
   render() {
     return html`
       <div class="private-host">
-        <ol cds-layout="horizontal gap:${this.gap} align:vertical-center">
+        <ol cds-layout="horizontal gap:sm align:vertical-center">
           ${this.getItems().map(
             item =>
-              html`<li cds-layout="horizontal gap:${this.gap} align:vertical-center">
+              html`<li cds-layout="horizontal gap:sm align:vertical-center">
                 ${item.element} ${item.separator}
               </li>`
           )}

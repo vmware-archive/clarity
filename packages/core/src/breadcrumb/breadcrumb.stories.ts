@@ -56,13 +56,8 @@ export function separator() {
 /** @website */
 export function gap() {
   return html`
-    <style>
-      .custom-gap {
-        --gap: lg; /* valid values: xxs, xs, sm, md, lg, xl, xxl (default: sm) */
-      }
-    </style>
     <cds-breadcrumb aria-label="breadcrumb" class="custom-gap">
-      <span slot="cds-separator">🚘</span>
+      <span cds-layout="p-x:lg" slot="cds-separator">🚘</span>
       <a href="#" cds-text="link">Home</a>
       <a href="#" cds-text="link">Parent page</a>
       <span aria-current="page">Current page</span>

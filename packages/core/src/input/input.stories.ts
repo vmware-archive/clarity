@@ -206,11 +206,6 @@ export function supportedTextTypes() {
       </cds-input>
 
       <cds-input>
-        <label>Date</label>
-        <input type="date" placeholder="date" />
-      </cds-input>
-
-      <cds-input>
         <label>Color</label>
         <input type="color" placeholder="color" value="#179BD3" />
       </cds-input>

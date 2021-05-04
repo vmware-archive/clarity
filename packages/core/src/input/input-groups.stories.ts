@@ -1,11 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html } from 'lit-html';
 import '@cds/core/input/register.js';
+import { internalProperty, LitElement } from 'lit-element';
+import { registerElementSafely } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Input Groups',
@@ -218,4 +220,44 @@ export function status() {
       </cds-input-group>
     </cds-form-group>
   `;
+}
+
+/** @website */
+export function editableContent() {
+  class EditableContentDemo extends LitElement {
+    @internalProperty() private showInput = false;
+
+    render() {
+      return html`
+        <cds-input layout="vertical">
+          <label cds-layout="display:screen-reader-only">Editable Content Available</label>
+          <input
+            placeholder="example"
+            ?readonly=${!this.showInput}
+            @keydown=${this.updateInput}
+            value="example content"
+          />
+          <cds-control-action action="prefix" aria-label="edit text content" @click="${this.toggleInput}">
+            <cds-icon shape="pencil"></cds-icon>
+          </cds-control-action>
+        </cds-input>
+      `;
+    }
+
+    toggleInput() {
+      this.showInput = !this.showInput;
+      this.shadowRoot.querySelector('input').focus();
+    }
+
+    updateInput(e: any) {
+      if (e.key === 'Enter') {
+        this.showInput = false;
+        this.shadowRoot.querySelector('cds-control-action').focus();
+      }
+    }
+  }
+
+  registerElementSafely('editable-content-demo', EditableContentDemo);
+
+  return html`<editable-content-demo></editable-content-demo>`;
 }

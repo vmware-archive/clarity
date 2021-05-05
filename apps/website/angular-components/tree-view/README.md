@@ -340,3 +340,21 @@ If your tree is too large to be fully build on initialization or getting the chi
 <doc-code>
 <<< .vuepress/code/demos/tree-view/lazy-tree.ts
 </doc-code>
+  
+### Lazy-loading recursive trees
+
+Lazy-loading data for recursive trees is actually the simplest case: as soon as you set `[clrLazy]="true"` on the parent `<clr-tree>`, the `getChildren` function will only be lazily called when a node becomes expanded, and supports both `Promise` and `Observable` return types if you need to fetch children asynchronously.
+
+By default, recursive trees will pre-load on level ahead to know if the currently displayed nodes are expandable of not. If you do not want this behavior and have a way of knowing if a node is expandable without fetching its children, you can prevent the extra loading by using the `[clrExpandable]` boolean input on nodes based on your own condition.
+
+#### Lazy-loading recursive tree element
+
+<doc-code>
+<<< .vuepress/code/demos/tree-view/lazy-recursive-ng.html
+</doc-code>
+
+#### Lazy-loading recursive tree TypeScript
+
+<doc-code>
+<<< .vuepress/code/demos/tree-view/lazy-recursive-ng.ts
+</doc-code>

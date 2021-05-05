@@ -1,0 +1,7 @@
+<clr-tree [clrLazy]="true">
+    <clr-tree-node *clrRecursiveFor="let file of root$ | async; getChildren: getChildren"
+                   [clrExpandable]="file.isFolder">
+        <clr-icon [attr.shape]="file.isFolder ? 'folder' : 'file'"></clr-icon>
+        {{file.name}}
+    </clr-tree-node>
+</clr-tree>

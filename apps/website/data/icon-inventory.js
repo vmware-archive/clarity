@@ -193,5 +193,6 @@ export default {
       'on-holiday',
     ], // vol 17 https://github.com/vmware/clarity/pull/4218
     'v5.0.0': ['announcement', 'birthday-cake', 'pdf-file', 'script-execute', 'script-schedule', 'xls-file'], // vol 18 https://github.com/vmware/clarity/issues/4839
+    'v5.2.0': ['digital-signature', 'internet-of-things', 'thin-client', 'timeline', 'update'], // vol 19 https://github.com/vmware/clarity/issues/5863
   },
 };

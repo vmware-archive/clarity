@@ -1,6 +1,6 @@
 {
   "name": "@clr/eslint-plugin-clarity-adoption",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "description": "A set of ESLint rules for Clarity Core adoption.",
   "main": "index.js",
   "typings": "index.d.ts",

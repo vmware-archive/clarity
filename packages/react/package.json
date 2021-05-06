@@ -1,6 +1,6 @@
 {
   "name": "@cds/react",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "scripts": {
     "start": "npm-run-all core:build build -p build:ts:watch dev:start",
     "dev:start": "parcel index.html --cache-dir=./.parcel-cache",

@@ -24,6 +24,7 @@ const scopes = [
   'login',
   'modal',
   'navigation',
+  'pagination',
   'password',
   'progress-bar',
   'radio',

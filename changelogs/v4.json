@@ -2,6 +2,26 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.15",
+      "date": "2021-05-06",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5887,
+          "title": "Prevent combobox from firing double open event with clrOpenChange when navigating away with the tab key",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5790,
+          "title": "Keep invalid password input from changing its width unexpectedly when focused",
+          "project": "Angular",
+          "scope": "Password"
+        }
+      ]
+    },
+    {
       "version": "4.0.14",
       "date": "2021-03-04",
       "description": "This is a bug fix release.",

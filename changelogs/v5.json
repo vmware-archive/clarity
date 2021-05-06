@@ -2,9 +2,240 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.2.0",
+      "date": "2021-05-06",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 5706,
+          "title": "Added standalone pagination component to clarity core (cds-pagination)",
+          "project": "Core",
+          "scope": "Pagination"
+        },
+        {
+          "issue": 5859,
+          "title": "Added a 'neutral' button style to cds-buttons",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5863,
+          "title": "Added signature, IoT, thin client, timeline, and update icons to cds-icons",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5872,
+          "title": "Added 'xs' size for cds-icon",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5890,
+          "title": "Added ng-add capability to @cds/angular",
+          "project": "Clarity Adoption",
+          "scope": "Schematics"
+        },
+        {
+          "issue": 5754,
+          "title": "Added cds-i18n documentation to Clarity Core storybook",
+          "project": "Website",
+          "scope": "Documentation"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 5769,
+          "title": "Fixed several issues with Core accordion CSS, including a gap in a collapsed header",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5852,
+          "title": "Fixed issue with content overflow in cds-accordion-header",
+          "project": "Core",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5866,
+          "title": "Lightened the border, text, and icon colors of disabled input",
+          "project": "Core",
+          "scope": "Input"
+        },
+        {
+          "issue": 5903,
+          "title": "Updated file input so that the clear-all control is removed when the input is disabled and a change event is fired when reset",
+          "project": "Core",
+          "scope": "Input"
+        },
+        {
+          "issue": 5918,
+          "title": "Allowed focus with the tab key for focusable content inside the cds-modal",
+          "project": "Core",
+          "scope": "Modal"
+        },
+        {
+          "issue": 5917,
+          "title": "Disabled the cds-toggle animation until after its initial load",
+          "project": "Core",
+          "scope": "Toggle"
+        },
+        {
+          "issue": 5908,
+          "title": "Changed cds-text=truncate so it would not cut off glyph descenders",
+          "project": "Core",
+          "scope": "Typography"
+        },
+        {
+          "issue": 5748,
+          "title": "Updated Angular to 11.2.5",
+          "project": "Angular",
+          "scope": "Build"
+        },
+        {
+          "issue": 5848,
+          "title": "Fixed dark theme configuration in @clr/angular dev app",
+          "project": "Angular",
+          "scope": "Build"
+        },
+        {
+          "issue": 5898,
+          "title": "Updated clr-buttons so that cds-icons could rotate within them",
+          "project": "Angular",
+          "scope": "Button"
+        },
+        {
+          "issue": 5886,
+          "title": "Prevent combobox from firing double open event with clrOpenChange when navigating away with the tab key",
+          "project": "Angular",
+          "scope": "Combobox"
+        },
+        {
+          "issue": 5818,
+          "title": "Corrected the alignment of the selected count checkbox in the datagrid footer",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5789,
+          "title": "Keep invalid password input from changing its width unexpectedly when focused",
+          "project": "Angular",
+          "scope": "Password"
+        },
+        {
+          "issue": 5897,
+          "title": "Fixed clr-stepper so that it would run validation after a user skips back to a completed step",
+          "project": "Angular",
+          "scope": "Stepper"
+        },
+        {
+          "issue": 5810,
+          "title": "Fixed animation of accordion header toggles",
+          "project": "UI",
+          "scope": "Accordion"
+        },
+        {
+          "issue": 5834,
+          "title": "Updated Clarity UI HSL values to remove deprecated warnings in sass builds",
+          "project": "UI",
+          "scope": "Build"
+        },
+        {
+          "issue": 5835,
+          "title": "Fixed sizing of Clarity Icons inside Clarity UI's compact buttons",
+          "project": "UI",
+          "scope": "Button"
+        },
+        {
+          "issue": 5856,
+          "title": "Added CSS variables to nav styles to improve theming",
+          "project": "UI",
+          "scope": "Navigation"
+        },
+        {
+          "issue": 5862,
+          "title": "Fixed the alignment of the collapse/expand icon in nav groups",
+          "project": "UI",
+          "scope": "Navigation"
+        },
+        {
+          "issue": 5849,
+          "title": "Added missing CSS properties to enable theming of clr-signpost",
+          "project": "UI",
+          "scope": "Signpost"
+        },
+        {
+          "issue": 5855,
+          "title": "Updated Clarity UI dark theme to use rem-sizing variables",
+          "project": "UI",
+          "scope": "Themes"
+        },
+        {
+          "issue": 5809,
+          "title": "Improved @cds/angular unit tests to make them faster and address sporadic failures",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        },
+        {
+          "issue": 5878,
+          "title": "Fixed unit tests after ng-add was updated",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        },
+        {
+          "issue": 5868,
+          "title": "Gave sidenav items unique ids",
+          "project": "Website",
+          "scope": "Accessibility"
+        },
+        {
+          "issue": 5914,
+          "title": "Added instructions for setting up Clarity Core with the Angular CLI",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5799,
+          "title": "Added clearer description for Core alert errors",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5812,
+          "title": "Fixed broken paths in Core storybook",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5820,
+          "title": "Removed deprecated Clarity Icons documentation from the website",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5875,
+          "title": "Corrected the angular checkbox examples",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5824,
+          "title": "Removed CSS override for cds-text=code examples",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5826,
+          "title": "Updated clr-modal binding description",
+          "project": "Website",
+          "scope": "Documentation"
+        }
+      ]
+    },
+    {
       "version": "5.1.1",
       "date": "2021-04-06",
-      "description": "This is a feature and bug release.",
+      "description": "This is a bug fix release.",
       "feat": [],
       "fix": [
         {

@@ -14,6 +14,8 @@
 
   <cds-button status="success" (click)="show = true">Open Alert</cds-button>
 
+  <cds-tag status="success" readonly>Should not be focusable, readonly</cds-tag>
+
   <section cds-layout="grid cols:6 gap:lg">
     <cds-accordion>
       <cds-accordion-panel [expanded]="panel1Expanded" (expandedChange)="expandedChange($event)">

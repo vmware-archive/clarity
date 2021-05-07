@@ -73,7 +73,7 @@ export class AppComponent {
     return this.form.controls.password.touched && this.form.controls.password.hasError('minlength');
   }
 
-  expandedChange(event): void {
+  expandedChange(event: CustomEvent): void {
     this.panel1Expanded = event.detail;
   }
 

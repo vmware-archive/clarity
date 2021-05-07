@@ -114,8 +114,10 @@ function createDirectives(componentDirectories) {
       const templateData = {
         tagName: tag.name,
         directiveClassName: getDirectiveClassName(tag.name, '', 'Directive'),
-        props: tag.properties,
+        props: tag.properties && tag.properties.map(p => ({ ...p, isBoolean: p.type === 'boolean' })),
+        events: tag.events,
         hasProps: !!tag.properties,
+        hasEvents: !!tag.events,
       };
 
       const directory = getDiretoryName(tag.path);

@@ -186,7 +186,6 @@
   --background: #{$cds-alias-status-disabled-tint};
   --border-color: #{$cds-alias-status-disabled-tint};
   --box-shadow-color: #{$cds-alias-object-opacity-0};
-  --color: #{$cds-alias-status-disabled};
 
   .private-host {
     cursor: not-allowed;
@@ -201,11 +200,13 @@
 
 :host([disabled][action='outline']) {
   --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-disabled};
 }
 
 :host([disabled][action='flat']) {
   --border-color: #{$cds-alias-object-opacity-0};
   --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-disabled};
 }
 
 :host([block]) {

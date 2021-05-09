@@ -70,16 +70,15 @@
 :host([disabled]) {
   ::slotted(cds-badge) {
     --background: #{$cds-alias-object-opacity-0} !important;
-    --border-color: #{$cds-alias-status-disabled} !important;
-    --color: #{$cds-alias-status-disabled} !important;
   }
 }
 
 :host([disabled][status='inverse']),
-:host([disabled][action='outline']) {
+:host([disabled][action='outline']),
+:host([disabled][action='flat']) {
   ::slotted(cds-badge) {
-    --border-color: #{$cds-alias-status-disabled-tint} !important;
-    --color: #{$cds-alias-status-disabled-tint} !important;
+    --border-color: #{$cds-alias-status-disabled} !important;
+    --color: #{$cds-alias-status-disabled} !important;
   }
 }
 

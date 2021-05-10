@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -484,6 +484,7 @@ export default function (): void {
 }
 
 class TestComparator implements ClrDatagridComparatorInterface<number> {
+  // eslint-disable-next-line
   compare(_a: number, _b: number): number {
     return 0;
   }
@@ -494,6 +495,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return true;
   }
 
+  // eslint-disable-next-line
   accepts(_n: number): boolean {
     return true;
   }
@@ -502,6 +504,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
 }
 
 class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
+  // eslint-disable-next-line
   accepts(_n: number, _search: string): boolean {
     return true;
   }
@@ -537,9 +540,7 @@ class SimpleTest {
   template: `
     <clr-dg-column [clrDgField]="field">
       Column title
-      <clr-dg-filter class="my-filter" [clrDgFilter]="filter">
-        Filter content
-      </clr-dg-filter>
+      <clr-dg-filter class="my-filter" [clrDgFilter]="filter"> Filter content </clr-dg-filter>
     </clr-dg-column>
   `,
 })
@@ -565,11 +566,7 @@ class StringFilterTest {
 }
 
 @Component({
-  template: `
-    <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field">
-      Column Title
-    </clr-dg-column>
-  `,
+  template: ` <clr-dg-column [(clrFilterValue)]="filterValue" [clrDgField]="field"> Column Title </clr-dg-column> `,
 })
 class PreFilterTest {
   field: string;
@@ -595,11 +592,7 @@ class UnregisterTest {
 }
 
 @Component({
-  template: `
-    <clr-dg-column [clrDgField]="field" [clrDgColType]="type">
-      Column Title
-    </clr-dg-column>
-  `,
+  template: ` <clr-dg-column [clrDgField]="field" [clrDgColType]="type"> Column Title </clr-dg-column> `,
 })
 class ColTypeTest {
   field: string;

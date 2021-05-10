@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -244,9 +244,7 @@ export default function (): void {
     <clr-vertical-nav-group #group>
       Group
       <clr-vertical-nav-group-children>
-        <a href="#" clrVerticalNavLink>
-          Link
-        </a>
+        <a href="#" clrVerticalNavLink> Link </a>
       </clr-vertical-nav-group-children>
     </clr-vertical-nav-group>
   `,
@@ -261,9 +259,7 @@ class GroupInternalsTestComponent {
       Group
       <ng-template clrIfExpanded>
         <clr-vertical-nav-group-children>
-          <a href="#" clrVerticalNavLink>
-            Link
-          </a>
+          <a href="#" clrVerticalNavLink> Link </a>
         </clr-vertical-nav-group-children>
       </ng-template>
     </clr-vertical-nav-group>
@@ -282,9 +278,7 @@ class IfExpandedTestComponent {
     >
       Group
       <clr-vertical-nav-group-children>
-        <a href="#" clrVerticalNavLink>
-          Link
-        </a>
+        <a href="#" clrVerticalNavLink> Link </a>
       </clr-vertical-nav-group-children>
     </clr-vertical-nav-group>
   `,

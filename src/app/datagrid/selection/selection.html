@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -43,9 +43,7 @@
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn>
-      Favorite color
-    </ng-container>
+    <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of clientNoTrackByUsers" [clrDgItem]="user">
@@ -78,9 +76,7 @@
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn>
-      Favorite color
-    </ng-container>
+    <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of clientTrackByIndexUsers; trackBy: trackByIndex" [clrDgItem]="user">
@@ -113,9 +109,7 @@
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn>
-      Favorite color
-    </ng-container>
+    <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of clientTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
@@ -148,9 +142,7 @@
   <clr-dg-column>Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
-    <ng-container *clrDgHideableColumn>
-      Favorite color
-    </ng-container>
+    <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
   <clr-dg-row *ngFor="let user of serverTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">

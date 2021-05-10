@@ -1,9 +1,7 @@
 <div class="dox-wrapper dox-header" [class.new-component-layout]="useNewLayout">
   <section>
     <h1>{{title}}</h1>
-    <h5 *ngIf="description">
-      {{ description }}
-    </h5>
+    <h5 *ngIf="description">{{ description }}</h5>
 
     <div *ngIf="!useNewLayout" class="component-workstream-bugs">
       <span class="bug bug-html" [class.hidden]="!uiDone && !uiInProgress">

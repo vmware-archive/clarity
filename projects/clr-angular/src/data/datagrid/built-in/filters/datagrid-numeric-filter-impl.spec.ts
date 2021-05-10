@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -77,7 +77,11 @@ export default function (): void {
       it('exposes state', function () {
         fullFilter.high = 10;
         fullFilter.low = null;
-        expect(fullFilter.state).toEqual({ property: 'a.b.c', high: 10, low: null });
+        expect(fullFilter.state).toEqual({
+          property: 'a.b.c',
+          high: 10,
+          low: null,
+        });
       });
 
       it('compares filters', function () {
@@ -111,6 +115,7 @@ class TestFilter implements ClrDatagridNumericFilterInterface<number> {
 }
 
 class IncompatibleFilter implements ClrDatagridFilterInterface<number> {
+  // eslint-disable-next-line
   accepts(_item: number): boolean {
     return true;
   }

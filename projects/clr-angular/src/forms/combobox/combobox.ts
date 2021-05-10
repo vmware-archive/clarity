@@ -78,8 +78,10 @@ import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state
     '[class.clr-combobox-disabled]': 'control?.disabled',
   },
 })
-export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
-  implements ControlValueAccessor, LoadingListener, AfterContentInit {
+export class ClrCombobox<T>
+  extends WrappedFormControl<ClrComboboxContainer>
+  implements ControlValueAccessor, LoadingListener, AfterContentInit
+{
   @ViewChild('textboxInput') textbox: ElementRef;
   @ViewChild('trigger') trigger: ElementRef;
   @ContentChild(ClrOptionSelected) optionSelected: ClrOptionSelected<T>;
@@ -259,8 +261,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   @Output('clrOpenChange') public clrOpenChange: Observable<boolean> = this.toggleService.openChange;
 
   // This output should be used to set up a live region using aria-live and populate it with updates that reflect each combobox change
-  @Output('clrSelectionChange') public clrSelectionChange: Observable<ComboboxModel<T>> = this.optionSelectionService
-    .selectionChanged;
+  @Output('clrSelectionChange') public clrSelectionChange: Observable<ComboboxModel<T>> =
+    this.optionSelectionService.selectionChanged;
 
   private initializeSubscriptions(): void {
     this.subscriptions.push(

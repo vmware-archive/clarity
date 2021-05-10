@@ -13,7 +13,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ClarityModule } from '../projects/clr-angular.module';
+import { ClarityModule } from '../../clr-angular.module';
 import { DisplayModeService } from './providers/display-mode.service';
 import { MockDisplayModeService } from './providers/display-mode.mock';
 import { Selection } from './providers/selection';
@@ -83,7 +83,9 @@ export class TestContext<D, C> {
   }
 
   // The Function type here is just to tell Typescript to be nice with abstract classes. Weird.
+  /* eslint-disable */
   getClarityProvider<T>(token: Type<T> | InjectionToken<T> | Function): T {
+    /* eslint-enable */
     return this.clarityDebugElement.injector.get(token);
   }
 

@@ -77,7 +77,7 @@
             The signpost is above the icon top-{HORIZONTAL_POSITION}
         */
     /***
-            TODO: Create a general mix-in for the poover-pointer that can
+            TODO: Create a general mix-in for the popover-pointer that can
             1. Accomadate all 12 positions
             2. Unification for the nomenclature between components
                 (if possible, I know they all use slightly different terms)
@@ -98,11 +98,23 @@
     &.top-middle,
     &.top-right {
       .popover-pointer {
-        border-top: $clr-signpost-pointer-border;
+        @include css-var(
+          border-top,
+          clr-signpost-pointer-border,
+          $clr-signpost-pointer-border,
+          $clr-use-custom-properties
+        );
+
         bottom: -1 * $clr-signpost-border-size;
 
         &:before {
-          border-top: $clr-signpost-pointer-psuedo-border;
+          @include css-var(
+            border-top,
+            clr-signpost-pointer-psuedo-border,
+            $clr-signpost-pointer-psuedo-border,
+            $clr-use-custom-properties
+          );
+
           bottom: $clr_baselineRem_2px;
         }
       }
@@ -114,11 +126,23 @@
       }
 
       .popover-pointer {
-        border-left: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-left,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         right: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-left: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-left,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           right: $clr_baselineRem_1px;
         }
       }
@@ -126,11 +150,22 @@
 
     &.top-middle {
       .popover-pointer {
-        border-right: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-right,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         left: 50%;
 
         &:before {
-          border-right: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-right,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
           left: $clr_baselineRem_1px;
         }
       }
@@ -142,11 +177,21 @@
       }
 
       .popover-pointer {
-        border-right: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-right,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
         left: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-right: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-right,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
           left: $clr_baselineRem_1px;
         }
       }
@@ -161,11 +206,23 @@
     &.bottom-middle,
     &.bottom-right {
       .popover-pointer {
-        border-bottom: $clr-signpost-pointer-border;
+        @include css-var(
+          border-bottom,
+          clr-signpost-pointer-border,
+          $clr-signpost-pointer-border,
+          $clr-use-custom-properties
+        );
+
         top: -1 * $clr-signpost-border-size + $clr_baselineRem_1px;
 
         &:before {
-          border-bottom: $clr-signpost-pointer-psuedo-border;
+          @include css-var(
+            border-bottom,
+            clr-signpost-pointer-psuedo-border,
+            $clr-signpost-pointer-psuedo-border,
+            $clr-use-custom-properties
+          );
+
           top: $clr_baselineRem_2px;
         }
       }
@@ -177,11 +234,23 @@
       }
 
       .popover-pointer {
-        border-left: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-left,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         right: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-left: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-left,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           right: $clr_baselineRem_1px;
         }
       }
@@ -189,11 +258,23 @@
 
     &.bottom-middle {
       .popover-pointer {
-        border-right: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-right,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         right: 50%;
 
         &:before {
-          border-right: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-right,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           right: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
@@ -205,11 +286,23 @@
       }
 
       .popover-pointer {
-        border-right: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-right,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         left: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-right: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-right,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           left: $clr_baselineRem_1px;
         }
       }
@@ -224,11 +317,22 @@
     &.left-middle,
     &.left-bottom {
       .popover-pointer {
-        border-left: $clr-signpost-pointer-border;
+        @include css-var(
+          border-left,
+          clr-signpost-pointer-border,
+          $clr-signpost-pointer-border,
+          $clr-use-custom-properties
+        );
+
         right: -1 * $clr-signpost-border-size;
 
         &:before {
-          border-left: $clr-signpost-pointer-psuedo-border;
+          @include css-var(
+            border-left,
+            clr-signpost-pointer-psuedo-border,
+            $clr-signpost-pointer-psuedo-border,
+            $clr-use-custom-properties
+          );
         }
       }
     }
@@ -239,11 +343,23 @@
       }
 
       .popover-pointer {
-        border-top: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-top,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-top: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-top,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
           right: $clr_baselineRem_2px;
         }
@@ -252,12 +368,24 @@
 
     &.left-middle {
       .popover-pointer {
-        border-bottom: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-bottom,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         top: 50%;
         transform: translateY(-50%);
 
         &:before {
-          border-bottom: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-bottom,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: $clr_baselineRem_1px;
           left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
@@ -270,11 +398,23 @@
       }
 
       .popover-pointer {
-        border-bottom: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-bottom,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         top: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-bottom: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-bottom,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: $clr_baselineRem_1px;
           left: -1 * $clr-signpost-border-size - $clr_baselineRem_2px;
         }
@@ -290,11 +430,23 @@
     &.right-middle,
     &.right-bottom {
       .popover-pointer {
-        border-right: $clr-signpost-pointer-border;
+        @include css-var(
+          border-right,
+          clr-signpost-pointer-border,
+          $clr-signpost-pointer-border,
+          $clr-use-custom-properties
+        );
+
         left: -1 * $clr-signpost-border-size;
 
         &:before {
-          border-right: $clr-signpost-pointer-psuedo-border;
+          @include css-var(
+            border-right,
+            clr-signpost-pointer-psuedo-border,
+            $clr-signpost-pointer-psuedo-border,
+            $clr-use-custom-properties
+          );
+
           left: $clr_baselineRem_2px;
         }
       }
@@ -306,11 +458,23 @@
       }
 
       .popover-pointer {
-        border-top: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-top,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         bottom: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-top: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-top,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: -1 * $clr-signpost-border-size - $clr_baselineRem_1px;
         }
       }
@@ -318,12 +482,24 @@
 
     &.right-middle {
       .popover-pointer {
-        border-bottom: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-bottom,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         top: 50%;
         transform: translateY(-50%);
 
         &:before {
-          border-bottom: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-bottom,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: $clr_baselineRem_1px;
         }
       }
@@ -335,11 +511,23 @@
       }
 
       .popover-pointer {
-        border-bottom: $clr-signpost-pointer-invisible-border;
+        @include css-var(
+          border-bottom,
+          clr-signpost-pointer-invisible-border,
+          $clr-signpost-pointer-invisible-border,
+          $clr-use-custom-properties
+        );
+
         top: (-1 * $clr_baselineRem_1px);
 
         &:before {
-          border-bottom: $clr-signpost-pointer-invisible-border;
+          @include css-var(
+            border-bottom,
+            clr-signpost-pointer-invisible-border,
+            $clr-signpost-pointer-invisible-border,
+            $clr-use-custom-properties
+          );
+
           top: $clr_baselineRem_1px;
         }
       }

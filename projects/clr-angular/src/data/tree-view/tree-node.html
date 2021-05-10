@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -49,12 +49,8 @@
   <div class="clr-treenode-content" (mousedown)="focusTreeNode()">
     <ng-content></ng-content>
     <div class="clr-sr-only" *ngIf="featuresService.selectable">
-      <span *ngIf="ariaSelected">
-        selected
-      </span>
-      <span *ngIf="!ariaSelected">
-        unselected
-      </span>
+      <span *ngIf="ariaSelected"> selected </span>
+      <span *ngIf="!ariaSelected"> unselected </span>
     </div>
   </div>
 </div>

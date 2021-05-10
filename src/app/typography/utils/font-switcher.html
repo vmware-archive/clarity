@@ -4,7 +4,7 @@
     ~ The full license information can be found in LICENSE in the root directory of this project.
 -->
 
-<form clrForm (submit)="noop()" [formGroup]="presetSwitcher" [clrLayout]="layout" style="padding: 0;">
+<form clrForm (submit)="noop()" [formGroup]="presetSwitcher" [clrLayout]="layout" style="padding: 0">
   <clr-select-container>
     <label>{{label}}</label>
     <select clrSelect formControlName="preset" name="formSwitcherSelect" (change)="handleSwitchFont($event)">

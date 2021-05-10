@@ -24,9 +24,6 @@
     "@cds/core": "^5.0.0",
     "@clr/ui": "^5.0.0"
   },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
   "schematics": "./schematics/collection.json",
   "ng-update": {
     "migrations": "./schematics/migration-collection.json",

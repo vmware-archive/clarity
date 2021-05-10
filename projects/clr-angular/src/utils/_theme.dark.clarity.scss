@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -33,6 +33,27 @@
  * Where possible, there is a list files affected by the variable.
  */
 $clr-use-custom-properties: false;
+
+/*********
+ * Baseline Rem Variables
+ */
+
+$clr-baseline-int: 24 !default; // used by design for relational sizing
+$clr-baseline-denominator: 20 !default; // used in code to reduce impact of browser rounding
+
+@function convertBaselineToBase20($size: 24) {
+  $clr-baseline-to-basefontsize-multiplier: $clr-baseline-int/$clr-baseline-denominator;
+  @return $size/$clr-baseline-int * $clr-baseline-to-basefontsize-multiplier * 1rem;
+}
+
+// Core rem values
+$clr_baselineRem_0_125: convertBaselineToBase20(3); // 3px
+$clr_baselineRem_0_25: convertBaselineToBase20(6); // 6px
+$clr_baselineRem_0_5: convertBaselineToBase20(12); // 12px
+
+// Pixel-based utilities
+$clr_baselineRem_1px: convertBaselineToBase20(1);
+$clr_baselineRem_2px: convertBaselineToBase20(2);
 
 /*********
  * $clr-global-app-background
@@ -333,7 +354,7 @@ $clr-btn-inverse-disabled-border-color: $clr-btn-disabled-border-color; // disab
 $clr-card-bg-color: hsl(198, 28%, 18%);
 $clr-card-border-color: hsl(203, 30%, 8%);
 $clr-card-title-color: hsl(210, 16%, 93%);
-$clr-card-box-shadow: 0 0.15rem 0 0 $clr-card-border-color;
+$clr-card-box-shadow: 0 $clr_baselineRem_0_125 0 0 $clr-card-border-color;
 $clr-card-divider-color: $clr-card-border-color;
 // END: Card
 
@@ -446,7 +467,7 @@ $clr-forms-select-option-color: hsl(201, 30%, 13%); // Option bg color on chrome
 // Checkbox
 $clr-forms-checkbox-label-color: hsl(203, 16%, 72%);
 $clr-forms-checkbox-background-color: hsl(198, 65%, 57%); // Use color here
-$clr-forms-checkbox-checked-shadow: inset 0 0 0 0.3rem $clr-forms-checkbox-background-color;
+$clr-forms-checkbox-checked-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-forms-checkbox-background-color;
 $clr-forms-checkbox-indeterminate-border-color: hsl(203, 16%, 72%);
 $clr-forms-checkbox-mark-color: hsl(0, 0%, 0%);
 $clr-forms-checkbox-disabled-background-color: hsl(204, 10%, 60%);
@@ -455,7 +476,7 @@ $clr-forms-checkbox-disabled-mark-color: hsl(0, 0%, 0%);
 // Radio
 $clr-forms-radio-label-color: hsl(203, 16%, 72%);
 $clr-forms-radio-selected-shadow: $clr-forms-checkbox-checked-shadow;
-$clr-forms-radio-focused-shadow: 0 0 0.1rem 0.1rem $clr-link-active-color;
+$clr-forms-radio-focused-shadow: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-link-active-color;
 $clr-forms-radio-disabled-background-color: hsl(0, 0%, 0%);
 $clr-forms-radio-disabled-mark-color: $clr-forms-checkbox-disabled-mark-color;
 $clr-forms-radio-disabled-shadow: $clr-forms-checkbox-checked-shadow;
@@ -470,7 +491,7 @@ $clr-combobox-input-background-color: hsl(198, 28%, 18%);
 $clr-combobox-pill-background-color: hsl(201, 30%, 15%);
 $clr-combobox-pill-border-color: hsl(208, 16%, 34%);
 $clr-combobox-pill-font-color: hsl(0, 0%, 75%);
-$clr-combobox-filter-highlight: hsl(198, 16, 93%);
+$clr-combobox-filter-highlight: hsl(198, 16%, 93%);
 
 /**********
   * Header
@@ -555,7 +576,7 @@ $clr-login-background: '%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22
   */
 $clr-modal-close-color: hsl(203, 16%, 72%);
 $clr-modal-bg-color: hsl(198, 28%, 18%);
-$clr-modal-backdrop-color: hsla(0, 0, 0, 0.85);
+$clr-modal-backdrop-color: hsla(0, 0%, 0%, 0.85);
 // END Modal
 
 /***************
@@ -591,7 +612,7 @@ $clr-sidenav-border-color: hsl(200, 30%, 12%);
 $clr-sidenav-link-hover-color: $clr-global-selection-color;
 
 $clr-subnav-bgColor: hsl(201, 30%, 13%);
-$clr-nav-shadow: 0 -0.05rem 0 hsl(208, 16%, 34%) inset;
+$clr-nav-shadow: 0 (-1 * $clr_baselineRem_1px) 0 hsl(208, 16%, 34%) inset;
 // END Nav
 
 /**************
@@ -618,7 +639,7 @@ $clr-signpost-action-color: hsl(210, 16%, 93%);
 $clr-signpost-action-hover-color: hsl(198, 65%, 57%);
 $clr-signpost-content-bg-color: hsl(198, 28%, 18%);
 $clr-signpost-content-border-color: hsl(0, 0%, 0%);
-$clr-signpost-border-size: 0.5rem;
+$clr-signpost-border-size: $clr_baselineRem_0_5;
 $clr-signpost-pointer-border: $clr-signpost-border-size solid $clr-signpost-content-border-color;
 $clr-signpost-pointer-invisible-border: $clr-signpost-border-size solid transparent;
 $clr-signpost-pointer-psuedo-border: $clr-signpost-border-size solid $clr-signpost-content-bg-color;
@@ -679,7 +700,7 @@ $clr-table-footer-border-top-color: $clr-datagrid-default-border-color;
 $clr-tablerow-bordercolor: $clr-datagrid-default-border-color;
 $clr-table-border-color: $clr-datagrid-default-border-color;
 $clr-table-bordercolor: $clr-datagrid-default-border-color;
-$clr-table-borderstyle: 0.05rem solid $clr-datagrid-default-border-color;
+$clr-table-borderstyle: $clr_baselineRem_1px solid $clr-datagrid-default-border-color;
 // END: Table
 
 /**********

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -18,9 +18,7 @@ import { TooltipIdService } from './providers/tooltip-id.service';
 @Component({
   template: `
     <clr-tooltip>
-      <clr-tooltip-content [clrPosition]="position" [clrSize]="size">
-        Hello world
-      </clr-tooltip-content>
+      <clr-tooltip-content [clrPosition]="position" [clrSize]="size"> Hello world </clr-tooltip-content>
     </clr-tooltip>
   `,
 })
@@ -34,9 +32,7 @@ class SimpleTest {
 @Component({
   template: `
     <clr-tooltip>
-      <clr-tooltip-content [id]="idValue">
-        Hello world
-      </clr-tooltip-content>
+      <clr-tooltip-content [id]="idValue"> Hello world </clr-tooltip-content>
     </clr-tooltip>
   `,
 })

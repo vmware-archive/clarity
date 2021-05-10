@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -10,15 +10,13 @@
     </h5>
 
     <div id="design-guidelines">
-      <h2 id="guidelines" style="margin-top: 48px;">Design Guidelines</h2>
+      <h2 id="guidelines" style="margin-top: 48px">Design Guidelines</h2>
 
       <p>
         Wizards are used to help users walk through a defined step-by-step process. Each step is in the sidebar on the
         left. As users complete steps, the steps are marked with a green bar to the left.
       </p>
-      <p>
-        Wizards should have at least 2 steps. If your wizard exceeds 10 steps, consider combining similar steps.
-      </p>
+      <p>Wizards should have at least 2 steps. If your wizard exceeds 10 steps, consider combining similar steps.</p>
       <p>Here is when you might want to use a wizard over just a normal form:</p>
       <ul class="list">
         <li>if the user is <b>not familiar with the domain knowledge</b> needed to complete a process</li>
@@ -80,9 +78,9 @@
 
       <clr-wizard-design-size-demo class="modal-size-design-demo"></clr-wizard-design-size-demo>
 
-      <div class="clr-row" style="margin-top: 48px;">
+      <div class="clr-row" style="margin-top: 48px">
         <div class="clr-col-md-6 clr-col-12">
-          <h3 id="step-indicators" style="margin: 21px 0 24px;">Step Indicators</h3>
+          <h3 id="step-indicators" style="margin: 21px 0 24px">Step Indicators</h3>
           <ul class="list">
             <li>Current step is indicated by a row-selected blue background</li>
             <li>Complete steps are indicated by a green bar to the left</li>
@@ -90,7 +88,7 @@
         </div>
         <div class="clr-col-md-6 clr-col-12">
           <div class="clrweb-DoxMedia is-figure">
-            <div class="clrweb-DoxMedia-block" style="height: 235px;">
+            <div class="clrweb-DoxMedia-block" style="height: 235px">
               <div class="clrweb-DoxMedia-img">
                 <img
                   class="clrweb-Img"
@@ -100,9 +98,7 @@
               </div>
             </div>
             <div class="clrweb-DoxMedia-text">
-              <p>
-                Completed steps are highlighted with a green bar to the left.
-              </p>
+              <p>Completed steps are highlighted with a green bar to the left.</p>
             </div>
           </div>
         </div>
@@ -131,18 +127,14 @@
         the next step to be completed. Otherwise, users might lose context of what change was made.
       </p>
 
-      <div class="clr-row" style="margin-top: 48px;">
+      <div class="clr-row" style="margin-top: 48px">
         <div class="clr-col-md-6 clr-col-12">
-          <h3 id="dismissing" style="margin: 21px 0 24px;">Dismissing Wizard</h3>
+          <h3 id="dismissing" style="margin: 21px 0 24px">Dismissing Wizard</h3>
           <ul class="list">
-            <li>
-              A user needs to actively dismiss a wizard. A wizard should not disappear on its own
-            </li>
-            <li>
-              Completing all of the steps or cancelling should dismiss the wizard
-            </li>
+            <li>A user needs to actively dismiss a wizard. A wizard should not disappear on its own</li>
+            <li>Completing all of the steps or cancelling should dismiss the wizard</li>
           </ul>
-          <div class="alert alert-warning" style="margin-top: 21px;">
+          <div class="alert alert-warning" style="margin-top: 21px">
             <div class="alert-items">
               <div class="alert-item static">
                 <div class="alert-icon-wrapper">
@@ -158,7 +150,7 @@
         </div>
         <div class="clr-col-md-6 clr-col-12">
           <div class="clrweb-DoxMedia is-figure">
-            <div class="clrweb-DoxMedia-block" style="height: 235px;">
+            <div class="clrweb-DoxMedia-block" style="height: 235px">
               <div class="clrweb-DoxMedia-img">
                 <img
                   class="clrweb-Img"
@@ -178,9 +170,7 @@
       </div>
 
       <h3 id="error-validation">Error Validation</h3>
-      <p>
-        Enhancement to the wizard component to add an error state to the wizard step states.
-      </p>
+      <p>Enhancement to the wizard component to add an error state to the wizard step states.</p>
 
       <h6>Wizard step states:</h6>
       <ul>
@@ -394,9 +384,7 @@
         button was clicked.
       </p>
 
-      <p>
-        Reference the following example:
-      </p>
+      <p>Reference the following example:</p>
 
       <clr-wizard-custom-buttons></clr-wizard-custom-buttons>
 
@@ -409,9 +397,7 @@
         <code class="clr-code">&lt;clr-wizard-page&gt;</code> to the form’s valid property as shown in the example.
       </p>
 
-      <p>
-        Note also in the example how the text of the third step nav item changes as the form is validated.
-      </p>
+      <p>Note also in the example how the text of the third step nav item changes as the form is validated.</p>
 
       <clr-wizard-form-validation></clr-wizard-form-validation>
 
@@ -458,9 +444,7 @@
         <code class="clr-code">clrWizardDisableStepnav</code> is set to <code class="clr-code">true</code>, it only
         disables the links in the stepnav on the left of the wizard. Buttons still work.
       </p>
-      <p>
-        Examples of when and how to use both are demonstrated in the following example.
-      </p>
+      <p>Examples of when and how to use both are demonstrated in the following example.</p>
 
       <clr-wizard-stop-navigation></clr-wizard-stop-navigation>
 

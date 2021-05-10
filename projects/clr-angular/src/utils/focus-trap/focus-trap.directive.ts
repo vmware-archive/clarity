@@ -166,7 +166,7 @@ export class FocusTrapDirective implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private focusElement(el: HTMLElement): HTMLElement | null {
+  private focusElement(el: HTMLElement): HTMLElement {
     if (el && el.focus) {
       el.focus();
       if (document.activeElement === el) {

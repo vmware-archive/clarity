@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -237,9 +237,7 @@ export default function () {
         [clrAlertAppLevel]="true"
       >
         <div class="alert-item">
-          <span class="alert-text">
-            This is the first alert!
-          </span>
+          <span class="alert-text"> This is the first alert! </span>
         </div>
       </clr-alert>
       <clr-alert
@@ -249,9 +247,7 @@ export default function () {
         [clrAlertAppLevel]="true"
       >
         <div class="alert-item">
-          <span class="alert-text">
-            This is the second alert!
-          </span>
+          <span class="alert-text"> This is the second alert! </span>
         </div>
       </clr-alert>
     </clr-alerts>
@@ -274,9 +270,7 @@ class TestComponent {
         [clrAlertAppLevel]="true"
       >
         <clr-alert-item>
-          <span class="alert-text">
-            This is the first alert!
-          </span>
+          <span class="alert-text"> This is the first alert! </span>
         </clr-alert-item>
       </clr-alert>
       <clr-alert
@@ -286,9 +280,7 @@ class TestComponent {
         [clrAlertAppLevel]="true"
       >
         <clr-alert-item>
-          <span class="alert-text">
-            This is the second alert!
-          </span>
+          <span class="alert-text"> This is the second alert! </span>
         </clr-alert-item>
       </clr-alert>
     </clr-alerts>

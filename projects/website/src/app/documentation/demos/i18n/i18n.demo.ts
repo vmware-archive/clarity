@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -95,39 +95,32 @@ export class I18nDemo extends ClarityDocComponent {
     },
     {
       key: 'datepickerSelectMonthText',
-      role:
-        'Populates aria-label and title for monthpicker button. Is concatenated with the (localized) value for calendarMonth as well as this value',
+      role: 'Populates aria-label and title for monthpicker button. Is concatenated with the (localized) value for calendarMonth as well as this value',
     },
     {
       key: 'datepickerSelectYearText',
-      role:
-        'Populates aria-label and title for yearpicker button. Is concatenated with the (localized) value for calendarYear as well as this value',
+      role: 'Populates aria-label and title for yearpicker button. Is concatenated with the (localized) value for calendarYear as well as this value',
     },
     {
       key: 'daypickerSRCurrentMonthPhrase',
-      role:
-        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the month changes.',
+      role: 'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the month changes.',
     },
     {
       key: 'daypickerSRCurrentYearPhrase',
-      role:
-        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the year changes.',
+      role: 'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the year changes.',
     },
     {
       key: 'daypickerSRCurrentDecadePhrase',
-      role:
-        'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the decade changes.',
+      role: 'Used in an aria-live region. Makes up one part of a phrase that is read to screen reader users when the decade changes.',
     },
     { key: 'stackViewChanged', role: 'Stack View: describes a particular stack block has changed' },
     {
       key: 'verticalNavToggle',
-      role:
-        'Applies expanded/collapsed state to an aria-expanded attribute for screen readers when vertical nav button  expands/collapses the entire menu',
+      role: 'Applies expanded/collapsed state to an aria-expanded attribute for screen readers when vertical nav button  expands/collapses the entire menu',
     },
     {
       key: 'verticalNavGroupToggle',
-      role:
-        'Applies the expanded/collapsed state to an aria-expanded attribute for screen readers whenever vertical nav group buttons are expanded/collapsed',
+      role: 'Applies the expanded/collapsed state to an aria-expanded attribute for screen readers whenever vertical nav group buttons are expanded/collapsed',
     },
     {
       key: 'signpostToggle',

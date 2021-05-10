@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,11 +16,7 @@ import { UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.servic
 import { TooltipIdService } from './providers/tooltip-id.service';
 
 @Component({
-  template: `
-    <span clrTooltipTrigger [attr.aria-label]="ariaLabel">
-      Hello world
-    </span>
-  `,
+  template: ` <span clrTooltipTrigger [attr.aria-label]="ariaLabel"> Hello world </span> `,
 })
 class SimpleTest {
   ariaLabel = 'Uniq aria label';

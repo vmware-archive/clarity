@@ -108,9 +108,7 @@ export default function (): void {
 
 @Component({
   template: ` <div>
-    <div class="outside-click-test">
-      This is an area outside of the action overflow
-    </div>
+    <div class="outside-click-test">This is an area outside of the action overflow</div>
     <clr-dg-action-overflow
       [(clrDgActionOverflowOpen)]="open"
       (clrDgActionOverflowOpenChange)="clrDgActionOverflowOpenChangeFn($event)"
@@ -120,6 +118,7 @@ export default function (): void {
   </div>`,
 })
 class SimpleTest {
+  // eslint-disable-next-line
   clrDgActionOverflowOpenChangeFn = (_$event: boolean) => {
     // Do nothing
   };

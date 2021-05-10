@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -55,9 +55,7 @@
     </form>
   </clr-wizard-page>
   <clr-wizard-page [clrWizardPagePreventDefaultNext]="true" (clrWizardPageOnCommit)="onCommit()">
-    <ng-template clrPageTitle>
-      Validate your information
-    </ng-template>
+    <ng-template clrPageTitle> Validate your information </ng-template>
     <ng-template clrPageNavTitle>
       <span *ngIf="!readyToFinish">Validate Info</span>
       <span *ngIf="readyToFinish">Ready to Go!</span>
@@ -76,8 +74,6 @@
       </div>
     </ng-container>
 
-    <p *ngIf="readyToFinish">
-      Click on the OK button to close the wizard.
-    </p>
+    <p *ngIf="readyToFinish">Click on the OK button to close the wizard.</p>
   </clr-wizard-page>
 </clr-wizard>

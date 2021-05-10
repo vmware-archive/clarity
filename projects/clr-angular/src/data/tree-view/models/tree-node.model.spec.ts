@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -59,7 +59,7 @@ export default function (): void {
 
     it('emits selection changes only when it actually changes', function () {
       let nbChanges = 0;
-      child.selected.subscribe(_ => nbChanges++);
+      child.selected.subscribe(() => nbChanges++);
       // BehaviorSubject sends us the first state on subscription
       expect(nbChanges).toBe(1);
       child.setSelected(ClrSelectedState.UNSELECTED, false, false);

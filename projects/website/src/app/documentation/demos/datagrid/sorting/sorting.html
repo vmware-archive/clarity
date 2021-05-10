@@ -19,16 +19,12 @@
   two elements being compared, then:
 </p>
 <ul>
-  <li>
-    if compare(a, b) is less than 0, a comes first,
-  </li>
+  <li>if compare(a, b) is less than 0, a comes first,</li>
   <li>
     if compare(a, b) returns 0, leave a and b unchanged with respect to each other, but sorted with respect to all other
     items,
   </li>
-  <li>
-    if compare(a, b) is greater than 0, b comes first.
-  </li>
+  <li>if compare(a, b) is greater than 0, b comes first.</li>
 </ul>
 <p>
   The safest way to check that your types comply with our API is to have your comparator be an instance of a class that
@@ -40,9 +36,7 @@
       <div class="alert-icon-wrapper">
         <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
       </div>
-      <span class="alert-text">
-        Why use an object instead of the function directly?
-      </span>
+      <span class="alert-text"> Why use an object instead of the function directly? </span>
       <br />
       <span>
         Using an object implementing an interface allows strong type-checking, which is safer for your application. If
@@ -69,15 +63,9 @@
   >.
 </p>
 <p>
-  <button class="btn btn-secondary" (click)="sortOrder = 1" [disabled]="sortOrder === 1">
-    Sort ascendingly
-  </button>
-  <button class="btn btn-secondary" (click)="sortOrder = -1" [disabled]="sortOrder === -1">
-    Sort descendingly
-  </button>
-  <button class="btn btn-secondary" (click)="sortOrder = 0" [disabled]="sortOrder === 0">
-    Clear sort
-  </button>
+  <button class="btn btn-secondary" (click)="sortOrder = 1" [disabled]="sortOrder === 1">Sort ascendingly</button>
+  <button class="btn btn-secondary" (click)="sortOrder = -1" [disabled]="sortOrder === -1">Sort descendingly</button>
+  <button class="btn btn-secondary" (click)="sortOrder = 0" [disabled]="sortOrder === 0">Clear sort</button>
 </p>
 <clr-datagrid>
   <clr-dg-column>User ID</clr-dg-column>
@@ -110,9 +98,7 @@
 </p>
 <p>
   The datagrid is currently {{sorted ? "" : "not"}} sorted.
-  <button class="btn btn-secondary" (click)="sorted = !sorted">
-    {{sorted ? "Clear sort" : "Sort"}}
-  </button>
+  <button class="btn btn-secondary" (click)="sorted = !sorted">{{sorted ? "Clear sort" : "Sort"}}</button>
 </p>
 <clr-datagrid>
   <clr-dg-column>User ID</clr-dg-column>
@@ -155,9 +141,7 @@
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
-  <clr-dg-column>
-    Pokemon
-  </clr-dg-column>
+  <clr-dg-column> Pokemon </clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let user of users">

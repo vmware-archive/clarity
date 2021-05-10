@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -53,9 +53,7 @@
   <clr-dg-column>User ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
   <clr-dg-column [clrDgField]="'creation'">
-    <ng-container *clrDgHideableColumn="{hidden: date}">
-      Creation date
-    </ng-container>
+    <ng-container *clrDgHideableColumn="{hidden: date}"> Creation date </ng-container>
   </clr-dg-column>
   <clr-dg-column [clrDgField]="'pokemon.name'">Pokemon</clr-dg-column>
   <clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
@@ -109,9 +107,7 @@
     <clr-dg-cell>{{ user.name }}</clr-dg-cell>
     <clr-dg-cell>{{ user.pokemon.name }}</clr-dg-cell>
     <ng-container *ngIf="i % 2" ngProjectAs="clr-dg-row-detail">
-      <clr-dg-row-detail *clrIfExpanded>
-        Lorem ipsum...{{user|json}}
-      </clr-dg-row-detail>
+      <clr-dg-row-detail *clrIfExpanded> Lorem ipsum...{{user|json}} </clr-dg-row-detail>
     </ng-container>
   </clr-dg-row>
 

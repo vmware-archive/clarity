@@ -48,7 +48,6 @@ export default function () {
 
     @Injectable()
     class MockNgControlService extends NgControlService {
-      // @ts-ignore
       setControl = setControlSpy;
     }
 
@@ -76,7 +75,12 @@ export default function () {
       beforeEach(function () {
         TestBed.overrideComponent(ClrDateContainer, {
           set: {
-            providers: [{ provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService }],
+            providers: [
+              {
+                provide: DatepickerEnabledService,
+                useClass: MockDatepickerEnabledService,
+              },
+            ],
           },
         });
 
@@ -452,7 +456,12 @@ export default function () {
 
         TestBed.overrideComponent(ClrDateContainer, {
           set: {
-            providers: [{ provide: DatepickerEnabledService, useClass: MockDatepickerEnabledService }],
+            providers: [
+              {
+                provide: DatepickerEnabledService,
+                useClass: MockDatepickerEnabledService,
+              },
+            ],
           },
         });
 

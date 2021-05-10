@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -9,30 +9,18 @@
   <clr-tree>
     <clr-tree-node [(clrSelected)]="eager.consistent.unselected.parent">
       Not selected
-      <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child1">
-        Not selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child2">
-        Not selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child1"> Not selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.unselected.child2"> Not selected </clr-tree-node>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="eager.consistent.selected.parent">
       Selected
-      <clr-tree-node [(clrSelected)]="eager.consistent.selected.child1">
-        Selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.consistent.selected.child2">
-        Selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.selected.child1"> Selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.selected.child2"> Selected </clr-tree-node>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.parent">
       Indeterminate
-      <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child1">
-        Selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child2">
-        Not selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child1"> Selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.consistent.indeterminate.child2"> Not selected </clr-tree-node>
     </clr-tree-node>
   </clr-tree>
 </div>
@@ -42,30 +30,18 @@
   <clr-tree>
     <clr-tree-node>
       Not selected
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child1">
-        Not selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child2">
-        Not selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child1"> Not selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.unselected.child2"> Not selected </clr-tree-node>
     </clr-tree-node>
     <clr-tree-node>
       Selected
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child1">
-        Selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child2">
-        Selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child1"> Selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.selected.child2"> Selected </clr-tree-node>
     </clr-tree-node>
     <clr-tree-node>
       Indeterminate
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child1">
-        Selected
-      </clr-tree-node>
-      <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child2">
-        Not selected
-      </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child1"> Selected </clr-tree-node>
+      <clr-tree-node [(clrSelected)]="eager.childrenOnly.indeterminate.child2"> Not selected </clr-tree-node>
     </clr-tree-node>
   </clr-tree>
 </div>
@@ -116,34 +92,22 @@
     <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.parent">
       Not selected
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child1">
-          Not selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child2">
-          Not selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child1"> Not selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.unselected.child2"> Not selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="lazy.consistent.selected.parent">
       Selected
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child1">
-          Selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child2">
-          Selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child1"> Selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.selected.child2"> Selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.parent">
       Indeterminate
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child1">
-          Selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child2">
-          Not selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child1"> Selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.consistent.indeterminate.child2"> Not selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
   </clr-tree>
@@ -161,34 +125,22 @@
     <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.parent">
       Indeterminate, I'm lazy and I take things literally
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child1">
-          Not selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child2">
-          Not selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child1"> Not selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.unselected.child2"> Not selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.parent">
       Unselected, I'm lazy and I take things literally
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child1">
-          Selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child2">
-          Selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child1"> Selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.selected.child2"> Selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
     <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.parent">
       Selected, I'm lazy and I take things literally
       <ng-template clrIfExpanded>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child1">
-          Selected
-        </clr-tree-node>
-        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child2">
-          Not selected
-        </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child1"> Selected </clr-tree-node>
+        <clr-tree-node [(clrSelected)]="lazy.inconsistent.indeterminate.child2"> Not selected </clr-tree-node>
       </ng-template>
     </clr-tree-node>
   </clr-tree>

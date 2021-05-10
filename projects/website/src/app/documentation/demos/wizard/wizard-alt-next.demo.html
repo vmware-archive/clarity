@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -58,9 +58,7 @@
   <clr-wizard-page>
     <ng-template clrPageTitle>Wizard level alt-next and the finish button</ng-template>
     <clr-alert *ngIf="errorFlag" clrAlertType="danger">
-      <clr-alert-item>
-        Your sequence should be 1, 2, 3, 5, 8.
-      </clr-alert-item>
+      <clr-alert-item> Your sequence should be 1, 2, 3, 5, 8. </clr-alert-item>
     </clr-alert>
 
     <ng-container *ngIf="!errorFlag">

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -36,7 +36,7 @@ export class DropdownFocusHandler implements FocusableItem {
     }
   }
 
-  private _unlistenFuncs: Function[] = [];
+  private _unlistenFuncs: (() => void)[] = [];
 
   /**
    * If the dropdown was opened by clicking on the trigger, we automatically move to the first item
@@ -205,7 +205,7 @@ export class DropdownFocusHandler implements FocusableItem {
   }
 
   ngOnDestroy() {
-    this._unlistenFuncs.forEach((unlisten: Function) => unlisten());
+    this._unlistenFuncs.forEach(unlisten => unlisten());
     this.focusService.detachListeners();
   }
 }

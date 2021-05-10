@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -339,17 +339,13 @@ describe('FocusTrap', () => {
 @Component({
   template: `
     <form clrFocusTrap *ngIf="mainFocusTrap" id="main-focus-trap">
-      <button id="first">
-        Button to test first input
-      </button>
+      <button id="first">Button to test first input</button>
       <input type="text" />
       <select>
         <option value="1">1</option>
         <option value="2">2</option>
       </select>
-      <button id="last">
-        Last Input
-      </button>
+      <button id="last">Last Input</button>
 
       <div id="levelOneFocusTrap" clrFocusTrap *ngIf="level1 === true">
         <button id="levelOneButton">Level 1</button>

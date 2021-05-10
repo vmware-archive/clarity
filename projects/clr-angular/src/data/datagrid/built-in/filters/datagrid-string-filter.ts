@@ -32,8 +32,10 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
     </clr-dg-filter>
   `,
 })
-export class DatagridStringFilter<T = any> extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
-  implements CustomFilter, AfterViewInit, OnDestroy {
+export class DatagridStringFilter<T = any>
+  extends DatagridFilterRegistrar<T, DatagridStringFilterImpl<T>>
+  implements CustomFilter, AfterViewInit, OnDestroy
+{
   private subs: Subscription[] = [];
   constructor(
     filters: FiltersProvider<T>,

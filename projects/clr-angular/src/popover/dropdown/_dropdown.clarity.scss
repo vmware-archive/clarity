@@ -41,7 +41,7 @@
       // This results in a different top value.
       cds-icon[shape^='angle'] {
         position: absolute;
-        top: 45%;
+        top: 35%;
         color: inherit;
         @include equilateral($clr-dropdown-caret-icon-dimension);
       }

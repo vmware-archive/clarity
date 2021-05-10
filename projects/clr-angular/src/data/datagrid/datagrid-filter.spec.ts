@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -162,9 +162,8 @@ export default function (): void {
 
       it('has a button with the correct common string for datagridFilterAriaLabel', function () {
         const toggle: HTMLButtonElement = context.clarityElement.querySelector('.datagrid-filter-toggle');
-        const commonStrings: ClrCommonStringsService = context.fixture.debugElement.injector.get(
-          ClrCommonStringsService
-        );
+        const commonStrings: ClrCommonStringsService =
+          context.fixture.debugElement.injector.get(ClrCommonStringsService);
         expect(toggle.getAttribute('aria-label')).toBe(commonStrings.keys.datagridFilterAriaLabel);
       });
 
@@ -208,6 +207,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return this.active;
   }
 
+  // eslint-disable-next-line
   accepts(_n: number): boolean {
     return true;
   }
@@ -229,6 +229,7 @@ class FullTest {
   filter: ClrDatagridFilterInterface<number>;
   open = false;
 
+  // eslint-disable-next-line
   clrDgFilterOpenChangeFn = (_$event: boolean) => {
     // Do nothing
   };

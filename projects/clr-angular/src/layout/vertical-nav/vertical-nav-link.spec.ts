@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -95,9 +95,7 @@ export default function (): void {
 
 @Component({
   template: `
-    <a href="#" clrVerticalNavLink id="link1">
-      Text
-    </a>
+    <a href="#" clrVerticalNavLink id="link1"> Text </a>
     <a href="#" clrVerticalNavLink id="link2">
       <cds-icon shape="home" clrVerticalNavIcon></cds-icon>
       Icon Text
@@ -111,16 +109,10 @@ class TestComponent {}
   template: `
     <clr-vertical-nav-group #group>
       Group
-      <a href="#" clrVerticalNavLink id="link1" #link>
-        Link 1
-      </a>
-      <a href="#" clrVerticalNavLink id="link2">
-        Link 2
-      </a>
+      <a href="#" clrVerticalNavLink id="link1" #link> Link 1 </a>
+      <a href="#" clrVerticalNavLink id="link2"> Link 2 </a>
     </clr-vertical-nav-group>
-    <a href="#" clrVerticalNavLink id="link3">
-      Link 3
-    </a>
+    <a href="#" clrVerticalNavLink id="link3"> Link 3 </a>
   `,
   providers: [VerticalNavService, VerticalNavIconService, VerticalNavGroupRegistrationService],
 })

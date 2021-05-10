@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -14,17 +14,13 @@
             <h4>{{palette.name}} color</h4>
             <ng-container *ngFor="let color of palette.weights">
               <p class="card-swatch" [style.background]="color.hsl">
-                <span [style.color]="color.on">
-                  $clr-color-{{palette.name}}-{{color.weight}}
-                </span>
+                <span [style.color]="color.on"> $clr-color-{{palette.name}}-{{color.weight}} </span>
               </p>
             </ng-container>
             <h4>{{palette.name}} color ON</h4>
             <ng-container *ngFor="let color of palette.weights">
               <p class="card-swatch" [style.background]="color.on">
-                <span [style.color]="color.hsl">
-                  $clr-color-{{palette.name}}-{{color.weight}}
-                </span>
+                <span [style.color]="color.hsl"> $clr-color-{{palette.name}}-{{color.weight}} </span>
               </p>
             </ng-container>
           </div>

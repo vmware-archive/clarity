@@ -43,8 +43,10 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
     </clr-dg-filter>
   `,
 })
-export class DatagridNumericFilter<T = any> extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>>
-  implements CustomFilter, AfterViewInit {
+export class DatagridNumericFilter<T = any>
+  extends DatagridFilterRegistrar<T, DatagridNumericFilterImpl<T>>
+  implements CustomFilter, AfterViewInit
+{
   constructor(
     filters: FiltersProvider<T>,
     private domAdapter: DomAdapter,

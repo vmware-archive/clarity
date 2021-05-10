@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -230,16 +230,10 @@ export default function (): void {
 
 @Component({
   template: `
-    <button #outsideClick type="button">
-      Button to test clicks outside of the dropdown component
-    </button>
+    <button #outsideClick type="button">Button to test clicks outside of the dropdown component</button>
     <clr-signpost>
-      <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
-        Custom trigger
-      </button>
-      <clr-signpost-content *clrIfOpen="openState">
-        Signpost content
-      </clr-signpost-content>
+      <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>Custom trigger</button>
+      <clr-signpost-content *clrIfOpen="openState"> Signpost content </clr-signpost-content>
     </clr-signpost>
   `,
 })
@@ -255,14 +249,10 @@ class TestCustomTriggerSignpost {
 
 @Component({
   template: `
-    <button #outsideClick type="button">
-      Button to test clicks outside of the dropdown component
-    </button>
+    <button #outsideClick type="button">Button to test clicks outside of the dropdown component</button>
     <clr-signpost>
       <clr-signpost-content *clrIfOpen="openState">
-        <button class="dummy-button" type="button">
-          dummy button
-        </button>
+        <button class="dummy-button" type="button">dummy button</button>
         Signpost content
       </clr-signpost-content>
     </clr-signpost>

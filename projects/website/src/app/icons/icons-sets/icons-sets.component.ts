@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -58,15 +58,16 @@ export class IconsSetsComponent implements AfterViewInit, OnDestroy {
   initialHeight: number;
 
   // Window Resize Event to be used for cancelling the event
-  windowResizeEvent: Function;
+  windowResizeEvent: () => void;
 
   // A "received" object value that comes when users adjust the preview settings for icons
   previewClasses: any;
 
   // When jumping to a fragment, leverage some space between window top and the fragment
-  fragmentOffset: number = 192;
+  fragmentOffset = 192;
 
-  @ViewChildren(FragmentContentComponent) fragmentContentElRef: QueryList<FragmentContentComponent>;
+  @ViewChildren(FragmentContentComponent)
+  fragmentContentElRef: QueryList<FragmentContentComponent>;
 
   sets: any = ICONS_INVENTORY;
   setNames: string[] = Object.keys(this.sets);

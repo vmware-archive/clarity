@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -13,49 +13,37 @@
   <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
 </div>
 
-<div style="width: 400px; display: inline-block;">
+<div style="width: 400px; display: inline-block">
   <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
 </div>
 
-<div style="width: 300px; display: inline-block; margin-left: 0.5rem;">
+<div style="width: 300px; display: inline-block; margin-left: 0.5rem">
   <ng-container [ngTemplateOutlet]="grid" [ngTemplateOutletContext]="{static: static, compact: compact}"></ng-container>
 </div>
 
 <ng-template #grid let-static="static" let-compact="compact">
   <clr-datagrid [(clrDgSelected)]="selected" [style.max-height.px]="250" [class.datagrid-compact]="compact">
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        User ID
-      </ng-container>
+      <ng-container *clrDgHideableColumn> User ID </ng-container>
     </clr-dg-column>
     <clr-dg-column>
       <!--Name-->
-      <ng-container *clrDgHideableColumn>
-        Name
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Name </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Creation date
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Creation date </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Pokemon
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Pokemon </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Favorite color
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Favorite color </ng-container>
     </clr-dg-column>
 
     <clr-dg-placeholder>No users found</clr-dg-placeholder>
 
     <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
-      <clr-dg-cell>
-        {{user.id}}
-      </clr-dg-cell>
+      <clr-dg-cell> {{user.id}} </clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
       <clr-dg-cell>
@@ -64,9 +52,7 @@
           <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
             <cds-icon shape="help-info"></cds-icon>
           </button>
-          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
-            The pokemon is strong.
-          </clr-signpost-content>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'"> The pokemon is strong. </clr-signpost-content>
         </clr-signpost>
       </clr-dg-cell>
       <clr-dg-cell>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -111,9 +111,7 @@ export default function (): void {
     <button class="outside-click-test" (click)="bodyClickHandler()">
       Button to test clicks outside of the dropdown component
     </button>
-    <clr-signpost-content [clrPosition]="position">
-      Signpost content
-    </clr-signpost-content>
+    <clr-signpost-content [clrPosition]="position"> Signpost content </clr-signpost-content>
   `,
   providers: [{ provide: POPOVER_HOST_ANCHOR, useExisting: ElementRef }],
 })

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -49,9 +49,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox1" class="clr-control-label">
-            option 1
-          </label>
+          <label for="{{ layout }}-checkbox1" class="clr-control-label"> option 1 </label>
         </div>
         <div class="clr-checkbox-wrapper">
           <input
@@ -61,9 +59,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox2" class="clr-control-label">
-            option 2
-          </label>
+          <label for="{{ layout }}-checkbox2" class="clr-control-label"> option 2 </label>
         </div>
         <div class="clr-checkbox-wrapper">
           <input
@@ -73,9 +69,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox3" class="clr-control-label">
-            option 3
-          </label>
+          <label for="{{ layout }}-checkbox3" class="clr-control-label"> option 3 </label>
         </div>
         <div class="clr-subtext-wrapper">
           <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
@@ -103,9 +97,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox7" class="clr-control-label">
-            option 1
-          </label>
+          <label for="{{ layout }}-checkbox7" class="clr-control-label"> option 1 </label>
         </div>
         <div class="clr-checkbox-wrapper">
           <input
@@ -115,9 +107,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox8" class="clr-control-label">
-            option 2
-          </label>
+          <label for="{{ layout }}-checkbox8" class="clr-control-label"> option 2 </label>
         </div>
         <div class="clr-checkbox-wrapper">
           <input
@@ -127,9 +117,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-checkbox9" class="clr-control-label">
-            option 3
-          </label>
+          <label for="{{ layout }}-checkbox9" class="clr-control-label"> option 3 </label>
         </div>
         <div class="clr-subtext-wrapper">
           <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
@@ -157,9 +145,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle1" class="clr-control-label">
-            option 1
-          </label>
+          <label for="{{ layout }}-toggle1" class="clr-control-label"> option 1 </label>
         </div>
         <div class="clr-toggle-wrapper">
           <input
@@ -169,9 +155,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle2" class="clr-control-label">
-            option 2
-          </label>
+          <label for="{{ layout }}-toggle2" class="clr-control-label"> option 2 </label>
         </div>
         <div class="clr-toggle-wrapper">
           <input
@@ -181,9 +165,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle3" class="clr-control-label">
-            option 3
-          </label>
+          <label for="{{ layout }}-toggle3" class="clr-control-label"> option 3 </label>
         </div>
         <div class="clr-subtext-wrapper">
           <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
@@ -211,9 +193,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle7" class="clr-control-label">
-            option 1
-          </label>
+          <label for="{{ layout }}-toggle7" class="clr-control-label"> option 1 </label>
         </div>
         <div class="clr-toggle-wrapper">
           <input
@@ -223,9 +203,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle8" class="clr-control-label">
-            option 2
-          </label>
+          <label for="{{ layout }}-toggle8" class="clr-control-label"> option 2 </label>
         </div>
         <div class="clr-toggle-wrapper">
           <input
@@ -235,9 +213,7 @@ import { ClrIconModule } from '../../icon/icon.module';
             placeholder="Enter value here"
             class="clr-checkbox"
           />
-          <label for="{{ layout }}-toggle9" class="clr-control-label">
-            option 3
-          </label>
+          <label for="{{ layout }}-toggle9" class="clr-control-label"> option 3 </label>
         </div>
         <div class="clr-subtext-wrapper">
           <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>

@@ -1172,6 +1172,8 @@
     .column-switch-wrapper {
       position: relative;
       flex: 0 0 auto;
+      display: flex;
+      align-items: center;
 
       &.active {
         .column-toggle--action {
@@ -1346,8 +1348,13 @@
     }
   }
 
+  .clr-form-control-disabled {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
   .clr-form-control-disabled .datagrid-footer-select.clr-checkbox-wrapper input[type='checkbox']:checked + label {
-    top: $clr_baselineRem_4px;
     cursor: default;
 
     margin-right: $clr_baselineRem_0_375;
@@ -1463,6 +1470,7 @@
     white-space: nowrap;
     display: block;
     text-align: right;
+    margin: auto 0;
   }
 
   // Yes, this is not .datagrid-pagination on purpose.

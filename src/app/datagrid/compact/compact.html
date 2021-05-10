@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -208,10 +208,8 @@
 
 <h3>Horizontal scrolling</h3>
 <div id="datagrid-compact-horizontal-scrolling">
-  <div class="card" style="width: 400px;" id="horizontal-scrolling">
-    <div class="card-header">
-      For instance when in a narrow card.
-    </div>
+  <div class="card" style="width: 400px" id="horizontal-scrolling">
+    <div class="card-header">For instance when in a narrow card.</div>
     <div class="card-block">
       <clr-datagrid class="datagrid-compact">
         <clr-dg-column>User ID</clr-dg-column>
@@ -339,30 +337,20 @@
 <div id="datagrid-compact-hide-show-columns">
   <clr-datagrid [(clrDgSelected)]="selected" class="datagrid-compact">
     <clr-dg-column *ngIf="showId">
-      <ng-container *clrDgHideableColumn>
-        User ID
-      </ng-container>
+      <ng-container *clrDgHideableColumn> User ID </ng-container>
     </clr-dg-column>
     <clr-dg-column>
       <!--Name-->
-      <ng-container *clrDgHideableColumn>
-        Name
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Name </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Creation date
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Creation date </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Pokemon
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Pokemon </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Favorite color
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Favorite color </ng-container>
     </clr-dg-column>
 
     <clr-dg-placeholder>No users found</clr-dg-placeholder>
@@ -399,17 +387,13 @@
           <button type="button" class="signpost-action btn btn-small btn-link" clrSignpostTrigger>
             <cds-icon shape="help-info"></cds-icon>
           </button>
-          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'">
-            The pokemon is strong.
-          </clr-signpost-content>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'top-middle'"> The pokemon is strong. </clr-signpost-content>
         </clr-signpost>
       </clr-dg-cell>
       <clr-dg-cell>
         {{user.name}}
         <clr-signpost>
-          <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'">
-            The user is strong.
-          </clr-signpost-content>
+          <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'"> The user is strong. </clr-signpost-content>
         </clr-signpost>
       </clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

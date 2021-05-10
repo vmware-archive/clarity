@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -47,7 +47,6 @@ export class ClrTabContent implements OnDestroy {
   // components in the content from initializing before a content container exists.
   // Some child components need their container for sizing calculations.
   @ViewChild('tabContentProjectedRef', { static: true })
-  // @ts-ignore
   private set templateRef(value: TemplateRef<ClrTabContent>) {
     this.viewRef = this.tabsService.tabContentViewContainer.createEmbeddedView(value);
   }

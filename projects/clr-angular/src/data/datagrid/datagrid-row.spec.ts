@@ -515,9 +515,7 @@ class FullTest {
   >
     <clr-dg-cell>Hello world</clr-dg-cell>
     <ng-container ngProjectAs="clr-dg-row-detail" *ngIf="!removeRowDetail">
-      <clr-dg-row-detail *clrIfExpanded>
-        Detail
-      </clr-dg-row-detail>
+      <clr-dg-row-detail *clrIfExpanded> Detail </clr-dg-row-detail>
     </ng-container>
   </clr-dg-row>`,
 })

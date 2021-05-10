@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -294,6 +294,7 @@ class MixedExpandableRowTest {
 }
 
 class TestComparator implements ClrDatagridComparatorInterface<number> {
+  // eslint-disable-next-line
   compare(_a: number, _b: number): number {
     return 0;
   }
@@ -304,6 +305,7 @@ class TestFilter implements ClrDatagridFilterInterface<number> {
     return true;
   }
 
+  // eslint-disable-next-line
   accepts(_n: number): boolean {
     return true;
   }
@@ -324,6 +326,7 @@ class TestCustomStateFilter extends TestFilter {
 }
 
 class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
+  // eslint-disable-next-line
   accepts(_item: number, _search: string) {
     return true;
   }
@@ -333,9 +336,7 @@ class TestStringFilter implements ClrDatagridStringFilterInterface<number> {
   selector: 'hidden-column-test',
   template: ` <clr-datagrid>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn="{ hidden: true }">
-        First
-      </ng-container>
+      <ng-container *clrDgHideableColumn="{ hidden: true }"> First </ng-container>
     </clr-dg-column>
     <clr-dg-column>Second</clr-dg-column>
 
@@ -368,9 +369,7 @@ class ProjectionTest {
   template: `
     <clr-datagrid>
       <clr-dg-column>
-        <ng-container *clrDgHideableColumn="{ hidden: true }">
-          First
-        </ng-container>
+        <ng-container *clrDgHideableColumn="{ hidden: true }"> First </ng-container>
       </clr-dg-column>
       <clr-dg-column>Second</clr-dg-column>
 

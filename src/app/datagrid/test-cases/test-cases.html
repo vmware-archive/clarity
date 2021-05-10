@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -23,9 +23,7 @@
       </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>
-      {{zeroUsers.length}} users
-    </clr-dg-footer>
+    <clr-dg-footer> {{zeroUsers.length}} users </clr-dg-footer>
   </clr-datagrid>
 </div>
 
@@ -33,8 +31,8 @@
   <h4>Zero Rows + Fixed Height</h4>
   <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
   <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
-  <div style="height: 300px;">
-    <clr-datagrid style="height: 100%;" [clrDgLoading]="loading">
+  <div style="height: 300px">
+    <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
       <clr-dg-column>User ID</clr-dg-column>
       <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
       <clr-dg-column>Creation date</clr-dg-column>
@@ -49,9 +47,7 @@
         </clr-dg-cell>
       </clr-dg-row>
 
-      <clr-dg-footer>
-        {{zeroUsers.length}} users
-      </clr-dg-footer>
+      <clr-dg-footer> {{zeroUsers.length}} users </clr-dg-footer>
     </clr-datagrid>
   </div>
 </div>
@@ -103,9 +99,7 @@
       </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>
-      {{oneUser.length}} user
-    </clr-dg-footer>
+    <clr-dg-footer> {{oneUser.length}} user </clr-dg-footer>
   </clr-datagrid>
 </div>
 
@@ -113,8 +107,8 @@
   <h4>One Row + Fixed Height</h4>
   <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
   <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
-  <div style="height: 300px;">
-    <clr-datagrid style="height: 100%;" [clrDgLoading]="loading">
+  <div style="height: 300px">
+    <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
       <clr-dg-column>User ID</clr-dg-column>
       <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
       <clr-dg-column>Creation date</clr-dg-column>
@@ -129,9 +123,7 @@
         </clr-dg-cell>
       </clr-dg-row>
 
-      <clr-dg-footer>
-        {{oneUser.length}} user
-      </clr-dg-footer>
+      <clr-dg-footer> {{oneUser.length}} user </clr-dg-footer>
     </clr-datagrid>
   </div>
 </div>
@@ -155,9 +147,7 @@
       </clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>
-      {{users.length}} users
-    </clr-dg-footer>
+    <clr-dg-footer> {{users.length}} users </clr-dg-footer>
   </clr-datagrid>
 </div>
 
@@ -165,8 +155,8 @@
   <h4>No Pagination + Fixed Height</h4>
   <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
   <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
-  <div style="height: 300px;">
-    <clr-datagrid style="height: 100%;" [clrDgLoading]="loading">
+  <div style="height: 300px">
+    <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
       <clr-dg-column>User ID</clr-dg-column>
       <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
       <clr-dg-column>Creation date</clr-dg-column>
@@ -181,9 +171,7 @@
         </clr-dg-cell>
       </clr-dg-row>
 
-      <clr-dg-footer>
-        {{users.length}} users
-      </clr-dg-footer>
+      <clr-dg-footer> {{users.length}} users </clr-dg-footer>
     </clr-datagrid>
   </div>
 </div>
@@ -214,12 +202,12 @@
   </clr-datagrid>
 </div>
 
-<div class="clr-example" style="margin-bottom: 72px;">
+<div class="clr-example" style="margin-bottom: 72px">
   <h4>Pagination + Fixed Height</h4>
   <p>Datagrid height should be fixed irrespective on the number of rows displayed.</p>
   <button class="btn btn-outline-primary" (click)="toggle()">Toggle Spinner</button>
-  <div style="height: 300px;">
-    <clr-datagrid style="height: 100%;" [clrDgLoading]="loading">
+  <div style="height: 300px">
+    <clr-datagrid style="height: 100%" [clrDgLoading]="loading">
       <clr-dg-column>User ID</clr-dg-column>
       <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
       <clr-dg-column>Creation date</clr-dg-column>
@@ -266,7 +254,5 @@
       <clr-dg-pagination #pagination [clrDgPageSize]="pageSize"></clr-dg-pagination>
     </clr-dg-footer>
   </clr-datagrid>
-  <button class="btn" (click)="updatePageSize()">
-    Update Page Size
-  </button>
+  <button class="btn" (click)="updatePageSize()">Update Page Size</button>
 </div>

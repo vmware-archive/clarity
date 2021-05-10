@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -573,9 +573,7 @@ export default function (): void {
   template: `
     <div class="main-container">
       <clr-vertical-nav>
-        <a href="#" clrVerticalNavLink>
-          Link
-        </a>
+        <a href="#" clrVerticalNavLink> Link </a>
       </clr-vertical-nav>
     </div>
   `,
@@ -601,9 +599,7 @@ class IconsButNoNavGroupTestComponent {}
     <div class="main-container">
       <clr-vertical-nav>
         <clr-vertical-nav-group>
-          <a href="#" clrVerticalNavLink>
-            Link
-          </a>
+          <a href="#" clrVerticalNavLink> Link </a>
         </clr-vertical-nav-group>
       </clr-vertical-nav>
     </div>
@@ -617,9 +613,7 @@ class OnlyNavGroupTestComponent {}
       <clr-vertical-nav-group>
         <cds-icon clrVerticalNavIcon shape="home"></cds-icon>
         Group
-        <a href="#" clrVerticalNavLink>
-          Link
-        </a>
+        <a href="#" clrVerticalNavLink> Link </a>
       </clr-vertical-nav-group>
     </clr-vertical-nav>
   `,
@@ -632,9 +626,7 @@ class IconsAndNavGroupTestComponent {}
       <clr-vertical-nav-group *ngIf="groupToggle">
         <cds-icon clrVerticalNavIcon></cds-icon>
         Group
-        <a href="#" clrVerticalNavLink>
-          Text
-        </a>
+        <a href="#" clrVerticalNavLink> Text </a>
       </clr-vertical-nav-group>
       <a href="#" clrVerticalNavLink *ngIf="iconToggle">
         <cds-icon clrVerticalNavIcon></cds-icon>
@@ -678,9 +670,7 @@ class APITestComponent {
     <div class="main-container" [class.open-overflow-menu]="overflowMenu" [class.open-hamburger-menu]="hamburgerMenu">
       <clr-vertical-nav>
         <clr-vertical-nav-group>
-          <a href="#" clrVerticalNavLink>
-            Link
-          </a>
+          <a href="#" clrVerticalNavLink> Link </a>
         </clr-vertical-nav-group>
         <a href="#" clrVerticalNavLink></a>
       </clr-vertical-nav>

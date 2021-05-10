@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { FormGroupName, NgModelGroup } from '@angular/forms';
-import { tap, filter } from 'rxjs/operators';
+import { tap, filter, pairwise } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { UNIQUE_ID_PROVIDER, UNIQUE_ID } from '../../utils/id-generator/id-generator.service';
@@ -72,6 +72,17 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
     this.panel = this.panel.pipe(tap(panel => this.triggerAllFormControlValidationIfError(panel)));
     this.stepperService.disablePanel(this.id, true);
     this.listenToFocusChanges();
+
+    if (this.formGroup) {
+      // not all stepper panels are guaranteed to have a form (i.e. empty template-driven)
+      this.subscriptions.push(
+        this.formGroup.statusChanges.pipe(pairwise()).subscribe(([prevStatus, newStatus]) => {
+          if ('VALID' === prevStatus && 'INVALID' === newStatus) {
+            this.stepperService.navigateToNextPanel(this.id, this.formGroup.valid);
+          }
+        })
+      );
+    }
   }
 
   ngOnDestroy() {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -40,7 +40,6 @@ class SimpleTest {
 export default function (): void {
   describe('ClrForm', () => {
     let fixture, directive, layoutService;
-    let commonStrings: ClrCommonStringsService;
 
     beforeEach(function () {
       TestBed.configureTestingModule({
@@ -51,7 +50,6 @@ export default function (): void {
       fixture = TestBed.createComponent(SimpleTest);
       directive = fixture.debugElement.query(By.directive(ClrForm));
       layoutService = directive.injector.get(LayoutService);
-      commonStrings = new ClrCommonStringsService();
     });
 
     it('adds the .clr-form class to host', function () {

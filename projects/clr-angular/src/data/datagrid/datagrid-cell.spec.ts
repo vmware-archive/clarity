@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -53,9 +53,7 @@ export default function (): void {
   template: ` <clr-dg-cell>
     Hello world
     <clr-signpost *ngIf="signpostTest">
-      <clr-signpost-content *clrIfOpen>
-        The user is strong.
-      </clr-signpost-content>
+      <clr-signpost-content *clrIfOpen> The user is strong. </clr-signpost-content>
     </clr-signpost>
   </clr-dg-cell>`,
 })

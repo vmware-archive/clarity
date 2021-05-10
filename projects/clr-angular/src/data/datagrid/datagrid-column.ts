@@ -88,8 +88,10 @@ import { DetailService } from './providers/detail.service';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
-  implements OnDestroy, OnInit, OnChanges {
+export class ClrDatagridColumn<T = any>
+  extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>>
+  implements OnDestroy, OnInit, OnChanges
+{
   constructor(
     private _sort: Sort<T>,
     filters: FiltersProvider<T>,

@@ -1532,7 +1532,6 @@
     .pagination-next {
       display: flex;
       align-items: center;
-      @include equilateral($clr-datagrid-icon-size);
       background-repeat: no-repeat;
       background-size: contain;
     }

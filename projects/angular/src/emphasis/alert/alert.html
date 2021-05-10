@@ -1,0 +1,21 @@
+<!--
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+<div
+  *ngIf="!_closed"
+  class="alert"
+  [ngClass]="alertClass"
+  [class.alert-hidden]="hidden"
+  [class.alert-sm]="isSmall"
+  [class.alert-app-level]="isAppLevel"
+>
+  <div class="alert-items">
+    <ng-content></ng-content>
+  </div>
+  <button type="button" class="close" *ngIf="closable" (click)="close()" [attr.aria-label]="clrCloseButtonAriaLabel">
+    <cds-icon shape="window-close"></cds-icon>
+  </button>
+</div>

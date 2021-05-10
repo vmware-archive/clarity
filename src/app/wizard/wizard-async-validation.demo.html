@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -21,9 +21,7 @@
   >
     <ng-template clrPageTitle>Form with async validation</ng-template>
     <!-- mandatory -->
-    <div class="spinner" *ngIf="loadingFlag">
-      Loading...
-    </div>
+    <div class="spinner" *ngIf="loadingFlag">Loading...</div>
     <clr-alert clrAlertType="info" [clrAlertClosable]="false">
       <clr-alert-item>
         This&nbsp;
@@ -33,9 +31,7 @@
       </clr-alert-item>
     </clr-alert>
     <clr-alert *ngIf="errorFlag" clrAlertType>
-      <clr-alert-item>
-        Your answer is incorrect.
-      </clr-alert-item>
+      <clr-alert-item> Your answer is incorrect. </clr-alert-item>
     </clr-alert>
     <form clrForm clrLayout="vertical" #myForm="ngForm" [class.hide]="loadingFlag">
       <clr-input-container>

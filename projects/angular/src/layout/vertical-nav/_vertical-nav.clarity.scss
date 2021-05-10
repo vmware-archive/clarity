@@ -1,0 +1,514 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin vertical-nav-link-colors() {
+  @include css-var(color, clr-vertical-nav-item-color, $clr-vertical-nav-item-color, $clr-use-custom-properties);
+
+  &.active {
+    @include css-var(
+      color,
+      clr-vertical-nav-item-active-color,
+      $clr-vertical-nav-item-active-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      background-color,
+      clr-vertical-nav-active-bg-color,
+      $clr-vertical-nav-active-bg-color,
+      $clr-use-custom-properties
+    );
+
+    .nav-icon {
+      @include css-var(
+        fill,
+        clr-vertical-nav-icon-active-color,
+        $clr-vertical-nav-icon-active-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  &:hover {
+    @include css-var(
+      color,
+      clr-vertical-nav-item-active-color,
+      $clr-vertical-nav-item-active-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      background-color,
+      clr-vertical-nav-hover-bg-color,
+      $clr-vertical-nav-hover-bg-color,
+      $clr-use-custom-properties
+    );
+    text-decoration: none;
+  }
+}
+
+@import './properties.vertical-nav';
+
+@include exports('vertical-nav.clarity') {
+  .clr-vertical-nav {
+    //Display
+    display: flex;
+    flex-direction: column;
+
+    //Dims
+    padding-top: $clr-vertical-nav-top-padding;
+    width: $clr-vertical-nav-width;
+    min-width: $clr-vertical-nav-min-width;
+
+    //Others
+    @include css-var(
+      background-color,
+      clr-vertical-nav-bg-color,
+      $clr-vertical-nav-bg-color,
+      $clr-use-custom-properties
+    );
+    will-change: width;
+    transition: width 0.2s ease-in-out;
+
+    .nav-divider {
+      //Dims
+      @include css-var(
+        border-color,
+        clr-vertical-nav-trigger-divider-border-color,
+        $clr-vertical-nav-trigger-divider-border-color,
+        $clr-use-custom-properties
+      );
+      border-style: solid;
+      @include css-var(
+        border-width,
+        clr-vertical-nav-trigger-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      margin: $clr-vertical-nav-divider-margin 0;
+    }
+
+    .nav-content {
+      //display
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+
+      //Others
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .nav-group {
+      //Display
+      display: block;
+      flex: 0 0 auto;
+
+      //Dims
+      height: auto;
+      min-height: $clr-vertical-nav-item-height;
+    }
+
+    .nav-group-content {
+      //Display
+      display: flex;
+
+      //Others
+      @include vertical-nav-link-colors();
+
+      .nav-link {
+        //Display
+        flex: 1 1 auto;
+
+        //Dims
+        padding-left: 0;
+        min-width: 0; //Chrome nested flex box ellipsis fix
+      }
+
+      .nav-icon {
+        //Dims
+        margin-left: $clr-vertical-nav-link-padding-left;
+      }
+
+      .nav-text {
+        //Dims
+        padding-left: $clr-vertical-nav-link-padding-left;
+      }
+
+      .nav-icon + .nav-text {
+        //Dims
+        padding-left: 0;
+      }
+
+      .nav-link + .nav-group-text {
+        //Display
+        display: none;
+      }
+    }
+
+    .nav-trigger,
+    .nav-group-trigger {
+      //Display
+      flex: 0 0 $clr-vertical-nav-item-height;
+
+      //Dims
+      border: none;
+      height: $clr-vertical-nav-item-height;
+
+      padding: 0;
+
+      //Others
+      cds-icon[shape='angle-double'],
+      clr-icon[shape='angle-double'] {
+        @include css-var(
+          color,
+          clr-vertical-nav-toggle-icon-color,
+          $clr-vertical-nav-toggle-icon-color,
+          $clr-use-custom-properties
+        );
+      }
+      background-color: transparent;
+      cursor: pointer;
+      outline-offset: $clr-outline-offset;
+    }
+
+    .nav-trigger {
+      //Display
+      display: flex;
+      align-items: center;
+      //Flex-start because of IE11 + margin-left: auto
+      justify-content: flex-start;
+
+      //Dims
+      height: $clr-vertical-nav-item-height;
+      margin-top: -1 * $clr-vertical-nav-top-padding;
+    }
+
+    //Parent .nav-group-content
+    .nav-group-trigger {
+      //Display
+      //flex: 0 0 $clr-vertical-nav-item-height;
+      display: flex;
+      flex: 1 1 auto;
+
+      //Others
+      color: inherit;
+      overflow: hidden;
+      text-align: left;
+
+      .nav-group-trigger-icon {
+        //Display
+        flex-shrink: 0;
+
+        //Dims
+        width: $clr-vertical-nav-icon-size;
+        align-self: center;
+        margin-left: $clr-vertical-nav-trigger-icon-align-margin;
+        margin-right: $clr-vertical-nav-trigger-icon-align-margin;
+
+        //Others
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    //Parent .nav-trigger
+    .nav-trigger-icon {
+      //Dims
+      margin-left: auto;
+      margin-right: ($clr-vertical-nav-item-height - $clr-vertical-nav-icon-size) / 2;
+
+      //Others
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nav-trigger + .nav-content {
+      //Dims
+      @include css-var(
+        border-top-color,
+        clr-vertical-nav-trigger-divider-border-color,
+        $clr-vertical-nav-trigger-divider-border-color,
+        $clr-use-custom-properties
+      );
+      border-top-style: solid;
+      @include css-var(
+        border-top-width,
+        clr-vertical-nav-trigger-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      padding-top: $clr_baselineRem_0_5;
+    }
+
+    .nav-group-text,
+    .nav-link {
+      //Dims
+      height: $clr-vertical-nav-item-height;
+      padding: 0 $clr-vertical-nav-link-padding-right 0 $clr-vertical-nav-link-padding-left;
+
+      //Others
+      line-height: $clr-vertical-nav-item-height;
+      outline-offset: $clr-outline-offset;
+    }
+
+    .nav-group-text,
+        /*Parent .nav-link*/
+        .nav-text {
+      //Display
+      flex: 1 1 auto;
+      //Mixins
+      @include overflow-ellipsis();
+    }
+
+    .nav-link {
+      //Display
+      display: flex;
+
+      //Others
+      @include vertical-nav-link-colors();
+    }
+
+    .nav-header {
+      //Dims
+      padding: 0 $clr-vertical-nav-link-padding-right 0 $clr-vertical-nav-link-padding-left;
+
+      //Others
+      font-size: $clr-vertical-nav-header-font-size;
+      @include css-var(
+        font-weight,
+        clr-vertical-nav-header-font-weight,
+        $clr-vertical-nav-header-font-weight,
+        $clr-use-custom-properties
+      );
+      letter-spacing: $clr-vertical-nav-header-letter-spacing;
+      line-height: $clr-vertical-nav-item-height;
+    }
+
+    //Parent .nav-text
+    .nav-icon {
+      //Display
+      flex: 0 0 $clr-vertical-nav-icon-size;
+      align-self: center;
+
+      //Dims
+      @include equilateral($clr-vertical-nav-icon-size);
+      margin-right: $clr-vertical-nav-icon-right-margin;
+
+      //Others
+      vertical-align: middle;
+    }
+
+    clr-vertical-nav-group-children {
+      display: block;
+    }
+
+    .nav-btn {
+      //Display
+      flex: 1 1 auto;
+
+      //Dims
+      padding: 0;
+      margin: 0;
+
+      //Others
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      outline-offset: $clr-outline-offset;
+    }
+
+    & > .nav-link,
+    .nav-content > .nav-link {
+      //Display
+      flex: 0 0 $clr-vertical-nav-item-height;
+    }
+
+    .nav-link + .nav-group-trigger {
+      //Display
+      flex: 0 0 $clr-vertical-nav-item-height;
+
+      .nav-group-text {
+        display: none;
+      }
+    }
+
+    .nav-icon + .nav-group-text {
+      padding-left: 0;
+    }
+
+    ///////
+    //////
+    ////
+    // Interactions
+    ////
+    //////
+    ///////
+    &.has-nav-groups {
+      .nav-link,
+      .nav-group .nav-group-text,
+      .nav-group .nav-group-trigger {
+        font-weight: 600;
+      }
+
+      .nav-group-children .nav-link {
+        font-weight: normal;
+      }
+    }
+
+    &.has-icons {
+      .nav-group-children .nav-link {
+        padding-left: $clr-vertical-nav-icon-size + $clr-vertical-nav-icon-right-margin +
+          $clr-vertical-nav-link-padding-left;
+      }
+    }
+
+    .nav-group.active:not(.is-expanded) {
+      .nav-group-content {
+        @include css-var(
+          background-color,
+          clr-vertical-nav-active-bg-color,
+          $clr-vertical-nav-active-bg-color,
+          $clr-use-custom-properties
+        );
+
+        //Horrible Nesting but nothing I can do.
+        .nav-icon {
+          @include css-var(
+            fill,
+            clr-vertical-nav-icon-active-color,
+            $clr-vertical-nav-icon-active-color,
+            $clr-use-custom-properties
+          );
+        }
+      }
+    }
+
+    .nav-group-content {
+      .nav-link.active ~ .nav-group-trigger {
+        @include css-var(
+          background-color,
+          clr-vertical-nav-active-bg-color,
+          $clr-vertical-nav-active-bg-color,
+          $clr-use-custom-properties
+        );
+      }
+      .nav-link:hover ~ .nav-group-trigger {
+        @include css-var(
+          background-color,
+          clr-vertical-nav-hover-bg-color,
+          $clr-vertical-nav-hover-bg-color,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
+    // horizontally center the expand icon
+    &:not(.is-collapsed) .nav-link + .nav-group-trigger {
+      justify-content: center;
+    }
+
+    .main-container:not([class*='open-overflow-menu']):not([class*='open-hamburger-menu']) &.is-collapsed {
+      //Dims
+      width: $clr-vertical-nav-min-width;
+      min-width: $clr-vertical-nav-min-width;
+
+      //Others
+      cursor: pointer;
+
+      .nav-trigger {
+        //Dims
+        margin-right: $clr-vertical-nav-trigger-collapsed-margin;
+      }
+
+      .nav-icon {
+        //Dims
+        margin: 0;
+        margin-left: $clr_baselineRem_0_667;
+      }
+
+      .nav-group-content {
+        .nav-link {
+          //Display
+          flex: 0 0 $clr-vertical-nav-min-width;
+        }
+
+        .nav-link ~ .nav-group-trigger {
+          //Display
+          flex: 0 0 $clr-vertical-nav-collapsed-caret-size + $clr-vertical-nav-icon-right-margin;
+
+          //Others
+          transform: translateX(-1 * $clr-vertical-nav-icon-size);
+          pointer-events: none;
+        }
+      }
+
+      .nav-link,
+      .nav-group-trigger {
+        //Dims
+        padding: 0;
+      }
+
+      .nav-group-trigger {
+        //Display
+        //flex: 0 0 $clr-vertical-nav-collapsed-caret-size + $clr-vertical-nav-icon-right-margin;
+
+        //Dims
+        padding-left: 0;
+
+        .nav-group-trigger-icon {
+          //Dims
+          height: $clr-vertical-nav-item-height;
+          width: $clr-vertical-nav-collapsed-caret-size;
+          margin-left: $clr_baselineRem_0_125;
+          margin-right: 0;
+        }
+      }
+
+      //If no icon present then hide the nav-group and nav-links.
+      .nav-group,
+      .nav-link {
+        display: none;
+      }
+
+      //When the nav has icons just hide the nav-text
+      &.has-icons {
+        .nav-group {
+          display: block;
+        }
+
+        .nav-link {
+          display: flex;
+        }
+
+        .nav-group-text,
+        .nav-text {
+          display: none;
+        }
+      }
+    }
+
+    &.nav-trigger--bottom {
+      .nav-trigger {
+        order: 2;
+        margin-top: 0;
+      }
+
+      .nav-trigger + .nav-content {
+        //Dims
+        @include css-var(
+          border-bottom-color,
+          clr-vertical-nav-trigger-divider-border-color,
+          $clr-vertical-nav-trigger-divider-border-color,
+          $clr-use-custom-properties
+        );
+        border-bottom-style: solid;
+        @include css-var(
+          border-bottom-width,
+          clr-vertical-nav-trigger-divider-border-width,
+          $clr-global-borderwidth,
+          $clr-use-custom-properties
+        );
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
+}

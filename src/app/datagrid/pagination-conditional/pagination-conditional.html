@@ -1,14 +1,12 @@
 <!--
-  ~ Copyright (c) 2016-2018 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <h2>Conditional Pagination</h2>
 
-<p>
-  Test to conditional activate/deactivate pagination in a datagrid
-</p>
+<p>Test to conditional activate/deactivate pagination in a datagrid</p>
 
 <clr-datagrid [class.conditional-datagrid]="!paginationEnabled">
   <clr-dg-column>User ID</clr-dg-column>
@@ -26,9 +24,7 @@
   </clr-dg-row>
 
   <clr-dg-footer>
-    <ng-container *ngIf="!paginationEnabled">
-      {{users.length}} users
-    </ng-container>
+    <ng-container *ngIf="!paginationEnabled"> {{users.length}} users </ng-container>
     <clr-dg-pagination #pagination [clrDgPageSize]="5" *ngIf="paginationEnabled">
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
     </clr-dg-pagination>

@@ -1,0 +1,22 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+$clr-combobox-min-height: $clr_baselineRem_1 !default;
+$clr-combobox-min-width: $clr_baselineRem_7 !default;
+$clr-ng-multiselect-min-width: $clr_baselineRem_15 !default;
+
+$clr-combobox-trigger-dimensions: $clr_baselineRem_1 !default;
+$clr-combobox-trigger-left-padding: $clr_baselineRem_0_25 !default;
+$clr-combobox-trigger-right-padding: $clr_baselineRem_1 !default;
+
+$clr-combobox-font-size: $clr-p2-font-size !default;
+$clr-combobox-border-color: $clr-color-neutral-200 !default;
+$clr-combobox-border-radius: $clr_baselineRem_3px !default;
+
+$clr-combobox-input-background-color: $clr-color-neutral-100 !default;
+$clr-combobox-pill-background-color: $clr-color-neutral-0 !default;
+$clr-combobox-pill-border-color: $clr-color-neutral-200 !default;
+$clr-combobox-pill-border-radius: $clr_baselineRem_3px !default;
+$clr-combobox-pill-font-color: $clr-color-neutral-800 !default;
+$clr-combobox-filter-highlight: $clr-color-neutral-800 !default;

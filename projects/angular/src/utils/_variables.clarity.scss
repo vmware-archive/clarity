@@ -1,0 +1,134 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Clarity Components
+//
+// Global
+// Alerts
+// Badge & Label
+// Button
+// Card
+// Dropdown
+// List
+// Table
+// Datagrid (Has dependency on table)
+// Form, Input, Checkbox, Radio, Toggle
+// Header
+// Login
+// Modal and Wizard
+// Nav
+// Typography
+// Progress Bars
+// Signpost
+// Stack View
+// Tabs
+// Tree View
+// Tooltip
+// Typography
+// Vertical Nav
+
+@import '../utils/variables/variables';
+
+// Alert
+@import '../emphasis/alert/variables.alert';
+// End Alert
+
+// Label
+// Has code sharing with badges
+@import '../emphasis/variables.label';
+// END: Label
+
+// Badge
+//Has code sharing with labels
+@import '../emphasis/variables.badges';
+// END: Badge
+
+// Button
+// Disabled states are global for all buttons, independent of status or type
+@import '../button/variables.buttons';
+// BUTTON END
+
+// Card
+@import '../layout/variables.card';
+// END CARD
+
+// Dropdown
+@import '../popover/dropdown/variables.dropdown';
+// END: Dropdown
+
+// Table
+// NOTE: Datagrid depends on these
+@import '../data/variables.tables';
+// END Table
+
+// Datagrid
+@import '../data/datagrid/variables.datagrid';
+// End Datagrid
+
+// Forms
+@import '../forms/styles/variables.forms';
+@import '../button/variables.toggles';
+@import '../forms/datepicker/variables.datepicker';
+@import '../forms/combobox/variables.combobox';
+
+// Header
+@import '../layout/main-container/variables.header';
+// END Header
+
+// Login
+@import '../layout/variables.login';
+// END: Login
+
+// Modal and Wizard (They are genetically related)
+@import '../modal/variables.modal';
+@import '../wizard/variables.wizard';
+// END: Modal and Wizard
+
+// Nav
+// There are several components grouped under Nav:
+// Links
+// Responsive Nav
+// Sidenav
+// Vertical Nav
+// Responsive Nav
+// Global nav variables
+@import '../layout/nav/variables.nav';
+@import '../layout/nav/variables.responsive-nav';
+// Sidenav
+@import '../layout/nav/variables.sidenav';
+// Subnav - NOTE: Depricated
+@import '../layout/nav/variables.subnav';
+// Vertical Nav
+@import '../layout/vertical-nav/variables.vertical-nav';
+// END: Nav variables
+
+// Progress Bars
+@import '../progress/progress-bars/variables.progress-bars';
+// END Progress bars
+
+// Signpost
+@import '../popover/signpost/variables.signpost';
+// END Signpost variables
+
+// Spinners
+@import '../progress/spinner/variables.spinner';
+// END Spinners
+
+// Stack View
+@import '../data/stack-view/variables.stack-view';
+
+// Tabs
+@import '../layout/tabs/variables.tabs';
+
+// Tree View
+@import '../data/tree-view/variables.tree-view';
+
+// Tooltip
+@import '../popover/tooltip/variables.tooltip';
+
+// Accordion
+@import '../accordion/variables.accordion';
+
+// Timeline
+@import '../timeline/variables.timeline';

@@ -1,13 +1,11 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <h4>500k nodes, synchronous</h4>
-<p>
-  Selected: {{tree.selected.join(', ')}}
-</p>
+<p>Selected: {{tree.selected.join(', ')}}</p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
     <clr-tree-node
@@ -66,9 +64,7 @@
 </div>
 
 <h4>Asynchronous</h4>
-<p>
-  Selected: {{asyncTree.selected.join(', ')}}
-</p>
+<p>Selected: {{asyncTree.selected.join(', ')}}</p>
 <div class="clr-example">
   <clr-tree [clrLazy]="true">
     <clr-tree-node

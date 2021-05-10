@@ -1,0 +1,175 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('color.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // global color variables
+
+      // until SASS variables are deprecated we have to apply them. after SASS variables are
+      // no longer a supported method of theming our color variables will look like...
+      // --clr-color-neutral-0: hsl(var(--clr-color-hue, 201), var(--clr-color-neutral-saturation, 0%), 100%);
+
+      // --clr-color-hue: #{$clr-color-hue};
+      // --clr-color-neutral-saturation: #{$clr-color-neutral-saturation};
+
+      // Neutral palette -- text, backgrounds, and content
+      --clr-color-neutral-0: #{$clr-color-neutral-0};
+      --clr-color-neutral-50: #{$clr-color-neutral-50};
+      --clr-color-neutral-100: #{$clr-color-neutral-100};
+      --clr-color-neutral-200: #{$clr-color-neutral-200};
+      --clr-color-neutral-300: #{$clr-color-neutral-300};
+      --clr-color-neutral-400: #{$clr-color-neutral-400};
+      --clr-color-neutral-500: #{$clr-color-neutral-500};
+      --clr-color-neutral-600: #{$clr-color-neutral-600};
+      --clr-color-neutral-700: #{$clr-color-neutral-700};
+      --clr-color-neutral-800: #{$clr-color-neutral-800};
+      --clr-color-neutral-900: #{$clr-color-neutral-900};
+      --clr-color-neutral-1000: #{$clr-color-neutral-1000};
+
+      --clr-color-on-neutral-0: #{$clr-color-on-neutral-0};
+      --clr-color-on-neutral-50: #{$clr-color-on-neutral-50};
+      --clr-color-on-neutral-100: #{$clr-color-on-neutral-100};
+      --clr-color-on-neutral-200: #{$clr-color-on-neutral-200};
+      --clr-color-on-neutral-300: #{$clr-color-on-neutral-300};
+      --clr-color-on-neutral-400: #{$clr-color-on-neutral-400};
+      --clr-color-on-neutral-500: #{$clr-color-on-neutral-500};
+      --clr-color-on-neutral-600: #{$clr-color-on-neutral-600};
+      --clr-color-on-neutral-700: #{$clr-color-on-neutral-700};
+      --clr-color-on-neutral-800: #{$clr-color-on-neutral-800};
+      --clr-color-on-neutral-900: #{$clr-color-on-neutral-900};
+      --clr-color-on-neutral-1000: #{$clr-color-on-neutral-1000};
+
+      // Action palette -- buttons and clickable items
+
+      --clr-color-action-50: #{$clr-color-action-50};
+      --clr-color-action-100: #{$clr-color-action-100};
+      --clr-color-action-200: #{$clr-color-action-200};
+      --clr-color-action-300: #{$clr-color-action-300};
+      --clr-color-action-400: #{$clr-color-action-400};
+      --clr-color-action-500: #{$clr-color-action-500};
+      --clr-color-action-600: #{$clr-color-action-600};
+      --clr-color-action-700: #{$clr-color-action-700};
+      --clr-color-action-800: #{$clr-color-action-800};
+      --clr-color-action-900: #{$clr-color-action-900};
+      --clr-color-action-1000: #{$clr-color-action-1000};
+
+      --clr-color-on-action-50: #{$clr-color-on-action-50};
+      --clr-color-on-action-100: #{$clr-color-on-action-100};
+      --clr-color-on-action-200: #{$clr-color-on-action-200};
+      --clr-color-on-action-300: #{$clr-color-on-action-300};
+      --clr-color-on-action-400: #{$clr-color-on-action-400};
+      --clr-color-on-action-500: #{$clr-color-on-action-500};
+      --clr-color-on-action-600: #{$clr-color-on-action-600};
+      --clr-color-on-action-700: #{$clr-color-on-action-700};
+      --clr-color-on-action-800: #{$clr-color-on-action-800};
+      --clr-color-on-action-900: #{$clr-color-on-action-900};
+      --clr-color-on-action-1000: #{$clr-color-on-action-1000};
+
+      // Secondary Action palette -- actions but off-the-beaten-path actions, like drag-and-drop
+
+      --clr-color-secondary-action-50: #{$clr-color-secondary-action-50};
+      --clr-color-secondary-action-100: #{$clr-color-secondary-action-100};
+      --clr-color-secondary-action-200: #{$clr-color-secondary-action-200};
+      --clr-color-secondary-action-300: #{$clr-color-secondary-action-300};
+      --clr-color-secondary-action-400: #{$clr-color-secondary-action-400};
+      --clr-color-secondary-action-500: #{$clr-color-secondary-action-500};
+      --clr-color-secondary-action-600: #{$clr-color-secondary-action-600};
+      --clr-color-secondary-action-700: #{$clr-color-secondary-action-700};
+      --clr-color-secondary-action-800: #{$clr-color-secondary-action-800};
+      --clr-color-secondary-action-900: #{$clr-color-secondary-action-900};
+      --clr-color-secondary-action-1000: #{$clr-color-secondary-action-1000};
+
+      --clr-color-on-secondary-action-50: #{$clr-color-on-secondary-action-50};
+      --clr-color-on-secondary-action-100: #{$clr-color-on-secondary-action-100};
+      --clr-color-on-secondary-action-200: #{$clr-color-on-secondary-action-200};
+      --clr-color-on-secondary-action-300: #{$clr-color-on-secondary-action-300};
+      --clr-color-on-secondary-action-400: #{$clr-color-on-secondary-action-400};
+      --clr-color-on-secondary-action-500: #{$clr-color-on-secondary-action-500};
+      --clr-color-on-secondary-action-600: #{$clr-color-on-secondary-action-600};
+      --clr-color-on-secondary-action-700: #{$clr-color-on-secondary-action-700};
+      --clr-color-on-secondary-action-800: #{$clr-color-on-secondary-action-800};
+      --clr-color-on-secondary-action-900: #{$clr-color-on-secondary-action-900};
+      --clr-color-on-secondary-action-1000: #{$clr-color-on-secondary-action-1000};
+
+      // Stoplight Danger color: alerts, error messaging, danger buttons
+
+      --clr-color-danger-50: #{$clr-color-danger-50};
+      --clr-color-danger-100: #{$clr-color-danger-100};
+      --clr-color-danger-200: #{$clr-color-danger-200};
+      --clr-color-danger-300: #{$clr-color-danger-300};
+      --clr-color-danger-400: #{$clr-color-danger-400};
+      --clr-color-danger-500: #{$clr-color-danger-500};
+      --clr-color-danger-600: #{$clr-color-danger-600};
+      --clr-color-danger-700: #{$clr-color-danger-700};
+      --clr-color-danger-800: #{$clr-color-danger-800};
+      --clr-color-danger-900: #{$clr-color-danger-900};
+      --clr-color-danger-1000: #{$clr-color-danger-1000};
+
+      --clr-color-on-danger-50: #{$clr-color-on-danger-50};
+      --clr-color-on-danger-100: #{$clr-color-on-danger-100};
+      --clr-color-on-danger-200: #{$clr-color-on-danger-200};
+      --clr-color-on-danger-300: #{$clr-color-on-danger-300};
+      --clr-color-on-danger-400: #{$clr-color-on-danger-400};
+      --clr-color-on-danger-500: #{$clr-color-on-danger-500};
+      --clr-color-on-danger-600: #{$clr-color-on-danger-600};
+      --clr-color-on-danger-700: #{$clr-color-on-danger-700};
+      --clr-color-on-danger-800: #{$clr-color-on-danger-800};
+      --clr-color-on-danger-900: #{$clr-color-on-danger-900};
+      --clr-color-on-danger-1000: #{$clr-color-on-danger-1000};
+
+      // Stoplight Warning color: alerts, warning messages
+
+      --clr-color-warning-50: #{$clr-color-warning-50};
+      --clr-color-warning-100: #{$clr-color-warning-100};
+      --clr-color-warning-200: #{$clr-color-warning-200};
+      --clr-color-warning-300: #{$clr-color-warning-300};
+      --clr-color-warning-400: #{$clr-color-warning-400};
+      --clr-color-warning-500: #{$clr-color-warning-500};
+      --clr-color-warning-600: #{$clr-color-warning-600};
+      --clr-color-warning-700: #{$clr-color-warning-700};
+      --clr-color-warning-800: #{$clr-color-warning-800};
+      --clr-color-warning-900: #{$clr-color-warning-900};
+      --clr-color-warning-1000: #{$clr-color-warning-1000};
+
+      --clr-color-on-warning-50: #{$clr-color-on-warning-50};
+      --clr-color-on-warning-100: #{$clr-color-on-warning-100};
+      --clr-color-on-warning-200: #{$clr-color-on-warning-200};
+      --clr-color-on-warning-300: #{$clr-color-on-warning-300};
+      --clr-color-on-warning-400: #{$clr-color-on-warning-400};
+      --clr-color-on-warning-500: #{$clr-color-on-warning-500};
+      --clr-color-on-warning-600: #{$clr-color-on-warning-600};
+      --clr-color-on-warning-700: #{$clr-color-on-warning-700};
+      --clr-color-on-warning-800: #{$clr-color-on-warning-800};
+      --clr-color-on-warning-900: #{$clr-color-on-warning-900};
+      --clr-color-on-warning-1000: #{$clr-color-on-warning-1000};
+
+      // Stoplight Success color: alerts, success messaging, success buttons
+
+      --clr-color-success-50: #{$clr-color-success-50};
+      --clr-color-success-100: #{$clr-color-success-100};
+      --clr-color-success-200: #{$clr-color-success-200};
+      --clr-color-success-300: #{$clr-color-success-300};
+      --clr-color-success-400: #{$clr-color-success-400};
+      --clr-color-success-500: #{$clr-color-success-500};
+      --clr-color-success-600: #{$clr-color-success-600};
+      --clr-color-success-700: #{$clr-color-success-700};
+      --clr-color-success-800: #{$clr-color-success-800};
+      --clr-color-success-900: #{$clr-color-success-900};
+      --clr-color-success-1000: #{$clr-color-success-1000};
+
+      --clr-color-on-success-50: #{$clr-color-on-success-50};
+      --clr-color-on-success-100: #{$clr-color-on-success-100};
+      --clr-color-on-success-200: #{$clr-color-on-success-200};
+      --clr-color-on-success-300: #{$clr-color-on-success-300};
+      --clr-color-on-success-400: #{$clr-color-on-success-400};
+      --clr-color-on-success-500: #{$clr-color-on-success-500};
+      --clr-color-on-success-600: #{$clr-color-on-success-600};
+      --clr-color-on-success-700: #{$clr-color-on-success-700};
+      --clr-color-on-success-800: #{$clr-color-on-success-800};
+      --clr-color-on-success-900: #{$clr-color-on-success-900};
+      --clr-color-on-success-1000: #{$clr-color-on-success-1000};
+    }
+  }
+}

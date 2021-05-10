@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -108,14 +108,10 @@
     </p>
 
     <p *ngIf="showWarning">
-      <button type="submit" class="btn btn-danger" (click)="handleDangerClick()">
-        Click here if you are sure
-      </button>
+      <button type="submit" class="btn btn-danger" (click)="handleDangerClick()">Click here if you are sure</button>
     </p>
 
-    <p class="content-for-page-4">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </p>
+    <p class="content-for-page-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 
     <ng-template clrPageButtons>
       <clr-wizard-button [type]="'cancel'">Page Override</clr-wizard-button>

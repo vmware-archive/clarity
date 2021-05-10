@@ -1,0 +1,399 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+$styledInputs: 'input[type=text], input[type=password], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=date], input[type=time], input[type=datetime-local]';
+
+@mixin lastElementBottomBorder($use-custom-props: true) {
+  border-bottom: none;
+  $fallbackShadow: 0 $clr_baselineRem_1px 0 $clr-stack-view-border-box-color;
+  $shadow: 0 $clr_baselineRem_1px 0 var(--clr-stack-view-border-box-color);
+  // IE/OldEdge
+  box-shadow: $fallbackShadow;
+  @if $use-custom-props == true {
+    box-shadow: $shadow;
+  }
+}
+
+@import './properties.stack-view';
+
+@include exports('stack-view.clarity') {
+  .stack-header {
+    font-weight: $clr-stack-view-font-weight;
+    display: flex;
+    align-items: flex-end;
+
+    .stack-title {
+      display: block;
+      flex: 1 1 auto;
+      padding: $clr_baselineRem_0_25 0;
+    }
+
+    .stack-actions {
+      display: block;
+      flex: 0 0 auto;
+
+      .stack-action {
+        margin: 0 0 $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+
+        &.btn {
+          min-width: 0;
+          padding: 0 $clr_baselineRem_0_5;
+        }
+
+        &.btn-link {
+          // Weird negative margin to make the button aligned with the stack view
+          // in its default state. It then looks unaligned on hover only.
+          margin-right: -1 * $clr_baselineRem_0_5;
+        }
+      }
+    }
+  }
+
+  .stack-view {
+    @include css-var(color, clr-stack-view-color, $clr-stack-view-color, $clr-use-custom-properties);
+    font-size: $clr-stack-view-font-size;
+    font-weight: $clr-stack-view-font-weight;
+    line-height: $clr-stack-view-line-height;
+    letter-spacing: $clr-stack-view-letter-spacing;
+    margin-top: 0;
+    border-width: $clr-stack-view-border-width;
+    border-style: solid;
+
+    @include css-var(
+      border-color,
+      clr-stack-view-border-color,
+      $clr-stack-view-border-color,
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      border-radius,
+      clr-stack-view-border-radius,
+      $clr-stack-view-border-radius,
+      $clr-use-custom-properties
+    );
+    overflow-y: auto;
+    @include css-var(background-color, clr-stack-view-bg-color, $clr-stack-view-bg-color, $clr-use-custom-properties);
+    word-wrap: break-word;
+
+    /* this fixes the overflow problem of children elements in a wrapper with a border-radius in Chrome */
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+    dd,
+    dt {
+      // One of the caveats of using definition lists here. Browsers automatically style them in unpredictable ways... :(
+      -webkit-margin-start: 0;
+      margin-inline-start: 0;
+      margin-left: 0;
+    }
+
+    .stack-block {
+      display: flex;
+      // Wrapping for nested stack-blocks
+      flex-flow: row wrap;
+      @include css-var(
+        border-bottom-width,
+        clr-global-borderwidth,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      border-bottom-style: solid;
+      @include css-var(
+        border-bottom-color,
+        clr-stack-view-stack-block-border-bottom,
+        $clr-stack-view-stack-block-border-bottom,
+        $clr-use-custom-properties
+      );
+      overflow-y: hidden;
+    }
+
+    // We have to handle potential nested elements, typically for web components
+    > .stack-block:last-child,
+    > :last-child .stack-block:last-of-type {
+      // This way we keep a border-bottom on the last element if the stack view is higher
+      // than the total height of the  blocks it contains, but we do not have a
+      // weird 1px scroll when both heights match exactly.
+      @include lastElementBottomBorder($clr-use-custom-properties);
+    }
+
+    .stack-block-changed {
+      > .stack-block-label {
+        margin-left: -1 * $clr_baselineRem_0_375;
+      }
+      &::before {
+        content: ' ';
+        position: relative;
+        @include equilateral(0);
+        border-top: $clr_baselineRem_0_375 solid;
+        @include css-var(
+          border-top-color,
+          clr-stack-block-changed-border-top-color,
+          $clr-stack-block-changed-border-top-color,
+          $clr-use-custom-properties
+        );
+        border-right: $clr_baselineRem_0_375 solid transparent;
+      }
+    }
+
+    .stack-block-label {
+      padding: $clr_baselineRem_0_25 $clr_baselineRem_0_5;
+      @include css-var(
+        background-color,
+        clr-stack-view-stack-block-label-and-content-bg-color,
+        $clr-stack-view-stack-block-label-and-content-bg-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    .stack-block-content {
+      background-color: inherit;
+    }
+
+    .stack-block-caret {
+      align-self: center;
+    }
+
+    .stack-block-label {
+      @include css-var(
+        color,
+        clr-stack-view-stack-block-label-text-color,
+        $clr-stack-view-stack-block-label-text-color,
+        $clr-use-custom-properties
+      );
+      font-size: $clr-stack-view-stack-block-label-font-size;
+      font-weight: $clr-stack-view-stack-block-label-font-weight;
+      line-height: $clr-stack-view-stack-block-label-line-height;
+      letter-spacing: $clr-stack-view-stack-block-label-letter-spacing;
+
+      // We're doing a non-flexible item.
+      // It's just easier to align and stretch everything vertically this way than with
+      // floats or inline-blocks.
+      flex: 1 1 auto;
+      display: flex;
+
+      &::before {
+        display: inline-block;
+        content: '';
+        float: left;
+        @include equilateral($clr_baselineRem_0_583);
+        margin: ($clr_baselineRem_0_25 + $clr_baselineRem_1px) $clr_baselineRem_0_2 0 0;
+        text-align: center;
+      }
+
+      &:focus {
+        outline: $clr_baselineRem_5px auto -webkit-focus-ring-color;
+      }
+    }
+
+    .stack-view-key {
+      flex: 0 0 40%;
+      max-width: 40%;
+    }
+
+    .stack-block-caret {
+      @include equilateral($clr_baselineRem_0_583);
+      margin-right: $clr_baselineRem_0_2;
+      @include css-var(
+        fill,
+        clr-stack-view-stack-block-caret-color,
+        $clr-stack-view-stack-block-caret-color,
+        $clr-use-custom-properties
+      );
+    }
+
+    .stack-block-content {
+      @include css-var(
+        color,
+        clr-stack-view-stack-block-content-text-color,
+        $clr-stack-view-stack-block-content-text-color,
+        $clr-use-custom-properties
+      );
+      flex: 1 1 auto;
+      width: 60%;
+      margin-bottom: 0;
+      font-weight: $clr-stack-view-font-weight;
+
+      @include clr-container;
+    }
+
+    .stack-children {
+      flex: 0 0 auto;
+      width: 100%;
+
+      .stack-block {
+        @include css-var(
+          border-bottom-color,
+          clr-stack-view-stack-children-stack-block-border-bottom-color,
+          $clr-stack-view-stack-children-stack-block-border-bottom-color,
+          $clr-use-custom-properties
+        );
+      }
+      > .stack-block:last-child,
+      > :last-child .stack-block:last-of-type {
+        // This way we keep a border-bottom on the last element if the stack view is higher
+        // than the total height of the  blocks it contains, but we do not have a
+        // weird 1px scroll when both heights match exactly.
+        @include lastElementBottomBorder($clr-use-custom-properties);
+      }
+
+      .stack-block-label,
+      .stack-block-content {
+        @include css-var(
+          background-color,
+          clr-stack-view-stack-children-stack-block-label-and-content-bg-color,
+          $clr-stack-view-stack-children-stack-block-label-and-content-bg-color,
+          $clr-use-custom-properties
+        );
+      }
+
+      .stack-block-label {
+        padding-left: $clr_baselineRem_1;
+      }
+    }
+
+    .stack-block-expandable {
+      > .stack-block-label {
+        cursor: pointer;
+
+        &::before {
+          background-image: generateCaretIcon($clr-accordion-text-color);
+          @include icon-background-styles();
+          transform: rotate(-90deg);
+          @include equilateral($clr_baselineRem_0_5);
+        }
+      }
+      > .stack-block-label,
+      > .stack-block-content {
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      }
+
+      &:hover:not(.stack-block-expanded) {
+        > .stack-block-label {
+          @include css-var(
+            background-color,
+            clr-stack-view-stack-block-expandable-hover,
+            $clr-stack-view-stack-block-expandable-hover,
+            $clr-use-custom-properties
+          );
+        }
+      }
+    }
+
+    .stack-block-expanded {
+      > .stack-block-label::before {
+        transform: rotate(0deg);
+      }
+
+      > .stack-block-label {
+        @include css-var(
+          background-color,
+          clr-stack-view-stack-block-expanded-bg-color,
+          $clr-stack-view-stack-block-expanded-bg-color,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          color,
+          clr-stack-view-stack-block-expanded-text-color,
+          $clr-stack-view-stack-block-expanded-text-color,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
+    /*
+      Styles specific to inputs used in a stack view
+    */
+    #{$styledInputs},
+    .select {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: $clr_baselineRem_0_5;
+      // We need to account for the border at the bottom of inputs
+      // Or the stack view blocks all move 1px when going in edit mode.
+      // Inputs are 24px high but 25px total when you include the border.
+      margin-bottom: -1 + $clr-global-borderwidth;
+    }
+
+    // Fix for Firefox and IE, which are throwing line-height for inputs in the air,
+    // like they just don't care.
+    // Yes, hard-coding the height isn't great. Haven't found anything better cross-browser.
+    #{$styledInputs},
+    .select select {
+      height: $clr_baselineRem_1;
+    }
+
+    // TODO: Clean up if not being used
+    .stack-block-expandable > .stack-block-content {
+      #{$styledInputs} {
+        transition: background-size 0.2s ease, border-bottom-color 0.2s ease-in-out;
+      }
+      .select {
+        select {
+          transition: border-bottom-color 0.2s ease-in-out;
+        }
+        &::after {
+          transition: color 0.2s ease-in-out;
+        }
+      }
+    }
+    // TODO: Clean up if not being used
+    .stack-block-expanded > .stack-block-content {
+      #{$styledInputs} {
+        @include css-var(
+          border-bottom-color,
+          clr-color-neutral-600,
+          $clr-color-neutral-600,
+          $clr-use-custom-properties
+        );
+        @include input-border-bottom-animation($clr-color-action-600, clr-color-action-600, $clr-use-custom-properties);
+      }
+
+      .select {
+        select {
+          @include css-var(
+            border-bottom-color,
+            clr-color-neutral-600,
+            $clr-color-neutral-600,
+            $clr-use-custom-properties
+          );
+        }
+
+        &::after {
+          @include css-var(color, clr-color-neutral-600, $clr-color-neutral-600, $clr-use-custom-properties);
+        }
+      }
+    }
+
+    /*
+      Styles specific to stack views used in a modal
+    */
+    .modal & {
+      height: 55vh;
+      margin-bottom: 0;
+    }
+  }
+
+  //Disable the generated icon without a breaking change for the stackview static markup
+  //Only targets the Angular component as of now. Static will require a breaking change.
+  .stack-view {
+    clr-stack-block.stack-block-expandable {
+      .stack-block-label::before {
+        content: none;
+      }
+    }
+
+    .stack-children clr-stack-block,
+    .stack-children {
+      .stack-block-label {
+        padding-left: $clr_baselineRem_1_5;
+
+        &::before {
+          display: none;
+        }
+      }
+      .stack-block-content {
+        padding-left: $clr_baselineRem_0_3;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../layout/nav/_sidenav.clarity.scss
+// Sidenav
+// Sidenav border
+$clr-sidenav-border-color: $clr-color-neutral-400 !default;
+$clr-sidenav-border-width: $clr-global-borderwidth !default;
+
+// Hover
+$clr-sidenav-link-hover-color: $clr-color-neutral-200 !default;
+
+// Active Item
+$clr-sidenav-link-active-color: $clr-color-neutral-1000 !default;
+$clr-sidenav-link-active-bg-color: $clr-global-selection-color !default;
+$clr-sidenav-link-active-border-radius: $clr-global-borderradius !default;
+
+// Collapse trigger
+$clr-sidenav-collapse-toggle-icon-size: $clr-dropdown-caret-icon-dimension !default;
+
+// Misc
+$clr-sidenav-width: 18% !default;
+
+// Sidenav Header
+$clr-sidenav-header-color: $clr-h6-color !default;
+$clr-sidenav-header-font-size: $clr-h6-font-size !default;
+$clr-sidenav-header-font-weight: $clr-h6-font-weight !default;
+$clr-sidenav-header-line-height: $clr-h6-line-height !default;
+$clr-sidenav-header-font-family: $clr-h6-font-family !default;
+$clr-sidenav-header-letter-spacing: $clr-h6-letter-spacing !default;
+
+// Sidenav Text
+$clr-sidenav-color: $clr-p1-color !default;
+$clr-sidenav-font-size: $clr-p1-font-size !default;
+$clr-sidenav-font-weight: $clr-p1-font-weight !default;
+$clr-sidenav-letter-spacing: $clr-p1-letter-spacing !default;

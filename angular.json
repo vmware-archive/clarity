@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clarity": {
+    "dev": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,20 +20,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/clarity",
+            "outputPath": "dist/dev",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "projects/clr-angular/src/main.scss",
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["projects/angular/src/main.scss", "src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -69,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "clarity:build"
+            "browserTarget": "dev:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "clarity:build:production"
+              "browserTarget": "dev:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clarity:build"
+            "browserTarget": "dev:build"
           }
         },
         "test": {
@@ -90,27 +84,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -152,7 +135,7 @@
             ],
             "styles": [
               "node_modules/prismjs/themes/prism-solarizedlight.css",
-              "projects/clr-angular/src/main.scss",
+              "projects/angular/src/main.scss",
               "node_modules/@clr/icons/clr-icons.min.css",
               "projects/website/src/styles/main.scss"
             ],
@@ -205,9 +188,7 @@
               "projects/website/tsconfig.spec.json",
               "projects/website/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -215,44 +196,39 @@
     "clr-angular": {
       "projectType": "library",
       "root": "projects/clr-angular",
-      "sourceRoot": "projects/clr-angular/src",
+      "sourceRoot": "projects/angular/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/clr-angular/tsconfig.lib.json",
-            "project": "projects/clr-angular/ng-package.json"
+            "tsConfig": "projects/angular/tsconfig.lib.json",
+            "project": "projects/angular/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/clr-angular/tsconfig.lib.prod.json"
+              "tsConfig": "projects/angular/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "styles": ["projects/clr-angular/src/main.scss"],
-            "main": "projects/clr-angular/src/test.ts",
-            "tsConfig": "projects/clr-angular/tsconfig.spec.json",
-            "karmaConfig": "projects/clr-angular/karma.conf.js"
+            "styles": ["projects/angular/src/main.scss"],
+            "main": "projects/angular/src/test.ts",
+            "tsConfig": "projects/angular/tsconfig.spec.json",
+            "karmaConfig": "projects/angular/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "projects/clr-angular/tsconfig.lib.json",
-              "projects/clr-angular/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["projects/angular/tsconfig.lib.json", "projects/angular/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
-  "defaultProject": "clarity"
+  "defaultProject": "clr-angular"
 }

@@ -1,0 +1,46 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage: ../layout/main-containter/_layout.clarity.scss
+// Usage: ../layout/nav/_header.clarity.scss
+// Usage: ../layout/nav/_responsive-nav.clarity.scss
+$clr-header-height: $clr_baselineRem_2_5 !default;
+
+// Usage: ../layout/nav/_header.clarity.scss
+$clr-header-bgColor: $clr-color-neutral-900 !default;
+$clr-logo-width: $clr_baselineRem_1_5 !default;
+$clr-nav-icon-size: $clr_baselineRem_0_916 !default;
+$clr-header-section-divider-height: $clr_baselineRem_1_66 !default;
+$clr-search-icon-width: $clr_baselineRem_0_83 !default;
+$clr-header-divider-opacity: 0.15 !default;
+$clr-header-nav-opacity: 0.65 !default;
+$clr-header-nav-hover-opacity: 1 !default;
+$clr-header-outline-offset: -1 * $clr_baselineRem_5px !default;
+$clr-header-clarity-icons-size: $clr_baselineRem_1 !default;
+$clr-header-nav-text-horizontal-padding: $clr_baselineRem_1 !default;
+$clr-header-nav-text-vertical-padding: $clr_baselineRem_0_75 !default;
+$clr-header-2-bg-color: hsl(
+  209,
+  19%,
+  35%
+) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-3-bg-color: $clr-color-secondary-action-1000 !default;
+// Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-4-bg-color: hsl(202, 66%, 41%) !default;
+$clr-header-5-bg-color: $clr-color-action-800 !default;
+$clr-header-6-bg-color: $clr-color-action-1000 !default;
+$clr-header-7-bg-color: hsl(
+  206,
+  25%,
+  25%
+) !default; // Hard coded because this color is not in the color palette. Its reserved for headers only
+$clr-header-8-bg-color: #0f171c !default; // dark theme only header added by external team to workaround lack of header-7 in dark theme
+
+$clr-header-font-color: $clr-color-neutral-50 !default;
+
+$clr-header-title-color: $clr-header-font-color !default;
+$clr-header-title-font-size: $clr-h5-font-size !default;
+$clr-header-title-font-weight: $clr-h5-font-weight !default;
+$clr-header-title-font-family: $clr-h5-font-family !default;
+$clr-header-title-letter-spacing: $clr-h5-letter-spacing !default;

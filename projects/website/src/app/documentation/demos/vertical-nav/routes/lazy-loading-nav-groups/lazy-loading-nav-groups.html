@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -13,7 +13,7 @@
 </p>
 
 <div class="clr-example">
-  <div class="main-container" style="height: 432px;">
+  <div class="main-container" style="height: 432px">
     <header class="header">
       <div class="branding">
         <a href="javascript://">
@@ -29,12 +29,8 @@
           <clr-icon shape="user" clrVerticalNavIcon></clr-icon>
           Normal
           <clr-vertical-nav-group-children *clrIfExpanded="true">
-            <a clrVerticalNavLink routerLink="./normal/pidgey" routerLinkActive="active">
-              Pidgey
-            </a>
-            <a clrVerticalNavLink routerLink="./normal/snorlax" routerLinkActive="active">
-              Snorlax
-            </a>
+            <a clrVerticalNavLink routerLink="./normal/pidgey" routerLinkActive="active"> Pidgey </a>
+            <a clrVerticalNavLink routerLink="./normal/snorlax" routerLinkActive="active"> Snorlax </a>
           </clr-vertical-nav-group-children>
         </clr-vertical-nav-group>
         <clr-vertical-nav-group routerLinkActive="active">
@@ -42,12 +38,8 @@
           <clr-icon shape="flame" clrVerticalNavIcon></clr-icon>
           Fire
           <clr-vertical-nav-group-children *clrIfExpanded>
-            <a clrVerticalNavLink routerLink="./fire/charmander" routerLinkActive="active">
-              Charmander
-            </a>
-            <a clrVerticalNavLink routerLink="./fire/charizard" routerLinkActive="active">
-              Charizard
-            </a>
+            <a clrVerticalNavLink routerLink="./fire/charmander" routerLinkActive="active"> Charmander </a>
+            <a clrVerticalNavLink routerLink="./fire/charizard" routerLinkActive="active"> Charizard </a>
           </clr-vertical-nav-group-children>
         </clr-vertical-nav-group>
         <clr-vertical-nav-group routerLinkActive="active">
@@ -55,12 +47,8 @@
           <clr-icon shape="bolt" clrVerticalNavIcon></clr-icon>
           Electric
           <clr-vertical-nav-group-children *clrIfExpanded>
-            <a clrVerticalNavLink routerLink="./electric/pikachu" routerLinkActive="active">
-              Pikachu
-            </a>
-            <a clrVerticalNavLink routerLink="./electric/raichu" routerLinkActive="active">
-              Raichu
-            </a>
+            <a clrVerticalNavLink routerLink="./electric/pikachu" routerLinkActive="active"> Pikachu </a>
+            <a clrVerticalNavLink routerLink="./electric/raichu" routerLinkActive="active"> Raichu </a>
           </clr-vertical-nav-group-children>
         </clr-vertical-nav-group>
         <a clrVerticalNavLink routerLinkActive="active" routerLink="./credit">

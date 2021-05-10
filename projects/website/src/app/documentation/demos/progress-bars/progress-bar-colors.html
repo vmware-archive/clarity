@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -10,7 +10,7 @@
     <progress value="{{type.value}}" max="100" [attr.data-displayval]="type.value + '%'"></progress>
     {{ type.label }}
   </div>
-  <div style="min-height: 1rem;">
+  <div style="min-height: 1rem">
     <ng-container *ngIf="type.label === 'flash-danger' && type.isFinished()">
       <span class="danger-text">
         <clr-icon shape="exclamation-circle" size="24"></clr-icon>

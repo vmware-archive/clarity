@@ -1,0 +1,14 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+input[clrDatalist] {
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+// Keeps the browser added datalist toggle on the right side of the input underline
+clr-datalist-container .clr-input-group {
+  padding-right: 0;
+}

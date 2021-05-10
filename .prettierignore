@@ -1,0 +1,13 @@
+package-lock.json
+package.json
+dist/
+reports/
+golden/
+.vscode
+.ng_build
+**/node_modules/**
+**/web_modules/**
+.cache
+.netlify
+projects/schematics/src/**/*.js
+projects/schematics/src/**/*.js.map

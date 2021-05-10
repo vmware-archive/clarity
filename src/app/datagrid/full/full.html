@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -63,30 +63,20 @@
 
   <clr-datagrid *ngIf="!isServerDriven" [(clrDgSelected)]="selected">
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        User ID
-      </ng-container>
+      <ng-container *clrDgHideableColumn> User ID </ng-container>
     </clr-dg-column>
     <clr-dg-column [clrDgField]="'name'" [(clrFilterValue)]="nameFilter">
-      <ng-container *clrDgHideableColumn>
-        Name
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Name </ng-container>
     </clr-dg-column>
     <clr-dg-column [clrDgField]="'creation'">
-      <ng-container *clrDgHideableColumn>
-        Creation date
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Creation date </ng-container>
     </clr-dg-column>
     <clr-dg-column [clrDgSortBy]="pokemonComparator">
-      <ng-container *clrDgHideableColumn>
-        Pokemon
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Pokemon </ng-container>
       <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
     </clr-dg-column>
     <clr-dg-column [clrDgField]="'color'">
-      <ng-container *clrDgHideableColumn>
-        Favorite color
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Favorite color </ng-container>
       <clr-dg-filter [clrDgFilter]="colorFilter">
         <clr-datagrid-color-filter-demo #colorFilter class="color-filter"> </clr-datagrid-color-filter-demo>
       </clr-dg-filter>

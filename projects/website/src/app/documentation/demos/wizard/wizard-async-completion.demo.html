@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -12,9 +12,7 @@
   <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
   <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
   <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-  <clr-wizard-button [type]="'finish'">
-    {{ finished ? "Done" : "Check Form" }}
-  </clr-wizard-button>
+  <clr-wizard-button [type]="'finish'"> {{ finished ? "Done" : "Check Form" }} </clr-wizard-button>
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Form question</ng-template>
@@ -47,14 +45,10 @@
     <!-- mandatory -->
 
     <clr-alert *ngIf="errorFlag" [clrAlertType]="'alert-danger'" [clrCloseButtonAriaLabel]="'Close Answer alert'">
-      <clr-alert-item>
-        Your answer is incorrect.
-      </clr-alert-item>
+      <clr-alert-item> Your answer is incorrect. </clr-alert-item>
     </clr-alert>
 
-    <clr-spinner *ngIf="loadingFlag">
-      Loading
-    </clr-spinner>
+    <clr-spinner *ngIf="loadingFlag"> Loading </clr-spinner>
 
     <p *ngIf="errorFlag && !loadingFlag">Go back and try again!</p>
 

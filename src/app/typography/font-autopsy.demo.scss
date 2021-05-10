@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
-@import '../../../projects/clr-angular/src/utils/variables/variables.color';
-@import '../../../projects/clr-angular/src/utils/variables/variables.global';
+@import '../../../projects/angular/src/utils/variables/variables.color';
+@import '../../../projects/angular/src/utils/variables/variables.global';
 
 $full-lh-block-width: $clr_baselineRem_1_5;
 $ruler-highlight-width: $full-lh-block-width/4;

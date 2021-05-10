@@ -1,0 +1,101 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.tabs';
+
+@include exports('tabs.clarity') {
+  @media screen {
+    section[aria-hidden='true'] {
+      display: none;
+    }
+  }
+
+  [data-hidden='true'] {
+    display: none;
+  }
+}
+
+button.nav-link {
+  border-radius: 0;
+  text-transform: capitalize;
+  min-width: 0;
+}
+
+.tabs-overflow {
+  position: relative;
+
+  .nav-item {
+    margin-right: 0;
+  }
+}
+
+.tab-content {
+  display: inline;
+}
+
+@include fixForIE11AndUp {
+  .tab-content {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.tabs-vertical {
+  display: flex;
+
+  // Must be direct child, so horizontal tabs can be nested in vertical tabs
+  & > .nav {
+    height: auto;
+    box-shadow: none;
+    flex-direction: column;
+    align-items: stretch;
+    margin-right: $clr_baselineRem_1;
+    overflow: auto;
+    flex-shrink: 0;
+    padding: $clr_baselineRem_4px;
+    width: $clr_baselineRem_10;
+    min-width: $clr_baselineRem_2;
+
+    .nav-link {
+      text-align: left;
+      padding: 0 $clr_baselineRem_0_5;
+      border: none;
+      margin-bottom: $clr_baselineRem_1px;
+      flex-shrink: 0;
+      margin-top: 0;
+      margin-left: 0;
+      width: 100%;
+
+      &.nav-item {
+        margin-right: 0;
+      }
+
+      &.active,
+      &:hover {
+        // IE/OldEdge
+        box-shadow: inset $clr_baselineRem_3px 0 0 $clr-nav-active-box-shadow-color;
+        @if $clr-use-custom-properties == true {
+          box-shadow: inset $clr_baselineRem_3px 0 0 var(--clr-nav-active-box-shadow-color);
+        }
+      }
+      &.active {
+        @include css-var(
+          background-color,
+          clr-nav-active-bg-color,
+          $clr-global-selection-color,
+          $clr-use-custom-properties
+        );
+      }
+
+      &:not(.active):hover {
+        @include css-var(
+          background-color,
+          clr-nav-hover-bg-color,
+          $clr-sidenav-link-hover-color,
+          $clr-use-custom-properties
+        );
+      }
+    }
+  }
+}

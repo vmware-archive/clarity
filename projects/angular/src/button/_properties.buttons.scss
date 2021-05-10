@@ -1,0 +1,168 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('button.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Spacing
+      --clr-btn-vertical-margin: #{$clr-btn-vertical-margin};
+      --clr-btn-horizontal-margin: #{$clr-btn-horizontal-margin};
+      --clr-btn-horizontal-padding: #{$clr-btn-horizontal-padding};
+      --clr-btn-vertical-padding: 0;
+      --clr-btn-padding: var(--clr-btn-vertical-padding) var(--clr-btn-horizontal-padding);
+
+      // Sizing
+      --clr-btn-height: #{$clr-btn-height};
+      --clr-btn-height-sm: #{$clr-btn-height-sm};
+
+      // Fonts
+      --clr-btn-font-weight: #{$clr-btn-font-weight};
+
+      // Borders
+      --clr-btn-border-radius: #{$clr-btn-border-radius};
+      --clr-btn-border-width: #{$clr-btn-border-width};
+
+      // Shared colors
+      --clr-btn-outline-bg-color: transparent;
+
+      // Standard button appearance - overrideable but not advertised!
+      --clr-btn-appearance-standard-line-height: #{$clr-btn-appearance-standard-line-height};
+      --clr-btn-appearance-standard-font-size: #{$clr-btn-appearance-standard-font-size};
+      --clr-btn-appearance-standard-font-weight: #{$clr-btn-appearance-standard-font-weight};
+      --clr-btn-appearance-standard-height: #{$clr-btn-appearance-standard-height};
+      --clr-btn-appearance-standard-padding: #{$clr-btn-appearance-standard-padding};
+      --clr-btn-appearance-standard-icon-size: #{$clr_baselineRem_0_5};
+
+      // form-style button appearance styles - overrideable but not advertised!
+      --clr-btn-appearance-form-line-height: #{$clr-btn-appearance-form-line-height};
+      --clr-btn-appearance-form-letter-spacing: #{$clr-btn-appearance-form-letter-spacing};
+      --clr-btn-appearance-form-font-size: #{$clr-btn-appearance-form-font-size};
+      --clr-btn-appearance-form-font-weight: #{$clr-btn-appearance-form-font-weight};
+      --clr-btn-appearance-form-height: #{$clr-btn-appearance-form-height};
+      --clr-btn-appearance-form-padding: #{$clr-btn-appearance-form-padding};
+
+      // Default button colors
+      --clr-btn-default-color: var(--clr-color-action-600);
+      --clr-btn-default-border-color: var(--clr-btn-default-color);
+      --clr-btn-default-bg-color: #{$clr-btn-default-bg-color};
+      --clr-btn-default-hover-bg-color: var(--clr-color-action-50);
+      --clr-btn-default-hover-color: var(--clr-color-action-800);
+      --clr-btn-default-box-shadow-color: var(--clr-color-action-500);
+      --clr-btn-default-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-default-disabled-bg-color: var(--clr-btn-default-bg-color);
+      --clr-btn-default-disabled-border-color: var(--clr-color-neutral-600);
+      --clr-btn-default-checked-bg-color: var(--clr-color-action-600);
+      --clr-btn-default-checked-color: var(--clr-color-neutral-0);
+
+      // Default outline button
+      --clr-btn-default-outline-color: var(--clr-color-action-600);
+      --clr-btn-default-outline-border-color: var(--clr-btn-default-outline-color);
+      --clr-btn-default-outline-bg-color: var(--clr-btn-outline-bg-color);
+      --clr-btn-default-outline-hover-bg-color: var(--clr-color-action-50);
+      --clr-btn-default-outline-hover-color: var(--clr-color-action-800);
+      --clr-btn-default-outline-box-shadow-color: var(--clr-color-action-500);
+      --clr-btn-default-outline-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-default-outline-disabled-bg-color: var(--clr-btn-default-outline-bg-color);
+      --clr-btn-default-outline-disabled-border-color: var(--clr-color-neutral-600);
+      --clr-btn-default-outline-checked-color: var(--clr-color-neutral-0);
+      --clr-btn-default-outline-checked-bg-color: var(--clr-btn-default-outline-color);
+
+      // Primary button colors
+      --clr-btn-primary-color: var(--clr-color-neutral-0);
+      --clr-btn-primary-bg-color: var(--clr-color-action-600);
+      --clr-btn-primary-border-color: var(--clr-color-action-600);
+      --clr-btn-primary-hover-bg-color: var(--clr-color-action-800);
+      --clr-btn-primary-hover-color: var(--clr-color-action-50);
+      --clr-btn-primary-box-shadow-color: var(--clr-color-action-500);
+      --clr-btn-primary-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-primary-disabled-bg-color: var(--clr-color-neutral-400);
+      --clr-btn-primary-disabled-border-color: var(--clr-color-neutral-400);
+      --clr-btn-primary-checked-bg-color: var(--clr-color-action-600);
+      --clr-btn-primary-checked-color: var(--clr-color-neutral-0);
+
+      // Success button colors
+      --clr-btn-success-color: var(--clr-color-neutral-0);
+      --clr-btn-success-bg-color: var(--clr-color-success-700);
+      --clr-btn-success-border-color: var(--clr-btn-success-bg-color);
+      --clr-btn-success-hover-bg-color: var(--clr-color-success-800);
+      --clr-btn-success-hover-color: var(--clr-btn-success-color);
+      --clr-btn-success-box-shadow-color: var(--clr-color-success-900);
+      --clr-btn-success-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-success-disabled-bg-color: var(--clr-color-neutral-400);
+      --clr-btn-success-disabled-border-color: var(--clr-color-neutral-400);
+      --clr-btn-success-checked-bg-color: var(--clr-btn-success-hover-bg-color);
+      --clr-btn-success-checked-color: var(--clr-btn-success-color);
+
+      // Success outline button colors
+      --clr-btn-success-outline-color: var(--clr-color-success-700);
+      --clr-btn-success-outline-bg-color: var(--clr-btn-outline-bg-color);
+      --clr-btn-success-outline-border-color: var(--clr-color-success-700);
+      --clr-btn-success-outline-hover-bg-color: var(--clr-color-success-50);
+      --clr-btn-success-outline-hover-color: var(--clr-color-success-900);
+      --clr-btn-success-outline-box-shadow-color: var(--clr-color-success-400);
+      --clr-btn-success-outline-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-success-outline-disabled-bg-color: var(--clr-btn-success-outline-bg-color);
+      --clr-btn-success-outline-disabled-border-color: var(--clr-color-neutral-600);
+      --clr-btn-success-outline-checked-bg-color: var(--clr-btn-success-outline-border-color);
+      --clr-btn-success-outline-checked-color: var(--clr-color-neutral-0);
+
+      // Danger button colors
+      --clr-btn-danger-color: var(--clr-color-neutral-0);
+      --clr-btn-danger-bg-color: var(--clr-color-danger-700);
+      --clr-btn-danger-border-color: var(--clr-btn-danger-bg-color);
+      --clr-btn-danger-hover-bg-color: var(--clr-color-danger-800);
+      --clr-btn-danger-hover-color: var(--clr-btn-danger-color);
+      --clr-btn-danger-box-shadow-color: var(--clr-color-danger-900);
+      --clr-btn-danger-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-danger-disabled-bg-color: var(--clr-color-neutral-400);
+      --clr-btn-danger-disabled-border-color: var(--clr-btn-danger-disabled-color);
+      --clr-btn-danger-checked-bg-color: var(--clr-color-danger-800);
+      --clr-btn-danger-checked-color: var(--clr-btn-danger-color);
+
+      // Danger outline button colors
+      --clr-btn-danger-outline-color: var(--clr-color-danger-700);
+      --clr-btn-danger-outline-bg-color: var(--clr-btn-outline-bg-color);
+      --clr-btn-danger-outline-border-color: var(--clr-color-danger-800);
+      --clr-btn-danger-outline-hover-bg-color: var(--clr-color-danger-100);
+      --clr-btn-danger-outline-hover-color: var(--clr-color-danger-900);
+      --clr-btn-danger-outline-box-shadow-color: var(--clr-color-danger-200);
+      --clr-btn-danger-outline-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-danger-outline-disabled-bg-color: var(--clr-btn-danger-outline-bg-color);
+      --clr-btn-danger-outline-disabled-border-color: var(--clr-btn-danger-outline-disabled-color);
+      --clr-btn-danger-outline-checked-bg-color: var(--clr-color-danger-800);
+      --clr-btn-danger-outline-checked-color: var(--clr-color-neutral-0);
+
+      // Link button colors
+      --clr-btn-link-color: var(--clr-color-action-600);
+      --clr-btn-link-bg-color: transparent;
+      --clr-btn-link-border-color: transparent;
+      --clr-btn-link-hover-bg-color: transparent;
+      --clr-btn-link-hover-color: var(--clr-color-action-800);
+      --clr-btn-link-disabled-color: var(--clr-color-neutral-700);
+      --clr-btn-link-disabled-bg-color: transparent;
+      --clr-btn-link-disabled-border-color: transparent;
+      --clr-btn-link-checked-bg-color: transparent;
+      --clr-btn-link-checked-color: var(--clr-color-action-800);
+
+      // Inverse button colors
+      --clr-btn-inverse-color: var(--clr-color-neutral-0);
+      --clr-btn-inverse-border-color: var(--clr-color-neutral-0);
+      --clr-btn-inverse-bg-color: transparent;
+      --clr-btn-inverse-hover-bg-color: rgba(255, 255, 255, 0.15);
+      --clr-btn-inverse-hover-color: var(--clr-color-neutral-0);
+      --clr-btn-inverse-box-shadow-color: rgba(0, 0, 0, 0.25);
+      --clr-btn-inverse-disabled-color: var(--clr-color-neutral-0);
+      --clr-btn-inverse-disabled-bg-color: var(--clr-btn-inverse-bg-color);
+      --clr-btn-inverse-disabled-border-color: var(--clr-color-neutral-0);
+      --clr-btn-inverse-checked-bg-color: rgba(255, 255, 255, 0.15);
+      --clr-btn-inverse-checked-color: var(--clr-color-neutral-0);
+
+      // For theme-able icon button color
+      --clr-btn-icon-disabled-color: var(--clr-btn-default-disabled-color, #{$clr-btn-default-disabled-color});
+
+      // Button groups
+      --clr-btn-group-focus-outline: #{$clr-btn-group-focus-outline};
+    }
+  }
+}

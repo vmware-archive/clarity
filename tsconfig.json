@@ -4,10 +4,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@clr/angular": [
-        "dist/clr-angular/clr-angular",
-        "dist/clr-angular"
-      ]
+      "@clr/angular": ["dist/clr-angular/clr-angular", "dist/clr-angular"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -22,15 +19,13 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false, // TURN BACK ON
     "strictInputAccessModifiers": false, // TURN BACK ON
     "strictTemplates": false // TURN BACK ON
-  }
+  },
+  "exclude": ["dist", "node_modules"]
 }

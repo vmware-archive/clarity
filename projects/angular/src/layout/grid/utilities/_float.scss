@@ -1,0 +1,19 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@each $breakpoint in map-keys($clr-grid-breakpoints) {
+  @include clr-media-breakpoint-up($breakpoint) {
+    .clr-float-#{$breakpoint}-left {
+      float: left !important;
+    }
+
+    .clr-float-#{$breakpoint}-right {
+      float: right !important;
+    }
+
+    .clr-float-#{$breakpoint}-none {
+      float: none !important;
+    }
+  }
+}

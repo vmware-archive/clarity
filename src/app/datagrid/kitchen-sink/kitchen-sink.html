@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -164,9 +164,7 @@
   <clr-datagrid [(clrDgSelected)]="selected">
     <clr-dg-action-bar>
       <div class="btn-group" role="group" aria-label="Available Actions" *ngIf="selected.length > 0">
-        <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">
-          Add to group
-        </button>
+        <button type="button" class="btn btn-sm btn-secondary" (click)="onAdd()">Add to group</button>
         <button type="button" class="btn btn-sm btn-secondary" (click)="onDelete()">Delete</button>
         <button type="button" class="btn btn-sm btn-secondary" (click)="onEdit()" *ngIf="selected.length == 1">
           Edit
@@ -268,10 +266,8 @@
 
 <h3>Horizontal scrolling</h3>
 
-<div class="card" style="width: 400px;" id="horizontal-scrolling">
-  <div class="card-header">
-    For instance when in a narrow card.
-  </div>
+<div class="card" style="width: 400px" id="horizontal-scrolling">
+  <div class="card-header">For instance when in a narrow card.</div>
   <div class="card-block">
     <clr-datagrid>
       <clr-dg-column>User ID</clr-dg-column>
@@ -401,35 +397,23 @@
 
 <h3>Hide-show columns</h3>
 <div id="hide-show">
-  <button class="btn btn-outline-primary" id="toggle-id" (click)="toggleId()">
-    Toggle ID
-  </button>
+  <button class="btn btn-outline-primary" id="toggle-id" (click)="toggleId()">Toggle ID</button>
   <clr-datagrid>
     <clr-dg-column *ngIf="showId">
-      <ng-container *clrDgHideableColumn>
-        User ID
-      </ng-container>
+      <ng-container *clrDgHideableColumn> User ID </ng-container>
     </clr-dg-column>
     <clr-dg-column>
       <!--Name-->
-      <ng-container *clrDgHideableColumn>
-        Name
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Name </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Creation date
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Creation date </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Pokemon
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Pokemon </ng-container>
     </clr-dg-column>
     <clr-dg-column>
-      <ng-container *clrDgHideableColumn>
-        Favorite color
-      </ng-container>
+      <ng-container *clrDgHideableColumn> Favorite color </ng-container>
     </clr-dg-column>
 
     <clr-dg-placeholder>No users found</clr-dg-placeholder>
@@ -464,9 +448,7 @@
           <label>{{user.id}}</label>
         </clr-toggle-wrapper>
       </clr-dg-cell>
-      <clr-dg-cell *ngIf="!isFirst">
-        {{user.id}}
-      </clr-dg-cell>
+      <clr-dg-cell *ngIf="!isFirst"> {{user.id}} </clr-dg-cell>
       <clr-dg-cell>{{user.name}}</clr-dg-cell>
       <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
       <clr-dg-cell>{{user.color}}</clr-dg-cell>

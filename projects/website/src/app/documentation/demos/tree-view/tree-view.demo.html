@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -85,9 +85,7 @@
 
       <h3>Style</h3>
 
-      <p>
-        The styling of each piece of a tree node is consistent across the different types of trees.
-      </p>
+      <p>The styling of each piece of a tree node is consistent across the different types of trees.</p>
 
       <div class="clr-row">
         <div class="clr-col-12 clr-col-md-5">
@@ -124,9 +122,7 @@
       </div>
 
       <h3>Behavior</h3>
-      <p>
-        To explain the behavior of the tree, here is the terminology we’ll be using in this section:
-      </p>
+      <p>To explain the behavior of the tree, here is the terminology we’ll be using in this section:</p>
 
       <div class="clr-row">
         <div class="clr-col-12 clr-col-md-4">
@@ -152,9 +148,7 @@
             To expand or collapse a parent node, the user clicks on the expand/collapse arrow. Clicking on the node item
             itself does not expand or collapse a node. It serves as a highlighting mechanism.
           </p>
-          <p>
-            In read-only trees where highlighting is not an option, this pattern remains true for consistency.
-          </p>
+          <p>In read-only trees where highlighting is not an option, this pattern remains true for consistency.</p>
         </div>
         <div class="clr-col-12 clr-col-md-6 clr-offset-md-1">
           <div class="clrweb-DoxMedia has-h4-margin">
@@ -200,15 +194,15 @@
             three distinct targets:
           </p>
           <ol class="list">
-            <li style="margin-top: 24px;">
+            <li style="margin-top: 24px">
               Expanding and Collapsing: a user is able to perform this action by clicking on the expand / collapse
               arrow.
             </li>
-            <li style="margin-top: 24px;">
+            <li style="margin-top: 24px">
               Checking a Checkbox: this would require clicking on the checkbox itself to check or uncheck a treenode.
               This will also affect the status of the parent node’s checkbox.
             </li>
-            <li style="margin-top: 24px;">
+            <li style="margin-top: 24px">
               Highlighting Tree Node: a user can highlight a tree node by clicking on the name (label) of the tree node.
               This allows for the possibility of loading content based on selection to provide more information on a
               tree node.
@@ -258,7 +252,7 @@
     <div id="code-examples">
       <h3 id="examples">Code &amp; Examples</h3>
 
-      <div class="clr-row" style="margin-top: 24px;">
+      <div class="clr-row" style="margin-top: 24px">
         <div class="clr-col-12">
           <ul class="list demo-list">
             <li><a routerLink="." fragment="basic-tree">Basic tree</a></li>
@@ -500,9 +494,7 @@
             </td>
             <td class="hidden-xs-down">boolean</td>
             <td class="hidden-xs-down">false</td>
-            <td class="left">
-              Indicates to the tree that children nodes should be lazy-loaded
-            </td>
+            <td class="left">Indicates to the tree that children nodes should be lazy-loaded</td>
           </tr>
         </tbody>
       </table>
@@ -526,9 +518,7 @@
             </td>
             <td class="hidden-xs-down">ClrSelectedState</td>
             <td class="hidden-xs-down">UNSELECTED</td>
-            <td class="left">
-              Two-way binding on the state of a Tree Node: UNSELECTED, SELECTED or INDETERMINATE.
-            </td>
+            <td class="left">Two-way binding on the state of a Tree Node: UNSELECTED, SELECTED or INDETERMINATE.</td>
           </tr>
           <tr>
             <td class="left">
@@ -538,9 +528,7 @@
             </td>
             <td class="hidden-xs-down">boolean</td>
             <td class="hidden-xs-down">false</td>
-            <td class="left">
-              Two-way binding on the expanded/collapsed state of the node.
-            </td>
+            <td class="left">Two-way binding on the expanded/collapsed state of the node.</td>
           </tr>
           <tr>
             <td class="left">
@@ -550,9 +538,7 @@
             </td>
             <td class="hidden-xs-down">boolean | undefined</td>
             <td class="hidden-xs-down">undefined</td>
-            <td class="left">
-              Forces a node to be expandable or node, regardless of its children.
-            </td>
+            <td class="left">Forces a node to be expandable or node, regardless of its children.</td>
           </tr>
         </tbody>
       </table>
@@ -577,9 +563,7 @@
             </td>
             <td class="hidden-xs-down">T | T[]</td>
             <td class="hidden-xs-down">none</td>
-            <td class="left">
-              Root node(s) of the recursive tree, to begin the iteration.
-            </td>
+            <td class="left">Root node(s) of the recursive tree, to begin the iteration.</td>
           </tr>
           <tr>
             <td class="left">
@@ -619,9 +603,7 @@
             </td>
             <td class="hidden-xs-down">boolean</td>
             <td class="hidden-xs-down">false</td>
-            <td class="left">
-              Two-way binding on the expanded/collapsed state of the node.
-            </td>
+            <td class="left">Two-way binding on the expanded/collapsed state of the node.</td>
           </tr>
         </tbody>
       </table>
@@ -646,9 +628,7 @@
             </td>
             <td class="hidden-xs-down">boolean</td>
             <td class="hidden-xs-down">false</td>
-            <td class="left">
-              Activates a spinner to indicate that children nodes are loading.
-            </td>
+            <td class="left">Activates a spinner to indicate that children nodes are loading.</td>
           </tr>
         </tbody>
       </table>

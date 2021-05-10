@@ -1,0 +1,16 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('progress.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ../progress/progress-bars/_progress-bars.clarity.scss
+      --clr-progress-default-color: var(--clr-color-action-600);
+      --clr-progress-alt-color-1: var(--clr-color-success-400); // green
+      --clr-progress-alt-color-2: var(--clr-color-danger-800); // red
+      --clr-progress-alt-color-3: var(--clr-progress-alt-color-2); // red
+      --clr-progress-bg-color: var(--clr-color-neutral-200);
+    }
+  }
+}

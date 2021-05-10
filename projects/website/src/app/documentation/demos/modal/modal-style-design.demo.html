@@ -1,12 +1,12 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <div class="clr-example">
   <div class="backdrop-example-container">
-    <div *ngIf="!basic" style="margin: 0 auto; text-align: center;">
+    <div *ngIf="!basic" style="margin: 0 auto; text-align: center">
       <button class="btn btn-outline btn-inverse" (click)="basic = true">Show modal</button>
     </div>
     <clr-modal [(clrModalOpen)]="basic" [clrModalStaticBackdrop]="true">

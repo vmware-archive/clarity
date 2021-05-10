@@ -1,0 +1,13 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../utils/variables/variables.color';
+
+$clr-accordion-text-color: $clr-color-neutral-0;
+$clr-accordion-active-background-color: $clr-global-selection-color;
+$clr-accordion-header-hover-background-color: $clr-global-selection-color;
+$clr-accordion-content-background-color: hsl(198, 28%, 18%);
+$clr-accordion-header-background-color: hsl(201, 30%, 15%);
+$clr-accordion-border-left-color: hsl(202, 30%, 24%);
+$clr-accordion-border-color: hsl(208, 16%, 34%);

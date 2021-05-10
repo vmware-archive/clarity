@@ -18,7 +18,7 @@ import {
   loadSocialIconSet,
   loadTechnologyIconSet,
   loadTextEditIconSet,
-  loadTravelIconSet
+  loadTravelIconSet,
 } from '@cds/core/icon';
 
 @Component({

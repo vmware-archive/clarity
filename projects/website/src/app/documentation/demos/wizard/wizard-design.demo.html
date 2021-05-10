@@ -1,12 +1,12 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
 
 <div class="clr-example">
   <div class="backdrop-example-container">
-    <div *ngIf="!open" style="margin: 0 auto; text-align: center;">
+    <div *ngIf="!open" style="margin: 0 auto; text-align: center">
       <button class="btn btn-outline btn-inverse" (click)="open = true">Show wizard</button>
     </div>
 
@@ -59,9 +59,7 @@
           <clr-select-container>
             <label>Gender</label>
             <select clrSelect name="gender" [(ngModel)]="model.gender">
-              <option *ngFor="let g of [ 'Male', 'Female' ]" [value]="g">
-                {{g}}
-              </option>
+              <option *ngFor="let g of [ 'Male', 'Female' ]" [value]="g">{{g}}</option>
             </select>
           </clr-select-container>
         </form>
@@ -100,9 +98,7 @@
           [clrCloseButtonAriaLabel]="'Close Wiki alert'"
         >
           <clr-alert-item>
-            <span class="alert-text">
-              Your power and weakness cannot be from the same source.
-            </span>
+            <span class="alert-text"> Your power and weakness cannot be from the same source. </span>
           </clr-alert-item>
         </clr-alert>
 
@@ -131,9 +127,7 @@
 
         <clr-alert [clrAlertClosable]="false" clrAlertType="alert-error" *ngIf="showPowerError">
           <clr-alert-item>
-            <span class="alert-text">
-              Your power and weakness cannot be from the same source.
-            </span>
+            <span class="alert-text"> Your power and weakness cannot be from the same source. </span>
           </clr-alert-item>
         </clr-alert>
 
@@ -164,13 +158,9 @@
           textsplanationOfPower }} but {{ textsplanationOfWeakness }}.
         </p>
 
-        <p>
-          Your pok&egrave;mon's power ranking is: {{ model.ranking }}{{ powerRankingPunctuation }}
-        </p>
+        <p>Your pok&egrave;mon's power ranking is: {{ model.ranking }}{{ powerRankingPunctuation }}</p>
 
-        <p>
-          {{ textsplanationOfRanking }}
-        </p>
+        <p>{{ textsplanationOfRanking }}</p>
       </clr-wizard-page>
     </clr-wizard>
   </div>

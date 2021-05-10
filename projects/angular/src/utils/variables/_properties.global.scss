@@ -1,0 +1,40 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('global.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // app borders
+      --clr-global-borderradius: #{$clr-global-borderradius};
+      --clr-global-borderwidth: #{$clr-global-borderwidth};
+
+      // app background
+      --clr-global-app-background: #{$clr-global-app-background};
+
+      // app selection colors
+      --clr-global-selection-color: #{$clr-global-selection-color};
+      --clr-global-on-selection-color: #{$clr-global-on-selection-color};
+
+      // app hover colors
+      --clr-global-hover-color: #{$clr-global-hover-color};
+
+      // app font colors
+      --clr-global-content-header-font-color: #{$clr-global-content-header-font-color};
+      --clr-global-font-color: #{$clr-global-font-color};
+
+      // app success/error colors
+      --clr-global-success-color: #{$clr-global-success-color};
+      --clr-global-error-color: #{$clr-global-error-color};
+
+      // component close icon colors
+      --clr-close-color--normal: #{$clr-close-color--normal};
+      --clr-close-color--normal-opacity: #{$clr-close-color--normal-opacity};
+      --clr-close-color--hover: #{$clr-close-color--hover};
+      --clr-close-color--hover-opacity: #{$clr-close-color--hover-opacity};
+
+      // global box-shadows
+      --clr-popover-box-shadow-color: #{$clr-popover-box-shadow-color};
+    }
+  }
+}

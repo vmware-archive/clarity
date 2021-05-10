@@ -1,0 +1,86 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('typography.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-font: #{$clr-font};
+      --clr-display-font: var(--clr-font);
+
+      --clr-font-weight-light: #{$clr-font-weight-light};
+      --clr-font-weight-regular: #{$clr-font-weight-regular};
+      --clr-font-weight-semibold: #{$clr-font-weight-semibold};
+      --clr-font-weight-bold: #{$clr-font-weight-bold};
+      --clr-font-weight-extrabold: #{$clr-font-weight-extrabold};
+
+      // Header styles
+      //H1 - login_productName
+      --clr-h1-color: var(--clr-global-content-header-font-color);
+      --clr-h1-font-weight: var(--clr-font-weight-light);
+      --clr-h1-font-family: var(--clr-display-font);
+
+      //H2 - login_trademark, page_mainHeading
+      --clr-h2-color: var(--clr-global-content-header-font-color);
+      --clr-h2-font-weight: var(--clr-font-weight-light);
+      --clr-h2-font-family: var(--clr-display-font);
+
+      //H3 - login_subtitle, modal_header, page_secondaryHeading
+      --clr-h3-color: var(--clr-global-content-header-font-color);
+      --clr-h3-font-weight: var(--clr-font-weight-light);
+      --clr-h3-font-family: var(--clr-display-font);
+
+      //H4 - card titles, page_tertiaryHeading
+      --clr-h4-color: var(--clr-global-content-header-font-color);
+      --clr-h4-font-weight: var(--clr-font-weight-light);
+      --clr-h4-font-family: var(--clr-display-font);
+
+      //H5 - dgrid placeholder, datagrid_column_toggle_title, form_block_label, nav_title, page_introParagraph, page_sectionHeader
+      --clr-h5-color: var(--clr-global-font-color);
+      --clr-h5-font-weight: var(--clr-font-weight-regular);
+      --clr-h5-font-family: var(--clr-display-font);
+
+      //H6 - sidenav_sectionHeader, toc_header
+      --clr-h6-color: var(--clr-color-neutral-900);
+      --clr-h6-font-weight: var(--clr-font-weight-semibold);
+      --clr-h6-font-family: var(--clr-display-font);
+
+      // Non-header text styles
+      //P0 - Intro text
+      --clr-p0-color: var(--clr-global-font-color);
+      --clr-p0-font-weight: var(--clr-font-weight-light);
+
+      //P1 - card text, dropdown_text, page_bodyText, sidenav_text, tab_text, toc_text
+      --clr-p1-color: var(--clr-global-font-color);
+      --clr-p1-font-weight: var(--clr-font-weight-regular);
+
+      //P2 - form_label, stackview_header
+      --clr-p2-color: var(--clr-global-font-color);
+      --clr-p2-font-weight: var(--clr-font-weight-semibold);
+
+      //P3 - alerts, form_group_fields, stackview_text, table_text, tooltip_text
+      --clr-p3-color: var(--clr-global-font-color);
+      --clr-p3-font-weight: var(--clr-font-weight-regular);
+
+      //P4 - small alerts, dropdown_header, vertical_nav_header
+      --clr-p4-color: var(--clr-global-font-color);
+      --clr-p4-font-weight: var(--clr-font-weight-bold);
+
+      //P5
+      --clr-p5-color: var(--clr-global-font-color);
+      --clr-p5-font-weight: var(--clr-font-weight-regular);
+
+      //P6 - card link btns, form_subtext, table_header
+      --clr-p6-color: var(--clr-global-font-color);
+      --clr-p6-font-weight: var(--clr-font-weight-bold);
+
+      //P7 - label_text
+      --clr-p7-color: var(--clr-global-font-color);
+      --clr-p7-font-weight: var(--clr-font-weight-regular);
+
+      //P8
+      --clr-p8-color: var(--clr-global-font-color);
+      --clr-p8-font-weight: var(--clr-font-weight-regular);
+    }
+  }
+}

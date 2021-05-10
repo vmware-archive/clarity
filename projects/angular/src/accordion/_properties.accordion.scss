@@ -1,0 +1,50 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('accordion.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      --clr-accordion-text-color: var(--clr-global-font-color);
+
+      --clr-accordion-active-background-color: var(--clr-global-selection-color);
+      --clr-accordion-content-background-color: var(--clr-color-neutral-0);
+
+      --clr-accordion-header-background-color: var(--clr-color-neutral-50);
+      --clr-accordion-header-hover-background-color: var(--clr-color-neutral-200);
+      --clr-accordion-header-font-size: #{$clr_baselineRem_0_65};
+
+      --clr-accordion-header-button-font-size: #{$clr_baselineRem_0_5};
+      --clr-accordion-title-font-weight: 500;
+      --clr-accordion-title-font-size: #{$clr_baselineRem_0_5416};
+
+      --clr-accordion-error-color: var(--clr-global-error-color);
+      --clr-accordion-complete-color: var(--clr-global-success-color);
+
+      --clr-accordion-border-color: var(--clr-color-neutral-400);
+      --clr-accordion-border-radius: var(--clr-global-borderradius);
+
+      --clr-accordion-border-left-color: #{$clr-accordion-border-left-color};
+      --clr-accordion-border-left-width: #{$clr_baselineRem_0_25};
+      --clr-accordion-border-left-color-complete: var(--clr-accordion-complete-color);
+      --clr-accordion-border-left-color-error: var(--clr-accordion-error-color);
+
+      // compound properties
+      --clr-accordion-header-left-indicator: inset
+        var(--clr-accordion-border-left-width)
+        0
+        0
+        var(--clr-accordion-border-left-color);
+      --clr-accordion-header-left-complete-indicator: inset
+        var(--clr-accordion-border-left-width)
+        0
+        0
+        var(--clr-accordion-border-left-color-complete);
+      --clr-accordion-header-left-error-indicator: inset
+        var(--clr-accordion-border-left-width)
+        0
+        0
+        var(--clr-accordion-border-left-color-error);
+    }
+  }
+}

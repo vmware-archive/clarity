@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -33,9 +33,7 @@
   <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
     <ng-template clrPageTitle>We need a number</ng-template>
     <!-- mandatory -->
-    <ng-template clrPageNavTitle>
-      Enter a number
-    </ng-template>
+    <ng-template clrPageNavTitle> Enter a number </ng-template>
     <!-- optional -->
     <form clrForm #formPageTwo="ngForm">
       <clr-input-container>
@@ -50,12 +48,8 @@
     <ng-template clrPageTitle>Title for page 3</ng-template>
     <!-- mandatory -->
     <ng-template clrPageNavTitle>
-      <span *ngIf="formPageOne.valid && formPageTwo.valid">
-        Ready to go!
-      </span>
-      <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
-        Not ready yet
-      </span>
+      <span *ngIf="formPageOne.valid && formPageTwo.valid"> Ready to go! </span>
+      <span *ngIf="!formPageOne.valid || !formPageTwo.valid"> Not ready yet </span>
     </ng-template>
     <!-- optional -->
 

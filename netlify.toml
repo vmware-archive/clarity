@@ -1,6 +1,6 @@
 # Default build settings
 [build]
-  command = "ng build website --prod"
+  command = "ng build clr-angular --prod && ng build website --prod && netlify-lambda build netlify"
   ignore = "./scripts/netlify-build.sh"
   functions = "dist/netlify"
   publish = "dist/website"

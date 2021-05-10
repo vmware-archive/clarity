@@ -1,0 +1,294 @@
+# Default build settings
+[build]
+  command = "ng build website --prod"
+  ignore = "./scripts/netlify-build.sh"
+  functions = "dist/netlify"
+  publish = "dist/website"
+  environment = { CI = "true", NPM_FLAGS = '--no-optional', CYPRESS_INSTALL_BINARY = "false" }
+
+# Legacy Website Redirects
+
+# getting started
+[[redirects]]
+  from = "/documentation/get-started"
+  to = "/get-started/"
+  status = 301
+
+# news -> releases
+[[redirects]]
+  from = "/news/*"
+  to = "/releases/"
+  status = 301
+
+# community -> (re-direct to homepage)
+[[redirects]]
+  from = "/community"
+  to = "/"
+  status = 301
+
+# Icons
+[[redirects]]
+  from = "/icons"
+  to = "/foundation/icons/"
+  status = 301
+
+# foundation pages
+[[redirects]]
+  from = "/documentation/accessibility"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/app-layout"
+  to = "/foundation/app-layout/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/color"
+  to = "/foundation/color/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/internationalization"
+  to = "/foundation/internationalization/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/navigation"
+  to = "/foundation/navigation/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/themes"
+  to = "/foundation/themes/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/typography"
+  to = "/foundation/typography/"
+  status = 301
+
+# Redirect components
+[[redirects]]
+  from = "/documentation/accordion"
+  to = "/angular-components/accordion/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/alerts"
+  to = "/angular-components/alert/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/badges"
+  to = "/angular-components/badge/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/buttons"
+  to = "/angular-components/button/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/button-group"
+  to = "/angular-components/button-group/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/cards"
+  to = "/angular-components/card/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/checkboxes"
+  to = "/angular-components/checkbox/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/datagrid/*"
+  to = "/angular-components/datagrid/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/datalist"
+  to = "/angular-components/datalist/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/datepicker"
+  to = "/angular-components/date-picker/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/dropdowns"
+  to = "/angular-components/dropdown/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/forms"
+  to = "/angular-components/form/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/grid"
+  to = "/angular-components/grid/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/header"
+  to = "/angular-components/header/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/input"
+  to = "/angular-components/input/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/labels"
+  to = "/angular-components/label/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/list"
+  to = "/angular-components/list/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/login"
+  to = "/angular-components/login/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/modals"
+  to = "/angular-components/modal/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/password"
+  to = "/angular-components/password/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/progress"
+  to = "/angular-components/progress-bar/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/radio"
+  to = "/angular-components/radio/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/range"
+  to = "/angular-components/range/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/select"
+  to = "/angular-components/select/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/sidenav"
+  to = "/angular-components/sidenav/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/signposts"
+  to = "/angular-components/signpost/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/spinners"
+  to = "/angular-components/spinner/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/stack-view"
+  to = "/angular-components/stack-view/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/stepper"
+  to = "/angular-components/stepper/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/tables"
+  to = "/angular-components/table/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/tabs"
+  to = "/angular-components/tab/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/textarea"
+  to = "/angular-components/textarea/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/timeline"
+  to = "/angular-components/timeline/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/toggle-switches"
+  to = "/angular-components/toggle/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/tooltips"
+  to = "/angular-components/tooltip/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/tree-view"
+  to = "/angular-components/tree-view/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/vertical-nav/*"
+  to = "/angular-components/vertical-nav/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/wizards"
+  to = "/angular-components/wizard/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation"
+  to = "/angular-components/"
+  status = 301
+
+[[redirects]]
+  from = "/documentation/*"
+  to = "/angular-components/:splat/"
+  status = 301
+
+# Redirects for all images to CDN
+[[redirects]]
+  from = "/images/*"
+  to = "https://dt7zex2d2lk4u.cloudfront.net/images/:splat"
+  status = 200
+
+# Redirect support for storybook/core demo
+[[redirects]]
+  from = "/storybook/core/*"
+  to = "/storybook/core"
+  status = 200
+
+# Support CORS on JSON files
+[[headers]]
+  for = "/*.json"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+# Handle 404s in our app, SPA redirect config
+[[redirects]]
+from = "/*"
+to = "/404/"
+status = 404

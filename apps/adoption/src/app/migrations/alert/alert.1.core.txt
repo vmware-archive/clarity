@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/alert/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-alert-group status="warning" *ngIf="showAlert">
+      <cds-alert closable="true" (closeChange)="showAlert = false">
+        Try closing this alert.
+      </cds-alert>
+    </cds-alert-group>
+
+    <button *ngIf="!showAlert" class="btn primary" (click)="showAlert = !showAlert">
+      Show alert
+    </button>
+`,
+})
+export class AppComponent {
+  showAlert = true;
+}

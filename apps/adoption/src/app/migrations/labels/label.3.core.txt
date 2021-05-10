@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/tag/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-tag readonly color="gray">Default</cds-tag>
+    <cds-tag readonly color="purple">Purple</cds-tag>
+    <cds-tag readonly color="blue">Blue</cds-tag>
+    <cds-tag readonly color="orange">Orange</cds-tag>
+    <cds-tag readonly color="light-blue">Light Blue</cds-tag>
+  `,
+})
+export class AppComponent {}

@@ -1,0 +1,23 @@
+import { CommonModule } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { ClarityModule } from '@clr/angular';
+
+import '@cds/core/badge/register.js';
+
+@Component({
+  selector: 'badge-demo',
+  template: `
+  <cds-badge status="info">2</cds-badge>
+  <cds-badge status="success">3</cds-badge>
+  <cds-badge status="warning">12</cds-badge>
+  <cds-badge status="danger">15</cds-badge>
+  `,
+})
+export class BadgeStatusCoreDemo {}
+
+@NgModule({
+  declarations: [BadgeStatusCoreDemo],
+  imports: [ClarityModule, CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+class AppModule {}

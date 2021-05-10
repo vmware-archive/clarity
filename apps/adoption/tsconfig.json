@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/adoption",
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "lib": ["es2018", "dom"]
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "strictTemplates": true
+  }
+}

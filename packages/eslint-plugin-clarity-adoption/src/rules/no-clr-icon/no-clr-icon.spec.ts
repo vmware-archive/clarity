@@ -81,6 +81,11 @@ htmlRuleTester.run('no-clr-icon', rule, {
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidIconTest({
+      code: `<clr-icon class="is-error"></clr-icon>`,
+      output: `<cds-icon status="danger"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
       code: `<clr-icon class="is-warning"></clr-icon>`,
       output: `<cds-icon status="warning"></cds-icon>`,
       locations: [{ line: 1, column: 1 }],
@@ -97,7 +102,7 @@ htmlRuleTester.run('no-clr-icon', rule, {
     }),
     getInvalidIconTest({
       code: `<clr-icon class="is-highlight"></clr-icon>`,
-      output: `<cds-icon status="highlight"></cds-icon>`,
+      output: `<cds-icon status="info"></cds-icon>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidIconTest({
@@ -235,6 +240,48 @@ htmlRuleTester.run('no-clr-icon', rule, {
       output: `<cds-icon shape="angle" direction="right"></cds-icon>`,
       locations: [{ line: 1, column: 1 }],
     }),
+
+    getInvalidIconTest({
+      code: `<clr-icon shape="collapse up"></clr-icon>`,
+      output: `<cds-icon shape="angle-double" direction="up"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="collapse down"></clr-icon>`,
+      output: `<cds-icon shape="angle-double" direction="down"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="collapse left"></clr-icon>`,
+      output: `<cds-icon shape="angle-double" direction="left"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="collapse right"></clr-icon>`,
+      output: `<cds-icon shape="angle-double" direction="right"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+
+    getInvalidIconTest({
+      code: `<clr-icon shape="arrow up"></clr-icon>`,
+      output: `<cds-icon shape="arrow" direction="up"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="arrow down"></clr-icon>`,
+      output: `<cds-icon shape="arrow" direction="down"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="arrow left"></clr-icon>`,
+      output: `<cds-icon shape="arrow" direction="left"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidIconTest({
+      code: `<clr-icon shape="arrow right"></clr-icon>`,
+      output: `<cds-icon shape="arrow" direction="right"></cds-icon>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
     /**
      * Shape attribute: already migrated tag (cds-icon)
      */
@@ -256,6 +303,48 @@ htmlRuleTester.run('no-clr-icon', rule, {
     getInvalidIconTest({
       code: `<cds-icon shape="caret right"></cds-icon>`,
       output: `<cds-icon shape="angle" direction="right"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+
+    getInvalidIconTest({
+      code: `<cds-icon shape="collapse up"></cds-icon>`,
+      output: `<cds-icon shape="angle-double" direction="up"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="collapse down"></cds-icon>`,
+      output: `<cds-icon shape="angle-double" direction="down"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="collapse left"></cds-icon>`,
+      output: `<cds-icon shape="angle-double" direction="left"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="collapse right"></cds-icon>`,
+      output: `<cds-icon shape="angle-double" direction="right"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+
+    getInvalidIconTest({
+      code: `<cds-icon shape="arrow up"></cds-icon>`,
+      output: `<cds-icon shape="arrow" direction="up"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="arrow down"></cds-icon>`,
+      output: `<cds-icon shape="arrow" direction="down"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="arrow left"></cds-icon>`,
+      output: `<cds-icon shape="arrow" direction="left"></cds-icon>`,
+      locations: [{ line: 1, column: 11 }],
+    }),
+    getInvalidIconTest({
+      code: `<cds-icon shape="arrow right"></cds-icon>`,
+      output: `<cds-icon shape="arrow" direction="right"></cds-icon>`,
       locations: [{ line: 1, column: 11 }],
     }),
     /**

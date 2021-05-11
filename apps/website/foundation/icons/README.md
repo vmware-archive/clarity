@@ -5,11 +5,7 @@ toc: true
 
 The Clarity Icons presents pixel-perfect, scalable SVG-based icons. The icon system gives you complete control over icon color, orientation, and size. Additionally, you can access and customize any SVG graphic elements inside the icon through standard CSS.
 
-<doc-alert status="warning">
-
-**Are you using the old icons?** This only describes the Clarity Core Web Components icon implemenation, which uses the `@cds/core` NPM package. If you are looking for documentation about the original Clarity Icons which uses the `@clr/icons` NPM package, please visit our [old icons documentation](https://v4.clarity.design/icons).
-
-</doc-alert>
+<DocAlert :actionPop="true" status="warning" path="https://v4.clarity.design/icons"><b>Are you using the old icons?</b> This only describes the Clarity Core Web Components icon implemenation, which uses the <b>@cds/core</b> NPM package. Documentation about the original Clarity Icons which uses the <b>@clr/icons</b> NPM package can be found in our old icons documentation.</DocAlert>
 
 ## Usage
 
@@ -68,7 +64,7 @@ Once the custom shape is added, use it just like any other icon.
 
 ## Behavior
 
-### Icon size:
+### Icon size
 
 By default, the size for Clarity Icons is 16 by 16 pixels, and you have two ways of customizing this default value. One is through the use of the size attribute; the other is manually customizing the width and height values in your icon's style.
 
@@ -86,7 +82,7 @@ The size attribute takes a string number or one of the standard Clarity t-shirt 
 !!!include(.vuepress/code/core-usage-demos/icon/size-style.html)!!!
 </doc-demo>
 
-### Rotation:
+### Rotation
 
 The default rotation for every shape in Clarity Icons is 0 degrees. With directional icons such as arrows and carets, 0 degrees means it points up. To rotate an icon to another direction, specify that either in the shape or dir attribute. Alternatively, you can set the rotation values in the icon's style attribute.
 
@@ -102,7 +98,7 @@ The default rotation for every shape in Clarity Icons is 0 degrees. With directi
 !!!include(.vuepress/code/core-usage-demos/icon/rotate-style.html)!!!
 </doc-demo>
 
-### Flips:
+### Flips
 
 You can flip icons horizontally or vertically through the use of the flip attribute.
 
@@ -115,7 +111,6 @@ You can flip icons horizontally or vertically through the use of the flip attrib
 Clarity Icons also come with predefined colors using the `status` attribute.
 Colors are described as:
 
-- **highlight**: use this color when you want to draw attention to the icon
 - **danger**: use this color when you want to show errors or make the user pause and evaluate when they see this icon
 - **warning**: use this color when you want the user to proceed with caution
 - **success**: use this color when you want the user to know something is correct
@@ -135,7 +130,7 @@ There is also `inverse` attribute, which is suitable for icons used on darker ba
 
 </doc-demo>
 
-### Badges and Variants:
+### Badges and Variants
 
 Clarity Icons come with variants for badges that add visual indicators to the badge, where applicable.
 

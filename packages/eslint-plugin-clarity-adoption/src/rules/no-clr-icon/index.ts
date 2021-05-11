@@ -16,13 +16,13 @@ const deprecatedClassToAttributeMap = {
 
   'is-danger': 'status="danger"',
   'is-red': 'status="danger"',
+  'is-error': 'status="danger"',
 
   'is-warning': 'status="warning"',
 
   'is-info': 'status="info"',
   'is-blue': 'status="info"',
-
-  'is-highlight': 'status="highlight"',
+  'is-highlight': 'status="info"',
 
   'is-inverse': 'inverse',
   'is-white': 'inverse',
@@ -36,13 +36,20 @@ const deprecatedClassToAttributeMap = {
   'has-alert': 'badge="triangle"',
 };
 
-function isDeprecatedShape(value: string): boolean {
-  const isValidDirection = (val: string): boolean =>
-    ['up', 'down', 'left', 'right'].some(direction => direction === val);
+const deprecatedShapesMap = {
+  caret: 'angle',
+  collapse: 'angle-double',
+  arrow: 'arrow',
+};
 
+function isValidDirection(direction: string): boolean {
+  return ['up', 'down', 'left', 'right'].includes(direction);
+}
+
+function isDeprecatedShape(value: string): boolean {
   const shapes = value.split(' ');
 
-  return shapes && shapes.length === 2 && shapes[0] === 'caret' && isValidDirection(shapes[1]);
+  return shapes?.length === 2 && deprecatedShapesMap[shapes[0]] && isValidDirection(shapes[1]);
 }
 
 function getShapeFixes(fixer: RuleFixer, attributes: Array<HTMLAttribute>): Array<RuleFix> {
@@ -52,14 +59,20 @@ function getShapeFixes(fixer: RuleFixer, attributes: Array<HTMLAttribute>): Arra
   }
 
   const attributeValue = shapeAttribute.attributeValue.value || '';
+  const shapes = attributeValue.split(' ');
 
-  if (!isDeprecatedShape(attributeValue)) {
+  if (shapes?.length !== 2) {
     return [];
   }
 
-  const shapeFix = fixer.replaceText(shapeAttribute.attributeValue as any, 'angle');
+  const [value, direction] = shapes;
+  const newShape = deprecatedShapesMap[value];
 
-  const direction = attributeValue.split(' ')[1];
+  if (!newShape || !isValidDirection(direction)) {
+    return [];
+  }
+
+  const shapeFix = fixer.replaceText(shapeAttribute.attributeValue as any, newShape);
   const insertedDirectionFix = fixer.insertTextAfter(shapeAttribute as any, ` direction="${direction}"`);
 
   return [shapeFix, insertedDirectionFix];

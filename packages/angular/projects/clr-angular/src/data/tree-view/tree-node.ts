@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,7 +24,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { debounceTime, filter } from 'rxjs/operators';
 
 import { KeyCodes } from './../../utils/enums/key-codes.enum';
 import { IfExpandService } from '../../utils/conditional/if-expanded.service';
@@ -66,6 +66,7 @@ const LVIEW_CONTEXT_INDEX = 8;
 export class ClrTreeNode<T> implements OnInit, OnDestroy {
   STATES = ClrSelectedState;
   private skipEmitChange = false;
+  isModelLoading = false;
 
   constructor(
     @Inject(UNIQUE_ID) public nodeId: string,
@@ -179,6 +180,10 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
       this.focusManager.focusChange.subscribe(nodeId => {
         this.checkTabIndex(nodeId);
       })
+    );
+
+    this.subscriptions.push(
+      this._model.loading$.pipe(debounceTime(0)).subscribe(isLoading => (this.isModelLoading = isLoading))
     );
   }
 

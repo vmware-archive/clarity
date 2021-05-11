@@ -45,7 +45,6 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private expand: IfExpandService
   ) {
-    expand.expandable++;
     this._subscriptions.push(
       expand.expandChange.subscribe(() => {
         this.updateView();
@@ -90,6 +89,7 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.expand.expandable++;
     this.updateView();
   }
 

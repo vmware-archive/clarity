@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -256,7 +256,7 @@ export default function (): void {
       });
 
       it('replaces the caret with a spinner when the model is loading', function (this: Context) {
-        this.clarityDirective._model.loading = true;
+        this.clarityDirective.isModelLoading = true;
         this.detectChanges();
         expect(this.clarityElement.querySelector('.clr-treenode-caret')).toBeNull();
         expect(this.clarityElement.querySelector('.clr-treenode-spinner')).not.toBeNull();

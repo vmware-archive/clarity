@@ -1874,6 +1874,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
     featuresService: TreeFeaturesService<T>;
+    isModelLoading: boolean;
     nodeId: string;
     get selected(): ClrSelectedState | boolean;
     set selected(value: ClrSelectedState | boolean);

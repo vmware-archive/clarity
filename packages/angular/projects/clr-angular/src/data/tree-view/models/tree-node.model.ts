@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -27,7 +27,17 @@ export abstract class TreeNodeModel<T> {
    * right now for them to know which kind of model they are using. So I'm lifting the public properties to this
    * abstract parent class for now and we can revisit it later, when we're not facing such a close deadline.
    */
-  loading = false;
+  private _loading = false;
+  loading$ = new BehaviorSubject<boolean>(false);
+
+  get loading() {
+    return this._loading;
+  }
+
+  set loading(isLoading: boolean) {
+    this._loading = isLoading;
+    this.loading$.next(isLoading);
+  }
 
   destroy() {
     // Just to be safe

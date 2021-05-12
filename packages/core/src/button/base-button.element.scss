@@ -182,6 +182,22 @@
   line-height: 0;
 }
 
+:host([status='success'][action='flat']) {
+  --color: #{$cds-alias-status-success};
+}
+
+:host([status='warning'][action='flat']) {
+  --color: #{$cds-alias-status-warning-dark};
+}
+
+:host([status='danger'][action='flat']) {
+  --color: #{$cds-alias-status-danger};
+}
+
+:host([status='neutral'][action='flat']) {
+  --color: #{$cds-alias-status-neutral};
+}
+
 :host([size='sm']) {
   --padding: #{$cds-global-space-4} #{$cds-global-space-6};
   --height: calc(#{$cds-global-space-9} + #{$cds-global-space-1});

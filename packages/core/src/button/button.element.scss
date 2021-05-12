@@ -30,24 +30,28 @@
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='flat'][status='success']) ::slotted(cds-badge),
 :host([action='outline'][status='success']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-success};
   --background: #{$cds-alias-status-success};
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='flat'][status='warning']) ::slotted(cds-badge),
 :host([action='outline'][status='warning']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-warning-dark};
   --background: #{$cds-alias-status-warning-dark};
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='flat'][status='danger']) ::slotted(cds-badge),
 :host([action='outline'][status='danger']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-danger};
   --background: #{$cds-alias-status-danger};
   --color: #{$cds-global-typography-color-100};
 }
 
+:host([action='flat'][status='neutral']) ::slotted(cds-badge),
 :host([action='outline'][status='neutral']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-neutral};
   --background: #{$cds-alias-status-neutral};

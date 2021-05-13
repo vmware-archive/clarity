@@ -196,6 +196,7 @@ export function textAndBadge() {
       </div>
       <div cds-layout="horizontal gap:sm p:xs p-b:none" style="background: #313131">
         <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button action="flat" status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button size="sm">Click Me <cds-badge>10</cds-badge></cds-button>

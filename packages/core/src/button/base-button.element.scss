@@ -198,6 +198,10 @@
   --color: #{$cds-alias-status-neutral};
 }
 
+:host([status='inverse'][action='flat']) {
+  --color: #{$cds-global-typography-color-100};
+}
+
 :host([size='sm']) {
   --padding: #{$cds-global-space-4} #{$cds-global-space-6};
   --height: calc(#{$cds-global-space-9} + #{$cds-global-space-1});

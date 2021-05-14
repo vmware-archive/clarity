@@ -104,7 +104,7 @@ export class ClrDropdownMenu extends AbstractPopover implements AfterContentInit
   }
 
   private focusHandler: DropdownFocusHandler;
-  @ContentChildren(FocusableItem) items: QueryList<FocusableItem>;
+  @ContentChildren(FocusableItem, { descendants: true }) items: QueryList<FocusableItem>;
 
   ngAfterContentInit() {
     this.focusHandler.container = this.el.nativeElement;

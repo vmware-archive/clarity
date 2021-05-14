@@ -85,6 +85,26 @@ export default class App extends React.Component<{}, {}> {
 }
 ```
 
+## Boolean Attributes on Web Components
+
+There is an issue with [the way React treats boolean HTML attributes](https://github.com/facebook/react/issues/9230).
+For boolean attributes on DOM elements or Clarity components, use `attribute="true"` or `attribute=""`
+instead of just `attribute`.
+
+```typescript
+const Component = () => {
+  return (
+    <CdsControl>
+      <label>label</label>
+      <p cds-text="body" cds-control="true">
+        A custom CDS Control
+      </p>
+      <CdsControlMessage>control message</CdsControlMessage>
+    </CdsControl>
+  );
+};
+```
+
 <a href="https://github.com/vmware/clarity/tree/next/apps" target="_blank" rel="noopener">
   <cds-button>Example Apps</cds-button>
 </a>

@@ -56,6 +56,11 @@
   &.header-7 {
     @include css-var(background-color, clr-header-7-bg-color, $clr-header-7-bg-color, $clr-use-custom-properties);
   }
+
+  // dark theme only header added by external team to workaround lack of header-7 in dark theme
+  &.header-8 {
+    @include css-var(background-color, clr-header-8-bg-color, $clr-header-8-bg-color, $clr-use-custom-properties);
+  }
 }
 
 @mixin header-branding() {

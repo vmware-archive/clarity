@@ -79,3 +79,54 @@ import '@cds/core/checkbox/register.js';
 ## Checkbox Group API
 
 <Props of={'cds-checkbox-group'} />
+
+## React Usage
+
+React doesn't expose `indeterminate` as a prop on `input` components,
+the attribute must be set using a `ref`.
+
+```typescript
+const Component = ({ indeterminate }) => {
+  const inputRef = useRef<HTMLInputElement>();
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      ref.current.indeterminate = indeterminate;
+    }
+  }, [indeterminate]);
+
+  return (
+    <CdsCheckbox>
+      <label>label</label>
+      <input type="checkbox" ref={inputRef} />
+    </CdsCheckbox>
+  );
+};
+```
+
+This can also be extracted into a custom hook for reuse:
+
+```typescript
+const useIndeterminateCheckbox = (indeterminate: boolean) => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      ref.current.indeterminate = indeterminate;
+    }
+  }, [indeterminate]);
+
+  return [ref];
+};
+
+const Component = ({ indeterminate }) => {
+  const [inputRef] = useIndeterminateCheckbox(indeterminate);
+
+  return (
+    <CdsCheckbox>
+      <label>label</label>
+      <input type="checkbox" ref={inputRef} />
+    </CdsCheckbox>
+  );
+};
+```

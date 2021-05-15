@@ -1,0 +1,322 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './_menu-mixins.clarity.scss';
+@import './properties.dropdown';
+
+%dropdown-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+@include exports('dropdown.clarity') {
+  .dropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropdown-toggle {
+      display: inline-block;
+      position: relative;
+      margin: 0;
+      white-space: nowrap;
+      cursor: pointer;
+
+      //No margins on any immediate dropdown-toggle children
+      & > * {
+        margin: 0;
+      }
+
+      clr-icon[shape^='caret'],
+      clr-icon[shape^='angle'] {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: inherit;
+        @include equilateral($clr-dropdown-caret-icon-dimension);
+      }
+
+      // NOTE: cds-icon handles direction internally.
+      // No need to translate it.
+      // This results in a different top value.
+      cds-icon[shape^='caret'],
+      cds-icon[shape^='angle'] {
+        position: absolute;
+        top: 35%;
+        color: inherit;
+        @include equilateral($clr-dropdown-caret-icon-dimension);
+      }
+
+      &.btn {
+        padding-right: $clr-btn-horizontal-padding + $clr-dropdown-caret-icon-dimension +
+          $clr-dropdown-caret-left-margin;
+
+        cds-icon[shape^='caret'],
+        clr-icon[shape^='caret'],
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: $clr-btn-horizontal-padding;
+        }
+      }
+
+      &:not(.btn) {
+        padding: 0 $clr-dropdown-caret-icon-dimension + $clr-dropdown-caret-left-margin 0 0;
+        @include css-var(
+          color,
+          clr-dropdown-active-text-color,
+          $clr-dropdown-active-text-color,
+          $clr-use-custom-properties
+        );
+        cds-icon[shape^='caret'],
+        clr-icon[shape^='caret'],
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: 0;
+        }
+      }
+    }
+
+    button.dropdown-toggle:not(.btn) {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      @include css-var(
+        color,
+        clr-dropdown-active-text-color,
+        $clr-dropdown-active-text-color,
+        $clr-use-custom-properties
+      );
+    }
+  }
+
+  //Dropdown Menu
+  .dropdown-menu > * {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .dropdown-menu {
+    @include generate-dropdown-menu();
+
+    .dropdown-header {
+      @include css-var(color, clr-dropdown-header-color, $clr-dropdown-header-color, $clr-use-custom-properties);
+      font-size: $clr-dropdown-header-font-size;
+      @include css-var(
+        font-weight,
+        clr-dropdown-header-font-weight,
+        $clr-dropdown-header-font-weight,
+        $clr-use-custom-properties
+      );
+      letter-spacing: $clr-dropdown-header-letter-spacing;
+
+      padding: 0 $clr_baselineRem_0_5;
+      line-height: $clr_baselineRem_0_75;
+      margin: 0;
+
+      @extend %dropdown-content;
+    }
+
+    .btn,
+    .btn-secondary,
+    .btn-info,
+    .btn-outline,
+    .btn-outline-primary,
+    .btn-outline-secondary,
+    .btn-outline-warning,
+    .btn-outline-danger,
+    .btn-outline-success,
+    .btn-danger,
+    .btn-primary,
+    .btn-warning,
+    .btn-success,
+    .btn-link,
+    .dropdown-item {
+      @include generate-dropdown-item();
+
+      @extend %dropdown-content;
+
+      &.expandable {
+        $clr-dropdown-caret-margin-top: $clr_baselineRem_0_25;
+
+        margin-right: $clr_baselineRem_1;
+        padding-right: $clr_baselineRem_0_5;
+
+        &:before {
+          content: '';
+          float: right;
+          @include equilateral($clr_baselineRem_0_5);
+          transform: rotate(-90deg);
+          background-image: generateCaretIcon();
+          @include icon-background-styles();
+          margin-top: $clr-dropdown-caret-margin-top;
+        }
+      }
+    }
+
+    .btn,
+    .dropdown-item {
+      @include generate-dropdown-item-height();
+    }
+
+    .dropdown-divider {
+      font-size: $clr-dropdown-header-font-size;
+      @include css-var(
+        border-bottom-width,
+        clr-dropdown-divider-border-width,
+        $clr-global-borderwidth,
+        $clr-use-custom-properties
+      );
+      border-bottom-style: solid;
+      @include css-var(
+        border-bottom-color,
+        clr-dropdown-divider-color,
+        $clr-dropdown-divider-color,
+        $clr-use-custom-properties
+      );
+      margin: $clr_baselineRem_0_25 0;
+    }
+  }
+
+  //Directions
+  .btn-group-overflow,
+  .tabs-overflow,
+  .dropdown {
+    $dropdown-menu-positional-nudge: $clr_baselineRem_2px;
+
+    &.open > .dropdown-menu,
+    &.open > .dropdown-menu-wrapper > .dropdown-menu {
+      visibility: visible;
+    }
+
+    &.bottom-left > .dropdown-menu,
+    &.bottom-right > .dropdown-menu {
+      top: 100%;
+      bottom: auto;
+      margin: $dropdown-menu-positional-nudge 0 0 0;
+    }
+
+    &.bottom-left > .dropdown-menu {
+      left: 0;
+      right: auto;
+    }
+
+    &.bottom-right > .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+
+    &.top-left > .dropdown-menu,
+    &.top-right > .dropdown-menu {
+      top: auto;
+      bottom: 100%;
+      margin: 0 0 $dropdown-menu-positional-nudge 0;
+    }
+
+    &.top-left > .dropdown-menu {
+      left: 0;
+      right: auto;
+    }
+
+    &.top-right > .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
+
+    &.left-top > .dropdown-menu,
+    &.left-bottom > .dropdown-menu {
+      right: 100%;
+      left: auto;
+      margin: 0 $dropdown-menu-positional-nudge 0 0;
+    }
+
+    &.left-bottom > .dropdown-menu {
+      top: 0;
+      bottom: auto;
+    }
+
+    &.left-top > .dropdown-menu {
+      bottom: 0;
+      top: auto;
+    }
+
+    &.right-top > .dropdown-menu,
+    &.right-bottom > .dropdown-menu {
+      left: 100%;
+      right: auto;
+      margin: 0 0 0 $dropdown-menu-positional-nudge;
+    }
+
+    &.right-bottom > .dropdown-menu {
+      top: 0;
+      bottom: auto;
+    }
+
+    &.right-top > .dropdown-menu {
+      bottom: 0;
+      top: auto;
+    }
+
+    // nested dropdown (submenu)
+    .dropdown {
+      $clr-dropdown-submenu-overlap-margin: -1 * $clr_baselineRem_4px;
+      $clr-dropdown-submenu-vertical-margin: (-1 * $clr_baselineRem_0_75) - $clr_baselineRem_1px;
+      // -1 is to account for the border that shifts the menu down by 1 pixel
+
+      .dropdown-menu {
+        @include css-var(
+          border-color,
+          clr-dropdown-child-border-color,
+          $clr-dropdown-child-border-color,
+          $clr-use-custom-properties
+        );
+        position: absolute;
+      }
+
+      &.left-top {
+        > .dropdown-menu,
+        > .dropdown-menu-wrapper > .dropdown-menu {
+          top: 0;
+          bottom: auto;
+          left: auto;
+          right: 100%;
+          margin-top: $clr-dropdown-submenu-vertical-margin;
+          margin-right: $clr-dropdown-submenu-overlap-margin;
+        }
+      }
+      &.right-top {
+        > .dropdown-menu,
+        > .dropdown-menu-wrapper > .dropdown-menu {
+          top: 0;
+          bottom: auto;
+          left: 100%;
+          right: auto;
+          margin-top: $clr-dropdown-submenu-vertical-margin;
+          margin-left: $clr-dropdown-submenu-overlap-margin;
+        }
+      }
+      &.left-bottom {
+        > .dropdown-menu,
+        > .dropdown-menu-wrapper > .dropdown-menu {
+          top: auto;
+          bottom: 0;
+          left: auto;
+          right: 100%;
+          margin-bottom: $clr-dropdown-submenu-vertical-margin;
+          margin-right: $clr-dropdown-submenu-overlap-margin;
+        }
+      }
+      &.right-bottom {
+        > .dropdown-menu,
+        > .dropdown-menu-wrapper > .dropdown-menu {
+          top: auto;
+          bottom: 0;
+          left: 100%;
+          right: auto;
+          margin-bottom: $clr-dropdown-submenu-vertical-margin;
+          margin-left: $clr-dropdown-submenu-overlap-margin;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsClarityAdd",
+  "title": "Clarity Add Options Schema",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project to add Clarity to."
+    },
+    "module": {
+      "type": "string",
+      "description": "The module file to add Clarity to, should be relative to project source directory.",
+      "alias": "m",
+      "default": "app/app.module.ts"
+    }
+  }
+}

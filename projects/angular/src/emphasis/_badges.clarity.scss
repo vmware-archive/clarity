@@ -1,0 +1,93 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.badges';
+
+@mixin generateBadgeStyles($color: gray, $alias: 1) {
+  &.badge-#{'' + $color},
+  &.badge-#{$alias} {
+    @include css-var(
+      background,
+      getBadgeColor($color, bg-color, 'css-var'),
+      getBadgeColor($color, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getBadgeColor($color, color, 'css-var'),
+      getBadgeColor($color, color),
+      $clr-use-custom-properties
+    );
+  }
+}
+
+@mixin generateStatusBadgeStyles($status: info) {
+  &.badge-#{$status} {
+    @include css-var(
+      background,
+      getBadgeColor($status, bg-color, 'css-var'),
+      getBadgeColor($status, bg-color),
+      $clr-use-custom-properties
+    );
+    @include css-var(
+      color,
+      getBadgeColor($status, color, 'css-var'),
+      getBadgeColor($status, color),
+      $clr-use-custom-properties
+    );
+  }
+}
+
+@include exports('badges.clarity') {
+  //NOTE: Had to use inline-flex, reset line-height to normal, and had to use change a few values
+  //instead of using our baselineRem function. This was done to achieve the desired look
+  //and to align this with our vertical baseline. Not sure why but aligning inline-blocks within inline-blocks
+  //is a bit tricky. I initially used display: inline-block but I wasn't able to align the badges properly.
+  //TODO: I still am unable to align the badges center of the baseline but have managed to aligned it to the
+  //bottom. There are no margins which are influencing this. Need to figure out whats the issue.
+  .badge {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    min-width: $clr_baselineRem_0_625;
+    background: getLabelColor(gray, bg-color);
+    height: $clr_baselineRem_0_625;
+    line-height: normal;
+    border-radius: $clr_baselineRem_0_416;
+    font-size: $clr_baselineRem_0_416;
+    padding: 0 $clr_baselineRem_4px;
+    margin-right: $clr_baselineRem_0_25;
+    white-space: nowrap;
+    text-align: center;
+    @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light, $clr-use-custom-properties);
+
+    &:visited {
+      @include css-var(color, clr-badge-font-color-light, $clr-badge-font-color-light, $clr-use-custom-properties);
+    }
+
+    @include generateBadgeStyles(gray, 1);
+    @include generateBadgeStyles(purple, 2);
+    @include generateBadgeStyles(blue, 3);
+    @include generateBadgeStyles(orange, 4);
+    @include generateBadgeStyles(light-blue, 5);
+
+    @include generateStatusBadgeStyles(info);
+    @include generateStatusBadgeStyles(success);
+    @include generateStatusBadgeStyles(danger);
+    @include generateStatusBadgeStyles(warning);
+  }
+
+  @include fixForIE10AndUp {
+    .badge {
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
+    }
+  }
+
+  @include fixForMsEdge {
+    .badge {
+      padding: $clr_baselineRem_2px $clr_baselineRem_0_125 0;
+    }
+  }
+}

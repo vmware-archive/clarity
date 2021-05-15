@@ -1,0 +1,145 @@
+<h1>Adoption tooling</h1>
+
+<h3>Clarity Adoption ESLint plugin</h3>
+<p>
+  The
+  <a href="https://www.npmjs.com/package/@clr/eslint-plugin-clarity-adoption">Clarity Adoption ESLint plugin</a> helps
+  with the adoption of Clarity Core components. The plugin provides ESLint rules to detect and warn against the usage of
+  Clarity Angular components. A few rules also have fixers that replace the Clarity Angular components with their
+  Clarity Core alternatives. You can enable rules with project configuration. For example, you can start with a
+  configuration listing only the <i>no-clr-badge</i> rule to warn against the usage of badges and gradually, add more
+  rules.
+</p>
+
+<h4>Installation</h4>
+<p>
+  The plugin is distributed as npm package -
+  <a href="https://www.npmjs.com/package/@clr/eslint-plugin-clarity-adoption">@clr/eslint-plugin-clarity-adoption</a>.
+  To start using it, add the following dependencies to your project.
+</p>
+<sourcecode [content]="eslintInstallation" language="bash"></sourcecode>
+
+<h4>Configuration</h4>
+<p>
+  Create an ESLint configuration file named <code>.eslintrc.json</code> in the root directory of your project. Add the
+  following content.
+  <sourcecode [content]="eslintConfiguration" language="json"></sourcecode>
+</p>
+<p>
+  The configuration above enables all rules distributed with the Clarity Adoption plugin. To turn off a rule, remove it
+  from the rules list. The plugin uses <b>@clr/eslint-plugin-clarity-adoption/html-parser</b> to lint HTML files and
+  <b>@typescript-eslint/parser</b> to lint inlined Angular component templates.
+</p>
+
+<p>Finally, you'll need to run eslint with the <code>--ext</code> flag to enable HTML scanning.</p>
+<sourcecode [content]="eslintCommand" language="bash"></sourcecode>
+
+<p>You can tell ESLint to fix any detected problems with the <code>--fix</code> option.</p>
+<sourcecode [content]="eslintFixCommand" language="bash"></sourcecode>
+
+<h4>Rules</h4>
+
+<table class="table">
+  <caption>
+    Rules distributed with the Clarity Adoption ESLint plugin.
+  </caption>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Rule</th>
+      <th>Fixer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Accordion</td>
+      <td><code>no-clr-accordion</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Alert</td>
+      <td><code>no-clr-alert</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Badge</td>
+      <td><code>no-clr-badge</code></td>
+      <td><cds-icon shape="plus"></cds-icon></td>
+    </tr>
+    <tr>
+      <td>Button</td>
+      <td><code>no-clr-button</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Checkbox</td>
+      <td><code>no-clr-checkbox</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Datalist</td>
+      <td><code>no-clr-datalist</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Form</td>
+      <td><code>no-clr-form</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Icon</td>
+      <td><code>no-clr-icon</code></td>
+      <td><cds-icon shape="plus"></cds-icon></td>
+    </tr>
+    <tr>
+      <td>Input</td>
+      <td><code>no-clr-input</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>List</td>
+      <td><code>no-clr-list</code></td>
+      <td><cds-icon shape="plus"></cds-icon></td>
+    </tr>
+    <tr>
+      <td>Label</td>
+      <td><code>no-clr-label</code></td>
+      <td><cds-icon shape="plus"></cds-icon></td>
+    </tr>
+    <tr>
+      <td>Modal</td>
+      <td><code>no-clr-modal</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><code>no-clr-password</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Radio</td>
+      <td><code>no-clr-radio</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Range</td>
+      <td><code>no-clr-range</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Select</td>
+      <td><code>no-clr-select</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Textarea</td>
+      <td><code>no-clr-textarea</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Toggle</td>
+      <td><code>no-clr-toggle</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

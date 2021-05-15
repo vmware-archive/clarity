@@ -1,0 +1,23 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('timeline.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // colors
+      --clr-timeline-line-color: var(--clr-color-neutral-500);
+      --clr-timeline-step-header-color: var(--clr-color-neutral-600);
+      --clr-timeline-step-title-color: var(--clr-color-neutral-700);
+      --clr-timeline-step-description-color: var(--clr-color-neutral-700);
+
+      --clr-timeline-incomplete-step-color: var(--clr-color-neutral-600);
+      --clr-timeline-current-step-color: var(--clr-color-action-600);
+      --clr-timeline-success-step-color: var(--clr-color-success-400);
+      --clr-timeline-error-step-color: var(--clr-color-danger-800);
+
+      // body (title)
+      --clr-timeline-step-title-font-weight: var(--clr-p2-font-weight);
+    }
+  }
+}

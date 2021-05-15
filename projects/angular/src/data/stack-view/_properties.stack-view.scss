@@ -1,0 +1,35 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('stack-view.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ../stack-view/_stack-view.clarity.scss
+      --clr-stack-view-border-radius: #{$clr-stack-view-border-radius};
+      --clr-stack-view-border-color: var(--clr-color-neutral-400);
+      --clr-stack-view-bg-color: var(--clr-color-neutral-50);
+      --clr-stack-view-stack-block-border-bottom: var(--clr-color-neutral-300);
+      --clr-stack-view-color: #{$clr-p3-color};
+      --clr-stack-view-stack-block-label-text-color: var(--clr-global-font-color);
+
+      //border-bottom for stack-view rows (not last)
+      --clr-stack-view-border-box-color: var(--clr-color-neutral-300);
+      --clr-stack-block-changed-border-top-color: var(--clr-color-action-600);
+      --clr-stack-view-stack-block-label-and-content-bg-color: var(--clr-color-neutral-50);
+
+      // stkvw row bg color when not expanded
+      --clr-stack-view-stack-children-stack-block-border-bottom-color: var(--clr-color-neutral-200);
+
+      // children of an expanded row
+      --clr-stack-view-stack-children-stack-block-label-and-content-bg-color: var(--clr-color-neutral-0);
+
+      // children of an expanded row
+      --clr-stack-view-stack-block-expanded-bg-color: var(--clr-global-selection-color);
+      --clr-stack-view-stack-block-expandable-hover: var(--clr-color-neutral-200);
+      --clr-stack-view-stack-block-content-text-color: inherit;
+      --clr-stack-view-stack-block-expanded-text-color: var(--clr-color-neutral-1000);
+      --clr-stack-view-stack-block-caret-color: var(--clr-global-font-color);
+    }
+  }
+}

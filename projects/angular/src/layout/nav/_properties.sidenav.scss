@@ -1,0 +1,32 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('sidenav.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ../layout/nav/_sidenav.clarity.scss
+      // Sidenav
+      // Sidenav border
+      --clr-sidenav-border-color: var(--clr-color-neutral-400);
+      --clr-sidenav-border-width: var(--clr-global-borderwidth);
+
+      // Hover
+      --clr-sidenav-link-hover-color: var(--clr-color-neutral-200);
+
+      // Active Item
+      --clr-sidenav-link-active-color: var(--clr-color-neutral-1000);
+      --clr-sidenav-link-active-bg-color: var(--clr-global-selection-color);
+      --clr-sidenav-link-active-border-radius: var(--clr-global-borderradius);
+
+      // Sidenav Header
+      --clr-sidenav-header-color: var(--clr-h6-color);
+      --clr-sidenav-header-font-weight: var(--clr-h6-font-weight);
+      --clr-sidenav-header-font-family: var(--clr-h6-font-family);
+
+      // Sidenav Text
+      --clr-sidenav-color: var(--clr-p1-color);
+      --clr-sidenav-font-weight: var(--clr-p1-font-weight);
+    }
+  }
+}

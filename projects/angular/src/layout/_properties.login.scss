@@ -1,0 +1,31 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('login.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Usage: ../layout/_login.clarity.scss
+      --clr-login-title-color: var(--clr-h1-color);
+      --clr-login-title-font-weight: var(--clr-h1-font-weight);
+      --clr-login-title-font-family: var(--clr-h1-font-family);
+
+      --clr-login-trademark-color: var(--clr-h2-color);
+      --clr-login-trademark-font-weight: var(--clr-h2-font-weight);
+      --clr-login-trademark-font-family: var(--clr-h2-font-family);
+
+      --clr-login-subtitle-color: var(--clr-h3-color);
+      --clr-login-subtitle-font-weight: var(--clr-h3-font-weight);
+      --clr-login-subtitle-font-family: var(--clr-h3-font-family);
+
+      --clr-login-background-color: var(--clr-global-app-background);
+      --clr-login-background: url('data:image/svg+xml;charset=utf8,#{$clr-login-background}');
+
+      --clr-login-error-background-color: var(--clr-color-danger-800);
+      --clr-login-error-border-radius: var(--clr-global-borderradius);
+
+      --clr-login-panel-line-color: var(--clr-color-neutral-1000);
+      --clr-login-panel-line-opacity: 0.1;
+    }
+  }
+}

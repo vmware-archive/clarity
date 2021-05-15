@@ -1,0 +1,68 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('lists.clarity') {
+  %kill-list-styles {
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+  }
+
+  ul:not([cds-list]),
+  ol:not([cds-list]) {
+    list-style-position: inside;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  ul.list:not([cds-list]),
+  ol.list:not([cds-list]) {
+    list-style-position: outside;
+    margin-left: $clr-list-style-padding;
+
+    &.compact {
+      line-height: $clr_baselineRem_0_75;
+
+      & > li {
+        margin-bottom: $clr_baselineRem_0_25;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // right now this causes no problems. but watch out in the future because it may
+  // cause issues with nested tabs, list-groups of sidenav lists or something.
+  // just be aware that this may need to be overridden down the line.
+  ul:not(.list-unstyled):not([cds-list]),
+  ol:not([cds-list]) {
+    & > li > ul.list-unstyled {
+      margin-left: $clr-list-style-padding;
+    }
+  }
+
+  ul.list-unstyled:not([cds-list]) {
+    @extend %kill-list-styles;
+  }
+
+  li > ul:not([cds-list]) {
+    margin-top: 0;
+    margin-left: $clr-list-style-padding;
+  }
+
+  ul.list-group:not([cds-list]) {
+    margin-top: 0;
+  }
+
+  ul:not([cds-list]),
+  ol:not([cds-list]) {
+    &.list-spacer {
+      margin-top: $clr_baselineRem_1;
+    }
+  }
+}

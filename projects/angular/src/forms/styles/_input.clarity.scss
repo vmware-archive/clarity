@@ -1,0 +1,67 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.input') {
+  .clr-input-wrapper {
+    white-space: nowrap;
+    max-height: $clr-forms-baseline * 4;
+  }
+
+  .clr-input {
+    @include custom-inputs-reset($clr-forms-baseline * 4);
+    @include form-fields-appearance();
+    padding: 0 $clr-forms-baseline;
+    max-height: $clr-forms-baseline * 4;
+    font-size: $clr-forms-field-font-size;
+
+    &[readonly] {
+      border: none;
+    }
+
+    &:not([readonly]) {
+      @include input-border-bottom-animation();
+    }
+
+    &:disabled {
+      @include disabled-form-fields();
+    }
+  }
+
+  .clr-error .clr-input:not([readonly]) {
+    @include css-var(
+      border-bottom-color,
+      clr-forms-invalid-color,
+      $clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+    @include input-border-bottom-animation(
+      $clr-forms-invalid-color,
+      clr-forms-invalid-color,
+      $clr-use-custom-properties
+    );
+  }
+
+  .clr-form-control.row .clr-input-wrapper {
+    max-width: calc(100% - #{$clr-forms-icon-size});
+  }
+
+  .clr-form-compact .clr-input {
+    @include form-flatten-compact-adjustments();
+  }
+
+  .clr-form-control-readonly .clr-input {
+    border: none;
+  }
+
+  .clr-form-control-multi .clr-input {
+    max-width: calc(100% + #{$clr-forms-icon-size});
+  }
+
+  /**
+   Placeholder
+   **/
+  @include input-placeholder-wrapper() {
+    @include css-var(color, clr-forms-placeholder-color, $clr-forms-placeholder-color, $clr-use-custom-properties);
+  }
+}

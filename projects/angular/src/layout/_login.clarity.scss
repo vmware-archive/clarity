@@ -1,0 +1,243 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './properties.login';
+
+@include exports('login.clarity') {
+  .login-wrapper {
+    display: flex;
+    height: 100%;
+    background: generateLoginBackground();
+    background-size: 100%;
+    background-position: $clr-login-width 0;
+    background-repeat: no-repeat;
+
+    .login {
+      @include css-var(background, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: $clr_baselineRem_1 $clr_baselineRem_2_5;
+      height: auto;
+      min-height: 100vh;
+      width: $clr-login-width;
+
+      .title {
+        @include css-var(color, clr-login-title-color, $clr-login-title-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-login-title-font-weight,
+          $clr-login-title-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          font-family,
+          clr-login-title-font-family,
+          $clr-login-title-font-family,
+          $clr-use-custom-properties
+        );
+        font-size: $clr-login-title-font-size;
+        letter-spacing: $clr-login-title-letter-spacing;
+        line-height: $clr-login-title-line-height;
+
+        .welcome {
+          line-height: $clr-login-title-line-height;
+        }
+
+        .hint {
+          @include css-var(color, clr-login-title-color, $clr-login-title-color, $clr-use-custom-properties);
+          margin-top: $clr_baselineRem_1_25;
+          font-size: $clr_baselineRem_0_583;
+        }
+      }
+
+      // @TODO Is this used?
+      .trademark {
+        @include css-var(color, clr-login-trademark-color, $clr-login-trademark-color, $clr-use-custom-properties);
+        @include css-var(
+          font-weight,
+          clr-login-trademark-font-weight,
+          $clr-login-trademark-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(
+          font-family,
+          clr-login-trademark-font-family,
+          $clr-login-trademark-font-family,
+          $clr-use-custom-properties
+        );
+        font-size: $clr-login-trademark-font-size;
+        letter-spacing: $clr-login-trademark-letter-spacing;
+      }
+
+      // @TODO Is this used?
+      .subtitle {
+        @include css-var(
+          font-weight,
+          clr-login-subtitle-font-weight,
+          $clr-login-subtitle-font-weight,
+          $clr-use-custom-properties
+        );
+        @include css-var(color, clr-login-subtitle-color, $clr-login-subtitle-color, $clr-use-custom-properties);
+        @include css-var(
+          font-family,
+          clr-login-subtitle-font-family,
+          $clr-login-subtitle-font-family,
+          $clr-use-custom-properties
+        );
+        font-size: $clr-login-subtitle-font-size;
+        letter-spacing: $clr-login-subtitle-letter-spacing;
+        line-height: $clr-login-subtitle-line-height;
+      }
+
+      .login-group {
+        display: flex;
+        flex-direction: column;
+        padding: $clr_baselineRem_2 0 0 0;
+
+        .auth-source,
+        .username,
+        .password,
+        .checkbox,
+        .clr-form-control,
+        .clr-checkbox-wrapper {
+          margin: $clr_baselineRem_0_25 0 $clr_baselineRem_0_75 0;
+        }
+
+        // Overrides for new forms layouts to match original login layout
+        .clr-control-container {
+          display: block;
+          width: 100%;
+
+          // Override to make select full width
+          .clr-select-wrapper,
+          .clr-select {
+            width: 100%;
+          }
+
+          // Override to make input full width
+          .clr-input-wrapper > .clr-input {
+            width: 100%;
+          }
+
+          // Override to make password full width
+          .clr-input-wrapper {
+            width: 100%;
+
+            & > .clr-input-group {
+              max-width: 100%;
+              width: 100%;
+              padding-right: $clr_baselineRem_0_4;
+
+              & > .clr-input {
+                width: calc(100% - #{$clr_baselineRem_1});
+              }
+            }
+          }
+        }
+
+        // @TODO Is this used?
+        .tooltip-validation {
+          margin-top: $clr_baselineRem_0_25;
+        }
+
+        // @TODO Is this used?
+        .tooltip-validation .username,
+        .tooltip-validation .password {
+          width: 100%;
+          margin-top: 0; //Since the top margin is now handled by the tooltip itself
+        }
+
+        .error {
+          display: none;
+          margin: $clr_baselineRem_0_25 0 0 0;
+          padding: $clr_baselineRem_0_375 $clr_baselineRem_0_5;
+          @include css-var(
+            background,
+            clr-login-error-background-color,
+            $clr-color-danger-800,
+            $clr-use-custom-properties
+          );
+          @include css-var(color, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
+          @include css-var(
+            border-radius,
+            clr-login-error-border-radius,
+            $clr-global-borderradius,
+            $clr-use-custom-properties
+          );
+          line-height: $clr_baselineRem_0_75;
+
+          &:before {
+            display: inline-block; //needed for IE. display: none to display:flex on parent doesnt work
+            content: '';
+            background: generateErrorIcon($clr-login-background-color);
+            margin: $clr_baselineRem_1px $clr_baselineRem_0_25 0 0;
+            @include equilateral($clr-login-icon-size);
+          }
+
+          &.active {
+            display: flex;
+
+            &:before {
+              flex: 0 0 $clr-login-icon-size;
+            }
+          }
+        }
+
+        .btn {
+          margin: $clr_baselineRem_3 0 0 0;
+          max-width: none;
+        }
+
+        .error + .btn {
+          margin: $clr_baselineRem_1 0 0 0;
+        }
+
+        .signup {
+          margin-top: $clr_baselineRem_0_5;
+          font-size: $clr_baselineRem_0_583;
+          text-align: center;
+        }
+      }
+
+      &:after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: $clr_baselineRem_1px;
+        height: 100%;
+        @include css-var(background, clr-login-panel-line-color, $clr-color-neutral-1000, $clr-use-custom-properties);
+        @include css-var(opacity, clr-login-panel-line-opacity, 0.1, $clr-use-custom-properties);
+        top: 0;
+        right: -1 * $clr_baselineRem_2px;
+      }
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
+    .login-wrapper {
+      justify-content: center;
+      @include css-var(background, clr-login-background-color, $clr-login-background-color, $clr-use-custom-properties);
+
+      .login {
+        width: 100%;
+        margin-left: 0;
+        padding: $clr_baselineRem_1 20%;
+
+        &:after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
+    .login-wrapper {
+      .login {
+        padding: $clr_baselineRem_1 15%;
+      }
+    }
+  }
+}

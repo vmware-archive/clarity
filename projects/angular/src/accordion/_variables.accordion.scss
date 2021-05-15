@@ -1,0 +1,19 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+$clr-accordion-text-color: $clr-global-font-color !default;
+$clr-accordion-active-background-color: $clr-global-selection-color !default;
+$clr-accordion-content-background-color: $clr-color-neutral-0 !default;
+$clr-accordion-header-background-color: $clr-color-neutral-50 !default;
+$clr-accordion-header-hover-background-color: $clr-color-neutral-200 !default;
+$clr-accordion-border-left-color: $clr-color-neutral-200 !default;
+$clr-accordion-responsive-breakpoint: map-get($clr-grid-breakpoints, sm) !default;
+$clr-accordion-error-color: $clr-global-error-color !default;
+$clr-accordion-complete-color: $clr-global-success-color !default;
+$clr-accordion-border-color: $clr-color-neutral-400 !default;
+$clr-accordion-padding: $clr_baselineRem_18px !default;
+$clr-accordion-border-radius: $clr-global-borderradius !default;
+$clr-accordion-border-left-width: $clr_baselineRem_0_25 !default;
+$clr-accordion-border-left-color-complete: $clr-accordion-complete-color !default;
+$clr-accordion-border-left-color-error: $clr-accordion-error-color !default;

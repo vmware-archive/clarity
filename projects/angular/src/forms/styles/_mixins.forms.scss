@@ -1,0 +1,229 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Flatten the error icon and message to be inline for certain input types
+@mixin form-flatten-validate-text() {
+  .clr-control-label {
+    font-weight: normal;
+    display: block;
+  }
+  & ~ .clr-validate-icon {
+    margin-left: 0;
+  }
+  & ~ .clr-subtext {
+    display: inline-block;
+  }
+}
+
+// Used to provide an inline set of labels for checkbox/radios
+@mixin form-inline-input() {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  .clr-control-label {
+    display: inline-block;
+    margin-right: $clr-forms-baseline * 2;
+    width: auto;
+  }
+}
+
+// Used to adjust the flattened error icon message for compact
+@mixin form-flatten-compact-adjustments() {
+  max-width: 100%;
+
+  & ~ .clr-subtext {
+    margin-left: $clr-forms-baseline;
+  }
+}
+
+// Standard Clarity Input Bottom Border Animation
+@mixin input-border-bottom-animation(
+  $border-color-sass: $clr-forms-focused-color,
+  $border-color-prop: clr-forms-focused-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  // Border-bottom animation on focus
+  @if $use-custom-props != true {
+    background: linear-gradient(to bottom, transparent 95%, $border-color-sass 95%) no-repeat;
+  } @else {
+    background: linear-gradient(
+        to bottom,
+        transparent 95%,
+        var(css-variablize-string($border-color-prop), $border-color-sass) 95%
+      )
+      no-repeat;
+  }
+  background-size: 0% 100%;
+  transition: background-size 0.2s ease;
+
+  &:focus,
+  &.clr-focus {
+    @if $border-color-prop == null or $use-custom-props != true {
+      border-bottom-color: $border-color-sass;
+    } @else {
+      @include css-var(border-bottom-color, $border-color-prop, $border-color-sass, $use-custom-props);
+    }
+    background-size: 100% 100%;
+  }
+}
+
+// Style default input
+@mixin custom-inputs-reset($height) {
+  @include clr-appearance-normal();
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  height: $height;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+@mixin form-fields-appearance(
+  $border-color-sass: $clr-forms-border-color,
+  $text-color-sass: $clr-forms-text-color,
+  $border-color-prop: clr-forms-border-color,
+  $text-color-prop: clr-forms-text-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  @if $use-custom-props != true {
+    color: $text-color-sass;
+    border-bottom: $clr-global-borderwidth solid $border-color-sass;
+  } @else {
+    @include css-var(color, $text-color-prop, $text-color-sass, $use-custom-props);
+    border-bottom: $clr-global-borderwidth solid;
+    @include css-var(border-bottom-color, $border-color-prop, $border-color-sass, $use-custom-props);
+  }
+  display: inline-block;
+}
+
+@mixin disabled-form-fields() {
+  @include css-var(color, clr-forms-text-disabled-color, $clr-forms-text-disabled-color, $clr-use-custom-properties);
+  cursor: not-allowed;
+}
+
+@mixin checkbox-radio-input-styles($size) {
+  //Positioning
+  position: absolute;
+  opacity: 0;
+  top: $clr_baselineRem_5px;
+  left: 0;
+
+  //Display
+  //NOTE: Even though the input is invisible, we assign it a height
+  //and width so that it aligns right behind the fake checkbox
+  //and so that the user's default input size doesn't affect it
+  @include equilateral($size);
+}
+
+@mixin checkbox-radio-label-styles(
+  $min-height,
+  $padding-left,
+  $color: $clr-forms-checkbox-label-color,
+  $color-prop: clr-forms-checkbox-label-color,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  //Positioning
+  position: relative;
+
+  //Display
+  display: inline-block;
+  min-height: $min-height;
+  padding-left: $padding-left;
+  margin-top: 0;
+  cursor: pointer;
+  line-height: $clr-forms-baseline * 4;
+
+  @if $use-custom-props != true {
+    color: $color;
+  } @else {
+    @include css-var(color, $color-prop, $color, $use-custom-props);
+  }
+}
+
+@mixin checkbox-radio-shared-inactive(
+  $size,
+  $top,
+  $left,
+  $border-color,
+  $border-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  //Positioning
+  position: absolute;
+  top: $top;
+  left: $left;
+
+  //Display
+  content: '';
+  display: inline-block;
+  @include equilateral($size);
+  border: $clr-global-borderwidth solid;
+
+  @if $use-custom-props != true or $border-color-prop == null {
+    border-color: $border-color;
+  } @else {
+    @include css-var(border-color, $border-color-prop, $border-color, $use-custom-props);
+  }
+}
+
+@mixin custom-inputs($height) {
+  @include clr-appearance-normal();
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+  height: $height;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+@mixin range-style(
+  $height,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  -webkit-appearance: none;
+  left: 0;
+  height: $height;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}
+
+@mixin range-track-style(
+  $height,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  height: $height;
+  cursor: pointer;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}
+
+@mixin range-thumb-style(
+  $margin,
+  $size,
+  $background-color,
+  $background-color-prop: null,
+  $use-custom-props: $clr-use-custom-properties
+) {
+  margin-top: $margin;
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+
+  @include css-var(background-color, $background-color-prop, $background-color, $use-custom-props);
+}

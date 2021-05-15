@@ -10,6 +10,7 @@
  * This script is designed to be used as a precommit hook to auto-update staged file license headers.
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const exec = require('child_process').execSync;
 const fs = require('fs');
 const path = require('path');

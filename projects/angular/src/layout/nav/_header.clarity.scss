@@ -1,0 +1,451 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@mixin header-section-divider() {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  @include css-var(background, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+  @include css-var(opacity, clr-header-divider-opacity, $clr-header-divider-opacity, $clr-use-custom-properties);
+  opacity: $clr-header-divider-opacity;
+  height: $clr-header-section-divider-height;
+  @include css-var(width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
+  top: ($clr-header-height - $clr-header-section-divider-height) / 2;
+  left: 0;
+}
+
+@mixin header-nav-appearance() {
+  @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+  @include css-var(opacity, clr-header-nav-opacity, $clr-header-nav-opacity, $clr-use-custom-properties);
+
+  &:enabled:hover {
+    @include css-var(opacity, clr-header-nav-hover-opacity, $clr-header-nav-hover-opacity, $clr-use-custom-properties);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin header-backgrounds() {
+  &.header-1 {
+    @include css-var(background-color, clr-header-bg-color, $clr-header-bgColor, $clr-use-custom-properties);
+  }
+
+  &.header-2 {
+    @include css-var(background-color, clr-header-2-bg-color, $clr-header-2-bg-color, $clr-use-custom-properties);
+  }
+
+  &.header-3 {
+    @include css-var(background-color, clr-header-3-bg-color, $clr-header-3-bg-color, $clr-use-custom-properties);
+  }
+
+  &.header-4 {
+    @include css-var(background-color, clr-header-4-bg-color, $clr-header-4-bg-color, $clr-use-custom-properties);
+  }
+
+  &.header-5 {
+    @include css-var(background-color, clr-header-5-bg-color, $clr-header-5-bg-color, $clr-use-custom-properties);
+  }
+
+  &.header-6 {
+    @include css-var(background-color, clr-header-6-bg-color, $clr-header-6-bg-color, $clr-use-custom-properties);
+  }
+
+  &.header-7 {
+    @include css-var(background-color, clr-header-7-bg-color, $clr-header-7-bg-color, $clr-use-custom-properties);
+  }
+
+  // dark theme only header added by external team to workaround lack of header-7 in dark theme
+  &.header-8 {
+    @include css-var(background-color, clr-header-8-bg-color, $clr-header-8-bg-color, $clr-use-custom-properties);
+  }
+}
+
+@mixin header-branding() {
+  .branding {
+    display: flex;
+    flex: 0 0 auto;
+    min-width: $clr_baselineRem_8_5;
+    padding: 0 $clr_baselineRem_1;
+    height: $clr-header-height;
+
+    & > a,
+    & > .nav-link {
+      display: inline-flex;
+      align-items: center;
+      height: $clr-header-height;
+      @include remove-text-decoration();
+
+      &:focus {
+        outline-offset: $clr-header-outline-offset; // So that the outline styles aren't hidden because of the browser
+      }
+    }
+
+    .clr-icon,
+    cds-icon,
+    clr-icon {
+      flex-grow: 0;
+      flex-shrink: 0;
+      @include equilateral($clr-logo-width);
+      margin-right: $clr_baselineRem_0_375;
+    }
+
+    .title {
+      @include css-var(color, clr-header-title-color, $clr-header-title-color, $clr-use-custom-properties);
+      @include css-var(
+        font-weight,
+        clr-header-title-font-weight,
+        $clr-header-title-font-weight,
+        $clr-use-custom-properties
+      );
+      @include css-var(
+        font-family,
+        clr-header-title-font-family,
+        $clr-header-title-font-family,
+        $clr-use-custom-properties
+      );
+      font-size: $clr-header-title-font-size;
+      letter-spacing: $clr-header-title-letter-spacing;
+      line-height: $clr-header-height;
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin header-links {
+  .settings, /* TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
+  .header-nav,
+  .header-actions {
+    height: $clr-header-height;
+
+    .nav-text {
+      font-weight: 500;
+    }
+
+    cds-icon,
+    clr-icon {
+      @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+    }
+
+    .nav-icon {
+      @include equilateral($clr-header-height);
+    }
+
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      padding: $clr-header-nav-text-vertical-padding $clr-header-nav-text-horizontal-padding;
+      @include remove-text-decoration();
+      @include header-nav-appearance();
+
+      .fa, /* TODO: deprecated. Remove support for font awesome*/
+      .nav-icon {
+        font-size: $clr-nav-icon-size;
+      }
+
+      cds-icon,
+      clr-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include equilateral($clr-header-clarity-icons-size);
+      }
+
+      &.nav-icon-text {
+        cds-icon,
+        clr-icon {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+          margin-left: $clr_baselineRem_1;
+        }
+
+        .nav-text {
+          margin-left: 0;
+          padding-left: $clr_baselineRem_0_25;
+        }
+      }
+
+      // .nav-text acts like the alt attribute for screens where responsiveness kicks in.
+      // on smaller screens icons are hidden and only nav-text is shown
+      .nav-icon + .nav-text {
+        display: none;
+      }
+
+      &.active {
+        background: rgba(255, 255, 255, 0.15);
+        opacity: 1;
+      }
+
+      &:focus {
+        outline-offset: $clr-header-outline-offset; // So that the outline styles aren't hidden because of the browser
+      }
+    }
+  }
+}
+
+@mixin header-nav {
+  .header-nav {
+    display: flex;
+    flex: 0 0 auto;
+
+    &:last-child {
+      & > .nav-link:last-child::after {
+        content: none;
+      }
+    }
+
+    .nav-link {
+      &:first-of-type,
+      &:last-of-type {
+        position: relative;
+      }
+
+      &:first-of-type::before,
+      &:last-of-type::after {
+        @include header-section-divider();
+        left: auto;
+      }
+
+      &:first-of-type::before {
+        left: 0;
+      }
+
+      &:last-of-type::after {
+        right: 0;
+      }
+
+      &.active:first-of-type::before,
+      &.active:last-of-type::after {
+        content: none;
+      }
+    }
+  }
+}
+
+@mixin header-actions {
+  .settings,
+  .header-actions {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: flex-end;
+
+    // Reduce nesting from 5 to 3 at the most
+    & > .dropdown {
+      $clr-header-action-caret-icon-right-position: $clr_baselineRem_0_5;
+
+      & > .dropdown-toggle {
+        position: relative;
+        line-height: $clr-header-height;
+        height: $clr-header-height;
+        outline-offset: $clr-header-outline-offset;
+        @include header-nav-appearance();
+      }
+
+      .dropdown-toggle.nav-icon {
+        cds-icon:not([shape^='angle']),
+        clr-icon:not([shape^='angle']) {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          // Dropdown icons are 2px smaller
+          @include equilateral($clr_baselineRem_0_916);
+          right: $clr_baselineRem_1;
+        }
+      }
+
+      .dropdown-toggle.nav-icon {
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: $clr-header-action-caret-icon-right-position;
+        }
+      }
+
+      $dropdown-nav-text-dist: $clr_baselineRem_1_5;
+      .dropdown-toggle.nav-text {
+        padding: 0 $dropdown-nav-text-dist 0 $clr-header-nav-text-horizontal-padding;
+
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: $clr-header-nav-text-horizontal-padding;
+        }
+      }
+
+      .dropdown-toggle.nav-icon {
+        width: $clr-header-height;
+        padding-right: 0;
+      }
+
+      // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
+      &.bottom-right > .dropdown-menu,
+      &.bottom-left > .dropdown-menu {
+        top: 85%;
+      }
+
+      // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
+      &:last-child.bottom-right > .dropdown-menu {
+        right: $clr_baselineRem_0_125;
+      }
+
+      // Pull the dropdown menus of all dropdowns up to compensate for the height of the header.
+      .dropdown-menu {
+        margin-top: -1 * $clr_baselineRem_4px;
+        // TODO: As of 0.10.0 the dropdown-menu inside header without clrIfOpen directive (legacy)
+        // will create empty space beyond the .main-container if the right isn't set to zero.
+        // Re-evaluate later if we can come up with a better solution.
+        left: auto;
+        right: 0;
+      }
+
+      // Last Dropdown Menu adjustments so that the menu has some space between itself and the right end of the browser window
+      :last-child.dropdown-menu {
+        margin-right: $clr_baselineRem_8px;
+      }
+    }
+  }
+}
+
+@mixin header-search() {
+  .search-box, /* TODO: deprecated. Remove when the clarity css naming convention is implemented.*/
+  .search {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    max-width: $clr_baselineRem_12;
+    padding: 0;
+    height: $clr-header-height;
+    @include header-nav-appearance();
+
+    & > .nav-icon {
+      margin: 0 $clr_baselineRem_0_25 $clr_baselineRem_0_125 $clr_baselineRem_1;
+    }
+
+    label {
+      display: inline-block;
+      height: $clr-header-height;
+      line-height: $clr-header-height;
+      padding-left: $clr_baselineRem_1;
+      text-align: center;
+
+      &::before {
+        display: inline-block;
+        content: '';
+        background-image: generateSearchIcon();
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        @include equilateral($clr-search-icon-width);
+        margin: $clr_baselineRem_0_83 0 0;
+        vertical-align: top;
+      }
+
+      input {
+        line-height: $clr_baselineRem_1;
+        margin: $clr-header-nav-text-vertical-padding 0;
+      }
+    }
+
+    input[type='text'] {
+      border: none;
+      background: none;
+      @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+      padding: 0;
+      vertical-align: middle;
+
+      &:focus,
+      &:active {
+        background: none;
+      }
+    }
+  }
+
+  .branding + .search,
+  .branding + .search-box {
+    position: relative;
+
+    &::after {
+      @include header-section-divider();
+    }
+  }
+}
+
+@mixin header-search-md {
+  .search-box,
+  .search {
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    max-width: none;
+
+    label {
+      padding: 0;
+      width: $clr-header-height;
+
+      &::before {
+        left: ($clr-header-height - $clr-search-icon-width) / 2;
+      }
+
+      input {
+        display: none; // TODO: Waiting for UX to finish the search designs.
+      }
+    }
+  }
+}
+
+@mixin header-branding-md {
+  .branding + .search,
+  .branding + .search-box {
+    &::after {
+      content: none;
+    }
+  }
+}
+
+@mixin header-actions-md {
+  // If actions directly follow search
+  .search-box + .settings,
+  .search-box + .header-actions,
+  .search + .settings,
+  .search + .header-actions {
+    position: relative;
+    flex: 0 0 auto;
+
+    &::after {
+      @include header-section-divider();
+    }
+  }
+}
+
+@import '../main-container/properties.header';
+
+@include exports('header.clarity') {
+  // TODO: rename to follow clr naming convention
+  header,
+  .header {
+    display: flex;
+    @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
+    @include css-var(background-color, clr-header-bg-color, $clr-header-bgColor, $clr-use-custom-properties);
+    height: $clr-header-height;
+    white-space: nowrap;
+
+    @include header-backgrounds();
+    @include header-branding();
+    @include header-links();
+    @include header-nav();
+    @include header-actions();
+    @include header-search();
+  }
+
+  @media screen and (max-width: map-get($clr-grid-breakpoints, md)) {
+    header,
+    .header {
+      @include header-search-md();
+      @include header-branding-md();
+      @include header-actions-md();
+    }
+  }
+}

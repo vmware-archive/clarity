@@ -1,0 +1,84 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('forms.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // Structure
+      --clr-form-disabled-background-color: var(--clr-color-neutral-400);
+
+      // Generic
+      --clr-forms-label-color: var(--clr-color-neutral-800);
+      --clr-forms-text-color: var(--clr-color-neutral-1000);
+      --clr-forms-invalid-color: var(--clr-color-danger-800);
+      --clr-forms-valid-color: var(--clr-color-success-700);
+      --clr-forms-valid-text-color: var(--clr-color-success-900);
+      --clr-forms-subtext-color: var(--clr-color-neutral-600);
+      --clr-forms-placeholder-color: var(--clr-color-neutral-600);
+      --clr-forms-border-color: var(--clr-color-neutral-500);
+      --clr-forms-focused-color: var(--clr-color-action-600);
+
+      --clr-forms-subtext-disabled-color: #{$clr-forms-subtext-disabled-color};
+      --clr-forms-border-disabled-color: #{$clr-forms-border-disabled-color};
+      --clr-forms-text-disabled-color: #{$clr-forms-text-disabled-color};
+      --clr-forms-label-disabled-color: #{$clr-forms-label-disabled-color};
+
+      // Typographic
+      --clr-forms-label-font-weight: var(--clr-font-weight-bold);
+      --clr-forms-block-label-font-weight: #{$clr-h5-font-weight};
+      --clr-forms-text-font-weight: #{$clr-p3-font-weight};
+
+      // Textarea
+      --clr-forms-textarea-background-color: var(--clr-color-neutral-0);
+      --clr-forms-textarea-focused-outline: 0 0 #{$clr_baselineRem_2px} #{$clr_baselineRem_2px} #{$clr-outline-color};
+      --clr-forms-textarea-invalid-focused-outline: 0
+        0
+        #{$clr_baselineRem_2px}
+        #{$clr_baselineRem_2px}
+        #{lighten($clr-forms-invalid-color, 30%)};
+
+      // Select
+      --clr-forms-select-hover-background: rgba(
+        #{red($clr-color-neutral-300)},
+        #{green($clr-color-neutral-300)},
+        #{blue($clr-color-neutral-300)},
+        0.5
+      );
+      --clr-forms-select-caret-hover-color: var(--clr-color-neutral-600);
+      --clr-forms-select-caret-color: var(--clr-color-neutral-500);
+      --clr-forms-select-option-color: var(--clr-forms-text-color);
+      --clr-forms-select-multiple-background-color: var(--clr-forms-textarea-background-color);
+      --clr-forms-select-multiple-border-color: var(--clr-color-neutral-400);
+      --clr-forms-select-multiple-option-color: var(--clr-forms-text-color);
+      --clr-forms-select-multiple-error-focus-color: #{lighten($clr-forms-invalid-color, 30%)};
+
+      // Checkbox
+      --clr-forms-checkbox-label-color: var(--clr-forms-label-color);
+      --clr-forms-checkbox-background-color: var(--clr-color-action-600);
+      --clr-forms-checkbox-indeterminate-border-color: var(--clr-color-action-600);
+      --clr-forms-checkbox-mark-color: var(--clr-color-neutral-0);
+      --clr-forms-checkbox-disabled-background-color: var(--clr-form-disabled-background-color);
+      --clr-forms-checkbox-disabled-mark-color: var(--clr-color-neutral-1000);
+      --clr-forms-checkbox-border-radius: var(--clr-global-borderradius);
+      --clr-forms-checkbox-checked-shadow: inset
+        0
+        0
+        0
+        #{$clr_baselineRem_0_25}
+        var(--clr-forms-checkbox-background-color);
+
+      // Radio
+      --clr-forms-radio-label-color: var(--clr-forms-checkbox-label-color);
+      --clr-forms-radio-disabled-background-color: var(--clr-form-disabled-background-color);
+      --clr-forms-radio-disabled-mark-color: var(--clr-forms-checkbox-disabled-mark-color);
+      --clr-forms-radio-selected-shadow: var(--clr-forms-checkbox-checked-shadow);
+      --clr-forms-radio-disabled-shadow: var(--clr-forms-checkbox-checked-shadow);
+      --clr-forms-radio-focused-shadow: 0 0 #{$clr-outline-blur} #{$clr-outline-spread} #{$clr-outline-color};
+
+      // Range
+      --clr-forms-range-progress-fill-color: var(--clr-color-action-600);
+      --clr-forms-range-track-color: var(--clr-color-neutral-200);
+    }
+  }
+}

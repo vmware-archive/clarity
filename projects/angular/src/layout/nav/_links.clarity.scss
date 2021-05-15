@@ -1,0 +1,26 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('links.clarity') {
+  // only imported for demos. gives a static view of links in various states.
+  a.link-normal:link {
+    @include css-var(color, clr-link-color, $clr-link-color, $clr-use-custom-properties);
+    text-decoration: none;
+  }
+
+  a.link-hovered:link {
+    @include css-var(color, clr-link-hover-color, $clr-link-hover-color, $clr-use-custom-properties);
+    text-decoration: underline;
+  }
+
+  a.link-clicked:link {
+    @include css-var(color, clr-link-active-color, $clr-link-active-color, $clr-use-custom-properties);
+    text-decoration: underline;
+  }
+
+  a.link-visited:link {
+    @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
+    text-decoration: none;
+  }
+}

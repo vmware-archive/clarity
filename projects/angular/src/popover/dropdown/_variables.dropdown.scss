@@ -1,0 +1,43 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Usage:  ../data/stack-view/_stack-view.clarity.scss
+// Usage: ../forms/_select.clarity.scss
+// Usage: ../layout/nav/_sidenav.clarity.scss
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+$clr-dropdown-caret-icon-dimension: $clr_baselineRem_0_416 !default;
+
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+$clr-dropdown-active-text-color: $clr-color-neutral-1000 !default;
+$clr-dropdown-caret-left-margin: $clr_baselineRem_2px !default;
+$clr-dropdown-bg-color: $clr-color-neutral-0 !default;
+$clr-dropdown-border-color: $clr-color-neutral-400 !default;
+$clr-dropdown-divider-color: $clr-color-neutral-200 !default;
+$clr-dropdown-child-border-color: $clr-color-neutral-500 !default;
+$clr-dropdown-bg-hover-color: $clr-global-hover-color !default;
+$clr-dropdown-selection-color: $clr-global-selection-color !default;
+$clr-dropdown-box-shadow: $clr-popover-box-shadow-color !default;
+
+// Usage:  ../data/datagrid/_datagrid.clarity.scss
+// Usage:  ../emphasis/alert/_alert.clarity.scss
+$clr-dropdown-text-color: $clr-p1-color !default;
+$clr-dropdown-font-size: $clr-p1-font-size !default;
+$clr-dropdown-letter-spacing: $clr-p1-letter-spacing !default;
+$clr-dropdown-line-height: $clr-p1-line-height !default;
+
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+// Dropdown Header
+$clr-dropdown-header-color: $clr-color-neutral-900 !default;
+$clr-dropdown-header-font-size: $clr-p4-font-size !default;
+$clr-dropdown-header-font-weight: $clr-p4-font-weight !default;
+$clr-dropdown-header-letter-spacing: $clr-p4-letter-spacing !default;
+
+// Usage: ../popover/dropdown/_menu-mixins.clarity.scss
+// Dropdown Item
+$clr-dropdown-item-color: $clr-color-neutral-700 !default;
+$clr-dropdown-item-font-size: $clr-p1-font-size !default;
+$clr-dropdown-item-font-weight: $clr-p1-font-weight !default;
+$clr-dropdown-item-letter-spacing: $clr-p1-letter-spacing !default;
+$clr-dropdown-item-height: $clr_baselineRem_1_25 !default;
+$clr-dropdown-item-height-sm: $clr_baselineRem_1_5 !default;

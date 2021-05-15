@@ -1,0 +1,602 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// General
+// Usage: ./_buttons.clarity.scss
+// Usage: ../popover/tooltip/_tooltips.clarity.scss
+$clr-btn-vertical-margin: $clr_baselineRem_0_25 !default;
+
+// Usage: ./_buttons.clarity.scss
+// Usage: ../popover/tooltip/_tooltips.clarity.scss
+// Usage: ../layout/_card.clarity.scss
+$clr-btn-horizontal-margin: $clr_baselineRem_0_5 !default;
+
+// Usage: ./_buttons.clarity.scss
+// Usage: ../popover/dropdown/_dropdown.clarity.scss
+$clr-btn-horizontal-padding: $clr_baselineRem_0_5 !default;
+
+$clr-btn-height: $clr_baselineRem_1_5 !default;
+$clr-btn-height-sm: $clr_baselineRem_1 !default;
+$clr-btn-font-weight: $clr-font-weight-semibold !default;
+$clr-btn-padding: 0 $clr-btn-horizontal-padding !default;
+
+$clr-btn-border-radius: $clr-global-borderradius !default;
+$clr-btn-border-width: $clr-global-borderwidth !default;
+
+// Usage: ./button-group/_button-group.clarity.scss
+$clr-btn-group-focus-outline: rgba(81, 203, 238, 1) !default;
+
+// Usage: ./button-group/_nav.clarity.scss
+$clr-nav-group-collapsible-focus-outline: rgb(59, 153, 252) !default;
+
+// standard appearance styles - overrideable but not advertised!
+$clr-btn-appearance-standard-line-height: $clr-btn-height-sm - $clr_baselineRem_1px !default;
+$clr-btn-appearance-standard-letter-spacing: 0.073em !default;
+$clr-btn-appearance-standard-font-size: $clr_baselineRem_0_458 !default;
+$clr-btn-appearance-standard-font-weight: $clr-btn-font-weight !default;
+$clr-btn-appearance-standard-height: $clr-btn-height-sm !default;
+$clr-btn-appearance-standard-padding: $clr-btn-padding !default;
+
+// form-style button appearance styles - overrideable but not advertised!
+$clr-btn-appearance-form-line-height: $clr-btn-height !default;
+$clr-btn-appearance-form-letter-spacing: 0.12em !default;
+$clr-btn-appearance-form-font-size: $clr_baselineRem_0_5 !default;
+$clr-btn-appearance-form-font-weight: $clr-btn-font-weight !default;
+$clr-btn-appearance-form-height: $clr-btn-height !default;
+$clr-btn-appearance-form-padding: $clr-btn-padding !default;
+
+// Default button colors
+$clr-btn-default-color: $clr-color-action-600 !default;
+$clr-btn-default-border-color: $clr-btn-default-color !default;
+$clr-btn-default-bg-color: transparent !default;
+$clr-btn-default-hover-bg-color: $clr-color-action-50 !default;
+$clr-btn-default-hover-color: $clr-color-action-800 !default;
+$clr-btn-default-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-default-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-default-disabled-bg-color: $clr-btn-default-bg-color !default;
+$clr-btn-default-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-default-checked-bg-color: $clr-color-action-600 !default;
+$clr-btn-default-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromDefaultButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-default-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-default-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-default-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-default-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-default-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-default-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-default-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-default-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-default-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-default-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-default-checked-color;
+  }
+
+  @return null;
+}
+
+// Default outline button
+$clr-btn-default-outline-color: $clr-color-action-600 !default;
+$clr-btn-default-outline-border-color: $clr-btn-default-outline-color !default;
+$clr-btn-default-outline-bg-color: transparent !default;
+$clr-btn-default-outline-hover-bg-color: $clr-color-action-50 !default;
+$clr-btn-default-outline-hover-color: $clr-color-action-800 !default;
+$clr-btn-default-outline-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-default-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-default-outline-disabled-bg-color: $clr-btn-default-outline-bg-color !default;
+$clr-btn-default-outline-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-default-outline-checked-color: $clr-color-neutral-0 !default;
+$clr-btn-default-outline-checked-bg-color: $clr-btn-default-outline-color !default;
+
+@function lookupFromDefaultOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-default-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-default-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-default-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-default-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-default-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-default-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-default-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-default-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-default-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-default-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-default-outline-checked-color;
+  }
+
+  @return null;
+}
+
+// Primary button colors
+$clr-btn-primary-color: $clr-color-neutral-0 !default;
+$clr-btn-primary-bg-color: $clr-color-action-600 !default;
+$clr-btn-primary-border-color: $clr-color-action-600 !default;
+$clr-btn-primary-hover-bg-color: $clr-color-action-800 !default;
+$clr-btn-primary-hover-color: $clr-color-action-50 !default;
+$clr-btn-primary-box-shadow-color: $clr-color-action-500 !default;
+$clr-btn-primary-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-primary-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-primary-disabled-border-color: $clr-color-neutral-400 !default;
+$clr-btn-primary-checked-bg-color: $clr-color-action-600 !default;
+$clr-btn-primary-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromPrimaryButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-primary-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-primary-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-primary-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-primary-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-primary-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-primary-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-primary-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-primary-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-primary-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-primary-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-primary-checked-color;
+  }
+
+  @return null;
+}
+
+// Success button colors
+$clr-btn-success-color: $clr-color-neutral-0 !default;
+$clr-btn-success-bg-color: $clr-color-success-700 !default;
+$clr-btn-success-border-color: $clr-btn-success-bg-color !default;
+$clr-btn-success-hover-bg-color: $clr-color-success-800 !default;
+$clr-btn-success-hover-color: $clr-btn-success-color !default;
+$clr-btn-success-box-shadow-color: $clr-color-success-900 !default;
+$clr-btn-success-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-success-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-success-disabled-border-color: $clr-color-neutral-400 !default;
+$clr-btn-success-checked-bg-color: $clr-btn-success-hover-bg-color !default;
+$clr-btn-success-checked-color: $clr-btn-success-color !default;
+
+@function lookupFromSuccessButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-success-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-success-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-success-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-success-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-success-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-success-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-success-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-success-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-success-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-success-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-success-checked-color;
+  }
+
+  @return null;
+}
+
+// Success outline button colors
+$clr-btn-success-outline-color: $clr-color-success-700 !default;
+$clr-btn-success-outline-bg-color: transparent !default;
+$clr-btn-success-outline-border-color: $clr-color-success-700 !default;
+$clr-btn-success-outline-hover-bg-color: $clr-color-success-50 !default;
+$clr-btn-success-outline-hover-color: $clr-color-success-900 !default;
+$clr-btn-success-outline-box-shadow-color: $clr-color-success-400 !default;
+$clr-btn-success-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-success-outline-disabled-bg-color: $clr-btn-success-outline-bg-color !default;
+$clr-btn-success-outline-disabled-border-color: $clr-color-neutral-600 !default;
+$clr-btn-success-outline-checked-bg-color: $clr-btn-success-outline-border-color !default;
+$clr-btn-success-outline-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromSuccessOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-success-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-success-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-success-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-success-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-success-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-success-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-success-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-success-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-success-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-success-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-success-outline-checked-color;
+  }
+
+  @return null;
+}
+
+// Danger button colors
+$clr-btn-danger-color: $clr-color-neutral-0 !default;
+$clr-btn-danger-bg-color: $clr-color-danger-700 !default;
+$clr-btn-danger-border-color: $clr-btn-danger-bg-color !default;
+$clr-btn-danger-hover-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-hover-color: $clr-btn-danger-color !default;
+$clr-btn-danger-box-shadow-color: $clr-color-danger-900 !default;
+$clr-btn-danger-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-danger-disabled-bg-color: $clr-color-neutral-400 !default;
+$clr-btn-danger-disabled-border-color: $clr-btn-danger-disabled-color !default;
+$clr-btn-danger-checked-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-checked-color: $clr-btn-danger-color !default;
+
+@function lookupFromDangerButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-danger-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-danger-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-danger-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-danger-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-danger-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-danger-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-danger-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-danger-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-danger-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-danger-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-danger-checked-color;
+  }
+
+  @return null;
+}
+
+// Danger outline button colors
+$clr-btn-danger-outline-color: $clr-color-danger-700 !default;
+$clr-btn-danger-outline-bg-color: transparent !default;
+$clr-btn-danger-outline-border-color: $clr-color-danger-800 !default;
+$clr-btn-danger-outline-hover-bg-color: $clr-color-danger-100 !default;
+$clr-btn-danger-outline-hover-color: $clr-color-danger-900 !default;
+$clr-btn-danger-outline-box-shadow-color: $clr-color-danger-200 !default;
+$clr-btn-danger-outline-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-danger-outline-disabled-bg-color: $clr-btn-danger-outline-bg-color !default;
+$clr-btn-danger-outline-disabled-border-color: $clr-btn-danger-outline-disabled-color !default;
+$clr-btn-danger-outline-checked-bg-color: $clr-color-danger-800 !default;
+$clr-btn-danger-outline-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromDangerOutlineButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-danger-outline-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-danger-outline-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-danger-outline-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-danger-outline-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-danger-outline-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-danger-outline-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-danger-outline-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-danger-outline-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-danger-outline-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-danger-outline-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-danger-outline-checked-color;
+  }
+
+  @return null;
+}
+
+// Link button colors
+$clr-btn-link-color: $clr-color-action-600 !default;
+$clr-btn-link-bg-color: transparent !default;
+$clr-btn-link-border-color: transparent !default;
+$clr-btn-link-hover-bg-color: transparent !default;
+$clr-btn-link-hover-color: $clr-color-action-800 !default;
+$clr-btn-link-disabled-color: $clr-color-neutral-700 !default;
+$clr-btn-link-disabled-bg-color: transparent !default;
+$clr-btn-link-disabled-border-color: transparent !default;
+$clr-btn-link-checked-bg-color: transparent !default;
+$clr-btn-link-checked-color: $clr-color-action-800 !default;
+
+@function lookupFromLinkButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-link-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-link-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-link-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-link-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-link-hover-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-link-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-link-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-link-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-link-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-link-checked-color;
+  }
+
+  @return null;
+}
+
+// Inverse button colors
+$clr-btn-inverse-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-border-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-bg-color: transparent !default;
+$clr-btn-inverse-hover-bg-color: rgba(255, 255, 255, 0.15) !default;
+$clr-btn-inverse-hover-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-box-shadow-color: rgba(0, 0, 0, 0.25) !default;
+$clr-btn-inverse-disabled-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-disabled-bg-color: $clr-btn-inverse-bg-color !default;
+$clr-btn-inverse-disabled-border-color: $clr-color-neutral-0 !default;
+$clr-btn-inverse-checked-bg-color: rgba(255, 255, 255, 0.15) !default;
+$clr-btn-inverse-checked-color: $clr-color-neutral-0 !default;
+
+@function lookupFromInverseButtonColors($property: null) {
+  @if $property == color {
+    @return $clr-btn-inverse-color;
+  }
+
+  @if $property == border-color {
+    @return $clr-btn-inverse-border-color;
+  }
+
+  @if $property == bg-color {
+    @return $clr-btn-inverse-bg-color;
+  }
+
+  @if $property == hover-bg-color {
+    @return $clr-btn-inverse-hover-bg-color;
+  }
+
+  @if $property == hover-color {
+    @return $clr-btn-inverse-hover-color;
+  }
+
+  @if $property == box-shadow-color {
+    @return $clr-btn-inverse-box-shadow-color;
+  }
+
+  @if $property == disabled-color {
+    @return $clr-btn-inverse-disabled-color;
+  }
+
+  @if $property == disabled-bg-color {
+    @return $clr-btn-inverse-disabled-bg-color;
+  }
+
+  @if $property == disabled-border-color {
+    @return $clr-btn-inverse-disabled-border-color;
+  }
+
+  @if $property == checked-bg-color {
+    @return $clr-btn-inverse-checked-bg-color;
+  }
+
+  @if $property == checked-color {
+    @return $clr-btn-inverse-checked-color;
+  }
+
+  @return null;
+}
+
+// For theme-able icon button color
+$clr-btn-icon-disabled-color: $clr-btn-default-disabled-color !default;
+
+@function lookupFromIconButtonColors($property: null) {
+  @if $property == disabled-color {
+    @return $clr-btn-icon-disabled-color;
+  }
+
+  @return null;
+}

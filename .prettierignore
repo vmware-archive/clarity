@@ -9,3 +9,5 @@ golden/
 **/web_modules/**
 .cache
 .netlify
+projects/schematics/src/**/*.js
+projects/schematics/src/**/*.js.map

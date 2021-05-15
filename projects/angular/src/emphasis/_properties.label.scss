@@ -1,0 +1,61 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@include exports('label.properties') {
+  @if $clr-use-custom-properties == true {
+    :root {
+      // COLOR
+      // Usage:
+      // - ./_labels.clarity.scss
+      --clr-label-font-color-light: var(--clr-color-neutral-1000);
+      --clr-label-font-color-dark: var(--clr-color-neutral-1000);
+      --clr-label-default-border-color: var(--clr-color-neutral-600);
+
+      // TYPOGRAPHIC STYLES
+      // Usage:
+      // - ./_labels.clarity.scss
+      --clr-label-font-size: #{$clr-p7-font-size};
+      --clr-label-font-weight: #{$clr-p7-font-weight};
+      --clr-label-letter-spacing: #{$clr-p7-letter-spacing};
+
+      --clr-label-border-radius: #{$clr_baselineRem_0_5};
+
+      // Usage: ./_labels.clarity.scss
+      --clr-label-bg-hover-color: var(--clr-color-neutral-200);
+
+      // START: deprecated for removal in 4.0
+      --clr-label-gray-bg-color: var(--clr-color-neutral-600);
+      --clr-label-gray-color: var(--clr-label-font-color-light);
+
+      --clr-label-purple-bg-color: var(--clr-color-secondary-action-500);
+      --clr-label-purple-color: var(--clr-label-font-color-light);
+
+      --clr-label-blue-bg-color: var(--clr-color-action-800);
+      --clr-label-blue-color: var(--clr-label-font-color-light);
+
+      --clr-label-orange-bg-color: var(--clr-color-warning-1000);
+      --clr-label-orange-color: var(--clr-label-font-color-dark);
+
+      --clr-label-light-blue-bg-color: var(--clr-color-action-500);
+      --clr-label-light-blue-color: var(--clr-label-font-color-dark);
+
+      --clr-label-info-bg-color: var(--clr-color-action-50);
+      --clr-label-info-font-color: var(--clr-color-action-800);
+      --clr-label-info-border-color: var(--clr-color-action-800);
+
+      --clr-label-success-bg-color: var(--clr-color-success-50);
+      --clr-label-success-font-color: var(--clr-color-success-800);
+      --clr-label-success-border-color: var(--clr-color-success-800);
+
+      --clr-label-warning-bg-color: var(--clr-color-warning-100);
+      --clr-label-warning-font-color: var(--clr-color-neutral-900);
+      --clr-label-warning-border-color: var(--clr-color-warning-800);
+
+      --clr-label-danger-bg-color: var(--clr-color-danger-100);
+      --clr-label-danger-font-color: var(--clr-color-danger-900);
+      --clr-label-danger-border-color: var(--clr-color-danger-900);
+      // END: deprecated for removal in 4.0
+    }
+  }
+}

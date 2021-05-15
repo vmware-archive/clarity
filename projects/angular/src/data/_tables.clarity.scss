@@ -1,0 +1,299 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+// Mixin for basic table styles to be able to reuse them on non-table elements.
+@mixin basic-table($table, $thead, $tbody, $tr, $th, $td) {
+  #{$table} {
+    border-collapse: separate;
+    border-style: solid;
+    @include css-var(border-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+    @include css-var(border-color, clr-table-border-color, $clr-table-border-color, $clr-use-custom-properties);
+    @include css-var(border-radius, clr-table-border-radius, $clr-table-border-radius, $clr-use-custom-properties);
+    @include css-var(background-color, clr-table-bgcolor, $clr-table-bgcolor, $clr-use-custom-properties);
+    @include css-var(color, clr-table-font-color, $clr-table-font-color, $clr-use-custom-properties);
+    margin: 0;
+    margin-top: $clr_baselineRem_1;
+    max-width: 100%;
+    width: 100%;
+
+    #{$th},
+    #{$td} {
+      font-size: $clr-table-fontsize;
+      line-height: $clr-table-lineheight;
+      border-top-style: solid;
+      @include css-var(border-top-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+      @include css-var(
+        border-top-color,
+        clr-tablerow-bordercolor,
+        $clr-tablerow-bordercolor,
+        $clr-use-custom-properties
+      );
+      padding: $clr-table-topcellpadding $clr-table-cellpadding $clr-table-bottomcellpadding;
+      text-align: center;
+      vertical-align: top;
+
+      &.left {
+        text-align: left;
+
+        &:first-child {
+          padding-left: $clr-table-smallpadding;
+        }
+      }
+    }
+
+    #{$th} {
+      @include css-var(color, clr-thead-color, $clr-thead-color, $clr-use-custom-properties);
+      font-size: $clr-thead-font-size;
+      font-weight: $clr-thead-font-weight;
+      letter-spacing: $clr-thead-letter-spacing;
+      @include css-var(background-color, clr-thead-bgcolor, $clr-thead-bgcolor, $clr-use-custom-properties);
+      vertical-align: bottom;
+      border-bottom-style: solid;
+      @include css-var(border-bottom-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+      @include css-var(
+        border-bottom-color,
+        clr-table-border-color,
+        $clr-table-border-color,
+        $clr-use-custom-properties
+      );
+      border-top: 0 none;
+    }
+
+    #{$tbody} #{$tr}:first-child #{$td} {
+      border-top: 0 none;
+    }
+
+    // in the rare event we have more than one tbody element.
+    #{$tbody} + #{$tbody} {
+      border-top-style: solid;
+      @include css-var(border-top-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+      @include css-var(border-top-color, clr-table-border-color, $clr-table-border-color, $clr-use-custom-properties);
+    }
+
+    // Rounded corners on tables are a pain...
+    #{$thead} #{$th} {
+      &:first-child {
+        border-radius: 0;
+        @include css-var(
+          border-top-left-radius,
+          clr-table-cornercellradius,
+          $clr-table-cornercellradius,
+          $clr-use-custom-properties
+        );
+      }
+
+      &:last-child {
+        border-radius: 0;
+        @include css-var(
+          border-top-right-radius,
+          clr-table-cornercellradius,
+          $clr-table-cornercellradius,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
+    #{$tbody}:last-child {
+      #{$tr}:last-child {
+        #{$td} {
+          &:first-child {
+            border-radius: 0;
+            @include css-var(
+              border-bottom-left-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+
+          &:last-child {
+            border-radius: 0;
+            @include css-var(
+              border-bottom-right-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+        }
+      }
+    }
+  }
+
+  #{$table}-compact {
+    #{$th},
+    #{$td} {
+      padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
+      padding-bottom: $clr-table--compact-verticalPadding;
+    }
+  }
+}
+
+@import './properties.tables';
+
+@include exports('tables.clarity') {
+  @include basic-table('.table', 'thead', 'tbody', 'tr', 'th', 'td');
+
+  .table.table-vertical {
+    thead th {
+      border: 0 none;
+      border-radius: 0;
+      display: none;
+    }
+
+    th {
+      border-bottom: 0;
+      border-top-style: solid;
+      @include css-var(border-top-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+      @include css-var(border-top-color, clr-table-border-color, $clr-table-border-color, $clr-use-custom-properties);
+      vertical-align: top;
+    }
+
+    td,
+    th {
+      text-align: left;
+      @include css-var(border-color, clr-table-border-color, $clr-table-border-color, $clr-use-custom-properties);
+
+      &:first-child {
+        border-right-style: solid;
+        @include css-var(border-right-width, clr-table-borderwidth, $clr-table-borderwidth, $clr-use-custom-properties);
+        @include css-var(
+          border-right-color,
+          clr-table-border-color,
+          $clr-table-border-color,
+          $clr-use-custom-properties
+        );
+        @include css-var(background-color, clr-thead-bgcolor, $clr-thead-bgcolor, $clr-use-custom-properties);
+        font-weight: $clr-thead-font-weight;
+      }
+    }
+
+    tbody:first-of-type {
+      tr:first-child {
+        th,
+        td {
+          border-top: 0 none;
+
+          &:first-child {
+            border-radius: 0;
+            @include css-var(
+              border-top-left-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+
+          &:last-child {
+            border-radius: 0;
+            @include css-var(
+              border-top-right-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+        }
+      }
+    }
+
+    tbody:last-child {
+      tr:last-child {
+        th,
+        td {
+          &:first-child {
+            border-radius: 0;
+            @include css-var(
+              border-bottom-left-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+
+          &:last-child {
+            border-radius: 0;
+            @include css-var(
+              border-bottom-right-radius,
+              clr-table-cornercellradius,
+              $clr-table-cornercellradius,
+              $clr-use-custom-properties
+            );
+          }
+        }
+      }
+    }
+  }
+
+  .table.table-noborder {
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border: 0;
+
+    th {
+      background-color: transparent;
+      @include css-var(
+        border-bottom-color,
+        clr-table-border-color,
+        $clr-table-border-color,
+        $clr-use-custom-properties
+      );
+
+      border-top: 0 none;
+
+      &:first-child {
+        // need this for vertical tables...
+        border-right: 0 none;
+      }
+    }
+
+    td {
+      border-top: 0 none;
+
+      // there's no border so we have to adjust padding to preserve baseline.
+      padding-top: $clr-table-topcellpadding + $clr-table-borderwidth;
+
+      &:first-child {
+        border-right: 0 none;
+      }
+    }
+
+    thead th {
+      &:first-child,
+      &:last-child {
+        border-radius: 0;
+      }
+    }
+
+    th,
+    td {
+      //  Very specific use of !important to avoid specificity inflation.
+      border-radius: 0 !important;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .table.table-compact {
+    th,
+    td {
+      // nudge down to force row to 24px height with border
+      padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
+      padding-bottom: $clr-table--compact-verticalPadding;
+    }
+
+    &.table-noborder {
+      th,
+      td {
+        // nudge down to force row to 24px height with border
+        padding-top: $clr-table--compact-verticalPadding + $clr_baselineRem_2px;
+        // account for now missing bottom border
+        padding-bottom: $clr-table--compact-verticalPadding + $clr_baselineRem_1px;
+      }
+    }
+  }
+}

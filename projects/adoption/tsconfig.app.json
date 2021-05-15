@@ -1,0 +1,17 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/adoption",
+    "types": [],
+    "paths": {
+      "@clr/angular": ["dist/clr-angular"],
+      "@clr/angular/*": ["dist/clr-angular/*"],
+      "@cds/angular": ["dist/angular"],
+      "@cds/angular/*": ["dist/angular/*"]
+    }
+  },
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "exclude": ["**/*.html"],
+  "include": ["src/**/*.d.ts", "src/app/migrations/**/*.ts"]
+}

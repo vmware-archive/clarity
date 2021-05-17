@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,32 @@ import { SocialShapes } from '@clr/icons/shapes/social-shapes';
 import { TechnologyShapes } from '@clr/icons/shapes/technology-shapes';
 import { TextEditShapes } from '@clr/icons/shapes/text-edit-shapes';
 import { TravelShapes } from '@clr/icons/shapes/travel-shapes';
+
+/**
+ * @NOTE importing all icons because into the iconography page we require all of them.
+ */
+import {
+  ClarityIcons,
+  chartCollectionIcons,
+  commerceCollectionIcons,
+  coreCollectionIcons,
+  essentialCollectionIcons,
+  socialCollectionIcons,
+  technologyCollectionIcons,
+  textEditCollectionIcons,
+  travelCollectionIcons,
+  mediaCollectionIcons,
+  chartCollectionAliases,
+  commerceCollectionAliases,
+  coreCollectionAliases,
+  essentialCollectionAliases,
+  mediaCollectionAliases,
+  miniCollectionAliases,
+  socialCollectionAliases,
+  technologyCollectionAliases,
+  textEditCollectionAliases,
+  travelCollectionAliases,
+} from '@cds/core/icon';
 
 @Component({
   selector: 'clr-icon-selection-demo',
@@ -37,4 +63,31 @@ export class IconSelectionDemo {
     { name: 'Chart Shapes', shapes: Object.keys(ChartShapes) },
     { name: 'Text Edit Shapes', shapes: Object.keys(TextEditShapes) },
   ];
+
+  constructor() {
+    ClarityIcons.addIcons(
+      ...chartCollectionIcons,
+      ...commerceCollectionIcons,
+      ...coreCollectionIcons,
+      ...essentialCollectionIcons,
+      ...mediaCollectionIcons,
+      ...socialCollectionIcons,
+      ...technologyCollectionIcons,
+      ...textEditCollectionIcons,
+      ...travelCollectionIcons
+    );
+
+    ClarityIcons.addAliases(
+      ...chartCollectionAliases,
+      ...commerceCollectionAliases,
+      ...coreCollectionAliases,
+      ...essentialCollectionAliases,
+      ...mediaCollectionAliases,
+      ...miniCollectionAliases,
+      ...socialCollectionAliases,
+      ...technologyCollectionAliases,
+      ...textEditCollectionAliases,
+      ...travelCollectionAliases
+    );
+  }
 }

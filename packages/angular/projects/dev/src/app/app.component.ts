@@ -8,6 +8,7 @@ import { Route } from '@angular/router';
 import { APP_ROUTES } from './app.routing';
 
 import '@cds/core/icon/register.js';
+
 import {
   bellIcon,
   boltIcon,
@@ -32,6 +33,14 @@ import {
   warningStandardIcon,
   sunIcon,
   worldIcon,
+  vmBugIcon,
+  cogIcon,
+  plusIcon,
+  errorStandardIcon,
+  floppyIcon,
+  hostIcon,
+  infoStandardIcon,
+  coreCollectionAliases,
 } from '@cds/core/icon';
 
 @Component({
@@ -66,7 +75,16 @@ export class AppComponent {
       lightbulbIcon,
       warningStandardIcon,
       sunIcon,
-      worldIcon
+      worldIcon,
+      vmBugIcon,
+      cogIcon,
+      plusIcon,
+      errorStandardIcon,
+      infoStandardIcon,
+      floppyIcon,
+      hostIcon
     );
+
+    ClarityIcons.addAliases(...coreCollectionAliases);
   }
 }

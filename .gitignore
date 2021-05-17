@@ -73,3 +73,6 @@ release-test/
 
 # Generated file
 apps/website/data/core-demos.json
+
+# Netlify logs
+logs/*

@@ -62,15 +62,15 @@ describe('Icon classname helpers: ', () => {
     it('should remove classnames and update size styles if passed a numeric string', async () => {
       updateIconSizeStyle(component, '15');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('0.75rem');
-      expect(component.style.height).toEqual('0.75rem');
+      expect(component.style.width).toEqual('calc((15 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toEqual('calc((15 / var(--cds-global-base)) * 1rem)');
     });
     it('should remove size styles and add classname if passed a t-shirt size', async () => {
       await componentIsStable(component);
       component.size = '30';
       await componentIsStable(component);
-      expect(component.style.height).toEqual('1.5rem');
-      expect(component.style.width).toEqual('1.5rem');
+      expect(component.style.height).toEqual('calc((30 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.width).toEqual('calc((30 / var(--cds-global-base)) * 1rem)');
       updateIconSizeStyle(component, 'xl');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -95,8 +95,8 @@ describe('Icon classname helpers: ', () => {
       expect(component.style.height).toEqual('');
       updateIconSizeStyle(component, '48');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('2.4rem');
-      expect(component.style.height).toEqual('2.4rem');
+      expect(component.style.width).toEqual('calc((48 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toEqual('calc((48 / var(--cds-global-base)) * 1rem)');
       updateIconSizeStyle(component, void 0);
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -112,8 +112,8 @@ describe('Icon classname helpers: ', () => {
       expect(component.style.height).toEqual('');
       updateIconSizeStyle(component, '48');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('2.4rem');
-      expect(component.style.height).toEqual('2.4rem');
+      expect(component.style.width).toEqual('calc((48 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toEqual('calc((48 / var(--cds-global-base)) * 1rem)');
       updateIconSizeStyle(component, '');
       await componentIsStable(component);
       expect(component.style.width).toEqual('');
@@ -127,12 +127,12 @@ describe('Icon classname helpers: ', () => {
       await componentIsStable(component);
       updateIconSizeStyle(component, '24');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('1.2rem');
-      expect(component.style.height).toEqual('1.2rem');
+      expect(component.style.width).toEqual('calc((24 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toEqual('calc((24 / var(--cds-global-base)) * 1rem)');
       updateIconSizeStyle(component, '4d9rs');
       await componentIsStable(component);
-      expect(component.style.width).toEqual('1.2rem');
-      expect(component.style.height).toEqual('1.2rem');
+      expect(component.style.width).toEqual('calc((24 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toEqual('calc((24 / var(--cds-global-base)) * 1rem)');
     });
   });
 });

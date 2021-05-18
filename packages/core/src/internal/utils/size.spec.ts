@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -71,8 +71,8 @@ describe('Functional Helper: ', () => {
 
     it('updates equilateral styles if passed a numeric string', () => {
       updateEquilateralSizeStyles(testDiv, '100');
-      expect(testDiv.style.width).toBe('5rem');
-      expect(testDiv.style.height).toBe('5rem');
+      expect(testDiv.style.width).toBe('calc((100 / var(--cds-global-base)) * 1rem)');
+      expect(testDiv.style.height).toBe('calc((100 / var(--cds-global-base)) * 1rem)');
     });
 
     it('does nothing if passed a non-numeric string that is not a t-shirt size', () => {

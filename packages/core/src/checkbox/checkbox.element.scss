@@ -44,7 +44,7 @@
   border-bottom-color: var(--check-color);
   border-right-color: var(--check-color);
   border-top-color: var(--check-color);
-  transform: translateY($cds-global-space-3-static) rotate(-45deg);
+  transform: translateY($cds-global-space-3) rotate(-45deg);
 }
 
 :host([_indeterminate]) {

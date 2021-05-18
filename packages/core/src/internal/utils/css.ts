@@ -41,17 +41,7 @@ export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, st
 }
 
 export function pxToRem(pxValue: number) {
-  let base = parseInt(document.documentElement.getAttribute('cds-base-font') as string);
-
-  if (!base) {
-    const prop = window
-      .getComputedStyle(document.body, null)
-      .getPropertyValue('--cds-global-typography-base-font-size');
-    base = (16 * parseInt(prop !== '' ? prop : '100%')) / 100;
-    document.documentElement.setAttribute('cds-base-font', `${base}`);
-  }
-
-  return `${pxValue / base}rem`;
+  return `calc((${pxValue} / var(--cds-global-base)) * 1rem)`;
 }
 
 export function getCssPropertyValue(

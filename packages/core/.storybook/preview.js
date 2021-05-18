@@ -120,11 +120,11 @@ export const globalTypes = {
   baseFont: {
     name: 'Base Font',
     description: 'Base Font for Document',
-    defaultValue: '125%',
+    defaultValue: '20',
     toolbar: {
       items: [
-        { value: '125%', title: 'Base 20px (Default)' },
-        { value: '100%', title: 'Base 16px' },
+        { value: '20', title: 'Base 20px (Default)' },
+        { value: '16', title: 'Base 16px' },
       ],
     },
   },
@@ -134,7 +134,7 @@ const themeDecorator = (story, { globals }) => {
   const themes = `${globals.theme ? globals.theme : ''} ${globals.motion ? globals.motion : ''}`;
   document.body.setAttribute('cds-theme', `${themes}`);
   window.parent.document.body.setAttribute('cds-theme', `${themes}`);
-  document.documentElement.setAttribute('cds-base-font', `${globals.baseFont === '100%' ? '16' : ''}`);
+  document.documentElement.style.setProperty('--cds-global-base', globals.baseFont);
 
   window.localStorage.setItem('cds-theme', themes);
 

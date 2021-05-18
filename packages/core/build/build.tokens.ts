@@ -111,14 +111,6 @@ function buildCSSTokens(path) {
   const cssTokens = `
 :root {
 ${tokens.map(token => `  --cds-${camelCaseToKebab(token.name)}: ${convertCSSValue(token, 20, false)};`).join('\n')}
-}
-
-[cds-base-font='16'] {
-  --cds-global-typography-base-font-size: 100%;
-${tokens
-  .filter(token => typeof token.value === 'number')
-  .map(token => `  --cds-${camelCaseToKebab(token.name)}: ${convertCSSValue(token, 16)};`)
-  .join('\n')}
 }`;
 
   fs.writeFileSync(path, cssTokens);
@@ -141,17 +133,18 @@ function tokenToSass(token: Token, fallback = false) {
   let staticValue;
 
   if (typeof token.value === 'number') {
-    staticValue = convertCSSValue(token, 16);
-  } else if (typeof token.value === 'string' && token.value.slice(-2) === 'em') {
+    staticValue = convertCSSValue(token);
+  } else if ((typeof token.value === 'string' && token.value.slice(-2) === 'em') || token.config.static) {
     staticValue = token.value;
   }
 
-  const staticVar = staticValue ? `\n$cds-${propName}-static: ${staticValue}${fallback ? '' : ' !default'};` : '';
   const dynamicVar = `$cds-${propName}: var(--cds-${camelCaseToKebab(token.name)}${
     fallback ? `, ${convertCSSValue(token)}` : ''
   })${fallback ? '' : ' !default'};`;
 
-  return `${dynamicVar}${staticVar}`;
+  return `${dynamicVar}${
+    token.config.static ? `\n$cds-${propName}-static: ${staticValue}${fallback ? '' : ' !default'};` : ''
+  }`;
 }
 
 function flattenTokens(theme: any) {
@@ -180,10 +173,10 @@ function convertCSSValue(token: Token, base = 20, fallback = true) {
     value = `var(--cds-${camelCaseToKebab(token.alias.name)}${
       fallback ? `, ${convertCSSValue(token.alias, 20, fallback)}` : ''
     })`;
-  } else if (token.config.absolute) {
+  } else if (token.config.static) {
     value = token.value;
   } else if (typeof token.value === 'number') {
-    value = `${(token.value / base).toFixed(base === 20 ? 2 : 4)}rem`;
+    value = `calc((${token.value} / var(--cds-global-base, ${base})) * 1rem)`;
   } else if (isHSL(token.value)) {
     value = `hsl(${token.value[0]}, ${token.value[1]}%, ${token.value[2]}%)`;
   }

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -7,22 +7,22 @@
 
 :root,
 :host {
-  --cxxs: var(--cds-global-layout-space-xxs, #{$cds-global-layout-space-xxs-static});
-  --cxs: var(--cds-global-layout-space-xs, #{$cds-global-layout-space-xs-static});
-  --csm: var(--cds-global-layout-space-sm, #{$cds-global-layout-space-sm-static});
-  --cmd: var(--cds-global-layout-space-md, #{$cds-global-layout-space-md-static});
-  --clg: var(--cds-global-layout-space-lg, #{$cds-global-layout-space-lg-static});
-  --cxl: var(--cds-global-layout-space-xl, #{$cds-global-layout-space-xl-static});
-  --cxxl: var(--cds-global-layout-space-xxl, #{$cds-global-layout-space-xxl-static});
+  --δ1: #{$cds-global-layout-space-xxs};
+  --δ2: #{$cds-global-layout-space-xs};
+  --δ3: #{$cds-global-layout-space-sm};
+  --δ4: #{$cds-global-layout-space-md};
+  --δ5: #{$cds-global-layout-space-lg};
+  --δ6: #{$cds-global-layout-space-xl};
+  --δ7: #{$cds-global-layout-space-xxl};
 }
 
-$cds-global-layout-space-xxs: var(--cxxs);
-$cds-global-layout-space-xs: var(--cxs);
-$cds-global-layout-space-sm: var(--csm);
-$cds-global-layout-space-md: var(--cmd);
-$cds-global-layout-space-lg: var(--clg);
-$cds-global-layout-space-xl: var(--cxl);
-$cds-global-layout-space-xxl: var(--cxxl);
+$cds-global-layout-space-xxs: var(--δ1);
+$cds-global-layout-space-xs: var(--δ2);
+$cds-global-layout-space-sm: var(--δ3);
+$cds-global-layout-space-md: var(--δ4);
+$cds-global-layout-space-lg: var(--δ5);
+$cds-global-layout-space-xl: var(--δ6);
+$cds-global-layout-space-xxl: var(--δ7);
 
 // selectors one location to make it easier to test for shorthand optimizations
 // this is also helpful for tools like AMP that require data-* prefix on all attrs

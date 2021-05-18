@@ -17,14 +17,14 @@ const layout = {
     xxl: token(96),
   },
   grid: {
-    cols: token(12, { absolute: true }),
+    cols: token(12, { static: true }),
   },
   width: {
-    xs: token(576),
-    sm: token(768),
-    md: token(992),
-    lg: token(1200),
-    xl: token(1440),
+    xs: token('576px', { static: true }),
+    sm: token('768px', { static: true }),
+    md: token('992px', { static: true }),
+    lg: token('1200px', { static: true }),
+    xl: token('1440px', { static: true }),
   },
 };
 
@@ -340,8 +340,8 @@ const typography = {
     8: token(32),
     9: token(40),
   },
-  baseFontSize: token('125%'),
-  baseFontSizePx: token(20),
+  baseFontSize: token('125%'), // deprecated for removal in 6.0
+  baseFontSizePx: token(20), // deprecated for removal in 6.0
   fontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
   headerFontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
   topGapHeight: token('0.1475em'), // line-height eraser
@@ -359,61 +359,61 @@ const typography = {
   },
   body: {
     fontSize: token(14),
-    lineHeight: token('1.42857em'),
+    lineHeight: token('1.42857em', { static: true }), // static for line height eraser calcs
     letterSpacing: token('-0.014286em'),
     fontWeight: token('400'),
   },
   display: {
     fontSize: token(40),
-    lineHeight: token('1.1em'),
+    lineHeight: token('1.1em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   heading: {
     fontSize: token(32),
-    lineHeight: token('1.125em'),
+    lineHeight: token('1.125em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   title: {
     fontSize: token(24),
-    lineHeight: token('1.16667em'),
+    lineHeight: token('1.16667em', { static: true }),
     letterSpacing: token('-0.008333em'),
     fontWeight: token('400'),
   },
   section: {
     fontSize: token(20),
-    lineHeight: token('1.2em'),
+    lineHeight: token('1.2em', { static: true }),
     letterSpacing: token('-0.01em'),
     fontWeight: token('400'),
   },
   subsection: {
     fontSize: token(16),
-    lineHeight: token('1.25em'),
+    lineHeight: token('1.25em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   message: {
     fontSize: token(16),
-    lineHeight: token('1.25em'),
+    lineHeight: token('1.25em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token(400),
   },
   secondary: {
     fontSize: token(13),
-    lineHeight: token('1.23077em'),
+    lineHeight: token('1.23077em', { static: true }),
     letterSpacing: token('-0.007692em'),
     fontWeight: token('400'),
   },
   caption: {
     fontSize: token(11),
-    lineHeight: token('1.454545em'),
+    lineHeight: token('1.454545em', { static: true }),
     letterSpacing: token('0.018182em'),
     fontWeight: token('400'),
   },
   smallcaption: {
     fontSize: token(10),
-    lineHeight: token('1.2em'),
+    lineHeight: token('1.2em', { static: true }),
     letterSpacing: token('0.05em'),
     fontWeight: token('500'),
   },
@@ -539,6 +539,6 @@ const aliases = {
 };
 
 export const baseTheme: CdsTheme = {
-  global: { layout, space, color, typography, animation },
+  global: { layout, space, color, typography, animation, base: token(20, { static: true }) },
   aliases,
 };

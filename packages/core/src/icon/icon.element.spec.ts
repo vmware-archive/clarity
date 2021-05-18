@@ -122,8 +122,8 @@ describe('icon element', () => {
       expect(component.style.height).toBe('');
       component.setAttribute('size', '43');
       await componentIsStable(component);
-      expect(component.style.width).toBe('2.15rem');
-      expect(component.style.height).toBe('2.15rem');
+      expect(component.style.width).toBe('calc((43 / var(--cds-global-base)) * 1rem)');
+      expect(component.style.height).toBe('calc((43 / var(--cds-global-base)) * 1rem)');
     });
     it('should remove the size attribute if set to undefined', async () => {
       await componentIsStable(component);

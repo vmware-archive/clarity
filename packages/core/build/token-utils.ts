@@ -11,6 +11,7 @@ export interface CdsTheme {
     color: Tokens;
     typography: Tokens;
     animation: Tokens;
+    base: Token;
   };
   aliases: Tokens;
 }
@@ -37,7 +38,7 @@ export class Token {
     return this._value instanceof Token ? this._value : null;
   }
 
-  constructor(value: Token | number | string | HSL, public config: { absolute?: boolean } = {}) {
+  constructor(value: Token | number | string | HSL, public config: { static?: boolean } = {}) {
     this._value = value;
   }
 

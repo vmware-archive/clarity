@@ -95,14 +95,8 @@ describe('Css utility functions - ', () => {
   });
 
   describe('pxToRem: ', () => {
-    it('should convert px to rem values from base font size token', () => {
-      expect(pxToRem(10)).toBe('0.5rem');
-    });
-
-    it('should cache the rem calculation to the HTML cds-font-size attr', () => {
-      document.documentElement.setAttribute('cds-base-font', null);
-      expect(pxToRem(20)).toBe('1rem');
-      expect(document.documentElement.getAttribute('cds-base-font')).toBe('20');
+    it('should return a px to rem calc from the base font size token', () => {
+      expect(pxToRem(10)).toBe('calc((10 / var(--cds-global-base)) * 1rem)');
     });
   });
 

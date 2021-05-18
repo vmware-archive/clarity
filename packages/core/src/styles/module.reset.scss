@@ -5,7 +5,7 @@
 @import '../../dist/core/tokens/tokens';
 
 html {
-  font-size: $cds-global-typography-base-font-size;
+  font-size: calc((#{$cds-global-base} / 16) * 100%); // convert any base value to a scaled percentage
   box-sizing: border-box !important;
 }
 
@@ -13,6 +13,10 @@ html {
 *:before,
 *:after {
   box-sizing: inherit !important;
+}
+
+[cds-base-font='16'] {
+  --cds-global-base: 16;
 }
 
 [cds-theme] {

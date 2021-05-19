@@ -63,6 +63,7 @@ export function actions() {
       <cds-button>solid</cds-button>
       <cds-button action="outline">outline</cds-button>
       <cds-button action="flat">flat</cds-button>
+      <cds-button action="flat-inline">flat-inline</cds-button>
     </div>
   `;
 }
@@ -73,6 +74,7 @@ export function disabled() {
       <cds-button disabled>solid</cds-button>
       <cds-button disabled action="outline">outline</cds-button>
       <cds-button disabled action="flat">flat</cds-button>
+      <cds-button disabled action="flat-inline">flat-inline</cds-button>
     </div>
   `;
 }
@@ -153,6 +155,9 @@ export function iconWithTextAndBadge() {
         <cds-button size="sm" action="flat"
           ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
         >
+        <cds-button size="sm" action="flat-inline"
+          ><cds-icon shape="user"></cds-icon> click <cds-badge color="blue">10</cds-badge></cds-button
+        >
       </div>
     </div>
   `;
@@ -166,6 +171,7 @@ export function textAndBadge() {
         <cds-button>Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button status="danger">Click Me <cds-badge>10</cds-badge></cds-button>
@@ -190,6 +196,7 @@ export function textAndBadge() {
         <cds-button size="sm">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button size="sm" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button size="sm" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button size="sm" action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
     </div>
   `;
@@ -309,6 +316,9 @@ export function darkTheme() {
           ><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button
         >
         <cds-button action="flat"><cds-icon shape="user"></cds-icon>flat<cds-badge>10</cds-badge></cds-button>
+        <cds-button action="flat-inline"
+          ><cds-icon shape="user"></cds-icon>flat-inline<cds-badge>10</cds-badge></cds-button
+        >
       </div>
     </div>
   `;

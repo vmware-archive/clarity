@@ -168,11 +168,17 @@
   --border-color: var(--color);
 }
 
-:host([action='flat']) {
+:host([action*='flat']) {
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-alias-object-opacity-0};
   --color: #{$cds-alias-status-info};
   --box-shadow-color: #{$cds-alias-object-opacity-0};
+}
+
+:host([action='flat-inline']) {
+  --height: auto;
+  --padding: 0;
+  --min-width: auto;
 }
 
 :host([size='sm']) {
@@ -212,7 +218,7 @@
   --color: #{$cds-alias-status-disabled};
 }
 
-:host([disabled][action='flat']) {
+:host([disabled][action*='flat']) {
   --border-color: #{$cds-alias-object-opacity-0};
   --background: #{$cds-alias-object-opacity-0};
   --color: #{$cds-alias-status-disabled};

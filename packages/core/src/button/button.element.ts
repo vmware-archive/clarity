@@ -70,7 +70,7 @@ export class CdsButton extends CdsBaseButton {
    * - `flat`: buttons are used as tertiary buttons. Can also be used inline because they are different from content in style and recognizable as buttons alongside content.
    */
   @property({ type: String })
-  action: 'solid' | 'outline' | 'flat' = 'solid';
+  action: 'solid' | 'outline' | 'flat' | 'flat-inline' = 'solid';
 
   /**
    * Sets the color of the button to match the following string statuses

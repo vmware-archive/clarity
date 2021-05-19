@@ -23,7 +23,7 @@
   --letter-spacing: 0.073em;
 }
 
-:host([action='flat']) ::slotted(cds-badge),
+:host([action*='flat']) ::slotted(cds-badge),
 :host([action='outline']) ::slotted(cds-badge) {
   --border-color: #{$cds-alias-status-info};
   --background: #{$cds-alias-status-info};
@@ -54,7 +54,7 @@
   --color: #{$cds-global-typography-color-100};
 }
 
-:host(:not([action='outline']):not([action='flat'])) ::slotted(cds-badge) {
+:host(:not([action='outline']):not([action*='flat'])) ::slotted(cds-badge) {
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-global-typography-color-100};
   --color: #{$cds-global-typography-color-100};
@@ -65,7 +65,7 @@
   --color: #{$cds-global-color-construction-900};
 }
 
-:host([action='flat'][disabled]) ::slotted(cds-badge) {
+:host([action*='flat'][disabled]) ::slotted(cds-badge) {
   --background: #{$cds-alias-object-opacity-0};
   --border-color: #{$cds-alias-status-neutral};
   --color: #{$cds-alias-status-neutral};
@@ -86,7 +86,7 @@
 
 :host([disabled][status='inverse']),
 :host([disabled][action='outline']),
-:host([disabled][action='flat']) {
+:host([disabled][action*='flat']) {
   ::slotted(cds-badge) {
     --border-color: #{$cds-alias-status-disabled} !important;
     --color: #{$cds-alias-status-disabled} !important;

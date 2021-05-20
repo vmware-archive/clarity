@@ -2,6 +2,110 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.2.1",
+      "date": "2021-05-20",
+      "description": "This is a bug release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 5958,
+          "title": "Updated dynamic rem calculation in Core to return CSS calc() instead of using DOM lookup operations to return sizing",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5819,
+          "title": "Add roadmap, updated Clarity support policy table, and added Angular version support to the website",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5964,
+          "title": "Added badged and alert variants for map icon",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5945,
+          "title": "Fixed EHCAIWC error for lazy expandable nodes inside tree view",
+          "project": "Angular",
+          "scope": "Treeview"
+        },
+        {
+          "issue": 5962,
+          "title": "Added a preview/beta of a flat-inline button that has no built in padding for better alignment inside cards and other bounded containers",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5885,
+          "title": "Implemented new version of visual diff build",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 5953,
+          "title": "Added .header-7/8 CSS class workaround for teams needing a specific header color in dark theme",
+          "project": "Angular",
+          "scope": "Header"
+        },
+        {
+          "issue": 5952,
+          "title": "Added ReactJS-specific documentation",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5932,
+          "title": "Improved handling of empty value boolean properties in @cds/angular",
+          "project": "Clarity Adoption",
+          "scope": "Schematics"
+        },
+        {
+          "issue": 5946,
+          "title": "Fixed styles for icons with `caret` shape in dropdown triggers",
+          "project": "Angular",
+          "scope": "Dropdown"
+        },
+        {
+          "issue": 5944,
+          "title": "Improved ESLint rule replacements for `is-error`, `is-highlight`, `collapse` and `arrow`",
+          "project": "Clarity Adoption",
+          "scope": "Schematics"
+        },
+        {
+          "issue": 5858,
+          "title": "Added warning button styles to Clarity Core buttons",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5821,
+          "title": "Adoption guide released in beta",
+          "project": "Clarity Adoption",
+          "scope": "Build"
+        },
+        {
+          "issue": 5937,
+          "title": "Removed highlight status in the icons article on Clarity website",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5934,
+          "title": "Amended Core solid button to use darker color when inactive and fixed badge color on an inactive outline button",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5936,
+          "title": "Fix pagination icons size and alignment in Clarity Angular datagrid",
+          "project": "Angular",
+          "scope": "Datagrid"
+        }
+      ]
+    },
+    {
       "version": "5.2.0",
       "date": "2021-05-06",
       "description": "This is a feature and bug release.",

@@ -1,6 +1,6 @@
-import { baseStyles, createId, internalProperty, querySlot } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { styles } from './breadcrumb.element.css.js';
+import { html, LitElement } from 'lit';
+import { baseStyles, createId, state, querySlot } from '@cds/core/internal';
+import styles from './breadcrumb.element.scss';
 
 /**
  * ```typescript
@@ -23,10 +23,10 @@ import { styles } from './breadcrumb.element.css.js';
  * @cssprop --color
  */
 export class CdsBreadcrumb extends LitElement {
-  @internalProperty({ type: String, reflect: true, attribute: 'role' })
+  @state({ type: String, reflect: true, attribute: 'role' })
   protected role = 'navigation';
 
-  @internalProperty({ type: Array }) private navItems: Element[] = [];
+  @state({ type: Array }) private navItems: Element[] = [];
 
   @querySlot('[slot="cds-separator"]') private customSeparator: HTMLElement;
 

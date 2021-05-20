@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { addClassnames, baseStyles, CdsBaseButton } from '@cds/core/internal';
-import { html } from 'lit-element';
-import { styles } from './inline-button.element.css.js';
+import { html } from 'lit';
+import styles from './inline-button.element.scss';
 
 /**
  * Inline buttons are used inside and alongside textual content within Clarity components.

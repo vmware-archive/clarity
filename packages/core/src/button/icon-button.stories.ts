@@ -7,19 +7,16 @@
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
-import { ClarityIcons, userIcon } from '@cds/core/icon';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 ClarityIcons.addIcons(userIcon);
 
 export default {
   title: 'Stories/Icon Button',
   component: 'cds-icon-button',
-  argTypes: getElementStorybookArgTypes('cds-icon-button', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -30,10 +27,10 @@ export default {
 };
 
 export function API(args: any) {
-  const invertBackground = boolean('invertBackground', false);
+  // const invertBackground = boolean('invertBackground', false);
   return html`
-    <cds-demo ?inverse=${invertBackground} inline-block>
-      <cds-icon-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
+    <cds-demo ?inverse=${false} inline-block>
+      <cds-icon-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${() => console.log('click')}>
         <cds-icon shape="user"></cds-icon>
       </cds-icon-button>
     </cds-demo>

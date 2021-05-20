@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { TemplateResult, render } from 'lit-html';
+import { TemplateResult, render } from 'lit';
 
 export function createTestElement(template?: TemplateResult): Promise<HTMLElement> {
   const element = document.createElement('div');

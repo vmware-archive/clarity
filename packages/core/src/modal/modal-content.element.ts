@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, internalProperty } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { baseStyles, state } from '@cds/core/internal';
+import { html, LitElement } from 'lit';
 
 /**
  * Web component modal content to be used inside modal.
@@ -34,11 +34,11 @@ export class CdsModalContent extends LitElement {
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside modal-content with a tabindex of -1. we need the tabindex so a
   // modal's content can scroll if it needs to.
-  protected createRenderRoot(): Element | ShadowRoot {
-    return this.attachShadow({ mode: 'open', delegatesFocus: true });
+  static get shadowRootOptions() {
+    return { ...super.shadowRootOptions, delegatesFocus: true };
   }
 
-  @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr = 0; // don't override native prop as it stops native focus behavior
+  @state({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr = 0; // don't override native prop as it stops native focus behavior
 
   render() {
     return this.hasAttribute('cds-layout')

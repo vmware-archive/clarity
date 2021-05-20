@@ -39,6 +39,7 @@
     "@clr/angular": "./dist/clr-angular",
     "@clr/ui": "./dist/clr-ui",
     "@cds/core": "./dist/core",
+    "@types/resize-observer-browser": "0.1.5",
     "@webcomponents/webcomponentsjs": "2.5.0",
     "prismjs": "1.8.4",
     "@stackblitz/sdk": "1.5.2",

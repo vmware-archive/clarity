@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { internalProperty, html } from 'lit-element';
+import { html } from 'lit';
+import { state } from '@cds/core/internal';
 import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
@@ -41,7 +42,7 @@ import { eyeHideIcon } from '@cds/core/icon/shapes/eye-hide.js';
  * @cssprop --transition
  */
 export class CdsPassword extends CdsControl {
-  @internalProperty() private showPassword = false;
+  @state() private showPassword = false;
 
   @i18n() i18n = I18nService.keys.password;
 

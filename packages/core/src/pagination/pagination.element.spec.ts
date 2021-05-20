@@ -9,8 +9,8 @@ import { LogService } from '@cds/core/internal';
 import { CdsPagination } from '@cds/core/pagination';
 import '@cds/core/pagination/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
-import { html } from 'lit-html';
-import { CdsInput } from '../input';
+import { html } from 'lit';
+import { CdsInput } from '@cds/core/input';
 
 describe('Pagination Element', () => {
   let defaultLayoutElement: HTMLElement;

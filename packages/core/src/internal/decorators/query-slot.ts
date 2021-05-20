@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 import { LogService, notProductionEnvironment } from '../services/log.service.js';
 
-// Slot Query decorators are similar to the query decorator in lit-element.
+// Slot Query decorators are similar to the query decorator in lit.
 // Instead of querying the component template they query the content slot of the component.
 
 const legacyQuery = (descriptor: PropertyDescriptor, proto: {}, name: PropertyKey) => {

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Internal Documentation/Unit Testing" />
 
@@ -15,16 +15,15 @@ import { Meta } from '@storybook/addon-docs/blocks';
 - Do not test several components at the same time, unless you're explicitly
   writing an integration test.
 
-- We run our unit tests in Chrome with native ESM modules. Currently, any
-  imports will have to be added to the [import map file](https://github.com/vmware/clarity/blob/master/packages/core/import-map.importmap).
-  This file tells Chrome how to resolve bare module import names to the local
-  file path. This will be automated in the near future. Example:
+- We run our unit tests in Chrome with native ESM modules. New import paths need to
+  be added to the [import map config](https://github.com/vmware/clarity/blob/next/packages/core/web-dev-server.config.mjs).
+  This config allows the dev server to load an import map which tells Chrome how
+  to resolve bare module import names to the local file path.
 
 ```json
-// importmap.importmap
-"lit-html": "/base/node_modules/lit-html/lit-html.js",
-"@cds/core/button": "/base/dist/core/button/index.js",
-"@cds/core/button/register.js": "/base/dist/core/button/register.js",
+"lit": "/node_modules/lit/index.js",
+"@cds/core/button": "/dist/button/index.js",
+"@cds/core/button/register.js": "/dist/button/register.js",
 ```
 
 ## Test Utilities
@@ -33,7 +32,7 @@ There are a couple of test utilities provided to make testing a bit easier. Thes
 Here is a basic starter test for a Clarity Web Component.
 
 ```typescript
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/badge/register.js';
 import { CdsBadge } from '@cds/core/badge';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
@@ -57,7 +56,7 @@ describe('badge element', () => {
   });
 
   it('should create the component', async () => {
-    // lit-element renders asynchronously, this utility will wait until all rendering has completed before continuing
+    // lit renders asynchronously, this utility will wait until all rendering has completed before continuing
     await componentIsStable(component);
     expect(component.innerText).toBe('10');
   });

@@ -1,10 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { LogService } from './log.service.js';
+import '@cds/core/badge/register.js'; // trigger global setup
 
 describe('LogService', () => {
   it('should not log when in a test environment', () => {

@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html, LitElement } from 'lit';
+import { state } from 'lit/decorators/state.js';
 import '@cds/core/input/register.js';
-import { internalProperty, LitElement } from 'lit-element';
 import { registerElementSafely } from '@cds/core/internal';
 
 export default {
@@ -14,10 +14,6 @@ export default {
   component: 'cds-input-group',
   parameters: {
     options: { showPanel: true },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/v2mkhzKQdhECXOx8BElgdA/Clarity-UI-Library---light-2.2.0?node-id=20%3A1',
-    },
   },
 };
 
@@ -224,8 +220,9 @@ export function status() {
 
 /** @website */
 export function editableContent() {
+  /** @element editable-content-demo */
   class EditableContentDemo extends LitElement {
-    @internalProperty() private showInput = false;
+    @state() private showInput = false;
 
     render() {
       return html`

@@ -7,18 +7,18 @@
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
-import { ClarityIcons, userIcon, popOutIcon, downloadCloudIcon } from '@cds/core/icon';
-import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@cds/core/internal';
-import { action } from '@storybook/addon-actions';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { downloadCloudIcon } from '@cds/core/icon/shapes/download-cloud.js';
+import { popOutIcon } from '@cds/core/icon/shapes/pop-out.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 ClarityIcons.addIcons(downloadCloudIcon, popOutIcon, userIcon);
 
 export default {
   title: 'Stories/Button',
   component: 'cds-button',
-  argTypes: getElementStorybookArgTypes('cds-button', customElements),
   parameters: {
     controls: { expanded: true },
     options: { showPanel: true },

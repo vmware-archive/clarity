@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { i18n } from '@cds/core/internal';
 
@@ -16,7 +16,7 @@ const i18nValues = {
 
 /** @element test-18n-element */
 class TestI18nElement extends LitElement {
-  [__i18n: string]: any;
+  __i18n: string;
 
   @i18n() i18n = i18nValues;
 

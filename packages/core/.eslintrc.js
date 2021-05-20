@@ -22,10 +22,23 @@ const rules = {
   'no-restricted-imports': [
     ERROR,
     {
-      paths: ['ramda', 'rxjs', 'rxjs/operators'],
-      patterns: ['lit-element/*', '@angular/*'],
+      paths: [
+        'ramda',
+        'rxjs',
+        'rxjs/operators',
+        {
+          name: '@cds/core/icon',
+          message:
+            'Please import icon service and icons directly https://clarity.design/storybook/core/?path=/story/internal-documentation-using-icons--page',
+        },
+      ],
+      patterns: ['lit-element', 'lit-element/*', 'lit-html', 'lit-html/*', '@angular/*'],
     },
   ],
+  'lit-a11y/img-redundant-alt': [OFF],
+  'lit-a11y/anchor-is-valid': [OFF],
+  'lit-a11y/alt-text': [OFF],
+  'lit-a11y/click-events-have-key-events': [OFF],
 };
 
 const parserOptions = {
@@ -34,10 +47,13 @@ const parserOptions = {
   sourceType: 'module',
 };
 
+const plugins = ['lit-a11y', 'lit', 'eslint-plugin-wc'];
+
 const config = {
-  extends: '../../.eslintrc.js',
+  extends: ['../../.eslintrc.js', 'plugin:lit-a11y/recommended', 'plugin:lit/recommended', 'plugin:wc/recommended'],
   parserOptions,
   rules,
+  plugins,
 };
 
 module.exports = config;

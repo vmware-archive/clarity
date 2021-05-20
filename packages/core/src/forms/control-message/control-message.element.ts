@@ -1,13 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
-import { baseStyles, property, assignSlotNames, internalProperty } from '@cds/core/internal';
+import { html, LitElement } from 'lit';
+import { baseStyles, property, assignSlotNames, state } from '@cds/core/internal';
 import { ControlStatus } from '../utils/interfaces.js';
-import { styles } from './control-message.element.css.js';
+import styles from './control-message.element.scss';
 import { ValidityStateKey } from '../utils/validate.js';
 
 /**
@@ -44,7 +44,7 @@ export class CdsControlMessage extends LitElement {
    */
   @property({ type: String }) error: ValidityStateKey;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
+  @state({ type: Boolean, reflect: true }) protected disabled = false;
 
   render() {
     return html`

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property as prop } from 'lit-element';
+import { property as _property } from 'lit/decorators/property.js';
 import { camelCaseToKebabCase, kebabCaseToPascalCase, capitalizeFirstLetter } from '../utils/string.js';
 import { LogService } from '../services/log.service.js';
 import { getAngularVersion, getReactVersion, getVueVersion } from '../utils/framework.js';
@@ -63,7 +63,7 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
       };
     }
     default:
-      return options as PropertyDeclaration<unknown, unknown>;
+      return { ...(options as PropertyDeclaration<unknown, unknown>) };
   }
 }
 
@@ -103,8 +103,8 @@ function getRequiredMessage(level = 'warning', propertyName: string, tagName: st
 }
 
 /**
- * lit-element @property decorator with custom defaults specific to Clarity.
- * https://lit-element.polymer-project.org/guide/properties#property-options
+ * lit @property decorator with custom defaults specific to Clarity.
+ * https://lit.dev/docs/components/properties/
  *
  * A property decorator which creates a LitElement property which reflects a
  * corresponding attribute value. A PropertyDeclaration may optionally be
@@ -115,7 +115,7 @@ function getRequiredMessage(level = 'warning', propertyName: string, tagName: st
 export function property(options?: PropertyConfig) {
   return (protoOrDescriptor: any, name: string) => {
     requirePropertyCheck(protoOrDescriptor, name, options);
-    return prop(getDefaultOptions(name, options))(protoOrDescriptor, name);
+    return _property(getDefaultOptions(name, options))(protoOrDescriptor, name);
   };
 }
 
@@ -134,18 +134,18 @@ export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
 }
 
 /**
- * lit-element @internalProperty decorator with custom defaults specific to Clarity.
+ * lit @state decorator with custom defaults specific to Clarity.
  *
  * This is used for communication between internal component properties
  * that are not exposed as part of the public component API.
  *
  * A internalProperty decorator which creates a LitElement property which will
  * trigger a re-render when set but not allow the value to be updated through
- * public attributes.
+ * public attributes. https://lit.dev/docs/api/decorators/#state
  *
  * @ExportDecoratedItems
  */
-export function internalProperty(options?: PropertyConfig) {
+export function state(options?: PropertyConfig) {
   return (protoOrDescriptor: any, name: string) => {
     const defaultOptions: any = getDefaultOptions(name, options);
 
@@ -159,6 +159,6 @@ export function internalProperty(options?: PropertyConfig) {
       }
     }
 
-    return prop(defaultOptions)(protoOrDescriptor, name);
+    return _property(defaultOptions)(protoOrDescriptor, name);
   };
 }

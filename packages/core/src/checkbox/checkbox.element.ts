@@ -5,7 +5,7 @@
  */
 
 import { CdsInternalControlInline } from '@cds/core/forms';
-import { styles } from './checkbox.element.css.js';
+import styles from './checkbox.element.scss';
 
 /**
  * Checkbox

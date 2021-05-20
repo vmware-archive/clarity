@@ -16,8 +16,8 @@ describe('CDS global', () => {
     it('should log all Clarity versions found', () => {
       window.CDS._version.push('1.0.0');
       const log = window.CDS.getVersion();
-      expect(log.versions.length).toBe(2);
-      expect(log.versions[0]).toBe('@VERSION');
+      expect(log.versions.length > 0).toBe(true);
+      expect(log.versions[0]).toBe('PACKAGE_VERSION');
       expect(log.versions[1]).toBe('1.0.0');
     });
 
@@ -49,7 +49,7 @@ describe('CDS global', () => {
 
     it('should not store duplicate versions when loading', () => {
       setupCDSGlobal();
-      window.CDS._version = ['@VERSION'];
+      window.CDS._version = ['PACKAGE_VERSION'];
       setupCDSGlobal();
       expect(window.CDS._version.length).toEqual(1);
     });
@@ -57,7 +57,7 @@ describe('CDS global', () => {
     it('should show loaded version in body attribute', () => {
       setupCDSGlobal();
       const attrValue = (document.querySelector('body') as HTMLElement).getAttribute('cds-version');
-      expect(attrValue).toEqual('@VERSION');
+      expect(attrValue).toEqual('PACKAGE_VERSION');
     });
   });
 });

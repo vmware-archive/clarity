@@ -1,6 +1,6 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from 'lit';
 import { baseStyles } from '@cds/core/internal';
-import { styles } from './panel.element.css.js';
+import styles from './panel.element.scss';
 
 export const CdsInternalPanelTagName = 'cds-internal-panel';
 

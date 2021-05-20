@@ -1,5 +1,4 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import alias from '@rollup/plugin-alias';
 import { terser } from 'rollup-plugin-terser';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import copy from 'rollup-plugin-copy-watch';
@@ -22,15 +21,6 @@ export default {
         { src: 'node_modules/@cds/city/Webfonts', dest: 'dist' },
         { src: 'src/index.html', dest: 'dist' },
         { src: 'src/favicon.ico', dest: 'dist' },
-      ],
-    }),
-    alias({
-      // https://lit-element.polymer-project.org/guide/build
-      entries: [
-        {
-          find: 'lit-html/lib/shady-render.js',
-          replacement: 'node_modules/lit-html/lit-html.js',
-        },
       ],
     }),
     nodeResolve(),

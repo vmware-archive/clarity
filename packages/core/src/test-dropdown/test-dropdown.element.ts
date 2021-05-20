@@ -5,9 +5,9 @@
  */
 
 import { baseStyles, I18nService, event, EventEmitter, property } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 
-import { styles } from './test-dropdown.element.css.js';
+import styles from './test-dropdown.element.scss';
 
 /**
  * Dropdown, example test component. Do not use in production.

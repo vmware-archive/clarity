@@ -16,7 +16,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es2017",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "types": ["@types/resize-observer-browser"]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

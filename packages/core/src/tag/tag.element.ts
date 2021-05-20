@@ -5,8 +5,8 @@
  */
 
 import { assignSlotNames, baseStyles, CdsBaseButton, id, property, StatusTypes, syncProps } from '@cds/core/internal';
-import { html } from 'lit-element';
-import { styles } from './tag.element.css.js';
+import { html } from 'lit';
+import styles from './tag.element.scss';
 
 /**
  * Tags show concise metadata in a compact format.

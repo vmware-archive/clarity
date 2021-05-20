@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
 import { CdsControl, CdsInternalControlGroup } from '@cds/core/forms';
 import '@cds/core/forms/register.js';

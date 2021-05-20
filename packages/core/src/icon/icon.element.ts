@@ -11,14 +11,15 @@ import {
   hasStringPropertyChangedAndNotNil,
   Orientations,
   property,
-  internalProperty,
+  state,
   StatusTypes,
   isString,
   pxToRem,
   EventSubscription,
 } from '@cds/core/internal';
-import { html, LitElement, query, svg } from 'lit-element';
-import { styles } from './icon.element.css.js';
+import { html, LitElement, svg } from 'lit';
+import { query } from 'lit/decorators/query.js';
+import styles from './icon.element.scss';
 import { ClarityIcons } from './icon.service.js';
 import { updateIconSizeStyle } from './utils/icon.classnames.js';
 import { getIconBadgeSVG, getIconSVG } from './utils/icon.svg-helpers.js';
@@ -147,7 +148,7 @@ export class CdsIcon extends LitElement {
    * @private
    * given a pixel value offset any surrounding whitespace within the svg
    */
-  @internalProperty({ type: Number })
+  @state({ type: Number })
   innerOffset: number; // Performance optimization: default to undefined so attr is not initially rendered
 
   @query('svg') private svg: SVGElement;

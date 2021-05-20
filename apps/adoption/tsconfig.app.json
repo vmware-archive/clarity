@@ -6,8 +6,8 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "types": []
+    "types": ["@types/resize-observer-browser"]
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "exclude": ["**/*.html", "**/node_moduels/**"]
+  "exclude": ["**/*.html", "**/node_modules/**"]
 }

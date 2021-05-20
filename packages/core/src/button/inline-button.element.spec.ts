@@ -4,11 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
 import { CdsInlineButton } from '@cds/core/button';
-import { CdsIcon } from '@cds/core/icon';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
 describe('Inline button element', () => {

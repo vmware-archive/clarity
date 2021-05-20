@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
+import img from '../.storybook/public/assets/images/clarity-logo.svg';
 
 export default {
   title: 'Stories/Clarity',
@@ -17,7 +18,7 @@ export const core = () => {
   return html`
     <section cds-layout="vertical gap:xl align:center m-t:xxl" cds-text="center">
       <img
-        src="./assets/images/clarity-logo.svg"
+        src="${img}"
         alt="Clarity Core"
         cds-layout="fill"
         style="max-width: calc(var(--cds-global-layout-space-xl) * 3)"

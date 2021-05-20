@@ -17,5 +17,5 @@ module.exports = {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  transformIgnorePatterns: ['node_modules/(?!@cds/core|lit-element|lit-html|ramda)'],
+  transformIgnorePatterns: ['node_modules/(?!@cds/core|lit|@lit|@lit-labs|ramda)'],
 };

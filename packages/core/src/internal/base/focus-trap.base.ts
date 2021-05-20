@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { FocusTrap } from '../utils/focus-trap.js';
-import { internalProperty, property } from '../decorators/property.js';
+import { state, property } from '../decorators/property.js';
 import { createId } from '../utils/identity.js';
 
 export class CdsBaseFocusTrap extends LitElement {
@@ -22,7 +22,7 @@ export class CdsBaseFocusTrap extends LitElement {
    */
   @property({ type: Boolean }) hidden = false;
 
-  @internalProperty({ type: Boolean, reflect: true })
+  @state({ type: Boolean, reflect: true })
   protected demoMode = false;
 
   @property({ type: String }) focusTrapId: string;

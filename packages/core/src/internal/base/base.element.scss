@@ -6,12 +6,6 @@
 @import './../../styles/module.layout';
 @import './../../styles/layout/shadow-dom';
 @import './../../styles/module.typography';
-@import './../../styles/layout/shims/gap';
-
-// Safari, if no flex gap apply shim
-:host([_nfg]) {
-  @include generateGapShim();
-}
 
 // Every Web Component will need to import a minimal amount of core CSS
 :host {

@@ -5,14 +5,12 @@
  */
 
 import '@cds/core/search/register.js';
-import { html } from 'lit-html';
-import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@cds/core/internal';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
+import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Search',
   component: 'cds-search',
-  argTypes: getElementStorybookArgTypes('cds-search', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

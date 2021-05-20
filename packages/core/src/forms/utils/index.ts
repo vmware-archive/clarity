@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { isVisible, pxToRem } from '@cds/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';

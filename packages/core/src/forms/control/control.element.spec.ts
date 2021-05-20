@@ -4,14 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
-import { CdsIcon } from '@cds/core/icon';
-import { CdsControl } from '@cds/core/forms';
-import '@cds/core/forms/register.js';
-import { CdsControlMessage } from '../control-message/control-message.element';
 import { listenForAttributeChange } from '@cds/core/internal';
-import { ControlLabelLayout } from './control.element';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
+import { CdsControl, ControlLabelLayout, CdsControlMessage } from '@cds/core/forms';
+import '@cds/core/forms/register.js';
 
 describe('cds-control', () => {
   let element: HTMLElement;
@@ -118,7 +116,7 @@ describe('cds-control', () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('cds-internal-control-label')).toBeTruthy();
 
-    control.labelLayout = ControlLabelLayout.inputGroup;
+    control.labelLayout = 'input-group' as ControlLabelLayout; // enum causes Jasmine to timeout from type not loading
     control.status = 'error';
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('cds-icon[status=error]')).toBe(null);
@@ -130,8 +128,8 @@ describe('cds-control', () => {
 
   it('should mark layout as stable when using a hidden label layout', async () => {
     await componentIsStable(control);
-    control.labelLayout = ControlLabelLayout.hiddenLabel;
-    expect(await control.layoutStable).toBe(true);
+    control.labelLayout = 'hidden-label' as ControlLabelLayout; // enum causes Jasmine to timeout from type not loading
+    expect(control.layoutStable).toBe(true);
   });
 
   it('should apply focus style attribute when native element is focused', async () => {

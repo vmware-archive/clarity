@@ -5,15 +5,12 @@
  */
 
 import '@cds/core/button/register.js';
-import { getElementStorybookArgTypes } from '@cds/core/internal';
 import '@cds/core/pagination/register.js';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
 
 export default {
   title: 'Stories/Pagination',
   component: 'cds-pagination',
-  argTypes: getElementStorybookArgTypes('cds-pagination', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

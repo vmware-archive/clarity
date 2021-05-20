@@ -1,14 +1,33 @@
-import { document } from 'global';
-import '!style-loader!css-loader!./public/demo.css';
-import { setCustomElements } from '@storybook/web-components';
-import { applyPolyfill } from 'custom-elements-hmr-polyfill';
-import customElements from '../dist/core/custom-elements.json';
+import styles from './public/demo.css';
+import { setCustomElements } from '@web/storybook-prebuilt/web-components.js';
+import pkg from '../dist/core/custom-elements.json';
+import img from './public/assets/images/clarity-logo.svg';
 
-window.HMR_SKIP_DEEP_PATCH = true;
-applyPolyfill();
+setCustomElements(pkg);
+
+// storybook-prebuild does not run the manager.js through rollup so custom
+// styles need to be appended from the preivew.js
+if (!window.parent.document.querySelector('#clarity-storybook-styles')) {
+  const style = document.createElement('style');
+  style.id = 'clarity-storybook-styles';
+  style.textContent = `${styles}`;
+  window.parent.document.head.append(style);
+  const logo = window.parent.document.querySelector('.sidebar-header a');
+  if (logo) {
+    logo.innerHTML = `<img src="${img}" />`;
+  }
+}
 
 export const parameters = {
   passArgsFirst: true,
+  docs: {
+    transformSource: (_src, storyContext) => {
+      return storyContext.storyFn().strings;
+    },
+    source: {
+      type: 'dynamic',
+    },
+  },
   options: {
     showRoots: true,
     storySort: {
@@ -149,9 +168,6 @@ const themeDecorator = (story, { globals }) => {
 };
 
 export const decorators = [themeDecorator];
-
-// https://github.com/storybookjs/storybook/tree/master/app/web-components
-setCustomElements(customElements);
 
 // We have this here since storybook does not have a easy way to set the <html> element in demos
 // The token system generates a base 16px set of variables for apps that may not be able to easily set the base font to 125%

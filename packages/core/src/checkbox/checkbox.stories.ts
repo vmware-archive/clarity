@@ -5,14 +5,12 @@
  */
 
 import '@cds/core/checkbox/register.js';
-import { html } from 'lit-html';
-import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@cds/core/internal';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Checkbox',
   component: 'cds-checkbox',
-  argTypes: getElementStorybookArgTypes('cds-checkbox', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import {
   baseStyles,
   property,
@@ -23,7 +24,7 @@ import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
 import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { CdsControl } from '../control/control.element.js';
-import { styles } from './control-group.element.css.js';
+import styles from './control-group.element.scss';
 import { ControlStatus, FormLayout, ControlWidth } from '../utils/interfaces.js';
 import { CdsControlMessage } from '../control-message/control-message.element.js';
 import { CdsInternalControlInline } from './../control-inline/control-inline.element.js';

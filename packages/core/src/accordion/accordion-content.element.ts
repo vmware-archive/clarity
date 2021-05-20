@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { baseStyles } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { styles } from './accordion-content.element.css.js';
+import { html, LitElement } from 'lit';
+import styles from './accordion-content.element.scss';
 
 /**
  * Web component accordion content to be used inside an accordion

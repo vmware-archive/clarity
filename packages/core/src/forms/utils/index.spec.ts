@@ -4,9 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { render, html } from 'lit-html';
+import { render, html } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
 import { associateInputAndLabel, associateInputToDatalist, getStatusIcon, isVerticalLayout } from './index.js';
+import '@cds/core/forms/register.js';
 
 describe('form internal utilities', () => {
   it('associateInputAndLabel', async () => {

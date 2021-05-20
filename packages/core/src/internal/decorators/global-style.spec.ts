@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, css } from 'lit';
 import { registerElementSafely, getCssPropertyValue } from '@cds/core/internal';
 import { createTestElement, removeTestElement } from '@cds/core/test';
 import { globalStyle } from './global-style.js';

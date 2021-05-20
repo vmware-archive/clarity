@@ -5,8 +5,8 @@
  */
 
 import { baseStyles } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { styles } from './accordion-header.element.css.js';
+import { html, LitElement } from 'lit';
+import styles from './accordion-header.element.scss';
 
 /**
  * Web component accordion to be used inside an accordion

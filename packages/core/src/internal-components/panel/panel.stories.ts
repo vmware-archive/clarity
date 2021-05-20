@@ -5,9 +5,7 @@
  */
 
 import '@cds/core/internal-components/panel/register.js';
-import { getElementStorybookArgTypes } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../../dist/core/custom-elements.json';
+import { html } from 'lit';
 
 const placeholder = 'Placeholder';
 const longerContent = `
@@ -37,7 +35,6 @@ const longerContent = `
 export default {
   title: 'Internal Stories /Panel',
   component: 'cds-internal-panel',
-  argTypes: getElementStorybookArgTypes('cds-internal-panel', customElements),
   parameters: {
     options: { showPanel: true },
   },

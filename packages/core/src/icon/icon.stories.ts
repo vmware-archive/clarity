@@ -5,66 +5,39 @@
  */
 
 import '@cds/core/icon/register.js';
-import { ClarityIcons, imageIcon, userIcon } from '@cds/core/icon';
-import { boolean, select, text } from '@storybook/addon-knobs';
-import { html } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map.js';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { imageIcon } from '@cds/core/icon/shapes/image.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { state } from 'lit/decorators/state.js';
+import { homeIcon } from '@cds/core/icon/shapes/home.js';
+// import { boolean, select, text } from '@storybook/addon-knobs';
+// import { classMap } from 'lit/directives/class-map.js';
+// import customElements from '../../dist/core/custom-elements.json';
 
-import {
-  chartCollectionAliases,
-  chartCollectionIcons,
-  commerceCollectionAliases,
-  commerceCollectionIcons,
-  coreCollectionAliases,
-  coreCollectionIcons,
-  essentialCollectionAliases,
-  essentialCollectionIcons,
-  loadChartIconSet,
-  loadCommerceIconSet,
-  loadCoreIconSet,
-  loadEssentialIconSet,
-  loadMediaIconSet,
-  loadMiniIconSet,
-  loadSocialIconSet,
-  loadTechnologyIconSet,
-  loadTextEditIconSet,
-  loadTravelIconSet,
-  mediaCollectionAliases,
-  mediaCollectionIcons,
-  miniCollectionAliases,
-  miniCollectionIcons,
-  socialCollectionAliases,
-  socialCollectionIcons,
-  technologyCollectionAliases,
-  technologyCollectionIcons,
-  textEditCollectionAliases,
-  textEditCollectionIcons,
-  travelCollectionAliases,
-  travelCollectionIcons,
-} from '@cds/core/icon';
-import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { IconShapeTuple } from './interfaces/icon.interfaces.js';
-
-loadChartIconSet();
-loadCommerceIconSet();
-loadCoreIconSet();
-loadEssentialIconSet();
-loadMediaIconSet();
-loadMiniIconSet();
-loadSocialIconSet();
-loadTechnologyIconSet();
-loadTextEditIconSet();
-loadTravelIconSet();
+// import {
+//   loadChartIconSet,
+//   loadCommerceIconSet,
+//   loadCoreIconSet,
+//   loadEssentialIconSet,
+//   loadMediaIconSet,
+//   loadMiniIconSet,
+//   loadSocialIconSet,
+//   loadTechnologyIconSet,
+//   loadTextEditIconSet,
+//   loadTravelIconSet,
+// } from '@cds/core/icon';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+// import { ifDefined } from 'lit/directives/if-defined.js';
+// import { IconShapeTuple } from './interfaces/icon.interfaces.js';
 
 // here for testing
-ClarityIcons.addIcons(userIcon, imageIcon);
+ClarityIcons.addIcons(userIcon, imageIcon, homeIcon);
 
 export default {
   title: 'Stories/Icon',
   component: 'cds-icon',
-  argTypes: getElementStorybookArgTypes('cds-icon', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -74,137 +47,192 @@ export default {
   },
 };
 
-export function all() {
-  const search = text('search', '', propertiesGroup);
-  const size = select(
-    'size',
-    { xs: 'xs', 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
-    'lg',
-    propertiesGroup
-  );
-  const dir = select(
-    'direction',
-    { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
-    undefined,
-    propertiesGroup
-  );
-  const fl = select(
-    'flip',
-    { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
-    undefined,
-    propertiesGroup
-  );
-  const badge = select(
-    'badge',
-    {
-      'none (default)': '',
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      danger: 'danger',
-      inherit: 'inherit',
-      'warning-triangle': 'warning-triangle',
-      'inherit-triangle': 'inherit-triangle',
-    },
-    '',
-    propertiesGroup
-  );
-  const iconStatus = select(
-    'status',
-    { 'none (default)': '', info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-    '',
-    propertiesGroup
-  );
-  const inverse = boolean('inverse', false, propertiesGroup);
-  const solid = boolean('solid', false, propertiesGroup);
+@customElement('demo-all-icons')
+class AllIcons extends LitElement {
+  @state() icons: string[] = [];
 
-  function createIconIndices(icons: IconShapeTuple[], aliases: [string, string[]][]): string[] {
-    const iconsMap = icons.map(iconTuple => iconTuple[0]);
-    const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
-    return iconsMap.concat(aliasMap).sort();
+  connectedCallback() {
+    super.connectedCallback();
+    import('@cds/core/icon').then(module => {
+      module.loadChartIconSet();
+      module.loadCommerceIconSet();
+      module.loadCoreIconSet();
+      module.loadEssentialIconSet();
+      module.loadMediaIconSet();
+      module.loadMiniIconSet();
+      module.loadSocialIconSet();
+      module.loadTechnologyIconSet();
+      module.loadTextEditIconSet();
+      module.loadTravelIconSet();
+      this.icons = Object.keys(ClarityIcons.registry);
+    });
   }
 
-  const iconIndex: { [key: string]: string[] } = {
-    Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
-    Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
-    Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
-    Essential: createIconIndices(essentialCollectionIcons, essentialCollectionAliases),
-    Media: createIconIndices(mediaCollectionIcons, mediaCollectionAliases),
-    Mini: createIconIndices(miniCollectionIcons, miniCollectionAliases),
-    Social: createIconIndices(socialCollectionIcons, socialCollectionAliases),
-    Technology: createIconIndices(technologyCollectionIcons, technologyCollectionAliases),
-    'Text-Edit': createIconIndices(textEditCollectionIcons, textEditCollectionAliases),
-    Travel: createIconIndices(travelCollectionIcons, travelCollectionAliases),
-  };
-
-  const iconSets = Object.keys(iconIndex);
-
-  return html`
-    <style>
-      .dc-icon-set {
-        max-width: 60rem;
-      }
-
-      .dc-icon-boxes {
-        padding: 1.2rem 0.4rem 0;
-        background: #f4f4f4;
-        display: grid;
-        grid-gap: 16px;
-        grid-template-columns: repeat(12, 1fr);
-      }
-
-      .dc-icon-boxes.inverse {
-        background: #565656;
-      }
-
-      .dc-icon-boxes.inverse .dc-icon-name {
-        color: #fff;
-      }
-
-      .dc-icon-box {
-        text-align: center;
-        grid-column: span 2 / span 2;
-      }
-
-      .dc-icon-box p {
-        margin: 0;
-        padding: 0.2rem 0 1.2rem;
-      }
-    </style>
-    ${iconSets.map(
-      k => html`
-        <section class="dc-icon-set">
-          <h2>${k}</h2>
-
-          <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
-            ${iconIndex[k].map(
-              i => html`
-                <div class="dc-icon-box" .hidden=${!i.includes(search)}>
-                  <cds-icon
-                    aria-label="This is an example of an icon using the ${i} shape"
-                    badge=${badge}
-                    status=${iconStatus}
-                    ?solid=${solid}
-                    size=${size}
-                    shape=${i}
-                    direction=${ifDefined(dir)}
-                    ?inverse=${inverse}
-                    flip=${ifDefined(fl)}
-                  >
-                  </cds-icon>
-                  <span cds-layout="display:screen-reader-only"
-                    >${'The shape needed to display this icon is ' + i}</span
-                  >
-                  <p class="dc-icon-name" aria-hidden="true">${i}</p>
-                </div>
-              `
-            )}
-          </div>
-        </section>
-      `
-    )}
-  `;
+  render() {
+    return html`
+      <div cds-layout="horizontal gap:lg">
+        ${this.icons.map(
+          icon =>
+            html`<cds-icon
+              size="lg"
+              .shape=${icon}
+              aria-label="This is an example of an icon using the ${icon} shape"
+            ></cds-icon>`
+        )}
+      </div>
+    `;
+  }
 }
+
+all.element = AllIcons; // get around unused class
+
+export function all() {
+  return html`<demo-all-icons></demo-all-icons>`;
+}
+
+// export function all() {
+// import('@cds/core/icon').then(module => {
+//   module.loadChartIconSet();
+//   module.loadCommerceIconSet();
+//   module.loadCoreIconSet();
+//   module.loadEssentialIconSet();
+//   module.loadMediaIconSet();
+//   module.loadMiniIconSet();
+//   module.loadSocialIconSet();
+//   module.loadTechnologyIconSet();
+//   module.loadTextEditIconSet();
+//   module.loadTravelIconSet();
+// });
+//   const search = text('search', '', propertiesGroup);
+//   const size = select(
+//     'size',
+//     { xs: 'xs', 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
+//     'lg',
+//     propertiesGroup
+//   );
+//   const dir = select(
+//     'direction',
+//     { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
+//     undefined,
+//     propertiesGroup
+//   );
+//   const fl = select(
+//     'flip',
+//     { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
+//     undefined,
+//     propertiesGroup
+//   );
+//   const badge = select(
+//     'badge',
+//     {
+//       'none (default)': '',
+//       info: 'info',
+//       success: 'success',
+//       warning: 'warning',
+//       danger: 'danger',
+//       inherit: 'inherit',
+//       'warning-triangle': 'warning-triangle',
+//       'inherit-triangle': 'inherit-triangle',
+//     },
+//     '',
+//     propertiesGroup
+//   );
+//   const iconStatus = select(
+//     'status',
+//     { 'none (default)': '', info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
+//     '',
+//     propertiesGroup
+//   );
+//   const inverse = boolean('inverse', false, propertiesGroup);
+//   const solid = boolean('solid', false, propertiesGroup);
+
+//   function createIconIndices(icons: IconShapeTuple[], aliases: [string, string[]][]): string[] {
+//     const iconsMap = icons.map(iconTuple => iconTuple[0]);
+//     const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
+//     return iconsMap.concat(aliasMap).sort();
+//   }
+
+//   const iconIndex: { [key: string]: string[] } = {
+//     Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
+//     Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
+//     Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
+//     Essential: createIconIndices(essentialCollectionIcons, essentialCollectionAliases),
+//     Media: createIconIndices(mediaCollectionIcons, mediaCollectionAliases),
+//     Mini: createIconIndices(miniCollectionIcons, miniCollectionAliases),
+//     Social: createIconIndices(socialCollectionIcons, socialCollectionAliases),
+//     Technology: createIconIndices(technologyCollectionIcons, technologyCollectionAliases),
+//     'Text-Edit': createIconIndices(textEditCollectionIcons, textEditCollectionAliases),
+//     Travel: createIconIndices(travelCollectionIcons, travelCollectionAliases),
+//   };
+
+//   const iconSets = Object.keys(iconIndex);
+
+//   return html`
+//     <style>
+//       .dc-icon-set {
+//         max-width: 60rem;
+//       }
+
+//       .dc-icon-boxes {
+//         padding: 1.2rem 0.4rem 0;
+//         background: #f4f4f4;
+//         display: grid;
+//         grid-gap: 16px;
+//         grid-template-columns: repeat(12, 1fr);
+//       }
+
+//       .dc-icon-boxes.inverse {
+//         background: #565656;
+//       }
+
+//       .dc-icon-boxes.inverse .dc-icon-name {
+//         color: #fff;
+//       }
+
+//       .dc-icon-box {
+//         text-align: center;
+//         grid-column: span 2 / span 2;
+//       }
+
+//       .dc-icon-box p {
+//         margin: 0;
+//         padding: 0.2rem 0 1.2rem;
+//       }
+//     </style>
+//     ${iconSets.map(
+//       k => html`
+//         <section class="dc-icon-set">
+//           <h2>${k}</h2>
+
+//           <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
+//             ${iconIndex[k].map(
+//               i => html`
+//                 <div class="dc-icon-box" .hidden=${!i.includes(search)}>
+//                   <cds-icon
+//                     aria-label="This is an example of an icon using the ${i} shape"
+//                     badge=${badge}
+//                     status=${iconStatus}
+//                     ?solid=${solid}
+//                     size=${size}
+//                     shape=${i}
+//                     direction=${ifDefined(dir)}
+//                     ?inverse=${inverse}
+//                     flip=${ifDefined(fl)}
+//                   >
+//                   </cds-icon>
+//                   <span cds-layout="display:screen-reader-only"
+//                     >${'The shape needed to display this icon is ' + i}</span
+//                   >
+//                   <p class="dc-icon-name" aria-hidden="true">${i}</p>
+//                 </div>
+//               `
+//             )}
+//           </div>
+//         </section>
+//       `
+//     )}
+//   `;
+// }
 
 export function API(args: any) {
   return html`
@@ -229,58 +257,58 @@ export function icon() {
 export function sizes() {
   return html`
     <cds-icon
-      shape="house"
+      shape="home"
       size="xs"
       aria-label="This is an example of an icon using a pre-defined extra small size"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="sm"
       aria-label="This is an example of an icon using a pre-defined small size"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="md"
       aria-label="This is an example of an icon using a pre-defined medium size"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="lg"
       aria-label="This is an example of an icon using a pre-defined large size"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="xl"
       aria-label="This is an example of an icon using a pre-defined extra large size"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="xxl"
       aria-label="This is an example of an icon using a pre-defined extra extra large size"
     ></cds-icon>
 
     <cds-icon
-      shape="house"
+      shape="home"
       size="16"
       aria-label="This is an example of an icon using a custom size of 16 pixels wide and tall"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="24"
       aria-label="This is an example of an icon using a custom size of 24 pixels wide and tall"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="48"
       aria-label="This is an example of an icon using a custom size of 48 pixels wide and tall"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="64"
       aria-label="This is an example of an icon using a custom size of 64 pixels wide and tall"
     ></cds-icon>
     <cds-icon
-      shape="house"
+      shape="home"
       size="128"
       loading
       aria-label="This is an example of an icon using a custom size of 128 pixels wide and tall"

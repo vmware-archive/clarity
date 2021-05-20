@@ -5,9 +5,9 @@
  */
 
 import { baseStyles, property } from '@cds/core/internal';
-import { html } from 'lit-element';
-import { styles as baseButtonStyles } from './base-button.element.css.js';
-import { styles } from './icon-button.element.css.js';
+import { html } from 'lit';
+import baseButtonStyles from './base-button.element.scss';
+import styles from './icon-button.element.scss';
 import { CdsButton, ClrLoadingState, iconCheck, iconSpinner } from './button.element.js';
 
 /**
@@ -54,7 +54,5 @@ export class CdsIconButton extends CdsButton {
     `;
   }
 
-  static get styles() {
-    return [baseStyles, baseButtonStyles, styles];
-  }
+  static styles = [baseStyles, baseButtonStyles, styles];
 }

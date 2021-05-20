@@ -143,6 +143,9 @@ export class CdsButton extends CdsBaseButton {
   static styles = [baseStyles, baseButtonStyles, styles];
 
   private updateLoadingState() {
+    if (this.disabled) {
+      return;
+    }
     switch (this.loadingState) {
       case ClrLoadingState.loading:
         this.disableButton();

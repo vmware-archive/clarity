@@ -274,6 +274,14 @@ describe('button element', () => {
       expect(component.hasAttribute('disabled')).toEqual(true);
       expect(component.getAttribute('aria-disabled')).toEqual('true');
     });
+
+    it('should stay disabled when loadingState changes to default', async () => {
+      await componentIsStable(component);
+      component.disabled = true;
+      component.loadingState = ClrLoadingState.default;
+      await componentIsStable(component);
+      expect(component.disabled).toBeTruthy();
+    });
   });
 
   describe('Button link', () => {

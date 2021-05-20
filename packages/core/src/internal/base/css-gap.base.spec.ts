@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from 'lit';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { applyCSSGapShim } from './css-gap.base.js';
 import { browserFeatures } from '../utils/supports.js';

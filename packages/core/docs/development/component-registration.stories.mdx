@@ -8,17 +8,20 @@ To use a component, it must be registered with the Custom Elements Registry.
 To ensure we preserve tree-shaking, we must isolate the registration side effect
 to a single `register.js` file. We signal to bundler tools like Webpack and Rollup
 that only this file has side effects, and the rest is safe to tree shake. We do
-this by setting the `sideEffects` key in the `package.json` of the component.
+this by setting the `sideEffects` key in the `package.json`. The paths to the
+register file are automatically added by the rollup build.
 
 ```json
-// @cds/core/alert/package.json
+// @cds/core/package.json
 {
-  "name": "@cds/core/alert",
-  "sideEffects": ["./register.js"]
+  "sideEffects": [
+    "./button/register.js"
+    ...
+  ]
 }
 ```
 
-In the `register.ts` file we import any other component dependencies including
+In the `register.ts` file, we import any other component dependencies including
 other core component side effect registrations.
 
 ```typescript
@@ -46,7 +49,7 @@ declare global {
 
 When registering the component we do not use `customElements.define()`. This
 will throw an exception if called more than once on the same component tag.
-Instead, we use `registerElementSafely` which will check and warn that it has
+Instead, we use `registerElementSafely`, which will check and warn that it has
 been registered prior. The `registerElementSafely` also adds the element to
 our global `window.CDS` API, which we use for diagnosing potential issues,
 opened on Github.

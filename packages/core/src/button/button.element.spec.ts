@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { CdsButton, ClrLoadingState, iconSpinner } from '@cds/core/button';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
@@ -81,6 +81,23 @@ describe('button element', () => {
       const event = new KeyboardEvent('keyup', { key: 'Enter' });
       component.focus();
       component.dispatchEvent(event);
+    });
+
+    it('should not interact with form elements if type is button', async () => {
+      component.type = 'button';
+      await componentIsStable(component);
+      const o = {
+        f: () => {
+          // Do nothing
+        },
+      };
+      spyOn(o, 'f');
+      testElement.querySelector('form').addEventListener('submit', o.f);
+      component.click();
+      const event = new KeyboardEvent('keyup', { key: 'Enter' });
+      component.focus();
+      component.dispatchEvent(event);
+      expect(o.f).not.toHaveBeenCalled();
     });
 
     it('should not interact with form elements if type is button', async () => {
@@ -186,11 +203,11 @@ describe('button element', () => {
 
     // todo fix, the button does not get removed properly
     // when not within an Angular zone context
-    xit('should not render a hidden button if readonly', async () => {
-      await componentIsStable(component);
-      const button = component.querySelector('button');
-      expect(button).toBeNull();
-    });
+    // xit('should not render a hidden button if readonly', async () => {
+    //   await componentIsStable(component);
+    //   const button = component.querySelector('button');
+    //   expect(button).toBeNull();
+    // });
 
     it('should not have a tabIndex attribute', async () => {
       await componentIsStable(component);

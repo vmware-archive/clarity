@@ -4,11 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
-import { render } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { html, LitElement, render } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { property, internalProperty } from '../decorators/property.js';
+import { property, state } from '../decorators/property.js';
 import { querySlot } from '../decorators/query-slot.js';
 import { onAnyKey } from '../utils/keycodes.js';
 import { stopEvent } from './../utils/events.js';
@@ -25,20 +24,18 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: Boolean }) disabled = false;
 
-  @internalProperty({ type: String, attribute: 'aria-disabled', reflect: true }) protected ariaDisabled:
-    | 'true'
-    | 'false'
-    | null = 'false';
+  @state({ type: String, attribute: 'aria-disabled', reflect: true }) protected ariaDisabled: 'true' | 'false' | null =
+    'false';
 
-  @internalProperty({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
+  @state({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
 
-  @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
+  @state({ type: Boolean, reflect: true }) protected focused = false;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected active = false;
+  @state({ type: Boolean, reflect: true }) protected active = false;
 
-  @internalProperty({ type: String, reflect: true, attribute: 'role' }) protected role: string | null = 'button';
+  @state({ type: String, reflect: true, attribute: 'role' }) protected role: string | null = 'button';
 
-  @internalProperty({ type: Boolean, reflect: true }) protected isAnchor = false;
+  @state({ type: Boolean, reflect: true }) protected isAnchor = false;
 
   @querySlot('cds-icon') protected icon: HTMLElement;
 

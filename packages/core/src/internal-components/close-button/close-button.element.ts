@@ -4,12 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, isBrowser, property, setAttributes, HTMLAttributeTuple } from '@cds/core/internal';
-import { CdsIconButton } from '@cds/core/button';
-import { html } from 'lit-element';
-import { styles } from './close-button.element.css.js';
+import { html } from 'lit';
+import { CdsBaseButton, baseStyles, isBrowser, property, setAttributes, HTMLAttributeTuple } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { timesIcon } from '@cds/core/icon/shapes/times.js';
+import styles from './close-button.element.scss';
 
 export const CdsCloseButtonTagName = 'cds-internal-close-button';
 
@@ -59,7 +58,7 @@ export function removeCloseButton(hostElement: HTMLElement) {
  * @cssprop --opacity
  * @cssprop --padding
  */
-export class CdsInternalCloseButton extends CdsIconButton {
+export class CdsInternalCloseButton extends CdsBaseButton {
   @property({ type: String })
   iconSize = '18';
 

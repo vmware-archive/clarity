@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { i18n } from '@cds/core/internal';
 

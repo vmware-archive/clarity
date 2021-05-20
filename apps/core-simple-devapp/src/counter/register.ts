@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement } from 'lit';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { minusIcon } from '@cds/core/icon/shapes/minus.js';
 import { plusIcon } from '@cds/core/icon/shapes/plus.js';

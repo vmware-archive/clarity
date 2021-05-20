@@ -40,9 +40,9 @@ When rendered the following output is given:
 
 ## Aria Live
 
-The `aria-live` attributes should never be used within a Core component. Due to
-the risk of triggering to many announcements, the use of `aria-live` must be
-managed by the application. Application developers can use `aria-live`
+The `aria-live` attribute should not be used within a Core component due to
+the risk of triggering too many announcements. The use of `aria-live` should be
+managed by the application.
 
 ```html
 <span cds-layout="display:screen-reader-only" aria-live="polite">
@@ -64,7 +64,7 @@ DOM boundary and not cross between the light or shadow DOM. Example:
 
 The `cds-input` could take a label as an input property and apply the text to the
 label with an associated id. However, in the example, the HTML input exists within
-the light DOM and projected into the component slot. The label element would exist
+the light DOM and is projected into the component slot. The label element would exist
 within the shadow DOM and template of the component.
 
 ```html
@@ -105,3 +105,5 @@ The component then can query and set the appropriate attributes.
   <input type="text" id="some-id" />
 </cds-input>
 ```
+
+Additional demos and examples can be [found here](https://coryrylan.com/blog/accessibility-with-id-referencing-and-shadow-dom).

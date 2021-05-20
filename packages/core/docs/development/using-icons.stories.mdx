@@ -31,7 +31,7 @@ import { successStandardIcon } from '@cds/core/icon/shapes/success-standard.js';
 
 By importing the direct path, we bypass the `index .js` file to prevent
 a large module resolution when using native ESM. This is an internal-only
-optimization, and users of the icons should continue to use the root `@cds/core/icon` import.
+optimization and users of the icons should continue to use the root `@cds/core/icon` import.
 
 We may be able to change this in the future, but since it's possibly a breaking
 change, for now, we import explicitly.

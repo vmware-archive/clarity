@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/accordion/register.js';
 import { CdsAccordionPanel } from '@cds/core/accordion';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
@@ -31,12 +31,11 @@ describe('accordion-panel element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots['accordion-header']).toBe(
-      `<cds-accordion-header slot="accordion-header"><!---->${placeholderHeader}<!----></cds-accordion-header>`
-    );
-    expect(slots['accordion-content']).toBe(
-      `<cds-accordion-content slot="accordion-content"><!---->${placeholderContent}<!----></cds-accordion-content>`
-    );
+    expect(slots['accordion-header'].includes('<cds-accordion-header slot="accordion-header">')).toBe(true);
+    expect(slots['accordion-header'].includes(placeholderHeader)).toBe(true);
+
+    expect(slots['accordion-content'].includes('<cds-accordion-content slot="accordion-content">')).toBe(true);
+    expect(slots['accordion-content'].includes(placeholderContent)).toBe(true);
   });
 
   it('should emit an expandedChange event when header is clicked', async done => {

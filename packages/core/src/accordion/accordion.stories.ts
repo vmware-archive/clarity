@@ -5,14 +5,12 @@
  */
 import '@cds/core/accordion/register.js';
 import { CdsAccordionPanel } from '@cds/core/accordion';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 export default {
   title: 'Stories/Accordion',
   component: 'cds-accordion',
-  argTypes: getElementStorybookArgTypes('cds-accordion', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

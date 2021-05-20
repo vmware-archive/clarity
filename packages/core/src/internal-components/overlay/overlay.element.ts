@@ -13,14 +13,15 @@ import {
   event,
   EventEmitter,
   FocusTrapTracker,
-  internalProperty,
+  state,
   onKey,
   property,
   AnimationModalEnterName,
   reverseAnimation,
 } from '@cds/core/internal';
-import { html, query } from 'lit-element';
-import { styles } from './overlay.element.css.js';
+import { html } from 'lit';
+import { query } from 'lit/decorators/query.js';
+import styles from './overlay.element.scss';
 
 export function isNestedOverlay(
   myId: string,
@@ -99,15 +100,15 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
 
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside an element with aria-modal set to true
-  protected createRenderRoot(): Element | ShadowRoot {
-    return this.attachShadow({ mode: 'open', delegatesFocus: true });
+  static get shadowRootOptions() {
+    return { ...super.shadowRootOptions, delegatesFocus: true };
   }
 
   private overlayIdPrefix = '_overlay-';
 
   @event() protected closeChange: EventEmitter<CloseChangeSources>;
 
-  @internalProperty({ type: Boolean })
+  @state({ type: Boolean })
   protected isLayered = false;
 
   @query('.overlay-backdrop') protected backdrop: HTMLElement;

@@ -1,5 +1,5 @@
 import '@cds/core/card/register.js';
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { CdsCard } from '@cds/core/card';
 

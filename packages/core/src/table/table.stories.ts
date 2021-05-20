@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { propertiesGroup } from '@cds/core/internal';
-import { select, boolean } from '@storybook/addon-knobs';
-import { html } from 'lit-html';
+// import { propertiesGroup } from '@cds/core/internal';
+// import { select, boolean } from '@storybook/addon-knobs';
+import { html } from 'lit';
 
 export default {
   title: 'Stories/Table',
@@ -16,83 +16,140 @@ export default {
   },
 };
 
-const tableOptions = {
-  default: '',
-  compact: 'compact',
-  vertical: 'vertical',
-};
+// const tableOptions = {
+//   default: '',
+//   compact: 'compact',
+//   vertical: 'vertical',
+// };
 
-const alignmentOptions = {
-  'left (default)': 'left',
-  center: 'center',
-  right: 'right',
-};
+// const alignmentOptions = {
+//   'left (default)': 'left',
+//   center: 'center',
+//   right: 'right',
+// };
 
-export function API() {
-  const tableStyle = select('Table Style', tableOptions, '', propertiesGroup);
-  const alignmentStyle = select('Alignment', alignmentOptions, '', propertiesGroup);
-  const rowBorder = boolean('Row Border', true, propertiesGroup);
-  const colBorder = boolean('Col Border', false, propertiesGroup);
-  const outsideBorder = boolean('Outside Border', true, propertiesGroup);
-  const zebraStyle = boolean('Zebra Row Highlights', false, propertiesGroup);
+// export function API() {
+//   const tableStyle = select('Table Style', tableOptions, '', propertiesGroup);
+//   const alignmentStyle = select('Alignment', alignmentOptions, '', propertiesGroup);
+//   const rowBorder = boolean('Row Border', true, propertiesGroup);
+//   const colBorder = boolean('Col Border', false, propertiesGroup);
+//   const outsideBorder = boolean('Outside Border', true, propertiesGroup);
+//   const zebraStyle = boolean('Zebra Row Highlights', false, propertiesGroup);
 
+//   return html`
+//     <div cds-layout="vertical gap:md">
+//       <table
+//         cds-table="${tableStyle} ${zebraStyle ? 'zebra' : ''} ${rowBorder ? 'border:row' : ''} ${outsideBorder
+//           ? 'border:outside'
+//           : ''} ${colBorder ? 'border:column' : ''}"
+//         cds-text=${alignmentStyle}
+//       >
+//         <caption>
+//           Nearest stars to Earth
+//         </caption>
+//         <thead>
+//           <tr>
+//             <th>Star</th>
+//             <th>Distance (Light Years)</th>
+//             <th>Solar Masses</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           <tr>
+//             <td>Sun (Sol)</td>
+//             <td>0.0000158 ly</td>
+//             <td>1 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Proxima Centauri</td>
+//             <td>4.24 ly</td>
+//             <td>0.122 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Alpha Centauri B</td>
+//             <td>4.36 ly</td>
+//             <td>0.907 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Alpha Centauri A</td>
+//             <td>4.36 ly</td>
+//             <td>1.10 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Barnard's Star</td>
+//             <td>5.95 ly</td>
+//             <td>1.44 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Luhman 16B</td>
+//             <td>6.50 ly</td>
+//             <td>0.027 M☉</td>
+//           </tr>
+//           <tr>
+//             <td>Luhman 16A</td>
+//             <td>6.50 ly</td>
+//             <td>0.032 M☉</td>
+//           </tr>
+//         </tbody>
+//       </table>
+//     </div>
+//   `;
+// }
+
+/** @website */
+export function basic() {
   return html`
-    <div cds-layout="vertical gap:md">
-      <table
-        cds-table="${tableStyle} ${zebraStyle ? 'zebra' : ''} ${rowBorder ? 'border:row' : ''} ${outsideBorder
-          ? 'border:outside'
-          : ''} ${colBorder ? 'border:column' : ''}"
-        cds-text=${alignmentStyle}
-      >
-        <caption>
-          Nearest stars to Earth
-        </caption>
-        <thead>
-          <tr>
-            <th>Star</th>
-            <th>Distance (Light Years)</th>
-            <th>Solar Masses</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Sun (Sol)</td>
-            <td>0.0000158 ly</td>
-            <td>1 M☉</td>
-          </tr>
-          <tr>
-            <td>Proxima Centauri</td>
-            <td>4.24 ly</td>
-            <td>0.122 M☉</td>
-          </tr>
-          <tr>
-            <td>Alpha Centauri B</td>
-            <td>4.36 ly</td>
-            <td>0.907 M☉</td>
-          </tr>
-          <tr>
-            <td>Alpha Centauri A</td>
-            <td>4.36 ly</td>
-            <td>1.10 M☉</td>
-          </tr>
-          <tr>
-            <td>Barnard's Star</td>
-            <td>5.95 ly</td>
-            <td>1.44 M☉</td>
-          </tr>
-          <tr>
-            <td>Luhman 16B</td>
-            <td>6.50 ly</td>
-            <td>0.027 M☉</td>
-          </tr>
-          <tr>
-            <td>Luhman 16A</td>
-            <td>6.50 ly</td>
-            <td>0.032 M☉</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table cds-table="border:row border:outside">
+      <caption>
+        List of nearby spiral galaxies
+      </caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Constellation</th>
+          <th>Number of stars</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Milky Way</td>
+          <td>none</td>
+          <td>200 billion</td>
+          <td>Barred Spiral</td>
+        </tr>
+        <tr>
+          <td>Andromeda</td>
+          <td>Andromeda</td>
+          <td>1 trillion</td>
+          <td>Barred Spiral</td>
+        </tr>
+        <tr>
+          <td>Pinwheel</td>
+          <td>Ursa Major</td>
+          <td>1 trillion</td>
+          <td>Spiral</td>
+        </tr>
+        <tr>
+          <td>Messier 63</td>
+          <td>Canes Venatici</td>
+          <td>400 billion</td>
+          <td>Spiral</td>
+        </tr>
+        <tr>
+          <td>Triangulum</td>
+          <td>Triangulum</td>
+          <td>40 billion</td>
+          <td>Spiral</td>
+        </tr>
+        <tr>
+          <td>Whirlpool</td>
+          <td>Canes Venatici</td>
+          <td>40 billion</td>
+          <td>Spiral</td>
+        </tr>
+      </tbody>
+    </table>
   `;
 }
 

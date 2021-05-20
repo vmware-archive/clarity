@@ -6,7 +6,7 @@
 
 import '@cds/core/icon/register.js';
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { CdsIcon } from '@cds/core/icon';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { renderIcon } from '../icon.renderer.js';

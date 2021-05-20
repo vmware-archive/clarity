@@ -11,7 +11,7 @@ production env with proper text compression. [See running example](https://clari
 - Treeshaking JavaScript
 - Treeshaking CSS
 - Minify HTML templates
-- [Optimize lit-element](https://lit-element.polymer-project.org/guide/build)
+- [Lit Deployments](https://lit.dev/docs/tools/publishing/)
 
 ## To run project:
 

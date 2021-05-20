@@ -5,12 +5,10 @@
  */
 
 import '@cds/core/card/register.js';
-import { html } from 'lit-html';
-import { withDesign } from 'storybook-addon-designs';
+import { html } from 'lit';
 
 export default {
   title: 'Stories/Typography',
-  decorators: [withDesign],
   parameters: {
     options: { showPanel: true },
     design: {

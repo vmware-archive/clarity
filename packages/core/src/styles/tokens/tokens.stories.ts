@@ -4,8 +4,15 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, TemplateResult } from 'lit-html';
+import { html, TemplateResult } from 'lit';
 import { default as tokenData } from '@cds/core/tokens/tokens.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { homeIcon } from '@cds/core/icon/shapes/home.js';
+import { plusIcon } from '@cds/core/icon/shapes/plus.js';
+import { trashIcon } from '@cds/core/icon/shapes/trash.js';
+import { downloadIcon } from '@cds/core/icon/shapes/download.js';
+
+ClarityIcons.addIcons(homeIcon, plusIcon, trashIcon, downloadIcon);
 
 export default {
   title: 'Stories/Design Tokens',
@@ -25,36 +32,21 @@ interface Token {
 
 function getTokenTable(key: string, globals: any = {}) {
   return html` <style>
-      .token-table {
-        width: 100%;
-      }
-
-      .token-table tr {
-        border-bottom: 1px solid var(--cds-alias-object-border-color-tint);
-        line-height: 0;
-        min-height: 45px;
-        width: 100%;
-      }
-
-      .token-table tr:last-child {
-        border-bottom: 0;
-      }
-
-      .token-table td {
-        padding: 0;
+      .token-table td > div {
+        line-height: 1em;
       }
     </style>
-    <table cds-table="b:row b:outside p:lg">
+    <table class="token-table" cds-table="border:row border:outside" cds-text="left">
       <thead>
-        <tr>
+        <tr cds-layout="grid cols:4">
           <th>Token</th>
           <th>Value</th>
           <th>Demo</th>
         </tr>
       </thead>
       <tbody>
-        ${getTokens(key, globals).map(token => {
-          return html`<tr>
+        ${getTokens(key, globals).map((token: any) => {
+          return html`<tr cds-layout="grid cols@md:4 align:stretch">
             <td>
               <span cds-text="body">${token.name}</span>
             </td>
@@ -105,15 +97,17 @@ function getThemeStyleMap(themeSelector: string) {
     .filter(sheet => sheet.href === null || sheet.href.startsWith(window.location.origin))
     .filter(sheet => Array.from(sheet.cssRules).find((rule: any) => rule.selectorText === themeSelector))[0];
 
-  return sheet.cssRules[0].cssText
-    .replace(`${themeSelector} {`, '')
-    .replace('}', '')
-    .split(';')
-    .filter((r: any) => r.length > 1)
-    .reduce((prev: any, next: string) => {
-      const rule = next.split(':');
-      return { ...prev, [rule[0].trim()]: rule[1].trim() };
-    }, {});
+  return sheet
+    ? sheet.cssRules[0].cssText
+        .replace(`${themeSelector} {`, '')
+        .replace('}', '')
+        .split(';')
+        .filter((r: any) => r.length > 1)
+        .reduce((prev: any, next: string) => {
+          const rule = next.split(':');
+          return { ...prev, [rule[0].trim()]: rule[1] ? rule[1].trim() : rule[0].trim() };
+        }, {})
+    : '';
 }
 
 function createToken(token: Token, globals: any, currentTheme: any) {
@@ -194,7 +188,7 @@ function isSpaceToken(token: Token) {
 }
 
 function setNumberToken(token: Token) {
-  token.formattedValue = html` <div>
+  token.formattedValue = html` <div cds-layout="vertical gap:md">
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
     <p cds-text="secondary">Web: <span cds-text="code">${token.computedValue}</span></p>
     <p cds-text="secondary">Android: <span cds-text="code">${token.value}dp</span></p>
@@ -225,7 +219,7 @@ function setColorToken(token: Token) {
   const rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
   const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
 
-  token.formattedValue = html` <div>
+  token.formattedValue = html` <div cds-layout="vertical gap:md">
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
     <p cds-text="secondary">Web: <span cds-text="code">hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})</span></p>
@@ -233,7 +227,7 @@ function setColorToken(token: Token) {
   </div>`;
 
   token.demo = html`<div
-    style="background: var(${token.name}); width: 200px; height: 50px; display: inline-block; border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color)"
+    style="background: var(${token.name}); width: 200px; height: 50px; display: block; border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color)"
   ></div>`;
 }
 
@@ -474,7 +468,7 @@ export function interactionMenuDemo() {
         <nav class="cds-menu-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
 
@@ -483,7 +477,7 @@ export function interactionMenuDemo() {
         <nav class="cds-menu-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
 
@@ -492,7 +486,7 @@ export function interactionMenuDemo() {
         <nav class="cds-menu-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
 
@@ -501,7 +495,7 @@ export function interactionMenuDemo() {
         <nav class="cds-menu-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
 
@@ -510,7 +504,7 @@ export function interactionMenuDemo() {
         <nav class="cds-menu-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
     </div>
@@ -581,7 +575,7 @@ export function interactionVerticalNavigationDemo() {
         <nav class="cds-vertical-nav-mock" cds-layout="vertical">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <cds-divider cds-layout="align:bottom"></cds-divider>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
@@ -591,7 +585,7 @@ export function interactionVerticalNavigationDemo() {
         <nav class="cds-vertical-nav-mock" cds-layout="vertical">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <cds-divider cds-layout="align:bottom"></cds-divider>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
@@ -601,7 +595,7 @@ export function interactionVerticalNavigationDemo() {
         <nav class="cds-vertical-nav-mock" cds-layout="vertical">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <cds-divider cds-layout="align:bottom"></cds-divider>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
@@ -611,7 +605,7 @@ export function interactionVerticalNavigationDemo() {
         <nav class="cds-vertical-nav-mock" cds-layout="vertical">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <cds-divider cds-layout="align:bottom"></cds-divider>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
@@ -621,7 +615,7 @@ export function interactionVerticalNavigationDemo() {
         <nav class="cds-vertical-nav-mock" cds-layout="vertical">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <cds-divider cds-layout="align:bottom"></cds-divider>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
@@ -707,7 +701,7 @@ export function interactionSubNavigationDemo() {
         <nav class="cds-sub-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
       </div>
@@ -716,7 +710,7 @@ export function interactionSubNavigationDemo() {
         <nav class="cds-sub-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
       </div>
@@ -725,7 +719,7 @@ export function interactionSubNavigationDemo() {
         <nav class="cds-sub-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
       </div>
@@ -734,7 +728,7 @@ export function interactionSubNavigationDemo() {
         <nav class="cds-sub-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
       </div>
@@ -743,7 +737,7 @@ export function interactionSubNavigationDemo() {
         <nav class="cds-sub-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
           <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
       </div>
@@ -827,7 +821,7 @@ export function interactionTabsDemo() {
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -835,7 +829,7 @@ export function interactionTabsDemo() {
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -843,7 +837,7 @@ export function interactionTabsDemo() {
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -851,7 +845,7 @@ export function interactionTabsDemo() {
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -859,7 +853,7 @@ export function interactionTabsDemo() {
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
     </div>
@@ -936,7 +930,7 @@ export function interactionVerticalTabsDemo() {
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -944,7 +938,7 @@ export function interactionVerticalTabsDemo() {
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -952,7 +946,7 @@ export function interactionVerticalTabsDemo() {
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -960,7 +954,7 @@ export function interactionVerticalTabsDemo() {
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
       <div cds-layout="vertical gap:md">
@@ -968,7 +962,7 @@ export function interactionVerticalTabsDemo() {
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="add" size="sm"></cds-icon> Item 3</button>
+          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
       </div>
     </div>

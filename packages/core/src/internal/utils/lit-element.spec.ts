@@ -1,13 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit-element';
-import { childrenUpdateComplete, syncDefinedProps, syncProps } from './lit-element.js';
+import { LitElement } from 'lit';
+import { childrenUpdateComplete, syncDefinedProps, syncProps } from './lit.js';
 
-describe('lit-element utils', () => {
+describe('lit utils', () => {
   it('childrenUpdateComplete', async () => {
     class MockElement {
       updateComplete = new Promise(resolve => resolve('test'));
@@ -16,8 +16,9 @@ describe('lit-element utils', () => {
     const one = new MockElement() as LitElement;
     const two = new MockElement() as LitElement;
 
-    const values = await childrenUpdateComplete([one, two]);
+    const values: any = await childrenUpdateComplete([one, two]);
     expect(values[0]).toBe('test');
+    expect(values[1]).toBe('test');
   });
 
   it('syncDefinedProps', () => {

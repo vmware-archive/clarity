@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 import {
   animate,
   Animatable,
@@ -17,7 +17,7 @@ import {
 } from '@cds/core/internal';
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
 import { appendCloseButton, removeCloseButton } from '@cds/core/internal-components/close-button';
-import { styles } from './modal.element.css.js';
+import styles from './modal.element.scss';
 
 /**
  * Web component modal.

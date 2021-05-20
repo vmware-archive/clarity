@@ -4,13 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, internalProperty } from 'lit-element';
+import { html } from 'lit';
+import { state } from '@cds/core/internal';
 import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { folderIcon } from '@cds/core/icon/shapes/folder.js';
 import { timesIcon } from '@cds/core/icon/shapes/times.js';
-import { styles } from './file.element.css.js';
+import styles from './file.element.scss';
 
 /**
  * Time Input
@@ -32,11 +33,11 @@ import { styles } from './file.element.css.js';
 export class CdsFile extends CdsControl {
   @i18n() i18n = I18nService.keys.file;
 
-  @internalProperty() private buttonLabel = this.i18n.browse;
+  @state() private buttonLabel = this.i18n.browse;
 
-  @internalProperty() protected fixedControlWidth = true;
+  @state() protected fixedControlWidth = true;
 
-  @internalProperty() protected supportsPrefixSuffixActions = false;
+  @state() protected supportsPrefixSuffixActions = false;
 
   static get styles() {
     return [...super.styles, styles];

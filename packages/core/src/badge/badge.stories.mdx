@@ -1,5 +1,4 @@
-import { Meta, Props, Story, Preview, API } from '@storybook/addon-docs/blocks';
-import { html, LitElement } from 'lit-element';
+import { Meta, Props, Story, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Components/Badge" />
 
@@ -28,28 +27,28 @@ import '@cds/core/badge/register.js';
 
 ## Status
 
-<Preview>
+<Canvas>
   <Story id="stories-badge--status" />
-</Preview>
+</Canvas>
 
 ## Color
 
-<Preview>
+<Canvas>
   <Story id="stories-badge--color" />
-</Preview>
+</Canvas>
 
 ## Dark Theme
 
-<Preview>
+<Canvas>
   <Story id="stories-badge--dark-theme" />
-</Preview>
+</Canvas>
 
 ## Color Custom
 
-<Preview>
+<Canvas>
   <Story id="stories-badge--color-custom" />
-</Preview>
+</Canvas>
 
 ## API
 
-<Props of={'cds-badge'} />
+<Props of="cds-badge" />

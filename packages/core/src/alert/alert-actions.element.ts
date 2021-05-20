@@ -1,14 +1,14 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { AlertGroupTypes } from '@cds/core/alert';
 import { CdsButton } from '@cds/core/button';
-import { assignSlotNames, baseStyles, querySlotAll, internalProperty } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { styles } from './alert-actions.element.css.js';
+import { assignSlotNames, baseStyles, querySlotAll, state } from '@cds/core/internal';
+import { html, LitElement } from 'lit';
+import styles from './alert-actions.element.scss';
 
 /**
  * Web component alert actions to be used inside default and banner alerts.
@@ -37,7 +37,7 @@ export class CdsAlertActions extends LitElement {
    * @type {default | banner | light}
    * @private
    */
-  @internalProperty({ type: String, reflect: true })
+  @state({ type: String, reflect: true })
   type: AlertGroupTypes = 'light';
 
   @querySlotAll('cds-button')

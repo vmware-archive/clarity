@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
-import '@cds/core/test-dropdown';
+import { html } from 'lit';
+import '@cds/core/test-dropdown/register.js';
 import { CdsTestDropdown } from '@cds/core/test-dropdown';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 

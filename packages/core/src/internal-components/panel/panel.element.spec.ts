@@ -1,4 +1,4 @@
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/internal-components/panel/register.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { CdsInternalPanel } from './panel.element';

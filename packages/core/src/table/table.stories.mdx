@@ -1,5 +1,4 @@
-import { Meta, Story, Preview, API } from '@storybook/addon-docs/blocks';
-import { html, LitElement } from 'lit-element';
+import { Meta, Props, Story, Canvas, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Components/Table" />
 
@@ -38,19 +37,16 @@ of the table. Each value can be used independently to turn on different styles.
 
 There are a handful of custom properties that you can set to modify the default styles.
 
-```
---background: #{$cds-alias-object-container-background}; // Table background
---color: #{$cds-global-typography-color-400}; // Text color
---border-radius: #{$cds-alias-object-border-radius-100}; // Border radius for corners of table
---border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color}; // Outside border style
-
---header-background: #{$cds-alias-object-container-background-tint}; // Header background
---header-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color}; // Header border separator style
-
---row-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint}; // Row border separator style
-
---cell-border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color-tint}; // Column border separator style
---cell-padding: #{$cds-global-space-5} #{$cds-global-space-6}; // Cell padding
+```css
+--background: var(--cds-alias-object-container-background); /* Table background */
+--color: var(--cds-global-typography-color-400); /* Text color */
+--border-radius: var(--cds-alias-object-border-radius-100); /* Border radius for corners of table */
+--border: var(--cds-alias-object-border-width-100} solid var(--cds-alias-object-border-color); /* Outside border style */
+--header-background: var(--cds-alias-object-container-background-tint); /* Header background */
+--header-border: var(--cds-alias-object-border-width-100} solid var(--cds-alias-object-border-color); /* Header border separator style */
+--row-border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color-tint); /* Row border separator style */
+--cell-border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color-tint); /* Column border separator style */
+--cell-padding: var(--cds-global-space-5} var(--cds-global-space-6); /* Cell padding */
 ```
 
 There are some cases you might need to turn on specific display properties, such as when a table uses
@@ -58,7 +54,7 @@ rowspan or colspan. You can apply or change styles for these special cases when 
 not show the way you expect. Below is an example of how you could apply styles to modify two cells that
 have a rowspan, where the styling doesn't quite look right without some work.
 
-````
+```html
 <table cds-table="border:all">
   <caption>
     Table with col and row spans, have to provide modifier classes to set correct border and radius
@@ -78,14 +74,15 @@ have a rowspan, where the styling doesn't quite look right without some work.
     <td>King Arthur</td>
     <td style="border-radius: 0; border-right: var(--cell-border)">Probably invented the tournament</td>
   </tr>
-</table>```
+</table>
+```
 
 You can also apply `cds-text` modifiers to the table, row, or specific cells for alignment, typography styles, etc.
 
 ## Basic Table
 
 <Preview>
-  <Story id="stories-table--api" />
+  <Story id="stories-table--basic" />
 </Preview>
 
 ## Center Aligned Table
@@ -131,4 +128,3 @@ You can use `cds-text` to modify the properties of individual cells or rows.
 <Preview>
   <Story id="stories-table--modifier-table" />
 </Preview>
-````

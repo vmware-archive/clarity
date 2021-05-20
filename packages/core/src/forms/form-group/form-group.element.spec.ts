@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { removeTestElement, createTestElement, componentIsStable } from '@cds/core/test';
 import { getCssPropertyValue } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
@@ -109,7 +109,7 @@ describe('cds-form-group', () => {
     await componentIsStable(formGroup); // firstUpdated
 
     expect(controls[0].querySelector('label').getBoundingClientRect().width).toBe(200);
-    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((200 /  20) * 1rem)'); // --cds-global-base is used in place of "20" but computed properties return the result of css custom properties
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((200 / 20) * 1rem)'); // --cds-global-base is used in place of "20" but computed properties return the result of css custom properties
   });
 
   it('should sync layouts when a control overflows', async () => {
@@ -141,7 +141,7 @@ describe('cds-form-group', () => {
 
     formGroup.removeAttribute('hidden');
     await componentIsStable(formGroup);
-    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((0 /  20) * 1rem)');
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((0 / 20) * 1rem)');
   });
 });
 

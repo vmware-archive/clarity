@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { globalStyle } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { searchIcon } from '@cds/core/icon/shapes/search.js';
-import { styles as globalStyles } from './search.global.css.js';
-import { styles } from './search.element.css.js';
+import globalStyles from './search.global.scss';
+import styles from './search.element.scss';
 
 /**
  * Search

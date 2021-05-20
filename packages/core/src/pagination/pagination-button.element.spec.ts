@@ -9,7 +9,7 @@ import { LogService } from '@cds/core/internal';
 import { CdsPaginationButton, CdsPaginationButtonAction } from '@cds/core/pagination';
 import '@cds/core/pagination/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 describe('Pagination Buttons', () => {
   let paginationButtonElement: HTMLElement;

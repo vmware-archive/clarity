@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/modal/register.js';
 import { CdsModalContent } from '@cds/core/modal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
@@ -20,7 +20,7 @@ describe('modal-content element', () => {
   beforeEach(async () => {
     testElement = await createTestElement(html`<cds-modal-content>${placeholderContent}</cds-modal-content>`);
     testElementWithLayout = await createTestElement(
-      html`<cds-modal-content tabindex="1" cds-layout="elliptical">${placeholderContent}</cds-modal-content>`
+      html`<cds-modal-content tabindex="0" cds-layout="elliptical">${placeholderContent}</cds-modal-content>`
     );
     component = testElement.querySelector<CdsModalContent>('cds-modal-content');
     componentWithLayout = testElementWithLayout.querySelector<CdsModalContent>('cds-modal-content');
@@ -61,6 +61,6 @@ describe('modal-content element', () => {
       true,
       `carries through overridden layout`
     );
-    expect(componentWithLayout.getAttribute('tabindex')).toBe('1', `can override tabindex`);
+    expect(componentWithLayout.getAttribute('tabindex')).toBe('0', `can override tabindex`);
   });
 });

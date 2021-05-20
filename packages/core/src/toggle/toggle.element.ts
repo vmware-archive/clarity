@@ -5,7 +5,7 @@
  */
 import { property } from '@cds/core/internal';
 import { CdsInternalControlInline } from '@cds/core/forms';
-import { styles } from './toggle.element.css.js';
+import styles from './toggle.element.scss';
 
 /**
  * Toggle

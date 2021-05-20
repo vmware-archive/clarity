@@ -5,12 +5,12 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { CdsCardTagName, CdsCard } from './card.element.js';
+import { CdsCard } from './card.element.js';
 
-registerElementSafely(CdsCardTagName, CdsCard);
+registerElementSafely('cds-card', CdsCard);
 
 declare global {
   interface HTMLElementTagNameMap {
-    [CdsCardTagName]: CdsCard;
+    'cds-card': CdsCard;
   }
 }

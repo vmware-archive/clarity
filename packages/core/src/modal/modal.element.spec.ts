@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/modal/register.js';
 import { I18nService, HTMLAttributeTuple } from '@cds/core/internal';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
@@ -37,12 +37,12 @@ describe('modal element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots.default).toBe(
-      `<cds-modal-content tabindex="0"><p><!---->${placeholderContent}<!----></p></cds-modal-content>`
-    );
-    expect(slots['modal-header']).toBe(
-      `<cds-modal-header slot="modal-header"><!---->${placeholderHeader}<!----></cds-modal-header>`
-    );
+    expect(slots.default.includes('<cds-modal-content tabindex="0">')).toBe(true);
+    expect(slots.default.includes(placeholderContent)).toBe(true);
+
+    expect(slots['modal-header'].includes('<cds-modal-header slot="modal-header">')).toBe(true);
+    expect(slots['modal-header'].includes(placeholderHeader)).toBe(true);
+
     // since cds-button further adds and modifies the element we simply test that it contains the button text
     expect(slots['modal-actions']).toContain(`${placeholderActionText}`);
   });

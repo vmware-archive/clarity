@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property } from 'lit-element';
+import { property } from 'lit/decorators/property.js';
 
 // Legacy TS Decorator
 function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {

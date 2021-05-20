@@ -21,7 +21,7 @@ Once installed, start the local project by running `yarn run start`.
 
 - [Intro to Web Components](https://coryrylan.com/blog/state-of-web-components-in-2020)
 
-- [Get started with LitElement](https://lit-element.polymer-project.org/)
+- [Get started with Lit](https://lit.dev)
 
 - [Web Component Authoring best practices](https://open-wc.org/)
 

@@ -1,14 +1,15 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@cds/core/internal';
 import { CdsAlert } from './alert.element.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
-import { styles } from './alert-group.element.css.js';
+import styles from './alert-group.element.scss';
 
 /**
  * Alert groups are containers for a set of alerts. Alert groups can hold one or many alerts

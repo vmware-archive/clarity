@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { registerElementSafely } from '../utils/register.js';
 import { CdsBaseFocusTrap } from './focus-trap.base.js';
+import '@cds/core/button/register.js';
 
 // register the element just for testing purposes
 registerElementSafely('cds-base-focus-trap', CdsBaseFocusTrap);

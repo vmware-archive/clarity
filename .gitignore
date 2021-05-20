@@ -4,9 +4,12 @@
 *.element.css.ts
 *.global.css.ts
 packages/core/src/styles/tokens/generated
+packages/core/coverage
 packages/react/.cache
 packages/react/coverage
 .parcel-cache
+.rollup.tscache
+.rollup.cache
 
 # auto-generated ng-core components
 packages/angular/projects/cds-angular/src/cds/components
@@ -53,6 +56,7 @@ testem.log
 /typings
 sauceconnect.log
 .env
+*.tsbuildinfo
 
 # e2e
 /e2e/*.js

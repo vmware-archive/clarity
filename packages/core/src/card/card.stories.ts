@@ -7,9 +7,9 @@
 import '@cds/core/card/register.js';
 import '@cds/core/divider/register.js';
 import { getElementStorybookArgs, getElementStorybookArgTypes, spreadProps } from '@cds/core/internal';
-import { html } from 'lit-html';
+import { html } from 'lit';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import customElements from '../../dist/core/custom-elements.json';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { form } from '../forms/forms.stories';
 
 const placeholder = 'Placeholder';
@@ -50,7 +50,7 @@ export default {
   },
 };
 
-export function Basic(args: { [key: string]: unknown }) {
+export function API(args: { [key: string]: unknown }) {
   return html`<cds-card ...="${spreadProps(getElementStorybookArgs(args))}">
     <p cds-text="body">${placeholder}</p>
   </cds-card>`;
@@ -172,7 +172,7 @@ export function WithForms() {
         </div>
 
         <div cds-text="body" cds-layout="p-y:lg">
-          ${unsafeHTML(form().getHTML())}
+          <!-- ${unsafeHTML(form().values as any)} -->
         </div>
 
         <cds-divider cds-card-remove-margin></cds-divider>

@@ -1,9 +1,7 @@
+import { css } from 'lit';
 import { property, globalStyle } from '@cds/core/internal';
 import { CdsInternalPanel } from '@cds/core/internal-components/panel';
-import { css } from 'lit-element';
-import { styles } from './card.element.css.js';
-
-export const CdsCardTagName = 'cds-card';
+import styles from './card.element.scss';
 
 /**
  * Web component card.

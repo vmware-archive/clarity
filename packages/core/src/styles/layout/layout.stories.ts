@@ -6,7 +6,9 @@
 
 import '@cds/core/divider/register.js';
 import '@cds/core/card/register.js';
-import { html, css, customElement, property, LitElement } from 'lit-element';
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { baseStyles } from '@cds/core/internal';
 
 export default {

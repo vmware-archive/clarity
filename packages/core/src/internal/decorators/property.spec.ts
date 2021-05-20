@@ -5,16 +5,16 @@
  */
 
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { registerElementSafely } from '../utils/register.js';
-import { getDefaultOptions, requirePropertyCheck, internalProperty } from './property.js';
+import { getDefaultOptions, requirePropertyCheck, state } from './property.js';
 
 const prop = 'prop';
 
 describe('@property decorator defaults', () => {
   it('should ignore unmatched types', () => {
     const config = { type: 'unknown' };
-    expect(getDefaultOptions(prop, config)).toBe(config);
+    expect(getDefaultOptions(prop, config)).toEqual(config);
   });
 
   it('should allow defaults to be overridden', () => {
@@ -104,9 +104,9 @@ describe('@property decorator defaults', () => {
 
 /** @element test-internal-prop-decorator */
 export class TestElement extends LitElement {
-  @internalProperty() protected one = 'one';
-  @internalProperty({ type: String, reflect: true }) protected two = 'two';
-  @internalProperty({ type: String, reflect: true, attribute: 'three' }) protected three = 'three';
+  @state() protected one = 'one';
+  @state({ type: String, reflect: true }) protected two = 'two';
+  @state({ type: String, reflect: true, attribute: 'three' }) protected three = 'three';
 }
 
 registerElementSafely('test-internal-prop-decorator', TestElement);

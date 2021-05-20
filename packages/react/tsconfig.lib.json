@@ -9,6 +9,7 @@
     "**/*.mock.tsx",
     "**/*.test.ts",
     "**/*.test.tsx",
+    "**/*.setup.ts",
     "dist",
     "node_modules",
     "App.tsx",

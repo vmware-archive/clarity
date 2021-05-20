@@ -5,7 +5,6 @@
  */
 
 import '@cds/core/icon/register.js';
-import '@cds/core/button/register.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { CdsInternalCloseButton, CdsCloseButtonTagName } from './close-button.element.js';
 

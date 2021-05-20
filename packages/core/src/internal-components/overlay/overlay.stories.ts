@@ -8,9 +8,8 @@ import '@cds/core/internal-components/overlay/register.js';
 import '@cds/core/button/register.js';
 import { ClarityMotion, AnimationHingeConfig, AnimationHingeName } from '@cds/core/internal';
 
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../../dist/core/custom-elements.json';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay/index.js';
 
@@ -19,7 +18,6 @@ ClarityMotion.add(AnimationHingeName, AnimationHingeConfig);
 export default {
   title: 'Internal Stories/Overlay',
   component: 'cds-internal-overlay',
-  argTypes: getElementStorybookArgTypes('cds-internal-overlay', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

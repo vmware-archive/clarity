@@ -1,6 +1,5 @@
 import '@cds/core/alert/register.js';
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
-import { html, LitElement } from 'lit-element';
 
 <Meta title="Internal API/Motion" />
 
@@ -47,7 +46,7 @@ import {
   property,
   ...
 } from '@cds/core/internal';
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 
 @animate({
   isValid: {
@@ -117,7 +116,7 @@ import {
   property,
   ...
 } from '@cds/core/internal';
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 
 /**
  * The @animate() decorator expects a 'property-driven' animation. This is the

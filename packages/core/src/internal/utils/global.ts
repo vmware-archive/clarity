@@ -83,7 +83,7 @@ function initializeCDSGlobal() {
 }
 
 function setRunningVersion() {
-  const loadedVersion = '@VERSION';
+  const loadedVersion = 'PACKAGE_VERSION';
   if (window.CDS._version.indexOf(loadedVersion) < 0) {
     window.CDS._version.push(loadedVersion);
   }

@@ -4,11 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/alert/register.js';
 import '@cds/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
-import { CdsIcon, infoStandardIcon } from '@cds/core/icon';
+import { CdsIcon } from '@cds/core/icon';
+import { infoStandardIcon } from '@cds/core/icon/shapes/info-standard.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { I18nService } from '@cds/core/internal';
@@ -201,9 +202,8 @@ describe('Alert element – ', () => {
       component.type = 'default';
       await componentIsStable(component);
       const slots = getComponentSlotContent(component);
-      expect(slots.actions.trim()).toBe(
-        `<cds-alert-actions slot="actions" _type="default"><!---->${placeholderActionsText}<!----></cds-alert-actions>`
-      );
+      expect(slots.actions.includes('<cds-alert-actions slot="actions" _type="default">')).toBe(true);
+      expect(slots.actions.includes(placeholderActionsText)).toBe(true);
     });
   });
 

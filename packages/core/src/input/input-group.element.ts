@@ -6,7 +6,7 @@
 
 import { querySlotAll, baseStyles } from '@cds/core/internal';
 import { CdsInternalControlGroup, ControlLabelLayout } from '@cds/core/forms';
-import { styles } from './input-group.element.css.js';
+import styles from './input-group.element.scss';
 import { CdsInput } from './input.element.js';
 
 /**

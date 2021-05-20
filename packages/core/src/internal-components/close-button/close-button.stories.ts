@@ -1,21 +1,22 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import '@cds/core/internal-components/close-button/register.js';
-import { angleIcon, ClarityIcons, timesCircleIcon, userIcon } from '@cds/core/icon';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { angleIcon } from '@cds/core/icon/shapes/angle.js';
+import { timesCircleIcon } from '@cds/core/icon/shapes/times-circle.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 ClarityIcons.addIcons(angleIcon, userIcon, timesCircleIcon);
 
 export default {
   title: 'Internal Stories/Close Button',
   component: 'cds-internal-close-button',
-  argTypes: getElementStorybookArgTypes('cds-internal-close-button', customElements),
   parameters: {
     options: { showPanel: true },
   },

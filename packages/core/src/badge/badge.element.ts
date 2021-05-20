@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { baseStyles, property, StatusTypes } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { styles } from './badge.element.css.js';
+import { html, LitElement } from 'lit';
+import styles from './badge.element.scss';
 
 /**
  * Badges provide a method to highlight a count of an element either next to it

@@ -12,21 +12,21 @@ the component. Let's take a look at an example with a modal.
 <cds-modal>modal content</cds-modal>
 ```
 
-With the modal we want to show or hide based on some application logic. We don't
+With the modal, we want to show or hide based on some application logic. We don't
 define a `show` property or a `showChange` property. The logic to determine if the
-modal should show be fully controlled by the applicaiton. The applicaiton may
+modal should show be fully controlled by the application. The application may
 want to hide via CSS or completely add or remove the modal from the DOM. Because
-of this the modal by default is visible. We do not assume the state of its visibility.
+of this, the modal by default is visible. We do not assume the state of its visibility.
 
-Instead of defining a `open` or `show` state we provide a `closeChange` event.
+Instead of defining an `open` or `show` state, we provide a `closeChange` event.
 This event fires when the user has clicked the close button within the modal.
 The modal itself does nothing but emit the event. The modal only notifies the
 application the user had clicked the close button. We leave it to the application
 to determine what it should do.
 
 This is important as it provides a much more flexible API and prevents "escape hatch"
-APIs. If we were to control the visibility of the modal then if the application
-needs to validate some logic before closing we would have to introduce yet another
+APIs. If we were to control the visibility of the modal, then if the application
+needs to validate some logic before closing, we would have to introduce yet another
 API to be able to intercept before closing. Let's take a look at how an Angular
 app may use this.
 
@@ -51,7 +51,7 @@ export class AppComponent {
 }
 ```
 
-Because we defer the state to the application the developer now has the flexibility
+Because we defer the state to the application, the developer now has the flexibility
 to intercept and run additional checks before closing the modal. While this is a
 subtle difference when compared to the stateful version, it provides a more
-fexible component and keeps the overall public API surface small.
+flexible component and keeps the overall public API surface small.

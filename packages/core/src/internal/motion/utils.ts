@@ -347,7 +347,7 @@ export function filterAnimationsByUpdatedProperties(
   animations: PropertyDrivenAnimation,
   updatingProps: Map<string, any>
 ): PropertyDrivenAnimation | null {
-  if (animations === null || animations === undefined || animations === {}) {
+  if (animations === null || animations === undefined) {
     return null;
   }
 

@@ -1,7 +1,6 @@
-@import '~normalize.css/normalize.css';
-@import '~@cds/city/css/bundles/default.min.css';
+@import '@cds/city/css/bundles/default.min.css';
+@import 'normalize.css/normalize.css';
 @import './../../dist/core/global.min.css';
-@import './../../dist/core/styles/module.shims.min.css';
 @import './../../dist/core/styles/theme.dark.min.css';
 @import './../../dist/core/styles/theme.low-motion.min.css';
 @import './../../dist/core/list/list.min.css';
@@ -17,6 +16,10 @@ body {
 
 body.sb-main-fullscreen {
   background: transparent !important;
+}
+
+body.sb-main-padded {
+  padding: var(--cds-global-layout-space-lg);
 }
 
 .docblock-propstable-body li {

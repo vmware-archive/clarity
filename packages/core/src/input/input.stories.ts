@@ -5,14 +5,12 @@
  */
 
 import '@cds/core/input/register.js';
-import { html } from 'lit-html';
-import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@cds/core/internal';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
+import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Input',
   component: 'cds-input',
-  argTypes: getElementStorybookArgTypes('cds-input', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

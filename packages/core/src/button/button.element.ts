@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } from '@cds/core/internal';
+import { baseStyles, CdsBaseButton, property, spanWrapper } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
 import { checkIcon } from '@cds/core/icon/shapes/check.js';
@@ -155,12 +155,12 @@ export class CdsButton extends CdsBaseButton {
         this.disableButton();
         return;
       default:
-        this.enableButton();
+        this.disabled ? this.disableButton() : this.enableButton();
     }
   }
 
   private disableButton() {
-    this.style.width = getElementWidth(this);
+    this.style.removeProperty('width');
     this.disabled = true;
   }
 

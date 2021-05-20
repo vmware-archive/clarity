@@ -13,6 +13,7 @@ ClarityIcons.addIcons(userIcon);
 interface AppProps {}
 interface AppState {
   show: boolean;
+  loadingState: "default" | "success" | "loading" | "error" | undefined;
 }
 
 export default class App extends Component<AppProps, AppState> {
@@ -20,7 +21,15 @@ export default class App extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       show: false,
+      loadingState: 'loading'
     };
+
+    setTimeout(() => {
+      this.setState({
+        ...this.state,
+        loadingState: 'default'
+      });
+     }, 1000);
   }
 
   render() {
@@ -47,6 +56,9 @@ export default class App extends Component<AppProps, AppState> {
           <CdsButton status="danger">danger</CdsButton>
           <CdsButton status="danger" disabled>
             disabled
+          </CdsButton>
+          <CdsButton loadingState={this.state.loadingState} disabled>
+            disabled with loadingState
           </CdsButton>
         </section>
         <section cds-layout="horizontal gap:sm">

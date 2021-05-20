@@ -20,7 +20,7 @@ Clarity is actively working on creating our Clarity Core components. Our long te
 
 #### Pagination
 
-This is a new component. We are building a standalone pagination component that could be used in any context where you have a large amount of records to display but need to split them into different pages. This is currently available in `beta`, see https://clarity.design/storybook/core/?path=/story/components-pagination--page.
+This is a new component. We are building a standalone pagination component that could be used in any context where you have a large amount of records to display but need to split them into different pages. This is currently available in `beta`, see [the pagination component on Storybook](https://clarity.design/storybook/core/?path=/story/components-pagination--page).
 
 #### Cards
 

@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/breadcrumb/register.js';
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { CdsBreadcrumb } from './breadcrumb.element';
 import { isVisible } from '@cds/core/internal';
+import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { CdsBreadcrumb } from './breadcrumb.element.js';
 
 describe('Breadcrumb element: ', () => {
   let testElement: HTMLElement;

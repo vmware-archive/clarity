@@ -5,14 +5,12 @@
  */
 
 import '@cds/core/toggle/register.js';
-import { html } from 'lit-html';
-import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@cds/core/internal';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
+import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Toggle',
   component: 'cds-toggle',
-  argTypes: getElementStorybookArgTypes('cds-toggle', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

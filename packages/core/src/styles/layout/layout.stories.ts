@@ -6,8 +6,18 @@
 
 import '@cds/core/divider/register.js';
 import '@cds/core/card/register.js';
-import { html, css, customElement, property, LitElement } from 'lit-element';
+import { html, css, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { baseStyles } from '@cds/core/internal';
+import { applicationsIcon } from '@cds/core/icon/shapes/applications.js';
+import { blocksGroupIcon } from '@cds/core/icon/shapes/blocks-group.js';
+import { bundleIcon } from '@cds/core/icon/shapes/bundle.js';
+import { buildingIcon } from '@cds/core/icon/shapes/building.js';
+import { cogIcon } from '@cds/core/icon/shapes/cog.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+
+ClarityIcons.addIcons(applicationsIcon, blocksGroupIcon, bundleIcon, buildingIcon, cogIcon);
 
 export default {
   title: 'Stories/Layout',

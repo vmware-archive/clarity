@@ -5,15 +5,13 @@
  */
 
 import '@cds/core/modal/register.js';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 import { CdsModal } from '@cds/core/modal';
 
 export default {
   title: 'Stories/Modal',
   component: 'cds-modal',
-  argTypes: getElementStorybookArgTypes('cds-modal', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

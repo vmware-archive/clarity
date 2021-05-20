@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import {
   AnimationAccordionPanelOpenName,
   reverseAnimation,
@@ -15,7 +15,7 @@ import {
   property,
   EventEmitter,
 } from '@cds/core/internal';
-import { styles } from './accordion-panel.element.css.js';
+import styles from './accordion-panel.element.scss';
 
 /**
  * Web component accordion panel to be used inside an accordion

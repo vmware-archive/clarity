@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Internal Documentation/Templates and Styles" />
 
@@ -67,8 +67,8 @@ cds-icon {
 // cds-badge
 :host {
   // public style API
-  --background: #{$clr-color-neutral-600};
-  --color: #{$clr-color-on-neutral-600};
+  --background: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-color-500};
 }
 
 // Styles other than the default display should not be applied directly to the
@@ -86,18 +86,16 @@ the API small and flexible.
 ```scss
 // cds-badge
 :host {
-  --background: #{$clr-color-neutral-600};
-  --color: #{$clr-color-on-neutral-600};
+  --background: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-color-500};
 }
 
 :host([status='success']) {
-  --background: #{$clr-color-success-700};
-  --color: #{$clr-color-on-success-700};
+  --background: #{$cds-alias-status-success};
 }
 
 :host([status='danger']) {
-  --background: #{$clr-color-danger-800};
-  --color: #{$clr-color-on-danger-800};
+  --background: #{$cds-alias-status-danger};
 }
 ```
 
@@ -117,6 +115,7 @@ cds-badge.product-badge {
 
 ## Notes
 
-There are numerous of `!important` property usage inside our components styles.
+There are numerous usages of `!important` property usage inside our components styles.
 
-We use `!important` for slotted elements because the `::slotted` selector has very low specificity and without it a simple CSS reset can break the component styles.
+We use `!important` for slotted elements because the `::slotted` selector has very
+low specificity, and without it, a simple CSS reset can break the component styles.

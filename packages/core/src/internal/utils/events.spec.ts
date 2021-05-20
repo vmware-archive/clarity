@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { removeTestElement, createTestElement } from '@cds/core/test';
 import { getElementUpdates } from './events.js';
 

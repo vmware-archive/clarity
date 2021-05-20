@@ -4,12 +4,12 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/icon/register.js';
-import { CdsIcon } from '@cds/core/icon';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { renderIcon } from './icon.renderer.js';
-import { ClarityIcons } from './icon.service.js';
 
 const testIcon = renderIcon('test');
 

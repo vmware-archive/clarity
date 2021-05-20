@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import '@cds/core/badge/register.js'; // trigger global setup
+
 describe('browser support feature checks', () => {
   it('should check browser support value strings in cds-support attr', () => {
     const supportValues = document.body.getAttribute('cds-supports');

@@ -5,6 +5,10 @@
  */
 
 /** @internal private module to Clarity Core */
+
+import styles from './base/base.element.scss';
+
+export const baseStyles = styles;
 export * from './base/button.base.js';
 export * from './base/focus-trap.base.js';
 export * from './utils/css.js';
@@ -18,7 +22,6 @@ export * from './directives/spread-props.js';
 export * from './decorators/id.js';
 export * from './decorators/i18n.js';
 export * from './decorators/global-style.js';
-export * from './motion/index.js';
 export * from './services/focus-trap-tracker.service.js';
 export * from './services/i18n.service.js';
 export * from './services/log.service.js';
@@ -33,7 +36,7 @@ export * from './utils/framework.js';
 export * from './i18n/utils.js';
 export * from './utils/identity.js';
 export * from './utils/keycodes.js';
-export * from './utils/lit-element.js';
+export * from './utils/lit.js';
 export * from './utils/metadata.js';
 export * from './utils/responsive.js';
 export * from './utils/size.js';
@@ -42,4 +45,13 @@ export * from './utils/supports.js';
 export * from './utils/events.js';
 export * from './utils/event-subject.js';
 export * from './interfaces/index.js';
-export { styles as baseStyles } from './base/base.element.css.js';
+export * from './motion/interfaces.js';
+export * from './motion/motion.service.js';
+export * from './motion/utils.js';
+export { AnimationModalEnterConfig, AnimationModalEnterName } from './motion/animations/cds-modal-enter.js';
+export {
+  AnimationAccordionPanelOpenConfig,
+  AnimationAccordionPanelOpenName,
+} from './motion/animations/cds-accordion-panel-open.js';
+export { AnimationHingeConfig, AnimationHingeName } from './motion/animations/cds-overlay-hinge-example.js';
+export { AnimationShakeConfig, AnimationShakeName } from './motion/animations/cds-component-shake.js';

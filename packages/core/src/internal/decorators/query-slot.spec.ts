@@ -5,7 +5,7 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
 import { querySlot, querySlotAll } from './query-slot.js';
 

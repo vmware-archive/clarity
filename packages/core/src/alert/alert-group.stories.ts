@@ -4,23 +4,18 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { I18nService } from '@cds/core';
-import { action } from '@storybook/addon-actions';
-import { html } from 'lit-html';
-import { ClarityIcons, headphonesIcon, nodeGroupIcon, timesCircleIcon } from '@cds/core/icon';
-import customElements from '../../dist/core/custom-elements.json';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { headphonesIcon } from '@cds/core/icon/shapes/headphones.js';
+import { nodeGroupIcon } from '@cds/core/icon/shapes/node-group.js';
+import { timesCircleIcon } from '@cds/core/icon/shapes/times-circle.js';
 
 ClarityIcons.addIcons(headphonesIcon, nodeGroupIcon, timesCircleIcon);
-
-I18nService.localize({
-  alert: { closeButtonAriaLabel: 'close info alert' },
-});
 
 export default {
   title: 'Stories/Alert Group',
   component: 'cds-alert-group',
-  argTypes: getElementStorybookArgTypes('cds-alert-group', customElements),
   parameters: {
     options: { showPanel: true },
     design: {
@@ -33,7 +28,7 @@ export default {
 export function API(args: any) {
   return html`
     <cds-alert-group ...="${spreadProps(getElementStorybookArgs(args))}">
-      <cds-alert closable @closeChange=${action('closeChange')}>
+      <cds-alert closable @closeChange=${() => console.log('closeChange')}>
         ${args.default}
         <cds-alert-actions>
           <cds-button>Button 1</cds-button>

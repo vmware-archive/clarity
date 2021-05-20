@@ -15,7 +15,7 @@ const pkg = require('../package.json');
 const files = [
   'packages/angular/projects/clr-angular/package.json',
   'packages/angular/projects/cds-angular/package.json',
-  'packages/core/package.json',
+  'packages/core/npm.json',
   'packages/react/package.json',
   'packages/eslint-plugin-clarity-adoption/package.json',
   'packages/icons/npm.json',

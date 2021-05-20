@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from 'lit';
 import { event, EventEmitter, registerElementSafely } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 

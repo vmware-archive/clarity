@@ -1,25 +1,29 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { directive } from 'lit-html';
+import { ElementPart, Directive, directive, DirectiveParameters } from 'lit/directive.js';
 
-const previousProps = new WeakMap();
-
-export const spreadProps = directive(props => (part: any) => {
-  const prev = previousProps.get(part);
-  if (prev === props) {
-    return;
+/*
+  @experimental
+  Only use within storybook demos
+*/
+export class SpreadProps extends Directive {
+  render() {
+    return '';
   }
 
-  previousProps.set(part, props);
+  update(part: ElementPart, params: DirectiveParameters<this>) {
+    Object.entries((params as any)[0])
+      .filter(([k, v]: [string, any]) => v !== (part.element as any)[k])
+      .forEach(([k, v]) => ((part.element as any)[k] = v));
+    return this.render();
+  }
+}
 
-  Object.entries(props)
-    .filter(([k, v]) => v !== part.committer.element[k])
-    .forEach(([k, v]) => (part.committer.element[k] = v));
-});
+export const spreadProps: any = directive(SpreadProps);
 
 // for typing spread props directive '..' + '.' property accessor
 declare global {

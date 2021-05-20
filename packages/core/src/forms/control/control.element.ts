@@ -4,7 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, query } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import {
   baseStyles,
   property,
@@ -17,7 +18,7 @@ import {
   EventEmitter,
   describeElementByElements,
   updateComponentLayout,
-  internalProperty,
+  state,
   syncProps,
   pxToRem,
   getElementUpdates,
@@ -26,7 +27,7 @@ import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
 import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
-import { styles } from './control.element.css.js';
+import styles from './control.element.scss';
 import { ControlStatus, ControlLayout, ControlWidth } from './../utils/interfaces.js';
 import { syncHTML5Validation } from '../utils/validate.js';
 import {
@@ -62,7 +63,7 @@ export const enum ControlLabelLayout {
  *   <input type="text" />
  * </cds-control>
  * ```
- *
+ * @element cds-control
  * @slot - For projecting input and label
  * @cssprop --label-width
  */
@@ -108,23 +109,23 @@ export class CdsControl extends LitElement {
 
   private _layout: ControlLayout = defaultFormLayout;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
+  @state({ type: Boolean, reflect: true }) protected focused = false;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
+  @state({ type: Boolean, reflect: true }) protected disabled = false;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected readonly = false;
+  @state({ type: Boolean, reflect: true }) protected readonly = false;
 
-  @internalProperty() protected fixedControlWidth = false;
+  @state() protected fixedControlWidth = false;
 
-  @internalProperty() protected supportsPrefixSuffixActions = true;
+  @state() protected supportsPrefixSuffixActions = true;
 
-  @internalProperty()
+  @state()
   protected get isRTL() {
     return getElementLanguageDirection(this) === 'rtl';
   }
 
   /** @private */
-  @internalProperty() labelLayout: ControlLabelLayout = ControlLabelLayout.default;
+  @state() labelLayout: ControlLabelLayout = ControlLabelLayout.default;
 
   /** @private Used for control/form groups */
   @querySlot('input, select, textarea, [cds-control]', {
@@ -208,20 +209,16 @@ export class CdsControl extends LitElement {
     return html``;
   }
 
-  protected get prefixDefaultTemplate() {
-    return html``;
+  protected get prefixDefaultTemplate(): TemplateResult | null {
+    return null;
   }
 
-  protected get suffixDefaultTemplate() {
-    return html``;
+  protected get suffixDefaultTemplate(): TemplateResult | null {
+    return null;
   }
 
   private get hasControlActions() {
-    return (
-      this.controlActions.length ||
-      this.prefixDefaultTemplate.getHTML().length ||
-      this.suffixDefaultTemplate.getHTML().length
-    );
+    return this.controlActions.length > 0 || this.prefixDefaultTemplate || this.suffixDefaultTemplate;
   }
 
   private get primaryLabelTemplate() {

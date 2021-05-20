@@ -42,7 +42,7 @@ export function kebabCaseToPascalCase(string: string) {
 
 /**
  * Take a object map of css properties and if value concatenate string of all computed values
- * Useful for dynamic style tags in lit-html templates
+ * Useful for dynamic style tags in lit templates
  */
 export function setStyles(styles: { [key: string]: string }) {
   return createPropStyleSelectors(Object.keys(styles), styles);

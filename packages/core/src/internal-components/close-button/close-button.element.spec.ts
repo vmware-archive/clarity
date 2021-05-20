@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/internal-components/close-button/register.js';
 import {
   CdsInternalCloseButton,

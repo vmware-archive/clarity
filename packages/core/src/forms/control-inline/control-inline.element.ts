@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-element';
-import { EventEmitter, property, event, getElementUpdates, internalProperty } from '@cds/core/internal';
-import { styles } from './control-inline.element.css.js';
+import { html } from 'lit';
+import { EventEmitter, property, event, getElementUpdates, state } from '@cds/core/internal';
+import styles from './control-inline.element.scss';
 import { CdsControl } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/index.js';
 
@@ -31,13 +31,13 @@ export class CdsInternalControlInline extends CdsControl {
   @property({ type: String }) controlAlign: 'left' | 'right' = 'left';
 
   /** @private */
-  @internalProperty() isControlGroup: boolean;
+  @state() isControlGroup: boolean;
 
   /** @private */
-  @internalProperty({ type: Boolean, reflect: true }) protected checked = false;
+  @state({ type: Boolean, reflect: true }) protected checked = false;
 
   /** @private */
-  @internalProperty({ type: Boolean, reflect: true }) protected indeterminate = false;
+  @state({ type: Boolean, reflect: true }) protected indeterminate = false;
 
   /** @private */
   @event() protected checkedChange: EventEmitter<boolean>;

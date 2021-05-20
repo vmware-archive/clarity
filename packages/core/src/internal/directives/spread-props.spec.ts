@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement, html } from 'lit-element';
-import { render } from 'lit-html';
+import { LitElement, html, render } from 'lit';
 import { registerElementSafely, property } from '@cds/core/internal';
 import { spreadProps } from './spread-props.js';
 import { createTestElement, removeTestElement } from '@cds/core/test';
@@ -40,15 +39,5 @@ describe('spread props directive', () => {
     expect(getTestElement().test).toBe(true);
     expect(getTestElement().test2).toBe('hello world');
     removeTestElement(element);
-  });
-
-  it('should only set prop if prop has changed in value', () => {
-    const mockPart: any = {
-      committer: { element: {} },
-    };
-
-    mockPart.committer.element['item'] = 'change';
-    spreadProps({ item: 'test2' })(mockPart);
-    expect(mockPart.committer.element['item']).toBe('test2');
   });
 });

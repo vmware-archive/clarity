@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { html } from 'lit-html';
+import { html } from 'lit';
 import '@cds/core/badge/register.js';
 import { CdsBadge } from '@cds/core/badge';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';

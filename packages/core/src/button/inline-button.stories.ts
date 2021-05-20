@@ -1,23 +1,22 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
-import { angleIcon, ClarityIcons, userIcon } from '@cds/core/icon';
-import { spreadProps, getElementStorybookArgs, getElementStorybookArgTypes } from '@cds/core/internal';
-import { action } from '@storybook/addon-actions';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { angleIcon } from '@cds/core/icon/shapes/angle.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 ClarityIcons.addIcons(angleIcon, userIcon);
 
 export default {
   title: 'Stories/Inline Button',
   component: 'cds-inline-button',
-  argTypes: getElementStorybookArgTypes('cds-inline-button', customElements),
   parameters: {
     options: { showPanel: true },
   },
@@ -26,7 +25,7 @@ export default {
 export function API(args: any) {
   return html`
     <cds-demo inline-block>
-      <cds-inline-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
+      <cds-inline-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${() => console.log('click')}>
         ${args.default}
       </cds-inline-button>
     </cds-demo>

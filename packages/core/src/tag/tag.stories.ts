@@ -6,12 +6,12 @@
 
 import '@cds/core/icon/register.js';
 import '@cds/core/tag/register.js';
-import { ClarityIcons, infoStandardIcon, userIcon } from '@cds/core/icon';
-import { propertiesGroup, getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { infoStandardIcon } from '@cds/core/icon/shapes/info-standard.js';
+import { userIcon } from '@cds/core/icon/shapes/user.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+
+import { html } from 'lit';
 
 ClarityIcons.addIcons(userIcon);
 ClarityIcons.addIcons(infoStandardIcon);
@@ -20,7 +20,6 @@ export default {
   title: 'Stories/Tag',
   component: 'cds-tag',
   argTypes: {
-    ...getElementStorybookArgTypes('cds-tag', customElements),
     badgeValue: { control: { type: 'number' }, defaultValue: 0 },
   },
   parameters: {
@@ -34,7 +33,7 @@ export default {
 
 export function API(args: any) {
   return html`
-    <cds-tag ...="${spreadProps(getElementStorybookArgs(args))}" @click=${action('click')}>
+    <cds-tag ...="${spreadProps(getElementStorybookArgs(args))}" @click=${() => console.log('click')}>
       ${args.default}${args.badgeValue !== 0
         ? html`<cds-badge aria-label="notification ${args.badgeValue}">${args.badgeValue}</cds-badge>`
         : ''}
@@ -252,7 +251,7 @@ export function closable() {
 
 /** @website */
 export function tagsAndIcons() {
-  const solidIcon = boolean('solid icons', false, propertiesGroup);
+  const solidIcon = false; // boolean('solid icons', false, propertiesGroup);
 
   return html`
     <div cds-layout="vertical gap:sm">

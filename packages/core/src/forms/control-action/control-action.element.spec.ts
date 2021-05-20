@@ -4,10 +4,11 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { CdsControlAction } from '@cds/core/forms';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { LogService } from '@cds/core/internal';
+import '@cds/core/forms/register.js';
 
 describe('cds-control-action', () => {
   let controlAction: CdsControlAction;

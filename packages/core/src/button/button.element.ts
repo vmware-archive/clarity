@@ -8,9 +8,10 @@ import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } fro
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
 import { checkIcon } from '@cds/core/icon/shapes/check.js';
-import { html, query } from 'lit-element';
-import { styles as baseButtonStyles } from './base-button.element.css.js';
-import { styles } from './button.element.css.js';
+import { html } from 'lit';
+import { query } from 'lit/decorators/query.js';
+import baseButtonStyles from './base-button.element.scss';
+import styles from './button.element.scss';
 
 export const iconSpinner = (size: string) => {
   const spinnerSize = size === 'sm' ? '12' : '18';
@@ -139,9 +140,7 @@ export class CdsButton extends CdsBaseButton {
     </div>`;
   }
 
-  static get styles() {
-    return [baseStyles, baseButtonStyles, styles];
-  }
+  static styles = [baseStyles, baseButtonStyles, styles];
 
   private updateLoadingState() {
     switch (this.loadingState) {

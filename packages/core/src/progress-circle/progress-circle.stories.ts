@@ -6,17 +6,19 @@
 
 import '@cds/core/icon/register.js';
 import '@cds/core/progress-circle/register.js';
-import { ClarityIcons, homeIcon, nodesIcon, stopIcon, warningStandardIcon } from '@cds/core/icon';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-import { html } from 'lit-html';
-import customElements from '../../dist/core/custom-elements.json';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { homeIcon } from '@cds/core/icon/shapes/home.js';
+import { nodesIcon } from '@cds/core/icon/shapes/nodes.js';
+import { stopIcon } from '@cds/core/icon/shapes/stop.js';
+import { warningStandardIcon } from '@cds/core/icon/shapes/warning-standard.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { html } from 'lit';
 
 ClarityIcons.addIcons(homeIcon, nodesIcon, stopIcon, warningStandardIcon);
 
 export default {
   title: 'Stories/Circular Progress',
   component: 'cds-progress-circle',
-  argTypes: getElementStorybookArgTypes('cds-progress-circle', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

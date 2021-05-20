@@ -6,11 +6,11 @@
 
 import '@cds/core/icon/register.js';
 
-import { html } from 'lit-html';
-import { CdsIcon } from '@cds/core/icon';
+import { html } from 'lit';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { renderIcon } from '../icon.renderer.js';
-import { ClarityIcons } from '../icon.service.js';
 
 import { getUpdateSizeStrategy, SizeUpdateStrategies, updateIconSizeStyle } from './icon.classnames.js';
 

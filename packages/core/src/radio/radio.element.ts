@@ -5,7 +5,7 @@
  */
 
 import { CdsInternalControlInline } from '@cds/core/forms';
-import { styles } from './radio.element.css.js';
+import styles from './radio.element.scss';
 
 /**
  * Radio

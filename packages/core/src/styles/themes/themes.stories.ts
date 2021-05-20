@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, TemplateResult } from 'lit-html';
+import { html, TemplateResult } from 'lit';
 import { default as tokenData } from '@cds/core/tokens/tokens.json';
 
 export default {
@@ -23,7 +23,7 @@ interface Token {
 function getTokens(val: string) {
   return Object.entries(tokenData)
     .filter(([key]) => key.includes(val))
-    .map(token => {
+    .map((token: any) => {
       return getTokenValue({
         name: `--cds-${token[0].replace(/([A-Z]|\d+)/g, '-$1').toLocaleLowerCase()}`,
         value: token[1].value,
@@ -229,7 +229,17 @@ export function dynamicTheme() {
     getTokens('globalLayoutSpace').forEach((space: any) => {
       const value = space.value * (parseInt((event.target as HTMLInputElement).value) / 100);
       dynamicTokens[space.name] = `${value / 20}rem`;
-      dynamicTokens[`--c${space.name.split('-').pop()}`] = `${value / 20}rem`; // alias optimization
+      // layout space tokens are optimized "minified" so for demo we are altering them in isolation
+      const optimizationName: any = {
+        xxs: 'δ1',
+        xs: 'δ2',
+        sm: 'δ3',
+        md: 'δ4',
+        lg: 'δ5',
+        xl: 'δ6',
+        xxl: 'δ7',
+      };
+      dynamicTokens[`--${optimizationName[space.name.split('-').pop()]}`] = `${value / 20}rem`;
     });
     document.querySelector<HTMLElement>('.density-label').innerHTML = `Density: ${
       (event.target as HTMLInputElement).value
@@ -252,10 +262,8 @@ export function dynamicTheme() {
   }
 
   function updateScale(event: Event) {
-    document.documentElement.style.setProperty(
-      '--cds-global-typography-base-font-size',
-      `${(parseInt((event.target as HTMLInputElement).value) / 100) * 125}%`
-    );
+    document.documentElement.style.fontSize = `${(parseInt((event.target as HTMLInputElement).value) / 100) * 16}px`;
+
     document.querySelector<HTMLElement>('.scale-label').innerHTML = `Scale: ${
       (event.target as HTMLInputElement).value
     }%`;

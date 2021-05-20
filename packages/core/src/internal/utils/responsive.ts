@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 
 export type ResponsiveComponent = LitElement & { layout: string; responsive: boolean; layoutStable: boolean };
 

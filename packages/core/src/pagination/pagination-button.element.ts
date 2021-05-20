@@ -12,8 +12,9 @@ import {
   property,
   querySlot,
 } from '@cds/core/internal';
-import { html, query } from 'lit-element';
-import { styles } from './pagination-button.element.css.js';
+import { html } from 'lit';
+import { query } from 'lit/decorators/query.js';
+import styles from './pagination-button.element.scss';
 
 export enum CdsPaginationButtonAction {
   First = 'first',

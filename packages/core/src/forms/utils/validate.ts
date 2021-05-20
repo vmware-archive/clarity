@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { CdsControlMessage } from '../control-message/control-message.element';
-import { CdsControl } from '../control/control.element';
+import { CdsControlMessage } from '../control-message/control-message.element.js';
+import { CdsControl } from '../control/control.element.js';
 
 // https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
 export type ValidityStateKey =

@@ -13,9 +13,9 @@ import {
   updateEquilateralSizeStyles,
   HTMLAttributeTuple,
 } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import isNil from 'ramda/es/isNil.js';
-import { styles } from './progress-circle.element.css.js';
+import styles from './progress-circle.element.scss';
 
 /**
  * Circular progress indicators provide a method to track how close long-running tasks are to

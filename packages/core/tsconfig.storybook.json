@@ -1,6 +1,7 @@
 {
-  "include": ["../**/*.stories.ts", "../docs/**/*", "../dist"],
-  "exclude": ["node_modules", "../**/test/*.ts", "../**/*.spec.ts", "../build/**/*.ts"],
+  "include": ["./**/*.stories.ts", "./docs/**/*", "./dist"],
+  "exclude": ["node_modules", "./**/test/*.ts", "./**/*.spec.ts", "./build/**/*.ts"],
+  "outDir": "../dist/website/storybook/core",
   "compilerOptions": {
     "rootDirs": ["src", "docs"],
     "target": "es2017",
@@ -10,7 +11,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "baseUrl": "../",
+    "baseUrl": "./",
     "paths": {
       "@cds/core": ["./dist/core"],
       "@cds/core/*": ["./dist/core/*"],

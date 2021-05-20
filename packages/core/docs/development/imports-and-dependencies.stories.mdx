@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Internal Documentation/Imports and Dependencies" />
 
@@ -10,8 +10,7 @@ Clarity Angular. This restriction is to ensure proper tree shaking and performan
 
 Core has the following direct dependencies:
 
-- [lit-element](https://lit-element.polymer-project.org/) is a
-  lightweight base class that provides syntactic sugar to Web Components.
+- [lit](https://lit.dev) is a lightweight library that provides syntactic sugar to Web Components.
 - [Ramda JS](https://ramdajs.com/) for common functional utilities. To use
   Currying, use the `curryN` function for TypeScript support.
 

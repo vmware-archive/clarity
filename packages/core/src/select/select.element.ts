@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit-element';
-import { globalStyle, internalProperty, listenForAttributeChange } from '@cds/core/internal';
+import { html } from 'lit';
+import { globalStyle, state, listenForAttributeChange } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { angleIcon } from '@cds/core/icon/shapes/angle.js';
-import { styles as globalStyles } from './select.global.css.js';
-import { styles } from './select.element.css.js';
+import globalStyles from './select.global.scss';
+import styles from './select.element.scss';
 
 /**
  * Select
@@ -55,7 +55,7 @@ export class CdsSelect extends CdsControl {
 
   @globalStyle() protected globalStyles = globalStyles;
 
-  @internalProperty({ type: Boolean, reflect: true }) protected multiple = false;
+  @state({ type: Boolean, reflect: true }) protected multiple = false;
 
   constructor() {
     super();

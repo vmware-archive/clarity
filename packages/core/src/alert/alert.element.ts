@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import {
   baseStyles,
   event,
@@ -14,7 +14,7 @@ import {
   querySlotAll,
   setAttributes,
   syncDefinedProps,
-  internalProperty,
+  state,
   id,
   I18nService,
   i18n,
@@ -29,7 +29,7 @@ import { helpIcon } from '@cds/core/icon/shapes/help.js';
 import { AlertGroupTypes, AlertStatusTypes, AlertSizes } from './alert.interfaces.js';
 import { CdsAlertActions } from './alert-actions.element.js';
 import { CdsAlertGroup } from './alert-group.element.js';
-import { styles } from './alert.element.css.js';
+import styles from './alert.element.scss';
 
 export function getIconStatusTuple(status: string): [string, string] {
   const statusIcons: { [key: string]: [string, string] } = {
@@ -147,7 +147,7 @@ export class CdsAlert extends LitElement {
    * Internal Use Only
    * @private
    */
-  @internalProperty({ type: String, reflect: true })
+  @state({ type: String, reflect: true })
   type: AlertGroupTypes = 'light';
 
   @id()

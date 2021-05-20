@@ -4,24 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit-element';
+import { html, LitElement } from 'lit';
 import clone from 'ramda/es/clone.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { registerElementSafely, property, event, EventEmitter } from '@cds/core/internal';
+import { animate } from '../decorators/animate.js';
 import {
-  animate,
   Animatable,
   AnimatableElement,
-  event,
-  EventEmitter,
   CLARITY_MOTION_FALLBACK_EASING,
   CLARITY_MOTION_FALLBACK_DURATION_IN_MS,
   CLARITY_MOTION_REVERSE_ANIMATION_SUFFIX,
-  ClarityMotion,
-  LogService,
-  property,
   PropertyDrivenAnimation,
-  registerElementSafely,
-} from '@cds/core/internal';
+} from './interfaces';
 import {
   filterAnimationsByUpdatedProperties,
   flattenAndSortAnimations,
@@ -44,6 +39,8 @@ import {
   setAnimationConfigOptions,
   getAnimationTarget,
 } from './utils.js';
+import { ClarityMotion } from './motion.service.js';
+import { LogService } from '../services/log.service.js';
 import { AnimationStatus, TargetedAnimation } from './interfaces.js';
 
 declare global {

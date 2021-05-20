@@ -1,18 +1,16 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import '@cds/core/select/register.js';
-import { html } from 'lit-html';
-import { getElementStorybookArgs, spreadProps, getElementStorybookArgTypes } from '@cds/core/internal';
-import customElements from '../../dist/core/custom-elements.json';
+import { html } from 'lit';
+import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 
 export default {
   title: 'Stories/Select',
   component: 'cds-select',
-  argTypes: getElementStorybookArgTypes('cds-select', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

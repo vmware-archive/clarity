@@ -4,10 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+// import { propertiesGroup } from '@cds/core/internal';
 import '@cds/core/card/register.js';
-import { propertiesGroup } from '@cds/core/internal';
-import { select } from '@storybook/addon-knobs';
-import { html } from 'lit-html';
+import { html } from 'lit';
 
 export default {
   title: 'Stories/List',
@@ -16,33 +15,33 @@ export default {
   },
 };
 
-const unorderedListOptions = {
-  'none (default disc)': '',
-  disc: 'disc',
-  circle: 'circle',
-  square: 'square',
-};
+// const unorderedListOptions = {
+//   'none (default disc)': '',
+//   disc: 'disc',
+//   circle: 'circle',
+//   square: 'square',
+// };
 
-const orderedListOptions = {
-  'none (default decimal)': '',
-  decimal: 'decimal',
-  'decimal-leading-zero': 'decimal-leading-zero',
-  'lower-alpha': 'lower-alpha',
-  'lower-latin': 'lower-latin',
-  'lower-roman': 'lower-roman',
-  'upper-alpha': 'upper-alpha',
-  'upper-latin': 'upper-latin',
-  'upper-roman': 'upper-roman',
-};
+// const orderedListOptions = {
+//   'none (default decimal)': '',
+//   decimal: 'decimal',
+//   'decimal-leading-zero': 'decimal-leading-zero',
+//   'lower-alpha': 'lower-alpha',
+//   'lower-latin': 'lower-latin',
+//   'lower-roman': 'lower-roman',
+//   'upper-alpha': 'upper-alpha',
+//   'upper-latin': 'upper-latin',
+//   'upper-roman': 'upper-roman',
+// };
 
 export function API() {
-  const orderedListStyle = select('Ordered List Style', orderedListOptions, '', propertiesGroup);
+  const orderedListStyle = ''; // select('Ordered List Style', orderedListOptions, '', propertiesGroup);
 
-  const orderedListChildStyle = select('Ordered List Style (Child)', orderedListOptions, '', propertiesGroup);
+  const orderedListChildStyle = ''; // select('Ordered List Style (Child)', orderedListOptions, '', propertiesGroup);
 
-  const unorderedListStyle = select('Unordered List Style', unorderedListOptions, '', propertiesGroup);
+  const unorderedListStyle = ''; // select('Unordered List Style', unorderedListOptions, '', propertiesGroup);
 
-  const unorderedListChildStyle = select('Unordered List Style (Child)', unorderedListOptions, '', propertiesGroup);
+  const unorderedListChildStyle = ''; // select('Unordered List Style (Child)', unorderedListOptions, '', propertiesGroup);
 
   return html`
     <div cds-layout="vertical gap:md">

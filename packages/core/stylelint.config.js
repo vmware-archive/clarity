@@ -39,7 +39,7 @@ const config = {
   defaultSeverity: 'error',
   syntax: 'scss',
   plugins: ['stylelint-scss', 'stylelint-declaration-use-variable', 'stylelint-no-px'],
-  ignoreFiles: ['./src/styles/tokens/generated/*.scss'],
+  ignoreFiles: ['./src/styles/tokens/generated/*.scss', './dist/**/*.scss'],
   rules,
 };
 

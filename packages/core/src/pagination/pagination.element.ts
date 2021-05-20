@@ -5,10 +5,10 @@
  */
 
 import { baseStyles, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
-import { html, LitElement } from 'lit-element';
-import { cache } from 'lit-html/directives/cache.js';
-import { CdsInput } from '../input/input.element.js';
-import { styles } from './pagination.element.css.js';
+import { html, LitElement } from 'lit';
+import { cache } from 'lit/directives/cache.js';
+import { CdsInput } from '@cds/core/input';
+import styles from './pagination.element.scss';
 
 /**
  * Web component pagination.

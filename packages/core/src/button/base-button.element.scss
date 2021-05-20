@@ -187,23 +187,23 @@
   line-height: 0;
 }
 
-:host([status='success'][action='flat']) {
+:host([status='success'][action*='flat']) {
   --color: #{$cds-alias-status-success};
 }
 
-:host([status='warning'][action='flat']) {
+:host([status='warning'][action*='flat']) {
   --color: #{$cds-alias-status-warning-dark};
 }
 
-:host([status='danger'][action='flat']) {
+:host([status='danger'][action*='flat']) {
   --color: #{$cds-alias-status-danger};
 }
 
-:host([status='neutral'][action='flat']) {
+:host([status='neutral'][action*='flat']) {
   --color: #{$cds-alias-status-neutral};
 }
 
-:host([status='inverse'][action='flat']) {
+:host([status='inverse'][action*='flat']) {
   --color: #{$cds-global-typography-color-100};
 }
 

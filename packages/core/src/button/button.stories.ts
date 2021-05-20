@@ -187,21 +187,25 @@ export function textAndBadge() {
         <cds-button status="danger">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="danger" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="danger" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="danger" action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button status="warning">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="warning" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="warning" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="warning" action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button status="success">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="success" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="success" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="success" action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm">
         <cds-button status="neutral">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="neutral" action="outline">Click Me <cds-badge>10</cds-badge></cds-button>
         <cds-button status="neutral" action="flat">Click Me <cds-badge>10</cds-badge></cds-button>
+        <cds-button status="neutral" action="flat-inline">Click Me <cds-badge>10</cds-badge></cds-button>
       </div>
       <div cds-layout="horizontal gap:sm p:sm" style="background: var(--cds-global-color-construction-800)">
         <cds-button status="inverse">Click Me <cds-badge>10</cds-badge></cds-button>
@@ -349,8 +353,23 @@ export function darkTheme() {
           ><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button
         >
       </div>
-      <div cds-layout="horizontal gap:sm">
+      <div cds-layout="horizontal gap:lg">
         <cds-button action="flat-inline"><cds-icon shape="user"></cds-icon>primary<cds-badge>10</cds-badge></cds-button>
+        <cds-button action="flat-inline" status="success"
+          ><cds-icon shape="user"></cds-icon>success<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="flat-inline" status="warning"
+          ><cds-icon shape="user"></cds-icon>warning<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="flat-inline" status="danger"
+          ><cds-icon shape="user"></cds-icon>danger<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="flat-inline" status="neutral"
+          ><cds-icon shape="user"></cds-icon>neutral<cds-badge>10</cds-badge></cds-button
+        >
+        <cds-button action="flat-inline" disabled
+          ><cds-icon shape="user"></cds-icon>disabled<cds-badge>10</cds-badge></cds-button
+        >
       </div>
     </div>
   `;

@@ -59,3 +59,16 @@
   background: var(--cds-global-color-construction-1000);
   padding: var(--cds-global-layout-space-md);
 }
+
+.clr-vertical-nav .nav-group-trigger .nav-group-trigger-icon[direction='down'] {
+  margin-top: 0.6rem;
+}
+
+.clr-vertical-nav .nav-group-trigger .nav-group-trigger-icon[direction='right'] {
+  margin-right: 0.15rem;
+}
+
+[cds-motion='on'] .clr-vertical-nav .nav-group-trigger .nav-group-trigger-icon,
+[cds-motion='off'] .clr-vertical-nav .nav-group-trigger .nav-group-trigger-icon {
+  transition: none;
+}

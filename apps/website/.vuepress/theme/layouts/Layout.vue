@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container" cds-layout="vertical align:stretch" cds-text="body">
+  <div class="main-container" cds-layout="vertical align:stretch" cds-text="body" cds-motion="on">
     <SkipTo toId="content-area" label="Skip to main content" />
     <SkipTo toId="sidenav" label="Skip to navigation" />
     <SkipTo toId="algolia-search-input" label="Skip to search" />

@@ -12,7 +12,6 @@
                     class="nav-group-trigger-icon"
                     shape="angle"
                     size="md"
-                    :cds-layout="states[index] ? 'm-t:md' : ''"
                     :direction="states[index] ? 'down' : 'right'"
                   ></cds-icon>
                 </button>

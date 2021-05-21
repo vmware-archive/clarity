@@ -29,4 +29,12 @@ export default ({
       });
     }
   }
+
+  window.addEventListener('load', event => {
+    const mainContainer = document.querySelector('.main-container');
+
+    if (mainContainer) {
+      mainContainer.setAttribute('cds-motion', 'ready');
+    }
+  });
 };

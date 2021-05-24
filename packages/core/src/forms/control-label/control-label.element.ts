@@ -23,6 +23,7 @@ import { styles } from './control-label.element.css.js';
  * @internal
  * @element cds-internal-control-label
  * @slot - For projecting label text
+ * @cssprop --label-width
  */
 export class CdsInternalControlLabel extends LitElement {
   @property({ type: Boolean }) disabled = false;

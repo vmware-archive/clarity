@@ -156,11 +156,11 @@ export class CdsIcon extends LitElement {
 
   updated(props: Map<string, any>) {
     if (props.has('innerOffset') && this.innerOffset > 0) {
-      const val = pxToRem(this.innerOffset);
-      const dimension = `calc(100% + ${Number(val.replace('rem', '')) * 2}rem)`;
+      const val = pxToRem(-1 * this.innerOffset);
+      const dimension = `calc(100% + ${pxToRem(this.innerOffset * 2)})`;
       this.svg.style.width = dimension;
       this.svg.style.height = dimension;
-      this.svg.style.margin = `-${val} 0 0 -${val}`;
+      this.svg.style.margin = `${val} 0 0 ${val}`;
     }
   }
 

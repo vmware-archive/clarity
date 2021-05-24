@@ -13,12 +13,12 @@
 }
 
 :host([action='primary']) {
-  min-width: var(--internal-label-min-width, initial);
+  min-width: var(--label-width, var(--internal-label-min-width));
+  max-width: var(--label-width, var(--internal-label-max-width));
 }
 
 ::slotted([slot='label']) {
   font-family: $cds-global-typography-font-family !important;
-  max-width: var(--internal-label-max-width, initial) !important;
   display: inline-block !important;
   text-transform: var(--text-transform) !important;
   cursor: pointer !important;

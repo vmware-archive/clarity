@@ -13,6 +13,7 @@ import {
   elementResize,
   pxToRem,
   syncDefinedProps,
+  elementVisible,
 } from '@cds/core/internal';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsInternalControlInline } from '../control-inline/control-inline.element.js';
@@ -44,6 +45,7 @@ import { styles } from './form-group.element.css.js';
  *
  * @element cds-form-group
  * @slot - For projecting input controls
+ * @cssprop --label-width
  */
 export class CdsFormGroup extends LitElement {
   /**
@@ -75,6 +77,8 @@ export class CdsFormGroup extends LitElement {
 
   @querySlotAll('[cds-control-group]') private groups: NodeListOf<CdsInternalControlGroup>;
 
+  protected observers: (MutationObserver | ResizeObserver)[] = [];
+
   private get controlsAndGroups() {
     return [...Array.from(this.groups), ...Array.from(this.controls)];
   }
@@ -97,6 +101,7 @@ export class CdsFormGroup extends LitElement {
     super.firstUpdated(props);
     this.syncLayouts();
     this.setControlLabelWidths();
+    this.observers.push(elementVisible(this, () => this.setControlLabelWidths()));
   }
 
   updated(props: Map<string, any>) {
@@ -104,12 +109,19 @@ export class CdsFormGroup extends LitElement {
     syncDefinedProps(props, this, this.controlsAndGroups);
   }
 
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.observers.forEach(o => o.disconnect());
+  }
+
   private async setControlLabelWidths() {
-    await childrenUpdateComplete(this.controlsAndGroups);
-    this.style.setProperty('--internal-label-min-width', await getLargestPrimaryLabelWidth(this.controlsAndGroups));
-    elementResize(this, () =>
-      this.style.setProperty('--internal-label-max-width', pxToRem(this.getBoundingClientRect().width))
-    );
+    if (this.layout === 'horizontal' || this.layout === 'horizontal-inline' || this.layout === 'compact') {
+      await childrenUpdateComplete(this.controlsAndGroups);
+      this.style.setProperty('--internal-label-min-width', await getLargestPrimaryLabelWidth(this.controlsAndGroups));
+      elementResize(this, () =>
+        this.style.setProperty('--internal-label-max-width', pxToRem(this.getBoundingClientRect().width))
+      );
+    }
   }
 
   private syncLayouts() {

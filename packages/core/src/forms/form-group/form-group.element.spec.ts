@@ -133,4 +133,43 @@ describe('cds-form-group', () => {
     await componentIsStable(formGroup);
     expect(formGroup.shadowRoot.innerHTML).toContain('vertical gap:md');
   });
+
+  it('should determine label width when visible', async () => {
+    formGroup.setAttribute('hidden', '');
+    await componentIsStable(formGroup);
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('');
+
+    formGroup.removeAttribute('hidden');
+    await componentIsStable(formGroup);
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((0 /  20) * 1rem)');
+  });
+});
+
+describe('cds-form-group label alignment', () => {
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-form-group layout="vertical">
+        <cds-control>
+          <label>control</label>
+          <input type="text" />
+        </cds-control>
+      </cds-form-group>
+    `);
+
+    formGroup = element.querySelector<CdsFormGroup>('cds-form-group');
+    controls = Array.from(element.querySelectorAll<CdsControl>('cds-control'));
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should not set label width for vertical layouts', async () => {
+    await componentIsStable(formGroup);
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('');
+
+    formGroup.layout = 'vertical-inline';
+    await componentIsStable(formGroup);
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('');
+  });
 });

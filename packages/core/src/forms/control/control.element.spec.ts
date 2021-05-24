@@ -11,6 +11,7 @@ import { CdsControl } from '@cds/core/forms';
 import '@cds/core/forms/register.js';
 import { CdsControlMessage } from '../control-message/control-message.element';
 import { listenForAttributeChange } from '@cds/core/internal';
+import { ControlLabelLayout } from './control.element';
 
 describe('cds-control', () => {
   let element: HTMLElement;
@@ -117,8 +118,10 @@ describe('cds-control', () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('cds-internal-control-label')).toBeTruthy();
 
-    control.hiddenLabel = true;
+    control.labelLayout = ControlLabelLayout.inputGroup;
+    control.status = 'error';
     await componentIsStable(control);
+    expect(control.shadowRoot.querySelector('cds-icon[status=error]')).toBe(null);
     expect(control.shadowRoot.querySelector('cds-internal-control-label')).toBe(null);
     expect(control.shadowRoot.querySelector('slot[name=label]').parentElement.getAttribute('cds-layout')).toBe(
       'display:screen-reader-only'
@@ -127,7 +130,7 @@ describe('cds-control', () => {
 
   it('should mark layout as stable when using a hidden label layout', async () => {
     await componentIsStable(control);
-    control.hiddenLabel = true;
+    control.labelLayout = ControlLabelLayout.hiddenLabel;
     expect(await control.layoutStable).toBe(true);
   });
 
@@ -283,6 +286,6 @@ describe('cds-control with aria-label', () => {
 
   it('should not enable hidden label', async () => {
     await componentIsStable(control);
-    expect(control.hiddenLabel).toBe(false);
+    expect(control.labelLayout).toBe(ControlLabelLayout.ariaLabel);
   });
 });

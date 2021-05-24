@@ -7,6 +7,7 @@
 import { html } from 'lit-html';
 import { CdsInputGroup, CdsInput } from '@cds/core/input';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
+import { ControlLabelLayout } from '@cds/core/forms';
 
 describe('cds-input-group', () => {
   let component: CdsInputGroup;
@@ -43,7 +44,7 @@ describe('cds-input-group', () => {
   it('should setup child controls to align within group', async () => {
     const inputControl = component.querySelector<CdsInput>('cds-input');
     await componentIsStable(component);
-    expect(inputControl.hiddenLabel).toBe(true);
+    expect(inputControl.labelLayout).toBe(ControlLabelLayout.inputGroup);
     expect(inputControl.controlWidth).toBe(component.controlWidth);
   });
 });

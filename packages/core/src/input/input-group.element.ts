@@ -5,7 +5,7 @@
  */
 
 import { querySlotAll, baseStyles } from '@cds/core/internal';
-import { CdsInternalControlGroup } from '@cds/core/forms';
+import { CdsInternalControlGroup, ControlLabelLayout } from '@cds/core/forms';
 import { styles } from './input-group.element.css.js';
 import { CdsInput } from './input.element.js';
 
@@ -51,7 +51,7 @@ export class CdsInputGroup extends CdsInternalControlGroup {
     super.firstUpdated(props);
     this.controls.forEach(c => {
       c.responsive = false;
-      c.hiddenLabel = true;
+      c.labelLayout = ControlLabelLayout.inputGroup;
       c.controlWidth = this.controlWidth;
     });
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -137,10 +137,19 @@ export function compact() {
 
 export function searchInline() {
   return html`
-    <cds-search>
-      <label cds-layout="display:screen-reader-only">search</label>
-      <input type="search" placeholder="search" />
-    </cds-search>
+    <cds-form-group>
+      <cds-search>
+        <input type="search" placeholder="search" aria-label="search" />
+      </cds-search>
+      <cds-search status="error">
+        <label cds-layout="display:screen-reader-only">search</label>
+        <input type="search" placeholder="search" />
+      </cds-search>
+      <cds-search status="success">
+        <label cds-layout="display:screen-reader-only">search</label>
+        <input type="search" placeholder="search" />
+      </cds-search>
+    </cds-form-group>
   `;
 }
 

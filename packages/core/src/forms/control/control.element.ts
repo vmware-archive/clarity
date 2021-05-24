@@ -42,6 +42,13 @@ import {
 import { CdsInternalControlLabel } from '../control-label/control-label.element.js';
 import { CdsControlAction } from '../control-action/control-action.element.js';
 
+export const enum ControlLabelLayout {
+  default = 'default',
+  ariaLabel = 'aria-label',
+  inputGroup = 'input-group',
+  hiddenLabel = 'hidden-label',
+}
+
 /**
  * Generic Control
  *
@@ -57,6 +64,7 @@ import { CdsControlAction } from '../control-action/control-action.element.js';
  * ```
  *
  * @slot - For projecting input and label
+ * @cssprop --label-width
  */
 export class CdsControl extends LitElement {
   /**
@@ -100,8 +108,6 @@ export class CdsControl extends LitElement {
 
   private _layout: ControlLayout = defaultFormLayout;
 
-  private inputHasAriaLabel = false;
-
   @internalProperty({ type: Boolean, reflect: true }) protected focused = false;
 
   @internalProperty({ type: Boolean, reflect: true }) protected disabled = false;
@@ -117,8 +123,8 @@ export class CdsControl extends LitElement {
     return getElementLanguageDirection(this) === 'rtl';
   }
 
-  /** @private Used for hiding label for input groups */
-  @internalProperty() hiddenLabel = false;
+  /** @private */
+  @internalProperty() labelLayout: ControlLabelLayout = ControlLabelLayout.default;
 
   /** @private Used for control/form groups */
   @querySlot('input, select, textarea, [cds-control]', {
@@ -165,7 +171,9 @@ export class CdsControl extends LitElement {
 
   render() {
     return html`
-      ${this.hiddenLabel ? html`<span cds-layout="display:screen-reader-only"><slot name="label"></slot></span>` : ''}
+      ${this.labelLayout === ControlLabelLayout.hiddenLabel || this.labelLayout === ControlLabelLayout.inputGroup
+        ? html`<span cds-layout="display:screen-reader-only"><slot name="label"></slot></span>`
+        : ''}
       <div
         cds-layout="${this.layout === 'vertical' ? 'vertical gap:sm' : 'horizontal gap:lg'} align:stretch"
         class="private-host ${this.isRTL ? 'rtl' : ''}"
@@ -188,7 +196,7 @@ export class CdsControl extends LitElement {
               <slot name="input"></slot>
               ${this.suffixTemplate}
             </div>
-            ${this.hiddenLabel ? '' : getStatusIcon(this.status)}
+            ${this.labelLayout !== ControlLabelLayout.inputGroup ? getStatusIcon(this.status) : ''}
           </div>
           ${this.messagesTemplate}
         </div>
@@ -218,7 +226,7 @@ export class CdsControl extends LitElement {
 
   private get primaryLabelTemplate() {
     return html`
-      ${!this.inputHasAriaLabel && !this.hiddenLabel
+      ${this.labelLayout === ControlLabelLayout.default
         ? html` <cds-internal-control-label
             .disabled="${this.disabled}"
             cds-layout="align:shrink align:top"
@@ -279,8 +287,7 @@ export class CdsControl extends LitElement {
     this.setActionOffsetPadding();
     this.setupResponsive();
     this.setupDescribedByUpdates();
-    this.setupHiddenLabel();
-    this.setupInputAriaLabel();
+    this.setupLabelLayout();
     this.assignSlotIfInControlGroup();
   }
 
@@ -329,11 +336,14 @@ export class CdsControl extends LitElement {
   }
 
   get layoutStable() {
-    return this.hiddenLabel || !controlIsWrapped(this.inputControl, this.controlLabel, this.layout);
+    return (
+      this.labelLayout !== ControlLabelLayout.default ||
+      !controlIsWrapped(this.inputControl, this.controlLabel, this.layout)
+    );
   }
 
   private setupResponsive() {
-    if (this.responsive && !this.hiddenLabel && this.controlLabel) {
+    if (this.responsive && this.labelLayout === ControlLabelLayout.default && this.controlLabel) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
       const observer = updateComponentLayout(this, layoutConfig, () =>
         this.layoutChange.emit(this.layout, { bubbles: true })
@@ -342,16 +352,13 @@ export class CdsControl extends LitElement {
     }
   }
 
-  private setupHiddenLabel() {
+  private setupLabelLayout() {
     if (this.label?.getAttribute('cds-layout')?.includes('display:screen-reader-only')) {
-      this.hiddenLabel = true;
+      this.labelLayout = ControlLabelLayout.hiddenLabel;
     }
-  }
 
-  private setupInputAriaLabel() {
-    if (this.inputControl) {
-      this.inputHasAriaLabel =
-        typeof this.inputControl.hasAttribute === 'function' && this.inputControl.hasAttribute('aria-label');
+    if (this.inputControl.hasAttribute('aria-label')) {
+      this.labelLayout = ControlLabelLayout.ariaLabel;
     }
   }
 

@@ -24,6 +24,20 @@ export function elementResize(element: HTMLElement, callbackFn: () => void) {
   return observer;
 }
 
+export function elementVisible(element: HTMLElement, callbackFn: () => void) {
+  const observer = new IntersectionObserver(
+    entries => {
+      if (entries[0].isIntersecting === true) {
+        callbackFn();
+      }
+    },
+    { threshold: [0] }
+  );
+
+  observer.observe(element);
+  return observer;
+}
+
 /**
  * Given a ResponsiveComponent this function will loop through a list of layout
  * options and change the layout of the component until the components layout

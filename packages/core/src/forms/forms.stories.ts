@@ -1254,6 +1254,148 @@ export function controlWidth() {
   `;
 }
 
+export function labelWidth() {
+  return html`
+    <form>
+      <cds-form-group layout="horizontal" style="--label-width: 300px">
+        <cds-input>
+          <label>text label</label>
+          <input placeholder="place holder text" />
+        </cds-input>
+
+        <cds-select>
+          <label>select label</label>
+          <select>
+            <option>Option One</option>
+            <option>Option Two</option>
+            <option>Option Three</option>
+          </select>
+          <cds-control-message>message text</cds-control-message>
+        </cds-select>
+
+        <cds-datalist>
+          <label>datalist label</label>
+          <input placeholder="place holder text" />
+          <datalist>
+            <option value="Item 1"></option>
+            <option value="Item 2"></option>
+            <option value="Item 3"></option>
+          </datalist>
+        </cds-datalist>
+
+        <cds-password>
+          <label>password label</label>
+          <input type="password" placeholder="password" />
+        </cds-password>
+
+        <cds-search>
+          <label>search label</label>
+          <input type="search" placeholder="search" />
+        </cds-search>
+
+        <cds-time>
+          <label>time label</label>
+          <input type="time" min="09:00" max="18:00" value="11:00" />
+        </cds-time>
+
+        <cds-input-group>
+          <label>input group label</label>
+          <cds-select cds-layout="align:shrink">
+            <label>Protocol</label>
+            <select>
+              <option>http://</option>
+              <option>https://</option>
+            </select>
+          </cds-select>
+          <cds-input>
+            <label>Host Port</label>
+            <input placeholder="localhost:8000" type="url" />
+            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+              <cds-icon shape="cloud" badge="success"></cds-icon>
+            </cds-control-action>
+          </cds-input>
+          <cds-control-message>Host ID: 123456</cds-control-message>
+        </cds-input-group>
+
+        <cds-range>
+          <label>range label</label>
+          <input type="range" min="0" max="100" value="75" step="5" />
+          <cds-control-message>CPU Utilization</cds-control-message>
+        </cds-range>
+
+        <cds-checkbox-group>
+          <label>checkbox group label</label>
+          <cds-checkbox>
+            <label>checkbox 1</label>
+            <input type="checkbox" checked />
+          </cds-checkbox>
+
+          <cds-checkbox>
+            <label>checkbox 2</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+
+          <cds-checkbox>
+            <label>checkbox 3</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+        </cds-checkbox-group>
+
+        <cds-radio-group name="region">
+          <label>radio group label</label>
+          <cds-radio>
+            <label>North America</label>
+            <input type="radio" value="north-america" checked />
+          </cds-radio>
+          <cds-radio>
+            <label>South America</label>
+            <input type="radio" value="south-america" />
+          </cds-radio>
+          <cds-radio>
+            <label>Europe</label>
+            <input type="radio" value="europe" />
+          </cds-radio>
+        </cds-radio-group>
+
+        <cds-toggle-group>
+          <label>toggle group</label>
+          <cds-toggle>
+            <label>toggle 1</label>
+            <input type="checkbox" checked />
+          </cds-toggle>
+          <cds-toggle>
+            <label>toggle 2</label>
+            <input type="checkbox" />
+          </cds-toggle>
+        </cds-toggle-group>
+
+        <cds-file>
+          <label>file label</label>
+          <input type="file" multiple />
+        </cds-file>
+
+        <cds-select>
+          <label>select multiple</label>
+          <select multiple>
+            <option>Option One</option>
+            <option>Option Two</option>
+            <option>Option Three</option>
+            <option>Option Four</option>
+            <option>Option Five</option>
+          </select>
+        </cds-select>
+
+        <cds-textarea>
+          <label>textarea label</label>
+          <textarea></textarea>
+        </cds-textarea>
+
+        <cds-button>save</cds-button>
+      </cds-form-group>
+    </form>
+  `;
+}
+
 /** @website */
 export function internationalization() {
   return html`
@@ -1514,11 +1656,12 @@ export function responsive() {
 export function longText() {
   return html`
     <style>
-      .long-text-demo label {
-        max-width: 200px;
+      .form-label-demo [layout='horizontal'],
+      .form-label-demo [layout='compact'] {
+        --label-width: 250px;
       }
     </style>
-    <div cds-layout="vertical gap:lg" class="long-text-demo">
+    <div cds-layout="vertical gap:lg" class="form-label-demo">
       <h2 cds-text="heading">Vertical</h2>
       <cds-form-group layout="vertical">
         <cds-input>
@@ -1557,7 +1700,7 @@ export function longText() {
         </cds-radio-group>
       </cds-form-group>
 
-      <h2 cds-text="heading">Horizontal</h2>
+      <h2 cds-text="heading">Horizontal ???</h2>
       <cds-form-group layout="horizontal">
         <cds-input>
           <label
@@ -1565,10 +1708,7 @@ export function longText() {
             dolore magna aliqua. Ut enim ad minim veniam</label
           >
           <input placeholder="place holder text" />
-          <cds-control-message
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
-          >
+          <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
         </cds-input>
 
         <cds-radio-group name="region">
@@ -1588,10 +1728,7 @@ export function longText() {
             <label>Europe</label>
             <input type="radio" value="europe" />
           </cds-radio>
-          <cds-control-message
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
-          >
+          <cds-control-message>Lorem ipsum dolor sitveniam</cds-control-message>
         </cds-radio-group>
       </cds-form-group>
 
@@ -1603,10 +1740,7 @@ export function longText() {
             dolore magna aliqua. Ut enim ad minim veniam</label
           >
           <input placeholder="place holder text" />
-          <cds-control-message status="error"
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
-          >
+          <cds-control-message status="error">Lorem ipsum dolor sit amet</cds-control-message>
         </cds-input>
 
         <cds-radio-group name="region">
@@ -1626,10 +1760,7 @@ export function longText() {
             <label>Europe</label>
             <input type="radio" value="europe" />
           </cds-radio>
-          <cds-control-message
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
-          >
+          <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
         </cds-radio-group>
       </cds-form-group>
 

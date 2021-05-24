@@ -7,6 +7,7 @@
 import { html } from 'lit-html';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 import { CdsControl } from '@cds/core/forms/index.js';
+import { elementVisible } from './responsive.js';
 
 describe('responsive utilities', () => {
   let element: HTMLElement;
@@ -39,5 +40,29 @@ describe('responsive utilities', () => {
 
     await componentIsStable(component);
     expect(component.layout).toBe('vertical');
+  });
+});
+
+describe('visibility utilities', () => {
+  let element: HTMLElement;
+  let component: HTMLParagraphElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(html` <p hidden>test</p> `);
+
+    component = element.querySelector<HTMLParagraphElement>('p');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should determine when an element is visible', done => {
+    elementVisible(component, () => {
+      expect(component.hasAttribute('hidden')).toBe(false);
+      done();
+    });
+
+    component.removeAttribute('hidden');
   });
 });

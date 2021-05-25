@@ -34,6 +34,7 @@ export const CdsCardTagName = 'cds-card';
   </cds-card>
  * ```
  *
+ * @beta
  * @element cds-card
  * @slot - For projecting card content
  * @cssprop --width

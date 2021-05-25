@@ -39,6 +39,7 @@ export enum CdsPaginationButtonAction {
  * </cds-pagination>
  * ```
  *
+ * @beta
  * @element cds-pagination-button
  * @slot
  * @slot cds-icon

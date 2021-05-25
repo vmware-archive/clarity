@@ -321,7 +321,7 @@ const typography = {
   },
   fontWeight: {
     // Clarity City is limited to 400-500, tokens provide hooks for customization
-    light: token('400'),
+    light: token('200'),
     regular: token('400'),
     medium: token('500'),
     semibold: token('500'),

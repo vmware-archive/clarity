@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -53,6 +53,7 @@ export { warningStandardIcon, warningStandardIconName } from './shapes/warning-s
 // SHAPES - ESSENTIAL
 export { accessibility1Icon, accessibility1IconName } from './shapes/accessibility-1.js';
 export { accessibility2Icon, accessibility2IconName } from './shapes/accessibility-2.js';
+export { announcementIcon, announcementIconName } from './shapes/announcement.js';
 export { addTextIcon, addTextIconName } from './shapes/add-text.js';
 export { alarmClockIcon, alarmClockIconName } from './shapes/alarm-clock.js';
 export { alarmOffIcon, alarmOffIconName } from './shapes/alarm-off.js';

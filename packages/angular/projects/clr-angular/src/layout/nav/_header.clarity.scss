@@ -124,7 +124,6 @@
       font-weight: 500;
     }
 
-    cds-icon,
     clr-icon {
       @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
     }

@@ -27,6 +27,7 @@ import { styles } from './pagination.element.css.js';
  * </cds-pagination>
  * ```
  *
+ * @beta
  * @element cds-pagination
  * @slot
  * @slot cds-pagination-button

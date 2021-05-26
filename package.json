@@ -7,7 +7,7 @@
     "test:angular:watch": "ng test clr-angular --source-map=false",
     "test:icons": "karma start ./projects/icons/karma.conf.js",
     "test:icons:watch": "karma start ./projects/icons/karma.conf.js --single-run=false",
-    "test": "npm-run-all test:angular test:icons",
+    "test": "npm-run-all test:angular test:icons schematics:test",
     "format": "prettier --list-different './**/*.{js,json,md,ts,scss}'",
     "format:fix": "pretty-quick --staged",
     "format:file": "prettier --write .",

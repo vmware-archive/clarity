@@ -28,6 +28,7 @@ import { CdsTextarea } from './dist/react/textarea/index.js';
 import { CdsToggle, CdsToggleGroup } from './dist/react/toggle/index.js';
 import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
 import { CdsDivider } from './dist/react/divider/index.js';
+import { CdsCard } from './dist/react/card/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -302,6 +303,32 @@ export default class App extends React.Component<{}, AppState> {
         <CdsBadge color="blue">15</CdsBadge>
         <CdsBadge color="orange">2</CdsBadge>
         <CdsBadge color="light-blue">3</CdsBadge>
+
+        <h2>Card</h2>
+        <div cds-layout="vertical gap:lg">
+          <CdsCard> Placeholder </CdsCard>
+
+          <CdsCard>
+            <div cds-layout="vertical gap:md">
+              <div cds-text="section" cds-layout="p-y:sm">
+                Card Title
+              </div>
+
+              <CdsDivider cds-card-remove-margin></CdsDivider>
+
+              <div cds-text="body" cds-layout="p-y:md">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum eum id alias aliquid, natus veritatis
+                aperiam repudiandae rem porro non, accusamus officia culpa maiores! Quis possimus ea hic laborum dicta!
+              </div>
+
+              <CdsDivider cds-card-remove-margin></CdsDivider>
+
+              <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+                <CdsButton action="flat-inline">View</CdsButton>
+              </div>
+            </div>
+          </CdsCard>
+        </div>
 
         <h2>Forms</h2>
         <div cds-layout="vertical gap:lg">

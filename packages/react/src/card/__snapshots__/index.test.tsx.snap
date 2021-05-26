@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsCard snapshot 1`] = `
+<div>
+  <CdsCard>
+    <cds-card(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-card
+        __forwardedRef={null}
+      >
+        Placeholder
+      </cds-card>
+    </cds-card(CustomElement)>
+  </CdsCard>
+</div>
+`;

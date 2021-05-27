@@ -2,6 +2,111 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.3.0",
+      "date": "2021-05-27",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 5785,
+          "title": "Added card component to Clarity Core",
+          "project": "Core",
+          "scope": "Card"
+        },
+        {
+          "issue": 6000,
+          "title": "Added card component to @cds/react",
+          "project": "React",
+          "scope": "Card"
+        },
+        {
+          "issue": 5940,
+          "title": "New breadcrumb component",
+          "project": "Core",
+          "scope": "Breadcrumb"
+        },
+        {
+          "issue": 5992,
+          "title": "Added light font weight to typography tokens",
+          "project": "Core",
+          "scope": "Typography"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6003,
+          "title": "Adjusted color for new header-8 background",
+          "project": "Angular",
+          "scope": "Header"
+        },
+        {
+          "issue": 5994,
+          "title": "Added announcment icon to icon exports",
+          "project": "Core",
+          "scope": "Icons"
+        },
+        {
+          "issue": 5935,
+          "title": "Removed MS-Edge reveal icon from password inputs",
+          "project": "Angular",
+          "scope": "Password"
+        },
+        {
+          "issue": 5990,
+          "title": "Fixed several issues with form control label alignments",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5996,
+          "title": "Added beta tags for card and pagination components in Clarity Core",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5991,
+          "title": "Fixed an issue where a hidden label on a form control would also hide the form control message's icon",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5974,
+          "title": "Ignored px values in tokens file that were causing stylelint to fail",
+          "project": "Core",
+          "scope": "Build"
+        },
+        {
+          "issue": 5975,
+          "title": "Corrected link to pagination component's storybook documentation",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5978,
+          "title": "Improved placeholder text color contrast in light-themed datagrid",
+          "project": "Angular",
+          "scope": "Datagrid"
+        },
+        {
+          "issue": 5983,
+          "title": "Prevented side navigation caret icons on website from animating on page load",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5977,
+          "title": "Added sizing for side navigation caret icons on website",
+          "project": "Website",
+          "scope": "Documentation"
+        },
+        {
+          "issue": 5970,
+          "title": "Adjusted Core line-height of new flat-inline buttons",
+          "project": "Core",
+          "scope": "Button"
+        }
+      ]
+    },
+    {
       "version": "5.2.1",
       "date": "2021-05-20",
       "description": "This is a bug release.",

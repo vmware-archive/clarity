@@ -1,6 +1,6 @@
 {
   "name": "@cds/core",
-  "version": "5.2.1",
+  "version": "5.3.0",
   "scripts": {
     "clean": "del ./dist",
     "start": "npm-run-all build -p build:watch storybook:start",

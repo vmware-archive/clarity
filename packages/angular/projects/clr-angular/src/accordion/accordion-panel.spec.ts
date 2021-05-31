@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2019 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,7 +20,11 @@ import { IfExpandService } from '../utils/conditional/if-expanded.service';
 @Component({
   template: `
     <clr-accordion>
-      <clr-accordion-panel [(clrAccordionPanelOpen)]="open" [clrAccordionPanelDisabled]="disabled">
+      <clr-accordion-panel
+        [(clrAccordionPanelOpen)]="open"
+        [clrAccordionPanelDisabled]="disabled"
+        (clrAccordionPanelOpenChange)="change($event)"
+      >
         <clr-accordion-title>title</clr-accordion-title>
         <clr-accordion-description *ngIf="showDescription">description</clr-accordion-description>
         <clr-accordion-content>panel</clr-accordion-content>
@@ -32,6 +36,26 @@ class TestComponent {
   open = false;
   disabled = false;
   showDescription = false;
+  change = state => {
+    return state;
+  };
+}
+
+@Component({
+  template: `
+    <clr-accordion>
+      <clr-accordion-panel (clrAccordionPanelOpenChange)="change($event)">
+        <clr-accordion-title>title</clr-accordion-title>
+        <clr-accordion-description>description</clr-accordion-description>
+        <clr-accordion-content>panel</clr-accordion-content>
+      </clr-accordion-panel>
+    </clr-accordion>
+  `,
+})
+class TestNoBindingComponent {
+  change = state => {
+    return state;
+  };
 }
 
 describe('ClrAccordionPanel', () => {
@@ -83,7 +107,7 @@ describe('ClrAccordionPanel', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent],
+        declarations: [TestComponent, TestNoBindingComponent],
         providers: [UNIQUE_ID_PROVIDER],
         imports: [ClrAccordionModule, ReactiveFormsModule, NoopAnimationsModule],
       });
@@ -111,6 +135,48 @@ describe('ClrAccordionPanel', () => {
       testComponent.disabled = true;
       fixture.detectChanges();
       expect(fixture.componentInstance.disabled).toBe(true);
+    });
+
+    describe('Output (clrAccordionPanelOpenChange)', () => {
+      /**
+       * Test that (clrAccordionPanelOpenChange) will be called with the correct state of the panel even
+       * when there is no [clrAccordionPanelOpen] binding.
+       */
+      it('emit value for [clrAccordionPanelOpen] without binding it', () => {
+        const fixture: ComponentFixture<TestNoBindingComponent> = TestBed.createComponent(TestNoBindingComponent);
+        const component = fixture.componentInstance;
+        const accordionPanel = fixture.debugElement.query(By.directive(ClrAccordionPanel)).componentInstance;
+        spyOn(component, 'change');
+
+        // First render
+        fixture.detectChanges();
+
+        accordionPanel.togglePanel();
+        expect(component.change).toHaveBeenCalledWith(true);
+
+        // Toggle it again
+        accordionPanel.togglePanel();
+        expect(component.change).toHaveBeenCalledWith(false);
+      });
+
+      /**
+       * Same test as above but with binding to the [clrAccordionPanelOpen]
+       */
+      it('emit value for [clrAccordionPanelOpen] when there is a binding to it', () => {
+        const component = fixture.componentInstance;
+        const accordionPanel = fixture.debugElement.query(By.directive(ClrAccordionPanel)).componentInstance;
+        spyOn(component, 'change');
+
+        // First render
+        fixture.detectChanges();
+
+        accordionPanel.togglePanel();
+        expect(component.change).toHaveBeenCalledWith(true);
+
+        // Toggle it again
+        accordionPanel.togglePanel();
+        expect(component.change).toHaveBeenCalledWith(false);
+      });
     });
   });
 

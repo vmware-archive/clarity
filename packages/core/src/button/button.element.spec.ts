@@ -9,7 +9,6 @@ import { CdsButton, ClrLoadingState, iconSpinner } from '@cds/core/button';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
-import { listenForAttributeChange } from '@cds/core/internal';
 
 describe('button element', () => {
   let testElement: HTMLElement;
@@ -39,6 +38,7 @@ describe('button element', () => {
 
   describe('Button Behaviors', () => {
     it('should have a tab index of 0 to be able to focus', async () => {
+      await componentIsStable(component);
       expect(component.getAttribute('tabindex')).toBe('0');
     });
 
@@ -78,9 +78,26 @@ describe('button element', () => {
         done();
       });
 
-      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      const event = new KeyboardEvent('keyup', { key: 'Enter' });
       component.focus();
       component.dispatchEvent(event);
+    });
+
+    it('should not interact with form elements if type is button', async () => {
+      component.type = 'button';
+      await componentIsStable(component);
+      const o = {
+        f: () => {
+          // Do nothing
+        },
+      };
+      spyOn(o, 'f');
+      testElement.querySelector('form').addEventListener('submit', o.f);
+      component.click();
+      const event = new KeyboardEvent('keyup', { key: 'Enter' });
+      component.focus();
+      component.dispatchEvent(event);
+      expect(o.f).not.toHaveBeenCalled();
     });
 
     it('should not interact with form elements if disabled (1)', async () => {
@@ -322,63 +339,39 @@ describe('iconSpinner(): ', () => {
 });
 
 describe('button keyboard interaction: ', () => {
-  it('should add active attr on click', async done => {
+  it('should add active attr on click', async () => {
     const element = await createTestElement(html`<cds-button>Text slot</cds-button>`);
     const component = element.querySelector('cds-button');
     expect(component.hasAttribute('_active')).toBe(false);
 
-    listenForAttributeChange(component, '_active', () => {
-      expect(true).toBe(true, 'active attr was added on click');
-      done();
-    });
+    component.dispatchEvent(new MouseEvent('mousedown'));
+    await componentIsStable(component);
+    expect(component.hasAttribute('_active')).toBe(true);
 
-    component.click();
     removeTestElement(element);
   });
 
-  it('should NOT add active attr if button is disabled', async done => {
-    const element = await createTestElement(html`<cds-button>Text slot</cds-button>`);
+  it('should NOT add active attr if button is disabled', async () => {
+    const element = await createTestElement(html`<cds-button disabled>Text slot</cds-button>`);
     const component = element.querySelector('cds-button');
-    expect(component.hasAttribute('active')).toBe(false);
-    component.disabled = true;
     await componentIsStable(component);
+    expect(component.hasAttribute('_active')).toBe(false);
 
-    listenForAttributeChange(component, 'active', () => {
-      expect(false).toBe(true, 'active attr should not be added on click');
-      done();
-    });
-
-    listenForAttributeChange(component, 'id', () => {
-      expect(component.hasAttribute('active')).toBe(false, 'active attr was not be added');
-      done();
-    });
-
-    component.click();
+    component.dispatchEvent(new MouseEvent('mousedown'));
     await componentIsStable(component);
-    component.setAttribute('id', 'ohai');
+    expect(component.hasAttribute('_active')).toBe(false);
     removeTestElement(element);
   });
 
-  it('should NOT add active attr if button is readonly', async done => {
+  it('should NOT add active attr if button is readonly', async () => {
     const element = await createTestElement(html`<cds-button readonly>Text slot</cds-button>`);
     const component = element.querySelector('cds-button');
     await componentIsStable(component);
-    expect(component.hasAttribute('active')).toBe(false);
-    expect(component.hasAttribute('readonly')).toBe(true);
+    expect(component.hasAttribute('_active')).toBe(false);
 
-    listenForAttributeChange(component, 'active', () => {
-      expect(false).toBe(true, 'active attr should not be added on click');
-      done();
-    });
-
-    listenForAttributeChange(component, 'id', () => {
-      expect(component.hasAttribute('active')).toBe(false, 'active attr was not be added');
-      done();
-    });
-
-    component.click();
+    component.dispatchEvent(new MouseEvent('mousedown'));
     await componentIsStable(component);
-    component.setAttribute('id', 'ohai');
+    expect(component.hasAttribute('_active')).toBe(false);
     removeTestElement(element);
   });
 });

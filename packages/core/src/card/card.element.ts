@@ -13,11 +13,11 @@ export const CdsCardTagName = 'cds-card';
  * ```
  *
  * ```html
- * <cds-card>
+ * <cds-card aria-labelledby="{label your card}">
     <div cds-layout="vertical gap:md">
-      <div cds-text="section" cds-layout="p-y:sm">
+      <h2 id="{label your card}" cds-text="section" cds-layout="p-y:sm">
         <!-- Card title -->
-      </div>
+      </h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 

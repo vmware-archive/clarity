@@ -14,16 +14,12 @@ import '@cds/core/card/register.js';
 
 ```html
 <cds-card>
-  <div cds-layout="vertical gap:md">
-    <div cds-text="section" cds-layout="p-y:sm">
-      Card Title
-    </div>
+  <div cds-layout="vertical gap:md" aria-labelledby="{id}">
+    <h2 id="{id}" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
 
     <cds-divider cds-card-remove-margin></cds-divider>
 
-    <div cds-text="body" cds-layout="p-y:md">
-      Card Content
-    </div>
+    <div cds-text="body" cds-layout="p-y:md">Card Content</div>
 
     <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -36,6 +32,18 @@ import '@cds/core/card/register.js';
 
 <Preview>
   <Story id="stories-card--with-layout-two-dividers-and-button" />
+</Preview>
+
+<Preview>
+  <Story id="stories-card--with-container-of-cards" />
+</Preview>
+
+<Preview>
+  <Story id="stories-card--social-post" />
+</Preview>
+
+<Preview>
+  <Story id="stories-card--with-image" />
 </Preview>
 
 ## API

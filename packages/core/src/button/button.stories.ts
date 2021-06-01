@@ -44,13 +44,14 @@ export function form() {
       cds-layout="vertical gap:md"
       @submit="${(e: Event) => {
         e.preventDefault();
-        action('submit')(e);
+        console.log('submit');
       }}"
     >
       <div cds-layout="vertical gap:sm">
         <label for="name" cds-text="caption">Name</label>
         <input id="name" />
       </div>
+      <cds-button type="button" action="outline" @click=${() => console.log('click')}>cancel</cds-button>
       <cds-button type="submit">submit</cds-button>
     </form>
   `;

@@ -5,6 +5,7 @@
  */
 
 import { html, LitElement } from 'lit-element';
+import { render } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { property, internalProperty } from '../decorators/property.js';
@@ -54,7 +55,11 @@ export class CdsBaseButton extends LitElement {
 
   protected updated(props: Map<string, any>) {
     super.updated(props);
-    this.updateButtonAttributes(props);
+    this.updateButtonAttributes();
+
+    if (props.has('readonly')) {
+      this.setupNativeButtonBehavior();
+    }
   }
 
   /** This mimics the mouse-click visual behavior for keyboard only users and screen readers.
@@ -66,21 +71,31 @@ export class CdsBaseButton extends LitElement {
    *
    * @private
    */
-  private showClick() {
-    this.active = true;
-    const clickTimer = setTimeout(() => {
-      this.active = false;
-      clearTimeout(clickTimer);
-    }, 300);
+  private emulateActiveMouseDown() {
+    if (!this.disabled && !this.readonly) {
+      this.active = true;
+    }
   }
 
-  private setupNativeButtonBehavior(readonly: boolean) {
-    if (readonly) {
+  private emulateActiveMouseUp() {
+    this.active = false;
+  }
+
+  private setupNativeButtonBehavior() {
+    if (this.readonly) {
+      this.removeEventListener('keyup', this.emulateActiveMouseUp);
+      this.removeEventListener('keydown', this.emulateActiveMouseDown);
+      this.removeEventListener('mouseup', this.emulateActiveMouseUp);
+      this.removeEventListener('mousedown', this.emulateActiveMouseDown);
       this.removeEventListener('click', this.triggerNativeButtonBehavior);
-      this.removeEventListener('keydown', this.emulateKeyBoardEventBehavior);
+      this.removeEventListener('keyup', this.emulateKeyBoardEventBehavior);
     } else {
+      this.addEventListener('keyup', this.emulateActiveMouseUp);
+      this.addEventListener('keydown', this.emulateActiveMouseDown);
+      this.addEventListener('mouseup', this.emulateActiveMouseUp);
+      this.addEventListener('mousedown', this.emulateActiveMouseDown);
       this.addEventListener('click', this.triggerNativeButtonBehavior);
-      this.addEventListener('keydown', this.emulateKeyBoardEventBehavior);
+      this.addEventListener('keyup', this.emulateKeyBoardEventBehavior);
     }
   }
 
@@ -94,7 +109,6 @@ export class CdsBaseButton extends LitElement {
         stopEvent(event);
       } else if (!event.defaultPrevented) {
         const buttonTemplate = html`<button
-          class="cds-hidden-button"
           aria-hidden="true"
           ?disabled="${this.disabled}"
           tabindex="-1"
@@ -104,23 +118,27 @@ export class CdsBaseButton extends LitElement {
           type="${ifDefined(this.type)}"
         ></button>`;
 
-        this.showClick();
-        this.appendChild(buttonTemplate.getTemplateElement().content.cloneNode(true) as HTMLElement);
-        const button = this.querySelector('.cds-hidden-button') as HTMLButtonElement;
-        button.dispatchEvent(new MouseEvent('click', { relatedTarget: this, composed: true }));
-        button.remove();
+        const marker = document.createElement('div');
+        this.appendChild(marker);
+        render(buttonTemplate, marker);
+        this.querySelector('button[aria-hidden]')?.dispatchEvent(
+          new MouseEvent('click', { relatedTarget: this, composed: true })
+        );
+        marker.remove();
       }
     }
   }
 
   private emulateKeyBoardEventBehavior(evt: KeyboardEvent) {
     onAnyKey(['enter', 'space'], evt, () => {
-      this.click();
-      stopEvent(evt);
+      if (!this.readonly) {
+        this.click();
+        stopEvent(evt);
+      }
     });
   }
 
-  private updateButtonAttributes(props: Map<string, any>) {
+  private updateButtonAttributes() {
     this.isAnchor = this.parentElement?.tagName === 'A';
 
     if (this.isAnchor && this.parentElement) {
@@ -138,10 +156,6 @@ export class CdsBaseButton extends LitElement {
       this.role = 'button';
       this.tabIndexAttr = this.disabled ? -1 : 0;
       this.ariaDisabled = this.disabled ? 'true' : 'false';
-    }
-
-    if (props.has('readonly')) {
-      this.setupNativeButtonBehavior(this.readonly);
     }
   }
 }

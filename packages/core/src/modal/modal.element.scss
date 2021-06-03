@@ -8,6 +8,9 @@
   --background: #{$cds-alias-object-overlay-background};
   --box-shadow: #{$cds-alias-object-shadow-100};
   --width: calc(8 * #{$cds-global-space-13});
+  --content-overflow: hidden auto;
+  --max-height: 70vh;
+  --tablet-max-height: 55vh;
 }
 
 :host([size='sm']) {
@@ -45,19 +48,18 @@
 .modal-body {
   // This doesn't do much, but at least with several paragraphs in the content
   // it doesn't mess up the modal's proportions.
-  max-height: 70vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  max-height: var(--max-height);
+  overflow: var(--content-overflow);
 }
 
 @media screen and (max-width: $cds-global-layout-width-sm) and (orientation: landscape) {
   .modal-body {
-    max-height: 55vh;
+    max-height: var(--tablet-max-height);
   }
 }
 
 @media screen and (max-width: $cds-global-layout-width-xs) {
   .modal-body {
-    max-height: 55vh;
+    max-height: var(--tablet-max-height);
   }
 }

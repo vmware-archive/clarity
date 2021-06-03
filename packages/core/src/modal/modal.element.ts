@@ -54,6 +54,9 @@ import { styles } from './modal.element.css.js';
  * @cssprop --background
  * @cssprop --box-shadow
  * @cssprop --width
+ * @cssprop --content-overflow - set as { x, y }. take care when customizing because overflow settings can have unintended side effects.
+ * @cssprop --max-height - sets hard limit on height of modal
+ * @cssprop --tablet-max-height - sets hard limit on height of modal when on a tablet in landscape mode
  */
 @animate({
   hidden: {

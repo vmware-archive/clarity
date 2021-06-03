@@ -2,6 +2,7 @@ import '@cds/core/accordion/register.js';
 import '@cds/core/alert/register.js';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
+import '@cds/core/card/register.js';
 import '@cds/core/checkbox/register.js';
 import '@cds/core/datalist/register.js';
 import '@cds/core/date/register.js';

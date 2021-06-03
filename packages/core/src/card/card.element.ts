@@ -19,7 +19,7 @@ import styles from './card.element.scss';
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body" cds-layout="p-y:md">
+      <div cds-text="body light" cds-layout="p-y:md">
         <!-- Card content -->
       </div>
 

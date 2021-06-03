@@ -6,6 +6,7 @@
 
 import '@cds/core/card/register.js';
 import '@cds/core/divider/register.js';
+import '@cds/core/forms/register.js';
 import { getElementStorybookArgs, getElementStorybookArgTypes, spreadProps } from '@cds/core/internal';
 import { html } from 'lit';
 import customElements from '../../dist/core/custom-elements.json';
@@ -16,33 +17,6 @@ import { thumbsUpIcon } from '@cds/core/icon/shapes/thumbs-up.js';
 ClarityIcons.addIcons(shareIcon, thumbsUpIcon);
 
 const placeholder = 'Placeholder';
-const basicContent = `
-    Message: Can you imagine what we will be downloading in another twenty years?
-    Who would have ever thought that you could record sound with digital quality fifty years ago?
-    Now we routinely download whole albums worth of music in a couple of minutes.`;
-const longerContent = `
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Praesent volutpat tortor eget quam auctor, quis sagittis libero auctor.
-    Nulla augue ante, tincidunt sit amet semper vitae, tempus at ipsum.
-    Vestibulum elementum, turpis quis ullamcorper fermentum, elit turpis placerat ipsum, quis convallis ex nisi sit amet lacus.
-    Ut enim ipsum, tincidunt nec luctus id, pharetra id velit. Aliquam nec elit ut neque lacinia mattis id ac lorem.
-    Vivamus egestas massa nulla, ac elementum purus pretium eu. Duis ultrices nec tortor varius consectetur.
-    Maecenas convallis bibendum urna, et aliquam quam tincidunt in.
-    Nam viverra, leo vitae imperdiet ultrices, ante mi facilisis mi, ac vehicula erat nulla sed nibh.
-    Nam euismod gravida est, convallis placerat nunc pharetra sed. Nullam scelerisque dui augue, eu porta erat tempus in.
-
-    Integer egestas massa orci, id scelerisque libero lobortis vitae.
-    Vivamus aliquet sem massa, eget sodales sapien dictum eu.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    Suspendisse non interdum sem, nec egestas nulla.
-    Duis vitae leo justo. Fusce ante enim, tincidunt nec faucibus sed, fringilla et ipsum.
-    Proin quis diam elit. Cras nec finibus libero. Sed bibendum lectus eget magna ultricies eleifend.
-    Duis ut molestie urna. Proin cursus dolor ac ex rutrum, eu condimentum elit tincidunt.
-    In a dolor faucibus, vehicula ipsum eu, viverra lorem. Aenean congue fermentum commodo.
-    Sed ex purus, consectetur mollis urna eget, vestibulum mollis dolor.
-    Donec sodales, felis sit amet gravida ornare, magna dolor ullamcorper turpis, vel facilisis odio ipsum semper sem.
-  `;
 
 export default {
   title: 'Stories/Card',
@@ -53,9 +27,10 @@ export default {
   },
 };
 
-export function API(args: { [key: string]: unknown }) {
-  return html`<cds-card aria-label="API card" ...="${spreadProps(getElementStorybookArgs(args))}">
-    <p cds-text="body">${placeholder}</p>
+/** @website **/
+export function Basic(args: { [key: string]: unknown }) {
+  return html`<cds-card aria-label="Basic card" ...="${spreadProps(getElementStorybookArgs(args))}">
+    <p cds-text="body light">${placeholder}</p>
   </cds-card>`;
 }
 
@@ -65,7 +40,11 @@ export function WithLayout() {
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithLayout" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
 
-      <div cds-text="body" cds-layout="p-y:lg">${basicContent}</div>
+      <div cds-text="body light" cds-layout="p-y:lg">
+        Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
+        you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
+        music in a couple of minutes.
+      </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -84,7 +63,11 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body" cds-layout="p-y:lg">${basicContent}</div>
+          <div cds-text="body light" cds-layout="p-y:lg">
+            Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
+            that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
+            worth of music in a couple of minutes.
+          </div>
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -97,7 +80,11 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body" cds-layout="p-y:lg">${basicContent}</div>
+          <div cds-text="body light" cds-layout="p-y:lg">
+            Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
+            that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
+            worth of music in a couple of minutes.
+          </div>
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -110,7 +97,11 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body" cds-layout="p-y:lg">${basicContent}</div>
+          <div cds-text="body light" cds-layout="p-y:lg">
+            Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
+            that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
+            worth of music in a couple of minutes.
+          </div>
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -123,7 +114,11 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body" cds-layout="p-y:lg">${basicContent}</div>
+          <div cds-text="body light" cds-layout="p-y:lg">
+            Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
+            that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
+            worth of music in a couple of minutes.
+          </div>
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -143,7 +138,7 @@ export function WithAlert() {
           Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
         </div>
 
-        <div cds-text="body" cds-layout="p-y:lg">
+        <div cds-text="body light" cds-layout="p-y:lg">
           <cds-alert-group>
             <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
           </cds-alert-group>
@@ -157,7 +152,6 @@ export function WithAlert() {
   `;
 }
 
-/** @website **/
 export function WithForms() {
   return html`
     <cds-card aria-labelledby="cardWithForms">
@@ -167,7 +161,39 @@ export function WithForms() {
         </div>
 
         <div cds-text="body" cds-layout="p-y:lg">
-          <!-- {unsafeHTML(form().values as any)} -->
+          <form>
+            <cds-form-group validate>
+              <cds-input>
+                <label>text input (required)</label>
+                <input placeholder="placeholder text" required />
+                <cds-control-message error="valueMissing">required</cds-control-message>
+              </cds-input>
+
+              <cds-input>
+                <label>number input (min/max)</label>
+                <input type="number" min="1" max="5" value="3" />
+                <cds-control-message error="rangeOverflow">Maximum is 5</cds-control-message>
+                <cds-control-message error="rangeUnderflow">Minimum is 1</cds-control-message>
+              </cds-input>
+
+              <cds-input>
+                <label>U.S telephone (pattern)</label>
+                <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="111-222-3333" />
+                <cds-control-message error="patternMismatch"
+                  >please enter US phone number (111-222-3333)</cds-control-message
+                >
+              </cds-input>
+
+              <cds-input>
+                <label>email input (required/type)</label>
+                <input type="email" placeholder="example@example.com" required />
+                <cds-control-message error="valueMissing">a email address is required to continue</cds-control-message>
+                <cds-control-message error="typeMismatch">please enter a valid email address</cds-control-message>
+              </cds-input>
+
+              <cds-button>save</cds-button>
+            </cds-form-group>
+          </form>
         </div>
 
         <cds-divider cds-card-remove-margin></cds-divider>
@@ -191,7 +217,11 @@ export function WithLayoutAndTwoDividers(args: { [key: string]: unknown }) {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body" cds-layout="p-y:md">${basicContent}</div>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
+        you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
+        music in a couple of minutes.
+      </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -211,7 +241,11 @@ export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown })
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body" cds-layout="p-y:md">${basicContent}</div>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
+        you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
+        music in a couple of minutes.
+      </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
@@ -229,7 +263,7 @@ export function WithImage() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body" cds-layout="p-y:md">
+      <div cds-text="body light" cds-layout="p-y:md">
         <img src="https://dummyimage.com/200x200/000/fff" alt="placeholder image" />
       </div>
 
@@ -242,6 +276,38 @@ export function WithImage() {
   </cds-card>`;
 }
 
+/** @website **/
+export function WithLists() {
+  return html`<cds-card aria-labelledby="cardWithList" style="--width: 15rem">
+    <div cds-layout="vertical gap:md">
+      <h2 id="cardWithList" cds-text="section" cds-layout="horizontal gap:sm align:vertical-center">
+        Card with list
+      </h2>
+
+      <cds-divider cds-card-remove-margin></cds-divider>
+
+      <div cds-text="body light" cds-layout="p-y:md">
+        <ul cds-list="unstyled">
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+          <li>The five boxing wizards jump quickly</li>
+        </ul>
+      </div>
+
+      <cds-divider cds-card-remove-margin></cds-divider>
+
+      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+        <cds-button action="flat-inline">Action</cds-button>
+      </div>
+    </div>
+  </cds-card>`;
+}
+
+/** @website **/
 export function SocialPost() {
   ClarityIcons.addIcons([
     'batman',
@@ -270,7 +336,7 @@ export function SocialPost() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body" cds-layout="p-y:md">
+      <div cds-text="body light" cds-layout="p-y:md">
         If you can carry it to the top of the mountain you may find what you were looking for in the first place.
       </div>
 
@@ -291,8 +357,23 @@ export function WithLayoutAndOverflow() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="p-y:md" cds-text="body" style="height: 4rem; overflow: auto; height: 100px">
-        ${longerContent}
+      <div cds-layout="p-y:md" cds-text="body light" style="height: 4rem; overflow: auto; height: 100px">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat tortor eget quam auctor, quis
+        sagittis libero auctor. Nulla augue ante, tincidunt sit amet semper vitae, tempus at ipsum. Vestibulum
+        elementum, turpis quis ullamcorper fermentum, elit turpis placerat ipsum, quis convallis ex nisi sit amet lacus.
+        Ut enim ipsum, tincidunt nec luctus id, pharetra id velit. Aliquam nec elit ut neque lacinia mattis id ac lorem.
+        Vivamus egestas massa nulla, ac elementum purus pretium eu. Duis ultrices nec tortor varius consectetur.
+        Maecenas convallis bibendum urna, et aliquam quam tincidunt in. Nam viverra, leo vitae imperdiet ultrices, ante
+        mi facilisis mi, ac vehicula erat nulla sed nibh. Nam euismod gravida est, convallis placerat nunc pharetra sed.
+        Nullam scelerisque dui augue, eu porta erat tempus in. Integer egestas massa orci, id scelerisque libero
+        lobortis vitae. Vivamus aliquet sem massa, eget sodales sapien dictum eu. Class aptent taciti sociosqu ad litora
+        torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia
+        nostra, per inceptos himenaeos. Suspendisse non interdum sem, nec egestas nulla. Duis vitae leo justo. Fusce
+        ante enim, tincidunt nec faucibus sed, fringilla et ipsum. Proin quis diam elit. Cras nec finibus libero. Sed
+        bibendum lectus eget magna ultricies eleifend. Duis ut molestie urna. Proin cursus dolor ac ex rutrum, eu
+        condimentum elit tincidunt. In a dolor faucibus, vehicula ipsum eu, viverra lorem. Aenean congue fermentum
+        commodo. Sed ex purus, consectetur mollis urna eget, vestibulum mollis dolor. Donec sodales, felis sit amet
+        gravida ornare, magna dolor ullamcorper turpis, vel facilisis odio ipsum semper sem.
       </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>

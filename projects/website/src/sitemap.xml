@@ -301,6 +301,26 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://clarity.design/news/src/releases/4.x/4.0.14.html</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/src/releases/4.x/4.0.13.html</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/src/releases/4.x/4.0.12.html</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/src/releases/4.x/4.0.11.html</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://clarity.design/news/src/releases/4.x/4.0.10.html</loc>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://clarity.design/news/src/releases/4.x/4.0.9.html</loc>
         <changefreq>daily</changefreq>
     </url>

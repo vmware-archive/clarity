@@ -3,6 +3,7 @@
   "version": "5.3.0",
   "scripts": {
     "start": "ng serve dev",
+    "website:news": "node projects/website/generate-news",
     "test:angular": "ng test clr-angular --watch false --source-map=false",
     "test:angular:watch": "ng test clr-angular --source-map=false",
     "test:icons": "karma start ./projects/icons/karma.conf.js",
@@ -130,7 +131,8 @@
     "tslint": "~6.1.0",
     "typescript": "~4.1.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack-cli": "^4.7.0"
+    "webpack-cli": "^4.7.0",
+    "xml-js": "^1.6.11"
   },
   "husky": {
     "hooks": {

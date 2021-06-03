@@ -10,6 +10,10 @@
 # dependencies
 /node_modules
 
+#auto-generated website sources
+projects/website/src/releases/final-template/auto-generated-news.component.html
+projects/website/src/releases/final-template/auto-generated-routes.ts
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json

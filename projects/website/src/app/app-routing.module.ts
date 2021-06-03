@@ -21,10 +21,10 @@ const appRoutes: Routes = [
     path: 'community',
     loadChildren: () => import('./community/community.module').then(m => m.CommunityModule),
   },
-  // {
-  //   path: 'news',
-  //   loadChildren: () => import('./news/news.module').then(m => m.NewsModule),
-  // },
+  {
+    path: 'news',
+    loadChildren: () => import('./news/news.module').then(m => m.NewsModule),
+  },
   {
     path: '',
     component: HomeComponent,

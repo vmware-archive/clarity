@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 export const environment = {
   production: true,
-  latest: 'v4',
-  version: 'v4',
+  latest: 'v5',
+  version: 'v5',
   versions_url: 'https://clarity.design/versions.json',
   icons_base_url: '/.netlify/functions/download-icon',
   icons_url: 'https://github.com/vmware/clarity-assets/archive/master.zip',

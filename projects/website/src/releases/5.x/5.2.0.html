@@ -1,0 +1,162 @@
+<!--
+  ~ Copyright (c) 2016-2021 VMWare, Inc. All Rights Reserved.
+  ~ This software is released under MIT License.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+-->
+
+<h2>Highlights</h2>
+<ul class="list">
+  <li>
+    Added standalone pagination component to clarity core (cds-pagination)
+    <a href="https://github.com/vmware/clarity/issues/5706" target="_blank"> (#5706) </a>
+  </li>
+  <li>
+    Added a &#39;neutral&#39; button style to cds-buttons
+    <a href="https://github.com/vmware/clarity/issues/5859" target="_blank"> (#5859) </a>
+  </li>
+  <li>
+    Added signature, IoT, thin client, timeline, and update icons to cds-icons
+    <a href="https://github.com/vmware/clarity/issues/5863" target="_blank"> (#5863) </a>
+  </li>
+  <li>
+    Added &#39;xs&#39; size for cds-icon
+    <a href="https://github.com/vmware/clarity/issues/5872" target="_blank"> (#5872) </a>
+  </li>
+  <li>
+    Added ng-add capability to @cds&#x2F;angular
+    <a href="https://github.com/vmware/clarity/issues/5890" target="_blank"> (#5890) </a>
+  </li>
+  <li>
+    Added cds-i18n documentation to Clarity Core storybook
+    <a href="https://github.com/vmware/clarity/issues/5754" target="_blank"> (#5754) </a>
+  </li>
+</ul>
+
+<h2>Bug Fixes</h2>
+<ul class="list">
+  <li bug-fix>
+    Fixed several issues with Core accordion CSS, including a gap in a collapsed header
+    <a href="https://github.com/vmware/clarity/issues/5769" target="_blank"> (#5769) </a>
+  </li>
+  <li bug-fix>
+    Fixed issue with content overflow in cds-accordion-header
+    <a href="https://github.com/vmware/clarity/issues/5852" target="_blank"> (#5852) </a>
+  </li>
+  <li bug-fix>
+    Lightened the border, text, and icon colors of disabled input
+    <a href="https://github.com/vmware/clarity/issues/5866" target="_blank"> (#5866) </a>
+  </li>
+  <li bug-fix>
+    Updated file input so that the clear-all control is removed when the input is disabled and a change event is fired
+    when reset
+    <a href="https://github.com/vmware/clarity/issues/5903" target="_blank"> (#5903) </a>
+  </li>
+  <li bug-fix>
+    Allowed focus with the tab key for focusable content inside the cds-modal
+    <a href="https://github.com/vmware/clarity/issues/5918" target="_blank"> (#5918) </a>
+  </li>
+  <li bug-fix>
+    Disabled the cds-toggle animation until after its initial load
+    <a href="https://github.com/vmware/clarity/issues/5917" target="_blank"> (#5917) </a>
+  </li>
+  <li bug-fix>
+    Changed cds-text&#x3D;truncate so it would not cut off glyph descenders
+    <a href="https://github.com/vmware/clarity/issues/5908" target="_blank"> (#5908) </a>
+  </li>
+  <li bug-fix>
+    Updated Angular to 11.2.5
+    <a href="https://github.com/vmware/clarity/issues/5748" target="_blank"> (#5748) </a>
+  </li>
+  <li bug-fix>
+    Fixed dark theme configuration in @clr&#x2F;angular dev app
+    <a href="https://github.com/vmware/clarity/issues/5848" target="_blank"> (#5848) </a>
+  </li>
+  <li bug-fix>
+    Updated clr-buttons so that cds-icons could rotate within them
+    <a href="https://github.com/vmware/clarity/issues/5898" target="_blank"> (#5898) </a>
+  </li>
+  <li bug-fix>
+    Prevent combobox from firing double open event with clrOpenChange when navigating away with the tab key
+    <a href="https://github.com/vmware/clarity/issues/5886" target="_blank"> (#5886) </a>
+  </li>
+  <li bug-fix>
+    Corrected the alignment of the selected count checkbox in the datagrid footer
+    <a href="https://github.com/vmware/clarity/issues/5818" target="_blank"> (#5818) </a>
+  </li>
+  <li bug-fix>
+    Keep invalid password input from changing its width unexpectedly when focused
+    <a href="https://github.com/vmware/clarity/issues/5789" target="_blank"> (#5789) </a>
+  </li>
+  <li bug-fix>
+    Fixed clr-stepper so that it would run validation after a user skips back to a completed step
+    <a href="https://github.com/vmware/clarity/issues/5897" target="_blank"> (#5897) </a>
+  </li>
+  <li bug-fix>
+    Fixed animation of accordion header toggles
+    <a href="https://github.com/vmware/clarity/issues/5810" target="_blank"> (#5810) </a>
+  </li>
+  <li bug-fix>
+    Updated Clarity UI HSL values to remove deprecated warnings in sass builds
+    <a href="https://github.com/vmware/clarity/issues/5834" target="_blank"> (#5834) </a>
+  </li>
+  <li bug-fix>
+    Fixed sizing of Clarity Icons inside Clarity UI&#39;s compact buttons
+    <a href="https://github.com/vmware/clarity/issues/5835" target="_blank"> (#5835) </a>
+  </li>
+  <li bug-fix>
+    Added CSS variables to nav styles to improve theming
+    <a href="https://github.com/vmware/clarity/issues/5856" target="_blank"> (#5856) </a>
+  </li>
+  <li bug-fix>
+    Fixed the alignment of the collapse&#x2F;expand icon in nav groups
+    <a href="https://github.com/vmware/clarity/issues/5862" target="_blank"> (#5862) </a>
+  </li>
+  <li bug-fix>
+    Added missing CSS properties to enable theming of clr-signpost
+    <a href="https://github.com/vmware/clarity/issues/5849" target="_blank"> (#5849) </a>
+  </li>
+  <li bug-fix>
+    Updated Clarity UI dark theme to use rem-sizing variables
+    <a href="https://github.com/vmware/clarity/issues/5855" target="_blank"> (#5855) </a>
+  </li>
+  <li bug-fix>
+    Improved @cds&#x2F;angular unit tests to make them faster and address sporadic failures
+    <a href="https://github.com/vmware/clarity/issues/5809" target="_blank"> (#5809) </a>
+  </li>
+  <li bug-fix>
+    Fixed unit tests after ng-add was updated
+    <a href="https://github.com/vmware/clarity/issues/5878" target="_blank"> (#5878) </a>
+  </li>
+  <li bug-fix>
+    Gave sidenav items unique ids
+    <a href="https://github.com/vmware/clarity/issues/5868" target="_blank"> (#5868) </a>
+  </li>
+  <li bug-fix>
+    Added instructions for setting up Clarity Core with the Angular CLI
+    <a href="https://github.com/vmware/clarity/issues/5914" target="_blank"> (#5914) </a>
+  </li>
+  <li bug-fix>
+    Added clearer description for Core alert errors
+    <a href="https://github.com/vmware/clarity/issues/5799" target="_blank"> (#5799) </a>
+  </li>
+  <li bug-fix>
+    Fixed broken paths in Core storybook
+    <a href="https://github.com/vmware/clarity/issues/5812" target="_blank"> (#5812) </a>
+  </li>
+  <li bug-fix>
+    Removed deprecated Clarity Icons documentation from the website
+    <a href="https://github.com/vmware/clarity/issues/5820" target="_blank"> (#5820) </a>
+  </li>
+  <li bug-fix>
+    Corrected the angular checkbox examples
+    <a href="https://github.com/vmware/clarity/issues/5875" target="_blank"> (#5875) </a>
+  </li>
+  <li bug-fix>
+    Removed CSS override for cds-text&#x3D;code examples
+    <a href="https://github.com/vmware/clarity/issues/5824" target="_blank"> (#5824) </a>
+  </li>
+  <li bug-fix>
+    Updated clr-modal binding description
+    <a href="https://github.com/vmware/clarity/issues/5826" target="_blank"> (#5826) </a>
+  </li>
+</ul>

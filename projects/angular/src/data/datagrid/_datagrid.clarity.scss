@@ -1346,12 +1346,12 @@
         }
       }
     }
-  }
 
-  .clr-form-control-disabled {
-    display: flex;
-    align-items: center;
-    height: 100%;
+    .clr-form-control-disabled {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
   }
 
   .clr-form-control-disabled .datagrid-footer-select.clr-checkbox-wrapper input[type='checkbox']:checked + label {

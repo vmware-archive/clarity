@@ -2,6 +2,7 @@ import noClrAccordion from './rules/no-clr-accordion';
 import noClrAlert from './rules/no-clr-alert';
 import noClrBadge from './rules/no-clr-badge';
 import noClrButton from './rules/no-clr-button';
+import noClrCard from './rules/no-clr-card';
 import noClrCheckbox from './rules/no-clr-checkbox';
 import noClrDatalist from './rules/no-clr-datalist';
 import noClrForm from './rules/no-clr-form';
@@ -23,6 +24,7 @@ module.exports = {
     'no-clr-alert': noClrAlert,
     'no-clr-badge': noClrBadge,
     'no-clr-button': noClrButton,
+    'no-clr-card': noClrCard,
     'no-clr-checkbox': noClrCheckbox,
     'no-clr-datalist': noClrDatalist,
     'no-clr-form': noClrForm,

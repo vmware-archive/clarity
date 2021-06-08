@@ -47,7 +47,7 @@ Applications can provide their own custom svg shapes if the icon library that sh
 <doc-code>
 
 ```typescript
-ClarityIcons.add({ 'my-custom-icon': '<svg ... >[your SVG code goes here]</svg>' });
+ClarityIcons.addIcons(['my-custom-icon', '<svg ... >[your SVG code goes here]</svg>']);
 ```
 
 </doc-code>

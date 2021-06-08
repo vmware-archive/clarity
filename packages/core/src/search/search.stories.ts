@@ -137,7 +137,8 @@ export function searchInline() {
   return html`
     <cds-form-group>
       <cds-search>
-        <input type="search" placeholder="search" aria-label="search" />
+        <label cds-layout="display:screen-reader-only">search</label>
+        <input type="search" placeholder="search" />
       </cds-search>
       <cds-search status="error">
         <label cds-layout="display:screen-reader-only">search</label>

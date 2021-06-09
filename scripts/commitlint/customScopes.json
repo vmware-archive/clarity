@@ -1,0 +1,3 @@
+{
+  "commitlint": ["customScopes", "coreScopes", "websiteScopes", "packagesScopes", "angularScopes"]
+}

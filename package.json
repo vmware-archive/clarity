@@ -32,6 +32,7 @@
     ]
   },
   "scripts": {
+    "commit": "git-cz",
     "ng": "ng",
     "clean:modules": "del ./**/node_modules",
     "clean": "del ./dist && yarn run schematics:clean",
@@ -106,8 +107,10 @@
     "eslint-rule:test": "yarn --cwd packages/eslint-plugin-clarity-adoption test"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.0.0",
-    "@commitlint/config-conventional": "8.0.0",
+    "@commitlint/cli": "^13.0.0",
+    "@commitlint/config-conventional": "^13.0.0",
+    "@commitlint/prompt": "^13.0.0",
+    "commitizen": "^4.2.4",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "2.27.0",
     "@typescript-eslint/parser": "2.27.0",
@@ -145,6 +148,11 @@
     "ts-morph": "8.2.0",
     "ts-node": "8.2.0",
     "typescript": "3.7.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
   },
   "engines": {
     "node": ">=14 <15",

@@ -2,6 +2,69 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.3.1",
+      "date": "2021-06-10",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 5755,
+          "title": "Added Core table",
+          "project": "Core",
+          "scope": "Table"
+        },
+        {
+          "issue": 6023,
+          "title": "Made the overflow on the modal content customizable",
+          "project": "Core",
+          "scope": "Table"
+        },
+        {
+          "issue": 6015,
+          "title": "Updated @cds/angular and schematics to Angular 12",
+          "project": "Angular",
+          "scope": "Build"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6017,
+          "title": "Fixed core button submit behavior",
+          "project": "Core",
+          "scope": "Forms"
+        },
+        {
+          "issue": 5942,
+          "title": "Added correct status colors to flat buttons",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5942,
+          "title": "Added flat variant to inverse status button",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5942,
+          "title": "Used correct color on disabled inverse button",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5942,
+          "title": "Added correct status colors to flat-inline buttons",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 5993,
+          "title": "Fixed icon color inside navigation sub-menu",
+          "project": "Angular",
+          "scope": "Navigation"
+        }
+      ]
+    },
+    {
       "version": "5.3.0",
       "date": "2021-05-27",
       "description": "This is a feature and bug release.",

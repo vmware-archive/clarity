@@ -9,7 +9,7 @@
 <h2>Angular - simple accordion</h2>
 
 <clr-accordion>
-  <clr-accordion-panel>
+  <clr-accordion-panel (clrAccordionPanelOpenChange)="change($event)">
     <clr-accordion-title>Step 1</clr-accordion-title>
     <clr-accordion-content>Content 1</clr-accordion-content>
   </clr-accordion-panel>

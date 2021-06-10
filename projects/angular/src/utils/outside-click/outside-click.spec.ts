@@ -3,50 +3,67 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { ApplicationRef, Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { OutsideClick } from './outside-click';
 
-describe('Loading directive', function () {
-  beforeEach(function () {
+describe('Outside click', () => {
+  let fixture: ComponentFixture<FullTest>;
+  let testComponent: FullTest;
+
+  let host: HTMLElement, button: HTMLElement, outside: HTMLElement;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({ declarations: [OutsideClick, FullTest] });
-    this.fixture = TestBed.createComponent(FullTest);
-    this.fixture.detectChanges();
-    this.testComponent = this.fixture.componentInstance;
-    this.host = this.fixture.debugElement.query(By.css('.host')).nativeElement;
-    this.button = this.fixture.debugElement.query(By.css('button')).nativeElement;
-    this.outside = this.fixture.debugElement.query(By.css('.outside')).nativeElement;
+    fixture = TestBed.createComponent(FullTest);
+    fixture.detectChanges();
+    testComponent = fixture.componentInstance;
+    host = fixture.debugElement.query(By.css('.host')).nativeElement;
+    button = fixture.debugElement.query(By.css('button')).nativeElement;
+    outside = fixture.debugElement.query(By.css('.outside')).nativeElement;
   });
 
-  afterEach(function () {
-    this.fixture.destroy();
+  it('emits clicks outside of the host', () => {
+    expect(testComponent.nbClicks).toBe(0);
+    outside.click();
+    expect(testComponent.nbClicks).toBe(1);
+    outside.click();
+    expect(testComponent.nbClicks).toBe(2);
   });
 
-  it('emits clicks outside of the host', function () {
-    expect(this.testComponent.nbClicks).toBe(0);
-    this.outside.click();
-    expect(this.testComponent.nbClicks).toBe(1);
-    this.outside.click();
-    expect(this.testComponent.nbClicks).toBe(2);
+  it('ignores clicks inside of the host', () => {
+    expect(testComponent.nbClicks).toBe(0);
+    host.click();
+    expect(testComponent.nbClicks).toBe(0);
+    button.click();
+    expect(testComponent.nbClicks).toBe(0);
   });
 
-  it('ignores clicks inside of the host', function () {
-    expect(this.testComponent.nbClicks).toBe(0);
-    this.host.click();
-    expect(this.testComponent.nbClicks).toBe(0);
-    this.button.click();
-    expect(this.testComponent.nbClicks).toBe(0);
+  it('offers a strict input to only ignore clicks that happen exactly on the host', () => {
+    testComponent.strict = true;
+    fixture.detectChanges();
+    expect(testComponent.nbClicks).toBe(0);
+    host.click();
+    expect(testComponent.nbClicks).toBe(0);
+    button.click();
+    expect(testComponent.nbClicks).toBe(1);
   });
 
-  it('offers a strict input to only ignore clicks that happen exactly on the host', function () {
-    this.testComponent.strict = true;
-    this.fixture.detectChanges();
-    expect(this.testComponent.nbClicks).toBe(0);
-    this.host.click();
-    expect(this.testComponent.nbClicks).toBe(0);
-    this.button.click();
-    expect(this.testComponent.nbClicks).toBe(1);
+  it('should not run change detection if the click event happened on the host element', () => {
+    const appRef = TestBed.inject(ApplicationRef);
+    const spy = spyOn(appRef, 'tick').and.callThrough();
+
+    host.click();
+    host.click();
+    host.click();
+
+    expect(spy.calls.count()).toEqual(0);
+
+    outside.click();
+
+    expect(spy.calls.count()).toEqual(1);
+    expect(testComponent.nbClicks).toEqual(1);
   });
 });
 

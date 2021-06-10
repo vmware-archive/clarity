@@ -104,6 +104,16 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   private emitPanelChange(panel: AccordionPanelModel) {
     if (panel.open !== this.panelOpen) {
       this.panelOpenChange.emit(panel.open);
+      /**
+       * @Note: this line below is needed because we don't want to use another value to track
+       * for changes of the panel. Because we use BehaviorSubject this emit event is trigger on
+       * init (that is not needed - there is no change of the original value) - in some cases this
+       * lead to duplicate events.
+       *
+       * To prevent this we try to emit only when the value is changed and keep the value in sync
+       * even that is used only into the Initial Lifecycle (ngOnInit).
+       */
+      this.panelOpen = panel.open;
     }
 
     if (panel.open) {

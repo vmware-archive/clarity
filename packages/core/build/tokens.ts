@@ -471,6 +471,7 @@ const aliases = {
       300: token('hsla(0, 0%, 0%, 0.6)'),
     },
     interaction: {
+      borderColor: token(color.construction[500]),
       background: {
         value: token(color.white),
         hover: token(color.blue[50]),

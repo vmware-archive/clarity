@@ -40,6 +40,8 @@ function getChildren(dir) {
       .filter(basename => ['', '.md'].includes(path.extname(basename)))
       // Remove anything prefixed with _
       .filter(basename => !basename.startsWith('_'))
+      // Remove/hide card component from sidebar navigation
+      .filter(basename => basename !== 'card')
       .map(basename => {
         if (fs.statSync(path.join(base, basename)).isDirectory()) {
           return {

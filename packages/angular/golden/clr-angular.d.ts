@@ -621,12 +621,12 @@ export interface ClrDatagridComparatorInterface<T> {
     compare(a: T, b: T): number;
 }
 
-export declare class ClrDatagridDetail {
+export declare class ClrDatagridDetail implements OnDestroy {
     commonStrings: ClrCommonStringsService;
     detailService: DetailService;
     header: ClrDatagridDetailHeader;
-    constructor(detailService: DetailService, commonStrings: ClrCommonStringsService);
-    closeCheck(): void;
+    constructor(detailService: DetailService, commonStrings: ClrCommonStringsService, ngZone: NgZone, renderer: Renderer2);
+    ngOnDestroy(): void;
 }
 
 export declare class ClrDatagridDetailBody {

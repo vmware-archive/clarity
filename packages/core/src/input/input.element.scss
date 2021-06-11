@@ -14,6 +14,7 @@
   --border-radius: 0;
   --outline: none;
   --padding: 0 #{$cds-global-space-4};
+  --padding: #{$cds-global-space-2} #{$cds-global-space-4} 0 #{$cds-global-space-4}; // 2px top for line height alignment with label: https://github.com/vmware/clarity/issues/6044
   --font-size: #{$cds-global-typography-font-size-3};
   --color: #{$cds-global-typography-color-500};
   --line-height: #{$cds-global-space-9};

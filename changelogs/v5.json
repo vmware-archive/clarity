@@ -14,9 +14,9 @@
         },
         {
           "issue": 6023,
-          "title": "Made the overflow on the modal content customizable",
+          "title": "Made the overflow on the Modal content customizable",
           "project": "Core",
-          "scope": "Table"
+          "scope": "Modal"
         },
         {
           "issue": 6015,

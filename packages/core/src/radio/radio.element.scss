@@ -7,7 +7,7 @@
 :host {
   --width: #{$cds-global-space-7};
   --height: #{$cds-global-space-7};
-  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
   --fill-box-shadow: none;
 }
 

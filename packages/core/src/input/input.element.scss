@@ -8,7 +8,7 @@
   --background-size: 0% 100%;
   --background-color: #{$cds-alias-object-opacity-0};
   --background: linear-gradient(180deg, var(--background-color) 95%, var(--border-color) 0) no-repeat;
-  --border-color: #{$cds-alias-object-border-color};
+  --border-color: #{$cds-alias-object-interaction-border-color};
   --border: 0;
   --border-bottom: #{$cds-alias-object-border-width-100} solid var(--border-color);
   --border-radius: 0;

@@ -9,7 +9,7 @@
   --check-color: #{$cds-global-typography-color-100};
   --background: #{$cds-alias-object-opacity-0};
   --border-radius: #{$cds-alias-object-border-radius-100};
-  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
 }
 
 .input {

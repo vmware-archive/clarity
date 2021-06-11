@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, Optional, PLATFORM_ID, Renderer2, SkipSelf } from '@angular/core';
+import { Inject, Injectable, OnDestroy, Optional, PLATFORM_ID, Renderer2, SkipSelf } from '@angular/core';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ClrPopoverToggleService } from '../../../utils/popover/providers/popover-toggle.service';
@@ -18,7 +18,7 @@ import { Linkers } from '../../../utils/focus/focusable-item/linkers';
 import { wrapObservable } from '../../../utils/focus/wrap-observable';
 
 @Injectable()
-export class DropdownFocusHandler implements FocusableItem {
+export class DropdownFocusHandler implements OnDestroy, FocusableItem {
   constructor(
     @Inject(UNIQUE_ID) public id: string,
     private renderer: Renderer2,
@@ -42,7 +42,7 @@ export class DropdownFocusHandler implements FocusableItem {
    * If the dropdown was opened by clicking on the trigger, we automatically move to the first item
    */
   moveToFirstItemWhenOpen() {
-    this.toggleService.openChange.subscribe(open => {
+    const subscription = this.toggleService.openChange.subscribe(open => {
       if (open && this.toggleService.originalEvent) {
         // Even if we properly waited for ngAfterViewInit, the container still wouldn't be attached to the DOM.
         // So setTimeout is the only way to wait for the container to be ready to move focus to first item.
@@ -56,6 +56,8 @@ export class DropdownFocusHandler implements FocusableItem {
         });
       }
     });
+
+    this._unlistenFuncs.push(() => subscription.unsubscribe());
   }
 
   private focusBackOnTrigger = false;
@@ -64,7 +66,7 @@ export class DropdownFocusHandler implements FocusableItem {
    * Focus on the menu when it opens, and focus back on the root trigger when the whole dropdown becomes closed
    */
   handleRootFocus() {
-    this.toggleService.openChange.subscribe(open => {
+    const subscription = this.toggleService.openChange.subscribe(open => {
       if (!open) {
         // We reset the state of the focus service both on initialization and when closing.
         this.focusService.reset(this);
@@ -75,6 +77,8 @@ export class DropdownFocusHandler implements FocusableItem {
       }
       this.focusBackOnTrigger = open;
     });
+
+    this._unlistenFuncs.push(() => subscription.unsubscribe());
   }
 
   private _trigger: HTMLElement;
@@ -205,8 +209,14 @@ export class DropdownFocusHandler implements FocusableItem {
   }
 
   ngOnDestroy() {
-    this._unlistenFuncs.forEach((unlisten: Function) => unlisten());
+    while (this._unlistenFuncs.length) {
+      this._unlistenFuncs.pop()();
+    }
     this.focusService.detachListeners();
+    // Caretaker note: we're explicitly setting these observables to `undefined` since they're
+    // created via `wrapObservable`. We provide the `onSubscribe` function, which captures `this`.
+    // This leads to a circular reference and prevents the `DropdownFocusHandler` from being GC'd.
+    this.right = this.down = this.up = undefined;
   }
 }
 

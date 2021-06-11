@@ -13,6 +13,8 @@
 #auto-generated website sources
 projects/website/src/releases/final-template/auto-generated-news.component.html
 projects/website/src/releases/final-template/auto-generated-routes.ts
+logs/
+.env
 
 # profiling files
 chrome-profiler-events*.json

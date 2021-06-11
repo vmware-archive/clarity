@@ -1,10 +1,11 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, Inject, ContentChildren, Input, QueryList } from '@angular/core';
+import { Component, Inject, ContentChildren, Input, QueryList, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { ButtonInGroupService } from '../providers/button-in-group.service';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
@@ -29,8 +30,10 @@ import { ClrButton } from './button';
   ],
   host: { '[class.btn-group]': 'true' },
 })
-export class ClrButtonGroup {
+export class ClrButtonGroup implements OnDestroy {
   @ContentChildren(ClrButton) buttons: QueryList<ClrButton>;
+
+  private subscription = Subscription.EMPTY;
 
   constructor(
     public buttonGroupNewService: ButtonInGroupService,
@@ -55,10 +58,14 @@ export class ClrButtonGroup {
    */
   ngAfterContentInit() {
     this.initializeButtons();
-    this.buttonGroupNewService.changes.subscribe(button => this.rearrangeButton(button));
+    this.subscription = this.buttonGroupNewService.changes.subscribe(button => this.rearrangeButton(button));
     this.buttons.changes.subscribe(() => {
       this.initializeButtons();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   /**

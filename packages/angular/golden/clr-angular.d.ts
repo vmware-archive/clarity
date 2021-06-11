@@ -227,7 +227,7 @@ export declare class ClrButton implements LoadingListener {
     ngAfterViewInit(): void;
 }
 
-export declare class ClrButtonGroup {
+export declare class ClrButtonGroup implements OnDestroy {
     buttonGroupNewService: ButtonInGroupService;
     buttons: QueryList<ClrButton>;
     commonStrings: ClrCommonStringsService;
@@ -242,6 +242,7 @@ export declare class ClrButtonGroup {
     getMoveIndex(buttonToMove: ClrButton): number;
     initializeButtons(): void;
     ngAfterContentInit(): void;
+    ngOnDestroy(): void;
     rearrangeButton(button: ClrButton): void;
 }
 

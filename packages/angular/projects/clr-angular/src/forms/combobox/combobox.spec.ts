@@ -1,13 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { TestBed, ComponentFixture, tick, async, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, waitForAsync, fakeAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Component } from '@angular/core';
+import { ApplicationRef, Component } from '@angular/core';
 
 import { ClrCombobox } from './combobox';
 import { OptionSelectionService } from './providers/option-selection.service';
@@ -17,6 +17,7 @@ import { ClrPopoverContent } from '../../utils/popover/popover-content';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ClrIconModule } from '../../icon/icon.module';
 import { ClrComboboxModule } from './combobox.module';
+import { BACKSPACE, UP_ARROW } from '../../utils/key-codes/key-codes';
 
 @Component({
   template: `
@@ -125,21 +126,27 @@ export default function (): void {
 
       // The forms framework has some inner asychronisity, which requires the async/whenStable
       // approach in the following tests
-      it('sets selection model based on selection binding', async(() => {
-        fixture.componentInstance.selection = 'test';
-        fixture.detectChanges();
-        fixture.whenStable().then(() => {
-          expect(selectionService.selectionModel.containsItem('test')).toBeTrue();
-        });
-      }));
+      it(
+        'sets selection model based on selection binding',
+        waitForAsync(() => {
+          fixture.componentInstance.selection = 'test';
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(selectionService.selectionModel.containsItem('test')).toBeTrue();
+          });
+        })
+      );
 
-      it('clears selection model', async(() => {
-        fixture.componentInstance.selection = null;
-        fixture.detectChanges();
-        fixture.whenStable().then(() => {
-          expect(selectionService.selectionModel.isEmpty()).toBeTrue();
-        });
-      }));
+      it(
+        'clears selection model',
+        waitForAsync(() => {
+          fixture.componentInstance.selection = null;
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(selectionService.selectionModel.isEmpty()).toBeTrue();
+          });
+        })
+      );
     });
 
     describe('Template API', function () {
@@ -222,6 +229,30 @@ export default function (): void {
           const button: HTMLButtonElement = clarityElement.querySelector('.clr-combobox-trigger');
           expect(button.disabled).toBeTruthy();
         }));
+    });
+
+    describe('Change detection', () => {
+      it('should not run change detection if the keydown event was not backspace', async () => {
+        fixture.componentInstance.multi = true;
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        fixture.componentInstance.selection = ['test'];
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        const appRef = TestBed.inject(ApplicationRef);
+        const spy = spyOn(appRef, 'tick').and.callThrough();
+
+        clarityElement.dispatchEvent(new KeyboardEvent('keydown', { keyCode: UP_ARROW }));
+        clarityElement.dispatchEvent(new KeyboardEvent('keydown', { keyCode: UP_ARROW }));
+
+        expect(spy).toHaveBeenCalledTimes(0);
+
+        clarityElement.dispatchEvent(new KeyboardEvent('keydown', { keyCode: BACKSPACE }));
+
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
     });
   });
 }

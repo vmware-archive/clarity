@@ -326,7 +326,7 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     smartPosition: ClrPopoverPosition;
     textbox: ElementRef;
     trigger: ElementRef;
-    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, optionSelectionService: OptionSelectionService<T>, commonStrings: ClrCommonStringsService, toggleService: ClrPopoverToggleService, positionService: ClrPopoverPositionService, controlStateService: IfControlStateService, containerService: ComboboxContainerService, platformId: any, ariaService: AriaService, focusHandler: ComboboxFocusHandler<T>, cdr: ChangeDetectorRef);
+    constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, optionSelectionService: OptionSelectionService<T>, commonStrings: ClrCommonStringsService, toggleService: ClrPopoverToggleService, positionService: ClrPopoverPositionService, controlStateService: IfControlStateService, containerService: ComboboxContainerService, platformId: any, ariaService: AriaService, focusHandler: ComboboxFocusHandler<T>, cdr: ChangeDetectorRef, ngZone: NgZone);
     focusFirstActive(): void;
     focusInput(): void;
     getActiveDescendant(): string;
@@ -338,7 +338,6 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     ngOnDestroy(): void;
     onBlur(): void;
     onFocus(): void;
-    onKeyUp(event: KeyboardEvent): void;
     registerOnChange(onChange: any): void;
     registerOnTouched(onTouched: any): void;
     setDisabledState(): void;

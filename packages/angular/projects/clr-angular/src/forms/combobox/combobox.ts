@@ -9,7 +9,6 @@ import {
   Component,
   ContentChild,
   ElementRef,
-  HostListener,
   PLATFORM_ID,
   Renderer2,
   ViewChild,
@@ -23,6 +22,7 @@ import {
   AfterContentInit,
   Inject,
   ChangeDetectorRef,
+  NgZone,
 } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 
@@ -85,6 +85,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   @ContentChild(ClrOptionSelected) optionSelected: ClrOptionSelected<T>;
 
   private onChangeCallback: (model: T | T[]) => any;
+  private unlisten: VoidFunction;
 
   protected index = 1;
 
@@ -108,7 +109,8 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     @Inject(PLATFORM_ID) private platformId: any,
     private ariaService: AriaService,
     private focusHandler: ComboboxFocusHandler<T>,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone
   ) {
     super(vcr, ClrComboboxContainer, injector, control, renderer, el);
     if (control) {
@@ -117,6 +119,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     // default to SingleSelectComboboxModel, in case the optional input [ClrMulti] isn't used
     this.optionSelectionService.selectionModel = new SingleSelectComboboxModel<T>();
     this.updateControlValue();
+    this.setupKeyDownListener();
   }
 
   focusedPill: any;
@@ -241,19 +244,6 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
     return this.commonStrings.keys.comboboxSelection;
   }
 
-  @HostListener('keydown', ['$event'])
-  onKeyUp(event: KeyboardEvent) {
-    // if BACKSPACE in multiselect mode, delete the last pill if text is empty
-    if (event.keyCode === BACKSPACE && this.multiSelect && this._searchText.length === 0) {
-      const multiModel: T[] = this.optionSelectionService.selectionModel.model as T[];
-      if (multiModel && multiModel.length > 0) {
-        const lastItem: T = multiModel[multiModel.length - 1];
-        this.control.control.markAsTouched();
-        this.optionSelectionService.unselect(lastItem);
-      }
-    }
-  }
-
   @Output('clrInputChange') public clrInputChange: EventEmitter<string> = new EventEmitter<string>(false);
 
   @Output('clrOpenChange') public clrOpenChange: Observable<boolean> = this.toggleService.openChange;
@@ -310,6 +300,35 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
         })
       );
     }
+  }
+
+  private setupKeyDownListener(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.unlisten = this.renderer.listen(this.el.nativeElement, 'keydown', (event: KeyboardEvent) => {
+        // if BACKSPACE in multiselect mode, delete the last pill if text is empty
+        if (event.keyCode !== BACKSPACE || !this.multiSelect || this._searchText.length !== 0) {
+          return;
+        }
+
+        const multiModel = this.optionSelectionService.selectionModel.model as T[];
+
+        if (!multiModel || multiModel.length === 0) {
+          return;
+        }
+
+        // We'll run change detection only when the `Backspace` button has been pressed, and the multiselect mode is on.
+        this.ngZone.run(() => {
+          // Caretaker note: the `Zone.prototype.run` will only notify the `ApplicationRef` to run the `tick()`.
+          // Angular will run change detection but the component won't have the `ChecksEnabled` state (e.g. if it's
+          // inside some `OnPush` component).
+          // This is done to be backwards-compatible with `HostListener` since `HostListener` calls `markDirty()` internally.
+          this.cdr.markForCheck();
+          const lastItem: T = multiModel[multiModel.length - 1];
+          this.control.control.markAsTouched();
+          this.optionSelectionService.unselect(lastItem);
+        });
+      });
+    });
   }
 
   focusFirstActive() {
@@ -391,6 +410,7 @@ export class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer>
   }
 
   ngOnDestroy() {
+    this.unlisten();
     this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
   }
 }

@@ -14,8 +14,8 @@
     "url": "https://github.com/vmware/clarity.git"
   },
   "peerDependencies": {
-    "@angular/common": "9.x || 10.x || 11.x",
-    "@angular/core": "9.x || 10.x || 11.x",
+    "@angular/common": ">9",
+    "@angular/core": ">9",
     "@cds/core": "./dist/core"
   },
   "dependencies": {

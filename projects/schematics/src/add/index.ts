@@ -68,7 +68,7 @@ function addClarityDependencies(host: Tree): void {
 
     json.dependencies['@clr/angular'] = version;
     json.dependencies['@clr/ui'] = version;
-    json.dependencies['@cds/core'] = version;
+    json.dependencies['@cds/core'] = '^5.0.0';
   });
 }
 

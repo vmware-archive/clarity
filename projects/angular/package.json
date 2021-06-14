@@ -22,7 +22,7 @@
     "@angular/common": "^11.0.0",
     "@angular/core": "^11.0.0",
     "@cds/core": "^5.0.0",
-    "@clr/ui": "^5.0.0"
+    "@clr/ui": "@VERSION"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

@@ -1,4 +1,4 @@
-name: Dev
+name: Website
 
 on: [push, pull_request]
 
@@ -18,8 +18,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
       - run: npm install
       - run: npm run build:angular
-      - run: npm run build:dev
-      - run: npm run deploy:dev
+      - run: npm run build:website
+      - run: npm run deploy:website
 
     env:
       CI: true

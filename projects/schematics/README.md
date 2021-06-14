@@ -14,7 +14,7 @@ These are a bit challenging to develop for, so here are a few tricks I've used.
 
 This is almost essential for testing npm packages without publishing them to real NPM. Its the only way I've come across that works reasonably well for approximating the experience of `ng add` and `ng update`.
 
-Install it `npm i -g verdaccio` and then run it with `verdaccio` in a terminal window. It starts a registry at http://localhost:4873.
+Install it `npm i -g verdaccio` and then run it with `verdaccio` in a terminal window. It starts a registry at http://localhost:4873. You will then need to run `npm login --registry="http://localhost:4873`, using `admin/admin` as user/pass.
 
 **Schematics CLI**
 

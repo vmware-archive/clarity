@@ -2,7 +2,7 @@
 [build]
   command = "./scripts/netlify-build.sh"
   functions = "dist/netlify"
-  publish = "dist/website"
+  publish = ""
   environment = { CI = "true" }
 
 # Legacy Website Redirects

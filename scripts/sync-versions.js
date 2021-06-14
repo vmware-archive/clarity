@@ -16,10 +16,11 @@ const pkg = require('../package.json');
 const files = ['dist/clr-angular/package.json', 'dist/clr-icons/package.json', 'dist/clr-ui/package.json'];
 
 files.forEach(file => {
-  file = path.join(process.cwd(), file);
-  const json = require(file);
-  json.version = pkg.version;
-  fs.writeFileSync(file, JSON.stringify(json, null, '  '), { encoding: 'utf8' });
+  const filePath = path.join(process.cwd(), file);
+  let content = fs.readFileSync(filePath, 'utf8');
+  console.log(content);
+  content = content.replace(/\@VERSION/gim, pkg.version);
+  fs.writeFileSync(filePath, content, { encoding: 'utf8' });
 
-  console.log(`The version in ${file} is synced to ${json.version}.`);
+  console.log(`The version in ${filePath} is synced to ${pkg.version}.`);
 });

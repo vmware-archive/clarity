@@ -7,7 +7,7 @@
 export interface StackblitzProject {
   title: string;
   description: string;
-  template: 'angular-cli' | 'create-react-app' | 'typescript' | 'javascript';
+  template: 'angular-cli' | 'create-react-app' | 'typescript' | 'javascript' | 'node';
   files: { [path: string]: string };
   tags?: string[];
   dependencies?: { [name: string]: string };

@@ -7,15 +7,13 @@
 import { Injectable } from '@angular/core';
 import sdk from '@stackblitz/sdk';
 
-import { LocalTemplate, SupportedTemplates } from '../../templates/types';
 import { deepCopy } from '../utils';
 import { StackblitzEmbedOptions, StackblitzOpenOptions, StackblitzProject } from './types';
 
-import { template as AngularTemplate } from '../../templates/angular/stackblitz-template';
-import { template as CoreTemplate } from '../../templates/core/stackblitz-template';
+import { templateCore, templateAngular, SupportedTemplates, LocalTemplate, templateHybrid } from '../../templates';
 
 const defaultEmbedOptions = {
-  height: 330,
+  height: 400,
   view: 'preview',
   hideExplorer: true,
   hideNavigation: true,
@@ -53,11 +51,15 @@ export class StackblitzService {
 
     switch (template) {
       case 'angular': {
-        project = deepCopy(AngularTemplate) as StackblitzProject;
+        project = deepCopy(templateAngular) as StackblitzProject;
         break;
       }
       case 'core': {
-        project = deepCopy(CoreTemplate) as StackblitzProject;
+        project = deepCopy(templateCore) as StackblitzProject;
+        break;
+      }
+      case 'hybrid': {
+        project = deepCopy(templateHybrid) as StackblitzProject;
         break;
       }
       default: {
@@ -68,7 +70,7 @@ export class StackblitzService {
     await Promise.all(
       Object.keys(project.files).map(async remoteLocation => {
         const localLocation = project.files[remoteLocation];
-        const content = await import(`!!raw-loader!./../../templates/${template}/${localLocation}`).then(resolve => {
+        const content = await import(`!!raw-loader!./../../templates/${localLocation}`).then(resolve => {
           return resolve.default;
         });
         project.files[remoteLocation] = content;

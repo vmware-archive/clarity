@@ -10,10 +10,7 @@ import { SourceCodeLanguages } from './sourcecode.component';
 // Stackblitz
 import { StackblitzService } from './stackblitz/stackblitz.service';
 
-// Codesandbox
-import { CodesandboxService } from './codesandbox/codesandbox.service';
-
-import { SupportedTemplates } from '../templates/types';
+import { SupportedTemplates } from '../templates';
 
 // Icons
 import '@cds/core/icon/register.js';
@@ -56,10 +53,6 @@ export interface DemoTabData {
             <button (click)="embedStackblitz(tab, tab.id)" class="btn btn-sm btn-link">
               <cds-icon shape="terminal"></cds-icon> Run localy
             </button>
-            <button (click)="openCodesandbox(tab)" class="btn btn-sm btn-link">
-              <cds-icon shape="code"></cds-icon> Codesandbox
-              <cds-icon size="md" shape="beta" status="success"></cds-icon>
-            </button>
           </clr-tab-content>
         </clr-tab>
 
@@ -91,10 +84,6 @@ export interface DemoTabData {
             <button (click)="embedStackblitz(tab, tab.id)" class="btn btn-sm btn-link">
               <cds-icon shape="terminal"></cds-icon> Run
             </button>
-            <button (click)="openCodesandbox(tab)" class="btn btn-sm btn-link">
-              <cds-icon shape="code"></cds-icon> Codesandbox
-              <cds-icon size="md" shape="beta" status="success"></cds-icon>
-            </button>
           </clr-tab-content>
         </clr-tab>
 
@@ -112,7 +101,7 @@ export interface DemoTabData {
       </clr-tabs>
     </div>
   `,
-  providers: [StackblitzService, CodesandboxService],
+  providers: [StackblitzService],
 })
 export class Demo {
   inOverflow = true;
@@ -122,7 +111,7 @@ export class Demo {
   // Experimental
   @Input('sideBySide') _sideBySideState: boolean | string = false;
 
-  constructor(private stackblitz: StackblitzService, private codesandbox: CodesandboxService) {}
+  constructor(private stackblitz: StackblitzService) {}
 
   ngOnInit(): void {
     if (Array.isArray(this.tabs)) {
@@ -160,10 +149,6 @@ export class Demo {
 
   public async openStackblitz(tab: DemoTabData): Promise<void> {
     await this.stackblitz.open(tab.template, tab.files);
-  }
-
-  public async openCodesandbox(tab: DemoTabData): Promise<void> {
-    this.codesandbox.open(tab.template, tab.files);
   }
 
   public sideBySide(): void {

@@ -3,16 +3,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ClarityModule } from "@clr/angular";
 
-import { CdsModule } from "@cds/angular";
-
 import { AppComponent } from "./app.component";
+
+import '@cds/core/icon/register.js';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,                 // Clarity Angular
-    CdsModule,                     // Clarity Angular wrapper for Core
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]

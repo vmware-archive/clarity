@@ -20,7 +20,7 @@ const addElementToRegistry = curryN(
       registry.define(tagName, applyCSSGapShim(elementClass));
       setupCDSGlobal();
 
-      if (!window.CDS._loadedElements.some(i => i === tagName)) {
+      if (window && !window.CDS._loadedElements.some(i => i === tagName)) {
         window.CDS._loadedElements.push(tagName);
       }
     }

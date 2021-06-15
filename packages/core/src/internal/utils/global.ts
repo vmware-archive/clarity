@@ -20,6 +20,7 @@ export interface CDSGlobal {
     /** Set to true for production env to disable dev time logging and tooling */
     production: boolean;
   };
+  state?: CDSState;
 }
 
 export interface CDSLog {
@@ -36,6 +37,9 @@ export interface CDSLog {
   };
 }
 
+export interface CDSState {
+  focusTraps?: string[];
+}
 declare global {
   interface Window {
     CDS: CDSGlobal;
@@ -50,22 +54,26 @@ export function setupCDSGlobal() {
 }
 
 function getVersion() {
-  const log: CDSLog = {
-    versions: window.CDS._version,
-    environment: window.CDS.environment,
-    userAgent: navigator.userAgent,
-    supports: window.CDS._supports,
-    angularVersion: getAngularVersion(false),
-    angularJSVersion: getAngularJSVersion(false),
-    reactVersion: getReactVersion(false),
-    vueVersion: getVueVersion(false),
-    loadedElements: window.CDS._loadedElements,
-  };
-  return log;
+  if (isBrowser()) {
+    const log: CDSLog = {
+      versions: window.CDS._version,
+      environment: window.CDS.environment,
+      userAgent: navigator.userAgent,
+      supports: window.CDS._supports,
+      angularVersion: getAngularVersion(false),
+      angularJSVersion: getAngularJSVersion(false),
+      reactVersion: getReactVersion(false),
+      vueVersion: getVueVersion(false),
+      loadedElements: window.CDS._loadedElements,
+    };
+    return log;
+  }
+
+  return void 0;
 }
 
 function logVersion() {
-  console.log(JSON.stringify(getVersion(), null, 2));
+  LogService.log(JSON.stringify(getVersion(), null, 2));
 }
 
 function initializeCDSGlobal() {
@@ -77,6 +85,7 @@ function initializeCDSGlobal() {
     environment: {
       production: false,
     },
+    state: {},
     getVersion,
     logVersion,
   };

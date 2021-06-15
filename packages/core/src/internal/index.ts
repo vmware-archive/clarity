@@ -23,6 +23,7 @@ export * from './decorators/id.js';
 export * from './decorators/i18n.js';
 export * from './decorators/global-style.js';
 export * from './services/focus-trap-tracker.service.js';
+export * from './services/global.service.js';
 export * from './services/i18n.service.js';
 export * from './services/log.service.js';
 export * from './utils/async.js';

@@ -6,7 +6,7 @@
 
 import '@cds/core/icon/register.js';
 import { LogService } from '@cds/core/internal';
-import { CdsPaginationButton, CdsPaginationButtonAction } from '@cds/core/pagination';
+import { CdsPaginationButton } from '@cds/core/pagination';
 import '@cds/core/pagination/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 import { html } from 'lit';
@@ -15,7 +15,7 @@ describe('Pagination Buttons', () => {
   let paginationButtonElement: HTMLElement;
   let paginationButtonComponent: CdsPaginationButton;
 
-  const createDefaultPaginationButton = async (action: CdsPaginationButtonAction) => {
+  const createDefaultPaginationButton = async (action: CdsPaginationButton['action']) => {
     paginationButtonElement = await createTestElement(
       html`<cds-pagination-button action="${action}"></cds-pagination-button>`
     );
@@ -27,7 +27,7 @@ describe('Pagination Buttons', () => {
   });
 
   it('should use proper icon for when action attribute is first', async () => {
-    await createDefaultPaginationButton(CdsPaginationButtonAction.First);
+    await createDefaultPaginationButton('first');
     await componentIsStable(paginationButtonComponent);
     const defaultIcon = paginationButtonComponent.shadowRoot.querySelector('cds-icon');
     expect(defaultIcon.getAttribute('shape')).toBe('step-forward-2');
@@ -35,7 +35,7 @@ describe('Pagination Buttons', () => {
   });
 
   it('should use proper icon for when action attribute is last', async () => {
-    await createDefaultPaginationButton(CdsPaginationButtonAction.Last);
+    await createDefaultPaginationButton('last');
     await componentIsStable(paginationButtonComponent);
     const defaultIcon = paginationButtonComponent.shadowRoot.querySelector('cds-icon');
     expect(defaultIcon.getAttribute('shape')).toBe('step-forward-2');
@@ -43,7 +43,7 @@ describe('Pagination Buttons', () => {
   });
 
   it('should use proper icon for when action attribute is prev', async () => {
-    await createDefaultPaginationButton(CdsPaginationButtonAction.Previous);
+    await createDefaultPaginationButton('prev');
     await componentIsStable(paginationButtonComponent);
     const defaultIcon = paginationButtonComponent.shadowRoot.querySelector('cds-icon');
     expect(defaultIcon.getAttribute('shape')).toBe('angle');
@@ -51,7 +51,7 @@ describe('Pagination Buttons', () => {
   });
 
   it('should use proper icon for when action attribute is next', async () => {
-    await createDefaultPaginationButton(CdsPaginationButtonAction.Next);
+    await createDefaultPaginationButton('next');
     await componentIsStable(paginationButtonComponent);
     const defaultIcon = paginationButtonComponent.shadowRoot.querySelector('cds-icon');
     expect(defaultIcon.getAttribute('shape')).toBe('angle');

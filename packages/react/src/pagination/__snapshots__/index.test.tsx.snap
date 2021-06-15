@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsPagination snapshot 1`] = `
+<CdsPagination
+  aria-label="pagination"
+>
+  <cds-pagination(CustomElement)
+    __forwardedRef={null}
+    aria-label="pagination"
+  >
+    <cds-pagination
+      __forwardedRef={null}
+      aria-label="pagination"
+    >
+      <CdsPaginationButton
+        action="prev"
+        aria-label="go to first"
+        disabled={true}
+      >
+        <cds-pagination-button(CustomElement)
+          __forwardedRef={null}
+          action="prev"
+          aria-label="go to first"
+          disabled={true}
+        >
+          <cds-pagination-button
+            __forwardedRef={null}
+            aria-label="go to first"
+          />
+        </cds-pagination-button(CustomElement)>
+      </CdsPaginationButton>
+      <CdsPaginationButton
+        action="next"
+        aria-label="go to next"
+      >
+        <cds-pagination-button(CustomElement)
+          __forwardedRef={null}
+          action="next"
+          aria-label="go to next"
+        >
+          <cds-pagination-button
+            __forwardedRef={null}
+            aria-label="go to next"
+          />
+        </cds-pagination-button(CustomElement)>
+      </CdsPaginationButton>
+    </cds-pagination>
+  </cds-pagination(CustomElement)>
+</CdsPagination>
+`;

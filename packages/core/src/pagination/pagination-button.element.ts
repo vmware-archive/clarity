@@ -16,13 +16,6 @@ import { html } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import styles from './pagination-button.element.scss';
 
-export enum CdsPaginationButtonAction {
-  First = 'first',
-  Previous = 'prev',
-  Next = 'next',
-  Last = 'last',
-}
-
 /**
  * Web component pagination button to be used inside pagination.
  *
@@ -56,10 +49,10 @@ export enum CdsPaginationButtonAction {
 
 export class CdsPaginationButton extends CdsBaseButton {
   /**
-   * @type {first | prev | next | last}
    * Sets the action from a predefined list of actions
    */
-  @property({ type: String, reflect: true }) action: CdsPaginationButtonAction;
+  @property({ type: String })
+  action: 'first' | 'prev' | 'next' | 'last';
 
   connectedCallback() {
     super.connectedCallback();
@@ -78,18 +71,10 @@ export class CdsPaginationButton extends CdsBaseButton {
     return html`
       <div class="private-host" cds-layout="horizontal align:center ${this.customContent ? 'p-x:sm' : ''}">
         <slot name="cds-icon-slot">
-          ${this.action === CdsPaginationButtonAction.Next
-            ? html`<cds-icon shape="angle" direction="right"></cds-icon>`
-            : ''}
-          ${this.action === CdsPaginationButtonAction.Last
-            ? html`<cds-icon shape="step-forward-2" direction="up"></cds-icon>`
-            : ''}
-          ${this.action === CdsPaginationButtonAction.Previous
-            ? html`<cds-icon shape="angle" direction="left"></cds-icon>`
-            : ''}
-          ${this.action === CdsPaginationButtonAction.First
-            ? html`<cds-icon shape="step-forward-2" direction="down"></cds-icon>`
-            : ''}
+          ${this.action === 'next' ? html`<cds-icon shape="angle" direction="right"></cds-icon>` : ''}
+          ${this.action === 'last' ? html`<cds-icon shape="step-forward-2" direction="up"></cds-icon>` : ''}
+          ${this.action === 'prev' ? html`<cds-icon shape="angle" direction="left"></cds-icon>` : ''}
+          ${this.action === 'first' ? html`<cds-icon shape="step-forward-2" direction="down"></cds-icon>` : ''}
         </slot>
         <slot></slot>
       </div>

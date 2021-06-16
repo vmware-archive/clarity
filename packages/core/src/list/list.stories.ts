@@ -489,3 +489,27 @@ export function darkTheme() {
     </div>
   `;
 }
+
+/** @website */
+export function descriptionList() {
+  return html`<dl cds-list>
+    <dt>Name</dt>
+    <dd>Description</dd>
+    <dt>Name</dt>
+    <dd>Description</dd>
+  </dl>`;
+}
+
+/** @website */
+export function customSpaceDescriptionList() {
+  return html`<dl cds-list cds-layout="vertical gap:md">
+    <div>
+      <dt>Name</dt>
+      <dd>Description</dd>
+    </div>
+    <div>
+      <dt>Name</dt>
+      <dd>Description</dd>
+    </div>
+  </dl>`;
+}

@@ -15,12 +15,27 @@
   left: 0;
 }
 
-@mixin header-nav-appearance() {
+@mixin header-nav-appearance($type: null) {
   @include css-var(color, clr-header-font-color, $clr-header-font-color, $clr-use-custom-properties);
   @include css-var(opacity, clr-header-nav-opacity, $clr-header-nav-opacity, $clr-use-custom-properties);
-
-  &:enabled:hover {
-    @include css-var(opacity, clr-header-nav-hover-opacity, $clr-header-nav-hover-opacity, $clr-use-custom-properties);
+  @if $type == anchor {
+    &:hover {
+      @include css-var(
+        opacity,
+        clr-header-nav-hover-opacity,
+        $clr-header-nav-hover-opacity,
+        $clr-use-custom-properties
+      );
+    }
+  } @else {
+    &:enabled:hover {
+      @include css-var(
+        opacity,
+        clr-header-nav-hover-opacity,
+        $clr-header-nav-hover-opacity,
+        $clr-use-custom-properties
+      );
+    }
   }
 
   &:disabled {
@@ -132,6 +147,9 @@
       @include equilateral($clr-header-height);
     }
 
+    a.nav-link {
+      @include header-nav-appearance(anchor);
+    }
     .nav-link {
       position: relative;
       display: inline-block;

@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const { delimiter } = require('./common');
 
 const components = [
   'accordion',
@@ -51,6 +54,6 @@ const components = [
 module.exports = {
   components,
   getScopes: () => {
-    return components.map(c => `angular/${c}`).concat(['angular']);
+    return components.map(c => `angular${delimiter}${c}`).concat(['angular']);
   },
 };

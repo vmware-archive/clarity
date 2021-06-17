@@ -36,5 +36,6 @@ const findScopes = (path, predicate, topLevel) => {
 };
 
 module.exports = {
+  delimiter: ':',
   findScopes,
 };

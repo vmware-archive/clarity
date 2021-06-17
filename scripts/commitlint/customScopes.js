@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
+const { delimiter } = require('./common');
 
 const getJsonData = path => {
   const json = readFileSync(path, 'utf8');
@@ -16,7 +19,7 @@ const generateCommitLintScopes = projects => {
   let _scopes = [];
 
   Object.entries(projects).forEach(([project, scopes]) => {
-    const projectScopes = scopes.map(scope => `${project}/${scope}`);
+    const projectScopes = scopes.map(scope => `${project}${delimiter}${scope}`);
     _scopes = _scopes.concat([project, ...projectScopes]);
   });
 

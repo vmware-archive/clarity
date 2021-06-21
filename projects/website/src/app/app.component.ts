@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 
 declare let ga: any;
 
-import * as GLOBAL from '../settings/global.json';
+import GLOBAL from '../settings/global.json';
 
 @Component({
   selector: 'app-root',

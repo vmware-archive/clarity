@@ -1,4 +1,5 @@
 const scopes = [
+  'angular',
   'a11y',
   'accordion',
   'alert',

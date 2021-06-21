@@ -1,8 +1,8 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
 import '@cds/core/icon/register';
-import 'zone.js/dist/zone';
-import 'zone.js/dist/zone-testing';
+import 'zone.js';
+import 'zone.js/testing';
 import 'jasmine-expect';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';

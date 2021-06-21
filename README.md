@@ -1,27 +1,42 @@
-# Clarity
+![Clarity Angular](logo.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+## Getting Started
 
-## Development server
+Clarity Angular is published as two npm packages:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [![npm version ui](https://img.shields.io/npm/v/@clr/ui/latest?label=%40clr%2Fui&style=flat-square)](https://www.npmjs.com/package/@clr/ui) Contains the static
+  styles for building HTML components.
+- [![npm version clr angular](https://img.shields.io/npm/v/@clr/angular/latest?label=%40clr%2Fangular&style=flat-square)](https://www.npmjs.com/package/@clr/angular) Contains the
+  Angular components. This package depends on `@clr/ui` for styles.
 
-## Code scaffolding
+## Installing Clarity
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **[Install CSS Only](/docs/INSTALLATION.md#installing-clarity-ui)**
+- **[Install Angular Components](/docs/INSTALLATION.md#installing-clarity-angular)**
 
-## Build
+## Documentation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For documentation on the Clarity Angular, including a list of components
+and example usage, see [our website](https://angular.clarity.design).
 
-## Running unit tests
+## Contributing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The Clarity project team welcomes contributions from the community. For more
+detailed information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Running end-to-end tests
+## Licenses
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- The Clarity Design System is licensed under the MIT license.
+- The font is licensed under the Open Font License (OFL).
 
-## Further help
+## Feedback
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity/issues).
+
+Include a link to the reproduction scenario you created by forking one of the
+Clarity Stackblitz Templates for the version you are using at
+[Clarity StackBlitz templates](https://stackblitz.com/@clr-team/).
+
+## Support
+
+Read more [here](https://medium.com/claritydesignsystem/clarity-5-0-jump-start-with-core-web-components-dcb22a51222e#a191)

@@ -5,6 +5,8 @@
  */
 
 import { property } from 'lit/decorators/property.js';
+import { GlobalStateService } from '../services/global.service.js';
+import { I18nService } from '../services/i18n.service.js';
 
 // Legacy TS Decorator
 function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
@@ -28,7 +30,7 @@ function standardI18n(descriptor: PropertyDescriptor, element: { key: string }) 
  * This decorator stores the i18n strings in a private variable __i18n.
  * Due to TypeScript decorators being dynamic a type cast is needed here.
  */
-type I18nElement = HTMLElement & { __i18n: {} };
+type I18nElement = HTMLElement & { __i18n: {}; __i18nKey: string };
 
 /**
  * A property decorator which accesses a set of string values for use
@@ -48,15 +50,41 @@ type I18nElement = HTMLElement & { __i18n: {} };
  */
 export function i18n() {
   return (protoOrDescriptor: any, name: string): any => {
+    const targetConnectedCallback: () => void = protoOrDescriptor.connectedCallback;
+    const targetDisconnectedCallback: () => void = protoOrDescriptor.disconnectedCallback;
+
+    function connectedCallback(this: any): void {
+      protoOrDescriptor.__i18nSub = GlobalStateService.stateUpdates.subscribe(update => {
+        if (update.key === 'i18nRegistry') {
+          this.requestUpdate(name);
+        }
+      });
+
+      if (targetConnectedCallback) {
+        targetConnectedCallback.apply(this);
+      }
+    }
+
+    function disconnectedCallback(this: any) {
+      protoOrDescriptor.__i18nSub.unsubscribe();
+
+      if (targetDisconnectedCallback) {
+        targetDisconnectedCallback.apply(this);
+      }
+    }
+
+    protoOrDescriptor.connectedCallback = connectedCallback;
+    protoOrDescriptor.disconnectedCallback = disconnectedCallback;
+
     const descriptor = {
       get(this: I18nElement) {
-        return this.__i18n;
+        return { ...(I18nService.keys as any)[this.__i18nKey], ...this.__i18n };
       },
       set(this: I18nElement, value: {}) {
-        if (!this.__i18n) {
+        (this.__i18nKey as any) = Object.keys(I18nService.keys).find(key => (I18nService.keys as any)[key] === value);
+
+        if (!this.__i18nKey) {
           this.__i18n = value;
-        } else {
-          this.__i18n = { ...this.__i18n, ...value };
         }
       },
       enumerable: true,

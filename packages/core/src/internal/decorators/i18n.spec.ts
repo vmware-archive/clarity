@@ -16,8 +16,6 @@ const i18nValues = {
 
 /** @element test-18n-element */
 class TestI18nElement extends LitElement {
-  __i18n: string;
-
   @i18n() i18n = i18nValues;
 
   render() {
@@ -42,7 +40,7 @@ describe('i18n decorator', () => {
   });
 
   it('should allow setting values for i18n', () => {
-    expect(component.__i18n).toEqual(i18nValues);
+    expect(component.i18n).toEqual(i18nValues);
   });
 
   it('should allow setting values for i18n through cds-i18n attribute', async () => {

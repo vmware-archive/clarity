@@ -16,6 +16,7 @@ import {
   isString,
   pxToRem,
   EventSubscription,
+  GlobalStateService,
 } from '@cds/core/internal';
 import { html, LitElement, svg } from 'lit';
 import { query } from 'lit/decorators/query.js';
@@ -165,18 +166,21 @@ export class CdsIcon extends LitElement {
     }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.subscription = ClarityIcons.iconUpdates.subscribe(shape => {
-      if (shape === this.shape) {
-        this.requestUpdate();
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+
+    let prior = 'unknown';
+    this.subscription = GlobalStateService.stateUpdates.subscribe(update => {
+      if (update.key === 'iconRegistry' && ClarityIcons.registry[this.shape] && prior !== this.shape) {
+        prior = this.shape;
+        this.requestUpdate('shape');
       }
     });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   protected render() {

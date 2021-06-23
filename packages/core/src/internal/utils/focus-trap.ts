@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit';
-import { CDS_FOCUS_TRAP_ID_ATTR, FocusTrapTracker } from '../services/focus-trap-tracker.service.js';
+import { FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
 import { isHTMLElement, isFocusable } from './dom.js';
 import { createId } from './identity.js';
 
@@ -20,7 +19,7 @@ export function refocusIfOutsideFocusTrapElement(
   focusTrapElement: FocusTrapElement,
   elementToRefocus?: HTMLElement
 ) {
-  const focusTrapIsCurrent = FocusTrapTracker.getCurrent() === focusTrapElement;
+  const focusTrapIsCurrent = FocusTrapTrackerService.getCurrent() === focusTrapElement;
   const elementToFocusIsOutsideFocusTrap = elementIsOutsideFocusTrapElement(focusedElement, focusTrapElement);
 
   if (focusTrapIsCurrent && elementToFocusIsOutsideFocusTrap) {
@@ -125,15 +124,6 @@ export class FocusTrap {
       hostElement.focusTrapId = createId();
     }
 
-    // @deprecation
-    // reflect attr for non-Lit Element traps
-    // IMPORTANT! Using something other than a LitElement will break in React.
-    // The preference should be to use the CdsBaseFocusTrap component
-    // If that is not possible, avoid passing HTMLElement through here
-    if (!(hostElement instanceof LitElement) && !hostElement.hasAttribute(CDS_FOCUS_TRAP_ID_ATTR)) {
-      hostElement.setAttribute(CDS_FOCUS_TRAP_ID_ATTR, hostElement.focusTrapId);
-    }
-
     this.focusTrapElement = hostElement;
   }
 
@@ -143,7 +133,7 @@ export class FocusTrap {
     const contentWrapper = fte.shadowRoot ? fte.shadowRoot.querySelector('.private-host[tabindex]') : null;
     const activeEl = document.activeElement;
 
-    if (FocusTrapTracker.getCurrent() === fte) {
+    if (FocusTrapTrackerService.getCurrent() === fte) {
       throw new Error('Focus trap is already enabled for this instance.');
     }
 
@@ -160,7 +150,7 @@ export class FocusTrap {
       this.previousFocus = activeEl as HTMLElement;
     }
 
-    FocusTrapTracker.setCurrent(fte.focusTrapId);
+    FocusTrapTrackerService.setCurrent(fte);
 
     // setTimeout here is required for Safari which may try to set focus on
     // element before it is visible...
@@ -177,7 +167,7 @@ export class FocusTrap {
   removeFocusTrap() {
     document.removeEventListener('focusin', this.onFocusInEvent);
     removeReboundElementsFromFocusTrapElement(this.focusTrapElement);
-    FocusTrapTracker.activatePreviousCurrent();
+    FocusTrapTrackerService.activatePreviousCurrent();
     this.active = false;
     if (this.previousFocus) {
       this.previousFocus.focus();

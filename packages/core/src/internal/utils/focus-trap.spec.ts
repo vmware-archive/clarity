@@ -18,11 +18,7 @@ import {
   removeReboundElementsFromFocusTrapElement,
 } from './focus-trap.js';
 import { CdsBaseFocusTrap } from '../base/focus-trap.base.js';
-import {
-  CDS_FOCUS_TRAP_DOCUMENT_ATTR,
-  CDS_FOCUS_TRAP_ID_ATTR,
-  FocusTrapTracker,
-} from '../services/focus-trap-tracker.service.js';
+import { CDS_FOCUS_TRAP_DOCUMENT_ATTR, FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -127,7 +123,7 @@ describe('Focus Trap Utilities: ', () => {
     describe('refocusIfOutsideFocusTrapElement()', () => {
       it('calls focus() if in current focus trap element', async () => {
         spyOn(focusedElement, 'focus');
-        FocusTrapTracker.setCurrent(focusTrapElement.focusTrapId);
+        FocusTrapTrackerService.setCurrent(focusTrapElement);
         refocusIfOutsideFocusTrapElement(focusedElement, focusTrapElement);
         expect(focusedElement.focus).toHaveBeenCalled();
       });
@@ -221,17 +217,9 @@ describe('FocusTrap Class: ', () => {
       removeTestElement(testElement);
     });
 
-    it('set focus trap id and reflect to attribute', () => {
+    it('set focus trap id', () => {
       focusTrap = setUpFocusTrap(testElement);
       expect(focusTrap.focusTrapElement.focusTrapId).toBeTruthy('needs to set focus trap id on plain html elements');
-      expect(testElement.hasAttribute(CDS_FOCUS_TRAP_ID_ATTR)).toBe(
-        true,
-        'needs to set focus trap attr on plain html elements'
-      );
-      expect(testElement.getAttribute(CDS_FOCUS_TRAP_ID_ATTR)).toBe(
-        focusTrap.focusTrapElement.focusTrapId,
-        'needs to reflect focus trap id values on plain html elements'
-      );
     });
 
     it('should add rebound elements', () => {
@@ -253,14 +241,12 @@ describe('FocusTrap Class: ', () => {
 
     it('should add to focus trap attr on root element (html) to prevent scrolling', () => {
       focusTrap = setUpFocusTrap(testElement);
-      expect(document.documentElement.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)).toContain(
-        focusTrap.focusTrapElement.focusTrapId
-      );
+      expect(document.documentElement.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)).toBe('');
     });
 
     it('should set itself to current on FocusTrapTracker service', () => {
       focusTrap = setUpFocusTrap(testElement);
-      expect(FocusTrapTracker.getCurrent()).toEqual(testElement);
+      expect(FocusTrapTrackerService.getCurrent()).toEqual(testElement as any);
     });
 
     it('should be focused', async () => {
@@ -289,7 +275,7 @@ describe('FocusTrap Class: ', () => {
 
     beforeEach(async () => {
       testElement = await createTestElement();
-      focusTrap = new FocusTrap(castHtmlElementToFocusTrapElement(testElement));
+      focusTrap = new FocusTrap(testElement as any);
       previousFocusedElement = await createTestElement();
       previousFocusedElement.setAttribute('tabindex', '0');
       previousFocusedElement.focus();
@@ -310,7 +296,7 @@ describe('FocusTrap Class: ', () => {
     });
 
     it('should not be set as current on FocusTrapTracker', () => {
-      expect(FocusTrapTracker.getCurrent()).not.toEqual(testElement);
+      expect(FocusTrapTrackerService.getCurrent()).not.toEqual(testElement as any);
     });
 
     it('should not be set to active', () => {
@@ -351,15 +337,16 @@ describe('Nested FocusTraps: ', () => {
   });
 
   it('set multiple focus trap ids', () => {
-    const focusTrapIdArray = document.documentElement.getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR).split(' ');
-    expect(focusTrapIdArray.indexOf(outerFocusTrap.focusTrapId) === 0).toBe(
-      true,
-      'sets focus trap ids as expected (1)'
-    );
-    expect(focusTrapIdArray.indexOf(innerFocusTrap.focusTrapId) === 1).toBe(
-      true,
-      'sets focus trap ids as expected (2)'
-    );
+    expect(
+      FocusTrapTrackerService.getTrapElements()
+        .map(e => e.focusTrapId)
+        .indexOf(outerFocusTrap.focusTrapId) === 0
+    ).toBe(true, 'sets focus trap ids as expected (1)');
+    expect(
+      FocusTrapTrackerService.getTrapElements()
+        .map(e => e.focusTrapId)
+        .indexOf(innerFocusTrap.focusTrapId) === 1
+    ).toBe(true, 'sets focus trap ids as expected (2)');
   });
 
   it('keeps focus inside the inner trap', () => {
@@ -384,12 +371,10 @@ describe('Nested FocusTraps: ', () => {
 
   it('cancelling inner trap falls back to outer trap', () => {
     innerFocusTrap.focusTrap.removeFocusTrap();
-    expect(
-      document.documentElement
-        .getAttribute(CDS_FOCUS_TRAP_DOCUMENT_ATTR)
-        .split(' ')
-        .indexOf(innerFocusTrap.focusTrapId) === -1
-    ).toBe(true, 'should remove focus trap from focus trap ids');
+    expect(FocusTrapTrackerService.getTrapElements().findIndex(e => e.focusTrapId === innerFocusTrap.focusTrapId)).toBe(
+      -1,
+      'should remove focus trap from focus trap ids'
+    );
 
     noFocusButton.focus();
     let focused = document.activeElement;

@@ -7,7 +7,7 @@ import { html } from 'lit';
 import '@cds/core/internal-components/overlay/register.js';
 import { CdsInternalOverlay, isNestedOverlay, overlayIsActive } from '@cds/core/internal-components/overlay';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { FocusTrapTracker } from '@cds/core/internal';
+import { FocusTrapTrackerService } from '@cds/core/internal';
 
 describe('Overlay helper functions: ', () => {
   describe('isNestedOverlay() - ', () => {
@@ -67,11 +67,11 @@ describe('Overlay helper functions: ', () => {
     });
 
     it('identifies top-most overlay', async () => {
-      const fttIds = FocusTrapTracker.getTrapIds();
+      const elements = FocusTrapTrackerService.getTrapElements();
       await componentIsStable(overlay);
 
-      expect(overlayIsActive(fttIds.pop())).toBe(true, 'the top overly is not active');
-      fttIds.forEach(item => expect(overlayIsActive(item)).toBe(false, 'a hidden overlay is active'));
+      expect(overlayIsActive(elements.pop().focusTrapId)).toBe(true, 'the top overly is active');
+      elements.forEach(item => expect(overlayIsActive(item.focusTrapId)).toBe(false, 'a hidden overlay is not active'));
     });
   });
 });

@@ -38,7 +38,7 @@ html {
   --cds-global-typography-color-200: #{$cds-alias-status-disabled};
 }
 
-html[cds-focus-trap-ids*='_'] {
+html[cds-focus-trap] {
   overflow: hidden !important;
   width: 100vw;
   height: 100vh;

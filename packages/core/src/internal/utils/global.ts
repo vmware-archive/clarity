@@ -11,35 +11,26 @@ import { LogService } from '../services/log.service.js';
 
 export interface CDSGlobal {
   _version: string[];
-  _loadedElements: string[];
   _react: { version: string }; // set by @cds/react
   _supports: FeatureSupportMatrix;
-  getVersion: () => CDSLog;
-  logVersion: () => void;
+  _isStateProxied: boolean;
+  _state: Readonly<CDSState>;
+  getDetails: () => any;
+  logDetails: () => void;
   environment: {
     /** Set to true for production env to disable dev time logging and tooling */
-    production: boolean;
-  };
-  state?: CDSState;
-}
-
-export interface CDSLog {
-  versions: string[];
-  loadedElements: string[];
-  userAgent: string;
-  supports: {};
-  angularVersion?: string | undefined;
-  angularJSVersion?: string | undefined;
-  reactVersion?: string | undefined;
-  vueVersion?: string | undefined;
-  environment: {
     production: boolean;
   };
 }
 
 export interface CDSState {
-  focusTraps?: string[];
+  focusTrapItems: Readonly<{ focusTrapId: string }[]>;
+  i18nRegistry: Readonly<{}>;
+  elementRegistry: Readonly<{ [key: string]: any }>;
+  iconRegistry: Readonly<{}>;
+  motionRegistry: Readonly<{}>;
 }
+
 declare global {
   interface Window {
     CDS: CDSGlobal;
@@ -50,44 +41,65 @@ export function setupCDSGlobal() {
   if (isBrowser()) {
     initializeCDSGlobal();
     setRunningVersion();
+    intializeCDSStateProxy();
   }
 }
 
-function getVersion() {
-  if (isBrowser()) {
-    const log: CDSLog = {
-      versions: window.CDS._version,
-      environment: window.CDS.environment,
-      userAgent: navigator.userAgent,
-      supports: window.CDS._supports,
-      angularVersion: getAngularVersion(false),
-      angularJSVersion: getAngularJSVersion(false),
-      reactVersion: getReactVersion(false),
-      vueVersion: getVueVersion(false),
-      loadedElements: window.CDS._loadedElements,
-    };
-    return log;
+function intializeCDSStateProxy() {
+  if (!window.CDS._isStateProxied) {
+    window.CDS._isStateProxied = true;
+    window.CDS._state = new Proxy(window.CDS._state, {
+      set: (target: any, key: string, value) => {
+        const detail = { key, prev: (window.CDS._state as any)[key], current: value };
+        target[key] = value;
+        document.dispatchEvent(new CustomEvent('CDS_STATE_UPDATE', { detail }));
+        return true;
+      },
+    });
   }
-
-  return void 0;
 }
 
-function logVersion() {
-  LogService.log(JSON.stringify(getVersion(), null, 2));
+function getDetails() {
+  return {
+    versions: window.CDS._version,
+    environment: window.CDS.environment,
+    userAgent: navigator.userAgent,
+    supports: window.CDS._supports,
+    angularVersion: getAngularVersion(false),
+    angularJSVersion: getAngularJSVersion(false),
+    reactVersion: getReactVersion(false),
+    vueVersion: getVueVersion(false),
+    state: {
+      ...window.CDS._state,
+      iconRegistry: Object.keys(window.CDS._state.iconRegistry),
+      motionRegistry: Object.keys(window.CDS._state.motionRegistry),
+      focusTrapRegistry: Object.keys(window.CDS._state.focusTrapItems.map(i => i.focusTrapId)),
+    },
+  };
+}
+
+function logDetails() {
+  LogService.log(JSON.stringify(getDetails(), null, 2));
 }
 
 function initializeCDSGlobal() {
   window.CDS = window.CDS || {
     _version: [],
-    _loadedElements: [],
     _react: { version: undefined },
     _supports: browserFeatures.supports,
+    _isStateProxied: false,
+    _state: {
+      focusTrapItems: [],
+      i18nRegistry: {},
+      elementRegistry: {},
+      iconRegistry: {},
+      motionRegistry: {},
+    },
     environment: {
       production: false,
     },
-    state: {},
-    getVersion,
-    logVersion,
+    getDetails,
+    logDetails,
   };
 }
 
@@ -95,9 +107,8 @@ function setRunningVersion() {
   const loadedVersion = 'PACKAGE_VERSION';
   if (window.CDS._version.indexOf(loadedVersion) < 0) {
     window.CDS._version.push(loadedVersion);
+    document.querySelector('body')?.setAttribute('cds-version', window.CDS._version.join(' '));
   }
-
-  (document.querySelector('body') as HTMLElement).setAttribute('cds-version', window.CDS._version[0]);
 
   if (window.CDS._version.length > 1) {
     LogService.warn(

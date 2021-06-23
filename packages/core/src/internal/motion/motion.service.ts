@@ -4,16 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { GlobalStateService } from '../services/global.service.js';
 import { MotionRegistry, TargetedAnimation } from './interfaces.js';
-
-const registry: MotionRegistry = {};
-
-const motionRegistry = new Proxy(registry, {
-  set: (target, key: string, value) => {
-    target[key] = value;
-    return true;
-  },
-});
 
 /**
  *
@@ -27,21 +19,25 @@ export class ClarityMotion {
    * Returns a readonly reference of the registry of animations.
    */
   static get registry(): Readonly<MotionRegistry> {
-    return motionRegistry;
+    return { ...GlobalStateService.state.motionRegistry };
   }
 
   static has(name: string): boolean {
-    return !!name && !!motionRegistry[name];
+    return !!name && !!ClarityMotion.registry[name];
   }
 
   static get(name: string): TargetedAnimation[] {
-    return motionRegistry[name] || [];
+    return ClarityMotion.registry[name] || [];
   }
 
   static add(animationName: string, animationConfig: TargetedAnimation[]) {
     if (!animationName || !animationConfig) {
       return;
     }
-    motionRegistry[animationName] = animationConfig;
+
+    GlobalStateService.state.motionRegistry = {
+      ...GlobalStateService.state.motionRegistry,
+      [animationName]: animationConfig,
+    };
   }
 }

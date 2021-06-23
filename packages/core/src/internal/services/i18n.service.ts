@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { GlobalStateService } from './global.service.js';
+
 export interface I18nStrings {
   [key: string]: { [key: string]: string | undefined };
 
@@ -81,15 +83,20 @@ type PartialRecursive<T> = T extends object ? { [K in keyof T]?: PartialRecursiv
  * use the i18n decorator.
  */
 export class I18nService {
-  private static strings: I18nStrings = { ...componentStringsDefault };
-
   static get keys(): Readonly<I18nStrings> {
-    return I18nService.strings;
+    // intialize registry if not yet set
+    if (Object.keys(GlobalStateService.state.i18nRegistry).length === 0) {
+      GlobalStateService.state.i18nRegistry = { ...componentStringsDefault, ...GlobalStateService.state.i18nRegistry };
+    }
+
+    return { ...componentStringsDefault, ...GlobalStateService.state.i18nRegistry };
   }
 
   static localize(overrides: PartialRecursive<I18nStrings>) {
-    for (const key of Object.keys(overrides)) {
-      I18nService.strings[key] = { ...I18nService.strings[key], ...overrides[key] };
-    }
+    GlobalStateService.state.i18nRegistry = {
+      ...componentStringsDefault,
+      ...GlobalStateService.state.i18nRegistry,
+      ...(overrides as I18nStrings),
+    };
   }
 }

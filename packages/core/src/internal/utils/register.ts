@@ -6,7 +6,7 @@
 
 import curryN from 'ramda/es/curryN.js';
 import { elementExists, existsInWindow, isBrowser } from './exists.js';
-import { setupCDSGlobal } from './global.js';
+import { CDSState, setupCDSGlobal } from './global.js';
 import { isStorybook } from './framework.js';
 import { LogService } from '../services/log.service.js';
 import { applyCSSGapShim } from '../base/css-gap.base.js';
@@ -20,8 +20,8 @@ const addElementToRegistry = curryN(
       registry.define(tagName, applyCSSGapShim(elementClass));
       setupCDSGlobal();
 
-      if (window && !window.CDS._loadedElements.some(i => i === tagName)) {
-        window.CDS._loadedElements.push(tagName);
+      if (window && !Object.keys(window.CDS._state.elementRegistry).some(i => i === tagName)) {
+        (window.CDS._state as CDSState).elementRegistry = { ...window.CDS._state.elementRegistry, [tagName]: {} };
       }
     }
   }

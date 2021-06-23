@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -32,10 +32,6 @@ declare module '@cds/core/internal' {
 }
 
 export type IconRegistry = Partial<IconRegistrySources>;
-
-export interface IconAliasLegacyObject {
-  [key: string]: IconAliases;
-}
 
 type NameOfIconToAlias = string;
 

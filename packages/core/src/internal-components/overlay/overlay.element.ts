@@ -12,7 +12,7 @@ import {
   CdsBaseFocusTrap,
   event,
   EventEmitter,
-  FocusTrapTracker,
+  FocusTrapTrackerService,
   state,
   onKey,
   property,
@@ -40,8 +40,8 @@ export function isNestedOverlay(
   return overlayIds.indexOf(myId) > 0; // id is present and not the first one...
 }
 
-export function overlayIsActive(overlayId: string, focusTrapService = FocusTrapTracker) {
-  return focusTrapService.getCurrentTrapId() === overlayId;
+export function overlayIsActive(overlayId: string, focusTrapService = FocusTrapTrackerService) {
+  return focusTrapService.getCurrent()?.focusTrapId === overlayId;
 }
 
 type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
@@ -124,7 +124,7 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
     const newLayered = isNestedOverlay(
       this.focusTrapId,
       this.overlayIdPrefix,
-      FocusTrapTracker.getTrapIds(),
+      FocusTrapTrackerService.getTrapElements().map(e => e.focusTrapId),
       oldLayered
     );
 

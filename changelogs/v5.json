@@ -2,6 +2,75 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.4.1",
+      "date": "2021-06-24",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 6079,
+          "title": "Add description list element styling",
+          "project": "Core",
+          "scope": "Description List"
+        },
+        {
+          "issue": 6074,
+          "title": "Adding global state service",
+          "project": "Core",
+          "scope": "Modal"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6050,
+          "title": "Input lines are now proper contrast",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 6081,
+          "title": "Fix anchor link hovers in clr-angular header",
+          "project": "Angular",
+          "scope": "Header"
+        },
+        {
+          "issue": 6057,
+          "title": "Remove memory leaks inside the `DropdownFocusHandler`",
+          "project": "Angular",
+          "scope": "Dropdown"
+        },
+        {
+          "issue": 6075,
+          "title": "Add missing React counterpart for Clarity Core pagination",
+          "project": "Core",
+          "scope": "Pagination"
+        },
+        {
+          "issue": 6056,
+          "title": "Remove line-height from control-label",
+          "project": "Angular",
+          "scope": "Input"
+        },
+        {
+          "issue": 6067,
+          "title": "Relax Angular dependency for @cds/angular for v9+",
+          "project": "Core",
+          "scope": ""
+        },
+        {
+          "issue": 6055,
+          "title": "Unsubscribe from `ButtonInGroupService.changes`",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 6048,
+          "title": "Disabled buttons should not be enabled on loadingState",
+          "project": "Core",
+          "scope": "Button"
+        }
+      ]
+    },
+    {
       "version": "5.4.0",
       "date": "2021-06-10",
       "description": "This is a feature and bug release.",

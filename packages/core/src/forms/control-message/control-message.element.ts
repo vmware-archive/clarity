@@ -30,6 +30,8 @@ import { ValidityStateKey } from '../utils/validate.js';
  * @cssprop --color
  * @cssprop --font-size
  * @cssprop --font-weight
+ * @cssprop --max-width
+ * @cssprop --min-width
  */
 export class CdsControlMessage extends LitElement {
   /**

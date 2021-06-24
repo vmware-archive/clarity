@@ -136,4 +136,17 @@ describe('cds-internal-control-group', () => {
     await componentIsStable(controlGroup);
     expect(controlGroup.shadowRoot.querySelector('slot[message]')).toEqual(null);
   });
+
+  it('should set wrap:none on label/messages when in non-vertical style layouts', async () => {
+    await componentIsStable(controlGroup);
+    expect(controlGroup.shadowRoot.querySelector('.controls').getAttribute('cds-layout').includes('wrap:none')).toEqual(
+      true
+    );
+
+    controlGroup.layout = 'vertical';
+    await componentIsStable(controlGroup);
+    expect(controlGroup.shadowRoot.querySelector('.controls').getAttribute('cds-layout').includes('wrap:none')).toEqual(
+      false
+    );
+  });
 });

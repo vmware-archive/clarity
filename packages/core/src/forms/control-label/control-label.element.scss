@@ -14,7 +14,7 @@
 
 :host([action='primary']) {
   min-width: var(--label-width, var(--internal-label-min-width));
-  max-width: var(--label-width, var(--internal-label-max-width));
+  max-width: var(--label-width, var(--internal-label-max-width, calc(#{$cds-global-layout-space-xxl} * 2)));
 }
 
 ::slotted([slot='label']) {

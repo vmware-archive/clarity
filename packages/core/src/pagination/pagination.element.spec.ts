@@ -30,7 +30,7 @@ describe('Pagination Element', () => {
   it('should slot the component', async () => {
     await componentIsStable(defaultLayoutComponent);
     const slots = getComponentSlotContent(defaultLayoutComponent);
-    expect(slots.default).toBe(`${placeholderText}`);
+    expect(slots.default.includes(placeholderText)).toBe(true);
   });
 
   it('should have default layout wrapper for content', async () => {
@@ -48,7 +48,7 @@ describe('Pagination Element', () => {
 
     expect(customLayoutElement.shadowRoot).toBeNull(`No wrappers for custom layouts.`);
     const slots = getComponentSlotContent(customLayoutComponent);
-    expect(slots.default).toBe(`${placeholderText}`);
+    expect(slots.default.includes(placeholderText)).toBe(true);
   });
 
   it('should setup cds-input with proper attributes', async () => {

@@ -155,7 +155,9 @@ export class CdsInternalControlGroup extends LitElement {
   }
 
   private get inlineControlLayout(): string {
-    return !this.layout.includes('inline') && this.layout !== 'compact' ? 'vertical gap:sm' : 'horizontal gap:md';
+    return `${!this.layout.includes('inline') && this.layout !== 'compact' ? 'vertical gap:sm' : 'horizontal gap:md'} ${
+      !this.layout.includes('vertical') ? 'wrap:none' : ''
+    }`;
   }
 
   private get primaryLabelLayout() {
@@ -172,7 +174,7 @@ export class CdsInternalControlGroup extends LitElement {
         <cds-internal-control-label .disabled=${this.disabled} cds-layout="align:top" action="primary">
           <slot name="label"></slot>
         </cds-internal-control-label>
-        <div cds-layout="${this.controlMessageLayout}">
+        <div class="control-message-container" cds-layout="${this.controlMessageLayout}">
           ${this.controlsTemplate} ${this.messages?.length ? this.messagesTemplate : ''}
         </div>
       </div>

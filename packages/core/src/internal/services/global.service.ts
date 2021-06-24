@@ -10,7 +10,7 @@ import { LogService } from './log.service.js';
 export class GlobalState {
   static get state(): Readonly<CDSState> {
     setupCDSGlobal();
-    return window?.CDS?.state;
+    return window?.CDS?.state as CDSState;
   }
 
   static getValue(key: string): any {

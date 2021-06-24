@@ -57,4 +57,17 @@ describe('cds-internal-control-inline', () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('slot[message]')).toEqual(null);
   });
+
+  it('should allow inline control messages when within a inline group', async () => {
+    await componentIsStable(control);
+    expect(control.shadowRoot.querySelector('.private-host').getAttribute('cds-layout').includes('vertical')).toBe(
+      true
+    );
+
+    control.isControlGroup = true;
+    await componentIsStable(control);
+    expect(control.shadowRoot.querySelector('.private-host').getAttribute('cds-layout').includes('horizontal')).toBe(
+      true
+    );
+  });
 });

@@ -18,6 +18,7 @@ import '@cds/core/textarea/register.js';
 import '@cds/core/time/register.js';
 import '@cds/core/toggle/register.js';
 import '@cds/core/button/register.js';
+import '@cds/core/divider/register.js';
 import { html } from 'lit';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { cloudIcon } from '@cds/core/icon/shapes/cloud.js';
@@ -1262,7 +1263,7 @@ export function controlWidth() {
 export function labelWidth() {
   return html`
     <form>
-      <cds-form-group layout="horizontal" style="--label-width: 300px">
+      <cds-form-group layout="horizontal" style="--label-width: 250px">
         <cds-input>
           <label>text label</label>
           <input placeholder="place holder text" />
@@ -1544,7 +1545,7 @@ export function internationalization() {
 /** @website */
 export function responsiveCheckboxGroup() {
   return html`
-    <cds-demo resizable style="max-width: 565px">
+    <cds-demo resizable style="max-width: 600px">
       <cds-checkbox-group layout="compact">
         <label>checkbox label</label>
         <cds-checkbox>
@@ -1596,7 +1597,7 @@ export function disabledResponsiveCheckboxGroup() {
 /** @website */
 export function responsive() {
   return html`
-    <cds-demo resizable style="max-width: 520px; min-width: 300px">
+    <cds-demo resizable style="max-width: 540px; min-width: 260px">
       <cds-form-group layout="horizontal-inline">
         <cds-input>
           <label>text label</label>
@@ -1661,18 +1662,67 @@ export function responsive() {
 export function longText() {
   return html`
     <style>
-      .form-label-demo [layout='horizontal'],
-      .form-label-demo [layout='compact'] {
-        --label-width: 250px;
+      .form-label-demo {
+        --width: 100%;
+        overflow: hidden;
+        padding: 4px;
+        resize: horizontal;
+        margin-bottom: 24px;
+        min-width: 220px;
       }
     </style>
-    <div cds-layout="vertical gap:lg" class="form-label-demo">
-      <h2 cds-text="heading">Vertical</h2>
-      <cds-form-group layout="vertical">
-        <cds-input>
+    <cds-card class="form-label-demo">
+      <div cds-layout="vertical gap:xl">
+        <h2 cds-text="section">Long Text Status</h2>
+
+        <cds-input layout="compact">
+          <label>compact text input</label>
+          <input type="text" />
+          <cds-control-message status="error">message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="horizontal">
+          <label>horizontal text input</label>
+          <input type="text" />
+          <cds-control-message status="error"
+            >message text is very very long so it breaks the layout for us if it's very very long long
+            long</cds-control-message
+          >
+        </cds-input>
+
+        <cds-input layout="horizontal">
           <label
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</label
+            >horizontal text input message text is very very long so it breaks the layout for us if it's very very long
+            long
+          </label>
+          <input type="text" />
+          <cds-control-message status="error"
+            >message text is very very long so it breaks the layout for us if it's very very long long
+            long</cds-control-message
+          >
+        </cds-input>
+
+        <cds-input layout="compact">
+          <label
+            >compact text input message text is very very long so it breaks the layout for us if it's very very long
+            long
+          </label>
+          <input type="text" />
+          <cds-control-message status="error"
+            >message text is very very long so it breaks the layout for us if it's very very long long
+            long</cds-control-message
+          >
+        </cds-input>
+      </div>
+    </cds-card>
+    <cds-card class="form-label-demo">
+      <div cds-layout="vertical gap:xl">
+        <h2 cds-text="section">Long Text</h2>
+
+        <cds-input layout="vertical">
+          <label
+            >Vertical Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam</label
           >
           <input placeholder="place holder text" />
           <cds-control-message
@@ -1681,204 +1731,195 @@ export function longText() {
           >
         </cds-input>
 
-        <cds-radio-group name="region">
-          <label>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam
-          </label>
+        <cds-input layout="horizontal">
+          <label
+            >Horizontal Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam</label
+          >
+          <input placeholder="place holder text" />
+          <cds-control-message
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
+          >
+        </cds-input>
+
+        <cds-input layout="horizontal">
+          <label>Horizontal Lorem ipsum</label>
+          <input placeholder="place holder text" />
+          <cds-control-message>Lorem ipsum</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="compact">
+          <label
+            >Compact Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam</label
+          >
+          <input placeholder="place holder text" />
+          <cds-control-message
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
+          >
+        </cds-input>
+
+        <cds-input layout="compact">
+          <label>Compact</label>
+          <input placeholder="place holder text" />
+          <cds-control-message>Lorem ipsum</cds-control-message>
+        </cds-input>
+
+        <cds-radio-group layout="compact">
+          <label>compact radio group</label>
           <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
+            <label>radio 1</label>
+            <input type="radio" checked />
           </cds-radio>
+
           <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
+            <label>radio 2</label>
+            <input type="radio" />
           </cds-radio>
+
           <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
+            <label>radio 3</label>
+            <input type="radio" />
           </cds-radio>
+
+          <cds-control-message>control message</cds-control-message>
+        </cds-radio-group>
+
+        <cds-radio-group layout="compact">
+          <label
+            >Compact Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam</label
+          >
+          <cds-radio>
+            <label>radio 1</label>
+            <input type="radio" checked />
+          </cds-radio>
+
+          <cds-radio>
+            <label>radio 2</label>
+            <input type="radio" />
+          </cds-radio>
+
+          <cds-radio>
+            <label>radio 3</label>
+            <input type="radio" />
+          </cds-radio>
+
           <cds-control-message
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
           >
         </cds-radio-group>
-      </cds-form-group>
+      </div>
+    </cds-card>
 
-      <h2 cds-text="heading">Horizontal ???</h2>
-      <cds-form-group layout="horizontal">
-        <cds-input>
-          <label
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</label
-          >
+    <cds-card class="form-label-demo">
+      <div cds-layout="vertical gap:xl">
+        <h2 cds-text="section">Form Group</h2>
+
+        <cds-form-group layout="compact">
+          <cds-input>
+            <label>Lorem ipsum dolor sit amet</label>
+            <input placeholder="place holder text" />
+            <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
+          </cds-input>
+
+          <cds-input>
+            <label
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</label
+            >
+            <input placeholder="place holder text" />
+            <cds-control-message
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
+            >
+          </cds-input>
+
+          <cds-input>
+            <label
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</label
+            >
+            <input placeholder="place holder text" />
+            <cds-control-message
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam</cds-control-message
+            >
+          </cds-input>
+        </cds-form-group>
+      </div>
+    </cds-card>
+
+    <cds-card class="form-label-demo">
+      <div cds-layout="vertical gap:xl">
+        <h2 cds-text="section">Form Group - Control Width Shrink</h2>
+
+        <cds-form-group layout="compact" control-width="shrink">
+          <cds-input>
+            <label>Lorem ipsum dolor sit amet</label>
+            <input placeholder="place holder text" />
+            <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
+          </cds-input>
+
+          <cds-input>
+            <label
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</label
+            >
+            <input placeholder="place holder text" />
+            <cds-control-message
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam</cds-control-message
+            >
+          </cds-input>
+
+          <cds-input>
+            <label
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</label
+            >
+            <input placeholder="place holder text" />
+            <cds-control-message
+              >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+              do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+              veniam</cds-control-message
+            >
+          </cds-input>
+        </cds-form-group>
+      </div>
+    </cds-card>
+
+    <cds-card class="form-label-demo">
+      <div cds-layout="vertical gap:xl">
+        <h2 cds-text="section">Short Text</h2>
+
+        <cds-input layout="vertical">
+          <label>Lorem ipsum dolor sit amet</label>
           <input placeholder="place holder text" />
           <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
         </cds-input>
 
-        <cds-radio-group name="region">
-          <label>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam
-          </label>
-          <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
-          </cds-radio>
-          <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
-          </cds-radio>
-          <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
-          </cds-radio>
-          <cds-control-message>Lorem ipsum dolor sitveniam</cds-control-message>
-        </cds-radio-group>
-      </cds-form-group>
-
-      <h2 cds-text="heading">Compact</h2>
-      <cds-form-group layout="compact">
-        <cds-input status="error">
-          <label
-            >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam</label
-          >
+        <cds-input layout="horizontal">
+          <label>Lorem ipsum dolor sit amet</label>
           <input placeholder="place holder text" />
-          <cds-control-message status="error">Lorem ipsum dolor sit amet</cds-control-message>
-        </cds-input>
-
-        <cds-radio-group name="region">
-          <label>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam
-          </label>
-          <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
-          </cds-radio>
-          <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
-          </cds-radio>
-          <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
-          </cds-radio>
           <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
-        </cds-radio-group>
-      </cds-form-group>
-
-      <h2 cds-text="heading">Vertical</h2>
-      <cds-form-group layout="vertical">
-        <cds-input>
-          <label>Lorem ipsum</label>
-          <input placeholder="place holder text" />
-          <cds-control-message>Lorem ipsum</cds-control-message>
         </cds-input>
 
-        <cds-radio-group name="region">
-          <label>Lorem ipsum</label>
-          <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
-          </cds-radio>
-          <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
-          </cds-radio>
-          <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
-          </cds-radio>
-          <cds-control-message>Lorem ipsum</cds-control-message>
-        </cds-radio-group>
-      </cds-form-group>
-
-      <h2 cds-text="heading">Horizontal</h2>
-      <cds-form-group layout="horizontal">
-        <cds-input>
-          <label>Lorem ipsum</label>
+        <cds-input layout="compact">
+          <label>Lorem ipsum dolor sit amet</label>
           <input placeholder="place holder text" />
-          <cds-control-message>Lorem ipsum</cds-control-message>
+          <cds-control-message>Lorem ipsum dolor sit amet</cds-control-message>
         </cds-input>
-
-        <cds-radio-group name="region">
-          <label>Lorem ipsum</label>
-          <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
-          </cds-radio>
-          <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
-          </cds-radio>
-          <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
-          </cds-radio>
-          <cds-control-message>Lorem ipsum</cds-control-message>
-        </cds-radio-group>
-      </cds-form-group>
-
-      <h2 cds-text="heading">Compact</h2>
-      <cds-form-group layout="compact">
-        <cds-input>
-          <label>Lorem ipsum</label>
-          <input placeholder="place holder text" />
-          <cds-control-message>Lorem ipsum</cds-control-message>
-        </cds-input>
-
-        <cds-radio-group name="region">
-          <label>Lorem ipsum</label>
-          <cds-radio>
-            <label>North America</label>
-            <input type="radio" value="north-america" checked />
-          </cds-radio>
-          <cds-radio>
-            <label>South America</label>
-            <input type="radio" value="south-america" />
-          </cds-radio>
-          <cds-radio>
-            <label>Europe</label>
-            <input type="radio" value="europe" />
-          </cds-radio>
-          <cds-control-message>Lorem ipsum</cds-control-message>
-        </cds-radio-group>
-      </cds-form-group>
-    </div>
-  `;
-}
-
-/** @website */
-export function multiColumn() {
-  return html`
-    <form>
-      <cds-form-group layout="vertical">
-        <div cds-layout="grid gap:lg cols@sm:6">
-          <cds-input>
-            <label>First Name</label>
-            <input type="text" />
-          </cds-input>
-
-          <cds-input>
-            <label>Last Name</label>
-            <input type="text" />
-          </cds-input>
-
-          <cds-input cds-layout="col:12">
-            <label>Email</label>
-            <input type="email" />
-          </cds-input>
-
-          <cds-textarea cds-layout="col:12">
-            <label>profile description</label>
-            <textarea></textarea>
-          </cds-textarea>
-        </div>
-        <cds-button>Update Profile</cds-button>
-      </cds-form-group>
-    </form>
+      </div>
+    </cds-card>
   `;
 }
 

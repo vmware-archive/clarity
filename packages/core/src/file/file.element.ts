@@ -48,7 +48,7 @@ export class CdsFile extends CdsControl {
       <div>
         <cds-button size="sm" action="outline" @click="${() => this.label.click()}" ?disabled=${this.disabled}>
           <cds-icon shape="folder" aria-hidden="true"></cds-icon>
-          ${this.buttonLabel}
+          <span>${this.buttonLabel}</span>
         </cds-button>
         ${this.clearFilesControlTemplate}
       </div>

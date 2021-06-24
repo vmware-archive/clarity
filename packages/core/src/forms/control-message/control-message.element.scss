@@ -9,6 +9,10 @@
   --color: #{$cds-global-typography-color-300};
   --font-size: #{$cds-global-typography-font-size-1};
   --font-weight: #{$cds-global-typography-font-weight-regular};
+  --min-width: #{$cds-global-layout-space-xxl};
+  --max-width: initial;
+  min-width: var(--min-width);
+  max-width: var(--max-width);
 }
 
 .private-host {

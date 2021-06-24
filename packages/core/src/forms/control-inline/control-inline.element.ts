@@ -50,8 +50,15 @@ export class CdsInternalControlInline extends CdsControl {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="vertical gap:sm">
-        <div cds-layout="horizontal gap:sm wrap:none ${this.controlAlign === 'right' ? 'order:reverse' : ''}">
+      <div
+        class="private-host"
+        cds-layout="${this.isControlGroup ? 'horizontal align:vertical-center' : 'vertical'} gap:sm"
+      >
+        <div
+          cds-layout="horizontal gap:sm wrap:none align:vertical-center ${this.controlAlign === 'right'
+            ? 'order:reverse'
+            : ''}"
+        >
           <div class="input" @click=${() => this.inputControl.click()}></div>
           <cds-internal-control-label
             action="secondary"
@@ -61,7 +68,7 @@ export class CdsInternalControlInline extends CdsControl {
             <slot name="label"></slot>
           </cds-internal-control-label>
         </div>
-        ${!this.isControlGroup && this.messages?.length
+        ${this.messages?.length
           ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:sm' : ''}">
               ${getStatusIcon(this.status)}
               <div cds-layout="align:vertical-center" class="messages">

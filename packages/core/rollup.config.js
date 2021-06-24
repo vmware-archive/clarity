@@ -83,7 +83,7 @@ const config = {
 };
 
 const prod = !process.env.ROLLUP_WATCH;
-const version = fs.readJsonSync('./package.json').version;
+const version = fs.readJsonSync('./npm.json').version;
 
 export default [
   ...globalStyles({

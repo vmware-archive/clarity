@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "scripts": {
     "start": "ng serve dev",
     "website:news": "node projects/website/generate-news",

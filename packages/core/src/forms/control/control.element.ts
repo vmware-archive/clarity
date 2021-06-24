@@ -181,7 +181,9 @@ export class CdsControl extends LitElement {
       >
         ${this.primaryLabelTemplate}
         <div
+          class="input-message-container"
           cds-layout="
+          wrap:none
           ${this.layout === 'compact' ? 'horizontal' : 'vertical'}
           ${this.controlWidth === 'stretch' && !this.fixedControlWidth ? 'align:horizontal-stretch' : ''}
           ${this.messages?.length ? 'gap:sm' : ''}"

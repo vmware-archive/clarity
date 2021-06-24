@@ -651,3 +651,28 @@ export function darkTheme() {
     </cds-form-group>
   `;
 }
+
+export function inlineGroupControlMessages() {
+  return html`
+    <div cds-layout="vertical gap:lg">
+      <cds-toggle-group>
+        <label>label</label>
+        <cds-toggle>
+          <label>toggle 1</label>
+          <input type="checkbox" checked />
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 2</label>
+          <input type="checkbox" />
+          <cds-control-message><a cds-text="link" href="#">learn more</a></cds-control-message>
+        </cds-toggle>
+
+        <cds-toggle>
+          <label>toggle 3</label>
+          <input type="checkbox" />
+        </cds-toggle>
+      </cds-toggle-group>
+    </div>
+  `;
+}

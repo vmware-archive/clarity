@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
-import { html, LitElement } from 'lit';
+import { baseStyles, globalStyle, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
+import { css, html, LitElement } from 'lit';
 import { cache } from 'lit/directives/cache.js';
 import { CdsInput } from '@cds/core/input';
 import styles from './pagination.element.scss';
@@ -36,6 +36,12 @@ import styles from './pagination.element.scss';
  */
 
 export class CdsPagination extends LitElement {
+  @globalStyle() protected globalStyles = css`
+    [cds-pagination-number] > cds-control-message {
+      --min-width: initial;
+    }
+  `;
+
   @querySlot('cds-input[cds-pagination-number]') private numberInput: CdsInput;
 
   render() {

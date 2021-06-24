@@ -4,9 +4,24 @@
 
 @import './../../styles/tokens/generated/index';
 
+$fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
+
 :host {
   display: block;
   width: 100%;
+  --control-width: #{$fallback-width};
+}
+
+:host([layout='compact']:not([control-width='shrink'])) .input-container {
+  min-width: var(--control-width);
+}
+
+:host(:not([layout*='vertical']):not([control-width='shrink'])) .input-message-container {
+  flex-basis: $fallback-width;
+}
+
+:host([layout='compact']:not([control-width='shrink'])) ::slotted(cds-control-message) {
+  --max-width: #{$fallback-width};
 }
 
 .input-container {

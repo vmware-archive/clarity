@@ -5,6 +5,7 @@
   --font-size: #{$cds-global-typography-font-size-4};
   color: var(--color);
   display: flex;
+  width: auto;
   font-size: var(--font-size);
 }
 
@@ -16,4 +17,11 @@
   --padding: var(--cds-global-space-2) var(--cds-global-space-4) 0;
   --font-size: #{$cds-global-typography-font-size-4};
   --text-align: center;
+}
+
+::slotted([cds-control]) {
+  --min-width: initial;
+  --label-width: 0;
+  --control-width: initial;
+  width: auto;
 }

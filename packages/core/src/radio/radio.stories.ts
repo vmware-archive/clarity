@@ -578,3 +578,57 @@ export function darkTheme() {
     </cds-form-group>
   `;
 }
+
+export function inlineGroupControlMessages() {
+  function updateOther(e: any) {
+    document.querySelector<HTMLInputElement>('.other-input').disabled = e.target.value !== '3';
+  }
+
+  return html`
+    <div cds-layout="vertical gap:lg">
+      <cds-radio-group layout="vertical">
+        <label>Available Options</label>
+
+        <cds-radio>
+          <label>Option 1</label>
+          <input type="radio" value="1" checked @change=${updateOther} />
+        </cds-radio>
+
+        <cds-radio>
+          <label>Option 2</label>
+          <input type="radio" value="2" @change=${updateOther} />
+        </cds-radio>
+
+        <cds-radio layout="horizontal">
+          <label>Other:</label>
+          <input type="radio" value="3" @change=${updateOther} />
+          <cds-control-message>
+            <cds-input control-width="shrink">
+              <input placeholder="options" aria-label="Other Details" disabled required class="other-input" />
+            </cds-input>
+          </cds-control-message>
+        </cds-radio>
+      </cds-radio-group>
+
+      <cds-radio-group layout="vertical">
+        <label>Available Options</label>
+
+        <cds-radio>
+          <label>Option 1</label>
+          <input type="radio" value="1" checked />
+        </cds-radio>
+
+        <cds-radio>
+          <label>Option 2</label>
+          <input type="radio" value="2" />
+        </cds-radio>
+
+        <cds-radio layout="horizontal">
+          <label>Option 3</label>
+          <input type="radio" value="3" />
+          <cds-control-message><a cds-text="link" href="#">learn more</a></cds-control-message>
+        </cds-radio>
+      </cds-radio-group>
+    </div>
+  `;
+}

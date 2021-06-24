@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { querySlotAll, baseStyles } from '@cds/core/internal';
+import { querySlotAll } from '@cds/core/internal';
 import { CdsInternalControlGroup, ControlLabelLayout } from '@cds/core/forms';
 import styles from './input-group.element.scss';
 import { CdsInput } from './input.element.js';
@@ -44,7 +44,7 @@ export class CdsInputGroup extends CdsInternalControlGroup {
   protected isInlineControlGroup = true;
 
   static get styles() {
-    return [baseStyles, styles];
+    return [super.styles, styles];
   }
 
   firstUpdated(props: Map<string, any>) {

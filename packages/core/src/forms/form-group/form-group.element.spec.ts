@@ -108,8 +108,8 @@ describe('cds-form-group', () => {
     await componentIsStable(formGroup); // connectedCallback
     await componentIsStable(formGroup); // firstUpdated
 
-    expect(controls[0].querySelector('label').getBoundingClientRect().width).toBe(200);
-    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((200 / 20) * 1rem)'); // --cds-global-base is used in place of "20" but computed properties return the result of css custom properties
+    expect(controls[0].querySelector('label').getBoundingClientRect().width).toBe(192);
+    expect(getCssPropertyValue('--internal-label-min-width', formGroup)).toBe('calc((192 / 20) * 1rem)'); // --cds-global-base is used in place of "20" but computed properties return the result of css custom properties
   });
 
   it('should sync layouts when a control overflows', async () => {

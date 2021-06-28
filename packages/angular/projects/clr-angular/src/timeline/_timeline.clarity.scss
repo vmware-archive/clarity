@@ -17,8 +17,7 @@
     min-width: $clr-timeline-step-min-width;
     margin-left: $clr-timeline-gutter-width;
 
-    cds-icon,
-    clr-icon {
+    cds-icon:not([size]) {
       @include min-equilateral($clr-timeline-icon-size);
     }
 

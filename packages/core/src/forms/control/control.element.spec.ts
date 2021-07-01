@@ -287,3 +287,28 @@ describe('cds-control with aria-label', () => {
     expect(control.labelLayout).toBe(ControlLabelLayout.ariaLabel);
   });
 });
+
+describe('cds-control with aria-labelledby', () => {
+  let element: HTMLElement;
+  let control: CdsControl;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-control layout="compact">
+        <input type="text" aria-labelledby="label" />
+      </cds-control>
+      <p id="label">input label</p>
+    `);
+
+    control = element.querySelector<CdsControl>('cds-control');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should not enable hidden label', async () => {
+    await componentIsStable(control);
+    expect(control.labelLayout).toBe(ControlLabelLayout.ariaLabel);
+  });
+});

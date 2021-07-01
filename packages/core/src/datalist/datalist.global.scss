@@ -3,5 +3,6 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 cds-datalist input::-webkit-calendar-picker-indicator {
-  display: none;
+  opacity: 0;
+  cursor: text;
 }

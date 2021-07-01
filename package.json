@@ -1,6 +1,10 @@
 {
   "name": "clarity",
   "version": "5.4.1",
+  "engines": {
+    "yarn": "please-use-npm",
+    "npm": ">= 6.14.0"
+  },
   "scripts": {
     "start": "ng serve dev",
     "website:news": "node projects/website/generate-news",
@@ -42,7 +46,7 @@
     "build:icons:zip": "node ./scripts/clr-icons-svg.js",
     "build:icons": "npm-run-all build:icons:css build:icons:optimize build:icons:webpack build:icons:zip build:icons:package",
     "schematics:clean": "rm -rf projects/schematics/src/**/*.{js,js.map}",
-    "schematics:test": "yarn run schematics:build:test && jasmine projects/schematics/**/*.spec.js",
+    "schematics:test": "npm run schematics:build:test && jasmine projects/schematics/**/*.spec.js",
     "schematics:build:clr": "tsc -p projects/schematics/tsconfig.json",
     "schematics:build:test": "tsc -p projects/schematics/tsconfig.test.json",
     "schematics:copy:clr": "cpy --parents --cwd='projects/schematics/src' '**/*.json' ../../../dist/clr-angular/schematics",
@@ -52,10 +56,10 @@
     "build:sync-versions": "node ./scripts/sync-versions.js",
     "build:release": "npm-run-all clean:build format lint test build:angular schematics:build build:ui build:icons build:sync-versions golden:fix golden:test",
     "build:ci": "npm-run-all build:release build:website build:dev",
-    "publish": "yarn publish dist/clr-angular; yarn publish dist/clr-ui; yarn publish dist/clr-icons;",
-    "publish:rc": "yarn publish dist/clr-angular --tag rc; yarn publish dist/clr-ui --tag rc; yarn publish dist/clr-icons --tag rc;",
-    "publish:next": "yarn publish dist/clr-angular --tag next; yarn publish dist/clr-ui --tag next; yarn publish dist/clr-icons --tag next;",
-    "publish:local": "yarn publish dist/clr-icons --registry http://localhost:4873 --tag local; yarn publish dist/clr-ui --registry http://localhost:4873 --tag local; yarn publish dist/clr-angular --registry http://localhost:4873 --tag local;"
+    "publish": "npm publish dist/clr-angular; npm publish dist/clr-ui; npm publish dist/clr-icons;",
+    "publish:rc": "npm publish dist/clr-angular --tag rc; npm publish dist/clr-ui --tag rc; npm publish dist/clr-icons --tag rc;",
+    "publish:next": "npm publish dist/clr-angular --tag next; npm publish dist/clr-ui --tag next; npm publish dist/clr-icons --tag next;",
+    "publish:local": "npm publish dist/clr-icons --registry http://localhost:4873 --tag local; npm publish dist/clr-ui --registry http://localhost:4873 --tag local; npm publish dist/clr-angular --registry http://localhost:4873 --tag local;"
   },
   "private": true,
   "dependencies": {
@@ -143,7 +147,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format:fix && yarn license:fix",
+      "pre-commit": "npm run format:fix && npm run license:fix",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

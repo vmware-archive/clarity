@@ -95,18 +95,18 @@ This will ensure that this project runs through your local registry before going
 
 You can test the schematic on a new project without the Angular CLI by using the schematics CLI directly. This is a bit easier as it doesn't require publishing to a local registry.
 
-Start by running `yarn build` to build the whole project. Then `cd dist/clr-angular` and run `npm link`. This will link this build directory to global node modules for schematics to leverage.
+Start by running `npm run build` to build the whole project. Then `cd dist/clr-angular` and run `npm link`. This will link this build directory to global node modules for schematics to leverage.
 
-Now, as you make changes run `yarn schematics:build` to build just the schematics.
+Now, as you make changes run `npm run schematics:build` to build just the schematics.
 
 Finally, in your new CLI project you can run `schematics @clr/angular:ng-add` to execute the schematic.
 
 ##### How to test package with npm registry
 
-During local development you can run the build `yarn build` from the repo root, and then `yarn publish:local` to publish it locally. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
+During local development you can run the build `npm run build` from the repo root, and then `npm run publish:local` to publish it locally. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
 
 ```bash
-rm -rf ~/.config/verdaccio/storage/@clr && yarn build:libs && yarn publish:local
+rm -rf ~/.config/verdaccio/storage/@clr && npm run build:libs && npm run publish:local
 ```
 
 Finally run `ng add @clr/angular` or `ng add @cds/angular` to have it install using your local registry.
@@ -146,7 +146,7 @@ You'll also want to ensure that when you build the project that you're increment
 
 ##### How to test package with npm registry
 
-During local development you can build and publish to the local registry `yarn publish:local`. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
+During local development you can build and publish to the local registry `npm run publish:local`. It will assume you have a local npm registry running, and that you've incremented the version number. Otherwise you may have to clear out the local registry to publish again.
 
 ```bash
 rm -rf ~/.config/verdaccio/storage/@clr && yarn publish:local

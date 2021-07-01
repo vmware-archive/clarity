@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,4 +12,8 @@ export function describeElementByElements(element: HTMLElement, messages: HTMLEl
     'aria-describedby',
     messages.length ? messages.map(m => (m.id = createId())).join(' ') : false,
   ]);
+}
+
+export function hasAriaLabelTypeAttr(element: HTMLElement) {
+  return element.hasAttribute('aria-label') || element.hasAttribute('aria-labelledby');
 }

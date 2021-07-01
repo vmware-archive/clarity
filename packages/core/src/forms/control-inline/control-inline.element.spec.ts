@@ -11,7 +11,9 @@ import '@cds/core/forms/register.js';
 
 let element: HTMLElement;
 let control: CdsInternalControlInline;
+let controlInGroup: CdsInternalControlInline;
 let input: HTMLInputElement;
+let inputInControlGroup: HTMLInputElement;
 
 describe('cds-internal-control-inline', () => {
   beforeEach(async () => {
@@ -20,10 +22,20 @@ describe('cds-internal-control-inline', () => {
         <label>control</label>
         <input type="checkbox" />
       </cds-internal-control-inline>
+
+      <cds-internal-control-group>
+        <cds-internal-control-inline>
+          <label>control</label>
+          <input type="checkbox" />
+        </cds-internal-control-inline>
+      </cds-internal-control-group>
     `);
 
-    control = element.querySelector<CdsInternalControlInline>('cds-internal-control-inline');
+    control = element.querySelectorAll<CdsInternalControlInline>('cds-internal-control-inline')[0];
+    controlInGroup = element.querySelectorAll<CdsInternalControlInline>('cds-internal-control-inline')[1];
+
     input = element.querySelector<HTMLInputElement>('input');
+    inputInControlGroup = element.querySelector<HTMLInputElement>('cds-internal-control-group input');
   });
 
   afterEach(() => {
@@ -69,5 +81,17 @@ describe('cds-internal-control-inline', () => {
     expect(control.shadowRoot.querySelector('.private-host').getAttribute('cds-layout').includes('horizontal')).toBe(
       true
     );
+  });
+
+  it('should only bubble events if control is not managed by a control group', async () => {
+    await componentIsStable(control);
+
+    let eventCount = 0;
+    element.addEventListener('checkedChange', () => eventCount++);
+    inputInControlGroup.click();
+    input.click();
+
+    await componentIsStable(control);
+    expect(eventCount).toBe(1);
   });
 });

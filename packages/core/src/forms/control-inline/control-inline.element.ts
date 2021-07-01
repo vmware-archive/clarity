@@ -11,7 +11,7 @@ import { CdsControl } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/index.js';
 
 /**
- * Internal Control Inline
+ * Internal Control Inline (boolean types)
  *
  * ```typescript
  * import '@cds/core/forms/register.js';
@@ -59,7 +59,7 @@ export class CdsInternalControlInline extends CdsControl {
             ? 'order:reverse'
             : ''}"
         >
-          <div class="input" @click=${() => this.inputControl.click()}></div>
+          <div class="input" @click=${this.selectInput}></div>
           <cds-internal-control-label
             action="secondary"
             .disabled="${this.disabled}"
@@ -105,7 +105,12 @@ export class CdsInternalControlInline extends CdsControl {
 
     if (props.has('checked') && props.get('checked') !== this.checked && this.checked) {
       this.indeterminate = false;
-      this.checkedChange.emit(this.checked);
+      this.checkedChange.emit(this.checked, { bubbles: !this.isControlGroup }); // if not a group then bubble to notify the other associated controls
     }
+  }
+
+  private selectInput(e: any) {
+    this.inputControl.click();
+    e.preventDefault(); // prevent any events from the input div, only the native input
   }
 }

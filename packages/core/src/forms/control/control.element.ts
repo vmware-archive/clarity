@@ -22,6 +22,7 @@ import {
   syncProps,
   pxToRem,
   getElementUpdates,
+  hasAriaLabelTypeAttr,
 } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
@@ -140,7 +141,7 @@ export class CdsControl extends LitElement {
     requiredMessage: 'To meet a11y standards either a <label> or input[aria-label] should be provided.',
     assign: 'label',
     exemptOn: _this => {
-      return _this.inputControl?.hasAttribute('aria-label');
+      return _this.hasAriaLabelTypeAttr;
     },
   })
   protected label: HTMLLabelElement;
@@ -168,6 +169,10 @@ export class CdsControl extends LitElement {
 
   static get styles() {
     return [baseStyles, styles];
+  }
+
+  private get hasAriaLabelTypeAttr() {
+    return hasAriaLabelTypeAttr(this.inputControl);
   }
 
   render() {
@@ -356,7 +361,7 @@ export class CdsControl extends LitElement {
       this.labelLayout = ControlLabelLayout.hiddenLabel;
     }
 
-    if (this.inputControl.hasAttribute('aria-label')) {
+    if (this.hasAriaLabelTypeAttr) {
       this.labelLayout = ControlLabelLayout.ariaLabel;
     }
   }

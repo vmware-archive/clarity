@@ -5,6 +5,7 @@
   "author": "clarity",
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
+  "customElements": "custom-elements.json",
   "keywords": ["web component", "design system", "clarity", "ui"],
   "repository": {
     "type": "git",

@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import API from '@cds/core/custom-elements.json';
+import API from '@cds/core/custom-elements.legacy.json';
 
 export default {
   name: 'DocWebComponentAPI',

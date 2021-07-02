@@ -9,7 +9,6 @@ import '@cds/core/divider/register.js';
 import '@cds/core/forms/register.js';
 import { getElementStorybookArgs, getElementStorybookArgTypes, spreadProps } from '@cds/core/internal';
 import { html } from 'lit';
-import customElements from '../../dist/core/custom-elements.json';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { shareIcon } from '@cds/core/icon/shapes/share.js';
 import { thumbsUpIcon } from '@cds/core/icon/shapes/thumbs-up.js';
@@ -21,7 +20,6 @@ const placeholder = 'Placeholder';
 export default {
   title: 'Stories/Card',
   component: 'cds-card',
-  argTypes: getElementStorybookArgTypes('cds-card', customElements),
   parameters: {
     options: { showPanel: true },
   },

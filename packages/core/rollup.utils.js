@@ -29,7 +29,11 @@ export const packageCheck = dir => {
 export const webComponentAnalyer = outDir => {
   return execute({
     commands: [
-      `wca analyze ${resolve(outDir)} --silent --format=json --outFile ${resolve(outDir, 'custom-elements.json')}`,
+      `cd ${resolve(outDir)} && cem analyze --litelement --globs ./**/*.element.d.ts`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
+      `wca analyze ${resolve(outDir)} --silent --format=json --outFile ${resolve(
+        outDir,
+        'custom-elements.legacy.json'
+      )}`,
     ],
     hook: 'writeBundle',
   });

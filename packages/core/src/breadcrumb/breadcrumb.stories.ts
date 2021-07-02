@@ -7,12 +7,10 @@
 import '@cds/core/breadcrumb/register.js';
 import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit';
-import customElements from '../../dist/core/custom-elements.json';
 
 export default {
   title: 'Stories/Breadcrumb',
   component: 'cds-breadcrumb',
-  argTypes: getElementStorybookArgTypes('cds-breadcrumb', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

@@ -23,6 +23,7 @@
     "build:update": "node ../../scripts/update-local-packages.js /packages/core/dist/core/package.json",
     "postinstall": "patch-package"
   },
+  "customElements": "dist/core/custom-elements.json",
   "sideEffects": [
     "src/**/*.register.js"
   ],
@@ -57,6 +58,7 @@
     "@types/resize-observer-browser": "^0.1.5"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.4.12",
     "@fullhuman/postcss-purgecss": "4.0.3",
     "@open-wc/dev-server-hmr": "0.1.2-next.0",
     "@rollup/plugin-alias": "3.1.2",

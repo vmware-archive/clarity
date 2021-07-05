@@ -27,6 +27,7 @@ import { RangePage } from './pages/range.page';
 import { SelectPage } from './pages/select.page';
 import { TextareaPage } from './pages/textarea.page';
 import { TogglePage } from './pages/toggle.page';
+import { CardPage } from './pages/card.page';
 
 const routes: Routes = [
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'alert', component: AlertPage },
   { path: 'badge', component: BadgePage },
   { path: 'button', component: ButtonPage },
+  { path: 'card', component: CardPage },
   { path: 'checkbox', component: CheckboxPage },
   { path: 'datalist', component: DatalistPage },
   { path: 'form', component: FormPage },

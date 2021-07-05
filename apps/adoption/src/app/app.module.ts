@@ -38,6 +38,7 @@ import { RangePage } from './pages/range.page';
 import { SelectPage } from './pages/select.page';
 import { TextareaPage } from './pages/textarea.page';
 import { TogglePage } from './pages/toggle.page';
+import { CardPage } from './pages/card.page';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TogglePage } from './pages/toggle.page';
     AlertPage,
     BadgePage,
     ButtonPage,
+    CardPage,
     CheckboxPage,
     DatalistPage,
     FormPage,

@@ -38,7 +38,7 @@ export interface DemoTabData {
   template: `
     <ng-content></ng-content>
 
-    <div *ngIf="sideBySideState" style="display:flex; align-items: flex-start; justify-content: space-between;">
+    <div style="display:flex; align-items: flex-start; justify-content: space-between;">
       <clr-tabs *ngFor="let tab of tabs" style="width: 49.5%">
         <clr-tab>
           <button clrTabLink>{{ tab.name }}</button>
@@ -55,49 +55,6 @@ export interface DemoTabData {
             </button>
           </clr-tab-content>
         </clr-tab>
-
-        <clr-tab *ngIf="!sideBySideState">
-          <button clrTabLink (click)="sideBySide()" [clrTabLinkInOverflow]="inOverflow">
-            <cds-icon (click)="sideBySide()" size="md" shape="view-columns">Side by side</cds-icon> Side by side
-          </button>
-        </clr-tab>
-
-        <clr-tab *ngIf="sideBySideState">
-          <button clrTabLink (click)="sideBySide()" [clrTabLinkInOverflow]="inOverflow">
-            <cds-icon size="md" shape="landscape"></cds-icon> Full width
-          </button>
-        </clr-tab>
-      </clr-tabs>
-    </div>
-    <div *ngIf="!sideBySideState">
-      <clr-tabs>
-        <clr-tab *ngFor="let tab of tabs">
-          <button clrTabLink>{{ tab.name }}</button>
-          <clr-tab-content *clrIfActive>
-            <div *ngFor="let file of tab.files | keyvalue">
-              <sourcecode [src]="file.value" [language]="tab.language"></sourcecode>
-            </div>
-            <div id="{{ tab.id }}"></div>
-            <button (click)="openStackblitz(tab)" class="btn btn-sm btn-link">
-              <cds-icon shape="bolt"></cds-icon> StackBlitz
-            </button>
-            <button (click)="embedStackblitz(tab, tab.id)" class="btn btn-sm btn-link">
-              <cds-icon shape="terminal"></cds-icon> Run
-            </button>
-          </clr-tab-content>
-        </clr-tab>
-
-        <clr-tab *ngIf="!sideBySideState">
-          <button clrTabLink (click)="sideBySide()" [clrTabLinkInOverflow]="inOverflow">
-            <cds-icon (click)="sideBySide()" size="md" shape="view-columns">Side by side</cds-icon> Side by side
-          </button>
-        </clr-tab>
-
-        <clr-tab *ngIf="sideBySideState">
-          <button clrTabLink (click)="sideBySide()" [clrTabLinkInOverflow]="inOverflow">
-            <cds-icon size="md" shape="landscape"></cds-icon> Full width
-          </button>
-        </clr-tab>
       </clr-tabs>
     </div>
   `,
@@ -107,9 +64,6 @@ export class Demo {
   inOverflow = true;
 
   @Input('tabs') tabs: DemoTabData[] = [];
-
-  // Experimental
-  @Input('sideBySide') _sideBySideState: boolean | string = false;
 
   constructor(private stackblitz: StackblitzService) {}
 
@@ -149,19 +103,5 @@ export class Demo {
 
   public async openStackblitz(tab: DemoTabData): Promise<void> {
     await this.stackblitz.open(tab.template, tab.files);
-  }
-
-  public sideBySide(): void {
-    this._sideBySideState = !this._sideBySideState;
-  }
-
-  /**
-   * Side by side only works where there are exactly two tabs defined.
-   */
-  get sideBySideState(): boolean {
-    if (this.tabs.length === 2) {
-      return this._sideBySideState as boolean;
-    }
-    return false;
   }
 }

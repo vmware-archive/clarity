@@ -15,6 +15,18 @@ import { IconsPage } from './pages/icons.page';
 import { AccordionPage } from './pages/accordion.page';
 import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
+import { ButtonPage } from './pages/button.page';
+import { DatalistPage } from './pages/detalist.page';
+import { FormPage } from './pages/form.page';
+import { InputPage } from './pages/input.page';
+import { ListPage } from './pages/list.page';
+import { ModalPage } from './pages/modal.page';
+import { PasswordPage } from './pages/password.page';
+import { RadioPage } from './pages/radio.page';
+import { RangePage } from './pages/range.page';
+import { SelectPage } from './pages/select.page';
+import { TextareaPage } from './pages/textarea.page';
+import { TogglePage } from './pages/toggle.page';
 
 const routes: Routes = [
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
@@ -22,9 +34,21 @@ const routes: Routes = [
   { path: 'accordion', component: AccordionPage },
   { path: 'alert', component: AlertPage },
   { path: 'badge', component: BadgePage },
+  { path: 'button', component: ButtonPage },
   { path: 'checkbox', component: CheckboxPage },
+  { path: 'datalist', component: DatalistPage },
+  { path: 'form', component: FormPage },
   { path: 'icons', component: IconsPage },
+  { path: 'input', component: InputPage },
   { path: 'label', component: LabelPage },
+  { path: 'list', component: ListPage },
+  { path: 'modal', component: ModalPage },
+  { path: 'password', component: PasswordPage },
+  { path: 'radio', component: RadioPage },
+  { path: 'range', component: RangePage },
+  { path: 'select', component: SelectPage },
+  { path: 'textarea', component: TextareaPage },
+  { path: 'toggle', component: TogglePage },
   { path: 'adoption-tooling', component: AdoptionToolingPage },
 ];
 

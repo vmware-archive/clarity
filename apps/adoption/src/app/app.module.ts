@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SourceCodeComponent } from './components/sourcecode.component';
 import { Demo } from './components/demo.component';
-
+import { NotReadyComponent } from './components/not-ready.component';
 import '@clr/icons/shapes/all-shapes';
 import '@cds/core/divider/register.js';
 
@@ -26,6 +26,18 @@ import { IconsPage } from './pages/icons.page';
 import { AccordionPage } from './pages/accordion.page';
 import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
+import { FormPage } from './pages/form.page';
+import { ButtonPage } from './pages/button.page';
+import { DatalistPage } from './pages/detalist.page';
+import { InputPage } from './pages/input.page';
+import { ListPage } from './pages/list.page';
+import { ModalPage } from './pages/modal.page';
+import { PasswordPage } from './pages/password.page';
+import { RadioPage } from './pages/radio.page';
+import { RangePage } from './pages/range.page';
+import { SelectPage } from './pages/select.page';
+import { TextareaPage } from './pages/textarea.page';
+import { TogglePage } from './pages/toggle.page';
 
 @NgModule({
   declarations: [
@@ -36,13 +48,26 @@ import { AdoptionToolingPage } from './pages/adoption-tooling.page';
     AccordionPage,
     AlertPage,
     BadgePage,
+    ButtonPage,
     CheckboxPage,
+    DatalistPage,
+    FormPage,
     IconsPage,
+    InputPage,
     LabelPage,
+    ListPage,
+    ModalPage,
+    PasswordPage,
+    RadioPage,
+    RangePage,
+    SelectPage,
+    TextareaPage,
+    TogglePage,
     AdoptionToolingPage,
 
     /* helpers */
     SourceCodeComponent,
+    NotReadyComponent,
     Demo,
   ],
   imports: [BrowserModule, AppRoutingModule, ClarityModule, BrowserAnimationsModule],

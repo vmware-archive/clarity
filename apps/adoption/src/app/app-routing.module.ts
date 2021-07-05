@@ -15,6 +15,7 @@ import { IconsPage } from './pages/icons.page';
 import { AccordionPage } from './pages/accordion.page';
 import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
+import { CardPage } from './pages/card.page';
 
 const routes: Routes = [
   { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'accordion', component: AccordionPage },
   { path: 'alert', component: AlertPage },
   { path: 'badge', component: BadgePage },
+  { path: 'card', component: CardPage },
   { path: 'checkbox', component: CheckboxPage },
   { path: 'icons', component: IconsPage },
   { path: 'label', component: LabelPage },

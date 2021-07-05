@@ -17,6 +17,7 @@ const eslintRules: Record<string, { name: string; errorLevel: string; fixer: boo
   'no-clr-alert': { name: 'Alert', errorLevel: 'warn', fixer: false },
   'no-clr-badge': { name: 'Badge', errorLevel: 'warn', fixer: true },
   'no-clr-button': { name: 'Button', errorLevel: 'warn', fixer: false },
+  'no-clr-card': { name: 'Card', errorLevel: 'warn', fixer: false },
   'no-clr-checkbox': { name: 'Checkbox', errorLevel: 'warn', fixer: false },
   'no-clr-datalist': { name: 'Datalist', errorLevel: 'warn', fixer: false },
   'no-clr-form': { name: 'Form', errorLevel: 'warn', fixer: false },

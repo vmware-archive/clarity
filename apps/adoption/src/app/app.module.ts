@@ -26,6 +26,7 @@ import { IconsPage } from './pages/icons.page';
 import { AccordionPage } from './pages/accordion.page';
 import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
+import { CardPage } from './pages/card.page';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AdoptionToolingPage } from './pages/adoption-tooling.page';
     GettingStartedPage,
     AccordionPage,
     AlertPage,
+    CardPage,
     BadgePage,
     CheckboxPage,
     IconsPage,

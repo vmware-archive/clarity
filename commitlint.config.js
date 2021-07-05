@@ -9,14 +9,23 @@ const angular = require('./scripts/commitlint/angularScopes');
 const website = require('./scripts/commitlint/websiteScopes');
 const packages = require('./scripts/commitlint/packagesScopes');
 const custom = require('./scripts/commitlint/customScopes');
+const adoption = require('./scripts/commitlint/adoptionScopes');
 
 const coreScopes = core.getScopes(resolve(process.cwd(), './packages/core'));
 const angularScopes = angular.getScopes(resolve(process.cwd(), './packages/angular'));
 const websiteScopes = website.getScopes(resolve(process.cwd(), './apps/website'));
 const packagesScopes = packages.getScopes(resolve(process.cwd(), './packages'));
 const customScopes = custom.getScopes();
+const adoptionScope = adoption.getScopes();
 
-const scopes = new Set([...customScopes, ...coreScopes, ...angularScopes, ...websiteScopes, ...packagesScopes]);
+const scopes = new Set([
+  ...customScopes,
+  ...coreScopes,
+  ...angularScopes,
+  ...websiteScopes,
+  ...packagesScopes,
+  ...adoptionScope,
+]);
 
 // Merging what @commitlint/config-convensional has with our new two types of commit
 const types = ['a11y', 'release'].concat(commitLintConfig.rules['type-enum'][2]);

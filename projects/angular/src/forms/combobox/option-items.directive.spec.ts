@@ -21,7 +21,7 @@ import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-t
 })
 class FullTest {
   @ViewChild(ClrOptionItems) optionItems: ClrOptionItems<number>;
-  numbers = [1, 2, 3, 4, 5];
+  numbers = [0, 1, 2, 3];
   trackBy: (index: number, item: number) => any;
 }
 
@@ -34,7 +34,7 @@ class FullTest {
 })
 class TrackByIndexTest {
   @ViewChild(ClrOptionItems) optionItems: ClrOptionItems<number>;
-  numbers = [1, 2, 3, 4, 5];
+  numbers = [0, 1, 2, 3];
   trackBy = (index: number) => index;
 }
 
@@ -47,7 +47,7 @@ class TrackByIndexTest {
 })
 class ObjectDataTest {
   @ViewChild(ClrOptionItems) optionItems: ClrOptionItems<number>;
-  numbers = [{ a: 1 }, { a: 2 }, { a: 3 }];
+  numbers = [{ a: 0 }, { a: 1 }, { a: 2 }, { a: 3 }];
   trackBy = (index: number) => index;
 }
 
@@ -80,7 +80,7 @@ export default function (): void {
 
       it('can handle changes', function () {
         const initialContent = this.fixture.elementRef.nativeElement.textContent;
-        expect(initialContent.trim()).toEqual('12345');
+        expect(initialContent.trim()).toEqual('0123');
         this.testComponent.numbers.push(6);
         this.fixture.detectChanges();
         const updatedContent = this.fixture.elementRef.nativeElement.textContent;
@@ -95,8 +95,8 @@ export default function (): void {
            Based on the above, I prefer to avoid complicating the iterator, unless we have a real scenario for it.
         */
         // Deprecated check:
-        // expect(updatedContent.trim()).toEqual('123456');
-        expect(updatedContent.trim()).toEqual('12345');
+        // expect(updatedContent.trim()).toEqual('01236');
+        expect(updatedContent.trim()).toEqual('0123');
       });
 
       it('handles a null input for the array of items', function () {
@@ -112,7 +112,7 @@ export default function (): void {
       });
 
       it('can filter out items based on the option service currentInput field', function () {
-        expect(this.clarityDirective.iterableProxy._ngForOf).toEqual([1, 2, 3, 4, 5]);
+        expect(this.clarityDirective.iterableProxy._ngForOf).toEqual([0, 1, 2, 3]);
         const optionService: OptionSelectionService<any> = TestBed.get(OptionSelectionService);
         this.testComponent.numbers.push(12);
         optionService.currentInput = '1';
@@ -155,13 +155,13 @@ export default function (): void {
         this.fixture.nativeElement.querySelectorAll('li:first-child').forEach(li => (li.style.color = 'red'));
         const firstItem = this.fixture.nativeElement.querySelector('li');
         expect(firstItem.style.color).toBe('red');
-        expect(firstItem.textContent.trim()).toBe('1');
+        expect(firstItem.textContent.trim()).toBe('0');
 
         // First mutation
         this.testComponent.numbers.unshift(42);
         this.fixture.detectChanges();
         const unshiftedItem = this.fixture.nativeElement.querySelector('li');
-        expect(this.clarityDirective._rawItems).toEqual([42, 1, 2, 3, 4, 5]);
+        expect(this.clarityDirective._rawItems).toEqual([42, 0, 1, 2, 3]);
         expect(unshiftedItem.style.color).toBe('red');
 
         // Resetting
@@ -190,7 +190,7 @@ export default function (): void {
 
       it('generates content', function () {
         const initialContent = this.fixture.elementRef.nativeElement.textContent;
-        expect(initialContent.trim()).toEqual('123');
+        expect(initialContent.trim()).toEqual('0123');
       });
 
       it('sets display field', function () {

@@ -21,7 +21,7 @@ export class OptionSelectionService<T> {
   }
   set currentInput(input) {
     // clear value in single selection model when input is empty
-    if (!input && !this.multiselectable) {
+    if (input === '' && !this.multiselectable) {
       this.setSelectionValue(null);
     }
     this._currentInput = input;
@@ -39,7 +39,7 @@ export class OptionSelectionService<T> {
   }
 
   select(item: T) {
-    if (!item || this.selectionModel.containsItem(item)) {
+    if (item === null || item === undefined || this.selectionModel.containsItem(item)) {
       return;
     }
     this.selectionModel.select(item);
@@ -47,7 +47,7 @@ export class OptionSelectionService<T> {
   }
 
   toggle(item: T) {
-    if (!item) {
+    if (item === null || item === undefined) {
       return;
     }
     if (this.selectionModel.containsItem(item)) {
@@ -59,7 +59,7 @@ export class OptionSelectionService<T> {
   }
 
   unselect(item: T) {
-    if (!item || !this.selectionModel.containsItem(item)) {
+    if (item === null || item === undefined || !this.selectionModel.containsItem(item)) {
       return;
     }
     this.selectionModel.unselect(item);

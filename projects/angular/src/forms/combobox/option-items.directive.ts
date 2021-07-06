@@ -81,7 +81,9 @@ export class ClrOptionItems<T> implements DoCheck, OnDestroy {
           return item.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1;
         }
         const objValues = Object.values(item).filter(value => {
-          return value ? value.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1 : false;
+          return value !== null && value !== undefined
+            ? value.toString().toLowerCase().indexOf(this.filter.toString().toLowerCase()) > -1
+            : false;
         });
         return objValues.length > 0;
       });

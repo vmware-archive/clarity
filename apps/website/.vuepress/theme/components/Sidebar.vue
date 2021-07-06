@@ -4,7 +4,7 @@
       <nav aria-label="Sidebar navigation" class="clr-vertical-nav has-nav-groups side-nav" ref="nav">
         <div class="nav-content">
           <template v-for="(item, index) in items">
-            <div class="nav-group" v-if="item.children">
+            <div class="nav-group" v-if="item.children" :key="index">
               <div class="nav-group-content" v-bind:class="{ active: !states[index] && childActive(item) }">
                 <button :id="'sidenav_' + index" class="nav-group-trigger" type="button" @click="toggle(index)">
                   <span class="nav-group-text">{{ item.title }}</span>
@@ -19,21 +19,27 @@
               <div
                 class="nav-group-children"
                 v-bind:class="{ 'is-expanded': states[index] || activePage.path.startsWith(item.path) }"
-                v-bind:style="{ height: states[index] ? `${item.children.length * 36}px` : '0' }"
+                v-bind:style="{
+                  /**
+                   * The `-1` is removes the additional whitespace added in `core-components` section
+                   */
+                  height: states[index] ? `${(item.children.length - betaComponents.length - 1) * 36}px` : '0',
+                }"
               >
-                <template v-for="childItem in item.children">
+                <template v-for="(childItem, index) in item.children">
                   <router-link
                     @focus.native="focusToggle(index)"
                     class="nav-link"
                     :to="childItem.path"
-                    v-if="childItem.type !== 'external'"
+                    v-if="childItem.type !== 'external' && isBeta(childItem) === false"
+                    :key="index"
                     v-bind:class="{
                       active: isItemActive(childItem),
                     }"
                   >
                     <span class="nav-text">
                       {{ childItem.title }}
-                      <cds-icon
+                      <!-- <cds-icon
                         aria-label="beta"
                         status="info"
                         solid
@@ -41,21 +47,23 @@
                         shape="beta"
                         size="md"
                         style="margin-left: -0.15rem; margin-top: -0.75rem;"
-                      ></cds-icon>
+                      ></cds-icon> -->
                     </span>
                   </router-link>
                   <a
+                    :key="index"
                     :href="childItem.path"
                     :target="childItem.target || '_blank'"
                     class="nav-link"
-                    v-if="childItem.type === 'external'"
-                    ><span class="nav-text">{{ childItem.title }}</span></a
+                    v-if="childItem.type === 'external' && isBeta(childItem) === false"
+                  >
+                    <span class="nav-text">{{ childItem.title }}</span></a
                   >
                 </template>
               </div>
             </div>
 
-            <router-link class="nav-link" v-if="!item.children" :to="item.path">
+            <router-link class="nav-link" v-if="!item.children" :to="item.path" :key="index">
               <span class="nav-text">{{ item.title }}</span>
             </router-link>
           </template>
@@ -137,6 +145,7 @@ export default {
     return {
       states: new Array(this.$props.items.length).fill(false),
       isOpen: false,
+      betaComponents: [],
     };
   },
   mounted() {
@@ -145,6 +154,12 @@ export default {
       const index = this.$props.items.findIndex(page => page.path.includes(parts[1]));
       this.toggle(index);
     }
+
+    this.$site.pages.forEach(page => {
+      if (page.frontmatter.beta === true) {
+        this.betaComponents.push(page);
+      }
+    });
   },
   computed: {
     activePage: function () {
@@ -177,9 +192,15 @@ export default {
       return childItemPath === this.activePage.path || this.activePage.path.startsWith(childItem.path + '/');
     },
     isBeta: function (item) {
-      // use titles; easier for now...
-      const betaItems = ['Progress Circle', 'Accordion', 'Divider', 'File', 'Search', 'Time'];
-      return item.path.indexOf('core-components') > -1 && betaItems.indexOf(item.title) > -1;
+      const found = this.betaComponents.find(x => {
+        return x.regularPath.includes(item.path);
+      });
+
+      if (found) {
+        return true;
+      }
+
+      return false;
     },
     childActive: function (item) {
       let path = this.$page.path;

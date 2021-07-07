@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@cds/core/internal';
+import { baseStyles, createId, setAttributes } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import styles from './accordion-content.element.scss';
 
@@ -41,7 +41,11 @@ import styles from './accordion-content.element.scss';
 export class CdsAccordionContent extends LitElement {
   connectedCallback() {
     super.connectedCallback();
-    this.setAttribute('slot', 'accordion-content');
+    setAttributes(this, ['role', 'region'], ['slot', 'accordion-content']);
+
+    if (!this.id) {
+      this.id = createId();
+    }
   }
   render() {
     return html`<div class="private-host"><slot></slot></div>`;

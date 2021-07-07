@@ -12,8 +12,9 @@ import {
   animate,
   baseStyles,
   event,
-  property,
   EventEmitter,
+  property,
+  querySlot,
 } from '@cds/core/internal';
 import styles from './accordion-panel.element.scss';
 
@@ -66,10 +67,23 @@ export class CdsAccordionPanel extends LitElement implements Animatable {
 
   @property({ type: Boolean }) expanded = false;
 
+  @querySlot('cds-accordion-header') private header: HTMLElement;
+
+  @querySlot('cds-accordion-content') private content: HTMLElement;
+
   @event() protected expandedChange: EventEmitter<boolean>;
 
   private toggle() {
     this.expandedChange.emit(!this.expanded);
+  }
+
+  updated(props: Map<string, any>) {
+    super.updated(props);
+
+    if (this.content && this.header) {
+      this.content.setAttribute('aria-labelledby', this.header.id);
+      this.header.setAttribute('aria-controls', this.content.id);
+    }
   }
 
   render() {
@@ -85,7 +99,7 @@ export class CdsAccordionPanel extends LitElement implements Animatable {
       >
         <slot name="accordion-header"></slot>
       </button>
-      <div role="region" aria-hidden="${!this.expanded}" class="accordion-content">
+      <div aria-hidden="${!this.expanded}" class="accordion-content">
         <slot name="accordion-content"></slot>
       </div>
     </div>`;

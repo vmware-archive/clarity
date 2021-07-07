@@ -27,24 +27,24 @@ Accordions can make information processing and discovering more effective. Howev
 
 <div cds-layout="vertical gap:sm align:horizontal-stretch m-y:md">
 <cds-accordion>
-  <cds-accordion-panel class="demo-accordion" expanded>
+  <cds-accordion-section class="demo-accordion" expanded>
     <cds-accordion-header>Header for panel #1</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for accordion panel #1</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
-  <cds-accordion-panel class="demo-accordion">
+  </cds-accordion-section>
+  <cds-accordion-section class="demo-accordion">
     <cds-accordion-header>Header for panel #2</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for accordion panel #2</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
-  <cds-accordion-panel class="demo-accordion">
+  </cds-accordion-section>
+  <cds-accordion-section class="demo-accordion">
     <cds-accordion-header>Header for panel #3</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for accordion panel #3</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
+  </cds-accordion-section>
 </cds-accordion>
 </div>
 <script type="text/javascript">
@@ -94,24 +94,24 @@ Accordion panels can be **expanded**, **disabled**, and **collapsed**.
 
 <div cds-layout="vertical gap:sm align:horizontal-stretch">
 <cds-accordion>
-  <cds-accordion-panel expanded>
+  <cds-accordion-section expanded>
     <cds-accordion-header>Expanded panel header</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for an expanded accordion panel</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
-  <cds-accordion-panel disabled>
+  </cds-accordion-section>
+  <cds-accordion-section disabled>
     <cds-accordion-header>Disabled panel header</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for a disabled accordion panel</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
-  <cds-accordion-panel>
+  </cds-accordion-section>
+  <cds-accordion-section>
     <cds-accordion-header>Collapsed panel header</cds-accordion-header>
     <cds-accordion-content>
         <p cds-text="body" cds-layout="m-y:lg">This is the content for a collapsed accordion panel</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
+  </cds-accordion-section>
 </cds-accordion>
 </div>
 

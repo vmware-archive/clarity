@@ -18,11 +18,11 @@ Examples of **correct** code for this rule:
 
 ```html
 <cds-accordion>
-  <cds-accordion-panel expanded>
+  <cds-accordion-section expanded>
     <cds-accordion-header>Expanded accordion panel</cds-accordion-header>
     <cds-accordion-content>
       <p cds-text="body">Content 1</p>
     </cds-accordion-content>
-  </cds-accordion-panel>
+  </cds-accordion-section>
 </cds-accordion>
 ```

@@ -10,7 +10,7 @@ import {
   registerElementSafely,
 } from '@cds/core/internal';
 import { CdsAccordion } from './accordion.element.js';
-import { CdsAccordionPanel } from './accordion-panel.element.js';
+import { CdsAccordionSection } from './accordion-section.element.js';
 import { CdsAccordionContent } from './accordion-content.element.js';
 import { CdsAccordionHeader } from './accordion-header.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -18,7 +18,7 @@ import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import '@cds/core/icon/register.js';
 
 registerElementSafely('cds-accordion', CdsAccordion);
-registerElementSafely('cds-accordion-panel', CdsAccordionPanel);
+registerElementSafely('cds-accordion-section', CdsAccordionSection);
 registerElementSafely('cds-accordion-content', CdsAccordionContent);
 registerElementSafely('cds-accordion-header', CdsAccordionHeader);
 
@@ -27,7 +27,7 @@ ClarityMotion.add(AnimationAccordionPanelOpenName, AnimationAccordionPanelOpenCo
 declare global {
   interface HTMLElementTagNameMap {
     'cds-accordion': CdsAccordion;
-    'cds-accordion-panel': CdsAccordionPanel;
+    'cds-accordion-section': CdsAccordionSection;
     'cds-accordion-content': CdsAccordionContent;
     'cds-accordion-header': CdsAccordionHeader;
   }

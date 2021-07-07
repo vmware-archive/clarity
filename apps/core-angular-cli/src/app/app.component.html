@@ -18,27 +18,27 @@
 
   <section cds-layout="grid cols:6 gap:lg">
     <cds-accordion>
-      <cds-accordion-panel [expanded]="panel1Expanded" (expandedChange)="expandedChange($event)">
+      <cds-accordion-section [expanded]="panel1Expanded" (expandedChange)="expandedChange($event)">
         <cds-accordion-header>Item 1</cds-accordion-header>
         <cds-accordion-content *ngIf="panel1Expanded">
           <section>Content 1</section>
         </cds-accordion-content>
-      </cds-accordion-panel>
-      <cds-accordion-panel>
+      </cds-accordion-section>
+      <cds-accordion-section>
         <cds-accordion-header>Item 2</cds-accordion-header>
         <cds-accordion-content>
           <cds-accordion>
-            <cds-accordion-panel expanded>
+            <cds-accordion-section expanded>
               <cds-accordion-header>Item 2-1</cds-accordion-header>
               <cds-accordion-content>Content 2-1</cds-accordion-content>
-            </cds-accordion-panel>
+            </cds-accordion-section>
           </cds-accordion>
         </cds-accordion-content>
-      </cds-accordion-panel>
-      <cds-accordion-panel>
+      </cds-accordion-section>
+      <cds-accordion-section>
         <cds-accordion-header>Item 3</cds-accordion-header>
         <cds-accordion-content>Content 3</cds-accordion-content>
-      </cds-accordion-panel>
+      </cds-accordion-section>
     </cds-accordion>
 
     <form [formGroup]="form" (ngSubmit)="submit()" cds-layout="col@md:8">

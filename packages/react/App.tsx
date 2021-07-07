@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   CdsAccordion,
-  CdsAccordionPanel,
+  CdsAccordionSection,
   CdsAccordionHeader,
   CdsAccordionContent,
 } from './dist/react/accordion/index.js';
@@ -85,7 +85,7 @@ export default class App extends React.Component<{}, AppState> {
 
         <h2>Accordion</h2>
         <CdsAccordion>
-          <CdsAccordionPanel
+          <CdsAccordionSection
             expanded={panel1Expanded}
             onExpandedChange={() => {
               const newVal = !panel1Expanded;
@@ -94,8 +94,8 @@ export default class App extends React.Component<{}, AppState> {
           >
             <CdsAccordionHeader>Item 1</CdsAccordionHeader>
             <CdsAccordionContent>Content 1</CdsAccordionContent>
-          </CdsAccordionPanel>
-          <CdsAccordionPanel
+          </CdsAccordionSection>
+          <CdsAccordionSection
             expanded={panel2Expanded}
             onExpandedChange={() => {
               const newVal = !panel2Expanded;
@@ -105,7 +105,7 @@ export default class App extends React.Component<{}, AppState> {
             <CdsAccordionHeader>Item 2</CdsAccordionHeader>
             <CdsAccordionContent>
               <CdsAccordion>
-                <CdsAccordionPanel
+                <CdsAccordionSection
                   expanded={panel4Expanded}
                   onExpandedChange={() => {
                     const newVal = !panel4Expanded;
@@ -125,11 +125,11 @@ export default class App extends React.Component<{}, AppState> {
                       billions upon billions upon billions upon billions upon billions.
                     </p>
                   </CdsAccordionContent>
-                </CdsAccordionPanel>
+                </CdsAccordionSection>
               </CdsAccordion>
             </CdsAccordionContent>
-          </CdsAccordionPanel>
-          <CdsAccordionPanel
+          </CdsAccordionSection>
+          <CdsAccordionSection
             disabled
             expanded={panel3Expanded}
             onExpandedChange={() => {
@@ -139,7 +139,7 @@ export default class App extends React.Component<{}, AppState> {
           >
             <CdsAccordionHeader>Item 3 – Should Not Open</CdsAccordionHeader>
             <CdsAccordionContent>Content 3</CdsAccordionContent>
-          </CdsAccordionPanel>
+          </CdsAccordionSection>
         </CdsAccordion>
 
         <h2>Breadcrumb</h2>

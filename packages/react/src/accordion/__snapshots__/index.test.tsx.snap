@@ -9,14 +9,14 @@ exports[`CdsAccordion snapshot 1`] = `
       <cds-accordion
         __forwardedRef={null}
       >
-        <CdsAccordionPanel
+        <CdsAccordionSection
           expanded={true}
         >
-          <cds-accordion-panel(CustomElement)
+          <cds-accordion-section(CustomElement)
             __forwardedRef={null}
             expanded={true}
           >
-            <cds-accordion-panel
+            <cds-accordion-section
               __forwardedRef={null}
             >
               <CdsAccordionHeader>
@@ -41,9 +41,9 @@ exports[`CdsAccordion snapshot 1`] = `
                   </cds-accordion-content>
                 </cds-accordion-content(CustomElement)>
               </CdsAccordionContent>
-            </cds-accordion-panel>
-          </cds-accordion-panel(CustomElement)>
-        </CdsAccordionPanel>
+            </cds-accordion-section>
+          </cds-accordion-section(CustomElement)>
+        </CdsAccordionSection>
       </cds-accordion>
     </cds-accordion(CustomElement)>
   </CdsAccordion>

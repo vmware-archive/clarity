@@ -5,23 +5,23 @@
  */
 import { html } from 'lit';
 import '@cds/core/accordion/register.js';
-import { CdsAccordionPanel } from '@cds/core/accordion';
+import { CdsAccordionSection } from '@cds/core/accordion';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
 
-describe('accordion-panel element', () => {
+describe('accordion-section element', () => {
   let testElement: HTMLElement;
-  let component: CdsAccordionPanel;
+  let component: CdsAccordionSection;
   const placeholderHeader = 'Accordion Header Placeholder';
   const placeholderContent = 'Accordion Content Placeholder';
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
-      <cds-accordion-panel>
+      <cds-accordion-section>
         <cds-accordion-header>${placeholderHeader}</cds-accordion-header>
         <cds-accordion-content>${placeholderContent}</cds-accordion-content>
-      </cds-accordion-panel>
+      </cds-accordion-section>
     `);
-    component = testElement.querySelector<CdsAccordionPanel>('cds-accordion-panel');
+    component = testElement.querySelector<CdsAccordionSection>('cds-accordion-section');
   });
 
   afterEach(() => {
@@ -31,10 +31,11 @@ describe('accordion-panel element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     const slots = getComponentSlotContent(component);
-    expect(slots['accordion-header'].includes('<cds-accordion-header slot="accordion-header">')).toBe(true);
+    console.log(slots);
+    expect(slots['accordion-header'].startsWith('<cds-accordion-header slot="accordion-header"')).toBe(true);
     expect(slots['accordion-header'].includes(placeholderHeader)).toBe(true);
 
-    expect(slots['accordion-content'].includes('<cds-accordion-content slot="accordion-content">')).toBe(true);
+    expect(slots['accordion-content'].startsWith('<cds-accordion-content slot="accordion-content"')).toBe(true);
     expect(slots['accordion-content'].includes(placeholderContent)).toBe(true);
   });
 
@@ -52,13 +53,33 @@ describe('accordion-panel element', () => {
     button.click();
   });
 
-  it('should set the expanded aria state accordion header when expanded', async () => {
+  it('should associate the aria-labelledby and aria-controls values correctly', async () => {
     await componentIsStable(component);
-    const accordionHeaderWrapper = component.shadowRoot.querySelector('.accordion-header-button');
-    expect(accordionHeaderWrapper.getAttribute('aria-expanded')).toBe('false');
+    const accordionHeader = component.querySelector<CdsAccordionHeader>('cds-accordion-header');
+    const accordionContent = component.querySelector<CdsAccordionHeader>('cds-accordion-content');
+    expect(accordionHeader.id).toBeDefined();
+    expect(accordionContent.id).toBeDefined();
+
+    expect(accordionHeader.getAttribute('aria-controls')).toBe(accordionContent.id);
+    expect(accordionContent.getAttribute('aria-labelledby')).toBe(accordionHeader.id);
+  });
+
+  it('should set the aria-expanded attribute on accordion header when expanded updates', async () => {
+    await componentIsStable(component);
+    const accordionHeader = component.querySelector<CdsAccordionHeader>('cds-accordion-header');
+    expect(accordionHeader.getAttribute('aria-expanded')).toBe('false');
     component.expanded = true;
     await componentIsStable(component);
-    expect(accordionHeaderWrapper.getAttribute('aria-expanded')).toBe('true');
+    expect(accordionHeader.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('should set the aria-disabled attribute onaccordion header when disabled updates', async () => {
+    await componentIsStable(component);
+    const accordionHeader = component.querySelector<CdsAccordionHeader>('cds-accordion-header');
+    expect(accordionHeader.getAttribute('aria-disabled')).toBe('false');
+    component.disabled = true;
+    await componentIsStable(component);
+    expect(accordionHeader.getAttribute('aria-disabled')).toBe('true');
   });
 
   it('should set the disabled state to the accordion when disabled', async () => {

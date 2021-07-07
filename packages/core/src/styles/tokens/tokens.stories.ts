@@ -976,120 +976,120 @@ export function interactionAccordionDemo() {
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Default</h3>
         <cds-accordion>
-          <cds-accordion-panel>
+          <cds-accordion-section>
             <cds-accordion-header>Item 1</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 1 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 2</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 2 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 3</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 3 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
+          </cds-accordion-section>
         </cds-accordion>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Hover</h3>
         <cds-accordion>
-          <cds-accordion-panel>
+          <cds-accordion-section>
             <cds-accordion-header>Item 1</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 1 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header style="--background: var(--cds-alias-object-interaction-background-hover)"
               >Item 2</cds-accordion-header
             >
             <cds-accordion-content>
               <p cds-text="body">Item 2 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 3</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 3 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
+          </cds-accordion-section>
         </cds-accordion>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Active</h3>
         <cds-accordion>
-          <cds-accordion-panel>
+          <cds-accordion-section>
             <cds-accordion-header>Item 1</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 1 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header style="--background: var(--cds-alias-object-interaction-background-active)"
               >Item 2</cds-accordion-header
             >
             <cds-accordion-content>
               <p cds-text="body">Item 2 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 3</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 3 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
+          </cds-accordion-section>
         </cds-accordion>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Selected</h3>
         <cds-accordion>
-          <cds-accordion-panel>
+          <cds-accordion-section>
             <cds-accordion-header>Item 1</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 1 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel expanded>
+          </cds-accordion-section>
+          <cds-accordion-section expanded>
             <cds-accordion-header>Item 2</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 2 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 3</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 3 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
+          </cds-accordion-section>
         </cds-accordion>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Disabled</h3>
         <cds-accordion>
-          <cds-accordion-panel>
+          <cds-accordion-section>
             <cds-accordion-header>Item 1</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 1 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel disabled>
+          </cds-accordion-section>
+          <cds-accordion-section disabled>
             <cds-accordion-header>Item 2</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 2 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
-          <cds-accordion-panel>
+          </cds-accordion-section>
+          <cds-accordion-section>
             <cds-accordion-header>Item 3</cds-accordion-header>
             <cds-accordion-content>
               <p cds-text="body">Item 3 content</p>
             </cds-accordion-content>
-          </cds-accordion-panel>
+          </cds-accordion-section>
         </cds-accordion>
       </div>
     </div>

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@cds/core/internal';
+import { baseStyles, createId } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import styles from './accordion-header.element.scss';
 
@@ -17,18 +17,18 @@ import styles from './accordion-header.element.scss';
  *
  * ```html
  * <cds-accordion>
- *   <cds-accordion-panel expanded>
+ *   <cds-accordion-section expanded>
  *     <cds-accordion-header>Item 1</cds-accordion-header>
  *     <cds-accordion-content>Content 1</cds-accordion-content>
- *   </cds-accordion-panel>
- *   <cds-accordion-panel>
+ *   </cds-accordion-section>
+ *   <cds-accordion-section>
  *     <cds-accordion-header>Item 2</cds-accordion-header>
  *     <cds-accordion-content>Content 2</cds-accordion-content>
- *   </cds-accordion-panel>
- *   <cds-accordion-panel disabled>
+ *   </cds-accordion-section>
+ *   <cds-accordion-section disabled>
  *     <cds-accordion-header>Item 3</cds-accordion-header>
  *     <cds-accordion-content>Content 3</cds-accordion-content>
- *   </cds-accordion-panel>
+ *   </cds-accordion-section>
  * </cds-accordion>
  * ```
  *
@@ -44,6 +44,10 @@ export class CdsAccordionHeader extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('slot', 'accordion-header');
+
+    if (!this.id) {
+      this.id = createId();
+    }
   }
 
   render() {

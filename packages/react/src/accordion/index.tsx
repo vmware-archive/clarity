@@ -1,12 +1,12 @@
 import { CdsAccordion as Accordion } from '@cds/core/accordion';
 import { CdsAccordionContent as AccordionContent } from '@cds/core/accordion';
 import { CdsAccordionHeader as AccordionHeader } from '@cds/core/accordion';
-import { CdsAccordionPanel as AccordionPanel } from '@cds/core/accordion';
+import { CdsAccordionSection as AccordionSection } from '@cds/core/accordion';
 import '@cds/core/accordion/register';
 import { createComponent } from '../converter/react-wrapper.js';
 
 export const CdsAccordion = createComponent('cds-accordion', Accordion);
-export const CdsAccordionPanel = createComponent('cds-accordion-panel', AccordionPanel, {
+export const CdsAccordionSection = createComponent('cds-accordion-section', AccordionSection, {
   onExpandedChange: 'expandedChange',
   onCdsMotionChange: 'cdsMotionChange',
 });

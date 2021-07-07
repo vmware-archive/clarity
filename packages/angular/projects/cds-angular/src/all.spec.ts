@@ -5,7 +5,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   CdsAccordionContentDirective,
   CdsAccordionHeaderDirective,
-  CdsAccordionPanelDirective,
+  CdsAccordionSectionDirective,
   CdsAccordionDirective,
   CdsAlertActionsDirective,
   CdsAlertGroupDirective,
@@ -91,7 +91,7 @@ describe('CDS Accordion Header', () => {
   });
 });
 
-describe('CDS Accordion Panel', () => {
+describe('CDS Accordion Section', () => {
   let fixture: ComponentFixture<any>;
   let instance: AccordionPanelTestComponent;
 
@@ -106,8 +106,8 @@ describe('CDS Accordion Panel', () => {
     instance = fixture.componentInstance;
   });
 
-  it('cds-accordion-panel should be defined', () => {
-    expect(instance.vcCdsAccordionPanelDirective).toBeDefined();
+  it('cds-accordion-section should be defined', () => {
+    expect(instance.vcCdsAccordionSectionDirective).toBeDefined();
   });
 });
 
@@ -967,23 +967,23 @@ class AccordionHeaderTestComponent {
 
 @Component({
   template: `
-    <cds-accordion-panel>
+    <cds-accordion-section>
       <cds-accordion-header></cds-accordion-header>
       <cds-accordion-content></cds-accordion-content>
-    </cds-accordion-panel>
+    </cds-accordion-section>
   `,
 })
 class AccordionPanelTestComponent {
-  @ViewChild(CdsAccordionPanelDirective) vcCdsAccordionPanelDirective: CdsAccordionPanelDirective;
+  @ViewChild(CdsAccordionSectionDirective) vcCdsAccordionSectionDirective: CdsAccordionSectionDirective;
 }
 
 @Component({
   template: `
     <cds-accordion>
-      <cds-accordion-panel expanded>
+      <cds-accordion-section expanded>
         <cds-accordion-header></cds-accordion-header>
         <cds-accordion-content></cds-accordion-content>
-      </cds-accordion-panel>
+      </cds-accordion-section>
     </cds-accordion>
   `,
 })

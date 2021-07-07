@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,9 +6,9 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-global-typography-color-500};
+  --color: #{$cds-global-typography-color-400};
   --font-size: #{$cds-global-typography-font-size-3};
-  --font-weight: #{$cds-global-typography-font-weight-semibold};
+  --font-weight: #{$cds-global-typography-body-font-weight};
   --background: #{$cds-alias-object-interaction-background};
   width: 100%;
   contain: inherit;

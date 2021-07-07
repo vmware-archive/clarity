@@ -26,7 +26,7 @@
   },
   "optionalDependencies": {
     "@cds/city": "^1.1.0",
-    "normalize.css": "^8.0.1",
-    "@types/resize-observer-browser": "^0.1.5"
+    "@types/resize-observer-browser": "^0.1.5",
+    "modern-normalize": "1.1.0"
   }
 }

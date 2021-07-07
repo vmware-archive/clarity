@@ -61,7 +61,7 @@
   },
   "optionalDependencies": {
     "@cds/city": "^1.1.0",
-    "normalize.css": "^8.0.1"
+    "modern-normalize": "^1.1.0"
   },
   "browserslist": {
     "production": [

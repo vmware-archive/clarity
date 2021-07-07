@@ -1,5 +1,5 @@
 @import '../node_modules/@cds/city/css/bundles/default.min.css';
-@import '../node_modules/normalize.css/normalize.css';
+@import '../node_modules/modern-normalize/modern-normalize.css';
 @import '../dist/core/global.min.css';
 @import '../dist/core/styles/theme.dark.min.css';
 

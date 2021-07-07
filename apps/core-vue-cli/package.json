@@ -11,7 +11,7 @@
     "@cds/city": "^1.1.0",
     "@cds/core": "../../dist/core",
     "core-js": "^3.6.4",
-    "normalize.css": "^8.0.1",
+    "modern-normalize": "^1.1.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

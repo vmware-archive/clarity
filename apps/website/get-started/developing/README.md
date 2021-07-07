@@ -29,7 +29,7 @@ be different depending on your build tooling
 
 ```scss
 // Sass file syntax
-@import '~normalize.css/normalize.css'; // css reset
+@import '~modern-normalize.css/modern-normalize.css'; // css reset
 @import '~@cds/core/global.min'; // clarity global styles
 @import '~@cds/core/styles/module.shims.min'; // non-evergreen browser shims
 @import '~@cds/city/css/bundles/default.min'; // load base font
@@ -37,7 +37,7 @@ be different depending on your build tooling
 
 ```html
 <!-- HTML file syntax -->
-<link href="/node_modules/normalize.css/normalize.css" rel="stylesheet" />
+<link href="/node_modules/modern-normalize.css/modern-normalize.css" rel="stylesheet" />
 <link href="/node_modules/@cds/core/global.min.css" rel="stylesheet" />
 <link href="/node_modules/@cds/core/styles/module.shims.min.css" rel="stylesheet" />
 <link href="/node_modules/@cds/city/css/bundles/default.min.css" rel="stylesheet" />
@@ -375,7 +375,7 @@ minimum, including normalize and the reset module, to ensure consistent styling
 across browsers.
 
 ```scss
-@import '~normalize.css/normalize.css';
+@import '~modern-normalize.css/modern-normalize.css';
 @import '@cds/core/styles/module.reset.min.css';
 @import '@cds/core/styles/module.tokens.min.css';
 @import '@cds/core/styles/module.layout.min.css';

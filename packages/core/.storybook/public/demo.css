@@ -1,5 +1,5 @@
 @import '@cds/city/css/bundles/default.min.css';
-@import 'normalize.css/normalize.css';
+@import 'modern-normalize/modern-normalize.css';
 @import './../../dist/core/global.min.css';
 @import './../../dist/core/styles/theme.dark.min.css';
 @import './../../dist/core/styles/theme.low-motion.min.css';

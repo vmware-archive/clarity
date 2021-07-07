@@ -1,25 +1,25 @@
 import { CdsAccordion as Accordion } from '@cds/core/accordion';
 import { CdsAccordionContent as AccordionContent } from '@cds/core/accordion';
 import { CdsAccordionHeader as AccordionHeader } from '@cds/core/accordion';
-import { CdsAccordionPanel as AccordionPanel } from '@cds/core/accordion';
+import { CdsAccordionSection as AccordionSection } from '@cds/core/accordion';
 import '@cds/core/accordion/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils/index';
+import { logReactVersion } from '../utils';
 
 // add react util here in all components.
 // Document that it needs to be part of each component in React.
 
 export const CdsAccordion = createComponent(React, 'cds-accordion', Accordion, {}, 'CdsAccordion');
-export const CdsAccordionPanel = createComponent(
+export const CdsAccordionSection = createComponent(
   React,
-  'cds-accordion-panel',
-  AccordionPanel,
+  'cds-accordion-section',
+  AccordionSection,
   {
     onExpandedChange: 'expandedChange',
     onCdsMotionChange: 'cdsMotionChange',
   },
-  'CdsAccordionPanel'
+  'CdsAccordionSection'
 );
 export const CdsAccordionHeader = createComponent(
   React,

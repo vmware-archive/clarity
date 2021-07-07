@@ -5,7 +5,7 @@
  */
 import { html } from 'lit';
 import '@cds/core/accordion/register.js';
-import { CdsAccordionHeader, CdsAccordionPanel } from '@cds/core/accordion';
+import { CdsAccordionHeader, CdsAccordionSection } from '@cds/core/accordion';
 import {
   componentIsStable,
   createTestElement,
@@ -14,20 +14,20 @@ import {
   removeTestElement,
 } from '@cds/core/test';
 
-describe('accordion-panel element', () => {
+describe('accordion-section element', () => {
   let testElement: HTMLElement;
-  let component: CdsAccordionPanel;
+  let component: CdsAccordionSection;
   const placeholderHeader = 'Accordion Header Placeholder';
   const placeholderContent = 'Accordion Content Placeholder';
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
-      <cds-accordion-panel>
+      <cds-accordion-section>
         <cds-accordion-header>${placeholderHeader}</cds-accordion-header>
         <cds-accordion-content>${placeholderContent}</cds-accordion-content>
-      </cds-accordion-panel>
+      </cds-accordion-section>
     `);
-    component = testElement.querySelector<CdsAccordionPanel>('cds-accordion-panel');
+    component = testElement.querySelector<CdsAccordionSection>('cds-accordion-section');
   });
 
   afterEach(() => {

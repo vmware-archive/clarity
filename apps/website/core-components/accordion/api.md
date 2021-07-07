@@ -26,28 +26,28 @@ toc: true
 
 <cds-divider cds-layout="m-t:xl"></cds-divider>
 
-<DocWebComponentAPI component="cds-accordion-panel">
+<DocWebComponentAPI component="cds-accordion-section">
 
-## Accordion Panel
+## Accordion Section
 
 <template v-slot:properties>
 
-### Accordion Panel Properties
+### Accordion Section Properties
 
 </template>
 <template v-slot:cssProperties>
 
-### Accordion Panel CSS Properties
+### Accordion Section CSS Properties
 
 </template>
 <template v-slot:events>
 
-### Accordion Panel Events
+### Accordion Section Events
 
 </template>
 <template v-slot:slots>
 
-### Accordion Panel Slots
+### Accordion Section Slots
 
 </template>
 </DocWebComponentAPI>

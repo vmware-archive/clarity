@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
-import { CdsAccordion, CdsAccordionPanel, CdsAccordionHeader, CdsAccordionContent } from './index';
+import { CdsAccordion, CdsAccordionSection, CdsAccordionHeader, CdsAccordionContent } from './index';
 
 describe('CdsAccordion', () => {
   it('renders', () => {
     const wrapper = shallow(
       <div>
         <CdsAccordion>
-          <CdsAccordionPanel expanded>
+          <CdsAccordionSection expanded>
             <CdsAccordionHeader>Item 1</CdsAccordionHeader>
             <CdsAccordionContent>Content 1</CdsAccordionContent>
-          </CdsAccordionPanel>
+          </CdsAccordionSection>
         </CdsAccordion>
       </div>
     );
@@ -23,10 +23,10 @@ describe('CdsAccordion', () => {
     const wrapper = mount(
       <div>
         <CdsAccordion>
-          <CdsAccordionPanel expanded>
+          <CdsAccordionSection expanded>
             <CdsAccordionHeader>Item 1</CdsAccordionHeader>
             <CdsAccordionContent>Content 1</CdsAccordionContent>
-          </CdsAccordionPanel>
+          </CdsAccordionSection>
         </CdsAccordion>
       </div>
     );

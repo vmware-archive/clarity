@@ -6,7 +6,7 @@
 
 import { TargetedAnimation } from '../interfaces.js';
 
-export const AnimationAccordionPanelOpenName = 'cds-accordion-panel-open';
+export const AnimationAccordionPanelOpenName = 'cds-accordion-section-open';
 export const AnimationAccordionPanelOpenConfig: TargetedAnimation[] = [
   {
     target: '.accordion-content',

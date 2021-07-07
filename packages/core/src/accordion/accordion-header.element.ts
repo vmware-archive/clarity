@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles } from '@cds/core/internal';
+import { baseStyles, createId } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import styles from './accordion-header.element.scss';
 
@@ -44,6 +44,10 @@ export class CdsAccordionHeader extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('slot', 'accordion-header');
+
+    if (!this.id) {
+      this.id = createId();
+    }
   }
 
   render() {

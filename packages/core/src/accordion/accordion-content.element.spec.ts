@@ -25,6 +25,7 @@ describe('accordion-content element', () => {
   it('should create the component', async () => {
     await componentIsStable(component);
     expect(component.innerText).toBe(placeholderContent);
+    expect(component.getAttribute('role')).toBe('region');
   });
 
   it('should have a slot attribute of value `accordion-content`', async () => {

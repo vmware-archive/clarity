@@ -45,7 +45,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   ],
   testRunnerHtml: (testRunnerImport, config) => `<html>
     <head>
-      <link href="./node_modules/normalize.css/normalize.css" rel="stylesheet" />
+      <link href="./node_modules/modern-normalize/modern-normalize.css" rel="stylesheet" />
       <link href="./dist/core/global.min.css" rel="stylesheet" />
       <script>window.process = { env: { NODE_ENV: "development" } }</script>
       <script type="text/javascript" src="./node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>

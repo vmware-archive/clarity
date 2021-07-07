@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import 'normalize.css/normalize.css';
+import 'modern-normalize.css/modern-normalize.css';
 import '@cds/core/global.min.css';
 import '@cds/city/css/bundles/default.min.css';
 import '@cds/core/accordion/register.js';

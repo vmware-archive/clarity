@@ -1,0 +1,132 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+@import './../styles/mixins/mixins';
+
+:host {
+  --animation-duration: #{$cds-global-animation-duration-secondary};
+  --animation-easing: #{$cds-global-animation-easing-primary};
+  --background: #{$cds-alias-object-app-background};
+  --color: #{$cds-global-typography-color-400};
+  --focus-width: #{$cds-alias-object-border-width-300};
+  --font-size: #{$cds-global-typography-font-size-3};
+  --font-weight: #{$cds-global-typography-body-font-weight};
+  --icon-transform: rotate(90deg);
+  cursor: pointer;
+}
+
+.private-host {
+  cursor: inherit;
+}
+
+.item-children {
+  overflow: hidden;
+}
+
+.item-content {
+  background: var(--background);
+  border-left: var(--focus-width) solid transparent;
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
+
+.item-content:hover {
+  --background: var(--cds-alias-object-interaction-background-hover);
+}
+
+.item-content:active {
+  --background: var(--cds-alias-object-interaction-background-active);
+}
+
+.lhs-container {
+  width: #{$cds-global-space-7};
+}
+
+.expand-collapse-icon {
+  --color: var(--cds-alias-object-interaction-color);
+  transform: var(--icon-transform);
+  transition: transform var(--animation-duration);
+}
+
+:host(:focus) {
+  outline: none !important;
+
+  .item-content {
+    --background: var(--cds-alias-object-interaction-background-hover);
+    border-color: var(--cds-alias-object-interaction-background-highlight);
+  }
+
+  .item-content:active {
+    --background: var(--cds-alias-object-interaction-background-active);
+  }
+}
+
+:host([disabled]) {
+  .item-content {
+    --color: var(--cds-alias-object-interaction-color-disabled);
+    cursor: not-allowed;
+  }
+
+  .item-content:hover {
+    --background: var(--cds-alias-object-interaction-background-disabled);
+  }
+}
+
+:host([disabled]:focus) {
+  .item-content {
+    --background: var(--cds-alias-object-interaction-background-disabled);
+    border-color: var(--cds-alias-object-interaction-color-disabled);
+  }
+}
+
+:host([selected]) {
+  .item-content {
+    --background: var(--cds-alias-object-interaction-background-selected);
+  }
+}
+
+:host([selected][disabled]) {
+  .item-content {
+    --background: var(--cds-alias-object-interaction-background-disabled);
+  }
+}
+
+:host([cds-motion='off']) {
+  & > .private-host {
+    & > .item-children {
+      height: 0;
+    }
+  }
+}
+
+:host([cds-motion='off'][expanded]) {
+  & > .private-host {
+    & > .item-children {
+      height: auto;
+    }
+  }
+}
+
+:host([cds-motion][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  & > .private-host {
+    & > .item-children {
+      height: 0;
+    }
+  }
+}
+
+:host([cds-motion][expanded][_cds-animation-status='ready']:not([cds-motion='off'])) {
+  & > .private-host {
+    & > .item-children {
+      height: auto !important;
+      transform: none;
+    }
+  }
+}
+
+:host([expanded]) {
+  --icon-transform: rotate(180deg);
+}

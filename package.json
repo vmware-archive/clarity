@@ -27,6 +27,8 @@
       "**/lit",
       "**/lit/**",
       "**/lit-html/**",
+      "**/ramda",
+      "**/ramda/**",
       "website/**",
       "adoption/**"
     ]

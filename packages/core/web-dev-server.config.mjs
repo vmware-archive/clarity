@@ -125,6 +125,9 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/internal-components/overlay/register.js': '/dist/core/internal-components/overlay/register.js',
             '@cds/core/internal-components/panel': '/dist/core/internal-components/panel/index.js',
             '@cds/core/internal-components/panel/register.js': '/dist/core/internal-components/panel/register.js',
+            '@cds/core/internal-components/visual-checkbox': '/dist/core/internal-components/visual-checkbox/index.js',
+            '@cds/core/internal-components/visual-checkbox/register.js':
+              '/dist/core/internal-components/visual-checkbox/register.js',
             '@cds/core/modal': '/dist/core/modal/index.js',
             '@cds/core/modal/register.js': '/dist/core/modal/register.js',
             '@cds/core/navigation': '/dist/core/navigation/index.js',
@@ -152,6 +155,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/textarea/register.js': '/dist/core/textarea/register.js',
             '@cds/core/time': '/dist/core/time/index.js',
             '@cds/core/time/register.js': '/dist/core/time/register.js',
+            '@cds/core/tree-view': '/dist/core/tree-view/index.js',
+            '@cds/core/tree-view/register.js': '/dist/core/tree-view/register.js',
             '@cds/core/toggle': '/dist/core/toggle/index.js',
             '@cds/core/toggle/register.js': '/dist/core/toggle/register.js',
           },

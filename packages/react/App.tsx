@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   CdsAccordion,
-  CdsAccordionPanel,
+  CdsAccordionSection,
   CdsAccordionHeader,
   CdsAccordionContent,
 } from './dist/react/accordion/index.js';
@@ -30,7 +30,13 @@ import { ClarityIcons, userIcon, timesIcon } from '@cds/core/icon';
 import { CdsDivider } from './dist/react/divider/index.js';
 import { CdsCard } from './dist/react/card/index.js';
 import { CdsBreadcrumb } from './dist/react/breadcrumb/index.js';
-import { CdsNavigation, CdsNavigationGroup, CdsNavigationItem, CdsNavigationStart } from './dist/react/navigation';
+import {
+  CdsNavigation,
+  CdsNavigationGroup,
+  CdsNavigationItem,
+  CdsNavigationStart,
+} from './dist/react/navigation/index.js';
+import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -75,6 +81,15 @@ export default class App extends React.Component<{}, AppState> {
     console.log(e);
   }
 
+  onExpandedChange(e: any) {
+    const myTreeItem = e.target as any;
+    myTreeItem.expanded = e.detail;
+  }
+
+  onSelectedChange(e: any) {
+    console.log(e);
+  }
+
   render() {
     const isModalOpen = this.state.modalOpen;
     const isModal2Open = this.state.modal2Open;
@@ -106,12 +121,13 @@ export default class App extends React.Component<{}, AppState> {
             <a>Last item</a>
           </CdsNavigationItem>
         </CdsNavigation>
+
         <main>
           <h1>Rendered by React!</h1>
 
           <h2>Accordion</h2>
           <CdsAccordion>
-            <CdsAccordionPanel
+            <CdsAccordionSection
               expanded={panel1Expanded}
               onExpandedChange={() => {
                 const newVal = !panel1Expanded;
@@ -120,8 +136,8 @@ export default class App extends React.Component<{}, AppState> {
             >
               <CdsAccordionHeader>Item 1</CdsAccordionHeader>
               <CdsAccordionContent>Content 1</CdsAccordionContent>
-            </CdsAccordionPanel>
-            <CdsAccordionPanel
+            </CdsAccordionSection>
+            <CdsAccordionSection
               expanded={panel2Expanded}
               onExpandedChange={() => {
                 const newVal = !panel2Expanded;
@@ -131,7 +147,7 @@ export default class App extends React.Component<{}, AppState> {
               <CdsAccordionHeader>Item 2</CdsAccordionHeader>
               <CdsAccordionContent>
                 <CdsAccordion>
-                  <CdsAccordionPanel
+                  <CdsAccordionSection
                     expanded={panel4Expanded}
                     onExpandedChange={() => {
                       const newVal = !panel4Expanded;
@@ -151,11 +167,11 @@ export default class App extends React.Component<{}, AppState> {
                         billions upon billions upon billions upon billions upon billions upon billions.
                       </p>
                     </CdsAccordionContent>
-                  </CdsAccordionPanel>
+                  </CdsAccordionSection>
                 </CdsAccordion>
               </CdsAccordionContent>
-            </CdsAccordionPanel>
-            <CdsAccordionPanel
+            </CdsAccordionSection>
+            <CdsAccordionSection
               disabled
               expanded={panel3Expanded}
               onExpandedChange={() => {
@@ -165,7 +181,7 @@ export default class App extends React.Component<{}, AppState> {
             >
               <CdsAccordionHeader>Item 3 – Should Not Open</CdsAccordionHeader>
               <CdsAccordionContent>Content 3</CdsAccordionContent>
-            </CdsAccordionPanel>
+            </CdsAccordionSection>
           </CdsAccordion>
 
           <h2>Breadcrumb</h2>
@@ -596,6 +612,155 @@ export default class App extends React.Component<{}, AppState> {
           <CdsIcon size="lg" shape="user" solid badge="danger"></CdsIcon>
           <CdsIcon size="lg" shape="user" solid badge="warning-triangle"></CdsIcon>
 
+          <CdsFormGroup>
+            <CdsPassword layout="vertical">
+              <label>disabled</label>
+              <input type="password" value="123456" disabled />
+              <CdsControlMessage>disabled message</CdsControlMessage>
+            </CdsPassword>
+
+            <CdsPassword layout="vertical" status="error">
+              <label>error</label>
+              <input type="password" defaultValue="123456" />
+              <CdsControlMessage status="error">error message</CdsControlMessage>
+            </CdsPassword>
+
+            <CdsPassword layout="vertical" status="success">
+              <label>success</label>
+              <input type="password" defaultValue="123456" />
+              <CdsControlMessage status="success">success message</CdsControlMessage>
+            </CdsPassword>
+          </CdsFormGroup>
+
+          <h2>Radio</h2>
+          <CdsRadioGroup>
+            <label>radio group</label>
+            <CdsRadio>
+              <label>radio 1</label>
+              <input type="radio" defaultChecked />
+            </CdsRadio>
+
+            <CdsRadio>
+              <label>radio 2</label>
+              <input type="radio" />
+            </CdsRadio>
+
+            <CdsRadio>
+              <label>radio 3</label>
+              <input type="radio" />
+            </CdsRadio>
+          </CdsRadioGroup>
+
+          <h2>Tags</h2>
+          <CdsTag readonly status="info">
+            Info
+          </CdsTag>
+          <CdsTag readonly status="success">
+            Success
+          </CdsTag>
+          <CdsTag readonly status="warning">
+            Warning
+          </CdsTag>
+          <CdsTag readonly status="danger">
+            Danger
+          </CdsTag>
+          <br />
+          <br />
+          <CdsTag readonly color="gray">
+            Austin <CdsBadge>1</CdsBadge>
+          </CdsTag>
+          <CdsTag readonly color="purple">
+            New York <CdsBadge>2</CdsBadge>
+          </CdsTag>
+          <CdsTag readonly color="blue">
+            Palo Alto <CdsBadge>3</CdsBadge>{' '}
+          </CdsTag>
+          <CdsTag readonly color="orange">
+            San Francisco <CdsBadge>12</CdsBadge>
+          </CdsTag>
+          <CdsTag readonly color="light-blue">
+            Seattle <CdsBadge>15</CdsBadge>
+          </CdsTag>
+
+          <h2>Tree View</h2>
+          <CdsTree multiSelect>
+            <CdsTreeItem
+              expanded
+              onExpandedChange={(e: any) => this.onExpandedChange(e)}
+              onSelectedChange={(e: any) => this.onSelectedChange(e)}
+            >
+              1
+              <CdsTreeItem
+                onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                onSelectedChange={(e: any) => this.onSelectedChange(e)}
+              >
+                1-1
+                <CdsTreeItem
+                  onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                  onSelectedChange={(e: any) => this.onSelectedChange(e)}
+                >
+                  1-1-1
+                </CdsTreeItem>
+                <CdsTreeItem
+                  onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                  onSelectedChange={(e: any) => this.onSelectedChange(e)}
+                >
+                  1-1-2
+                </CdsTreeItem>
+              </CdsTreeItem>
+              <CdsTreeItem
+                onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                onSelectedChange={(e: any) => this.onSelectedChange(e)}
+              >
+                1-2
+              </CdsTreeItem>
+              <CdsTreeItem
+                onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                onSelectedChange={(e: any) => this.onSelectedChange(e)}
+              >
+                1-3
+              </CdsTreeItem>
+            </CdsTreeItem>
+            <CdsTreeItem
+              onExpandedChange={(e: any) => this.onExpandedChange(e)}
+              onSelectedChange={(e: any) => this.onSelectedChange(e)}
+            >
+              2
+              <CdsTreeItem
+                onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                onSelectedChange={(e: any) => this.onSelectedChange(e)}
+              >
+                2-1
+              </CdsTreeItem>
+              <CdsTreeItem
+                onExpandedChange={(e: any) => this.onExpandedChange(e)}
+                onSelectedChange={(e: any) => this.onSelectedChange(e)}
+              >
+                2-2
+              </CdsTreeItem>
+            </CdsTreeItem>
+            <CdsTreeItem
+              onExpandedChange={(e: any) => this.onExpandedChange(e)}
+              onSelectedChange={(e: any) => this.onSelectedChange(e)}
+            >
+              3
+            </CdsTreeItem>
+          </CdsTree>
+
+          <h2>Icons</h2>
+          <CdsIcon size="lg" shape="user"></CdsIcon>
+          <CdsIcon size="lg" shape="user" badge="info"></CdsIcon>
+          <CdsIcon size="lg" shape="user" badge="success"></CdsIcon>
+          <CdsIcon size="lg" shape="user" badge="danger"></CdsIcon>
+          <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
+          <br />
+          <br />
+          <CdsIcon size="lg" shape="user" solid></CdsIcon>
+          <CdsIcon size="lg" shape="user" solid badge="info"></CdsIcon>
+          <CdsIcon size="lg" shape="user" solid badge="success"></CdsIcon>
+          <CdsIcon size="lg" shape="user" solid badge="danger"></CdsIcon>
+          <CdsIcon size="lg" shape="user" solid badge="warning-triangle"></CdsIcon>
+
           <h2>Toggles</h2>
           <CdsToggleGroup>
             <label>A toggle group</label>
@@ -604,17 +769,11 @@ export default class App extends React.Component<{}, AppState> {
               <input type="checkbox" />
             </CdsToggle>
             <CdsToggle>
-              <label>Toggle 2</label>
+              <label>Toggle</label>
               <input type="checkbox" />
+              <CdsControlMessage>message text</CdsControlMessage>
             </CdsToggle>
-            <CdsControlMessage>message text</CdsControlMessage>
           </CdsToggleGroup>
-
-          <CdsToggle>
-            <label>Toggle</label>
-            <input type="checkbox" />
-            <CdsControlMessage>message text</CdsControlMessage>
-          </CdsToggle>
 
           <h2>Date Inputs</h2>
           <CdsDate layout="horizontal" control-width="shrink">

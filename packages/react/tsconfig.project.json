@@ -25,6 +25,7 @@
     { "path": "./src/tag/entrypoint.tsconfig.json" },
     { "path": "./src/textarea/entrypoint.tsconfig.json" },
     { "path": "./src/time/entrypoint.tsconfig.json" },
-    { "path": "./src/toggle/entrypoint.tsconfig.json" }
+    { "path": "./src/toggle/entrypoint.tsconfig.json" },
+    { "path": "./src/tree-view/entrypoint.tsconfig.json" }
   ]
 }

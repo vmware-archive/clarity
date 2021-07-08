@@ -308,6 +308,7 @@
 }
 
 // remove line-height eraser from element
+[cds-layout~='disable-lhe'],
 [cds-text~='disable-lhe'] {
   @include remove-line-height-erasers;
 }

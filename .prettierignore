@@ -1,5 +1,6 @@
 package-lock.json
 package.json
+*/**/npm.json
 dist/
 reports/
 golden/

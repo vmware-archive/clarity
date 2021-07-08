@@ -2,6 +2,43 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.4.2",
+      "date": "2021-07-08",
+      "description": "This is a feature and bug release.",
+      "fix": [
+        {
+          "issue": 6114,
+          "title": "Enable aria-labelledby",
+          "project": "Core",
+          "scope": "Controls"
+        },
+        {
+          "issue": 6115,
+          "title": "Horizontally center cds-tag content to support fixed width",
+          "project": "Core",
+          "scope": "Tag"
+        },
+        {
+          "issue": 6111,
+          "title": "Double caret on hover and focus",
+          "project": "Core",
+          "scope": "Datalist"
+        },
+        {
+          "issue": 6109,
+          "title": "Accessibility update construction-400 color",
+          "project": "Core",
+          "scope": "Tokens"
+        },
+        {
+          "issue": 6101,
+          "title": "Label/message alignments",
+          "project": "Core",
+          "scope": "Control"
+        }
+      ]
+    },
+    {
       "version": "5.4.1",
       "date": "2021-06-24",
       "description": "This is a feature and bug release.",

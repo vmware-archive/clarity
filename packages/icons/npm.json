@@ -1,6 +1,6 @@
 {
   "name": "@clr/icons",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "Custom Element Icons for Clarity",
   "homepage": "https://clarity.design",
   "main": "index.js",

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.lib.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "../internal/entrypoint.tsconfig.json" },
+    { "path": "../internal-components/visual-checkbox/entrypoint.tsconfig.json" },
+    { "path": "../icon/entrypoint.tsconfig.json" },
+    { "path": "../progress-circle/entrypoint.tsconfig.json" }
+  ]
+}

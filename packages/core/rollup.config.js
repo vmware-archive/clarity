@@ -48,6 +48,7 @@ const config = {
       './src/internal-components/close-button',
       './src/internal-components/overlay',
       './src/internal-components/panel',
+      './src/internal-components/visual-checkbox',
       './src/modal',
       './src/navigation',
       './src/pagination',
@@ -62,6 +63,7 @@ const config = {
       './src/test-dropdown',
       './src/time',
       './src/toggle',
+      './src/tree-view',
     ],
     styles: [
       { input: './src/styles/global.scss', output: './dist/core/global.css' },

@@ -61,3 +61,7 @@ export {
   AnimationNavigationGroupOpenName,
 } from './motion/animations/cds-navigation-group-open.js';
 export { AnimationNavigationOpenConfig, AnimationNavigationOpenName } from './motion/animations/cds-navigation-open.js';
+export {
+  AnimationTreeItemExpandConfig,
+  AnimationTreeItemExpandName,
+} from './motion/animations/cds-tree-item-expand.js';

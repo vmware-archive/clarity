@@ -33,6 +33,9 @@ export interface I18nStrings {
     showButtonAriaLabel: string;
     hideButtonAriaLabel: string;
   };
+  treeview: {
+    loading: string;
+  };
 }
 
 export const componentStringsDefault = {
@@ -67,6 +70,9 @@ export const componentStringsDefault = {
   password: {
     showButtonAriaLabel: 'Show password',
     hideButtonAriaLabel: 'Hide password',
+  },
+  treeview: {
+    loading: 'Loading',
   },
 };
 

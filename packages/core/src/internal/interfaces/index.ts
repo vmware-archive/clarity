@@ -17,6 +17,8 @@ export type StatusTypes = 'neutral' | 'info' | 'success' | 'warning' | 'danger';
 // MISC
 export type AriaLivePolitenessSettings = 'off' | 'polite' | 'assertive';
 
+export type AriaBooleanAttributeValues = 'true' | 'false';
+
 export type Directions = 'up' | 'down' | 'left' | 'right';
 
 export type Orientations = 'horizontal' | 'vertical';

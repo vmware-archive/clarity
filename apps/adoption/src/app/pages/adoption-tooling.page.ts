@@ -7,36 +7,15 @@
 import { Component } from '@angular/core';
 import '@cds/core/icon/register.js';
 import { ClarityIcons, checkCircleIcon } from '@cds/core/icon';
+import { ClarityESLintRule, EslintRulesService } from '../services/eslint-rules.service';
 
 ClarityIcons.addIcons(checkCircleIcon);
-/**
- * Describe eslint rules here! (Write once use everywhere)
- */
-const eslintRules: Record<string, { name: string; errorLevel: string; fixer: boolean }> = {
-  'no-clr-accordion': { name: 'Accordion', errorLevel: 'warn', fixer: false },
-  'no-clr-alert': { name: 'Alert', errorLevel: 'warn', fixer: false },
-  'no-clr-badge': { name: 'Badge', errorLevel: 'warn', fixer: true },
-  'no-clr-button': { name: 'Button', errorLevel: 'warn', fixer: false },
-  'no-clr-card': { name: 'Card', errorLevel: 'warn', fixer: false },
-  'no-clr-checkbox': { name: 'Checkbox', errorLevel: 'warn', fixer: false },
-  'no-clr-datalist': { name: 'Datalist', errorLevel: 'warn', fixer: false },
-  'no-clr-form': { name: 'Form', errorLevel: 'warn', fixer: false },
-  'no-clr-icon': { name: 'Icon', errorLevel: 'warn', fixer: true },
-  'no-clr-input': { name: 'Input', errorLevel: 'warn', fixer: false },
-  'no-clr-label': { name: 'Label', errorLevel: 'warn', fixer: true },
-  'no-clr-list': { name: 'List', errorLevel: 'warn', fixer: true },
-  'no-clr-modal': { name: 'Modal', errorLevel: 'warn', fixer: false },
-  'no-clr-password': { name: 'Password', errorLevel: 'warn', fixer: false },
-  'no-clr-radio': { name: 'Radio', errorLevel: 'warn', fixer: false },
-  'no-clr-range': { name: 'Range', errorLevel: 'warn', fixer: false },
-  'no-clr-select': { name: 'Select', errorLevel: 'warn', fixer: false },
-  'no-clr-textarea': { name: 'Textarea', errorLevel: 'warn', fixer: false },
-  'no-clr-toggle': { name: 'Toggle', errorLevel: 'warn', fixer: false },
-};
 
 @Component({
   template: `
     <h1>Adoption tooling</h1>
+
+    <app-eslint-intro-block rule="no-clr-accordion"></app-eslint-intro-block>
 
     <h3>Clarity Adoption ESLint plugin</h3>
     <p>
@@ -90,7 +69,7 @@ const eslintRules: Record<string, { name: string; errorLevel: string; fixer: boo
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let rule of eslintRules | keyvalue">
+        <tr *ngFor="let rule of rules | keyvalue">
           <td class="left">{{ rule.value.name }}</td>
           <td class="left">
             <code>@clr/clarity-adoption/{{ rule.key }}</code>
@@ -103,35 +82,40 @@ const eslintRules: Record<string, { name: string; errorLevel: string; fixer: boo
   `,
 })
 export class AdoptionToolingPage {
-  eslintRules = eslintRules;
+  eslintInstallation: string;
+  eslintConfiguration: string;
 
-  eslintInstallation = `
-npm install --save-dev @clr/eslint-plugin-clarity-adoption @typescript-eslint/parser eslint
-`;
+  rules: Record<string, ClarityESLintRule>;
 
-  eslintConfiguration = `
-{
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2015
-  },
-  "plugins": ["@clr/clarity-adoption"],
-  "rules": {
-${Object.keys(eslintRules)
-  .map((rule: string) => {
-    return `    "@clr/clarity-adoption/${rule}": "${(eslintRules[rule] || {}).errorLevel}"`;
-  })
-  .join(',\n')}
-  },
-  "overrides": [
-    {
-      "files": ["*.html"],
-      "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
-    }
-  ]
-}
-`;
+  constructor(public eslintRules: EslintRulesService) {
+    this.rules = eslintRules.getRules();
+
+    this.eslintInstallation = `npm install --save-dev @clr/eslint-plugin-clarity-adoption @typescript-eslint/parser eslint`;
+
+    this.eslintConfiguration = `
+      {
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "sourceType": "module",
+          "ecmaVersion": 2015
+        },
+        "plugins": ["@clr/clarity-adoption"],
+        "rules": {
+      ${Object.keys(this.rules)
+        .map((rule: string) => {
+          return `    "@clr/clarity-adoption/${rule}": "${(this.rules[rule] || {}).errorLevel}"`;
+        })
+        .join(',\n')}
+        },
+        "overrides": [
+          {
+            "files": ["*.html"],
+            "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
+          }
+        ]
+      }
+    `;
+  }
 
   eslintCommand = `npx eslint --ext=ts,html src/`;
   eslintFixCommand = `npx eslint --ext=ts,html --fix src/`;

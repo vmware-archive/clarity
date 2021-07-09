@@ -1,0 +1,48 @@
+<div cds-layout="horizontal p:md m-y:md">
+  <div cds-layout="align:stretch">
+    <h3 cds-layout="horizontal gap:sm align:vertical-center">
+      <img src="/assets/eslint-logo.svg" alt="Eslint logo" />
+
+      ESLint support for
+      <img
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMTc5YmQzIiBkPSJNMjQuNzAyIDQuNTgzbDExLjI3OCA2LjY3OS0uMDE5IDEzLjU2My0xMS4yNiA2LjY2LTYuNjg0LTMuOTcgMTEuNjUyLTYuNTQxdi01Ljg5OGwtNC43NDctMi42MDQtNi44OS0zLjkzOCIvPjxwYXRoIGZpbGw9IiNGMzhCMDAiIGQ9Ik0xMS4zMzEgNC41ODNMLjA1NCAxMS4yNjJsLjAxOCAxMy41NjMgMTEuMjYgNi42NiA2LjY4NS0zLjk3LTEwLjY2My02LjU0MXYtNS44OThsMTAuNjc4LTYuNTQyIi8+PHBhdGggZmlsbD0iIzAwNjQ4ZiIgZD0iTTE4LjAxNyAyNy41MTVMMTEuNSAyMy41MTZsNi41MjItMy44NDUgNi45MyAzLjk1MiIvPjxwYXRoIGZpbGw9IiM5ODQ0MUUiIGQ9Ik0xOC4wMzEgOC41MzNsLTYuNTA0IDMuOTg1IDYuNTE3IDMuODg0IDYuODYyLTMuOTQiLz48L2c+PC9zdmc+"
+      />
+      Clarity
+      {{ rule?.name }}
+
+      <span
+        *ngIf="rule?.fixer"
+        href="javascript:void(0)"
+        role="tooltip"
+        aria-haspopup="true"
+        class="tooltip tooltip-md"
+      >
+        <cds-icon size="md" status="success" shape="check-circle" solid *ngIf="rule?.fixer"></cds-icon>
+        <span class="tooltip-content">The rule contains an auto fixer</span>
+      </span>
+    </h3>
+
+    <p>To enabled the rule use your eslint configuration file and add the following:</p>
+
+    <sourcecode [content]="eslintRule"></sourcecode>
+
+    <p *ngIf="rule?.fixer">
+      To use the auto fixer, run your eslint command with the <code>--fix</code> flag.
+      <span
+        *ngIf="rule?.fixer"
+        href="javascript:void(0)"
+        role="tooltip"
+        aria-haspopup="true"
+        class="tooltip tooltip-lg"
+      >
+        <cds-icon size="md" status="info" shape="info-circle" solid *ngIf="rule?.fixer"></cds-icon>
+        <span class="tooltip-content"><code>npx eslint --ext=ts,html --fix src/</code></span>
+      </span>
+    </p>
+
+    <p>
+      For more information about other eslint rules go to
+      <a routerLink="/adoption-tooling">Eslint adoption tooling page</a>
+    </p>
+  </div>
+</div>

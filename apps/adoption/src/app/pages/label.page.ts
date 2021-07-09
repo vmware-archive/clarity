@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Labels</h1>
 
+    <app-eslint-intro-block ruleName="no-clr-label"></app-eslint-intro-block>
+
     <demo [tabs]="demo0"></demo>
     <demo [tabs]="demo1"></demo>
     <demo [tabs]="demo2"></demo>

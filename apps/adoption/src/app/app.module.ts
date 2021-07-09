@@ -39,6 +39,7 @@ import { SelectPage } from './pages/select.page';
 import { TextareaPage } from './pages/textarea.page';
 import { TogglePage } from './pages/toggle.page';
 import { CardPage } from './pages/card.page';
+import { EslintIntroBlockComponent } from './components/eslint-intro-block/eslint-intro-block.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CardPage } from './pages/card.page';
     SourceCodeComponent,
     NotReadyComponent,
     Demo,
+    EslintIntroBlockComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ClarityModule, BrowserAnimationsModule],
   providers: [],

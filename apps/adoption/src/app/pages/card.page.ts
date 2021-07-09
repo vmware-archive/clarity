@@ -6,6 +6,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Card</h1>
 
+    <app-eslint-intro-block ruleName="no-clr-card"></app-eslint-intro-block>
+
     <demo [tabs]="demo1">
       <h2>Basic</h2>
     </demo>

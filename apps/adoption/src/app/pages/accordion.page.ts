@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Accordion</h1>
 
+    <app-eslint-intro-block ruleName="no-clr-acoordion"></app-eslint-intro-block>
+
     <demo [tabs]="demo1"></demo>
   `,
 })

@@ -1,0 +1,9 @@
+:host {
+  > div {
+    border: var(--clr-global-borderwidth) solid var(--clr-accordion-border-color);
+  }
+
+  img {
+    width: 2rem;
+  }
+}

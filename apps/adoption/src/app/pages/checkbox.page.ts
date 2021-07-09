@@ -11,6 +11,9 @@ import { DemoTabData } from '../components/demo.component';
   selector: 'app-checkbox',
   template: `
     <h1>Checkbox</h1>
+
+    <app-eslint-intro-block ruleName="no-clr-checkbox"></app-eslint-intro-block>
+
     <demo [tabs]="demo1">
       <p>Basic checkbox</p>
     </demo>

@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Badges</h1>
 
+    <app-eslint-intro-block ruleName="no-clr-badge"></app-eslint-intro-block>
+
     <demo [tabs]="demo1"></demo>
     <demo [tabs]="demo2"></demo>
   `,

@@ -405,6 +405,9 @@
     &.btn-danger .dropdown-toggle {
       @include populateButtonProperties(primary);
     }
+    &.btn-danger :disabled {
+      @include css-var(border-color, --clr-color-neutral-400, $clr-color-neutral-400, $clr-use-custom-properties);
+    }
 
     &.btn-link .dropdown-toggle {
       @include populateButtonProperties(link);

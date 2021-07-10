@@ -90,6 +90,11 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/icon/shapes/cog.js': '/dist/core/icon/shapes/cog.js',
             '@cds/core/icon/shapes/share.js': '/dist/core/icon/shapes/share.js',
             '@cds/core/icon/shapes/thumbs-up.js': '/dist/core/icon/shapes/thumbs-up.js',
+            '@cds/core/icon/shapes/dashboard.js': '/dist/core/icon/shapes/dashboard.js',
+            '@cds/core/icon/shapes/dollar.js': '/dist/core/icon/shapes/dollar.js',
+            '@cds/core/icon/shapes/help-info.js': '/dist/core/icon/shapes/help-info.js',
+            '@cds/core/icon/shapes/line-chart.js': '/dist/core/icon/shapes/line-chart.js',
+            '@cds/core/icon/shapes/file.js': '/dist/core/icon/shapes/file.js',
 
             '@cds/core/accordion': '/dist/core/accordion/index.js',
             '@cds/core/accordion/register.js': '/dist/core/accordion/register.js',

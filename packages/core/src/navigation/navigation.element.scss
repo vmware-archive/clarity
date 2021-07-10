@@ -65,3 +65,7 @@
   height: 100%;
   overflow: auto;
 }
+
+::slotted([slot='cds-navigation-substart']) {
+  width: 100%;
+}

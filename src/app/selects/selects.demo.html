@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -220,6 +220,21 @@
     <div class="clr-control-container clr-error">
       <div class="clr-select-wrapper">
         <select id="vertical-select-basic-error" placeholder="Enter value here" class="clr-select">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
+      </div>
+      <span class="clr-subtext">Helper Text</span>
+    </div>
+  </div>
+
+  <div class="clr-form-control">
+    <label for="vertical-select-basic-error" class="clr-control-label">Basic select, success</label>
+    <div class="clr-control-container clr-success">
+      <div class="clr-select-wrapper">
+        <select id="vertical-select-basic-success" placeholder="Enter value here" class="clr-select">
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>

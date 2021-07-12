@@ -75,7 +75,8 @@
     }
   }
 
-  .clr-error .clr-select-wrapper::after {
+  .clr-error .clr-select-wrapper::after,
+  .clr-success .clr-select-wrapper::after {
     right: $clr-forms-icon-size + $clr-forms-baseline;
   }
 

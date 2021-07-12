@@ -93,6 +93,18 @@
   .clr-timeline-step-body {
     display: flex;
     flex-direction: column;
+    cds-icon,
+    clr-icon {
+      @include equilateral($clr-timeline-default-icon-size);
+      min-width: initial;
+      min-height: initial;
+      &[shape='circle'],
+      &[shape='dot-circle'],
+      &[shape='success-standard'],
+      &[shape='error-standard'] {
+        color: inherit;
+      }
+    }
   }
 
   .clr-timeline-step-title {

@@ -1791,7 +1791,8 @@
 
   // Small screens should only display the detail pane when opened, or optionally forced by a class
   .datagrid-detail-overlay {
-    &.datagrid-detail-open .datagrid-inner-wrapper {
+    // too specific query needed to avoid issues with nested datagrids
+    &.datagrid-detail-open > .datagrid-outer-wrapper > .datagrid-inner-wrapper {
       display: none;
     }
     .datagrid-detail-pane {
@@ -1800,7 +1801,8 @@
     }
   }
   @media screen and (max-width: map-get($clr-grid-breakpoints, sm)) {
-    .datagrid-detail-open .datagrid-inner-wrapper {
+    // too specific query needed to avoid issues with nested datagrids
+    .datagrid-detail-open > .datagrid-outer-wrapper > .datagrid-inner-wrapper {
       display: none;
     }
     .datagrid-detail-pane {

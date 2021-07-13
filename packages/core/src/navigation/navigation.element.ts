@@ -241,23 +241,24 @@ export class CdsNavigation extends LitElement implements Animatable {
     onKey('arrow-right', event, () => {
       const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
 
-      if (groupParent && !groupParent.expanded) {
-        groupParent.expandedChange.emit(!groupParent.expanded);
+      if (!groupParent && this.currentActiveItem?.tagName === 'CDS-NAVIGATION-START' && !this.expanded) {
+        this.toggle();
         return;
       }
 
-      if (!groupParent) {
-        this.toggle();
+      if (groupParent && !groupParent.expanded) {
+        groupParent.expandedChange.emit(!groupParent.expanded);
         return;
       }
     });
 
     onKey('arrow-left', event, () => {
       const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
-      if (!groupParent) {
+      if (!groupParent && this.currentActiveItem?.tagName === 'CDS-NAVIGATION-START' && this.expanded) {
         this.toggle();
         return;
       }
+
       if (this.currentActiveItem?.tagName === 'CDS-NAVIGATION-ITEM' && !!groupParent) {
         const groupStartElement = groupParent?.querySelector('cds-navigation-start');
         removeFocus(this.currentActiveItem as FocusableElement);
@@ -287,6 +288,20 @@ export class CdsNavigation extends LitElement implements Animatable {
         const end = focusableElements[focusableElements.length - 1];
         this.ariaActiveDescendant = end.id;
         setFocus(end);
+      }
+    });
+
+    onKey('enter', event, () => {
+      // focusElement is either an Anchor or a button and we want to click it here
+      if (this.currentActiveItem?.focusElement) {
+        this.currentActiveItem?.focusElement.click();
+      }
+    });
+
+    onKey('space', event, () => {
+      // focusElement is either an Anchor or a button and we want to click it here
+      if (this.currentActiveItem?.focusElement) {
+        this.currentActiveItem?.focusElement.click();
       }
     });
   }
@@ -336,7 +351,8 @@ export class CdsNavigation extends LitElement implements Animatable {
     }
   }
 
-  firstUpdated() {
+  firstUpdated(props: PropertyValues) {
+    super.firstUpdated(props);
     // set all visible navigation elements to tabindex = -1
     this.allNavigationElements.forEach(item => {
       setAttributes(item, ['tabindex', '-1']);
@@ -382,7 +398,6 @@ export class CdsNavigation extends LitElement implements Animatable {
       <div class="navigation-body-wrapper" role="list" cds-layout="p-y:xxs">
         <div class="navigation-body" role="presentation" cds-layout="vertical wrap:none align:horizontal-stretch">
           <slot></slot>
-          <!-- make naviagtion body default slot-->
         </div>
       </div>
       ${this.endTemplate}

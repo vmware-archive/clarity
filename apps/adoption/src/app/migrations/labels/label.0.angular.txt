@@ -1,7 +1,0 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  template: `<span class="label">Austin</span>`,
-})
-export class AppComponent {}

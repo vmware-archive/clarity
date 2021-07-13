@@ -280,16 +280,6 @@
   to = "/storybook/core"
   status = 200
 
-[[redirects]]
-  from = "/adoption"
-  to = "/adoption/"
-  status = 200
-
-[[redirects]]
-  from = "/adoption/*"
-  to = "/adoption/"
-  status = 200
-
 # Support CORS on JSON files
 [[headers]]
   for = "/*.json"

@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/tag/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `<cds-tag>Austin</cds-tag>
+`,
+})
+export class AppComponent {}

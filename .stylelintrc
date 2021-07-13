@@ -1,0 +1,21 @@
+{
+  "extends": "stylelint-config-recommended",
+  "defaultSeverity": "error",
+  "syntax": "scss",
+  "plugins": [
+    "stylelint-scss"
+  ],
+
+  "rules": {
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["/^clr-/", "/^cds-/", "/^app-/", "/^_/", "_"]
+    }],
+    "selector-pseudo-element-no-unknown":[true, {
+      "ignorePseudoElements": ["/^ng-deep/"]
+    }]
+  }
+}

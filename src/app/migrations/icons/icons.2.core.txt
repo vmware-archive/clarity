@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/icon/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-icon shape="home" status="success"></cds-icon>
+    <cds-icon shape="home" status="success"></cds-icon>
+    <cds-icon shape="home" status="danger"></cds-icon>
+    <cds-icon shape="home" status="danger"></cds-icon>
+    <cds-icon shape="home" status="warning"></cds-icon>
+    <cds-icon shape="home" status="info"></cds-icon>
+    <cds-icon shape="home" status="info"></cds-icon>
+    <cds-icon shape="home" status="highlight"></cds-icon>
+    <cds-icon shape="home" inverse></cds-icon>
+    <cds-icon shape="home" inverse></cds-icon>
+    <cds-icon shape="home" solid></cds-icon>
+  `,
+})
+export class AppComponent {}

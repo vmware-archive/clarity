@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <clr-alert [clrAlertType]="'warning'" *ngIf="showAlert" (clrAlertClosedChange)="showAlert = false">
+      <clr-alert-item>
+        <span class="alert-text">
+          Try closing this alert.
+        </span>
+      </clr-alert-item>
+    </clr-alert>
+
+    <button *ngIf="!showAlert" class="btn primary" (click)="showAlert = !showAlert">
+      Show alert
+    </button>
+  `,
+})
+export class AppComponent {
+  showAlert = true;
+}

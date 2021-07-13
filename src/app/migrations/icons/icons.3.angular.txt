@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <clr-icon shape="home" dir="up"></clr-icon>
+    <clr-icon shape="home" dir="down"></clr-icon>
+    <clr-icon shape="home" dir="left"></clr-icon>
+    <clr-icon shape="home" dir="right"></clr-icon>
+  `,
+})
+export class AppComponent {}

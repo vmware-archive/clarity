@@ -32,9 +32,11 @@ export function getToggleIconDirection(element: CdsNavigationStart): Directions 
 
 export function manageScreenReaderElements(element: HTMLElement, expandedRoot: boolean): void {
   const span = element.querySelector('span');
-  setOrRemoveAttribute(span, ['cds-layout', 'display:screen-reader-only'], () => {
-    return !expandedRoot;
-  });
+  if (span) {
+    setOrRemoveAttribute(span, ['cds-layout', 'display:screen-reader-only'], () => {
+      return !expandedRoot;
+    });
+  }
 }
 
 export function removeFocus(element: FocusableElement) {

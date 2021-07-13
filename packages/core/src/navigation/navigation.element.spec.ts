@@ -120,11 +120,21 @@ describe('cds-navigation', () => {
       element.dispatchEvent(ee);
     }
 
+    // function enterEvent(element: any) {
+    //   const ee = new KeyboardEvent('keydown', {
+    //     code: 'Enter',
+    //     key: 'Enter',
+    //   });
+    //   element.dispatchEvent(ee);
+    // }
+
     beforeEach(async () => {
       element = await createTestElement(html`
-        <cds-navigation cds-motion="off">
+        <cds-navigation cds-motion="off" id="testNav">
           <cds-navigation-start id="rootStart">Root start</cds-navigation-start>
-          <cds-navigation-item>Root item</cds-navigation-item>
+          <cds-navigation-item>
+            Root Item
+          </cds-navigation-item>
           <cds-navigation-group>
             <cds-navigation-start id="groupStart">
               <cds-icon shape="home" size="md"></cds-icon>
@@ -134,10 +144,9 @@ describe('cds-navigation', () => {
           </cds-navigation-group>
         </cds-navigation>
       `);
-      component = element.querySelector<CdsNavigation>('cds-navigation');
+      component = element.querySelector<CdsNavigation>('cds-navigation#testNav');
       group = component.querySelector<CdsNavigationGroup>('cds-navigation-group');
       groupStart = component.querySelector<CdsNavigationStart>('cds-navigation-start#groupStart');
-      ``;
       rootStart = component.querySelector<CdsNavigationStart>('cds-navigation-start#rootStart');
     });
 
@@ -278,6 +287,23 @@ describe('cds-navigation', () => {
       initFocus(component);
       group.expandedChange.emit(true);
       expect(component.currentActiveItem.hasFocus).toBeTruthy();
+    });
+
+    xit('respond to space key and fire click events for cds-navigation-item anchor tags', async () => {
+      // TODO address same as test below.
+    });
+
+    xit('respond to enter key and fire click events for cds-navigation-item anchor tags', async () => {
+      // TODO: why is this code and the addEventListener pattern not firing events in the same order as a real browser?
+      // Try with Spy on the link.click() fn
+      // await componentIsStable(component);
+      // const link: HTMLAnchorElement = component.querySelector<HTMLAnchorElement>('#rootItem');
+      // const clickSpy = spyOn(link, 'click');
+      // initFocus(component);
+      // arrowDownEvent(component)
+      // enterEvent(component);
+      // await componentIsStable(component);
+      // expect(clickSpy).toHaveBeenCalled();
     });
   });
 

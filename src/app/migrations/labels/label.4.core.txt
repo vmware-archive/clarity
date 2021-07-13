@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/tag/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-tag readonly status="info">Info</cds-tag>
+    <cds-tag readonly status="success">Success</cds-tag>
+    <cds-tag readonly status="warning">Warning</cds-tag>
+    <cds-tag readonly status="danger">Danger</cds-tag>
+  `,
+})
+export class AppComponent {}

@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/alert/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-alert-group status="danger" type="banner">
+      <cds-alert closable>
+        Proin varius lacinia tincidunt. In elementum suscipit lectus eget hendrerit. Vestibulum rutrum risus ut turpis
+        interdum, ac auctor nisi ultrices
+      </cds-alert>
+    </cds-alert-group>
+  `,
+})
+export class AppComponent {}

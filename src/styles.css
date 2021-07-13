@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+pre {
+  padding: 0.5rem;
+}
+
+.docs-changer {
+  margin-top: 12px;
+}
+
+.npm-reference {
+  margin-left: 1rem;
+}

@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/checkbox/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+  <cds-checkbox>
+    <label>Option 1</label>
+    <input type="checkbox" />
+  </cds-checkbox>
+  `,
+})
+export class AppComponent {}

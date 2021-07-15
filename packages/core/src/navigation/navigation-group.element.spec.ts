@@ -37,11 +37,11 @@ describe('cds-navigation-group', () => {
 
   it('expands and collapses', async () => {
     await componentIsStable(component);
-    const items = component.shadowRoot.querySelector('.navigation-group-items');
-    expect(items.getAttribute('aria-expanded')).toBe('false');
+    const itemContainer = component.shadowRoot.querySelector('.group-items-container');
+    expect(itemContainer.getAttribute('aria-expanded')).toBe('false');
     component.expanded = true;
     await componentIsStable(component);
-    expect(items.getAttribute('aria-expanded')).toBe('true');
+    expect(itemContainer.getAttribute('aria-expanded')).toBe('true');
   });
 
   it('emits the expandedChange event', async () => {

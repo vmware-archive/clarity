@@ -67,6 +67,9 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
   @property({ type: Boolean, reflect: true })
   isGroupStart = false;
 
+  @property({ type: String, reflect: true })
+  role = 'listitem';
+
   @property({ type: String })
   navigationGroupId: string;
 
@@ -120,36 +123,70 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
 
   private handleStartButtonText() {
     spanWrapper(this.childNodes);
+
     // get the projected text now wrapped in a span and add the sr attribute.
     this.querySelector('span')?.setAttribute(NAVIGATION_TEXT_WRAPPER, '');
   }
 
+  private renderRootStart() {
+    return html`
+      <slot @slotchange=${this.handleStartButtonText}></slot>
+      <button
+        aria-pressed="${this.expandedRoot}"
+        aria-label="${this.expandedRoot ? this.i18n.navigationUnabridgedText : this.i18n.navigationAbridgedText}"
+        class="private-host"
+        id="${this.isGroupStart ? this.navigationGroupId : ''}"
+        type="button"
+      >
+        <div cds-layout="horizontal align:vertical-center">
+          <span class="icon-slot" cds-layout="${this.expandedRoot ? 'align:right' : 'align:left'}">
+            <slot name="cds-icon-slot">
+              ${this.startIcon
+                ? ''
+                : html` <cds-icon
+                    size="${!this.expandedRoot && this.isGroupStart ? 'xs' : 'sm'}"
+                    shape="${this.isGroupStart ? 'angle' : 'angle-double'}"
+                    direction="${this.toggleIconDirection}"
+                  >
+                  </cds-icon>`}
+            </slot>
+          </span>
+        </div>
+      </button>
+    `;
+  }
+
+  private renderGroupStart() {
+    return html`
+      <button
+        aria-expanded="${this.expanded}"
+        class="private-host"
+        id="${this.isGroupStart ? this.navigationGroupId : ''}"
+        type="button"
+      >
+        <div cds-layout="horizontal wrap:none align:vertical-center">
+          <slot @slotchange=${this.handleStartButtonText}></slot>
+          <span class="icon-slot" cds-layout="${this.expandedRoot ? 'align:right' : 'align:left'}">
+            <slot name="cds-icon-slot">
+              ${this.startIcon
+                ? ''
+                : html` <cds-icon
+                    size="${!this.expandedRoot && this.isGroupStart ? 'xs' : 'sm'}"
+                    shape="${this.isGroupStart ? 'angle' : 'angle-double'}"
+                    direction="${this.toggleIconDirection}"
+                  >
+                  </cds-icon>`}
+            </slot>
+          </span>
+        </div>
+      </button>
+    `;
+  }
+
   render() {
     return html`
-      <div class="private-host">
-        <button
-          aria-expanded="${this.expanded}"
-          cds-layout="horizontal align:stretch align:vertical-center"
-          class="private-host"
-          id="${this.isGroupStart ? this.navigationGroupId : ''}"
-          type="button"
-        >
-          <div cds-layout="horizontal align:vertical-center">
-            <slot @slotchange=${this.handleStartButtonText}></slot>
-            <span class="icon-slot" cds-layout="${this.expandedRoot ? 'align:right' : 'align:left'}">
-              <slot name="cds-icon-slot">
-                ${this.startIcon
-                  ? ''
-                  : html` <cds-icon
-                      size="${!this.expandedRoot && this.isGroupStart ? 'xs' : 'sm'}"
-                      shape="${this.isGroupStart ? 'angle' : 'angle-double'}"
-                      direction="${this.toggleIconDirection}"
-                    >
-                    </cds-icon>`}
-              </slot>
-            </span>
-          </div>
-        </button>
+      <div class="private-host" cds-layout="horizontal align:vertical-center align:horizontal-stretch">
+        ${this.isGroupStart ? this.renderGroupStart() : this.renderRootStart()}
       </div>
     `;
   }

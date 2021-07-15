@@ -4,12 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@cds/core/navigation/register.js';
-import customElements from '../../dist/core/custom-elements.json';
 import { html } from 'lit';
 import { CdsNavigation } from '@cds/core/navigation';
 import { CdsNavigationGroup } from '@cds/core/navigation';
-
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { applicationsIcon } from '@cds/core/icon/shapes/applications.js';
@@ -26,6 +23,7 @@ import { imageIcon } from '@cds/core/icon/shapes/image.js';
 import { homeIcon } from '@cds/core/icon/shapes/home.js';
 
 import '@cds/core/icon/register.js';
+import '@cds/core/navigation/register.js';
 
 ClarityIcons.addIcons(
   applicationsIcon,
@@ -482,15 +480,15 @@ export function navigationGroups() {
     },
   };
   const demo = html`
-    <div style="height: 500px" cds-layout="vertical gap:md">
+    <div style="height: 400px" cds-layout="vertical gap:md">
       <a href="#">
         <cds-icon shape="image" solid size="xl"></cds-icon>
         Application Inc.
       </a>
       <div cds-layout="horizontal wrap:none" style="height: 100%">
         <cds-navigation expanded @expandedChange="${onExpandChange}">
-          <cds-navigation-start></cds-navigation-start>
-          <cds-navigation-item active>
+          <cds-navigation-start>Root Start</cds-navigation-start>
+          <cds-navigation-item>
             <a href="#" cds-layout="horizontal align:vertical-center gap:md">
               <cds-icon cds-layout="m-y:md" shape="home" size="sm"></cds-icon>
               Home
@@ -520,7 +518,7 @@ export function navigationGroups() {
               </a>
             </cds-navigation-item>
           </cds-navigation-group>
-          <cds-navigation-group @expandedChange="${onExpandGroupChange}">
+          <cds-navigation-group @expandedChange="${onExpandGroupChange}" active>
             <cds-navigation-start>
               <cds-icon cds-layout="m-y:md m-r:md" shape="user" size="sm"></cds-icon>
               People
@@ -531,7 +529,7 @@ export function navigationGroups() {
                 Matthew
               </a>
             </cds-navigation-item>
-            <cds-navigation-item>
+            <cds-navigation-item active>
               <a href="#">
                 <cds-icon shape="user" size="sm"></cds-icon>
                 Melissa

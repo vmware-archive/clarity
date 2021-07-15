@@ -9,19 +9,48 @@
 :host {
   --color: inherit;
   --line-height: inherit;
+  --focus-width: #{$cds-alias-object-border-width-300};
   --font-size: inherit;
   --font-weight: inherit;
   --letter-spacing: inherit;
   --padding: inherit;
+  padding-left: var(--focus-width);
 }
 
 :host(:hover:not([disabled])),
 :host([_has-focus]) {
   background: #{$cds-alias-object-interaction-background-hover};
+  outline: 0;
+  cursor: pointer;
 }
 
-:host(:active),
+:host(:hover:not([disabled]))::after,
+:host([_has-focus])::after {
+  content: '';
+  position: absolute;
+  inset: #{$cds-global-space-2};
+  outline: #{$cds-global-space-2} auto -webkit-focus-ring-color;
+}
+
 :host([active]) {
+  background: #{$cds-alias-object-interaction-background-selected};
+  padding-left: 0;
+  border-left: var(--focus-width) solid #{$cds-alias-object-interaction-background-highlight};
+}
+
+:host([_has-focus][active]) {
+  background: #{$cds-alias-object-interaction-background-hover};
+  border-color: transparent;
+}
+
+/**
+  NOTE: the use of active is in a very specific context that makes it easy for consumers
+        to use the active attribute to indicate the selected route, e.g similar to the syntax of the angular router
+        tl;dr - there is naming confusion for us, but externally [active] is more consistent
+        with how routing in angular works
+ */
+:host(:active),
+:host(:active:focus) {
   background: #{$cds-alias-object-interaction-background-active};
 }
 
@@ -42,10 +71,6 @@
   }
 }
 
-:host([_group-item]) {
-  padding: var(--padding);
-}
-
 ::slotted(cds-icon) {
   color: inherit;
 }
@@ -55,7 +80,6 @@
   color: var(--color) !important;
   padding: var(--padding) !important;
   text-decoration: none !important;
-  outline: none !important;
 }
 
 .private-host {
@@ -64,4 +88,5 @@
   letter-spacing: var(--letter-spacing);
   line-height: var(--line-height);
   width: 100%;
+  height: fit-content;
 }

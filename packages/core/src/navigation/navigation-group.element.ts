@@ -132,15 +132,15 @@ export class CdsNavigationGroup extends LitElement implements Animatable {
 
   render() {
     return html`
-      <div role="listitem" class="private-host" cds-layout="vertical wrap:none align:horizontal-stretch">
+      <div class="private-host" cds-layout="vertical wrap:none align:horizontal-stretch">
         <slot name="group-start"></slot>
-        <div role="region" class="group-items-wrapper" aria-labelledby="${this.navigationGroupId}">
-          <div role="list" class="group-items-container">
-            <div
-              class="navigation-group-items"
-              aria-expanded="${this.expanded}"
-              cds-layout="vertical wrap:none align:horizontal-stretch"
-            >
+        <div
+          class="group-items-wrapper"
+          aria-hidden="${!this.expandedGroup}"
+          aria-labelledby="${this.navigationGroupId}"
+        >
+          <div class="group-items-container" aria-expanded="${this.expanded}">
+            <div class="navigation-group-items" cds-layout="vertical wrap:none align:horizontal-stretch" role="list">
               <slot></slot>
             </div>
           </div>

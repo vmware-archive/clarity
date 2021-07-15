@@ -38,7 +38,7 @@ describe('cds-navigation-item', () => {
 
   it('manages screen reader text', async () => {
     await componentIsStable(component);
-    const wrappedSpan = component.querySelector('span[cds-layout]');
+    const wrappedSpan = component.querySelector('[cds-navigation-sr-text]');
     expect(wrappedSpan.getAttribute('cds-layout')).toBe('display:screen-reader-only');
     component.expanded = true;
     await componentIsStable(component);
@@ -63,14 +63,12 @@ describe('cds-navigation-item', () => {
     expect(component.getAttribute('_has-focus')).toBe('');
   });
 
-  it('cannot be focused when disabled', async () => {
+  it('can be disabled', async () => {
     await componentIsStable(component);
     expect(component.getAttribute('disabled')).toBeNull();
-    expect(component.getAttribute('tabindex')).toBeNull();
-    component.setAttribute('disabled', '');
+    component.disabled = true;
     await componentIsStable(component);
     expect(component.getAttribute('disabled')).toBe('');
-    expect(component.getAttribute('tabindex')).toBe('-1');
   });
 
   describe('when inside a cds-navigation-group', () => {

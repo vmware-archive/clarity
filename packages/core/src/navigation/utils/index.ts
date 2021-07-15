@@ -45,7 +45,7 @@ export function removeFocus(element: FocusableElement) {
 
 export function setFocus(element: FocusableElement) {
   element.hasFocus = true;
-  element.focusElement?.scrollIntoView(); // Bring elements that are hidden by overflow into viewport
+  element.scrollIntoView(); // Bring elements that are hidden by overflow into viewport
 }
 
 export function visibleElement(element: FocusableElement): boolean {

@@ -27,7 +27,6 @@ import {
 import styles from './navigation.element.scss';
 
 import {
-  DEFAULT_NAVIGATION_LAYOUT,
   FocusableElement,
   getNextFocusElement,
   getPreviousFocusElement,
@@ -85,6 +84,9 @@ export class CdsNavigation extends LitElement implements Animatable {
   @property({ type: String })
   cdsMotion = 'on';
 
+  @property({ type: String })
+  role = 'list';
+
   @event()
   protected expandedChange: EventEmitter<boolean>;
 
@@ -103,7 +105,7 @@ export class CdsNavigation extends LitElement implements Animatable {
   /**
    * Set and update the aria-active descended value onto the navigation.
    */
-  @property({ type: String, reflect: true, attribute: 'aria-activedescendant' })
+  @state({ type: String })
   ariaActiveDescendant: any;
 
   /**
@@ -130,7 +132,7 @@ export class CdsNavigation extends LitElement implements Animatable {
    * TODO: How to add in forms selector attribute and other things that are not FocusableElements like I use here
    * tbd - I don;'t have an answer yet.
    */
-  @querySlotAll('cds-navigation-start, cds-navigation-item:not([disabled])')
+  @querySlotAll('cds-navigation-group > cds-navigation-start, cds-navigation-item:not([disabled])')
   protected allNavigationElements: NodeListOf<FocusableElement>;
 
   /**
@@ -181,131 +183,6 @@ export class CdsNavigation extends LitElement implements Animatable {
   @querySlotAll('cds-navigation-group')
   protected navigationGroupRefs: NodeListOf<CdsNavigationGroup>;
 
-  private initAriaActiveDescendant() {
-    /**
-     * If there is a currentActiveItem, focus on that
-     * If there is not a currentActiveItem focus on the first visible element
-     */
-    const focusElement = this.currentActiveItem ? this.currentActiveItem : this.allNavigationElements[0];
-    setFocus(focusElement);
-    this.ariaActiveDescendant = focusElement.id;
-  }
-
-  /**
-   * Rules for keyboard handling logic:
-   *
-   * 1. when cds-navigation element receives focus if there is already an active focus item,
-   *    set focus on it, else set focus on first focusable item
-   * 2. arrow key down sets focus on the next focusable item, if last item it moves focus to first focusable item
-   * 3. arrow key up sets focus on the previous focusable item, if first it moves focus to the last focusable item
-   * 4. arrow key left on a cds-navigation-item inside cds-navigation-group will put focus on the cds-navigation-start
-   *    button for the group
-   * 5. arrow key left on a cds-navigation-start element inside a cds-navigation-group will emit the groups
-   *    expandedChange event
-   * 6. arrow key right on a non expanded cds-navigation-group will emit the groups expandedChange event
-   * 7. arrow key left on a root cds-navigation-start element will fire the cds-navigation expandedChange event if
-   *    the cds-navigation element is expanded
-   * 8. arrow key right on a root cds-navigation-start element will fire the cds-navigation expandedChange event if
-   *    the cds-navigation element is not expanded
-   * 9. home key will move focus to the first focusable item
-   * 10. end key will move focus to the last focusable item
-   *
-   * We may need a way to let consumers mark elements and include them in the focusable elements, not sure how yet
-   *
-   * @param event
-   * @private
-   */
-  private keyboardNavigationHandler(event: KeyboardEvent) {
-    const focusableElements = Array.from(this.allNavigationElements).filter(visibleElement);
-
-    onKey('arrow-down', event, () => {
-      if (this.currentActiveItem) {
-        removeFocus(this.currentActiveItem);
-        const next = getNextFocusElement(this.currentActiveItem, focusableElements);
-        this.ariaActiveDescendant = next.id;
-        setFocus(next);
-        // event.preventDefault(); // needed for when when overflow scrolling is enabled
-      }
-    });
-
-    onKey('arrow-up', event, () => {
-      if (this.currentActiveItem) {
-        removeFocus(this.currentActiveItem);
-        const next = getPreviousFocusElement(this.currentActiveItem, focusableElements);
-        this.ariaActiveDescendant = next.id;
-        setFocus(next);
-        // event.preventDefault(); // needed for when when overflow scrolling is enabled
-      }
-    });
-
-    onKey('arrow-right', event, () => {
-      const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
-
-      if (!groupParent && this.currentActiveItem?.tagName === 'CDS-NAVIGATION-START' && !this.expanded) {
-        this.toggle();
-        return;
-      }
-
-      if (groupParent && !groupParent.expanded) {
-        groupParent.expandedChange.emit(!groupParent.expanded);
-        return;
-      }
-    });
-
-    onKey('arrow-left', event, () => {
-      const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
-      if (!groupParent && this.currentActiveItem?.tagName === 'CDS-NAVIGATION-START' && this.expanded) {
-        this.toggle();
-        return;
-      }
-
-      if (this.currentActiveItem?.tagName === 'CDS-NAVIGATION-ITEM' && !!groupParent) {
-        const groupStartElement = groupParent?.querySelector('cds-navigation-start');
-        removeFocus(this.currentActiveItem as FocusableElement);
-        this.ariaActiveDescendant = groupStartElement?.id;
-        setFocus(groupStartElement as FocusableElement);
-        return;
-      }
-
-      if (groupParent && groupParent.expanded) {
-        groupParent.expandedChange.emit(!groupParent.expanded);
-        return;
-      }
-    });
-
-    onKey('home', event, () => {
-      if (this.currentActiveItem) {
-        removeFocus(this.currentActiveItem);
-        const home = focusableElements[0];
-        this.ariaActiveDescendant = home.id;
-        setFocus(home);
-      }
-    });
-
-    onKey('end', event, () => {
-      if (this.currentActiveItem) {
-        removeFocus(this.currentActiveItem);
-        const end = focusableElements[focusableElements.length - 1];
-        this.ariaActiveDescendant = end.id;
-        setFocus(end);
-      }
-    });
-
-    onKey('enter', event, () => {
-      // focusElement is either an Anchor or a button and we want to click it here
-      if (this.currentActiveItem?.focusElement) {
-        this.currentActiveItem?.focusElement.click();
-      }
-    });
-
-    onKey('space', event, () => {
-      // focusElement is either an Anchor or a button and we want to click it here
-      if (this.currentActiveItem?.focusElement) {
-        this.currentActiveItem?.focusElement.click();
-      }
-    });
-  }
-
   private toggle() {
     this.expandedChange.emit(!this.expanded);
   }
@@ -317,7 +194,7 @@ export class CdsNavigation extends LitElement implements Animatable {
   protected get endTemplate() {
     return this.navigationEnd
       ? html`
-          <div role="region" class="navigation-end" cds-layout="vertical align:horizontal-stretch">
+          <div class="navigation-end" cds-layout="vertical align:horizontal-stretch">
             <slot name="cds-navigation-end"></slot>
           </div>
         `
@@ -329,7 +206,7 @@ export class CdsNavigation extends LitElement implements Animatable {
 
     this.rootNavigationStart
       ? (returnHTML = html`
-          <div role="region" class="navigation-start" cds-layout="vertical align:horizontal-stretch">
+          <div class="navigation-start" cds-layout="vertical align:horizontal-stretch">
             <slot @slotchange="${() => this.addStartEventListener()}" name="navigation-start"></slot>
             <cds-divider class="start-divider"></cds-divider>
           </div>
@@ -357,19 +234,147 @@ export class CdsNavigation extends LitElement implements Animatable {
     this.allNavigationElements.forEach(item => {
       setAttributes(item, ['tabindex', '-1']);
     });
+
+    const itemWrapper = this.shadowRoot?.querySelector('#item-container');
+    itemWrapper?.addEventListener('focus', this.initItemKeys.bind(this));
+    itemWrapper?.addEventListener('keydown', this.handleItemKeys.bind(this));
+    itemWrapper?.addEventListener('blur', this.blurItemKeys.bind(this));
+  }
+
+  private blurItemKeys() {
+    if (this.currentActiveItem) {
+      removeFocus(this.currentActiveItem);
+    }
+  }
+
+  private focusRootStart() {
+    if (this.rootNavigationStart) {
+      setFocus(this.rootNavigationStart);
+    }
+  }
+
+  private blurRootStart() {
+    if (this.rootNavigationStart) {
+      removeFocus(this.rootNavigationStart);
+    }
+  }
+
+  private initItemKeys() {
+    if (!this.currentActiveItem) {
+      setFocus(this.focusableElements[0]);
+      this.ariaActiveDescendant = this.focusableElements[0].id;
+    } else {
+      const focusElement = this.currentActiveItem ? this.currentActiveItem : this.allNavigationElements[0];
+      setFocus(focusElement);
+      this.ariaActiveDescendant = focusElement.id;
+    }
+  }
+
+  private get focusableElements() {
+    return Array.from(this.allNavigationElements).filter(visibleElement);
+  }
+
+  private handleItemKeys(event: KeyboardEvent) {
+    onKey('arrow-down', event, () => {
+      if (this.currentActiveItem) {
+        removeFocus(this.currentActiveItem);
+        const next = getNextFocusElement(this.currentActiveItem, this.focusableElements);
+        this.ariaActiveDescendant = next.id;
+        setFocus(next);
+        event.preventDefault();
+      }
+    });
+
+    onKey('arrow-up', event, () => {
+      if (this.currentActiveItem) {
+        removeFocus(this.currentActiveItem);
+        const previous = getPreviousFocusElement(this.currentActiveItem, this.focusableElements);
+        this.ariaActiveDescendant = previous.id;
+        setFocus(previous);
+        event.preventDefault();
+      }
+    });
+
+    onKey('arrow-right', event, () => {
+      const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
+
+      if (groupParent && !groupParent.expanded) {
+        groupParent.expandedChange.emit(!groupParent.expanded);
+        return;
+      }
+    });
+
+    onKey('arrow-left', event, () => {
+      const groupParent = this.currentActiveItem?.closest('cds-navigation-group');
+
+      if (this.currentActiveItem?.tagName === 'CDS-NAVIGATION-ITEM' && !!groupParent) {
+        const groupStartElement = groupParent?.querySelector('cds-navigation-start');
+        removeFocus(this.currentActiveItem as FocusableElement);
+        this.ariaActiveDescendant = groupStartElement?.id;
+        setFocus(groupStartElement as FocusableElement);
+        return;
+      }
+
+      if (groupParent && groupParent.expanded) {
+        groupParent.expandedChange.emit(!groupParent.expanded);
+        return;
+      }
+    });
+
+    onKey('home', event, () => {
+      if (this.currentActiveItem) {
+        removeFocus(this.currentActiveItem);
+        const home = this.focusableElements[0];
+        this.ariaActiveDescendant = home.id;
+        setFocus(home);
+      }
+    });
+
+    onKey('end', event, () => {
+      if (this.currentActiveItem) {
+        removeFocus(this.currentActiveItem);
+        const end = this.focusableElements[this.focusableElements.length - 1];
+        this.ariaActiveDescendant = end.id;
+        setFocus(end);
+      }
+    });
+
+    onKey('enter', event, () => {
+      // focusElement is either an Anchor or a button and we want to click it here
+      if (this.currentActiveItem?.focusElement) {
+        this.currentActiveItem?.focusElement.click();
+      }
+    });
+
+    onKey('space', event, () => {
+      // focusElement is either an Anchor or a button and we want to click it here
+      if (this.currentActiveItem?.focusElement) {
+        this.currentActiveItem?.focusElement.click();
+      }
+    });
+  }
+
+  private handleRootStartKeys(event: KeyboardEvent) {
+    onKey('arrow-right', event, () => {
+      if (!this.expanded) {
+        this.toggle();
+        return;
+      }
+    });
+
+    onKey('arrow-left', event, () => {
+      if (this.expanded) {
+        this.toggle();
+        return;
+      }
+    });
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.tabIndex = 0;
-    this.addEventListener('focus', this.initAriaActiveDescendant);
-    this.addEventListener('keydown', this.keyboardNavigationHandler);
-    this.addEventListener('blur', () => {
-      if (this.currentActiveItem && this.currentActiveItem.hasFocus) {
-        removeFocus(this.currentActiveItem as FocusableElement);
-      }
-    });
-    this.addEventListener('expandedChange', this.setActiveItemFocus);
+    this.rootNavigationStart?.addEventListener('focus', this.focusRootStart.bind(this));
+    this.rootNavigationStart?.addEventListener('blur', this.blurRootStart.bind(this));
+    this.rootNavigationStart?.addEventListener('keydown', this.handleRootStartKeys.bind(this));
   }
 
   disconnectedCallback() {
@@ -379,29 +384,33 @@ export class CdsNavigation extends LitElement implements Animatable {
     }
   }
 
-  private setActiveItemFocus(event: Event) {
-    if (this.currentActiveItem && event.target instanceof CdsNavigationGroup) {
-      setFocus(this.currentActiveItem);
-    }
-  }
-
   render() {
-    return html`<nav
+    return html`<div
       class="private-host"
       aria-label="${this.i18n.navigationLabel}"
-      cds-layout="${DEFAULT_NAVIGATION_LAYOUT}
+      cds-layout="vertical
                   wrap:none
                   align:horizontal-center"
     >
       ${this.startTemplate}
       <slot name="cds-navigation-substart"></slot>
-      <div class="navigation-body-wrapper" role="list" cds-layout="p-y:xxs">
-        <div class="navigation-body" role="presentation" cds-layout="vertical wrap:none align:horizontal-stretch">
-          <slot></slot>
-        </div>
+      <div class="navigation-sr-wrapper" cds-layout="vertical align:horizontal-stretch gap:sm">
+        <nav style="height: 100%">
+          <div
+            class="navigation-body-wrapper"
+            cds-layout="p-y:xxs"
+            aria-activedescendant="${this.ariaActiveDescendant}"
+            tabindex="0"
+            id="item-container"
+          >
+            <div class="navigation-body" cds-layout="vertical wrap:none align:horizontal-stretch">
+              <slot></slot>
+            </div>
+          </div>
+          ${this.endTemplate}
+        </nav>
       </div>
-      ${this.endTemplate}
-    </nav>`;
+    </div>`;
   }
 
   updated(props: PropertyValues<this>) {

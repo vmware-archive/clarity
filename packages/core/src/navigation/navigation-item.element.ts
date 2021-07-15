@@ -50,6 +50,9 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
+  @property({ type: String, reflect: true })
+  role = 'listitem';
+
   @state({ type: Boolean })
   expanded = false;
 
@@ -81,6 +84,7 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
   firstUpdated(props: PropertyValues) {
     super.firstUpdated(props);
     this.handleItemAnchorText();
+    manageScreenReaderElements(this, this.expanded);
   }
 
   private handleItemAnchorText() {
@@ -94,7 +98,6 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
   render() {
     return html`
       <div
-        role="listitem"
         class="private-host ${this.groupItem ? 'group-item' : ''}"
         cds-layout="horizontal align:horizontal-stretch wrap:none"
       >
@@ -109,7 +112,6 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
 
   protected updated(props: PropertyValues) {
     super.updated(props);
-    this.disabled ? this.setAttribute('tabindex', '-1') : this.removeAttribute('tabindex');
     manageScreenReaderElements(this, this.expanded);
   }
 }

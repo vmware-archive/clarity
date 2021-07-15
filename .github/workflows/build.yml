@@ -14,10 +14,6 @@ jobs:
           node-version: '14'
           check-latest: true
       - uses: microsoft/playwright-github-action@v1
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-v1-${{ hashFiles('**/yarn.lock') }}-${{ github.base_ref }}
       - run: yarn install
       - run: yarn build:ci
 

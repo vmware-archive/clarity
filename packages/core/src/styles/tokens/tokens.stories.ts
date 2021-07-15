@@ -12,6 +12,8 @@ import { plusIcon } from '@cds/core/icon/shapes/plus.js';
 import { trashIcon } from '@cds/core/icon/shapes/trash.js';
 import { downloadIcon } from '@cds/core/icon/shapes/download.js';
 
+import '@cds/core/navigation/register.js';
+
 ClarityIcons.addIcons(homeIcon, plusIcon, trashIcon, downloadIcon);
 
 export default {
@@ -418,121 +420,136 @@ export function objectDemo() {
 export function interactionMenuDemo() {
   return html`
     <style>
-      .cds-menu-mock {
-        display: block;
-        width: 160px;
-        box-shadow: var(--cds-alias-object-shadow-100);
-        background: var(--cds-alias-object-interaction-background);
+      cds-navigation {
+        --expanded-width: 160px;
       }
-
-      .cds-menu-mock button {
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-items: center;
-        gap: var(--cds-global-space-6);
-        padding: var(--cds-global-space-7) var(--cds-global-space-6);
-        border: 0;
-        width: 100%;
-        cursor: pointer;
-        color: var(--cds-alias-object-interaction-color);
-        background: var(--cds-alias-object-interaction-background);
-      }
-
-      .cds-menu-mock button cds-icon {
-        --color: var(--cds-alias-object-interaction-color);
-        margin-top: calc(-1 * var(--cds-global-space-3));
-      }
-
-      .cds-menu-mock button:hover,
-      .cds-menu-mock button[hover] {
-        background: var(--cds-alias-object-interaction-background-hover);
-        color: var(--cds-alias-object-interaction-color-hover);
-      }
-
-      .cds-menu-mock button:hover cds-icon,
-      .cds-menu-mock button[hover] cds-icon,
-      .cds-tabs-mock button cds-icon:hover {
-        --color: var(--cds-alias-object-interaction-color-selected);
-        cursor: pointer;
-      }
-
-      .cds-menu-mock button:active,
-      .cds-menu-mock button[active] {
+      .active {
         background: var(--cds-alias-object-interaction-background-active);
-        color: var(--cds-alias-object-interaction-color-active);
       }
-
-      .cds-menu-mock button:active cds-icon,
-      .cds-menu-mock button[active] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-selected);
-      }
-
-      .cds-menu-mock button[selected] {
-        background: var(--cds-alias-object-interaction-background-selected);
-        color: var(--cds-alias-object-interaction-color-selected);
-      }
-
-      .cds-menu-mock button[selected] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-selected);
-      }
-
-      .cds-menu-mock button[disabled] {
-        background: var(--cds-alias-object-interaction-background-disabled);
-        color: var(--cds-alias-object-interaction-color-disabled);
-        cursor: not-allowed;
-      }
-
-      .cds-menu-mock button[disabled] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-disabled);
-        cursor: not-allowed;
+      .hover {
+        background: var(--cds-alias-object-interaction-background-hover);
       }
     </style>
 
     <div cds-layout="horizontal gap:lg">
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Default</h3>
-        <nav class="cds-menu-mock">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-        </nav>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="home" size="sm"></cds-icon>
+              <span>Item 1</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="download" size="sm"></cds-icon>
+              <span>Item 2</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="plus" size="sm"></cds-icon>
+              <span>Item 3</span>
+            </a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
 
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Hover</h3>
-        <nav class="cds-menu-mock">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-        </nav>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="home" size="sm"></cds-icon>
+              <span>Item 1</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item class="hover">
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="download" size="sm"></cds-icon>
+              <span>Item 2</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="plus" size="sm"></cds-icon>
+              <span>Item 3</span>
+            </a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
 
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Active</h3>
-        <nav class="cds-menu-mock">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-        </nav>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="home" size="sm"></cds-icon>
+              <span>Item 1</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item class="active" selected>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="download" size="sm"></cds-icon>
+              <span>Item 2</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="plus" size="sm"></cds-icon>
+              <span>Item 3</span>
+            </a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
 
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Selected</h3>
-        <nav class="cds-menu-mock">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-        </nav>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="home" size="sm"></cds-icon>
+              <span>Item 1</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item active>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="download" size="sm"></cds-icon>
+              <span>Item 2</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="plus" size="sm"></cds-icon>
+              <span>Item 3</span>
+            </a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
 
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Disabled</h3>
-        <nav class="cds-menu-mock">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-        </nav>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="home" size="sm"></cds-icon>
+              <span>Item 1</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item disabled>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="download" size="sm"></cds-icon>
+              <span>Item 2</span>
+            </a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#">
+              <cds-icon cds-layout="m-y:md m-r:md" shape="plus" size="sm"></cds-icon>
+              <span>Item 3</span>
+            </a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
     </div>
   `;
@@ -542,10 +559,20 @@ export function interactionMenuDemo() {
 export function interactionVerticalNavigationDemo() {
   return html`
     <style>
+      cds-navigation {
+        --expanded-width: 160px;
+        min-height: 300px;
+      }
+      .active {
+        background: var(--cds-alias-object-interaction-background-active);
+      }
+      .hover {
+        background: var(--cds-alias-object-interaction-background-hover);
+      }
       .cds-vertical-nav-mock {
         border: 0;
         max-width: 240px;
-        min-height: 300px;
+        height: 300px;
         width: 100%;
         background: var(--cds-alias-object-interaction-background);
         box-shadow: var(--cds-alias-object-shadow-100);
@@ -599,53 +626,98 @@ export function interactionVerticalNavigationDemo() {
     <div cds-layout="horizontal gap:md align:stretch">
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Default</h3>
-        <nav class="cds-vertical-nav-mock" cds-layout="vertical">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+          </cds-navigation-item>
+          </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
-        </nav>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="trash" size="sm"></cds-icon> Item 4</a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Hover</h3>
-        <nav class="cds-vertical-nav-mock" cds-layout="vertical">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
+          </cds-navigation-item>
+          <cds-navigation-item class="hover">
+            <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+          </cds-navigation-item>
+          </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
-        </nav>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="trash" size="sm"></cds-icon> Item 4</a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Active</h3>
-        <nav class="cds-vertical-nav-mock" cds-layout="vertical">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
+          </cds-navigation-item>
+          <cds-navigation-item class="active">
+            <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+          </cds-navigation-item>
+          </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
-        </nav>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="trash" size="sm"></cds-icon> Item 4</a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Selected</h3>
-        <nav class="cds-vertical-nav-mock" cds-layout="vertical">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
+          </cds-navigation-item>
+          <cds-navigation-item active>
+            <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+          </cds-navigation-item>
+          </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
-        </nav>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="trash" size="sm"></cds-icon> Item 4</a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Disabled</h3>
-        <nav class="cds-vertical-nav-mock" cds-layout="vertical">
-          <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
-          <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
-          <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+        <cds-navigation expanded>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
+          </cds-navigation-item>
+          <cds-navigation-item disabled>
+            <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
+          </cds-navigation-item>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+          </cds-navigation-item>
+          </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
-        </nav>
+          <cds-navigation-item>
+            <a href="#"><cds-icon shape="trash" size="sm"></cds-icon> Item 4</a>
+          </cds-navigation-item>
+        </cds-navigation>
       </div>
     </div>
   `;

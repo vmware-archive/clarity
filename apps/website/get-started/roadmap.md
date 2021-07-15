@@ -12,11 +12,9 @@ Clarity is an open source project, so we welcome input from the community to hel
 
 Maintaining a design system is a delicate balance of defining the specific capabilities and allowing maximum flexibility. We often take requests together in block to design the best solution that meets the most needs. This means at times we can't accept or prioritize requests, but do our best to balance the overall needs of the community with aligning efforts to keep harmony with Clarity.
 
-## In Progress Work
+## Recently Completed
 
-### Core Components
-
-Clarity is actively working on creating our Clarity Core components. Our long term goal is to provide a greater level of capabilities through Clarity Core for the next generation of applications to depend upon for the long term. We are also working to ensure that accessibility is included by default in all of our Core components.
+Below is a list of items that have been recently completed.
 
 #### Pagination
 
@@ -24,15 +22,25 @@ This is a new component. We are building a standalone pagination component that 
 
 #### Cards
 
-This is a new component, built to replace Cards in Clarity Angular. Cards are a common container for grouping information. We are building out a new Card component that will support the existing use cases and allow for additional flexibility for applications.
-
-#### Navigation
-
-This is a new component, designed to unify navigation in a single component and will replace the Vertical Nav, Subnav, and Header navigation in Clarity Angular. We are building a new component that combines some of the common navigation elements into a single component for easier use and better accessibility.
+This is a new component, built to replace Cards in Clarity Angular. Cards are a common container for grouping information. We are building out a new Card component that will support the existing use cases and allow for additional flexibility for applications. This is currently available in `beta`, see [the cards component on Storybook](https://clarity.design/storybook/core/?path=/story/components-card--page).
 
 #### Table
 
-This is a new component, designed to replace Tables in Clarity Angular. We are building out custom stylings that can be applied to tables to style and suppliment the default browser tables provided in HTML.
+This is a new component, designed to replace Tables in Clarity Angular. We are building out custom stylings that can be applied to tables to style and suppliment the default browser tables provided in HTML. This is currently available in `beta`, see [the table component on Storybook](https://clarity.design/storybook/core/?path=/story/components-table--page).
+
+#### Breadcrumbs
+
+This is a new component, and doesn't exist today in Clarity Angular. We are working with our friends at Porsche Informatik who have the [Clarity Addons](https://github.com/porscheinformatik/clarity-addons/) library to bring this component into Clarity Core. This is currently available in `beta`, see [the breadcrumb component on Storybook](https://clarity.design/storybook/core/?path=/story/components-breadcrumb--page).
+
+## In Progress Work
+
+### Core Components
+
+Clarity is actively working on creating our Clarity Core components. Our long term goal is to provide a greater level of capabilities through Clarity Core for the next generation of applications to depend upon for the long term. We are also working to ensure that accessibility is included by default in all of our Core components.
+
+#### Vertical Navigation
+
+This is a new component, designed to replace the Vertical Nav in Clarity Angular. We will then explore building out the other navigational items such as a Header, Subnav, and mobile friendly behaviors.
 
 #### Tree View
 
@@ -45,10 +53,6 @@ This is a collection of new components, designed to replace the Clarity Angular 
 #### Popovers and Dropdowns
 
 This is a new component, designed to replace the Clarity Angular dropdown menu. We are building out a new dropdown menu that has rich positioning and accessibility behaviors that are highly requested. The bulk of the work is in developing an accessible and reusable popover that can be used by dropdowns and other components like signposts and tooltips.
-
-#### Breadcrumbs
-
-This is a new component, and doesn't exist today in Clarity Angular. We are working with our friends at Porsche Informatik who have the [Clarity Addons](https://github.com/porscheinformatik/clarity-addons/) library to bring this component into Clarity Core.
 
 ### Adoption Support
 
@@ -75,7 +79,6 @@ There are a number of Core components that are either blocked by other work or w
 
 - Combobox
 - Progress
-- Range
 - Signpost
 - Stack View
 - Stepper

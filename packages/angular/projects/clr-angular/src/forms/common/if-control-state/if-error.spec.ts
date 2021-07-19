@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -126,6 +126,18 @@ export default function (): void {
         ifControlStateService.triggerStatusChange();
         fixture.detectChanges();
         expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
+      });
+
+      it('updates the error message with values from error object in context', () => {
+        const control = new FormControl('abcdef', [Validators.maxLength(5)]);
+        ngControlService.setControl(control);
+        ifControlStateService.triggerStatusChange();
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
+
+        control.setValue('abcdefg');
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-7`);
       });
 
       it('should show error only when they are required', () => {

@@ -7,6 +7,7 @@
 import { Tree, HostTree, SchematicsException } from '@angular-devkit/schematics';
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { join } from 'path';
+import { getVersion } from '.';
 import { getFileContent } from '../utility/get-file-content';
 import { setupProject } from '../utility/setup-project';
 
@@ -57,6 +58,38 @@ describe('ng add @clr/angular', () => {
       const styles = configFile.projects[PROJECT_NAME].architect.build.options.styles;
 
       expect(styles.includes('node_modules/@clr/ui/clr-ui.min.css')).toBeTruthy();
+    });
+
+    it('should add return Clarity version as correct', async () => {
+      const correct = getVersion('^12.0.0', '12.0.0-next.0');
+
+      expect(correct).toEqual('12.0.0-next.0');
+    });
+
+    it('should throw a not support message', async () => {
+      try {
+        getVersion('^12.0.0', '13.0.0');
+      } catch (e) {
+        expect(e.message).toEqual(`Clarity 13 doesn't support Angular 12`);
+      }
+    });
+
+    it('should return Clarity version 5', async () => {
+      const correct = getVersion('^11.0.0', '12.0.0');
+
+      expect(correct).toEqual('^5.0.0');
+    });
+
+    it('should return Clarity version 4', async () => {
+      const correct = getVersion('^10.0.0', '12.0.0');
+
+      expect(correct).toEqual('^4.0.0');
+    });
+
+    it('should return Clarity version 3', async () => {
+      const correct = getVersion('^9.0.0', '12.0.0');
+
+      expect(correct).toEqual('^3.0.0');
     });
 
     it('should not add Clarity assets in the configuration file if they are already present', async () => {

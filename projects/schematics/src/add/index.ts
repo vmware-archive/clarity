@@ -48,13 +48,35 @@ function setProjectSettings(options: NgAddOptions) {
 }
 
 // Checks if a version of Angular is compatible with current or next
-function getVersion(ngVersion: string, clrVersion: string): string {
+export function getVersion(ngVersion: string, clrVersion: string): string {
+  const majorNgVersion = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
+
+  if (majorNgVersion >= 12) {
+    return getVersionsAfterTwelve(ngVersion, clrVersion);
+  } else {
+    // Otherwise, just link to installed version for latest or next releases
+    return getVersionsBeforeTwelve(ngVersion, clrVersion);
+  }
+}
+
+function getVersionsAfterTwelve(ngVersion: string, clrVersion: string): string {
+  const majorNgVersion = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
+  const majorClrVersion = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
+
+  if (majorNgVersion === majorClrVersion) {
+    return clrVersion;
+  } else {
+    // Otherwise, just link to installed version for latest or next releases
+    throw new SchematicsException(`Clarity ${majorClrVersion} doesn't support Angular ${majorNgVersion}`);
+  }
+}
+
+function getVersionsBeforeTwelve(ngVersion: string, clrVersion: string): string {
   const diff = 6; // Number disparity between Angular and Clarity, this works as long as we stay in sync with versioning
   const majorNgVersion = Number.parseInt(ngVersion.split('.')[0].replace(/\D/g, ''));
   const majorClrVersion = Number.parseInt(clrVersion.split('.')[0].replace(/\D/g, ''));
 
   if (majorNgVersion - majorClrVersion < diff) {
-    // If Angular is less than 6 versions ahead, backtrack Clarity version
     return `^${majorNgVersion - diff}.0.0`;
   } else {
     // Otherwise, just link to installed version for latest or next releases

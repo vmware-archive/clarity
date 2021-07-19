@@ -73,8 +73,6 @@ export class Demo {
         tab.id = this.generateId();
         return tab;
       });
-
-      console.log(this.tabs);
     }
   }
 

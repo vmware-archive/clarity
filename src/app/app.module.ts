@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SourceCodeComponent } from './components/sourcecode.component';
 import { Demo } from './components/demo.component';
 import { NotReadyComponent } from './components/not-ready.component';
+import { EslintIntroBlockComponent } from './components/eslint-intro-block/eslint-intro-block.component';
 
 // Adoption Pages
 import { GettingStartedPage } from './pages/getting-started.page';
@@ -65,6 +66,7 @@ import { CardPage } from './pages/card.page';
     AdoptionToolingPage,
 
     /* Interface Components */
+    EslintIntroBlockComponent,
     SourceCodeComponent,
     NotReadyComponent,
     Demo,

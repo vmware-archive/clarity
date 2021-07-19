@@ -28,7 +28,7 @@ export type SourceCodeLanguages = 'ts' | 'js' | 'html' | 'bash' | 'json' | undef
   template: '<pre style="overflow-x: scroll;"><code [innerHTML]="formattedContent"></code></pre>',
 })
 export class SourceCodeComponent {
-  @Input() content = '';
+  @Input() content: string | null = '';
   @Input() language: SourceCodeLanguages = 'ts';
   @Input() src = '';
   formattedContent = '';

@@ -12,6 +12,9 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Icons</h1>
 
+     <app-eslint-intro-block rule="no-clr-icon"></app-eslint-intro-block>
+
+
     <p>
       There is replacement for Clarity Angular icons with
       <a href="https://clarity.design/foundation/icons/">Core Icons</a> that have almost the same syntax. We provide

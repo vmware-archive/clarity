@@ -11,6 +11,9 @@ import { DemoTabData } from '../components/demo.component';
   selector: 'app-alert',
   template: `
     <h1>Alerts</h1>
+
+    <app-eslint-intro-block rule="no-clr-alert"></app-eslint-intro-block>
+
     <p>
       Angular alerts could be replaced with
       <a href="https://clarity.design/core-components/alert/" target="_blank">Core alerts</a>. There some examples below

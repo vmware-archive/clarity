@@ -7,7 +7,7 @@
 import '@cds/core/card/register.js';
 import '@cds/core/divider/register.js';
 import '@cds/core/forms/register.js';
-import { getElementStorybookArgs, getElementStorybookArgTypes, spreadProps } from '@cds/core/internal';
+import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 import { html } from 'lit';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { shareIcon } from '@cds/core/icon/shapes/share.js';

@@ -5,7 +5,7 @@
  */
 
 import '@cds/core/breadcrumb/register.js';
-import { getElementStorybookArgTypes, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit';
 
 export default {

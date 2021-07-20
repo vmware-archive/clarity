@@ -1,6 +1,6 @@
 import styles from './public/demo.css';
 import { setCustomElements } from '@web/storybook-prebuilt/web-components.js';
-import pkg from '../dist/core/custom-elements.json';
+import pkg from '../dist/core/custom-elements.legacy.json';
 import img from './public/assets/images/clarity-logo.svg';
 
 setCustomElements(pkg);

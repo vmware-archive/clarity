@@ -5,7 +5,6 @@
  */
 
 import '@cds/core/navigation/register.js';
-import { getElementStorybookArgTypes } from '@cds/core/internal';
 import customElements from '../../dist/core/custom-elements.json';
 import { html } from 'lit';
 import { CdsNavigation } from '@cds/core/navigation';
@@ -46,7 +45,6 @@ ClarityIcons.addIcons(
 export default {
   title: 'Stories/Navigation',
   component: 'cds-navigation',
-  argTypes: getElementStorybookArgTypes('cds-navigation', customElements),
   parameters: {
     options: { showPanel: true },
     design: {

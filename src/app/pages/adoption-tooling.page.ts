@@ -91,28 +91,29 @@ export class AdoptionToolingPage {
     this.eslintInstallation = `npm install --save-dev @clr/eslint-plugin-clarity-adoption @typescript-eslint/parser eslint`;
 
     this.eslintConfiguration = `
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2015
+  },
+  "plugins": ["@clr/clarity-adoption"],
+  "rules": {
+${Object.keys(this.rules)
+  .map((rule: string) => {
+    return `    "@clr/clarity-adoption/${rule}": "${(this.rules[rule] || {}).errorLevel}"`;
+  })
+  .join(',\n')}
+    },
+    "overrides": [
       {
-        "parser": "@typescript-eslint/parser",
-        "parserOptions": {
-          "sourceType": "module",
-          "ecmaVersion": 2015
-        },
-        "plugins": ["@clr/clarity-adoption"],
-        "rules": {
-      ${Object.keys(this.rules)
-        .map((rule: string) => {
-          return `    "@clr/clarity-adoption/${rule}": "${(this.rules[rule] || {}).errorLevel}"`;
-        })
-        .join(',\n')}
-        },
-        "overrides": [
-          {
-            "files": ["*.html"],
-            "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
-          }
-        ]
+        "files": ["*.html"],
+        "parser": "@clr/eslint-plugin-clarity-adoption/html-parser"
       }
-    `;
+    ]
+  }
+}
+`.trim();
   }
 
   eslintCommand = `npx eslint --ext=ts,html src/`;

@@ -13,7 +13,6 @@ import { DemoTabData } from '../components/demo.component';
     <h1>Accordion</h1>
 
     <app-eslint-intro-block rule="no-clr-accordion"></app-eslint-intro-block>
-
     <demo [tabs]="demo1"></demo>
   `,
 })

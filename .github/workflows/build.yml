@@ -18,6 +18,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
       - run: npm install
       - run: npm run build
+      - run: npm run deploy
 
     env:
       CI: true

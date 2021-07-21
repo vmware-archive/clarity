@@ -14,7 +14,6 @@ import { DemoTabData } from '../components/demo.component';
 
      <app-eslint-intro-block rule="no-clr-label"></app-eslint-intro-block>
 
-
     <demo [tabs]="demo0"></demo>
     <demo [tabs]="demo1"></demo>
     <demo [tabs]="demo2"></demo>

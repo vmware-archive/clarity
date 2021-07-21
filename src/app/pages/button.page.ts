@@ -10,7 +10,6 @@ import { Component } from '@angular/core';
   selector: 'app-button',
   template: `
     <h1>Button</h1>
-
     <not-ready name="Button"></not-ready>
   `,
 })

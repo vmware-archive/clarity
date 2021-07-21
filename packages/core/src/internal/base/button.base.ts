@@ -13,6 +13,7 @@ import { ariaPressed } from '../controllers/aria-pressed.controller.js';
 import { ariaButton } from '../controllers/aria-button.controller.js';
 import { buttonAnchor } from '../controllers/button-anchor.controller.js';
 import { buttonSubmit } from '../controllers/button-submit.controller.js';
+import { ariaExpanded } from '../controllers/aria-expanded.controller.js';
 
 /**
  * Base class that provides all nessesary behavior for enabling a custom element to emulate a native button.
@@ -20,12 +21,17 @@ import { buttonSubmit } from '../controllers/button-submit.controller.js';
 @active<CdsBaseButton>()
 @ariaButton<CdsBaseButton>()
 @ariaPressed<CdsBaseButton>()
+@ariaExpanded<CdsBaseButton>()
 @ariaDisabled<CdsBaseButton>()
 @ariaPopupTrigger<CdsBaseButton>()
 @buttonSubmit<CdsBaseButton>()
 @buttonAnchor<CdsBaseButton>()
 export class CdsBaseButton extends LitElement {
-  @property({ type: Boolean }) readonly = false;
+  @property({ type: Boolean }) pressed: boolean;
+
+  @property({ type: Boolean }) expanded: boolean;
+
+  @property({ type: Boolean }) readonly: boolean;
 
   @property({ type: String }) type: 'button' | 'submit';
 
@@ -36,6 +42,4 @@ export class CdsBaseButton extends LitElement {
   @property({ type: Boolean }) disabled = false;
 
   @property({ type: String }) popup: string;
-
-  @property({ type: Boolean }) pressed: boolean;
 }

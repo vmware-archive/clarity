@@ -1,21 +1,26 @@
-import { LitElement } from 'lit';
+import { ReactiveController, ReactiveElement } from 'lit';
+import { focusable, focusElement, ignoreFocus } from '../utils/focus.js';
 import { listenForAttributeChange } from '../utils/events.js';
-import { getFocusableItems } from '../utils/traversal.js';
-import { getItemToFocus, ignoreFocusTrap } from './utils/first-focus.controller.utils.js';
-import { FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
+import { getFlattenedDOMTree } from '../utils/traversal.js';
+
+export interface FirstFocusConfig {
+  fallback: 'none' | 'host' | 'focusable';
+}
 
 /**
  * Provides a focus first behavior to any component via the cds-first-focus attribute
  */
-export class FirstFocusController {
+export function firstFocus<T extends ReactiveElement>(
+  config: FirstFocusConfig = { fallback: 'focusable' }
+): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new FirstFocusController(instance, config));
+}
+
+export class FirstFocusController<T extends ReactiveElement> implements ReactiveController {
   private observer: MutationObserver;
 
-  constructor(private host: LitElement) {
+  constructor(private host: T, private config: FirstFocusConfig = { fallback: 'focusable' }) {
     this.host.addController(this);
-  }
-
-  private get focusableItems() {
-    return getFocusableItems(this.host);
   }
 
   async hostConnected() {
@@ -25,19 +30,26 @@ export class FirstFocusController {
   }
 
   hostDisconnected() {
-    const hostFocusTrapId = (this.host as any).focusTrapId;
-    if (hostFocusTrapId) {
-      // usually handled in closable controller but here to force the issue if there is a problem there
-      FocusTrapTrackerService.removeTrapElement({ focusTrapId: hostFocusTrapId });
-    }
     this.observer.disconnect();
   }
 
   private cdsFocusFirst() {
-    if (this.host.hidden || ignoreFocusTrap(this.host)) {
-      return;
-    }
+    if (!ignoreFocus(this.host)) {
+      const root = this.host.shadowRoot ? this.host.shadowRoot : this.host;
+      const rootHost = root.querySelector<HTMLElement>('.private-host') ?? this.host;
+      const elements = getFlattenedDOMTree(root).filter(i => !i.hasAttribute('cds-focus-boundary'));
 
-    getItemToFocus(this.host, this.focusableItems).focus();
+      const firstFocus = elements.find(i => i.hasAttribute('cds-first-focus'));
+      const focusableElement =
+        this.config.fallback === 'focusable'
+          ? elements.find(i => focusable(i) && !i.classList.contains('private-host'))
+          : null;
+      const host = this.config.fallback === 'none' ? null : rootHost;
+
+      const focus = firstFocus ?? focusableElement ?? host;
+      if (focus) {
+        focusElement(focus);
+      }
+    }
   }
 }

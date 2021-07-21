@@ -236,8 +236,8 @@ describe('CDS Button', () => {
 
   it('boolean attributes should be treated as truthy', () => {
     const element = fixture.nativeElement.querySelector('cds-button');
-    expect(instance.vcCdsButtonDirective.readonly).toBe(false);
-    expect(element.readonly).toBe(false);
+    expect(instance.vcCdsButtonDirective.readonly).toBeFalsy();
+    expect(element.readonly).toBeFalsy();
     expect(element.hasAttribute('readonly')).toBe(false);
 
     element.setAttribute('readonly', '');

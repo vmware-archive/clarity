@@ -50,7 +50,7 @@ describe('cds-button-expand', () => {
     await componentIsStable(component);
     expect(component.shadowRoot.querySelector('cds-icon').direction).toBe('right');
 
-    component.pressed = true;
+    component.expanded = true;
     await componentIsStable(component);
     expect(component.shadowRoot.querySelector('cds-icon').direction).toBe('left');
   });
@@ -60,7 +60,7 @@ describe('cds-button-expand', () => {
     await componentIsStable(component);
     expect(component.shadowRoot.querySelector('cds-icon').direction).toBe('right');
 
-    component.pressed = true;
+    component.expanded = true;
     await componentIsStable(component);
     expect(component.shadowRoot.querySelector('cds-icon').direction).toBe('down');
   });

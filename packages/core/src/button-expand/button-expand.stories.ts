@@ -35,17 +35,17 @@ export function basic() {
         <div cds-layout="horizontal gap:lg">
           <cds-button-expand
             action="vertical"
-            .pressed=${this.expandOne}
+            .expanded=${this.expandOne}
             @click=${() => (this.expandOne = !this.expandOne)}
           ></cds-button-expand>
           <cds-button-expand
             action="horizontal"
-            .pressed=${this.expandTwo}
+            .expanded=${this.expandTwo}
             @click=${() => (this.expandTwo = !this.expandTwo)}
           ></cds-button-expand>
           <cds-button-expand
             action="detail"
-            .pressed=${this.expandThree}
+            .expanded=${this.expandThree}
             @click=${() => (this.expandThree = !this.expandThree)}
           ></cds-button-expand>
         </div>

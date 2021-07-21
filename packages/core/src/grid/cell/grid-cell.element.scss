@@ -1,0 +1,85 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --border-right: var(--cell-border-width) solid #{$cds-alias-object-border-color};
+  --border-left: 0;
+  --min-width: #{$cds-alias-object-interaction-touch-target};
+  --font-size: #{$cds-global-typography-font-size-3};
+  --justify-content: var(--cell-justify-content, start);
+  --padding-block: #{$cds-global-space-3};
+  --padding-inline-start: #{$cds-global-space-6};
+  --padding-inline-end: #{$cds-global-space-6};
+  --color: #{$cds-global-typography-color-500};
+  display: block;
+  height: 100%;
+  outline: 0 !important;
+  position: sticky;
+}
+
+.private-host {
+  justify-content: var(--justify-content);
+  border-left: var(--border-left);
+  background: var(--background);
+  box-shadow: var(--box-shadow);
+  border-right: var(--border-right);
+  min-width: var(--min-width);
+  font-size: var(--font-size);
+  /* safari fallback for padding-inline */
+  padding-inline-start: var(--padding-inline-start);
+  padding-inline-end: var(--padding-inline-end);
+  padding-block: var(--padding-block);
+  color: var(--color);
+  text-align: left;
+  display: flex;
+  gap: $cds-global-space-5;
+  line-height: 1em;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+:host([type='action']) {
+  --padding-block: 0;
+  --padding-inline-start: 0;
+  --padding-inline-end: 0;
+}
+
+:host([type='action']) .private-host {
+  justify-content: center;
+  min-width: #{$cds-global-space-11};
+}
+
+:host([highlight]) .private-host::after {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: hsl(200deg 100% 50% / 20%);
+  content: '';
+  pointer-events: none;
+}
+
+[focusable] {
+  outline-offset: calc(#{$cds-global-space-2} * -1) !important;
+}
+
+:host([type='action']:focus-within) [focusable] {
+  outline: #{$cds-alias-object-interaction-outline} !important;
+  outline-offset: calc(#{$cds-global-space-2} * -1) !important;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host([type='action']:focus-within) [focusable] {
+    outline: #{$cds-alias-object-interaction-outline-webkit} !important;
+  }
+}
+
+:host([type='action']:focus-within) ::slotted([cds-button-action]),
+:host([type='action']:focus-within) ::slotted([cds-control]) {
+  --cds-alias-object-interaction-outline-webkit: none !important;
+  --cds-alias-object-interaction-outline: none !important;
+}

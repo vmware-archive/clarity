@@ -7,7 +7,6 @@
 import {
   animate,
   AnimationResponsivePopupEnterName,
-  AriaPopupController,
   AxisAligns,
   baseStyles,
   event,
@@ -23,6 +22,7 @@ import {
   setAttributes,
   setPopupPosition,
   state,
+  ariaPopup,
 } from '@cds/core/internal';
 import { html, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
@@ -80,6 +80,7 @@ import { CdsInternalPointer } from './pointer.element.js';
  * KNOWN ISSUE: Safari jumps through the exit animation but only when the ESC key is pressed.
  *
  */
+@ariaPopup<CdsInternalPopup>()
 @animate({
   hidden: {
     true: reverseAnimation(AnimationResponsivePopupEnterName),
@@ -88,8 +89,6 @@ import { CdsInternalPointer } from './pointer.element.js';
 })
 export class CdsInternalPopup extends CdsInternalStaticOverlay implements PositionableElement {
   // --- mixins/composables ---
-
-  protected ariaPopupController = new AriaPopupController(this);
 
   @i18n() i18n = I18nService.keys.popup;
 

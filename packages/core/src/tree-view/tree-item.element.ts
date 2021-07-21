@@ -210,7 +210,7 @@ export class CdsTreeItem extends LitElement {
       return html`
         <div @click="${() => this.toggleExpanded()}">
           <cds-button-expand
-            .pressed=${this.expanded}
+            .expanded=${this.expanded}
             readonly
             action="vertical"
             part="expand-collapse-icon"

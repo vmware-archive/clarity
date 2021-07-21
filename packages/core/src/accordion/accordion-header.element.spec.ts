@@ -33,12 +33,12 @@ describe('accordion-header element', () => {
     expect(component.getAttribute('slot')).toEqual('accordion-header');
   });
 
-  it('should set action pressed state when panel is expanded', async () => {
+  it('should set action expanded state when panel is expanded', async () => {
     await componentIsStable(component);
-    expect(component.shadowRoot.querySelector('cds-button-expand').pressed).toBe(false);
+    expect(component.shadowRoot.querySelector('cds-button-expand').expanded).toBe(false);
 
     component.expanded = true;
     await componentIsStable(component);
-    expect(component.shadowRoot.querySelector('cds-button-expand').pressed).toBe(true);
+    expect(component.shadowRoot.querySelector('cds-button-expand').expanded).toBe(true);
   });
 });

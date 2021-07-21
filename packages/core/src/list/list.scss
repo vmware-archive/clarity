@@ -22,7 +22,7 @@ $list-default-unordered-type: disc;
 }
 
 %kill-list-styles {
-  padding-left: 0 !important;
+  padding-inline-start: 0 !important;
   margin: 0 !important;
   // zero-width blank space added to help VoiceOver screen reader read a list-style-type none list
   list-style: '\200B' !important;
@@ -36,14 +36,14 @@ $list-default-unordered-type: disc;
 ol[cds-list] {
   list-style-type: $list-default-ordered-type;
   list-style-position: outside;
-  padding-left: $list-indent;
+  padding-inline-start: $list-indent;
   margin: 0;
 }
 
 ul[cds-list]:not([cds-list='unstyled']) {
   list-style-type: $list-default-unordered-type;
   list-style-position: outside;
-  padding-left: $list-indent;
+  padding-inline-start: $list-indent;
   margin: 0;
 }
 
@@ -60,13 +60,13 @@ ul[cds-list='unstyled'] {
   & > li {
     & > ul:not([cds-list='unstyled']),
     ol {
-      margin-left: 0;
-      padding-left: $list-indent;
+      margin-inline-start: 0;
+      padding-inline-start: $list-indent;
     }
 
     & > ul[cds-list='unstyled'] {
-      margin-left: 0;
-      padding-left: $list-indent !important;
+      margin-inline-start: 0;
+      padding-inline-start: $list-indent !important;
     }
   }
 }
@@ -74,14 +74,14 @@ ul[cds-list='unstyled'] {
 ul:not([cds-list='unstyled']),
 ol[cds-list] {
   & > li > ul[cds-list='unstyled'] {
-    margin-left: 0;
-    padding-left: $list-indent !important;
+    margin-inline-start: 0;
+    padding-inline-start: $list-indent !important;
   }
 }
 
 ol[cds-list] > li > ol[cds-list] {
-  margin-left: 0;
-  padding-left: $list-indent;
+  margin-inline-start: 0;
+  padding-inline-start: $list-indent;
 }
 
 ul[cds-layout~='horizontal'],
@@ -99,6 +99,6 @@ dl[cds-list] {
   }
 
   dd {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }

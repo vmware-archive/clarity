@@ -5,7 +5,7 @@
   --background: var(--cds-alias-status-tint, #{$cds-alias-status-neutral-tint});
   --color: #{$cds-global-typography-color-400};
   --padding: #{$cds-global-space-2};
-  --font-size: #{$cds-global-typography-font-size-0};
+  --font-size: #{$cds-global-typography-font-size-2};
   --border-radius: #{$cds-alias-object-border-radius-200};
   --border-color: #{$cds-alias-status-neutral};
   --border-width: #{$cds-alias-object-border-width-100};
@@ -38,8 +38,12 @@ cds-icon[shape='times'] {
   cursor: pointer;
 }
 
+:host([readonly]) {
+  pointer-events: none;
+}
+
 :host(:not([readonly])) {
-  &:host([_active]),
+  &:host([cds-active]),
   &:host(:hover),
   &:host(:focus),
   &:host(:active) {
@@ -58,7 +62,7 @@ cds-icon[shape='times'] {
     }
   }
 
-  &:host([_active]),
+  &:host([cds-active]),
   &:host(:active) {
     .private-host {
       box-shadow: 0 #{$cds-global-space-1} 0 0 var(--border-color) inset;

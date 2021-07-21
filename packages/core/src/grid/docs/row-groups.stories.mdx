@@ -1,0 +1,82 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal Preview Grid/Row Groups" />
+
+# Grid Row Groups
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Row groups enable rows to be grouped by a common property or type. Row groups
+are not compatible with drag and drop type or detail view features. To create a group order rows by group type.
+Add a `cds-button-expand` to the first row in the group to toggle the visibility of
+the rest of the rows within the related group.
+
+<Story id="stories-grid--row-groups" />
+
+```html
+<cds-grid>
+  <cds-grid-column></cds-grid-column>
+  <cds-grid-column>Region</cds-grid-column>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>
+      <cds-button-expand action="expand" expanded aria-label="view Europe regions"></cds-button-expand>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-row>
+    <cds-grid-cell>
+      <span cds-layout="display:screen-reader-only">region europe</span>
+    </cds-grid-cell>
+    <cds-grid-cell>europe</cds-grid-cell>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-row>
+    <cds-grid-cell>
+      <cds-button-expand action="expand" aria-label="view US West regions"></cds-button-expand>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-002</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  <!--
+  us regions are not rendered until the group expand button is pressed
+  <cds-grid-row>
+    <cds-grid-cell>
+      <span cds-layout="display:screen-reader-only">region US West</span>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-004</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  -->
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<ArgsTable of={'cds-grid'} />
+
+### cds-grid-column
+
+<ArgsTable of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<ArgsTable of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<ArgsTable of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<ArgsTable of={'cds-grid-footer'} />

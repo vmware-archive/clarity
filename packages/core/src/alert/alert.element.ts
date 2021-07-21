@@ -7,8 +7,6 @@
 import { html, LitElement, PropertyValues } from 'lit';
 import {
   baseStyles,
-  event,
-  EventEmitter,
   property,
   querySlot,
   querySlotAll,
@@ -18,6 +16,8 @@ import {
   id,
   I18nService,
   i18n,
+  ClosableController,
+  closable,
 } from '@cds/core/internal';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -132,9 +132,8 @@ export function getAlertContentLayout(
  * @cssprop --close-icon-color
  * @cssprop --close-icon-color-hover
  */
+@closable<CdsAlert>({ escape: false })
 export class CdsAlert extends LitElement {
-  @event() closeChange: EventEmitter<boolean>;
-
   /**
    * Sets the overall height and width of the alert and icon based on value
    * @type {default | sm}
@@ -175,6 +174,8 @@ export class CdsAlert extends LitElement {
   @querySlotAll('cds-icon', { assign: 'alert-icon' }) protected alertIcons: NodeListOf<CdsIcon>;
 
   @querySlot('cds-internal-close-button', { assign: 'close-button' }) protected closeButton: HTMLElement;
+
+  protected closableController: ClosableController<this>;
 
   connectedCallback() {
     super.connectedCallback();
@@ -254,7 +255,7 @@ export class CdsAlert extends LitElement {
           ? html`<slot name="close-button">
               <cds-internal-close-button
                 icon-size="${this.type === 'banner' ? '20' : '16'}"
-                @click="${() => this.closeAlert()}"
+                @click="${() => this.closableController.close(true)}"
                 aria-label="${this.i18n.closeButtonAriaLabel}"
               ></cds-internal-close-button
             ></slot>`
@@ -266,10 +267,6 @@ export class CdsAlert extends LitElement {
   constructor() {
     super();
     ClarityIcons.addIcons(infoStandardIcon, errorStandardIcon, successStandardIcon, warningStandardIcon, helpIcon);
-  }
-
-  private closeAlert() {
-    this.closeChange.emit(true);
   }
 
   static get styles() {

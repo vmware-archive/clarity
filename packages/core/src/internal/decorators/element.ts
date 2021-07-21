@@ -5,6 +5,7 @@
  */
 
 import { registerElementSafely } from './../utils/registration.js';
+import { Constructor, ClassDescriptor, classLegacyDecorator, classStandardDecorator } from './utils.js';
 
 /**
  * @experimental
@@ -21,48 +22,10 @@ import { registerElementSafely } from './../utils/registration.js';
  * ```
  */
 
-// TC39 Decorators proposal
-const standardCustomElement = (tagName: string, descriptor: ClassDescriptor) => {
-  const { kind, elements } = descriptor;
-  return {
-    kind,
-    elements,
-    finisher(classDef: Constructor<HTMLElement>) {
-      registerElementSafely(tagName, classDef);
-    },
-  };
-};
-
-// Legacy TS Decorator
-const legacyCustomElement = (tagName: string, classDef: Constructor<HTMLElement>) => {
-  registerElementSafely(tagName, classDef);
-  return classDef as any;
-};
-
 export const customElement = (tagName: string) => (classOrDescriptor: Constructor<HTMLElement> | ClassDescriptor) => {
   return typeof classOrDescriptor === 'function'
-    ? legacyCustomElement(tagName, classOrDescriptor)
-    : standardCustomElement(tagName, classOrDescriptor);
-};
-
-// TC39 Decorators proposal
-interface ClassDescriptor {
-  kind: 'class';
-  elements: ClassElement[];
-  finisher?: <T>(classDef: Constructor<T>) => undefined | Constructor<T>;
-}
-
-interface ClassElement {
-  kind: 'field' | 'method';
-  key: PropertyKey;
-  placement: 'static' | 'prototype' | 'own';
-  // TODO: type the function expected here; alt fix would be to tslint:disable-next-line: ban-types for Function type
-  initializer?: (...args: any[]) => any;
-  extras?: ClassElement[];
-  finisher?: <T>(classDef: Constructor<T>) => undefined | Constructor<T>;
-  descriptor?: PropertyDescriptor;
-}
-
-export type Constructor<T> = {
-  new (...args: any[]): T;
+    ? classLegacyDecorator(tagName, classOrDescriptor, (tagName, classDef) => registerElementSafely(tagName, classDef))
+    : classStandardDecorator(tagName, classOrDescriptor, (tagName, classDef) =>
+        registerElementSafely(tagName, classDef)
+      );
 };

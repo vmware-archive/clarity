@@ -23,6 +23,10 @@ export class AriaButtonController<T extends AriaButton> implements ReactiveContr
 
   hostUpdated() {
     this.host.role = this.host.readonly ? null : 'button';
-    this.host.tabIndex = !this.host.readonly && !this.host.disabled ? 0 : -1;
+    this.host.tabIndex = !this.host.disabled ? 0 : -1;
+
+    if (this.host.readonly) {
+      this.host.removeAttribute('tabindex');
+    }
   }
 }

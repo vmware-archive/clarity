@@ -112,6 +112,7 @@ cds-internal-close-button {
   position: absolute;
   top: var(--close-button-offset);
   right: var(--close-button-offset);
+  margin: $cds-global-space-3;
 }
 
 // -- pointer position/rotation styles

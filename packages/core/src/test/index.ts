@@ -6,3 +6,4 @@
 
 /** @internal testing utilities */
 export * from './utils.js';
+export * from './web-test-server.js';

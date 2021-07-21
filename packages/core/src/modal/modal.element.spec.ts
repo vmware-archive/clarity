@@ -125,7 +125,6 @@ describe('modal element', () => {
       const expectedAttrs: HTMLAttributeTuple[] = [
         ['cds-layout', 'align:top'],
         ['aria-label', I18nService.keys.modal.closeButtonAriaLabel],
-        ['icon-size', '24'],
       ];
       const root = component.shadowRoot;
       component.hidden = false;

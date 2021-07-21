@@ -10,13 +10,14 @@
   --background: #{$cds-alias-object-opacity-0};
   --border-radius: #{$cds-alias-object-border-radius-100};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
+  --cursor: pointer;
 }
 
 .input {
+  cursor: var(--cursor);
   width: #{$cds-global-space-7};
   height: #{$cds-global-space-7};
   position: relative;
-  cursor: pointer;
 }
 
 .input::before {
@@ -77,8 +78,5 @@
 :host([_disabled]) {
   --color: #{$cds-alias-status-disabled-tint};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
-
-  .input {
-    cursor: not-allowed;
-  }
+  --cursor: not-allowed;
 }

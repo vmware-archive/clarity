@@ -4,27 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { getShadowRootOrElse, makeFocusable, queryChildFromLightOrShadowDom, tabFlowSelectors } from './dom.js';
-
-export function getFocusableItems(hostEl: HTMLElement) {
-  // This checks light+shadow dom; jic end users are making composite/wrapper components
-  const firstFocusEl = queryChildFromLightOrShadowDom(hostEl, '[cds-first-focus]');
-  const allFocusable = getFlattenedFocusableItems(getShadowRootOrElse(hostEl));
-
-  if (firstFocusEl === null) {
-    return allFocusable;
-  } else {
-    const filteredFocusable = allFocusable.filter(i => i !== firstFocusEl);
-    return [makeFocusable(firstFocusEl), ...filteredFocusable];
-  }
-}
+import { focusable } from './focus.js';
 
 export function getFlattenedFocusableItems(element: Node, depth = 10) {
-  const focusableSelector = tabFlowSelectors.join(',');
-  return getFlattenedDOMTree(element, depth).filter((e: HTMLElement) => e.matches(focusableSelector)) as HTMLElement[];
+  return getFlattenedDOMTree(element, depth).filter((e: HTMLElement) => focusable(e)) as HTMLElement[];
 }
 
-export function getFlattenedDOMTree(node: any, depth = 10): any {
+export function getFlattenedDOMTree(node: Node, depth = 10): HTMLElement[] {
   return Array.from(getChildren(node))
     .reduce((prev: any[], next: any) => {
       return [...prev, [next, [...Array.from(getChildren(next)).map((i: any) => [i, getFlattenedDOMTree(i, depth)])]]];
@@ -39,7 +25,7 @@ export function getChildren(node: any) {
     return node.shadowRoot.children;
   } else if (node.assignedElements) {
     const slotted = node.assignedElements(); // slotted elements
-    return slotted.length ? slotted : node.children; // else fallback
+    return slotted.length ? slotted : node.children; // else slot fallback
   } else {
     return node.children;
   }

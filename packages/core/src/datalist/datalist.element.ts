@@ -49,7 +49,7 @@ export class CdsDatalist extends CdsControl {
   @querySlot('datalist', { required: 'error' }) protected datalistControl: HTMLDataListElement;
 
   protected get suffixDefaultTemplate() {
-    return html`<cds-button-expand pressed readonly></cds-button-expand>`;
+    return html`<cds-button-expand expanded readonly></cds-button-expand>`;
   }
 
   static get styles() {

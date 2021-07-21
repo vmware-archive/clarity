@@ -7,8 +7,7 @@
 import '@cds/core/divider/register.js';
 import '@cds/core/card/register.js';
 import { html, css, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { customElement, property } from 'lit/decorators.js';
 import { baseStyles } from '@cds/core/internal';
 import { applicationsIcon } from '@cds/core/icon/shapes/applications.js';
 import { blocksGroupIcon } from '@cds/core/icon/shapes/blocks-group.js';

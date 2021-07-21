@@ -1,0 +1,41 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal Controllers/Draggable List Controller" />
+
+# Draggable List
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The `@draggableList` controller enables a list of items to become a draggable list of elements using
+native HTML5 drag and drop APIs.
+
+```typescript
+@draggableList<DemoDraggableListController>({ shadowRoot: true })
+class DemoDraggableListController extends LitElement {
+  @state() private items = Array.from(Array(10).keys()).map(id => ({ id: `${id}` }));
+
+  render() {
+    return html`
+      <section @cdsDraggableChange=${(e: any) => this.sortList(e)}>
+        ${this.items.map(
+          item => html` <cds-card draggable="true" id=${item.id}>
+            <div cds-layout="horizontal">
+              <p cds-text="body">${item.id}</p>
+              <cds-button-handle aria-label="sort item ${item.id}" cds-layout="align:right"></cds-button-handle>
+            </div>
+          </cds-card>`
+        )}
+        <div draggable="false"></div>
+      </section>
+    `;
+  }
+}
+```
+
+## Draggable List
+
+<Canvas>
+  <Story id="internal-stories-controllers--draggable-list-controller" />
+</Canvas>

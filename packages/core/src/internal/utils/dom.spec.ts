@@ -6,7 +6,6 @@
 
 import { LitElement, html } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
-import { registerElementSafely, updateElementStyles } from '@cds/core/internal';
 import {
   addAttributeValue,
   assignSlotNames,
@@ -19,7 +18,6 @@ import {
   HTMLAttributeTuple,
   windowIsAboveMobileBreakpoint,
   isHTMLElement,
-  makeFocusable, // <- LEFTOFF
   removeAttributes,
   removeAttributeValue,
   setAttributes,
@@ -31,7 +29,10 @@ import {
   queryAllFocusable,
   isScrollable,
   coerceBooleanProperty,
+  getInputValueType,
 } from './dom.js';
+import { updateElementStyles } from './css.js';
+import { registerElementSafely } from './registration.js';
 
 /** @element test-dom-spec-element */
 export class TestElement extends LitElement {
@@ -789,49 +790,25 @@ describe('Functional Helper: ', () => {
     });
   });
 
-  describe('makeFocusable(): ', () => {
-    let testElement: HTMLElement;
-    let alreadyFocusable: HTMLElement;
-    let alreadyTabindexed: HTMLElement;
-    let notFocusable: HTMLElement;
-
-    beforeEach(async () => {
-      testElement = await createTestElement(
-        html`
-          <button id="focusable">ohai</button>
-          <div id="not-focusable">howdy</div>
-          <div id="tab-indexed" tabindex="0">wassup</div>
-        `
-      );
-      alreadyFocusable = testElement.querySelector('#focusable');
-      notFocusable = testElement.querySelector('#not-focusable');
-      alreadyTabindexed = testElement.querySelector('#tab-indexed');
-    });
-
-    afterEach(() => {
-      removeTestElement(testElement);
-    });
-
-    it('should makeFocusable as expected', () => {
-      const returnFocusable = makeFocusable(alreadyFocusable);
-      const returnNotFocusable = makeFocusable(notFocusable);
-      const returnTabIndexed = makeFocusable(alreadyTabindexed);
-      expect(returnFocusable.getAttribute('tabindex')).toBe(null, 'does not tab index focusable items');
-      expect(returnNotFocusable.getAttribute('tabindex')).toBe('-1', 'adds tab index but does not add to tab flow');
-      expect(returnTabIndexed.getAttribute('tabindex')).toBe('0', 'preserves tab index if already set');
-    });
-
-    it('should add to tabflow as expected', () => {
-      const tabFlowed = makeFocusable(notFocusable, true);
-      expect(tabFlowed.getAttribute('tabindex')).toBe('0', 'adds to tab flow');
-    });
-  });
-
   describe('createFragment(): ', () => {
     it('returns as expected', () => {
       const test = createFragment('ohai');
       expect(test instanceof DocumentFragment).toBe(true, 'we made a fragment');
       expect(test.textContent).toBe('ohai', 'fragment has our text');
+    });
+  });
+
+  describe('getInputValueType() ', () => {
+    it('string should return text type', async () => {
+      expect(getInputValueType('hello')).toBe('text');
+    });
+
+    it('numeric string should return number type', async () => {
+      expect(getInputValueType('10')).toBe('number');
+    });
+
+    it('date string should return number type', async () => {
+      expect(getInputValueType('2018-12-31')).toBe('date');
     });
   });
 

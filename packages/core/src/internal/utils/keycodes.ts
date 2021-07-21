@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -135,4 +135,28 @@ function wereNonModifierComboKeysPressed(keyCombo: string, evt: KeyboardEvent): 
   }
 
   return keyArray.reduce((acc: boolean, currentKey: string) => acc && keyWasEvented(evt, currentKey), true);
+}
+
+export function validKeyNavigationCode(e: KeyboardEvent) {
+  return (
+    e.code === KeyNavigationCode.ArrowUp ||
+    e.code === KeyNavigationCode.ArrowDown ||
+    e.code === KeyNavigationCode.ArrowLeft ||
+    e.code === KeyNavigationCode.ArrowRight ||
+    e.code === KeyNavigationCode.End ||
+    e.code === KeyNavigationCode.Home ||
+    e.code === KeyNavigationCode.PageUp ||
+    e.code === KeyNavigationCode.PageDown
+  );
+}
+
+export enum KeyNavigationCode {
+  ArrowUp = 'ArrowUp',
+  ArrowDown = 'ArrowDown',
+  ArrowLeft = 'ArrowLeft',
+  ArrowRight = 'ArrowRight',
+  End = 'End',
+  Home = 'Home',
+  PageUp = 'PageUp',
+  PageDown = 'PageDown',
 }

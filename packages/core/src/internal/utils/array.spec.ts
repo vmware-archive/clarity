@@ -13,6 +13,7 @@ import {
   arrayRemoveFirstInstance,
   arrayRemoveLastInstance,
   arrayRemoveAllInstances,
+  groupArray,
 } from './array.js';
 
 describe('array utils', () => {
@@ -146,6 +147,16 @@ describe('array utils', () => {
       const modded = arrayRemoveAllInstances(['b', 'a'], orig);
       expect(modded).toEqual(['c'], 'instance removed');
       expect(orig).toEqual(['a', 'b', 'a', 'c', 'b', 'a', 'b'], 'original unchanged');
+    });
+  });
+
+  describe('groupArray: ', () => {
+    it('splits an array into a given number of groups', () => {
+      const groups = groupArray([1, 1, 1, 2, 2, 2, 3, 3, 3], 3);
+      expect(groups.length).toEqual(3);
+      expect(groups[0].length).toEqual(3);
+      expect(groups[1].length).toEqual(3);
+      expect(groups[2].length).toEqual(3);
     });
   });
 });

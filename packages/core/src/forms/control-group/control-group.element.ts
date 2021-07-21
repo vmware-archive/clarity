@@ -16,9 +16,10 @@ import {
   EventEmitter,
   syncDefinedProps,
   describeElementByElements,
-  updateComponentLayout,
   setAttributes,
   syncProps,
+  calculateOptimalLayout,
+  responsive,
 } from '@cds/core/internal';
 import { CdsControl } from '../control/control.element.js';
 import styles from './control-group.element.scss';
@@ -60,6 +61,7 @@ import {
  * @element cds-internal-control-group
  * @slot - For projecting control group
  */
+@responsive<CdsInternalControlGroup>()
 export class CdsInternalControlGroup extends LitElement {
   /**
    * Set the status of control group validation
@@ -112,8 +114,6 @@ export class CdsInternalControlGroup extends LitElement {
   protected isInlineControlGroup = false;
 
   protected isControlGroup = true;
-
-  protected observers: (MutationObserver | ResizeObserver)[] = [];
 
   static styles = [baseStyles, styles];
 
@@ -195,12 +195,6 @@ export class CdsInternalControlGroup extends LitElement {
     syncDefinedProps(props, this, Array.from(this.controls));
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.observers.forEach(o => o.disconnect());
-  }
-
-  /** @private */
   get layoutStable() {
     return (
       !inlineControlListIsWrapped(Array.from(this.controls), this.layout) &&
@@ -221,8 +215,8 @@ export class CdsInternalControlGroup extends LitElement {
   private setupResponsive() {
     if (this.responsive) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
-      this.observers.push(
-        updateComponentLayout(this, layoutConfig, () => this.layoutChange.emit(this.layout, { bubbles: true }))
+      this.addEventListener('cdsResizeChange', () =>
+        calculateOptimalLayout(this, layoutConfig).then(() => this.layoutChange.emit(this.layout, { bubbles: true }))
       );
     }
   }

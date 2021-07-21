@@ -8,161 +8,59 @@ import {
   AnimationModalEnterName,
   animate,
   baseStyles,
-  CdsBaseFocusTrap,
-  createId,
   event,
   EventEmitter,
-  FocusTrapTrackerService,
-  HTMLAttributeTuple,
   i18n,
   I18nService,
-  setAttributes,
   state,
   property,
   reverseAnimation,
+  ClosableController,
+  focusTrap,
+  CloseChangeType,
+  LayerController,
+  ariaModal,
+  firstFocus,
+  layer,
+  closable,
+  triggerable,
 } from '@cds/core/internal';
-import { html, PropertyValues } from 'lit';
-import { query } from 'lit/decorators/query.js';
+import { html, LitElement } from 'lit';
 import styles from './overlay.element.scss';
 import sharedStyles from './shared.element.scss';
 
-export function isNestedOverlay(
-  myId: string,
-  overlayPrefix: string,
-  trapIds: string[],
-  previousValue?: boolean
-): boolean {
-  const overlayIds = trapIds.filter(id => id.indexOf(overlayPrefix) > -1);
+@layer<CdsInternalStaticOverlay>()
+@closable<CdsInternalStaticOverlay>()
+@focusTrap<CdsInternalStaticOverlay>()
+@ariaModal<CdsInternalStaticOverlay>()
+@firstFocus<CdsInternalStaticOverlay>()
+@triggerable<CdsInternalStaticOverlay>()
+export class CdsInternalStaticOverlay extends LitElement {
+  @property({ type: Boolean }) closable = false;
 
-  if (previousValue === true && trapIds.indexOf(myId) < 0) {
-    // handling situation where focusTrapIds remove our overlay from the list and we still need to consider
-    // this overlay as nested. this happens when an overlay is being closed/hidden
-    return true;
-  }
-
-  return overlayIds.indexOf(myId) > 0; // id is present and not the first one...
-}
-
-export function overlayIsActive(overlayId: string, focusTrapService = FocusTrapTrackerService) {
-  return focusTrapService.getCurrent()?.focusTrapId === overlayId;
-}
-
-export type CloseChangeSources = 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
-
-/** @private */
-export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
-  @property({ type: Boolean })
-  closable = false;
-
-  @property({ type: Boolean, attribute: 'cds-ignore-focus-trap' })
-  ignoreFocusTrap = false;
-
-  protected get customBumpers(): [HTMLElement, HTMLElement] | [] {
-    return [];
-  }
+  @state({ type: Boolean, reflect: true }) protected demoMode = false;
 
   @i18n() i18n = I18nService.keys.overlay;
 
-  // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
-  // inside an element with aria-modal set to true
-  /** @private */
+  protected layerController: LayerController<this>;
+
+  protected closableController: ClosableController<this>;
+
+  // renderRoot needs delegatesFocus so that focus can cross the shadowDOM inside an element with aria-modal set to true
   static get shadowRootOptions(): any {
-    // any is used until TS 4.4.x adopted through other @cds/* libraries. Can be removed in 6.0
     return { ...super.shadowRootOptions, delegatesFocus: true };
-  }
-
-  private overlayIdPrefix = '_overlay-';
-
-  @event() closeChange: EventEmitter<CloseChangeSources>;
-
-  @state({ type: Boolean })
-  protected isLayered = false;
-
-  @state({ type: String })
-  protected focusTrapId: string;
-
-  /* @private */
-  getFocusTrapId(): string {
-    // we need this for some unit tests
-    return this.focusTrapId;
-  }
-
-  /* c8 ignore next */
-  @query('.overlay-backdrop') protected backdrop: HTMLElement;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.ariaModal = 'true';
-  }
-
-  firstUpdated(props: PropertyValues<this>) {
-    super.firstUpdated(props);
-    this.backdrop.addEventListener('click', this.fireEventOnBackdropClick);
-  }
-
-  updated(props: PropertyValues<this>) {
-    super.updated(props);
-    const oldLayered = this.isLayered;
-    const newLayered = isNestedOverlay(
-      this.focusTrapId,
-      this.overlayIdPrefix,
-      FocusTrapTrackerService.getTrapElements().map(e => e.focusTrapId),
-      oldLayered
-    );
-
-    if (oldLayered !== newLayered) {
-      this.isLayered = newLayered;
-      this.requestUpdate('isLayered', oldLayered);
-    }
-
-    this.setAriaRole();
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.backdrop.removeEventListener('click', this.fireEventOnBackdropClick);
-  }
-
-  // we do this so that screen-readers can make their way through nested/layered overlays.
-  // it sets a virtual cursor trap on the top-most overlay
-  private setAriaRole() {
-    const myRole = FocusTrapTrackerService.getCurrent()?.focusTrapId === this.focusTrapId ? 'dialog' : 'region';
-    setAttributes(this, ['role', myRole]);
-  }
-
-  protected get closeButtonAttrs(): HTMLAttributeTuple[] {
-    return [
-      ['cds-layout', 'align:top'],
-      ['aria-label', this.i18n.closeButtonAriaLabel],
-      ['icon-size', '24'],
-    ];
-  }
-
-  constructor() {
-    super();
-
-    // override focus-trap base id so we know this is an overlay
-    this.focusTrapId = createId(this.overlayIdPrefix);
-  }
-
-  closeOverlay(trigger: CloseChangeSources = 'custom') {
-    this.closableController.close(trigger);
   }
 
   protected get closeButtonTemplate() {
     return html`<cds-internal-close-button
       cds-layout="align:top"
       aria-label=${this.i18n.closeButtonAriaLabel}
-      icon-size="24"
       @click=${() => this.closeOverlay('close-button-click')}
     ></cds-internal-close-button>`;
   }
 
   protected get backdropTemplate() {
-    return html`<div
-      class="${this.isLayered ? 'overlay-backdrop layered' : 'overlay-backdrop'}"
-      aria-hidden="true"
-    ></div>`;
+    return html`<div class="overlay-backdrop" aria-hidden="true" @click=${() => this.backdropClick()}></div>`;
   }
 
   protected render() {
@@ -174,11 +72,15 @@ export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
     `;
   }
 
-  protected fireEventOnBackdropClick = () => {
-    if (overlayIsActive(this.focusTrapId)) {
+  protected backdropClick() {
+    if (this.layerController.isActiveLayer) {
       this.closeOverlay('backdrop-click');
     }
-  };
+  }
+
+  closeOverlay(trigger: CloseChangeType = 'custom') {
+    this.closableController.close(trigger);
+  }
 
   static get styles() {
     return [baseStyles, styles, sharedStyles];

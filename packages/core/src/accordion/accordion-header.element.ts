@@ -55,7 +55,7 @@ export class CdsAccordionHeader extends LitElement {
 
   render() {
     return html`<div class="private-host" cds-layout="horizontal gap:sm align:vertical-center wrap:none">
-      <cds-button-expand .pressed=${this.expanded} readonly action="vertical"></cds-button-expand>
+      <cds-button-expand .expanded=${this.expanded} readonly action="vertical"></cds-button-expand>
       <div cds-layout="align:stretch"><slot></slot></div>
     </div>`;
   }

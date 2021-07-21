@@ -5,7 +5,7 @@
   position: fixed;
 }
 
-.layered {
+:host(:not([cds-layer='0'])) .overlay-backdrop {
   background: var(--layered-backdrop-background, var(--backdrop-background));
 }
 

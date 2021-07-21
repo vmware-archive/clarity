@@ -16,13 +16,15 @@ import {
   event,
   EventEmitter,
   describeElementByElements,
-  updateComponentLayout,
   state,
   syncProps,
   pxToRem,
   getElementUpdates,
   hasAriaLabelTypeAttr,
+  calculateOptimalLayout,
+  responsive,
 } from '@cds/core/internal';
+import { CdsControlAction } from '../control-action/control-action.element.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
 import styles from './control.element.scss';
 import { ControlStatus, ControlLayout, ControlWidth } from './../utils/interfaces.js';
@@ -38,7 +40,6 @@ import {
   getCurrentMessageStatus,
 } from '../utils/utils.js';
 import { CdsInternalControlLabel } from '../control-label/control-label.element.js';
-import { CdsControlAction } from '../control-action/control-action.element.js';
 
 export const enum ControlLabelLayout {
   default = 'default',
@@ -64,6 +65,7 @@ export const enum ControlLabelLayout {
  * @slot - For projecting input and label
  * @cssprop --label-width
  */
+@responsive<CdsControl>()
 export class CdsControl extends LitElement {
   /**
    * Set the status of form control validation
@@ -366,10 +368,13 @@ export class CdsControl extends LitElement {
   private setupResponsive() {
     if (this.responsive && this.labelLayout === ControlLabelLayout.default && this.controlLabel) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
-      const observer = updateComponentLayout(this, layoutConfig, () =>
-        this.layoutChange.emit(this.layout, { bubbles: true })
-      );
-      this.observers.push(observer);
+      this.addEventListener('cdsResizeChange', () => {
+        calculateOptimalLayout(this, layoutConfig).then(updated => {
+          if (updated) {
+            this.layoutChange.emit(this.layout, { bubbles: true });
+          }
+        });
+      });
     }
   }
 

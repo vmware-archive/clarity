@@ -44,7 +44,7 @@ import styles from './select.element.scss';
  */
 export class CdsSelect extends CdsControl {
   protected get suffixDefaultTemplate() {
-    return html`<cds-button-expand pressed readonly></cds-button-expand>`;
+    return html`<cds-button-expand expanded readonly></cds-button-expand>`;
   }
 
   static get styles() {

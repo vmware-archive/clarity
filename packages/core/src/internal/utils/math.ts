@@ -22,3 +22,7 @@ export const compareSumTo = curryN(
     return !compareFn ? false : compareFn(sumAndSubtract(startValue, add, subtract));
   }
 );
+
+export function getOffesetDifference(minuend: number, subtrahend: number) {
+  return Math.sign(subtrahend - minuend) * Math.abs(minuend - subtrahend);
+}

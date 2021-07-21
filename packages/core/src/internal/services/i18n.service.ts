@@ -7,8 +7,14 @@
 import { GlobalStateService } from './global.service.js';
 
 export interface I18nStrings {
-  [key: string]: { [key: string]: string | undefined };
-
+  custom?: any;
+  actions: {
+    sort: string;
+    expand: string;
+    close: string;
+    resize: string;
+    filter: string;
+  };
   alert: {
     closeButtonAriaLabel: string;
     loading: string;
@@ -41,6 +47,12 @@ export interface I18nStrings {
     contentStart: string;
     contentEnd: string;
   };
+  navigation: {
+    navigationElement: string;
+    navigationLabel: string;
+    navigationAbridgedText: string;
+    navigationUnabridgedText: string;
+  };
   password: {
     showButtonAriaLabel: string;
     hideButtonAriaLabel: string;
@@ -52,9 +64,28 @@ export interface I18nStrings {
   treeview: {
     loading: string;
   };
+  grid: {
+    resizeColumn: string;
+    closeDetails: string;
+    noData: string;
+    rowDetailStart: string;
+    rowDetailEnd: string;
+    footerEnd: string;
+    action: string;
+    dropTarget: string;
+    pagination: {
+      label: string;
+      firstPage: string;
+      previousPage: string;
+      nextPage: string;
+      lastPage: string;
+      pageSize: string;
+      page: string;
+    };
+  };
 }
 
-export const componentStringsDefault = {
+export const componentStringsDefault: I18nStrings = {
   actions: {
     sort: 'Sort',
     expand: 'Expand',
@@ -111,11 +142,30 @@ export const componentStringsDefault = {
   treeview: {
     loading: 'Loading',
   },
+  grid: {
+    resizeColumn: 'Resize Column',
+    closeDetails: 'Close Details',
+    noData: 'No Results Found',
+    rowDetailStart: 'Start of row details',
+    rowDetailEnd: 'End of row details',
+    footerEnd: 'End of grid rows',
+    action: 'Action',
+    dropTarget: 'Drop Item',
+    pagination: {
+      label: 'grid pagination',
+      firstPage: 'go to first page',
+      previousPage: 'go to previous page',
+      nextPage: 'go to next page',
+      lastPage: 'go to last page',
+      pageSize: 'rows per page',
+      page: 'page',
+    },
+  },
 };
 
-/**
+/*
  * We want the user to be able to not only override a subset of the keys (e.g. only override strings
- * for aalert) but also be able to override a subset of values for that key (e.g. only override
+ * for alert) but also be able to override a subset of values for that key (e.g. only override
  * the closeButtonAriaLabel). This type is defined here for the localize method in the I18nService.
  */
 type PartialRecursive<T> = T extends object ? { [K in keyof T]?: PartialRecursive<T[K]> } : T;

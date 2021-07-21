@@ -6,9 +6,9 @@
 import includes from 'ramda/es/includes.js';
 import without from 'ramda/es/without.js';
 
-import { isStringAndNotNilOrEmpty } from './identity.js';
 import { getCssPropertyValue } from './css.js';
 import { pluckPixelValue, transformSpacedStringToArray } from './string.js';
+import { isNumericString, isStringAndNotNilOrEmpty } from './identity.js';
 
 /**
  * We are not going to be opinionated about the use of the disabled attribute here.
@@ -226,17 +226,34 @@ export function windowIsAboveMobileBreakpoint(breakpointAsPixelValue?: string): 
   return breakpointAsPixelValue?.endsWith('px') ? pluckPixelValue(breakpointVal) >= getWindowDimensions().width : false;
 }
 
-export function makeFocusable(element: HTMLElement, addToTabflow = false): HTMLElement {
-  if (!isFocusable(element)) {
-    setAttributes(element, ['tabindex', addToTabflow ? '0' : '-1']);
-  }
-
-  return element;
-}
-
 export function getShadowRootOrElse(hostEl: HTMLElement, fallbackEl?: HTMLElement): HTMLElement {
   const fallTo = fallbackEl ? fallbackEl : hostEl;
   return (hostEl.shadowRoot ? hostEl.shadowRoot : fallTo) as HTMLElement;
+}
+
+export function getInputValueType(value: string) {
+  if (isNumericString(value)) {
+    return 'number';
+  } else if (value.match(/^\d{4}-\d{1,2}-\d{1,2}$/)) {
+    return 'date';
+  } else {
+    return 'text';
+  }
+}
+
+// todo cory: test
+export function querySelectorRoots<T extends HTMLElement>(element: HTMLElement, selector: string) {
+  const root = element.querySelectorAll(selector);
+  const shadowRoot = element.shadowRoot?.querySelectorAll(selector);
+  return [...Array.from(root as any), ...Array.from(shadowRoot as any)] as T[];
+}
+
+// todo cory: test
+/**
+ * Checks for right click with context menus & keyboard mouse control https://apple.stackexchange.com/questions/32715/how-do-i-open-the-context-menu-from-a-mac-keyboard
+ */
+export function contextMenuClick(event: MouseEvent) {
+  return (event.buttons === 2 && !event.ctrlKey) || (event.buttons === 1 && event.ctrlKey);
 }
 
 export type BooleanProperty = string | boolean | null | undefined;

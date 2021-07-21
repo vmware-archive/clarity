@@ -17,7 +17,7 @@ import styles from './button-expand.element.scss';
  * ```
  *
  * ```html
- * <cds-button-expand pressed></cds-button-expand>
+ * <cds-button-expand expanded></cds-button-expand>
  * ```
  * @beta
  * @element cds-button-expand
@@ -32,9 +32,9 @@ export class CdsButtonExpand extends CdsButtonAction {
 
   private get iconDirection() {
     if (this.action === 'vertical') {
-      return this.pressed ? 'down' : 'right';
+      return this.expanded ? 'down' : 'right';
     } else if (this.action === 'horizontal') {
-      return this.pressed ? 'left' : 'right';
+      return this.expanded ? 'left' : 'right';
     } else {
       return null;
     }
@@ -42,7 +42,7 @@ export class CdsButtonExpand extends CdsButtonAction {
 
   private get iconShape() {
     if (this.action === 'detail') {
-      return this.pressed ? 'detail-collapse' : 'detail-expand';
+      return this.expanded ? 'detail-collapse' : 'detail-expand';
     } else {
       return 'angle';
     }
@@ -58,7 +58,7 @@ export class CdsButtonExpand extends CdsButtonAction {
 
   constructor() {
     super();
-    this.pressed = false;
+    this.expanded = false;
   }
 
   firstUpdated(props: PropertyValues<this>) {

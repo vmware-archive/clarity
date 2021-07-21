@@ -1,0 +1,161 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+[hidden] {
+  display: none !important;
+}
+
+:host {
+  --background: #{$cds-alias-object-container-background};
+  --body-height: auto;
+  --body-min-height: auto;
+  --scrollbar-background: var(--background);
+  --scrollbar-thumb-background: #{$cds-alias-object-border-color};
+  --column-height: #{$cds-alias-object-interaction-touch-target};
+  --row-height: #{$cds-alias-object-interaction-touch-target};
+  --scroll-padding-top: var(--column-height);
+  --row-content-visibility: auto;
+  --column-text-align: left;
+  --cell-text-algin: left;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+:host([range-selection]) {
+  user-select: none;
+}
+
+/* border options */
+:host([border*='cell']) ::slotted(cds-grid-row) {
+  --cell-border-width: #{$cds-alias-object-border-width-100};
+}
+
+:host([border*='column']) ::slotted(cds-grid-row) {
+  --cell-border-width: #{$cds-alias-object-border-width-100};
+  --border-top: 0;
+  --border-bottom: 0;
+}
+
+:host([border*='stripe']) ::slotted(cds-grid-row),
+:host([border*='none']) ::slotted(cds-grid-row) {
+  --border-top: 0;
+  --border-bottom: 0;
+}
+
+::slotted(cds-grid-row:first-of-type) {
+  --border-top: 0;
+}
+
+::slotted(cds-grid-row:last-of-type) {
+  --border-bottom: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+}
+
+:host([border*='stripe']) ::slotted(cds-grid-row:nth-child(even)) {
+  --background: #{$cds-alias-object-container-background-tint};
+  filter: alpha(opacity=50);
+}
+
+/* column alignments */
+:host([column-align*='center']) {
+  --column-justify-content: center;
+  --cell-justify-content: center;
+}
+
+:host([column-align*='right']) {
+  --column-justify-content: flex-end;
+  --cell-justify-content: flex-end;
+}
+
+:host([cds-theme='compact']) {
+  --cds-alias-object-interaction-touch-target: calc(#{$cds-global-space-9} + #{$cds-global-space-3});
+}
+
+.private-host {
+  border: $cds-alias-object-border-width-100 solid $cds-alias-object-border-color;
+  border-radius: $cds-alias-object-border-radius-100;
+  background: var(--background);
+  position: relative;
+}
+
+.scroll-container {
+  overflow: auto;
+  height: var(--body-height, 100%);
+  min-height: var(--body-min-height, auto);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  scroll-padding-top: var(--scroll-padding-top);
+  background: $cds-alias-object-container-background-tint; // for scroll overflow on columns
+}
+
+:host([scroll-lock]) .scroll-container {
+  overflow: hidden;
+}
+
+.body-row-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  min-width: fit-content;
+  margin-top: #{$cds-global-space-2};
+  background: var(--background);
+}
+
+.column-row-group:first-child,
+.body-row-group:first-child {
+  display: contents; // allow cols/rows to be sticky relative to grid container
+}
+
+.column-row {
+  display: grid;
+  top: 0;
+  position: sticky;
+  z-index: 99;
+  min-width: fit-content;
+  grid-template-columns: var(--ch-grid);
+  background: $cds-alias-object-container-background-tint;
+  box-shadow: 0 $cds-alias-object-border-width-100 0 $cds-alias-object-border-color;
+}
+
+.footer {
+  background: var(--background);
+}
+
+::slotted(cds-grid-row:not([cds-draggable='target']):first-of-type) {
+  --box-shadow: #{$cds-alias-object-border-width-100} solid transparent;
+}
+
+::-webkit-scrollbar {
+  width: $cds-global-space-5;
+  height: $cds-global-space-5;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  margin-top: #{$cds-alias-object-interaction-touch-target};
+  box-shadow: inset 0 0 #{$cds-global-space-6} var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-background);
+  border-radius: $cds-global-space-5;
+  border: $cds-global-space-2 solid var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,28 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Responsive Controller" />
+
+# Responsive Controller
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The Responsive Controller enables a given component to get updates when the component
+dimentions are changed or resized. On resize the `cdsResizeChange` event will emit from
+the host element providing a [`DOMRect`](https://developer.mozilla.org/en-US/docs/Web/API/DOMRect) instance.
+
+```typescript
+class ResponsiveControllerTestElement extends LitElement {
+  responsiveController = new ResponsiveController(this);
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('cdsResizeChange', event => console.log(event)); // DOMRect
+  }
+}
+```
+
+<Canvas>
+  <Story id="internal-stories-controllers--responsive-controller" />
+</Canvas>

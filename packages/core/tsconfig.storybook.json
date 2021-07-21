@@ -1,6 +1,13 @@
 {
   "include": ["./**/*.stories.ts", "./docs/**/*", "./dist"],
-  "exclude": ["node_modules", "./**/test/*.ts", "./**/*.spec.ts", "./build/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "./**/test/*.ts",
+    "./**/*.spec.ts",
+    "./**/*.a11y.ts",
+    "./**/*.performance.ts",
+    "./build/**/*.ts"
+  ],
   "outDir": "../dist/website/storybook/core",
   "compilerOptions": {
     "rootDirs": ["src", "docs"],

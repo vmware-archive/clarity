@@ -1,0 +1,73 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Draggable" />
+
+# Grid Column Draggable
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+The datagrid columns use the native [HTML5 Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).
+To enable a column apply the `draggable="true"` attribute to the `cds-grid-column`.
+Listen for drag events via the `cdsDraggableChange` event on the `cds-grid` element.
+Row drag events are stateless, meaning once an event occurs, the application should
+take the event details to resort columns appropriately.
+
+Keyboard navigation support is available by applying the `cds-draggable="handle"` attribute to a `cds-action`.
+Once applied, using cmd/ctrl + arrow up/down will trigger `cdsDraggableChange` change events to resort the list.
+
+The `cdsDraggableChange` only emits when a column was attempted to be moved but does not change the DOM.
+This ensures the host application has full control of how columns are rendered. This behavior also
+provides the flexibility for host applications to use framework-specific drag and drop libraries
+to provide easier framework integrations.
+
+<Story id="stories-grid--column-draggable" />
+
+```html
+<cds-grid>
+  <cds-grid-column draggable="true">
+    Host <cds-action-handle aria-label="sort host column"></cds-action-handle>
+  </cds-grid-column>
+  <cds-grid-column draggable="true">
+    Status <cds-action-handle aria-label="sort status column"></cds-action-handle>
+  </cds-grid-column>
+  <cds-grid-column draggable="true">
+    CPU <cds-action-handle aria-label="sort cpu column"></cds-action-handle>
+  </cds-grid-column>
+  <cds-grid-column draggable="true">
+    Memory <cds-action-handle aria-label="sort memory column"></cds-action-handle>
+  </cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

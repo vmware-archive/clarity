@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-export * from './control-message/control-message.element.js';
 export * from './control-action/control-action.element.js';
+export * from './control-message/control-message.element.js';
 export * from './control-group/control-group.element.js';
 export * from './control/control.element.js';
 export * from './form-group/form-group.element.js';

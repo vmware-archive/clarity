@@ -6,77 +6,9 @@
 import { html, LitElement } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import '@cds/core/internal-components/overlay/register.js';
-import { CdsInternalOverlay, isNestedOverlay, overlayIsActive } from '@cds/core/internal-components/overlay';
+import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
 import { componentIsStable, createTestElement, emulatedClick, onceEvent, removeTestElement } from '@cds/core/test';
-import { customElement, FocusTrapTrackerService, property } from '@cds/core/internal';
-
-describe('Overlay helper functions: ', () => {
-  describe('isNestedOverlay() - ', () => {
-    it('return true if overlay id is present and it is not the first id', () => {
-      expect(isNestedOverlay('ohai_3', 'ohai_', ['ohai_1', 'ohai_2', 'ohai_3'])).toBe(true, 'last one checks');
-      expect(isNestedOverlay('ohai_2', 'ohai_', ['ohai_1', 'ohai_2', 'ohai_3'])).toBe(true, 'middle one checks');
-    });
-
-    // this situation happens during an update loop when the focus trap list is updated just
-    // prior to the rest of the component and the component still needs to think of itself as
-    // "nested" or "layered". a good example is running an exit animation asynchronously
-    // outside of the update loop.
-    it('should return true if id is not present and it was previously present', () => {
-      expect(isNestedOverlay('ohai_2', 'ohai_', ['abcd', 'ohai_1', 'efgh', 'ijkl'], true)).toBe(true);
-    });
-
-    it('should ignore non-prefixed ids', () => {
-      expect(isNestedOverlay('ohai_2', 'ohai_', ['abcd', 'ohai_1', 'efgh', 'ijkl', 'ohai_2'])).toBe(true);
-    });
-
-    it('should return false if id is not present', () => {
-      expect(isNestedOverlay('ohai_2', 'ohai_', ['abcd', 'ohai_1', 'efgh', 'ijkl'])).toBe(false);
-    });
-
-    it('should return false if id is not present and it was previously not present', () => {
-      expect(isNestedOverlay('ohai_2', 'ohai_', ['abcd', 'ohai_1', 'efgh', 'ijkl'], false)).toBe(false);
-    });
-
-    it('should return false if id is first in the list', () => {
-      expect(isNestedOverlay('ohai_1', 'ohai_', ['ohai_1', 'efgh', 'ijkl', 'ohai_2', 'ohai_3'])).toBe(false);
-    });
-
-    it('should return false if list has no overlays', () => {
-      expect(isNestedOverlay('ohai_1', 'ohai_', ['abcd', 'efgh', 'ijkl'])).toBe(false);
-    });
-
-    it('should return false if list is empty', () => {
-      expect(isNestedOverlay('ohai_1', 'ohai_', [])).toBe(false);
-    });
-  });
-
-  describe('overlayIsActive - ', () => {
-    let overlayElement: HTMLElement;
-    let overlay: CdsInternalOverlay;
-
-    beforeEach(async () => {
-      overlayElement = await createTestElement(
-        html`<cds-internal-overlay id="rootOverlay"
-          >Placeholder<cds-internal-overlay id="secondOverlay">Ohai</cds-internal-overlay
-          ><cds-internal-overlay id="thirdOverlay">Kthxbye</cds-internal-overlay></cds-internal-overlay
-        >`
-      );
-      overlay = overlayElement.querySelector<CdsInternalOverlay>('#thirdOverlay');
-    });
-
-    afterEach(() => {
-      removeTestElement(overlayElement);
-    });
-
-    it('identifies top-most overlay', async () => {
-      const elements = FocusTrapTrackerService.getTrapElements();
-      await componentIsStable(overlay);
-
-      expect(overlayIsActive(elements.pop().focusTrapId)).toBe(true, 'the top overly is active');
-      elements.forEach(item => expect(overlayIsActive(item.focusTrapId)).toBe(false, 'a hidden overlay is not active'));
-    });
-  });
-});
+import { customElement, property } from '@cds/core/internal';
 
 describe('Overlay element: ', () => {
   let testElement: HTMLElement;
@@ -96,16 +28,6 @@ describe('Overlay element: ', () => {
     it('should create the component', async () => {
       await componentIsStable(component);
       expect(component.innerText.includes(placeholderText)).toBe(true);
-    });
-
-    it('should have a focusTrapId', async () => {
-      await componentIsStable(component);
-      expect(component.getFocusTrapId()).toBeDefined();
-    });
-
-    it('should have its focusTrapId prefixed', async () => {
-      await componentIsStable(component);
-      expect(component.getFocusTrapId().indexOf('_overlay-') > -1).toBe(true);
     });
 
     it('inner panel should exist', async () => {
@@ -232,13 +154,10 @@ describe('Nested overlays: ', () => {
   });
 
   describe('backdrops - ', () => {
-    it('non-root overlays should have "layered" classnames on backdrops', () => {
-      const rootBackdrop = firstOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      const secondBackdrop = secondOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      const thirdBackdrop = thirdOverlay.shadowRoot.querySelector('.overlay-backdrop');
-      expect(rootBackdrop.classList.contains('layered')).toBe(false, 'root does NOT have layered classname');
-      expect(secondBackdrop.classList.contains('layered')).toBe(true, 'has layered classname (1)');
-      expect(thirdBackdrop.classList.contains('layered')).toBe(true, 'has layered classname (2)');
+    it('non-root overlays should have a non zero layer index', () => {
+      expect(firstOverlay.getAttribute('cds-layer')).toBe('0');
+      expect(secondOverlay.getAttribute('cds-layer')).toBe('1');
+      expect(thirdOverlay.getAttribute('cds-layer')).toBe('2');
     });
 
     it('clicks should only apply to topmost overlay', async () => {

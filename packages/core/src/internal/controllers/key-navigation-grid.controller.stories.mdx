@@ -1,0 +1,44 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Key Navigation Grid Controller" />
+
+# Key Navigation - Grid
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The key navigation controllers are generic key handlers that enable various keyboard navigation behavior.
+
+The `KeyNavigationGridController` enables a component to support key navigation through a
+two dimentional grid of elements. The controller provides a set of keyboard shortcuts implementing the
+[W3 Aria Datagrid Spec](https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html#kbd_label).
+
+```typescript
+class DemoKeyNavigationGridController extends LitElement implements KeyGrid {
+  @query('section') keyGrid: HTMLElement;
+  @queryAll('section div') keyGridRows: NodeListOf<HTMLElement>;
+  @queryAll('section button') keyGridCells: NodeListOf<HTMLElement>;
+
+  protected gridKeyNavigationController = new KeyNavigationGridController(this);
+
+  @state() private items = Array.from(Array(10).keys()).map(() => Array.from(Array(10).keys()));
+
+  render() {
+    return html`
+      <div cds-layout="vertical gap:md">
+        <section @cdsKeyChange=${...}>
+          ${this.items.map((r, ri) => html`
+            <div>${r.map(c => html`<button>${ri}-${c}</button>`)}</div>`
+          )}
+        </section>
+      </div>`;
+  }
+}
+```
+
+<Canvas>
+  <Story id="internal-stories-controllers--key-navigation-grid-controller" />
+</Canvas>
+
+<Story id="stories-grid--keyboard" />

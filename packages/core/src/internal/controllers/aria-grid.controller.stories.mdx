@@ -1,0 +1,57 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Aria Grid Controller" />
+
+# Aria Grid Controller
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The `AriaGridController` provides an API to manage the proper aria attributes for
+accessible HTML Grids. [W3 Aria Datagrid Spec](https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html).
+
+```typescript
+class DemoAriaGridController extends LitElement {
+  @query('section') grid: HTMLElement;
+  @query('section > div:first-child') columnRow: HTMLElement;
+  @queryAll('section > div:first-child > div') columns: NodeListOf<HTMLElement>;
+  @queryAll('section > div:not(:first-child)') rows: NodeListOf<HTMLElement & { cells: NodeListOf<HTMLElement> }>;
+
+  private ariaGridController = new AriaGridController(this);
+
+  render() {
+    return html`
+      <section>
+        <div>
+          <div>Host</div>
+          <div>Status</div>
+          <div>CPU</div>
+          <div>Memory</div>
+        </div>
+        <div>
+          <div>vm-host-001</div>
+          <div>online</div>
+          <div>5%</div>
+          <div>10%</div>
+        </div>
+        <div>
+          <div>vm-host-003</div>
+          <div>online</div>
+          <div>10%</div>
+          <div>30%</div>
+        </div>
+      </section>
+    `;
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    await this.updateComplete;
+    this.rows.forEach(r => (r.cells = r.querySelectorAll('div')));
+    this.ariaGridController.update();
+  }
+}
+```
+
+<Story id="internal-stories-controllers--aria-grid-controller" />

@@ -1,0 +1,60 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Placeholder" />
+
+# Grid Placeholder
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The `cds-grid-placeholder` element is used for rows that cannot be displayed within a data grid.
+The placeholder component can also be used as a drop target area for drag and drop rows.
+
+<Story id="stories-grid--placeholder" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-placeholder>No Items Found</cds-grid-placeholder>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+```
+
+## Empty
+
+If a table has no provided rows, columns or a placeholder then it will display a default empty message.
+
+<Story id="stories-grid--empty" />
+
+## API
+
+### cds-grid-placeholder
+
+<Props of={'cds-grid-placeholder'} />
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

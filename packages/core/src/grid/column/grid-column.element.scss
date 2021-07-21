@@ -1,0 +1,107 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --min-height: var(--column-height, #{$cds-alias-object-interaction-touch-target});
+  --min-width: fit-content;
+  --justify-content: var(--column-justify-content, start);
+  --padding-block: #{$cds-global-space-3};
+  --padding-inline-start: #{$cds-global-space-6};
+  --padding-inline-end: #{$cds-global-space-8};
+  --background: #{$cds-alias-object-container-background-tint};
+  top: 0;
+  z-index: 998;
+  position: sticky;
+  min-height: var(--min-height);
+  min-width: var(--min-width);
+  outline: 0 !important;
+}
+
+[part='column'] {
+  min-height: var(--min-height);
+  justify-content: var(--justify-content);
+  background: var(--background);
+  /* safari fallback for padding-inline */
+  padding-inline-start: var(--padding-inline-start);
+  padding-inline-end: var(--padding-inline-end);
+  padding-block: var(--padding-block);
+  text-align: left;
+  border: 0;
+  font-weight: 500;
+  color: $cds-global-typography-color-500;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  font-size: #{$cds-global-typography-font-size-3};
+  line-height: 1em;
+  margin: 0;
+  display: flex;
+  gap: #{$cds-global-layout-space-sm};
+  align-items: center;
+  height: 100%;
+  position: sticky !important;
+  box-shadow: 0 $cds-alias-object-border-width-100 0 $cds-alias-object-border-color;
+}
+
+:host([type='action']) {
+  --padding-block: 0;
+  --padding-inline-start: 0;
+  --padding-inline-end: 0;
+}
+
+:host([type='action']) [part='column'] {
+  justify-content: center;
+}
+
+[cds-action],
+::slotted([cds-action]) {
+  --outline-offset: calc(#{$cds-global-space-3} * -1);
+}
+
+:host([position='fixed']),
+:host([position='sticky']) {
+  z-index: 999;
+}
+
+::slotted([cds-layout='align:right']),
+::slotted([cds-action]) {
+  margin-inline-start: auto;
+}
+
+.line {
+  top: var(--min-height);
+  width: $cds-global-space-1;
+  bottom: 0;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+}
+
+cds-action-resize {
+  --height: #{$cds-global-layout-space-lg};
+  --min-height: #{$cds-global-layout-space-lg};
+  --secondary-line-display: none;
+  position: absolute;
+  right: $cds-global-space-1;
+}
+
+:host([draggable-hidden]) cds-action-resize {
+  display: none;
+}
+
+[_focused] + .line {
+  border-right: $cds-global-space-2 solid $cds-alias-object-interaction-background-highlight;
+}
+
+:host([cds-draggable*='active']) [part='column'],
+:host([cds-draggable*='target']) [part='column'] {
+  box-shadow: 0 $cds-alias-object-border-width-200 0 $cds-alias-object-interaction-background-highlight;
+}
+
+:host([tabindex='0']:focus) [part='column'] {
+  --cds-alias-object-interaction-touch-target: var(--min-height);
+  outline-offset: calc(#{$cds-global-space-2} * -1);
+}

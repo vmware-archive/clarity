@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": ["es2020", "dom"],
-    "emitDecoratorMetadata": false,
+    "lib": ["esnext", "dom"],
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "outDir": "./dist/core",
@@ -15,7 +15,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "strictFunctionTypes": true,
     "noFallthroughCasesInSwitch": true,

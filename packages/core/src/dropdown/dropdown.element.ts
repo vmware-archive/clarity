@@ -20,6 +20,7 @@ import { CdsInternalPopup } from '@cds/core/internal-components/popup';
  * @element cds-dropdown
  * @slot - Content slot for the content inside the popup's panel
  * @event closeChange - Notify user when close event has occurred
+ * @property anchor
  * @cssprop --active-corner-border-radius
  * @cssprop --background
  * @cssprop --backdrop-background

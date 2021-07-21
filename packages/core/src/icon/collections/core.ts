@@ -45,6 +45,8 @@ import { viewColumnsIcon, viewColumnsIconName } from '../shapes/view-columns.js'
 import { vmBugInverseIcon, vmBugInverseIconName } from '../shapes/vm-bug-inverse.js';
 import { vmBugIcon, vmBugIconName } from '../shapes/vm-bug.js';
 import { warningStandardIcon, warningStandardIconName } from '../shapes/warning-standard.js';
+import { detailExpandIcon } from '../shapes/detail-expand.js';
+import { detailCollapseIcon } from '../shapes/detail-collapse.js';
 
 export const coreCollectionIcons: IconShapeTuple[] = [
   angleIcon,
@@ -84,6 +86,8 @@ export const coreCollectionIcons: IconShapeTuple[] = [
   vmBugIcon,
   vmBugInverseIcon,
   warningStandardIcon,
+  detailExpandIcon,
+  detailCollapseIcon,
 ];
 
 export const coreCollectionAliases: IconAlias[] = [

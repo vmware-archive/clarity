@@ -1,0 +1,81 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Resize" />
+
+# Grid Column Resize
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Grid Columns provide a resize option to enable a user to resize the column width.
+By default, the Grid Columns will evenly space within available space. When resized they will
+respect the exact size and overflow scroll to fit the larger columns. To get resize updates
+listen to the `resizeChange` event on `cds-grid-column`.
+
+<cds-alert status="info">To resize a column with a keyboard, focus the resize handle and use the left and right arrows to adjust the column.</cds-alert>
+
+<Story id="stories-grid--column-resize" />
+
+```html
+<cds-grid>
+  <cds-grid-column resizable>Host</cds-grid-column>
+  <cds-grid-column resizable>Status</cds-grid-column>
+  <cds-grid-column resizable>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Flex Width Columns
+
+Flex Width Columns are enabled by setting the `column-layout="flex"` option on `cds-grid`.
+This will treat each column as a flex child and adjust the width to best possible fit without
+scroll. This option is ideal for smaller datasets with fewer columns.
+
+```html
+<cds-grid column-layout="flex">
+  <cds-grid-column resizable>Host</cds-grid-column>
+  <cds-grid-column resizable>Status</cds-grid-column>
+  <cds-grid-column resizable>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+<Story id="stories-grid--column-flex-width" />
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

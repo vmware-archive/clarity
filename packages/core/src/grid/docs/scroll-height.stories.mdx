@@ -1,0 +1,66 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Scroll Height" />
+
+# Grid Scroll Height
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The `height` property allows control of the scroll height of the grid. By default, the grid will expand to the number of provided rows.
+
+```html
+<cds-grid aria-label="height datagrid demo" height="400">
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+```
+
+<Story id="stories-grid--no-scroll" />
+
+## Min Height
+
+You can also set a minimum grid body height allowing the grid using the `--body-min-height` css custom property.
+
+```html
+<cds-grid aria-label="min height datagrid demo" style="--body-min-height: 400px">
+  ...
+</cds-grid>
+```
+
+<Story id="stories-grid--min-height" />
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

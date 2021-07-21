@@ -85,6 +85,48 @@ export const parameters = {
           'Toggle',
           'Date (Internal)',
         ],
+        'Data Grid (Preview)',
+        [
+          'Basic',
+          'Kitchen Sink',
+          'Row Single Select',
+          'Row Multi Select',
+          'Row Action',
+          'Row Batch Action',
+          'Row Sort',
+          'Row Multi Sort',
+          'Row Detail',
+          'Row Header',
+          'Row and Column Height',
+          'Column Filter',
+          'Column Multi Filter',
+          'Column Width',
+          'Column Resize',
+          'Column Visibility',
+          'Column Sticky',
+          'Column Fixed',
+          'Column Align',
+          'Async Data',
+          'Footer',
+          'Pagination',
+          'Placeholder',
+          'Scroll Height',
+          'Async Data',
+          'Borders',
+          'Compact',
+          'Dark Theme',
+          'RTL',
+          'Responsive',
+          'Performance',
+          // experimental
+          'Cell Editable',
+          'Range Select',
+          'Row Fixed',
+          'Row Sticky',
+          'Row Draggable',
+          'Row Swappable',
+          'Column Draggable',
+        ],
         'Components (Preview)',
         ['Circular Progress', 'Divider', 'Pagination'],
         'Utilities (Preview)',
@@ -104,6 +146,18 @@ export const parameters = {
           'Unit Testing',
         ],
         'Internal API',
+        [
+          'Close Button',
+          'Panel',
+          'Motion',
+          'Overlay',
+          'Aria Grid Controller',
+          'Aria Popup Controller',
+          'Responsive Controller',
+          'Draggable List Controller',
+          'Key Navigation List Controller',
+          'Key Navigation Grid Controller',
+        ],
         'Stories',
         'Internal Stories',
       ],
@@ -115,13 +169,23 @@ export const globalTypes = {
   theme: {
     name: 'Themes',
     description: 'Available built in Clarity themes',
-    defaultValue: window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : window.localStorage.getItem('cds-color-theme'),
+    defaultValue: '',
     toolbar: {
       items: [
         { value: '', title: 'Light Theme' },
         { value: 'dark', title: 'Dark Theme' },
+      ],
+    },
+  },
+  dataTheme: {
+    name: 'Data',
+    description: 'Available demo datasets',
+    defaultValue: '',
+    toolbar: {
+      items: [
+        { value: 'infrastructure', title: 'Infrastructure' },
+        { value: 'food', title: 'Food' },
+        { value: 'system', title: 'System' },
       ],
     },
   },
@@ -154,20 +218,17 @@ const themeDecorator = (story, { globals }) => {
   document.body.setAttribute('cds-theme', `${themes}`);
   window.parent.document.body.setAttribute('cds-theme', `${themes}`);
   document.documentElement.style.setProperty('--cds-global-base', globals.baseFont);
-
   window.localStorage.setItem('cds-theme', themes);
-
-  window.addEventListener('storage', () => {
-    const updatedTheme = window.localStorage.getItem('cds-theme');
-    if (updatedTheme) {
-      window.document.body.setAttribute('cds-theme', `${updatedTheme}`);
-    }
-  });
-
   return story();
 };
 
-export const decorators = [themeDecorator];
+const dataThemeDecorator = (story, { globals }) => {
+  localStorage.setItem('cds-data-theme', globals.dataTheme);
+  const fn = (...args) => story(args);
+  return fn();
+};
+
+export const decorators = [themeDecorator, dataThemeDecorator];
 
 // We have this here since storybook does not have a easy way to set the <html> element in demos
 // The token system generates a base 16px set of variables for apps that may not be able to easily set the base font to 125%

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property } from 'lit/decorators/property.js';
+import { property } from './property.js';
 import { GlobalStateService } from '../services/global.service.js';
 import { I18nService } from '../services/i18n.service.js';
 

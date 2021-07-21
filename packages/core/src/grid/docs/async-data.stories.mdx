@@ -1,0 +1,52 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Async Data" />
+
+# Grid Aync Data
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+When rendering async data, conditionally show `cds-grid-placeholder` and `cds-progress-circle` to indicate that the data is loading.
+Once the data has loaded, remove `cds-grid-placeholder` and `cds-progress-circle` from the DOM.
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-placeholder>
+    <cds-progress-circle size="xl" status="info"></cds-progress-circle>
+    <p cds-text="subsection">Loading VMs</p>
+  </cds-grid-placeholder>
+</cds-grid>
+```
+
+<Story id="stories-grid--async-data" />
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

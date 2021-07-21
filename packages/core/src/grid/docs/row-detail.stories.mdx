@@ -1,0 +1,71 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Detail" />
+
+# Grid Row Detail
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The `cds-grid-detail` component provides a modal-like overlay to display additional details to a particular row entry.
+A `cds-grid-detail` can be visually toggled with `hidden`. To show the `cds-grid-detail` toggle its visibility using
+`cds-action` in a given grid row. The row detail will auto align to any cell with `role="rowheader"` as an identifier.
+If no `role="rowheader"` is found it will default to `70%` of the grid. The fallback width can be cusomized via
+the `--width` CSS Custom Property.
+
+<Story id="stories-grid--row-detail" />
+
+```html
+<cds-grid>
+  <cds-grid-column></cds-grid-column>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>
+      <cds-action-expand id="current-detail-demo" aria-label="view host details"></cds-action-expand>
+    </cds-grid-cell>
+    <cds-grid-cell role="rowheader">vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-detail hidden anchor="current-detail-demo">
+    <h2>Host: vm-host-001</h2>
+    <p>Status: online</p>
+    <p>CPU: 5%</p>
+    <p>Memory: 10%</p>
+  </cds-grid-detail>
+</cds-grid>
+```
+
+## API
+
+### cds-grid-detail
+
+<Props of={'cds-grid-detail'} />
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

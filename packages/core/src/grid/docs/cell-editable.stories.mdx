@@ -1,0 +1,61 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Cell Editable" />
+
+# Grid Cell Editable
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Cell editing can be created by leveraging the `cds-input` form component. Using `cds-action`
+toggle the visibility of the `cds-input` to enable the user to edit the input. Once the `enter` key is pressed
+re-focus back to the `cds-action`. Any cell not editable should have the [`aria-readonly="true"` attribute](https://www.w3.org/TR/wai-aria-1.1/#aria-readonly).
+If no cells are editable the `aria-readonly="true"` attribute can be omitted all together.
+
+<Story id="stories-grid--cell-editable" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>About</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell aria-readonly="true">vm-host-001</cds-grid-cell>
+    <cds-grid-cell>
+      <cds-input hidden>
+        <input type="text" value="1000" aria-label="host about" />
+      </cds-input>
+      <cds-action shape="pencil" aria-label="edit host about"></cds-action>
+      <span>about notes...</span>
+    </cds-grid-cell>
+    <cds-grid-cell aria-readonly="true">25%</p></cds-grid-cell>
+    <cds-grid-cell aria-readonly="true">50%</p></cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

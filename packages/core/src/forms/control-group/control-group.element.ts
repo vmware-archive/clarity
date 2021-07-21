@@ -16,9 +16,10 @@ import {
   EventEmitter,
   syncDefinedProps,
   describeElementByElements,
-  updateComponentLayout,
   setAttributes,
   syncProps,
+  ResponsiveController,
+  calculateOptimalLayout,
 } from '@cds/core/internal';
 import { CdsControl } from '../control/control.element.js';
 import styles from './control-group.element.scss';
@@ -113,7 +114,7 @@ export class CdsInternalControlGroup extends LitElement {
 
   protected isControlGroup = true;
 
-  protected observers: (MutationObserver | ResizeObserver)[] = [];
+  protected responsiveController = new ResponsiveController(this);
 
   static styles = [baseStyles, styles];
 
@@ -195,12 +196,6 @@ export class CdsInternalControlGroup extends LitElement {
     syncDefinedProps(props, this, Array.from(this.controls));
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.observers.forEach(o => o.disconnect());
-  }
-
-  /** @private */
   get layoutStable() {
     return (
       !inlineControlListIsWrapped(Array.from(this.controls), this.layout) &&
@@ -221,8 +216,8 @@ export class CdsInternalControlGroup extends LitElement {
   private setupResponsive() {
     if (this.responsive) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
-      this.observers.push(
-        updateComponentLayout(this, layoutConfig, () => this.layoutChange.emit(this.layout, { bubbles: true }))
+      this.addEventListener('cdsResizeChange', () =>
+        calculateOptimalLayout(this, layoutConfig).then(() => this.layoutChange.emit(this.layout, { bubbles: true }))
       );
     }
   }

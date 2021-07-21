@@ -1,0 +1,66 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Sticky" />
+
+# Grid Row Sticky
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Rows can be set to sticky positioning. This will prevent the row from scrolling out of view when scrolled.
+If more than one sticky row exists the subsuquent sticky row will replace the prior as the grid is scrolled.
+To learn more checkout the [MDN position sticky](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#position_sticky) documentation.
+
+To place a row in a sticky position, set the column with a `position="sticky"` attribute. You can enable user toggling
+of the position by using a `cds-action` to set the position state of a given column.
+
+<cds-alert status="warning">Similar to fixed rows, sticky rows are not compatible with draggable rows.</cds-alert>
+
+<Story id="stories-grid--row-sticky" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Stock</cds-grid-column>
+  <cds-grid-column>Average</cds-grid-column>
+  <cds-grid-column>Current</cds-grid-column>
+  <cds-grid-column>About</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>APPL</cds-grid-cell>
+    <cds-grid-cell>$1000</cds-grid-cell>
+    <cds-grid-cell>$0</cds-grid-cell>
+    <cds-grid-cell>...</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-row position="sticky">
+    <cds-grid-cell>MSFT</cds-grid-cell>
+    <cds-grid-cell>$500</cds-grid-cell>
+    <cds-grid-cell>$0.00</cds-grid-cell>
+    <cds-grid-cell>Lorem ipsum dolor sit amet</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

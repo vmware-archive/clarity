@@ -10,8 +10,7 @@ import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { imageIcon } from '@cds/core/icon/shapes/image.js';
 import { userIcon } from '@cds/core/icon/shapes/user.js';
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
+import { customElement, state } from 'lit/decorators.js';
 import { homeIcon } from '@cds/core/icon/shapes/home.js';
 import { baseStyles, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 

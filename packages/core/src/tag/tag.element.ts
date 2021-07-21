@@ -82,7 +82,7 @@ export class CdsTag extends CdsBaseButton {
         class="private-host"
         role="group"
         aria-labelledby="${this.groupLabelId}"
-        cds-layout="horizontal align:center"
+        cds-layout="horizontal align:center wrap:none"
       >
         <slot name="tag-icon"></slot>
         <span id="${this.groupLabelId}" class="tag-content" cds-text="lhe"><slot></slot></span>

@@ -65,7 +65,7 @@ describe('Pagination Buttons', () => {
     paginationButtonComponent = paginationButtonElement.querySelector<CdsPaginationButton>('cds-pagination-button');
     await componentIsStable(paginationButtonComponent);
     const slots = getComponentSlotContent(paginationButtonComponent);
-    expect(slots['cds-icon-slot'].includes('cds-icon')).toBeTruthy();
+    expect(slots['default'].includes('cds-icon')).toBeTruthy();
   });
 
   it('should render custom text in default slot', async () => {

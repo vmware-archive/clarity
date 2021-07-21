@@ -1,0 +1,81 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Visibility" />
+
+# Grid Column Visibility
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+To show or hide columns conditionally render the column and cell elements. Conditionally rendering
+will provide the best runtime performance of large data sets. You can also conditionally hide
+columns and cells using the `hidden` attribute.
+
+<Story id="stories-grid--column-visibility" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <!-- (removed) <cds-grid-column>Memory</cds-grid-column> -->
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <!-- (removed) <cds-grid-cell>10%</cds-grid-cell> -->
+  </cds-grid-row>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-003</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+    <!-- (removed) <cds-grid-cell>30%</cds-grid-cell> -->
+  </cds-grid-row>
+  <cds-grid-footer>
+    <cds-action id="toggle-columns" shape="view-columns" aria-label="filter column"></cds-action>
+  </cds-grid-footer>
+</cds-grid>
+<cds-dropdown anchor="#toggle-columns (element ref)" position="top">
+  <cds-checkbox-group layout="vertical">
+    <cds-checkbox>
+      <label>Status</label>
+      <input type="checkbox" checked />
+    </cds-checkbox>
+    <cds-checkbox>
+      <label>CPU</label>
+      <input type="checkbox" checked />
+    </cds-checkbox>
+    <cds-checkbox>
+      <label>Memory</label>
+      <input type="checkbox" />
+    </cds-checkbox>
+  </cds-checkbox-group>
+  <cds-button action="flat">Select All</cds-button>
+</cds-dropdown>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

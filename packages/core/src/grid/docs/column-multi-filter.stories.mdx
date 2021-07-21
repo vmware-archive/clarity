@@ -1,0 +1,73 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Multi Filter" />
+
+# Grid Column Multi Filter
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+To search any column in a Data Grid, use `cds-search` and the HTML `input` event
+to filter your data set and render only matching rows.
+
+<Story id="stories-grid--column-multi-filter" />
+
+```html
+<section cds-layout="vertical gap:lg">
+  <cds-search>
+    <label>Search VMs</label>
+    <input type="search" placeholder="search" />
+  </cds-search>
+  <cds-grid>
+    <cds-grid-column>Host</cds-grid-column>
+    <cds-grid-column>Status</cds-grid-column>
+    <cds-grid-column>CPU</cds-grid-column>
+    <cds-grid-column>Memory</cds-grid-column>
+    <cds-grid-row>
+      <cds-grid-cell>vm-host-001</cds-grid-cell>
+      <cds-grid-cell>online</cds-grid-cell>
+      <cds-grid-cell>5%</cds-grid-cell>
+      <cds-grid-cell>10%</cds-grid-cell>
+    </cds-grid-row>
+  </cds-grid>
+</section>
+```
+
+Any strategy can be used to determine what cells to search or what weights
+should apply. Here is an example of a basic string matching filter.
+
+```javascript
+const results = itemsList.filter(i =>
+  Object.keys(i)
+    .map(k => i[k])
+    .reduce((p, n) => `${p} ${n}`)
+    .toLocaleLowerCase()
+    .includes(searchInputElement.value.trim().toLocaleLowerCase())
+);
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

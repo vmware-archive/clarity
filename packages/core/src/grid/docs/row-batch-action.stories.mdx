@@ -1,0 +1,71 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Batch Action" />
+
+# Grid Row Batch Action
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Row batch action support is similar to single sction support but leverages `cds-checkbox` to determine
+which elements the actions should apply. To mark a row as selected, set the `select`
+attribute/property on the `cds-grid-row`.
+
+<Story id="stories-grid--row-batch-action" />
+
+```html
+<div cds-layout="horizontal gap:sm align:vertical-center m-b:sm">
+  <p id="vm-host-grid" cds-text="message">VM Hosts</p>
+  <cds-divider orientation="vertical" cds-layout="m-x:md"></cds-divider>
+  <cds-button action="outline" size="sm">Restart</cds-button>
+  <cds-button action="outline" size="sm">Shutdown</cds-button>
+</div>
+<cds-grid aria-labelledby="vm-host-grid" selectable="multi">
+  <cds-grid-column type="action">
+    <cds-checkbox>
+      <input type="checkbox" aria-label="select all hosts" />
+    </cds-checkbox>
+  </cds-grid-column>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row select>
+    <cds-grid-cell>
+      <cds-checkbox>
+        <input type="checkbox" aria-label="select host" />
+      </cds-checkbox>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

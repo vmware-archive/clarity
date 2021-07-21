@@ -1,0 +1,54 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/RTL" />
+
+# Grid RTL
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Data Grid supports internationalization via the [I18nService](./?path=/story/foundation-internationalization--page). The Data Grid also supports
+RTL languages. To enable RTL support, apply the `dir="rtl"` attribute to the Data Grid.
+
+<Story id="stories-grid--rtl" />
+
+```html
+<cds-grid dir="rtl">
+  <cds-grid-column>Stock</cds-grid-column>
+  <cds-grid-column>Average</cds-grid-column>
+  <cds-grid-column>Current</cds-grid-column>
+  <cds-grid-column>About</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>APPL</cds-grid-cell>
+    <cds-grid-cell>$1000</cds-grid-cell>
+    <cds-grid-cell>$0</cds-grid-cell>
+    <cds-grid-cell>...</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

@@ -13,6 +13,7 @@ golden/
 packages/core/**/*.css.ts
 packages/core/custom-elements.json
 packages/core/src/styles/tokens/generated/**
+packages/core/src/grid/docs/*.stories.ts
 packages/core/dist/
 packages/react/coverage/
 packages/react/dist/
@@ -22,9 +23,17 @@ apps/core-angular-cli
 apps/core-angular-universal
 apps/website/.vuepress/config.js
 apps/core-snowpack/build
+apps/core-angular-cli/
+.netlify
 apps/website/data/core-demos.json
 
 # Markdown files that break rendering when prettier forats them
 apps/website/core-components/datalist/README.md
 apps/website/core-components/checkbox/README.md
 apps/website/core-components/input/README.md
+
+# temporary
+demos/
+
+# has errors and got past build
+packages/eslint-plugin-clarity-adoption

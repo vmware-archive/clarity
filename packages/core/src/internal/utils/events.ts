@@ -54,7 +54,7 @@ export function onFirstInteraction(element: HTMLElement): Promise<null> {
     }
 
     element.addEventListener('mouseover', update, { once: true });
-    element.addEventListener('mousedown', update, { once: true });
+    element.addEventListener('touchstart', update, { once: true }); // avoid click related events to prevent SRs like NVDA from anouncing "clickable" https://github.com/nvaccess/nvda/issues/5830
     element.addEventListener('keydown', update, { once: true });
     element.addEventListener('focus', update, { once: true });
   });
@@ -76,7 +76,7 @@ export function listenForAttributeChange(
   element: HTMLElement,
   attrName: string,
   fn: (attrValue: string | null) => void
-): MutationObserver {
+) {
   const observer = new MutationObserver(mutations => {
     if (mutations.find(m => m.attributeName === attrName)) {
       fn(element.getAttribute(attrName));

@@ -1,0 +1,96 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Swappable" />
+
+# Grid Row Swappable
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+The grid rows use the native [HTML5 Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).
+To enable a row apply the `draggable="true"` attribute to the `cds-grid-row`. To
+create a dropzone that is not draggable, apply the `draggable="false"` attribute.
+Listen for drag events via the `cdsDraggableChange` event on the `cds-grid` element.
+Row drag events are stateless, meaning once an event occurs, the application should
+take the event details to resort the row list appropriately.
+
+Keyboard navigation support is available by applying the `cds-draggable="handle"` attribute to a `cds-action`.
+Once applied, using cmd/ctrl + arrow up/down will trigger `cdsDraggableChange` change events to resort the list.
+
+The `cdsDraggableChange` only emits when a row was attempted to be moved but does not change the DOM.
+This ensures the host application has full control of how rows are rendered. This behavior also
+provides the flexibility for host applications to use framework specific drag and drop libraries
+to provide easier framework integrations.
+
+<cds-alert status="info" cds-layout="m-b:lg">
+  Because <code>cds-grid-row</code> uses standard HTML5 drag and drop API, rows can be dropped in or out of the Grid as
+  long as the row or item uses the same HTML5 draggable attribute.
+</cds-alert>
+
+<Story id="stories-grid--row-swappable" />
+
+```html
+<cds-grid>
+  <cds-grid-column type="action"></cds-grid-column>
+  <cds-grid-column>host</cds-grid-column>
+  <cds-grid-column>status</cds-grid-column>
+  <cds-grid-row id="1" draggable="true">
+    <cds-grid-cell>
+      <cds-action-handle aria-label="sort host"></cds-action-handle>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-placeholder draggable="false">
+    Move host to staging
+  </cds-grid-placeholder>
+  <cds-grid-footer>
+    List One: 1, 2, 3
+  </cds-grid-footer>
+</cds-grid>
+
+<cds-grid>
+  <cds-grid-column></cds-grid-column>
+  <cds-grid-column>host</cds-grid-column>
+  <cds-grid-column>status</cds-grid-column>
+  <cds-grid-row id="4" draggable="true">
+    <cds-grid-cell>
+      <cds-action-handle aria-label="sort row"></cds-action-handle>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-002</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-placeholder draggable="false">
+    Move host to production
+  </cds-grid-placeholder>
+  <cds-grid-footer>
+    List Two: 4, 5, 6
+  </cds-grid-footer>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

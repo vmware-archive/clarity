@@ -45,9 +45,7 @@ import { getIconBadgeSVG, getIconSVG } from './utils/icon.svg-helpers.js';
  * @cssprop --badge-color
  */
 export class CdsIcon extends LitElement {
-  static get styles() {
-    return [baseStyles, styles];
-  }
+  static styles = [baseStyles, styles];
 
   private _shape = 'unknown';
   private _size: string;

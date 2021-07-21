@@ -11,6 +11,7 @@ import { CdsCheckboxModule } from '@cds/angular/checkbox';
 import { CdsDatalistModule } from '@cds/angular/datalist';
 import { CdsFormsModule } from '@cds/angular/forms';
 import { CdsFileModule } from '@cds/angular/file';
+import { CdsGridModule } from '@cds/angular/grid';
 import { CdsInputModule } from '@cds/angular/input';
 import { CdsPasswordModule } from '@cds/angular/password';
 import { CdsRadioModule } from '@cds/angular/radio';
@@ -24,6 +25,7 @@ import { CdsToggleModule } from '@cds/angular/toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { VMService } from './vm.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +40,7 @@ import { AppComponent } from './app.component';
     CdsCheckboxModule,
     CdsDatalistModule,
     CdsFileModule,
+    CdsGridModule,
     CdsFormsModule,
     CdsInputModule,
     CdsPasswordModule,
@@ -50,7 +53,7 @@ import { AppComponent } from './app.component';
     CdsTimeModule,
     CdsToggleModule,
   ],
-  providers: [],
+  providers: [VMService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

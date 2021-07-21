@@ -33,16 +33,16 @@ describe('aria-popup-trigger.controller', () => {
 
   it('should initialize aria attributes for popup type triggers', async () => {
     await componentIsStable(component);
-    expect(component.getAttribute('aria-controls')).toBe('popup-el');
-    expect(component.getAttribute('aria-haspopup')).toBe('true');
-    expect(component.getAttribute('aria-expanded')).toBe('false');
+    expect(component.ariaControls).toBe('popup-el'); // todo: cory update to props
+    expect(component.ariaHasPopup).toBe('true');
+    expect(component.ariaExpanded).toBe('false');
   });
 
   it('should NOT initialize aria attributes for triggers without a popup id', async () => {
     await componentIsStable(noponent);
     expect(noponent.hasAttribute('popup')).toBe(false);
-    expect(noponent.hasAttribute('aria-controls')).toBe(false);
-    expect(noponent.hasAttribute('aria-haspopup')).toBe(false);
-    expect(noponent.hasAttribute('aria-expanded')).toBe(false);
+    expect(noponent.ariaControls).toBe(undefined);
+    expect(noponent.ariaHasPopup).toBe(null);
+    expect(noponent.ariaExpanded).toBe(null);
   });
 });

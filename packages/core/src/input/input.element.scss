@@ -31,7 +31,6 @@
 ::slotted([slot='input']:not([multiple]):not([size])) {
   text-transform: var(--text-transform) !important;
   border: var(--border) !important;
-  outline: var(--outline) !important;
   padding: var(--padding);
   font-size: var(--font-size) !important;
   color: var(--color) !important;
@@ -51,6 +50,11 @@
 
 ::slotted([slot='input']) {
   margin: 0 !important;
+}
+
+::slotted([slot='input']:focus) {
+  outline: var(--outline) !important;
+  outline-offset: var(--outline-offset) !important;
 }
 
 .input-container {

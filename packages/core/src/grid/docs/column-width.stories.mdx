@@ -1,0 +1,97 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Width" />
+
+# Grid Column Width
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The `cds-grid-column` provides a `width` attribute/property to set a starting width
+of a given column. By default, the Grid column width will be evenly distributed to
+the number of given columns.
+
+<Story id="stories-grid--column-fixed-width" />
+
+```html
+<cds-grid height="360">
+  <cds-grid-column width="150">Host</cds-grid-column>
+  <cds-grid-column width="150">Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>25%</p></cds-grid-cell>
+    <cds-grid-cell>50%</p></cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Percentage Width
+
+The width can be controlled with percentages as well as px values.
+
+<Story id="stories-grid--column-percentage-width" />
+
+```html
+<cds-grid height="360">
+  <cds-grid-column width="15%">Host</cds-grid-column>
+  <cds-grid-column width="15%">Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>25%</p></cds-grid-cell>
+    <cds-grid-cell>50%</p></cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Text Wrap
+
+Control text wrapping by using the `cds-text="truncate"` utility.
+
+<Story id="stories-grid--column-overflow" />
+
+```html
+<cds-grid height="360">
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column width="100">CPU</cds-grid-column>
+  <cds-grid-column width="100">Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell><p cds-text="truncate">25.00000001%</p></cds-grid-cell>
+    <cds-grid-cell><p cds-text="truncate">50.00000005%</p></cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

@@ -7,7 +7,6 @@
 import { html } from 'lit';
 import { CdsControlAction } from './control-action.element.js';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
-import { LogService } from '@cds/core/internal';
 import '@cds/core/forms/register.js';
 
 describe('cds-control-action', () => {
@@ -31,21 +30,11 @@ describe('cds-control-action', () => {
     expect(controlAction.getAttribute('slot')).toBe('suffix');
   });
 
-  it('should warn when a aria-label is missing and interactive', async () => {
-    spyOn(LogService, 'warn');
-
-    controlAction.readonly = true;
-    await componentIsStable(controlAction);
-    controlAction.readonly = false;
-    await componentIsStable(controlAction);
-    expect(LogService.warn).toHaveBeenCalled();
-  });
-
   describe('syncAria: ', () => {
     it('should set aria-hidden on read-only', async () => {
       const testElement = await createTestElement(html` <cds-control-action readonly>test</cds-control-action>`);
       const testControlAction = testElement.querySelector<CdsControlAction>('cds-control-action');
-      expect(testControlAction.getAttribute('aria-hidden')).toBe('true');
+      expect(testControlAction.ariaHidden).toBe('true');
       removeTestElement(testElement);
     });
 

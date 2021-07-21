@@ -1,0 +1,74 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Draggable" />
+
+# Grid Row Draggable
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+The grid rows use the native [HTML5 Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).
+To enable a row apply the `draggable="true"` attribute to the `cds-grid-row`.
+To create a dropzone that is not draggable, apply the `draggable="false"` attribute.
+Listen for drag events via the `cdsDraggableChange` event on the `cds-grid` element.
+Row drag events are stateless, meaning once an event occurs, the application should
+take the event details to resort the row list appropriately.
+
+Keyboard navigation support is available by using the `cds-action-handle` component.
+Once applied, the `space` and `arrow` keys can be used to pick up and drop rows.
+
+The `cdsDraggableChange` only emits when a row was attempted to be moved but does not change the DOM.
+This ensures the host application has full control of how rows are rendered. This behavior also
+provides the flexibility for host applications to use framework specific drag and drop libraries
+to provide easier framework integrations.
+
+<Story id="stories-grid--row-draggable" />
+
+```html
+<cds-grid>
+  <cds-grid-column aria-label="draggable action"></cds-grid-column>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row draggable="true">
+    <cds-grid-cell>
+      <cds-action-handle aria-label="sort vm-host-001"></cds-action-handle>
+    </cds-grid-cell>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-placeholder draggable="false"></cds-grid-placeholder>
+</cds-grid>
+<div cds-layout="display:screen-reader-only" aria-live="assertive" role="log" aria-atomic="true">
+  host vm-host-001 moved to row 3
+</div>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

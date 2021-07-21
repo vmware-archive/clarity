@@ -8,10 +8,16 @@ const bannedTSTypes = {
   Boolean: 'Use `boolean` instead.',
   Number: 'Use `number` instead.',
   String: 'Use `string` instead.',
+  '{}': false, // todo: enable
+  object: false, // todo: enable
+  Function: false, // todo: enable
 };
 
 // only adding rules that override the defaults or enforce new standards
 const rules = {
+  'no-unused-vars': 'off',
+  '@typescript-eslint/no-unused-vars': [ERROR, { varsIgnorePattern: 'Demo|Test' }],
+  '@typescript-eslint/explicit-module-boundary-types': OFF,
   '@typescript-eslint/explicit-function-return-type': OFF, // too much work at the moment
   '@typescript-eslint/no-explicit-any': OFF, // would LOVE to turn this on
   // cause slow analysis on TS files with Storybook, see
@@ -35,6 +41,7 @@ const rules = {
       patterns: ['lit-element', 'lit-element/*', 'lit-html', 'lit-html/*', '@angular/*'],
     },
   ],
+  'lit/plugin/no-boolean-in-attribute-binding': [OFF],
   'lit-a11y/img-redundant-alt': [OFF],
   'lit-a11y/anchor-is-valid': [OFF],
   'lit-a11y/alt-text': [OFF],
@@ -47,9 +54,10 @@ const parserOptions = {
   sourceType: 'module',
 };
 
-const plugins = ['lit-a11y', 'lit', 'eslint-plugin-wc'];
+const plugins = ['@typescript-eslint', 'lit-a11y', 'lit', 'eslint-plugin-wc'];
 
 const config = {
+  parser: '@typescript-eslint/parser',
   extends: ['../../.eslintrc.js', 'plugin:lit-a11y/recommended', 'plugin:lit/recommended', 'plugin:wc/recommended'],
   parserOptions,
   rules,

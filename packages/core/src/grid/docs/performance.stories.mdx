@@ -1,0 +1,34 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Performance" />
+
+# Grid Performance
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The Core Data Grid performance primarily relies on two points, how much data and cell content.
+When rendering a Data Grid and working with a large data set, leverage pagination and conditionally
+render only the visible rows in the DOM. This ensures the browser only needs to render rows as needed.
+Be aware of what content is placed within rows and cells. The more components or
+more complex the content, the more work it will take the browser to render that content.
+
+Because the browser will render only rows that are placed in the DOM you can leverage
+application framework optimizations for rendering performance. For example, if using Angular,
+take advantage of the [ngFor trackBy](https://angular.io/api/common/NgForOf) functionality.
+
+To optimize render performance, the `cds-grid-row` leverages the [CSS Contain Visibility](https://web.dev/content-visibility/) property.
+This enables the browser to skip expensive render calculations by providing an intrisic height.
+By default, the height of the row is set for you. However, if your grid changes the default height, then
+apply the `--row-height` property to the grid to get better overall rendering performance.
+
+```html
+<!-- if custom row height -->
+<cds-grid style="--row-height: 60px"> </cds-grid>
+```
+
+<Story id="stories-grid--performance" />

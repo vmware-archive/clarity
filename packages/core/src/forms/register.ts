@@ -5,6 +5,7 @@
  */
 
 import '@cds/core/icon/register.js';
+import '@cds/core/actions/register.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
 import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';

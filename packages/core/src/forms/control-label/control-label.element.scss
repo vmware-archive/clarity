@@ -47,7 +47,5 @@
 }
 
 ::slotted(cds-control-action) {
-  padding: $cds-global-space-4 0 $cds-global-space-3 0 !important;
-  margin-bottom: calc(-1 * #{$cds-global-space-5}) !important;
-  margin-top: calc(-1 * calc(#{$cds-global-space-6} - #{$cds-global-space-2})) !important;
+  margin-top: calc(-1 * #{$cds-global-space-2}) !important;
 }

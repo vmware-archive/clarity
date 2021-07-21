@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": [],
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "rootDir": "./src",
     "incremental": true,
     "isolatedModules": true,
@@ -12,6 +12,7 @@
   "allowSyntheticDefaultImports": false,
   "exclude": [
     "**/*.spec.ts",
+    "**/*.a11y.ts",
     "**/*.performance.ts",
     "dist",
     "node_modules",

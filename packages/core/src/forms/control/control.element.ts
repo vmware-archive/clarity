@@ -16,13 +16,15 @@ import {
   event,
   EventEmitter,
   describeElementByElements,
-  updateComponentLayout,
   state,
   syncProps,
   pxToRem,
   getElementUpdates,
   hasAriaLabelTypeAttr,
+  ResponsiveController,
+  calculateOptimalLayout,
 } from '@cds/core/internal';
+import { CdsControlAction } from '../control-action/control-action.element.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
 import styles from './control.element.scss';
 import { ControlStatus, ControlLayout, ControlWidth } from './../utils/interfaces.js';
@@ -38,7 +40,6 @@ import {
   getCurrentMessageStatus,
 } from '../utils/utils.js';
 import { CdsInternalControlLabel } from '../control-label/control-label.element.js';
-import { CdsControlAction } from '../control-action/control-action.element.js';
 
 export const enum ControlLabelLayout {
   default = 'default',
@@ -161,6 +162,8 @@ export class CdsControl extends LitElement {
 
   protected observers: (MutationObserver | ResizeObserver)[] = [];
 
+  protected responsiveController = new ResponsiveController(this);
+
   static get styles() {
     return [baseStyles, styles];
   }
@@ -258,7 +261,7 @@ export class CdsControl extends LitElement {
   private get prefixTemplate() {
     return html`
       <div cds-layout="align:shrink align:vertical-center" class="prefix">
-        <div cds-layout="horizontal gap:xs">
+        <div cds-layout="horizontal gap:md">
           ${this.prefixDefaultTemplate}
           <slot name="prefix"></slot>
         </div>
@@ -269,7 +272,7 @@ export class CdsControl extends LitElement {
   private get suffixTemplate() {
     return html`
       <div cds-layout="align:shrink align:vertical-center" class="suffix">
-        <div cds-layout="horizontal gap:xs">
+        <div cds-layout="horizontal gap:md">
           <slot name="suffix"></slot>
           ${this.suffixDefaultTemplate}
         </div>
@@ -366,10 +369,13 @@ export class CdsControl extends LitElement {
   private setupResponsive() {
     if (this.responsive && this.labelLayout === ControlLabelLayout.default && this.controlLabel) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
-      const observer = updateComponentLayout(this, layoutConfig, () =>
-        this.layoutChange.emit(this.layout, { bubbles: true })
-      );
-      this.observers.push(observer);
+      this.addEventListener('cdsResizeChange', () => {
+        calculateOptimalLayout(this, layoutConfig).then(updated => {
+          if (updated) {
+            this.layoutChange.emit(this.layout, { bubbles: true });
+          }
+        });
+      });
     }
   }
 

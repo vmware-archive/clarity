@@ -1,0 +1,60 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Compact" />
+
+# Grid Compact
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+To use the compact view apply the `cds-theme="compact"` attribute to the `cds-grid` element.
+
+<Story id="stories-grid--compact" />
+
+```html
+<cds-grid cds-theme="compact">
+  <cds-grid-column>Type</cds-grid-column>
+  <cds-grid-column>Description</cds-grid-column>
+  <cds-grid-column>Amount</cds-grid-column>
+  <cds-grid-column>Balance</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>Deposit</cds-grid-cell>
+    <cds-grid-cell>Item</cds-grid-cell>
+    <cds-grid-cell>$1,000,000.00</cds-grid-cell>
+    <cds-grid-cell>$1,000,000.00</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-row>
+    <cds-grid-cell>Credit</cds-grid-cell>
+    <cds-grid-cell>Billing</cds-grid-cell>
+    <cds-grid-cell>$250.00</cds-grid-cell>
+    <cds-grid-cell>$523,750.00</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

@@ -23,6 +23,7 @@ describe('performance', () => {
   it(`should bundle and treeshake all components`, async () => {
     const bundle = `
       import '@cds/core/accordion/register.js';
+      import '@cds/core/actions/register.js';
       import '@cds/core/alert/register.js';
       import '@cds/core/badge/register.js';
       import '@cds/core/breadcrumb/register.js';
@@ -34,6 +35,7 @@ describe('performance', () => {
       import '@cds/core/divider/register.js';
       import '@cds/core/file/register.js';
       import '@cds/core/forms/register.js';
+      import '@cds/core/grid/register.js';
       import '@cds/core/icon/register.js';
       import '@cds/core/input/register.js';
       import '@cds/core/modal/register.js';
@@ -51,6 +53,6 @@ describe('performance', () => {
       import '@cds/core/toggle/register.js';
       import '@cds/core/tree-view/register.js';`;
 
-    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(46.5);
+    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(56);
   });
 });

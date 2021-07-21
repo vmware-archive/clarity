@@ -11,6 +11,8 @@ import {
   onKeyCombo,
   getModifierKeysFromKeyCombo,
   removeModifierKeysFromKeyCombo,
+  validKeyNavigationCode,
+  KeyNavigationCode,
 } from './keycodes.js';
 
 describe('Keycodes Helpers – ', () => {
@@ -205,6 +207,21 @@ describe('Keycode Utilities – ', () => {
         ['tab', 'space', 'enter'],
         'returns empty array if no modifier keys'
       );
+    });
+  });
+
+  describe('validKeyNavigationCode(): ', () => {
+    it('should validate that key code is a valid key navigation option', () => {
+      expect(validKeyNavigationCode({ code: 'nope' } as KeyboardEvent)).toBe(false);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.ArrowUp } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.ArrowDown } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.ArrowLeft } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.ArrowRight } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.End } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.Home } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.PageUp } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.PageDown } as KeyboardEvent)).toBe(true);
+      expect(validKeyNavigationCode({ code: KeyNavigationCode.Enter } as KeyboardEvent)).toBe(true);
     });
   });
 });

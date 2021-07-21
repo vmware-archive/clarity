@@ -1,90 +1,56 @@
-import { ReactiveControllerHost } from 'lit';
+import { ReactiveController, ReactiveElement } from 'lit';
 import { listenForAttributeChange } from '../utils/events.js';
-import { EventEmitter } from '../decorators/event.js';
-import { ignoreFocusTrap } from './utils/first-focus.controller.utils.js';
-import { FocusTrapTrackerService } from '../services/focus-trap-tracker.service.js';
+import { onEscape, onFocusOut } from '../utils/focus.js';
+import { TriggerRefController } from './trigger-ref.controller.js';
 
-interface ClosableConfig {
+export type CloseChangeType = 'focusout' | 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
+
+export interface ClosableControllerConfig {
   escape?: boolean;
-  lastFocus?: boolean;
-  closable?: () => boolean;
+  focusout?: boolean;
 }
 
 /**
  * Given a closable component provides the following
  * - close on escape
- * - focus to trigger
- * - close method for component specific events
+ * - focus to trigger if available
  */
-export class ClosableController {
-  private config: ClosableConfig;
+export class ClosableController<T extends ReactiveElement & { trigger?: HTMLElement }> implements ReactiveController {
   private observer: MutationObserver;
 
-  priorActiveElement: HTMLElement;
+  private trigger: TriggerRefController<T>;
 
-  private get isFocusTrapper(): boolean {
-    return (this.host as any).focusTrapId && !ignoreFocusTrap(this.host);
-  }
-
-  constructor(private host: ReactiveControllerHost & HTMLElement, config?: ClosableConfig) {
-    this.config = { escape: true, lastFocus: true, closable: () => true, ...config };
+  constructor(private host: T, private config?: ClosableControllerConfig) {
+    this.config = { escape: true, focusout: false, ...config };
     this.host.addController(this);
+    this.trigger = new TriggerRefController(this.host);
   }
 
   hostConnected() {
-    this.togglePriorActiveElement();
-    this.host.addEventListener('keyup', (e: KeyboardEvent) => this.keyEvent(e));
-    this.observer = listenForAttributeChange(this.host, 'hidden', () => this.togglePriorActiveElement());
+    this.observer = listenForAttributeChange(this.host, 'hidden', () => {
+      if (this.host.hidden) {
+        this.trigger.current?.focus();
+      }
+    });
+
+    if (this.config.escape) {
+      onEscape(this.host, () => this.close('escape-keypress'));
+    }
+
+    if (this.config.focusout) {
+      this.host.tabIndex = 0; // for a11y focus out https://stackoverflow.com/questions/152975/how-do-i-detect-a-click-outside-an-element
+      onFocusOut(this.host, () => this.close('focusout'));
+    }
   }
 
   hostDisconnected() {
-    this.priorActiveElement?.focus();
-    this.removeFocusTrap();
+    this.trigger.current?.focus();
     this.observer.disconnect();
   }
 
   close(detail?: any) {
-    if (this.config && this.config.closable && this.config.closable()) {
-      // host has an event emitter so use it
-      if ((this.host as any).closeChange) {
-        ((this.host as any).closeChange as EventEmitter<string>).emit(detail);
-      } else {
-        this.host.dispatchEvent(new CustomEvent('closeChange', { detail }));
-      }
-    }
-  }
-
-  private setFocusTrap() {
-    if (this.isFocusTrapper) {
-      FocusTrapTrackerService.setCurrent({ focusTrapId: (this.host as any).focusTrapId });
-    }
-  }
-
-  private removeFocusTrap() {
-    if (this.isFocusTrapper) {
-      FocusTrapTrackerService.removeTrapElement({ focusTrapId: (this.host as any).focusTrapId });
-    }
-  }
-
-  private togglePriorActiveElement() {
-    if (this.host.hidden && this.config.lastFocus) {
-      this.removeFocusTrap();
-      this.priorActiveElement?.focus();
-    } else {
-      this.setFocusTrap();
-      this.setPriorActiveElement();
-    }
-  }
-
-  private setPriorActiveElement() {
-    this.priorActiveElement = (this.host.getRootNode() as any).activeElement;
-  }
-
-  private keyEvent(e: KeyboardEvent) {
-    if (this.config.escape && e.code === 'Escape') {
-      e.preventDefault();
-      e.stopPropagation();
-      this.close('escape-keypress');
-    }
+    this.host.dispatchEvent(
+      new CustomEvent<CloseChangeType>('closeChange', { detail })
+    );
   }
 }

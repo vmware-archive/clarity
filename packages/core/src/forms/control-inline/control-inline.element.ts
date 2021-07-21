@@ -7,7 +7,7 @@
 import { html } from 'lit';
 import { EventEmitter, property, event, getElementUpdates, state } from '@cds/core/internal';
 import styles from './control-inline.element.scss';
-import { CdsControl } from '../control/control.element.js';
+import { CdsControl, ControlLabelLayout } from '../control/control.element.js';
 import { getStatusIcon } from '../utils/utils.js';
 
 /**
@@ -49,11 +49,17 @@ export class CdsInternalControlInline extends CdsControl {
   }
 
   protected get internalLabelTemplate() {
-    return html`
-      <cds-internal-control-label action="secondary" .disabled="${this.disabled}" cds-layout="align:vertical-center">
-        <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
-      </cds-internal-control-label>
-    `;
+    return this.labelLayout !== ControlLabelLayout.ariaLabel
+      ? html`
+          <cds-internal-control-label
+            action="secondary"
+            .disabled="${this.disabled}"
+            cds-layout="align:vertical-center"
+          >
+            <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
+          </cds-internal-control-label>
+        `
+      : '';
   }
 
   render() {

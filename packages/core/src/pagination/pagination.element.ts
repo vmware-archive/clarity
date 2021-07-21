@@ -5,7 +5,7 @@
  */
 
 import { baseStyles, globalStyle, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, PropertyValues } from 'lit';
 import { cache } from 'lit/directives/cache.js';
 import { CdsInput } from '@cds/core/input';
 import styles from './pagination.element.scss';
@@ -55,7 +55,7 @@ export class CdsPagination extends LitElement {
     return [baseStyles, styles];
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues) {
     super.firstUpdated(props);
     this.setupNumberInput();
     this.validateAriaLabel();

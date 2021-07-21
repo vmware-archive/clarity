@@ -1,0 +1,54 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Key Navigation List Controller" />
+
+# Key Navigation - List
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The key navigation controllers are generic key handlers that enable various keyboard navigation behavior.
+
+The `KeyNavigationListController` enables a component to support key navigation through a
+one dimentional linear list of elements. The controller also provides shortcut keys such
+as `Home`, `End`, `PageUp` and `PageDown`.
+
+```typescript
+class DemoKeyNavigationList extends LitElement {
+  @state() private items = Array.from(Array(10).keys());
+
+  @queryAll('section > div') keyListItems: NodeListOf<HTMLElement>;
+  protected keyNavigationListController = new KeyNavigationListController(this);
+
+  render() {
+    return html`
+      <section @cdsKeyChange=${...}>
+        ${this.items.map(i => html`<div><button>${i}</button></div>`)}
+      </section>
+    `;
+  }
+}
+```
+
+## Horizontal List
+
+<Canvas>
+  <Story id="internal-stories-controllers--key-navigation-list-controller" />
+</Canvas>
+
+## Vertical List
+
+To change the direction the key focus is controlled change the `layout` option to `vertical` or `horizontal`.
+
+<Canvas>
+  <Story id="internal-stories-controllers--key-navigation-list-controller-vertical" />
+</Canvas>
+
+## Loop List
+
+Lists can loop on key navigation. When the last item is reached the focus can navigate back to the top.
+
+<Canvas>
+  <Story id="internal-stories-controllers--key-navigation-list-controller-loop" />
+</Canvas>

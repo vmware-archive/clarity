@@ -6,9 +6,14 @@
 
 import '@cds/core/icon/register.js';
 import { registerElementSafely } from '@cds/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { timesIcon } from '@cds/core/icon/shapes/times.js';
 import { CdsInternalCloseButton, CdsCloseButtonTagName } from './close-button.element.js';
 
 registerElementSafely(CdsCloseButtonTagName, CdsInternalCloseButton);
+
+ClarityIcons.addIcons(timesIcon);
+ClarityIcons.addAliases(['times', ['close']]);
 
 declare global {
   interface HTMLElementTagNameMap {

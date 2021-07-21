@@ -1,0 +1,69 @@
+import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Aria Popup Controller" />
+
+# Aria Popup Controller
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>This is an internal API and should only be used for developing Clarity Components.</cds-alert>
+</cds-alert-group>
+
+The `AriaPopupController` and `AriaPopupTriggerController` provides an API to associate
+a popup type component with an trigger/trigger.
+
+## Consumer Usage
+
+Emulating the [popup API proposal](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/Popup/explainer.md) the
+controllers will associate the two components via the `trigger` and `popup` attr/properties.
+This will add the appropriate aria attributes including, `aria-controls`, `aria-haspopup` and `aria-expanded`.
+Then the popup component is removed from the DOM or has a `hidden` attr applied it will updated the `aria-expanded`
+attribute on its associated trigger.
+
+```html
+<!-- user template -->
+<demo-trigger popup="my-popup" id="my-trigger">trigger</demo-trigger>
+<demo-popup hidden anchor="my-trigger" id="my-popup">popup</demo-popup>
+
+<!-- rendered output -->
+<demo-trigger popup="my-popup" id="my-trigger" aria-controls="my-popup" aria-haspopup="true" aria-expanded="false">trigger</demo-anchor>
+<demo-popup hidden anchor="my-trigger" id="my-popup">popup</demo-popup>
+```
+
+## Useage
+
+```typescript
+class DemoAriaPopup extends LitElement {
+  ariaPopupController = new AriaPopupController(this);
+  render() {
+    return html`<slot></slot>`;
+  }
+
+  get trigger() {
+    return (this.getRootNode() as HTMLElement).querySelector<HTMLElement>(`#${this.getAttribute('anchor')}`);
+  }
+}
+
+class DemoAriaPopupTrigger extends LitElement {
+  ariaPopupTriggerController = new AriaPopupTriggerController(this);
+  render() {
+    return html`<slot></slot>`;
+  }
+}
+
+class DemoPopupController extends LitElement {
+  @state() show = false;
+
+  render() {
+    return html`
+      <aria-trigger popup="my-popup" id="my-trigger" role="button" tabindex="0" @click=${() => (this.show = true)}
+        >trigger</aria-trigger
+      >
+      <aria-popup ?hidden=${!this.show} anchor="my-trigger" id="my-popup" @click=${() => (this.show = false)}
+        >popup</aria-popup
+      >
+    `;
+  }
+}
+```
+
+<Story id="internal-stories-controllers--aria-popup-controller" />

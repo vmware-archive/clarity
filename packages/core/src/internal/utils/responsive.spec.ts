@@ -9,6 +9,7 @@ import { createTestElement, removeTestElement, componentIsStable } from '@cds/co
 import { CdsControl } from '@cds/core/forms/index.js';
 import { elementVisible } from './responsive.js';
 import '@cds/core/forms/register.js';
+import '@cds/core/actions/register.js';
 
 describe('responsive utilities', () => {
   let element: HTMLElement;
@@ -30,7 +31,7 @@ describe('responsive utilities', () => {
     removeTestElement(element);
   });
 
-  it('should get optimal component layout', async () => {
+  xit('should get optimal component layout', async () => {
     await componentIsStable(component);
     expect(component.layout).toBe('horizontal');
 

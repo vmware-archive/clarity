@@ -1,0 +1,102 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Column Fixed" />
+
+# Grid Column Fixed
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Columns can be fixed in place. This will prevent the column from scrolling when the grid has horizontal scrolling.
+To place a column in a fixed position, set the column with a `position="fixed"` attribute. You can enable user toggling
+of the position by using a `cds-action` to set the position state of a given column.
+
+<Story id="stories-grid--column-fixed" />
+
+```html
+<cds-grid>
+  <cds-grid-column position="fixed">Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column position="fixed">Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Column Fixed Dynamic
+
+Columns can dynamically be placed into a fixed position.
+
+<Story id="stories-grid--column-fixed-dynamic" />
+
+```html
+<cds-grid>
+  <cds-grid-column position="fixed">
+    Host <cds-action status="active" pressed aria-label="pin column" shape="pin"></cds-action>
+  </cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column position="initial">
+    Memory <cds-action aria-label="pin column" shape="pin"></cds-action>
+  </cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Column Multi Fixed
+
+Multiple Columns can be fixed to any given side. Multiple fixed columns should not
+span past the half way point of the grid to ensure enough scroll space for the remaining columns.
+
+<Story id="stories-grid--column-multi-fixed" />
+
+```html
+<cds-grid>
+  <cds-grid-column position="fixed">Host</cds-grid-column>
+  <cds-grid-column position="fixed">Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

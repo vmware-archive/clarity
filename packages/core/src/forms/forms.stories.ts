@@ -159,18 +159,8 @@ export function form() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action
-              action="suffix"
-              readonly
-              aria-label="Icon indicating that the selected host status is stable"
-              title="Icon indicating that the selected host status is stable"
-            >
-              <cds-icon
-                shape="cloud"
-                badge="success"
-                role="img"
-                aria-label="Icon of host cloud with green badge"
-              ></cds-icon>
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
+              <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
           <cds-control-message>Host ID: 123456</cds-control-message>
@@ -312,7 +302,7 @@ export function vertical() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -455,7 +445,7 @@ export function verticalInline() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -598,7 +588,7 @@ export function horizontal() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -741,7 +731,7 @@ export function horizontalInline() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -885,7 +875,7 @@ export function compact() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -1030,7 +1020,7 @@ export function compactShrink() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -1174,7 +1164,7 @@ export function controlWidth() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -1316,7 +1306,7 @@ export function labelWidth() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>
@@ -2115,9 +2105,7 @@ export function checkoutForm() {
           <cds-input cds-layout="col@sm:5">
             <label>promo code</label>
             <input type="text" />
-            <cds-control-action action="suffix" aria-label="add promo code">
-              <cds-icon shape="plus"></cds-icon>
-            </cds-control-action>
+            <cds-control-action shape="plus" action="suffix" aria-label="add promo code"></cds-control-action>
           </cds-input>
         </div>
       </cds-form-group>
@@ -2246,7 +2234,7 @@ export function darkTheme() {
           <cds-input>
             <label>Host Port</label>
             <input placeholder="localhost:8000" type="url" />
-            <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
+            <cds-control-action action="suffix" readonly aria-label="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
           </cds-input>

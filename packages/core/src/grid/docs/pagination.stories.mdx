@@ -1,0 +1,88 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Pagination" />
+
+# Grid Pagination
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Data Grid pagination uses the stand alone `cds-pagination` component. Use the `cds-pagination-button`
+to listen for click events to determine the rows that should be rendered for your Grid's current page.
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>25%</p></cds-grid-cell>
+    <cds-grid-cell>50%</p></cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>
+    <cds-grid-pagination page="1" page-size="20" page-count="100"></cds-grid-pagination>
+  </cds-grid-footer>
+</cds-grid>
+```
+
+<Story id="stories-grid--pagination" />
+
+## Advanced
+
+If you would like more control of the pagination logic, you can use the generic `cds-pagination` component
+in place of `cds-grid-pagination`.
+
+```html
+<cds-grid-footer>
+  <cds-pagination aria-label="pagination">
+    <cds-select>
+      <select aria-label="per page">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+      </select>
+    </cds-select>
+    <cds-pagination-button action="first" aria-label="go to first"></cds-pagination-button>
+    <cds-pagination-button action="prev" aria-label="go to previous"></cds-pagination-button>
+    <cds-input cds-pagination-number>
+      <input type="number" value="1" size="1" aria-label="current page" min="1" max="5" />
+      <cds-control-message>/ 5</cds-control-message>
+    </cds-input>
+    <cds-pagination-button action="next" aria-label="go to next"></cds-pagination-button>
+    <cds-pagination-button action="last" aria-label="go to last"></cds-pagination-button>
+  </cds-pagination>
+</cds-grid-footer>
+```
+
+## API
+
+### cds-grid-pagination
+
+<Props of={'cds-grid-pagination'} />
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

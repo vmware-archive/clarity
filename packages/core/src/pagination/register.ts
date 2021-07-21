@@ -7,6 +7,7 @@
 import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
 import '@cds/core/input/register.js';
+import '@cds/core/select/register.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { angleIcon } from '@cds/core/icon/shapes/angle.js';

@@ -13,11 +13,15 @@ export interface LayoutConfig {
   initialLayout: string;
 }
 
-export function elementResize(element: HTMLElement, callbackFn: () => void) {
+export function elementResize(element: HTMLElement, callbackFn: () => void, async = true) {
   const observer = new ResizeObserver(() => {
     // We wrap the callback in requestAnimationFrame to
     // avoid the error of "ResizeObserver loop limit exceeded".
-    window.requestAnimationFrame(() => callbackFn());
+    if (async) {
+      window.requestAnimationFrame(() => callbackFn());
+    } else {
+      callbackFn();
+    }
   });
   observer.observe(element);
   (observer as any).__testTrigger = callbackFn; // hook to trigger resize event as ResizeObserver does not run in headless chrome.
@@ -43,19 +47,7 @@ export function elementVisible(element: HTMLElement, callbackFn: () => void) {
  * options and change the layout of the component until the components layout
  * condition is satisfied.
  */
-export function updateComponentLayout(component: ResponsiveComponent, layoutConfig: LayoutConfig, fn: () => void) {
-  return elementResize(component, () => {
-    if (component.responsive) {
-      calculateOptimalLayout(component, layoutConfig).then(updated => {
-        if (updated) {
-          fn();
-        }
-      });
-    }
-  });
-}
-
-function calculateOptimalLayout(component: ResponsiveComponent, layoutConfig: LayoutConfig): Promise<boolean> {
+export function calculateOptimalLayout(component: ResponsiveComponent, layoutConfig: LayoutConfig): Promise<boolean> {
   return component.updateComplete.then(() => {
     const currentLayout = component.layout;
     component.layout = layoutConfig.layouts[0];

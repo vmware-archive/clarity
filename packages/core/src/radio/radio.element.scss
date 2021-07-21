@@ -9,9 +9,11 @@
   --height: #{$cds-global-space-7};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
   --fill-box-shadow: none;
+  --cursor: pointer;
 }
 
 .input {
+  cursor: var(--cursor);
   width: var(--width);
   height: var(--height);
   min-width: var(--width); // for compact forms with long text
@@ -20,7 +22,6 @@
   display: inline-block;
   border-radius: #{$cds-alias-object-border-radius-300};
   content: '';
-  cursor: pointer;
 }
 
 .input::after {

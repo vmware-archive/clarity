@@ -6,9 +6,9 @@
 import includes from 'ramda/es/includes.js';
 import without from 'ramda/es/without.js';
 
-import { isStringAndNotNilOrEmpty } from './identity.js';
 import { getCssPropertyValue } from './css.js';
 import { pluckPixelValue, transformSpacedStringToArray } from './string.js';
+import { isNumericString, isStringAndNotNilOrEmpty } from './identity.js';
 
 /**
  * We are not going to be opinionated about the use of the disabled attribute here.
@@ -226,15 +226,21 @@ export function windowIsAboveMobileBreakpoint(breakpointAsPixelValue?: string): 
   return breakpointAsPixelValue?.endsWith('px') ? pluckPixelValue(breakpointVal) >= getWindowDimensions().width : false;
 }
 
-export function makeFocusable(element: HTMLElement, addToTabflow = false): HTMLElement {
-  if (!isFocusable(element)) {
-    setAttributes(element, ['tabindex', addToTabflow ? '0' : '-1']);
-  }
-
-  return element;
-}
-
 export function getShadowRootOrElse(hostEl: HTMLElement, fallbackEl?: HTMLElement): HTMLElement {
   const fallTo = fallbackEl ? fallbackEl : hostEl;
   return (hostEl.shadowRoot ? hostEl.shadowRoot : fallTo) as HTMLElement;
+}
+
+export function isElementTextInputType(e: HTMLInputElement) {
+  return /^(?:input|select|textarea)$/i.test(e.nodeName) && e.type !== 'radio' && e.type !== 'checkbox';
+}
+
+export function getInputValueType(value: string) {
+  if (isNumericString(value)) {
+    return 'number';
+  } else if (value.match(/^\d{4}-\d{1,2}-\d{1,2}$/)) {
+    return 'date';
+  } else {
+    return 'text';
+  }
 }

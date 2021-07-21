@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit';
+import { LitElement, PropertyValues, render, RenderOptions } from 'lit';
 
 /**
  * Returns a promise when all components have completed rendering one cycle.
@@ -48,4 +48,23 @@ export function syncPropsForAllItems(
   conditions: { [prop: string]: boolean }
 ) {
   targets.forEach(target => syncProps(target, source, conditions));
+}
+
+/** given an element and prop map, determine if property was updated during the updated lifecycle */
+export function propUpdated(element: any, props: PropertyValues, prop: string) {
+  return props.has(prop) && element[prop] !== props.get(prop);
+}
+
+export function renderBefore(value: unknown, container: HTMLElement | DocumentFragment, options?: RenderOptions) {
+  const el = document.createElement('div');
+  container.prepend(el);
+  render(value, container, { renderBefore: el, ...options });
+  el.remove();
+}
+
+export function renderAfter(value: unknown, container: HTMLElement | DocumentFragment, options?: RenderOptions) {
+  const el = document.createElement('div');
+  container.appendChild(el);
+  render(value, container, { renderBefore: el, ...options });
+  el.remove();
 }

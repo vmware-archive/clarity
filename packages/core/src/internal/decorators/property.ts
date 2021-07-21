@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-
+import { PropertyDeclaration } from 'lit';
 import { property as _property } from 'lit/decorators/property.js';
 import { camelCaseToKebabCase, kebabCaseToPascalCase, capitalizeFirstLetter } from '../utils/string.js';
 import { LogService } from '../services/log.service.js';
@@ -113,24 +113,12 @@ function getRequiredMessage(level = 'warning', propertyName: string, tagName: st
  * @ExportDecoratedItems
  */
 export function property(options?: PropertyConfig) {
-  return (protoOrDescriptor: any, name: string) => {
-    requirePropertyCheck(protoOrDescriptor, name, options);
-    return _property(getDefaultOptions(name, options))(protoOrDescriptor, name);
+  return (protoOrDescriptor: any, name?: PropertyKey) => {
+    if (options.required) {
+      requirePropertyCheck(protoOrDescriptor, name as string, options);
+    }
+    return _property(getDefaultOptions(name as string, options))(protoOrDescriptor, name);
   };
-}
-
-export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
-  noAccessor?: boolean;
-  attribute?: boolean | string;
-  type?: TypeHint;
-  reflect?: boolean;
-  converter?:
-    | ((value: string | null, type?: TypeHint) => Type)
-    | {
-        fromAttribute?(value: string | null, type?: TypeHint): Type;
-        toAttribute?(value: Type, type?: TypeHint): unknown;
-      };
-  hasChanged?(value: Type, oldValue: Type): boolean;
 }
 
 /**
@@ -138,15 +126,12 @@ export interface PropertyDeclaration<Type = unknown, TypeHint = unknown> {
  *
  * This is used for communication between internal component properties
  * that are not exposed as part of the public component API.
- *
- * A internalProperty decorator which creates a LitElement property which will
- * trigger a re-render when set but not allow the value to be updated through
- * public attributes. https://lit.dev/docs/api/decorators/#state
+ * https://lit.dev/docs/api/decorators/#state
  *
  * @ExportDecoratedItems
  */
 export function state(options?: PropertyConfig) {
-  return (protoOrDescriptor: any, name: string) => {
+  return (protoOrDescriptor: any, name?: string) => {
     const defaultOptions: any = getDefaultOptions(name, options);
 
     if (defaultOptions) {

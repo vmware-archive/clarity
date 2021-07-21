@@ -1,45 +1,50 @@
-import { LitElement } from 'lit';
-import { ClosableController } from './closable.controller.js';
+/*
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
 
-export class AriaPopupController {
+import { ReactiveController, ReactiveElement } from 'lit';
+import { listenForAttributeChange } from '../utils/events.js';
+import { TriggerRefController } from './trigger-ref.controller.js';
+
+/**
+ * Provides all nessesary aria-* attributes to create a vaild aria popup
+ */
+export class AriaPopupController<T extends ReactiveElement & { trigger?: HTMLElement }> implements ReactiveController {
   private observer: MutationObserver;
 
-  constructor(private host: LitElement) {
+  private trigger: TriggerRefController<T>;
+
+  constructor(private host: T) {
     this.host.addController(this);
+    this.trigger = new TriggerRefController(this.host);
   }
 
-  private get closableController(): ClosableController {
-    return (this.host as any).closableController;
-  }
-
-  /* c8 ignore next 3 */
   async hostConnected() {
     await this.host.updateComplete;
-    this.onExpand(!this.host.hasAttribute('hidden'));
-
-    this.observer = new MutationObserver(mutations => {
-      for (const mutation of mutations) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'hidden') {
-          this.onExpand(!this.host.hasAttribute('hidden'));
-        }
-      }
-    });
-
-    this.observer.observe(this.host, { attributes: true });
+    this.observer = listenForAttributeChange(this.host, 'hidden', () => this.updateTrigger(!this.host.hidden));
   }
 
-  /* c8 ignore next 2 */
+  async hostUpdate() {
+    await this.host.updateComplete;
+    this.updateTrigger(!this.host.hidden);
+  }
+
   hostDisconnected() {
-    this.onExpand(false);
+    this.updateTrigger(false);
     this.observer.disconnect();
   }
 
-  private onExpand(expand: boolean) {
-    if (this.closableController) {
-      const previousFocusElement = this.closableController.priorActiveElement;
-      if (previousFocusElement && previousFocusElement.hasAttribute('popup')) {
-        previousFocusElement.setAttribute('aria-expanded', expand ? 'true' : 'false');
-      }
+  private updateTrigger(expanded: boolean) {
+    if (this.trigger.current?.hasAttribute('popup')) {
+      this.trigger.current.ariaExpanded = `${expanded}`;
+      this.trigger.current.ariaPressed = `${expanded}`;
+    }
+
+    if (this.trigger.prev?.hasAttribute('popup') && this.trigger.prev !== this.trigger.current) {
+      this.trigger.prev.ariaExpanded = 'false';
+      this.trigger.prev.ariaPressed = 'false';
     }
   }
 }

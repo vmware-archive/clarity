@@ -1,0 +1,67 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Range Select" />
+
+# Grid Range-Select
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Each `cds-grid-cell` has a `selected` property and `selectedChange` event. The `cds-grid` component
+combines the cell selection and can emit a single `rangeSelectionChange` which emits a list of currently
+active/highlighted cells. Range selection can be diabled by setting the `rangeSelection` property on `cds-grid`. Mouse based
+range selection is automatically disabled for draggable rows.
+
+- **Mouse Drag** Click a cell and drag the cursor to a different cell. All cells between the two will be marked as active.
+- **Shift + Arrow Keys** Hold shift and use the arrow keysto focus to another cell. All cells between the two will be marked as active.
+
+<Story id="stories-grid--range-select" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>Status</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-column>Memory</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell selected>vm-host-001</cds-grid-cell>
+    <cds-grid-cell>online</cds-grid-cell>
+    <cds-grid-cell>5%</cds-grid-cell>
+    <cds-grid-cell>10%</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>2 selected</cds-grid-footer>
+</cds-grid>
+```
+
+## Context Menu Range Selection
+
+Using a combination of Range Selection and Dropdowns you can create action context menus
+that can apply to a range of selected cells.
+
+<Story id="stories-grid--range-select-context-menu" />
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

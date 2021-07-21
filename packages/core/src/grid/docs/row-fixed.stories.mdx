@@ -1,0 +1,63 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Data Grid (Preview)/Row Fixed" />
+
+# Grid Row Fixed
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Rows can be fixed in place. This will prevent the row from scrolling out of view.
+To place a row in a fixed position, set the column with a `position="fixed"` attribute. You can enable user toggling
+of the position by using a `cds-action` to set the position state of a given column.
+
+<cds-alert status="warning">Only the first row can be placed in the fixed position and cannot be sorted.</cds-alert>
+
+<Story id="stories-grid--row-fixed" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Stock</cds-grid-column>
+  <cds-grid-column>Average</cds-grid-column>
+  <cds-grid-column>Current</cds-grid-column>
+  <cds-grid-column>About</cds-grid-column>
+  <cds-grid-row position="fixed">
+    <cds-grid-cell>APPL</cds-grid-cell>
+    <cds-grid-cell>$1000</cds-grid-cell>
+    <cds-grid-cell>$0</cds-grid-cell>
+    <cds-grid-cell>...</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-row>
+    <cds-grid-cell>MSFT</cds-grid-cell>
+    <cds-grid-cell>$500</cds-grid-cell>
+    <cds-grid-cell>$0.00</cds-grid-cell>
+    <cds-grid-cell>Lorem ipsum dolor sit amet</cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## API
+
+### cds-grid
+
+<Props of={'cds-grid'} />
+
+### cds-grid-column
+
+<Props of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<Props of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<Props of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<Props of={'cds-grid-footer'} />

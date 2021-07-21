@@ -5,7 +5,7 @@
  */
 
 import { html, LitElement } from 'lit';
-import { state } from 'lit/decorators/state.js';
+import { state } from 'lit/decorators.js';
 import '@cds/core/input/register.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -124,24 +124,28 @@ export function iconsButtons() {
       <cds-input>
         <label>icon</label>
         <input placeholder="example" />
-        <cds-control-action action="prefix" aria-label="select user">
-          <cds-icon shape="user"></cds-icon>
-        </cds-control-action>
+        <cds-control-action action="prefix" shape="user" aria-label="select user"></cds-control-action>
       </cds-input>
 
       <cds-input>
         <label>icon button</label>
         <input placeholder="example" />
-        <cds-control-action action="suffix" aria-label="clear example input" onclick="alert('!')">
-          <cds-icon shape="times"></cds-icon>
-        </cds-control-action>
+        <cds-control-action
+          action="suffix"
+          shape="close"
+          aria-label="clear example input"
+          onclick="alert('!')"
+        ></cds-control-action>
       </cds-input>
 
       <cds-input>
         <label>icon button label</label>
-        <cds-control-action action="label" aria-label="get more details" onclick="alert('!')">
-          <cds-icon shape="info-circle"></cds-icon>
-        </cds-control-action>
+        <cds-control-action
+          action="label"
+          shape="info-circle"
+          aria-label="get more details"
+          onclick="alert('!')"
+        ></cds-control-action>
         <input placeholder="example" />
       </cds-input>
 
@@ -150,18 +154,23 @@ export function iconsButtons() {
         <input placeholder="example" />
         <cds-control-message>
           message text
-          <cds-control-action aria-label="get more details" onclick="alert('!')">
-            <cds-icon shape="info-circle"></cds-icon>
-          </cds-control-action>
+          <cds-control-action
+            shape="info-circle"
+            aria-label="get more details"
+            onclick="alert('!')"
+          ></cds-control-action>
         </cds-control-message>
       </cds-input>
 
       <cds-password>
         <label>additional actions to existing input types</label>
         <input type="password" value="123456" />
-        <cds-control-action action="suffix" aria-label="clear password input" onclick="alert('!')">
-          <cds-icon shape="times"></cds-icon>
-        </cds-control-action>
+        <cds-control-action
+          action="suffix"
+          shape="close"
+          aria-label="clear password input"
+          onclick="alert('!')"
+        ></cds-control-action>
       </cds-password>
     </cds-form-group>
   `;
@@ -238,9 +247,12 @@ export function editableContent() {
             @keydown=${this.updateInput}
             value="example content"
           />
-          <cds-control-action action="prefix" aria-label="edit text content" @click="${this.toggleInput}">
-            <cds-icon shape="pencil"></cds-icon>
-          </cds-control-action>
+          <cds-control-action
+            action="prefix"
+            shape="pencil"
+            aria-label="edit text content"
+            @click="${this.toggleInput}"
+          ></cds-control-action>
         </cds-input>
       `;
     }

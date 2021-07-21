@@ -6,9 +6,13 @@
 
 import { importMapsPlugin } from '@web/dev-server-import-maps';
 import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+// import { fromRollup } from '@web/dev-server-rollup';
+// import alias from '@rollup/plugin-alias';
 
 /** Use Hot Module replacement by adding --hmr to the start command */
 const hmr = process.argv.includes('--hmr');
+
+// const rollupAlias = fromRollup(alias);
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   open: './',
@@ -17,6 +21,14 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
     exportConditions: ['development'],
   },
   plugins: [
+    // rollupAlias({
+    //   entries: [
+    //     { find: '@cds/core/tokens/tokens.json', replacement: `${process.cwd()}/dist/core/tokens/tokens.json` },
+    //     { find: /^@cds\/core\/([^.]+)$/, replacement: `${process.cwd()}/dist/core/$1/index.js` },
+    //     { find: /^@cds\/core\/(.+)\.js$/, replacement: `${process.cwd()}/dist/core/$1.js` },
+    //     { find: /^@cds\/core\/(.+)\.css$/, replacement: `${process.cwd()}/dist/core/$1.css` },
+    //   ],
+    // }),
     importMapsPlugin({
       inject: {
         importMap: {
@@ -40,14 +52,17 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/button-handle': '/dist/core/button-handle/index.js',
             '@cds/core/button-inline': '/dist/core/button-inline/index.js',
             '@cds/core/button-sort': '/dist/core/button-sort/index.js',
+            '@cds/core/button-split': '/dist/core/button-split/index.js',
             '@cds/core/card': '/dist/core/card/index.js',
             '@cds/core/checkbox': '/dist/core/checkbox/index.js',
             '@cds/core/datalist/index.js': '/dist/core/datalist/index.js',
             '@cds/core/date': '/dist/core/date/index.js',
+            '@cds/core/demo': '/dist/core/demo/index.js',
             '@cds/core/divider': '/dist/core/divider/index.js',
             '@cds/core/dropdown': '/dist/core/dropdown/index.js',
             '@cds/core/file': '/dist/core/file/index.js',
             '@cds/core/forms': '/dist/core/forms/index.js',
+            '@cds/core/grid': '/dist/core/grid/index.js',
             '@cds/core/icon': '/dist/core/icon/index.js',
             '@cds/core/input': '/dist/core/input/index.js',
             '@cds/core/internal': '/dist/core/internal/index.js',

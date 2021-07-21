@@ -1,0 +1,67 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal Preview Grid/Cell Editable" />
+
+# Grid Cell Editable
+
+<cds-alert-group status="danger" cds-layout="m-b:lg">
+  <cds-alert>
+    This feature or component is <strong>experimental</strong> and has no defined support policy. Experimental features
+    are subject to change at any time and are not stable.
+  </cds-alert>
+</cds-alert-group>
+
+Cell editing can be created by leveraging the `cds-input` to enable the user to edit the cell. Once the `enter` key is pressed
+re-focus back to the `cds-grid-cell`. Any cell not editable should have the [`aria-readonly="true"` attribute](https://www.w3.org/TR/wai-aria-1.1/#aria-readonly).
+If no cells are editable the `aria-readonly="true"` attribute can be omitted all together.
+
+<Story id="stories-grid--cell-editable" />
+
+```html
+<cds-grid>
+  <cds-grid-column>Host</cds-grid-column>
+  <cds-grid-column>About</cds-grid-column>
+  <cds-grid-column>CPU</cds-grid-column>
+  <cds-grid-row>
+    <cds-grid-cell aria-readonly="true">vm-host-001</cds-grid-cell>
+    <cds-grid-cell>
+      <cds-input>
+        <input type="text" value="1000" aria-label="host about" />
+      </cds-input>
+    </cds-grid-cell>
+    <cds-grid-cell aria-readonly="true">
+      <cds-input>
+        <input type="number" value="25" aria-label="CPU" readonly />
+      </cds-input>
+    </cds-grid-cell>
+  </cds-grid-row>
+</cds-grid>
+```
+
+## Avanced CSV
+
+Combining editable cells, file upload input and simple utilitiy functions you can create an editable import/export CSV datagrid.
+
+<Story id="stories-grid--csv" />
+
+## API
+
+### cds-grid
+
+<ArgsTable of={'cds-grid'} />
+
+### cds-grid-column
+
+<ArgsTable of={'cds-grid-column'} />
+
+### cds-grid-row
+
+<ArgsTable of={'cds-grid-row'} />
+
+### cds-grid-cell
+
+<ArgsTable of={'cds-grid-cell'} />
+
+### cds-grid-footer
+
+<ArgsTable of={'cds-grid-footer'} />

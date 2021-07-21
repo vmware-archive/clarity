@@ -8,7 +8,7 @@ import { testBundleSize } from 'web-test-runner-performance/browser.js';
 
 describe('performance', () => {
   it(`should meet maximum individual css bundle size limits`, async () => {
-    expect((await testBundleSize('@cds/core/global.min.css')).kb).toBeLessThan(8.5);
+    expect((await testBundleSize('@cds/core/global.min.css')).kb).toBeLessThan(8.6);
     expect((await testBundleSize('@cds/core/styles/theme.dark.min.css')).kb).toBeLessThan(0.5);
     expect((await testBundleSize('@cds/core/list/list.min.css')).kb).toBeLessThan(0.5);
 
@@ -38,6 +38,7 @@ describe('performance', () => {
       import '@cds/core/divider/register.js';
       import '@cds/core/file/register.js';
       import '@cds/core/forms/register.js';
+      import '@cds/core/grid/register.js';
       import '@cds/core/icon/register.js';
       import '@cds/core/input/register.js';
       import '@cds/core/modal/register.js';
@@ -55,6 +56,6 @@ describe('performance', () => {
       import '@cds/core/toggle/register.js';
       import '@cds/core/tree-view/register.js';`;
 
-    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(47);
+    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(57);
   });
 });

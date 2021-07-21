@@ -65,6 +65,31 @@ export function createId(prefix = '_') {
   return `${prefix}${Math.random().toString(36).substr(2, 9)}`;
 }
 
+// simplistic way to test objects for equality
+// note that it ignores/removes methods from objects
+export function objectNaiveDeepEquals(obj1: Record<string, unknown>, obj2: Record<string, unknown>) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+export function getFromObjectPath(path: string, dataObj: any, fallback = `$\{${path}}`) {
+  return path.split('.').reduce((res, key) => {
+    try {
+      const val = res[key];
+      switch (true) {
+        case val === null:
+        case val === false:
+        case val === '':
+        case val === 0:
+          return val;
+        default:
+          return val || fallback;
+      }
+    } catch {
+      return fallback;
+    }
+  }, dataObj);
+}
+
 // used by deepClone() tested through integration
 function cloneMap(mp: Map<any, any>): Map<any, any> {
   const clonedMap = new Map();

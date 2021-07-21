@@ -5,7 +5,7 @@
  */
 
 import { LitElement } from 'lit';
-import { property } from 'lit/decorators/property.js';
+import { property } from './property.js';
 import { GlobalStateService } from '../services/global.service.js';
 import { I18nService } from '../services/i18n.service.js';
 

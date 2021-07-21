@@ -5,8 +5,7 @@
  */
 
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
+import { customElement, state } from 'lit/decorators.js';
 import { componentStringsDefault, I18nStrings, I18nService } from '@cds/core/internal';
 
 export default {

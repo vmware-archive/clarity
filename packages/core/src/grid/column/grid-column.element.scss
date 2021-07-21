@@ -1,0 +1,128 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --min-height: var(--column-height, #{$cds-alias-object-interaction-touch-target});
+  --min-width: fit-content;
+  --justify-content: var(--column-justify-content, start);
+  --padding-block: #{$cds-global-space-3};
+  --padding-inline-start: #{$cds-global-space-6};
+  --padding-inline-end: #{$cds-global-space-8};
+  --background: #{$cds-alias-object-container-background-tint};
+  top: 0;
+  z-index: 998;
+  position: sticky;
+  min-height: var(--min-height);
+  min-width: var(--min-width);
+  outline: 0 !important;
+}
+
+.private-host {
+  min-height: var(--min-height);
+  justify-content: var(--justify-content);
+  background: var(--background);
+  /* safari fallback for padding-inline */
+  padding-inline-start: var(--padding-inline-start);
+  padding-inline-end: var(--padding-inline-end);
+  padding-block: var(--padding-block);
+  text-align: left;
+  border: 0;
+  font-weight: 500;
+  color: $cds-global-typography-color-500;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  font-size: #{$cds-global-typography-font-size-3};
+  line-height: 1em;
+  margin: 0;
+  display: flex;
+  gap: #{$cds-global-layout-space-sm};
+  align-items: center;
+  height: 100%;
+  position: sticky !important;
+  box-shadow: 0 $cds-alias-object-border-width-100 0 $cds-alias-object-border-color;
+}
+
+:host([type='action']) {
+  --padding-block: 0;
+  --padding-inline-start: 0;
+  --padding-inline-end: 0;
+}
+
+:host([type='action']) .private-host {
+  justify-content: center;
+}
+
+[cds-button-action],
+::slotted([cds-button-action]) {
+  --outline-offset: calc(#{$cds-global-space-3} * -1);
+}
+
+:host([position='fixed']),
+:host([position='sticky']) {
+  z-index: 999;
+}
+
+::slotted([cds-layout='align:right']),
+::slotted([cds-button-action]) {
+  margin-inline-start: auto;
+}
+
+cds-internal-split-handle {
+  --height: #{$cds-global-layout-space-lg};
+  --min-height: #{$cds-global-layout-space-lg};
+  --secondary-line-display: none;
+  position: absolute;
+  right: $cds-global-space-1;
+}
+
+:host([draggable-hidden]) cds-internal-split-handle {
+  display: none;
+}
+
+.line {
+  top: var(--min-height);
+  width: $cds-global-space-1;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  position: absolute;
+}
+
+[_focused] + .line {
+  right: 0;
+  border-right: $cds-global-space-2 solid $cds-alias-object-interaction-background-highlight;
+}
+
+:host([cds-draggable*='target']) .line {
+  left: #{$cds-global-space-0};
+  border-left: $cds-global-space-2 solid $cds-alias-object-interaction-background-highlight;
+}
+
+:host([cds-draggable*='active']) .private-host {
+  box-shadow: 0 $cds-alias-object-border-width-200 0 $cds-alias-object-interaction-background-highlight;
+}
+
+[focusable] {
+  outline-offset: calc(#{$cds-global-space-2} * -1) !important;
+}
+
+:host([type='action']:focus-within) [focusable] {
+  outline: #{$cds-alias-object-interaction-outline} !important;
+  outline-offset: calc(#{$cds-global-space-2} * -1) !important;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host([type='action']:focus-within) [focusable] {
+    outline: #{$cds-alias-object-interaction-outline-webkit} !important;
+  }
+}
+
+:host([type='action']:focus-within) ::slotted([cds-button-action]),
+:host([type='action']:focus-within) ::slotted([cds-control]) {
+  --cds-alias-object-interaction-outline-webkit: none !important;
+  --cds-alias-object-interaction-outline: none !important;
+}

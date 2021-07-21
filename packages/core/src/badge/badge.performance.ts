@@ -11,7 +11,7 @@ describe('cds-badge performance', () => {
   const badge = html`<cds-badge></cds-badge>`;
 
   it(`should bundle and treeshake badge`, async () => {
-    expect((await testBundleSize('@cds/core/badge/register.js', { optimize: true })).kb).toBeLessThan(12.5);
+    expect((await testBundleSize('@cds/core/badge/register.js', { optimize: true })).kb).toBeLessThan(13);
   });
 
   it(`should render 1 badge under 20ms`, async () => {

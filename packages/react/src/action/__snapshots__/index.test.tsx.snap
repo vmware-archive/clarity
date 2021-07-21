@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsAction snapshot 1`] = `
+<div>
+  <CdsAction
+    aria-label="open options"
+  >
+    <cds-action(CustomElement)
+      __forwardedRef={null}
+      aria-label="open options"
+    >
+      <cds-action
+        __forwardedRef={null}
+        aria-label="open options"
+      />
+    </cds-action(CustomElement)>
+  </CdsAction>
+  <CdsAction
+    aria-label="open menu"
+    shape="bars"
+  >
+    <cds-action(CustomElement)
+      __forwardedRef={null}
+      aria-label="open menu"
+      shape="bars"
+    >
+      <cds-action
+        __forwardedRef={null}
+        aria-label="open menu"
+      />
+    </cds-action(CustomElement)>
+  </CdsAction>
+  <CdsActionResize
+    aria-label="resize column"
+    direction="cross"
+  >
+    <cds-action-resize(CustomElement)
+      __forwardedRef={null}
+      aria-label="resize column"
+      direction="cross"
+    >
+      <cds-action-resize
+        __forwardedRef={null}
+        aria-label="resize column"
+      />
+    </cds-action-resize(CustomElement)>
+  </CdsActionResize>
+  <CdsActionResize
+    aria-label="resize column"
+    direction="main"
+  >
+    <cds-action-resize(CustomElement)
+      __forwardedRef={null}
+      aria-label="resize column"
+      direction="main"
+    >
+      <cds-action-resize
+        __forwardedRef={null}
+        aria-label="resize column"
+      />
+    </cds-action-resize(CustomElement)>
+  </CdsActionResize>
+  <CdsActionSort
+    aria-label="sort list"
+  >
+    <cds-action-sort(CustomElement)
+      __forwardedRef={null}
+      aria-label="sort list"
+    >
+      <cds-action-sort
+        __forwardedRef={null}
+        aria-label="sort list"
+      />
+    </cds-action-sort(CustomElement)>
+  </CdsActionSort>
+  <CdsActionHandle
+    aria-label="move item"
+  >
+    <cds-action-handle(CustomElement)
+      __forwardedRef={null}
+      aria-label="move item"
+    >
+      <cds-action-handle
+        __forwardedRef={null}
+        aria-label="move item"
+      />
+    </cds-action-handle(CustomElement)>
+  </CdsActionHandle>
+  <CdsActionExpand
+    aria-label="open item"
+  >
+    <cds-action-expand(CustomElement)
+      __forwardedRef={null}
+      aria-label="open item"
+    >
+      <cds-action-expand
+        __forwardedRef={null}
+        aria-label="open item"
+      />
+    </cds-action-expand(CustomElement)>
+  </CdsActionExpand>
+</div>
+`;

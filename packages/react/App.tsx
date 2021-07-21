@@ -42,6 +42,7 @@ import { CdsInternalCloseButton } from './dist/react/internal-components/close-b
 import { CdsDropdown } from './dist/react/dropdown/index.js';
 import { CdsInternalPointer } from './dist/react/internal-components/popup/index.js';
 import { CdsInternalPanel } from './dist/react/internal-components/panel/index.js';
+import { CdsGrid, CdsGridColumn, CdsGridRow, CdsGridCell, CdsGridFooter } from './dist/react/grid/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -138,6 +139,87 @@ export default class App extends React.Component<{}, AppState> {
 
         <main>
           <h1>Rendered by React!</h1>
+
+          <h2>Grid</h2>
+
+          <CdsGrid aria-label="basic datagrid demo">
+            <CdsGridColumn>Type</CdsGridColumn>
+            <CdsGridColumn>Description</CdsGridColumn>
+            <CdsGridColumn>Amount</CdsGridColumn>
+            <CdsGridColumn>Balance</CdsGridColumn>
+            <CdsGridRow>
+              <CdsGridCell>Deposit</CdsGridCell>
+              <CdsGridCell>Item</CdsGridCell>
+              <CdsGridCell>$1,000,000.00</CdsGridCell>
+              <CdsGridCell>$1,000,000.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Credit</CdsGridCell>
+              <CdsGridCell>Billing</CdsGridCell>
+              <CdsGridCell>$250.00</CdsGridCell>
+              <CdsGridCell>$523,750.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Debit</CdsGridCell>
+              <CdsGridCell>Renewal</CdsGridCell>
+              <CdsGridCell>$9.00</CdsGridCell>
+              <CdsGridCell>$163,262.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Credit</CdsGridCell>
+              <CdsGridCell>Subscription</CdsGridCell>
+              <CdsGridCell>$53.00</CdsGridCell>
+              <CdsGridCell>$347,423.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Deposit</CdsGridCell>
+              <CdsGridCell>Subscription</CdsGridCell>
+              <CdsGridCell>$1239.00</CdsGridCell>
+              <CdsGridCell>$564,772.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Deposit</CdsGridCell>
+              <CdsGridCell>Service Fee</CdsGridCell>
+              <CdsGridCell>$49.00</CdsGridCell>
+              <CdsGridCell>$977,527.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Debit</CdsGridCell>
+              <CdsGridCell>Account Transfer</CdsGridCell>
+              <CdsGridCell>$2300.00</CdsGridCell>
+              <CdsGridCell>$423,236.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Credit</CdsGridCell>
+              <CdsGridCell>Payment</CdsGridCell>
+              <CdsGridCell>$9.00</CdsGridCell>
+              <CdsGridCell>$199,282.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Debit</CdsGridCell>
+              <CdsGridCell>Unknown</CdsGridCell>
+              <CdsGridCell>$9.00</CdsGridCell>
+              <CdsGridCell>$929,741.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridRow>
+              <CdsGridCell>Debit</CdsGridCell>
+              <CdsGridCell>Provider</CdsGridCell>
+              <CdsGridCell>$9203.00</CdsGridCell>
+              <CdsGridCell>$239,120.00</CdsGridCell>
+            </CdsGridRow>
+            <CdsGridFooter></CdsGridFooter>
+          </CdsGrid>
+
+          <h2>Actions</h2>
+          <div cds-layout="horizontal gap:lg">
+            <CdsAction aria-label="open options"></CdsAction>
+            <CdsAction aria-label="open menu" shape="bars"></CdsAction>
+            <CdsActionResize direction="cross" aria-label="resize column"></CdsActionResize>
+            <CdsActionResize direction="main" aria-label="resize column"></CdsActionResize>
+            <CdsActionSort aria-label="sort list"></CdsActionSort>
+            <CdsActionHandle aria-label="move item"></CdsActionHandle>
+            <CdsActionExpand aria-label="open item"></CdsActionExpand>
+          </div>
 
           <h2>Accordion</h2>
           <CdsAccordion>

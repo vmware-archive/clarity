@@ -67,6 +67,15 @@ slot {
   display: block !important;
 }
 
+[role='dialog'][hidden],
+[role='dialog'][hidden] > *,
+:host([role='dialog'][hidden]),
+:host([role='dialog'][hidden]) ::slotted(*) {
+  // safari https://www.tpgi.com/the-current-state-of-modal-dialog-accessibility/
+  display: block !important;
+  visibility: hidden !important;
+}
+
 // normalize focus styles
 // https://coryrylan.com/blog/dont-override-css-outline-focus-styles
 :host([tabindex='0']:focus),

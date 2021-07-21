@@ -12,7 +12,6 @@ import {
   i18n,
   I18nService,
   isScrollable,
-  HTMLAttributeTuple,
   property,
   reverseAnimation,
   querySlot,
@@ -90,15 +89,6 @@ export class CdsModal extends CdsInternalOverlay {
   @query('.modal-body') content: HTMLElement;
   @querySlot('cds-modal-header') modalHeader: CdsModalHeader;
   @querySlot('cds-modal-actions') modalFooter: CdsModalActions;
-
-  protected get closeButtonAttrs(): HTMLAttributeTuple[] {
-    return [
-      ['cds-layout', 'align:top'],
-      ['slot', 'close-button'],
-      ['aria-label', this.i18n.closeButtonAriaLabel],
-      ['icon-size', '24'],
-    ];
-  }
 
   protected isScrollable = false;
 

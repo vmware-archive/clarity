@@ -26,7 +26,8 @@ export interface CDSGlobal {
 
 export interface CDSState {
   focusTrapItems: Readonly<{ focusTrapId: string }[]>;
-  i18nRegistry: Readonly<Record<string, unknown>>;
+  layerElements: Readonly<HTMLElement[]>;
+  i18nRegistry: Readonly<Record<string, any>>;
   elementRegistry: Readonly<{ [key: string]: any }>;
   iconRegistry: Readonly<Record<string, unknown>>;
   motionRegistry: Readonly<MotionRegistry>;
@@ -91,6 +92,7 @@ function initializeCDSGlobal() {
     _isStateProxied: false,
     _state: {
       focusTrapItems: [],
+      layerElements: [],
       i18nRegistry: {},
       elementRegistry: {},
       iconRegistry: {},

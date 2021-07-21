@@ -7,7 +7,7 @@
     "sandbox": "web-dev-server -c web-dev-server.sandbox.mjs",
     "build": "npm-run-all -s clean build:tokens build:lib build:update",
     "test": "npm-run-all test:unit test:performance",
-    "lint": "eslint \"src/**/*.ts\" && stylelint --config \"./stylelint.config.js\" \"./**/*.scss\" && lit-analyzer ./src",
+    "lint": "eslint \"src/**/*.ts\" --ignore-pattern \"dist\" && stylelint --config \"./stylelint.config.js\" \"./**/*.scss\" && lit-analyzer ./src",
     "storybook:start": "wds -c ./web-dev-server.storybook.mjs",
     "storybook:build": "build-storybook --config-dir .storybook --output-dir ../../dist/website/storybook/core",
     "lint:fix": "eslint --fix \"./**/*.ts\" && stylelint --fix \"./**/*.scss\"",

@@ -1,0 +1,66 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --width: 75%;
+  --inset-inline-start: auto;
+  --inset-inline-end: 0;
+  --backdrop-background: none;
+  width: var(--width);
+  display: block;
+  z-index: 99;
+  position: absolute;
+  inset: 0;
+  inset-inline-start: var(--inset-inline-start);
+  inset-inline-end: var(--inset-inline-end);
+}
+
+.private-host {
+  background: $cds-alias-object-container-background;
+  z-index: 998;
+  border: 0;
+  color: $cds-global-typography-color-500;
+  border-inline-start: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: $cds-global-space-9;
+  overflow-y: auto;
+}
+
+:host([_overlay='full']) {
+  inset: 0 !important;
+}
+
+:host([position='bottom']) {
+  --width: 100% !important;
+
+  .private-host {
+    border-inline-start: 0;
+    border-block-start: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color};
+  }
+
+  .caret {
+    display: none;
+  }
+}
+
+::slotted([part='close']) {
+  position: absolute;
+  top: $cds-global-space-7;
+  inset-inline-end: $cds-global-space-7;
+}
+
+.caret {
+  background: $cds-alias-object-container-background;
+  width: $cds-global-space-4;
+  height: calc(var(--row-height) - #{$cds-global-space-2});
+  position: absolute;
+  inset-inline-start: calc(#{$cds-global-space-3} * -1);
+  top: var(--caret-top);
+  z-index: 999;
+}

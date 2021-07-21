@@ -1,4 +1,5 @@
 import { setCustomElements } from '@web/storybook-prebuilt/web-components.js';
+import { addons } from '@web/storybook-prebuilt/addons';
 import pkg from '../dist/core/custom-elements.json';
 import previewStyles from './public/preview.css';
 import commonStyles from './public/common.css';
@@ -6,6 +7,10 @@ import managerStyles from './public/manager.css';
 import img from './public/assets/images/clarity-logo.svg';
 
 setCustomElements(pkg);
+
+addons.setConfig({
+  showPanel: false,
+});
 
 // storybook-prebuild does not run the manager.js through rollup so custom
 // styles need to be appended from the preview.js
@@ -107,9 +112,8 @@ export const parameters = {
           'Toggle',
           'Date (Internal)',
         ],
-        'Components (Preview)',
-        ['Circular Progress', 'Divider', 'Pagination'],
-        'Utilities (Preview)',
+        'Stories',
+        'Internal Stories',
         'Internal Documentation',
         [
           'Getting Started',
@@ -127,8 +131,58 @@ export const parameters = {
         ],
         'Internal API',
         ['Close Button', 'Panel', 'Motion', 'Overlay'],
-        'Stories',
-        'Internal Stories',
+        'Internal Preview Grid',
+        [
+          'Basic',
+          'Kitchen Sink',
+          'Row Single Select',
+          'Row Multi Select',
+          'Row Action',
+          'Row Batch Action',
+          'Row Sort',
+          'Row Multi Sort',
+          'Row Detail',
+          'Row Header',
+          'Row and Column Height',
+          'Column Filter',
+          'Column Multi Filter',
+          'Column Width',
+          'Column Resize',
+          'Column Visibility',
+          'Column Sticky',
+          'Column Fixed',
+          'Column Align',
+          'Async Data',
+          'Footer',
+          'Pagination',
+          'Placeholder',
+          'Scroll Height',
+          'Async Data',
+          'Borders',
+          'Compact',
+          'Dark Theme',
+          'RTL',
+          'Responsive',
+          'Performance',
+          // experimental
+          'Cell Editable',
+          'Range Select',
+          'Row Fixed',
+          'Row Sticky',
+          'Row Groups',
+          'Row Draggable',
+          'Row Swappable',
+          'Column Draggable',
+        ],
+        'Internal Controllers',
+        [
+          'Aria Grid Controller',
+          'Aria Popup Controller',
+          'Responsive Controller',
+          'Key Navigation List Controller',
+          'Key Navigation Grid Controller',
+          'Draggable List Controller',
+        ],
       ],
     },
   },
@@ -147,6 +201,20 @@ export const globalTypes = {
         { value: 'dark', title: 'Dark Theme' },
         { value: 'low-motion', title: 'Low Motion Theme' },
         { value: 'high-contrast', title: 'High Contrast Theme' },
+      ],
+    },
+  },
+  dataTheme: {
+    name: 'Data',
+    description: 'Available demo datasets',
+    defaultValue: 'infrastructure',
+    toolbar: {
+      icon: 'database',
+      showName: true,
+      items: [
+        { value: 'infrastructure', title: 'Infrastructure' },
+        { value: 'food', title: 'Food' },
+        { value: 'system', title: 'System' },
       ],
     },
   },

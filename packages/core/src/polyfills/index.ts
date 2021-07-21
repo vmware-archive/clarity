@@ -4,4 +4,5 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import './at.js';
 import './aria-reflect.js';

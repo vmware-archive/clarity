@@ -23,8 +23,7 @@ body {
   background: transparent !important;
 }
 
-.sidebar-header a[title='Storybook'],
-.sidebar-header button[title='Shortcuts'] {
+.sidebar-header a[title='Storybook'] {
   color: var(--cds-global-typography-color-500) !important;
 }
 

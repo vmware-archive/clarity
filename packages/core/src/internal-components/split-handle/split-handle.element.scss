@@ -1,0 +1,103 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --color: #{$cds-global-color-construction-300};
+  --cursor: ew-resize;
+  --padding: 0;
+  --height: 100%;
+  --width: #{$cds-global-space-1};
+  --min-height: #{$cds-alias-object-interaction-touch-target};
+  --secondary-line-display: block;
+  touch-action: pan-y;
+}
+
+.private-host {
+  position: relative;
+  line-height: 0;
+  display: block;
+  height: var(--height);
+  width: var(--width);
+  background: var(--color);
+  cursor: var(--cursor);
+  min-height: var(--min-height);
+}
+
+.private-host::before {
+  content: '';
+  position: absolute;
+  display: var(--secondary-line-display);
+  background: var(--color);
+  height: $cds-global-space-9;
+  width: $cds-global-space-1;
+  right: calc(#{$cds-global-space-3} * -1);
+  top: calc(50% - #{$cds-global-space-6});
+}
+
+.private-host::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: calc(calc(#{$cds-alias-object-interaction-touch-target} / 2) * -1);
+  min-width: $cds-alias-object-interaction-touch-target;
+  min-height: $cds-alias-object-interaction-touch-target;
+}
+
+:host([direction='horizontal']) {
+  --cursor: ns-resize;
+  --width: 100%;
+  --height: #{$cds-global-space-1};
+  touch-action: pan-x;
+
+  .private-host {
+    min-width: $cds-alias-object-interaction-touch-target;
+    min-height: auto;
+  }
+
+  .private-host::after {
+    top: calc(calc(#{$cds-alias-object-interaction-touch-target} / 2) * -1);
+    left: 0;
+  }
+
+  .private-host::before {
+    content: '';
+    position: absolute;
+    background: var(--color);
+    height: $cds-global-space-1;
+    width: $cds-global-space-9;
+    top: $cds-global-space-3;
+    left: calc(50% - #{$cds-global-space-6});
+  }
+}
+
+:host(:focus-within) {
+  outline: $cds-alias-object-interaction-outline;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host(:focus-within) {
+    outline-color: -webkit-focus-ring-color;
+  }
+}
+
+::slotted(input) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: $cds-global-space-1;
+  width: $cds-global-space-1;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+:host([_readonly]) {
+  --cursor: default;
+
+  .private-host::after,
+  .private-host::before {
+    display: none;
+  }
+}

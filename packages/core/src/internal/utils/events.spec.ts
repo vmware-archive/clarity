@@ -95,9 +95,9 @@ describe('onFirstInteraction', () => {
     expect(true).toBe(true);
   });
 
-  it('should track mousedown interaction', async () => {
+  it('should track touchstart interaction', async () => {
     const event = onFirstInteraction(element);
-    element.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+    element.dispatchEvent(new MouseEvent('touchstart', { bubbles: true, cancelable: true }));
     await event;
     expect(true).toBe(true);
   });

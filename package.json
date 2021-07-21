@@ -149,11 +149,5 @@
     "node": ">=14 <15",
     "yarn": ">=1.22.4 <2",
     "npm": "     PLEASE USE YARN     "
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format:fix && yarn license:fix",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }

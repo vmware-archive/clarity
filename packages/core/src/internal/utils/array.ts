@@ -49,3 +49,20 @@ export function arrayRemoveAllInstances<T>(val: T | T[], arr: T[]): T[] {
   const arrayRemovalMachine = ([].concat(val as never) as unknown) as T[];
   return arr.filter(item => !arrayRemovalMachine.includes(item));
 }
+
+export function groupArray<T>(arr: T[], size: number) {
+  return [...arr].reduce((acc, val, i) => {
+    const idx = Math.floor(i / size);
+    const page = acc[idx] || (acc[idx] = []);
+    page.push(val);
+    return acc;
+  }, [] as T[][]);
+}
+
+export async function* asyncGroupArray(items: any[], batch = 100): any {
+  const values = groupArray(items, batch);
+  for (let i = 0; i < values.length; i++) {
+    yield values[i];
+    await new Promise(r => setTimeout(r, 0));
+  }
+}

@@ -187,6 +187,11 @@
   line-height: inherit !important;
   font-size: inherit !important;
 
+  &:focus {
+    outline: #{$cds-alias-object-interaction-outline};
+    outline-offset: #{$cds-alias-object-interaction-outline-offset};
+  }
+
   &:hover {
     color: $cds-global-typography-link-color-hover !important;
   }
@@ -198,6 +203,12 @@
     &:hover {
       color: $cds-global-typography-link-color-visited-hover !important;
     }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  [cds-text='link']:focus {
+    outline: #{$cds-alias-object-interaction-outline-webkit};
   }
 }
 

@@ -9,9 +9,9 @@ import { testBundleSize, testRenderTime } from 'web-test-runner-performance/brow
 import '@cds/core/button-sort/register.js';
 
 describe('cds-button-sort bundle performance', () => {
-  it(`should bundle and treeshake component in under 22kb`, async () => {
+  it(`should bundle and treeshake component in under 23kb`, async () => {
     const result = await testBundleSize(`import '@cds/core/button-sort/register.js'`);
-    expect(result.kb).toBeLessThan(22);
+    expect(result.kb).toBeLessThan(23);
   });
 });
 

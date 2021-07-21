@@ -1,0 +1,55 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal API/Split Handle" />
+
+# Internal Split Handle
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+The `cds-internal-split-handle` component provides a action button as a split handle for
+resizable type features. The component also provides two direction options `vertical` and `horizontal`.
+
+## Installation
+
+```typescript
+import '@cds/core/internal-components/split-handle/register.js';
+```
+
+## Usage
+
+```html
+<cds-internal-split-handle direction="horizontal">
+  <input type="range" aria-label="resize panel" value="100" min="20" max="180" step="10" />
+</cds-internal-split-handle>
+```
+
+<Preview>
+  <Story id="stories-internal-components-split-handle--basic" />
+</Preview>
+
+The split handle can be used to create resizable panels or elements.
+
+```html
+<cds-card>
+  <section style="grid-template-columns: ${this.width}px 1px 1fr">
+    <div class="one"></div>
+    <cds-internal-split-handle>
+      <input type="range" aria-label="resize panel" value="90" min="20" max="180" step="10" />
+    </cds-internal-split-handle>
+    <div class="two"></div>
+  </section>
+</cds-card>
+```
+
+<Preview>
+  <Story id="stories-internal-components-split-handle--panel" />
+</Preview>
+
+## API
+
+<ArgsTable of={'cds-internal-split-handle'} />

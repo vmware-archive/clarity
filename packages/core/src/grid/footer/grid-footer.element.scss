@@ -1,0 +1,26 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --min-height: var(--column-height, #{$cds-alias-object-interaction-touch-target});
+}
+
+.private-host {
+  min-height: var(--min-height);
+  display: flex;
+  align-items: center;
+  padding: 0 $cds-global-space-5;
+  border-top: $cds-alias-object-border-width-100 solid $cds-alias-object-border-color;
+  color: $cds-global-typography-color-500;
+  background: $cds-alias-object-container-background-tint;
+  font-size: #{$cds-global-typography-font-size-3};
+  width: 100%;
+}
+
+::slotted(cds-pagination),
+::slotted(cds-grid-pagination) {
+  margin-left: auto;
+}

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { compareSumTo, getMillisecondsFromSeconds, sumAndSubtract } from './math.js';
+import { compareSumTo, getMillisecondsFromSeconds, getOffesetDifference, sumAndSubtract } from './math.js';
 
 describe('Functional Helper: ', () => {
   describe('sumAndSubtract(): ', () => {
@@ -68,6 +68,25 @@ describe('Functional Helper: ', () => {
     it('converts negative values as expected', () => {
       expect(getMillisecondsFromSeconds(-1)).toBe(-1000);
       expect(getMillisecondsFromSeconds(-0.5)).toBe(-500);
+    });
+  });
+
+  describe('getOffsetDifference', () => {
+    it('should return the offset difference of two positive numbers', () => {
+      expect(getOffesetDifference(5, 15)).toBe(10);
+      expect(getOffesetDifference(15, 5)).toBe(-10);
+    });
+
+    it('should return the offset difference of two negative numbers', () => {
+      expect(getOffesetDifference(-5, -15)).toBe(-10);
+      expect(getOffesetDifference(-15, -5)).toBe(10);
+    });
+
+    it('should return the offset difference negative and positive numbers', () => {
+      expect(getOffesetDifference(5, -15)).toBe(-20);
+      expect(getOffesetDifference(15, -5)).toBe(-20);
+      expect(getOffesetDifference(-15, 5)).toBe(20);
+      expect(getOffesetDifference(-5, 15)).toBe(20);
     });
   });
 });

@@ -2,6 +2,39 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.4.3",
+      "date": "2021-07-24",
+      "description": "This is a feature and bug release.",
+      "feat": [
+        {
+          "issue": 6020,
+          "title": "feat(core:tree-view): beta release",
+          "project": "core",
+          "scope": "tree-view"
+        },
+        {
+          "issue": 6136,
+          "title": "fix(core:layout): remove line height erasure when disabled on cds-layout",
+          "project": "core",
+          "scope": "layout"
+        },
+        {
+          "issue": 6024,
+          "title": "feat(core:navigation): beta release",
+          "project": "core",
+          "scope": "navigation"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6097,
+          "title": "fix(core): global state service sync",
+          "project": "core",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "5.4.2",
       "date": "2021-07-08",
       "description": "This is a feature and bug release.",

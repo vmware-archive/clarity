@@ -1,12 +1,17 @@
 {
   "name": "@cds/core",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "license": "MIT",
   "author": "clarity",
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
   "customElements": "custom-elements.json",
-  "keywords": ["web component", "design system", "clarity", "ui"],
+  "keywords": [
+    "web component",
+    "design system",
+    "clarity",
+    "ui"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/vmware/clarity.git"
@@ -18,7 +23,9 @@
   "module": "./index.js",
   "typings": "./index.d.ts",
   "type": "module",
-  "files": ["*"],
+  "files": [
+    "*"
+  ],
   "dependencies": {
     "lit": "2.0.0-rc.2",
     "ramda": "^0.27.1",

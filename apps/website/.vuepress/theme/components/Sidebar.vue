@@ -126,6 +126,12 @@
 .nav-group-children {
   overflow-y: hidden;
   transition: height 0.2s ease-in-out;
+
+  // This fixes an unknown rendering issue with the expanded nav-group-children. The calculation in template is fine.
+  // This works for now.
+  &.is-expanded {
+    height: fit-content !important;
+  }
 }
 .nav-group-trigger-icon {
   padding-top: 10px;

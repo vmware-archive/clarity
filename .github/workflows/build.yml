@@ -17,7 +17,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}-${{ github.base_ref }}
+          key: ${{ runner.os }}-modules-v1-${{ hashFiles('**/yarn.lock') }}-${{ github.base_ref }}
       - run: yarn install
       - run: yarn build:ci
 

@@ -56,10 +56,10 @@
     "build:sync-versions": "node ./scripts/sync-versions.js",
     "build:release": "npm-run-all clean:build format lint test build:angular schematics:build build:ui build:icons build:sync-versions golden:fix golden:test",
     "build:ci": "npm-run-all build:release build:website build:dev",
-    "publish": "npm publish dist/clr-angular; npm publish dist/clr-ui; npm publish dist/clr-icons;",
-    "publish:rc": "npm publish dist/clr-angular --tag rc; npm publish dist/clr-ui --tag rc; npm publish dist/clr-icons --tag rc;",
-    "publish:next": "npm publish dist/clr-angular --tag next; npm publish dist/clr-ui --tag next; npm publish dist/clr-icons --tag next;",
-    "publish:local": "npm publish dist/clr-icons --registry http://localhost:4873 --tag local; npm publish dist/clr-ui --registry http://localhost:4873 --tag local; npm publish dist/clr-angular --registry http://localhost:4873 --tag local;"
+    "publish": "npm publish ./dist/clr-angular; npm publish ./dist/clr-ui; npm publish ./dist/clr-icons;",
+    "publish:rc": "npm publish ./dist/clr-angular --tag rc; npm publish ./dist/clr-ui --tag rc; npm publish ./dist/clr-icons --tag rc;",
+    "publish:next": "npm publish ./dist/clr-angular --tag next; npm publish ./dist/clr-ui --tag next; npm publish ./dist/clr-icons --tag next;",
+    "publish:local": "npm publish ./dist/clr-icons --registry http://localhost:4873 --tag local; npm publish ./dist/clr-ui --registry http://localhost:4873 --tag local; npm publish ./dist/clr-angular --registry http://localhost:4873 --tag local;"
   },
   "private": true,
   "dependencies": {

@@ -16,6 +16,7 @@
   "5.0.0-rc.0": "src/releases/5.x/5.0.0-rc.0.html",
   "5.0.0-next.0": "src/releases/5.x/5.0.0-next.0.html",
 
+  "4.0.16": "src/releases/4.x/4.0.15.html",
   "4.0.15": "src/releases/4.x/4.0.15.html",
   "4.0.14": "src/releases/4.x/4.0.14.html",
   "4.0.13": "src/releases/4.x/4.0.13.html",

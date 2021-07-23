@@ -2,8 +2,8 @@
   "$schema": "./schema.json",
   "releases": [
     {
-      "version": "5.4.3",
-      "date": "2021-07-24",
+      "version": "5.5.0",
+      "date": "2021-07-25",
       "description": "This is a feature and bug release.",
       "feat": [
         {

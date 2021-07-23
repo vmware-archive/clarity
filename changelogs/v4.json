@@ -2,6 +2,20 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "4.0.16",
+      "date": "2021-07-23",
+      "description": "This is a bug fix release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6152,
+          "title": "fix: styles selectors fixes for datagrid and select (backport)",
+          "project": "Datagrid",
+          "scope": "Angular"
+        }
+      ]
+    },
+    {
       "version": "4.0.15",
       "date": "2021-05-06",
       "description": "This is a bug fix release.",

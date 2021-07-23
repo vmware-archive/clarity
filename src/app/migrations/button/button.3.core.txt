@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-button action="outline">Primary</cds-button>
+    <cds-button action="outline" status="success">Success</cds-button>
+    <cds-button action="outline" status="warning">Warning</cds-button>
+    <cds-button action="outline" status="danger">Danger</cds-button>
+    <cds-button action="outline" disabled>Disabled</cds-button>
+   `,
+})
+export class AppComponent {}

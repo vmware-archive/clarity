@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <button [clrLoading]="0" class="btn btn-info-outline">Default</button>
+    <button [clrLoading]="1" class="btn btn-info-outline">Loading</button>
+    <button [clrLoading]="2" class="btn btn-success-outline">Success</button>
+    <button [clrLoading]="3" class="btn btn-danger-outline">Error</button>
+  `,
+})
+export class AppComponent {}

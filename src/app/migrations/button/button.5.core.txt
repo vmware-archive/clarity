@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { ClarityIcons, homeIcon, warningStandardIcon, cogIcon, errorStandardIcon, checkIcon } from '@cds/core/icon';
+
+ClarityIcons.addIcons(homeIcon, warningStandardIcon, cogIcon, errorStandardIcon, checkIcon);
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-button type="button" action="outline" aria-label="home">
+      <cds-icon shape="home"></cds-icon>
+    </cds-button>
+    <cds-button type="button" status="primary" aria-label="settings">
+      <cds-icon shape="cog"></cds-icon>
+    </cds-button>
+    <cds-button type="button" status="warning" aria-label="warning">
+      <cds-icon shape="warning-standard"></cds-icon>
+    </cds-button>
+    <cds-button type="button" status="danger" aria-label="error">
+      <cds-icon shape="error-standard"></cds-icon>
+    </cds-button>
+    <cds-button type="button" status="success" aria-label="done">
+      <cds-icon shape="check"></cds-icon>
+    </cds-button>
+    <cds-button type="button" disabled aria-label="home">
+      <cds-icon shape="home"></cds-icon>
+    </cds-button>
+  `,
+})
+export class AppComponent {}

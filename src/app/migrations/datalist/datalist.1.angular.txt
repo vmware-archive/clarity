@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-datalist-container>
+        <label>datalist</label>
+        <input clrDatalistInput placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </clr-datalist-container>
+    </form>
+  `,
+})
+export class AppComponent {
+  items = ['Red', 'Green', 'Blue'];
+}

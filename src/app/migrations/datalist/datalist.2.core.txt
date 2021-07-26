@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm [formGroup]="model">
+      <cds-datalist status="{{ itemHasErrors ? 'error' : 'neutral' }}" control-width="shrink">
+        <label>datalist</label>
+        <input placeholder="No label" formControlName="item" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+        <cds-control-message *ngIf="itemHasErrors">error message</cds-control-message>
+      </cds-datalist>
+    </form>
+    {{ model.controls.item.errors | json }}
+  `,
+})
+export class AppComponent {
+  items = ['Red', 'Green', 'Blue'];
+
+  itemHasErrors: boolean | null = false;
+
+  model = new FormGroup({
+    item: new FormControl('', [Validators.required, Validators.minLength(4)]),
+  });
+
+  ngOnInit() {
+    this.model.controls.item.valueChanges.subscribe(value => {
+      this.itemHasErrors = this.model.controls.item.errors && this.model.controls.item.dirty;
+    });
+  }
+}

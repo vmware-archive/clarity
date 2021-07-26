@@ -16,7 +16,7 @@ import { AccordionPage } from './pages/accordion.page';
 import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
 import { ButtonPage } from './pages/button.page';
-import { DatalistPage } from './pages/detalist.page';
+import { DatalistPage } from './pages/datalist.page';
 import { FormPage } from './pages/form.page';
 import { InputPage } from './pages/input.page';
 import { ListPage } from './pages/list.page';

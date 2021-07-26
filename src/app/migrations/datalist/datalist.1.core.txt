@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/datalist/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-datalist control-width="shrink">
+      <label>datalist</label>
+      <input placeholder="No label" />
+      <datalist>
+        <option *ngFor="let item of items" [value]="item"></option>
+      </datalist>
+    </cds-datalist>
+  `,
+})
+export class AppComponent {
+  items = ['Red', 'Green', 'Blue'];
+}

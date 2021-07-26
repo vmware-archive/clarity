@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@cds/core": "./dist/core",
-    "@clr/ui": "./dist/clr-ui",
+    "@clr/ui": "12.0.0",
     "@sentry/browser": "5.15.5",
     "@sentry/integrations": "5.15.5",
     "markdown-it-attrs": "^3.0.3",

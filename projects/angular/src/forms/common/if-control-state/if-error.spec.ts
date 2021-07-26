@@ -128,6 +128,18 @@ export default function (): void {
         expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
       });
 
+      it('updates the error message with values from error object in context', () => {
+        const control = new FormControl('abcdef', [Validators.maxLength(5)]);
+        ngControlService.setControl(control);
+        ifControlStateService.triggerStatusChange();
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-6`);
+
+        control.setValue('abcdefg');
+        fixture.detectChanges();
+        expect(fixture.nativeElement.innerHTML).toContain(`${maxLengthMessage}-5-7`);
+      });
+
       it('should show error only when they are required', () => {
         const control = new FormControl(undefined, [
           Validators.required,

@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Clarity Design System</title>
-    <meta name="Description" content="Clarity Design System" />
+    <title>Clarity Core - CDN Starter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://unpkg.com/normalize.css/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@cds/core@next/global.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@cds/city/css/bundles/default.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/modern-normalize@1.1.0/modern-normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@cds/core@5.5.0/global.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@cds/city@1.1.0/css/bundles/default.min.css" />
   </head>
-  <body>
+  <body cds-text="body">
     <main cds-layout="vertical gap:lg p:lg">
-      <h1 cds-text="heading">Clarity Design <cds-badge status="success"></cds-badge></h1>
+      <h1 cds-text="heading">Clarity Core Demo - CDN Starter</h1>
 
-      <p cds-text="body">
-        This is an example of Clarity with no build step or bundling required.
-      </p>
+      <cds-button status="primary">Hello There</cds-button>
 
-      <p cds-text="body">
-        <a href="https://clarity.design/storybook/core" cds-text="link">API Documentation</a>
-      </p>
+      <cds-alert-group status="danger" hidden>
+        <cds-alert closable>
+          This is an example of Clarity with no build step or bundling required.
+        </cds-alert>
+      </cds-alert-group>
     </main>
-    <script type="module" src="https://unpkg.com/@cds/core@next/badge/register.js?module"></script>
     <script type="module">
-      document.querySelector('cds-badge').textContent = `v${window.CDS.getVersion().versions[0]}`;
+      import 'https://cdn.skypack.dev/@cds/core@v5.5.0/button/register.js';
+      import 'https://cdn.skypack.dev/@cds/core@v5.5.0/alert/register.js';
+
+      const button = document.querySelector('cds-button');
+      const alertGroup = document.querySelector('cds-alert-group');
+      const alert = document.querySelector('cds-alert');
+
+      button.addEventListener('click', () => {
+        alertGroup.removeAttribute('hidden');
+      });
+
+      alert.addEventListener('closeChange', () => {
+        alertGroup.setAttribute('hidden', '');
+      });
     </script>
   </body>
 </html>

@@ -1,6 +1,6 @@
-@import 'normalize.css/normalize.css';
+@import 'modern-normalize/modern-normalize.css';
 @import '@cds/city/css/bundles/default.min.css';
-@import '@cds/core/global.min.css';
+// @import '@cds/core/global.min.css';// causing server to fail https://github.com/angular/angular-cli/issues/20760#issuecomment-840608632
 
 // optionally hide component until created
 cds-alert,

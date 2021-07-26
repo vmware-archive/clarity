@@ -1,11 +1,4 @@
 <main cds-text="body" cds-layout="vertical gap:lg p:lg">
-  <style>
-    cds-alert-group {
-      --background: skyblue;
-      --color: #2d2d2d;
-    }
-  </style>
-
   <cds-alert-group status="warning" *ngIf="show">
     <cds-alert [closable]="true" (closeChange)="show = false">
       Hello World

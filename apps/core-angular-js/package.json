@@ -1,33 +1,29 @@
 {
   "name": "core-angular-js",
-  "version": "1.0.0",
-  "description": "",
-  "scripts": {
-    "start": "parcel src/index.html --cache-dir=./.parcel-cache",
-    "build": "yarn run clean && parcel build src/index.html --cache-dir=./.parcel-cache",
-    "bundle": "source-map-explorer dist/*.js",
-    "clean": "del ./dist .parcel-cache"
-  },
-  "browserModern": "dist/index.html",
-  "targets": {
-    "browserModern": {
-      "engines": {
-        "browsers": [
-          "last 2 Chrome versions"
-        ]
-      }
-    }
-  },
+  "version": "0.0.0",
+  "author": "Clarity",
   "license": "MIT",
+  "scripts": {
+    "start": "rollup -c rollup.config.js --watch",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && rollup -c rollup.config.js",
+    "bundle-check": "source-map-explorer dist/*.js"
+  },
   "dependencies": {
-    "@cds/city": "^1.1.0",
+    "angular": "^1.8.2",
+    "@cds/city": "1.1.0",
     "@cds/core": "../../dist/core",
-    "angular": "^1.8.0",
-    "del-cli": "^3.0.1",
-    "normalize.css": "^8.0.1"
+    "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
-    "parcel": "2.0.0-beta.1",
-    "source-map-explorer": "^2.1.2"
+    "@open-wc/rollup-plugin-html": "^1.2.5",
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@web/dev-server": "^0.1.18",
+    "rollup": "^2.53.2",
+    "rollup-plugin-browsersync": "^1.3.3",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-styles": "^3.14.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "source-map-explorer": "^2.5.2"
   }
 }

@@ -4,54 +4,40 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --source-map=true",
-    "source-map": "cd dist/ng-app && source-map-explorer *.js",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.2.3",
-    "@angular/common": "~11.2.3",
-    "@angular/compiler": "~11.2.3",
-    "@angular/core": "~11.2.3",
-    "@angular/forms": "~11.2.3",
-    "@angular/platform-browser": "~11.2.3",
-    "@angular/platform-browser-dynamic": "~11.2.3",
-    "@angular/router": "~11.2.3",
+    "@angular/animations": "~12.1.2",
+    "@angular/common": "~12.1.2",
+    "@angular/compiler": "~12.1.2",
+    "@angular/core": "~12.1.2",
+    "@angular/forms": "~12.1.2",
+    "@angular/platform-browser": "~12.1.2",
+    "@angular/platform-browser-dynamic": "~12.1.2",
+    "@angular/router": "~12.1.2",
     "@cds/city": "^1.1.0",
     "@cds/core": "../../dist/core",
     "@cds/angular": "../../dist/angular",
-    "normalize.css": "^8.0.1",
+    "modern-normalize": "^1.1.0",
     "rxjs": "~6.6.0",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.11.3"
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.2",
-    "@angular/cli": "~11.2.2",
-    "@angular/compiler-cli": "~11.2.3",
-    "@types/jasmine": "~3.6.0",
+    "@angular-devkit/build-angular": "~12.1.2",
+    "@angular/cli": "~12.1.2",
+    "@angular/compiler-cli": "~12.1.2",
+    "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
-    "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.1.0",
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
-    "postcss-cli": "7.1.0",
-    "protractor": "~7.0.0",
-    "sass": "1.32.8",
-    "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~4.1.2"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.3.2"
   }
 }

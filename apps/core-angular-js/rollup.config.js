@@ -4,6 +4,7 @@ import browsersync from 'rollup-plugin-browsersync';
 import { terser } from 'rollup-plugin-terser';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import styles from 'rollup-plugin-styles';
+import commonjs from '@rollup/plugin-commonjs';
 
 const prod = !process.env.ROLLUP_WATCH;
 
@@ -12,6 +13,7 @@ export default {
   output: { dir: 'dist', format: 'esm' },
   plugins: [
     nodeResolve(),
+    commonjs(),
     html(),
     styles(),
     prod ? minifyHTML() : [],

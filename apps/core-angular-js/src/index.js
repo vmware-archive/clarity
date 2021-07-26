@@ -1,3 +1,4 @@
+import './index.css';
 import angular from 'angular';
 import '@cds/core/alert/register.js';
 import '@cds/core/button/register.js';

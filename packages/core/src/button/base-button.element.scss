@@ -33,7 +33,6 @@
   cursor: pointer;
   font-size: var(--font-size);
   height: 100%;
-  justify-content: center;
   line-height: 1em;
   min-width: var(--min-width);
   overflow: visible;
@@ -52,21 +51,10 @@
     @include center-content('block');
     height: 100%;
   }
+}
 
-  .button-status-icon {
-    cds-icon {
-      @include min-equilateral(#{$cds-global-space-8});
-      fill: var(--color);
-    }
-
-    cds-icon[shape='error-standard'] {
-      --color: #{$cds-alias-status-danger};
-    }
-
-    .button-spinner {
-      --ring-color: #{$cds-global-color-construction-400};
-    }
-  }
+cds-progress-circle {
+  --ring-color: #{$cds-global-color-construction-400};
 }
 
 :host(:active) .private-host,

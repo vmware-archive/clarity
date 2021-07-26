@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { CdsButton, ClrLoadingState, iconSpinner } from '@cds/core/button';
+import { CdsButton, ClrLoadingState } from '@cds/core/button';
 import '@cds/core/badge/register.js';
 import '@cds/core/button/register.js';
 import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
@@ -221,15 +221,6 @@ describe('button element', () => {
   });
 
   describe('LoadingStateChange', () => {
-    it('should fallback to default state as expected', async () => {
-      await componentIsStable(component);
-      component.loadingState = null;
-      await componentIsStable(component);
-      expect(component.loadingState).toEqual(ClrLoadingState.default);
-      expect(component.hasAttribute('disabled')).toEqual(false);
-      expect(component.style.getPropertyValue('width')).toBe('');
-    });
-
     it('should set default state as expected', async () => {
       await componentIsStable(component);
       component.loadingState = ClrLoadingState.default;
@@ -280,51 +271,74 @@ describe('button element', () => {
       component.disabled = true;
       component.loadingState = ClrLoadingState.default;
       await componentIsStable(component);
+
+      component.loadingState = ClrLoadingState.loading;
+      await componentIsStable(component);
+      expect(component.disabled).toBeTruthy();
+
+      component.loadingState = ClrLoadingState.success;
+      await componentIsStable(component);
+      expect(component.disabled).toBeTruthy();
+
+      component.loadingState = ClrLoadingState.default;
+      await componentIsStable(component);
       expect(component.disabled).toBeTruthy();
     });
+
+    it('should default to spinner size to "18"', async () => {
+      component.loadingState = ClrLoadingState.loading;
+      await componentIsStable(component);
+      expect(component.shadowRoot.querySelector<any>('cds-progress-circle').size).toBe('18');
+    });
+
+    it('should set spinner size to "12" if button size "sm"', async () => {
+      component.loadingState = ClrLoadingState.loading;
+      component.size = 'sm';
+      await componentIsStable(component);
+      expect(component.shadowRoot.querySelector<any>('cds-progress-circle').size).toBe('12');
+    });
+  });
+});
+
+describe('Button link', () => {
+  let testLinkElement: HTMLElement;
+  let anchor: HTMLAnchorElement;
+  let anchorButton: HTMLButtonElement;
+
+  beforeEach(async () => {
+    testLinkElement = await createTestElement(html` <a href="about"><cds-button>About</cds-button></a> `);
+    anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
+    anchorButton = testLinkElement.querySelector<HTMLButtonElement>('cds-button');
   });
 
-  describe('Button link', () => {
-    let testLinkElement: HTMLElement;
-    let anchor: HTMLAnchorElement;
-    let anchorButton: HTMLButtonElement;
+  afterEach(() => {
+    removeTestElement(testLinkElement);
+  });
 
-    beforeEach(async () => {
-      testLinkElement = await createTestElement(html` <a href="about"><cds-button>About</cds-button></a> `);
+  it('should render a link properly', async () => {
+    await componentIsStable(anchorButton);
+    expect(anchor.style.lineHeight).toBe('0');
+    expect(anchor.style.textDecoration).toBe('none');
+  });
 
-      anchor = testLinkElement.querySelector<HTMLAnchorElement>('a');
-      anchorButton = testLinkElement.querySelector<HTMLButtonElement>('cds-button');
-    });
+  it('should set button to be readonly', async () => {
+    await componentIsStable(anchorButton);
+    expect(anchor.querySelector('cds-button').readonly).toBe(true);
+  });
 
-    afterEach(() => {
-      removeTestElement(testLinkElement);
-    });
+  it('should not trigger button click if link', async () => {
+    await componentIsStable(anchorButton);
+    const o = {
+      f: () => {
+        // Do nothing
+      },
+    };
+    spyOn(o, 'f');
+    anchorButton.addEventListener('click', o.f);
+    anchor.focus();
+    anchor.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
 
-    it('should render a link properly', async () => {
-      await componentIsStable(anchorButton);
-      expect(anchor.style.lineHeight).toBe('0');
-      expect(anchor.style.textDecoration).toBe('none');
-    });
-
-    it('should set button to be readonly', async () => {
-      await componentIsStable(anchorButton);
-      expect(anchor.querySelector('cds-button').readonly).toBe(true);
-    });
-
-    it('should not trigger button click if link', async () => {
-      await componentIsStable(anchorButton);
-      const o = {
-        f: () => {
-          // Do nothing
-        },
-      };
-      spyOn(o, 'f');
-      anchorButton.addEventListener('click', o.f);
-      anchor.focus();
-      anchor.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
-
-      expect(o.f).not.toHaveBeenCalled();
-    });
+    expect(o.f).not.toHaveBeenCalled();
   });
 });
 
@@ -343,23 +357,6 @@ describe('buttonSlots: ', () => {
     const component = elem.querySelector<CdsButton>('cds-button');
     const slots = getComponentSlotContent(component);
     expect(slots.default).toContain('Text slot');
-  });
-});
-
-describe('iconSpinner(): ', () => {
-  it('should default to spinner size to "18"', () => {
-    const templateResult = iconSpinner('lg');
-    expect(templateResult.values.indexOf('18') > -1).toBe(true);
-  });
-
-  it('should set spinner size to "18" if not passed size "sm"', () => {
-    const templateResult = iconSpinner('anything-at-all');
-    expect(templateResult.values.indexOf('18') > -1).toBe(true);
-  });
-
-  it('should set spinner size to "12" if size "sm"', () => {
-    const templateResult = iconSpinner('sm');
-    expect(templateResult.values.indexOf('12') > -1).toBe(true);
   });
 });
 

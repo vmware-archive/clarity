@@ -5,10 +5,9 @@
  */
 
 import { baseStyles, property } from '@cds/core/internal';
-import { html } from 'lit';
 import baseButtonStyles from './base-button.element.scss';
 import styles from './icon-button.element.scss';
-import { CdsButton, ClrLoadingState, iconCheck, iconSpinner } from './button.element.js';
+import { CdsButton } from './button.element.js';
 
 /**
  * Icon buttons give applications a compact alternative to communicate action and direct user intent.
@@ -43,16 +42,6 @@ export class CdsIconButton extends CdsButton {
    */
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
-
-  render() {
-    return html`
-      <div class="private-host">
-        ${this.loadingState === ClrLoadingState.loading ? iconSpinner(this.size) : ''}
-        ${this.loadingState === ClrLoadingState.success ? iconCheck : ''}
-        ${this.loadingState === ClrLoadingState.default ? html`<slot></slot>` : ''}
-      </div>
-    `;
-  }
 
   static styles = [baseStyles, baseButtonStyles, styles];
 }

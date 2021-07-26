@@ -4,27 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, CdsBaseButton, getElementWidth, property, spanWrapper } from '@cds/core/internal';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { errorStandardIcon } from '@cds/core/icon/shapes/error-standard.js';
-import { checkIcon } from '@cds/core/icon/shapes/check.js';
+import { baseStyles, CdsBaseButton, getElementWidth, property } from '@cds/core/internal';
 import { html } from 'lit';
-import { query } from 'lit/decorators/query.js';
 import baseButtonStyles from './base-button.element.scss';
 import styles from './button.element.scss';
-
-export const iconSpinner = (size: string) => {
-  const spinnerSize = size === 'sm' ? '12' : '18';
-  return html`<span class="button-status-icon" cds-layout="horizontal align:center"><cds-progress-circle class="button-spinner" size="${spinnerSize}" status="info"></cds-progress-circle></span></span>`;
-};
-
-export const iconCheck = html`<span class="button-status-icon" cds-layout="horizontal align:center"
-  ><cds-icon shape="check" status="success" cds-layout="align:center"></cds-icon
-></span>`;
-
-export const iconError = html`<span class="button-status-icon" cds-layout="horizontal align:center"
-  ><cds-icon shape="error-standard" cds-layout="align:center"></cds-icon
-></span>`;
 
 export const enum ClrLoadingState {
   default = 'default',
@@ -89,8 +72,6 @@ export class CdsButton extends CdsBaseButton {
   @property({ type: Boolean })
   block = false;
 
-  @query('.private-host') privateHost: HTMLElement;
-
   /**
    * @type {default | loading | success | error}
    * Changes the button content based on the value passed.
@@ -100,75 +81,55 @@ export class CdsButton extends CdsBaseButton {
    * - `success`: disables the button and shows a check mark inside the button; auto-triggers to change back to DEFAULT state after 1000 ms
    * - `error`: shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)
    */
-  @property({ type: String })
-  loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(errorStandardIcon, checkIcon);
+  @property({ type: String }) get loadingState() {
+    return this._loadingState;
   }
 
-  firstUpdated(props: Map<string, any>) {
-    super.firstUpdated(props);
-
-    // Find and wrap any text nodes into span elements
-    spanWrapper(this.childNodes);
-
-    if (this.loadingState !== ClrLoadingState.default) {
-      this.updateLoadingState();
+  set loadingState(value: keyof typeof ClrLoadingState) {
+    // track prior disabled state to set prior value after button is re-enabled from a loading state
+    if (this._loadingState === ClrLoadingState.default) {
+      this._disabled = this.disabled;
     }
+
+    if (value === ClrLoadingState.default) {
+      this.enableButton();
+    } else {
+      this.disableButton();
+    }
+
+    const oldValue = this._loadingState;
+    this._loadingState = value;
+    this.requestUpdate('loadingState', oldValue);
   }
 
-  update(props: Map<string, any>) {
-    if (this.privateHost && props.has('loadingState')) {
-      this.updateLoadingState();
-    }
-    super.update(props);
-  }
+  private _loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
+  private _disabled = false;
 
   render() {
-    const loadingState = this.loadingState;
-    return html`<div class="private-host">
-      <div cds-layout="horizontal gap:sm wrap:none align:center">
-        ${loadingState === ClrLoadingState.success ? iconCheck : ''}
-        ${loadingState === ClrLoadingState.error ? iconError : ''}
-        ${loadingState === ClrLoadingState.loading ? iconSpinner(this.size) : ''}
-        ${loadingState === ClrLoadingState.default
-          ? html`<slot @slotchange=${() => spanWrapper(this.childNodes)}></slot>`
-          : ''}
-      </div>
+    return html`<div class="private-host" cds-layout="horizontal gap:sm wrap:none align:center">
+      ${this.loadingState === ClrLoadingState.success
+        ? html`<cds-icon shape="check" status="success" size="18"></cds-icon>`
+        : ''}
+      ${this.loadingState === ClrLoadingState.error
+        ? html`<cds-icon shape="error-standard" status="danger" size="18"></cds-icon>`
+        : ''}
+      ${this.loadingState === ClrLoadingState.loading
+        ? html`<cds-progress-circle .size=${this.size === 'sm' ? '12' : '18'} status="info"></cds-progress-circle>`
+        : ''}
+      ${this.loadingState === ClrLoadingState.default ? html`<slot></slot>` : ''}
     </div>`;
   }
 
   static styles = [baseStyles, baseButtonStyles, styles];
 
-  private updateLoadingState() {
-    if (this.disabled) {
-      return;
-    }
-    switch (this.loadingState) {
-      case ClrLoadingState.loading:
-        this.disableButton();
-        return;
-      case ClrLoadingState.success:
-        this.disableButton();
-        return;
-      case ClrLoadingState.error:
-        this.disableButton();
-        return;
-      default:
-        this.enableButton();
-    }
-  }
-
-  private disableButton() {
+  private async disableButton() {
+    await this.updateComplete;
     this.style.width = getElementWidth(this);
     this.disabled = true;
   }
 
   private enableButton() {
-    this.loadingState = ClrLoadingState.default;
     this.style.removeProperty('width');
-    this.disabled = false;
+    this.disabled = this._disabled;
   }
 }

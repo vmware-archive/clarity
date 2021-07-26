@@ -61,7 +61,6 @@
     "publish:local:npm": "npm publish dist/core --registry http://localhost:4873 --tag local; yarn publish dist/angular  --registry http://localhost:4873 --tag local; npm publish dist/react --registry http://localhost:4873 --tag local; npm publish dist/eslint-plugin-clarity-adoption --registry http://localhost:4873 --tag local",
     "angular:build": "yarn --cwd packages/angular run build",
     "angular:test": "yarn --cwd packages/angular run test",
-    "angular:test:watch": "yarn --cwd packages/angular run test:watch",
     "angular:lint": "yarn --cwd packages/angular run lint",
     "angular:visual-testing": "node ./tools/visual-tester/index.js",
     "angular:visual-testing:fix": "node ./tools/visual-tester/index.js --overwrite=true",

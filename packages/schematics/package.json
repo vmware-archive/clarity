@@ -11,15 +11,11 @@
     "url": "git@github.com:vmware/clarity.git"
   },
   "scripts": {
-    "build": "npm-run-all schematics:build:ts schematics:build:collection",
+    "build": "npm-run-all build:tsc copy:build",
     "build:test": "tsc -p tsconfig.test.json",
     "clean": "del src/**/*.{js,js.map}",
-    "build:clr": "tsc -p tsconfig.json",
-    "build:cds": "tsc -p tsconfig.cds.json",
-    "schematics:build:ts": "npm-run-all build:clr build:cds",
-    "copy:clr": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/clr-angular/schematics",
-    "copy:cds": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/angular/schematics",
-    "schematics:build:collection": "npm-run-all copy:clr copy:cds",
+    "build:tsc": "tsc -p tsconfig.cds.json",
+    "copy:build": "cpy --parents --cwd='src/' '**/*.json' ../../../dist/angular/schematics",
     "test": "yarn run build:test && jasmine **/*.spec.js"
   },
   "keywords": [

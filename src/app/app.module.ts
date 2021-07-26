@@ -26,7 +26,7 @@ import { CheckboxPage } from './pages/checkbox.page';
 import { AdoptionToolingPage } from './pages/adoption-tooling.page';
 import { FormPage } from './pages/form.page';
 import { ButtonPage } from './pages/button.page';
-import { DatalistPage } from './pages/detalist.page';
+import { DatalistPage } from './pages/datalist.page';
 import { InputPage } from './pages/input.page';
 import { ListPage } from './pages/list.page';
 import { ModalPage } from './pages/modal.page';

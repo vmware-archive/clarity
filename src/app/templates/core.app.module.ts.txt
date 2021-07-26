@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CdsModule } from '@cds/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CdsModule } from '@cds/angular';
   ],
   imports: [
     BrowserModule,
-    CdsModule
+    CdsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

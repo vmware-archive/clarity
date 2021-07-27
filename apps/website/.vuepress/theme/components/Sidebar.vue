@@ -20,13 +20,12 @@
                 class="nav-group-children"
                 v-bind:class="{ 'is-expanded': states[index] || activePage.path.startsWith(item.path) }"
                 v-bind:style="{
-                  /**
-                   * The `-1` is removes the additional whitespace added in `core-components` section
-                   */
-                  height: states[index] ? `${(item.children.length - betaComponents.length - 1) * 36}px` : '0',
+                  height: states[index]
+                    ? `${$options.filters.filterReleasedComponents(item.children).length * 36}px`
+                    : '0',
                 }"
               >
-                <template v-for="(childItem, index) in item.children">
+                <template v-for="(childItem, index) in $options.filters.filterReleasedComponents(item.children)">
                   <router-link
                     @focus.native="focusToggle(index)"
                     class="nav-link"
@@ -126,12 +125,6 @@
 .nav-group-children {
   overflow-y: hidden;
   transition: height 0.2s ease-in-out;
-
-  // This fixes an unknown rendering issue with the expanded nav-group-children. The calculation in template is fine.
-  // This works for now.
-  &.is-expanded {
-    height: fit-content !important;
-  }
 }
 .nav-group-trigger-icon {
   padding-top: 10px;
@@ -154,18 +147,36 @@ export default {
       betaComponents: [],
     };
   },
+  filters: {
+    filterReleasedComponents: function (items) {
+      return items.filter(item => {
+        // keep items without the children array
+        if (!item.children) {
+          return item;
+        } else {
+          // flag for detecting beta frontmatter
+          let hasBeta = false;
+          // iterate over all children
+          item.children.forEach(child => {
+            // set the hasBeta flag if the child is beta marked
+            if (child.frontmatter.beta === true) {
+              hasBeta = true;
+            }
+          });
+          // return items that are not beta marked
+          if (!hasBeta) {
+            return item;
+          }
+        }
+      });
+    },
+  },
   mounted() {
     if (this.childActive(this.$page)) {
       const parts = this.$page.path.split('/');
       const index = this.$props.items.findIndex(page => page.path.includes(parts[1]));
       this.toggle(index);
     }
-
-    this.$site.pages.forEach(page => {
-      if (page.frontmatter.beta === true) {
-        this.betaComponents.push(page);
-      }
-    });
   },
   computed: {
     activePage: function () {

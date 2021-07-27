@@ -8,11 +8,18 @@
       :isNew="component.isNew"
     >
       <template>
-        <img cds-layout="fill" :src="component.name | adjustToSvgUrl" :alt="component.title + ' visual example'" />
+        <img class="overview-image" :src="component.name | adjustToSvgUrl" :alt="component.title + ' visual example'" />
       </template>
     </ItemOverview>
   </section>
 </template>
+
+<style lang="scss">
+.overview-image {
+  max-width: 50%;
+  height: auto;
+}
+</style>
 
 <script>
 export default {

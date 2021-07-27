@@ -7,7 +7,7 @@
           <span role="status" v-if="isNew" class="badge badge-info">new</span>
         </div>
       </h2>
-      <div cds-layout="align:center p:md">
+      <div cds-layout="vertical align:center p:md">
         <slot></slot>
       </div>
       <slot name="footer"></slot>

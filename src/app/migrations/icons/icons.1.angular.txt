@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+import '@cds/core/icon/register.js';
+import { ClarityIcons, homeIcon } from '@cds/core/icon';
+
+ClarityIcons.addIcons(homeIcon);
+
 @Component({
   selector: 'app-root',
   template: `

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClarityModule } from '@clr/angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -13,6 +13,7 @@ import '@cds/core/icon/register.js';
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule, // Clarity Angular
+    FormsModule,
     ReactiveFormsModule,
   ],
   declarations: [AppComponent],

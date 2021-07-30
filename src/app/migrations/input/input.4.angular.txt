@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-input-container>
+        <label>input</label>
+        <input clrInput placeholder="input" name="input" [(ngModel)]="input" />
+        <clr-control-helper>message text</clr-control-helper>
+      </clr-input-container>
+      <clr-input-container>
+        <label>error</label>
+        <input type="text" clrInput placeholder="input" name="input" [(ngModel)]="input" required />
+        <clr-control-error>error text</clr-control-error>
+      </clr-input-container>
+    </form>
+  `,
+})
+export class AppComponent {
+  input = '';
+}

@@ -1,0 +1,25 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <cds-form-group layout="vertical">
+        <cds-input layout="vertical">
+          <label>label</label>
+          <input placeholder="name" [(ngModel)]="input" />
+          <cds-control-message>message text</cds-control-message>
+        </cds-input>
+
+        <cds-input layout="vertical">
+          <label>error</label>
+          <input placeholder="name" [(ngModel)]="input" />
+          <cds-control-message status="error">error message</cds-control-message>
+        </cds-input>
+      </cds-form-group>
+    </form>
+  `,
+})
+export class AppComponent {
+  input = null;
+}

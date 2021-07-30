@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm class="clr-form-horizontal">
+      <clr-input-container>
+        <label>input</label>
+        <input clrInput placeholder="input" name="input" [(ngModel)]="input" />
+      </clr-input-container>
+    </form>
+  `,
+})
+export class AppComponent {
+  input = null;
+}

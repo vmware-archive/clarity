@@ -55,8 +55,6 @@ export async function run(userOptions = {}) {
   for (let fileIndex = 0; fileIndex < filesLength; fileIndex++) {
     const specName = files[fileIndex];
 
-    console.log(`Running ${specName}`);
-
     const ctx = new Context(specName);
 
     const foundReporter = reporterList[options.reporter];

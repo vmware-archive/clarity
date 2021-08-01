@@ -62,6 +62,9 @@ export class Context {
 
     // @TODO: there is a possibility to run in parallel multiple parts of the tree
     const linked: any = this.tree.toLinkedList();
+    if (linked === null) {
+      return [];
+    }
     return [...linked].filter((i: any) => i !== undefined);
   }
 

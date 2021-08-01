@@ -10,6 +10,16 @@ Install all needed node modules.
 yarn install
 ```
 
+## Quick start
+
+To run all tests in one go, use the following command:
+
+```bash
+yarn install
+
+yarn start
+```
+
 ## Usage
 
 By default file naming is `<target>.vspec.js`, but in the end - it depends on you. `*.vspec.js` is used so no conflict with other specs runner will be made.
@@ -47,7 +57,7 @@ const screenshot = await VisualDiff.screenshot({ name: 'screenshot-body', select
 // Screenshot only a table with class 'userlist'
 ```
 
-If this is the first time making this screenshot it will be automaticaly set as base image - and used as reference in the next time.
+If this is the first time making this screenshot it will be automatically set as base image - and used as reference in the next time.
 
 To compare the images with previous version of this the `name` must match so it could be found based on the Visual Diff context.
 
@@ -144,7 +154,7 @@ This issue is not there when using `npm`.
 If you don't want to do this you could use `node`
 
 ```bash
-node ./dist/runner/cli.js --specs="./specs/**/*.vspec.js"
+./node_modules/.bin/tsc && node ./dist/runner/cli.js --specs="./specs/**/*.vspec.js"
 ```
 
 In the case when all base images must be updated:
@@ -253,9 +263,132 @@ describe(`Testing ${TARGET_URL}`, () => {
 });
 ```
 
+### Example of testing multiple stories in storybook.
+
+In some cases it is needed to test multiple stories in storybook.
+
+```js
+const CLARITY_STORYBOOK_URL = process.env.CLARITY_STORYBOOK_URL || 'my-url-to-snapshots';
+const UPDATE_SNAPSHOTS = process.env.UPDATE_SNAPSHOTS || false;
+
+const stories = ['story-url1', 'story-url2', 'story-url3'];
+
+describe(`Core Stories: ${CLARITY_STORYBOOK_URL}`, () => {
+  let browser, page, VisualDiff;
+
+  beforeAll(async () => {
+    VisualDiff = new VisualDiffContext('core.multiple-snapshosts', { updateSnapshots: UPDATE_SNAPSHOTS });
+    await VisualDiff.prepare();
+
+    // One instance only
+    browser = await VisualDiff.createBrowser();
+  });
+
+  afterEach(async () => {
+    // Close pages after every test
+    page.close();
+  });
+
+  afterAll(async () => {
+    browser.close();
+  });
+
+  stories.forEach(story => {
+    it(`Snapshot ${story}`, async () => {
+      page = await VisualDiff.goto(`${CLARITY_STORYBOOK_URL}/iframe.html?id=${story}&viewMode=story`, browser);
+
+      const snapshot = await VisualDiff.screenshot(
+        {
+          name: story,
+          selector: '#root',
+        },
+        page
+      );
+
+      await VisualDiff.expectToMatchBase(snapshot);
+    });
+  });
+});
+```
+
+The example above will create a snapshot for each story in storybook. But this type of snapshots could be changed to monitor any page or sub-application
+that we just need to compare a simple region that is repeatable over the pages. Similar tests are done for Angular Development application and so on.
+
+### Interact with dropdowns, input text and check results.
+
+Example below will try to visit the website, open the search combobox, input a value and snapshot the result.
+
+```js
+const CLARITY_DESIGN_URL = process.env.CLARITY_DESIGN_URL || 'https://clarity.design';
+const UPDATE_SNAPSHOTS = process.env.UPDATE_SNAPSHOTS || false;
+
+describe(`Clarity Design ${CLARITY_DESIGN_URL}`, () => {
+  let browser, page, VisualDiff;
+
+  beforeAll(async () => {
+    VisualDiff = new VisualDiffContext('website.vspec.js', { updateSnapshots: UPDATE_SNAPSHOTS });
+    await VisualDiff.prepare();
+    browser = await VisualDiff.createBrowser();
+  });
+
+  beforeEach(async () => {
+    page = await VisualDiff.goto(CLARITY_DESIGN_URL, browser);
+  });
+
+  afterAll(async () => {
+    browser.close();
+  });
+
+  afterEach(async () => {
+    page.close();
+  });
+
+  it('display and show search dialog', async () => {
+    const searchId = 'input#algolia-search-input';
+    const dropdownId = '#algolia-autocomplete-listbox-0';
+
+    await page.waitForSelector(searchId);
+    await page.evaluate(selector => {
+      document.querySelector(selector).value = '';
+    }, searchId);
+    await page.type(searchId, 'combo', { delay: 1 });
+
+    await page.waitForSelector(dropdownId);
+
+    // @NOTE need to wait a little to be sure that animation is finish.
+    await page.waitForTimeout(300);
+
+    const screenshot = await VisualDiff.screenshot(
+      {
+        name: 'open search dialog',
+        selector: 'body',
+      },
+      page
+    );
+
+    await VisualDiff.expectToMatchBase(screenshot);
+  });
+});
+```
+
+As additional step we could click on elements by using the `$eval` method.
+
+```js
+await page.$eval('.css-selector', el => el.click());
+```
+
+Keep in mind that on some cases the effect of it could take some additional time so better check with `page.waitForSelector` or `page.waitForTimeout` method to be sure that the effect is finished.
+
 **Note**: almost everything must be into `async/await` calls because visiting pages, finding elements on it and taking pictures is asynchronous task.
 
 ## Known issues
 
 - Clarity Icons - Core Icons that we use - are running inside ShadowDOM so we could not prevent the animations from running - Probably a work around will be to use ignoreBoxes to prevent detecting changes.
 - You need to have a root Describe block for Basic Runner. Detached test could have strange behavior. - planned fix.
+
+### Directories
+
+- `specs` - contains all the tests.
+- `__tests__` - contains jest spec files that link to `specs` directory.
+- `src` - source code for runner and visual diff class
+- `images` - snapshot images will be stored there by default

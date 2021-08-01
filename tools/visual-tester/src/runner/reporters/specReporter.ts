@@ -34,8 +34,6 @@ export class SpecReporter implements Reporter {
   }
 
   report() {
-    console.log(`${this.stats.success + this.stats.fail} test found`);
-
     if (this.stats.fail > 0) {
       this.failList.forEach((report: any) => {
         const { error, test } = report;
@@ -50,10 +48,12 @@ export class SpecReporter implements Reporter {
           console.log(chalk.yellow(`Diff    : ${diffImage}`));
         }
 
-        console.log('');
+        console.log('\n');
       });
 
-      console.log(chalk.red(`${this.stats.fail} test fail`));
+      console.log(chalk.red(`${this.stats.fail} from ${this.stats.success + this.stats.fail} test fail`));
+    } else {
+      console.log(`${this.stats.success} test passed`);
     }
   }
 

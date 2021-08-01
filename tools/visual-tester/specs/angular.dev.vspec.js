@@ -14,6 +14,24 @@ const VisualDiffContext = require('../dist/index').VisualDiffContext;
 const CLARITY_ANGULAR_DEV = process.env.CLARITY_ANGULAR_DEV || 'http://localhost:4200';
 const UPDATE_SNAPSHOTS = process.env.UPDATE_SNAPSHOTS || false;
 
+/**
+ * ! Angular Dev Specs are not suitable to run inside the `next` branch.
+ * The `next` branch is not having any angular related packages so the Development App that
+ * this test is running against is not here. So to be able to run this spec file you need to
+ * run Angular Developer app on the side.
+ *
+ * There are few things that could be done to solve this issue:
+ *
+ *  1. Run Development app from another source base.
+ *  2. Run against Netlify build as other spec files
+ *  3. Move the diff tool into separate branch
+ *  4. Create a copy of diff-tool inside the `angular` branch to run there.
+ *
+
+ * At the moment the spec will be skipped until some solution on the problem above is found
+ * so to run it please change the `xdescribe` to `describe` below.
+ */
+
 const pagesList = [
   'accordion',
   'alert/static/styles',
@@ -293,7 +311,7 @@ const pagesList = [
 // cache size.
 const pageListLength = pagesList.length;
 
-describe(`Clarity Angular Development ${CLARITY_ANGULAR_DEV}`, () => {
+xdescribe(`Clarity Angular Development ${CLARITY_ANGULAR_DEV}`, () => {
   let browser, VisualDiff;
 
   beforeAll(async () => {

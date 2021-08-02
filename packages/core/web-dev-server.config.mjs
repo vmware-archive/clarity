@@ -95,6 +95,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/icon/shapes/help-info.js': '/dist/core/icon/shapes/help-info.js',
             '@cds/core/icon/shapes/line-chart.js': '/dist/core/icon/shapes/line-chart.js',
             '@cds/core/icon/shapes/file.js': '/dist/core/icon/shapes/file.js',
+            '@cds/core/icon/shapes/pencil.js': '/dist/core/icon/shapes/pencil.js',
 
             '@cds/core/accordion': '/dist/core/accordion/index.js',
             '@cds/core/accordion/register.js': '/dist/core/accordion/register.js',

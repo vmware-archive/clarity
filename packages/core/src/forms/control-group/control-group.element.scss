@@ -18,11 +18,6 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   flex-basis: 0;
 }
 
-.messages,
-.messages-container {
-  width: 100%;
-}
-
 cds-control-action.status {
   height: #{$cds-global-space-7};
 }

@@ -24,6 +24,10 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   --max-width: #{$fallback-width};
 }
 
+:host([layout*='vertical']) cds-internal-control-label {
+  --label-width: 100%;
+}
+
 .input-container {
   line-height: 0;
 }

@@ -8,6 +8,10 @@ import { html, LitElement } from 'lit';
 import { state } from 'lit/decorators/state.js';
 import '@cds/core/input/register.js';
 import { registerElementSafely } from '@cds/core/internal';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { pencilIcon } from '@cds/core/icon/shapes/pencil.js';
+
+ClarityIcons.addIcons(pencilIcon);
 
 export default {
   title: 'Stories/Input Groups',

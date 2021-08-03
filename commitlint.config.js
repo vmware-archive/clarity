@@ -2,6 +2,7 @@ const scopes = [
   'a11y',
   'accordion',
   'alert',
+  'angular:form',
   'badge',
   'build',
   'button',

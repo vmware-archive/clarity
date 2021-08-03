@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <clr-modal [clrModalSize]="'lg'" [clrModalClosable]="false">
+      <h3 class="modal-title">Modal Title</h3>
+      <div class="modal-body">
+          <p>Place holder text for the modal example.</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline">Cancel</button>
+          <button type="button" class="btn btn-primary">Ok</button>
+      </div>
+    </clr-modal>
+  `,
+})
+export class AppComponent { }
+

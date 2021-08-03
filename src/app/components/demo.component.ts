@@ -45,7 +45,7 @@ let PreviewID = 0;
       <div *ngFor="let tab of tabs" style="width: 49.5%">
         <h5>{{ tab.name }}</h5>
         <div *ngFor="let file of tab.files | keyvalue">
-          <sourcecode [src]="file.value" [language]="tab.language"></sourcecode>
+          <sourcecode [src]="file.value" [language]="tab.language || 'ts'"></sourcecode>
         </div>
         <div id="{{ tab.id }}"></div>
         <button (click)="embedStackblitz(tab, tab.id)" class="btn btn-sm btn-link">

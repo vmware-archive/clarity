@@ -1,5 +1,14 @@
 /*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */
 
+// Clarity Core uses a global CSS var token --cds-global-base to set the default
+// base font for all core web components on the page. Now that clr-angular is using
+// @cds/core under the hood we are adding this value to clr-ui CSS for the apps
+// that may not be using the core global CSS.
+// https://github.com/vmware/clarity/issues/6198
+:root {
+  --cds-global-base: 20;
+}
+
 //
 // 1. Change the default font family in all browsers (opinionated).
 // 2. Correct the line height in all browsers.
@@ -264,6 +273,12 @@ select,
 textarea {
   font: inherit; // 1
   margin: 0; // 2
+}
+
+textarea {
+  // from latest normalize.css which is missing from clr-ui
+  // https://github.com/vmware/clarity/issues/6199
+  line-height: 1.15;
 }
 
 //

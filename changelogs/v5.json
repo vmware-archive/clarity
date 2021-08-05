@@ -2,6 +2,81 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.1",
+      "date": "2021-08-05",
+      "description": "This is a patch release.",
+      "feat": [
+        {
+          "issue": 6203,
+          "title": "fix(core:control): label alignments",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6200,
+          "title": "a11y(core:accordion): fixes and improvements",
+          "project": "core",
+          "scope": "accordion"
+        },
+        {
+          "issue": 6183,
+          "title": "fix(core:button): disabled/loading state",
+          "project": "core",
+          "scope": "button"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6050,
+          "title": "Input lines are now proper contrast",
+          "project": "Core",
+          "scope": "Form"
+        },
+        {
+          "issue": 6081,
+          "title": "Fix anchor link hovers in clr-angular header",
+          "project": "Angular",
+          "scope": "Header"
+        },
+        {
+          "issue": 6057,
+          "title": "Remove memory leaks inside the `DropdownFocusHandler`",
+          "project": "Angular",
+          "scope": "Dropdown"
+        },
+        {
+          "issue": 6075,
+          "title": "Add missing React counterpart for Clarity Core pagination",
+          "project": "Core",
+          "scope": "Pagination"
+        },
+        {
+          "issue": 6056,
+          "title": "Remove line-height from control-label",
+          "project": "Angular",
+          "scope": "Input"
+        },
+        {
+          "issue": 6067,
+          "title": "Relax Angular dependency for @cds/angular for v9+",
+          "project": "Core",
+          "scope": ""
+        },
+        {
+          "issue": 6055,
+          "title": "Unsubscribe from `ButtonInGroupService.changes`",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 6048,
+          "title": "Disabled buttons should not be enabled on loadingState",
+          "project": "Core",
+          "scope": "Button"
+        }
+      ]
+    },
+    {
       "version": "5.5.0",
       "date": "2021-07-25",
       "description": "This is a feature and bug release.",

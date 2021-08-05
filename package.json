@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "5.5.0",
+  "version": "5.5.1",
   "private": true,
   "workspaces": {
     "packages": [
@@ -53,7 +53,7 @@
     "format:fix": "pretty-quick --staged",
     "format:file": "prettier --write .",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "publish:copyversion": "node scripts/copy-version",
+    "publish:copyversion": "node ./scripts/copy-version.js",
     "publish:latest": "yarn publish dist/core; yarn publish dist/angular; yarn publish dist/react; yarn publish dist/eslint-plugin-clarity-adoption;",
     "publish:next": "yarn publish dist/core --tag next; yarn publish dist/angular --tag next; yarn publish dist/react --tag next; yarn publish dist/eslint-plugin-clarity-adoption --tag next;",
     "publish:rc": "yarn publish dist/core --tag rc; yarn publish dist/angular --tag rc; yarn publish dist/react --tag rc; yarn publish dist/eslint-plugin-clarity-adoption --tag rc;",

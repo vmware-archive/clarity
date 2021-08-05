@@ -5,12 +5,57 @@
  */
 
 import { Component } from '@angular/core';
+import { DemoTabData } from '../components/demo.component';
 
 @Component({
   selector: 'app-password',
   template: `
     <h1>Password</h1>
-    <not-ready name="Password"></not-ready>
+    <demo [tabs]="demo1">
+      <h3>Basic</h3>
+    </demo>
+
+    <demo [tabs]="demo2">
+      <h3>Password with Reactive form</h3>
+    </demo>
   `,
 })
-export class PasswordPage {}
+export class PasswordPage {
+  demo1: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'password/password.1.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'password/password.1.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+
+  demo2: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'password/password.2.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'password/password.2.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+}

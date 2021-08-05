@@ -224,6 +224,10 @@ export class CdsControl extends LitElement {
     return null;
   }
 
+  private get isGenericControl() {
+    return this.tagName.toLowerCase() === 'cds-control';
+  }
+
   private get hasControlActions() {
     return this.controlActions.length > 0 || this.prefixDefaultTemplate || this.suffixDefaultTemplate;
   }
@@ -331,7 +335,7 @@ export class CdsControl extends LitElement {
 
   private async setActionOffsetPadding() {
     await childrenUpdateComplete(this.controlActions);
-    if (this.supportsPrefixSuffixActions && this.hasControlActions) {
+    if (!this.isGenericControl && this.supportsPrefixSuffixActions && this.hasControlActions) {
       const start = pxToRem(this.prefixAction.getBoundingClientRect().width + 6);
       const end = pxToRem(this.suffixAction.getBoundingClientRect().width + 6);
       this.inputControl.style.setProperty('padding-left', this.isRTL ? end : start, 'important');

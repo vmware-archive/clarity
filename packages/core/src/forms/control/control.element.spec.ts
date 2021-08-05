@@ -10,6 +10,7 @@ import { listenForAttributeChange } from '@cds/core/internal';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { CdsControl, ControlLabelLayout, CdsControlMessage } from '@cds/core/forms';
 import '@cds/core/forms/register.js';
+import '@cds/core/icon/register.js';
 
 describe('cds-control', () => {
   let element: HTMLElement;
@@ -310,5 +311,35 @@ describe('cds-control with aria-labelledby', () => {
   it('should not enable hidden label', async () => {
     await componentIsStable(control);
     expect(control.labelLayout).toBe(ControlLabelLayout.ariaLabel);
+  });
+});
+
+describe('cds-control with label control action', () => {
+  let element: HTMLElement;
+  let control: CdsControl;
+  let input: HTMLElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-control>
+        <label>with label control action</label>
+        <cds-control-action action="label" aria-label="get more details">
+          <cds-icon shape="unknown"></cds-icon>
+        </cds-control-action>
+        <input placeholder="example" />
+      </cds-control>
+    `);
+
+    control = element.querySelector<CdsControl>('cds-control');
+    input = control.querySelector<HTMLElement>('input');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should not apply padding inline styles to generic control', async () => {
+    await componentIsStable(control);
+    expect(input.getAttribute('style')).toBeNull();
   });
 });

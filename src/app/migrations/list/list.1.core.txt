@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+
+import '@cds/core/datalist/register.js';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <ol cds-list>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ol>
+  `,
+})
+export class AppComponent {
+  items = ['Red', 'Green', 'Blue'];
+}

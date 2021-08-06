@@ -323,6 +323,11 @@ export class CdsControl extends LitElement {
     this.inputControl.addEventListener('focusout', () => (this.focused = false));
     this.observers.push(
       getElementUpdates(this.inputControl, 'disabled', (value: any) => (this.disabled = value === '' ? true : value)),
+      getElementUpdates(
+        this.inputControl,
+        'aria-disabled',
+        (value: any) => (this.disabled = value === 'true' ? true : false)
+      ),
       getElementUpdates(this.inputControl, 'readonly', (value: any) => (this.readonly = value === '' ? true : value))
     );
   }

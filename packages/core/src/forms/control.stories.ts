@@ -96,12 +96,23 @@ export function controlCompact() {
 
 export function genericContent() {
   return html`
-    <cds-control>
-      <label>label</label>
-      <p cds-text="body" cds-control cds-layout="m-t:sm">
-        Use the <code cds-text="code">cds-control</code> attribute to place generic content into a control layout.
-      </p>
-      <cds-control-message>control message</cds-control-message>
-    </cds-control>
+    <div cds-layout="vertical gap:lg">
+      <cds-control>
+        <label>label</label>
+        <p cds-text="body" cds-control cds-layout="m-t:sm">
+          Use the <code cds-text="code">cds-control</code> attribute to place generic content into a control layout.
+        </p>
+        <cds-control-message>control message</cds-control-message>
+      </cds-control>
+
+      <cds-control>
+        <label>label</label>
+        <p cds-text="body" cds-control cds-layout="m-t:sm" style="opacity: 0.3" aria-disabled="true">
+          Use the <code cds-text="code">aria-disabled</code> to render a non-form control inert. Note that applications
+          need to manage the styles of their own custom controls.
+        </p>
+        <cds-control-message>control message</cds-control-message>
+      </cds-control>
+    </div>
   `;
 }

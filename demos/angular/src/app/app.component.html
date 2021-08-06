@@ -1,0 +1,54 @@
+<main id="demo-app" cds-layout="vertical align:horizontal-stretch">
+  <header id="app-header" cds-layout="p:md p@md:lg">
+    Clarity Angular Demos
+  </header>
+  <div cds-layout="horizontal wrap:none align:vertical-stretch">
+    <div id="app-sidenav" cds-layout="horizontal wrap:none align:stretch">
+      <cds-navigation expanded>
+        <cds-navigation-group [expanded]="showDgDemos" (expandedChange)="handleGroupExpand($event)">
+          <cds-navigation-start>Datagrid</cds-navigation-start>
+          <cds-navigation-item [active]="'/datagrid/basic' === activeRoute || '/datagrid' === activeRoute">
+            <a routerLink="/datagrid/basic">Basic</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/detail' === activeRoute">
+            <a routerLink="/datagrid/detail">Detail</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/filtering' === activeRoute">
+            <a routerLink="/datagrid/filtering">Filtering</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/full-async' === activeRoute">
+            <a routerLink="/datagrid/full-async">Full async</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/hide-show-column' === activeRoute">
+            <a routerLink="/datagrid/hide-show-column">Hide/show columns</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/multi-action' === activeRoute">
+            <a routerLink="/datagrid/multi-action">Multi action</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/multi-select' === activeRoute">
+            <a routerLink="/datagrid/multi-select">Mulit select</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/pagination' === activeRoute">
+            <a routerLink="/datagrid/pagination">Pagination</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/pin-columns' === activeRoute">
+            <a routerLink="/datagrid/pin-columns">Pin columns</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/single-action' === activeRoute">
+            <a routerLink="/datagrid/single-action">Single action</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/single-select' === activeRoute">
+            <a routerLink="/datagrid/single-select">Single select</a>
+          </cds-navigation-item>
+          <cds-navigation-item [active]="'/datagrid/sorting' === activeRoute">
+            <a routerLink="/datagrid/sorting">Sorting</a>
+          </cds-navigation-item>
+        </cds-navigation-group>
+      </cds-navigation>
+      <cds-divider orientation="vertical"></cds-divider>
+    </div>
+    <div class="app-content" cds-layout="p-x:md">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>

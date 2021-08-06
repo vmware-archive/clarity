@@ -1,0 +1,83 @@
+<h2>@cds/core Grid with column filter</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for grids with filtering</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        Besides the data, applications must keep track of the anchor used to position the filter popover, the
+        filterString (or what ever filter object is used depending on the type of filter implemented), the state of the
+        filter popover (visible or hidden) and the filtered list of data objects for display. This filtered list should
+        derive from the full data set and be used to generate the cds-grid-row elements.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+
+<cds-grid aria-label="column filter datagrid demo" style="--body-height: 360px;">
+  <cds-grid-column *ngFor="let column of dataFields" [id]="column">
+    {{ column | titlecase }}
+    <ng-container *ngIf="column === 'id'">
+      <cds-action
+        (click)="toggleFilter($event, column)"
+        shape="filter"
+        [status]="this.filterString ? 'active' : ''"
+        aria-label="search hosts"
+      ></cds-action>
+    </ng-container>
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>Grid Footer</cds-grid-footer>
+</cds-grid>
+
+<ng-container *ngIf="filterAnchor">
+  <cds-dropdown
+    [hidden]="hiddenFilter"
+    [anchor]="this.filterAnchor"
+    (closeChange)="filterAnchor = null; hiddenFilter = !hiddenFilter"
+  >
+    <cds-input>
+      <input
+        type="text"
+        aria-label="search hosts"
+        placeholder="Search"
+        value=""
+        [value]="this.filterString"
+        (input)="filterData($event)"
+        [attr.anchor]="filterAnchor"
+        *ngIf="filterAnchor"
+      />
+    </cds-input>
+  </cds-dropdown>
+</ng-container>
+
+<h2>@clr/angular Datagrid with built in column string filter</h2>
+<section cds-layout="vertical gap:md">
+  <p>Notes on a Clarity core grid filtering</p>
+  <ul>
+    <li>With the Angular datagrid, when a model property is bound to a column sorting and filtering is turned on.</li>
+    <li>Filtering happens when user clicks the arrow up/down icon and enters text in the input control.</li>
+  </ul>
+</section>
+<clr-datagrid style="height: 360px;">
+  <clr-dg-column [clrDgField]="'id'">ID</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>CPU</clr-dg-column>
+  <clr-dg-column>Memory</clr-dg-column>
+  <clr-dg-column>Selected</clr-dg-column>
+  <clr-dg-column>About</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let vm of data" [clrDgItem]="vm">
+    <clr-dg-cell>{{ vm.id }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.status }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.cpu }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.memory }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.selected }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.about }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

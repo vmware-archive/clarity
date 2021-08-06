@@ -1,0 +1,63 @@
+<h2>@cds/core Grid with single row action behavior</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for single action grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        Single action is a simplified variation of the multi-select pattern. The main difference is that single
+        selection does not need a form to manage which rows are selected for batch action. Single selection does need to
+        implement a popover that can handle the row actions available for the row. Then, add a cds-action button to the
+        row. When the rows are generated the application can pass the click event and the row model to a function that
+        can handle associateing the button clicked with the popover element. Store a reference to the selected for of
+        your model type to create a general way to access te row information that needs action on.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<cds-grid aria-label="column visibility datagrid demo" style="--body-height: 360px;">
+  <!-- Place holder column for the row action button -->
+  <cds-grid-column type="action" aria-label="selection column"></cds-grid-column>
+  <!-- iterate all column fields -->
+  <cds-grid-column *ngFor="let column of dataFields" [id]="column">
+    {{ column | titlecase }}
+  </cds-grid-column>
+  <!-- Iterate rows of data -->
+  <cds-grid-row *ngFor="let vm of data">
+    <!-- generate row action button specific for this row model -->
+    <cds-grid-cell>
+      <cds-action popup="row-actions" aria-label="host actions" (click)="displayRowActions($event, vm)"></cds-action>
+    </cds-grid-cell>
+    <!-- Generate cells with model data -->
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+<!-- A drop down that holds the details for the single selected row to act on -->
+<cds-dropdown
+  id="row-actions"
+  [hidden]="hiddenRowAction"
+  [anchor]="singleActionAnchor"
+  (closeChange)="closeRowActionPopover()"
+>
+  <cds-button action="flat" size="sm" (click)="shutdownVM(actionRow)">Shutdown {{ actionRow?.id }}</cds-button>
+  <cds-button action="flat" size="sm" (click)="restartVM(actionRow)">Restart {{ actionRow?.id }}</cds-button>
+</cds-dropdown>
+
+<h2>@clr/angular single action datagrid</h2>
+<p>This is a single action <strong>@clr/angular</strong> datagrid.</p>
+<clr-datagrid style="height: 360px;">
+  <clr-dg-column *ngFor="let column of dataFields">{{ column }}</clr-dg-column>
+
+  <clr-dg-row *ngFor="let vm of data" [clrDgItem]="vm">
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="clrAction('Shutdown', vm)">Shutdown {{ vm.id }}</button>
+      <button class="action-item" (click)="clrAction('Restart', vm)">Restart {{ vm.id }}</button>
+    </clr-dg-action-overflow>
+    <clr-dg-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>Footer</clr-dg-footer>
+</clr-datagrid>

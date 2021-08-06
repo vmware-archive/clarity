@@ -25,6 +25,7 @@ packages/angular/projects/cds-angular/*
 # compiled output
 /dist
 /packages/**/dist
+/demos/**/dist
 /tmp
 /out-tsc
 /.ng_build

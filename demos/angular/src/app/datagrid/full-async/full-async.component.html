@@ -1,0 +1,276 @@
+<h2>@cds/core Grid many feature / behaviors</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for pagination grids</cds-accordion-header>
+    <cds-accordion-content>
+      <h3>Data, template and observable</h3>
+      <p>
+        Angular service returns an observable that mocks server call with a delay time. The implementation pattern for
+        the template stays the same for columns. For the rows and placeholder, I chose to use a container with an ngIf
+        that checks the property for the presence of an observable. If its not there the placeholder template is
+        rendered.
+      </p>
+      <p>
+        When it is there, The row and rendered with a normal *ngFor loop over the data rows and a *ngFor that iterates
+        over the models data fields to render cell content. There may bo other approaches but this on one way to reduce
+        template code and consume an observable service.
+      </p>
+      <p>
+        Note that the data property is of type <code>Observable&lt;TestVM[]&gt; | null</code> so it can be nullified
+        when making a refresh call for more data. Not this is just a mock so we just re-fetch the data. .
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+
+<div cds-layout="horizontal align-items:left gap:sm m-b:xs">
+  <cds-button size="sm" (click)="refreshData()">Refresh data</cds-button>
+</div>
+
+<div *ngIf="multiSelectForm" [formGroup]="multiSelectForm">
+  <!--<div>-->
+  <cds-grid
+    aria-label="Full featured datagrid demo with async data, details, filtering, hide/show columns, pagination, sorting dynamicly pinned columns, multi select rows and single row action behaviors."
+    style="--body-height: 350px;"
+  >
+    <!-- multi-select all rows checkbox -->
+    <cds-grid-column type="action" position="fixed">
+      <cds-checkbox>
+        <input
+          type="checkbox"
+          formControlName="allRows"
+          [indeterminate]="selectedCount > 0 && selectedCount < rowCount"
+          aria-label="select all hosts"
+        />
+      </cds-checkbox>
+    </cds-grid-column>
+    <!-- Place holder column for the row action button -->
+    <cds-grid-column type="action" aria-label="row action column" position="fixed"></cds-grid-column>
+    <!-- Place holder for the hide/show detail paine action button -->
+    <cds-grid-column type="action" aria-label="row detail column" position="fixed"></cds-grid-column>
+    <ng-container *ngFor="let column of dataFields; first as isFirst">
+      <cds-grid-column
+        resizable
+        [hidden]="!isColumnVisible(column)"
+        [id]="column"
+        [position]="isFirst && pinFirstColumn ? 'fixed' : ''"
+        [width]="isFirst ? '150px' : '225px'"
+      >
+        {{ column | titlecase }}
+        <ng-container *ngIf="column === 'id'">
+          <div cds-layout="horizontal gap:md align:vertical-center">
+            <cds-action-sort
+              cds-layout="align:right"
+              aria-label="sort hosts"
+              [sort]="idSortType"
+              (sortChange)="sortGridId($event)"
+            ></cds-action-sort>
+            <cds-action
+              (click)="toggleFilter($event)"
+              shape="filter"
+              [status]="this.filterString ? 'active' : ''"
+              aria-label="search hosts"
+            ></cds-action>
+            <cds-action
+              (click)="pinFirstColumn = !this.pinFirstColumn"
+              [status]="pinFirstColumn ? 'active' : ''"
+              shape="pin"
+              aria-label="pin host column"
+            ></cds-action>
+            <cds-action
+              popup="row-actions"
+              (click)="showBatchActions($event)"
+              aria-label="available host options"
+            ></cds-action>
+          </div>
+        </ng-container>
+        <cds-action-sort
+          *ngIf="column === 'status'"
+          aria-label="sort hosts"
+          [sort]="statusSortType"
+          (sortChange)="sortGridStatus($event)"
+        ></cds-action-sort>
+      </cds-grid-column>
+    </ng-container>
+
+    <ng-container *ngIf="data | async as data; else placeholder">
+      <!-- placeholder column for the detail toggle button -->
+
+      <cds-grid-row
+        *ngFor="let vm of data; trackBy: trackById; let i = index"
+        formGroupName="rows"
+        [selected]="multiSelectForm.controls.rows.get(vm.id)?.value"
+      >
+        <!--      <cds-grid-row *ngFor="let vm of data; trackBy: trackById">-->
+        <!-- generate multi-select checkbox for _this_ row -->
+        <cds-grid-cell type="action">
+          <cds-checkbox>
+            <input type="checkbox" [formControlName]="vm.id" aria-label="select host" />
+          </cds-checkbox>
+        </cds-grid-cell>
+        <!-- generate row action button specific for this row model -->
+        <cds-grid-cell type="action">
+          <cds-action popup="row-actions" aria-label="host actions" (click)="showRowActions($event, vm)"></cds-action>
+        </cds-grid-cell>
+        <!-- Add in the button for detail pane toggle and use the currentVM to set up its aria state -->
+        <cds-grid-cell type="action">
+          <cds-action-expand
+            [id]="vm.id"
+            [attr.aria-label]="getDetails(vm.id)"
+            (click)="toggleDetail($event, vm)"
+            action="detail"
+            [attr.expanded]="this.currentVM?.id === vm.id"
+          ></cds-action-expand>
+        </cds-grid-cell>
+        <cds-grid-cell *ngFor="let column of dataFields" [hidden]="!isColumnVisible(column)">
+          <ng-content *ngIf="!isColumnVisible(column)"></ng-content>
+          {{ $any(vm)[column] }}
+        </cds-grid-cell>
+      </cds-grid-row>
+    </ng-container>
+    <ng-template #placeholder>
+      <cds-grid-placeholder>
+        <cds-progress-circle size="xl" status="info"></cds-progress-circle>
+        <p cds-text="subsection">Loading VMs</p>
+      </cds-grid-placeholder>
+    </ng-template>
+    <cds-grid-footer>
+      <div cds-layout="horizontal gap:md">
+        <cds-action
+          (click)="setAnchor($event)"
+          [status]="allColumnsVisible ? 'active' : ''"
+          aria-label="filter column"
+          shape="view-columns"
+        ></cds-action>
+        <div cds-layout="align:stretch"></div>
+        <div>Grid Footer</div>
+        <cds-pagination aria-label="pagination">
+          <cds-select control-width="shrink">
+            <select [value]="getPageSize()" (input)="setPageSize($event)" style="width: 46px;" aria-label="per page">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="25">25</option>
+            </select>
+          </cds-select>
+          <cds-pagination-button
+            [attr.disabled]="currentPage === 0 ? true : null"
+            aria-label="go to first"
+            action="first"
+            (click)="firstPage()"
+          ></cds-pagination-button>
+          <cds-pagination-button
+            aria-label="go to previous"
+            [attr.disabled]="currentPage === 0 ? true : null"
+            action="prev"
+            (click)="prevPage()"
+          ></cds-pagination-button>
+          <cds-input cds-pagination-number>
+            <input
+              type="number"
+              size="1"
+              aria-label="current page"
+              (input)="setPage($event)"
+              [valueAsNumber]="currentPage + 1"
+              min="1"
+              [max]="pageCount"
+            />
+            <cds-control-message>/ {{ pageCount }}</cds-control-message>
+          </cds-input>
+          <cds-pagination-button
+            aria-label="go to next"
+            [attr.disabled]="currentPage === pageCount - 1 ? true : null"
+            action="next"
+            (click)="nextPage()"
+          ></cds-pagination-button>
+          <cds-pagination-button
+            aria-label="go to last"
+            [attr.disabled]="currentPage === pageCount - 1 ? true : null"
+            action="last"
+            (click)="lastPage()"
+          ></cds-pagination-button>
+        </cds-pagination>
+      </div>
+    </cds-grid-footer>
+    <cds-grid-detail
+      aria-labelledby="heading"
+      [anchor]="this.detailAnchor"
+      *ngIf="currentVM"
+      (closeChange)="currentVM = null"
+    >
+      <section cds-layout="vertical align:center gap:lg">
+        <h2 id="heading" cds-text="section" cds-layout="align:left">{{ this.currentVM?.id }}</h2>
+        <p cds-text="body">Status: {{ this.currentVM?.status }}</p>
+        <p cds-text="body">CPU: {{ this.currentVM?.cpu }}%</p>
+        <p cds-text="body">Memory: {{ this.currentVM?.memory }}%</p>
+      </section>
+    </cds-grid-detail>
+  </cds-grid>
+</div>
+
+<!-- A popover for batch actions -->
+<ng-container *ngIf="batchActionAnchor">
+  <!-- A drop down that can hold row action buttons -->
+  <cds-dropdown
+    id="row-actions"
+    [hidden]="!batchActionAnchor"
+    [anchor]="batchActionAnchor"
+    (closeChange)="batchActionAnchor = null"
+    position="bottom"
+  >
+    <cds-button action="flat" size="sm" (click)="batchAction('Restart')">Restart Selected</cds-button>
+    <cds-button action="flat" size="sm" (click)="batchAction('Shutdown')">Shutdown Selected</cds-button>
+  </cds-dropdown>
+</ng-container>
+
+<!-- A popover for row actions -->
+<cds-dropdown
+  id="row-actions"
+  [hidden]="hiddenRowAction"
+  [anchor]="actionPopoverAnchor"
+  (closeChange)="closeRowActionPopover()"
+>
+  <cds-button action="flat" size="sm" (click)="executeRowAction('Shutdown')">Shutdown {{ selectedRow?.id }}</cds-button>
+  <cds-button action="flat" size="sm" (click)="executeRowAction('Restart')">Restart {{ selectedRow?.id }}</cds-button>
+</cds-dropdown>
+
+<!-- popover for the filter -->
+<ng-container *ngIf="filterAnchor">
+  <cds-dropdown
+    [hidden]="hiddenFilter"
+    [anchor]="this.filterAnchor"
+    (closeChange)="filterAnchor = null; hiddenFilter = !hiddenFilter"
+  >
+    <cds-input>
+      <input
+        type="text"
+        aria-label="search hosts"
+        placeholder="Search"
+        value=""
+        [value]="this.filterString"
+        (input)="filterByID($event)"
+        [attr.anchor]="filterAnchor"
+      />
+    </cds-input>
+  </cds-dropdown>
+</ng-container>
+
+<!-- hide/show popover -->
+<cds-dropdown
+  (closeChange)="this.columnAnchor = null; hiddenColumnPicker = !hiddenColumnPicker"
+  *ngIf="columnAnchor"
+  [anchor]="columnAnchor"
+  position="top"
+>
+  <form [formGroup]="hideShowForm">
+    <cds-checkbox-group formGroupName="columns" layout="vertical">
+      <cds-checkbox *ngFor="let column of dataFields">
+        <label>{{ column }}</label>
+        <input type="checkbox" [formControlName]="column" />
+      </cds-checkbox>
+    </cds-checkbox-group>
+  </form>
+  <cds-button action="flat" [attr.disabled]="allColumnsVisible ? null : true" (click)="showAllColumns()">
+    Select All
+  </cds-button>
+</cds-dropdown>

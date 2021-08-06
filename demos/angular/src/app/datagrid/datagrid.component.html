@@ -1,0 +1,232 @@
+<div cds-layout="p-b:xxl">
+  <h1>Datagrid</h1>
+  <cds-divider orientation="horizontal"></cds-divider>
+  <div cds-layout="vertical gap:md">
+    <h2>Dev Notes</h2>
+    <cds-accordion>
+      <cds-accordion-panel
+        [expanded]="expandedAccessibility"
+        (expandedChange)="expandedAccessibility = !expandedAccessibility"
+      >
+        <cds-accordion-header>Accessibility</cds-accordion-header>
+        <cds-accordion-content>
+          <div cds-layout="vertical gap:md align:stretch">
+            <p>
+              Where possible CdsGrid (and children elements) handle accessibility internally. In some cases it is the
+              responsibility of the consuming application to provide the accessibility features, usually in the form of
+              aria attributes.
+            </p>
+            <span cds-text="title">Icon Key</span>
+            <table cds-table style="width: 10rem;">
+              <tbody>
+                <tr>
+                  <td>Clarity</td>
+                  <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                </tr>
+                <tr>
+                  <td>App/Dev</td>
+                  <td><cds-icon shape="application" size="lg" solid></cds-icon></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <table cds-table="border:row border:outside zebra" cds-text="center">
+            <caption>
+              A table with accessibility responsibilities for Clarity side vs application side
+            </caption>
+            <thead>
+              <tr>
+                <th>Element</th>
+                <th>Attribute</th>
+                <th>Responsibility</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>cds-grid</td>
+                <td>role</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We must tell accessibility tools that this is a grid.</td>
+              </tr>
+              <tr>
+                <td>cds-grid</td>
+                <td>aria-rowcount</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We calculate the rowcount based on the data model provided and set or update this value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid</td>
+                <td>aria-colcount</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We calculate the colcount based on the data model provided and set or update this value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-column</td>
+                <td>role</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We must tell accessibility tools that this is a columnheader.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-column</td>
+                <td>aria-colindex</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We calculate the aria-colindex based on the data model provided and set or update this value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-column</td>
+                <td>aria-sort</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>This updates based on the cds-action-sort attribute `sort` value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-row</td>
+                <td>role</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We must tell accessibility tools this is a row.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-row</td>
+                <td>aria-rowindex</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We calculate the aria-rowindex based on the data model provided and set of update this value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-cell</td>
+                <td>role</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We must tell accessibility tools this is a cell.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-cell</td>
+                <td>aria-colindex</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We calculate the aria-colindex based on hte data model provided and set or update this value.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-cell</td>
+                <td>tabindex</td>
+                <td><cds-icon shape="clarity-logo" size="lg"></cds-icon></td>
+                <td>We manage tabindex for cells to enable keyboard navigation.</td>
+              </tr>
+              <tr>
+                <td>cds-grid-detail</td>
+                <td>aria-labelledby</td>
+                <td><cds-icon shape="application" size="lg" solid></cds-icon></td>
+                <td>The value must correspond to the id of an element in the projected content for the detail pane.</td>
+              </tr>
+              <tr>
+                <td>cds-action-expand</td>
+                <td>aria-label</td>
+                <td><cds-icon shape="application" size="lg" solid></cds-icon></td>
+                <td>
+                  The cds-action-expand button use used to open the detail pane. It's aria-label needs to describe what
+                  it opens and closes when clicked.
+                </td>
+              </tr>
+              <tr>
+                <td>cds-action-expand</td>
+                <td>tabindex</td>
+                <td><cds-icon shape="clarity-logo" size="lg" solid></cds-icon></td>
+                <td>Clarity adds this so that the buttons are accessible.</td>
+              </tr>
+              <tr>
+                <td>cds-action-expand</td>
+                <td>aria-disabled</td>
+                <td><cds-icon shape="clarity-logo" size="lg" solid></cds-icon></td>
+                <td>Clarity manages this based on the presence or absence of the disabled attribute.</td>
+              </tr>
+              <tr>
+                <td>cds-action-expand</td>
+                <td>role</td>
+                <td><cds-icon shape="clarity-logo" size="lg" solid></cds-icon></td>
+                <td>We must tell accessibility tools that this is a button.</td>
+              </tr>
+              <tr>
+                <td>cds-action</td>
+                <td>aria-label</td>
+                <td><cds-icon shape="application" size="lg" solid></cds-icon></td>
+                <td>
+                  You must provide a descriptive label for the this button. E.g "Trigger ID column filter" or "Pin ID
+                  column."
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </cds-accordion-content>
+      </cds-accordion-panel>
+
+      <cds-accordion-panel [expanded]="expandedDevNotes" (expandedChange)="expandedDevNotes = !expandedDevNotes">
+        <cds-accordion-header>General Dev</cds-accordion-header>
+        <cds-accordion-content>
+          <div cds-layout="vertical gap:md align:horizontal-stretch">
+            <h3>Consuming CdsGrid in the Angular framework</h3>
+            <p>
+              If you are coming to the CdsGrid after using the <code>@clr/angular ClrDatagrid</code> component, there
+              are some differences in possible solutions that can be used to architect a core grid. In general, lean on
+              and leverage Angular for its strengths and rely on teh core elements to provide a standard HTML based API
+              and stateless nature. The power of this core architecture results in several things which, as usual in
+              software, are a series of trade-offs.
+            </p>
+            <p>
+              Apps must handle the state and use the API to pass the state to an element. This does require additional
+              wiring that was previously encapsulated inside ClrDatagrid. However, this also means applications gain
+              full control over things that previously were difficult or impossible to accomplish with ClrDatagrid.
+            </p>
+            <p>
+              This module is a series of almost 1:1 comparisons for various features provided in ClrDatagrid so that a
+              developer can look at the code and run the app to see the differences between developing with CdsGrid vs
+              ClrDatagrid.
+            </p>
+          </div>
+
+          <h3>Reactive Forms</h3>
+          <p>
+            Some datagrid features need form controls to work. The best way I have found to wire things up in a DRY way
+            with the least amount of templating is to use Reactive forms. This approach gives the app the control and
+            ability to generate groups and controls for the corresponding pard of the data model. E.g columns and rows
+            might need checkboxes for features like hide/show columns and single or multi select.
+          </p>
+          <h3 cds-layout="m-b:lg">Angular Development</h3>
+          <ul cds-list cds-layout="vertical gap:md">
+            <li>Is the binding correct? [my-attribute] vs [attr.my-attribute]</li>
+            <li>
+              You can't use 'Banana in a box'. Core emits custom events with the value on the event detail property.
+              Apps have to [expanded]="isExpanded" (expandedChange)="isExpanded = !isExpanded" instead of
+              [(expanded)]="isExpanded".
+            </li>
+          </ul>
+          <h3>Popovers and CdsGrid</h3>
+          <p>
+            Many features of the CdsGrid need popovers to work. In ClrDatagrid this was handled internally. With the
+            Core architecture the application is fully empowered to create and manages popovers as it sees fit. This
+            includes, when to hide and show them, what the popover gets anchored to. What triggers the popover to hide
+            or show. These examples show one way to accomplish the feature with a simple popover that is similar to the
+            feature in ClrDatagrid. This is not the only way, or the 'right' way. There is no right way, these demos
+            only show how to make the CdsGrid popovers behave like ClrDatagrid popovers.
+          </p>
+          <p>
+            In general you will need two things to implement a popover for the grid behavior. You will need a button in
+            the proper place of the grid (column, cell, other trigger elements?) that acts as a trigger for the behavior
+            (hide/shot, filter etc) and you will need a popover element that can associate with an anchor (note, this
+            doesn't have to be the trigger but you should work with your design team to craft a good UX for your grids).
+            Once you have the trigger and the anchor (they can be the same) logic can be written that manages the
+            visibility of the popover _thing_.
+          </p>
+          <h4 cds-layout="m-b:md">Features that need popovers:</h4>
+          <ul cds-list>
+            <li>Detail pane</li>
+            <li>Filter(s)</li>
+            <li>Hide and show columns</li>
+            <li>Row actions</li>
+            <li>Batch (multi) actions</li>
+          </ul>
+        </cds-accordion-content>
+      </cds-accordion-panel>
+    </cds-accordion>
+
+    <section cds-layout="vertical p-b:xl gap:md align:horizontal-stretch">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

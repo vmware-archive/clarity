@@ -1,0 +1,91 @@
+<h2>@cds/core multi-action grid</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for multi action grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        A multi action grid is a variant of the multi select grid. The only difference is that in this grid there is a
+        cds-action button in the Host column. This action button toggles a popover that contains buttons to call
+        functions that can act on the selected row objects. This is set up like other popovers.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<div [formGroup]="multiSelectForm">
+  <cds-grid aria-label="column visibility datagrid demo" style="--body-height: 360px;">
+    <!-- set up our row controls -->
+    <cds-grid-column type="action" resizable="hidden">
+      <cds-checkbox>
+        <input
+          type="checkbox"
+          formControlName="allRows"
+          [indeterminate]="selectedCount > 0 && selectedCount < data.length"
+          aria-label="select all hosts"
+        />
+      </cds-checkbox>
+    </cds-grid-column>
+    <!-- There is prolly [class]="more programmatic way to simplify this -->
+    <cds-grid-column>
+      Host
+      <cds-action
+        popup="row-actions"
+        (click)="showBatchActions($event)"
+        aria-label="available host options"
+      ></cds-action>
+    </cds-grid-column>
+    <ng-container *ngFor="let column of dataFields">
+      <cds-grid-column *ngIf="column !== 'id'" [id]="column">
+        {{ column | titlecase }}
+      </cds-grid-column>
+    </ng-container>
+
+    <cds-grid-row
+      *ngFor="let vm of data; let i = index"
+      formGroupName="rows"
+      [selected]="multiSelectForm.controls.rows.get(vm.id)?.value"
+    >
+      <!-- cell for the row checkbox -->
+      <cds-grid-cell type="action">
+        <cds-checkbox>
+          <input type="checkbox" [formControlName]="vm.id" aria-label="select host" />
+        </cds-checkbox>
+      </cds-grid-cell>
+      <!-- the cells for each column field -->
+      <cds-grid-cell *ngFor="let column of dataFields">
+        {{ $any(vm)[column] }}
+      </cds-grid-cell>
+    </cds-grid-row>
+    <cds-grid-footer> There are {{ data.length }} virtual machines. </cds-grid-footer>
+  </cds-grid>
+  <!-- [class]="container that can be conditionally added/removed from the DOM -->"
+  <ng-container *ngIf="batchActionAnchor">
+    <!-- A drop down that can hold row action buttons -->
+    <cds-dropdown
+      id="row-actions"
+      [hidden]="!batchActionAnchor"
+      [anchor]="batchActionAnchor"
+      (closeChange)="batchActionAnchor = null"
+      position="bottom"
+    >
+      <cds-button action="flat" size="sm" (click)="batchAction('Restart')">Restart Selected</cds-button>
+      <cds-button action="flat" size="sm" (click)="batchAction('Shutdown')">Shutdown Selected</cds-button>
+    </cds-dropdown>
+  </ng-container>
+</div>
+
+<h2>@clr/angular batch action datagrid</h2>
+<p>This is a <strong>@clr/angular</strong> batch action datagrid.</p>
+<clr-datagrid style="height: 360px;" [(clrDgSelected)]="clrNgSelected">
+  <clr-dg-action-bar>
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary" (click)="clrAction('Shutdown')">Shutdown selected</button>
+      <button type="button" class="btn btn-sm btn-secondary" (click)="clrAction('Restart')">Restart selected</button>
+    </div>
+  </clr-dg-action-bar>
+  <clr-dg-column *ngFor="let column of dataFields">{{ column }}</clr-dg-column>
+
+  <clr-dg-row *ngFor="let vm of data" [clrDgItem]="vm">
+    <clr-dg-cell *ngFor="let column of dataFields">{{ $any(vm)[column] }}</clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

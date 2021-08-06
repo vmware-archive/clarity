@@ -1,0 +1,81 @@
+<h2>@cds/core Hidable columns grid</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for grids with hide-able columns</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        To implement hide/show behavior an application will need two things:
+      </p>
+      <ol cds-list>
+        <li>A list of columns that can be toggled and an id or unique way to identify it</li>
+        <li>A form of controls for each column that can be toggled</li>
+      </ol>
+      <p>
+        There are many ways to do this. For the purpose of the demo I set up a 'service' that could extract the names of
+        columns from the data data. I then use an Angular reactive form to generate controls that associate the control
+        with a column. Once that is done, the template can implement a popover with the form instance and a checkbox
+        group element that uses *ngFor to generate checkboxes for each column that can be hidden or shown.
+      </p>
+      <p>
+        Also not that the action button in the cds-grid-footer passes the event to a method that uses the event target
+        to associate the clicked button with the form in the popover. Positioning calculations are handled by the
+        popover.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+
+<cds-grid aria-label="column visibility datagrid demo" style="--body-height: 360px;">
+  <cds-grid-column *ngFor="let column of dataFields" [hidden]="!isColumnVisible(column)" [id]="column">
+    {{ column | titlecase }}
+  </cds-grid-column>
+
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell *ngFor="let column of dataFields" [hidden]="!isColumnVisible(column)">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>
+    <cds-action
+      (click)="setAnchor($event)"
+      [status]="allColumnsVisible ? 'active' : ''"
+      aria-label="filter column"
+      shape="view-columns"
+    ></cds-action>
+  </cds-grid-footer>
+</cds-grid>
+<cds-dropdown
+  (closeChange)="this.columnAnchor = null; hiddenColumnPicker = !hiddenColumnPicker"
+  *ngIf="columnAnchor"
+  [anchor]="columnAnchor"
+  position="top"
+>
+  <form [formGroup]="hideShowForm">
+    <cds-checkbox-group formGroupName="columns" layout="vertical">
+      <cds-checkbox *ngFor="let column of dataFields">
+        <label>{{ column }}</label>
+        <input type="checkbox" [formControlName]="column" />
+      </cds-checkbox>
+    </cds-checkbox-group>
+  </form>
+  <cds-button action="flat" [attr.disabled]="allColumnsVisible ? null : true" (click)="showAllColumns()">
+    Select All
+  </cds-button>
+</cds-dropdown>
+
+<h2>@clr/angular Hideable columns datagrid</h2>
+<p>This is a basic <strong>@clr/angular</strong> datagrid.</p>
+<clr-datagrid style="height: 360px;">
+  <clr-dg-column *ngFor="let column of dataFields">
+    <ng-container *clrDgHideableColumn="{ hidden: false }">
+      {{ column | uppercase }}
+    </ng-container>
+  </clr-dg-column>
+
+  <clr-dg-row *ngFor="let vm of data">
+    <clr-dg-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

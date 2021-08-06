@@ -1,0 +1,77 @@
+<h3>@cds/core Grid with detail</h3>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for grids with detail</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        Detail pane can be implemented by adding an action="button" to corresponding cds-grid-column and cds-grid-cell
+        pairs. In side the cell, for each row you must use te cds-action-expand button. Bind the aria-label to details
+        taht describe the row data. Listen to the click event and use that to toggle the visibility of the
+        cds-grid-detail element. There are many ways to achieve this. This example uses *ngIf. Note, the cds-grid-detail
+        element needs to bind to the [anchor] attribute. I passed it to the toggleDetail function so I could update the
+        property and also pass the row details for the selected row.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<cds-grid aria-label="row detail datagrid demo" style="--body-height: 360px;">
+  <cds-grid-column type="action" aria-label="row detail column"></cds-grid-column>
+  <cds-grid-column *ngFor="let column of dataFields">
+    {{ column | titlecase }}
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <!-- Add in the button for detail pane toggle and use the currentVM to set up its aria state -->
+    <cds-grid-cell type="action">
+      <cds-action-expand
+        [attr.aria-label]="getDetails(vm.id)"
+        (click)="toggleDetail($event, vm)"
+        action="detail"
+        [attr.expanded]="this.currentVM?.id === vm.id"
+      ></cds-action-expand>
+    </cds-grid-cell>
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+  <cds-grid-detail
+    aria-labelledby="heading"
+    [anchor]="this.detailAnchor"
+    *ngIf="currentVM"
+    (closeChange)="currentVM = null"
+  >
+    <section cds-layout="vertical align:center gap:lg">
+      <h2 id="heading" cds-text="section" cds-layout="align:left">{{ this.currentVM?.id }}</h2>
+      <p cds-text="body">Status: {{ this.currentVM?.status }}</p>
+      <p cds-text="body">CPU: {{ this.currentVM?.cpu }}%</p>
+      <p cds-text="body">Memory: {{ this.currentVM?.memory }}%</p>
+    </section>
+  </cds-grid-detail>
+</cds-grid>
+<h2>@clr/angular Datagrid with detail</h2>
+<clr-datagrid style="width: 100%;">
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>Memory</clr-dg-column>
+  <clr-dg-column>About</clr-dg-column>
+
+  <clr-dg-row *ngFor="let vm of data" [clrDgItem]="vm">
+    <clr-dg-cell>{{ vm.id }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.status }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.memory }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.about }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-detail *clrIfDetail="let detail">
+    <clr-dg-detail-header>{{ detail.id }}</clr-dg-detail-header>
+    <clr-dg-detail-body>
+      <section cds-layout="vertical align:center gap:lg">
+        <p cds-text="body">Status: {{ detail.status }}</p>
+        <p cds-text="body">CPU: {{ detail.cpu }}%</p>
+        <p cds-text="body">Memory: {{ detail.memory }}%</p>
+      </section>
+    </clr-dg-detail-body>
+  </clr-dg-detail>
+
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

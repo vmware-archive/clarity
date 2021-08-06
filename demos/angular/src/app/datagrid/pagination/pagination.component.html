@@ -1,0 +1,93 @@
+<h2>@cds/core Grid with pagination behavior</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for pagination grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        To paginate a grid use the Core pagination component to give UI that can set and update: currentPage, pageSize
+        and also navigate around the data set in various ways: first/last and previous/next. I'm using a standard
+        utility function that takes the full list of data, the pageSize and returns an array of pages that can be given
+        to the tempalte iteration to generate cds-grid-rows. There are other ways to handle this both client side as
+        well as hooking up a service to an API. The importing thig for devs is to implement proper UI and guards so that
+        users cannot get into an impossible state. E.g - on the first page but the First/previous buttons are enabled ot
+        when focus in in hte page number input, they cannot use the native controls to go higher than the highest
+        available page by setting an appropriate max on the input in the template.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<cds-grid aria-label="pagination datagrid demo" style="--body-height: 360px;">
+  <cds-grid-column *ngFor="let column of dataFields" [id]="column">
+    {{ column | titlecase }}
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>
+    <cds-pagination aria-label="pagination">
+      <cds-select control-width="shrink">
+        <select [value]="getPageSize()" (input)="setPageSize($event)" style="width: 46px;" aria-label="per page">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="25">25</option>
+        </select>
+      </cds-select>
+      <cds-pagination-button
+        [attr.disabled]="vmData.currentPage === 0 ? true : null"
+        aria-label="go to first"
+        action="first"
+        (click)="firstPage()"
+      ></cds-pagination-button>
+      <cds-pagination-button
+        aria-label="go to previous"
+        [attr.disabled]="vmData.currentPage === 0 ? true : null"
+        action="prev"
+        (click)="prevPage()"
+      ></cds-pagination-button>
+      <cds-input cds-pagination-number>
+        <input
+          type="number"
+          size="1"
+          aria-label="current page"
+          (input)="setPage($event)"
+          [valueAsNumber]="vmData.currentPage + 1"
+          min="1"
+          [max]="vmData.pageCount"
+        />
+        <cds-control-message>/ {{ vmData.pageCount }}</cds-control-message>
+      </cds-input>
+      <cds-pagination-button
+        aria-label="go to next"
+        [attr.disabled]="vmData.currentPage === vmData.pageCount - 1 ? true : null"
+        action="next"
+        (click)="nextPage()"
+      ></cds-pagination-button>
+      <cds-pagination-button
+        aria-label="go to last"
+        [attr.disabled]="vmData.currentPage === vmData.pageCount - 1 ? true : null"
+        action="last"
+        (click)="lastPage()"
+      ></cds-pagination-button>
+    </cds-pagination>
+  </cds-grid-footer>
+</cds-grid>
+<h2>@clr/angular Datagrid with pagination behavior</h2>
+<!-- Note: I have to override the internal height behavior with css to get the height I want when user
+           changes pageSize. Each grid needs to override according the the desired behavior. -->
+<clr-datagrid style="height: 360px; min-height: 360px; max-height: 360px;">
+  <clr-dg-column *ngFor="let column of dataFields">{{ column }}</clr-dg-column>
+  <clr-dg-row *clrDgItems="let vm of data" [clrDgItem]="vm">
+    <clr-dg-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[5, 10, 15, 20]">Users per page</clr-dg-page-size>
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

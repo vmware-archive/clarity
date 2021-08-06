@@ -1,0 +1,49 @@
+<h2>@cds/core Grid with column sorting</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for sortable grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        Sorting can be added to a grid with two changes. First, add a cds-action-sort button to the column that needs to
+        be sorted. Then listen to the sortChange event on that button and implement the applications sorting algorithm,
+        so that is takes the original data and places it on a sorted property that can be used as the iterator in the
+        template for each of the rows.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<cds-grid aria-label="row sort datagrid demo" style="--body-height: 360px;">
+  <cds-grid-column *ngFor="let column of dataFields" [id]="column">
+    {{ column | titlecase }}
+    <ng-container *ngIf="column === 'id'">
+      <cds-action-sort
+        aria-label="sort hosts"
+        [sort]="vmData.sortType"
+        (sortChange)="sortGrid($event)"
+      ></cds-action-sort>
+    </ng-container>
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+
+<h2>@clr/angular Datagrid with built in column string filter</h2>
+<clr-datagrid style="height: 360px;">
+  <clr-dg-column [clrDgField]="'id'">ID</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>Memory</clr-dg-column>
+  <clr-dg-column>About</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let vm of data" [clrDgItem]="vm">
+    <clr-dg-cell>{{ vm.id }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.status }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.memory }}</clr-dg-cell>
+    <clr-dg-cell>{{ vm.about }}</clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

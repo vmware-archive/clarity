@@ -1,0 +1,70 @@
+<h2>@cds/core Grid with pinned column behaviors</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for pinned column grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p cds-text="subsection">There is no equivalent in @clr/angular for pinned columns.</p>
+      <p>
+        With the new core architecture this is now possible. To implement a static grid with pinned columns just give
+        the column a fixed width and set the cds-grid-column attribute: position="fixed".
+      </p>
+      <p>
+        For dynamic pinning behavior that users can control you will need a boolean property to determine when a column
+        is pinned and a cds-action button in the cds-grid-column that needs the behavior. Finally, when the column is
+        pinned, set the cds-action status to active so that the UI reflects the pinned state.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+
+<!-- Need a more generic way to iterate columns and utalize metadata (width) for the columns -->
+<cds-grid aria-label="column fixed datagrid demo" style="--body-height: 360px; width: 650px;">
+  <cds-grid-column width="150px" position="fixed">Host</cds-grid-column>
+  <cds-grid-column width="350px">Status</cds-grid-column>
+  <cds-grid-column width="500px">CPU</cds-grid-column>
+  <cds-grid-column width="150px">Memory</cds-grid-column>
+  <cds-grid-column width="150px">Selected</cds-grid-column>
+  <cds-grid-column width="150px" position="fixed">About</cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell *ngFor="let column of dataFields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>
+
+<h3>Dynamic Fixed columns</h3>
+<p>
+  This demo enables the user to fix or 'pin' two of the columns. When there is overflow, those columns remin visible and
+  the rest scroll on the x-axis..
+</p>
+
+<cds-grid aria-label="columns fixed dynamic datagrid demo" style="--body-height: 360px; width: 650px;">
+  <cds-grid-column width="200px" resizable [position]="pinFirst ? 'fixed' : ''">
+    Host
+    <cds-action
+      (click)="pinFirst = !this.pinFirst"
+      [status]="pinFirst ? 'active' : ''"
+      shape="pin"
+      aria-label="pin host column"
+    ></cds-action>
+  </cds-grid-column>
+  <cds-grid-column width="400px" resizable>Status</cds-grid-column>
+  <cds-grid-column width="1000px" resizable>CPU</cds-grid-column>
+  <cds-grid-column width="200px" resizable [position]="pinLast ? 'fixed' : ''">
+    Memory
+    <cds-action
+      (click)="pinLast = !this.pinLast"
+      [status]="pinLast ? 'active' : ''"
+      shape="pin"
+      aria-label="pin memory column"
+    ></cds-action>
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of data">
+    <cds-grid-cell>{{ vm.id }}</cds-grid-cell>
+    <cds-grid-cell>{{ vm.status }}</cds-grid-cell>
+    <cds-grid-cell>{{ vm.cpu }}%</cds-grid-cell>
+    <cds-grid-cell>{{ vm.memory }}%</cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer></cds-grid-footer>
+</cds-grid>

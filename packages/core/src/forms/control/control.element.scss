@@ -7,6 +7,7 @@
 $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
 
 :host {
+  contain: inherit;
   display: block;
   width: 100%;
   --control-width: #{$fallback-width};

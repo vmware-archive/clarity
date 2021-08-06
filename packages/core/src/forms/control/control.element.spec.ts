@@ -343,3 +343,43 @@ describe('cds-control with label control action', () => {
     expect(input.getAttribute('style')).toBeNull();
   });
 });
+
+describe('cds-control with non-input as control', () => {
+  let element: HTMLElement;
+  let control: CdsControl;
+  let para: HTMLElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-control>
+        <label>control without native input</label>
+        <p cds-text="body" cds-control aria-disabled="true">aria disabled</p>
+        <cds-control-message error="valueMissing">message text</cds-control-message>
+      </cds-control>
+    `);
+
+    control = element.querySelector<CdsControl>('cds-control');
+    para = control.querySelector<HTMLElement>('p[cds-control]');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should apply disabled styles when non-input has aria-disabled', async () => {
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(true, 'true aria-disabled is true');
+
+    para.setAttribute('aria-disabled', '');
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(false, 'non-true aria-disabled is false');
+
+    para.removeAttribute('aria-disabled');
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(false, 'no aria-disabled is false');
+
+    para.setAttribute('aria-disabled', 'true');
+    await componentIsStable(control);
+    expect(control.hasAttribute('_disabled')).toBe(true, 'set aria-disabled is respected');
+  });
+});

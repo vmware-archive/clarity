@@ -43,6 +43,7 @@ slot {
 
   ::slotted(*) {
     cursor: not-allowed !important;
+    pointer-events: none;
   }
 }
 

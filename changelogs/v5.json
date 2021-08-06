@@ -5,27 +5,25 @@
       "version": "5.5.1",
       "date": "2021-08-05",
       "description": "This is a patch release.",
-      "feat": [
+      "fix": [
         {
           "issue": 6203,
-          "title": "fix(core:control): label alignments",
-          "project": "core",
-          "scope": "control"
-        },
-        {
-          "issue": 6200,
-          "title": "a11y(core:accordion): fixes and improvements",
-          "project": "core",
-          "scope": "accordion"
+          "title": "Label alignments",
+          "project": "Core",
+          "scope": "Control"
         },
         {
           "issue": 6183,
-          "title": "fix(core:button): disabled/loading state",
-          "project": "core",
-          "scope": "button"
-        }
-      ],
-      "fix": [
+          "title": "Disabled/loading state",
+          "project": "Core",
+          "scope": "Button"
+        },
+        {
+          "issue": 6200,
+          "title": "Accessibility screen reader support",
+          "project": "Core",
+          "scope": "Accordion"
+        },
         {
           "issue": 6050,
           "title": "Input lines are now proper contrast",
@@ -83,28 +81,28 @@
       "feat": [
         {
           "issue": 6020,
-          "title": "feat(core:tree-view): beta release",
-          "project": "core",
-          "scope": "tree-view"
-        },
-        {
-          "issue": 6136,
-          "title": "fix(core:layout): remove line height erasure when disabled on cds-layout",
-          "project": "core",
-          "scope": "layout"
+          "title": "Beta release",
+          "project": "Core",
+          "scope": "Tree-view"
         },
         {
           "issue": 6024,
-          "title": "feat(core:navigation): beta release",
-          "project": "core",
-          "scope": "navigation"
+          "title": "Beta release",
+          "project": "Core",
+          "scope": "Navigation"
         }
       ],
       "fix": [
         {
+          "issue": 6136,
+          "title": "Remove line height erasure when disabled on cds-layout",
+          "project": "Core",
+          "scope": "Layout"
+        },
+        {
           "issue": 6097,
-          "title": "fix(core): global state service sync",
-          "project": "core",
+          "title": "Global state service sync",
+          "project": "Core",
           "scope": ""
         }
       ]
@@ -841,7 +839,7 @@
       "feat": [
         {
           "issue": 5657,
-          "title": "feat: clarity motion",
+          "title": "Clarity motion",
           "project": "Core",
           "scope": "Motion"
         },
@@ -927,7 +925,7 @@
         },
         {
           "issue": 5714,
-          "title": "fix: update react-wrapper imports",
+          "title": "Update react-wrapper imports",
           "project": "Core",
           "scope": "React"
         },

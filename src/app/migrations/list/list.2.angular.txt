@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <ul class="list">
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+      <li>The five boxing wizards jump quickly</li>
+    </ul>
+  `,
+})
+export class AppComponent {}

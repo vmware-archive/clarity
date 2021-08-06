@@ -5,12 +5,80 @@
  */
 
 import { Component } from '@angular/core';
+import { DemoTabData } from '../components/demo.component';
 
 @Component({
   selector: 'app-toggle',
   template: `
     <h1>Toggle</h1>
-    <not-ready name="Toggle"></not-ready>
+
+    <demo [tabs]="demo1">
+      <h3>Basic</h3>
+    </demo>
+
+    <demo [tabs]="demo2">
+      <h3>With Subtext and Forms</h3>
+    </demo>
+
+    <demo [tabs]="demo3">
+      <h3>Disabled</h3>
+    </demo>
   `,
 })
-export class TogglePage {}
+export class TogglePage {
+  demo1: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.1.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.1.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+  demo2: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.2.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.2.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+
+  demo3: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.3.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'toggle/toggle.3.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+}

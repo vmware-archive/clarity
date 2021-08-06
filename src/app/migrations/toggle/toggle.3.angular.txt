@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-toggle-wrapper>
+        <input type="checkbox" clrToggle name="input" disabled />
+        <label>toggle</label>
+      </clr-toggle-wrapper>
+    </form>
+  `,
+})
+export class AppComponent {
+}

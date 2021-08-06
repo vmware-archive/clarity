@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-toggle-container>
+        <clr-toggle-wrapper>
+          <input type="checkbox" clrToggle name="input" [(ngModel)]="input" />
+          <label>toggle</label>
+        </clr-toggle-wrapper>
+        <clr-control-helper>message text</clr-control-helper>
+      </clr-toggle-container>
+    </form>
+  `,
+})
+export class AppComponent {
+  input = 'checked';
+}

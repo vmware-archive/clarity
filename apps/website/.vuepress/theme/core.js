@@ -49,6 +49,7 @@ import {
   animationIcon,
   clockIcon,
   betaIcon,
+  timesCircleIcon,
 } from '@cds/core/icon';
 
 ClarityIcons.addIcons(
@@ -74,6 +75,7 @@ ClarityIcons.addIcons(
   animationIcon,
   clockIcon,
   betaIcon,
-  copyToClipboardIcon
+  copyToClipboardIcon,
+  timesCircleIcon
 );
 loadCoreIconSet();

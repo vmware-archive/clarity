@@ -1,0 +1,37 @@
+<h2>Basic @cds/core Grid</h2>
+<cds-accordion cds-layout="m-y:md">
+  <cds-accordion-panel [expanded]="showDevNotes" (expandedChange)="showDevNotes = !showDevNotes">
+    <cds-accordion-header>Dev notes for basic grids</cds-accordion-header>
+    <cds-accordion-content>
+      <p>
+        This is a basic @cds/core grid. It uses a simple dataset of TestVM data type. The service used mocks a simple
+        API and extracts the column information from the data in the set. This enables iterationfor both the columns,
+        the rows, and the cells.
+      </p>
+    </cds-accordion-content>
+  </cds-accordion-panel>
+</cds-accordion>
+<cds-grid aria-label="basic datagrid demo" style="--body-height: 350px;">
+  <cds-grid-column *ngFor="let column of vmData.fields" [id]="column">
+    {{ column | titlecase }}
+  </cds-grid-column>
+  <cds-grid-row *ngFor="let vm of vmData.get()">
+    <cds-grid-cell *ngFor="let column of vmData.fields">
+      {{ $any(vm)[column] }}
+    </cds-grid-cell>
+  </cds-grid-row>
+  <cds-grid-footer>Grid footer</cds-grid-footer>
+</cds-grid>
+
+<h2>Basic @clr/angular Datagrid</h2>
+<clr-datagrid style="height: 350px;">
+  <clr-dg-column *ngFor="let column of vmData.fields" [id]="column">
+    {{ column | titlecase }}
+  </clr-dg-column>
+  <clr-dg-row *ngFor="let vm of vmData.get()">
+    <clr-dg-cell *ngFor="let column of vmData.fields">
+      {{ $any(vm)[column] }}
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>Datagrid footer</clr-dg-footer>
+</clr-datagrid>

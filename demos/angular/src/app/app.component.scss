@@ -1,0 +1,18 @@
+#demo-app {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#app-header {
+  max-height: 3rem;
+}
+
+.app-content {
+  height: calc(100vh + 3rem);
+  overflow-y: auto;
+  width: 100%;
+}
+
+#app-sidenav {
+  width: fit-content;
+}

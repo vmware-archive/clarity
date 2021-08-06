@@ -1,0 +1,639 @@
+From 635248ff806d89418dea065e08af10bbe51895ab Mon Sep 17 00:00:00 2001
+From: Matt Hippely <mhippely@vmware.com>
+Date: Mon, 3 Jan 2022 16:52:33 -0800
+Subject: [PATCH] refactor: created services for demos - basic - detail -
+ filtering
+
+Signed-off-by: Matt Hippely <mhippely@vmware.com>
+---
+ demos/angular/src/app/app.component.html      |  3 +-
+ .../src/app/datagrid/basic/basic.component.ts |  5 +-
+ .../app/datagrid/basic/basic.service.spec.ts  | 16 ++++++
+ .../src/app/datagrid/basic/basic.service.ts   | 20 ++++++++
+ .../app/datagrid/detail/detail.component.html | 26 +++++-----
+ .../app/datagrid/detail/detail.component.ts   | 27 ++++------
+ .../datagrid/detail/detail.service.spec.ts    | 16 ++++++
+ .../src/app/datagrid/detail/detail.service.ts | 25 ++++++++++
+ .../filtering/filtering.component.html        | 28 +++++------
+ .../datagrid/filtering/filtering.component.ts | 31 ++----------
+ .../filtering/filtering.service.spec.ts       | 16 ++++++
+ .../datagrid/filtering/filtering.service.ts   | 50 +++++++++++++++++++
+ .../utils/providers/vm-async.service.ts       |  5 +-
+ .../utils/providers/vm-sync.service.ts        |  7 ++-
+ .../app/datagrid/utils/vm-data.interface.ts   | 38 +++++++++++---
+ 15 files changed, 228 insertions(+), 85 deletions(-)
+ create mode 100644 demos/angular/src/app/datagrid/basic/basic.service.spec.ts
+ create mode 100644 demos/angular/src/app/datagrid/basic/basic.service.ts
+ create mode 100644 demos/angular/src/app/datagrid/detail/detail.service.spec.ts
+ create mode 100644 demos/angular/src/app/datagrid/detail/detail.service.ts
+ create mode 100644 demos/angular/src/app/datagrid/filtering/filtering.service.spec.ts
+ create mode 100644 demos/angular/src/app/datagrid/filtering/filtering.service.ts
+
+diff --git a/demos/angular/src/app/app.component.html b/demos/angular/src/app/app.component.html
+index e88f31227..d19b929d0 100644
+--- a/demos/angular/src/app/app.component.html
++++ b/demos/angular/src/app/app.component.html
+@@ -1,5 +1,6 @@
+ <main id="demo-app" cds-layout="vertical align:horizontal-stretch">
+-  <header id="app-header" cds-layout="p:md p@md:lg">
++  <header id="app-header" cds-layout="horizontal align:vertical-center gap:md p-l:sm p-l@md:md">
++    <cds-icon shape="clarity-logo" size="lg"></cds-icon>
+     Clarity Angular Demos
+   </header>
+   <div cds-layout="horizontal wrap:none align:vertical-stretch">
+diff --git a/demos/angular/src/app/datagrid/basic/basic.component.ts b/demos/angular/src/app/datagrid/basic/basic.component.ts
+index 9dc16165e..2c960c393 100644
+--- a/demos/angular/src/app/datagrid/basic/basic.component.ts
++++ b/demos/angular/src/app/datagrid/basic/basic.component.ts
+@@ -1,5 +1,5 @@
+ import { Component } from '@angular/core';
+-import { VmSyncService } from '../utils/providers/vm-sync.service';
++import { BasicService } from './basic.service';
+ 
+ @Component({
+   selector: 'app-basic',
+@@ -8,5 +8,6 @@ import { VmSyncService } from '../utils/providers/vm-sync.service';
+ })
+ export class BasicComponent {
+   showDevNotes = false;
+-  constructor(public vmData: VmSyncService) {}
++
++  constructor(public vmData: BasicService) {}
+ }
+diff --git a/demos/angular/src/app/datagrid/basic/basic.service.spec.ts b/demos/angular/src/app/datagrid/basic/basic.service.spec.ts
+new file mode 100644
+index 000000000..6339de32d
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/basic/basic.service.spec.ts
+@@ -0,0 +1,16 @@
++import { TestBed } from '@angular/core/testing';
++
++import { BasicService } from './basic.service';
++
++describe('BasicService', () => {
++  let service: BasicService;
++
++  beforeEach(() => {
++    TestBed.configureTestingModule({});
++    service = TestBed.inject(BasicService);
++  });
++
++  it('should be created', () => {
++    expect(service).toBeTruthy();
++  });
++});
+diff --git a/demos/angular/src/app/datagrid/basic/basic.service.ts b/demos/angular/src/app/datagrid/basic/basic.service.ts
+new file mode 100644
+index 000000000..2ca646b04
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/basic/basic.service.ts
+@@ -0,0 +1,20 @@
++import { Injectable } from '@angular/core';
++import { SyncDataService } from '../utils/vm-data.interface';
++import { getVMData, TestVM } from '@cds/core/demo';
++
++@Injectable({
++  providedIn: 'root',
++})
++export class BasicService implements SyncDataService<TestVM> {
++  readonly data: TestVM[];
++  readonly fields: string[];
++
++  constructor() {
++    this.data = getVMData();
++    this.fields = Object.keys(this.data[0]);
++  }
++
++  public get(): TestVM[] {
++    return this.data;
++  }
++}
+diff --git a/demos/angular/src/app/datagrid/detail/detail.component.html b/demos/angular/src/app/datagrid/detail/detail.component.html
+index d6450ce6c..4b142e484 100644
+--- a/demos/angular/src/app/datagrid/detail/detail.component.html
++++ b/demos/angular/src/app/datagrid/detail/detail.component.html
+@@ -16,35 +16,35 @@
+ </cds-accordion>
+ <cds-grid aria-label="row detail datagrid demo" style="--body-height: 360px;">
+   <cds-grid-column type="action" aria-label="row detail column"></cds-grid-column>
+-  <cds-grid-column *ngFor="let column of dataFields">
++  <cds-grid-column *ngFor="let column of vmData.fields">
+     {{ column | titlecase }}
+   </cds-grid-column>
+-  <cds-grid-row *ngFor="let vm of data">
++  <cds-grid-row *ngFor="let vm of vmData.get()">
+     <!-- Add in the button for detail pane toggle and use the currentVM to set up its aria state -->
+     <cds-grid-cell type="action">
+       <cds-button-expand
+-        [attr.aria-label]="getDetails(vm.id)"
++        [attr.aria-label]="this.getDetails(vm.id)"
+         (click)="toggleDetail($event, vm)"
+         action="detail"
+-        [attr.expanded]="this.currentVM?.id === vm.id"
++        [attr.expanded]="this.vmData.currentVM?.id === vm.id"
+       ></cds-button-expand>
+     </cds-grid-cell>
+-    <cds-grid-cell *ngFor="let column of dataFields">
++    <cds-grid-cell *ngFor="let column of vmData.fields">
+       {{ $any(vm)[column] }}
+     </cds-grid-cell>
+   </cds-grid-row>
+   <cds-grid-footer></cds-grid-footer>
+   <cds-grid-detail
+     aria-labelledby="heading"
+-    [anchor]="this.detailAnchor"
+-    *ngIf="currentVM"
+-    (closeChange)="currentVM = null"
++    [anchor]="this.vmData.detailAnchor"
++    *ngIf="this.vmData.currentVM"
++    (closeChange)="this.vmData.currentVM = null"
+   >
+     <section cds-layout="vertical align:center gap:lg">
+-      <h2 id="heading" cds-text="section" cds-layout="align:left">{{ this.currentVM?.id }}</h2>
+-      <p cds-text="body">Status: {{ this.currentVM?.status }}</p>
+-      <p cds-text="body">CPU: {{ this.currentVM?.cpu }}%</p>
+-      <p cds-text="body">Memory: {{ this.currentVM?.memory }}%</p>
++      <h2 id="heading" cds-text="section" cds-layout="align:left">{{ this.vmData.currentVM?.id }}</h2>
++      <p cds-text="body">Status: {{ this.vmData.currentVM?.status }}</p>
++      <p cds-text="body">CPU: {{ this.vmData.currentVM?.cpu }}%</p>
++      <p cds-text="body">Memory: {{ this.vmData.currentVM?.memory }}%</p>
+     </section>
+   </cds-grid-detail>
+ </cds-grid>
+@@ -55,7 +55,7 @@
+   <clr-dg-column>Memory</clr-dg-column>
+   <clr-dg-column>About</clr-dg-column>
+ 
+-  <clr-dg-row *ngFor="let vm of data" [clrDgItem]="vm">
++  <clr-dg-row *ngFor="let vm of vmData.data" [clrDgItem]="vm">
+     <clr-dg-cell>{{ vm.id }}</clr-dg-cell>
+     <clr-dg-cell>{{ vm.status }}</clr-dg-cell>
+     <clr-dg-cell>{{ vm.memory }}</clr-dg-cell>
+diff --git a/demos/angular/src/app/datagrid/detail/detail.component.ts b/demos/angular/src/app/datagrid/detail/detail.component.ts
+index 726176a49..4a25d0680 100644
+--- a/demos/angular/src/app/datagrid/detail/detail.component.ts
++++ b/demos/angular/src/app/datagrid/detail/detail.component.ts
+@@ -1,36 +1,29 @@
+-import { Component, OnInit } from '@angular/core';
+-import { Observable } from 'rxjs';
++import { Component } from '@angular/core';
+ import { TestVM } from '@cds/core/demo';
+-import { VmService } from '../vm.service';
+-import { DetailGridComponent } from '../utils/vm-data.interface';
++import { DetailService } from './detail.service';
+ 
+ @Component({
+   selector: 'app-detail',
+   templateUrl: './detail.component.html',
+   styleUrls: ['./detail.component.scss'],
+ })
+-export class DetailComponent implements DetailGridComponent<TestVM> {
+-  data: TestVM[];
+-  dataFields!: string[];
+-  currentVM!: TestVM | null;
+-  detailAnchor!: HTMLElement;
++export class DetailComponent {
+   showDevNotes = false;
+ 
+-  constructor(private vmData: VmService) {
+-    this.data = vmData.get();
+-    this.dataFields = vmData.fields;
+-  }
++  constructor(public vmData: DetailService) {}
+ 
++  // Component handles aria-label for the row expand button
+   getDetails(id: string): string {
+     return `view host ${id} details`;
+   }
+ 
++  // Component handles the `state` of the detail pane.
+   toggleDetail(event: Event, vm: TestVM): void {
+-    if (this.currentVM?.id !== vm.id) {
+-      this.currentVM = vm;
+-      this.detailAnchor = event.target as HTMLElement;
++    if (this.vmData.currentVM?.id !== vm.id) {
++      this.vmData.currentVM = vm;
++      this.vmData.detailAnchor = event.target as HTMLElement;
+     } else {
+-      this.currentVM = null;
++      this.vmData.currentVM = null;
+     }
+   }
+ }
+diff --git a/demos/angular/src/app/datagrid/detail/detail.service.spec.ts b/demos/angular/src/app/datagrid/detail/detail.service.spec.ts
+new file mode 100644
+index 000000000..a8b03fa5a
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/detail/detail.service.spec.ts
+@@ -0,0 +1,16 @@
++import { TestBed } from '@angular/core/testing';
++
++import { DetailService } from './detail.service';
++
++describe('DetailService', () => {
++  let service: DetailService;
++
++  beforeEach(() => {
++    TestBed.configureTestingModule({});
++    service = TestBed.inject(DetailService);
++  });
++
++  it('should be created', () => {
++    expect(service).toBeTruthy();
++  });
++});
+diff --git a/demos/angular/src/app/datagrid/detail/detail.service.ts b/demos/angular/src/app/datagrid/detail/detail.service.ts
+new file mode 100644
+index 000000000..3ee48630c
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/detail/detail.service.ts
+@@ -0,0 +1,25 @@
++import {Injectable} from '@angular/core';
++import {DetailGrid, SyncDataService} from '../utils/vm-data.interface';
++import {getVMData, TestVM} from '@cds/core/demo';
++
++@Injectable({
++  providedIn: 'root',
++})
++export class DetailService implements SyncDataService<TestVM>, DetailGrid<TestVM> {
++  // Implements SyncDataService interface
++  readonly data: TestVM[];
++  readonly fields: string[];
++
++  //Implements DetailGrid interface
++  public currentVM!: TestVM | null;
++  public detailAnchor!: HTMLElement;
++
++  constructor() {
++    this.data = getVMData();
++    this.fields = Object.keys(this.data[0]);
++  }
++
++  public get(): TestVM[] {
++    return this.data;
++  }
++}
+diff --git a/demos/angular/src/app/datagrid/filtering/filtering.component.html b/demos/angular/src/app/datagrid/filtering/filtering.component.html
+index a7dba236c..ac2aedf4f 100644
+--- a/demos/angular/src/app/datagrid/filtering/filtering.component.html
++++ b/demos/angular/src/app/datagrid/filtering/filtering.component.html
+@@ -14,30 +14,30 @@
+ </cds-accordion>
+ 
+ <cds-grid aria-label="column filter datagrid demo" style="--body-height: 360px;">
+-  <cds-grid-column *ngFor="let column of dataFields" [id]="column">
++  <cds-grid-column *ngFor="let column of vmData.fields" [id]="column">
+     {{ column | titlecase }}
+     <ng-container *ngIf="column === 'id'">
+       <cds-button-action
+-        (click)="toggleFilter($event, column)"
++        (click)="vmData.toggleFilter($event, column)"
+         shape="filter"
+-        [pressed]="this.filterString.length > 0"
++        [pressed]="vmData.filterString.length > 0"
+         aria-label="search hosts"
+       ></cds-button-action>
+     </ng-container>
+   </cds-grid-column>
+-  <cds-grid-row *ngFor="let vm of data">
+-    <cds-grid-cell *ngFor="let column of dataFields">
++  <cds-grid-row *ngFor="let vm of vmData.filteredData() | async">
++    <cds-grid-cell *ngFor="let column of vmData.fields">
+       {{ $any(vm)[column] }}
+     </cds-grid-cell>
+   </cds-grid-row>
+   <cds-grid-footer>Grid Footer</cds-grid-footer>
+ </cds-grid>
+ 
+-<ng-container *ngIf="filterAnchor">
++<ng-container *ngIf="vmData.filterAnchor">
+   <cds-dropdown
+-    [hidden]="hiddenFilter"
+-    [anchor]="this.filterAnchor"
+-    (closeChange)="filterAnchor = null; hiddenFilter = !hiddenFilter"
++    [hidden]="vmData.hiddenFilter"
++    [anchor]="vmData.filterAnchor"
++    (closeChange)="vmData.filterAnchor = null; vmData.hiddenFilter = !vmData.hiddenFilter"
+   >
+     <div cds-layout="vertical p:md">
+       <cds-input>
+@@ -46,10 +46,10 @@
+           aria-label="search hosts"
+           placeholder="Search"
+           value=""
+-          [value]="this.filterString"
+-          (input)="filterData($event)"
+-          [attr.anchor]="filterAnchor"
+-          *ngIf="filterAnchor"
++          [value]="vmData.filterString"
++          (input)="vmData.triggerFilter($event)"
++          [attr.anchor]="vmData.filterAnchor"
++          *ngIf="vmData.filterAnchor"
+         />
+       </cds-input>
+     </div>
+@@ -72,7 +72,7 @@
+   <clr-dg-column>Selected</clr-dg-column>
+   <clr-dg-column>About</clr-dg-column>
+ 
+-  <clr-dg-row *clrDgItems="let vm of data" [clrDgItem]="vm">
++  <clr-dg-row *clrDgItems="let vm of vmData.get()" [clrDgItem]="vm">
+     <clr-dg-cell>{{ vm.id }}</clr-dg-cell>
+     <clr-dg-cell>{{ vm.status }}</clr-dg-cell>
+     <clr-dg-cell>{{ vm.cpu }}</clr-dg-cell>
+diff --git a/demos/angular/src/app/datagrid/filtering/filtering.component.ts b/demos/angular/src/app/datagrid/filtering/filtering.component.ts
+index 8eb8067ad..eea29c259 100644
+--- a/demos/angular/src/app/datagrid/filtering/filtering.component.ts
++++ b/demos/angular/src/app/datagrid/filtering/filtering.component.ts
+@@ -1,36 +1,13 @@
+-import { Component, OnInit } from '@angular/core';
+-import { filter, TestVM } from '@cds/core/demo';
+-import { FilteredGridComponent } from '../utils/vm-data.interface';
+-import { VmSyncService } from '../utils/providers/vm-sync.service';
++import { Component } from '@angular/core';
++import { FilteringService } from './filtering.service';
+ 
+ @Component({
+   selector: 'app-filtering',
+   templateUrl: './filtering.component.html',
+   styleUrls: ['./filtering.component.scss'],
+ })
+-export class FilteringComponent implements FilteredGridComponent<TestVM> {
+-  data!: TestVM[];
+-  dataFields!: string[];
+-  filterAnchor: HTMLElement | null = null;
+-  filterColumn: string = 'id'; // default to id, multiple column filters could work here with template adjustments.
+-  filterString: string = '';
+-  hiddenFilter = true;
++export class FilteringComponent {
+   showDevNotes = false;
+ 
+-  constructor(private vmData: VmSyncService) {
+-    this.data = this.vmData.filteredData(this.filterColumn, this.filterString);
+-    this.dataFields = vmData.fields;
+-  }
+-
+-  toggleFilter(event: Event, column: string) {
+-    this.filterColumn = column;
+-    this.filterAnchor = event.target as HTMLElement;
+-    this.hiddenFilter = !this.hiddenFilter;
+-  }
+-
+-  filterData(event: Event) {
+-    const input: HTMLInputElement = event.target as HTMLInputElement;
+-    this.filterString = input.value ? input.value : '';
+-    this.data = this.vmData.filteredData(this.filterColumn, this.filterString);
+-  }
++  constructor(public vmData: FilteringService) {}
+ }
+diff --git a/demos/angular/src/app/datagrid/filtering/filtering.service.spec.ts b/demos/angular/src/app/datagrid/filtering/filtering.service.spec.ts
+new file mode 100644
+index 000000000..e482ccaff
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/filtering/filtering.service.spec.ts
+@@ -0,0 +1,16 @@
++import { TestBed } from '@angular/core/testing';
++
++import { FilteringService } from './filtering.service';
++
++describe('FilteringService', () => {
++  let service: FilteringService;
++
++  beforeEach(() => {
++    TestBed.configureTestingModule({});
++    service = TestBed.inject(FilteringService);
++  });
++
++  it('should be created', () => {
++    expect(service).toBeTruthy();
++  });
++});
+diff --git a/demos/angular/src/app/datagrid/filtering/filtering.service.ts b/demos/angular/src/app/datagrid/filtering/filtering.service.ts
+new file mode 100644
+index 000000000..72e2fe671
+--- /dev/null
++++ b/demos/angular/src/app/datagrid/filtering/filtering.service.ts
+@@ -0,0 +1,50 @@
++import { Injectable } from '@angular/core';
++import { FilteredGridComponent, SyncDataService } from '../utils/vm-data.interface';
++import { filter, getVMData, TestVM } from '@cds/core/demo';
++import { BehaviorSubject, Observable } from 'rxjs';
++
++@Injectable({
++  providedIn: 'root',
++})
++export class FilteringService implements SyncDataService<TestVM>, FilteredGridComponent<TestVM> {
++  // ImplementSyncDataService
++  data!: TestVM[];
++  fields!: string[];
++
++  // Implement FilteredGridComponent
++  filterAnchor: HTMLElement | null = null;
++  filterColumn: string = 'id'; // default to id, multiple column filters could work here with template adjustments.
++  filterString: string = '';
++  hiddenFilter = true;
++
++  filteredSubject: BehaviorSubject<TestVM[]> = new BehaviorSubject<TestVM[]>(this.data);
++
++  filteredData(): Observable<TestVM[]> {
++    return this.filteredSubject.asObservable();
++  }
++
++  constructor() {
++    this.data = getVMData();
++    this.fields = Object.keys(this.data[0]);
++    this.filteredSubject.next(this.data);
++  }
++
++  // ImplementSyncDataService
++  public get(): TestVM[] {
++    return this.data;
++  }
++
++  // Implement FilteredGridComponent
++  toggleFilter(event: Event, column: string) {
++    this.filterColumn = column;
++    this.filterAnchor = event.target as HTMLElement;
++    this.hiddenFilter = !this.hiddenFilter;
++  }
++
++  // Implement FilteredGridComponent
++  triggerFilter(event: Event) {
++    const input: HTMLInputElement = event.target as HTMLInputElement;
++    this.filterString = input.value ? input.value : '';
++    this.filteredSubject.next(filter(this.data, this.filterColumn, this.filterString));
++  }
++}
+diff --git a/demos/angular/src/app/datagrid/utils/providers/vm-async.service.ts b/demos/angular/src/app/datagrid/utils/providers/vm-async.service.ts
+index 7249e51ac..26c331575 100644
+--- a/demos/angular/src/app/datagrid/utils/providers/vm-async.service.ts
++++ b/demos/angular/src/app/datagrid/utils/providers/vm-async.service.ts
+@@ -1,14 +1,15 @@
+ import { Injectable } from '@angular/core';
+-import { AsyncGridService } from '../vm-data.interface';
++import { AsyncDataService } from '../vm-data.interface';
+ import { BehaviorSubject, Observable } from 'rxjs';
+ import { TestVM } from '@cds/core/demo';
+ 
+ @Injectable({
+   providedIn: 'root',
+ })
+-export class VmAsyncService implements AsyncGridService<TestVM> {
++export class VmAsyncService implements AsyncDataService<TestVM> {
+   readonly data: BehaviorSubject<TestVM[]> = new BehaviorSubject<TestVM[]>([]);
+   public data$: Observable<TestVM[]> = this.data.asObservable();
++
+   constructor() {}
+ 
+   refresh(): void {}
+diff --git a/demos/angular/src/app/datagrid/utils/providers/vm-sync.service.ts b/demos/angular/src/app/datagrid/utils/providers/vm-sync.service.ts
+index 2ccfe872e..f53796e5d 100644
+--- a/demos/angular/src/app/datagrid/utils/providers/vm-sync.service.ts
++++ b/demos/angular/src/app/datagrid/utils/providers/vm-sync.service.ts
+@@ -1,13 +1,13 @@
+ import { Injectable } from '@angular/core';
+ import { filter, getVMData, paginate, sortStrings, TestVM } from '@cds/core/demo';
+-import { PaginationGridService, SortedGridService, SyncGridService } from '../vm-data.interface';
++import { PaginationGridService, SortedGridService, SyncDataService } from '../vm-data.interface';
+ import { StringSortType } from '../../vm.service';
+ 
+ @Injectable({
+   providedIn: 'root',
+ })
+ export class VmSyncService
+-  implements SyncGridService<TestVM>, PaginationGridService<TestVM>, SortedGridService<TestVM> {
++  implements SyncDataService<TestVM>, PaginationGridService<TestVM>, SortedGridService<TestVM> {
+   readonly data: TestVM[];
+   readonly fields: string[];
+ 
+@@ -16,6 +16,7 @@ export class VmSyncService
+   public get sortColumn(): string {
+     return this._sortColumn;
+   }
++
+   public set sortColumn(column: string) {
+     this._sortColumn = column;
+   }
+@@ -34,6 +35,7 @@ export class VmSyncService
+   public get currentPage() {
+     return this._currentPage;
+   }
++
+   public set currentPage(page) {
+     this._currentPage = page;
+   }
+@@ -44,6 +46,7 @@ export class VmSyncService
+   public get pageSize(): number {
+     return this._pageSize;
+   }
++
+   public set pageSize(size: number) {
+     this._pageSize = size;
+     this.pageCount = Math.ceil(this.data.length / this.pageSize);
+diff --git a/demos/angular/src/app/datagrid/utils/vm-data.interface.ts b/demos/angular/src/app/datagrid/utils/vm-data.interface.ts
+index 54770d5c4..8140ffb46 100644
+--- a/demos/angular/src/app/datagrid/utils/vm-data.interface.ts
++++ b/demos/angular/src/app/datagrid/utils/vm-data.interface.ts
+@@ -13,61 +13,83 @@ import { TestVM } from '@cds/core/demo';
+ import { BehaviorSubject, Observable } from 'rxjs';
+ import { StringSortType } from '../vm.service';
+ 
+-export interface SyncGridService<T> {
++export interface SyncDataService<T> {
+   readonly data: T[];
+   readonly fields: string[];
++
+   get(): T[];
+ }
+-export interface AsyncGridService<T> {
++
++export interface AsyncDataService<T> {
+   readonly data: BehaviorSubject<T[]>;
+   data$: Observable<T[]>;
++
+   refresh(): void;
+ }
+-export interface DetailGridComponent<T> {
++
++export interface DetailGrid<T> {
+   currentVM: T | null;
+   detailAnchor: EventTarget | null;
+-  toggleDetail(event: Event, item: T): void;
+ }
++
+ export interface FilteredGridComponent<T> {
+   filterAnchor: EventTarget | null;
+   filterColumn: string;
+   filterString: string;
+   hiddenFilter: boolean;
++
++  filteredSubject: BehaviorSubject<T[]>;
++  filteredData: () => Observable<T[]>;
++
++  toggleFilter(event: Event, column: string): void;
++
++  triggerFilter(event: Event): void;
+ }
+-export interface FilteredGridService<T> {
+-  filteredData?(column: string, search: string): T[];
+-}
++
+ export interface HideShowColumnGridComponent {
+   columnAnchor: EventTarget | null;
+   hideShowForm: FormGroup;
+   allColumnsVisible: boolean;
++
+   isColumnVisible(columnName: string): boolean;
++
+   setAnchor(target: Event): void;
++
+   showAllColumns(): void;
+ }
++
+ export interface MultiSelectGridComponent<T> {
+   multiSelectForm: FormGroup;
+   selectedCount: number; // implement as a getter that handles filtering the form controls.
+   selectedItems: T[]; // implemented as a getter that handles filtering/mapping form controls to data.
+ }
++
+ export interface PaginationGridService<T> {
+   currentPage: number;
+   pageCount: number;
+   pageSize: number;
++
+   paginateData(): T[];
+ }
++
+ export interface PinnedColumnGrid {}
++
+ export interface SingleActionGridComponent<T> {
+   actionRow: TestVM | null;
+   singleActionAnchor: EventTarget | null;
++
+   displayRowActions(event: Event, row: T): void;
+ }
++
+ export interface SingleSelectGridComponent<T> {
+   selectedRow: T;
++
+   rowSelectChange(event: Event): void;
+ }
++
+ export interface SortedGridService<T> {
+   sortType: StringSortType;
++
+   sortedData(): T[];
+ }
+ 
+@@ -117,6 +139,8 @@ export interface GridService {
+   state: BehaviorSubject<GridService>;
+ 
+   getState(): Observable<GridService>;
++
+   get(): TestVM[];
++
+   asyncGet(delayTime: number): Observable<TestVM>;
+ }
+-- 
+2.23.0
+

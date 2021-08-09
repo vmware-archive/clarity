@@ -88,4 +88,4 @@ The Clarity Angular components implement the following behaviors to make them ac
 
 1. The active tab has the attribute aria-selected set to true, and the others to false
 1. The active panel associated with the active tab has the attribute aria-hidden set to true, and the others panels to false
-1. ach tab should has an aria-controls attribute set to the id of the matching panel and each panel has an aria-labelledby attribute set to the id of the tab associated with the panel
+1. Each tab should has an aria-controls attribute set to the id of the matching panel and each panel has an aria-labelledby attribute set to the id of the tab associated with the panel

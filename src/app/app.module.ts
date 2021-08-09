@@ -37,6 +37,20 @@ import { SelectPage } from './pages/select.page';
 import { TextareaPage } from './pages/textarea.page';
 import { TogglePage } from './pages/toggle.page';
 import { CardPage } from './pages/card.page';
+import { WizardPage } from './pages/wizard.page';
+import { TooltipPage } from './pages/tooltip.page';
+import { StackViewPage } from './pages/stackview.page';
+import { StepperPage } from './pages/stepper.page';
+import { TimelinePage } from './pages/timeline.page';
+import { TreeviewPage } from './pages/treeview.page';
+import { TabPage } from './pages/tab.page';
+import { SignpostPage } from './pages/signpost.page';
+import { SpinnerPage } from './pages/spinner.page';
+import { TablePage } from './pages/table.page';
+import { HeaderPage } from './pages/header.page';
+import { ProgressbarPage } from './pages/progressbar.page';
+import { ComboboxPage } from './pages/combobox.page';
+import { DropdownPage } from './pages/dropdown.page';
 
 @NgModule({
   declarations: [
@@ -63,6 +77,20 @@ import { CardPage } from './pages/card.page';
     SelectPage,
     TextareaPage,
     TogglePage,
+    WizardPage,
+    TimelinePage,
+    TabPage,
+    SignpostPage,
+    SpinnerPage,
+    StepperPage,
+    StackViewPage,
+    TreeviewPage,
+    TablePage,
+    HeaderPage,
+    DropdownPage,
+    ComboboxPage,
+    ProgressbarPage,
+    TooltipPage,
     AdoptionToolingPage,
 
     /* Interface Components */

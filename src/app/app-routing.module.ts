@@ -28,34 +28,61 @@ import { SelectPage } from './pages/select.page';
 import { TextareaPage } from './pages/textarea.page';
 import { TogglePage } from './pages/toggle.page';
 import { CardPage } from './pages/card.page';
+import { WizardPage } from './pages/wizard.page';
+import { TimelinePage } from './pages/timeline.page';
+import { DropdownPage } from './pages/dropdown.page';
+import { ComboboxPage } from './pages/combobox.page';
+import { ProgressbarPage } from './pages/progressbar.page';
+import { TreeviewPage } from './pages/treeview.page';
+import { SignpostPage } from './pages/signpost.page';
+import { StepperPage } from './pages/stepper.page';
+import { TablePage } from './pages/table.page';
+import { SpinnerPage } from './pages/spinner.page';
+import { TooltipPage } from './pages/tooltip.page';
+import { HeaderPage } from './pages/header.page';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
-  { path: 'getting-started', component: GettingStartedPage },
+export const componentRoutes = [
   { path: 'accordion', component: AccordionPage },
   { path: 'alert', component: AlertPage },
   { path: 'badge', component: BadgePage },
   { path: 'button', component: ButtonPage },
   { path: 'card', component: CardPage },
   { path: 'checkbox', component: CheckboxPage },
+  { path: 'combobox', component: ComboboxPage },
   { path: 'datalist', component: DatalistPage },
+  { path: 'dropdown', component: DropdownPage },
   { path: 'form', component: FormPage },
+  { path: 'header', component: HeaderPage },
   { path: 'icons', component: IconsPage },
   { path: 'input', component: InputPage },
   { path: 'label', component: LabelPage },
   { path: 'list', component: ListPage },
   { path: 'modal', component: ModalPage },
   { path: 'password', component: PasswordPage },
+  { path: 'progressbar', component: ProgressbarPage },
   { path: 'radio', component: RadioPage },
   { path: 'range', component: RangePage },
   { path: 'select', component: SelectPage },
+  { path: 'signpost', component: SignpostPage },
+  { path: 'spinner', component: SpinnerPage },
+  { path: 'stepper', component: StepperPage },
+  { path: 'tab', component: TablePage },
   { path: 'textarea', component: TextareaPage },
+  { path: 'timeline', component: TimelinePage },
   { path: 'toggle', component: TogglePage },
+  { path: 'tooltip', component: TooltipPage },
+  { path: 'treeview', component: TreeviewPage },
+  { path: 'wizard', component: WizardPage },
+];
+
+const routes: Routes = [
+  { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
+  { path: 'getting-started', component: GettingStartedPage },
   { path: 'adoption-tooling', component: AdoptionToolingPage },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot([...routes, ...componentRoutes])],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

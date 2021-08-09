@@ -15,7 +15,7 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
+          key: ${{ runner.os }}-modules-v1-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
       - run: npm install
       - run: npm run build:angular
       - run: npm run build:dev

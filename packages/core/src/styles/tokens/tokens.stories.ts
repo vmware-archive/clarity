@@ -32,11 +32,40 @@ interface Token {
 
 function getTokenTable(key: string, globals: any = {}) {
   return html` <style>
+      .token-table {
+        width: 100%;
+      }
+
       .token-table td > div {
         line-height: 1em;
       }
     </style>
-    <table class="token-table" cds-table="border:row border:outside" cds-text="left">
+    <table cds-layout="display@sm:none" class="token-table" cds-table="border:row border:outside" cds-text="left">
+      <thead>
+        <tr cds-layout="grid cols:12">
+          <th cds-layout="p-y:md p-x:lg display:block display@md:none">Token/Value/Demo</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${getTokens(key, globals).map((token: any) => {
+          return html`<tr cds-layout="grid cols:12 align:stretch">
+            <td cds-layout="p:lg display:block display@md:none">
+              <div cds-layout="vertical gap:lg">
+                <div cds-text="body">${token.name}</div>
+                <div>${token.formattedValue}</div>
+                <div>${token.demo}</div>
+              </div>
+            </td>
+          </tr>`;
+        })}
+      </tbody>
+    </table>
+    <table
+      class="token-table"
+      cds-layout="display:none display@sm:block"
+      cds-table="border:row border:outside"
+      cds-text="left"
+    >
       <thead>
         <tr cds-layout="grid cols:4">
           <th cds-layout="p-y:md p-x:lg">Token</th>
@@ -46,13 +75,11 @@ function getTokenTable(key: string, globals: any = {}) {
       </thead>
       <tbody>
         ${getTokens(key, globals).map((token: any) => {
-          return html`<tr cds-layout="grid cols@md:4 align:stretch">
+          return html`<tr cds-layout="grid cols:4 align:stretch">
             <td cds-layout="p:lg">
               <span cds-text="body">${token.name}</span>
             </td>
-            <td cds-layout="p:lg">
-              ${token.formattedValue}
-            </td>
+            <td cds-layout="p:lg">${token.formattedValue}</td>
             <td cds-layout="p:lg">${token.demo}</td>
           </tr>`;
         })}

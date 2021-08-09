@@ -41,7 +41,7 @@
   text-align: center;
   text-decoration: var(--text-decoration);
   text-overflow: ellipsis;
-  transform: translateZ(0px); // used for ::after hover
+  transform: scale(1);
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;

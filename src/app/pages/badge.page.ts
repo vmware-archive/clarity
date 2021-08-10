@@ -14,8 +14,12 @@ import { DemoTabData } from '../components/demo.component';
 
      <app-eslint-intro-block rule="no-clr-badge"></app-eslint-intro-block>
 
-    <demo [tabs]="demo1"></demo>
-    <demo [tabs]="demo2"></demo>
+    <demo [tabs]="demo1">
+      <h2>Basic</h2>
+    </demo>
+    <demo [tabs]="demo2">
+      <h2>Status</h2>
+    </demo>
   `,
 })
 export class BadgePage {

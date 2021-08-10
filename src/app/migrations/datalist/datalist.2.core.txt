@@ -5,30 +5,37 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   selector: 'app-root',
   template: `
     <form clrForm [formGroup]="model">
-      <cds-datalist status="{{ itemHasErrors ? 'error' : 'neutral' }}" control-width="shrink">
-        <label>datalist</label>
+      <cds-datalist control-width="shrink">
+        <label>Reactive Datalist</label>
         <input placeholder="No label" formControlName="item" />
         <datalist>
           <option *ngFor="let item of items" [value]="item"></option>
         </datalist>
-        <cds-control-message *ngIf="itemHasErrors">error message</cds-control-message>
+        <cds-control-message status="success" *ngIf="model.valid">
+          Everything is valid
+        </cds-control-message>
+        <cds-control-message *ngIf="model.dirty && !model.invalid && !model.valid">
+          Helper text
+        </cds-control-message>
+        <cds-control-message status="error" *ngIf="model.dirty && model.invalid">
+          There was an error
+        </cds-control-message>
       </cds-datalist>
+
+      <cds-button [attr.disabled]="model.invalid || null" (click)="submit()">
+        Submit
+      </cds-button>
     </form>
-    {{ model.controls.item.errors | json }}
-  `,
+  `
 })
 export class AppComponent {
   items = ['Red', 'Green', 'Blue'];
 
-  itemHasErrors: boolean | null = false;
-
   model = new FormGroup({
-    item: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    item: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
-  ngOnInit() {
-    this.model.controls.item.valueChanges.subscribe(value => {
-      this.itemHasErrors = this.model.controls.item.errors && this.model.controls.item.dirty;
-    });
+  submit() {
+    console.log('Form submit', this.model);
   }
 }

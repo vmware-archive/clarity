@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-select>
+      <label>Select</label>
+      <select>
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+      <cds-control-message>Helper text</cds-control-message>
+    </cds-select>
+  `,
+})
+export class AppComponent {}

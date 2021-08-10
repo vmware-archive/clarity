@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import '@cds/core/modal/register.js';
-
 @Component({
   selector: 'app-root',
   template: `

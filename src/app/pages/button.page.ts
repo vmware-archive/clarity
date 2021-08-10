@@ -12,6 +12,9 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Button</h1>
 
+     <app-eslint-intro-block rule="no-clr-button"></app-eslint-intro-block>
+
+
     <demo [tabs]="demo1">
       <h3>Basic</h3>
     </demo>

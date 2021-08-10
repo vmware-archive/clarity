@@ -7,18 +7,35 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     <form clrForm [formGroup]="model">
       <clr-datalist-container>
         <label>Reactive Datalist</label>
-        <input clrDatalistInput placeholder="Option" name="Option" formControlName="item" />
-        <datalist id="clr-custom-datalistid-1">
-          <option *ngFor="let item of items" [value]="item + ' dl 1'"></option>
+        <input clrDatalistInput placeholder="Option" formControlName="item" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
         </datalist>
+        <clr-control-success>
+          Everything is valid
+        </clr-control-success>
+        <clr-control-helper>
+          Helper text
+        </clr-control-helper>
+        <clr-control-error>
+          There was an error
+        </clr-control-error>
       </clr-datalist-container>
-      <button class="btn btn-primary" type="submit" [disabled]="model.invalid" (click)="submit()">Submit</button>
+
+      <button class="btn btn-primary" [disabled]="model.invalid || null" (click)="submit()">
+        Submit
+      </button>
     </form>
-  `,
+  `
 })
 export class AppComponent {
   items = ['Red', 'Green', 'Blue'];
+
   model = new FormGroup({
-    item: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    item: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
+
+  submit() {
+    console.log('Form submit', this.model);
+  }
 }

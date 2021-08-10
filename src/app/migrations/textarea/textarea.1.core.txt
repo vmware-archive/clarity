@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-textarea control-width="shrink">
+      <label>Тextarea</label>
+      <textarea></textarea>
+      <cds-control-message>Мessage text</cds-control-message>
+    </cds-textarea>
+  `,
+})
+export class AppComponent {}

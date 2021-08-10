@@ -1,21 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'badge-color-demo',
+  selector: 'app-root',
   template: `
-  <span class="badge">1</span>
-  <span class="badge badge-purple">15</span>
-  <span class="badge badge-blue">2</span>
-  <span class="badge badge-orange">3</span>
-  <span class="badge badge-light-blue">12</span>
+    <span class="badge">1</span>
+    <span class="badge badge-purple">15</span>
+    <span class="badge badge-blue">2</span>
+    <span class="badge badge-orange">3</span>
+    <span class="badge badge-light-blue">12</span>
   `,
 })
-export class BadgeColorNgDemo {}
-
-@NgModule({
-  declarations: [BadgeColorNgDemo],
-  imports: [ClarityModule, CommonModule],
-})
-class AppModule {}
+export class AppComponent {}

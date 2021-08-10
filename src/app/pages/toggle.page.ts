@@ -17,7 +17,7 @@ import { DemoTabData } from '../components/demo.component';
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>With Subtext and Forms</h3>
+      <h3>With subtext and forms</h3>
     </demo>
 
     <demo [tabs]="demo3">

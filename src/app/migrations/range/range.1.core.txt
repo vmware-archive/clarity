@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <cds-range>
+      <label>Range example</label>
+      <input type="range" />
+      <cds-control-message>Helper text</cds-control-message>
+    </cds-range>
+  `,
+})
+export class AppComponent {}

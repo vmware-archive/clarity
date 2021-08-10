@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
     <form clrForm>
       <clr-toggle-container>
         <clr-toggle-wrapper>
-          <input type="checkbox" clrToggle name="input" [(ngModel)]="input" />
           <label>toggle</label>
+          <input type="checkbox" clrToggle name="input" [(ngModel)]="input" />
         </clr-toggle-wrapper>
-        <clr-control-helper>message text</clr-control-helper>
+        <clr-control-helper>Мessage text</clr-control-helper>
       </clr-toggle-container>
     </form>
   `,

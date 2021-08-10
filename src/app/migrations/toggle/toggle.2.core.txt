@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       <cds-toggle>
         <label>toggle</label>
         <input type="checkbox" checked [(ngModel)]="input" />
-        <cds-control-message>message text</cds-control-message>
+        <cds-control-message>Меssage text</cds-control-message>
       </cds-toggle>
     </form>
   `,

@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <form clrForm>
       <clr-toggle-wrapper>
-        <input type="checkbox" clrToggle name="input" disabled />
         <label>toggle</label>
+        <input type="checkbox" clrToggle name="input" disabled />
       </clr-toggle-wrapper>
     </form>
   `,

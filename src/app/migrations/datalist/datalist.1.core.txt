@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 
-import '@cds/core/datalist/register.js';
-
 @Component({
   selector: 'app-root',
   template: `
     <cds-datalist control-width="shrink">
-      <label>datalist</label>
+      <label>Datalist</label>
       <input placeholder="No label" />
       <datalist>
         <option *ngFor="let item of items" [value]="item"></option>

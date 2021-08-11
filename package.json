@@ -5,7 +5,8 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "apps/website"
+      "apps/website",
+      "demos/react"
     ],
     "nohoist": [
       "@cds/core/tslib",
@@ -77,6 +78,8 @@
     "core:test": "yarn --cwd packages/core run test",
     "core:test:watch": "yarn --cwd packages/core run test:watch",
     "core:lint": "yarn --cwd packages/core run lint",
+    "demo:react": "yarn --cwd demos/react run start",
+    "demo:react:build": "yarn --cwd demos/react run build",
     "react:start": "yarn --cwd packages/react run start",
     "react:build": "yarn --cwd packages/react run build",
     "react:lint": "yarn --cwd packages/react run lint",

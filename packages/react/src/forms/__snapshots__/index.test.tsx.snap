@@ -4,10 +4,10 @@ exports[`CdsControl snapshot 1`] = `
 <div
   cds-layout="vertical gap:lg"
 >
-  <w
+  <D
     layout="compact"
   >
-    <w
+    <D
       l={null}
       layout="compact"
     >
@@ -33,13 +33,13 @@ exports[`CdsControl snapshot 1`] = `
           </n>
         </n>
       </cds-control>
-    </w>
-  </w>
-  <w
+    </D>
+  </D>
+  <D
     layout="compact"
     status="error"
   >
-    <w
+    <D
       l={null}
       layout="compact"
       status="error"
@@ -69,13 +69,13 @@ exports[`CdsControl snapshot 1`] = `
           </n>
         </n>
       </cds-control>
-    </w>
-  </w>
-  <w
+    </D>
+  </D>
+  <D
     layout="compact"
     status="success"
   >
-    <w
+    <D
       l={null}
       layout="compact"
       status="success"
@@ -105,7 +105,7 @@ exports[`CdsControl snapshot 1`] = `
           </n>
         </n>
       </cds-control>
-    </w>
-  </w>
+    </D>
+  </D>
 </div>
 `;

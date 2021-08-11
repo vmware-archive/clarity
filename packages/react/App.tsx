@@ -43,6 +43,11 @@ import { CdsDropdown } from './dist/react/dropdown/index.js';
 import { CdsInternalPointer } from './dist/react/internal-components/popup/index.js';
 import { CdsInternalPanel } from './dist/react/internal-components/panel/index.js';
 import { CdsGrid, CdsGridColumn, CdsGridRow, CdsGridCell, CdsGridFooter } from './dist/react/grid/index.js';
+import { CdsButtonAction } from './dist/react/button-action/index.js';
+import { CdsButtonResize } from './dist/react/button-resize/index.js';
+import { CdsButtonSort } from './dist/react/button-sort/index.js';
+import { CdsButtonHandle } from './dist/react/button-handle/index.js';
+import { CdsButtonExpand } from './dist/react/button-expand/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -210,15 +215,15 @@ export default class App extends React.Component<{}, AppState> {
             <CdsGridFooter></CdsGridFooter>
           </CdsGrid>
 
-          <h2>Actions</h2>
+          <h2>Button Actions</h2>
           <div cds-layout="horizontal gap:lg">
-            <CdsAction aria-label="open options"></CdsAction>
-            <CdsAction aria-label="open menu" shape="bars"></CdsAction>
-            <CdsActionResize direction="cross" aria-label="resize column"></CdsActionResize>
-            <CdsActionResize direction="main" aria-label="resize column"></CdsActionResize>
-            <CdsActionSort aria-label="sort list"></CdsActionSort>
-            <CdsActionHandle aria-label="move item"></CdsActionHandle>
-            <CdsActionExpand aria-label="open item"></CdsActionExpand>
+            <CdsButtonAction aria-label="open options"></CdsButtonAction>
+            <CdsButtonAction aria-label="open menu" shape="bars"></CdsButtonAction>
+            <CdsButtonResize direction="cross" aria-label="resize column"></CdsButtonResize>
+            <CdsButtonResize direction="main" aria-label="resize column"></CdsButtonResize>
+            <CdsButtonSort aria-label="sort list"></CdsButtonSort>
+            <CdsButtonHandle aria-label="move item"></CdsButtonHandle>
+            <CdsButtonExpand aria-label="open item"></CdsButtonExpand>
           </div>
 
           <h2>Accordion</h2>

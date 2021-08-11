@@ -1,0 +1,43 @@
+@import '~modern-normalize/modern-normalize.css'; // css reset
+// react-script css optimization chokes on minified styles
+// so I resort to unminified styles.
+@import '~@cds/core/global'; // clarity global styles
+@import '~@cds/core/styles/module.shims'; // non-evergreen browser shims
+@import '~@cds/city/css/bundles/default.min'; // load base font
+
+#root {
+  height: 100vh;
+}
+
+main {
+  height: 100%;
+}
+
+.demo-header {
+  background: var(--cds-global-color-blue-1000);
+  color: var(--cds-global-color-gray-0);
+}
+
+.router-container {
+  // check if cds-layout could replace these styles
+  display: flex;
+  height: 100%;
+}
+
+.demo-grid {
+  width: 960px;
+  --body-height: 360px;
+}
+
+.grid-content-height {
+  --body-height: auto;
+}
+
+.demo-grid-pin-column {
+   --ch-grid: var(--ch1, 150px) var(--ch2, 350px) var(--ch3, 500px) var(--ch4, 150px);
+   --ch1:150px;
+   --ch2:350px;
+   --ch3:500px;
+   --ch4:150px;
+   --row-content-visibility:visibile; 
+}

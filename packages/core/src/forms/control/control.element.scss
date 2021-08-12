@@ -31,6 +31,23 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
 
 .input-container {
   line-height: 0;
+  max-width: 100%;
+
+  &.with-status-icon {
+    /*
+      the following is to allow space for the status icon in the layout
+      the sizing of the icon is hard-coded so there's no good way for me to
+      predict/decipher how it is sized. 
+      
+      - it's hard-coded so a clientRect is needlessly expensive.
+      - it's not sized by any design token so using one here would make it 
+        SEEM like it was cleverly done when actually there would be no connection
+        and any size-breakage would be harder to track down
+      
+      See: https://github.com/vmware/clarity/blob/66073e77391426b8d2a28d5b7485984eab7fc1b2/packages/core/src/forms/utils/index.ts#L48
+    */
+    max-width: calc(100% - 1.2rem);
+  }
 }
 
 :host([_disabled]) ::slotted([slot='input']) {
@@ -39,6 +56,10 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
 
 :host([control-width='shrink']) {
   width: auto;
+}
+
+::slotted([cds-control]) {
+  width: 100%;
 }
 
 ::slotted(input) {

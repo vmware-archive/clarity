@@ -383,3 +383,74 @@ describe('cds-control with non-input as control', () => {
     expect(control.hasAttribute('_disabled')).toBe(true, 'set aria-disabled is respected');
   });
 });
+
+describe('cds-control status icon sizing', () => {
+  let element: HTMLElement;
+  let control: CdsControl;
+  let controlWithSuccessStatus: CdsControl;
+  let controlWithErrorStatus: CdsControl;
+  let controlWithNeutralStatus: CdsControl;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-control class="a-control">
+        <label>control with no status</label>
+        <input placeholder="example" />
+        <cds-control-message>message text</cds-control-message>
+      </cds-control>
+
+      <cds-control class="a-control-with-neutral-status" status="neutral">
+        <label>control with neutral status</label>
+        <input placeholder="example" />
+        <cds-control-message status="neutral">message text</cds-control-message>
+      </cds-control>
+
+      <cds-control class="a-control-with-success-status" status="success">
+        <label>control without native input</label>
+        <input placeholder="example" />
+        <cds-control-message status="success">message text</cds-control-message>
+      </cds-control>
+
+      <cds-control class="a-control-with-error-status" status="success">
+        <label>control without native input</label>
+        <input placeholder="example" />
+        <cds-control-message status="success">message text</cds-control-message>
+      </cds-control>
+    `);
+
+    control = element.querySelector<CdsControl>('.a-control');
+    controlWithNeutralStatus = element.querySelector<CdsControl>('.a-control-with-neutral-status');
+    controlWithSuccessStatus = element.querySelector<CdsControl>('.a-control-with-success-status');
+    controlWithErrorStatus = element.querySelector<CdsControl>('.a-control-with-error-status');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should apply .with-status-icon classname to controls with status', async () => {
+    await componentIsStable(control);
+
+    const containerWithNoStatus = control.shadowRoot.querySelector('.input-container');
+    const containerWithNeutralStatus = controlWithNeutralStatus.shadowRoot.querySelector('.input-container');
+    const containerWithSuccessStatus = controlWithSuccessStatus.shadowRoot.querySelector('.input-container');
+    const containerWithErrorStatus = controlWithErrorStatus.shadowRoot.querySelector('.input-container');
+
+    expect(containerWithNoStatus.classList.contains('with-status-icon')).toBe(
+      false,
+      'no status means no class gets added'
+    );
+    expect(containerWithNeutralStatus.classList.contains('with-status-icon')).toBe(
+      false,
+      'neutral status means no class gets added'
+    );
+    expect(containerWithSuccessStatus.classList.contains('with-status-icon')).toBe(
+      true,
+      'success status means class gets added'
+    );
+    expect(containerWithErrorStatus.classList.contains('with-status-icon')).toBe(
+      true,
+      'error status means class gets added'
+    );
+  });
+});

@@ -175,6 +175,10 @@ export class CdsControl extends LitElement {
     return hasAriaLabelTypeAttr(this.inputControl);
   }
 
+  private get hasStatusIcon() {
+    return this.labelLayout !== ControlLabelLayout.inputGroup && (this.status === 'error' || this.status === 'success');
+  }
+
   render() {
     return html`
       ${this.labelLayout === ControlLabelLayout.hiddenLabel || this.labelLayout === ControlLabelLayout.inputGroup
@@ -198,13 +202,13 @@ export class CdsControl extends LitElement {
               cds-layout="horizontal align:top wrap:none ${this.controlWidth === 'shrink' || this.fixedControlWidth
                 ? 'align:shrink'
                 : 'align:horizontal-stretch'}"
-              class="input-container"
+              class="${this.hasStatusIcon ? 'input-container with-status-icon' : 'input-container'}"
             >
               ${this.inputTemplate} ${this.prefixTemplate}
               <slot name="input"></slot>
               ${this.suffixTemplate}
             </div>
-            ${this.labelLayout !== ControlLabelLayout.inputGroup ? getStatusIcon(this.status) : ''}
+            ${this.hasStatusIcon ? getStatusIcon(this.status) : ''}
           </div>
           ${this.messagesTemplate}
         </div>

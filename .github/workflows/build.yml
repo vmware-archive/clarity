@@ -19,6 +19,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
       - run: npm install
       - run: npm run build:ci
+      - run: npm run deploy:website
 
     env:
       CI: true
+      NETLIFY_SITE_ID: 64d9bcd7-691e-4710-91fe-83cb6ace8023

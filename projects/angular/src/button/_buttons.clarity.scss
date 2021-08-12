@@ -133,7 +133,10 @@
 
 @mixin btn-checked-styles($button-type: default, $type: checkbox) {
   // add semantic prop: group-checked-font-color
-  input[type='#{$type}']:checked + label {
+  input[type='#{$type}']:checked + label,
+  // override icon colors on inverted backgrounds
+  input[type='#{$type}']:checked + label > clr-icon,
+  input[type='#{$type}']:checked + label > cds-icon {
     background-color: getSassButtonColor($button-type, checked-bg-color);
     color: getSassButtonColor($button-type, checked-color);
   }

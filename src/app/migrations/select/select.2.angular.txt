@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm [formGroup]="model">
+      <clr-select-container>
+        <label>Select</label>
+        <select clrSelect formControlName="item">
+          <option value="one">One</option>
+          <option value="two">Two</option>
+          <option value="three">Three</option>
+        </select>
+        <clr-control-success>
+          Everything is valid
+        </clr-control-success>
+        <clr-control-helper>
+          Helper text
+        </clr-control-helper>
+        <clr-control-error>
+          There was an error
+        </clr-control-error>
+      </clr-select-container>
+    </form>
+  `
+})
+export class AppComponent {
+  model = new FormGroup({
+    item: new FormControl('', [Validators.required])
+  });
+}

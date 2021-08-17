@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm [formGroup]="model">
+      <cds-select>
+        <label>Select</label>
+        <select formControlName="item">
+            <option value="one">One</option>
+            <option value="two">Two</option>
+            <option value="three">Three</option>
+        </select>
+        <cds-control-message status="success" *ngIf="model.valid">
+          Everything is valid
+        </cds-control-message>
+        <cds-control-message *ngIf="model.dirty && !model.invalid && !model.valid">
+          Helper text
+        </cds-control-message>
+        <cds-control-message status="error" *ngIf="model.dirty && model.invalid">
+          There was an error
+        </cds-control-message>
+      </cds-select>
+    </form>
+  `,
+})
+export class AppComponent {
+  model = new FormGroup({
+    item: new FormControl('', [Validators.required])
+  });
+}

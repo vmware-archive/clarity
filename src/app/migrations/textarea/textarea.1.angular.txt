@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-textarea-container>
+        <label>Textarea</label>
+        <textarea clrTextarea></textarea>
+        <clr-control-helper>Message text</clr-control-helper>
+      </clr-textarea-container>
+    </form>
+  `
+})
+export class AppComponent {}

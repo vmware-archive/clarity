@@ -5,12 +5,37 @@
  */
 
 import { Component } from '@angular/core';
+import { DemoTabData } from '../components/demo.component';
 
 @Component({
   selector: 'app-range',
   template: `
     <h1>Range</h1>
-    <not-ready name="Range"></not-ready>
+
+    <app-eslint-intro-block rule="no-clr-range"></app-eslint-intro-block>
+
+    <demo [tabs]="demo1">
+      <h3>Basic</h3>
+    </demo>
   `,
 })
-export class RangePage {}
+export class RangePage {
+  demo1: DemoTabData[] = [
+    {
+      name: 'Angular',
+      files: {
+        'src/app/app.component.ts': 'range/range.1.angular.txt',
+      },
+      language: 'ts',
+      template: 'angular',
+    },
+    {
+      name: 'Core',
+      files: {
+        'src/app/app.component.ts': 'range/range.1.core.txt',
+      },
+      language: 'ts',
+      template: 'core',
+    },
+  ];
+}

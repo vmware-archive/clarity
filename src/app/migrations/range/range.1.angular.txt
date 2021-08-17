@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-range-container [clrRangeHasProgress]="true">
+        <label>Range</label>
+        <input type="range" clrRange/>
+        <clr-control-helper>Helper text</clr-control-helper>
+      </clr-range-container>
+    </form>
+  `
+})
+export class AppComponent {}

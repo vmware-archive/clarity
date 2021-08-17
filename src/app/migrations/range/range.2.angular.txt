@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm [formGroup]="model">
+      <clr-range-container [clrRangeHasProgress]="true">
+        <label>Range</label>
+        <input type="range" clrRange formControlName="item"/>
+        <clr-control-success>
+          Everything is valid
+        </clr-control-success>
+        <clr-control-helper>
+          Helper text
+        </clr-control-helper>
+        <clr-control-error>
+          There was an error
+        </clr-control-error>
+      </clr-range-container>
+    </form>
+  `
+})
+export class AppComponent {
+  model = new FormGroup({
+    item: new FormControl('', [Validators.required])
+  });
+}

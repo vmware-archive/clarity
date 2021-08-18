@@ -1,0 +1,36 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form>
+      <cds-form-group control-width="shrink">
+        <cds-input>
+          <label>Input</label>
+          <input type="text" />
+          <cds-control-message>Input helper text</cds-control-message>
+        </cds-input>
+
+        <cds-textarea>
+          <label>Textarea</label>
+          <textarea></textarea>
+          <cds-control-message>Textarea helper text</cds-control-message>
+        </cds-textarea>
+
+        <cds-checkbox-group>
+          <label>Checkbox</label>
+          <cds-checkbox>
+            <label>Option 1</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+          <cds-checkbox>
+            <label>Option 2</label>
+            <input type="checkbox" />
+          </cds-checkbox>
+          <cds-control-message>Checkbox helper text</cds-control-message>
+        </cds-checkbox-group>
+      </cds-form-group>
+    </form>
+  `
+})
+export class AppComponent {}

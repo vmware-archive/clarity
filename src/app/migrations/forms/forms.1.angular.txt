@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm>
+      <clr-input-container>
+        <label>Input</label>
+        <input clrInput type="text" />
+        <clr-control-helper>Input helper text</clr-control-helper>
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Textarea</label>
+        <textarea clrTextarea></textarea>
+        <clr-control-helper>Textarea helper text</clr-control-helper>
+      </clr-textarea-container>
+
+      <clr-checkbox-container>
+        <label>Checkbox</label>
+        <clr-checkbox-wrapper>
+          <label>Option 1</label>
+          <input type="checkbox" clrCheckbox />
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+          <label>Option 2</label>
+          <input type="checkbox" clrCheckbox />
+        </clr-checkbox-wrapper>
+        <clr-control-helper>Checkbox helper text</clr-control-helper>
+      </clr-checkbox-container>
+    </form>
+  `
+})
+export class AppComponent {}

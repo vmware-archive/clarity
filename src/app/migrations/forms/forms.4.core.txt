@@ -1,0 +1,71 @@
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <form clrForm [formGroup]="model">
+      <cds-form-group>
+        <cds-input>
+          <label>Input</label>
+          <input type="text" formControlName="input" />
+          <cds-control-message status="success" *ngIf="showSuccess('input')">
+            Input value is valid
+          </cds-control-message>
+          <cds-control-message *ngIf="showHelper('input')">
+            Helper text for input
+          </cds-control-message>
+          <cds-control-message status="error" *ngIf="showError('input')">
+            This field is required or the length of it is under 4 characters
+          </cds-control-message>
+        </cds-input>
+
+        <cds-textarea>
+          <label>Textarea</label>
+          <textarea formControlName="textarea"></textarea>
+          <cds-control-message status="success" *ngIf="showSuccess('textarea')">
+            Textarea value is valid
+          </cds-control-message>
+          <cds-control-message *ngIf="showHelper('textarea')">
+            Helper text for textarea
+          </cds-control-message>
+          <cds-control-message status="error" *ngIf="showError('textarea')">
+            General error for textarea
+          </cds-control-message>
+          <cds-control-message status="error" *ngIf="whenError('textarea', 'minlength')">
+            Textarea must be more than 4 characters long
+          </cds-control-message>
+        </cds-textarea>
+      </cds-form-group>
+
+      <cds-button (click)="save()">Save</cds-button>
+    </form>
+  `
+})
+export class AppComponent {
+  model = new FormGroup({
+    input: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    textarea: new FormControl('', [Validators.required, Validators.minLength(4)])
+  });
+
+  save() {
+    this.model.markAsDirty();
+  }
+
+  showSuccess(name: string) {
+    return this.model.dirty && this.model.controls[name].valid;
+  }
+
+  showError(name: string) {
+    return this.model.dirty && this.model.controls[name].invalid;
+  }
+
+  showHelper(name: string) {
+    return !this.model.dirty && (!this.showError(name) || !this.showSuccess(name));
+  }
+
+  whenError(name: string, error: string) {
+    // @ts-ignore - controls[name] - could be null
+    return this.showError(name) && this.model.controls[name].errors[error];
+  }
+}

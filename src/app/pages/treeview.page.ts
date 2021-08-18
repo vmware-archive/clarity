@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-tree-view',
   template: `
     <h1>Tree view</h1>
-    <not-ready name="Tree view"></not-ready>
+    <not-ready name="tree-view"></not-ready>
   `,
 })
 export class TreeviewPage {}

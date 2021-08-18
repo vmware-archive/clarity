@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-progressbar',
   template: `
     <h1>Progress bar</h1>
-    <not-ready name="Progress Bar"></not-ready>
+    <not-ready name="Progress"></not-ready>
   `,
 })
 export class ProgressbarPage {}

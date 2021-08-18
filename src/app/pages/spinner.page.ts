@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-spinner',
   template: `
     <h1>Spinner</h1>
-    <not-ready name="Spinner"></not-ready>
+    <not-ready name="Spinners"></not-ready>
   `,
 })
 export class SpinnerPage {}

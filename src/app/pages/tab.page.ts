@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-tab',
   template: `
     <h1>Tab</h1>
-    <not-ready name="Tab"></not-ready>
+    <not-ready name="Tabs"></not-ready>
   `,
 })
 export class TabPage {}

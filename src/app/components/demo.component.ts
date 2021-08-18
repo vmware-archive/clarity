@@ -42,7 +42,7 @@ let PreviewID = 0;
     <ng-content></ng-content>
 
     <div style="display:flex; align-items: flex-start; justify-content: space-between;">
-      <div *ngFor="let tab of tabs" style="width: 49.5%">
+      <div *ngFor="let tab of tabs" style="{{ tabs.length > 1 ? 'width: 49.5%' : 'width: 100%' }}">
         <h5>{{ tab.name }}</h5>
         <div *ngFor="let file of tab.files | keyvalue">
           <sourcecode [src]="file.value" [language]="tab.language || 'ts'"></sourcecode>

@@ -15,7 +15,10 @@ jobs:
           check-latest: true
       - uses: microsoft/playwright-github-action@v1
       - run: yarn install
-      - run: yarn build:ci
+      - run: yarn build
+      - run: yarn website:functions
+      - run: npm run website:deploy # Use NPM as a workaround for npx executing
 
     env:
       CI: true
+      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db

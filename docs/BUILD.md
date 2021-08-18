@@ -1,6 +1,6 @@
 # Local setup
 
-Clarity uses NodeJS 12+ and Yarn 1.22.4+ for development, so ensure you have them installed and up to date. To find the exact
+Clarity uses NodeJS 14+ and Yarn 1.22.4+ for development, so ensure you have them installed and up to date. To find the exact
 version you could check `.nvmrc` file.
 
 It also uses Docker for running visual diff tests, so if you plan to run those tests, you'll have to have Docker installed and running.
@@ -11,24 +11,23 @@ The project structure is as follow:
 packages
 
 packages
-├── angular     # All Angular Clarity components and styles
-├── core        # Web Components
-├── icons       # Clarity Icons
-├── ui          # Common CSS
-├── schematics  # Auto update scripts
+├── angular                           # Angular wrappers
+├── core                              # Web Components
+├── eslint-plugin-clarity-adoption    # ESLint rules to help with migration to Core
+├── react                             # React Wrappers Components
+├── schematics                        # Angular schematics
 ```
 
 ## Understanding the build
 
-We have four packages:
+We have several packages:
 
-- `@clr/icons` - Clarity Icons package, which is a standalone web component library for icons
-- `@clr/ui` - Clarity UI package, which is a standalone CSS library for Clarity styles
-- `@clr/angular` - Clarity Angular package, which depends upon the other two packages to implement a set of Angular components
-- `@cds/core` - Clarity Web Components and common utilities.
+- `@cds/angular` - Clarity Angular package for easier consumption of Clarity Core with Angular
+- `@clr/core` - Clarity Web Components and common utilities.
+- `@cds/react` - Clarity React package for easier consumption of Clarity Core with React
 
 Each package has a slightly different build process, and this guide describes them each separately.
-Many of these commands have a corresponding `watch` command that enables watch
+Many of these commands have a corresponding command that enables watch
 mode while you develop.
 
 ## Full Project Build
@@ -36,15 +35,6 @@ mode while you develop.
 To build the entire repo and all projects run the command `yarn build`.
 This command is useful to run before submitting a PR to ensure everything will
 pass the CI build.
-
-## `@clr/angular`
-
-Build Clarity Angular by running `yarn angular:build`, which calls the following tasks to build the package.
-
-- `angular:build` - Build the Angular package for production
-- `angular:start` - Run the test project for Clarity Angular Components
-- `angular:test` - Run all tests for Clarity Angular
-- `angular:test:watch` - Continually run all tests for Clarity Angular
 
 ## `@cds/core`
 
@@ -54,35 +44,6 @@ Build Clarity Core by running `yarn core:build`, which calls the following tasks
 - `core:start` - Run the test project for Clarity Core Web Components
 - `core:test` - Run all tests for Clarity Core
 - `core:test:watch` - Continually run all tests for Clarity Core
-
-## `@clr/icons`
-
-Build Clarity Icons by running `yarn icons:build`, which calls the following tasks to build the package.
-
-- `icons:build:web` - Webpack compiles and bundles the TypeScript assets
-- `icons:build:css` - Sass compiles the styles
-- `icons:build:optimize` - CSSO optimizes the CSS
-- `icons:build:package` - Copy the `package.json` into the package, and set the version number
-- `icons:build:web` - Build the raw svg files and zip directories for designers
-
-## `@clr/ui`
-
-Build Clarity UI is by running `yarn ui:build`, which calls the following tasks to build the package.
-
-- `ui:build:css` - Sass compiles the light and dark theme files
-- `ui:build:prefix` - Autoprefixer adds prefixes to CSS properties based on browser compatibility
-- `ui:build:src` - Copy in the source files for anyone building directly
-- `ui:build:optimize` - CSSO Optimize the CSS
-- `ui:build:package` - Copy the `package.json` into the package, and set the version number
-
-## Globally Installed NPM packages
-
-The following packages are installed globally in the development environment. The purpose of each is listed below.
-You won't need to install these for general development but may wish to do so if you want to run specific scripts for testing or publishing that require them:
-
-- [@angular/cli](https://cli.angular.io/): The whole project uses this for build, preview, and testing.
-- [gemini](https://gemini-testing.github.io/): this is used to run cli commands to run visual diff regression tests.
-- [html-reporter](https://www.npmjs.com/package/html-reporter): plugin for Gemini to produce an HTML report of the CSS regression tests.
 
 ## Additional NPM Scripts
 
@@ -121,12 +82,6 @@ The script copies over the `package.json` template from our `npm` folder (this c
 `README.md` for all of our packages) into `src/clr-angular` and sets the correct version number. This step is necessary
 because `ng-packagr` requires the `package.json` to be at the root of the `src` (defined in `ng-package.json`).
 
-##### `yarn icons:build`
-
-This script produces the `clr-icons` package by bundling js files that is included in the consuming app.
-The `webpack` script also processes the `package.json` and `README.md` files for all of our packages.
-This means that running `npm icons:build` by itself does NOT produce a complete package.
-
 ##### `yarn core:build`
 
 This script produces the `@cds/core` package that is used to consume the Clarity Core Web Components.
@@ -137,28 +92,9 @@ The `lint` script runs the linter and fails if linting fails. The `lint:fix` scr
 is run with the `--fix` flag to auto-fix some rules if possible. Some lint rules cannot be auto fixed, so you have
 to fix those manually.
 
-##### `yarn gemini` and `yarn gemini:fix`
-
-These scripts use Docker to start up a container with selenium and chrome to run the Gemini tests. Currently, there are 4 sets
-in our codebase, and these are arbitrary sets to parallelize running them in Travis builds. You must pass in the set(s) for both
-of these scripts (e.g. `yarn gemini set1 set3`).
-
 ##### `yarn format:file -- path/to/file`
 
 When contributing to Clarity, there is a post-commit hook installed and run with
 [husky](https://github.com/typicode/husky) that formats the files staged before they are committed. There are
 corner cases and editors that may not behave as expected, and it is possible to create a pull request that fails because
 the files are not correctly formatted. This command can be used to format a specific file or a space-separated list of files.
-
-##### `yarn angular:golden` and `yarn angular:golden:fix`
-
-To update and test for changes against `clr-angular.d.ts`.
-
-#### How to run visual tests
-
-- You going to need Docker installed and running
-- `yarn gemini:fix` - this runs all visual tests and compare them to there snapshots. It could take a long time,
-  and also the changes that you made may not affect every test. A better solution is to run only the affected sets.
-  `yarn gemini:fix set2 set4`
-- Verify that the screenshots which can be found modified in your git changes reflect the changes you intended.
-- Commit and push the updated screenshots. This is enough to trigger our CI builds again.

@@ -12,10 +12,7 @@ responsive as possible.
 Before you start coding anything, please fill out the following proposal
 template in as much detail as you can. The more complete your details, the
 better, but not all questions will apply for every change. As you fill this out,
-please make sure to follow our coding guidelines for components.
-
-- [Angular Guidelines](/docs/CODING_GUIDELINES_ANGULAR.md)
-- [Core Web Component Guidelines](/docs/CODING_GUIDELINES_CORE.md)
+please make sure to follow our [coding guidelines for components](./CODING_GUIDELINES.md).
 
 ```markdown
 ## Summary
@@ -82,7 +79,7 @@ First, make sure you:
   contributions to this repository must be signed as described on that page.
   Your signature certifies that you wrote the patch or have the right to pass it
   on as an open-source patch.
-- Read our [Angular coding guidelines](/CODING_GUIDELINES_ANGULAR.md) and [Web Component coding guidelines](/CODING_GUIDELINES_CORE.md).
+- Read our [coding guidelines](/CODING_GUIDELINES.md).
 
 ### Getting started
 
@@ -139,16 +136,7 @@ steps.
 If you are making a change that changes the public API of a Component make sure
 to discuss this within a proposal issue with a Clarity team member. A proposal
 allows us to plan out potential breaking changes if necessary and review the API
-changes. If a public API change is approved you will have to update our Golden
-files which track our public API surface.
-
-To update the Golden files follow these steps:
-
-1.  Make public API change
-2.  Run `build:ci`
-3.  Run `angular:golden:test` this should fail
-4.  Run `angular:golden:fix`
-5.  Run `angular:golden:test` this should now pass
+changes.
 
 ### Commits
 
@@ -230,8 +218,8 @@ requested some help.
 To make sure your pull request will pass our automated testing, before submitting
 you should:
 
-- Make sure `yarn test` passes for each of them.
-  For individual lint failures, you will have to fix them manually.
+- Make sure `yarn build` passes for on your machine.
+- For individual lint failures, you will have to fix them manually.
 
 The CI runs three parallel Jobs for performance.
 

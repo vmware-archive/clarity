@@ -68,11 +68,7 @@ case. These visual designs can be created using [Sketch](https://www.sketchapp.c
 
 ### Getting Started
 
-An excellent place to get started is with the Clarity Design Resources:
-
-1.  [Clarity Light Theme](https://github.com/vmware/clarity-assets/blob/master/sketch/light/clarity-library-light-2.2.0.sketch?raw=true)
-2.  [Clarity Dark Theme](https://github.com/vmware/clarity-assets/blob/master/sketch/dark/clarity-library-dark-2.2.0.sketch?raw=true)
-3.  [Clarity Icons](https://github.com/vmware/clarity-assets/blob/master/sketch/icons/clarity-library-icons-2.2.0.sketch?raw=true)
+An excellent place to get started is with the [Clarity Design Figma Libraries](https://www.figma.com/@vmware).
 
 Download those files and familiarize yourself with how the existing components are organized. Reach out to us if you
 have questions about the natural place for a new component. Much of the visual aspects for the new component have

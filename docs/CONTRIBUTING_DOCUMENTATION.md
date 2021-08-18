@@ -51,7 +51,7 @@ our development environment on your computer. You will need to have
 
 5.  See changes in your browser at `localhost:8080`
 
-The source code for the Clarity Documentation is located in the `src/website` folder.
+The source code for the Clarity Documentation is located in the `apps/website` folder.
 Once you have made the changes and are happy with the results you can submit and
 open a [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
 by following our [Development Contribution Guidelines](/docs/CONTRIBUTING_DEVELOPMENT.md).

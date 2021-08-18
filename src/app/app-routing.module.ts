@@ -40,6 +40,7 @@ import { TablePage } from './pages/table.page';
 import { SpinnerPage } from './pages/spinner.page';
 import { TooltipPage } from './pages/tooltip.page';
 import { HeaderPage } from './pages/header.page';
+import { TabPage } from './pages/tab.page';
 
 export const componentRoutes = [
   { path: 'accordion', component: AccordionPage },
@@ -66,7 +67,7 @@ export const componentRoutes = [
   { path: 'signpost', component: SignpostPage },
   { path: 'spinner', component: SpinnerPage },
   { path: 'stepper', component: StepperPage },
-  { path: 'tab', component: TablePage },
+  { path: 'tab', component: TabPage },
   { path: 'textarea', component: TextareaPage },
   { path: 'timeline', component: TimelinePage },
   { path: 'toggle', component: TogglePage },

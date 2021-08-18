@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-signpost',
   template: `
     <h1>Signpost</h1>
-    <not-ready name="Signpost"></not-ready>
+    <not-ready name="Signposts"></not-ready>
   `,
 })
 export class SignpostPage {}

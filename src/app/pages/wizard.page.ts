@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   selector: 'app-wizard',
   template: `
     <h1>Wizard</h1>
-    <not-ready name="Wizard"></not-ready>
+    <not-ready name="Wizards"></not-ready>
   `,
 })
 export class WizardPage {}

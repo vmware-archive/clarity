@@ -134,6 +134,7 @@ import { worldIcon, worldIconName } from '../shapes/world.js';
 import { wrenchIcon, wrenchIconName } from '../shapes/wrench.js';
 import { zoomInIcon, zoomInIconName } from '../shapes/zoom-in.js';
 import { zoomOutIcon, zoomOutIconName } from '../shapes/zoom-out.js';
+import { gavelIcon, gavelIconName } from '../shapes/gavel.js';
 
 export const essentialCollectionIcons: IconShapeTuple[] = [
   accessibility1Icon,
@@ -190,6 +191,7 @@ export const essentialCollectionIcons: IconShapeTuple[] = [
   flameIcon,
   formIcon,
   fuelIcon,
+  gavelIcon,
   gridViewIcon,
   helpIcon,
   historyIcon,
@@ -356,6 +358,7 @@ declare module '@cds/core/internal' {
     [flameIconName]: string;
     [formIconName]: string;
     [fuelIconName]: string;
+    [gavelIconName]: string;
     [gridViewIconName]: string;
     [helpIconName]: string;
     [historyIconName]: string;

@@ -2,6 +2,49 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.2",
+      "date": "2021-08-19",
+      "description": "This is a patch release.",
+      "fix": [
+        {
+          "issue": 6254,
+          "title": "Prevent controls from overflowing control group",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6244,
+          "title": "Button border disappears on window resize",
+          "project": "core",
+          "scope": "button"
+        },
+        {
+          "issue": 6235,
+          "title": "Allow aria-disabled to set control as disabled",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6238,
+          "title": "Icon button icon clicks when button is inert",
+          "project": "core",
+          "scope": "icon"
+        },
+        {
+          "issue": 6237,
+          "title": "Prevent cds-control to forcefully appear above other elements",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6222,
+          "title": "Avoid applying padding style to generic controls",
+          "project": "core",
+          "scope": "control"
+        }
+      ]
+    },
+    {
       "version": "5.5.1",
       "date": "2021-08-05",
       "description": "This is a patch release.",

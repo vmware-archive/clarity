@@ -113,6 +113,7 @@ import { internetOfThingsIcon, internetOfThingsIconName } from '../shapes/intern
 import { thinClientIcon, thinClientIconName } from '../shapes/thin-client.js';
 import { digitalSignatureIcon, digitalSignatureIconName } from '../shapes/digital-signature.js';
 import { updateIcon, updateIconName } from '../shapes/update.js';
+import { forkingIcon, forkingIconName } from '../shapes/forking.js';
 
 export const technologyCollectionIcons: IconShapeTuple[] = [
   administratorIcon,
@@ -160,6 +161,7 @@ export const technologyCollectionIcons: IconShapeTuple[] = [
   fileShare2Icon,
   flaskIcon,
   floppyIcon,
+  forkingIcon,
   hardDriveIcon,
   hardDriveDisksIcon,
   hardDiskIcon,
@@ -298,6 +300,7 @@ declare module '@cds/core/internal' {
     [fileShare2IconName]: string;
     [flaskIconName]: string;
     [floppyIconName]: string;
+    [forkingIconName]: string;
     [hardDriveIconName]: string;
     [hardDriveDisksIconName]: string;
     [hardDiskIconName]: string;

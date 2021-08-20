@@ -73,6 +73,11 @@
   to = "https://dt7zex2d2lk4u.cloudfront.net/images/:splat"
   status = 200
 
+[[redirects]]
+  from = "/dev/*"
+  to = "/dev"
+  status = 200
+
 # Support CORS on JSON files
 [[headers]]
   for = "/*.json"

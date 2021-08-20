@@ -1,11 +1,10 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import * as RELEASES from '../../../releases/release-list.json';
 
 const NG_MODULE_EXAMPLE = `
 import { NgModule } from "@angular/core";
@@ -67,8 +66,6 @@ const UI_CDN = `
 export class GetStartedComponent {
   sketchBaseUrl = environment.sketch_base_url;
   sketchIconsUrl = environment.sketch_icons_url;
-  sketchVersion = RELEASES.all[RELEASES.current].sketch;
-  figmaVersion = RELEASES.all[RELEASES.current].figma;
   majorVersion: Number = Number(environment.version.charAt(1));
   lightFigma = environment.figma_link_light;
   darkFigma = environment.figma_link_dark;
@@ -81,7 +78,7 @@ export class GetStartedComponent {
 
   gaClick(eventName: string) {
     if (window.ga) {
-      window.ga('send', 'event', 'design-resource', 'click', eventName, this.sketchVersion);
+      window.ga('send', 'event', 'design-resource', 'click', eventName, this.majorVersion);
     }
   }
 }

@@ -12,7 +12,9 @@ jobs:
         with:
           node-version: '12.x'
       - run: yarn
-      - run: yarn build:ci
+      - run: yarn build
+      - run: npm run website:deploy # Use NPM as a workaround for npx executing
 
     env:
       CI: true
+      NETLIFY_SITE_ID: bb7d9a3a-ea2d-4f28-a1b1-7d7bacd9815d

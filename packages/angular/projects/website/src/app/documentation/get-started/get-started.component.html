@@ -44,7 +44,7 @@
         (click)="gaClick('figma-light')"
         class="btn btn-primary btn-sm"
         rel="noopener"
-        >UI Library - Light ({{ sketchVersion || figmaVersion }})
+        >UI Library - Light
       </a>
       <a
         [href]="darkFigma"
@@ -52,7 +52,7 @@
         (click)="gaClick('figma-dark')"
         class="btn btn-primary btn-sm"
         rel="noopener"
-        >UI Library - Dark ({{ sketchVersion || figmaVersion }})
+        >UI Library - Dark
       </a>
       <a
         [href]="iconFigma"
@@ -60,7 +60,7 @@
         (click)="gaClick('figma-icons')"
         class="btn btn-primary btn-sm"
         rel="noopener"
-        >Icon Library ({{ sketchVersion || figmaVersion }})
+        >Icon Library
       </a>
       <a
         [href]="colorFigma"
@@ -68,34 +68,7 @@
         (click)="gaClick('figma-color')"
         class="btn btn-primary btn-sm"
         rel="noopener"
-        >Color Library ({{ sketchVersion || figmaVersion }})
-      </a>
-    </div>
-    <div *ngIf="majorVersion < 3">
-      <h4>Sketch Libraries</h4>
-      <a
-        [href]="sketchBaseUrl + '/light/clarity-library-light-' + sketchVersion + '.sketch?raw=true'"
-        target="_blank"
-        (click)="gaClick('sketch-light')"
-        class="btn btn-primary btn-sm"
-        rel="noopener"
-        >UI Library - Light ({{ sketchVersion }})
-      </a>
-      <a
-        [href]="sketchBaseUrl + '/dark/clarity-library-dark-' + sketchVersion + '.sketch?raw=true'"
-        target="_blank"
-        (click)="gaClick('sketch-dark')"
-        class="btn btn-primary btn-sm"
-        rel="noopener"
-        >UI Library - Dark ({{ sketchVersion }})
-      </a>
-      <a
-        [href]="sketchIconsUrl"
-        target="_blank"
-        (click)="gaClick('sketch-icons')"
-        class="btn btn-primary btn-sm"
-        rel="noopener"
-        >Icon Library ({{ sketchVersion }})
+        >Color Library
       </a>
     </div>
   </div>

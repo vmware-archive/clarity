@@ -27,7 +27,7 @@
       </div>
       <div class="card-footer" cds-layout="horizontal">
         See more usage options in&nbsp;<router-link to="/foundation/icons/api/">How To Use</router-link>
-        <a :href="fetchIconUrl()" cds-layout="align:right">
+        <a :href="fetchIconUrl(activeVariant)" cds-layout="align:right">
           <cds-button size="sm" action="outline">
             <cds-icon class="download-svg-icon" shape="download"></cds-icon> SVG ICON
           </cds-button>
@@ -71,8 +71,8 @@ export default {
         variants.push({ badge: 'warning' });
       }
       if (this.iconSnippet.hasOwnProperty('outlineAlerted')) {
-        variants.push({ badge: 'warning-triangle' });
-        variants.push({ badge: 'inherit-triangle' });
+        variants.push({ badge: 'warning-triangle', alert: true });
+        variants.push({ badge: 'inherit-triangle', alert: true });
       }
       if (this.iconSnippet.hasOwnProperty('solid')) {
         variants.forEach(v => {
@@ -85,7 +85,7 @@ export default {
     version: function () {
       // We look up the icons added since v1, if we find it use that version, otherwise send v1
       const version = Object.entries(IconInventory.versionMap).find(entry => {
-        if (entry[1].indexOf(this.iconName) > -1) {
+        if (entry[1].includes(this.iconName)) {
           return entry[0];
         }
         return false;
@@ -116,50 +116,26 @@ export default {
     },
     activateVariant: function (variant) {
       this.activeVariant = variant;
-      this.fetchIconUrl();
-    },
-    hasSolid: function (variants) {
-      const solidTest = variants.filter(v => v.includes('solid'));
-      return solidTest.length > 0 ? true : false;
-    },
-    createSolidDownload: function (variants) {
-      const hasBadge = variants.filter(v => v.includes('has-badge'));
-      const hasAlert = variants.filter(v => v.includes('has-alert'));
-      if (variants.length === 1) {
-        // is solid
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid`;
-      } else if (hasBadge.length === 1) {
-        // is solid + badged
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid-badged`;
-      } else if (hasAlert.length === 1) {
-        // is solid + alerted
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-solid-alerted`;
-      }
-    },
-    createOutlineDownload: function (variants) {
-      const hasBadge = variants.filter(v => v.includes('has-badge'));
-      const hasAlert = variants.filter(v => v.includes('has-alert'));
-
-      if (hasBadge.length === 1) {
-        // is oulined + badged
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-outline-badged`;
-      } else if (hasAlert.length === 1) {
-        // is outlined + alerted
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-outline-alerted`;
-      }
     },
     fetchIconUrl: function (activeVariant) {
-      const variants = this.activeVariant.classes ? this.activeVariant.classes.filter(variant => variant) : [];
-      if (variants.length === 0) {
-        // not solid, no badge, no alert
-        return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}&shape=${this.iconName}-line`;
-      } else if (this.hasSolid(variants)) {
-        // is a solid icon download, may have badge or alert
-        return this.createSolidDownload(variants);
+      let shape = `&shape=${this.iconName}`;
+
+      // If there any keys in the activeVariant that means is solid or have badge so `line` will not work
+      if (Object.keys(activeVariant).length) {
+        shape += activeVariant.solid ? `-solid` : `-outline`;
       } else {
-        // is an outline, has either badge or alert
-        return this.createOutlineDownload(variants);
+        shape += '-line';
       }
+
+      // Add badge or alert if they exist
+      if (activeVariant.badge && activeVariant.alert === undefined) {
+        shape += '-badged';
+      }
+      if (activeVariant.alert) {
+        shape += '-alerted';
+      }
+
+      return `${ICON_DOWNLOAD_URL}set=${this.iconSetName}${shape}`;
     },
   },
 };

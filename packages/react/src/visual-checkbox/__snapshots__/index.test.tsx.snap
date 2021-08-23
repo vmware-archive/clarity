@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsInternalVisualCheckbox snapshot 1`] = `
+<div>
+  <CdsInternalVisualCheckbox>
+    <cds-internal-visual-checkbox(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-internal-visual-checkbox
+        __forwardedRef={null}
+      />
+    </cds-internal-visual-checkbox(CustomElement)>
+  </CdsInternalVisualCheckbox>
+</div>
+`;

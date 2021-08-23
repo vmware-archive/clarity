@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   CdsAccordion,
-  CdsAccordionSection,
+  CdsAccordionPanel,
   CdsAccordionHeader,
   CdsAccordionContent,
 } from './dist/react/accordion/index.js';
@@ -37,6 +37,7 @@ import {
   CdsNavigationStart,
 } from './dist/react/navigation/index.js';
 import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
+import { CdsInternalVisualCheckbox } from './dist/react/visual-checkbox/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -127,7 +128,7 @@ export default class App extends React.Component<{}, AppState> {
 
           <h2>Accordion</h2>
           <CdsAccordion>
-            <CdsAccordionSection
+            <CdsAccordionPanel
               expanded={panel1Expanded}
               onExpandedChange={() => {
                 const newVal = !panel1Expanded;
@@ -136,8 +137,8 @@ export default class App extends React.Component<{}, AppState> {
             >
               <CdsAccordionHeader>Item 1</CdsAccordionHeader>
               <CdsAccordionContent>Content 1</CdsAccordionContent>
-            </CdsAccordionSection>
-            <CdsAccordionSection
+            </CdsAccordionPanel>
+            <CdsAccordionPanel
               expanded={panel2Expanded}
               onExpandedChange={() => {
                 const newVal = !panel2Expanded;
@@ -147,7 +148,7 @@ export default class App extends React.Component<{}, AppState> {
               <CdsAccordionHeader>Item 2</CdsAccordionHeader>
               <CdsAccordionContent>
                 <CdsAccordion>
-                  <CdsAccordionSection
+                  <CdsAccordionPanel
                     expanded={panel4Expanded}
                     onExpandedChange={() => {
                       const newVal = !panel4Expanded;
@@ -167,11 +168,11 @@ export default class App extends React.Component<{}, AppState> {
                         billions upon billions upon billions upon billions upon billions upon billions.
                       </p>
                     </CdsAccordionContent>
-                  </CdsAccordionSection>
+                  </CdsAccordionPanel>
                 </CdsAccordion>
               </CdsAccordionContent>
-            </CdsAccordionSection>
-            <CdsAccordionSection
+            </CdsAccordionPanel>
+            <CdsAccordionPanel
               disabled
               expanded={panel3Expanded}
               onExpandedChange={() => {
@@ -181,7 +182,7 @@ export default class App extends React.Component<{}, AppState> {
             >
               <CdsAccordionHeader>Item 3 – Should Not Open</CdsAccordionHeader>
               <CdsAccordionContent>Content 3</CdsAccordionContent>
-            </CdsAccordionSection>
+            </CdsAccordionPanel>
           </CdsAccordion>
 
           <h2>Breadcrumb</h2>
@@ -453,6 +454,11 @@ export default class App extends React.Component<{}, AppState> {
               <input type="checkbox" disabled checked />
               <CdsControlMessage>disabled message</CdsControlMessage>
             </CdsCheckbox>
+          </CdsFormGroup>
+
+          <h2>Visual Checkbox</h2>
+          <CdsFormGroup>
+            <CdsInternalVisualCheckbox />
           </CdsFormGroup>
 
           <h2>Datalist</h2>

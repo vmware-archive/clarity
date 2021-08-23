@@ -30,7 +30,7 @@
       --clr-table-font-color: var(--clr-color-neutral-700);
 
       // Table header styles
-      --clr-thead-color: #{$clr-p6-color};
+      --clr-thead-color: #{$clr-thead-color};
     }
   }
 }

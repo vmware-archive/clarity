@@ -30,6 +30,7 @@
     "@cds/core": "./dist/core"
   },
   "devDependencies": {
+    "@cds/core": "./dist/core",
     "@babel/core": "7.10.2",
     "@babel/preset-env": "7.10.2",
     "@types/enzyme": "^3.10.5",

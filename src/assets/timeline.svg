@@ -1,0 +1,38 @@
+<svg width="154" height="25" viewBox="0 0 154 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="11" y1="8.5" x2="144" y2="8.50001" stroke="#676767"/>
+<circle cx="141" cy="9" r="8" fill="white"/>
+<circle cx="8" cy="9" r="8" fill="#74C34F"/>
+<circle cx="52" cy="9" r="8" fill="#74C34F"/>
+<circle cx="97" cy="9" r="6.5" fill="white" stroke="#47A6D7" stroke-width="3"/>
+<circle cx="140" cy="9" r="6.5" fill="white" stroke="#C2C2C2" stroke-width="3"/>
+<g opacity="0.5">
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect y="23" width="21" height="2" rx="1" fill="#A7A7A7"/>
+</g>
+<g opacity="0.5">
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="44" y="23" width="21" height="2" rx="1" fill="#A7A7A7"/>
+</g>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="89" y="23" width="22" height="2" rx="1" fill="#A7A7A7"/>
+<g opacity="0.5">
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7" fill-opacity="0.25"/>
+<rect x="132" y="23" width="22" height="2" rx="1" fill="#A7A7A7"/>
+</g>
+</svg>

@@ -41,19 +41,16 @@ let PreviewID = 0;
   template: `
     <ng-content></ng-content>
 
-    <div style="display:flex; align-items: flex-start; justify-content: space-between;">
-      <div *ngFor="let tab of tabs" style="{{ tabs.length > 1 ? 'width: 49.5%' : 'width: 100%' }}">
-        <h5>{{ tab.name }}</h5>
+    <div cds-layout="grid gap:md">
+      <div *ngFor="let tab of tabs" [attr.cds-layout]="'col:12 col@sm:' + (tabs.length === 1 ? '12' : '6')">
+        <p cds-text="message">{{ tab.name }} <button (click)="openStackblitz(tab)" class="btn btn-sm btn-link">
+          <cds-icon shape="bolt"></cds-icon> View in StackBlitz
+        </button></p>
         <div *ngFor="let file of tab.files | keyvalue">
           <sourcecode [src]="file.value" [language]="tab.language || 'ts'"></sourcecode>
         </div>
-        <div id="{{ tab.id }}"></div>
-        <button (click)="embedStackblitz(tab, tab.id)" class="btn btn-sm btn-link">
-          <cds-icon shape="terminal"></cds-icon> Run
-        </button>
-        <button (click)="openStackblitz(tab)" class="btn btn-sm btn-link">
-          <cds-icon shape="bolt"></cds-icon> StackBlitz
-        </button>
+        
+        
       </div>
     </div>
   `,
@@ -83,10 +80,6 @@ export class Demo {
    */
   public generateId(): string {
     return PreviewID++ + '';
-  }
-
-  public async embedStackblitz(tab: DemoTabData, container: string | undefined): Promise<void> {
-    await this.stackblitz.embed(tab.template, tab.files, container);
   }
 
   public async openStackblitz(tab: DemoTabData): Promise<void> {

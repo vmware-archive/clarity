@@ -1,0 +1,16 @@
+<svg width="150" height="96" viewBox="0 0 150 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="149" height="95" rx="1.5" fill="white" stroke="#CACACA"/>
+<rect opacity="0.4" x="11" y="42" width="25" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="11" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="15" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="19" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="23" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="27" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="31" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="35" y="54" width="2" height="2" rx="1" fill="#A7A7A7"/>
+<rect opacity="0.4" x="11" y="69" width="36" height="7" rx="1" fill="#A7A7A7"/>
+<path d="M57 0H148C149.105 0 150 0.895431 150 2V94C150 95.1046 149.105 96 148 96H57V0Z" fill="#F4F4F4"/>
+<rect x="11" y="46" width="36" height="1" fill="#9A9A9A"/>
+<rect x="11" y="58" width="36" height="1" fill="#9A9A9A"/>
+<rect x="0.5" y="0.5" width="149" height="95" rx="1.5" stroke="#A7A7A7"/>
+</svg>

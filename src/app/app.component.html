@@ -3,37 +3,34 @@
   <header class="header-6">
     <div class="branding">
       <img
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMTc5YmQzIiBkPSJNMjQuNzAyIDQuNTgzbDExLjI3OCA2LjY3OS0uMDE5IDEzLjU2My0xMS4yNiA2LjY2LTYuNjg0LTMuOTcgMTEuNjUyLTYuNTQxdi01Ljg5OGwtNC43NDctMi42MDQtNi44OS0zLjkzOCIvPjxwYXRoIGZpbGw9IiNGMzhCMDAiIGQ9Ik0xMS4zMzEgNC41ODNMLjA1NCAxMS4yNjJsLjAxOCAxMy41NjMgMTEuMjYgNi42NiA2LjY4NS0zLjk3LTEwLjY2My02LjU0MXYtNS44OThsMTAuNjc4LTYuNTQyIi8+PHBhdGggZmlsbD0iIzAwNjQ4ZiIgZD0iTTE4LjAxNyAyNy41MTVMMTEuNSAyMy41MTZsNi41MjItMy44NDUgNi45MyAzLjk1MiIvPjxwYXRoIGZpbGw9IiM5ODQ0MUUiIGQ9Ik0xOC4wMzEgOC41MzNsLTYuNTA0IDMuOTg1IDYuNTE3IDMuODg0IDYuODYyLTMuOTQiLz48L2c+PC9zdmc+"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMTc5YmQzIiBkPSJNMjQuNzAyIDQuNTgzbDExLjI3OCA2LjY3OS0uMDE5IDEzLjU2My0xMS4yNiA2LjY2LTYuNjg0LTMuOTcgMTEuNjUyLTYuNTQxdi01Ljg5OGwtNC43NDctMi42MDQtNi44OS0zLjkzOCIvPjxwYXRoIGZpbGw9IiNGMzhCMDAiIGQ9Ik0xMS4zMzEgNC41ODNMLjA1NCAxMS4yNjJsLjAxOCAxMy41NjMgMTEuMjYgNi42NiA2LjY4NS0zLjk3LTEwLjY2My02LjU0MXYtNS44OThsMTAuNjc4LTYuNTQyIi8+PHBhdGggZmlsbD0iIzAwNjQ4ZiIgZD0iTTE4LjAxNyAyNy41MTVMMTEuNSAyMy41MTZsNi41MjItMy44NDUgNi45MyAzLjk1MiIvPjxwYXRoIGZpbGw9IiM5ODQ0MUUiIGQ9Ik0xOC4wMzEgOC41MzNsLTYuNTA0IDMuOTg1IDYuNTE3IDMuODg0IDYuODYyLTMuOTQiLz48L2c+PC9zdmc+" cds-layout="m-t:md"
       />
-      <a cds-layout="m-x:md" routerLink="/" class="nav-link"><span class="title">Clarity Adoption</span></a>
+      <a cds-layout="m-x:md" routerLink="/" class="nav-link" cds-text="title">Clarity Adoption Guide</a>
     </div>
     <div class="header-actions">
       <a
         href="https://clarity.design/"
         class="docs-changer btn btn-outline btn-inverse"
-        aria-label="Clarity Documentation"
       >
-        Clarity Documentation
+        Clarity Core Documentation
+      </a>
+      <a
+        href="https://angular.clarity.design/"
+        class="docs-changer btn btn-outline btn-inverse"
+      >
+        Clarity Angular Documentation
       </a>
     </div>
   </header>
   <div class="content-container">
-    <clr-vertical-nav>
-      <a
-        clrVerticalNavLink
-        routerLink="/getting-started"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <clr-icon shape="help-info" clrVerticalNavIcon></clr-icon> Getting started
-      </a>
+    <clr-vertical-nav>      
 
       <clr-vertical-nav-group routerLinkActive="active" [clrVerticalNavGroupExpanded]="true">
-        <clr-icon clrVerticalNavIcon shape="cog"></clr-icon>
-        Components
+        <cds-icon clrVerticalNavIcon shape="help-info"></cds-icon>
+        About This Guide
         <clr-vertical-nav-group-children>
-          <a *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="active" clrVerticalNavLink>{{
-            route.path | titlecase
+          <a *ngFor="let route of getStartedRoutes" [routerLink]="route.path" routerLinkActive="active" clrVerticalNavLink>{{
+            route.path | menuTitle
           }}</a>
         </clr-vertical-nav-group-children>
       </clr-vertical-nav-group>
@@ -44,8 +41,18 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <clr-icon shape="wrench" clrVerticalNavIcon></clr-icon> Adoption tooling
+        <cds-icon shape="wrench" clrVerticalNavIcon></cds-icon> Adoption tooling
       </a>
+
+      <clr-vertical-nav-group routerLinkActive="active" [clrVerticalNavGroupExpanded]="true">
+        <cds-icon clrVerticalNavIcon shape="cog"></cds-icon>
+        Components
+        <clr-vertical-nav-group-children>
+          <a *ngFor="let route of componentRoutes" [routerLink]="route.path" routerLinkActive="active" clrVerticalNavLink>{{
+            route.path | menuTitle
+          }}</a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
 
       <cds-divider cds-layout="m-y:md"></cds-divider>
 
@@ -92,7 +99,20 @@
       </a>
     </clr-vertical-nav>
     <div class="content-area">
+      <div  cds-layout="container:xl">
       <router-outlet></router-outlet>
+
+      <footer cds-layout="grid p-x:md p-x@sm:xl m-t:xl p-t:lg" class="doc-footer">
+        <div cds-layout="col:12 col@sm:6">
+          <p cds-layout="m-t:none">Powered by VMware, Inc &copy;{{today | date:'YYYY'}}. All rights reserved.<br />Code licensed by <a href="https://opensource.org/licenses/MIT" target="_blank" cds-layout="m-r:sm">MIT License</a> <a href="https://www.vmware.com/help/privacy.html" target="_blank">Privacy Policy</a></p>
+        </div> 
+        <div cds-layout="col:12 col@sm:6" cds-text="right">
+          <a aria-label="Clarity on GitHub" href="https://github.com/vmware/clarity" target="_blank" class="sm-icon-link" cds-layout="m-r:md"><img src="/assets/github.svg" alt="Clarity Github"></a> 
+          <a aria-label="Clarity on twitter" href="https://twitter.com/VMwareClarity" target="_blank" class="sm-icon-link" cds-layout="m-r:md"><img src="/assets/twitter.svg" alt="Clarity Twitter"></a> 
+          <a aria-label="Clarity on Medium" href="https://medium.com/claritydesignsystem" target="_blank" class="sm-icon-link" cds-layout="m-r:md"><img src="/assets/medium.svg" alt="Clarity Medium"></a>
+        </div>
+      </footer>
+      </div>
     </div>
   </div>
 </div>

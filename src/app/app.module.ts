@@ -51,6 +51,13 @@ import { HeaderPage } from './pages/header.page';
 import { ProgressbarPage } from './pages/progressbar.page';
 import { ComboboxPage } from './pages/combobox.page';
 import { DropdownPage } from './pages/dropdown.page';
+import { StatusBlockComponent } from './components/status-block/status-block.component';
+import { LandingPage } from './pages/landing.page';
+import { IntroPage } from './pages/intro.page';
+import { ApproachesPage } from './pages/approaches.page';
+import { MenuTitlePipe } from './pipes/menu-title.pipe';
+import { OverviewPage } from './pages/overview.page';
+import { DifferencesPage } from './pages/differences.page';
 
 @NgModule({
   declarations: [
@@ -60,17 +67,22 @@ import { DropdownPage } from './pages/dropdown.page';
     GettingStartedPage,
     AccordionPage,
     AlertPage,
+    ApproachesPage,
     BadgePage,
     ButtonPage,
     CardPage,
     CheckboxPage,
+    DifferencesPage,
     DatalistPage,
     FormPage,
     IconsPage,
     InputPage,
+    IntroPage,
     LabelPage,
+    LandingPage,
     ListPage,
     ModalPage,
+    OverviewPage,
     PasswordPage,
     RadioPage,
     RangePage,
@@ -97,7 +109,10 @@ import { DropdownPage } from './pages/dropdown.page';
     EslintIntroBlockComponent,
     SourceCodeComponent,
     NotReadyComponent,
+    StatusBlockComponent,
     Demo,
+
+    MenuTitlePipe,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, CdsModule, AppRoutingModule, ClarityModule],
   providers: [],

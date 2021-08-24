@@ -65,6 +65,15 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "dark": {
+              "styles": ["projects/ui/src/dark-theme.scss", "projects/icons/src/clr-icons.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dark.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": ""
@@ -77,6 +86,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dev:build:production"
+            },
+            "dark": {
+              "browserTarget": "dev:build:dark"
             }
           }
         },

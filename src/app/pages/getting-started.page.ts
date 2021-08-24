@@ -12,30 +12,33 @@ import { SupportedTemplates } from '../templates';
   selector: 'app-home',
   providers: [StackblitzService],
   template: `
-    <h1>Getting Started</h1>
+  <h2 cds-text="title" cds-layout="m-t:lg">Getting Started</h2>
 
-    <h3>Who is this guide for?</h3>
+    <h3 cds-text="subtitle" cds-layout="m-t:lg">Who is this guide for?</h3>
+
     <p>
       This guide is for everyone that want and needs to adopt our new Core components into there existing Clarity
       Angular application. It's designed to help you rework and adopt in the best way and still get the same result as
-      before.
+      before. Developers will find this most useful, but we hope to also incorporate any details that might be useful
+      for designers as necessary.
     </p>
 
-    <h3>How to use this guide?</h3>
+    <h3 cds-text="subtitle" cds-layout="m-t:lg">How to use this guide?</h3>
     <p>
       The guide is structured into sections, every section will provide examples based on our Angular components and
       their Core counterparts. Into the form of guides, snippets and corner cases that will help you with the adoption
-      of the new components and workflows.
+      of the new components and workflows. It will help to start by reviewing the <a routerLink="/differences">differences</a>
+      and <a routerLink="/approaches">approaches</a> to adopting Clarity Core.
     </p>
 
-    <h3>Where to find more information?</h3>
+    <h3 cds-text="subtitle" cds-layout="m-t:lg">Where to find more information?</h3>
     <p>
-      The guide won't always reflect the latest API changes inside the components so if you want to know more on
-      specific section you could go and check the
-      <a href="https://clarity.design/" target="_blank">official documentation</a>
+      This guide is updated regularly but won't have every detail about the Clarity Angular or Clarity Core APIs. Therefore you
+      should also be ready to reference both the <a href="https://angular.clarity.design" target="_blank">Clarity Angular documentation</a> and 
+      <a href="https://clarity.design/" target="_blank">Clarity Core documentation</a>
     </p>
 
-    <h3>Project starters</h3>
+    <h3 cds-text="subtitle" cds-layout="m-t:lg">Project starters</h3>
     <p>Below are few templates that could be used to start running Angular or Core based application.</p>
 
     <ul>

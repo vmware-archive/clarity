@@ -2,6 +2,15 @@
 
 pre {
   padding: 0.5rem;
+  background-color: var(--clr-color-neutral-0);
+}
+
+.branding img {
+  height: 2rem;
+}
+
+.header-6 [cds-text="title"] {
+  color: var(--cds-global-color-neutral-0);
 }
 
 .docs-changer {
@@ -10,4 +19,12 @@ pre {
 
 .npm-reference {
   margin-left: 1rem;
+}
+
+.doc-footer {
+  border-top: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color);
+}
+
+.doc-footer img {
+  opacity: 0.5;
 }

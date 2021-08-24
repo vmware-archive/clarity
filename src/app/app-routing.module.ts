@@ -19,6 +19,7 @@ import { ButtonPage } from './pages/button.page';
 import { DatalistPage } from './pages/datalist.page';
 import { FormPage } from './pages/form.page';
 import { InputPage } from './pages/input.page';
+import { IntroPage } from './pages/intro.page';
 import { ListPage } from './pages/list.page';
 import { ModalPage } from './pages/modal.page';
 import { PasswordPage } from './pages/password.page';
@@ -41,8 +42,13 @@ import { SpinnerPage } from './pages/spinner.page';
 import { TooltipPage } from './pages/tooltip.page';
 import { HeaderPage } from './pages/header.page';
 import { TabPage } from './pages/tab.page';
+import { LandingPage } from './pages/landing.page';
+import { OverviewPage } from './pages/overview.page';
+import { ApproachesPage } from './pages/approaches.page';
+import { DifferencesPage } from './pages/differences.page';
 
 export const componentRoutes = [
+  { path: 'overview', component: OverviewPage },
   { path: 'accordion', component: AccordionPage },
   { path: 'alert', component: AlertPage },
   { path: 'badge', component: BadgePage },
@@ -60,7 +66,7 @@ export const componentRoutes = [
   { path: 'list', component: ListPage },
   { path: 'modal', component: ModalPage },
   { path: 'password', component: PasswordPage },
-  { path: 'progressbar', component: ProgressbarPage },
+  { path: 'progress-bar', component: ProgressbarPage },
   { path: 'radio', component: RadioPage },
   { path: 'range', component: RangePage },
   { path: 'select', component: SelectPage },
@@ -68,22 +74,30 @@ export const componentRoutes = [
   { path: 'spinner', component: SpinnerPage },
   { path: 'stepper', component: StepperPage },
   { path: 'tab', component: TabPage },
+  { path: 'table', component: TablePage },
   { path: 'textarea', component: TextareaPage },
   { path: 'timeline', component: TimelinePage },
   { path: 'toggle', component: TogglePage },
   { path: 'tooltip', component: TooltipPage },
-  { path: 'treeview', component: TreeviewPage },
+  { path: 'tree-view', component: TreeviewPage },
   { path: 'wizard', component: WizardPage },
 ];
 
+export const getStartedRoutes = [
+  { path: 'introduction', component: IntroPage },
+  { path: 'get-started', component: GettingStartedPage },
+  { path: 'differences', component: DifferencesPage },
+  { path: 'approaches', component: ApproachesPage },
+];
+
 const routes: Routes = [
-  { path: '', redirectTo: '/getting-started', pathMatch: 'full' },
-  { path: 'getting-started', component: GettingStartedPage },
   { path: 'adoption-tooling', component: AdoptionToolingPage },
+  { path: '', component: LandingPage },
+  { path: '*', redirectTo: '/getting-started', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot([...routes, ...componentRoutes])],
+  imports: [RouterModule.forRoot([...routes, ...componentRoutes, ...getStartedRoutes])],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

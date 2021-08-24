@@ -5,20 +5,18 @@
  */
 
 import { Component } from '@angular/core';
-import { componentRoutes as routes } from './app-routing.module';
+import { componentRoutes, getStartedRoutes } from './app-routing.module';
+
+import { ClarityIcons, cogIcon, helpInfoIcon, wrenchIcon } from '@cds/core/icon';
+
+ClarityIcons.addIcons(cogIcon, helpInfoIcon, wrenchIcon);
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: [
-    `
-      :host header img {
-        height: 3rem;
-        width: 3rem;
-      }
-    `,
-  ],
 })
 export class AppComponent {
-  routes = routes;
+  componentRoutes = componentRoutes;
+  getStartedRoutes = getStartedRoutes;
+  today = new Date();
 }

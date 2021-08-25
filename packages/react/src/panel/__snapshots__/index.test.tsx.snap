@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsInternalPanel snapshot 1`] = `
+<div>
+  <CdsInternalPanel>
+    <cds-internal-panel(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-internal-panel
+        __forwardedRef={null}
+      >
+        Hello!
+      </cds-internal-panel>
+    </cds-internal-panel(CustomElement)>
+  </CdsInternalPanel>
+</div>
+`;

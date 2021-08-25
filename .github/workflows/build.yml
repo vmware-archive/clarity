@@ -13,12 +13,10 @@ jobs:
         with:
           node-version: '14.x'
       - uses: microsoft/playwright-github-action@v1
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}-${{ github.base_ref }}
       - run: npm install
       - run: npm run build:ci
+      - run: npm run deploy:website
 
     env:
       CI: true
+      NETLIFY_SITE_ID: e617b306-1e77-45f2-9692-86a46c70d8c0

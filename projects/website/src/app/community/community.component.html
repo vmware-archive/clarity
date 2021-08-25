@@ -42,13 +42,13 @@
       <div class="clr-col-lg-3 clr-col-md-6 clr-col-6">
         <a
           target="_blank"
-          href="https://stackoverflow.com/tags/vmware-clarity"
+          href="https://github.com/vmware/clarity/discussions"
           class="social-card social-card-stackoverflow"
         >
           <div class="card clickable">
             <div class="card-block">
               <div class="community-social-icon">
-                <img src="assets/images/team/social/stackoverflow.png" alt="twitter" />
+                <img src="assets/images/team/social/github.png" alt="github" />
               </div>
               <p class="card-text">Ask a question</p>
             </div>
@@ -82,33 +82,5 @@
         </a>
       </div>
     </div>
-  </section>
-
-  <section class="community-team-cards">
-    <h3>Clarity Team</h3>
-
-    <div class="clr-row">
-      <div *ngFor="let member of team" class="card clr-col-12 clr-col-md-4">
-        <div class="card-block">
-          <img src="{{ teamImgUrl }}{{ member.img }}" alt="Picture of {{ member.name }}" />
-
-          <div class="card-text">
-            <p class="community-team-name" [ngSwitch]="member.twitter">
-              <span *ngSwitchCase="undefined">{{ member.name }}</span>
-              <a href="https://twitter.com/{{ member.twitter }}" target="_blank" *ngSwitchDefault>{{ member.name }}</a>
-            </p>
-            <p class="community-team-role">{{ member.role }}</p>
-            <p class="community-team-blurb">{{ member.blurb }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="community-contributors">
-    <h3>Contributors</h3>
-    <ul class="list-unstyled contributor-list">
-      <li *ngFor="let name of contributors">{{ name }}</li>
-    </ul>
   </section>
 </main>

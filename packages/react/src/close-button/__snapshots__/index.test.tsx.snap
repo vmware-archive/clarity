@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsInternalCloseButton snapshot 1`] = `
+<div>
+  <CdsInternalCloseButton>
+    <cds-internal-close-button(CustomElement)
+      __forwardedRef={null}
+    >
+      <cds-internal-close-button
+        __forwardedRef={null}
+      />
+    </cds-internal-close-button(CustomElement)>
+  </CdsInternalCloseButton>
+</div>
+`;

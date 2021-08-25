@@ -38,6 +38,7 @@ import {
 } from './dist/react/navigation/index.js';
 import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 import { CdsInternalVisualCheckbox } from './dist/react/visual-checkbox/index.js';
+import { CdsInternalCloseButton } from './dist/react/close-button/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -351,6 +352,9 @@ export default class App extends React.Component<{}, AppState> {
           <CdsButton status="danger" disabled>
             disabled
           </CdsButton>
+
+          <h2>Internal Close button</h2>
+          <CdsInternalCloseButton />
 
           <h2>Badge</h2>
           <CdsBadge status="info">2</CdsBadge>

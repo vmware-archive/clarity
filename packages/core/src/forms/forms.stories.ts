@@ -2072,6 +2072,50 @@ export function responsiveCheckoutForm() {
     ></iframe>`;
 }
 
+export function submitOnEnter() {
+  let count = 0;
+  let typeVal = 'submit';
+
+  const onSubmit = {
+    handleEvent(e: any) {
+      e.preventDefault();
+      count++;
+      document.querySelector('div#submit-count').innerHTML = `Submit count: ${count}`;
+      return false;
+    },
+  };
+
+  const changeType = {
+    handleEvent() {
+      typeVal = typeVal === 'submit' ? 'button' : 'submit';
+      const button = document.querySelector('cds-button[name=test-button]');
+      button.setAttribute('type', typeVal);
+      document.querySelector('div#button-type').innerHTML = `type="${typeVal}"`;
+    },
+  };
+
+  return html`
+    <div cds-layout="vertical gap:md">
+      <form @submit="${onSubmit}">
+        <cds-form-group layout="horizontal-inline">
+          <cds-input>
+            <label>Form input 1</label>
+            <input placeholder="Press Enter to submit" />
+          </cds-input>
+          <cds-input>
+            <label>Form input 2</label>
+            <input placeholder="Press Enter to submit" />
+          </cds-input>
+          <cds-button type="${typeVal}" name="test-button" value="test-value">Submit</cds-button>
+        </cds-form-group>
+      </form>
+      <div id="submit-count">Submit count: ${count}</div>
+      <div><cds-button @click="${changeType}">Change type</cds-button></div>
+      <div id="button-type">type="${typeVal}"</div>
+    </div>
+  `;
+}
+
 /** @website */
 export function darkTheme() {
   return html`

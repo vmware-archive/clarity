@@ -24,8 +24,7 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: Boolean }) disabled = false;
 
-  @state({ type: String, attribute: 'aria-disabled', reflect: true }) protected ariaDisabled: 'true' | 'false' | null =
-    'false';
+  @state({ type: String, attribute: 'aria-disabled', reflect: true }) ariaDisabled: 'true' | 'false' | null = 'false';
 
   @state({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
 
@@ -41,6 +40,15 @@ export class CdsBaseButton extends LitElement {
 
   @querySlot('cds-badge') protected badge: HTMLElement;
 
+  private marker: HTMLElement;
+
+  // When submitting forms with Enter key, the default submit button receives a click event from the form.
+  // We need to be able to differentiate between the real/explicit clicks and those form produced clicks.
+  // Otherwise we will submit the form twice.
+  private explicitClick = false;
+
+  private markerSignificantProperties = ['type', 'name', 'value', 'disabled'];
+
   protected render() {
     return html` <slot></slot> `;
   }
@@ -51,8 +59,16 @@ export class CdsBaseButton extends LitElement {
   }
 
   protected updated(props: Map<string, any>) {
+    if (this.hasMarkerSignificantProperty(props)) {
+      if (this.markerAttached) {
+        this.marker.remove();
+      }
+      this.createMarker();
+    }
+
     super.updated(props);
     this.updateButtonAttributes();
+    this.addDefaultSubmitBehavior();
 
     if (props.has('readonly')) {
       this.setupNativeButtonBehavior();
@@ -76,6 +92,7 @@ export class CdsBaseButton extends LitElement {
 
   private emulateActiveMouseUp() {
     this.active = false;
+    this.explicitClick = true; // mouse down/up are only associated with real clicks
   }
 
   private setupNativeButtonBehavior() {
@@ -104,26 +121,53 @@ export class CdsBaseButton extends LitElement {
     if (!this.readonly) {
       if (this.disabled) {
         stopEvent(event);
-      } else if (!event.defaultPrevented) {
-        const buttonTemplate = html`<button
-          aria-hidden="true"
-          ?disabled="${this.disabled}"
-          tabindex="-1"
-          style="display: none !important"
-          value="${ifDefined(this.value)}"
-          name="${ifDefined(this.name)}"
-          type="${ifDefined(this.type)}"
-        ></button>`;
-
-        const marker = document.createElement('div');
-        this.appendChild(marker);
-        render(buttonTemplate, marker);
+      } else if (!event.defaultPrevented && this.marker && this.explicitClick) {
+        if (!this.markerAttached) {
+          this.appendChild(this.marker);
+        }
         this.querySelector('button[aria-hidden]')?.dispatchEvent(
           new MouseEvent('click', { relatedTarget: this, composed: true })
         );
-        marker.remove();
+        if (this.type !== 'submit') {
+          this.marker.remove();
+        }
       }
     }
+    // get ready for the next real click check
+    this.explicitClick = false;
+  }
+
+  private createMarker() {
+    const buttonTemplate = html`<button
+      aria-hidden="true"
+      role="presentation"
+      ?disabled="${this.disabled}"
+      tabindex="-1"
+      style="display: none !important"
+      value="${ifDefined(this.value)}"
+      name="${ifDefined(this.name)}"
+      type="${ifDefined(this.type)}"
+    ></button>`;
+
+    const marker = document.createElement('div');
+    // avoid an empty space inside button
+    marker.style.display = 'none';
+    render(buttonTemplate, marker);
+    this.marker = marker;
+  }
+
+  private get markerAttached(): boolean {
+    return !!(this.marker && this.marker.parentElement);
+  }
+
+  // A marker significant property is one that should be dynamically bound to a property of the native button
+  private hasMarkerSignificantProperty(props: Map<string, any>): boolean {
+    for (const prop of this.markerSignificantProperties) {
+      if (props.has(prop)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private emulateKeyBoardEventBehavior(evt: KeyboardEvent) {
@@ -153,6 +197,17 @@ export class CdsBaseButton extends LitElement {
       this.role = 'button';
       this.tabIndexAttr = this.disabled ? -1 : 0;
       this.ariaDisabled = this.disabled ? 'true' : 'false';
+    }
+  }
+
+  // Forms handle default submit buttons without type="submit" automatically.
+  // Because of the dynamic createion of the native element, we prefer to set the attribute explicitly.
+  private addDefaultSubmitBehavior() {
+    if (!this.type && this.closest('form')) {
+      this.type = 'submit';
+    }
+    if (this.type === 'submit' && !this.markerAttached) {
+      this.appendChild(this.marker);
     }
   }
 }

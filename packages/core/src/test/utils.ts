@@ -85,3 +85,13 @@ export function componentIsStable(component: any) {
       })
   );
 }
+
+// Full set of mouse events, generated on click
+export function emulatedClick(component: HTMLElement) {
+  const event1 = new MouseEvent('mousedown');
+  const event2 = new MouseEvent('mouseup');
+  const event3 = new MouseEvent('click');
+  component.dispatchEvent(event1);
+  component.dispatchEvent(event2);
+  component.dispatchEvent(event3);
+}

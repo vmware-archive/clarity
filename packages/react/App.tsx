@@ -39,6 +39,7 @@ import {
 import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 import { CdsInternalVisualCheckbox } from './dist/react/visual-checkbox/index.js';
 import { CdsInternalCloseButton } from './dist/react/close-button/index.js';
+import { CdsInternalPanel } from 'src/panel/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 
@@ -393,6 +394,9 @@ export default class App extends React.Component<{}, AppState> {
               </div>
             </CdsCard>
           </div>
+
+          <h2>Internal Panel</h2>
+          <CdsInternalPanel>Hello!</CdsInternalPanel>
 
           <h2>Forms</h2>
           <div cds-layout="vertical gap:lg">

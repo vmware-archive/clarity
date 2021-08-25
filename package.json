@@ -7,6 +7,7 @@
   },
   "scripts": {
     "start": "ng serve dev",
+    "start:website": "ng serve website",
     "website:news": "node projects/website/generate-news",
     "test:angular": "ng test clr-angular --watch false --source-map=false",
     "test:angular:watch": "ng test clr-angular --source-map=false",

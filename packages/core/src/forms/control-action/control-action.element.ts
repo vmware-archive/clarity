@@ -30,7 +30,6 @@ import { LogService } from '@cds/core/internal';
  *
  * </cds-control-action>
  * ```
- * @internal
  * @element cds-control-action
  * @slot - For projecting text content or cds-icon
  */

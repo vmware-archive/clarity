@@ -29,7 +29,7 @@ export const packageCheck = dir => {
 export const webComponentAnalyer = outDir => {
   return execute({
     commands: [
-      `cd ${resolve(outDir)} && cem analyze --litelement --globs ./**/*.element.d.ts`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
+      `cd ${resolve(outDir)} && cem analyze --litelement`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
       `wca analyze ${resolve(outDir)} --silent --format=json --outFile ${resolve(
         outDir,
         'custom-elements.legacy.json'

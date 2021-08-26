@@ -43,7 +43,6 @@ import {
   CdsSearchDirective,
   CdsSelectDirective,
   CdsTagDirective,
-  CdsTestDropdownDirective,
   CdsTextareaDirective,
   CdsTimeDirective,
   CdsToggleGroupDirective,
@@ -851,26 +850,6 @@ describe('CDS Tag', () => {
   });
 });
 
-describe('CDS Test Dropdown', () => {
-  let fixture: ComponentFixture<any>;
-  let instance: TestDropdownTestComponent;
-
-  beforeEach(function () {
-    TestBed.configureTestingModule({
-      imports: [CdsModule],
-      declarations: [TestDropdownTestComponent],
-    });
-
-    fixture = TestBed.createComponent(TestDropdownTestComponent);
-    fixture.detectChanges();
-    instance = fixture.componentInstance;
-  });
-
-  it('cds-test-dropdown should be defined', () => {
-    expect(instance.vcCdsTestDropdownDirective).toBeDefined();
-  });
-});
-
 describe('CDS Textarea', () => {
   let fixture: ComponentFixture<any>;
   let instance: TextareaTestComponent;
@@ -1359,13 +1338,6 @@ class SelectTestComponent {
 })
 class TagTestComponent {
   @ViewChild(CdsTagDirective) vcCdsTagDirective: CdsTagDirective;
-}
-
-@Component({
-  template: ` <cds-test-dropdown></cds-test-dropdown> `,
-})
-class TestDropdownTestComponent {
-  @ViewChild(CdsTestDropdownDirective) vcCdsTestDropdownDirective: CdsTestDropdownDirective;
 }
 
 @Component({

@@ -10,12 +10,10 @@ const fs = require('fs');
 const path = require('path');
 const Mustache = require('mustache');
 
-const SOURCE_PATH = path.join(__dirname, './../packages/core/dist/core/custom-elements.legacy.json');
+const SOURCE_PATH = path.join(__dirname, './../packages/core/dist/core/custom-elements.json');
 const TARGET_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/components');
 const MUSTACHE_TEMPLTATE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/_stubs');
 
-// TODO: check if a directory is already created for the same tag
-const IGNORE_DIRECTORY_NAMES = ['index.d.ts', 'internal-components', 'icon-shapes'];
 const MODULE_NAME = 'cds-angular.module.ts'; // hard-coded in the root index mustache template
 
 const directiveTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/directive.ts.mustache', 'utf8');
@@ -24,142 +22,160 @@ const indexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/index.ts.musta
 const rootIndexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-index.ts.mustache', 'utf8');
 const rootModuleTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-module.ts.mustache', 'utf8');
 
-function getDiretoryName(tagPath) {
-  return tagPath.split('/')[1];
+function formatName(string) {
+  return string
+    .split('-')
+    .map(function (word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join('');
 }
 
-function getDirectiveName(tagName) {
-  return tagName + '.directive.ts';
+function extractDirectoryFromPath({ path }) {
+  return path.split('/')[0];
 }
 
-// turns kebab case to camel case with options of adding prefix and suffix
-// eg: getDirectiveClassName("modal-body", "Clr", "Directive") -> ClrModalBodyDirective
-function getDirectiveClassName(tagName, prefix, suffix) {
-  return (
-    prefix +
-    tagName
-      .split('-')
-      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-      .join('') +
-    suffix
-  );
+function filterByPath({ path }) {
+  /**
+   * @note the regex here could only try to get only `*.element.d.ts` files and ignore
+   * everything else.
+   */
+  return !new RegExp(
+    [
+      '^internal', // Internal code is not exported
+      'index.d.ts', // ignore index.d.ts
+      'collections', // Icons collections
+      'shapes', // Icons shapes
+      'register.d.ts', // Register is not a component
+      '.js', // Drop all javscript files
+      'interfaces', // Drop all interfaces
+      'tokens', // Drop all tokens
+      'service', // Drop all services
+      'utils', // Drop all utils
+      '^test', // Drop all test components
+    ].join('|'),
+    'mg'
+  ).test(path);
 }
 
-function createFileOnTemplate(mustacheTemplate, templateData, fileName, targetPath, subDir = '') {
-  // if subDir is defined, we will create a sub directory inside the target path and create the file there
-  if (fs.existsSync(path.join(targetPath, subDir))) {
-    const filePath = path.join(targetPath, subDir, fileName);
-    const templateRender = Mustache.render(mustacheTemplate, templateData);
-    fs.writeFileSync(filePath, templateRender);
-  }
-}
-
-function createRootIndex(moduleData) {
-  if (moduleData) {
-    const templateData = {
-      modules: Object.keys(moduleData).map(md => ({ moduleDirectoryName: md })),
-    };
-
-    createFileOnTemplate(rootIndexTemplate, templateData, 'index.ts', TARGET_PATH);
-  }
-}
-
-function createIndexes(moduleData) {
-  if (moduleData) {
-    Object.keys(moduleData).forEach(moduleDirectory => {
-      const templateData = {
-        directives: Object.keys(moduleData[moduleDirectory]).map(md => ({
-          directiveFileName: md,
-        })),
-        moduleFileName: 'cds-' + moduleDirectory,
-      };
-
-      createFileOnTemplate(indexTemplate, templateData, 'index.ts', TARGET_PATH, moduleDirectory);
+function reformatDirectiveProps(props) {
+  return props
+    .filter(prop => prop.privacy === undefined) // public
+    .filter(prop => prop.type && prop.type.text && !prop.type.text.includes('EventEmitter')) // exclude events
+    .map(prop => {
+      const { name, type } = prop;
+      const isBoolean = type && type.text === 'boolean';
+      return { name, isBoolean };
     });
-
-    createRootIndex(moduleData);
-  }
 }
 
-function createModules(moduleData) {
-  if (moduleData) {
-    const rootModuleTemplateData = { modules: [] };
-    Object.keys(moduleData).forEach(moduleDirectory => {
-      const templateData = {
-        directives: Object.keys(moduleData[moduleDirectory]).map(md => ({
-          directiveFileName: md,
-          directiveClassName: moduleData[moduleDirectory][md],
-        })),
-        moduleClassName: getDirectiveClassName(moduleDirectory, 'Cds', 'Module'),
-        moduleDirectory,
-      };
-
-      rootModuleTemplateData.modules.push({ moduleClassName: templateData.moduleClassName, moduleDirectory });
-
-      const moduleFileName = 'cds-' + moduleDirectory + '.module.ts';
-      createFileOnTemplate(moduleTemplate, templateData, moduleFileName, TARGET_PATH, moduleDirectory);
+function reformatDirectiveEvents(events) {
+  return events
+    .filter(event => event.privacy === undefined) // public
+    .filter(prop => prop.type && prop.type.text && prop.type.text.includes('EventEmitter')) // include only events
+    .map(event => {
+      const { name } = event;
+      return { name };
     });
-
-    createFileOnTemplate(rootModuleTemplate, rootModuleTemplateData, MODULE_NAME, TARGET_PATH);
-
-    return moduleData;
-  }
 }
 
-function createDirectives(componentDirectories) {
-  if (componentDirectories) {
-    const customElementsData = JSON.parse(fs.readFileSync(SOURCE_PATH));
+function writeToDisk(filename, content) {
+  fs.mkdirSync(path.dirname(filename), { recursive: true });
+  fs.writeFileSync(filename, content);
+}
 
-    return customElementsData.tags.reduce((moduleData, tag) => {
-      const templateData = {
-        tagName: tag.name,
-        directiveClassName: getDirectiveClassName(tag.name, '', 'Directive'),
-        props: tag.properties && tag.properties.map(p => ({ ...p, isBoolean: p.type === 'boolean' })),
-        events: tag.events,
-        hasProps: !!tag.properties,
-        hasEvents: !!tag.events,
-      };
+// Read custom elements data
+(function (CustomElementsData) {
+  // Remove previous custom elements data
+  fs.rmdirSync(TARGET_PATH, { recursive: true });
 
-      const directory = getDiretoryName(tag.path);
+  // Create new custom elements data
+  fs.mkdirSync(TARGET_PATH);
 
-      createFileOnTemplate(directiveTemplate, templateData, getDirectiveName(tag.name), TARGET_PATH, directory);
+  const componentsFound = CustomElementsData.modules.filter(filterByPath);
+  const modulesToCreate = {};
 
-      if (componentDirectories.includes(directory)) {
-        if (moduleData[directory]) {
-          moduleData[directory][templateData.tagName] = [templateData.directiveClassName];
-        } else {
-          moduleData[directory] = { [templateData.tagName]: templateData.directiveClassName };
-        }
+  // Locate directives to create
+  componentsFound.forEach(entry => {
+    (entry.declarations || []).forEach(directive => {
+      // Read only classes
+      if (directive.kind !== 'class') {
+        return;
       }
 
-      return moduleData;
-    }, {});
-  }
-}
+      const directory = extractDirectoryFromPath(entry);
 
-function createComponentDirectories() {
-  if (fs.existsSync(SOURCE_PATH)) {
-    const customElementsData = JSON.parse(fs.readFileSync(SOURCE_PATH));
+      const templateData = {
+        module: directory,
+        tagName: directive.tagName,
+        directiveClassName: `${directive.name}Directive`,
+        props: (directive.members && reformatDirectiveProps(directive.members)) || [],
+        events: (directive.members && reformatDirectiveEvents(directive.members)) || [],
+      };
 
-    const componentDirectories = [...new Set(customElementsData.tags.map(tag => getDiretoryName(tag.path)))].filter(
-      dirName => !IGNORE_DIRECTORY_NAMES.includes(dirName)
-    );
+      // Re-use already calculated data
+      templateData.hasEvents = !!templateData.events.length;
+      templateData.hasProps = !!templateData.props.length;
 
-    // clear existing directory
-    fs.rmdirSync(TARGET_PATH, { recursive: true });
+      const file = {
+        filename: `${directive.tagName}.directive.ts`,
+        path: path.join(TARGET_PATH, directory),
+        data: templateData,
+      };
 
-    fs.mkdirSync(TARGET_PATH);
-    componentDirectories.forEach(d => {
-      fs.mkdirSync(path.join(TARGET_PATH, d));
+      // Write directive file
+      writeToDisk(path.join(file.path, file.filename), Mustache.render(directiveTemplate, file.data));
+
+      modulesToCreate[templateData.module] = [...(modulesToCreate[templateData.module] || []), file];
     });
+  });
 
-    return componentDirectories;
-  } else {
-    console.warn(`WARNING: Skipped generating ng-core modules because ${SOURCE_PATH} doesn't exist.`, '\n');
-  }
-}
+  Object.keys(modulesToCreate).forEach(moduleName => {
+    modulesToCreate[moduleName].forEach(directive => {
+      const data = {
+        moduleDirectory: moduleName,
+        moduleClassName: `Cds${formatName(moduleName)}Module`,
+        directives: modulesToCreate[moduleName].map(directive => {
+          return {
+            directiveClassName: directive.data.directiveClassName,
+            directiveFileName: directive.data.tagName,
+          };
+        }),
+      };
 
-const directories = createComponentDirectories();
-const directives = createDirectives(directories);
-const modules = createModules(directives);
-createIndexes(modules);
+      // Write component module
+      writeToDisk(
+        path.join(directive.path, `cds-${directive.data.module}.module.ts`),
+        Mustache.render(moduleTemplate, data)
+      );
+
+      // Write component index
+      writeToDisk(
+        path.join(directive.path, `index.ts`),
+        Mustache.render(indexTemplate, {
+          moduleFileName: `cds-${moduleName}`,
+          directives: data.directives,
+        })
+      );
+    });
+  });
+
+  // Calculate root module data
+  const moduleData = {
+    modules: Object.keys(modulesToCreate)
+      .sort()
+      .map(moduleName => {
+        return {
+          moduleClassName: `Cds${formatName(moduleName)}Module`,
+          moduleDirectory: moduleName,
+          moduleDirectoryName: moduleName,
+        };
+      }),
+  };
+
+  // Write root index
+  writeToDisk(path.join(TARGET_PATH, `index.ts`), Mustache.render(rootIndexTemplate, moduleData));
+
+  // Write root module
+  writeToDisk(path.join(TARGET_PATH, MODULE_NAME), Mustache.render(rootModuleTemplate, moduleData));
+})(JSON.parse(fs.readFileSync(SOURCE_PATH)));

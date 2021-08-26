@@ -35,7 +35,7 @@ export function standard() {
     <cds-breadcrumb aria-label="breadcrumb">
       <a href="#" cds-text="link">Home</a>
       <a href="#" cds-text="link">Parent page</a>
-      <a href="#" cds-text="link" aria-current="page">Current page</a>
+      <span aria-current="page">Current page</span>
     </cds-breadcrumb>
   `;
 }

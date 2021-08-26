@@ -20,7 +20,7 @@ import styles from './control-label.element.scss';
  *   <label>...</label>
  * </cds-internal-control-label>
  * ```
- * @internal
+ *
  * @element cds-internal-control-label
  * @slot - For projecting label text
  * @cssprop --label-width

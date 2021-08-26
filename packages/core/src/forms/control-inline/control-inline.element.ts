@@ -23,7 +23,7 @@ import { getStatusIcon } from '../utils/index.js';
  *   <input type="radio" />
  * </ds-internal-control-inline>
  * ```
- *
+ * @element cds-internal-control-inline
  * @slot - For projecting inline input and label
  */
 export class CdsInternalControlInline extends CdsControl {

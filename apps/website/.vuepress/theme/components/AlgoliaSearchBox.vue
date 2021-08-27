@@ -180,6 +180,11 @@ header .search,
   .search-box input {
     left: 0 !important;
     min-width: unset !important;
+    font-size: 0.7rem !important;
+  }
+
+  .search-box input::placeholder {
+    color: var(-cds-global-typography-color-400) !important;
   }
 
   [class^='ds-dataset-'] {

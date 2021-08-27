@@ -21,6 +21,7 @@ module.exports = {
   ],
   dest: '../../dist/website',
   themeConfig: {
+    searchPlaceholder: 'Search documentation',
     algolia: {
       // apiKey: '88df2445b3dc4bf5e8bc4caafa9fbc50', // https://next.clarity.design index
       // indexName: 'next_clarity',

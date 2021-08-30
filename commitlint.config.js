@@ -2,6 +2,7 @@ const scopes = [
   'angular',
   'angular:form',
   'angular:schematics',
+  'angular:datagrid',
   'a11y',
   'accordion',
   'alert',

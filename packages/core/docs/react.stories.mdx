@@ -122,6 +122,20 @@ test('my test', async () => {
 });
 ```
 
+### IntersectionObserver
+
+`CdsFormGroup` and other Clarity components use the
+[Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API),
+which [jsdom doesn't implement](https://github.com/jsdom/jsdom/issues/2032). It can be mocked if tests are failing:
+
+```javascript
+window.IntersectionObserver = jest.fn().mockReturnValue({
+  observe: () => null,
+  unobserve: () => null,
+  disconnect: () => null,
+});
+```
+
 <a href="https://github.com/vmware/clarity/tree/next/apps" target="_blank" rel="noopener">
   <cds-button>Example Apps</cds-button>
 </a>

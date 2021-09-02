@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import clarityWebComponents from '../dist/core/custom-elements.legacy.json';
+import clarityWebComponents from '../dist/core/custom-elements.json';
 
 export default {
   fetchApi(componentName) {

@@ -2,6 +2,37 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.3",
+      "date": "2021-09-02",
+      "description": "This is a patch release.",
+      "fix": [
+        {
+          "issue": 6270,
+          "title": "Volume 20 of icons",
+          "project": "core",
+          "scope": "icon"
+        },
+        {
+          "issue": 6290,
+          "title": "Internal close button wrapper",
+          "project": "react",
+          "scope": "close-button"
+        },
+        {
+          "issue": 6284,
+          "title": "Adding visual checkbox react wrapper",
+          "project": "react",
+          "scope": "visual-checkbox"
+        },
+        {
+          "issue": 6210,
+          "title": "Improvements in accessibility for navigaiton",
+          "project": "core",
+          "scope": "navigation"
+        }
+      ]
+    },
+    {
       "version": "5.5.2",
       "date": "2021-08-19",
       "description": "This is a patch release.",

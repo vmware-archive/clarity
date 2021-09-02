@@ -1,6 +1,6 @@
 {
   "name": "clarity",
-  "version": "12.0.2",
+  "version": "12.0.3",
   "engines": {
     "yarn": "please-use-npm",
     "npm": ">= 6.14.0"

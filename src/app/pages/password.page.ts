@@ -12,11 +12,11 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Password</h1>
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Password with Reactive form</h3>
+      <h3 cds-text="section">Password with Reactive form</h3>
     </demo>
   `,
 })

@@ -15,10 +15,10 @@ import { DemoTabData } from '../components/demo.component';
     <app-eslint-intro-block rule="no-clr-checkbox"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <p>Basic checkbox</p>
+      <h3 cds-text="section">Basic checkbox</h3>
     </demo>
     <demo [tabs]="demo2">
-      <p>Example of more complex form structure</p>
+      <h3 cds-text="section">Example of more complex form structure</h3>
     </demo>
   `,
 })

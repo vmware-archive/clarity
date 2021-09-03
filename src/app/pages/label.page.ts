@@ -12,13 +12,24 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Labels</h1>
 
-     <app-eslint-intro-block rule="no-clr-label"></app-eslint-intro-block>
+    <app-eslint-intro-block rule="no-clr-label"></app-eslint-intro-block>
 
-    <demo [tabs]="demo0"></demo>
-    <demo [tabs]="demo1"></demo>
-    <demo [tabs]="demo2"></demo>
-    <demo [tabs]="demo3"></demo>
-    <demo [tabs]="demo4"></demo>
+    <demo [tabs]="demo0">
+      <h3 cds-text="section">Simple label with text</h3>
+    </demo>
+    <demo [tabs]="demo1">
+      <h3 cds-text="section">Outline labels with badge</h3>
+    </demo>
+    <demo [tabs]="demo2">
+      <h3 cds-text="section">Clickable outline labels</h3>
+    </demo>
+    <demo [tabs]="demo3">
+      <h3 cds-text="section">Outline labels without badge</h3>
+    </demo>
+    <demo [tabs]="demo4">
+      <h3 cds-text="section">Labels with status</h3>
+      <p>Labels with colour background fill</p>
+    </demo>
   `,
 })
 export class LabelPage {

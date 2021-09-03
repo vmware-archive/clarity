@@ -15,7 +15,7 @@ import { DemoTabData } from '../components/demo.component';
     <app-eslint-intro-block rule="no-clr-range"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With label and info message</h3>
     </demo>
   `,
 })

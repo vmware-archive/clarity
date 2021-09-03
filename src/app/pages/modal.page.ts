@@ -20,15 +20,15 @@ import { DemoTabData } from '../components/demo.component';
     </p>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With title, body and footer</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Closable</h3>
+      <h3 cds-text="section">Closable</h3>
 
       <p>
-        In some cases there is a need to prevent the user from closing the modal. To achieve this there is an option for removing the closable action button
-        on the top right corner of the dialog.
+        In some cases there is a need to prevent the user from closing the modal. To achieve this there is an option for
+        removing the closable action button on the top right corner of the dialog.
       </p>
     </demo>
   `,

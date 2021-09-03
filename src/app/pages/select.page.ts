@@ -15,11 +15,11 @@ import { DemoTabData } from '../components/demo.component';
     <app-eslint-intro-block rule="no-clr-select"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With 3 elements and label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Reactive form</h3>
+      <h3 cds-text="section">Reactive form</h3>
     </demo>
   `,
 })

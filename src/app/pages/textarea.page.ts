@@ -15,11 +15,11 @@ import { DemoTabData } from '../components/demo.component';
     <app-eslint-intro-block rule="no-clr-textarea"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With label and info message</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Reactive forms</h3>
+      <h3 cds-text="section">Reactive forms</h3>
     </demo>
   `,
 })

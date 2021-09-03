@@ -12,31 +12,33 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Button</h1>
 
-     <app-eslint-intro-block rule="no-clr-button"></app-eslint-intro-block>
-
+    <app-eslint-intro-block rule="no-clr-button"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">Primary button</h3>
+      <p>Basic primary button</p>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>All solid buttons</h3>
+      <h3 cds-text="section">Solid buttons</h3>
+      <p>All solid buttons</p>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3>All outline buttons</h3>
+      <h3 cds-text="section">Outline buttons</h3>
+      <p>All outline buttons</p>
     </demo>
 
     <demo [tabs]="demo4">
-      <h3>Inverse</h3>
+      <h3 cds-text="section">Inverse buttons</h3>
     </demo>
 
     <demo [tabs]="demo5">
-      <h3>Icon buttons</h3>
+      <h3 cds-text="section">Icon buttons</h3>
     </demo>
 
     <demo [tabs]="demo6">
-      <h3>Loading buttons</h3>
+      <h3 cds-text="section">Loading buttons</h3>
     </demo>
   `,
 })

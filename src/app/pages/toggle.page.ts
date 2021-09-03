@@ -13,15 +13,15 @@ import { DemoTabData } from '../components/demo.component';
     <h1>Toggle</h1>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">With label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>With subtext and forms</h3>
+      <h3 cds-text="section">With subtext and forms</h3>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3>Disabled</h3>
+      <h3 cds-text="section">Disabled</h3>
     </demo>
   `,
 })

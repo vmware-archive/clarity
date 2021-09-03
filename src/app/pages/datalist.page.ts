@@ -13,11 +13,12 @@ import { DemoTabData } from '../components/demo.component';
     <h1>Datalist</h1>
 
     <demo [tabs]="demo">
-      <h3>Basic</h3>
+      <h3 cds-text="section">Datalist with text items</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Reactive forms</h3>
+      <h3 cds-text="section">Reactive forms</h3>
+      <p>Using Angular forms inside datalist</p>
     </demo>
   `,
 })

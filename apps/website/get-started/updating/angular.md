@@ -9,10 +9,3 @@ In order to keep up with Clarity, you can use ng update to automatically update 
 ng update @angular/core @angular/cli
 ng update @clr/angular
 ```
-
-If you want to update to a prerelease version, you can do so by running:
-
-```bash
-ng update @angular/core@next @angular/cli@next
-ng update @clr/angular@next
-```

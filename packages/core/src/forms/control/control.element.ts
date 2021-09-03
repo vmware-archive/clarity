@@ -24,9 +24,6 @@ import {
   getElementUpdates,
   hasAriaLabelTypeAttr,
 } from '@cds/core/internal';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
-import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
 import styles from './control.element.scss';
 import { ControlStatus, ControlLayout, ControlWidth } from './../utils/interfaces.js';
@@ -280,11 +277,6 @@ export class CdsControl extends LitElement {
     `;
   }
 
-  constructor() {
-    super();
-    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('cds-control', '');
@@ -343,7 +335,12 @@ export class CdsControl extends LitElement {
   }
 
   private async setActionOffsetPadding() {
+    const prefix = (this.prefixAction as LitElement)?.updateComplete;
+    const suffix = (this.suffixAction as LitElement)?.updateComplete;
+    (await prefix) ? prefix : Promise.resolve(true);
+    (await suffix) ? suffix : Promise.resolve(true);
     await childrenUpdateComplete(this.controlActions);
+
     if (!this.isGenericControl && this.supportsPrefixSuffixActions && this.hasControlActions) {
       const start = pxToRem(this.prefixAction.getBoundingClientRect().width + 6);
       const end = pxToRem(this.suffixAction.getBoundingClientRect().width + 6);

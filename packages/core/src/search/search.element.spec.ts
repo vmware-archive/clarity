@@ -12,6 +12,7 @@ import '@cds/core/search/register.js';
 describe('cds-search', () => {
   let component: CdsSearch;
   let element: HTMLElement;
+  let input: HTMLElement;
 
   beforeEach(async () => {
     element = await createTestElement(html`
@@ -23,6 +24,7 @@ describe('cds-search', () => {
     `);
 
     component = element.querySelector<CdsSearch>('cds-search');
+    input = component.querySelector<HTMLElement>('input');
   });
 
   afterEach(() => {
@@ -32,5 +34,12 @@ describe('cds-search', () => {
   it('should create component', async () => {
     await componentIsStable(component);
     expect(component).toBeTruthy();
+  });
+
+  it('should apply prefix padding for search icon', async () => {
+    await componentIsStable(component);
+    expect(input.getAttribute('style')).toBe(
+      'padding-left: calc((24 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((6 / var(--cds-global-base)) * 1rem) !important;'
+    );
   });
 });

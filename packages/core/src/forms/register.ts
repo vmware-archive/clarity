@@ -1,10 +1,13 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import '@cds/core/icon/register.js';
+import { ClarityIcons } from '@cds/core/icon/icon.service.js';
+import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
+import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { registerElementSafely } from '@cds/core/internal';
 import { CdsControl } from './control/control.element.js';
 import { CdsControlAction } from './control-action/control-action.element.js';
@@ -21,6 +24,8 @@ registerElementSafely('cds-internal-control-inline', CdsInternalControlInline);
 registerElementSafely('cds-internal-control-label', CdsInternalControlLabel);
 registerElementSafely('cds-control-message', CdsControlMessage);
 registerElementSafely('cds-form-group', CdsFormGroup);
+
+ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
 
 declare global {
   interface HTMLElementTagNameMap {

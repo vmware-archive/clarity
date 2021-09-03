@@ -20,9 +20,6 @@ import {
   setAttributes,
   syncProps,
 } from '@cds/core/internal';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { exclamationCircleIcon } from '@cds/core/icon/shapes/exclamation-circle.js';
-import { checkCircleIcon } from '@cds/core/icon/shapes/check-circle.js';
 import { CdsControl } from '../control/control.element.js';
 import styles from './control-group.element.scss';
 import { ControlStatus, FormLayout, ControlWidth } from '../utils/interfaces.js';
@@ -104,11 +101,9 @@ export class CdsInternalControlGroup extends LitElement {
   @querySlotAll('cds-control-message') protected messages: NodeListOf<CdsControlMessage>;
 
   /** @private */
-  @query('cds-internal-control-label[action=primary]') controlLabel: CdsInternalControlLabel;
+  @query('cds-internal-control-label[action=primary]', true) controlLabel: CdsInternalControlLabel;
 
-  @query('.controls') private controlSlot: HTMLElement;
-
-  @query('.messages') private messageSlot: HTMLElement;
+  @query('.controls', true) private controlSlot: HTMLElement;
 
   @id() private groupLabelId: string;
 
@@ -120,26 +115,26 @@ export class CdsInternalControlGroup extends LitElement {
 
   protected observers: (MutationObserver | ResizeObserver)[] = [];
 
-  static get styles() {
-    return [baseStyles, styles];
-  }
+  static styles = [baseStyles, styles];
 
   protected get messagesTemplate() {
-    return html`
-      <div cds-layout="horizontal align:shrink ${this.messages?.length ? 'gap:sm' : ''}" class="messages-container">
-        ${!this.isInlineControlGroup ? getStatusIcon(this.status) : ''}
-        <div class="messages">
-          <slot name="message"></slot>
-        </div>
+    return html` <div
+      ?hidden=${this.messages.length === 0}
+      cds-layout="horizontal align:shrink gap:sm wrap:none"
+      class="messages-container"
+    >
+      ${!this.isInlineControlGroup ? getStatusIcon(this.status) : ''}
+      <div class="messages">
+        <slot name="message" @slotchange=${this.updateControlMessages}></slot>
       </div>
-    `;
+    </div>`;
   }
 
   protected get controlsTemplate() {
     return this.isInlineControlGroup
       ? html`
           <div cds-layout="horizontal gap:sm align:horizontal-stretch" class="input-container">
-            <div class="controls" cds-layout="horizontal align:horizontal-stretch">
+            <div class="controls" cds-layout="horizontal align:horizontal-stretch wrap:none">
               <slot name="controls"></slot>
             </div>
             ${getStatusIcon(this.status)}
@@ -170,20 +165,15 @@ export class CdsInternalControlGroup extends LitElement {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="${this.primaryLabelLayout}">
+      <div class="private-host" cds-layout=${this.primaryLabelLayout}>
         <cds-internal-control-label .disabled=${this.disabled} cds-layout="align:top" action="primary">
           <slot name="label"></slot>
         </cds-internal-control-label>
-        <div class="control-message-container" cds-layout="${this.controlMessageLayout}">
-          ${this.controlsTemplate} ${this.messages?.length ? this.messagesTemplate : ''}
+        <div class="control-message-container" cds-layout=${this.controlMessageLayout}>
+          ${this.controlsTemplate} ${this.messagesTemplate}
         </div>
       </div>
     `;
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(exclamationCircleIcon, checkCircleIcon);
   }
 
   connectedCallback() {
@@ -194,7 +184,6 @@ export class CdsInternalControlGroup extends LitElement {
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
     this.associateLabelAndGroup();
-    this.setupDescribedByUpdates();
     this.setupResponsive();
   }
 
@@ -223,20 +212,17 @@ export class CdsInternalControlGroup extends LitElement {
     this.label.setAttribute('id', this.groupLabelId);
   }
 
-  private setupDescribedByUpdates() {
-    this.messageSlot?.addEventListener('slotchange', () => {
-      describeElementByElements(this, Array.from(this.messages));
-      getCurrentMessageStatus(Array.from(this.messages)).then(s => (this.status = s));
-    });
+  private async updateControlMessages() {
+    describeElementByElements(this, Array.from(this.messages));
+    this.status = await getCurrentMessageStatus(Array.from(this.messages));
   }
 
   private setupResponsive() {
     if (this.responsive) {
       const layoutConfig = { layouts: formLayouts, initialLayout: this.layout };
-      const observer = updateComponentLayout(this, layoutConfig, () =>
-        this.layoutChange.emit(this.layout, { bubbles: true })
+      this.observers.push(
+        updateComponentLayout(this, layoutConfig, () => this.layoutChange.emit(this.layout, { bubbles: true }))
       );
-      this.observers.push(observer);
     }
   }
 }

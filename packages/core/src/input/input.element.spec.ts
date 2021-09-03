@@ -67,3 +67,38 @@ describe('cds-input with label control action', () => {
     expect(styleAttr.includes('padding-right')).toBe(true);
   });
 });
+
+describe('cds-control with prefix/suffix icon', () => {
+  let element: HTMLElement;
+  let control: CdsInput;
+  let input: HTMLElement;
+
+  beforeEach(async () => {
+    element = await createTestElement(html`
+      <cds-input>
+        <label>with label control action</label>
+        <cds-control-action action="prefix">
+          <cds-icon shape="unknown"></cds-icon>
+        </cds-control-action>
+        <cds-control-action action="suffix">
+          <cds-icon shape="unknown"></cds-icon>
+        </cds-control-action>
+        <input placeholder="example" />
+      </cds-input>
+    `);
+
+    control = element.querySelector<CdsInput>('cds-input');
+    input = control.querySelector<HTMLElement>('input');
+  });
+
+  afterEach(() => {
+    removeTestElement(element);
+  });
+
+  it('should apply padding inline styles when suffix/prefix controls are applied in input', async () => {
+    await componentIsStable(control);
+    expect(input.getAttribute('style')).toBe(
+      'padding-left: calc((30 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((30 / var(--cds-global-base)) * 1rem) !important;'
+    );
+  });
+});

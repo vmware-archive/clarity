@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { isVisible, pxToRem } from '@cds/core/internal';
+import { pxToRem } from '@cds/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsControl } from '../control/control.element.js';
@@ -78,8 +78,11 @@ export function isVerticalLayout(layout: FormLayout) {
   return layout === 'vertical' || layout === 'vertical-inline';
 }
 
+/**
+ * Returns updated message status unless hidden then returns 'neutral'
+ */
 export async function getCurrentMessageStatus(messages: CdsControlMessage[]) {
   const message = messages.find(m => m.status !== 'neutral');
   await message?.updateComplete;
-  return message && isVisible(message) ? message.status : 'neutral';
+  return message && !message.hidden ? message.status : 'neutral';
 }

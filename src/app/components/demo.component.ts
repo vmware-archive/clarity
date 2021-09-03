@@ -39,18 +39,21 @@ let PreviewID = 0;
 @Component({
   selector: 'demo',
   template: `
-    <ng-content></ng-content>
+    <div cds-layout="m-b:md">
+      <ng-content></ng-content>
+    </div>
 
-    <div cds-layout="grid gap:md">
+    <div cds-layout="grid gap:lg m-b:xl">
       <div *ngFor="let tab of tabs" [attr.cds-layout]="'col:12 col@sm:' + (tabs.length === 1 ? '12' : '6')">
-        <p cds-text="message">{{ tab.name }} <button (click)="openStackblitz(tab)" class="btn btn-sm btn-link">
-          <cds-icon shape="bolt"></cds-icon> View in StackBlitz
-        </button></p>
+        <p cds-text="message">
+          {{ tab.name }}
+          <button (click)="openStackblitz(tab)" class="btn btn-sm btn-link">
+            <cds-icon shape="bolt"></cds-icon> View in StackBlitz
+          </button>
+        </p>
         <div *ngFor="let file of tab.files | keyvalue">
           <sourcecode [src]="file.value" [language]="tab.language || 'ts'"></sourcecode>
         </div>
-        
-        
       </div>
     </div>
   `,

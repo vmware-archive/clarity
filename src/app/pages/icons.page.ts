@@ -12,7 +12,7 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Icons</h1>
 
-     <app-eslint-intro-block rule="no-clr-icon"></app-eslint-intro-block>
+    <app-eslint-intro-block rule="no-clr-icon"></app-eslint-intro-block>
 
     <p>
       There is replacement for Clarity Angular icons with
@@ -21,16 +21,16 @@ import { DemoTabData } from '../components/demo.component';
     </p>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">All available icon variants</h3>
     </demo>
     <demo [tabs]="demo2">
-      <h3>Color states</h3>
+      <h3 cds-text="section">Color states</h3>
     </demo>
     <demo [tabs]="demo3">
-      <h3>Rotation</h3>
+      <h3 cds-text="section">Rotation</h3>
     </demo>
     <demo [tabs]="demo4">
-      <h3>Badges</h3>
+      <h3 cds-text="section">Badges</h3>
     </demo>
   `,
 })

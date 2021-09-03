@@ -12,13 +12,15 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Badges</h1>
 
-     <app-eslint-intro-block rule="no-clr-badge"></app-eslint-intro-block>
+    <app-eslint-intro-block rule="no-clr-badge"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h2>Basic</h2>
+      <h3 cds-text="section">Badge colours</h3>
+      <p>Badge in different colours</p>
     </demo>
     <demo [tabs]="demo2">
-      <h2>Status</h2>
+      <h3 cds-text="section">Badge status</h3>
+      <p>Badges with all available statuses</p>
     </demo>
   `,
 })

@@ -9,10 +9,10 @@ import { DemoTabData } from '../components/demo.component';
     <app-eslint-intro-block rule="no-clr-card"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h2>Basic</h2>
+      <h3 cds-text="section">Card with title and body</h3>
     </demo>
     <demo [tabs]="demo2">
-      <h2>Card media block</h2>
+      <h3 cds-text="section">Card media block</h3>
     </demo>
   `,
 })

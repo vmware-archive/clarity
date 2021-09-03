@@ -13,19 +13,16 @@ import { DemoTabData } from '../components/demo.component';
     <h1>Input</h1>
 
     <demo [tabs]="demo1">
-      <h3>Basic</h3>
+      <h3 cds-text="section">Input with placeholder</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3>Input with label</h3>
+      <h3 cds-text="section">Input with label and placeholder</h3>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3>Input with label</h3>
-    </demo>
-
-    <demo [tabs]="demo4">
-      <h3>All type of inputs</h3>
+      <h3 cds-text="section">Error and Info</h3>
+      <p>Input demos with info message and error message</p>
     </demo>
   `,
 })
@@ -69,25 +66,6 @@ export class InputPage {
   ];
 
   demo3: DemoTabData[] = [
-    {
-      name: 'Angular',
-      files: {
-        'src/app/app.component.ts': 'input/input.3.angular.txt',
-      },
-      language: 'ts',
-      template: 'angular',
-    },
-    {
-      name: 'Core',
-      files: {
-        'src/app/app.component.ts': 'input/input.3.core.txt',
-      },
-      language: 'ts',
-      template: 'core',
-    },
-  ];
-
-  demo4: DemoTabData[] = [
     {
       name: 'Angular',
       files: {

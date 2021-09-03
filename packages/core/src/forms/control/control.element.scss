@@ -72,12 +72,8 @@ cds-control-action.status {
   padding-top: $cds-global-space-3;
 }
 
-:host([layout='horizontal']),
-:host([layout='horizontal-inline']),
-:host([layout='compact']) {
-  cds-internal-control-label[action='primary'] {
-    padding-top: $cds-global-space-5;
-  }
+:host(:not([layout*='vertical'])) cds-internal-control-label[action='primary'] {
+  padding-top: $cds-global-space-5;
 }
 
 :host([layout='compact']),

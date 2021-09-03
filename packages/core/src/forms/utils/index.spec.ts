@@ -6,7 +6,13 @@
 
 import { render, html } from 'lit';
 import { createTestElement, removeTestElement } from '@cds/core/test';
-import { associateInputAndLabel, associateInputToDatalist, getStatusIcon, isVerticalLayout } from './index.js';
+import {
+  associateInputAndLabel,
+  associateInputToDatalist,
+  getCurrentMessageStatus,
+  getStatusIcon,
+  isVerticalLayout,
+} from './index.js';
 import '@cds/core/forms/register.js';
 
 describe('form internal utilities', () => {
@@ -55,5 +61,18 @@ describe('form internal utilities', () => {
     expect(isVerticalLayout('horizontal')).toBe(false);
     expect(isVerticalLayout('horizontal-inline')).toBe(false);
     expect(isVerticalLayout('compact')).toBe(false);
+  });
+
+  it('getCurrentMessageStatus', async () => {
+    const testElement = await createTestElement(html` <cds-control-message status="success"></cds-control-message>
+      <cds-control-message hidden status="success"></cds-control-message>`);
+    const [message, hiddenMessage] = Array.from(testElement.querySelectorAll('cds-control-message'));
+
+    const messageStatus = await getCurrentMessageStatus([message]);
+    const hiddenMessageStatus = await getCurrentMessageStatus([hiddenMessage]);
+
+    expect(messageStatus).toBe('success');
+    expect(hiddenMessageStatus).toBe('neutral');
+    removeTestElement(testElement);
   });
 });

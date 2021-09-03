@@ -29,6 +29,15 @@ slot {
   display: contents !important;
 }
 
+::slotted(*) {
+  font-family: inherit;
+  box-sizing: inherit;
+}
+
+::slotted(*)::placeholder {
+  color: $cds-global-typography-color-200;
+}
+
 :host([role='button']),
 :host([_is-anchor]) {
   cursor: pointer !important;
@@ -49,7 +58,8 @@ slot {
 
 // https://developers.google.com/web/fundamentals/web-components/best-practices#add-a-:host-display-style-that-respects-the-hidden-attribute
 // we need the check against hidden='false' here because React is pushing string through instead of adding/removing the boolean attribute
-:host([hidden]) {
+:host([hidden]),
+[hidden] {
   display: none !important;
 }
 

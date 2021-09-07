@@ -40,7 +40,7 @@ export function API(args: any) {
   return html`
     <cds-demo popover>
       <cds-button status="primary" type="button" @click=${showApiModal}>Show Modal</cds-button>
-      <cds-modal ...="${spreadProps(getElementStorybookArgs(args))}" id="${modalId}">
+      <cds-modal ...="${spreadProps(getElementStorybookArgs(args))}" id="${modalId}" hidden>
         <cds-modal-header>
           <h3 cds-text="title" cds-first-focus tabindex="-1">${args['cds-modal-header']}</h3>
         </cds-modal-header>

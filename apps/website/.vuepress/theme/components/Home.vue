@@ -187,7 +187,7 @@
           <router-link to="/angular-components/" cds-layout="m-t:lg" cds-text="subsection expanded"
             >Browse Angular components</router-link
           >
-          <router-link to="/core-components/" cds-layout="m-t:lg" cds-text="subsection expanded"
+          <router-link to="/components/" cds-layout="m-t:lg" cds-text="subsection expanded"
             >Browse Core components</router-link
           >
         </div>

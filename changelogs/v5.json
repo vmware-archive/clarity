@@ -74,28 +74,10 @@
           "scope": "Form"
         },
         {
-          "issue": 6081,
-          "title": "Fix anchor link hovers in clr-angular header",
-          "project": "Angular",
-          "scope": "Header"
-        },
-        {
-          "issue": 6057,
-          "title": "Remove memory leaks inside the `DropdownFocusHandler`",
-          "project": "Angular",
-          "scope": "Dropdown"
-        },
-        {
           "issue": 6075,
           "title": "Add missing React counterpart for Clarity Core pagination",
           "project": "Core",
           "scope": "Pagination"
-        },
-        {
-          "issue": 6056,
-          "title": "Remove line-height from control-label",
-          "project": "Angular",
-          "scope": "Input"
         },
         {
           "issue": 6067,
@@ -213,28 +195,10 @@
           "scope": "Form"
         },
         {
-          "issue": 6081,
-          "title": "Fix anchor link hovers in clr-angular header",
-          "project": "Angular",
-          "scope": "Header"
-        },
-        {
-          "issue": 6057,
-          "title": "Remove memory leaks inside the `DropdownFocusHandler`",
-          "project": "Angular",
-          "scope": "Dropdown"
-        },
-        {
           "issue": 6075,
           "title": "Add missing React counterpart for Clarity Core pagination",
           "project": "Core",
           "scope": "Pagination"
-        },
-        {
-          "issue": 6056,
-          "title": "Remove line-height from control-label",
-          "project": "Angular",
-          "scope": "Input"
         },
         {
           "issue": 6067,
@@ -272,12 +236,6 @@
           "title": "Made the overflow on the Modal content customizable",
           "project": "Core",
           "scope": "Modal"
-        },
-        {
-          "issue": 6015,
-          "title": "Updated @cds/angular and schematics to Angular 12",
-          "project": "Angular",
-          "scope": "Build"
         }
       ],
       "fix": [
@@ -310,12 +268,6 @@
           "title": "Added correct status colors to flat-inline buttons",
           "project": "Core",
           "scope": "Button"
-        },
-        {
-          "issue": 5993,
-          "title": "Fixed icon color inside navigation sub-menu",
-          "project": "Angular",
-          "scope": "Navigation"
         }
       ]
     },
@@ -351,22 +303,10 @@
       ],
       "fix": [
         {
-          "issue": 6003,
-          "title": "Adjusted color for new header-8 background",
-          "project": "Angular",
-          "scope": "Header"
-        },
-        {
           "issue": 5994,
           "title": "Added announcment icon to icon exports",
           "project": "Core",
           "scope": "Icons"
-        },
-        {
-          "issue": 5935,
-          "title": "Removed MS-Edge reveal icon from password inputs",
-          "project": "Angular",
-          "scope": "Password"
         },
         {
           "issue": 5990,
@@ -397,12 +337,6 @@
           "title": "Corrected link to pagination component's storybook documentation",
           "project": "Website",
           "scope": "Documentation"
-        },
-        {
-          "issue": 5978,
-          "title": "Improved placeholder text color contrast in light-themed datagrid",
-          "project": "Angular",
-          "scope": "Datagrid"
         },
         {
           "issue": 5983,
@@ -449,12 +383,6 @@
           "scope": "Icons"
         },
         {
-          "issue": 5945,
-          "title": "Fixed EHCAIWC error for lazy expandable nodes inside tree view",
-          "project": "Angular",
-          "scope": "Treeview"
-        },
-        {
           "issue": 5962,
           "title": "Added a preview/beta of a flat-inline button that has no built in padding for better alignment inside cards and other bounded containers",
           "project": "Core",
@@ -467,12 +395,6 @@
           "scope": "Build"
         },
         {
-          "issue": 5953,
-          "title": "Added .header-7/8 CSS class workaround for teams needing a specific header color in dark theme",
-          "project": "Angular",
-          "scope": "Header"
-        },
-        {
           "issue": 5952,
           "title": "Added ReactJS-specific documentation",
           "project": "Website",
@@ -483,12 +405,6 @@
           "title": "Improved handling of empty value boolean properties in @cds/angular",
           "project": "Clarity Adoption",
           "scope": "Schematics"
-        },
-        {
-          "issue": 5946,
-          "title": "Fixed styles for icons with `caret` shape in dropdown triggers",
-          "project": "Angular",
-          "scope": "Dropdown"
         },
         {
           "issue": 5944,
@@ -519,12 +435,6 @@
           "title": "Amended Core solid button to use darker color when inactive and fixed badge color on an inactive outline button",
           "project": "Core",
           "scope": "Button"
-        },
-        {
-          "issue": 5936,
-          "title": "Fix pagination icons size and alignment in Clarity Angular datagrid",
-          "project": "Angular",
-          "scope": "Datagrid"
         }
       ]
     },
@@ -612,48 +522,6 @@
           "title": "Changed cds-text=truncate so it would not cut off glyph descenders",
           "project": "Core",
           "scope": "Typography"
-        },
-        {
-          "issue": 5748,
-          "title": "Updated Angular to 11.2.5",
-          "project": "Angular",
-          "scope": "Build"
-        },
-        {
-          "issue": 5848,
-          "title": "Fixed dark theme configuration in @clr/angular dev app",
-          "project": "Angular",
-          "scope": "Build"
-        },
-        {
-          "issue": 5898,
-          "title": "Updated clr-buttons so that cds-icons could rotate within them",
-          "project": "Angular",
-          "scope": "Button"
-        },
-        {
-          "issue": 5886,
-          "title": "Prevent combobox from firing double open event with clrOpenChange when navigating away with the tab key",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5818,
-          "title": "Corrected the alignment of the selected count checkbox in the datagrid footer",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5789,
-          "title": "Keep invalid password input from changing its width unexpectedly when focused",
-          "project": "Angular",
-          "scope": "Password"
-        },
-        {
-          "issue": 5897,
-          "title": "Fixed clr-stepper so that it would run validation after a user skips back to a completed step",
-          "project": "Angular",
-          "scope": "Stepper"
         },
         {
           "issue": 5810,
@@ -766,18 +634,6 @@
       "feat": [],
       "fix": [
         {
-          "issue": 5791,
-          "title": "Dropdown toggle CSS for cds-icon direction",
-          "project": "Angular",
-          "scope": "Dropdown"
-        },
-        {
-          "issue": 5678,
-          "title": "Datepicker extend ClrAbstractContainer",
-          "project": "Angular",
-          "scope": "Datepicker"
-        },
-        {
           "issue": 5800,
           "title": "Core form label text transform default",
           "project": "Core",
@@ -794,12 +650,6 @@
           "title": "TSX type error with loadingState and CdsButton",
           "project": "React",
           "scope": "Button"
-        },
-        {
-          "issue": 5666,
-          "title": "Reduce change detection cycles in Modal",
-          "project": "Angular",
-          "scope": "Modal"
         },
         {
           "issue": 5689,
@@ -931,12 +781,6 @@
           "scope": "React"
         },
         {
-          "issue": 5557,
-          "title": "Assign correct described-by id to form input and control helpers",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
           "issue": 5733,
           "title": "Cursor of disabled core radio",
           "project": "Core",
@@ -997,12 +841,6 @@
           "scope": "Design Tokens"
         },
         {
-          "issue": 5688,
-          "title": "Arrow icon rotation on compact view",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
           "issue": 5705,
           "title": "React examples to use clarity motion",
           "project": "Core",
@@ -1025,12 +863,6 @@
           "title": "Datalist and toggle demos",
           "project": "Website",
           "scope": "Documentation"
-        },
-        {
-          "issue": 5682,
-          "title": "angular ngcc postinstall",
-          "project": "Angular",
-          "scope": "Build"
         }
       ]
     },
@@ -1052,28 +884,10 @@
           "scope": "Design Tokens"
         },
         {
-          "issue": 5648,
-          "title": "Static errors inside datagrid-pagination",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
           "issue": 5646,
           "title": "React input native input event change",
           "project": "Core",
           "scope": "Input"
-        },
-        {
-          "issue": 5653,
-          "title": "Combobox popover not repositioned after selection",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5647,
-          "title": "Disabled radio button style",
-          "project": "Angular",
-          "scope": "Form"
         },
         {
           "issue": 5638,
@@ -1095,12 +909,6 @@
       "description": "This is a bug fix release.",
       "fix": [
         {
-          "issue": 5616,
-          "title": "Fix strictTemplates errors",
-          "project": "Angular",
-          "scope": "Utility"
-        },
-        {
           "issue": 5624,
           "title": "Update docs for progress circle and dividers",
           "project": "Core",
@@ -1113,18 +921,6 @@
           "scope": "Button"
         },
         {
-          "issue": 5617,
-          "title": "Combobox fixes - set id, prevent double event on Esc, fix click-to-close, prevent focus-error",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5620,
-          "title": "Vertically center text in alert",
-          "project": "Angular",
-          "scope": "Alert"
-        },
-        {
           "issue": 5594,
           "title": "Fix Core accordion register icon element",
           "project": "Core",
@@ -1135,12 +931,6 @@
           "title": "Fix accordion Safari flex gap issue overflow",
           "project": "Core",
           "scope": "Accordion"
-        },
-        {
-          "issue": 5574,
-          "title": "Fix datagrids in forms with checkboxes",
-          "project": "Angular",
-          "scope": "Datagrid"
         },
         {
           "issue": 5577,
@@ -1204,40 +994,10 @@
           "scope": "Documentation"
         },
         {
-          "issue": 5489,
-          "title": "Combobox no list reset on blur",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
           "issue": 5492,
           "title": "Core storybook links, invalid html demo",
           "project": "Core",
           "scope": "Documentation"
-        },
-        {
-          "issue": 5487,
-          "title": "Combobox options exception on null values",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5439,
-          "title": "Reorder link styles so :hover will have effect even on visited links",
-          "project": "Angular",
-          "scope": "Utility"
-        },
-        {
-          "issue": 5448,
-          "title": "Turn-on strictTemplates for Angular",
-          "project": "Angular",
-          "scope": "Utility"
-        },
-        {
-          "issue": 5482,
-          "title": "Visited links styling",
-          "project": "Angular",
-          "scope": "Utility"
         }
       ]
     },
@@ -1251,12 +1011,6 @@
           "title": "Fix core package exports",
           "project": "Core",
           "scope": "Build"
-        },
-        {
-          "issue": 5259,
-          "title": "Fix color for status badge-warning",
-          "project": "Angular",
-          "scope": "Badge"
         },
         {
           "issue": 5452,
@@ -1275,12 +1029,6 @@
           "title": "Fix core package exports",
           "project": "Core",
           "scope": "Build"
-        },
-        {
-          "issue": 4718,
-          "title": "Fix tab navigation inside stack-block",
-          "project": "Angular",
-          "scope": "Stack View"
         }
       ]
     },
@@ -1327,12 +1075,6 @@
           "title": "Export icon names from the entrypoint of @clr/core/icon",
           "project": "Core",
           "scope": "Icons"
-        },
-        {
-          "issue": 5288,
-          "title": "Angular modules for Core components",
-          "project": "Angular",
-          "scope": "Build"
         },
         {
           "issue": 4839,
@@ -1425,12 +1167,6 @@
           "scope": "Form"
         },
         {
-          "issue": 5374,
-          "title": "Allow apps to disable focus management on page change",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
           "issue": 5370,
           "title": "Core v5 fixes",
           "project": "Core"
@@ -1452,18 +1188,6 @@
           "title": "Inherit icon color from `currentColor`",
           "project": "Core",
           "scope": "Icons"
-        },
-        {
-          "issue": 5101,
-          "title": "Simplify control state management",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5101,
-          "title": "Consolidate cdr for simultaneous children updates",
-          "project": "Angular",
-          "scope": "Treeview"
         }
       ]
     },
@@ -1489,12 +1213,6 @@
           "title": "Theming support for Core",
           "project": "Core",
           "scope": "Theme"
-        },
-        {
-          "issue": 5190,
-          "title": "Angular updated to use Core icons for tree shaking",
-          "project": "Angular",
-          "scope": "Build"
         },
         {
           "issue": 5225,

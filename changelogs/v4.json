@@ -4,338 +4,62 @@
     {
       "version": "4.0.16",
       "date": "2021-07-23",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 6152,
-          "title": "fix: styles selectors fixes for datagrid and select (backport)",
-          "project": "Datagrid",
-          "scope": "Angular"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.15",
       "date": "2021-05-06",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5887,
-          "title": "Prevent combobox from firing double open event with clrOpenChange when navigating away with the tab key",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5790,
-          "title": "Keep invalid password input from changing its width unexpectedly when focused",
-          "project": "Angular",
-          "scope": "Password"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.14",
       "date": "2021-03-04",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5740,
-          "title": "Assign correct described-by id to form input and control helpers",
-          "project": "Angular",
-          "scope": "Form"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.13",
       "date": "2021-03-04",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5655,
-          "title": "Tab navigation skipped for children when stack-block is not expanded",
-          "project": "Angular",
-          "scope": "Stack View"
-        },
-        {
-          "issue": 5654,
-          "title": "Combobox popover not repositioned after selection",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5652,
-          "title": "Disabled radio button style",
-          "project": "Angular",
-          "scope": "Form"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.12",
       "date": "2021-02-18",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5618,
-          "title": "Combobox fixes - set id, prevent double event on Esc, fix click-to-close, prevent focus-error",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5622,
-          "title": "Vertically center text in alert",
-          "project": "Angular",
-          "scope": "Alert"
-        },
-        {
-          "issue": 5587,
-          "title": "Fix issue with datagrids in forms with checkboxes",
-          "project": "Angular",
-          "scope": "Datagrid"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.11",
       "date": "2021-02-04",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5490,
-          "title": "Combobox no list reset on blur",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5488,
-          "title": "fix: combobox options exception on null values",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5466,
-          "title": "Reorder link styles so :hover will have effect even on visited links",
-          "project": "Angular",
-          "scope": "Utility"
-        },
-        {
-          "issue": 5465,
-          "title": "Turn-on strictTemplates for Angular",
-          "project": "Angular",
-          "scope": "Utility"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.10",
       "date": "2021-01-21",
-      "description": "This is a bug fix release.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5259,
-          "title": "Fix color for status badge-warning",
-          "project": "Angular",
-          "scope": "Badge"
-        }
-      ]
+      "description": "This is a bug fix release."
     },
     {
       "version": "4.0.9",
       "date": "2021-01-07",
-      "description": "This is a bug fix release that addresses issues in Angular components.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5413,
-          "title": "Fix looping progress bar in firefox",
-          "project": "Angular",
-          "scope": "Progress bar"
-        },
-        {
-          "issue": 5416,
-          "title": "Display placeholder text",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5386,
-          "title": "Allow apps to disable focus management on page change",
-          "project": "Angular",
-          "scope": "Datagrid"
-        }
-      ]
+      "description": "This is a bug fix release that addresses issues in Angular components."
     },
     {
       "version": "4.0.8",
       "date": "2020-12-07",
-      "description": "This is a bug fix release that addresses issues in Angular components.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5362,
-          "title": "Consolidate cdr for simultaneous children",
-          "project": "Angular",
-          "scope": "Tree view"
-        },
-        {
-          "issue": 5347,
-          "title": "Simplified control state management",
-          "project": "Angular",
-          "scope": "Combobox"
-        }
-      ]
+      "description": "This is a bug fix release that addresses issues in Angular components."
     },
     {
       "version": "4.0.7",
       "date": "2020-11-26",
-      "description": "This is a bug fix release that addresses issues in Angular components.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5326,
-          "title": "Fixed dropdown unlisten method so that it only runs after initialization",
-          "project": "Angular",
-          "scope": "Dropdown"
-        },
-        {
-          "issue": 5307,
-          "title": "Combobox selection issues fixes and a11y improvements (1)",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5275,
-          "title": "Combobox selection issues fixes and a11y improvements (2)",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5282,
-          "title": "Combobox selection issues fixes and a11y improvements (3)",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5199,
-          "title": "Combobox selection issues fixes and a11y improvements (4)",
-          "project": "Angular",
-          "scope": "Combobox"
-        }
-      ]
+      "description": "This is a bug fix release that addresses issues in Angular components."
     },
     {
       "version": "4.0.6",
       "date": "2020-11-12",
-      "description": "This is a bug fix release that addresses issues in Angular components.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5232,
-          "title": "Updating data grid CSS to use flex-start to improve support and remove PostCSS warning",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5226,
-          "title": "Checkbox/toggles had wrong label color",
-          "project": "Angular",
-          "scope": "Checkbox"
-        },
-        {
-          "issue": 5009,
-          "title": "Fixed underline issue with datepicker",
-          "project": "Angular",
-          "scope": "Datepicker"
-        },
-        {
-          "issue": 5146,
-          "title": "Fixed alignment issue with datepicker",
-          "project": "Angular",
-          "scope": "Datepicker"
-        },
-        {
-          "issue": 5097,
-          "title": "Fixed focus trap issue with the hide/show columns panel in datagrid",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4754,
-          "title": "Added aria attribute to hide/show columns panel in datagrid",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5128,
-          "title": "Fixed issue with combo box where single-select selection could not be cleared",
-          "project": "Angular",
-          "scope": "Combobox"
-        }
-      ]
+      "description": "This is a bug fix release that addresses issues in Angular components."
     },
     {
       "version": "4.0.5",
       "date": "2020-10-29",
-      "description": "This is a bug fix release that addresses issues in Angular components.",
-      "feat": [],
-      "fix": [
-        {
-          "issue": 5222,
-          "title": "Fix input width issue",
-          "project": "Angular",
-          "scope": "Input"
-        },
-        {
-          "issue": 5220,
-          "title": "Fix accessibility issues with clr-icon involving title and aria-hidden",
-          "project": "Angular",
-          "scope": "Icon"
-        },
-        {
-          "issue": 5139,
-          "title": "Fix placeholder position",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5179,
-          "title": "Remove column a11y name override",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5165,
-          "title": "Put header before contents to fix DOM/a11y tree order",
-          "project": "Angular",
-          "scope": "Signpost"
-        },
-        {
-          "issue": 5163,
-          "title": "Fix disable openClose button",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5159,
-          "title": "Mark only blurred control as touched instead of whole form",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 5157,
-          "title": "Fix skipped change detection cycle on select",
-          "project": "Angular",
-          "scope": "Datagrid"
-        }
-      ]
+      "description": "This is a bug fix release that addresses issues in Angular components."
     },
     {
       "version": "4.0.4",
@@ -351,24 +75,6 @@
       ],
       "fix": [
         {
-          "issue": 5145,
-          "title": "Update combobox pill design",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 5119,
-          "title": "Fix datagrid filtering with ivy off",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5113,
-          "title": "Fix css variables applied to the component",
-          "project": "Angular",
-          "scope": "Accordion"
-        },
-        {
           "issue": 5112,
           "title": "Improves default core tag implementation",
           "project": "Core",
@@ -382,34 +88,10 @@
       "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
       "fix": [
         {
-          "issue": 5099,
-          "title": "Fix clr-input-wrapper max width",
-          "project": "Angular",
-          "scope": "Input"
-        },
-        {
-          "issue": 5080,
-          "title": "Make datagrid header sticky no matter how many rows ",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
           "issue": 5072,
           "title": "Allow className to be passed down to the underlying component",
           "project": "Core",
           "scope": "React"
-        },
-        {
-          "issue": 5086,
-          "title": "Fix icon download svg",
-          "project": "Website",
-          "scope": "Documentation"
-        },
-        {
-          "issue": 5066,
-          "title": "Fix broken link in website documentation",
-          "project": "Website",
-          "scope": "Documentation"
         }
       ]
     },
@@ -418,18 +100,6 @@
       "date": "2020-9-17",
       "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
       "fix": [
-        {
-          "issue": 5056,
-          "title": "Datagrid: trackBy items by provided trackBy option",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4996,
-          "title": "Datagrid: correct way of assigning clrDgSelectable",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
         {
           "issue": 5050,
           "title": "Range input layout",
@@ -443,52 +113,10 @@
           "scope": "Button"
         },
         {
-          "issue": 5046,
-          "title": "Double event on selection",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5036,
-          "title": "Pane was losing state when rows update",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 5037,
-          "title": "Updated panel property to match stepper panel for TS 4",
-          "project": "Angular",
-          "scope": "Stepper"
-        },
-        {
-          "issue": 5033,
-          "title": "Sync child alerts when slot changes in alert group",
-          "project": "Angular",
-          "scope": "Alert"
-        },
-        {
-          "issue": 5025,
-          "title": "Display the correct error when validating",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4999,
-          "title": "Export form layout enum for strict typing",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
           "issue": 5019,
           "title": "Fix modal exception",
           "project": "Core",
           "scope": "Modal"
-        },
-        {
-          "issue": 5007,
-          "title": "Handle TypeError when calling triggerStatusChange",
-          "project": "Angular",
-          "scope": "Form"
         },
         {
           "issue": 4998,
@@ -503,30 +131,6 @@
       "date": "",
       "description": "This is a bug fix release that addresses issues in both Angular and Core components.",
       "fix": [
-        {
-          "issue": 4083,
-          "title": "Corrected DOM order of close buttons in modals",
-          "project": "Angular",
-          "scope": "Modal"
-        },
-        {
-          "issue": 4525,
-          "title": "Removed unnecessary aria-label on expand/collapse SVG in Stack View",
-          "project": "Angular",
-          "scope": "Stack View"
-        },
-        {
-          "issue": 4977,
-          "title": "Fixed issue with Angular assigning inputs for @clr/angular components that are not ready",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4978,
-          "title": "Removed min-height from datagrid header to prevent overlapping data",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
         {
           "issue": 4968,
           "title": "Added focus trap to @clr/core modal and check for hidden to prevent hidden focus traps",
@@ -574,227 +178,28 @@
           "title": "Improved support for anchor tags and @clr/core button elements",
           "project": "Core",
           "scope": "Button"
-        },
-        {
-          "issue": 4980,
-          "title": "Fixes for @clr/angular schematics",
-          "project": "Angular",
-          "scope": "Schematics"
         }
       ]
     },
     {
       "version": "4.0.0",
       "date": "2020-08-19",
-      "description": "This is the official 4.0.0 release, which is fully compatible with Angular 10.",
-      "fix": [
-        {
-          "issue": 4799,
-          "title": "Hide vertical nav helper button from screen readers",
-          "project": "Angular",
-          "scope": "Vertical Nav"
-        },
-        {
-          "issue": 4804,
-          "title": "Fix tab content width in IE11",
-          "project": "Angular",
-          "scope": "Tabs"
-        },
-        {
-          "issue": 4817,
-          "title": "Fix potential undefined error in form control error message",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4905,
-          "title": "Set aria-current in wizard steps",
-          "project": "Angular",
-          "scope": "Wizard"
-        },
-        {
-          "issue": 4904,
-          "title": "Handle possible exception in stepper with unknown first panel",
-          "project": "Angular",
-          "scope": "Stepper"
-        },
-        {
-          "issue": 4873,
-          "title": "Fix border on last accordion panel when opened",
-          "project": "Angular",
-          "scope": "Accordion"
-        },
-        {
-          "issue": 4888,
-          "title": "Reverted a change in 3.1.5 that tried to fix Ivy compatibility but cause potential memory leak in some uses of Datagrid",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4851,
-          "title": "Removed unnecessary inline style on wizard button",
-          "project": "Angular",
-          "scope": "Wizard"
-        },
-        {
-          "issue": 4918,
-          "title": "Fix Combobox focus indicator animations",
-          "project": "Angular",
-          "scope": "Combobox"
-        },
-        {
-          "issue": 4917,
-          "title": "Fix form success and helper messages hiding when they should be visible",
-          "project": "Angular",
-          "scope": "Form"
-        }
-      ]
+      "description": "This is the official 4.0.0 release, which is fully compatible with Angular 10."
     },
     {
       "version": "4.0.0-rc.1",
       "date": "2020-07-15",
-      "description": "Stability was the goal for this release, where a number of bugs have been fixed and everything has been checked before we target a stable release soon!",
-      "feat": [
-        {
-          "issue": 4758,
-          "title": "Allow shift+tab in focus trap to rebound for accessibility",
-          "project": "Angular",
-          "scope": "Accessibility"
-        }
-      ],
-      "fix": [
-        {
-          "issue": 4461,
-          "title": "Form control placeholder color and opacity updated for accessibility",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4767,
-          "title": "Fix some Angular form controls that don't get marked as touched",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4788,
-          "title": "Fix compatibility issue in Datagrid when Ivy was disabled",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4774,
-          "title": "Fix popover toggle behavior that broke arrow key events",
-          "project": "Angular",
-          "scope": "Popover"
-        },
-        {
-          "issue": 4791,
-          "title": "Fix missing border on Datagrid detail pane with limited rows",
-          "project": "Angular",
-          "scope": "Datagrid"
-        }
-      ]
+      "description": "Stability was the goal for this release, where a number of bugs have been fixed and everything has been checked before we target a stable release soon!"
     },
     {
       "version": "4.0.0-rc.0",
       "date": "2020-07-07",
-      "description": "Introducing the new Combobox component! The Combobox is a significant form control that allows you to define searchable select lists with dynamic content and options. No more breaking changes will occur in v4 after this release, and works with Angular 10 stable.",
-      "feat": [
-        {
-          "issue": 4286,
-          "title": "New Combobox form component for creating dynamic and complex searchable inputs",
-          "project": "Angular",
-          "scope": "Combobox"
-        }
-      ],
-      "fix": [
-        {
-          "issue": 4735,
-          "title": "Fix datagrid placeholder to work with a screen reader",
-          "project": "Angular",
-          "scope": "Datagrid"
-        }
-      ]
+      "description": "Introducing the new Combobox component! The Combobox is a significant form control that allows you to define searchable select lists with dynamic content and options. No more breaking changes will occur in v4 after this release, and works with Angular 10 stable."
     },
     {
       "version": "4.0.0-next.0",
       "date": "2020-06-17",
-      "description": "Clarity moves forward with a new prerelease for the upcoming Clarity v4 milestone. There are a number of breaking changes and improvements for this version, which will only work with Angular 10 and TypeScript 3.9. ",
-      "deprecation": [
-        {
-          "issue": 4687,
-          "title": "Remove internal use of ClrAriaLiveService",
-          "breaking": true,
-          "project": "Angular",
-          "scope": "Accessibility"
-        }
-      ],
-      "fix": [
-        {
-          "issue": 4707,
-          "title": "Update several colors for accessibility",
-          "breaking": true,
-          "project": "Angular",
-          "scope": "Color"
-        },
-        {
-          "issue": 4693,
-          "title": "Fix z-index so column switcher is above modals",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4470,
-          "title": "Fix possible undefined error when opening a popover synchronously",
-          "project": "Angular",
-          "scope": "Popover"
-        },
-        {
-          "issue": 4645,
-          "title": "Fix selection for server-driven Datagrids in some uses",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4557,
-          "title": "Fix alert text width in IE11",
-          "project": "Angular",
-          "scope": "Alert"
-        }
-      ],
-      "feat": [
-        {
-          "issue": 4535,
-          "title": "Support Datagrid column resizing with keyboard for accessibility",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4163,
-          "title": "Support Datagrid expandable rows for accessibility",
-          "project": "Angular",
-          "scope": "Datagrid"
-        },
-        {
-          "issue": 4565,
-          "title": "Success helper text in forms",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4403,
-          "title": "Form input group support",
-          "project": "Angular",
-          "scope": "Form"
-        },
-        {
-          "issue": 4556,
-          "title": "Update to Angular 10",
-          "project": "Angular",
-          "breaking": true,
-          "scope": "Build"
-        }
-      ]
+      "description": "Clarity moves forward with a new prerelease for the upcoming Clarity v4 milestone. There are a number of breaking changes and improvements for this version, which will only work with Angular 10 and TypeScript 3.9."
     }
   ]
 }

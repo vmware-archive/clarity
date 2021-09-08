@@ -9,6 +9,16 @@
       </h2>
       <p v-if="release.description" cds-text="body" cds-layout="m-t:xs m-b:lg">{{ release.description }}</p>
 
+      <p
+        v-if="
+          (!release.deprecation || !release.deprecation.length) &&
+          (!release.fix || !release.fix.length) &&
+          (!release.feat || !release.feat.length)
+        "
+      >
+        No changes for this release to Clarity Core.
+      </p>
+
       <div cds-layout="vertical gap:lg">
         <ReleaseGroup v-if="release.feat && release.feat.length > 0" type="feat">
           <template v-for="feat of release.feat">

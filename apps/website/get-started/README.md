@@ -2,7 +2,7 @@
 
 Clarity is an open-source, enterprise-focused design system with a core design principle of inclusion.
 
-Clarity’s designs stem from continuous exploration and research. These designs are built into our Core components and can be used any web application, regardless of the underlying JavaScript framework. Clarity also offers a set of well-designed and implemented data-bound components built on top of Angular, one of the most popular JavaScript frameworks in the industry.
+Clarity’s designs stem from continuous exploration and research. These designs are built into our Core components and can be used any web application, regardless of the underlying JavaScript framework. Clarity also offers our original implementation of well-designed [components built on top of Angular](https://angular.clarity.design), one of the most popular JavaScript frameworks in the industry, though we recommend using Clarity Core with Angular for all new work.
 
 If you are new to Clarity, we suggest using Clarity's web component implemenation, as this version of our components is the long term vision for Clarity. The existing Clarity Angular components are still stable and supported, but are no longer receiving feature enhancements as we work towards fully realizing the Clarity Core components as the replacement for the Clarity Angular component implementations.
 
@@ -10,7 +10,6 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 
 - [Getting started with Clarity for designers](/get-started/design/)
 - [Getting started with Clarity Core using our Web Components](/get-started/developing/)
-- [Getting started with Clarity Angular using our Angular Components](/get-started/developing/angular/)
 
 ## Contributing to Clarity
 
@@ -29,7 +28,3 @@ When submitting issues please provide a minimal app that demonstrates the issue 
 ## Asking a Question
 
 Ask questions on [GitHub Discussions](https://github.com/vmware/clarity/discussions) to get help with your project. You can also view previous discussions that might answer your questions or even share news about your successes!
-
-## Attributions
-
-See the [legal attributions](https://github.com/vmware/clarity/blob/master/docs/ATTRIBUTION.md) for third party software included in Clarity.

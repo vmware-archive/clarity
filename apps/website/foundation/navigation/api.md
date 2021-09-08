@@ -51,5 +51,3 @@ There is only one `@Input` which is `clr-nav-level` directive itself. When the a
 Navigation classes apply to container elements that can be composed together to offer a standard Clarity layout.
 
 ### Classes
-
-<DocComponentApi component="ClrNavigation" item="css" />

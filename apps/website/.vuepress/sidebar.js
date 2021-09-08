@@ -74,27 +74,15 @@ module.exports = [
     children: getChildren('foundation'),
   },
   {
-    title: 'Core Components',
-    path: '/core-components/',
+    title: 'Components',
+    path: '/components/',
     children: [
       {
         title: 'Overview',
-        path: '/core-components/',
+        path: '/components/',
         overview: false,
       },
-      ...getChildren('core-components'),
-    ],
-  },
-  {
-    title: 'Angular Components',
-    path: '/angular-components/',
-    children: [
-      {
-        title: 'Overview',
-        path: '/angular-components/',
-        overview: false,
-      },
-      ...getChildren('angular-components'),
+      ...getChildren('components'),
     ],
   },
   {

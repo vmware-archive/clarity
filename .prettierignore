@@ -25,6 +25,6 @@ apps/core-snowpack/build
 apps/website/data/core-demos.json
 
 # Markdown files that break rendering when prettier forats them
-apps/website/core-components/datalist/README.md
-apps/website/core-components/checkbox/README.md
-apps/website/core-components/input/README.md
+apps/website/components/datalist/README.md
+apps/website/components/checkbox/README.md
+apps/website/components/input/README.md

@@ -37,8 +37,9 @@ module.exports = {
       md.use(require('markdown-it-attrs'));
       md.use(require('markdown-it-include'));
       md.use(require('markdown-it-footnote'));
-
+      
       md.renderer.rules.footnote_block_open = () => (`<section class="footnotes"><ol class="footnotes-list">`);
+      md.renderer.rules.table_open = () => (`<table cds-table cds-text="left">`);
     },
     anchor: {
       permalink: true,

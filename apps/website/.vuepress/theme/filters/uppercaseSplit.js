@@ -7,8 +7,8 @@ export const uppercaseSplit = function (value) {
 
   const chars = value.split('');
 
-  let currentWordIndex = -1;
-  const words = [];
+  let currentWordIndex = 0;
+  const words = [''];
 
   chars.forEach(char => {
     if (char.toUpperCase() === char) {
@@ -27,7 +27,7 @@ export const uppercaseSplit = function (value) {
     }
   });
 
-  return words.join(' ');
+  return words.map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ');
 };
 
 Vue.filter('uppercaseSplit', uppercaseSplit);

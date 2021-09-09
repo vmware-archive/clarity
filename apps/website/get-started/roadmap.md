@@ -32,19 +32,19 @@ This is a new component, designed to replace Tables in Clarity Angular. We are b
 
 This is a new component, and doesn't exist today in Clarity Angular. We are working with our friends at Porsche Informatik who have the [Clarity Addons](https://github.com/porscheinformatik/clarity-addons/) library to bring this component into Clarity Core. This is currently available in `beta`, see [the breadcrumb component on Storybook](https://clarity.design/storybook/core/?path=/story/components-breadcrumb--page).
 
+#### Vertical Navigation
+
+This is a new component, designed to replace the Vertical Nav in Clarity Angular. We will then explore building out the other navigational items such as a Header, Subnav, and mobile friendly behaviors. This is currently available in `beta`, see [the navigation component on Storybook](https://clarity.design/storybook/core/?path=/story/components-navigation--page).
+
+#### Tree View
+
+This is a new component, designed to replace Clarity Angular Tree View. We are building out a set of components to compose a nested tree of items and allow users to navigate through directories or select items from a nested list. This is currently available in `beta`, see [the tree view component on Storybook](https://clarity.design/storybook/core/?path=/story/components-tree-view--page).
+
 ## In Progress Work
 
 ### Core Components
 
 Clarity is actively working on creating our Clarity Core components. Our long term goal is to provide a greater level of capabilities through Clarity Core for the next generation of applications to depend upon for the long term. We are also working to ensure that accessibility is included by default in all of our Core components.
-
-#### Vertical Navigation
-
-This is a new component, designed to replace the Vertical Nav in Clarity Angular. We will then explore building out the other navigational items such as a Header, Subnav, and mobile friendly behaviors.
-
-#### Tree View
-
-This is a new component, designed to replace Clarity Angular Tree View. We are building out a set of components to compose a nested tree of items and allow users to navigate through directories or select items from a nested list.
 
 #### Datagrid
 
@@ -53,6 +53,10 @@ This is a collection of new components, designed to replace the Clarity Angular 
 #### Popovers and Dropdowns
 
 This is a new component, designed to replace the Clarity Angular dropdown menu. We are building out a new dropdown menu that has rich positioning and accessibility behaviors that are highly requested. The bulk of the work is in developing an accessible and reusable popover that can be used by dropdowns and other components like signposts and tooltips.
+
+#### Header, Subnav, and Mobile Nav
+
+These are new components, designed to replace the Clarity Angular header, subnav and mobile navigation pattern. There will be similar support to having different header styles and menu options, but enhanced accessibility and mobile friendliness.
 
 ### Adoption Support
 

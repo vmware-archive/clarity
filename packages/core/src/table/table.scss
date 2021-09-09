@@ -144,7 +144,7 @@ table[cds-table] {
 
 // Compact options
 table[cds-table~='compact'] {
-  --cell-padding: calc(#{$cds-global-space-5} / 2) calc(#{$cds-global-space-6} / 2);
+  --cell-padding: #{$cds-global-space-2} #{$cds-global-space-3};
 }
 
 // Tinted rows

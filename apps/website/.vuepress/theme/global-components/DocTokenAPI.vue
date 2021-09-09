@@ -32,8 +32,6 @@
 import Values from '@cds/core/tokens/tokens.json';
 import * as Tokens from '@cds/core/tokens/tokens';
 
-console.log(Tokens);
-
 export default {
   name: 'DocTokenAPI',
   props: ['prefix'],

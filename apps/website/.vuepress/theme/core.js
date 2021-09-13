@@ -12,6 +12,7 @@ import '@cds/core/forms/register.js';
 import '@cds/core/icon/register.js';
 import '@cds/core/input/register.js';
 import '@cds/core/modal/register.js';
+import '@cds/core/navigation/register.js';
 import '@cds/core/password/register.js';
 import '@cds/core/progress-circle/register.js';
 import '@cds/core/radio/register.js';

@@ -1,78 +1,40 @@
 <template>
-  <transition name="slide-fade">
-    <div class="side-nav-container" v-show="isOpen" @click="checkOutsideClick($event)">
-      <nav aria-label="Sidebar navigation" class="clr-vertical-nav has-nav-groups side-nav" ref="nav">
-        <div class="nav-content">
-          <template v-for="(item, index) in items">
-            <div class="nav-group" v-if="item.children" :key="index">
-              <div class="nav-group-content" v-bind:class="{ active: !states[index] && childActive(item) }">
-                <button :id="'sidenav_' + index" class="nav-group-trigger" type="button" @click="toggle(index)">
-                  <span class="nav-group-text">{{ item.title }}</span>
-                  <cds-icon
-                    class="nav-group-trigger-icon"
-                    shape="angle"
-                    size="md"
-                    :direction="states[index] ? 'down' : 'right'"
-                  ></cds-icon>
-                </button>
-              </div>
-              <div
-                class="nav-group-children"
-                v-bind:class="{ 'is-expanded': states[index] || activePage.path.startsWith(item.path) }"
-                v-bind:style="{
-                  height: states[index]
-                    ? `${$options.filters.filterReleasedComponents(item.children).length * 36}px`
-                    : '0',
-                }"
-              >
-                <template v-for="(childItem, index) in $options.filters.filterReleasedComponents(item.children)">
-                  <router-link
-                    @focus.native="focusToggle(index)"
-                    class="nav-link"
-                    :to="childItem.path"
-                    v-if="childItem.type !== 'external' && isBeta(childItem) === false"
-                    :key="index"
-                    v-bind:class="{
-                      active: isItemActive(childItem),
-                    }"
-                  >
-                    <span class="nav-text">
-                      {{ childItem.title }}
-                      <!-- <cds-icon
-                        aria-label="beta"
-                        status="info"
-                        solid
-                        v-if="isBeta(childItem) === true"
-                        shape="beta"
-                        size="md"
-                        style="margin-left: -0.15rem; margin-top: -0.75rem;"
-                      ></cds-icon> -->
-                    </span>
-                  </router-link>
-                  <a
-                    :key="index"
-                    :href="childItem.path"
-                    :target="childItem.target || '_blank'"
-                    class="nav-link"
-                    v-if="childItem.type === 'external' && isBeta(childItem) === false"
-                  >
-                    <span class="nav-text">{{ childItem.title }}</span></a
-                  >
-                </template>
-              </div>
-            </div>
+  <cds-navigation expanded>
+    <!-- <cds-navigation-start>Root Start</cds-navigation-start> -->
 
-            <router-link class="nav-link" v-if="!item.children" :to="item.path" :key="index">
-              <span class="nav-text">{{ item.title }}</span>
-            </router-link>
-          </template>
-          <a href="https://clarity.design" class="nav-link" cds-layout="m-t:md display@md:none">
-            <span class="nav-text">Return to Current Site <cds-icon shape="pop-out"></cds-icon></span>
+    <template v-for="(item, index) in items">
+      <!-- Top level link only -->
+      <cds-navigation-item v-if="!item.children" :key="index">
+        <router-link :to="item.path" cds-layout="horizontal align:vertical-center gap:md">
+          {{ item.title }}
+        </router-link>
+      </cds-navigation-item>
+
+      <!-- Link with children -->
+      <cds-navigation-group
+        v-if="item.children"
+        :key="index"
+        :expanded="states[index]"
+        :active="!states[index] && childActive(item)"
+      >
+        <cds-navigation-start @click="toggle(index)">
+          {{ item.title }}
+        </cds-navigation-start>
+        <cds-navigation-item v-for="child in item.children" :key="child.index" :active="isItemActive(child)">
+          <a
+            :href="child.path"
+            @click="
+              () => {
+                console.log('click');
+              }
+            "
+          >
+            {{ child.title }}
           </a>
-        </div>
-      </nav>
-    </div>
-  </transition>
+        </cds-navigation-item>
+      </cds-navigation-group>
+    </template>
+  </cds-navigation>
 </template>
 
 <style lang="scss">
@@ -183,13 +145,13 @@ export default {
       return this.$page;
     },
   },
-  watch: {
-    isSidebarOpen: function (value) {
-      if (this.isOpen !== value) {
-        this.isOpen = value;
-      }
-    },
-  },
+  // watch: {
+  //   isSidebarOpen: function (value) {
+  //     if (this.isOpen !== value) {
+  //       this.isOpen = value;
+  //     }
+  //   },
+  // },
   methods: {
     toggle: function (index) {
       // This is because Vue can't detect changes mutated on an array, so this alerts it of changes
@@ -220,19 +182,21 @@ export default {
       return false;
     },
     childActive: function (item) {
-      let path = this.$page.path;
-      let itemPath = item.path;
-      if (!itemPath) {
-        return false;
-      }
-      if (path.endsWith('/')) {
-        path = path.slice(0, -1);
-      }
-      if (itemPath.endsWith('/')) {
-        itemPath = itemPath.slice(0, -1);
-      }
-      // This sets the parent to active if the children are collapsed
-      return path === itemPath;
+      let path = this.$page.path.split('/');
+      let itemPath = item.path.split('/');
+      return path[1] === itemPath[1];
+      // if (!itemPath) {
+      //   return false;
+      // }
+      // if (path.endsWith('/')) {
+      //   path = path.slice(0, -1);
+      // }
+      // if (itemPath.endsWith('/')) {
+      //   itemPath = itemPath.slice(0, -1);
+      // }
+      // console.log(path, itemPath)
+      // // This sets the parent to active if the children are collapsed
+      // return path === itemPath;
     },
     checkOutsideClick: function (event) {
       if (this.isOpen && !this.$refs.nav.contains(event.target)) {

@@ -70,7 +70,7 @@ export function code() {
 export function weights() {
   return html`
     <cds-demo cds-layout="vertical gap:lg">
-      <p cds-text="body light">The <em>200</em> quick brown foxes <em>lightly</em> jump over the lazy dog. (light)</p>
+      <p cds-text="body light">The <em>300</em> quick brown foxes <em>lightly</em> jump over the lazy dog. (light)</p>
       <p cds-text="body regular">
         The <em>400</em> quick brown foxes <em>regularly</em> jump over the lazy dog. (regular)
       </p>
@@ -78,7 +78,7 @@ export function weights() {
         The <em>500</em> quick brown foxes <em>mediumly</em> jump over the lazy dog. (medium)
       </p>
       <p cds-text="body semibold">
-        The <em>500</em> quick brown foxes <em>semi-boldly</em> jump over the lazy dog. (semibold)
+        The <em>600</em> quick brown foxes <em>semi-boldly</em> jump over the lazy dog. (semibold)
       </p>
       <p cds-text="body bold">The <em>600</em> quick brown foxes <em>boldly</em> jump over the lazy dog. (bold)</p>
       <p cds-text="body extrabold">

@@ -24,6 +24,9 @@ import '@cds/core/textarea/register.js';
 import '@cds/core/time/register.js';
 import '@cds/core/toggle/register.js';
 
+// Clarity Cross Component (Experimental)
+import '../../../../packages/docs-internal/dist/lib/component-status/register.js';
+
 import {
   ClarityIcons,
   linkIcon,

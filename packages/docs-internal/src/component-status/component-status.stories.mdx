@@ -1,0 +1,44 @@
+import { Meta, Props, Story, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Components/ComponentStatus" />
+
+# Component Status
+
+Badges provide a method to highlight a count of an element either next to it
+or inside the element itself.
+
+## Installation
+
+To use the counter component, import the component in your JavaScript.
+
+```typescript
+import 'lib/component-status/register.js';
+```
+
+The minimal example of the counter component is shown below. You need at least one attribute and this is `name`,
+the other one `description` is optional in the case that you need to overwrite the default description block.
+
+Important note here is that this component depends to internal private service named `ComponentInformation.service`.
+This service is used to get the information about the component and there meta information.
+
+```html
+<doc-component-status name="accordion"></doc-component-status>
+```
+
+## Component Status
+
+Basic example of the component
+
+<Canvas>
+  <Story id="stories-component-status--basic" />
+</Canvas>
+
+Example with custom description block that overwrite the default one.
+
+<Canvas>
+  <Story id="stories-component-status--basic-description" />
+</Canvas>
+
+## API
+
+<Props of="doc-component-status" />

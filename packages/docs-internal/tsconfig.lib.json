@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "strictNullChecks": true,
+    "rootDir": "./src",
+    "incremental": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "tsBuildInfoFile": "./dist/lib/.tsbuildinfo"
+  },
+  "allowSyntheticDefaultImports": false,
+  "exclude": ["**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts", "./build"]
+}

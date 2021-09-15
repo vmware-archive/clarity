@@ -1,0 +1,21 @@
+{
+  "include": ["./**/*.stories.ts", "./docs/**/*", "./dist"],
+  "exclude": ["node_modules", "./**/test/*.ts", "./**/*.spec.ts", "./build/**/*.ts"],
+  "outDir": "../dist/storybook",
+  "compilerOptions": {
+    "rootDirs": ["src", "docs"],
+    "target": "es2017",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "lib": ["./dist/lib"],
+      "lib/*": ["./dist/lib/*"],
+      "lib/*/register": ["./dist/lib/*/register"]
+    }
+  }
+}

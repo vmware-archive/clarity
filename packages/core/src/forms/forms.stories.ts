@@ -1402,6 +1402,79 @@ export function labelWidth() {
   `;
 }
 
+export function verticalRow() {
+  return html`
+    <form>
+      <cds-form-group layout="vertical-inline" control-width="shrink">
+        <div cds-layout="horizontal gap:lg align:vertical-center">
+          <cds-button action="flat-inline" size="sm">
+            Action
+          </cds-button>
+
+          <cds-divider orientation="vertical"></cds-divider>
+
+          <cds-input>
+            <label>text label</label>
+            <input placeholder="place holder text" />
+          </cds-input>
+
+          <cds-select>
+            <label>select label</label>
+            <select>
+              <option>Option One</option>
+              <option>Option Two</option>
+              <option>Option Three</option>
+            </select>
+            <cds-control-message>message text</cds-control-message>
+          </cds-select>
+
+          <cds-search>
+            <label>search label</label>
+            <input type="search" placeholder="search" />
+          </cds-search>
+        </div>
+      </cds-form-group>
+    </form>
+  `;
+}
+
+export function horizontalRow() {
+  return html`
+    <style>
+      .form-group-demo {
+        --internal-label-min-width: initial !important;
+      }
+    </style>
+
+    <form>
+      <cds-form-group class="form-group-demo" control-width="shrink" layout="horizontal-inline">
+        <div cds-layout="horizontal gap:lg align:vertical-center">
+          <cds-button action="flat-inline" size="sm">
+            Action
+          </cds-button>
+
+          <cds-divider orientation="vertical"></cds-divider>
+
+          <cds-input>
+            <label>text label</label>
+            <input placeholder="place holder text" />
+          </cds-input>
+
+          <cds-select>
+            <label>select label</label>
+            <select>
+              <option>Option One</option>
+              <option>Option Two</option>
+              <option>Option Three</option>
+            </select>
+            <cds-control-message>message text</cds-control-message>
+          </cds-select>
+        </div>
+      </cds-form-group>
+    </form>
+  `;
+}
+
 /** @website */
 export function internationalization() {
   return html`

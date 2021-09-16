@@ -48,6 +48,14 @@ export class CdsInternalControlInline extends CdsControl {
     return [...super.styles, styles];
   }
 
+  protected get internalLabelTemplate() {
+    return html`
+      <cds-internal-control-label action="secondary" .disabled="${this.disabled}" cds-layout="align:vertical-center">
+        <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
+      </cds-internal-control-label>
+    `;
+  }
+
   render() {
     return html`
       <div
@@ -61,13 +69,7 @@ export class CdsInternalControlInline extends CdsControl {
         >
           <div role="presentation" class="input" @click=${this.selectInput}></div>
           <div role="presentation" focusable @click=${this.selectInput}></div>
-          <cds-internal-control-label
-            action="secondary"
-            .disabled="${this.disabled}"
-            cds-layout="align:vertical-center"
-          >
-            <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
-          </cds-internal-control-label>
+          ${this.internalLabelTemplate}
         </div>
         ${this.messages?.length
           ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:sm' : ''}">

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsCheckboxPanel snapshot 1`] = `
+<div>
+  <CdsCheckboxPanel>
+    <CdsCheckboxPanel
+      l={null}
+    >
+      <cds-checkbox
+        l={null}
+      >
+        <label>
+          Hello
+        </label>
+        <input
+          type="checkbox"
+        />
+      </cds-checkbox>
+    </CdsCheckboxPanel>
+  </CdsCheckboxPanel>
+</div>
+`;

@@ -1,0 +1,97 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Forms/Radio Panel" />
+
+# Complex Radio
+
+Radio panels are buttons that allow users to select one option from a mutually exclusive group of options. It also
+provides an increased capacity to display additional information related to each option.
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+  <cds-alert>
+    To keep the component accessible only project text or span elements with text inside. If your need to apply
+    typography, layout or spacing use the applicable core token on the span elements.
+  </cds-alert>
+</cds-alert-group>
+
+## Installation
+
+To use the checkbox panel, import the component in your JavaScript.
+
+```typescript
+import '@cds/core/selection-panels/radio/register.js';
+```
+
+```html
+<cds-radio-group>
+  <cds-radio-panel>
+    <label cds-layout="vertical gap:md align:center">
+      <span cds-text="section">VM One</span>
+      <span cds-text="subsection center">Orchestrate & Automate</p>
+    </label>
+    <input type="radio" value="0" />
+  </cds-radio-panel>
+  <cds-radio-panel>
+    <label cds-layout="vertical gap:md align:center">
+      <span cds-text="section">VM One</span>
+      <span cds-text="subsection center">Orchestrate & Automate</p>
+    </label>
+    <input type="radio" value="1" />
+  </cds-radio-panel>
+</cds-radio-group>
+```
+
+## Basic
+
+<Preview>
+  <Story id="stories-radio-panel--basic" />
+</Preview>
+
+## Vertical Layouts
+
+<Preview>
+  <Story id="stories-radio-panel--vertical" />
+</Preview>
+
+## Horizontal Layouts
+
+<Preview>
+  <Story id="stories-radio-panel--horizontal" />
+</Preview>
+
+## Compact Layout
+
+<Preview>
+  <Story id="stories-radio-panel--compact" />
+</Preview>
+
+## Status
+
+<Preview>
+  <Story id="stories-radio-panel--status" />
+</Preview>
+
+## Sizes
+
+<Preview>
+  <Story id="stories-radio-panel--sizes" />
+</Preview>
+
+## Dark Theme
+
+<Preview>
+  <Story id="stories-radio-panel--dark-theme" />
+</Preview>
+
+## Complex Radio API
+
+<Props of={'cds-radio-panel'} />
+
+## Accessibility
+
+These components should never have interactive elements inside theme. Avoid large amounts of information
+inside the label.

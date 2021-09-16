@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsRadioPanel snapshot 1`] = `
+<div>
+  <CdsRadioPanel>
+    <CdsRadioPanel
+      l={null}
+    >
+      <cds-radio
+        l={null}
+      >
+        <label>
+          Hello
+        </label>
+        <input
+          type="checkbox"
+        />
+      </cds-radio>
+    </CdsRadioPanel>
+  </CdsRadioPanel>
+</div>
+`;

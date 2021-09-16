@@ -648,3 +648,657 @@ export function inlineGroupControlMessages() {
     </div>
   `;
 }
+
+export function complexCheckboxLabelLayouts() {
+  return html`
+    <div cds-layout="vertical gap:lg">
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="horizontal-inline">
+        <label>Horizontal inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="compact">
+        <label>Compact</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text</cds-control-message>
+      </cds-checkbox-group>
+      <section cds-layout="horizontal gap:lg wrap:none">
+        <cds-checkbox-group layout="vertical">
+          <label>Vertical</label>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM One</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+                <p cds-text="subsection center">Orchestrate & Automate</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Two</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+                <p cds-text="subsection center">Replication & Remediation</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Three</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+                <p cds-text="subsection center">Scale & Secure</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Four</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+                <p cds-text="subsection center">Storage & Salvage</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-control-message>Helper text</cds-control-message>
+        </cds-checkbox-group>
+        <cds-checkbox-group layout="horizontal">
+          <label>Horizontal</label>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM One</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+                <p cds-text="subsection center">Orchestrate & Automate</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Two</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+                <p cds-text="subsection center">Replication & Remediation</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Three</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+                <p cds-text="subsection center">Scale & Secure</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-checkbox selection-panel>
+            <label>
+              <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+                <span cds-text="section">VM Four</span>
+                <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+                <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+                <p cds-text="subsection center">Storage & Salvage</p>
+              </div>
+            </label>
+            <input type="checkbox" value="1" />
+          </cds-checkbox>
+          <cds-control-message>Helper text</cds-control-message>
+        </cds-checkbox-group>
+      </section>
+    </div>
+  `;
+}
+
+export function complexCheckboxLabelStatuses() {
+  return html`
+    <div cds-layout="vertical gap:lg">
+      <cds-checkbox-group layout="vertical-inline" status="error">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message status="error">Helper text2</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group layout="vertical-inline" status="success">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message status="success">Helper text2</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+
+      <cds-checkbox-group layout="vertical-inline" disabled>
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" disabled />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" disabled />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" disabled />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" disabled />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+    </div>
+  `;
+}
+
+export function complexCheckboxLabelSizes() {
+  return html`
+    <section cds-layout="vertical gap:md">
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel>
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel size="sm">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="sm">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="sm">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="sm">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:sm align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel size="md">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="subsection center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="md">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="subsection center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="md">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Three</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="warning"></cds-icon>
+              <p cds-text="subsection center">Scale & Secure</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="md">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:md align:center">
+              <span cds-text="section">VM Four</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="danger"></cds-icon>
+              <p cds-text="subsection center">Storage & Salvage</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel size="lg">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:lg align:center">
+              <span cds-text="heading">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="info"></cds-icon>
+              <p cds-text="section center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="lg">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:lg align:center">
+              <span cds-text="heading">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xl" badge="success"></cds-icon>
+              <p cds-text="section center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+      <cds-checkbox-group layout="vertical-inline">
+        <label>Vertical inline</label>
+        <cds-checkbox selection-panel size="xl">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:xxl align:center">
+              <span cds-text="heading">VM One</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xxl" badge="info"></cds-icon>
+              <p cds-text="section center">Orchestrate & Automate</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-checkbox selection-panel size="xl">
+          <label>
+            <div style="width: 100%; height: 100%" cds-layout="vertical gap:xxl align:center">
+              <span cds-text="heading">VM Two</span>
+              <!-- inert icon that does not provide any context to screen readers / is not interactive -->
+              <cds-icon shape="vm" size="xxl" badge="success"></cds-icon>
+              <p cds-text="section center">Replication & Remediation</p>
+            </div>
+          </label>
+          <input type="checkbox" value="1" />
+        </cds-checkbox>
+        <cds-control-message>Helper text2</cds-control-message>
+      </cds-checkbox-group>
+    </section>
+  `;
+}

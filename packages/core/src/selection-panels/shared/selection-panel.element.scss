@@ -1,0 +1,121 @@
+/*!
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+@import './../../styles/tokens/generated/index';
+
+:host {
+  --panel-width: calc(#{$cds-global-space-8} * 10); // 180
+  --panel-height: calc(#{$cds-global-space-8} * 10); // 180
+  --panel-background: #{$cds-alias-object-interaction-background}; // naming conflict with inherited --background
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-object-interaction-border-color};
+  --padding: #{$cds-global-layout-space-md};
+}
+
+.private-host {
+  gap: 0 !important;
+  position: relative;
+  width: var(--panel-width);
+  height: var(--panel-height);
+}
+
+.input,
+[focusable] {
+  left: initial;
+  margin: 0 0 #{$cds-global-layout-space-sm} #{$cds-global-layout-space-xs};
+  position: absolute;
+  right: #{$cds-global-space-4};
+  top: #{$cds-global-space-4};
+  z-index: 99;
+}
+
+::slotted(label) {
+  box-shadow: var(--box-shadow);
+  background: var(--panel-background);
+  border: var(--border);
+  border-radius: #{$cds-alias-object-border-radius-100};
+  cursor: pointer;
+  display: flex;
+  margin: 0;
+  padding: var(--padding);
+  text-wrap: normal;
+  white-space: normal;
+  word-break: break-word;
+  overflow: hidden;
+  width: var(--panel-width) !important;
+  height: var(--panel-height);
+}
+
+// Start status code
+:host([_disabled][_checked]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint} !important;
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-disabled};
+}
+
+:host([_disabled][_checked]) .input {
+  --border: var(--border);
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-disabled};
+}
+
+:host([_disabled]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-disabled};
+}
+
+:host([_disabled]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-disabled};
+}
+
+:host([status='error']) ::slotted(label) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-danger};
+}
+
+:host(:hover:not([_disabled])) ::slotted(label),
+:host(:hover:not([_disabled])) .input {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-info};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-info};
+}
+
+:host([status='error']:hover:not([_disabled])) ::slotted(label),
+:host([status='error']:hover:not([_disabled])) .input {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-danger-dark};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-danger-dark};
+}
+
+:host([_checked]:hover:not([_disabled])) .input {
+  --border: var(--border);
+}
+
+:host([_checked]:not([_disabled])) ::slotted(label) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-info};
+  --box-shadow: 0 #{$cds-global-space-2} 0 #{$cds-alias-status-info};
+}
+
+:host([size='sm']),
+:host([size='sm']) ::slotted(label) {
+  --panel-width: calc(#{$cds-global-space-8} * 10); // 180
+  --panel-height: calc(#{$cds-global-space-8} * 10); // 180
+}
+
+:host([size='md']),
+:host([size='md']) ::slotted(label) {
+  --panel-width: calc(#{$cds-global-space-6} * 20); // 240px
+  --panel-height: calc(#{$cds-global-space-6} * 20); // 240px
+}
+
+:host([size='lg']),
+:host([size='lg']) ::slotted(label) {
+  --panel-width: calc(#{$cds-global-space-8} * 20); // 360px
+  --panel-height: calc(#{$cds-global-space-8} * 20); // 360px
+}
+
+:host([size='xl']),
+:host([size='xl']) ::slotted(label) {
+  --panel-width: calc(#{$cds-global-space-6} * 40); // 480px
+  --panel-height: calc(#{$cds-global-space-6} * 40); // 480px
+}

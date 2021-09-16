@@ -528,6 +528,7 @@ const aliases = {
       value: token(color.red[700]),
       tint: token(color.red[50]),
       shade: token(color.red[800]),
+      dark: token(color.red[900]),
     },
     neutral: {
       value: token(color.construction[600]),

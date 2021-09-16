@@ -96,6 +96,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/icon/shapes/line-chart.js': '/dist/core/icon/shapes/line-chart.js',
             '@cds/core/icon/shapes/file.js': '/dist/core/icon/shapes/file.js',
             '@cds/core/icon/shapes/pencil.js': '/dist/core/icon/shapes/pencil.js',
+            '@cds/core/icon/shapes/vm.js': '/dist/core/icon/shapes/vm.js',
 
             '@cds/core/accordion': '/dist/core/accordion/index.js',
             '@cds/core/accordion/register.js': '/dist/core/accordion/register.js',
@@ -152,6 +153,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/search/register.js': '/dist/core/search/register.js',
             '@cds/core/select': '/dist/core/select/index.js',
             '@cds/core/select/register.js': '/dist/core/select/register.js',
+            '@cds/core/selection-panels/checkbox/register.js': '/dist/core/selection-panels/checkbox/register.js',
+            '@cds/core/selection-panels/radio/register.js': '/dist/core/selection-panels/radio/register.js',
             '@cds/core/tag': '/dist/core/tag/index.js',
             '@cds/core/tag/register.js': '/dist/core/tag/register.js',
             '@cds/core/test': '/dist/core/test/index.js',

@@ -2,6 +2,25 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.4",
+      "date": "2021-09-16",
+      "description": "This is a patch release.",
+      "fix": [
+        {
+          "issue": 6317,
+          "title": "Layout issues from async render",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6296,
+          "title": "Adding Panel react wrapper",
+          "project": "react",
+          "scope": "panel"
+        }
+      ]
+    },
+    {
       "version": "5.5.3",
       "date": "2021-09-02",
       "description": "This is a patch release.",

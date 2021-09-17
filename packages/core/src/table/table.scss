@@ -169,3 +169,18 @@ table[cds-table~='vertical'] {
 table[cds-table] tr[cds-text]::before {
   content: none !important;
 }
+
+// Equal sized columns support
+@mixin makeSize($size) {
+  table[cds-table~='equal-col:#{$size}'] {
+    th,
+    td {
+      width: 1 / $size * 100%;
+    }
+  }
+}
+
+$sizes: (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+@each $size in $sizes {
+  @include makeSize($size);
+}

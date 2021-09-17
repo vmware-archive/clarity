@@ -8,13 +8,16 @@
           $siteTitle
         }}</span>
       </RouterLink>
-      <cds-divider orientation="vertical" cds-layout="p:md"></cds-divider>
+      <cds-divider
+        orientation="vertical"
+        cds-layout="p-r:md p-l:md p-t:lg p-b:lg display:none display@md:inline"
+      ></cds-divider>
       <!-- TO BE REPLACED WITH CORE DROPDOWN WHEN AVAILABLE -->
-      <div cds-layout="vertical align:vertical-center">
+      <div cds-layout="vertical align:vertical-center m-t:md display:none display@md:inline">
         <div id="backdrop" @click="dropdownOpen = false" :class="{ open: dropdownOpen }"></div>
         <div class="dropdown" :class="{ open: dropdownOpen }">
-          <cds-button size="sm" @click="dropdownOpen = !dropdownOpen"
-            >Clarity Core <cds-icon shape="caret" direction="down" size="16"></cds-icon
+          <cds-button size="sm" @click="dropdownOpen = !dropdownOpen" style="--font-size: 11px;"
+            >Clarity Core <cds-icon shape="caret" direction="down" size="12"></cds-icon
           ></cds-button>
           <div class="dropdown-menu">
             <a :href="currentPage" class="dropdown-item" target="_blank"
@@ -113,7 +116,7 @@ function css(el, property) {
   opacity: 1;
 }
 .header .logo {
-  margin-right: 10px;
+  margin-right: 0.55rem;
 }
 .main-container .header .branding {
   max-width: none;
@@ -121,7 +124,9 @@ function css(el, property) {
 .header .branding cds-icon {
   margin-right: 0;
 }
-
+.header .dropdown {
+  margin-top: 0.2rem;
+}
 .header .dropdown-menu {
   z-index: 9999999;
 }

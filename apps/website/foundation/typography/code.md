@@ -3,6 +3,10 @@ title: Code
 toc: false
 ---
 
-# Samples
-
 <CdsDemos componentName="typography" />
+
+<style type="text/css">
+table[cds-table] td, table[cds-table] th {
+  width: 50%;
+}
+</style>

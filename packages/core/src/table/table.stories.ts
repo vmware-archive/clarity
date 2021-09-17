@@ -523,6 +523,51 @@ export function verticalTable() {
 }
 
 /** @website */
+export function equalColumnsTable() {
+  return html`
+    <table cds-table="border:all equal-col:4">
+      <caption>
+        Galaxies with large super massive black holes
+      </caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Solar Mass</th>
+          <th>Distance (light years)</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>NGC 1600</th>
+          <td>17 billion M☉</td>
+          <td>200 million ly</td>
+          <td>Surprising large despite its diffuse environment</td>
+        </tr>
+        <tr>
+          <th>Messier 87</th>
+          <td>2.4 billion M☉</td>
+          <td>53 million ly</td>
+          <td>Has been imaged</td>
+        </tr>
+        <tr>
+          <th>Sombrero Galaxy</th>
+          <td>1 billion M☉</td>
+          <td>31 million ly</td>
+          <td>Neared billion solar mass black hold to Earth</td>
+        </tr>
+        <tr>
+          <th>Andromeda Galaxy</th>
+          <td>140 million M☉</td>
+          <td>2.5 million ly</td>
+          <td>Believed to have multiple black holes at the core</td>
+        </tr>
+      </tbody>
+    </table>
+  `;
+}
+
+/** @website */
 export function borderTable() {
   return html`
     <table cds-table="border:all">

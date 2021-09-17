@@ -334,7 +334,7 @@ Provides info to user’s in context. Be careful not to overuse to replace regul
 
 Place app-level alerts at the very top of the global context. Be careful not to place them in any other configuration.
 
-<ClrImage title="Image that shows App level alert above the page header." src="/images/components/alert/app_level_placement.png" />
+<DocImage title="Image that shows App level alert above the page header." src="/images/components/alert/app_level_placement.png" />
 :::
 
 ::: component-section-level-one-title

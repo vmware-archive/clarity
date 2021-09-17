@@ -82,7 +82,7 @@ Consider using modals for the following scenarios: alerting the user, confirmati
 <p>Clarity modals are not dismissed when clicking on the background overlay. This prevents losing information or data. An option to override this is available.</p>
 </div>
 <div>
-<ClrImage title="Image that shows multiple ways to dismiss a modal." src="/images/components/modal/dismissing.png" />
+<DocImage title="Image that shows multiple ways to dismiss a modal." src="/images/components/modal/dismissing.png" />
 </div>
 </div>
 
@@ -104,7 +104,7 @@ Consider using modals for the following scenarios: alerting the user, confirmati
 </ul>
 </div>
 <div>
-<ClrImage title="Image that shows multiple modals stacked on top of each other as an example for what not to do." src="/images/components/modal/stacking.png" />
+<DocImage title="Image that shows multiple modals stacked on top of each other as an example for what not to do." src="/images/components/modal/stacking.png" />
 </div>
 </div>
 

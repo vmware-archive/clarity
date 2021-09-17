@@ -38,9 +38,21 @@ cds-placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: hsl(198, 14%, 92%);
+  background: var(--cds-global-color-cool-gray-700);
+  color: var(--cds-global-color-gray-0);
   min-width: 50px;
   min-height: 50px;
+}
+
+cds-demo[layout][tall] > [cds-layout],
+.layout-demo.tall-demo > cds-layout {
+  min-height: 300px;
+}
+
+cds-demo[layout][wide],
+.layout-demo.wide-demo {
+  width: 100%;
+  display: block;
 }
 
 .cds-demo[inverse] {
@@ -72,6 +84,11 @@ iframe[resizable] {
   border: 1px solid hsl(0, 0%, 87%);
   margin-bottom: 48px;
   position: relative;
+}
+
+#foundation-layouts-code section cds-demo {
+  background: var(--cds-global-color-cool-gray-300);
+  display: inline-block;
 }
 
 // For controlling modal behavior with non-interactive demos, interactive examples andthe sticky header

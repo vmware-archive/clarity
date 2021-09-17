@@ -420,7 +420,7 @@ export function objectDemo() {
 export function interactionMenuDemo() {
   return html`
     <style>
-      cds-navigation {
+      cds-demo cds-navigation {
         --expanded-width: 160px;
       }
       .active {
@@ -559,7 +559,7 @@ export function interactionMenuDemo() {
 export function interactionVerticalNavigationDemo() {
   return html`
     <style>
-      cds-navigation {
+      cds-demo cds-navigation {
         --expanded-width: 160px;
         min-height: 300px;
       }
@@ -623,7 +623,7 @@ export function interactionVerticalNavigationDemo() {
         cursor: not-allowed;
       }
     </style>
-    <div cds-layout="horizontal gap:md align:stretch">
+    <div cds-layout="horizontal gap:md">
       <div cds-layout="vertical gap:md">
         <h3 cds-text="subsection">Default</h3>
         <cds-navigation expanded>

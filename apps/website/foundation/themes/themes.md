@@ -30,7 +30,7 @@ Light theme is Clarity’s default. It is best suited to **content-rich applicat
 
 </div>
 <div class="clr-col" cds-layout="vertical align:top">
-<ClrImage width="100%" alt="Light Theme" src="/images/foundation/themes/theme-light.svg" />
+<DocImage width="100%" alt="Light Theme" src="/images/foundation/themes/theme-light.svg" />
 </div>
 </div>
 
@@ -51,7 +51,7 @@ Dark theme is best suited for applications that are **content-sparse, yet highly
 
 </div>
 <div class="clr-col" cds-layout="vertical align:top">
-<ClrImage width="100%" alt="Dark Theme" src="/images/foundation/themes/theme-dark.svg" />
+<DocImage width="100%" alt="Dark Theme" src="/images/foundation/themes/theme-dark.svg" />
 </div>
 </div>
 

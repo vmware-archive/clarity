@@ -49,7 +49,7 @@ Our Clarity Angular package is designed to explicitly support specific versions 
 
 We actively support the following browsers on desktop and mobile devices. For each, we support the current and previous major releases only.
 
-<ClrImage src="/images/get-started/device-support.svg" width="100%" aria-label="Image showing supported browser list that contains icons for: Edge, Chrome, Safari and Firefox."/>
+<DocImage src="/images/get-started/device-support.svg" width="100%" aria-label="Image showing supported browser list that contains icons for: Edge, Chrome, Safari and Firefox."/>
 
 - Chrome
 - Safari

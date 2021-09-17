@@ -117,12 +117,12 @@ For the grouping of labels and their input fields, we recommend grouping labels 
 <div class="clr-row">
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
-<ClrImage class="doc-example" title="Put labels in close proximity to their input controls" src="/images/angular-components/form/input-grouping-do.svg" align="center" />
+<DocImage class="doc-example" title="Put labels in close proximity to their input controls" src="/images/angular-components/form/input-grouping-do.svg" align="center" />
 Put labels in close proximity to their input controls.
 </div>
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
-<ClrImage class="doc-example" title="Space labels out far from their input controls" src="/images/angular-components/form/input-grouping-dont.svg" align="center" />
+<DocImage class="doc-example" title="Space labels out far from their input controls" src="/images/angular-components/form/input-grouping-dont.svg" align="center" />
 Space labels out far from their input controls.
 </div>
 
@@ -149,12 +149,12 @@ When showing error inputs, highlight the input field with red in some way, but a
 <div class="clr-row">
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
-<ClrImage class="doc-example" title="Place icons outside the input field" src="/images/angular-components/form/error-do.svg" align="center" />
+<DocImage class="doc-example" title="Place icons outside the input field" src="/images/angular-components/form/error-do.svg" align="center" />
 Place icons outside the input field. This will also help avoid browser and third-party app collision conflicts.
 </div>
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
-<ClrImage class="doc-example" title="Don't Put icons inside the input field" src="/images/angular-components/form/error-dont.svg" align="center" />
+<DocImage class="doc-example" title="Don't Put icons inside the input field" src="/images/angular-components/form/error-dont.svg" align="center" />
 Don't put icons inside the input field. If inside, account for changing form value space (increase characters).
 </div>
 

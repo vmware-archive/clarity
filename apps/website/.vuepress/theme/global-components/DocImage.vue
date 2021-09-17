@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'ClrImage',
+  name: 'DocImage',
   props: {
     src: String,
     title: String,

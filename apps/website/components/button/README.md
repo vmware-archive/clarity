@@ -93,7 +93,7 @@ There are two distinct patterns when it comes to the placement of a button.
 <div class="clr-col-sm-12 clr-col-lg-6" cds-layout="p-b:lg p-b@lg:none">
 <DocInset height="300">
 <div cds-layout="horizontal align:center">
-<ClrImage title="Z Pattern illustration" src="/images/angular-components/button/z_pattern.svg" />
+<DocImage title="Z Pattern illustration" src="/images/angular-components/button/z_pattern.svg" />
 </div>
 </DocInset>
 <p cds-text="subsection semibold" cds-layout="p-t:lg">Z Pattern</p>
@@ -103,7 +103,7 @@ There are two distinct patterns when it comes to the placement of a button.
 <div class="clr-col-sm-12 clr-col-lg-6">
 <DocInset height="300">
 <div cds-layout="horizontal align:center">
-<ClrImage title="F Pattern illustration" src="/images/angular-components/button/f_pattern.svg" />
+<DocImage title="F Pattern illustration" src="/images/angular-components/button/f_pattern.svg" />
 </div>
 </DocInset>
 <p cds-text="subsection semibold" cds-layout="p-t:lg">F Pattern</p>
@@ -139,12 +139,12 @@ The text inside of buttons is always **uppercase**. This indicates action by dif
 <DocDoDont>
 <DocDo summary="Use a call to action on buttons." demoHeight="280">
 <div cds-layout="horizontal align:center">
-<ClrImage class="doc-example" title="Typography Do Example" src="/images/angular-components/button/typography_do.svg" />
+<DocImage class="doc-example" title="Typography Do Example" src="/images/angular-components/button/typography_do.svg" />
 </div>
 </DocDo>
 <DocDont slot="dont" summary="Use generic language not related to the action and not relating to the intent of the user." demoHeight="280">
 <div cds-layout="horizontal gap:sm align:center">
-<ClrImage class="doc-example" title="Typography Don't Example" src="/images/angular-components/button/typography_dont.svg"/>
+<DocImage class="doc-example" title="Typography Don't Example" src="/images/angular-components/button/typography_dont.svg"/>
 </div>
 </DocDont>
 </DocDoDont>
@@ -191,7 +191,7 @@ Clarity buttons have a border radius of 3px.
 </div>
 </div>
 <div class="clr-col-sm-12 clr-col-lg-6">
-<ClrImage  title="Visualization of button sizes" src="/images/angular-components/button/button_sizes.png" />
+<DocImage  title="Visualization of button sizes" src="/images/angular-components/button/button_sizes.png" />
 </div>
 </div>
 

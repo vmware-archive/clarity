@@ -3,4 +3,6 @@ title: Code
 toc: false
 ---
 
-<CdsDemos componentName="themes" />
+These examples show the various interaction tokens in use across different scenarios in the system.
+
+<CdsDemos componentName="tokens" />

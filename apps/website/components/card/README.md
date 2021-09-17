@@ -38,12 +38,12 @@ What users commonly use cards with:
 <div class="clr-row">
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-do">
-<ClrImage class="doc-example" title="Do align card actions to the left" src="/images/angular-components/card/buttons_in_cards_2.png" align="center" />
+<DocImage class="doc-example" title="Do align card actions to the left" src="/images/angular-components/card/buttons_in_cards_2.png" align="center" />
 This card correctly aligns actions to the left.
 </div>
 
 <div class="clr-col-sm-12 clr-col-lg-6 doc-dont">
-<ClrImage class="doc-example" title="Don't align buttons to right" src="/images/angular-components/card/buttons_in_cards_1.png" align="center" />
+<DocImage class="doc-example" title="Don't align buttons to right" src="/images/angular-components/card/buttons_in_cards_1.png" align="center" />
 Users might not scan to the bottom right of wide cards.
 </div>
 

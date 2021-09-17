@@ -6,7 +6,7 @@
 
 <template>
   <section>
-    <table cds-layout="m-y:sm" cds-table cds-text="align:left">
+    <table cds-layout="m-y:sm" cds-table="border:all zebra equal-col:4" cds-text="align:left">
       <thead>
         <tr>
           <th>CSS Custom Property</th>
@@ -38,7 +38,7 @@ export default {
   data: function () {
     return {
       api: Object.entries(Values)
-        .filter(([key, item]) => key.search('globalTypography') > -1)
+        .filter(([key, item]) => key.search(this.prefix) > -1)
         .map(item => [Tokens[item[0]], item[0], item[1].value.toString(), Tokens[item[1].alias]]),
     };
   },

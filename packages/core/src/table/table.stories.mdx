@@ -33,6 +33,7 @@ of the table. Each value can be used independently to turn on different styles.
 - `<table cds-table="vertical">` - Display table in vertical layout
 - `<table cds-table="compact">` - Display table in compact layout
 - `<table cds-table="zebra">` - Display table in with alternating background colors
+- `<table cds-table="equal-col:5">` - Display table with equal size columns by defining how many columns there are (up to 12)
 - `<table cds-table="border:row border:outside zebra">` - Mix and match to turn on both outsidie and row borders with zebra
 
 There are a handful of custom properties that you can set to modify the default styles.
@@ -67,7 +68,12 @@ have a rowspan, where the styling doesn't quite look right without some work.
     <td>Obi-Wan Kenobi</td>
     <td>Republic/Rebellion</td>
     <td>No</td>
-    <td rowspan="2" style="border-bottom-right-radius: var(--border-radius); border-bottom: var(--border); border-right: var(--border);">No<br />No<br />No<br />No</td>
+    <td
+      rowspan="2"
+      style="border-bottom-right-radius: var(--border-radius); border-bottom: var(--border); border-right: var(--border);"
+    >
+      No<br />No<br />No<br />No
+    </td>
   </tr>
   <tr>
     <td>Merlin</td>
@@ -119,6 +125,12 @@ You can also apply `cds-text` modifiers to the table, row, or specific cells for
 
 <Preview>
   <Story id="stories-table--vertical-table" />
+</Preview>
+
+## Equal Column Width
+
+<Preview>
+  <Story id="stories-table--equal-columns-table" />
 </Preview>
 
 ## Modifiers for Table

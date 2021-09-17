@@ -21,7 +21,7 @@
           "
           v-for="weight in weights"
           :key="weight"
-          @click="copyText('--cds-global-color-' + color + '-' + weight)"
+          @click="copyText('--cds-global-color-' + color + '-' + weight, $event)"
         >
           {{ weight }}
         </div>
@@ -32,7 +32,7 @@
           class="swatch"
           cds-layout="horizontal m-t:md p:md"
           style="border: 1px solid var(--cds-global-color-black); background-color: var(--cds-global-color-white);"
-          @click="copyText('--cds-global-color-white')"
+          @click="copyText('--cds-global-color-white', $event)"
         >
           White
         </div>
@@ -40,7 +40,7 @@
           class="swatch"
           cds-layout="horizontal m-t:md p:md"
           style="border: 1px solid var(--cds-global-color-black); background-color: var(--cds-global-color-black);"
-          @click="copyText('--cds-global-color-black')"
+          @click="copyText('--cds-global-color-black', $event)"
         >
           Black
         </div>
@@ -70,7 +70,15 @@ export default {
       if (['lavender'].indexOf(color) > -1) tippingPoint = 500;
       return weight >= tippingPoint ? 'white' : 'black';
     },
-    copyText: ClipboardCopy.copyText,
+    copyText: function (text, el) {
+      console.log(el.target.innerText);
+      const innerText = el.target.innerText;
+      ClipboardCopy.copyText(text);
+      el.target.innerText = 'Copied!';
+      setTimeout(() => {
+        el.target.innerText = innerText;
+      }, 3000);
+    },
   },
 };
 </script>
@@ -79,5 +87,6 @@ export default {
 <style lang="scss" scoped>
 .swatch {
   border-radius: var(--cds-alias-object-border-radius-100);
+  cursor: pointer;
 }
 </style>

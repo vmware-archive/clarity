@@ -170,7 +170,7 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
     }
   }
 
-  @ViewChild('detailButton') detailButton: HTMLButtonElement;
+  @ViewChild('detailButton') detailButton: ElementRef;
 
   private _detailOpenLabel = '';
   @Input()

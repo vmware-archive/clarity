@@ -757,7 +757,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     set clrDgSelectable(value: boolean | string);
     get clrDgSelectable(): boolean | string;
     commonStrings: ClrCommonStringsService;
-    detailButton: HTMLButtonElement;
+    detailButton: ElementRef;
     detailService: DetailService;
     dgCells: QueryList<ClrDatagridCell>;
     displayCells: boolean;

@@ -250,7 +250,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
           /**
            * Reopen updated row or close it
            */
-          row ? this.detailService.open(row.item, row.detailButton) : this.detailService.close();
+          row ? this.detailService.open(row.item, row.detailButton.nativeElement) : this.detailService.close();
         }
       })
     );

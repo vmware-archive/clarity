@@ -53,7 +53,7 @@ export class CdsAccordionHeader extends LitElement {
   render() {
     return html`<div class="private-host" cds-layout="horizontal gap:md align:vertical-center wrap:none">
       <cds-icon class="accordion-angle" shape="angle" size="9" inner-offset="2"></cds-icon>
-      <div cds-text="secondary" cds-layout="align:stretch"><slot></slot></div>
+      <div cds-layout="align:stretch"><slot></slot></div>
     </div>`;
   }
 

@@ -7,8 +7,8 @@
 
 :host {
   --color: #{$cds-global-typography-color-400};
-  --font-size: #{$cds-global-typography-font-size-3};
-  --font-weight: #{$cds-global-typography-font-weight-semibold};
+  --font-size: #{$cds-global-typography-secondary-font-size};
+  --font-weight: #{$cds-global-typography-secondary-font-weight};
   --background: #{$cds-alias-object-app-background};
   --icon-color: var(--color);
   --icon-transform: rotate(90deg);
@@ -22,12 +22,9 @@
   padding: #{$cds-global-space-6};
   cursor: inherit;
   border: 0;
-
-  span {
-    color: var(--color);
-    font-size: var(--font-size);
-    font-weight: var(--font-weight);
-  }
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  color: var(--color);
 }
 
 :host([_nfg]) {

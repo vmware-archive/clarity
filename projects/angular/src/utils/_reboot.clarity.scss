@@ -317,8 +317,16 @@
   //
   // Credit: https://github.com/suitcss/base/
   button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+    outline: 2px solid -webkit-focus-ring-color;
+    outline-offset: 1px;
+  }
+
+  button:-moz-focusring,
+  [type='button']:-moz-focusring,
+  [type='reset']:-moz-focusring,
+  [type='submit']:-moz-focusring {
+    outline: 2px solid Highlight;
+    outline-offset: 1px;
   }
 
   input,

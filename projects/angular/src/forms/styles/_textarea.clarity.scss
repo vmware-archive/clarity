@@ -36,13 +36,7 @@
     font-size: $clr-forms-field-font-size;
 
     &:focus {
-      $focused-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px $clr-outline-color;
-      outline: 0;
-      // Old IE/Edge
-      box-shadow: $focused-outline;
-      @if $clr-use-custom-properties == true {
-        box-shadow: var(--clr-forms-textarea-focused-outline, #{$focused-outline});
-      }
+      @include include-slim-outline-style-form-fields();
     }
 
     &:disabled {
@@ -52,16 +46,6 @@
 
   .clr-error .clr-textarea {
     @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
-
-    &:focus {
-      $error-outline: 0 0 $clr_baselineRem_2px $clr_baselineRem_2px lighten($clr-forms-invalid-color, 30%);
-      outline: 0;
-      // Old IE/Edge
-      box-shadow: $error-outline;
-      @if $clr-use-custom-properties == true {
-        box-shadow: var(--clr-forms-textarea-invalid-focused-outline, #{$error-outline});
-      }
-    }
   }
 
   .clr-control-container textarea {

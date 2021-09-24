@@ -11,7 +11,12 @@
     select {
       @include custom-inputs($clr_baselineRem_1);
       @include form-fields-appearance();
-      @include input-border-bottom-animation();
+      &:not([multiple]) {
+        @include input-border-bottom-animation();
+      }
+      &[multiple]:focus {
+        @include include-slim-outline-style-form-fields();
+      }
       position: relative;
       padding: 0 ($clr-forms-select-caret-size + $clr-forms-baseline * 2) 0 $clr-forms-baseline;
       cursor: pointer;
@@ -130,20 +135,7 @@
 
   .clr-error select[multiple] {
     @include css-var(border-color, clr-forms-invalid-color, $clr-forms-invalid-color, $clr-use-custom-properties);
-
-    &:focus {
-      outline: 0;
-      // TODO: this is a mess and will need to be fixed. we shouldn't be using lighten() like this
-      $focus-shadow-color: lighten($clr-forms-invalid-color, 30%);
-      $sass-box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px $focus-shadow-color;
-      $cssvar-box-shadow: 0 $clr_baselineRem_1px $clr_baselineRem_3px
-        var(--clr-forms-select-multiple-error-focus-color, $focus-shadow-color);
-
-      box-shadow: $sass-box-shadow;
-      box-shadow: $cssvar-box-shadow;
-    }
   }
-
   .clr-form-control-disabled .clr-select {
     &.disabled {
       @include disabled-form-fields();

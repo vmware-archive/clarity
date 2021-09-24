@@ -52,24 +52,12 @@
 
     //Outline color for unchecked radios
     input[type='radio']:focus + label::before {
-      outline: 0;
-      @include css-var(
-        box-shadow,
-        clr-forms-radio-focused-shadow,
-        $clr-forms-radio-focused-shadow,
-        $clr-use-custom-properties
-      );
+      @include include-outline-style-form-fields();
     }
 
     //Outline color for checked radios
     input[type='radio']:focus:checked + label::before {
-      outline: 0;
-      // IE/OldEdge
-      box-shadow: $clr-forms-radio-selected-shadow, $clr-forms-radio-focused-shadow;
-      @if $clr-use-custom-properties == true {
-        box-shadow: var(--clr-forms-radio-selected-shadow, $clr-forms-radio-selected-shadow),
-          var(--clr-forms-radio-focused-shadow, $clr-forms-radio-focused-shadow);
-      }
+      @include include-outline-style-form-fields();
     }
 
     input[type='radio']:disabled + label::before {

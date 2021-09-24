@@ -697,7 +697,7 @@
 
         cds-icon,
         clr-icon {
-          @include css-var(color, clr-color-neutral-500, $clr-color-neutral-500, $clr-use-custom-properties);
+          @include css-var(color, clr-color-neutral-600, $clr-color-neutral-600, $clr-use-custom-properties);
         }
 
         &:hover {
@@ -1190,7 +1190,7 @@
         padding-right: 0;
         cds-icon,
         clr-icon {
-          @include css-var(color, clr-color-neutral-500, $clr-color-neutral-500, $clr-use-custom-properties);
+          @include css-var(color, clr-color-neutral-600, $clr-color-neutral-600, $clr-use-custom-properties);
         }
 
         &:hover {
@@ -1237,11 +1237,6 @@
             min-width: $clr_baselineRem_0_75;
             margin: 0;
             padding: 0;
-            @include css-var(color, clr-color-neutral-500, $clr-color-neutral-500, $clr-use-custom-properties);
-
-            &:hover {
-              @include css-var(color, clr-color-action-600, $clr-color-action-600, $clr-use-custom-properties);
-            }
           }
         }
 

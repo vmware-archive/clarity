@@ -24,13 +24,15 @@ $clr-outline-color-inverse: hsla(0, 0%, 100%, 0.09) !default;
 $clr-outline-blur: $clr_baselineRem_2px;
 $clr-outline-spread: $clr_baselineRem_2px;
 
-@mixin include-outline-style-form-fields(
-  $outline-color: $clr-outline-color,
-  $outline-blur: $clr-outline-blur,
-  $outline-spread: $clr-outline-spread
-) {
-  outline: 0;
-  box-shadow: 0 0 $outline-blur $outline-spread $outline-color;
+@mixin include-outline-style-form-fields() {
+  outline: Highlight solid $clr_baselineRem_2px;
+  outline: -webkit-focus-ring-color solid $clr_baselineRem_2px;
+  outline-offset: $clr_baselineRem_1px;
+}
+
+@mixin include-slim-outline-style-form-fields() {
+  outline: Highlight auto $clr_baselineRem_2px;
+  outline: -webkit-focus-ring-color auto $clr_baselineRem_2px;
 }
 
 @mixin include-outline-style-links() {

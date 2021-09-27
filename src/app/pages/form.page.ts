@@ -11,6 +11,9 @@ import { DemoTabData } from '../components/demo.component';
   selector: 'app-form',
   template: `
     <h1>Form</h1>
+
+    <cdc-component-status name="form"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-form"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">

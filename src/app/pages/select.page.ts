@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Select</h1>
 
+    <cdc-component-status name="select"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-select"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">

@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-spinner',
   template: `
     <h1>Spinner</h1>
+
+    <cdc-component-status name="spinner"></cdc-component-status>
+
     <not-ready name="Spinners"></not-ready>
   `,
 })

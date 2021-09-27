@@ -11,6 +11,9 @@ import { DemoTabData } from '../components/demo.component';
   selector: 'app-password',
   template: `
     <h1>Password</h1>
+
+    <cdc-component-status name="password"></cdc-component-status>
+
     <demo [tabs]="demo1">
       <h3 cds-text="section">With label</h3>
     </demo>

@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
 @Component({
   template: `
     <h1 cds-text="title" cds-layout="m-t:lg">Introduction</h1>
-
     <p>
       Clarity began in 2016 as a design system built specifically for Angular, which we will call Clarity Angular. It is used by many of VMware's largest applications, and by other companies and applications outside of VMware. As Clarity's popularity and usage grew, so did requirements for Clarity to work well with other frameworks to help unify applications that don't use Angular. That led us to envision a new implementation of Clarity built on top of web components that can be utilized by any application.
     </p>
@@ -23,11 +22,11 @@ import { Component } from '@angular/core';
     </p>
 
     <p>
-      As great as Clarity Angular is, we are excited about what Clarity Core can allow you to accomplish. For example, there are new features in the Clarity Core datagrid that were previously impossible with Clarity Angular. We're adding new components like the pagination and breadcrumb components as well. And finally, it's fully independent of frameworks and systematically built to maximize the lifetime of the components. We are building Clarity Core on top of web standards, which means that they will continue to work even if your frameworks of choice change over time. In the life of the web web standards are not removed just deprecated in favor of better choices. (Even the original Space Jam movie website works perfectly fine today as it did in the 1990s). This means we can confidently say that Clarity Core is future facing, with no expiration date. 
+      As great as Clarity Angular is, we are excited about what Clarity Core can allow you to accomplish. For example, there are new features in the Clarity Core datagrid that were previously impossible with Clarity Angular. We're adding new components like the pagination and breadcrumb components as well. And finally, it's fully independent of frameworks and systematically built to maximize the lifetime of the components. We are building Clarity Core on top of web standards, which means that they will continue to work even if your frameworks of choice change over time. In the life of the web web standards are not removed just deprecated in favor of better choices. (Even the original Space Jam movie website works perfectly fine today as it did in the 1990s). This means we can confidently say that Clarity Core is future facing, with no expiration date.
     </p>
 
     <p>
-      Our objective with Clarity Core and this website specifically is to help you benefit from the improvements in quality, consistency, and framework independence that we've built in this modern implementation. We aim to support you with this interactive guide showing details about the way components are used in Clarity Angular and Clarity Core. We have also built tooling, such as our ESLint rules to help identify where you are using Clarity Angular and in some cases also to help automate the upgrade process. We will also be adding some case studies and expanding this guide with more stories about how applications have approached incorporating Clarity Core. 
+      Our objective with Clarity Core and this website specifically is to help you benefit from the improvements in quality, consistency, and framework independence that we've built in this modern implementation. We aim to support you with this interactive guide showing details about the way components are used in Clarity Angular and Clarity Core. We have also built tooling, such as our ESLint rules to help identify where you are using Clarity Angular and in some cases also to help automate the upgrade process. We will also be adding some case studies and expanding this guide with more stories about how applications have approached incorporating Clarity Core.
     </p>
 
     <p>
@@ -37,5 +36,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class IntroPage {
-  
+
 }

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CdsModule } from '@cds/angular';
 import { ClarityModule } from '@clr/angular';
 
+import { CdcModule } from './components/cross-components/cross-component.module';
+
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -114,7 +116,7 @@ import { DifferencesPage } from './pages/differences.page';
 
     MenuTitlePipe,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, CdsModule, AppRoutingModule, ClarityModule],
+  imports: [BrowserModule, BrowserAnimationsModule, CdsModule, AppRoutingModule, ClarityModule, CdcModule],
   providers: [],
   bootstrap: [AppComponent],
 })

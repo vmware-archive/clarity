@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Textarea</h1>
 
+    <cdc-component-status name="textarea"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-textarea"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">

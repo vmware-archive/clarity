@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Icons</h1>
 
+    <cdc-component-status name="icon"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-icon"></app-eslint-intro-block>
 
     <p>

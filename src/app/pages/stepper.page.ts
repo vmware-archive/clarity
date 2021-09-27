@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-stepper',
   template: `
     <h1>Stepper</h1>
+
+    <cdc-component-status name="stepper"></cdc-component-status>
+
     <not-ready name="Stepper"></not-ready>
   `,
 })

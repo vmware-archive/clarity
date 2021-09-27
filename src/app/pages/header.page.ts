@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   template: `
     <h1>Header</h1>
+
+    <cdc-component-status name="header"></cdc-component-status>
+
     <not-ready name="Header"></not-ready>
   `,
 })

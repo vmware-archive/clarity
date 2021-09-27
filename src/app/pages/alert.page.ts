@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Alerts</h1>
 
+    <cdc-component-status name="alert"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-alert"></app-eslint-intro-block>
 
     <p>

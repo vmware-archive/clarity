@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-tree-view',
   template: `
     <h1>Tree view</h1>
+
+    <cdc-component-status name="treeview"></cdc-component-status>
+
     <not-ready name="tree-view"></not-ready>
   `,
 })

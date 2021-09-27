@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Toggle</h1>
 
+    <cdc-component-status name="toggle"></cdc-component-status>
+
     <demo [tabs]="demo1">
       <h3 cds-text="section">With label</h3>
     </demo>

@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-table',
   template: `
     <h1>Table</h1>
+
+    <cdc-component-status name="table"></cdc-component-status>
+
     <not-ready name="Table"></not-ready>
   `,
 })

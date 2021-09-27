@@ -12,18 +12,7 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Accordion</h1>
 
-    <status-block
-      coreVersion="v4"
-      angularVersion="v1"
-      coreLink=""
-      coreStorybookLink="https://clarity.design/storybook/core/?path=/story/components-accordion--page"
-      angularLink="https://angular.clarity.design/documentation/accordion"
-      [eslint]="true"
-      angularFigma="https://www.figma.com/file/ZvaQGGktjGoW6gz9DqwvrLtz/?node-id=1007%3A0"
-      coreFigma="https://www.figma.com/file/cjen2ts5Vz0W37NacV1eBE/Clarity-Core-Library-BETA?node-id=1169%3A3267"
-    >
-      An accordion allows generic content to be collapsed and allows users to expand to show more detail.
-    </status-block>
+    <cdc-component-status name="accordion"></cdc-component-status>
 
     <demo [tabs]="demo1">
       <h3 cds-text="section">With expanded, disabled and exapandable panels</h3>

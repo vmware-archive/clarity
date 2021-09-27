@@ -11,6 +11,9 @@ import { DemoTabData } from '../components/demo.component';
   selector: 'app-modal',
   template: `
     <h1>Modal</h1>
+
+    <cdc-component-status name="modal"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-modal"></app-eslint-intro-block>
 
     <p>

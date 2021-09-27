@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>List</h1>
 
+    <cdc-component-status name="list"></cdc-component-status>
+
     <demo [tabs]="demo">
       <h3>Ordered list</h3>
     </demo>

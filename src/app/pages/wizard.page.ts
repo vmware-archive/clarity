@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-wizard',
   template: `
     <h1>Wizard</h1>
+
+    <cdc-component-status name="wizard"></cdc-component-status>
+
     <not-ready name="Wizards"></not-ready>
   `,
 })

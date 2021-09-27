@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-tooltip',
   template: `
     <h1>Tooltip</h1>
+
+    <cdc-component-status name="tooltip"></cdc-component-status>
+
     <not-ready name="Tooltip"></not-ready>
   `,
 })

@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-progressbar',
   template: `
     <h1>Progress bar</h1>
+
+    <cdc-component-status name="progressbar"></cdc-component-status>
+
     <not-ready name="Progress"></not-ready>
   `,
 })

@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Datalist</h1>
 
+    <cdc-component-status name="details"></cdc-component-status>
+
     <demo [tabs]="demo">
       <h3 cds-text="section">Datalist with text items</h3>
     </demo>

@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Range</h1>
 
+    <cdc-component-status name="range"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-range"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">

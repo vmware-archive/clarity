@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-radio',
   template: `
     <h1>Radio</h1>
+
+    <cdc-component-status name="radio"></cdc-component-status>
+
     <not-ready name="Radio"></not-ready>
   `,
 })

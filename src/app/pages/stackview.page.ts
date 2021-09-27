@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-stack-view',
   template: `
     <h1>Stack View</h1>
+
+    <cdc-component-status name="stackview"></cdc-component-status>
+
     <not-ready name="Stack View"></not-ready>
   `,
 })

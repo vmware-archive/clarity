@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-dropdown',
   template: `
     <h1>Dropdown</h1>
+
+    <cdc-component-status name="dropdown"></cdc-component-status>
+
     <not-ready name="Dropdown"></not-ready>
   `,
 })

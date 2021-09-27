@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Checkbox</h1>
 
+    <cdc-component-status name="checkbox"></cdc-component-status>
+
     <app-eslint-intro-block rule="no-clr-checkbox"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">

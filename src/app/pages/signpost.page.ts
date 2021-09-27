@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-signpost',
   template: `
     <h1>Signpost</h1>
+
+    <cdc-component-status name="signpost"></cdc-component-status>
+
     <not-ready name="Signposts"></not-ready>
   `,
 })

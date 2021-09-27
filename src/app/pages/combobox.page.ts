@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-combobox',
   template: `
     <h1>Combobox</h1>
+
+    <cdc-component-status name="combobox"></cdc-component-status>
+
     <not-ready name="Combobox"></not-ready>
   `,
 })

@@ -10,6 +10,9 @@ import { Component } from '@angular/core';
   selector: 'app-timeline',
   template: `
     <h1>Timeline</h1>
+
+    <cdc-component-status name="timeline"></cdc-component-status>
+
     <not-ready name="Timeline"></not-ready>
   `,
 })

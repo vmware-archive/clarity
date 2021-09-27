@@ -12,6 +12,8 @@ import { DemoTabData } from '../components/demo.component';
   template: `
     <h1>Input</h1>
 
+    <cdc-component-status name="input"></cdc-component-status>
+
     <demo [tabs]="demo1">
       <h3 cds-text="section">Input with placeholder</h3>
     </demo>

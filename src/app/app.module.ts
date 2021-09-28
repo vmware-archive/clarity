@@ -53,7 +53,6 @@ import { HeaderPage } from './pages/header.page';
 import { ProgressbarPage } from './pages/progressbar.page';
 import { ComboboxPage } from './pages/combobox.page';
 import { DropdownPage } from './pages/dropdown.page';
-import { StatusBlockComponent } from './components/status-block/status-block.component';
 import { LandingPage } from './pages/landing.page';
 import { IntroPage } from './pages/intro.page';
 import { ApproachesPage } from './pages/approaches.page';
@@ -111,7 +110,6 @@ import { DifferencesPage } from './pages/differences.page';
     EslintIntroBlockComponent,
     SourceCodeComponent,
     NotReadyComponent,
-    StatusBlockComponent,
     Demo,
 
     MenuTitlePipe,

@@ -6,41 +6,41 @@ exports[`CdsProgressCircle snapshot 1`] = `
     status="info"
     value={49}
   >
-    <cds-progress-circle(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="info"
       value={49}
     >
       <cds-progress-circle
-        __forwardedRef={null}
+        l={null}
       />
-    </cds-progress-circle(CustomElement)>
+    </h>
   </CdsProgressCircle>
   <CdsProgressCircle
     value={0}
   >
-    <cds-progress-circle(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       value={0}
     >
       <cds-progress-circle
-        __forwardedRef={null}
+        l={null}
       />
-    </cds-progress-circle(CustomElement)>
+    </h>
   </CdsProgressCircle>
   <CdsProgressCircle
     status="success"
     value={100}
   >
-    <cds-progress-circle(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="success"
       value={100}
     >
       <cds-progress-circle
-        __forwardedRef={null}
+        l={null}
       />
-    </cds-progress-circle(CustomElement)>
+    </h>
   </CdsProgressCircle>
 </div>
 `;

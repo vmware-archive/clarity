@@ -12,7 +12,7 @@ describe('CdsPassword', () => {
         </CdsPassword>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsPassword');
+    const renderedComponent = wrapper.find(CdsPassword);
     expect(renderedComponent.html()).toMatch(/label/);
   });
 

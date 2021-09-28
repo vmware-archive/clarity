@@ -9,7 +9,7 @@ describe('CdsInternalCloseButton', () => {
         <CdsInternalCloseButton />
       </div>
     );
-    const renderedComponent = wrapper.find('CdsInternalCloseButton');
+    const renderedComponent = wrapper.find(CdsInternalCloseButton);
     expect(renderedComponent).toBeTruthy();
   });
 

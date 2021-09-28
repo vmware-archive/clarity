@@ -3,21 +3,21 @@
 exports[`CdsInput snapshot 1`] = `
 <div>
   <CdsInputGroup>
-    <cds-input-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-input-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsInput
           layout="vertical"
         >
-          <cds-input(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="vertical"
           >
             <cds-input
-              __forwardedRef={null}
+              l={null}
               layout="vertical"
             >
               <label>
@@ -27,17 +27,17 @@ exports[`CdsInput snapshot 1`] = `
                 placeholder="name"
               />
             </cds-input>
-          </cds-input(CustomElement)>
+          </h>
         </CdsInput>
         <CdsInput
           layout="vertical"
         >
-          <cds-input(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="vertical"
           >
             <cds-input
-              __forwardedRef={null}
+              l={null}
               layout="vertical"
             >
               <label>
@@ -48,10 +48,10 @@ exports[`CdsInput snapshot 1`] = `
                 placeholder="name"
               />
             </cds-input>
-          </cds-input(CustomElement)>
+          </h>
         </CdsInput>
       </cds-input-group>
-    </cds-input-group(CustomElement)>
+    </h>
   </CdsInputGroup>
 </div>
 `;

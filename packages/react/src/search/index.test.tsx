@@ -16,7 +16,7 @@ describe('CdsSearch', () => {
         </CdsFormGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsSearch');
+    const renderedComponent = wrapper.find(CdsSearch);
     expect(renderedComponent.at(0).html()).toMatch(/label/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

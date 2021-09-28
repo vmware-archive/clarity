@@ -3,49 +3,49 @@
 exports[`CdsAccordion snapshot 1`] = `
 <div>
   <CdsAccordion>
-    <cds-accordion(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-accordion
-        __forwardedRef={null}
+        l={null}
       >
-        <CdsAccordionPanel
+        <ForwardRef
           expanded={true}
         >
-          <cds-accordion-panel(CustomElement)
-            __forwardedRef={null}
+          <h
             expanded={true}
+            l={null}
           >
             <cds-accordion-panel
-              __forwardedRef={null}
+              l={null}
             >
-              <CdsAccordionHeader>
-                <cds-accordion-header(CustomElement)
-                  __forwardedRef={null}
+              <ForwardRef>
+                <h
+                  l={null}
                 >
                   <cds-accordion-header
-                    __forwardedRef={null}
+                    l={null}
                   >
                     Item 1
                   </cds-accordion-header>
-                </cds-accordion-header(CustomElement)>
-              </CdsAccordionHeader>
-              <CdsAccordionContent>
-                <cds-accordion-content(CustomElement)
-                  __forwardedRef={null}
+                </h>
+              </ForwardRef>
+              <ForwardRef>
+                <h
+                  l={null}
                 >
                   <cds-accordion-content
-                    __forwardedRef={null}
+                    l={null}
                   >
                     Content 1
                   </cds-accordion-content>
-                </cds-accordion-content(CustomElement)>
-              </CdsAccordionContent>
+                </h>
+              </ForwardRef>
             </cds-accordion-panel>
-          </cds-accordion-panel(CustomElement)>
-        </CdsAccordionPanel>
+          </h>
+        </ForwardRef>
       </cds-accordion>
-    </cds-accordion(CustomElement)>
+    </h>
   </CdsAccordion>
 </div>
 `;

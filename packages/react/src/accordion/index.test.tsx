@@ -14,7 +14,7 @@ describe('CdsAccordion', () => {
         </CdsAccordion>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsAccordion');
+    const renderedComponent = wrapper.find(CdsAccordion);
     expect(renderedComponent.at(0).html()).toMatch(/Item 1/);
     expect(renderedComponent.at(0).html()).toMatch(/Content 1/);
   });

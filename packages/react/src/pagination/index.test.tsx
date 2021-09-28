@@ -13,7 +13,7 @@ describe('CdsPagination', () => {
         <CdsPaginationButton aria-label="go to last" action="last"></CdsPaginationButton>
       </CdsPagination>
     );
-    const renderedComponent = wrapper.find('CdsPagination');
+    const renderedComponent = wrapper.find(CdsPagination);
     expect(renderedComponent.at(0)).toBeDefined();
     expect(renderedComponent.at(1)).toBeDefined();
     expect(renderedComponent.at(2)).toBeDefined();

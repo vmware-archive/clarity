@@ -17,7 +17,7 @@ describe('CdsRange', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('CdsRange');
+    const renderedComponent = wrapper.find(CdsRange);
     expect(renderedComponent.at(0).html()).toMatch(/label/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

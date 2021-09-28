@@ -12,7 +12,7 @@ describe('CdsCheckbox', () => {
         </CdsCheckbox>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsCheckbox');
+    const renderedComponent = wrapper.find(CdsCheckbox);
     expect(renderedComponent.html()).toMatch(/Hello/);
   });
 

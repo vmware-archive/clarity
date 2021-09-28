@@ -5,128 +5,128 @@ exports[`CdsBadge snapshot 1`] = `
   <CdsBadge
     status="info"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="info"
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         2
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     status="success"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="success"
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         3
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     status="warning"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="warning"
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         12
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     status="danger"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       status="danger"
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         15
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     color="gray"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
       color="gray"
+      l={null}
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         1
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     color="purple"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
       color="purple"
+      l={null}
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         6
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     color="blue"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
       color="blue"
+      l={null}
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         15
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     color="orange"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
       color="orange"
+      l={null}
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         2
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
   <CdsBadge
     color="light-blue"
   >
-    <cds-badge(CustomElement)
-      __forwardedRef={null}
+    <h
       color="light-blue"
+      l={null}
     >
       <cds-badge
-        __forwardedRef={null}
+        l={null}
       >
         3
       </cds-badge>
-    </cds-badge(CustomElement)>
+    </h>
   </CdsBadge>
 </div>
 `;

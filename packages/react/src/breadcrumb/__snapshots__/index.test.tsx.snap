@@ -3,11 +3,11 @@
 exports[`CdsBreadcrumb snapshot 1`] = `
 <div>
   <CdsBreadcrumb>
-    <cds-breadcrumb(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-breadcrumb
-        __forwardedRef={null}
+        l={null}
       >
         <a
           href="#"
@@ -20,7 +20,7 @@ exports[`CdsBreadcrumb snapshot 1`] = `
           link 2
         </a>
       </cds-breadcrumb>
-    </cds-breadcrumb(CustomElement)>
+    </h>
   </CdsBreadcrumb>
 </div>
 `;

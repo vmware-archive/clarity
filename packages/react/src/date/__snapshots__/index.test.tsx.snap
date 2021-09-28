@@ -6,14 +6,14 @@ exports[`CdsDate snapshot 1`] = `
     control-width="shrink"
     layout="horizontal"
   >
-    <cds-date(CustomElement)
-      __forwardedRef={null}
+    <h
       control-width="shrink"
+      l={null}
       layout="horizontal"
     >
       <cds-date
-        __forwardedRef={null}
         control-width="shrink"
+        l={null}
         layout="horizontal"
       >
         <label>
@@ -26,18 +26,18 @@ exports[`CdsDate snapshot 1`] = `
           type="date"
         />
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-date>
-    </cds-date(CustomElement)>
+    </h>
   </CdsDate>
 </div>
 `;

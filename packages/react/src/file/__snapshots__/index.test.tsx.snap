@@ -5,12 +5,12 @@ exports[`CdsFile snapshot 1`] = `
   <CdsFile
     layout="vertical"
   >
-    <cds-file(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="vertical"
     >
       <cds-file
-        __forwardedRef={null}
+        l={null}
         layout="vertical"
       >
         <label>
@@ -21,7 +21,7 @@ exports[`CdsFile snapshot 1`] = `
           type="file"
         />
       </cds-file>
-    </cds-file(CustomElement)>
+    </h>
   </CdsFile>
 </div>
 `;

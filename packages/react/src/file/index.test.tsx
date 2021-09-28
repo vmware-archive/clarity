@@ -12,7 +12,7 @@ describe('CdsFile', () => {
         </CdsFile>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsFile');
+    const renderedComponent = wrapper.find(CdsFile);
     expect(renderedComponent.html()).toMatch(/File/);
   });
 

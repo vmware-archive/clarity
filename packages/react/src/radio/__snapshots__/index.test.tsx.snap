@@ -3,21 +3,21 @@
 exports[`CdsRadio snapshot 1`] = `
 <div>
   <CdsRadioGroup>
-    <cds-radio-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-radio-group
-        __forwardedRef={null}
+        l={null}
       >
         <label>
           radio group
         </label>
         <CdsRadio>
-          <cds-radio(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-radio
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 radio 1
@@ -27,14 +27,14 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </cds-radio(CustomElement)>
+          </h>
         </CdsRadio>
         <CdsRadio>
-          <cds-radio(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-radio
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 radio 2
@@ -43,14 +43,14 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </cds-radio(CustomElement)>
+          </h>
         </CdsRadio>
         <CdsRadio>
-          <cds-radio(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-radio
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 radio 3
@@ -59,10 +59,10 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </cds-radio(CustomElement)>
+          </h>
         </CdsRadio>
       </cds-radio-group>
-    </cds-radio-group(CustomElement)>
+    </h>
   </CdsRadioGroup>
 </div>
 `;

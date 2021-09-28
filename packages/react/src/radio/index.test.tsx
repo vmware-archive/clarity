@@ -25,7 +25,7 @@ describe('CdsRadio', () => {
         </CdsRadioGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsRadio');
+    const renderedComponent = wrapper.find(CdsRadio);
     expect(renderedComponent.at(0).html()).toMatch(/radio 1/);
     expect(renderedComponent.at(1).html()).toMatch(/radio 2/);
     expect(renderedComponent.at(2).html()).toMatch(/radio 3/);

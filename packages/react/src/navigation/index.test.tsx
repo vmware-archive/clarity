@@ -26,7 +26,7 @@ describe('CdsNavigation', () => {
         </CdsNavigation>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsNavigation');
+    const renderedComponent = wrapper.find(CdsNavigation);
     expect(renderedComponent.at(0).html()).toMatch(/Root start/);
     expect(renderedComponent.at(0).html()).toMatch(/Root item/);
     expect(renderedComponent.at(0).html()).toMatch(/Group start/);

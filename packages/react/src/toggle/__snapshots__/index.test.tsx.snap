@@ -3,21 +3,21 @@
 exports[`CdsToggle snapshot 1`] = `
 <div>
   <CdsToggleGroup>
-    <cds-toggle-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-toggle-group
-        __forwardedRef={null}
+        l={null}
       >
         <label>
           A toggle group
         </label>
         <CdsToggle>
-          <cds-toggle(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-toggle
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 Toggle 1
@@ -26,14 +26,14 @@ exports[`CdsToggle snapshot 1`] = `
                 type="checkbox"
               />
             </cds-toggle>
-          </cds-toggle(CustomElement)>
+          </h>
         </CdsToggle>
         <CdsToggle>
-          <cds-toggle(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-toggle
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 Toggle 2
@@ -42,28 +42,28 @@ exports[`CdsToggle snapshot 1`] = `
                 type="checkbox"
               />
             </cds-toggle>
-          </cds-toggle(CustomElement)>
+          </h>
         </CdsToggle>
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               group message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-toggle-group>
-    </cds-toggle-group(CustomElement)>
+    </h>
   </CdsToggleGroup>
   <CdsToggle>
-    <cds-toggle(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-toggle
-        __forwardedRef={null}
+        l={null}
       >
         <label>
           Toggle
@@ -72,18 +72,18 @@ exports[`CdsToggle snapshot 1`] = `
           type="checkbox"
         />
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-toggle>
-    </cds-toggle(CustomElement)>
+    </h>
   </CdsToggle>
 </div>
 `;

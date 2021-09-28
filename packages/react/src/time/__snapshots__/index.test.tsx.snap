@@ -5,13 +5,13 @@ exports[`CdsTime snapshot 1`] = `
   <CdsTime
     control-width="shrink"
   >
-    <cds-time(CustomElement)
-      __forwardedRef={null}
+    <h
       control-width="shrink"
+      l={null}
     >
       <cds-time
-        __forwardedRef={null}
         control-width="shrink"
+        l={null}
       >
         <label>
           Time input
@@ -23,18 +23,18 @@ exports[`CdsTime snapshot 1`] = `
           type="time"
         />
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-time>
-    </cds-time(CustomElement)>
+    </h>
   </CdsTime>
 </div>
 `;

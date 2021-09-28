@@ -5,22 +5,22 @@ exports[`CdsRange snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="horizontal"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsRange
           layout="horizontal"
         >
-          <cds-range(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
           >
             <cds-range
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -30,28 +30,28 @@ exports[`CdsRange snapshot 1`] = `
                 type="range"
               />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-range>
-          </cds-range(CustomElement)>
+          </h>
         </CdsRange>
         <CdsRange
           layout="horizontal"
         >
-          <cds-range(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
           >
             <cds-range
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -62,30 +62,30 @@ exports[`CdsRange snapshot 1`] = `
                 type="range"
               />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     disabled message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-range>
-          </cds-range(CustomElement)>
+          </h>
         </CdsRange>
         <CdsRange
           layout="horizontal"
           status="error"
         >
-          <cds-range(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="error"
           >
             <cds-range
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -97,31 +97,31 @@ exports[`CdsRange snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-range>
-          </cds-range(CustomElement)>
+          </h>
         </CdsRange>
         <CdsRange
           layout="horizontal"
           status="success"
         >
-          <cds-range(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="success"
           >
             <cds-range
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -133,22 +133,22 @@ exports[`CdsRange snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-range>
-          </cds-range(CustomElement)>
+          </h>
         </CdsRange>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
 </div>
 `;

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.lib.json",
   "references": [
-    { "path": "./src/converter/entrypoint.tsconfig.json" },
+    { "path": "./src/utils/entrypoint.tsconfig.json" },
     { "path": "./src/alert/entrypoint.tsconfig.json" },
     { "path": "./src/badge/entrypoint.tsconfig.json" },
     { "path": "./src/button/entrypoint.tsconfig.json" },

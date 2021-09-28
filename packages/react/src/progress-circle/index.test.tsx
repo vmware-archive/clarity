@@ -11,7 +11,7 @@ describe('CdsProgressCircle', () => {
         <CdsProgressCircle status="success" value={100}></CdsProgressCircle>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsProgressCircle');
+    const renderedComponent = wrapper.find(CdsProgressCircle);
     expect(renderedComponent.at(0)).toBeDefined();
     expect(renderedComponent.at(1)).toBeDefined();
     expect(renderedComponent.at(2)).toBeDefined();

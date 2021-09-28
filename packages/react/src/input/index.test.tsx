@@ -18,7 +18,7 @@ describe('CdsInput', () => {
         </CdsInputGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsInput');
+    const renderedComponent = wrapper.find(CdsInput);
     expect(renderedComponent.at(0).html()).toMatch(/label/);
     expect(renderedComponent.at(1).html()).toMatch(/disabled/);
   });

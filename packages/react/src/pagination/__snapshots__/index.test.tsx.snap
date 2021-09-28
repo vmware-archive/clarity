@@ -4,47 +4,47 @@ exports[`CdsPagination snapshot 1`] = `
 <CdsPagination
   aria-label="pagination"
 >
-  <cds-pagination(CustomElement)
-    __forwardedRef={null}
+  <h
     aria-label="pagination"
+    l={null}
   >
     <cds-pagination
-      __forwardedRef={null}
       aria-label="pagination"
+      l={null}
     >
       <CdsPaginationButton
         action="prev"
         aria-label="go to first"
         disabled={true}
       >
-        <cds-pagination-button(CustomElement)
-          __forwardedRef={null}
+        <h
           action="prev"
           aria-label="go to first"
           disabled={true}
+          l={null}
         >
           <cds-pagination-button
-            __forwardedRef={null}
             aria-label="go to first"
+            l={null}
           />
-        </cds-pagination-button(CustomElement)>
+        </h>
       </CdsPaginationButton>
       <CdsPaginationButton
         action="next"
         aria-label="go to next"
       >
-        <cds-pagination-button(CustomElement)
-          __forwardedRef={null}
+        <h
           action="next"
           aria-label="go to next"
+          l={null}
         >
           <cds-pagination-button
-            __forwardedRef={null}
             aria-label="go to next"
+            l={null}
           />
-        </cds-pagination-button(CustomElement)>
+        </h>
       </CdsPaginationButton>
     </cds-pagination>
-  </cds-pagination(CustomElement)>
+  </h>
 </CdsPagination>
 `;

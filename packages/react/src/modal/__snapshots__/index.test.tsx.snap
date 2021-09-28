@@ -2,19 +2,19 @@
 
 exports[`CdsModal snapshot 1`] = `
 <div>
-  <CdsModal>
-    <cds-modal(CustomElement)
-      __forwardedRef={null}
+  <ForwardRef>
+    <h
+      l={null}
     >
       <cds-modal
-        __forwardedRef={null}
+        l={null}
       >
         <CdsModalHeader>
-          <cds-modal-header(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-modal-header
-              __forwardedRef={null}
+              l={null}
             >
               <h3
                 cds-text="title"
@@ -22,14 +22,14 @@ exports[`CdsModal snapshot 1`] = `
                 My Modal
               </h3>
             </cds-modal-header>
-          </cds-modal-header(CustomElement)>
+          </h>
         </CdsModalHeader>
         <CdsModalContent>
-          <cds-modal-content(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-modal-content
-              __forwardedRef={null}
+              l={null}
             >
               <div
                 cds-layout="vertical gap:md p-y:xs"
@@ -41,14 +41,14 @@ exports[`CdsModal snapshot 1`] = `
                 </p>
               </div>
             </cds-modal-content>
-          </cds-modal-content(CustomElement)>
+          </h>
         </CdsModalContent>
         <CdsModalActions>
-          <cds-modal-actions(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-modal-actions
-              __forwardedRef={null}
+              l={null}
             >
               <div
                 cds-layout="horizontal gap:sm align:right"
@@ -56,10 +56,10 @@ exports[`CdsModal snapshot 1`] = `
                 Foo
               </div>
             </cds-modal-actions>
-          </cds-modal-actions(CustomElement)>
+          </h>
         </CdsModalActions>
       </cds-modal>
-    </cds-modal(CustomElement)>
-  </CdsModal>
+    </h>
+  </ForwardRef>
 </div>
 `;

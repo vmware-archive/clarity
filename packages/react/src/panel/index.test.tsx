@@ -9,7 +9,7 @@ describe('CdsInternalPanel', () => {
         <CdsInternalPanel>Hello!</CdsInternalPanel>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsInternalPanel');
+    const renderedComponent = wrapper.find(CdsInternalPanel);
     expect(renderedComponent.at(0).html()).toMatch('Hello!');
   });
 

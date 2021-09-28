@@ -23,7 +23,7 @@ describe('CdsAlert', () => {
         </CdsAlertGroup>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsAlert');
+    const renderedComponent = wrapper.find(CdsAlert);
     expect(renderedComponent.at(0).html()).toMatch(/Foo/);
     expect(renderedComponent.at(1).html()).toMatch(/Bar/);
   });

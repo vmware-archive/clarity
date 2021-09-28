@@ -3,13 +3,13 @@
 exports[`CdsInternalVisualCheckbox snapshot 1`] = `
 <div>
   <CdsInternalVisualCheckbox>
-    <cds-internal-visual-checkbox(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-internal-visual-checkbox
-        __forwardedRef={null}
+        l={null}
       />
-    </cds-internal-visual-checkbox(CustomElement)>
+    </h>
   </CdsInternalVisualCheckbox>
 </div>
 `;

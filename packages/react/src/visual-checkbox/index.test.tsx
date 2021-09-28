@@ -9,7 +9,7 @@ describe('CdsInternalVisualCheckbox', () => {
         <CdsInternalVisualCheckbox />
       </div>
     );
-    const renderedComponent = wrapper.find('CdsInternalVisualCheckbox');
+    const renderedComponent = wrapper.find(CdsInternalVisualCheckbox);
     expect(renderedComponent).toBeTruthy();
   });
 

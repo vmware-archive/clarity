@@ -21,7 +21,7 @@ describe('CdsSelect', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('CdsSelect');
+    const renderedComponent = wrapper.find(CdsSelect);
     expect(renderedComponent.at(0).html()).toMatch(/label/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

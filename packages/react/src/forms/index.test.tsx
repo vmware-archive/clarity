@@ -13,7 +13,7 @@ describe('CdsControl', () => {
         </CdsControl>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsControl');
+    const renderedComponent = wrapper.find(CdsControl);
     expect(renderedComponent.at(0).html()).toMatch(/Foo/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

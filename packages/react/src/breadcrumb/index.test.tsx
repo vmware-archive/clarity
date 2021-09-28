@@ -12,7 +12,7 @@ describe('CdsBreadcrumb', () => {
         </CdsBreadcrumb>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsBreadcrumb');
+    const renderedComponent = wrapper.find(CdsBreadcrumb);
     expect(renderedComponent.at(0).html()).toMatch(/link 1/);
   });
 

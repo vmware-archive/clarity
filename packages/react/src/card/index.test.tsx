@@ -9,7 +9,7 @@ describe('CdsCard', () => {
         <CdsCard>Placeholder</CdsCard>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsCard');
+    const renderedComponent = wrapper.find(CdsCard);
     expect(renderedComponent.at(0).html()).toMatch(/Placeholder/);
   });
 

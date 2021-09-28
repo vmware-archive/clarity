@@ -8,22 +8,22 @@ exports[`CdsTextarea snapshot 1`] = `
   <CdsFormGroup
     layout="vertical"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="vertical"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsTextarea
           layout="vertical"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="vertical"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="vertical"
             >
               <label>
@@ -31,30 +31,30 @@ exports[`CdsTextarea snapshot 1`] = `
               </label>
               <textarea />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
         <CdsTextarea
           layout="vertical"
           status="error"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="vertical"
             status="error"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="vertical"
             >
               <label>
@@ -64,31 +64,31 @@ exports[`CdsTextarea snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
         <CdsTextarea
           layout="vertical"
           status="success"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="vertical"
             status="success"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="vertical"
             >
               <label>
@@ -98,22 +98,22 @@ exports[`CdsTextarea snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
   <h3>
     Horizontal
@@ -121,22 +121,22 @@ exports[`CdsTextarea snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="horizontal"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsTextarea
           layout="horizontal"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -144,30 +144,30 @@ exports[`CdsTextarea snapshot 1`] = `
               </label>
               <textarea />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
         <CdsTextarea
           layout="horizontal"
           status="error"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="error"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -177,31 +177,31 @@ exports[`CdsTextarea snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
         <CdsTextarea
           layout="horizontal"
           status="success"
         >
-          <cds-textarea(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="success"
           >
             <cds-textarea
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -211,22 +211,22 @@ exports[`CdsTextarea snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-textarea>
-          </cds-textarea(CustomElement)>
+          </h>
         </CdsTextarea>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
 </div>
 `;

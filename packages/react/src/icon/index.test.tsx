@@ -16,7 +16,7 @@ describe('CdsIcon', () => {
         <CdsIcon size="lg" shape="user" badge="warning-triangle"></CdsIcon>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsIcon');
+    const renderedComponent = wrapper.find(CdsIcon);
     expect(renderedComponent.at(0).html()).toBeDefined();
     expect(renderedComponent.at(1).html()).toBeDefined();
     expect(renderedComponent.at(2).html()).toBeDefined();

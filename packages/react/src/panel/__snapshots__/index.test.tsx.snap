@@ -3,15 +3,15 @@
 exports[`CdsInternalPanel snapshot 1`] = `
 <div>
   <CdsInternalPanel>
-    <cds-internal-panel(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-internal-panel
-        __forwardedRef={null}
+        l={null}
       >
         Hello!
       </cds-internal-panel>
-    </cds-internal-panel(CustomElement)>
+    </h>
   </CdsInternalPanel>
 </div>
 `;

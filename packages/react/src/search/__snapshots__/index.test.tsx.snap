@@ -8,19 +8,19 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="vertical"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="vertical"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsSearch>
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 label
@@ -29,28 +29,28 @@ exports[`CdsSearch snapshot 1`] = `
                 type="search"
               />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           status="error"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="error"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 error
@@ -61,29 +61,29 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           status="success"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="success"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 success
@@ -94,22 +94,22 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
   <h3>
     Horizontal
@@ -117,22 +117,22 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="horizontal"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsSearch
           layout="horizontal"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -142,30 +142,30 @@ exports[`CdsSearch snapshot 1`] = `
                 type="search"
               />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           layout="horizontal"
           status="error"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="error"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -177,31 +177,31 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           layout="horizontal"
           status="success"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="horizontal"
             status="success"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="horizontal"
             >
               <label>
@@ -213,22 +213,22 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
   <h3>
     Compact
@@ -236,22 +236,22 @@ exports[`CdsSearch snapshot 1`] = `
   <CdsFormGroup
     layout="compact"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="compact"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsSearch
           layout="compact"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="compact"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="compact"
             >
               <label>
@@ -261,30 +261,30 @@ exports[`CdsSearch snapshot 1`] = `
                 type="search"
               />
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           layout="compact"
           status="error"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="compact"
             status="error"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="compact"
             >
               <label>
@@ -296,31 +296,31 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
         <CdsSearch
           layout="compact"
           status="success"
         >
-          <cds-search(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             layout="compact"
             status="success"
           >
             <cds-search
-              __forwardedRef={null}
+              l={null}
               layout="compact"
             >
               <label>
@@ -332,22 +332,22 @@ exports[`CdsSearch snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-search>
-          </cds-search(CustomElement)>
+          </h>
         </CdsSearch>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
 </div>
 `;

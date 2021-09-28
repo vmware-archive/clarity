@@ -25,7 +25,7 @@ describe('CdsTree', () => {
         </CdsTree>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsTreeItem');
+    const renderedComponent = wrapper.find(CdsTreeItem);
     expect(renderedComponent.at(0).html()).toMatch(/1/);
     expect(renderedComponent.at(1).html()).toMatch(/1-1/);
   });

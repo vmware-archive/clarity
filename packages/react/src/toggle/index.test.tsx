@@ -27,7 +27,7 @@ describe('CdsToggle', () => {
         </CdsToggle>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsToggle');
+    const renderedComponent = wrapper.find(CdsToggle);
     expect(renderedComponent.at(0).html()).toMatch(/Toggle 1/);
     expect(renderedComponent.at(1).html()).toMatch(/Toggle 2/);
     expect(renderedComponent.at(2).html()).toMatch(/Toggle/);

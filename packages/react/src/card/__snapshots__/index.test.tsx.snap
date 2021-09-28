@@ -3,15 +3,15 @@
 exports[`CdsCard snapshot 1`] = `
 <div>
   <CdsCard>
-    <cds-card(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-card
-        __forwardedRef={null}
+        l={null}
       >
         Placeholder
       </cds-card>
-    </cds-card(CustomElement)>
+    </h>
   </CdsCard>
 </div>
 `;

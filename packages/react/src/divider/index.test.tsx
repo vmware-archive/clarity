@@ -9,7 +9,7 @@ describe('CdsDivider', () => {
         <CdsDivider></CdsDivider>
       </div>
     );
-    const renderedComponent = wrapper.find('CdsDivider');
+    const renderedComponent = wrapper.find(CdsDivider);
     expect(renderedComponent).toBeDefined();
   });
 

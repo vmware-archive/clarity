@@ -3241,7 +3241,7 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@cds/angular@./dist/angular":
-  version "5.5.1"
+  version "5.5.4"
   dependencies:
     jsdom "^16.5.3"
     tslib "^2.0.0"
@@ -3252,7 +3252,7 @@
   integrity sha512-S9K+Q39BGOghyLHmR0Wdcmu1i1noSUk8HcvMj+3IaohZw02WFd99aPTQDHJeseXrXZP3CNovaSlePI0R11NcFg==
 
 "@cds/core@./dist/core":
-  version "5.5.1"
+  version "0.0.0"
   dependencies:
     lit "2.0.0-rc.2"
     ramda "^0.27.1"
@@ -3970,6 +3970,11 @@
     loader-utils "^2.0.0"
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
+
+"@lit-labs/react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@lit-labs/react/-/react-1.0.0.tgz#bd64fb630198436d6881b8e57aef4e73a6d2c49e"
+  integrity sha512-wxHfI04aFOCULmCtQdRKIopD2ab+ijVkk0+pHkiP8SF3g3m3t7nFjzg5/337ZOPGOA0PVoJ/Tb1mLdnBu38cNA==
 
 "@lit/reactive-element@^1.0.0-rc.2":
   version "1.0.0-rc.2"

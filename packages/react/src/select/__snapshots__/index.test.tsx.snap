@@ -8,19 +8,19 @@ exports[`CdsSelect snapshot 1`] = `
   <CdsFormGroup
     layout="horizontal"
   >
-    <cds-form-group(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="horizontal"
     >
       <cds-form-group
-        __forwardedRef={null}
+        l={null}
       >
         <CdsSelect>
-          <cds-select(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-select
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 label
@@ -37,28 +37,28 @@ exports[`CdsSelect snapshot 1`] = `
                 </option>
               </select>
               <CdsControlMessage>
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     message text
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-select>
-          </cds-select(CustomElement)>
+          </h>
         </CdsSelect>
         <CdsSelect
           status="error"
         >
-          <cds-select(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="error"
           >
             <cds-select
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 error
@@ -77,29 +77,29 @@ exports[`CdsSelect snapshot 1`] = `
               <CdsControlMessage
                 status="error"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="error"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     error message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-select>
-          </cds-select(CustomElement)>
+          </h>
         </CdsSelect>
         <CdsSelect
           status="success"
         >
-          <cds-select(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="success"
           >
             <cds-select
-              __forwardedRef={null}
+              l={null}
             >
               <label>
                 success
@@ -118,32 +118,32 @@ exports[`CdsSelect snapshot 1`] = `
               <CdsControlMessage
                 status="success"
               >
-                <cds-control-message(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                   status="success"
                 >
                   <cds-control-message
-                    __forwardedRef={null}
+                    l={null}
                   >
                     success message
                   </cds-control-message>
-                </cds-control-message(CustomElement)>
+                </h>
               </CdsControlMessage>
             </cds-select>
-          </cds-select(CustomElement)>
+          </h>
         </CdsSelect>
       </cds-form-group>
-    </cds-form-group(CustomElement)>
+    </h>
   </CdsFormGroup>
   <h3>
     Multi-selects
   </h3>
   <CdsSelect>
-    <cds-select(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-select
-        __forwardedRef={null}
+        l={null}
       >
         <label>
           label
@@ -168,18 +168,18 @@ exports[`CdsSelect snapshot 1`] = `
           </option>
         </select>
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-select>
-    </cds-select(CustomElement)>
+    </h>
   </CdsSelect>
 </div>
 `;

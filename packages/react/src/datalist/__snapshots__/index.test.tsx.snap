@@ -3,11 +3,11 @@
 exports[`CdsDatalist snapshot 1`] = `
 <div>
   <CdsDatalist>
-    <cds-datalist(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-datalist
-        __forwardedRef={null}
+        l={null}
       >
         <label>
           datalist
@@ -27,7 +27,7 @@ exports[`CdsDatalist snapshot 1`] = `
           />
         </datalist>
       </cds-datalist>
-    </cds-datalist(CustomElement)>
+    </h>
   </CdsDatalist>
 </div>
 `;

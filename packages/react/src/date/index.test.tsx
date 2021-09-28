@@ -15,7 +15,7 @@ describe('CdsDate', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('CdsDate');
+    const renderedComponent = wrapper.find(CdsDate);
     expect(renderedComponent.at(0).html()).toMatch(/Date input/);
   });
 

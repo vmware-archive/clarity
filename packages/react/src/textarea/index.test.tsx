@@ -17,7 +17,7 @@ describe('CdsTextarea', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('CdsTextarea');
+    const renderedComponent = wrapper.find(CdsTextarea);
     expect(renderedComponent.at(0).html()).toMatch(/label/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

@@ -7,12 +7,12 @@ exports[`CdsControl snapshot 1`] = `
   <CdsControl
     layout="compact"
   >
-    <cds-control(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="compact"
     >
       <cds-control
-        __forwardedRef={null}
+        l={null}
         layout="compact"
       >
         <label>
@@ -22,30 +22,30 @@ exports[`CdsControl snapshot 1`] = `
           placeholder="some custom control"
         />
         <CdsControlMessage>
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               message text
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-control>
-    </cds-control(CustomElement)>
+    </h>
   </CdsControl>
   <CdsControl
     layout="compact"
     status="error"
   >
-    <cds-control(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="compact"
       status="error"
     >
       <cds-control
-        __forwardedRef={null}
+        l={null}
         layout="compact"
       >
         <label>
@@ -57,31 +57,31 @@ exports[`CdsControl snapshot 1`] = `
         <CdsControlMessage
           status="error"
         >
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="error"
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               error message
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-control>
-    </cds-control(CustomElement)>
+    </h>
   </CdsControl>
   <CdsControl
     layout="compact"
     status="success"
   >
-    <cds-control(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="compact"
       status="success"
     >
       <cds-control
-        __forwardedRef={null}
+        l={null}
         layout="compact"
       >
         <label>
@@ -93,19 +93,19 @@ exports[`CdsControl snapshot 1`] = `
         <CdsControlMessage
           status="success"
         >
-          <cds-control-message(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
             status="success"
           >
             <cds-control-message
-              __forwardedRef={null}
+              l={null}
             >
               success message
             </cds-control-message>
-          </cds-control-message(CustomElement)>
+          </h>
         </CdsControlMessage>
       </cds-control>
-    </cds-control(CustomElement)>
+    </h>
   </CdsControl>
 </div>
 `;

@@ -15,7 +15,7 @@ describe('CdsTime', () => {
       </div>
     );
 
-    const renderedComponent = wrapper.find('CdsTime');
+    const renderedComponent = wrapper.find(CdsTime);
     expect(renderedComponent.at(0).html()).toMatch(/Time input/);
     expect(renderedComponent.at(0).html()).toMatch(/message text/);
   });

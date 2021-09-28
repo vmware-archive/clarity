@@ -3,82 +3,82 @@
 exports[`CdsNavigation snapshot 1`] = `
 <div>
   <CdsNavigation>
-    <cds-navigation(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
     >
       <cds-navigation
-        __forwardedRef={null}
+        l={null}
       >
         <CdsNavigationStart>
-          <cds-navigation-start(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-navigation-start
-              __forwardedRef={null}
+              l={null}
             >
               Root start
             </cds-navigation-start>
-          </cds-navigation-start(CustomElement)>
+          </h>
         </CdsNavigationStart>
         <CdsNavigationItem>
-          <cds-navigation-item(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-navigation-item
-              __forwardedRef={null}
+              l={null}
             >
               <a>
                 Root item
               </a>
             </cds-navigation-item>
-          </cds-navigation-item(CustomElement)>
+          </h>
         </CdsNavigationItem>
         <CdsNavigationGroup>
-          <cds-navigation-group(CustomElement)
-            __forwardedRef={null}
+          <h
+            l={null}
           >
             <cds-navigation-group
-              __forwardedRef={null}
+              l={null}
             >
               <CdsNavigationStart>
-                <cds-navigation-start(CustomElement)
-                  __forwardedRef={null}
+                <h
+                  l={null}
                 >
                   <cds-navigation-start
-                    __forwardedRef={null}
+                    l={null}
                   >
                     <CdsNavigationStart>
-                      <cds-navigation-start(CustomElement)
-                        __forwardedRef={null}
+                      <h
+                        l={null}
                       >
                         <cds-navigation-start
-                          __forwardedRef={null}
+                          l={null}
                         >
                           Group start
                         </cds-navigation-start>
-                      </cds-navigation-start(CustomElement)>
+                      </h>
                     </CdsNavigationStart>
                     <CdsNavigationItem>
-                      <cds-navigation-item(CustomElement)
-                        __forwardedRef={null}
+                      <h
+                        l={null}
                       >
                         <cds-navigation-item
-                          __forwardedRef={null}
+                          l={null}
                         >
                           <a>
                             Group item
                           </a>
                         </cds-navigation-item>
-                      </cds-navigation-item(CustomElement)>
+                      </h>
                     </CdsNavigationItem>
                   </cds-navigation-start>
-                </cds-navigation-start(CustomElement)>
+                </h>
               </CdsNavigationStart>
             </cds-navigation-group>
-          </cds-navigation-group(CustomElement)>
+          </h>
         </CdsNavigationGroup>
       </cds-navigation>
-    </cds-navigation(CustomElement)>
+    </h>
   </CdsNavigation>
 </div>
 `;

@@ -5,12 +5,12 @@ exports[`CdsPassword snapshot 1`] = `
   <CdsPassword
     layout="vertical"
   >
-    <cds-password(CustomElement)
-      __forwardedRef={null}
+    <h
+      l={null}
       layout="vertical"
     >
       <cds-password
-        __forwardedRef={null}
+        l={null}
         layout="vertical"
       >
         <label>
@@ -21,7 +21,7 @@ exports[`CdsPassword snapshot 1`] = `
           type="password"
         />
       </cds-password>
-    </cds-password(CustomElement)>
+    </h>
   </CdsPassword>
 </div>
 `;

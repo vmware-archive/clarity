@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -37,12 +37,13 @@
       <h3 id="examples">How to Localize</h3>
 
       <p>
-        First, you need to make a new object that has a key value pair for each string you want to localize. You only
-        need to define the strings that you need for your application.
+        First, you need to make a new object that has a key value pair for each string you want to localize. If you are
+        making full translation use <code class="clr-code">ClrCommonStrings</code>. If you only need to define some of
+        the strings then you can use <code class="clr-code">Partial&lt;ClrCommonStrings&gt;</code>
       </p>
 
       <pre><code clr-code-highlight="language-ts" ngNonBindable>
-export const klingonLocale: ClrCommonStrings = &#123;
+export const klingonLocale: Partial&lt;ClrCommonStrings&gt; = &#123;
   open: 'ghIt',
   close: 'SoQmoH'
 &#125;
@@ -136,7 +137,7 @@ export class MyCommonStringsService implements ClrCommonStrings &#123;
 &#125;
 
 // New object format
-export const klingonLocale: ClrCommonStrings = &#123;
+export const klingonLocale: Partial&lt;ClrCommonStrings&gt; = &#123;
   open: 'ghIt',
   close: 'SoQmoH'
 &#125;

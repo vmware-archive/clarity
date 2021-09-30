@@ -5,7 +5,7 @@ export class MyCommonStringsService implements ClrCommonStrings {
 }
 
 // New object format
-export const klingonLocale: ClrCommonStrings = {
+export const klingonLocale: Partial<ClrCommonStrings> = {
   open: 'ghIt',
   close: 'SoQmoH',
 };

@@ -15,7 +15,7 @@ In order to improve accessibility of its components, Clarity added a default Eng
 
 ## How to Localize
 
-First, you need to make a new object that has a key value pair for each string you want to localize. You only need to define the strings that you need for your application. Then Inject the customized strings into the service.
+First, you need to make a new object that has a key value pair for each string you want to localize. If you are making full translation use `ClrCommonStrings`. If you only need to define some of the strings then you can use `Partial<ClrCommonStrings>`. Then Inject the customized strings into the service.
 
 <doc-code>
 <<< .vuepress/code/demos/i18n/localize-ng.ts

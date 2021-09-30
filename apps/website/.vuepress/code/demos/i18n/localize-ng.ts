@@ -1,4 +1,4 @@
-export const klingonLocale: ClrCommonStrings = {
+export const klingonLocale: Partial<ClrCommonStrings> = {
   open: 'ghIt',
   close: 'SoQmoH',
 };

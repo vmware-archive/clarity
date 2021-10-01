@@ -6,7 +6,7 @@
 
 import { html } from 'lit';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
-import { CdsNavigation, CdsNavigationGroup, CdsNavigationItem, CdsNavigationStart } from './index.js';
+import { CdsNavigation, CdsNavigationItem, CdsNavigationStart } from './index.js';
 import '@cds/core/navigation/register.js';
 import Spy = jasmine.Spy;
 

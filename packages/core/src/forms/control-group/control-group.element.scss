@@ -37,3 +37,7 @@ cds-control-action.status {
     padding-top: $cds-global-space-3;
   }
 }
+
+:host([layout*='vertical']) cds-internal-control-label {
+  --label-width: 100%;
+}

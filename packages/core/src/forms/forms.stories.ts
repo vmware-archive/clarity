@@ -1860,7 +1860,7 @@ export function longText() {
           <cds-control-message>control message</cds-control-message>
         </cds-radio-group>
 
-        <cds-radio-group layout="compact">
+        <cds-radio-group layout="vertical">
           <label
             >Compact Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
             et dolore magna aliqua. Ut enim ad minim veniam</label
@@ -2121,7 +2121,7 @@ export function checkoutForm() {
           </cds-input>
         </div>
       </cds-form-group>
-      <cds-button cds-layout="m-t:lg">continue to checkout</cds-button>
+      <cds-button>continue to checkout</cds-button>
     </div>
   `;
 }
@@ -2132,12 +2132,11 @@ export function responsiveCheckoutForm() {
         width: 100%;
         max-width: 820px;
         min-width: 440px;
-        height: 1400px;
+        height: 1000px;
       }
     </style>
     <iframe
-      src="./iframe.html?id=stories-forms--checkout-form%26viewMode=story"
-      scrolling="no"
+      src="./iframe.html?id=stories-forms--checkout-form&amp;viewMode=story"
       frameborder="0"
       resizable="true"
       id="complex-form-demo"

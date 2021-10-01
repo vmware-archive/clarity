@@ -2,6 +2,37 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.5",
+      "date": "2021-10-01",
+      "description": "This is a patch release.",
+      "fix": [
+        {
+          "issue": 6338,
+          "title": "Correct font weight tokens",
+          "project": "core",
+          "scope": "typography"
+        },
+        {
+          "issue": 6351,
+          "title": "Fix override issues with accordion header and content",
+          "project": "core",
+          "scope": "typography"
+        },
+        {
+          "issue": 6291,
+          "title": "Fix not submitting forms on Enter key",
+          "project": "core",
+          "scope": "button"
+        },
+        {
+          "issue": 6345,
+          "title": "Header content to wrap in smaller screens",
+          "project": "core",
+          "scope": "accordion"
+        }
+      ]
+    },
+    {
       "version": "5.5.4",
       "date": "2021-09-16",
       "description": "This is a patch release.",

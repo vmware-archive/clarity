@@ -208,6 +208,24 @@ export function multiple() {
 }
 
 /** @website */
+export function size() {
+  return html`
+    <cds-select>
+      <label>label</label>
+      <select size="5">
+        <option>Option One</option>
+        <option>Option Two</option>
+        <option>Option Three</option>
+        <option>Option Four</option>
+        <option>Option Five</option>
+        <option>Option Six</option>
+      </select>
+      <cds-control-message>message text</cds-control-message>
+    </cds-select>
+  `;
+}
+
+/** @website */
 export function darkTheme() {
   return html`
     <cds-form-group layout="horizontal" cds-theme="dark">

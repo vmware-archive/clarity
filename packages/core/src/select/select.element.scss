@@ -4,6 +4,7 @@
 
 @import './../styles/tokens/generated/index';
 
+:host([_size]),
 :host([_multiple]) {
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-border-color} !important;
   --border-bottom: 0;
@@ -17,6 +18,7 @@
   cursor: pointer;
 }
 
+::slotted([slot='input'][size]),
 ::slotted([slot='input'][multiple]) {
   width: 100% !important;
   border-radius: #{$cds-alias-object-border-radius-100} !important;

@@ -24,7 +24,8 @@
   width: 100%;
 }
 
-::slotted([slot='input']:not([multiple])) {
+// size/multiple are native select APIs
+::slotted([slot='input']:not([multiple]):not([size])) {
   text-transform: var(--text-transform) !important;
   border: var(--border) !important;
   outline: var(--outline) !important;

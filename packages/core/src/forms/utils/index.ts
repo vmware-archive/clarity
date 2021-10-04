@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { pxToRem } from '@cds/core/internal';
+import { createId, pxToRem } from '@cds/core/internal';
 import { ControlLayout, FormLayout } from './interfaces.js';
 import { CdsInternalControlGroup } from '../control-group/control-group.element.js';
 import { CdsControl } from '../control/control.element.js';
@@ -17,17 +17,24 @@ export const defaultFormLayout = 'horizontal';
 
 export const defaultControlWidth = 'stretch';
 
-export function associateInputAndLabel(input: HTMLInputElement, label: HTMLLabelElement, id: string) {
+export function associateInputAndLabel(input: HTMLInputElement, label: HTMLLabelElement) {
   if (input && label) {
-    input.id = id;
+    assignInputId(input);
     label.setAttribute('for', input.id);
   }
 }
 
 export function associateInputToDatalist(input: HTMLInputElement, datalist: HTMLDataListElement) {
   if (datalist) {
+    assignInputId(input);
     datalist.id = `${input.id}-datalist`;
     input.setAttribute('list', datalist.id);
+  }
+}
+
+export function assignInputId(input: HTMLInputElement) {
+  if (!input.id.length) {
+    input.id = createId();
   }
 }
 

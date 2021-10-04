@@ -19,10 +19,16 @@ describe('form internal utilities', () => {
   it('associateInputAndLabel', async () => {
     const input = (await createTestElement()) as HTMLInputElement;
     const label = (await createTestElement()) as HTMLLabelElement;
-    associateInputAndLabel(input, label, 'test-id');
+    input.id = 'test-id';
+    associateInputAndLabel(input, label);
 
     expect(input.id).toBe('test-id');
     expect(label.getAttribute('for')).toBe('test-id');
+
+    input.id = '';
+    associateInputAndLabel(input, label);
+    expect(input.id.includes('_')).toBe(true);
+    expect(label.getAttribute('for')).toBe(input.id);
     removeTestElement(input);
     removeTestElement(label);
   });
@@ -36,6 +42,11 @@ describe('form internal utilities', () => {
 
     expect(datalist.id).toBe('test-id-datalist');
     expect(input.getAttribute('list')).toBe('test-id-datalist');
+
+    input.id = '';
+    associateInputToDatalist(input, datalist);
+    expect(input.id.includes('_')).toBe(true);
+    expect(datalist.id).toBe(`${input.id}-datalist`);
     removeTestElement(input);
     removeTestElement(datalist);
   });

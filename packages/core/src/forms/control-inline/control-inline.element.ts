@@ -65,7 +65,7 @@ export class CdsInternalControlInline extends CdsControl {
             .disabled="${this.disabled}"
             cds-layout="align:vertical-center"
           >
-            <slot name="label"></slot>
+            <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
           </cds-internal-control-label>
         </div>
         ${this.messages?.length

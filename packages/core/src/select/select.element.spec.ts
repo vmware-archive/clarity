@@ -46,4 +46,13 @@ describe('cds-select', () => {
     await componentIsStable(component);
     expect(component.hasAttribute('_multiple')).toBe(true);
   });
+
+  it('should sync host size attr', async () => {
+    await componentIsStable(component);
+    expect(component.hasAttribute('_size')).toBe(false);
+
+    component.inputControl.setAttribute('size', '');
+    await componentIsStable(component);
+    expect(component.hasAttribute('_size')).toBe(true);
+  });
 });

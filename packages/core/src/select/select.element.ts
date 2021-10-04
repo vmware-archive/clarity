@@ -8,8 +8,6 @@ import { html } from 'lit';
 import { globalStyle, state, listenForAttributeChange } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import globalStyles from './select.global.scss';
 import styles from './select.element.scss';
 
@@ -57,14 +55,14 @@ export class CdsSelect extends CdsControl {
 
   @state({ type: Boolean, reflect: true }) protected multiple = false;
 
-  constructor() {
-    super();
-    ClarityIcons.addIcons(angleIcon);
-  }
+  @state({ type: Boolean, reflect: true }) protected size = false;
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
     this.multiple = this.inputControl.hasAttribute('multiple');
     this.observers.push(listenForAttributeChange(this.inputControl, 'multiple', val => (this.multiple = val !== null)));
+
+    this.size = this.inputControl.hasAttribute('size');
+    this.observers.push(listenForAttributeChange(this.inputControl, 'size', val => (this.size = val !== null)));
   }
 }

@@ -16,6 +16,7 @@ describe('cds-control', () => {
   let element: HTMLElement;
   let control: CdsControl;
   let controlInGroup: CdsControl;
+  let controlCustomId: CdsControl;
   let message: CdsControlMessage;
   let label: HTMLLabelElement;
   let input: HTMLInputElement;
@@ -41,10 +42,16 @@ describe('cds-control', () => {
           <input type="text" />
         </cds-control>
       </div>
+
+      <cds-control id="custom-id-control">
+        <label>control in group</label>
+        <input type="text" id="custom-id" />
+      </cds-control>
     `);
 
     control = element.querySelector<CdsControl>('cds-control');
     controlInGroup = element.querySelector<CdsControl>('#control-in-group');
+    controlCustomId = element.querySelector<CdsControl>('#custom-id-control');
     label = element.querySelector<HTMLLabelElement>('label');
     input = element.querySelector<HTMLInputElement>('input');
     datalist = element.querySelector<HTMLDataListElement>('datalist');
@@ -65,8 +72,14 @@ describe('cds-control', () => {
 
   it('should associate the input and datalist if available', async () => {
     await componentIsStable(control);
+    expect(input.id.length > 0).toBe(true);
     expect(datalist.id).toBe(input.id + '-datalist');
     expect(input.getAttribute('list')).toBe(datalist.id);
+  });
+
+  it('should use provided id when available', async () => {
+    await componentIsStable(control);
+    expect(controlCustomId.inputControl.id).toBe('custom-id');
   });
 
   it('should show appropriate status icon', async () => {

@@ -11,7 +11,6 @@ import {
   property,
   querySlot,
   querySlotAll,
-  id,
   childrenUpdateComplete,
   getElementLanguageDirection,
   event,
@@ -146,13 +145,11 @@ export class CdsControl extends LitElement {
   /** @private */
   @query('cds-internal-control-label[action=primary]') controlLabel: CdsInternalControlLabel;
 
-  @querySlot('datalist') protected datalistControl: HTMLDataListElement;
+  @querySlot('datalist', { assign: 'datalist' }) protected datalistControl: HTMLDataListElement;
 
   @querySlotAll('cds-control-message') protected messages: NodeListOf<CdsControlMessage>;
 
   @querySlotAll('cds-control-action') protected controlActions: NodeListOf<CdsControlAction>;
-
-  @id() protected inputControlId: string;
 
   @query('.prefix') private prefixAction: HTMLElement;
 
@@ -179,7 +176,9 @@ export class CdsControl extends LitElement {
   render() {
     return html`
       ${this.labelLayout === ControlLabelLayout.hiddenLabel || this.labelLayout === ControlLabelLayout.inputGroup
-        ? html`<span cds-layout="display:screen-reader-only"><slot name="label"></slot></span>`
+        ? html`<span cds-layout="display:screen-reader-only"
+            ><slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot
+          ></span>`
         : ''}
       <div
         cds-layout="${this.layout === 'vertical' ? 'vertical gap:sm' : 'horizontal gap:lg'} align:stretch"
@@ -208,6 +207,7 @@ export class CdsControl extends LitElement {
             ${this.hasStatusIcon ? getStatusIcon(this.status) : ''}
           </div>
           ${this.messagesTemplate}
+          <slot name="datalist" @slotchange=${() => this.associateInputToDatalist()}></slot>
         </div>
       </div>
     `;
@@ -241,7 +241,7 @@ export class CdsControl extends LitElement {
             cds-layout="align:shrink align:top"
             action="primary"
           >
-            <slot name="label"></slot>
+            <slot name="label" @slotchange=${() => this.associateInputAndLabel()}></slot>
           </cds-internal-control-label>`
         : ''}
     `;
@@ -284,8 +284,6 @@ export class CdsControl extends LitElement {
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);
-    associateInputAndLabel(this.inputControl, this.label, this.inputControlId);
-    associateInputToDatalist(this.inputControl, this.datalistControl);
     this.setupHostAttributes();
     this.setupHTML5Validation();
     this.setActionOffsetPadding();
@@ -305,6 +303,14 @@ export class CdsControl extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.observers.forEach(o => o.disconnect());
+  }
+
+  protected associateInputAndLabel() {
+    associateInputAndLabel(this.inputControl, this.label);
+  }
+
+  private associateInputToDatalist() {
+    associateInputToDatalist(this.inputControl, this.datalistControl);
   }
 
   private setupDescribedByUpdates() {

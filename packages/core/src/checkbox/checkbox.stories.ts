@@ -120,17 +120,17 @@ export function verticalGroup() {
 
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -211,17 +211,17 @@ export function verticalInlineGroup() {
 
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -300,17 +300,17 @@ export function horizontalGroup() {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -387,17 +387,17 @@ export function horizontalInlineGroup() {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -474,17 +474,17 @@ export function compactGroup() {
         <label>disabled</label>
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -563,17 +563,17 @@ export function darkTheme() {
 
         <cds-checkbox>
           <label>checkbox 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-checkbox>
           <label>checkbox 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-checkbox>
 
         <cds-control-message>disabled message</cds-control-message>

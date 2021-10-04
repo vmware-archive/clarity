@@ -83,17 +83,17 @@ export function verticalGroup() {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -172,17 +172,17 @@ export function verticalInlineGroup() {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -259,17 +259,17 @@ export function horizontalGroup() {
         <label>Horizontal Disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -346,17 +346,17 @@ export function horizontalInlineGroup() {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -433,17 +433,17 @@ export function compactGroup() {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -520,17 +520,17 @@ export function darkTheme() {
         <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
-          <input type="radio" checked />
+          <input type="radio" checked disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 2</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-radio>
           <label>radio 3</label>
-          <input type="radio" />
+          <input type="radio" disabled />
         </cds-radio>
 
         <cds-control-message>disabled message</cds-control-message>

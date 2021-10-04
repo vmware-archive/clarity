@@ -109,17 +109,17 @@ export function verticalGroup() {
 
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>message text</cds-control-message>
@@ -200,17 +200,17 @@ export function verticalInlineGroup() {
 
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -289,17 +289,17 @@ export function horizontalGroup() {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -376,17 +376,17 @@ export function horizontalInlineGroup() {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -463,17 +463,17 @@ export function compactGroup() {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>
@@ -593,17 +593,17 @@ export function darkTheme() {
         <label>disabled</label>
         <cds-toggle>
           <label>toggle 1</label>
-          <input type="checkbox" checked />
+          <input type="checkbox" checked disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 2</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-toggle>
           <label>toggle 3</label>
-          <input type="checkbox" />
+          <input type="checkbox" disabled />
         </cds-toggle>
 
         <cds-control-message>disabled message</cds-control-message>

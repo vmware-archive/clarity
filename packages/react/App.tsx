@@ -37,11 +37,11 @@ import {
   CdsNavigationStart,
 } from './dist/react/navigation/index.js';
 import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
-import { CdsInternalVisualCheckbox } from './dist/react/visual-checkbox/index.js';
-import { CdsInternalCloseButton } from './dist/react/close-button/index.js';
+import { CdsInternalVisualCheckbox } from './dist/react/internal-components/visual-checkbox/index.js';
+import { CdsInternalCloseButton } from './dist/react/internal-components/close-button/index.js';
 import { CdsDropdown } from './dist/react/dropdown/index.js';
 import { CdsInternalPointer } from './dist/react/popup/index.js';
-import { CdsInternalPanel } from './dist/react/panel/index.js';
+import { CdsInternalPanel } from './dist/react/internal-components/panel/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
 

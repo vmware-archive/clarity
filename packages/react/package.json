@@ -3,7 +3,7 @@
   "version": "6.0.0-next.1",
   "scripts": {
     "start": "npm-run-all core:build build -p build:ts:watch dev:start",
-    "dev:start": "parcel index.html --cache-dir=./.parcel-cache",
+    "dev:start": "parcel index.html",
     "build": "npm-run-all -s build:ts build:package build:update",
     "build:preinstall": "mkdir -p ../../dist/react/ && cp ./package.json ../../dist/react/",
     "build:update": "node ../../scripts/update-local-packages.js /packages/react/dist/react/package.json",

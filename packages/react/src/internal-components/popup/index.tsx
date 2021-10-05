@@ -2,7 +2,7 @@ import { CdsInternalPopup as Popup, CdsInternalPointer as Pointer } from '@cds/c
 import '@cds/core/internal-components/popup/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils';
+import { logReactVersion } from '../../utils';
 
 export const CdsInternalPopup = createComponent(
   React,

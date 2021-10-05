@@ -1,7 +1,7 @@
 import { CdsInternalCloseButton as CloseButton } from '@cds/core/internal-components/close-button';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils/index';
+import { logReactVersion } from '../../utils/index';
 
 export const CdsInternalCloseButton = createComponent(
   React,

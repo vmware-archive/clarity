@@ -128,7 +128,7 @@ export class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, On
    * Array of all selected items
    */
   @Input('clrDgSelected')
-  set selected(value: T[]) {
+  set selected(value: T[] | undefined) {
     if (value) {
       this.selection.selectionType = SelectionType.Multi;
     } else {

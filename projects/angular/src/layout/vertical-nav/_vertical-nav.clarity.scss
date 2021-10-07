@@ -202,7 +202,6 @@
         //Dims
         width: $clr-vertical-nav-icon-size;
         align-self: center;
-        margin-left: $clr-vertical-nav-trigger-icon-align-margin;
         margin-right: $clr-vertical-nav-trigger-icon-align-margin;
 
         //Others
@@ -453,12 +452,16 @@
         //Dims
         padding-left: 0;
 
-        .nav-group-trigger-icon {
+        clr-icon.nav-group-trigger-icon {
           //Dims
           height: $clr-vertical-nav-item-height;
           width: $clr-vertical-nav-collapsed-caret-size;
           margin-left: $clr_baselineRem_0_125;
           margin-right: 0;
+        }
+
+        cds-icon.nav-group-trigger-icon {
+          width: $clr-vertical-nav-collapsed-caret-size;
         }
       }
 

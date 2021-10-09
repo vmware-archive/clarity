@@ -30,9 +30,9 @@ be different depending on your build tooling
 ```scss
 // Sass file syntax
 @import '~modern-normalize.css/modern-normalize.css'; // css reset
-@import '~@cds/core/global.min'; // clarity global styles
-@import '~@cds/core/styles/module.shims.min'; // non-evergreen browser shims
-@import '~@cds/city/css/bundles/default.min'; // load base font
+@import '~@cds/core/global.min.css'; // clarity global styles
+@import '~@cds/core/styles/module.shims.min.css'; // non-evergreen browser shims
+@import '~@cds/city/css/bundles/default.min.css'; // load base font
 ```
 
 ```html

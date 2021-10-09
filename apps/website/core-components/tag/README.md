@@ -106,7 +106,7 @@ Differentiate tags from [buttons](/core-components/button).
 
 ::: component-section-level-two-title
 
-### Clicking Labels
+### Clicking Tags
 
 :::
 
@@ -129,7 +129,7 @@ Differentiate tags from [buttons](/core-components/button).
 
 ::: component-section-level-two-title
 
-### Dismissing Labels
+### Dismissing Tags
 
 :::
 

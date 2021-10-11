@@ -10,7 +10,13 @@ import '@cds/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { infoStandardIcon } from '@cds/core/icon/shapes/info-standard.js';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
+import {
+  componentIsStable,
+  createTestElement,
+  getComponentSlotContent,
+  onceEvent,
+  removeTestElement,
+} from '@cds/core/test';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { I18nService } from '@cds/core/internal';
 
@@ -294,23 +300,14 @@ describe('Alert element – ', () => {
       expect(getCloseButton().getAttribute('aria-label')).toBe(expectedLabel);
     });
 
-    it('should emit a closeChanged event when close button is clicked', async done => {
-      let value: any;
-      await componentIsStable(component);
-
+    it('should emit a closeChanged event when close button is clicked', async () => {
       component.type = 'default';
       component.closable = true;
       await componentIsStable(component);
 
-      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe(true);
-        done();
-      });
-
-      const button = getCloseButton();
-      expect(button).toBeDefined();
-      button.click();
+      const event = onceEvent(component, 'closeChange');
+      getCloseButton().click();
+      expect((await event).detail).toBe(true);
     });
 
     it('sets 16 as the default icon size', async () => {

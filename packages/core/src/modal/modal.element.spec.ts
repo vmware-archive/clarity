@@ -9,7 +9,13 @@ import '@cds/core/modal/register.js';
 import { I18nService, HTMLAttributeTuple } from '@cds/core/internal';
 import { CdsInternalCloseButton } from '@cds/core/internal-components/close-button';
 import { CdsModal } from '@cds/core/modal';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
+import {
+  componentIsStable,
+  createTestElement,
+  getComponentSlotContent,
+  onceEvent,
+  removeTestElement,
+} from '@cds/core/test';
 
 describe('modal element', () => {
   let testElement: HTMLElement;
@@ -18,6 +24,7 @@ describe('modal element', () => {
   const placeholderContent = 'But not much to say...';
   const placeholderActionText = 'Ok';
   const placeholderAction = `<cds-button>${placeholderActionText}</cds-button>`;
+  const getCloseButton = () => component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
@@ -64,23 +71,20 @@ describe('modal element', () => {
     await componentIsStable(component);
     expect(component.closable).toBe(true);
     expect(component.hasAttribute('closable')).toBe(true);
-    let button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-    expect(button).not.toBeNull();
+    expect(getCloseButton()).not.toBeNull();
 
     component.closable = false;
     await componentIsStable(component);
     expect(component.hasAttribute('closable')).toBe(false);
-    button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-    expect(button).toBeNull();
+    expect(getCloseButton()).toBeNull();
   });
 
   describe(' - close button: ', () => {
     it('should set close button aria label using Common Strings Service', async () => {
       await componentIsStable(component);
-      const button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-      expect(button).not.toBeNull();
-      expect(button.hasAttribute('aria-label')).toBe(true);
-      expect(button.getAttribute('aria-label')).toEqual(I18nService.keys.modal.closeButtonAriaLabel);
+      expect(getCloseButton()).not.toBeNull();
+      expect(getCloseButton().hasAttribute('aria-label')).toBe(true);
+      expect(getCloseButton().getAttribute('aria-label')).toEqual(I18nService.keys.modal.closeButtonAriaLabel);
     });
 
     it('should set close button attributes as expected', async () => {
@@ -95,42 +99,31 @@ describe('modal element', () => {
       expect(component.shadowRoot.querySelector('cds-internal-close-button')).toBeNull(
         'close button is not in the shadow dom'
       );
-      const closeBtn = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-      expect(closeBtn).not.toBeNull('close button is in the light dom');
+      expect(getCloseButton()).not.toBeNull('close button is in the light dom');
       expectedAttrs.forEach(attr => {
         const [name, val] = attr;
-        expect(closeBtn.getAttribute(name)).toBe(val as string, `close button has ${name} attr set to ${val}`);
+        expect(getCloseButton().getAttribute(name)).toBe(val as string, `close button has ${name} attr set to ${val}`);
       });
     });
 
     it('should toggle close button as expected', async () => {
       await componentIsStable(component);
       expect(component.closable).toBe(true, 'should be closable by default');
-      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).not.toBeNull(
-        'close button should be present by default'
-      );
+      expect(getCloseButton()).not.toBeNull('close button should be present by default');
       component.size = 'lg';
       await componentIsStable(component);
       expect(component.closable).toBe(true, 'should still be closable');
-      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).not.toBeNull(
-        'close button should not be removed if closable not updated'
-      );
+      expect(getCloseButton()).not.toBeNull('close button should not be removed if closable not updated');
       component.closable = false;
       await componentIsStable(component);
-      expect(component.querySelector<CdsInternalCloseButton>('cds-internal-close-button')).toBeNull(
-        'close button should be removed'
-      );
+      expect(getCloseButton()).toBeNull('close button should be removed');
     });
 
-    it('should set close button click event as expected', async done => {
+    it('should set close button click event as expected', async () => {
       await componentIsStable(component);
-      let value = '';
-      component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe('close-button-click');
-        done();
-      });
-      component.querySelector<CdsInternalCloseButton>('cds-internal-close-button').click();
+      const event = onceEvent(component, 'closeChange');
+      getCloseButton().click();
+      expect((await event).detail).toBe('close-button-click');
     });
   });
 
@@ -141,33 +134,19 @@ describe('modal element', () => {
     expect(messages[1].innerText).toBe('End of Modal Content');
   });
 
-  it('should emit a closeChange event on escape', async done => {
-    let value: any;
+  it('should emit a closeChange event on escape', async () => {
     await componentIsStable(component);
-
-    component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-      value = e.detail;
-      expect(value).toBe('escape-keypress');
-      done();
-    });
-
+    const event = onceEvent(component, 'closeChange');
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-
     await componentIsStable(component);
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc' }));
+    expect((await event).detail).toBe('escape-keypress');
   });
 
-  it('should emit a closeChange event when close button is clicked', async done => {
-    let value: any;
+  it('should emit a closeChange event when close button is clicked', async () => {
     await componentIsStable(component);
-    component.addEventListener<any>('closeChange', (e: CustomEvent) => {
-      value = e.detail;
-      expect(value).toBe('close-button-click');
-      done();
-    });
-
-    const button = component.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-    expect(button).toBeDefined();
-    button.click();
+    const event = onceEvent(component, 'closeChange');
+    getCloseButton().click();
+    expect((await event).detail).toBe('close-button-click');
   });
 });

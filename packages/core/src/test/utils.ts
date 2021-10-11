@@ -95,3 +95,10 @@ export function emulatedClick(component: HTMLElement) {
   component.dispatchEvent(event2);
   component.dispatchEvent(event3);
 }
+
+/** helpful for capturing a single event in a async test rather than Jasmine `done()` */
+export function onceEvent(element: HTMLElement, event: string) {
+  return new Promise<any>(resolve => {
+    element.addEventListener(event, e => resolve(e));
+  });
+}

@@ -45,7 +45,7 @@ import styles from './tree.element.scss';
  */
 export class CdsTree extends LitElement {
   @state({ type: String, reflect: true, attribute: 'role' })
-  protected role = 'tree';
+  role = 'tree';
 
   @property({ type: Boolean, attribute: 'multi-select' })
   multiSelect = false;
@@ -54,7 +54,7 @@ export class CdsTree extends LitElement {
   ariaActiveDescendant: string;
 
   @state({ type: String, reflect: true, attribute: 'aria-multiselectable' })
-  protected ariaMultiSelectable: AriaBooleanAttributeValues = 'false';
+  ariaMultiSelectable: AriaBooleanAttributeValues = 'false';
 
   @querySlot('cds-tree-item') private firstChildItem: CdsTreeItem;
 

@@ -6,7 +6,13 @@
 import { html } from 'lit';
 import '@cds/core/accordion/register.js';
 import { CdsAccordionHeader, CdsAccordionPanel } from '@cds/core/accordion';
-import { componentIsStable, createTestElement, getComponentSlotContent, removeTestElement } from '@cds/core/test';
+import {
+  componentIsStable,
+  createTestElement,
+  getComponentSlotContent,
+  onceEvent,
+  removeTestElement,
+} from '@cds/core/test';
 
 describe('accordion-panel element', () => {
   let testElement: HTMLElement;
@@ -39,18 +45,12 @@ describe('accordion-panel element', () => {
     expect(slots['accordion-content'].includes(placeholderContent)).toBe(true);
   });
 
-  it('should emit an expandedChange event when header is clicked', async done => {
-    let value: any;
+  it('should emit an expandedChange event when header is clicked', async () => {
     await componentIsStable(component);
-    component.addEventListener<any>('expandedChange', (e: CustomEvent) => {
-      value = e.detail;
-      expect(value).toBe(true);
-      done();
-    });
-
+    const event = onceEvent(component, 'expandedChange');
     const button = component.shadowRoot.querySelector<HTMLButtonElement>('.accordion-header-button');
-    expect(button).toBeDefined();
     button.click();
+    expect((await event).detail).toBe(true);
   });
 
   it('should associate the aria-labelledby and aria-controls values correctly', async () => {

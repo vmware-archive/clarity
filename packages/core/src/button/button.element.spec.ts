@@ -14,10 +14,12 @@ import {
   getComponentSlotContent,
   removeTestElement,
   emulatedClick,
+  onceEvent,
 } from '@cds/core/test';
 
 describe('button element', () => {
   let testElement: HTMLElement;
+  let form: HTMLFormElement;
   let component: CdsButton;
   const placeholderText = 'Button Placeholder';
 
@@ -31,6 +33,8 @@ describe('button element', () => {
     `);
 
     component = testElement.querySelector<CdsButton>('cds-button');
+    form = testElement.querySelector('form');
+    form.addEventListener('submit', e => e.preventDefault());
   });
 
   afterEach(() => {
@@ -65,28 +69,19 @@ describe('button element', () => {
       expect(component.getAttribute('aria-disabled')).toBe('true');
     });
 
-    it('should work with form elements when clicked; defaults to type="submit"', async done => {
+    it('should work with form elements when clicked; defaults to type="submit"', async () => {
       await componentIsStable(component);
-      testElement.querySelector('form').addEventListener('submit', e => {
-        e.preventDefault();
-        expect(true).toBe(true);
-        done();
-      });
-
+      const event = onceEvent(form, 'submit');
       emulatedClick(component);
+      expect((await event) instanceof SubmitEvent).toBe(true);
     });
 
-    it('should work with form elements when clicked via keyboard; defaults to type="submit"', async done => {
+    it('should work with form elements when clicked via keyboard; defaults to type="submit"', async () => {
       await componentIsStable(component);
-      testElement.querySelector('form').addEventListener('submit', e => {
-        e.preventDefault();
-        expect(true).toBe(true);
-        done();
-      });
-
-      const event = new KeyboardEvent('keyup', { key: 'Enter' });
+      const event = onceEvent(form, 'submit');
       component.focus();
-      component.dispatchEvent(event);
+      component.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
+      expect((await event) instanceof SubmitEvent).toBe(true);
     });
 
     it('should not interact with form elements if type is button', async () => {
@@ -98,7 +93,7 @@ describe('button element', () => {
         },
       };
       spyOn(o, 'f');
-      testElement.querySelector('form').addEventListener('submit', o.f);
+      form.addEventListener('submit', o.f);
       component.click();
       const event = new KeyboardEvent('keyup', { key: 'Enter' });
       component.focus();
@@ -106,7 +101,7 @@ describe('button element', () => {
       expect(o.f).not.toHaveBeenCalled();
     });
 
-    it('should handle dynamic changes in button type', async done => {
+    it('should handle dynamic changes in button type', async () => {
       const o = {
         f: () => {
           // Do nothing
@@ -114,33 +109,23 @@ describe('button element', () => {
       };
       spyOn(o, 'f');
 
-      // submit case needs this setup to prevent actual form submission and change of locaiton
-      // which lead to errors in the tests
-      const p = (e: Event) => {
-        e.preventDefault();
-        expect(true).toBe(true);
-        done();
-      };
-
       // change from default (implicit "submit") to type="button"
       component.type = 'button';
       await componentIsStable(component);
-      testElement.querySelector('form').addEventListener('submit', o.f);
+      form.addEventListener('submit', o.f);
       emulatedClick(component);
       expect(o.f).not.toHaveBeenCalled();
 
       // change from type="button" to type="submit"
       component.type = 'submit';
       await componentIsStable(component);
-      testElement.querySelector('form').removeEventListener('submit', o.f);
-      testElement.querySelector('form').addEventListener('submit', p);
+      form.removeEventListener('submit', o.f);
       emulatedClick(component);
 
       // change from type="submit" to type="button"
       component.type = 'button';
       await componentIsStable(component);
-      testElement.querySelector('form').removeEventListener('submit', p);
-      testElement.querySelector('form').addEventListener('submit', o.f);
+      form.addEventListener('submit', o.f);
       emulatedClick(component);
       expect(o.f).not.toHaveBeenCalled();
     });
@@ -154,7 +139,7 @@ describe('button element', () => {
         },
       };
       spyOn(o, 'f');
-      testElement.querySelector('form').addEventListener('submit', o.f);
+      form.addEventListener('submit', o.f);
       expect(o.f).not.toHaveBeenCalled();
     });
 
@@ -167,7 +152,7 @@ describe('button element', () => {
         },
       };
       spyOn(o, 'f');
-      testElement.querySelector('form').addEventListener('submit', o.f);
+      form.addEventListener('submit', o.f);
       expect(o.f).not.toHaveBeenCalled();
     });
 

@@ -8,7 +8,7 @@ import { html } from 'lit';
 import '@cds/core/tree-view/register.js';
 import { CdsTreeItem } from '@cds/core/tree-view';
 import { CdsProgressCircle } from '@cds/core/progress-circle';
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { componentIsStable, createTestElement, onceEvent, removeTestElement } from '@cds/core/test';
 
 describe('tree item element', () => {
   let testElement: HTMLElement;
@@ -75,35 +75,26 @@ describe('tree item element', () => {
     expect(component.getAttribute('aria-selected')).toBe('false');
   });
 
-  it('should emit an expandedChange event when expand/collapse icon is clicked', async done => {
-    let value: any;
+  it('should emit an expandedChange event when expand/collapse icon is clicked', async () => {
     await componentIsStable(component);
 
     component.expandable = true;
     await componentIsStable(component);
 
-    component.addEventListener<any>('expandedChange', (e: CustomEvent) => {
-      value = e.detail;
-      expect(value).toBe(true);
-      done();
-    });
-
+    const event = onceEvent(component, 'expandedChange');
     const itemCaret = component.shadowRoot.querySelector<HTMLElement>('[part="expand-collapse-icon"]');
     expect(itemCaret).toBeDefined();
     itemCaret.click();
+
+    expect((await event).detail).toBe(true);
   });
 
-  it('should emit a selectedChange event when an item is clicked', async done => {
-    let value: any;
+  it('should emit a selectedChange event when an item is clicked', async () => {
     await componentIsStable(component);
-    component.addEventListener<any>('selectedChange', (e: CustomEvent) => {
-      value = e.detail;
-      expect(value).toBe(true);
-      done();
-    });
-
+    const event = onceEvent(component, 'selectedChange');
     const item = component.shadowRoot.querySelector<HTMLElement>('.item-content');
     expect(item).toBeDefined();
     item.click();
+    expect((await event).detail).toBe(true);
   });
 });

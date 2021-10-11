@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,6 +6,10 @@
 
 :host {
   width: initial;
+  position: relative;
+  --width: #{$cds-global-space-7};
+  --height: #{$cds-global-space-7};
+  --cds-alias-object-interaction-touch-target: #{$cds-global-space-8};
 }
 
 ::slotted(label) {
@@ -18,4 +22,22 @@ cds-internal-control-label {
 
 cds-control-action.status {
   padding-top: 0 !important;
+}
+
+.input {
+  outline: 0 !important;
+}
+
+[focusable] {
+  content: '';
+  position: absolute;
+  top: calc(calc(calc(#{$cds-alias-object-interaction-touch-target} - var(--height)) * -1) / 2);
+  left: calc(calc(calc(#{$cds-alias-object-interaction-touch-target} - var(--width)) * -1) / 2);
+  width: #{$cds-alias-object-interaction-touch-target};
+  height: #{$cds-alias-object-interaction-touch-target};
+  cursor: pointer;
+}
+
+:host([_disabled]) [focusable] {
+  cursor: not-allowed;
 }

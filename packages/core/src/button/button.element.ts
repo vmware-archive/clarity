@@ -6,7 +6,6 @@
 
 import { baseStyles, CdsBaseButton, getElementWidth, property } from '@cds/core/internal';
 import { html } from 'lit';
-import baseButtonStyles from './base-button.element.scss';
 import styles from './button.element.scss';
 
 export const enum ClrLoadingState {
@@ -120,7 +119,7 @@ export class CdsButton extends CdsBaseButton {
     </div>`;
   }
 
-  static styles = [baseStyles, baseButtonStyles, styles];
+  static styles = [baseStyles, styles];
 
   private async disableButton() {
     await this.updateComplete;

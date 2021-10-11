@@ -63,6 +63,12 @@ describe('cds-internal-control-inline', () => {
     expect(clicked).toBe(true);
   });
 
+  it('should mark ui div input/focus elements as presentational only roles', async () => {
+    await componentIsStable(control);
+    expect(control.shadowRoot.querySelector<HTMLElement>('.input').getAttribute('role')).toEqual('presentation');
+    expect(control.shadowRoot.querySelector<HTMLElement>('[focusable]').getAttribute('role')).toEqual('presentation');
+  });
+
   it('to prevent empty gap space it should not render messages slot wrapper when no messages are provided', async () => {
     await componentIsStable(control);
     expect(control.shadowRoot.querySelector('slot[message]')).toEqual(null);

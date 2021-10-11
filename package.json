@@ -55,7 +55,9 @@
     "publish:v5-lts": "yarn publish dist/clr-angular --tag v5-lts; yarn publish dist/clr-ui --tag v5-lts; yarn publish dist/clr-icons --tag v5-lts;",
     "publish:rc": "yarn publish dist/clr-angular --tag rc; yarn publish dist/clr-ui --tag rc; yarn publish dist/clr-icons --tag rc;",
     "publish:next": "yarn publish dist/clr-angular --tag next; yarn publish dist/clr-ui --tag next; yarn publish dist/clr-icons --tag next;",
-    "publish:local": "yarn publish dist/clr-icons --registry http://localhost:4873 --tag local; yarn publish dist/clr-ui --registry http://localhost:4873 --tag local; yarn publish dist/clr-angular --registry http://localhost:4873 --tag local;"
+    "publish:local": "yarn publish dist/clr-icons --registry http://localhost:4873 --tag local; yarn publish dist/clr-ui --registry http://localhost:4873 --tag local; yarn publish dist/clr-angular --registry http://localhost:4873 --tag local;",
+    "release:setversion": "node ./scripts/set-version.js",
+    "release:verify": "node ./scripts/publish-verify.js"
   },
   "private": true,
   "dependencies": {

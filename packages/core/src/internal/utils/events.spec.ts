@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { removeTestElement, createTestElement } from '@cds/core/test';
+import { removeTestElement, createTestElement, onceEvent } from '@cds/core/test';
 import { getElementUpdates } from './events.js';
 
 describe('getElementUpdates', () => {
@@ -29,31 +29,16 @@ describe('getElementUpdates', () => {
     expect(checked).toEqual(true);
   });
 
-  it('get notified of initial attr value', async done => {
+  it('get notified of initial attr value', async () => {
     input.setAttribute('indeterminate', '');
-
-    getElementUpdates(input, 'indeterminate', value => {
-      expect(value).toEqual('');
-      done();
-    });
+    const event = new Promise(resolve => getElementUpdates(input, 'indeterminate', v => resolve(v)));
+    expect(await event).toBe('');
   });
 
-  it('get notified of attr changes', async done => {
-    const values: any = [];
-    getElementUpdates(input, 'checked', value => {
-      values.push(value === '');
-
-      if (values.length === 2) {
-        // initial property value set
-        expect(values[0]).toEqual(false);
-
-        // attribute update set
-        expect(values[1]).toEqual(true);
-        done();
-      }
-    });
-
+  it('get notified of attr changes', async () => {
+    const event = new Promise(resolve => getElementUpdates(input, 'checked', v => resolve(v)));
     input.setAttribute('checked', '');
+    expect(await event).toBe(false);
   });
 
   it('should reset any React value trackers if input', () => {

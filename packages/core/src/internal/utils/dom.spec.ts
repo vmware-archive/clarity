@@ -367,17 +367,15 @@ describe('Functional Helper: ', () => {
   });
 
   describe('listenForAttributeChange', () => {
-    it('executes callback when observed attribute changes', async done => {
+    it('executes callback when observed attribute changes', async () => {
       const element = await createTestElement();
       expect(element.getAttribute('name')).toBe(null);
-
-      listenForAttributeChange(element, 'name', id => {
-        expect(id).toBe('hello world');
-        done();
-      });
+      const event = new Promise(resolve => listenForAttributeChange(element, 'name', id => resolve(id)));
 
       element.setAttribute('name', 'hello world');
       removeTestElement(element);
+
+      expect(await event).toBe('hello world');
     });
   });
 

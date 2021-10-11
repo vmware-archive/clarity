@@ -7,7 +7,7 @@
 import { html } from 'lit';
 import '@cds/core/tree-view/register.js';
 import { CdsTree } from '@cds/core/tree-view';
-import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { componentIsStable, createTestElement, onceEvent, removeTestElement } from '@cds/core/test';
 
 describe('tree element', () => {
   let testElement: HTMLElement;
@@ -152,20 +152,16 @@ describe('keyboard navigation', () => {
   });
 
   describe('arrow-left key - ', () => {
-    it('should emit expandedChange event if expanded', async done => {
-      let value: any;
+    it('should emit expandedChange event if expanded', async () => {
       await componentIsStable(component);
       const treeItemChildren = testElement.querySelectorAll('cds-tree-item');
       component.focus();
 
       await componentIsStable(component);
-      treeItemChildren[0].addEventListener<any>('expandedChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe(false);
-        done();
-      });
+      const event = onceEvent(treeItemChildren[0], 'expandedChange');
 
       component.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+      expect((await event).detail).toBe(false);
     });
 
     it('should move focus to parent if not expanded', async () => {
@@ -209,8 +205,7 @@ describe('keyboard navigation', () => {
   });
 
   describe('arrow-right key - ', () => {
-    it('should emit expandedChange event if not expanded', async done => {
-      let value: any;
+    it('should emit expandedChange event if not expanded', async () => {
       await componentIsStable(component);
       const treeItemChildren = testElement.querySelectorAll('cds-tree-item');
       component.focus();
@@ -219,13 +214,9 @@ describe('keyboard navigation', () => {
       treeItemChildren[1].focus();
       component.ariaActiveDescendant = treeItemChildren[1].id;
 
-      treeItemChildren[1].addEventListener<any>('expandedChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe(true);
-        done();
-      });
-
+      const event = onceEvent(treeItemChildren[1], 'expandedChange');
       component.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft', key: 'ArrowRight' }));
+      expect((await event).detail).toBe(true);
     });
 
     it('should move focus to first child node if expanded', async () => {
@@ -316,23 +307,18 @@ describe('keyboard navigation', () => {
   });
 
   describe('enter key - ', () => {
-    it('should emit expandedChange event if expandable', async done => {
-      let value: any;
+    it('should emit expandedChange event if expandable', async () => {
       await componentIsStable(component);
       const treeItemChildren = testElement.querySelectorAll('cds-tree-item');
       component.focus();
 
       await componentIsStable(component);
-      treeItemChildren[0].addEventListener<any>('expandedChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe(false);
-        done();
-      });
-
+      const event = onceEvent(treeItemChildren[0], 'expandedChange');
       component.dispatchEvent(new KeyboardEvent('keydown', { code: 'Enter', key: 'Enter' }));
+      expect((await event).detail).toBe(false);
     });
 
-    it('should click on a link inside tree node', async done => {
+    it('should click on a link inside tree node', async () => {
       testElement = await createTestElement(html`
         <cds-tree>
           <cds-tree-item>
@@ -348,41 +334,30 @@ describe('keyboard navigation', () => {
       `);
       component = testElement.querySelector<CdsTree>('cds-tree');
       await componentIsStable(component);
-      const link = testElement.querySelector('#link1');
+      const link = testElement.querySelector<HTMLElement>('#link1');
       component.focus();
-
-      let clicked = false;
       await componentIsStable(component);
 
-      expect(link).toBeDefined();
-      link.addEventListener<any>('click', () => {
-        clicked = true;
-        expect(clicked).toBe(true);
-        done();
-      });
-
+      const event = onceEvent(link, 'click');
       component.dispatchEvent(new KeyboardEvent('keydown', { code: 'Enter', key: 'Enter' }));
+      expect(await event).toBeTruthy();
     });
   });
 
   describe('space key - ', () => {
-    it('should emit selectedChange event if selectable', async done => {
-      let value: any;
+    it('should emit selectedChange event if selectable', async () => {
       await componentIsStable(component);
       const treeItemChildren = testElement.querySelectorAll('cds-tree-item');
       component.focus();
 
       await componentIsStable(component);
-      treeItemChildren[0].addEventListener<any>('selectedChange', (e: CustomEvent) => {
-        value = e.detail;
-        expect(value).toBe(true);
-        done();
-      });
 
+      const event = onceEvent(treeItemChildren[0], 'selectedChange');
       component.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', key: ' ' }));
+      expect((await event).detail).toBe(true);
     });
 
-    it('should click on a link inside tree node', async done => {
+    it('should click on a link inside tree node', async () => {
       testElement = await createTestElement(html`
         <cds-tree>
           <cds-tree-item>
@@ -398,20 +373,12 @@ describe('keyboard navigation', () => {
       `);
       component = testElement.querySelector<CdsTree>('cds-tree');
       await componentIsStable(component);
-      const link = testElement.querySelector('#link1');
+      const link = testElement.querySelector<HTMLElement>('#link1');
       component.focus();
-
-      let clicked = false;
       await componentIsStable(component);
-
-      expect(link).toBeDefined();
-      link.addEventListener<any>('click', () => {
-        clicked = true;
-        expect(clicked).toBe(true);
-        done();
-      });
-
+      const event = onceEvent(link, 'click');
       component.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', key: ' ' }));
+      expect((await event).detail).toBe(0);
     });
   });
 });

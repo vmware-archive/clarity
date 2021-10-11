@@ -67,6 +67,10 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   width: 100%;
 }
 
+::slotted(input[readonly]) {
+  cursor: default;
+}
+
 cds-control-action.status {
   height: $cds-global-space-7;
   padding-top: $cds-global-space-3;

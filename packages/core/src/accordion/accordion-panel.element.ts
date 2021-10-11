@@ -96,6 +96,7 @@ export class CdsAccordionPanel extends LitElement implements Animatable {
         ?disabled="${this.disabled}"
         aria-disabled="${this.disabled}"
         aria-expanded="${this.expanded}"
+        focusable
       >
         <slot name="accordion-header"></slot>
       </button>

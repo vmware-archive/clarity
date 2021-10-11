@@ -6,17 +6,249 @@
 @import './../styles/mixins/mixins';
 
 :host {
+  --box-shadow-color: #{$cds-alias-object-opacity-100};
+  --border-radius: #{$cds-alias-object-border-radius-100};
+  --border-width: #{$cds-alias-object-border-width-100};
+  --border-color: var(--background);
+  --background: #{$cds-alias-status-info};
+  --color: #{$cds-global-typography-color-100};
+  --font-size: #{$cds-global-space-6};
+  --padding: calc(#{$cds-global-space-6} - var(--border-width));
+  --height: #{$cds-global-space-11};
+  --min-width: #{$cds-global-space-13};
+  --text-decoration: none;
   --font-weight: #{$cds-global-typography-font-weight-semibold};
   --font-family: #{$cds-global-typography-font-family};
   --text-transform: uppercase;
   --letter-spacing: 0.12em;
+  display: inline-block;
+  height: var(--height); // height is set so button is not distorted when in flex container
 }
 
 .private-host {
+  @include vertical-center-content;
+
+  -webkit-appearance: none !important;
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: var(--border-width);
+  color: var(--color);
+  cursor: pointer;
+  font-size: var(--font-size);
+  height: 100%;
+  line-height: 1em;
+  min-width: var(--min-width);
+  overflow: visible;
+  padding: var(--padding);
+  position: relative;
+  text-align: center;
+  text-decoration: var(--text-decoration);
+  text-overflow: ellipsis;
+  transform: translateZ(0px); // used for ::after hover
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
   font-family: var(--font-family);
   font-weight: var(--font-weight);
   letter-spacing: var(--letter-spacing);
   text-transform: var(--text-transform);
+
+  & > span {
+    @include center-content('block');
+    height: 100%;
+  }
+}
+
+cds-progress-circle {
+  --ring-color: #{$cds-global-color-construction-400};
+}
+
+:host(:active) .private-host,
+:host(:active) .private-host::after {
+  box-shadow: 0 #{$cds-global-space-2} 0 0 var(--box-shadow-color) inset;
+}
+
+.private-host::after {
+  --offset: calc(-1 * #{$cds-global-space-1});
+  background: var(--background);
+  border-radius: var(--border-radius);
+  position: absolute;
+  content: '';
+  top: var(--offset);
+  left: var(--offset);
+  bottom: var(--offset);
+  right: var(--offset);
+  inset: var(--offset); // once safari catches up positions can be deleted for inset
+  z-index: -1;
+}
+
+:host(:hover),
+:host(:focus),
+:host(:active) {
+  .private-host::after {
+    filter: brightness(90%);
+  }
+}
+
+:host([action='outline']) {
+  .private-host::after {
+    filter: brightness(100%);
+    opacity: 0;
+  }
+}
+
+:host([action='outline']:hover),
+:host([action='outline']:focus),
+:host([action='outline']:active),
+:host([status='inverse']:hover),
+:host([status='inverse']:focus),
+:host([status='inverse']:active) {
+  .private-host::after {
+    opacity: 0.1;
+  }
+}
+
+::slotted {
+  line-height: 1em !important;
+  color: inherit !important;
+}
+
+::slotted(cds-icon) {
+  --color: inherit;
+  @include equilateral(calc(var(--font-size) + (2 * #{$cds-global-space-2})));
+}
+
+:host([status='success']) {
+  --background: #{$cds-alias-status-success};
+}
+
+:host([status='warning']) {
+  --background: #{$cds-alias-status-warning};
+  --color: #{$cds-global-color-construction-900};
+}
+
+:host([status='danger']) {
+  --background: #{$cds-alias-status-danger};
+}
+
+:host([status='neutral']) {
+  --background: #{$cds-alias-status-neutral};
+}
+
+:host([action='outline']) {
+  --color: #{$cds-alias-status-info};
+  --border-color: var(--color);
+}
+
+:host([status='success'][action='outline']) {
+  --color: #{$cds-alias-status-success};
+}
+
+:host([status='warning'][action='outline']) {
+  --color: #{$cds-alias-status-warning-dark};
+}
+
+:host([status='danger'][action='outline']) {
+  --color: #{$cds-alias-status-danger};
+}
+
+:host([status='neutral'][action='outline']) {
+  --color: #{$cds-alias-status-neutral};
+}
+
+:host([status='inverse']) {
+  --color: #{$cds-global-typography-color-100};
+  --background: #{$cds-alias-object-opacity-0};
+}
+
+:host([status='inverse']),
+:host([disabled][status='inverse']),
+:host([disabled][status='inverse'][action='outline']) {
+  --border-color: var(--color);
+}
+
+:host([action*='flat']) {
+  --background: #{$cds-alias-object-opacity-0};
+  --border-color: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-info};
+  --box-shadow-color: #{$cds-alias-object-opacity-0};
+}
+
+:host([action='flat-inline']) {
+  --height: auto;
+  --padding: 0;
+  --min-width: auto;
+  line-height: 0;
+}
+
+:host([status='success'][action*='flat']) {
+  --color: #{$cds-alias-status-success};
+}
+
+:host([status='warning'][action*='flat']) {
+  --color: #{$cds-alias-status-warning-dark};
+}
+
+:host([status='danger'][action*='flat']) {
+  --color: #{$cds-alias-status-danger};
+}
+
+:host([status='neutral'][action*='flat']) {
+  --color: #{$cds-alias-status-neutral};
+}
+
+:host([status='inverse'][action*='flat']) {
+  --color: #{$cds-global-typography-color-100};
+}
+
+:host([size='sm']) {
+  --padding: #{$cds-global-space-4} #{$cds-global-space-6};
+  --height: calc(#{$cds-global-space-9} + #{$cds-global-space-1});
+}
+
+:host([size='sm']) .private-host {
+  .spinner:not(.spinner-check) {
+    @include min-equilateral(#{$cds-global-space-6});
+  }
+}
+
+:host([disabled]:active) {
+  pointer-events: none !important;
+}
+
+:host([disabled]),
+:host([disabled][action='outline']) {
+  --background: #{$cds-alias-status-disabled-tint};
+  --border-color: #{$cds-alias-status-disabled-tint};
+  --box-shadow-color: #{$cds-alias-object-opacity-0};
+
+  .private-host {
+    cursor: not-allowed;
+    outline: 0;
+
+    &::after {
+      filter: brightness(100%) !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+:host([disabled][action='outline']),
+:host([disabled][status='inverse']) {
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-disabled};
+}
+
+:host([disabled][action*='flat']) {
+  --border-color: #{$cds-alias-object-opacity-0};
+  --background: #{$cds-alias-object-opacity-0};
+  --color: #{$cds-alias-status-disabled};
+}
+
+:host([block]) {
+  width: 100%;
 }
 
 :host([size='sm']) .private-host {

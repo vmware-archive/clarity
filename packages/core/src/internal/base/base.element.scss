@@ -68,15 +68,22 @@ slot {
 }
 
 // normalize focus styles
+// https://coryrylan.com/blog/dont-override-css-outline-focus-styles
 :host([tabindex='0']:focus),
-:host([_focused]) .input {
-  outline: Highlight solid $cds-global-space-2;
-  outline-offset: $cds-global-space-1;
+:host([tabindex='0']:focus) [focusable],
+:host([_focused]) [focusable],
+:host([_focused]) .input,
+[tabindex='0'][focusable]:focus {
+  outline: #{$cds-alias-object-interaction-outline};
+  outline-offset: #{$cds-alias-object-interaction-outline-offset};
 }
 
 @media (-webkit-min-device-pixel-ratio: 0) {
   :host([tabindex='0']:focus),
-  :host([_focused]) .input {
+  :host([tabindex='0']:focus) [focusable],
+  :host([_focused]) [focusable],
+  :host([_focused]) .input,
+  [tabindex='0'][focusable]:focus {
     outline-color: -webkit-focus-ring-color;
   }
 }

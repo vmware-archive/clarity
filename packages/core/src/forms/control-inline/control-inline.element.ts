@@ -59,7 +59,8 @@ export class CdsInternalControlInline extends CdsControl {
             ? 'order:reverse'
             : ''}"
         >
-          <div class="input" @click=${this.selectInput}></div>
+          <div role="presentation" class="input" @click=${this.selectInput}></div>
+          <div role="presentation" focusable @click=${this.selectInput}></div>
           <cds-internal-control-label
             action="secondary"
             .disabled="${this.disabled}"

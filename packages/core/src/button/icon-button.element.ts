@@ -4,8 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, property } from '@cds/core/internal';
-import baseButtonStyles from './base-button.element.scss';
+import { property } from '@cds/core/internal';
 import styles from './icon-button.element.scss';
 import { CdsButton } from './button.element.js';
 
@@ -43,5 +42,7 @@ export class CdsIconButton extends CdsButton {
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
 
-  static styles = [baseStyles, baseButtonStyles, styles];
+  static get styles() {
+    return [super.styles, styles];
+  }
 }

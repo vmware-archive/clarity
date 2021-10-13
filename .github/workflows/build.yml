@@ -18,11 +18,25 @@ jobs:
           node-version: '14'
           check-latest: true
       - uses: microsoft/playwright-github-action@v1
-      - run: yarn install
-      - run: yarn build
-      - run: yarn website:functions
-      - run: npm run website:deploy # Use NPM as a workaround for npx executing
-
+      - name: Install Dependencies
+        run: yarn install
+      - name: Clarity Build
+        run: yarn build
+      - name: Website Functions
+        run: yarn website:functions
+      - name: Get Config
+        run: curl -g https://us-central1-clarity-design-system.cloudfunctions.net/actions -o .env
+      - name: Init Config
+        run: source .env; echo $NETLIFY_AUTH_TOKEN; echo ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Deploy Website Preview
+        continue-on-error: true
+        uses: South-Paw/action-netlify-deploy@v1.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: $NETLIFY_AUTH_TOKEN
+          netlify-site-id: 03fce0dd-9568-4ab2-a3ea-211d856989db
+          build-dir: './dist/website'
+          draft: true
+          comment-on-commit: true
     env:
       CI: true
-      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db

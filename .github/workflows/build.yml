@@ -19,9 +19,22 @@ jobs:
           check-latest: true
       - uses: microsoft/playwright-github-action@v1
       - run: yarn install
-      - run: yarn build
+      - name: Clarity Build
+        run: yarn build
       - run: yarn website:functions
-      - run: npm run website:deploy # Use NPM as a workaround for npx executing
+      - name: Website Deploy (Netlify)
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist/website'
+          production-branch: next
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Website Deploy from Gitub Actions'
+          netlify-config-path: ./netlify.toml
+          functions-dir: ./dist/netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
 
     env:
       CI: true

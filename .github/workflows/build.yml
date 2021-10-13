@@ -18,10 +18,29 @@ jobs:
           node-version: '14'
           check-latest: true
       - uses: microsoft/playwright-github-action@v1
-      - run: yarn install
-      - run: yarn build
-      - run: yarn website:functions
-      - run: npm run website:deploy # Use NPM as a workaround for npx executing
+      - name: Install Dependencies
+        run: yarn install
+      - name: Clarity Build
+        run: yarn build
+      - name: Website Functions
+        run: yarn website:functions
+      - name: Deploy Website Preview
+        continue-on-error: true
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist/website'
+          production-branch: next
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Website Preview'
+          netlify-config-path: ./netlify.toml
+          functions-dir: ./dist/netlify
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
 
     env:
       CI: true

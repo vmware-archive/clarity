@@ -15,7 +15,9 @@ jobs:
       - uses: microsoft/playwright-github-action@v1
       - run: npm install
       - run: npm run build:ci
-      - run: npm run deploy:website
+      - name: Website Deploy
+        continue-on-error: true
+        run: npm run deploy:website
 
     env:
       CI: true

@@ -11,6 +11,7 @@ import styles from './base/base.element.scss';
 export const baseStyles = styles;
 export * from './base/button.base.js';
 export * from './base/focus-trap.base.js';
+export * from './utils/color.js';
 export * from './utils/css.js';
 export * from './utils/dom.js';
 export * from './utils/register.js';

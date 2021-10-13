@@ -30,6 +30,7 @@
       "**/ramda/**",
       "website/**"
     ]
+
   },
   "scripts": {
     "commit": "git-cz",

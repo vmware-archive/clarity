@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    branches:
+      - '*'
     tags-ignore:
       - '**'
   pull_request:
@@ -21,7 +23,9 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn website:functions
-      - run: npm run website:deploy # Use NPM as a workaround for npx executing
+      - name: Website Deploy
+        continue-on-error: true
+        run: npm run website:deploy # Use NPM as a workaround for npx executing
 
     env:
       CI: true

@@ -2,6 +2,43 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.5.8",
+      "date": "2021-10-18",
+      "description": "This is a patch release.",
+      "fix": [
+        {
+          "issue": 6396,
+          "title": "Cleanup focus css prop",
+          "project": "core",
+          "scope": "styles"
+        },
+        {
+          "issue": 6377,
+          "title": "Support select size attr",
+          "project": "core",
+          "scope": "select"
+        },
+        {
+          "issue": 6376,
+          "title": "Missing disabled attr demo",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6376,
+          "title": "Label async association",
+          "project": "core",
+          "scope": "control"
+        },
+        {
+          "issue": 6372,
+          "title": "Vertical label expand",
+          "project": "core",
+          "scope": "control"
+        }
+      ]
+    },
+    {
       "version": "5.5.7",
       "date": "2021-10-01",
       "description": "This is a release fixing build problems for 5.5.6. Please see 5.5.5 for fix details.",

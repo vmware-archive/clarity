@@ -2,7 +2,7 @@ import { CdsButton as Button, CdsIconButton as IconButton, CdsInlineButton as In
 import '@cds/core/button/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils';
+import { logReactVersion } from '../utils/index';
 
 export const CdsButton = createComponent(React, 'cds-button', Button);
 export const CdsIconButton = createComponent(React, 'cds-icon-button', IconButton);

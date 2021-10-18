@@ -8,7 +8,7 @@ import {
 import '@cds/core/forms/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils';
+import { logReactVersion } from '../utils/index';
 
 export const CdsControlMessage = createComponent(React, 'cds-control-message', ControlMessage);
 export const CdsControlAction = createComponent(React, 'cds-control-action', ControlAction);

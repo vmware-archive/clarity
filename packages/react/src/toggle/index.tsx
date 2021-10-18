@@ -2,7 +2,7 @@ import { CdsToggleGroup as ToggleGroup, CdsToggle as Toggle } from '@cds/core/to
 import '@cds/core/toggle/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils';
+import { logReactVersion } from '../utils/index';
 
 export const CdsToggleGroup = createComponent(React, 'cds-toggle-group', ToggleGroup);
 export const CdsToggle = createComponent(React, 'cds-toggle', Toggle);

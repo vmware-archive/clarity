@@ -15,7 +15,6 @@ import { SignpostIdService } from './providers/signpost-id.service';
   selector: '[clrSignpostTrigger]',
   host: {
     class: 'signpost-trigger',
-    '[attr.aria-label]': 'commonStrings.keys.signpostToggle',
     '[attr.aria-expanded]': 'ariaExpanded',
     '[attr.aria-controls]': 'ariaControl',
     '[class.active]': 'isOpen',
@@ -68,6 +67,13 @@ export class ClrSignpostTrigger implements OnDestroy {
       }),
       this.signpostIdService.id.subscribe(idChange => (this.ariaControl = idChange))
     );
+    this.addDefaultAriaLabel(this.el.nativeElement);
+  }
+
+  private addDefaultAriaLabel(el: HTMLElement) {
+    if (!el.hasAttribute('aria-label')) {
+      el.setAttribute('aria-label', this.commonStrings.keys.signpostToggle);
+    }
   }
 
   private focusOnClose() {

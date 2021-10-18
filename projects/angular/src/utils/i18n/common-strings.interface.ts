@@ -133,6 +133,10 @@ export interface ClrCommonStrings {
    */
   datagridFilterAriaLabel?: string;
   /**
+   * Datagrid filter dialog
+   */
+  datagridFilterDialogAriaLabel?: string;
+  /**
    * Datagrid column handler string
    */
   columnSeparatorAriaLabel?: string;

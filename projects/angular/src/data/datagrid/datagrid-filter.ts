@@ -63,6 +63,8 @@ import { isPlatformBrowser } from '@angular/common';
       [id]="popoverId"
       clrFocusTrap
       *clrPopoverContent="open; at: smartPosition; outsideClickToClose: true; scrollToClose: true"
+      role="dialog"
+      [attr.aria-label]="commonStrings.keys.datagridFilterDialogAriaLabel"
     >
       <div class="datagrid-filter-close-wrapper">
         <button type="button" class="close" clrPopoverCloseButton>

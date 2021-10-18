@@ -167,6 +167,17 @@ export default function (): void {
         expect(toggle.getAttribute('aria-label')).toBe(commonStrings.keys.datagridFilterAriaLabel);
       });
 
+      it('has role and label on the filter dialog', function () {
+        const commonStrings: ClrCommonStringsService =
+          context.fixture.debugElement.injector.get(ClrCommonStringsService);
+        const openBtn: HTMLButtonElement = context.clarityElement.querySelector('.clr-smart-open-close');
+        openBtn.click();
+        context.detectChanges();
+        const popoverContent = document.querySelector('.clr-popover-content');
+        expect(popoverContent.getAttribute('role')).toBe('dialog');
+        expect(popoverContent.getAttribute('aria-label')).toBe(commonStrings.keys.datagridFilterDialogAriaLabel);
+      });
+
       it('projects content into the dropdown', function () {
         const openBtn: HTMLButtonElement = context.clarityElement.querySelector('.clr-smart-open-close');
         const prePopoverContent = document.querySelector('.clr-popover-content');

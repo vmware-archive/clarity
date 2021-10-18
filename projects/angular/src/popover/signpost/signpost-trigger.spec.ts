@@ -66,6 +66,13 @@ export default function (): void {
       expect(trigger.getAttribute('aria-label')).toEqual('Signpost Toggle');
     });
 
+    it('preserves explicitly set label', () => {
+      const testLabel = 'Test label';
+      fixture.debugElement.componentInstance.label = testLabel;
+      fixture.detectChanges();
+      expect(trigger.getAttribute('aria-label')).toEqual(testLabel);
+    });
+
     it('reflects the correct aria-expanded state', () => {
       expect(trigger.getAttribute('aria-expanded')).toBeFalsy();
       trigger.click();
@@ -85,10 +92,13 @@ export default function (): void {
       type="button"
       class="signpost-action btn btn-small btn-link"
       [ngClass]="{ active: open }"
+      [attr.aria-label]="label"
       clrSignpostTrigger
     >
       <cds-icon shape="info-circle"></cds-icon>
     </button>
   `,
 })
-class TestTrigger {}
+class TestTrigger {
+  label = null;
+}

@@ -5,7 +5,7 @@ exports[`CdsFile snapshot 1`] = `
   <CdsFile
     layout="vertical"
   >
-    <h
+    <CdsFile
       l={null}
       layout="vertical"
     >
@@ -21,7 +21,7 @@ exports[`CdsFile snapshot 1`] = `
           type="file"
         />
       </cds-file>
-    </h>
+    </CdsFile>
   </CdsFile>
 </div>
 `;

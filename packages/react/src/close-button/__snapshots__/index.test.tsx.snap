@@ -3,13 +3,13 @@
 exports[`CdsInternalCloseButton snapshot 1`] = `
 <div>
   <CdsInternalCloseButton>
-    <h
+    <CdsInternalCloseButton
       l={null}
     >
       <cds-internal-close-button
         l={null}
       />
-    </h>
+    </CdsInternalCloseButton>
   </CdsInternalCloseButton>
 </div>
 `;

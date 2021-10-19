@@ -3,13 +3,13 @@
 exports[`CdsDivider snapshot 1`] = `
 <div>
   <CdsDivider>
-    <h
+    <CdsDivider
       l={null}
     >
       <cds-divider
         l={null}
       />
-    </h>
+    </CdsDivider>
   </CdsDivider>
   <div
     style={
@@ -22,7 +22,7 @@ exports[`CdsDivider snapshot 1`] = `
     <CdsDivider
       orientation="vertical"
     >
-      <h
+      <CdsDivider
         l={null}
         orientation="vertical"
       >
@@ -31,7 +31,7 @@ exports[`CdsDivider snapshot 1`] = `
         >
           1
         </cds-divider>
-      </h>
+      </CdsDivider>
     </CdsDivider>
   </div>
 </div>

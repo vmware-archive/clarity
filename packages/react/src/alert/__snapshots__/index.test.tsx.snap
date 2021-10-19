@@ -5,7 +5,7 @@ exports[`CdsAlert snapshot 1`] = `
   <CdsAlert
     status="success"
   >
-    <h
+    <CdsAlert
       l={null}
       status="success"
     >
@@ -14,12 +14,12 @@ exports[`CdsAlert snapshot 1`] = `
       >
         Foo
       </cds-alert>
-    </h>
+    </CdsAlert>
   </CdsAlert>
   <CdsAlertGroup
     status="info"
   >
-    <h
+    <CdsAlertGroup
       l={null}
       status="info"
     >
@@ -29,7 +29,7 @@ exports[`CdsAlert snapshot 1`] = `
         <CdsAlert
           closable={true}
         >
-          <h
+          <CdsAlert
             closable={true}
             l={null}
           >
@@ -38,7 +38,7 @@ exports[`CdsAlert snapshot 1`] = `
             >
               Bar
               <CdsAlertActions>
-                <h
+                <CdsAlertActions
                   l={null}
                 >
                   <cds-alert-actions
@@ -46,18 +46,18 @@ exports[`CdsAlert snapshot 1`] = `
                   >
                     Baz
                   </cds-alert-actions>
-                </h>
+                </CdsAlertActions>
               </CdsAlertActions>
             </cds-alert>
-          </h>
+          </CdsAlert>
         </CdsAlert>
       </cds-alert-group>
-    </h>
+    </CdsAlertGroup>
   </CdsAlertGroup>
   <CdsAlertGroup
     type="banner"
   >
-    <h
+    <CdsAlertGroup
       l={null}
       type="banner"
     >
@@ -67,7 +67,7 @@ exports[`CdsAlert snapshot 1`] = `
         <CdsAlert
           status="info"
         >
-          <h
+          <CdsAlert
             l={null}
             status="info"
           >
@@ -76,7 +76,7 @@ exports[`CdsAlert snapshot 1`] = `
             >
               Foobar
               <CdsAlertActions>
-                <h
+                <CdsAlertActions
                   l={null}
                 >
                   <cds-alert-actions
@@ -84,13 +84,13 @@ exports[`CdsAlert snapshot 1`] = `
                   >
                     Test
                   </cds-alert-actions>
-                </h>
+                </CdsAlertActions>
               </CdsAlertActions>
             </cds-alert>
-          </h>
+          </CdsAlert>
         </CdsAlert>
       </cds-alert-group>
-    </h>
+    </CdsAlertGroup>
   </CdsAlertGroup>
 </div>
 `;

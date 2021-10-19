@@ -3,14 +3,14 @@
 exports[`CdsNavigation snapshot 1`] = `
 <div>
   <CdsNavigation>
-    <h
+    <CdsNavigation
       l={null}
     >
       <cds-navigation
         l={null}
       >
         <CdsNavigationStart>
-          <h
+          <CdsNavigationStart
             l={null}
           >
             <cds-navigation-start
@@ -18,10 +18,10 @@ exports[`CdsNavigation snapshot 1`] = `
             >
               Root start
             </cds-navigation-start>
-          </h>
+          </CdsNavigationStart>
         </CdsNavigationStart>
         <CdsNavigationItem>
-          <h
+          <CdsNavigationItem
             l={null}
           >
             <cds-navigation-item
@@ -31,24 +31,24 @@ exports[`CdsNavigation snapshot 1`] = `
                 Root item
               </a>
             </cds-navigation-item>
-          </h>
+          </CdsNavigationItem>
         </CdsNavigationItem>
         <CdsNavigationGroup>
-          <h
+          <CdsNavigationGroup
             l={null}
           >
             <cds-navigation-group
               l={null}
             >
               <CdsNavigationStart>
-                <h
+                <CdsNavigationStart
                   l={null}
                 >
                   <cds-navigation-start
                     l={null}
                   >
                     <CdsNavigationStart>
-                      <h
+                      <CdsNavigationStart
                         l={null}
                       >
                         <cds-navigation-start
@@ -56,10 +56,10 @@ exports[`CdsNavigation snapshot 1`] = `
                         >
                           Group start
                         </cds-navigation-start>
-                      </h>
+                      </CdsNavigationStart>
                     </CdsNavigationStart>
                     <CdsNavigationItem>
-                      <h
+                      <CdsNavigationItem
                         l={null}
                       >
                         <cds-navigation-item
@@ -69,16 +69,16 @@ exports[`CdsNavigation snapshot 1`] = `
                             Group item
                           </a>
                         </cds-navigation-item>
-                      </h>
+                      </CdsNavigationItem>
                     </CdsNavigationItem>
                   </cds-navigation-start>
-                </h>
+                </CdsNavigationStart>
               </CdsNavigationStart>
             </cds-navigation-group>
-          </h>
+          </CdsNavigationGroup>
         </CdsNavigationGroup>
       </cds-navigation>
-    </h>
+    </CdsNavigation>
   </CdsNavigation>
 </div>
 `;

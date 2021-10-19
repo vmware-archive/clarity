@@ -5,7 +5,7 @@ exports[`CdsButton snapshot 1`] = `
   <CdsButton
     status="primary"
   >
-    <h
+    <CdsButton
       l={null}
       status="primary"
     >
@@ -14,12 +14,12 @@ exports[`CdsButton snapshot 1`] = `
       >
         primary
       </cds-button>
-    </h>
+    </CdsButton>
   </CdsButton>
   <CdsButton
     status="success"
   >
-    <h
+    <CdsButton
       l={null}
       status="success"
     >
@@ -28,12 +28,12 @@ exports[`CdsButton snapshot 1`] = `
       >
         success
       </cds-button>
-    </h>
+    </CdsButton>
   </CdsButton>
   <CdsButton
     status="danger"
   >
-    <h
+    <CdsButton
       l={null}
       status="danger"
     >
@@ -42,13 +42,13 @@ exports[`CdsButton snapshot 1`] = `
       >
         danger
       </cds-button>
-    </h>
+    </CdsButton>
   </CdsButton>
   <CdsButton
     disabled={true}
     status="danger"
   >
-    <h
+    <CdsButton
       disabled={true}
       l={null}
       status="danger"
@@ -58,7 +58,7 @@ exports[`CdsButton snapshot 1`] = `
       >
         disabled
       </cds-button>
-    </h>
+    </CdsButton>
   </CdsButton>
 </div>
 `;

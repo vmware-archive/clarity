@@ -2,15 +2,15 @@
 
 exports[`CdsModal snapshot 1`] = `
 <div>
-  <ForwardRef>
-    <h
+  <CdsModal>
+    <CdsModal
       l={null}
     >
       <cds-modal
         l={null}
       >
         <CdsModalHeader>
-          <h
+          <CdsModalHeader
             l={null}
           >
             <cds-modal-header
@@ -22,10 +22,10 @@ exports[`CdsModal snapshot 1`] = `
                 My Modal
               </h3>
             </cds-modal-header>
-          </h>
+          </CdsModalHeader>
         </CdsModalHeader>
         <CdsModalContent>
-          <h
+          <CdsModalContent
             l={null}
           >
             <cds-modal-content
@@ -41,10 +41,10 @@ exports[`CdsModal snapshot 1`] = `
                 </p>
               </div>
             </cds-modal-content>
-          </h>
+          </CdsModalContent>
         </CdsModalContent>
         <CdsModalActions>
-          <h
+          <CdsModalActions
             l={null}
           >
             <cds-modal-actions
@@ -56,10 +56,10 @@ exports[`CdsModal snapshot 1`] = `
                 Foo
               </div>
             </cds-modal-actions>
-          </h>
+          </CdsModalActions>
         </CdsModalActions>
       </cds-modal>
-    </h>
-  </ForwardRef>
+    </CdsModal>
+  </CdsModal>
 </div>
 `;

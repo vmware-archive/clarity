@@ -6,7 +6,7 @@ exports[`CdsIcon snapshot 1`] = `
     shape="user"
     size="lg"
   >
-    <h
+    <CdsIcon
       l={null}
       shape="user"
       size="lg"
@@ -16,14 +16,14 @@ exports[`CdsIcon snapshot 1`] = `
         shape="user"
         size="lg"
       />
-    </h>
+    </CdsIcon>
   </CdsIcon>
   <CdsIcon
     badge="info"
     shape="user"
     size="lg"
   >
-    <h
+    <CdsIcon
       badge="info"
       l={null}
       shape="user"
@@ -34,14 +34,14 @@ exports[`CdsIcon snapshot 1`] = `
         shape="user"
         size="lg"
       />
-    </h>
+    </CdsIcon>
   </CdsIcon>
   <CdsIcon
     badge="success"
     shape="user"
     size="lg"
   >
-    <h
+    <CdsIcon
       badge="success"
       l={null}
       shape="user"
@@ -52,14 +52,14 @@ exports[`CdsIcon snapshot 1`] = `
         shape="user"
         size="lg"
       />
-    </h>
+    </CdsIcon>
   </CdsIcon>
   <CdsIcon
     badge="danger"
     shape="user"
     size="lg"
   >
-    <h
+    <CdsIcon
       badge="danger"
       l={null}
       shape="user"
@@ -70,14 +70,14 @@ exports[`CdsIcon snapshot 1`] = `
         shape="user"
         size="lg"
       />
-    </h>
+    </CdsIcon>
   </CdsIcon>
   <CdsIcon
     badge="warning-triangle"
     shape="user"
     size="lg"
   >
-    <h
+    <CdsIcon
       badge="warning-triangle"
       l={null}
       shape="user"
@@ -88,7 +88,7 @@ exports[`CdsIcon snapshot 1`] = `
         shape="user"
         size="lg"
       />
-    </h>
+    </CdsIcon>
   </CdsIcon>
 </div>
 `;

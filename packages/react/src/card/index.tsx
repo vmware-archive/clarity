@@ -4,13 +4,6 @@ import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
 import { logReactVersion } from '../utils';
 
-export const CdsCard = createComponent(React, 'cds-card', Card);
-
-/**
- * Setting displayName on the prototype is a workaround for now.
- * See: https://github.com/lit/lit/issues/2154
- * Follow: https://github.com/lit/lit/pull/2155
- */
-CdsCard.displayName = 'CdsCard';
+export const CdsCard = createComponent(React, 'cds-card', Card, {}, 'CdsCard');
 
 logReactVersion(React);

@@ -5,7 +5,7 @@ exports[`CdsBadge snapshot 1`] = `
   <CdsBadge
     status="info"
   >
-    <h
+    <CdsBadge
       l={null}
       status="info"
     >
@@ -14,12 +14,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         2
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     status="success"
   >
-    <h
+    <CdsBadge
       l={null}
       status="success"
     >
@@ -28,12 +28,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         3
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     status="warning"
   >
-    <h
+    <CdsBadge
       l={null}
       status="warning"
     >
@@ -42,12 +42,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         12
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     status="danger"
   >
-    <h
+    <CdsBadge
       l={null}
       status="danger"
     >
@@ -56,12 +56,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         15
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     color="gray"
   >
-    <h
+    <CdsBadge
       color="gray"
       l={null}
     >
@@ -70,12 +70,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         1
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     color="purple"
   >
-    <h
+    <CdsBadge
       color="purple"
       l={null}
     >
@@ -84,12 +84,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         6
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     color="blue"
   >
-    <h
+    <CdsBadge
       color="blue"
       l={null}
     >
@@ -98,12 +98,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         15
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     color="orange"
   >
-    <h
+    <CdsBadge
       color="orange"
       l={null}
     >
@@ -112,12 +112,12 @@ exports[`CdsBadge snapshot 1`] = `
       >
         2
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
   <CdsBadge
     color="light-blue"
   >
-    <h
+    <CdsBadge
       color="light-blue"
       l={null}
     >
@@ -126,7 +126,7 @@ exports[`CdsBadge snapshot 1`] = `
       >
         3
       </cds-badge>
-    </h>
+    </CdsBadge>
   </CdsBadge>
 </div>
 `;

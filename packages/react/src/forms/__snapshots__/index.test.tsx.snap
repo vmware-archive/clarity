@@ -4,10 +4,10 @@ exports[`CdsControl snapshot 1`] = `
 <div
   cds-layout="vertical gap:lg"
 >
-  <CdsControl
+  <w
     layout="compact"
   >
-    <h
+    <w
       l={null}
       layout="compact"
     >
@@ -21,8 +21,8 @@ exports[`CdsControl snapshot 1`] = `
         <input
           placeholder="some custom control"
         />
-        <CdsControlMessage>
-          <h
+        <n>
+          <n
             l={null}
           >
             <cds-control-message
@@ -30,16 +30,16 @@ exports[`CdsControl snapshot 1`] = `
             >
               message text
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-control>
-    </h>
-  </CdsControl>
-  <CdsControl
+    </w>
+  </w>
+  <w
     layout="compact"
     status="error"
   >
-    <h
+    <w
       l={null}
       layout="compact"
       status="error"
@@ -54,10 +54,10 @@ exports[`CdsControl snapshot 1`] = `
         <input
           placeholder="some custom control"
         />
-        <CdsControlMessage
+        <n
           status="error"
         >
-          <h
+          <n
             l={null}
             status="error"
           >
@@ -66,16 +66,16 @@ exports[`CdsControl snapshot 1`] = `
             >
               error message
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-control>
-    </h>
-  </CdsControl>
-  <CdsControl
+    </w>
+  </w>
+  <w
     layout="compact"
     status="success"
   >
-    <h
+    <w
       l={null}
       layout="compact"
       status="success"
@@ -90,10 +90,10 @@ exports[`CdsControl snapshot 1`] = `
         <input
           placeholder="some custom control"
         />
-        <CdsControlMessage
+        <n
           status="success"
         >
-          <h
+          <n
             l={null}
             status="success"
           >
@@ -102,10 +102,10 @@ exports[`CdsControl snapshot 1`] = `
             >
               success message
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-control>
-    </h>
-  </CdsControl>
+    </w>
+  </w>
 </div>
 `;

@@ -3,7 +3,7 @@
 exports[`CdsInput snapshot 1`] = `
 <div>
   <CdsInputGroup>
-    <h
+    <CdsInputGroup
       l={null}
     >
       <cds-input-group
@@ -12,7 +12,7 @@ exports[`CdsInput snapshot 1`] = `
         <CdsInput
           layout="vertical"
         >
-          <h
+          <CdsInput
             l={null}
             layout="vertical"
           >
@@ -27,12 +27,12 @@ exports[`CdsInput snapshot 1`] = `
                 placeholder="name"
               />
             </cds-input>
-          </h>
+          </CdsInput>
         </CdsInput>
         <CdsInput
           layout="vertical"
         >
-          <h
+          <CdsInput
             l={null}
             layout="vertical"
           >
@@ -48,10 +48,10 @@ exports[`CdsInput snapshot 1`] = `
                 placeholder="name"
               />
             </cds-input>
-          </h>
+          </CdsInput>
         </CdsInput>
       </cds-input-group>
-    </h>
+    </CdsInputGroup>
   </CdsInputGroup>
 </div>
 `;

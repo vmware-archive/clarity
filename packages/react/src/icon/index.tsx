@@ -16,13 +16,6 @@ import { logReactVersion } from '../utils';
  * <CdsIcon shape={userIconName} />
  * ```
  */
-export const CdsIcon = createComponent(React, 'cds-icon', Icon);
-
-/**
- * Setting displayName on the prototype is a workaround for now.
- * See: https://github.com/lit/lit/issues/2154
- * Follow: https://github.com/lit/lit/pull/2155
- */
-CdsIcon.displayName = 'CdsIcon';
+export const CdsIcon = createComponent(React, 'cds-icon', Icon, {}, 'CdsIcon');
 
 logReactVersion(React);

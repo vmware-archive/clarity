@@ -6,7 +6,7 @@ exports[`CdsProgressCircle snapshot 1`] = `
     status="info"
     value={49}
   >
-    <h
+    <CdsProgressCircle
       l={null}
       status="info"
       value={49}
@@ -14,25 +14,25 @@ exports[`CdsProgressCircle snapshot 1`] = `
       <cds-progress-circle
         l={null}
       />
-    </h>
+    </CdsProgressCircle>
   </CdsProgressCircle>
   <CdsProgressCircle
     value={0}
   >
-    <h
+    <CdsProgressCircle
       l={null}
       value={0}
     >
       <cds-progress-circle
         l={null}
       />
-    </h>
+    </CdsProgressCircle>
   </CdsProgressCircle>
   <CdsProgressCircle
     status="success"
     value={100}
   >
-    <h
+    <CdsProgressCircle
       l={null}
       status="success"
       value={100}
@@ -40,7 +40,7 @@ exports[`CdsProgressCircle snapshot 1`] = `
       <cds-progress-circle
         l={null}
       />
-    </h>
+    </CdsProgressCircle>
   </CdsProgressCircle>
 </div>
 `;

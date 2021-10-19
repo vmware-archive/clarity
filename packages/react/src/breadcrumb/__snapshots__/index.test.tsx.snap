@@ -3,7 +3,7 @@
 exports[`CdsBreadcrumb snapshot 1`] = `
 <div>
   <CdsBreadcrumb>
-    <h
+    <CdsBreadcrumb
       l={null}
     >
       <cds-breadcrumb
@@ -20,7 +20,7 @@ exports[`CdsBreadcrumb snapshot 1`] = `
           link 2
         </a>
       </cds-breadcrumb>
-    </h>
+    </CdsBreadcrumb>
   </CdsBreadcrumb>
 </div>
 `;

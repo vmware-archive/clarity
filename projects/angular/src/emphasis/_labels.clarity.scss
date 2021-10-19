@@ -89,7 +89,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 0 $clr-label-padding-left-right $label-nudge-for-vertical-alignment;
+    padding: 0 $clr-label-padding-left-right 0;
     @include css-var(border-radius, clr-label-border-radius, $clr_baselineRem_0_5, $clr-use-custom-properties);
     border: $clr-label-borderwidth solid;
     @include css-var(
@@ -99,7 +99,7 @@
       $clr-use-custom-properties
     );
     height: $clr_baselineRem_0_875;
-    margin: 0 $clr_baselineRem_0_25 0 0;
+    margin: 0 $clr_baselineRem_0_25 $label-nudge-for-vertical-alignment 0;
     white-space: nowrap;
     @include css-var(color, clr-label-font-color-light, $clr-label-font-color-light, $clr-use-custom-properties);
 

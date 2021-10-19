@@ -7,6 +7,7 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
+import { defaultReporter } from '@web/test-runner';
 import execute from 'rollup-plugin-shell';
 import baseConfig from './web-dev-server.config.mjs';
 
@@ -15,7 +16,6 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   // open: true,
   // manual: true,
   files: ['./src/**/*.spec.ts'],
-  testsFinishTimeout: 20000,
   browsers: [playwrightLauncher({ product: 'chromium' })],
   coverageConfig: {
     require: ['ts-node/register'],
@@ -43,6 +43,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     esbuildPlugin({ ts: true, json: true, target: 'auto' }),
     fromRollup(execute)({ commands: [`tsc --noEmit src/**/*.spec.ts`], hook: 'writeBundle' }),
   ],
+  reporters: [defaultReporter({ reportTestResults: true, reportTestProgress: true })],
   testRunnerHtml: (testRunnerImport, config) => `<html>
     <head>
       <link href="./dist/core/global.min.css" rel="stylesheet" />

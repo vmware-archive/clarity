@@ -14,8 +14,7 @@
     "test:watch": "wtr --watch",
     "test:unit": "wtr",
     "test:unit:coverage": "wtr --coverage",
-    "test:performance": "rollup --config ./rollup.performance.js",
-    "test:performance:report": "npm-run-all 'test:performance --sourcemap'",
+    "test:performance": "wtr --config ./web-test-runner.performance.mjs",
     "build:watch": "npm-run-all 'build:lib --watch'",
     "build:lib": "rollup --config ./rollup.config.js",
     "build:tokens": "cd build && ts-node ./build.tokens.ts",
@@ -123,6 +122,7 @@
     "ts-lit-plugin": "1.2.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.2.4",
-    "web-component-analyzer": "1.2.0-next.0"
+    "web-component-analyzer": "1.2.0-next.0",
+    "web-test-runner-performance": "^0.0.4"
   }
 }

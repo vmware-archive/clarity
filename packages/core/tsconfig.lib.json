@@ -10,5 +10,13 @@
     "tsBuildInfoFile": "./dist/core/.tsbuildinfo"
   },
   "allowSyntheticDefaultImports": false,
-  "exclude": ["**/*.spec.ts", "dist", "node_modules", "./storybook", "**/*.stories.ts", "./build"]
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.performance.ts",
+    "dist",
+    "node_modules",
+    "./storybook",
+    "**/*.stories.ts",
+    "./build"
+  ]
 }

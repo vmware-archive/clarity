@@ -60,8 +60,10 @@ env.addReporter({
 
 (async () => {
   sessionStarted();
-
   const { testFile, watch, debug, testFrameworkConfig } = await getConfig();
+  const config = { defaultTimeoutInterval: 60000, ...(testFrameworkConfig ?? {}) };
+
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = config.defaultTimeoutInterval;
 
   await import(new URL(testFile, document.baseURI).href).catch(error => {
     failedImports.push({ file: testFile, error: { message: error.message, stack: error.stack } });

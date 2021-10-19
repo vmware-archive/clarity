@@ -3,7 +3,7 @@
 exports[`CdsCheckbox snapshot 1`] = `
 <div>
   <CdsCheckbox>
-    <h
+    <CdsCheckbox
       l={null}
     >
       <cds-checkbox
@@ -16,7 +16,7 @@ exports[`CdsCheckbox snapshot 1`] = `
           type="checkbox"
         />
       </cds-checkbox>
-    </h>
+    </CdsCheckbox>
   </CdsCheckbox>
 </div>
 `;

@@ -3,7 +3,7 @@
 exports[`CdsRadio snapshot 1`] = `
 <div>
   <CdsRadioGroup>
-    <h
+    <CdsRadioGroup
       l={null}
     >
       <cds-radio-group
@@ -13,7 +13,7 @@ exports[`CdsRadio snapshot 1`] = `
           radio group
         </label>
         <CdsRadio>
-          <h
+          <CdsRadio
             l={null}
           >
             <cds-radio
@@ -27,10 +27,10 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </h>
+          </CdsRadio>
         </CdsRadio>
         <CdsRadio>
-          <h
+          <CdsRadio
             l={null}
           >
             <cds-radio
@@ -43,10 +43,10 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </h>
+          </CdsRadio>
         </CdsRadio>
         <CdsRadio>
-          <h
+          <CdsRadio
             l={null}
           >
             <cds-radio
@@ -59,10 +59,10 @@ exports[`CdsRadio snapshot 1`] = `
                 type="radio"
               />
             </cds-radio>
-          </h>
+          </CdsRadio>
         </CdsRadio>
       </cds-radio-group>
-    </h>
+    </CdsRadioGroup>
   </CdsRadioGroup>
 </div>
 `;

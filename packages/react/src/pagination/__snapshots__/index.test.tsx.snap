@@ -4,7 +4,7 @@ exports[`CdsPagination snapshot 1`] = `
 <CdsPagination
   aria-label="pagination"
 >
-  <h
+  <CdsPagination
     aria-label="pagination"
     l={null}
   >
@@ -17,7 +17,7 @@ exports[`CdsPagination snapshot 1`] = `
         aria-label="go to first"
         disabled={true}
       >
-        <h
+        <CdsPaginationButton
           action="prev"
           aria-label="go to first"
           disabled={true}
@@ -27,13 +27,13 @@ exports[`CdsPagination snapshot 1`] = `
             aria-label="go to first"
             l={null}
           />
-        </h>
+        </CdsPaginationButton>
       </CdsPaginationButton>
       <CdsPaginationButton
         action="next"
         aria-label="go to next"
       >
-        <h
+        <CdsPaginationButton
           action="next"
           aria-label="go to next"
           l={null}
@@ -42,9 +42,9 @@ exports[`CdsPagination snapshot 1`] = `
             aria-label="go to next"
             l={null}
           />
-        </h>
+        </CdsPaginationButton>
       </CdsPaginationButton>
     </cds-pagination>
-  </h>
+  </CdsPagination>
 </CdsPagination>
 `;

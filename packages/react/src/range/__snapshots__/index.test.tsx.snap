@@ -2,10 +2,10 @@
 
 exports[`CdsRange snapshot 1`] = `
 <div>
-  <CdsFormGroup
+  <m
     layout="horizontal"
   >
-    <h
+    <m
       l={null}
       layout="horizontal"
     >
@@ -15,7 +15,7 @@ exports[`CdsRange snapshot 1`] = `
         <CdsRange
           layout="horizontal"
         >
-          <h
+          <CdsRange
             l={null}
             layout="horizontal"
           >
@@ -29,8 +29,8 @@ exports[`CdsRange snapshot 1`] = `
               <input
                 type="range"
               />
-              <CdsControlMessage>
-                <h
+              <n>
+                <n
                   l={null}
                 >
                   <cds-control-message
@@ -38,15 +38,15 @@ exports[`CdsRange snapshot 1`] = `
                   >
                     message text
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-range>
-          </h>
+          </CdsRange>
         </CdsRange>
         <CdsRange
           layout="horizontal"
         >
-          <h
+          <CdsRange
             l={null}
             layout="horizontal"
           >
@@ -61,8 +61,8 @@ exports[`CdsRange snapshot 1`] = `
                 disabled={true}
                 type="range"
               />
-              <CdsControlMessage>
-                <h
+              <n>
+                <n
                   l={null}
                 >
                   <cds-control-message
@@ -70,16 +70,16 @@ exports[`CdsRange snapshot 1`] = `
                   >
                     disabled message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-range>
-          </h>
+          </CdsRange>
         </CdsRange>
         <CdsRange
           layout="horizontal"
           status="error"
         >
-          <h
+          <CdsRange
             l={null}
             layout="horizontal"
             status="error"
@@ -94,10 +94,10 @@ exports[`CdsRange snapshot 1`] = `
               <input
                 type="range"
               />
-              <CdsControlMessage
+              <n
                 status="error"
               >
-                <h
+                <n
                   l={null}
                   status="error"
                 >
@@ -106,16 +106,16 @@ exports[`CdsRange snapshot 1`] = `
                   >
                     error message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-range>
-          </h>
+          </CdsRange>
         </CdsRange>
         <CdsRange
           layout="horizontal"
           status="success"
         >
-          <h
+          <CdsRange
             l={null}
             layout="horizontal"
             status="success"
@@ -130,10 +130,10 @@ exports[`CdsRange snapshot 1`] = `
               <input
                 type="range"
               />
-              <CdsControlMessage
+              <n
                 status="success"
               >
-                <h
+                <n
                   l={null}
                   status="success"
                 >
@@ -142,13 +142,13 @@ exports[`CdsRange snapshot 1`] = `
                   >
                     success message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-range>
-          </h>
+          </CdsRange>
         </CdsRange>
       </cds-form-group>
-    </h>
-  </CdsFormGroup>
+    </m>
+  </m>
 </div>
 `;

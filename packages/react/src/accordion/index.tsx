@@ -10,19 +10,30 @@ import { logReactVersion } from '../utils';
 // add react util here in all components.
 // Document that it needs to be part of each component in React.
 
-export const CdsAccordion = createComponent(React, 'cds-accordion', Accordion);
-export const CdsAccordionPanel = createComponent(React, 'cds-accordion-panel', AccordionPanel, {
-  onExpandedChange: 'expandedChange',
-  onCdsMotionChange: 'cdsMotionChange',
-});
-export const CdsAccordionHeader = createComponent(React, 'cds-accordion-header', AccordionHeader);
-export const CdsAccordionContent = createComponent(React, 'cds-accordion-content', AccordionContent);
-
-/**
- * Setting displayName on the prototype is a workaround for now.
- * See: https://github.com/lit/lit/issues/2154
- * Follow: https://github.com/lit/lit/pull/2155
- */
-CdsAccordion.displayName = 'CdsAccordion';
+export const CdsAccordion = createComponent(React, 'cds-accordion', Accordion, {}, 'CdsAccordion');
+export const CdsAccordionPanel = createComponent(
+  React,
+  'cds-accordion-panel',
+  AccordionPanel,
+  {
+    onExpandedChange: 'expandedChange',
+    onCdsMotionChange: 'cdsMotionChange',
+  },
+  'CdsAccordionPanel'
+);
+export const CdsAccordionHeader = createComponent(
+  React,
+  'cds-accordion-header',
+  AccordionHeader,
+  {},
+  'CdsAccordionHeader'
+);
+export const CdsAccordionContent = createComponent(
+  React,
+  'cds-accordion-content',
+  AccordionContent,
+  {},
+  'CdsAccordionContent'
+);
 
 logReactVersion(React);

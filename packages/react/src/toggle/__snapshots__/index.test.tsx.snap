@@ -3,7 +3,7 @@
 exports[`CdsToggle snapshot 1`] = `
 <div>
   <CdsToggleGroup>
-    <h
+    <CdsToggleGroup
       l={null}
     >
       <cds-toggle-group
@@ -13,7 +13,7 @@ exports[`CdsToggle snapshot 1`] = `
           A toggle group
         </label>
         <CdsToggle>
-          <h
+          <CdsToggle
             l={null}
           >
             <cds-toggle
@@ -26,10 +26,10 @@ exports[`CdsToggle snapshot 1`] = `
                 type="checkbox"
               />
             </cds-toggle>
-          </h>
+          </CdsToggle>
         </CdsToggle>
         <CdsToggle>
-          <h
+          <CdsToggle
             l={null}
           >
             <cds-toggle
@@ -42,10 +42,10 @@ exports[`CdsToggle snapshot 1`] = `
                 type="checkbox"
               />
             </cds-toggle>
-          </h>
+          </CdsToggle>
         </CdsToggle>
-        <CdsControlMessage>
-          <h
+        <n>
+          <n
             l={null}
           >
             <cds-control-message
@@ -53,13 +53,13 @@ exports[`CdsToggle snapshot 1`] = `
             >
               group message text
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-toggle-group>
-    </h>
+    </CdsToggleGroup>
   </CdsToggleGroup>
   <CdsToggle>
-    <h
+    <CdsToggle
       l={null}
     >
       <cds-toggle
@@ -71,8 +71,8 @@ exports[`CdsToggle snapshot 1`] = `
         <input
           type="checkbox"
         />
-        <CdsControlMessage>
-          <h
+        <n>
+          <n
             l={null}
           >
             <cds-control-message
@@ -80,10 +80,10 @@ exports[`CdsToggle snapshot 1`] = `
             >
               message text
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-toggle>
-    </h>
+    </CdsToggle>
   </CdsToggle>
 </div>
 `;

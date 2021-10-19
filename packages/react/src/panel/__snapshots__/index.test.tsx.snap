@@ -3,7 +3,7 @@
 exports[`CdsInternalPanel snapshot 1`] = `
 <div>
   <CdsInternalPanel>
-    <h
+    <CdsInternalPanel
       l={null}
     >
       <cds-internal-panel
@@ -11,7 +11,7 @@ exports[`CdsInternalPanel snapshot 1`] = `
       >
         Hello!
       </cds-internal-panel>
-    </h>
+    </CdsInternalPanel>
   </CdsInternalPanel>
 </div>
 `;

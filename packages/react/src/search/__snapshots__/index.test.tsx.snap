@@ -5,10 +5,10 @@ exports[`CdsSearch snapshot 1`] = `
   <h3>
     Vertical
   </h3>
-  <CdsFormGroup
+  <m
     layout="vertical"
   >
-    <h
+    <m
       l={null}
       layout="vertical"
     >
@@ -16,7 +16,7 @@ exports[`CdsSearch snapshot 1`] = `
         l={null}
       >
         <CdsSearch>
-          <h
+          <CdsSearch
             l={null}
           >
             <cds-search
@@ -28,8 +28,8 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage>
-                <h
+              <n>
+                <n
                   l={null}
                 >
                   <cds-control-message
@@ -37,15 +37,15 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     message text
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           status="error"
         >
-          <h
+          <CdsSearch
             l={null}
             status="error"
           >
@@ -58,10 +58,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="error"
               >
-                <h
+                <n
                   l={null}
                   status="error"
                 >
@@ -70,15 +70,15 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     error message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           status="success"
         >
-          <h
+          <CdsSearch
             l={null}
             status="success"
           >
@@ -91,10 +91,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="success"
               >
-                <h
+                <n
                   l={null}
                   status="success"
                 >
@@ -103,21 +103,21 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     success message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
       </cds-form-group>
-    </h>
-  </CdsFormGroup>
+    </m>
+  </m>
   <h3>
     Horizontal
   </h3>
-  <CdsFormGroup
+  <m
     layout="horizontal"
   >
-    <h
+    <m
       l={null}
       layout="horizontal"
     >
@@ -127,7 +127,7 @@ exports[`CdsSearch snapshot 1`] = `
         <CdsSearch
           layout="horizontal"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="horizontal"
           >
@@ -141,8 +141,8 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage>
-                <h
+              <n>
+                <n
                   l={null}
                 >
                   <cds-control-message
@@ -150,16 +150,16 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     message text
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           layout="horizontal"
           status="error"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="horizontal"
             status="error"
@@ -174,10 +174,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="error"
               >
-                <h
+                <n
                   l={null}
                   status="error"
                 >
@@ -186,16 +186,16 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     error message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           layout="horizontal"
           status="success"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="horizontal"
             status="success"
@@ -210,10 +210,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="success"
               >
-                <h
+                <n
                   l={null}
                   status="success"
                 >
@@ -222,21 +222,21 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     success message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
       </cds-form-group>
-    </h>
-  </CdsFormGroup>
+    </m>
+  </m>
   <h3>
     Compact
   </h3>
-  <CdsFormGroup
+  <m
     layout="compact"
   >
-    <h
+    <m
       l={null}
       layout="compact"
     >
@@ -246,7 +246,7 @@ exports[`CdsSearch snapshot 1`] = `
         <CdsSearch
           layout="compact"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="compact"
           >
@@ -260,8 +260,8 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage>
-                <h
+              <n>
+                <n
                   l={null}
                 >
                   <cds-control-message
@@ -269,16 +269,16 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     message text
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           layout="compact"
           status="error"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="compact"
             status="error"
@@ -293,10 +293,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="error"
               >
-                <h
+                <n
                   l={null}
                   status="error"
                 >
@@ -305,16 +305,16 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     error message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
         <CdsSearch
           layout="compact"
           status="success"
         >
-          <h
+          <CdsSearch
             l={null}
             layout="compact"
             status="success"
@@ -329,10 +329,10 @@ exports[`CdsSearch snapshot 1`] = `
               <input
                 type="search"
               />
-              <CdsControlMessage
+              <n
                 status="success"
               >
-                <h
+                <n
                   l={null}
                   status="success"
                 >
@@ -341,13 +341,13 @@ exports[`CdsSearch snapshot 1`] = `
                   >
                     success message
                   </cds-control-message>
-                </h>
-              </CdsControlMessage>
+                </n>
+              </n>
             </cds-search>
-          </h>
+          </CdsSearch>
         </CdsSearch>
       </cds-form-group>
-    </h>
-  </CdsFormGroup>
+    </m>
+  </m>
 </div>
 `;

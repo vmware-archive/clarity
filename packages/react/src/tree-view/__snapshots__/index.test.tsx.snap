@@ -3,7 +3,7 @@
 exports[`CdsTree snapshot 1`] = `
 <div>
   <CdsTree>
-    <h
+    <CdsTree
       l={null}
     >
       <cds-tree
@@ -12,7 +12,7 @@ exports[`CdsTree snapshot 1`] = `
         <CdsTreeItem
           expanded={true}
         >
-          <h
+          <CdsTreeItem
             expanded={true}
             l={null}
           >
@@ -21,7 +21,7 @@ exports[`CdsTree snapshot 1`] = `
             >
               1
               <CdsTreeItem>
-                <h
+                <CdsTreeItem
                   l={null}
                 >
                   <cds-tree-item
@@ -29,7 +29,7 @@ exports[`CdsTree snapshot 1`] = `
                   >
                     1-1
                     <CdsTreeItem>
-                      <h
+                      <CdsTreeItem
                         l={null}
                       >
                         <cds-tree-item
@@ -37,10 +37,10 @@ exports[`CdsTree snapshot 1`] = `
                         >
                           1-1-1
                         </cds-tree-item>
-                      </h>
+                      </CdsTreeItem>
                     </CdsTreeItem>
                     <CdsTreeItem>
-                      <h
+                      <CdsTreeItem
                         l={null}
                       >
                         <cds-tree-item
@@ -48,13 +48,13 @@ exports[`CdsTree snapshot 1`] = `
                         >
                           1-1-2
                         </cds-tree-item>
-                      </h>
+                      </CdsTreeItem>
                     </CdsTreeItem>
                   </cds-tree-item>
-                </h>
+                </CdsTreeItem>
               </CdsTreeItem>
               <CdsTreeItem>
-                <h
+                <CdsTreeItem
                   l={null}
                 >
                   <cds-tree-item
@@ -62,10 +62,10 @@ exports[`CdsTree snapshot 1`] = `
                   >
                     1-2
                   </cds-tree-item>
-                </h>
+                </CdsTreeItem>
               </CdsTreeItem>
               <CdsTreeItem>
-                <h
+                <CdsTreeItem
                   l={null}
                 >
                   <cds-tree-item
@@ -73,13 +73,13 @@ exports[`CdsTree snapshot 1`] = `
                   >
                     1-3
                   </cds-tree-item>
-                </h>
+                </CdsTreeItem>
               </CdsTreeItem>
             </cds-tree-item>
-          </h>
+          </CdsTreeItem>
         </CdsTreeItem>
         <CdsTreeItem>
-          <h
+          <CdsTreeItem
             l={null}
           >
             <cds-tree-item
@@ -87,7 +87,7 @@ exports[`CdsTree snapshot 1`] = `
             >
               2
               <CdsTreeItem>
-                <h
+                <CdsTreeItem
                   l={null}
                 >
                   <cds-tree-item
@@ -95,10 +95,10 @@ exports[`CdsTree snapshot 1`] = `
                   >
                     2-1
                   </cds-tree-item>
-                </h>
+                </CdsTreeItem>
               </CdsTreeItem>
               <CdsTreeItem>
-                <h
+                <CdsTreeItem
                   l={null}
                 >
                   <cds-tree-item
@@ -106,13 +106,13 @@ exports[`CdsTree snapshot 1`] = `
                   >
                     2-2
                   </cds-tree-item>
-                </h>
+                </CdsTreeItem>
               </CdsTreeItem>
             </cds-tree-item>
-          </h>
+          </CdsTreeItem>
         </CdsTreeItem>
         <CdsTreeItem>
-          <h
+          <CdsTreeItem
             l={null}
           >
             <cds-tree-item
@@ -120,10 +120,10 @@ exports[`CdsTree snapshot 1`] = `
             >
               3
             </cds-tree-item>
-          </h>
+          </CdsTreeItem>
         </CdsTreeItem>
       </cds-tree>
-    </h>
+    </CdsTree>
   </CdsTree>
 </div>
 `;

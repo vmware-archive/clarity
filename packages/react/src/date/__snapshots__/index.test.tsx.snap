@@ -6,7 +6,7 @@ exports[`CdsDate snapshot 1`] = `
     control-width="shrink"
     layout="horizontal"
   >
-    <h
+    <CdsDate
       control-width="shrink"
       l={null}
       layout="horizontal"
@@ -25,8 +25,8 @@ exports[`CdsDate snapshot 1`] = `
           min="2018-01-01"
           type="date"
         />
-        <CdsControlMessage>
-          <h
+        <n>
+          <n
             l={null}
           >
             <cds-control-message
@@ -34,10 +34,10 @@ exports[`CdsDate snapshot 1`] = `
             >
               message text
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-date>
-    </h>
+    </CdsDate>
   </CdsDate>
 </div>
 `;

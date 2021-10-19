@@ -2,10 +2,10 @@
 
 exports[`CdsTime snapshot 1`] = `
 <div>
-  <CdsTime
+  <m
     control-width="shrink"
   >
-    <h
+    <m
       control-width="shrink"
       l={null}
     >
@@ -22,8 +22,8 @@ exports[`CdsTime snapshot 1`] = `
           min="09:00"
           type="time"
         />
-        <CdsControlMessage>
-          <h
+        <n>
+          <n
             l={null}
           >
             <cds-control-message
@@ -31,10 +31,10 @@ exports[`CdsTime snapshot 1`] = `
             >
               message text
             </cds-control-message>
-          </h>
-        </CdsControlMessage>
+          </n>
+        </n>
       </cds-time>
-    </h>
-  </CdsTime>
+    </m>
+  </m>
 </div>
 `;

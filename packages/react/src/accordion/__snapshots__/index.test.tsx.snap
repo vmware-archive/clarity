@@ -3,24 +3,24 @@
 exports[`CdsAccordion snapshot 1`] = `
 <div>
   <CdsAccordion>
-    <h
+    <CdsAccordion
       l={null}
     >
       <cds-accordion
         l={null}
       >
-        <ForwardRef
+        <CdsAccordionPanel
           expanded={true}
         >
-          <h
+          <CdsAccordionPanel
             expanded={true}
             l={null}
           >
             <cds-accordion-panel
               l={null}
             >
-              <ForwardRef>
-                <h
+              <CdsAccordionHeader>
+                <CdsAccordionHeader
                   l={null}
                 >
                   <cds-accordion-header
@@ -28,10 +28,10 @@ exports[`CdsAccordion snapshot 1`] = `
                   >
                     Item 1
                   </cds-accordion-header>
-                </h>
-              </ForwardRef>
-              <ForwardRef>
-                <h
+                </CdsAccordionHeader>
+              </CdsAccordionHeader>
+              <CdsAccordionContent>
+                <CdsAccordionContent
                   l={null}
                 >
                   <cds-accordion-content
@@ -39,13 +39,13 @@ exports[`CdsAccordion snapshot 1`] = `
                   >
                     Content 1
                   </cds-accordion-content>
-                </h>
-              </ForwardRef>
+                </CdsAccordionContent>
+              </CdsAccordionContent>
             </cds-accordion-panel>
-          </h>
-        </ForwardRef>
+          </CdsAccordionPanel>
+        </CdsAccordionPanel>
       </cds-accordion>
-    </h>
+    </CdsAccordion>
   </CdsAccordion>
 </div>
 `;

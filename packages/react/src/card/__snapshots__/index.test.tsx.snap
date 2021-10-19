@@ -3,7 +3,7 @@
 exports[`CdsCard snapshot 1`] = `
 <div>
   <CdsCard>
-    <h
+    <CdsCard
       l={null}
     >
       <cds-card
@@ -11,7 +11,7 @@ exports[`CdsCard snapshot 1`] = `
       >
         Placeholder
       </cds-card>
-    </h>
+    </CdsCard>
   </CdsCard>
 </div>
 `;

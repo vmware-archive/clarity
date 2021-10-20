@@ -19,6 +19,8 @@
       $clr-use-custom-properties
     );
 
+    border-left: $clr_baselineRem_3px solid var(--clr-nav-active-box-shadow-color);
+
     .nav-icon {
       @include css-var(
         fill,
@@ -367,6 +369,8 @@
           $clr-vertical-nav-active-bg-color,
           $clr-use-custom-properties
         );
+
+        border-left: $clr_baselineRem_3px solid var(--clr-nav-active-box-shadow-color);
 
         //Horrible Nesting but nothing I can do.
         .nav-icon {

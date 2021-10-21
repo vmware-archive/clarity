@@ -35,8 +35,8 @@ import { ValidityStateKey } from '../utils/validate.js';
  */
 export class CdsControlMessage extends LitElement {
   /**
-   * @type {neutral | error | success}
    * Set the status of form control message validation
+   * @type {neutral | error | success}
    */
   @property({ type: String }) status: ControlStatus = 'neutral';
 

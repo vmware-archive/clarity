@@ -49,15 +49,15 @@ import styles from './form-group.element.scss';
  */
 export class CdsFormGroup extends LitElement {
   /**
-   * @type {horizontal | horizontal-inline | vertical | vertical-inline | compact}
    * Set to adjust the default control layout for all controls within form group.
    * When `responsive` is true this will be the largest size to scale to.
+   * @type {horizontal | horizontal-inline | vertical | vertical-inline | compact}
    */
   @property({ type: String }) layout: FormLayout = defaultFormLayout;
 
   /**
-   * @type {stretch | shrink}
    * Adjust the control from the default full width or the browser default width
+   * @type {stretch | shrink}
    */
   @property({ type: String }) controlWidth: ControlWidth; // no default given so child controls are not overridden unless explicity set by parent form group
 

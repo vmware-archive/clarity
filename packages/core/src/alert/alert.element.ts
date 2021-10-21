@@ -136,8 +136,8 @@ export class CdsAlert extends LitElement {
   @event() private closeChange: EventEmitter<boolean>;
 
   /**
-   * @type {default | sm}
    * Sets the overall height and width of the alert and icon based on value
+   * @type {default | sm}
    */
   @property({ type: String })
   size: AlertSizes = 'default';
@@ -162,8 +162,8 @@ export class CdsAlert extends LitElement {
   closable = false;
 
   /**
-   * @type {neutral | info | success | warning | danger | alt | loading}
    * Sets the color of the alert from a predefined list of statuses
+   * @type {neutral | info | success | warning | danger | alt | loading}
    */
   @property({ type: String })
   status: AlertStatusTypes = 'neutral';

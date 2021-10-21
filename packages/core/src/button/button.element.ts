@@ -72,8 +72,8 @@ export class CdsButton extends CdsBaseButton {
   block = false;
 
   /**
-   * @type {default | loading | success | error}
    * Changes the button content based on the value passed.
+   * @type {default | loading | success | error}
    *
    * - `default`: shows the content of the button
    * - `loading`: disables the button and shows a spinner inside the button

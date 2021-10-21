@@ -74,8 +74,8 @@ export class CdsIcon extends LitElement {
   }
 
   /**
-   * @type {string | xs | sm | md | lg | xl | xxl}
    * Apply numerical width-height or a t-shirt-sized CSS classname
+   * @type {string | xs | sm | md | lg | xl | xxl}
    */
   @property({ type: String })
   set size(val: string) {
@@ -88,16 +88,16 @@ export class CdsIcon extends LitElement {
   }
 
   /**
-   * @type {up | down | left | right}
    * Takes a directional value that rotates the icon 90° with the
    * top of the icon pointing in the specified direction.
+   * @type {up | down | left | right}
    */
   @property({ type: String })
   direction: Directions;
 
   /**
-   * @type {horizontal | vertical}
    * Takes an orientation value that reverses the orientation of the icon vertically or horizontally'
+   * @type {horizontal | vertical}
    */
   @property({ type: String })
   flip: Orientations;
@@ -109,8 +109,8 @@ export class CdsIcon extends LitElement {
   solid = false;
 
   /**
-   * @type {info | success | warning | danger}
    * Changes color of icon fills and outlines
+   * @type {info | success | warning | danger}
    */
   @property({ type: String })
   status: StatusTypes;
@@ -123,7 +123,6 @@ export class CdsIcon extends LitElement {
   inverse = false;
 
   /**
-   * @type {info | success | warning | danger | inherit | warning-triangle | inherit-triangle}
    * Sets the color of the icon decoration that appears in the top-right corner
    * of the glyph. The icon decoration is derived from the following predefined types.
    *
@@ -141,6 +140,7 @@ export class CdsIcon extends LitElement {
    * By default, the badge displays a 'danger' dot (a red-colored dot).
    *
    * Setting the badge to 'false' or removing the attribute will remove the default icon badge.
+   * @type {info | success | warning | danger | inherit | warning-triangle | inherit-triangle}
    */
   @property({ type: String })
   badge: StatusTypes | 'inherit' | 'warning-triangle' | 'inherit-triangle' | true | false;

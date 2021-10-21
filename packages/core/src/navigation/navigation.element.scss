@@ -62,13 +62,14 @@
 
 .navigation-body-wrapper {
   height: 100%;
+  width: 100%;
   overflow: auto;
   outline: none;
 }
 
-.navigation-sr-wrapper {
-  height: 100%;
+#item-container {
   outline: none;
+  height: 100%;
 }
 
 ::slotted([slot='cds-navigation-substart']) {

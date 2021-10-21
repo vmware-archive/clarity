@@ -385,31 +385,17 @@ export class CdsNavigation extends LitElement implements Animatable {
   }
 
   render() {
-    return html`<div
-      class="private-host"
-      aria-label="${this.i18n.navigationLabel}"
-      cds-layout="vertical
-                  wrap:none
-                  align:horizontal-center"
-    >
+    return html`<div class="private-host" aria-label="${this.i18n.navigationLabel}" cds-layout="vertical wrap:none">
       ${this.startTemplate}
       <slot name="cds-navigation-substart"></slot>
-      <div class="navigation-sr-wrapper" cds-layout="vertical align:horizontal-stretch gap:sm">
-        <nav style="height: 100%">
-          <div
-            class="navigation-body-wrapper"
-            cds-layout="p-y:xxs"
-            aria-activedescendant="${this.ariaActiveDescendant}"
-            tabindex="0"
-            id="item-container"
-          >
-            <div class="navigation-body" cds-layout="vertical wrap:none align:horizontal-stretch">
-              <slot></slot>
-            </div>
+      <nav class="navigation-body-wrapper">
+        <div aria-activedescendant="${this.ariaActiveDescendant}" tabindex="0" id="item-container">
+          <div class="navigation-body" cds-layout="vertical wrap:none align:horizontal-stretch">
+            <slot></slot>
           </div>
-          ${this.endTemplate}
-        </nav>
-      </div>
+        </div>
+      </nav>
+      ${this.endTemplate}
     </div>`;
   }
 

@@ -17,6 +17,7 @@ import {
   spanWrapper,
   state,
 } from '@cds/core/internal';
+import itemStyles from './navigation-item.element.scss';
 import styles from './navigation-start.element.scss';
 import { getToggleIconDirection, manageScreenReaderElements, NAVIGATION_TEXT_WRAPPER } from './utils/index.js';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
@@ -134,7 +135,6 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
       <button
         aria-pressed="${this.expandedRoot}"
         aria-label="${this.expandedRoot ? this.i18n.navigationUnabridgedText : this.i18n.navigationAbridgedText}"
-        class="private-host"
         id="${this.isGroupStart ? this.navigationGroupId : ''}"
         type="button"
       >
@@ -158,13 +158,8 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
 
   private renderGroupStart() {
     return html`
-      <button
-        aria-expanded="${this.expanded}"
-        class="private-host"
-        id="${this.isGroupStart ? this.navigationGroupId : ''}"
-        type="button"
-      >
-        <div cds-layout="horizontal wrap:none align:vertical-center">
+      <button aria-expanded="${this.expanded}" id="${this.isGroupStart ? this.navigationGroupId : ''}" type="button">
+        <div cds-layout="horizontal wrap:none align:vertical-center gap:md">
           <slot @slotchange=${this.handleStartButtonText}></slot>
           <span class="icon-slot" cds-layout="${this.expandedRoot ? 'align:right' : 'align:left'}">
             <slot name="cds-icon-slot">
@@ -192,7 +187,7 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
   }
 
   static get styles() {
-    return [baseStyles, styles];
+    return [baseStyles, itemStyles, styles];
   }
 
   get toggleIconDirection(): Directions {

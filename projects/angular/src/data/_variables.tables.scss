@@ -30,15 +30,15 @@ $clr-table-font-color: $clr-color-neutral-700 !default;
 // Table dims and sizing
 $clr-table-fontsize: $clr_baselineRem_0_5416 !default;
 $clr-table-lineheight: $clr_baselineRem_0_583 !default;
-$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight)/2 !default;
+$clr-table-lineheightPaddingShim: ($clr_baselineRem_1 - $clr-table-lineheight) * 0.5 !default;
 $clr-table-cellpadding: $clr_baselineRem_0_5 !default;
 $clr-table-topcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
 $clr-table-bottomcellpadding: $clr-table-cellpadding - $clr_baselineRem_1px !default;
-$clr-table-topcellpadding-cmp: $clr-table-cellpadding/2 - $clr_baselineRem_1px !default;
-$clr-table-bottomcellpadding-cmp: $clr-table-cellpadding/2 - $clr_baselineRem_1px !default;
+$clr-table-topcellpadding-cmp: $clr-table-cellpadding * 0.5 - $clr_baselineRem_1px !default;
+$clr-table-bottomcellpadding-cmp: $clr-table-cellpadding * 0.5 - $clr_baselineRem_1px !default;
 
 $clr-table--compact-rowHeight: $clr_baselineRem_1 !default;
-$clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table-lineheight)/2 !default;
+$clr-table--compact-verticalPadding: ($clr-table--compact-rowHeight - $clr-table-lineheight) * 0.5 !default;
 
 // Table header styles
 $clr-thead-color: $clr-p6-color !default;

@@ -64,13 +64,13 @@ $clr-forms-checkbox-disabled-mark-color: $clr-color-neutral-1000 !default;
 $clr-forms-checkbox-border-radius: $clr-global-borderradius !default;
 
 $clr-forms-checkbox-label-height: $clr-forms-baseline * 4;
-$clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) / 2 !default;
+$clr-forms-checkbox-top: ($clr-forms-checkbox-label-height - $clr-forms-checkbox-height) * 0.5 !default;
 
 $clr-forms-checkbox-size: $clr_baselineRem_0_667;
 $clr-forms-checkbox-padding-left: $clr-forms-checkbox-height + $clr_baselineRem_0_25;
 $clr-forms-checkbox-checked-shadow: inset 0 0 0 $clr_baselineRem_0_25 $clr-forms-checkbox-background-color;
-$clr-forms-checkbox-mark-size: $clr-forms-checkbox-height / 2;
-$clr-forms-checkbox-mark-border-size: ($clr-forms-checkbox-height / 8);
+$clr-forms-checkbox-mark-size: $clr-forms-checkbox-height * 0.5;
+$clr-forms-checkbox-mark-border-size: ($clr-forms-checkbox-height * 0.125);
 
 // Radio
 $clr-forms-radio-label-color: $clr-forms-checkbox-label-color !default;

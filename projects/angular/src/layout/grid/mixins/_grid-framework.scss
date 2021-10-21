@@ -11,8 +11,8 @@
   %clr-grid-column {
     width: 100%;
     min-height: $clr_baselineRem_1px; // Prevent columns from collapsing when empty
-    padding-right: ($gutter / 2);
-    padding-left: ($gutter / 2);
+    padding-right: ($gutter * 0.5);
+    padding-left: ($gutter * 0.5);
   }
 
   @each $breakpoint in map-keys($breakpoints) {

@@ -3,7 +3,7 @@
 // The full license information can be found in LICENSE in the root directory of this project.
 
 @include exports('forms.checkbox') {
-  $mark-half-size: $clr-forms-checkbox-mark-size / 2;
+  $mark-half-size: $clr-forms-checkbox-mark-size * 0.5;
 
   // @TODO un-nest the checkbox from the wrapper, after old forms are removed
   .clr-checkbox-wrapper {
@@ -61,7 +61,7 @@
         $clr-forms-checkbox-mark-color,
         $clr-use-custom-properties
       );
-      top: ($clr-forms-baseline * 4 - $clr-icon-dimension-sm) / 2;
+      top: ($clr-forms-baseline * 4 - $clr-icon-dimension-sm) * 0.5;
       left: $mark-half-size;
       transform: translate(0, $mark-half-size) rotate(-45deg);
     }
@@ -129,7 +129,7 @@
     input[type='checkbox']:checked + label::after {
       $sassVar: $clr-forms-checkbox-disabled-mark-color;
       $cssVar: clr-forms-checkbox-disabled-mark-color;
-      $disabled-border-style: ($clr-forms-checkbox-height / 8) solid;
+      $disabled-border-style: ($clr-forms-checkbox-height * 0.125) solid;
       border-left: $disabled-border-style;
       border-bottom: $disabled-border-style;
       @include css-var(border-left-color, $cssVar, $sassVar, $clr-use-custom-properties);

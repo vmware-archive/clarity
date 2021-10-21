@@ -11,7 +11,7 @@
   opacity: $clr-header-divider-opacity;
   height: $clr-header-section-divider-height;
   @include css-var(width, clr-global-borderwidth, $clr-global-borderwidth, $clr-use-custom-properties);
-  top: ($clr-header-height - $clr-header-section-divider-height) / 2;
+  top: ($clr-header-height - $clr-header-section-divider-height) * 0.5;
   left: 0;
 }
 
@@ -385,7 +385,7 @@
       width: $clr-header-height;
 
       &::before {
-        left: ($clr-header-height - $clr-search-icon-width) / 2;
+        left: ($clr-header-height - $clr-search-icon-width) * 0.5;
       }
 
       input {

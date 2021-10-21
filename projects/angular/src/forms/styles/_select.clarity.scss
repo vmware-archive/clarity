@@ -62,7 +62,7 @@
       position: absolute;
       content: '';
       @include equilateral($clr-forms-select-caret-size);
-      top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) / 2;
+      top: ($clr-forms-baseline * 4 - $clr-forms-select-caret-size) * 0.5;
       right: $clr-forms-baseline;
       // TODO: get rid of generated icons?
       background-image: generateCaretIcon($clr-forms-select-caret-color);
@@ -114,7 +114,7 @@
       @include css-var(border-color, $multiCssBorderVar, $multiSassBorderVar, $clr-use-custom-properties);
     }
     option {
-      padding: ($clr-forms-baseline / 2) $clr-forms-baseline;
+      padding: ($clr-forms-baseline * 0.5) $clr-forms-baseline;
       @include css-var(
         color,
         clr-forms-select-multiple-option-color,

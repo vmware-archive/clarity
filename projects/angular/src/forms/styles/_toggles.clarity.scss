@@ -51,7 +51,7 @@
       border-radius: $clr_baselineRem_0_375;
       @include css-var(border-color, clr-toggle-bg-color-off, $clr-toggle-bg-color-off, $clr-use-custom-properties);
       @include css-var(background-color, clr-toggle-bg-color-off, $clr-toggle-bg-color-off, $clr-use-custom-properties);
-      top: ($clr-forms-baseline / 2);
+      top: ($clr-forms-baseline * 0.5);
       right: 0;
       left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing);
       @include clr-toggle-transition-styles;
@@ -90,7 +90,7 @@
         $clr-toggle-handle-bg-color,
         $clr-use-custom-properties
       );
-      top: ($clr_baselineRem_2px + $clr-forms-baseline / 2);
+      top: ($clr_baselineRem_2px + $clr-forms-baseline * 0.5);
       right: 0;
       left: -1 * ($clr-toggle-switch-base-width + $clr-toggle-switch-base-left-spacing - $clr_baselineRem_2px);
       @include clr-toggle-transition-styles;

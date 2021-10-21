@@ -215,7 +215,7 @@
     .nav-trigger-icon {
       //Dims
       margin-left: auto;
-      margin-right: ($clr-vertical-nav-item-height - $clr-vertical-nav-icon-size) / 2;
+      margin-right: ($clr-vertical-nav-item-height - $clr-vertical-nav-icon-size) * 0.5;
 
       //Others
       transition: all 0.2s ease-in-out;

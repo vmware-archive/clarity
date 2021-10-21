@@ -27,7 +27,7 @@ $clr-datagrid-icon-size: $clr_baselineRem_0_583;
 $clr-datagrid-icon-color: $clr-color-neutral-600 !default;
 $clr-datagrid-action-arrow-size: $clr_baselineRem_0_25;
 $clr-datagrid-fixed-column-size: (2 * $clr-table-cellpadding) + $clr-table-lineheight;
-$horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) / 2;
+$horizontalPadding: ($clr-datagrid-fixed-column-size - $clr_baselineRem_1_25) * 0.5;
 $clr-datagrid-column-separator-expandby: $clr_baselineRem_0_5;
 $clr-datagrid-column-switch-header-font-color: $clr-color-neutral-500;
 $clr-datagrid-column-switch-header-font-hover-color: $clr-color-action-600;

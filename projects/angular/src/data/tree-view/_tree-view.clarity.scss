@@ -91,7 +91,7 @@
   .clr-treenode-spinner-container {
     //Dimensions
     @include equilateral($clr-tree-node-touch-target);
-    padding: ($clr-tree-node-touch-target - $clr-tree-spinner-size) / 2;
+    padding: ($clr-tree-node-touch-target - $clr-tree-spinner-size) * 0.5;
   }
 
   .clr-treenode-spinner {

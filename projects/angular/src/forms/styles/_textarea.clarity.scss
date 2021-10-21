@@ -31,7 +31,7 @@
     border: $clr-global-borderwidth solid;
     @include css-var(border-color, clr-forms-border-color, $clr-forms-border-color, $clr-use-custom-properties);
     @include css-var(color, clr-forms-text-color, $clr-forms-text-color, $clr-use-custom-properties);
-    border-radius: $clr-forms-baseline / 2;
+    border-radius: $clr-forms-baseline * 0.5;
     padding: $textarea-vertical-padding $textarea-horizontal-padding;
     font-size: $clr-forms-field-font-size;
 

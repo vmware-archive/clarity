@@ -7,40 +7,61 @@
 @import './../styles/tokens/generated/index';
 
 :host {
-  --color: inherit;
-  --line-height: inherit;
-  --focus-width: #{$cds-alias-object-border-width-300};
+  --color: #{$cds-alias-object-interaction-color};
+  --background: #{$cds-alias-object-interaction-background};
+  --line-height: calc(#{$cds-alias-object-interaction-touch-target} + #{$cds-global-space-3});
   --font-size: inherit;
   --font-weight: inherit;
   --letter-spacing: inherit;
-  --padding: inherit;
-  padding-left: var(--focus-width);
+  --padding: 0 #{$cds-global-space-5};
+  --cursor: pointer;
 }
 
-:host(:hover:not([disabled])),
+:host([_group-item]) {
+  --padding: 0 #{$cds-global-space-5} 0 #{$cds-global-space-7};
+}
+
+.private-host {
+  min-height: var(--line-height);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
+  width: 100%;
+  height: fit-content;
+  color: var(--color);
+  background: var(--background);
+  border: 0;
+  cursor: var(--cursor);
+  padding: var(--padding);
+}
+
+:host(:hover) {
+  --background: #{$cds-alias-object-interaction-background-hover};
+  --color: #{$cds-alias-object-interaction-color-hover};
+}
+
 :host([_has-focus]) {
-  background: #{$cds-alias-object-interaction-background-hover};
-  outline: 0;
-  cursor: pointer;
+  --background: #{$cds-alias-object-interaction-background-hover};
+  --color: #{$cds-alias-object-interaction-color-hover};
+  outline: #{$cds-alias-object-interaction-outline};
+  outline-offset: calc(#{$cds-alias-object-interaction-outline-offset} * -2);
 }
 
-:host(:hover:not([disabled]))::after,
-:host([_has-focus])::after {
-  content: '';
-  position: absolute;
-  inset: #{$cds-global-space-2};
-  outline: #{$cds-global-space-2} auto -webkit-focus-ring-color;
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host([_has-focus]) {
+    outline-color: -webkit-focus-ring-color;
+  }
 }
 
-:host([active]) {
-  background: #{$cds-alias-object-interaction-background-selected};
-  padding-left: 0;
-  border-left: var(--focus-width) solid #{$cds-alias-object-interaction-background-highlight};
-}
+:host([active]),
+:host([_active]:not([_expanded])) {
+  --background: #{$cds-alias-object-interaction-background-selected};
+  --color: #{$cds-alias-object-interaction-color};
 
-:host([_has-focus][active]) {
-  background: #{$cds-alias-object-interaction-background-hover};
-  border-color: transparent;
+  .private-host {
+    box-shadow: inset #{$cds-alias-object-border-width-300} 0 0 0 #{$cds-alias-object-interaction-background-highlight};
+  }
 }
 
 /**
@@ -51,42 +72,37 @@
  */
 :host(:active),
 :host(:active:focus) {
-  background: #{$cds-alias-object-interaction-background-active};
+  --color: #{$cds-alias-object-interaction-color-active};
+  --background: #{$cds-alias-object-interaction-background-active};
 }
 
 :host([selected]) {
-  background: #{$cds-alias-object-interaction-background-selected};
+  --color: #{$cds-alias-object-interaction-color-selected};
+  --background: #{$cds-alias-object-interaction-background-selected};
 }
 
-:host([disabled]) {
+:host([disabled]),
+:host([disabled]:hover) {
   --color: #{$cds-alias-object-interaction-color-disabled};
-
-  // disabled items should not respond to hover
-  &:hover {
-    --background: inherit;
-  }
-
-  ::slotted(a) {
-    cursor: not-allowed;
-  }
+  --background: #{$cds-alias-object-interaction-background-disabled};
+  --cursor: not-allowed;
 }
 
-::slotted(cds-icon) {
-  color: inherit;
-}
-
-// These are not our elements and the consumer can easily override us here.
-::slotted(a) {
-  color: var(--color) !important;
-  padding: var(--padding) !important;
-  text-decoration: none !important;
-}
-
-.private-host {
-  font-size: var(--font-size);
-  font-weight: var(--font-weight);
-  letter-spacing: var(--letter-spacing);
+::slotted(a),
+::slotted(button),
+::slotted([role='button']),
+button {
   line-height: var(--line-height);
-  width: 100%;
-  height: fit-content;
+  min-height: var(--line-height);
+  cursor: var(--cursor);
+  text-decoration: none !important;
+  padding: 0;
+  outline: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: #{$cds-global-space-6};
 }

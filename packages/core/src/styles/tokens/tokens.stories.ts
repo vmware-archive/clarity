@@ -636,7 +636,7 @@ export function interactionVerticalNavigationDemo() {
             <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
           </cds-navigation-item>
           <cds-navigation-item>
-            <a href="#"><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
+            <a><cds-icon shape="plus" size="sm"></cds-icon> Item 3</a>
           </cds-navigation-item>
           </cds-navigation-item>
           <cds-divider cds-layout="align:bottom"></cds-divider>
@@ -651,7 +651,7 @@ export function interactionVerticalNavigationDemo() {
           <cds-navigation-item>
             <a href="#"><cds-icon shape="home" size="sm"></cds-icon> Item 1</a>
           </cds-navigation-item>
-          <cds-navigation-item focused>
+          <cds-navigation-item _has-focus>
             <a href="#"><cds-icon shape="download" size="sm"></cds-icon> Item 2</a>
           </cds-navigation-item>
           <cds-navigation-item>

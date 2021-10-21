@@ -66,14 +66,14 @@ export const enum ControlLabelLayout {
  */
 export class CdsControl extends LitElement {
   /**
-   * @type {neutral | error | success}
    * Set the status of form control validation
+   * @type {neutral | error | success}
    */
   @property({ type: String }) status: ControlStatus = 'neutral';
 
   /**
-   * @type {stretch | shrink}
    * Adjust the control from the default full width or the browser default width
+   * @type {stretch | shrink}
    */
   @property({ type: String }) controlWidth: ControlWidth = defaultControlWidth;
 
@@ -90,8 +90,8 @@ export class CdsControl extends LitElement {
   @property({ type: Boolean }) responsive = true;
 
   /**
-   * @type {vertical | horizontal | compact}
    * Set to adjust the default control layout. When `responsive` is true this will be the largest size to scale to.
+   * @type {vertical | horizontal | compact}
    */
   @property({ type: String })
   get layout(): ControlLayout {

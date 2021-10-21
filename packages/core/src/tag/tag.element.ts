@@ -33,8 +33,8 @@ import styles from './tag.element.scss';
  */
 export class CdsTag extends CdsBaseButton {
   /**
-   * @type {neutral | info | success | warning | danger}
    * Sets the color of the tag (and badge if present) from the following predefined list of statuses:
+   * @type {neutral | info | success | warning | danger}
    */
   @property({ type: String })
   status: StatusTypes = 'neutral';

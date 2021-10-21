@@ -57,15 +57,15 @@ import styles from './alert-group.element.scss';
  */
 export class CdsAlertGroup extends LitElement {
   /**
-   * @type {default | sm}
    * Sets the overall height and width of the alerts inside the alert group
+   * @type {default | sm}
    */
   @property({ type: String })
   size: AlertSizes = 'default';
 
   /**
-   * @type {default | banner | light}
    * Passed down into the alerts inside the alert-group
+   * @type {default | banner | light}
    */
   @property({ type: String })
   type: AlertGroupTypes = 'default';
@@ -77,8 +77,8 @@ export class CdsAlertGroup extends LitElement {
   role = 'region';
 
   /**
-   * @type {neutral | info | success | warning | danger | alt | loading}
    * Sets the status of the alerts inside the alert group
+   * @type {neutral | info | success | warning | danger | alt | loading}
    */
   @property({ type: String })
   status: AlertStatusTypes = 'neutral';

@@ -62,8 +62,8 @@ import {
  */
 export class CdsInternalControlGroup extends LitElement {
   /**
-   * @type {neutral | error | success}
    * Set the status of control group validation
+   * @type {neutral | error | success}
    */
   @property({ type: String }) status: ControlStatus = 'neutral';
 
@@ -77,8 +77,8 @@ export class CdsInternalControlGroup extends LitElement {
   @property({ type: Boolean }) disabled = false;
 
   /**
-   * @type {stretch | shrink}
    * Adjust the control from the default full width or the browser default width
+   * @type {stretch | shrink}
    */
   @property({ type: String }) controlWidth: ControlWidth = defaultControlWidth;
 

@@ -39,8 +39,8 @@ export class CdsProgressCircle extends LitElement {
   private _size: string;
 
   /**
-   * @type {neutral | info | success | warning | danger}
    * Sets the color of the badge
+   * @type {neutral | info | success | warning | danger}
    */
   @property({ type: String })
   status: StatusTypes = 'neutral';
@@ -102,8 +102,8 @@ export class CdsProgressCircle extends LitElement {
   }
 
   /**
-   * @type {string | sm | md | lg | xl | xxl}
    * Apply numerical width-height or a t-shirt-sized CSS classname
+   * @type {string | sm | md | lg | xl | xxl}
    */
   @property({ type: String })
   set size(val: string) {

@@ -14,7 +14,7 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 
 ## Contributing to Clarity
 
-The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md) on GitHub.
+The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware/clarity/blob/next/docs/CONTRIBUTING.md) on GitHub.
 
 ## Clarity Blog
 

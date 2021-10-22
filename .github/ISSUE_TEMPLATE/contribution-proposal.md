@@ -3,7 +3,7 @@ name: Contribution proposal
 about: Proposal for a larger new feature or enhancement
 ---
 
-_Please review our [Contribution guide](https://github.com/vmware/clarity/blob/master/CONTRIBUTING.md) for more details about how to contribute effectively._
+_Please review our [Contribution guide](https://github.com/vmware/clarity/blob/next/docs/CONTRIBUTING.md) for more details about how to contribute effectively._
 
 ## Summary
 

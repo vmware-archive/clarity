@@ -79,7 +79,7 @@ First, make sure you:
   contributions to this repository must be signed as described on that page.
   Your signature certifies that you wrote the patch or have the right to pass it
   on as an open-source patch.
-- Read our [coding guidelines](/CODING_GUIDELINES.md).
+- Read our [coding guidelines](./CODING_GUIDELINES.md).
 
 ### Getting started
 

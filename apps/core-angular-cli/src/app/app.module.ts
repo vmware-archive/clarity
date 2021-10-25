@@ -1,35 +1,57 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { cloudIcon, ClarityIcons } from '@cds/core/icon';
-import '@cds/core/icon/register.js';
-import '@cds/core/accordion/register.js';
-import '@cds/core/alert/register.js';
-import '@cds/core/button/register.js';
-import '@cds/core/checkbox/register.js';
-import '@cds/core/datalist/register.js';
-import '@cds/core/file/register.js';
-import '@cds/core/forms/register.js';
-import '@cds/core/input/register.js';
-import '@cds/core/password/register.js';
-import '@cds/core/radio/register.js';
-import '@cds/core/range/register.js';
-import '@cds/core/search/register.js';
-import '@cds/core/select/register.js';
-import '@cds/core/textarea/register.js';
-import '@cds/core/time/register.js';
-import '@cds/core/toggle/register.js';
+import { CdsIconModule } from '@cds/angular/icon';
+import { CdsAccordionModule } from '@cds/angular/accordion';
+import { CdsAlertModule } from '@cds/angular/alert';
+import { CdsButtonModule } from '@cds/angular/button';
+import { CdsCheckboxModule } from '@cds/angular/checkbox';
+import { CdsDatalistModule } from '@cds/angular/datalist';
+import { CdsFormsModule } from '@cds/angular/forms';
+import { CdsFileModule } from '@cds/angular/file';
+import { CdsInputModule } from '@cds/angular/input';
+import { CdsPasswordModule } from '@cds/angular/password';
+import { CdsRadioModule } from '@cds/angular/radio';
+import { CdsRangeModule } from '@cds/angular/range';
+import { CdsSearchModule } from '@cds/angular/search';
+import { CdsSelectModule } from '@cds/angular/select';
+import { CdsTagModule } from '@cds/angular/tag';
+import { CdsTextareaModule } from '@cds/angular/textarea';
+import { CdsTimeModule } from '@cds/angular/time';
+import { CdsToggleModule } from '@cds/angular/toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    CdsIconModule,
+    CdsAccordionModule,
+    CdsAlertModule,
+    CdsButtonModule,
+    CdsCheckboxModule,
+    CdsDatalistModule,
+    CdsFileModule,
+    CdsFormsModule,
+    CdsInputModule,
+    CdsPasswordModule,
+    CdsRadioModule,
+    CdsRangeModule,
+    CdsSearchModule,
+    CdsSelectModule,
+    CdsTagModule,
+    CdsTextareaModule,
+    CdsTimeModule,
+    CdsToggleModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // temp for @cds/angular once update to angular 12.x
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {

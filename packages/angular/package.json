@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "build": "npm-run-all build:lib build:update",
+    "build": "npm-run-all clean build:lib build:update",
     "build:preinstall": "mkdir -p ../../dist/angular/ && cp ./projects/cds-angular/package.json ../../dist/angular/",
     "build:update": "node ../../scripts/update-local-packages.js /packages/angular/dist/angular/package.json",
     "build:lib": "yarn run generate:core-ng-modules && ng build cds-angular --configuration=production",
-    "generate:core-ng-modules": "node ../../scripts/core-ng-module-generator && prettier --write ./projects/cds-angular/src/cds",
+    "clean": "cd ./projects/cds-angular && git clean -dfX",
+    "generate:core-ng-modules": "node ../../scripts/core-ng-module-generator && prettier --write ./projects/cds-angular/",
     "test": "ng test cds-angular --watch false  --source-map=false",
     "lint": "eslint -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\"",
     "lint:fix": "eslint --fix -c .eslintrc.js \"src/**/*.ts\" \"projects/**/*.ts\""

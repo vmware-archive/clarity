@@ -34,6 +34,7 @@ export class CdsModalContent extends LitElement {
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside modal-content with a tabindex of -1. we need the tabindex so a
   // modal's content can scroll if it needs to.
+  /** @private */
   static get shadowRootOptions() {
     return { ...super.shadowRootOptions, delegatesFocus: true };
   }

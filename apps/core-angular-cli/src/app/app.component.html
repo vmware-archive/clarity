@@ -1,6 +1,6 @@
 <main cds-text="body" cds-layout="vertical gap:lg p:lg">
   <cds-alert-group status="warning" *ngIf="show">
-    <cds-alert [closable]="true" (closeChange)="show = false">
+    <cds-alert closable (closeChange)="show = false">
       Hello World
     </cds-alert>
   </cds-alert-group>

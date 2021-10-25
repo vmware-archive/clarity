@@ -1,0 +1,31 @@
+/*
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
+ */
+
+import { Directive, ElementRef, {{#hasProps}} Input {{/hasProps}} {{#hasEvents}}, Output, EventEmitter {{/hasEvents}} } from '@angular/core';
+import { {{elementClassName}} } from '@cds/core/{{{directiveModule}}}';
+
+@Directive({ selector: '{{tagName}}' })
+export class {{directiveClassName}} {
+  protected element: {{elementClassName}};
+
+  {{#props}}
+  get {{name}}() {
+    return this.element.{{name}};
+  }
+  {{! empty string is added to support boolean attrs https://github.com/angular/angular/issues/14761 }}
+  @Input() set {{name}}(value{{#isBoolean}}: boolean | ''{{/isBoolean}}) {
+    this.element.{{name}} = {{#isBoolean}}!!{{/isBoolean}}value;
+  };
+  {{/props}}
+
+  {{#events}}
+  @Output() {{name}}: EventEmitter<CustomEvent> = new EventEmitter();
+  {{/events}}
+
+  constructor(elementRef: ElementRef) {
+    this.element = elementRef.nativeElement;
+  }
+}

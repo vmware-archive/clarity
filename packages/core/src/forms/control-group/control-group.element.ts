@@ -200,6 +200,7 @@ export class CdsInternalControlGroup extends LitElement {
     this.observers.forEach(o => o.disconnect());
   }
 
+  /** @private */
   get layoutStable() {
     return (
       !inlineControlListIsWrapped(Array.from(this.controls), this.layout) &&

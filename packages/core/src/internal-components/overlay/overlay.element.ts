@@ -100,6 +100,7 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
 
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside an element with aria-modal set to true
+  /** @private */
   static get shadowRootOptions() {
     return { ...super.shadowRootOptions, delegatesFocus: true };
   }

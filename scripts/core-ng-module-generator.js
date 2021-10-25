@@ -11,171 +11,140 @@ const path = require('path');
 const Mustache = require('mustache');
 
 const SOURCE_PATH = path.join(__dirname, './../packages/core/dist/core/custom-elements.json');
-const TARGET_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/components');
-const MUSTACHE_TEMPLTATE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src/cds/_stubs');
-
+const TARGET_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular');
+const ROOT_SOURCE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/src');
+const MUSTACHE_TEMPLTATE_PATH = path.join(__dirname, './../packages/angular/projects/cds-angular/_stubs');
 const MODULE_NAME = 'cds-angular.module.ts'; // hard-coded in the root index mustache template
 
 const directiveTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/directive.ts.mustache', 'utf8');
 const moduleTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/module.ts.mustache', 'utf8');
 const indexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/index.ts.mustache', 'utf8');
+const packageTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/package.json.mustache', 'utf8');
+const publicAPITemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/public-api.ts.mustache', 'utf8');
 const rootIndexTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-index.ts.mustache', 'utf8');
 const rootModuleTemplate = fs.readFileSync(MUSTACHE_TEMPLTATE_PATH + '/root-module.ts.mustache', 'utf8');
 
-function formatName(string) {
-  return string
+const metadata = JSON.parse(fs.readFileSync(SOURCE_PATH));
+const entrypoints = createEntryPoints(metadata.modules);
+
+writeRootModule(entrypoints);
+writeRootPublicAPI(entrypoints);
+writeComponentSubModules(entrypoints);
+
+function createEntryPoints(modules) {
+  return findEntryPointModules(modules).map(module => {
+    const elements = findModuleElements(module.exports);
+    const moduleDirectory = path.dirname(module.path);
+    const moduleFileName = `${moduleDirectory.replace(/\//g, '-')}`;
+    const moduleFilePath = path.resolve(TARGET_PATH, path.join(moduleDirectory, `${moduleFileName}.module.ts`));
+    const indexFilePath = path.resolve(TARGET_PATH, path.join(moduleDirectory, 'index.ts'));
+    const publicAPIFilePath = path.resolve(TARGET_PATH, path.join(moduleDirectory, 'public-api.ts'));
+    const packageFilePath = path.resolve(TARGET_PATH, path.join(moduleDirectory, 'package.json'));
+    const moduleClassName = createModuleClassName(module);
+    const directives = elements.map(element => createDirective(element, module));
+
+    return {
+      moduleDirectory,
+      moduleFileName,
+      moduleFilePath,
+      moduleClassName,
+      packageFilePath,
+      indexFilePath,
+      publicAPIFilePath,
+      directives,
+    };
+  });
+}
+
+function writeRootPublicAPI(modules) {
+  writeToDisk(path.join(ROOT_SOURCE_PATH, `public-api.ts`), Mustache.render(rootIndexTemplate, { modules }));
+}
+
+function writeRootModule(modules) {
+  writeToDisk(path.join(ROOT_SOURCE_PATH, MODULE_NAME), Mustache.render(rootModuleTemplate, { modules }));
+}
+
+function writeComponentSubModules(modules) {
+  modules.forEach(module => {
+    writeToDisk(module.moduleFilePath, Mustache.render(moduleTemplate, module));
+    writeToDisk(module.indexFilePath, Mustache.render(indexTemplate, module));
+    writeToDisk(module.packageFilePath, Mustache.render(packageTemplate, module));
+    writeToDisk(module.publicAPIFilePath, Mustache.render(publicAPITemplate));
+    module.directives.forEach(directive =>
+      writeToDisk(directive.directiveFilePath, Mustache.render(directiveTemplate, directive))
+    );
+  });
+}
+
+function findEntryPointModules(modules) {
+  return modules
+    .filter(module => module.path.includes('/register.d.ts'))
+    .map(module => metadata.modules.find(m => m.path === `${path.dirname(module.path)}/index.d.ts`))
+    .filter(m => m?.exports);
+}
+
+function findModuleElements(exports) {
+  const elements = exports
+    .filter(m => !!m.declaration.package)
+    .map(e =>
+      findCustomElements().find(c => {
+        return (
+          path.basename(c.path).replace('.d.ts', '.js') === path.basename(e.declaration.package).replace('.d.ts', '.js')
+        );
+      })
+    )
+    .flatMap(m => m?.declarations)
+    .filter(e => !!e?.tagName);
+  return elements;
+}
+
+function findCustomElements() {
+  return metadata.modules.filter(module => module.declarations.find(d => d.customElement));
+}
+
+function createModuleClassName(module) {
+  let className = path
+    .dirname(module.path)
+    .replace(/\//g, '-')
     .split('-')
-    .map(function (word) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
+    .map(i => i.charAt(0).toUpperCase() + i.slice(1)) // capitalize
     .join('');
+
+  return `Cds${className}Module`;
 }
 
-function extractDirectoryFromPath({ path }) {
-  return path.split('/')[0];
+function createDirective(element, module) {
+  const directive = {
+    tagName: element.tagName,
+    elementClassName: element.name,
+    directiveFileName: element.tagName,
+    directiveClassName: `${element.name}Directive`,
+    props: (element.members && getDirectiveProps(element.members)) || [],
+    events: (element.members && getDirectiveEvents(element.members)) || [],
+    directiveFilePath: path.join(TARGET_PATH, path.dirname(module.path), `${element.tagName}.directive.ts`),
+    directiveModule: path.dirname(module.path),
+  };
+
+  directive.hasEvents = !!directive.events.length;
+  directive.hasProps = !!directive.props.length;
+  return directive;
 }
 
-function filterByPath({ path }) {
-  /**
-   * @note the regex here could only try to get only `*.element.d.ts` files and ignore
-   * everything else.
-   */
-  return !new RegExp(
-    [
-      '^internal', // Internal code is not exported
-      'index.d.ts', // ignore index.d.ts
-      'collections', // Icons collections
-      'shapes', // Icons shapes
-      'register.d.ts', // Register is not a component
-      '.js', // Drop all javscript files
-      'interfaces', // Drop all interfaces
-      'tokens', // Drop all tokens
-      'service', // Drop all services
-      'utils', // Drop all utils
-      '^test', // Drop all test components
-    ].join('|'),
-    'mg'
-  ).test(path);
-}
-
-function reformatDirectiveProps(props) {
+function getDirectiveProps(props) {
   return props
     .filter(prop => prop.privacy === undefined) // public
     .filter(prop => prop.type && prop.type.text && !prop.type.text.includes('EventEmitter')) // exclude events
-    .map(prop => {
-      const { name, type } = prop;
-      const isBoolean = type && type.text === 'boolean';
-      return { name, isBoolean };
-    });
+    .map(prop => ({ name: prop.name, isBoolean: prop?.type?.text === 'boolean' }));
 }
 
-function reformatDirectiveEvents(events) {
+function getDirectiveEvents(events) {
   return events
     .filter(event => event.privacy === undefined) // public
     .filter(prop => prop.type && prop.type.text && prop.type.text.includes('EventEmitter')) // include only events
-    .map(event => {
-      const { name } = event;
-      return { name };
-    });
+    .map(event => ({ name: event.name }));
 }
 
 function writeToDisk(filename, content) {
   fs.mkdirSync(path.dirname(filename), { recursive: true });
   fs.writeFileSync(filename, content);
 }
-
-// Read custom elements data
-(function (CustomElementsData) {
-  // Remove previous custom elements data
-  fs.rmdirSync(TARGET_PATH, { recursive: true });
-
-  // Create new custom elements data
-  fs.mkdirSync(TARGET_PATH);
-
-  const componentsFound = CustomElementsData.modules.filter(filterByPath);
-  const modulesToCreate = {};
-
-  // Locate directives to create
-  componentsFound.forEach(entry => {
-    (entry.declarations || []).forEach(directive => {
-      // Read only classes
-      if (directive.kind !== 'class') {
-        return;
-      }
-
-      const directory = extractDirectoryFromPath(entry);
-
-      const templateData = {
-        module: directory,
-        tagName: directive.tagName,
-        directiveClassName: `${directive.name}Directive`,
-        props: (directive.members && reformatDirectiveProps(directive.members)) || [],
-        events: (directive.members && reformatDirectiveEvents(directive.members)) || [],
-      };
-
-      // Re-use already calculated data
-      templateData.hasEvents = !!templateData.events.length;
-      templateData.hasProps = !!templateData.props.length;
-
-      const file = {
-        filename: `${directive.tagName}.directive.ts`,
-        path: path.join(TARGET_PATH, directory),
-        data: templateData,
-      };
-
-      // Write directive file
-      writeToDisk(path.join(file.path, file.filename), Mustache.render(directiveTemplate, file.data));
-
-      modulesToCreate[templateData.module] = [...(modulesToCreate[templateData.module] || []), file];
-    });
-  });
-
-  Object.keys(modulesToCreate).forEach(moduleName => {
-    modulesToCreate[moduleName].forEach(directive => {
-      const data = {
-        moduleDirectory: moduleName,
-        moduleClassName: `Cds${formatName(moduleName)}Module`,
-        directives: modulesToCreate[moduleName].map(directive => {
-          return {
-            directiveClassName: directive.data.directiveClassName,
-            directiveFileName: directive.data.tagName,
-          };
-        }),
-      };
-
-      // Write component module
-      writeToDisk(
-        path.join(directive.path, `cds-${directive.data.module}.module.ts`),
-        Mustache.render(moduleTemplate, data)
-      );
-
-      // Write component index
-      writeToDisk(
-        path.join(directive.path, `index.ts`),
-        Mustache.render(indexTemplate, {
-          moduleFileName: `cds-${moduleName}`,
-          directives: data.directives,
-        })
-      );
-    });
-  });
-
-  // Calculate root module data
-  const moduleData = {
-    modules: Object.keys(modulesToCreate)
-      .sort()
-      .map(moduleName => {
-        return {
-          moduleClassName: `Cds${formatName(moduleName)}Module`,
-          moduleDirectory: moduleName,
-          moduleDirectoryName: moduleName,
-        };
-      }),
-  };
-
-  // Write root index
-  writeToDisk(path.join(TARGET_PATH, `index.ts`), Mustache.render(rootIndexTemplate, moduleData));
-
-  // Write root module
-  writeToDisk(path.join(TARGET_PATH, MODULE_NAME), Mustache.render(rootModuleTemplate, moduleData));
-})(JSON.parse(fs.readFileSync(SOURCE_PATH)));

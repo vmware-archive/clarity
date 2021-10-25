@@ -1,6 +1,7 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import { HTMLElement } from '../../types/index';
 import { lintDecoratorTemplate } from '../decorator-template-helper';
+import { getDeprecatedClassFixes, getTagFixes } from '../html-fixer-helpers';
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
 export type MessageIds = 'clrDatalistFailure';
@@ -26,9 +27,19 @@ export default createESLintRule({
   create(context) {
     return {
       [`HTMLElement[tagName="${disallowedTag}"]`](node: HTMLElement): void {
+        const classNode = node.attributes?.find(attribute => attribute.attributeName.value === 'class');
+
         context.report({
           node: node as any,
           messageId: 'clrDatalistFailure',
+          fix: fixer => {
+            const tagFixes = getTagFixes(fixer, node, 'clr-datalist-container', 'cds-datalist', [
+              `control-width="shrink"`,
+            ]);
+            const attributeFixes = getDeprecatedClassFixes(fixer, classNode, [] as any);
+
+            return [...tagFixes, ...attributeFixes];
+          },
         });
       },
       'ClassDeclaration > Decorator'(node: TSESTree.Decorator): void {

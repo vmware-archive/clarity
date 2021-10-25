@@ -15,6 +15,27 @@ htmlRuleTester.run('no-clr-datalist', rule, {
           <option *ngFor="let item of items" [value]="item"></option>
         </datalist>
       </clr-datalist-container>`,
+      output: `<cds-datalist control-width="shrink">
+        <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </cds-datalist>`,
+      locations: [{ line: 1, column: 1 }],
+    }),
+    getInvalidDatalistTest({
+      code: `<clr-datalist-container id="custom-id">
+        <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </clr-datalist-container>`,
+      output: `<cds-datalist control-width="shrink" id="custom-id">
+        <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </cds-datalist>`,
       locations: [{ line: 1, column: 1 }],
     }),
     getInvalidDatalistTest({
@@ -26,6 +47,15 @@ htmlRuleTester.run('no-clr-datalist', rule, {
             <option *ngFor="let item of items" [value]="item"></option>
           </datalist>
         </clr-datalist-container>
+      `,
+      output: `
+        <div></div>
+        <cds-datalist control-width="shrink">
+          <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+          <datalist>
+            <option *ngFor="let item of items" [value]="item"></option>
+          </datalist>
+        </cds-datalist>
       `,
       locations: [{ line: 3, column: 9 }],
     }),
@@ -40,7 +70,32 @@ htmlRuleTester.run('no-clr-datalist', rule, {
           </clr-datalist-container>
         </div>
       `,
+      output: `
+        <div>
+          <cds-datalist control-width="shrink">
+            <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+            <datalist>
+              <option *ngFor="let item of items" [value]="item"></option>
+            </datalist>
+          </cds-datalist>
+        </div>
+      `,
       locations: [{ line: 3, column: 11 }],
+    }),
+    getInvalidDatalistTest({
+      code: `<clr-datalist-container id="custom-id" class="custom-class">
+        <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </clr-datalist-container>`,
+      output: `<cds-datalist control-width="shrink" id="custom-id" class="custom-class">
+        <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+      </cds-datalist>`,
+      locations: [{ line: 1, column: 1 }],
     }),
     getInvalidDatalistTest({
       code: `
@@ -53,6 +108,17 @@ htmlRuleTester.run('no-clr-datalist', rule, {
           </clr-datalist-container>
         </div>
         <clr-datalist-container></clr-datalist-container>
+      `,
+      output: `
+        <div>
+          <cds-datalist control-width="shrink">
+            <input clrDatalistInput [(ngModel)]="vertical" placeholder="No label" name="Option" />
+            <datalist>
+              <option *ngFor="let item of items" [value]="item"></option>
+            </datalist>
+          </cds-datalist>
+        </div>
+        <cds-datalist control-width="shrink"></cds-datalist>
       `,
       locations: [
         { line: 3, column: 11 },

@@ -355,6 +355,7 @@ export class CdsControl extends LitElement {
     }
   }
 
+  /** @private */
   get layoutStable() {
     return (
       this.labelLayout !== ControlLabelLayout.default ||

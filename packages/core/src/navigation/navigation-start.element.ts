@@ -190,7 +190,7 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
     return [baseStyles, itemStyles, styles];
   }
 
-  get toggleIconDirection(): Directions {
+  private get toggleIconDirection(): Directions {
     return getToggleIconDirection(this);
   }
 

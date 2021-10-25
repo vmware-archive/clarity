@@ -48,7 +48,7 @@ import {
   CdsToggleGroupDirective,
   CdsToggleDirective,
   CdsModule,
-} from './cds/components';
+} from './public-api';
 
 describe('CDS Accordion Content', () => {
   let fixture: ComponentFixture<any>;

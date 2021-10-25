@@ -12,7 +12,15 @@ packages/react/coverage
 .rollup.cache
 
 # auto-generated ng-core components
-packages/angular/projects/cds-angular/src/cds/components
+packages/angular/projects/cds-angular/*
+!packages/angular/projects/cds-angular/_stubs
+!packages/angular/projects/cds-angular/*.json
+!packages/angular/projects/cds-angular/*.md
+!packages/angular/projects/cds-angular/karma.conf.js
+!packages/angular/projects/cds-angular/yarn.lock
+!packages/angular/projects/cds-angular/src/all.spec.ts
+!packages/angular/projects/cds-angular/src/test.ts
+
 
 # compiled output
 /dist

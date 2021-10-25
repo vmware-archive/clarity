@@ -58,7 +58,6 @@ const config = {
       './src/range',
       './src/search',
       './src/select',
-      './src/selection-panels',
       './src/selection-panels/checkbox',
       './src/selection-panels/radio',
       './src/tag',

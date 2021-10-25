@@ -187,7 +187,7 @@ export class CdsNavigation extends LitElement implements Animatable {
     this.expandedChange.emit(!this.expanded);
   }
 
-  get currentActiveItem() {
+  private get currentActiveItem() {
     return this.visibleChildren.find(c => c.id === this.ariaActiveDescendant);
   }
 

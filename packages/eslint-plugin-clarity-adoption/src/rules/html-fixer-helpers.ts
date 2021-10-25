@@ -97,7 +97,13 @@ export function getAttributeNameFixes(
   return [fixer.replaceTextRange([start, end], newName)];
 }
 
-export function getTagFixes(fixer: RuleFixer, node: HTMLElement, oldTag: string, newTag: string): Array<RuleFix> {
+export function getTagFixes(
+  fixer: RuleFixer,
+  node: HTMLElement,
+  oldTag: string,
+  newTag: string,
+  newAttributes: Array<string> = []
+): Array<RuleFix> {
   const openingTag = `<${oldTag}`;
   const closingTag = `</${oldTag}>`;
 
@@ -109,7 +115,10 @@ export function getTagFixes(fixer: RuleFixer, node: HTMLElement, oldTag: string,
   const closingTagEnd = closingTagStart + closingTag.length - 1;
 
   return [
-    fixer.replaceTextRange([openingTagStart, openingTagEnd], `<${newTag}`),
+    fixer.replaceTextRange(
+      [openingTagStart, openingTagEnd],
+      newAttributes.length ? `<${newTag}` + ' ' + newAttributes?.join(' ') : `<${newTag}`
+    ),
     fixer.replaceTextRange([closingTagStart, closingTagEnd], `</${newTag}`),
   ];
 }

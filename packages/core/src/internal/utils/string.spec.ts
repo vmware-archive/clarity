@@ -21,6 +21,7 @@ import {
   removePrefix,
   removeSuffix,
   removePrefixOrSuffix,
+  replaceWord,
 } from './string.js';
 
 describe('Functional Helper: ', () => {
@@ -232,6 +233,34 @@ describe('Functional Helper: ', () => {
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', '')).toBe('yep_ohai');
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', null)).toBe('yep_ohai');
       expect(removePrefixOrSuffix('yep_ohai', 'yep_', 'sufix')).toBe('yep_ohai');
+    });
+  });
+
+  describe('replaceWord()', () => {
+    it('defaults to removing words', () => {
+      expect(replaceWord('dog seahawk cat', 'seahawk')).toBe('dog cat');
+    });
+
+    it('removes more than one instance of a word', () => {
+      expect(replaceWord('seahawk dog horse seahawk cat seahawk seahawk mouse', 'seahawk')).toBe('dog horse cat mouse');
+    });
+
+    it('handles empty strings', () => {
+      expect(replaceWord('', 'ohai')).toBe('');
+    });
+
+    it('does not mess with string if word is not in it', () => {
+      expect(replaceWord('dog horse cat seahawk mouse', 'niner')).toBe('dog horse cat seahawk mouse');
+    });
+
+    it('can also do a replace', () => {
+      expect(replaceWord('dog horse cat seahawk mouse', 'seahawk', 'niner')).toBe('dog horse cat niner mouse');
+    });
+
+    it('can replace multiple instances of a word', () => {
+      expect(replaceWord('seahawk dog horse seahawk cat seahawk seahawk mouse', 'seahawk', 'niner')).toBe(
+        'niner dog horse niner cat niner niner mouse'
+      );
     });
   });
 });

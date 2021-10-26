@@ -12,6 +12,7 @@ import {
   pxToRem,
   removeClassnames,
   removeClassnamesUnless,
+  unsetElementStyles,
   updateElementStyles,
   isCssPropertyName,
   getCssPropertyValue,
@@ -91,6 +92,32 @@ describe('Css utility functions - ', () => {
       expect(testMe.style.backgroundColor).toBe('yellow');
       expect(testMe.style.width).toBe('100%');
       expect(testMe.style.fontSize).toBe('28px');
+    });
+  });
+
+  describe('pxToRem: ', () => {
+    it('should return a px to rem calc from the base font size token', () => {
+      expect(pxToRem(10)).toBe('calc((10 / var(--cds-global-base)) * 1rem)');
+    });
+  });
+
+  describe('unsetElementStyles: ', () => {
+    it('should unset element styles as expected', () => {
+      updateElementStyles(
+        testDiv,
+        ['backgroundColor', 'fuchsia'],
+        ['width', '500px'],
+        ['height', '200px'],
+        ['color', 'orange']
+      );
+
+      const testMe = unsetElementStyles(testDiv, 'background-color', 'width', 'margin', 'color');
+
+      expect(testMe.style.backgroundColor).toBe('');
+      expect(testMe.style.width).toBe('');
+      expect(testMe.style.color).toBe('');
+      expect(testMe.style.margin).toBe('');
+      expect(testMe.style.height).toBe('200px');
     });
   });
 

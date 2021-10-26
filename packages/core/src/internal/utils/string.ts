@@ -121,3 +121,12 @@ export function removePrefix(str: string, prefix: string): string {
 export function removeSuffix(str: string, suffix: string): string {
   return removePrefixOrSuffix(str, suffix, 'suffix');
 }
+
+export function replaceWord(str: string, wordToReplace: string, replaceWith = '') {
+  const words = str.split(' ');
+  const returnWords =
+    replaceWith === ''
+      ? words.filter(w => w !== wordToReplace)
+      : words.map(w => (w === wordToReplace ? replaceWith : w));
+  return returnWords.length > 0 ? returnWords.join(' ') : '';
+}

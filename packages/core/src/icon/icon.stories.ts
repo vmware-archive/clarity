@@ -5,6 +5,7 @@
  */
 
 import '@cds/core/icon/register.js';
+import '@cds/core/button/register.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { imageIcon } from '@cds/core/icon/shapes/image.js';
 import { userIcon } from '@cds/core/icon/shapes/user.js';
@@ -12,25 +13,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { homeIcon } from '@cds/core/icon/shapes/home.js';
-// import { boolean, select, text } from '@storybook/addon-knobs';
-// import { classMap } from 'lit/directives/class-map.js';
-// import customElements from '../../dist/core/custom-elements.json';
-
-// import {
-//   loadChartIconSet,
-//   loadCommerceIconSet,
-//   loadCoreIconSet,
-//   loadEssentialIconSet,
-//   loadMediaIconSet,
-//   loadMiniIconSet,
-//   loadSocialIconSet,
-//   loadTechnologyIconSet,
-//   loadTextEditIconSet,
-//   loadTravelIconSet,
-// } from '@cds/core/icon';
-import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
-// import { ifDefined } from 'lit/directives/if-defined.js';
-// import { IconShapeTuple } from './interfaces/icon.interfaces.js';
+import { baseStyles, spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 
 // here for testing
 ClarityIcons.addIcons(userIcon, imageIcon, homeIcon);
@@ -89,150 +72,6 @@ all.element = AllIcons; // get around unused class
 export function all() {
   return html`<demo-all-icons></demo-all-icons>`;
 }
-
-// export function all() {
-// import('@cds/core/icon').then(module => {
-//   module.loadChartIconSet();
-//   module.loadCommerceIconSet();
-//   module.loadCoreIconSet();
-//   module.loadEssentialIconSet();
-//   module.loadMediaIconSet();
-//   module.loadMiniIconSet();
-//   module.loadSocialIconSet();
-//   module.loadTechnologyIconSet();
-//   module.loadTextEditIconSet();
-//   module.loadTravelIconSet();
-// });
-//   const search = text('search', '', propertiesGroup);
-//   const size = select(
-//     'size',
-//     { xs: 'xs', 'sm (default)': 'sm', md: 'md', lg: 'lg', xl: 'xl', xxl: 'xxl' },
-//     'lg',
-//     propertiesGroup
-//   );
-//   const dir = select(
-//     'direction',
-//     { 'up (default)': undefined, down: 'down', left: 'left', right: 'right' },
-//     undefined,
-//     propertiesGroup
-//   );
-//   const fl = select(
-//     'flip',
-//     { 'none (default)': undefined, vertical: 'vertical', horizontal: 'horizontal' },
-//     undefined,
-//     propertiesGroup
-//   );
-//   const badge = select(
-//     'badge',
-//     {
-//       'none (default)': '',
-//       info: 'info',
-//       success: 'success',
-//       warning: 'warning',
-//       danger: 'danger',
-//       inherit: 'inherit',
-//       'warning-triangle': 'warning-triangle',
-//       'inherit-triangle': 'inherit-triangle',
-//     },
-//     '',
-//     propertiesGroup
-//   );
-//   const iconStatus = select(
-//     'status',
-//     { 'none (default)': '', info: 'info', success: 'success', warning: 'warning', danger: 'danger' },
-//     '',
-//     propertiesGroup
-//   );
-//   const inverse = boolean('inverse', false, propertiesGroup);
-//   const solid = boolean('solid', false, propertiesGroup);
-
-//   function createIconIndices(icons: IconShapeTuple[], aliases: [string, string[]][]): string[] {
-//     const iconsMap = icons.map(iconTuple => iconTuple[0]);
-//     const aliasMap = aliases.map(aliasTuple => aliasTuple[1]).reduce((acc, val) => acc.concat(val), []);
-//     return iconsMap.concat(aliasMap).sort();
-//   }
-
-//   const iconIndex: { [key: string]: string[] } = {
-//     Chart: createIconIndices(chartCollectionIcons, chartCollectionAliases),
-//     Commerce: createIconIndices(commerceCollectionIcons, commerceCollectionAliases),
-//     Core: createIconIndices(coreCollectionIcons, coreCollectionAliases),
-//     Essential: createIconIndices(essentialCollectionIcons, essentialCollectionAliases),
-//     Media: createIconIndices(mediaCollectionIcons, mediaCollectionAliases),
-//     Mini: createIconIndices(miniCollectionIcons, miniCollectionAliases),
-//     Social: createIconIndices(socialCollectionIcons, socialCollectionAliases),
-//     Technology: createIconIndices(technologyCollectionIcons, technologyCollectionAliases),
-//     'Text-Edit': createIconIndices(textEditCollectionIcons, textEditCollectionAliases),
-//     Travel: createIconIndices(travelCollectionIcons, travelCollectionAliases),
-//   };
-
-//   const iconSets = Object.keys(iconIndex);
-
-//   return html`
-//     <style>
-//       .dc-icon-set {
-//         max-width: 60rem;
-//       }
-
-//       .dc-icon-boxes {
-//         padding: 1.2rem 0.4rem 0;
-//         background: #f4f4f4;
-//         display: grid;
-//         grid-gap: 16px;
-//         grid-template-columns: repeat(12, 1fr);
-//       }
-
-//       .dc-icon-boxes.inverse {
-//         background: #565656;
-//       }
-
-//       .dc-icon-boxes.inverse .dc-icon-name {
-//         color: #fff;
-//       }
-
-//       .dc-icon-box {
-//         text-align: center;
-//         grid-column: span 2 / span 2;
-//       }
-
-//       .dc-icon-box p {
-//         margin: 0;
-//         padding: 0.2rem 0 1.2rem;
-//       }
-//     </style>
-//     ${iconSets.map(
-//       k => html`
-//         <section class="dc-icon-set">
-//           <h2>${k}</h2>
-
-//           <div class="dc-icon-boxes ${classMap({ inverse: inverse })}">
-//             ${iconIndex[k].map(
-//               i => html`
-//                 <div class="dc-icon-box" .hidden=${!i.includes(search)}>
-//                   <cds-icon
-//                     aria-label="This is an example of an icon using the ${i} shape"
-//                     badge=${badge}
-//                     status=${iconStatus}
-//                     ?solid=${solid}
-//                     size=${size}
-//                     shape=${i}
-//                     direction=${ifDefined(dir)}
-//                     ?inverse=${inverse}
-//                     flip=${ifDefined(fl)}
-//                   >
-//                   </cds-icon>
-//                   <span cds-layout="display:screen-reader-only"
-//                     >${'The shape needed to display this icon is ' + i}</span
-//                   >
-//                   <p class="dc-icon-name" aria-hidden="true">${i}</p>
-//                 </div>
-//               `
-//             )}
-//           </div>
-//         </section>
-//       `
-//     )}
-//   `;
-// }
 
 export function API(args: any) {
   return html`
@@ -542,7 +381,7 @@ export function customStyles() {
     <div class="custom-icon-colors a">
       <cds-icon
         shape="user"
-        badge="default"
+        badge="neutral"
         class="icon-a"
         aria-label="This is an example of how an icon can be visually customized."
       ></cds-icon>
@@ -558,7 +397,7 @@ export function customStyles() {
     <div class="custom-icon-colors c">
       <cds-icon
         shape="user"
-        badge="default"
+        badge="neutral"
         class="icon-c"
         aria-label="This is a third example of how an icon can be visually customized."
       ></cds-icon>
@@ -655,4 +494,70 @@ export function lazyLoading() {
       ClarityIcons.addIcons([shapeName, mySvg]);
     }
   }
+}
+
+const testNonequilateralIcon =
+  '<svg style="background: yellow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 124"><defs><linearGradient id="illus_grad" x1="-1907.36" x2="-1863.1" y1="63.08" y2="112.71" gradientTransform="matrix(-1 0 0 1 -1840.95 0)" gradientUnits="userSpaceOnUse"><stop offset=".15" stop-color="#0091da" stop-opacity=".6"/><stop offset=".54" stop-color="#0091da" stop-opacity=".32"/><stop offset="1" stop-color="#0091da" stop-opacity="0"/></linearGradient><linearGradient id="illus_grad-2" x1="-1923.8" x2="-1892.27" y1="71.55" y2="106.92" xlink:href="#illus_grad"/><style>.path-size{fill:none}.vmw-color-blue-67,.vmw-color-blue-87{opacity:.5}.vmw-color-blue-87{fill:url(#illus_grad)}.vmw-color-blue-67{fill:url(#illus_grad-2)}.vmw-color-blue{fill:#0091da}</style></defs><path id="Layer_6" d="M0 0h96v124H0z" class="path-size" data-name="Layer 6"/><g id="Layer_4" data-name="Layer 4"><path d="M16.04 94.86h44.03V50.84L16.04 94.86z" class="vmw-color-blue-87"/><path d="M46.97 94.2h31.37V62.83L46.97 94.2z" class="vmw-color-blue-67"/></g><g id="Layer_2" data-name="Layer 2"><path d="M89.91 95.91H5.46a1 1 0 110-2h84.45a1 1 0 010 2zM57.38 40H38.62a1 1 0 010-2h18.76a1 1 0 010 2zM48.1 80.67A4.72 4.72 0 1152.82 76a4.72 4.72 0 01-4.72 4.67zm0-7.44A2.72 2.72 0 1050.82 76a2.72 2.72 0 00-2.72-2.77zM76.92 47H67v2h9.92a1 1 0 000-2zM19.08 48H29v2h-9.92a1 1 0 010-2z" class="vmw-color-blue"/><path d="M64 96a1 1 0 01-1-1V31a1 1 0 00-1-1H34a1 1 0 00-1 1v64a1 1 0 01-2 0V31a3 3 0 013-3h28a3 3 0 013 3v64a1 1 0 01-1 1zM83 95h-2V41a1 1 0 00-1-1H67v-2h13a3 3 0 013 3zM15 95h-2V41a3 3 0 013-3h13v2H16a1 1 0 00-1 1z" class="vmw-color-blue"/></g></svg>';
+const testNonequilateralIconName = 'test-nonequilateral';
+
+ClarityIcons.addIcons([testNonequilateralIconName, testNonequilateralIcon]);
+
+// rotate and resize!
+
+@customElement('demo-non-equilateral')
+class NonEquilateralIcon extends LitElement {
+  static get styles() {
+    return [baseStyles];
+  }
+
+  @state() sizeToFit = false;
+
+  toggleFitSizing() {
+    this.sizeToFit = !this.sizeToFit;
+  }
+
+  render() {
+    return html`
+      <div cds-layout="vertical gap:lg">
+        <div cds-layout="horizontal gap:lg">
+          <cds-icon
+            size=${this.sizeToFit ? 'xl fit' : 'xl'}
+            shape=${testNonequilateralIconName}
+            aria-label="This is an example of an icon that is taller than it is wide."
+            style="border: 1px solid red"
+          ></cds-icon>
+          <cds-icon
+            size=${this.sizeToFit ? 'xl fit' : 'xl'}
+            shape=${testNonequilateralIconName}
+            direction="right"
+            aria-label="This is an example of an icon that is taller than it is wide rotated to the right."
+            style="border: 1px solid red"
+          ></cds-icon>
+          <cds-icon
+            size=${this.sizeToFit ? 'xl fit' : 'xl'}
+            shape=${testNonequilateralIconName}
+            direction="down"
+            aria-label="This is an example of an icon that is taller than it is wide flipped upside down."
+            style="border: 1px solid red"
+          ></cds-icon>
+          <cds-icon
+            size=${this.sizeToFit ? 'xl fit' : 'xl'}
+            shape=${testNonequilateralIconName}
+            direction="left"
+            aria-label="This is an example of an icon that is taller than it is wide rotated to the left."
+            style="border: 1px solid red"
+          ></cds-icon>
+        </div>
+        <div>
+          <cds-button type="button" @click=${this.toggleFitSizing}>Size to Image</cds-button>
+        </div>
+      </div>
+    `;
+  }
+}
+
+nonequilateral.element = NonEquilateralIcon; // get around unused class
+
+export function nonequilateral() {
+  return html`<demo-non-equilateral></demo-non-equilateral>`;
 }

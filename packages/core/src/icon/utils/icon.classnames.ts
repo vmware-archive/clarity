@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isTshirtSize, pxToRem, updateElementStyles } from '@cds/core/internal';
-import isNil from 'ramda/es/isNil.js';
+import { isTshirtSize, pxToRem, replaceWord, updateElementStyles, unsetElementStyles } from '@cds/core/internal';
+import isNil from 'ramda/es/isNil.js'; // TODO: REPLACE WITH INTERNAL FN AFTER MERGING DROPDOWN BRANCH
 import { CdsIcon } from '../icon.element.js';
 
 export const enum SizeUpdateStrategies {
@@ -31,20 +31,29 @@ export function getUpdateSizeStrategy(size: string) {
   return SizeUpdateStrategies.BadSizeValue;
 }
 
+export function getSizeValue(size: string) {
+  return isNil(size) || size === '' ? '' : replaceWord(size, 'fit');
+}
+
 export function updateIconSizeStyle(el: CdsIcon, size: string) {
-  const updateStrategy = getUpdateSizeStrategy(size);
+  const updateStrategy = getUpdateSizeStrategy(getSizeValue(size));
+  const isFitSized = isNil(size) ? false : size.indexOf('fit') > -1;
   let val = '';
 
   switch (updateStrategy) {
     case SizeUpdateStrategies.ValidNumericString:
       val = pxToRem(parseInt(size)); // set val in block to run expensive call only when needed
-      updateElementStyles(el, ['width', val], ['height', val]);
+      if (isFitSized) {
+        updateElementStyles(el, ['width', 'auto'], ['height', 'auto'], ['min-width', val], ['min-height', val]);
+      } else {
+        updateElementStyles(el, ['width', val], ['height', val], ['min-width', val], ['min-height', val]);
+      }
       return;
     case SizeUpdateStrategies.ValidSizeString:
-      updateElementStyles(el, ['width', ''], ['height', '']);
+      unsetElementStyles(el, 'width', 'height', 'min-width', 'min-height');
       return;
     case SizeUpdateStrategies.NilSizeValue: // nil values empty out all sizing
-      updateElementStyles(el, ['width', ''], ['height', '']);
+      unsetElementStyles(el, 'width', 'height', 'min-width', 'min-height');
       return;
     case SizeUpdateStrategies.BadSizeValue:
       // bad-value is ignored

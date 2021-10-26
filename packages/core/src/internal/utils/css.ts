@@ -40,6 +40,13 @@ export function updateElementStyles(el: HTMLElement, ...styleTuples: [string, st
   return el;
 }
 
+export function unsetElementStyles(el: HTMLElement, ...styleProperties: string[]): HTMLElement {
+  styleProperties.forEach(prop => {
+    (el.style as { [key: string]: any })[prop] = '';
+  });
+  return el;
+}
+
 export function pxToRem(pxValue: number) {
   return `calc((${pxValue} / var(--cds-global-base)) * 1rem)`;
 }

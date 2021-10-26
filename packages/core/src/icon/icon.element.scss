@@ -15,6 +15,7 @@
   --color: currentColor;
   display: inline-block;
   @include equilateral(#{$cds-global-space-7});
+  @include min-equilateral(#{$cds-global-space-7});
   margin: 0;
   vertical-align: middle;
   fill: var(--color);
@@ -28,33 +29,49 @@ svg {
 }
 
 // sizing
-:host([size='xs']) {
+:host([size*='xs']) {
   @include equilateral(#{$cds-global-space-5});
+  @include min-equilateral(#{$cds-global-space-5});
 }
 
-:host([size='sm']) {
+:host([size*='sm']) {
   // weirdly, the default... 16px
   @include equilateral(#{$cds-global-space-7});
+  @include min-equilateral(#{$cds-global-space-7});
 }
 
-:host([size='md']) {
+:host([size*='md']) {
   // 24px
   @include equilateral(#{$cds-global-space-9});
+  @include min-equilateral(#{$cds-global-space-9});
 }
 
-:host([size='lg']) {
+:host([size*='lg']) {
   // 36px
   @include equilateral(#{$cds-global-space-11});
+  @include min-equilateral(#{$cds-global-space-11});
 }
 
-:host([size='xl']) {
+// note: the selectors for `xl` and `xxl` work as expected due to the order in
+// which they are listed here. this is fine and expected for CSS. just know
+// that if their order is switched around, they will break.
+// likewise if we add an `xxs` it will have to go AFTER `xs`!
+:host([size*='xl']) {
   // 48px
   @include equilateral(#{$cds-global-space-12});
+  @include min-equilateral(#{$cds-global-space-12});
 }
 
-:host([size='xxl']) {
+:host([size*='xxl']) {
   // 64px
   @include equilateral(calc(#{$cds-global-space-13} - #{$cds-global-space-5}));
+  @include min-equilateral(calc(#{$cds-global-space-13} - #{$cds-global-space-5}));
+}
+
+:host([size*='fit']) {
+  height: auto;
+  width: auto;
+  contain: layout;
 }
 
 // colors

@@ -5,7 +5,7 @@
  */
 
 import { html } from 'lit';
-import { removeTestElement, createTestElement, onceEvent } from '@cds/core/test';
+import { removeTestElement, createTestElement } from '@cds/core/test';
 import { getElementUpdates } from './events.js';
 
 describe('getElementUpdates', () => {

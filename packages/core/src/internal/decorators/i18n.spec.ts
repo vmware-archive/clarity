@@ -48,5 +48,8 @@ describe('i18n decorator', () => {
     component.setAttribute('cds-i18n', `{ "close": "${closeText}" }`);
     await componentIsStable(component);
     expect(component.i18n.close).toEqual(closeText);
+    component.setAttribute('cds-i18n', `{ "close": "ohai" }`);
+    await componentIsStable(component);
+    expect(component.i18n.close).toEqual('ohai', 'double set i18n');
   });
 });

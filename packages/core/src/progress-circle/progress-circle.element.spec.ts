@@ -155,4 +155,147 @@ describe('progress circle element – ', () => {
     });
   });
   // circle classname arcstroke/backstroke
+
+  describe('ariaLabel', () => {
+    it('should show indeterminate label if no label is set and there is no value', async () => {
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('aria-label')).toBe('Loading');
+    });
+    it('should show loading label and value if no label is set', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label')).toBe('Loading 49%');
+      component.value = 80;
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label')).toBe('Loading 80%');
+    });
+    it('should not show default label if a custom label is set', async () => {
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('aria-label')).toBe('Loading');
+      componentUnset.setAttribute('aria-label', 'ohai');
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('aria-label')).toBe('ohai');
+
+      await componentIsStable(component);
+      component.setAttribute('aria-label', 'ohai');
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label')).toBe('ohai');
+      component.value = 88;
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label')).toBe('ohai');
+    });
+  });
+
+  describe('i18n', () => {
+    const newLoading = 'ohai';
+    const newLooping = 'kthxbye';
+
+    it('uses i18n strings by default', async () => {
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label').indexOf(component.i18n.loading) > -1).toBe(
+        true,
+        'has loading i18n string'
+      );
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('aria-label').indexOf(componentUnset.i18n.looping) > -1).toBe(
+        true,
+        'has looping i18n string'
+      );
+    });
+    it('updates looping i18n strings as expected', async () => {
+      await componentIsStable(componentUnset);
+      componentUnset.setAttribute('cds-i18n', `{ "loading": "${newLoading}", "looping": "${newLooping}" }`);
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('aria-label').indexOf(newLooping) > -1).toBe(true);
+    });
+    it('updates loading i18n strings as expected', async () => {
+      await componentIsStable(component);
+      component.setAttribute('cds-i18n', `{ "loading": "${newLoading}", "looping": "${newLooping}" }`);
+      await componentIsStable(component);
+      expect(component.getAttribute('aria-label').indexOf(newLoading) > -1).toBe(true);
+    });
+  });
+
+  describe('setAriaAttributes', () => {
+    it('should return expected for indeterminate progress', async () => {
+      await componentIsStable(componentUnset);
+      componentUnset.setAriaAttributes();
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('role')).toBe('img');
+      expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuenow')).toBe(false);
+      expect(componentUnset.getAttribute('aria-label')).toBe('Loading');
+
+      componentUnset.ariaLabel = 'howdy';
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('role')).toBe('img');
+      expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuenow')).toBe(false);
+      expect(componentUnset.getAttribute('aria-label')).toBe('howdy');
+    });
+    it('should return as expected for progress with value', async () => {
+      await componentIsStable(component);
+      component.setAriaAttributes();
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('progressbar');
+      expect(component.getAttribute('aria-valuemin')).toBe('0');
+      expect(component.getAttribute('aria-valuemax')).toBe('100');
+      expect(component.getAttribute('aria-valuenow')).toBe('49');
+      expect(component.getAttribute('aria-label')).toBe('Loading 49%');
+
+      component.value = 0;
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('progressbar');
+      expect(component.getAttribute('aria-valuemin')).toBe('0');
+      expect(component.getAttribute('aria-valuemax')).toBe('100');
+      expect(component.getAttribute('aria-valuenow')).toBe('0');
+      expect(component.getAttribute('aria-label')).toBe('Loading 0%');
+
+      component.ariaLabel = 'ohai';
+      component.value = 80;
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('progressbar');
+      expect(component.getAttribute('aria-valuemin')).toBe('0');
+      expect(component.getAttribute('aria-valuemax')).toBe('100');
+      expect(component.getAttribute('aria-valuenow')).toBe('80');
+      expect(component.getAttribute('aria-label')).toBe('ohai');
+    });
+    it('should update as expected for indeterminate progress given a value', async () => {
+      await componentIsStable(componentUnset);
+      componentUnset.setAriaAttributes();
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('role')).toBe('img');
+      expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false);
+      expect(componentUnset.hasAttribute('aria-valuenow')).toBe(false);
+      expect(componentUnset.getAttribute('aria-label')).toBe('Loading');
+
+      componentUnset.value = 66;
+      await componentIsStable(componentUnset);
+      expect(componentUnset.getAttribute('role')).toBe('progressbar');
+      expect(componentUnset.getAttribute('aria-valuemin')).toBe('0');
+      expect(componentUnset.getAttribute('aria-valuemax')).toBe('100');
+      expect(componentUnset.getAttribute('aria-valuenow')).toBe('66');
+      expect(componentUnset.getAttribute('aria-label')).toBe('Loading 66%');
+    });
+    it('should update as expected for progress with a value shifted to indeterminate', async () => {
+      await componentIsStable(component);
+      component.setAriaAttributes();
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('progressbar');
+      expect(component.getAttribute('aria-valuemin')).toBe('0');
+      expect(component.getAttribute('aria-valuemax')).toBe('100');
+      expect(component.getAttribute('aria-valuenow')).toBe('49');
+      expect(component.getAttribute('aria-label')).toBe('Loading 49%');
+
+      component.value = null;
+      await componentIsStable(component);
+      expect(component.getAttribute('role')).toBe('img');
+      expect(component.hasAttribute('aria-valuemin')).toBe(false);
+      expect(component.hasAttribute('aria-valuemax')).toBe(false);
+      expect(component.hasAttribute('aria-valuenow')).toBe(false);
+      expect(component.getAttribute('aria-label')).toBe('Loading');
+    });
+  });
 });

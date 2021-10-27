@@ -47,6 +47,8 @@ describe('Functional Helper: ', () => {
       expect(isNilOrEmpty({ item: 1 })).toEqual(false);
       expect(isNilOrEmpty([1, 2])).toEqual(false);
       expect(isNilOrEmpty('ohai')).toEqual(false);
+      expect(isNilOrEmpty(0)).toEqual(false);
+      expect(isNilOrEmpty(-1)).toEqual(false);
       expect(isNilOrEmpty(true)).toEqual(false);
       expect(isNilOrEmpty(false)).toEqual(false);
     });

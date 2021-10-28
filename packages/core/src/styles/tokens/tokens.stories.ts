@@ -397,8 +397,6 @@ export function interactionMenuDemo() {
       .cds-menu-mock {
         display: block;
         width: 100%;
-        box-shadow: var(--cds-alias-object-shadow-100);
-        background: var(--cds-alias-object-interaction-background);
       }
 
       .cds-menu-mock button {
@@ -407,12 +405,14 @@ export function interactionMenuDemo() {
         align-content: center;
         justify-items: center;
         gap: var(--cds-global-space-6);
-        padding: var(--cds-global-space-7) var(--cds-global-space-6);
+        padding: 0 var(--cds-global-space-5);
+        min-height: var(--cds-alias-object-interaction-touch-target);
         border: 0;
         width: 100%;
         cursor: pointer;
         color: var(--cds-alias-object-interaction-color);
-        background: var(--cds-alias-object-interaction-background);
+        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        background: none;
       }
 
       .cds-menu-mock button cds-icon {
@@ -429,7 +429,7 @@ export function interactionMenuDemo() {
       .cds-menu-mock button:hover cds-icon,
       .cds-menu-mock button[hover] cds-icon,
       .cds-tabs-mock button cds-icon:hover {
-        --color: var(--cds-alias-object-interaction-color-selected);
+        color: var(--cds-alias-object-interaction-color-selected);
         cursor: pointer;
       }
 
@@ -441,12 +441,14 @@ export function interactionMenuDemo() {
 
       .cds-menu-mock button:active cds-icon,
       .cds-menu-mock button[active] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-selected);
+        color: var(--cds-alias-object-interaction-color-active);
       }
 
       .cds-menu-mock button[selected] {
         background: var(--cds-alias-object-interaction-background-selected);
         color: var(--cds-alias-object-interaction-color-selected);
+        box-shadow: inset var(--cds-alias-object-border-width-300) 0 0 0
+          var(--cds-alias-object-interaction-background-highlight);
       }
 
       .cds-menu-mock button[selected] cds-icon {
@@ -454,7 +456,6 @@ export function interactionMenuDemo() {
       }
 
       .cds-menu-mock button[disabled] {
-        background: var(--cds-alias-object-interaction-background-disabled);
         color: var(--cds-alias-object-interaction-color-disabled);
         cursor: not-allowed;
       }
@@ -469,12 +470,12 @@ export function interactionMenuDemo() {
 
       .cds-menu-mock button[focused] {
         outline: var(--cds-alias-object-interaction-outline);
-        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        outline-offset: calc(var(--cds-alias-object-interaction-outline-offset) * -1);
       }
 
       @media (-webkit-min-device-pixel-ratio: 0) {
         .cds-menu-mock button[focused] {
-          outline-color: -webkit-focus-ring-color;
+          outline: var(--cds-alias-object-interaction-outline-webkit);
         }
       }
     </style>
@@ -532,6 +533,168 @@ export function interactionMenuDemo() {
   `;
 }
 
+export function interactionDropdownMenuDemo() {
+  // for cds-menu api used within inline and dropdown menus
+  return html`
+    <style>
+      .cds-dropdown-mock {
+        display: block;
+        width: 100%;
+        background: var(--cds-alias-object-container-background);
+        box-shadow: var(--cds-alias-object-shadow-100);
+      }
+
+      .cds-menu-mock {
+        display: block;
+        width: 100%;
+      }
+
+      .cds-menu-mock button {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
+        gap: var(--cds-global-space-6);
+        padding: 0 var(--cds-global-space-5);
+        min-height: var(--cds-alias-object-interaction-touch-target);
+        border: 0;
+        width: 100%;
+        cursor: pointer;
+        color: var(--cds-alias-object-interaction-color);
+        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        background: none;
+      }
+
+      .cds-menu-mock button cds-icon {
+        --color: var(--cds-alias-object-interaction-color);
+        margin-top: calc(-1 * var(--cds-global-space-3));
+      }
+
+      .cds-menu-mock button:hover,
+      .cds-menu-mock button[hover] {
+        background: var(--cds-alias-object-interaction-background-hover);
+        color: var(--cds-alias-object-interaction-color-hover);
+      }
+
+      .cds-menu-mock button:hover cds-icon,
+      .cds-menu-mock button[hover] cds-icon,
+      .cds-tabs-mock button cds-icon:hover {
+        color: var(--cds-alias-object-interaction-color-selected);
+        cursor: pointer;
+      }
+
+      .cds-menu-mock button:active,
+      .cds-menu-mock button[active] {
+        background: var(--cds-alias-object-interaction-background-active);
+        color: var(--cds-alias-object-interaction-color-active);
+      }
+
+      .cds-menu-mock button:active cds-icon,
+      .cds-menu-mock button[active] cds-icon {
+        color: var(--cds-alias-object-interaction-color-active);
+      }
+
+      .cds-menu-mock button[selected] {
+        background: var(--cds-alias-object-interaction-background-selected);
+        color: var(--cds-alias-object-interaction-color-selected);
+        box-shadow: inset var(--cds-alias-object-border-width-300) 0 0 0
+          var(--cds-alias-object-interaction-background-highlight);
+      }
+
+      .cds-menu-mock button[selected] cds-icon {
+        --color: var(--cds-alias-object-interaction-color-selected);
+      }
+
+      .cds-menu-mock button[disabled] {
+        color: var(--cds-alias-object-interaction-color-disabled);
+        cursor: not-allowed;
+      }
+      .cds-menu-mock button[disabled] cds-icon {
+        --color: var(--cds-alias-object-interaction-color-disabled);
+        cursor: not-allowed;
+      }
+
+      .cds-menu-mock button[selected] cds-icon {
+        --color: var(--cds-alias-object-interaction-color-selected);
+      }
+
+      .cds-menu-mock button[focused] {
+        outline: var(--cds-alias-object-interaction-outline);
+        outline-offset: calc(var(--cds-alias-object-interaction-outline-offset) * -1);
+      }
+
+      @media (-webkit-min-device-pixel-ratio: 0) {
+        .cds-menu-mock button[focused] {
+          outline: var(--cds-alias-object-interaction-outline-webkit);
+        }
+      }
+    </style>
+
+    <div cds-layout="grid cols@sm:6 cols@md:4 cols@lg:2 gap:md">
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Default</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Hover</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Active</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Selected</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Disabled</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+      <div cds-layout="vertical gap:md">
+        <h3 cds-text="subsection">Focused</h3>
+        <div class="cds-dropdown-mock">
+          <nav class="cds-menu-mock">
+            <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
+            <button focused><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
+            <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 /** @website */
 export function interactionVerticalNavigationDemo() {
   return html`
@@ -542,11 +705,11 @@ export function interactionVerticalNavigationDemo() {
       }
 
       .active {
-        background: var(--cds-alias-object-interaction-background-active);
+        --background: var(--cds-alias-object-interaction-background-active);
       }
 
       .hover {
-        background: var(--cds-alias-object-interaction-background-hover);
+        --background: var(--cds-alias-object-interaction-background-hover);
       }
     </style>
     <div cds-layout="grid cols@sm:4 cols@md:3 cols@lg:2 gap:md align:stretch">
@@ -669,141 +832,135 @@ export function interactionVerticalNavigationDemo() {
 }
 
 /** @website */
-export function interactionSubNavigationDemo() {
+export function interactionHorizontalNavigationDemo() {
   return html`
     <style>
-      .cds-sub-nav-mock {
-        border-bottom: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color);
+      .cds-horizontal-nav-mock {
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-100) * -1) 0 0 var(--cds-alias-object-border-color);
         background: var(--cds-alias-object-container-background);
         display: flex;
         width: 100%;
       }
 
-      .cds-sub-nav-mock button {
+      .cds-horizontal-nav-mock button {
         display: flex;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
         gap: var(--cds-global-space-5);
         background: transparent;
         border: 0;
         color: var(--cds-alias-object-interaction-color);
-        padding: var(--cds-global-space-6) var(--cds-global-space-6) var(--cds-global-space-4) var(--cds-global-space-6);
-        border-bottom: var(--cds-alias-object-border-width-300) solid transparent;
+        padding: 0 var(--cds-global-space-6);
+        min-height: var(--cds-alias-object-interaction-touch-target);
         cursor: pointer;
-        margin-right: var(--cds-global-space-6);
       }
 
-      .cds-sub-nav-mock button cds-icon {
+      .cds-horizontal-nav-mock button cds-icon {
         margin-top: -1px;
       }
 
-      .cds-sub-nav-mock button:hover,
-      .cds-sub-nav-mock button[hover] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
-          var(--cds-alias-object-interaction-background-highlight);
+      .cds-horizontal-nav-mock button:hover,
+      .cds-horizontal-nav-mock button[hover] {
         color: var(--cds-alias-object-interaction-color-hover);
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-300) * -1) 0 0
+          var(--cds-alias-object-interaction-background-highlight);
       }
 
-      .cds-sub-nav-mock button:hover cds-icon,
-      .cds-sub-nav-mock button[hover] cds-icon,
-      .cds-sub-nav-mock button cds-icon:hover {
-        --color: var(--cds-alias-object-interaction-color-hover);
+      .cds-horizontal-nav-mock button:hover cds-icon,
+      .cds-horizontal-nav-mock button[hover] cds-icon,
+      .cds-horizontal-nav-mock button cds-icon:hover {
+        color: var(--cds-alias-object-interaction-color-hover);
         cursor: pointer;
       }
 
-      .cds-sub-nav-mock button:active,
-      .cds-sub-nav-mock button[active] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
-          var(--cds-alias-object-interaction-background-highlight);
+      .cds-horizontal-nav-mock button:active,
+      .cds-horizontal-nav-mock button[active] {
         background: var(--cds-alias-object-interaction-background-active);
         color: var(--cds-alias-object-interaction-color-active);
       }
 
-      .cds-sub-nav-mock button:active cds-icon,
-      .cds-sub-nav-mock button[active] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-active);
+      .cds-horizontal-nav-mock button:active cds-icon,
+      .cds-horizontal-nav-mock button[active] cds-icon {
+        color: var(--cds-alias-object-interaction-color-active);
       }
 
-      .cds-sub-nav-mock button[selected] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
+      .cds-horizontal-nav-mock button[selected] {
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-300) * -1) 0 0
           var(--cds-alias-object-interaction-background-highlight);
         color: var(--cds-alias-object-interaction-selected);
       }
 
-      .cds-sub-nav-mock button[disabled] {
+      .cds-horizontal-nav-mock button[disabled] {
         color: var(--cds-alias-object-interaction-color-disabled);
-        border-bottom: var(--cds-alias-object-border-width-300) solid transparent;
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-100) * -1) 0 0 var(--cds-alias-object-border-color);
         cursor: not-allowed;
       }
 
-      .cds-sub-nav-mock button[disabled] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-disabled);
+      .cds-horizontal-nav-mock button[disabled] cds-icon {
+        color: var(--cds-alias-object-interaction-color-disabled);
         cursor: not-allowed;
       }
 
-      .cds-sub-nav-mock button[focused] {
+      .cds-horizontal-nav-mock button[focused] {
         outline: var(--cds-alias-object-interaction-outline);
-        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        outline-offset: calc(var(--cds-alias-object-interaction-outline-offset) * -1);
       }
 
       @media (-webkit-min-device-pixel-ratio: 0) {
-        .cds-sub-nav-mock button[focused] {
-          outline-color: -webkit-focus-ring-color;
+        .cds-horizontal-nav-mock button[focused] {
+          outline: var(--cds-alias-object-interaction-outline-webkit);
         }
       }
     </style>
-    <div cds-layout="grid cols@md:6 gap:lg">
+    <div cds-layout="grid cols@md:4 gap:md">
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Default</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Default</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Hover</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Hover</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Active</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Active</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Selected</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Selected</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Disabled</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Disabled</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Focused</h3>
-        <nav class="cds-sub-nav-mock">
+        <nav class="cds-horizontal-nav-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button focused><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
-          <button><cds-icon shape="trash" size="sm"></cds-icon> Item 4</button>
         </nav>
+        <p cds-text="body">Focused</p>
       </div>
     </div>
   `;
@@ -814,21 +971,23 @@ export function interactionTabsDemo() {
   return html`
     <style>
       .cds-tabs-mock {
-        border-bottom: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-border-color);
         display: flex;
         width: 100%;
       }
 
       .cds-tabs-mock button {
         display: flex;
+        align-items: center;
+        align-content: center;
+        justify-items: center;
         gap: var(--cds-global-space-5);
         background: transparent;
         border: 0;
         color: var(--cds-alias-object-interaction-color);
         padding: var(--cds-global-space-5) var(--cds-global-space-6) var(--cds-global-space-4) var(--cds-global-space-6);
-        border-bottom: var(--cds-alias-object-border-width-300) solid transparent;
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-100) * -1) 0 0 var(--cds-alias-object-border-color);
+        min-height: var(--cds-alias-object-interaction-touch-target);
         cursor: pointer;
-        margin-right: var(--cds-global-space-5);
       }
 
       .cds-tabs-mock button cds-icon {
@@ -837,7 +996,7 @@ export function interactionTabsDemo() {
 
       .cds-tabs-mock button:hover,
       .cds-tabs-mock button[hover] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-300) * -1) 0 0
           var(--cds-alias-object-interaction-background-highlight);
         color: var(--cds-alias-object-interaction-color-hover);
       }
@@ -845,99 +1004,97 @@ export function interactionTabsDemo() {
       .cds-tabs-mock button:hover cds-icon,
       .cds-tabs-mock button[hover] cds-icon,
       .cds-tabs-mock button cds-icon:hover {
-        --color: var(--cds-alias-object-interaction-color-hover);
+        color: var(--cds-alias-object-interaction-color-hover);
         cursor: pointer;
       }
 
       .cds-tabs-mock button:active,
       .cds-tabs-mock button[active] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
-          var(--cds-alias-object-interaction-background-highlight);
-        background: var(--cds-alias-object-interaction-background-active);
         color: var(--cds-alias-object-interaction-color-active);
+        background: var(--cds-alias-object-interaction-background-active);
       }
 
       .cds-tabs-mock button:active cds-icon,
       .cds-tabs-mock button[active] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-active);
+        color: var(--cds-alias-object-interaction-color-active);
       }
 
       .cds-tabs-mock button[selected] {
-        border-bottom: var(--cds-alias-object-border-width-300) solid
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-300) * -1) 0 0
           var(--cds-alias-object-interaction-background-highlight);
         color: var(--cds-alias-object-interaction-selected);
       }
 
       .cds-tabs-mock button[disabled] {
         color: var(--cds-alias-object-interaction-color-disabled);
-        border-bottom: var(--cds-alias-object-border-width-300) solid transparent;
+        box-shadow: inset 0 calc(var(--cds-alias-object-border-width-100) * -1) 0 0 var(--cds-alias-object-border-color);
         cursor: not-allowed;
       }
 
       .cds-tabs-mock button[disabled] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-disabled);
+        color: var(--cds-alias-object-interaction-color-disabled);
         cursor: not-allowed;
       }
 
       .cds-tabs-mock button[focused] {
         outline: var(--cds-alias-object-interaction-outline);
-        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        outline-offset: calc(var(--cds-alias-object-interaction-outline-offset) * -1);
       }
 
       @media (-webkit-min-device-pixel-ratio: 0) {
         .cds-tabs-mock button[focused] {
-          outline-color: -webkit-focus-ring-color;
+          outline: var(--cds-alias-object-interaction-outline-webkit);
         }
       }
     </style>
-    <div cds-layout="grid cols@md:4 gap:lg">
+    <div cds-layout="grid cols@md:4" style="gap: 48px 36px">
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Default</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Default</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Hover</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Hover</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Active</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Active</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Selected</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Selected</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Disabled</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Disabled</p>
       </div>
       <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Focused</h3>
         <nav class="cds-tabs-mock">
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button focused><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <p cds-text="body">Focused</p>
       </div>
     </div>
   `;
@@ -952,19 +1109,20 @@ export function interactionVerticalTabsDemo() {
         width: 100%;
         flex-direction: column;
         border: 0;
-        max-width: 180px;
+        max-width: 135px;
       }
 
       .cds-tabs-mock[vertical] button {
         border: 0;
         color: var(--cds-alias-object-interaction-color);
-        border-left: var(--cds-alias-object-border-width-300) solid transparent;
         padding: var(--cds-global-space-6) var(--cds-global-space-5) var(--cds-global-space-6) var(--cds-global-space-4);
         margin-bottom: var(--cds-global-space-1);
         display: flex;
         gap: var(--cds-global-space-5);
         background: transparent;
+        min-height: var(--cds-alias-object-interaction-touch-target);
         cursor: pointer;
+        box-shadow: none;
       }
 
       .cds-tabs-mock[vertical] button cds-icon {
@@ -974,98 +1132,105 @@ export function interactionVerticalTabsDemo() {
 
       .cds-tabs-mock[vertical] button:hover,
       .cds-tabs-mock[vertical] button[hover] {
-        border-left: var(--cds-alias-object-border-width-300) solid
-          var(--cds-alias-object-interaction-background-highlight);
         background: var(--cds-alias-object-interaction-background-hover);
         color: var(--cds-alias-object-interaction-color-hover);
       }
 
       .cds-tabs-mock[vertical] button:active,
       .cds-tabs-mock[vertical] button[active] {
-        border-left: var(--cds-alias-object-border-width-300) solid
-          var(--cds-alias-object-interaction-background-highlight);
         background: var(--cds-alias-object-interaction-background-active);
         color: var(--cds-alias-object-interaction-color-active);
       }
 
       .cds-tabs-mock[vertical] button[selected] {
-        border-left: var(--cds-alias-object-border-width-300) solid
+        box-shadow: inset var(--cds-alias-object-border-width-300) 0 0 0
           var(--cds-alias-object-interaction-background-highlight);
         background: var(--cds-alias-object-interaction-background-selected);
         color: var(--cds-alias-object-interaction-color-selected);
       }
 
       .cds-tabs-mock[vertical] button[disabled] {
-        border-left: var(--cds-alias-object-border-width-300) solid transparent;
         color: var(--cds-alias-object-interaction-color-disabled);
         background: transparent;
         cursor: not-allowed;
       }
 
       .cds-tabs-mock[vertical] button[disabled] cds-icon {
-        --color: var(--cds-alias-object-interaction-color-disabled);
+        color: var(--cds-alias-object-interaction-color-disabled);
         cursor: not-allowed;
       }
 
       .cds-tabs-mock button[focused] {
         outline: var(--cds-alias-object-interaction-outline);
-        outline-offset: var(--cds-alias-object-interaction-outline-offset);
+        outline-offset: calc(var(--cds-alias-object-interaction-outline-offset) * -1);
       }
 
       @media (-webkit-min-device-pixel-ratio: 0) {
         .cds-tabs-mock button[focused] {
-          outline-color: -webkit-focus-ring-color;
+          outline: var(--cds-alias-object-interaction-outline-webkit);
         }
       }
     </style>
-    <div cds-layout="grid cols@md:4 cols@lg:2 gap:md align:stretch">
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Default</h3>
+    <div cds-layout="grid cols:6@sm cols@md:4 align:stretch" style="gap: 48px 36px">
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Default</h3>
+        </div>
       </div>
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Hover</h3>
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button hover><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Hover</h3>
+        </div>
       </div>
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Active</h3>
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button active><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Active</h3>
+        </div>
       </div>
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Selected</h3>
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button selected><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Selected</h3>
+        </div>
       </div>
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Disabled</h3>
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button disabled><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Disabled</h3>
+        </div>
       </div>
-      <div cds-layout="vertical gap:md">
-        <h3 cds-text="subsection">Focused</h3>
+      <div cds-layout="horizontal gap:sm">
         <nav class="cds-tabs-mock" vertical>
           <button><cds-icon shape="home" size="sm"></cds-icon> Item 1</button>
           <button focused><cds-icon shape="download" size="sm"></cds-icon> Item 2</button>
           <button><cds-icon shape="plus" size="sm"></cds-icon> Item 3</button>
         </nav>
+        <div cds-layout="vertical gap:md p-y:md">
+          <h3 cds-text="subsection">Focused</h3>
+        </div>
       </div>
     </div>
   `;
@@ -1160,7 +1325,8 @@ export function interactionAccordionDemo() {
           <cds-accordion-panel expanded>
             <cds-accordion-header>Item 2</cds-accordion-header>
             <cds-accordion-content>
-              <p cds-text="body">Item 2 content</p>
+              <p cds-text="body">Item 2</p>
+              <p cds-text="body">content</p>
             </cds-accordion-content>
           </cds-accordion-panel>
           <cds-accordion-panel>

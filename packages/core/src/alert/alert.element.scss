@@ -6,9 +6,9 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
 :host {
   --container-padding: #{$cds-global-space-2} 0;
   --min-height: #{$cds-global-space-9};
-  --color: #{$cds-global-typography-color-500};
-  --font-size: #{$cds-global-typography-body-font-size};
-  --font-weight: #{$cds-global-typography-body-font-weight};
+  --color: #{$cds-global-typography-color-400};
+  --font-size: #{$cds-global-typography-secondary-font-size};
+  --font-weight: #{$cds-global-typography-secondary-font-weight};
   --letter-spacing: #{$cds-global-typography-body-letter-spacing};
   --icon-size: #{$cds-global-space-8};
   --icon-color: var(--color);
@@ -18,10 +18,6 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
 .private-host {
   min-height: var(--min-height);
   color: var(--color);
-}
-
-:host([_type='default']) {
-  --font-size: #{$cds-global-typography-font-size-3};
 }
 
 :host([_type='default']) ::slotted(cds-alert-actions),

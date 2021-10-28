@@ -3,7 +3,7 @@
 
 :host {
   --background: var(--cds-alias-status-tint, #{$cds-alias-status-neutral-tint});
-  --color: #{$cds-global-typography-color-500};
+  --color: #{$cds-global-typography-color-400};
   --padding: #{$cds-global-space-2};
   --font-size: #{$cds-global-typography-font-size-0};
   --border-radius: #{$cds-alias-object-border-radius-200};

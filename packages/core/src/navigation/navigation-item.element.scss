@@ -9,7 +9,7 @@
 :host {
   --color: #{$cds-alias-object-interaction-color};
   --background: #{$cds-alias-object-interaction-background};
-  --line-height: calc(#{$cds-alias-object-interaction-touch-target} + #{$cds-global-space-3});
+  --line-height: #{$cds-alias-object-interaction-touch-target};
   --font-size: inherit;
   --font-weight: inherit;
   --letter-spacing: inherit;
@@ -42,7 +42,6 @@
 }
 
 :host([_has-focus]) {
-  --background: #{$cds-alias-object-interaction-background-hover};
   --color: #{$cds-alias-object-interaction-color-hover};
   outline: #{$cds-alias-object-interaction-outline};
   outline-offset: calc(#{$cds-alias-object-interaction-outline-offset} * -2);
@@ -50,7 +49,7 @@
 
 @media (-webkit-min-device-pixel-ratio: 0) {
   :host([_has-focus]) {
-    outline-color: -webkit-focus-ring-color;
+    outline: #{$cds-alias-object-interaction-outline-webkit};
   }
 }
 

@@ -18,7 +18,6 @@ import {
   state,
 } from '@cds/core/internal';
 import itemStyles from './navigation-item.element.scss';
-import styles from './navigation-start.element.scss';
 import { getToggleIconDirection, manageScreenReaderElements, NAVIGATION_TEXT_WRAPPER } from './utils/index.js';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { FocusableItem, NavigationFocusState } from './interfaces/navigation.interfaces.js';
@@ -187,7 +186,7 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
   }
 
   static get styles() {
-    return [baseStyles, itemStyles, styles];
+    return [baseStyles, itemStyles];
   }
 
   get toggleIconDirection(): Directions {

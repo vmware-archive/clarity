@@ -472,6 +472,7 @@ const aliases = {
     },
     interaction: {
       outline: token('Highlight solid 2px'),
+      outlineWebkit: token('5px auto -webkit-focus-ring-color'), // https://coryrylan.com/blog/dont-override-css-outline-focus-styles
       outlineOffset: token('1px'),
       touchTarget: token(36),
       borderColor: token(color.construction[500]),

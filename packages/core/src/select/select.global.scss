@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -6,7 +6,7 @@
 
 cds-select option {
   background: $cds-alias-object-container-background;
-  color: $cds-global-typography-color-500;
+  color: $cds-global-typography-color-400;
   padding: $cds-global-space-4;
   font-size: $cds-global-typography-font-size-3;
 }

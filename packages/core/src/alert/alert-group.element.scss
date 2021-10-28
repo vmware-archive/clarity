@@ -2,10 +2,10 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --icon-color: #{$cds-global-typography-color-500};
+  --icon-color: var(--color);
   --icon-size: #{$cds-global-space-8};
-  --font-size: #{$cds-global-typography-body-font-size};
-  --font-weight: #{$cds-global-typography-body-font-weight};
+  --font-size: #{$cds-global-typography-secondary-font-size};
+  --font-weight: #{$cds-global-typography-secondary-font-weight};
   --letter-spacing: #{$cds-global-typography-body-letter-spacing};
   --padding: #{$cds-global-space-5} #{$cds-global-space-5} #{$cds-global-space-4} #{$cds-global-space-6};
   --background: #{$cds-alias-status-neutral-tint};
@@ -13,7 +13,6 @@
   --border-width: #{$cds-alias-object-border-width-100};
   --border-radius: #{$cds-alias-object-border-radius-100};
   --pager-background: #{$cds-alias-status-neutral};
-
   width: 100%;
 }
 

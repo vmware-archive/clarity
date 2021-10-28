@@ -43,6 +43,8 @@
 }
 
 :host([_disabled]) {
+  --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-status-disabled-tint};
+
   .input::after {
     cursor: not-allowed;
   }

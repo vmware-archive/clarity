@@ -53,6 +53,7 @@ export function status() {
     <div cds-layout="horizontal gap:sm">
       <cds-icon-button><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="success"><cds-icon shape="user"></cds-icon></cds-icon-button>
+      <cds-icon-button status="warning"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="danger"><cds-icon shape="user"></cds-icon></cds-icon-button>
       <cds-icon-button status="danger" disabled><cds-icon shape="user"></cds-icon></cds-icon-button>
     </div>
@@ -141,6 +142,9 @@ export function darkTheme() {
         <cds-icon-button status="success" aria-label="icon button success demo"
           ><cds-icon shape="user"></cds-icon
         ></cds-icon-button>
+        <cds-icon-button status="warning" aria-label="icon button warning demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
         <cds-icon-button status="danger" aria-label="icon button danger demo"
           ><cds-icon shape="user"></cds-icon
         ></cds-icon-button>
@@ -153,6 +157,9 @@ export function darkTheme() {
           ><cds-icon shape="user"></cds-icon
         ></cds-icon-button>
         <cds-icon-button action="outline" status="success" aria-label="icon button outline success demo"
+          ><cds-icon shape="user"></cds-icon
+        ></cds-icon-button>
+        <cds-icon-button action="outline" status="warning" aria-label="icon button outline warning demo"
           ><cds-icon shape="user"></cds-icon
         ></cds-icon-button>
         <cds-icon-button action="outline" status="danger" aria-label="icon button outline danger demo"

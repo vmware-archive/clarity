@@ -6,7 +6,7 @@
 @import './../../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-global-typography-color-300};
+  --color: #{$cds-global-typography-color-200};
   --font-size: #{$cds-global-typography-font-size-1};
   --font-weight: #{$cds-global-typography-font-weight-regular};
   --min-width: #{$cds-global-layout-space-xxl};

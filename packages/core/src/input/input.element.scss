@@ -16,13 +16,13 @@
   --outline-offset: var(--cds-alias-object-interaction-outline-offset);
   --cds-alias-object-interaction-outline: none;
   --cds-alias-object-interaction-outline-offset: 0;
-  --padding: 0 #{$cds-global-space-4};
   --padding: #{$cds-global-space-2} #{$cds-global-space-4} 0 #{$cds-global-space-4}; // 2px top for line height alignment with label: https://github.com/vmware/clarity/issues/6044
   --font-size: #{$cds-global-typography-font-size-3};
-  --color: #{$cds-global-typography-color-500};
+  --color: #{$cds-global-typography-color-400};
   --line-height: #{$cds-global-space-9};
   --transition: background-size #{$cds-global-animation-duration-quick} ease;
   --text-align: inherit;
+  // font-weight: secondary regular
   display: block;
   width: 100%;
 }
@@ -45,7 +45,7 @@
   text-align: var(--text-align) !important;
 
   &::placeholder {
-    --color: $cds-global-typography-color-200 !important;
+    --color: #{$cds-global-typography-color-200} !important;
   }
 }
 

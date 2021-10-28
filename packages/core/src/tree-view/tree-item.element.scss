@@ -34,11 +34,8 @@
 }
 
 .item-content:hover {
-  --background: var(--cds-alias-object-interaction-background-hover);
-}
-
-.item-content:active {
-  --background: var(--cds-alias-object-interaction-background-active);
+  --background: #{$cds-alias-object-interaction-background-hover};
+  --color: #{$cds-alias-object-interaction-color-hover};
 }
 
 .lhs-container {
@@ -46,51 +43,42 @@
 }
 
 .expand-collapse-icon {
-  --color: var(--cds-alias-object-interaction-color);
+  --color: #{$cds-alias-object-interaction-color};
   transform: var(--icon-transform);
   transition: transform var(--animation-duration);
 }
 
 :host(:focus) {
-  outline: none !important;
-
   .item-content {
-    --background: var(--cds-alias-object-interaction-background-hover);
-    border-color: var(--cds-alias-object-interaction-background-highlight);
+    border-color: #{$cds-alias-object-interaction-background-hover};
+    outline-offset: calc(#{$cds-alias-object-interaction-outline-offset} * -2);
+    outline: #{$cds-alias-object-interaction-outline};
   }
 
   .item-content:active {
-    --background: var(--cds-alias-object-interaction-background-active);
+    --background: #{$cds-alias-object-interaction-background-active};
+    --color: #{$cds-alias-object-interaction-color-active};
   }
 }
 
-:host([disabled]) {
-  .item-content {
-    --color: var(--cds-alias-object-interaction-color-disabled);
-    cursor: not-allowed;
-  }
-
-  .item-content:hover {
-    --background: var(--cds-alias-object-interaction-background-disabled);
-  }
-}
-
-:host([disabled]:focus) {
-  .item-content {
-    --background: var(--cds-alias-object-interaction-background-disabled);
-    border-color: var(--cds-alias-object-interaction-color-disabled);
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host(:focus) .item-content {
+    outline: #{$cds-alias-object-interaction-outline-webkit};
   }
 }
 
 :host([selected]) {
   .item-content {
-    --background: var(--cds-alias-object-interaction-background-selected);
+    --background: #{$cds-alias-object-interaction-background-selected};
   }
 }
 
-:host([selected][disabled]) {
+:host([disabled]) {
   .item-content {
-    --background: var(--cds-alias-object-interaction-background-disabled);
+    --background: #{$cds-alias-object-interaction-background-disabled} !important;
+    --color: #{$cds-alias-object-interaction-color-disabled} !important;
+    border-color: #{$cds-alias-object-interaction-color-disabled} !important;
+    cursor: not-allowed;
   }
 }
 
@@ -130,3 +118,7 @@
 :host([expanded]) {
   --icon-transform: rotate(180deg);
 }
+
+// bar is used for focus but should be outline focus
+// height should be 36 min height
+// internal checkbox needs to align with actual checkbox

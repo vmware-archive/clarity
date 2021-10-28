@@ -40,6 +40,7 @@
   color: var(--color);
 }
 
+// these are shade as dark theme inverts shade status colors and badges follows the buttons style
 :host([status='info']) {
   --background: #{$cds-alias-status-info-shade};
 }
@@ -66,11 +67,11 @@
 }
 
 :host([color='orange']) {
-  --background: #{$cds-global-color-ochre-700};
+  --background: #{$cds-global-color-tangerine-400};
   --color: #{$cds-global-color-black};
 }
 
 :host([color='light-blue']) {
-  --background: #{$cds-global-color-blue-400};
+  --background: #{$cds-global-color-blue-300};
   --color: #{$cds-global-color-black};
 }

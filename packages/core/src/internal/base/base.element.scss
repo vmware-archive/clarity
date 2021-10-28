@@ -84,6 +84,6 @@ slot {
   :host([_focused]) [focusable],
   :host([_focused]) .input,
   [tabindex='0'][focusable]:focus {
-    outline-color: -webkit-focus-ring-color;
+    outline: #{$cds-alias-object-interaction-outline-webkit};
   }
 }

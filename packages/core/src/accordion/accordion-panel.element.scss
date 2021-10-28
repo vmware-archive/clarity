@@ -61,8 +61,8 @@
 
 :host([disabled]) {
   ::slotted(cds-accordion-header) {
-    --background: #{$cds-alias-object-opacity-0};
-    --color: #{$cds-alias-status-disabled};
+    --background: #{$cds-alias-object-container-background-tint};
+    --color: #{$cds-alias-object-interaction-color-disabled};
     cursor: not-allowed;
   }
 }

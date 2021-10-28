@@ -256,7 +256,7 @@ export function horizontalGroup() {
       </cds-radio-group>
 
       <cds-radio-group layout="horizontal" disabled>
-        <label>Horizontal Disabled</label>
+        <label>disabled</label>
         <cds-radio>
           <label>radio 1</label>
           <input type="radio" checked disabled />

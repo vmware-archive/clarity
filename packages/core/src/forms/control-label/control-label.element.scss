@@ -32,7 +32,7 @@
 
   font-size: $cds-global-typography-secondary-font-size !important;
   font-weight: $cds-global-typography-secondary-font-weight !important;
-  color: $cds-global-typography-color-300 !important;
+  color: $cds-global-typography-color-400 !important;
   line-height: $cds-global-typography-secondary-line-height !important;
   letter-spacing: $cds-global-typography-secondary-letter-spacing !important;
 }
@@ -43,7 +43,7 @@
 }
 
 :host([action='primary']) ::slotted([slot='label']) {
-  font-weight: bold !important;
+  font-weight: $cds-global-typography-font-weight-semibold !important;
 }
 
 ::slotted(cds-control-action) {

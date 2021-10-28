@@ -6,10 +6,10 @@
 @import './../styles/mixins/mixins';
 
 :host {
-  --color: #{$cds-global-typography-color-400};
+  --color: #{$cds-alias-object-interaction-color};
+  --background: #{$cds-alias-object-container-background-tint};
   --font-size: #{$cds-global-typography-secondary-font-size};
   --font-weight: #{$cds-global-typography-secondary-font-weight};
-  --background: #{$cds-alias-object-app-background};
   --icon-color: var(--color);
   --icon-transform: rotate(90deg);
   cursor: pointer;
@@ -32,10 +32,12 @@
 }
 
 :host(:hover) {
+  --color: #{$cds-alias-object-interaction-color-hover};
   --background: #{$cds-alias-object-interaction-background-hover};
 }
 
 :host(:active) {
+  --color: #{$cds-alias-object-interaction-color-active};
   --background: #{$cds-alias-object-interaction-background-active};
 }
 

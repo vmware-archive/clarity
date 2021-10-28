@@ -1,4 +1,5 @@
 {
+  "12.0.7": "src/releases/12.x/12.0.7.html",
   "12.0.6": "src/releases/12.x/12.0.6.html",
   "12.0.5": "src/releases/12.x/12.0.5.html",
   "12.0.4": "src/releases/12.x/12.0.4.html",
@@ -7,7 +8,7 @@
   "12.0.1": "src/releases/12.x/12.0.1.html",
   "12.0.0": "src/releases/12.x/12.0.0.html",
   "12.0.0-next.0": "src/releases/12.x/12.0.0-next.0.html",
-
+  "5.5.2": "src/releases/5.x/5.5.2.html",
   "5.5.1": "src/releases/5.x/5.5.1.html",
   "5.5.0": "src/releases/5.x/5.5.0.html",
   "5.4.1": "src/releases/5.x/5.4.1.html",
@@ -23,7 +24,6 @@
   "5.0.0-rc.1": "src/releases/5.x/5.0.0-rc.1.html",
   "5.0.0-rc.0": "src/releases/5.x/5.0.0-rc.0.html",
   "5.0.0-next.0": "src/releases/5.x/5.0.0-next.0.html",
-
   "4.0.16": "src/releases/4.x/4.0.15.html",
   "4.0.15": "src/releases/4.x/4.0.15.html",
   "4.0.14": "src/releases/4.x/4.0.14.html",
@@ -44,7 +44,6 @@
   "4.0.0-rc.1": "src/releases/4.x/4.0.0-rc.1.html",
   "4.0.0-rc.0": "src/releases/4.x/4.0.0-rc.0.html",
   "4.0.0-next.0": "src/releases/4.x/4.0.0-next.0.html",
-
   "3.1.15": "src/releases/3.x/3.1.15.html",
   "3.1.14": "src/releases/3.x/3.1.14.html",
   "3.1.13": "src/releases/3.x/3.1.13.html",
@@ -72,7 +71,6 @@
   "3.0.0-next.3": "src/releases/3.x/3.0.0-next.3.html",
   "3.0.0-next.2": "src/releases/3.x/3.0.0-next.2.html",
   "3.0.0-next.1": "src/releases/3.x/3.0.0-next.1.html",
-
   "2.4.11": "src/releases/2.x/2.4.11.html",
   "2.4.10": "src/releases/2.x/2.4.10.html",
   "2.4.9": "src/releases/2.x/2.4.9.html",
@@ -108,7 +106,6 @@
   "2.0.0-rc.1": "src/releases/2.x/2.0.0-rc.1.html",
   "2.0.0-beta.2": "src/releases/2.x/2.0.0-beta.2.html",
   "2.0.0-beta.1": "src/releases/2.x/2.0.0-beta.1.html",
-
   "1.3.9": "src/releases/1.x/1.3.9.html",
   "1.3.8": "src/releases/1.x/1.3.8.html",
   "1.3.7": "src/releases/1.x/1.3.7.html",
@@ -138,7 +135,6 @@
   "1.0.0-rc.1": "src/releases/1.x/1.0.0-rc.1.html",
   "1.0.0-beta.2": "src/releases/1.x/1.0.0-beta.2.html",
   "1.0.0-beta.1": "src/releases/1.x/1.0.0-beta.1.html",
-
   "0.13.11": "src/releases/0.13/0.13.11.html",
   "0.13.10": "src/releases/0.13/0.13.10.html",
   "0.13.9": "src/releases/0.13/0.13.9.html",
@@ -155,7 +151,6 @@
   "0.13.0-rc.1": "src/releases/0.13/0.13.0-rc.1.html",
   "0.13.0-beta.2": "src/releases/0.13/0.13.0-beta.2.html",
   "0.13.0-beta.1": "src/releases/0.13/0.13.0-beta.1.html",
-
   "0.12.16": "src/releases/0.12/0.12.16.html",
   "0.12.15": "src/releases/0.12/0.12.15.html",
   "0.12.14": "src/releases/0.12/0.12.14.html",
@@ -177,7 +172,6 @@
   "0.12.0-rc.2": "src/releases/0.12/0.12.0-rc.2.html",
   "0.12.0-rc.1": "src/releases/0.12/0.12.0-rc.1.html",
   "0.12.0-beta.4": "src/releases/0.12/0.12.0-beta.4.html",
-
   "0.11.34": "src/releases/0.11/0.11.34.html",
   "0.11.33": "src/releases/0.11/0.11.33.html",
   "0.11.32": "src/releases/0.11/0.11.32.html",
@@ -217,7 +211,6 @@
   "0.11.0": "src/releases/0.11/0.11.0.html",
   "0.11.0-rc.1": "src/releases/0.11/0.11.0-rc.1.html",
   "0.11.0-beta.1": "src/releases/0.11/0.11.0-beta.1.html",
-
   "0.10.27": "src/releases/0.10/0.10.27.html",
   "0.10.26": "src/releases/0.10/0.10.26.html",
   "0.10.25": "src/releases/0.10/0.10.25.html",
@@ -254,7 +247,6 @@
   "0.10.0-alpha.3": "src/releases/0.10/0.10.0-alpha.3.html",
   "0.10.0-alpha.2": "src/releases/0.10/0.10.0-alpha.2.html",
   "0.10.0-alpha": "src/releases/0.10/0.10.0-alpha.html",
-
   "0.9.20": "src/releases/0.9/0.9.20.html",
   "0.9.19": "src/releases/0.9/0.9.19.html",
   "0.9.18": "src/releases/0.9/0.9.18.html",

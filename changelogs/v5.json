@@ -2,6 +2,45 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.6.0",
+      "date": "2021-10-28",
+      "description": "This is a feature and bug fix release.",
+      "feat": [
+        {
+          "issue": 6409,
+          "title": "Add CdsRadioPanel and CdsCheckboxPanel",
+          "project": "core",
+          "scope": "forms"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6431,
+          "title": "Add tokens to package.json exports",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6399,
+          "title": "Add button fixer",
+          "project": "eslint-plugin-clarity-adoption",
+          "scope": "ESLint"
+        },
+        {
+          "issue": 6426,
+          "title": "Anchor click, scroll support",
+          "project": "core",
+          "scope": "navigation"
+        },
+        {
+          "issue": 6417,
+          "title": "Fixing ESM import paths for React wrapper",
+          "project": "react",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "5.5.8",
       "date": "2021-10-18",
       "description": "This is a patch release.",

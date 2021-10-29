@@ -170,6 +170,11 @@
       --clr-color-on-success-800: #{$clr-color-on-success-800};
       --clr-color-on-success-900: #{$clr-color-on-success-900};
       --clr-color-on-success-1000: #{$clr-color-on-success-1000};
+
+      // placeholder text that aligns with core color
+      // Added as a fix for https://github.com/vmware/clarity/issues/6439
+      // Unifies only form input placeholder color and makes it accessible and align with core form placeholders.
+      --clr-global-color-construction-600: #{$clr-global-color-construction-600};
     }
   }
 }

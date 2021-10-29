@@ -258,6 +258,10 @@ $clr-color-on-success-800: null; // #fff
 $clr-color-on-success-900: null; // #fff
 $clr-color-on-success-1000: null; // #fff
 
+// Added as a fix for https://github.com/vmware/clarity/issues/6439
+// Unifies only form input placeholder color and makes it accessible
+$clr-global-color-construction-600: null; // hsl(198, 14%, 36%)
+
 /*================================================================================*/
 /* DEPRECATED color variables below:       */
 /*================================================================================*/
@@ -449,7 +453,7 @@ $clr-forms-invalid-color: null; // $clr-color-danger-800
 $clr-forms-valid-color: null; // $clr-color-success-700
 $clr-forms-valid-text-color: null; // $clr-color-success-900
 $clr-forms-subtext-color: null; // $clr-color-neutral-600
-$clr-forms-placeholder-color: null; // $clr-color-neutral-600
+$clr-forms-placeholder-color: null; // $clr-global-color-construction-600
 $clr-forms-border-color: null; // $clr-color-neutral-500
 $clr-forms-focused-color: null; // $clr-color-action-600
 $clr-forms-subtext-disabled-color: null;

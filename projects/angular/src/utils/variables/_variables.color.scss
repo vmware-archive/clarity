@@ -244,3 +244,8 @@ $clr-red-dark-midtone: $clr-color-danger-800 !default;
 $clr-red-dark: $clr-color-danger-900 !default;
 $clr-red-darker: $clr-color-danger-1000 !default;
 $clr-red-darkest: $clr-color-danger-1000 !default;
+
+// placeholder text that aligns with core color
+// Added as a fix for https://github.com/vmware/clarity/issues/6439
+// Unifies only form input placeholder color and makes it accessible and align with core form placeholders.
+$clr-global-color-construction-600: hsl(198, 14%, 36%) !default;

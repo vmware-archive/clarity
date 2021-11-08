@@ -35,7 +35,7 @@ export class NoopDomAdapter implements DomAdapter {
   }
 
   // eslint-disable-next-line
-  clientRect(element: any): ClientRect {
+  clientRect(element: any): DOMRect {
     return {
       top: 0,
       bottom: 0,
@@ -43,7 +43,7 @@ export class NoopDomAdapter implements DomAdapter {
       right: 0,
       width: 0,
       height: 0,
-    };
+    } as DOMRect;
   }
 
   // eslint-disable-next-line

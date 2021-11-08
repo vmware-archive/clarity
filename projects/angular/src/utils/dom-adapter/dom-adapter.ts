@@ -33,7 +33,7 @@ export class DomAdapter {
     return parseInt(getComputedStyle(element).getPropertyValue('height'), 10);
   }
 
-  clientRect(element: any): ClientRect {
+  clientRect(element: any): DOMRect {
     const elementClientRect = element.getBoundingClientRect();
     return {
       top: parseInt(elementClientRect.top, 10),
@@ -42,7 +42,7 @@ export class DomAdapter {
       right: parseInt(elementClientRect.right, 10),
       width: parseInt(elementClientRect.width, 10),
       height: parseInt(elementClientRect.height, 10),
-    };
+    } as DOMRect;
   }
 
   minWidth(element: any): number {

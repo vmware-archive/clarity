@@ -131,7 +131,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 200,
-        };
+        } as DOMRect;
         // Place content centered above the anchor
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -152,7 +152,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on left side of anchor and right side of content
         const clrPopover = {
           anchor: ClrAlignment.START,
@@ -174,7 +174,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 200,
-        };
+        } as DOMRect;
         // Place content centered below the anchor
         const centeredPopover = {
           anchor: ClrAlignment.CENTER,
@@ -195,7 +195,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.END,
@@ -218,7 +218,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.START,
@@ -240,7 +240,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.END,
@@ -262,7 +262,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.START,
@@ -284,7 +284,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 500,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.END,
@@ -306,7 +306,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 100,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -328,7 +328,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 1000,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -352,7 +352,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 1000,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -375,7 +375,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 1000,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -398,7 +398,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 1000,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -421,7 +421,7 @@ export function ClrViewportValidationSpec() {
           right: 400,
           top: 300,
           width: 1000,
-        };
+        } as DOMRect;
         // Place content on right side of anchor and left side of content
         const clrPopover = {
           anchor: ClrAlignment.CENTER,
@@ -450,7 +450,7 @@ const testAnchorRect: ClientRect = {
   right: 400,
   top: 300,
   width: 200,
-};
+} as DOMRect;
 const testContentRect: ClientRect = {
   bottom: 400,
   height: 100,
@@ -458,7 +458,7 @@ const testContentRect: ClientRect = {
   right: 400,
   top: 300,
   width: 200,
-};
+} as DOMRect;
 const positionTestCases = [
   // axis: VERTICAL side: BEFORE
   {

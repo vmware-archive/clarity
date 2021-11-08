@@ -1,7 +1,12 @@
 export declare class CdsIconCustomTag {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdsIconCustomTag, "cds-icon", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CdsIconCustomTag, never>;
 }
 
 export declare class ClarityModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClarityModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClarityModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClarityModule, never, never, [typeof i1.ClrEmphasisModule, typeof i2.ClrDataModule, typeof i3.ClrIconModule, typeof i4.ClrModalModule, typeof i5.ClrLoadingModule, typeof i6.ClrConditionalModule, typeof i7.ClrFocusTrapModule, typeof i8.ClrFocusOnViewInitModule, typeof i9.ClrButtonModule, typeof i10.ClrFormsModule, typeof i11.ClrLayoutModule, typeof i12.ClrPopoverModule, typeof i13.ClrWizardModule, typeof i14.ClrDragAndDropModule, typeof i15.ClrStepperModule, typeof i16.ClrSpinnerModule, typeof i17.ClrProgressBarModule, typeof i18.ClrPopoverModuleNext, typeof i19.ClrTimelineModule]>;
 }
 
 export declare const CLR_ALERT_DIRECTIVES: Type<any>[];
@@ -68,6 +73,8 @@ export declare abstract class ClrAbstractContainer implements DynamicWrapper, On
     controlClass(): string;
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrAbstractContainer, never, never, {}, {}, ["label", "controlSuccessComponent", "controlErrorComponent", "controlHelperComponent"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAbstractContainer, [null, { optional: true; }, null, null]>;
 }
 
 export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, OnDestroy {
@@ -79,16 +86,25 @@ export declare class ClrAccordion implements OnInit, OnChanges, AfterViewInit, O
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAccordion, "clr-accordion", never, { "multiPanel": "clrAccordionMultiPanel"; }, {}, ["panels"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordion, never>;
 }
 
 export declare class ClrAccordionContent {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAccordionContent, "clr-accordion-content, clr-step-content", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordionContent, never>;
 }
 
 export declare class ClrAccordionDescription {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAccordionDescription, "clr-accordion-description, clr-step-description", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordionDescription, never>;
 }
 
 export declare class ClrAccordionModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordionModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrAccordionModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrAccordionModule, [typeof i1.ClrAccordion, typeof i2.ClrAccordionPanel, typeof i3.ClrAccordionTitle, typeof i4.ClrAccordionDescription, typeof i5.ClrAccordionContent, typeof i6.AccordionOompaLoompa, typeof i7.AccordionWillyWonka], [typeof i8.CommonModule, typeof i9.ClrIconModule], [typeof i1.ClrAccordion, typeof i2.ClrAccordionPanel, typeof i3.ClrAccordionTitle, typeof i4.ClrAccordionDescription, typeof i5.ClrAccordionContent, typeof i6.AccordionOompaLoompa, typeof i7.AccordionWillyWonka]>;
 }
 
 export declare class ClrAccordionPanel implements OnInit, OnChanges {
@@ -110,9 +126,13 @@ export declare class ClrAccordionPanel implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
     ngOnInit(): void;
     togglePanel(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAccordionPanel, "clr-accordion-panel", never, { "disabled": "clrAccordionPanelDisabled"; "panelOpen": "clrAccordionPanelOpen"; }, { "panelOpenChange": "clrAccordionPanelOpenChange"; }, ["accordionDescription"], ["clr-accordion-title, clr-step-title", "clr-accordion-description, clr-step-description", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordionPanel, never>;
 }
 
 export declare class ClrAccordionTitle {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAccordionTitle, "clr-accordion-title, clr-step-title", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAccordionTitle, never>;
 }
 
 export declare class ClrAlert implements OnInit, OnDestroy {
@@ -133,15 +153,22 @@ export declare class ClrAlert implements OnInit, OnDestroy {
     ngOnDestroy(): void;
     ngOnInit(): void;
     open(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlert, "clr-alert", never, { "isSmall": "clrAlertSizeSmall"; "closable": "clrAlertClosable"; "isAppLevel": "clrAlertAppLevel"; "clrCloseButtonAriaLabel": "clrCloseButtonAriaLabel"; "_closed": "clrAlertClosed"; "alertType": "clrAlertType"; "alertIconShape": "clrAlertIcon"; }, { "_closedChanged": "clrAlertClosedChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlert, [null, null, { optional: true; }, null]>;
 }
 
 export declare class ClrAlertItem {
     iconService: AlertIconAndTypesService;
     constructor(iconService: AlertIconAndTypesService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlertItem, "clr-alert-item", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlertItem, never>;
 }
 
 export declare class ClrAlertModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlertModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrAlertModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrAlertModule, [typeof i1.ClrAlert, typeof i2.ClrAlertItem, typeof i3.ClrAlerts, typeof i4.ClrAlertsPager, typeof i5.ClrAlertText], [typeof i6.CommonModule, typeof i7.ClrIconModule, typeof i8.ClrDropdownModule], [typeof i1.ClrAlert, typeof i2.ClrAlertItem, typeof i3.ClrAlerts, typeof i4.ClrAlertsPager, typeof i5.ClrAlertText]>;
 }
 
 export declare class ClrAlerts implements AfterContentInit, OnDestroy {
@@ -159,6 +186,8 @@ export declare class ClrAlerts implements AfterContentInit, OnDestroy {
     constructor(multiAlertService: MultiAlertService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlerts, "clr-alerts", never, { "_inputCurrentIndex": "clrCurrentAlertIndex"; "currentAlert": "clrCurrentAlert"; }, { "currentAlertIndexChange": "clrCurrentAlertIndexChange"; "currentAlertChange": "clrCurrentAlertChange"; }, ["allAlerts"], ["clr-alert"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlerts, never>;
 }
 
 export declare class ClrAlertsPager implements OnInit, OnDestroy {
@@ -175,9 +204,13 @@ export declare class ClrAlertsPager implements OnInit, OnDestroy {
     ngOnInit(): void;
     pageDown(): void;
     pageUp(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlertsPager, "clr-alerts-pager", never, { "currentAlert": "clrCurrentAlert"; "currentAlertIndex": "clrCurrentAlertIndex"; }, { "currentAlertChange": "clrCurrentAlertChange"; "currentAlertIndexChange": "clrCurrentAlertIndexChange"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlertsPager, never>;
 }
 
 export declare class ClrAlertText {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrAlertText, ".alert-text", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlertText, never>;
 }
 
 export declare enum ClrAlignment {
@@ -197,6 +230,8 @@ export declare class ClrAriaLiveService implements OnDestroy {
     constructor(ngZone: NgZone, _document: any, platformId: any);
     announce(message: string | HTMLElement, politeness?: ClrAriaLivePoliteness): void;
     ngOnDestroy(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrAriaLiveService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ClrAriaLiveService>;
 }
 
 export declare enum ClrAxis {
@@ -225,6 +260,8 @@ export declare class ClrButton implements LoadingListener {
     emitClick($event: Event): void;
     loadingStateChange(state: ClrLoadingState): void;
     ngAfterViewInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrButton, "clr-button", never, { "inMenu": "clrInMenu"; "classNames": "class"; "name": "name"; "type": "type"; "id": "id"; "disabled": "disabled"; }, { "_click": "click"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrButton, [{ optional: true; skipSelf: true; }, null]>;
 }
 
 export declare class ClrButtonGroup {
@@ -243,13 +280,21 @@ export declare class ClrButtonGroup {
     initializeButtons(): void;
     ngAfterContentInit(): void;
     rearrangeButton(button: ClrButton): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrButtonGroup, "clr-button-group", never, { "menuPosition": "clrMenuPosition"; }, {}, ["buttons"], never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrButtonGroup, never>;
 }
 
 export declare class ClrButtonGroupModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrButtonGroupModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrButtonGroupModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrButtonGroupModule, [typeof i1.ClrButton, typeof i2.ClrButtonGroup], [typeof i3.CommonModule, typeof i4.ClrIconModule, typeof i5.ClrPopoverModuleNext], [typeof i1.ClrButton, typeof i2.ClrButtonGroup]>;
 }
 
 export declare class ClrButtonModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrButtonModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrButtonModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrButtonModule, never, never, [typeof i1.ClrLoadingButtonModule, typeof i2.ClrButtonGroupModule]>;
 }
 
 export declare class ClrCalendar implements OnDestroy {
@@ -263,11 +308,15 @@ export declare class ClrCalendar implements OnDestroy {
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onKeyDown(event: KeyboardEvent): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrCalendar, "clr-calendar", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCalendar, never>;
 }
 
 export declare class ClrCheckbox extends WrappedFormControl<ClrCheckboxWrapper> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, toggle: string);
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrCheckbox, "[clrCheckbox],[clrToggle]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCheckbox, [null, null, { optional: true; self: true; }, null, null, { attribute: "clrToggle"; }]>;
 }
 
 export declare class ClrCheckboxContainer extends ClrAbstractContainer implements AfterContentInit {
@@ -281,10 +330,15 @@ export declare class ClrCheckboxContainer extends ClrAbstractContainer implement
     role: string;
     constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngAfterContentInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrCheckboxContainer, "clr-checkbox-container,clr-toggle-container", never, { "clrInline": "clrInline"; }, {}, ["checkboxes"], ["label", "clr-checkbox-wrapper,clr-toggle-wrapper", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCheckboxContainer, [{ optional: true; }, null, null, null]>;
 }
 
 export declare class ClrCheckboxModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCheckboxModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrCheckboxModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrCheckboxModule, [typeof i1.ClrCheckbox, typeof i2.ClrCheckboxContainer, typeof i3.ClrCheckboxWrapper], [typeof i4.CommonModule, typeof i5.ClrIconModule, typeof i6.ClrCommonFormsModule, typeof i7.ClrHostWrappingModule], [typeof i6.ClrCommonFormsModule, typeof i1.ClrCheckbox, typeof i2.ClrCheckboxContainer, typeof i3.ClrCheckboxWrapper]>;
 }
 
 export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDestroy {
@@ -294,6 +348,8 @@ export declare class ClrCheckboxWrapper implements DynamicWrapper, OnInit, OnDes
     constructor(toggleService: BehaviorSubject<boolean>);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrCheckboxWrapper, "clr-checkbox-wrapper,clr-toggle-wrapper", never, {}, {}, ["label"], ["[clrCheckbox],[clrToggle]", "label"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCheckboxWrapper, never>;
 }
 
 export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContainer> implements ControlValueAccessor, LoadingListener, AfterContentInit {
@@ -344,6 +400,8 @@ export declare class ClrCombobox<T> extends WrappedFormControl<ClrComboboxContai
     setDisabledState(): void;
     unselect(item: T): void;
     writeValue(value: T | T[]): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrCombobox<any>, "clr-combobox", never, { "placeholder": "placeholder"; "multiSelect": "clrMulti"; }, { "clrInputChange": "clrInputChange"; "clrOpenChange": "clrOpenChange"; "clrSelectionChange": "clrSelectionChange"; }, ["optionSelected"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCombobox<any>, [null, null, { optional: true; self: true; }, null, null, null, null, null, null, { optional: true; }, { optional: true; }, null, null, null, null]>;
 }
 
 export declare class ClrComboboxContainer extends ClrAbstractContainer implements AfterContentInit, AfterViewInit {
@@ -352,14 +410,22 @@ export declare class ClrComboboxContainer extends ClrAbstractContainer implement
     constructor(ifControlStateService: IfControlStateService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, containerService: ComboboxContainerService, el: ElementRef);
     ngAfterContentInit(): void;
     ngAfterViewInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrComboboxContainer, "clr-combobox-container", never, {}, {}, ["label"], ["label", "clr-combobox", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrComboboxContainer, [null, { optional: true; }, null, null, null, null]>;
 }
 
 export declare class ClrComboboxModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrComboboxModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrComboboxModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrComboboxModule, [typeof i1.ClrCombobox, typeof i2.ClrComboboxContainer, typeof i3.ClrOptions, typeof i4.ClrOption, typeof i5.ClrOptionSelected, typeof i6.ClrOptionItems], [typeof i7.CommonModule, typeof i8.FormsModule, typeof i9.ClrIconModule, typeof i10.ClrKeyFocusModule, typeof i11.ClrCommonFormsModule, typeof i12.ClrConditionalModule, typeof i13.ClrPopoverModuleNext, typeof i14.ClrSpinnerModule], [typeof i11.ClrCommonFormsModule, typeof i1.ClrCombobox, typeof i2.ClrComboboxContainer, typeof i3.ClrOptions, typeof i4.ClrOption, typeof i5.ClrOptionSelected, typeof i12.ClrConditionalModule, typeof i6.ClrOptionItems]>;
 }
 
 export declare class ClrCommonFormsModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCommonFormsModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrCommonFormsModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrCommonFormsModule, [typeof i1.ClrLabel, typeof i2.ClrControlError, typeof i3.ClrControlSuccess, typeof i4.ClrControlHelper, typeof i5.ClrIfError, typeof i6.ClrIfSuccess, typeof i7.ClrForm, typeof i8.ClrLayout, typeof i9.ClrControlContainer, typeof i10.ClrControl], [typeof i11.CommonModule, typeof i12.ClrIconModule], [typeof i1.ClrLabel, typeof i2.ClrControlError, typeof i3.ClrControlSuccess, typeof i4.ClrControlHelper, typeof i5.ClrIfError, typeof i6.ClrIfSuccess, typeof i7.ClrForm, typeof i8.ClrLayout, typeof i9.ClrControlContainer, typeof i10.ClrControl]>;
 }
 
 export interface ClrCommonStrings {
@@ -446,17 +512,26 @@ export declare class ClrCommonStringsService {
     parse(source: string, tokens?: {
         [key: string]: string;
     }): string;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrCommonStringsService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ClrCommonStringsService>;
 }
 
 export declare class ClrConditionalModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrConditionalModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrConditionalModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrConditionalModule, [typeof i1.ClrIfActive, typeof i2.ClrIfOpen, typeof i3.ClrIfExpanded], [typeof i4.CommonModule], [typeof i1.ClrIfActive, typeof i2.ClrIfOpen, typeof i3.ClrIfExpanded]>;
 }
 
 export declare class ClrControl extends WrappedFormControl<ClrControlContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrControl, "[clrControl]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrControl, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrControlContainer extends ClrAbstractContainer {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrControlContainer, "clr-control-container", never, {}, {}, never, ["label", "*", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrControlContainer, never>;
 }
 
 export declare class ClrControlError extends ClrAbstractControl {
@@ -464,6 +539,8 @@ export declare class ClrControlError extends ClrAbstractControl {
     protected controlIdService: ControlIdService;
     controlIdSuffix: string;
     constructor(controlIdService: ControlIdService, containerIdService: ContainerIdService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrControlError, "clr-control-error", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrControlError, [{ optional: true; }, { optional: true; }]>;
 }
 
 export declare class ClrControlHelper extends ClrAbstractControl {
@@ -471,6 +548,8 @@ export declare class ClrControlHelper extends ClrAbstractControl {
     protected controlIdService: ControlIdService;
     controlIdSuffix: string;
     constructor(controlIdService: ControlIdService, containerIdService: ContainerIdService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrControlHelper, "clr-control-helper", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrControlHelper, [{ optional: true; }, { optional: true; }]>;
 }
 
 export declare class ClrControlSuccess extends ClrAbstractControl {
@@ -478,6 +557,8 @@ export declare class ClrControlSuccess extends ClrAbstractControl {
     protected controlIdService: ControlIdService;
     controlIdSuffix: string;
     constructor(controlIdService: ControlIdService, containerIdService: ContainerIdService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrControlSuccess, "clr-control-success", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrControlSuccess, [{ optional: true; }, { optional: true; }]>;
 }
 
 export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterViewInit, OnDestroy {
@@ -520,9 +601,13 @@ export declare class ClrDatagrid<T = any> implements AfterContentInit, AfterView
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     resize(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagrid<any>, "clr-datagrid", never, { "loading": "clrDgLoading"; "selected": "clrDgSelected"; "singleSelected": "clrDgSingleSelected"; "clrDgSingleSelectionAriaLabel": "clrDgSingleSelectionAriaLabel"; "clrDgSingleActionableAriaLabel": "clrDgSingleActionableAriaLabel"; "clrDetailExpandableAriaLabel": "clrDetailExpandableAriaLabel"; "clrDgDisablePageFocus": "clrDgDisablePageFocus"; "clrDgPreserveSelection": "clrDgPreserveSelection"; "rowSelectionMode": "clrDgRowSelection"; }, { "refresh": "clrDgRefresh"; "selectedChanged": "clrDgSelectedChange"; "singleSelectedChanged": "clrDgSingleSelectedChange"; }, ["iterator", "placeholder", "columns", "rows"], ["clr-dg-action-bar", "clr-dg-placeholder", "clr-dg-footer", "[clrIfDetail],clr-dg-detail"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagrid<any>, never>;
 }
 
 export declare class ClrDatagridActionBar {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridActionBar, "clr-dg-action-bar", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridActionBar, never>;
 }
 
 export declare class ClrDatagridActionOverflow implements OnDestroy {
@@ -535,6 +620,8 @@ export declare class ClrDatagridActionOverflow implements OnDestroy {
     constructor(rowActionService: RowActionService, commonStrings: ClrCommonStringsService, platformId: any, zone: NgZone, smartToggleService: ClrPopoverToggleService, popoverId: string);
     closeOverflowContent(event: Event): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridActionOverflow, "clr-dg-action-overflow", never, { "open": "clrDgActionOverflowOpen"; }, { "openChange": "clrDgActionOverflowOpenChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridActionOverflow, never>;
 }
 
 export declare class ClrDatagridCell implements OnInit {
@@ -542,6 +629,8 @@ export declare class ClrDatagridCell implements OnInit {
     signpost: QueryList<ClrSignpost>;
     constructor(vcr: ViewContainerRef);
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridCell, "clr-dg-cell", never, {}, {}, ["signpost"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridCell, never>;
 }
 
 export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements OnDestroy, OnInit, OnChanges {
@@ -575,6 +664,8 @@ export declare class ClrDatagridColumn<T = any> extends DatagridFilterRegistrar<
     ngOnDestroy(): void;
     ngOnInit(): void;
     sort(reverse?: boolean): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridColumn<any>, "clr-dg-column", never, { "colType": "clrDgColType"; "field": "clrDgField"; "sortBy": "clrDgSortBy"; "sorted": "clrDgSorted"; "sortOrder": "clrDgSortOrder"; "updateFilterValue": "clrFilterValue"; }, { "sortedChange": "clrDgSortedChange"; "sortOrderChange": "clrDgSortOrderChange"; "filterValueChange": "clrFilterValueChange"; }, ["projectedFilter"], ["clr-dg-filter, clr-dg-string-filter, clr-dg-numeric-filter", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumn<any>, never>;
 }
 
 export declare class ClrDatagridColumnSeparator implements AfterViewInit, OnDestroy {
@@ -587,6 +678,8 @@ export declare class ClrDatagridColumnSeparator implements AfterViewInit, OnDest
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     showTracker(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridColumnSeparator, "clr-dg-column-separator", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumnSeparator, never>;
 }
 
 export declare class ClrDatagridColumnToggle {
@@ -606,6 +699,8 @@ export declare class ClrDatagridColumnToggle {
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
     trackByFn(index: number): number;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridColumnToggle, "clr-dg-column-toggle", never, {}, {}, ["customToggleTitle", "customToggleButton"], ["clr-dg-column-toggle-title", "clr-dg-column-toggle-button"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumnToggle, never>;
 }
 
 export declare class ClrDatagridColumnToggleButton {
@@ -613,9 +708,13 @@ export declare class ClrDatagridColumnToggleButton {
     get clrAllSelected(): Observable<boolean>;
     constructor(columnsService: ColumnsService);
     selectAll(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridColumnToggleButton, "clr-dg-column-toggle-button", never, {}, { "clrAllSelected": "clrAllSelected"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumnToggleButton, never>;
 }
 
 export declare class ClrDatagridColumnToggleTitle {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridColumnToggleTitle, "clr-dg-column-toggle-title", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumnToggleTitle, never>;
 }
 
 export interface ClrDatagridComparatorInterface<T> {
@@ -628,9 +727,13 @@ export declare class ClrDatagridDetail {
     header: ClrDatagridDetailHeader;
     constructor(detailService: DetailService, commonStrings: ClrCommonStringsService);
     closeCheck(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridDetail, "clr-dg-detail", never, {}, {}, ["header"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridDetail, never>;
 }
 
 export declare class ClrDatagridDetailBody {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridDetailBody, "clr-dg-detail-body", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridDetailBody, never>;
 }
 
 export declare class ClrDatagridDetailHeader {
@@ -638,6 +741,8 @@ export declare class ClrDatagridDetailHeader {
     detailService: DetailService;
     get titleId(): string;
     constructor(detailService: DetailService, commonStrings: ClrCommonStringsService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridDetailHeader, "clr-dg-detail-header", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridDetailHeader, never>;
 }
 
 export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<T, ClrDatagridFilterInterface<T>> implements CustomFilter, OnDestroy {
@@ -653,6 +758,8 @@ export declare class ClrDatagridFilter<T = any> extends DatagridFilterRegistrar<
     smartPosition: ClrPopoverPosition;
     constructor(_filters: FiltersProvider<T>, commonStrings: ClrCommonStringsService, smartToggleService: ClrPopoverToggleService, platformId: any, popoverId: string);
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridFilter<any>, "clr-dg-filter", never, { "open": "clrDgFilterOpen"; "customFilter": "clrDgFilter"; }, { "openChange": "clrDgFilterOpenChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridFilter<any>, never>;
 }
 
 export interface ClrDatagridFilterInterface<T, S = any> {
@@ -670,6 +777,8 @@ export declare class ClrDatagridFooter<T = any> {
     selection: Selection<T>;
     toggle: ClrDatagridColumnToggle;
     constructor(selection: Selection<T>, detailService: DetailService, columnsService: ColumnsService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridFooter<any>, "clr-dg-footer", never, {}, {}, ["toggle"], ["clr-dg-column-toggle", "*", "clr-dg-pagination"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridFooter<any>, never>;
 }
 
 export declare class ClrDatagridHideableColumn implements OnDestroy {
@@ -681,6 +790,8 @@ export declare class ClrDatagridHideableColumn implements OnDestroy {
     constructor(titleTemplateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef, columnsService: ColumnsService, columnState: BehaviorSubject<ColumnState>);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDatagridHideableColumn, "[clrDgHideableColumn]", never, { "clrDgHideableColumn": "clrDgHideableColumn"; "clrDgHidden": "clrDgHidden"; }, { "hiddenChange": "clrDgHiddenChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridHideableColumn, [null, null, null, { optional: true; }]>;
 }
 
 export declare class ClrDatagridItems<T> implements DoCheck, OnDestroy {
@@ -690,15 +801,22 @@ export declare class ClrDatagridItems<T> implements DoCheck, OnDestroy {
     constructor(template: TemplateRef<NgForOfContext<T>>, differs: IterableDiffers, items: Items, vcr: ViewContainerRef);
     ngDoCheck(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDatagridItems<any>, "[clrDgItems][clrDgItemsOf]", never, { "rawItems": "clrDgItemsOf"; "trackBy": "clrDgItemsTrackBy"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridItems<any>, never>;
 }
 
 export declare class ClrDatagridItemsTrackBy<T = any> {
     set trackBy(value: TrackByFunction<T>);
     constructor(_items: Items<T>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDatagridItemsTrackBy<any>, "[ngForTrackBy]", never, { "trackBy": "ngForTrackBy"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridItemsTrackBy<any>, [{ optional: true; }]>;
 }
 
 export declare class ClrDatagridModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDatagridModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDatagridModule, [typeof i1.ClrDatagrid, typeof i2.ClrDatagridActionBar, typeof i3.ClrDatagridActionOverflow, typeof i4.ClrDatagridColumn, typeof i5.ClrDatagridColumnSeparator, typeof i6.ClrDatagridColumnToggle, typeof i7.ClrDatagridHideableColumn, typeof i8.ClrDatagridFilter, typeof i9.ClrDatagridItems, typeof i10.ClrDatagridItemsTrackBy, typeof i11.ClrDatagridRow, typeof i12.ClrDatagridRowDetail, typeof i13.DatagridDetailRegisterer, typeof i14.ClrDatagridCell, typeof i15.ClrDatagridFooter, typeof i16.ClrDatagridPagination, typeof i17.ClrDatagridPageSize, typeof i18.ClrDatagridPlaceholder, typeof i19.ClrDatagridColumnToggleButton, typeof i20.ClrDatagridColumnToggleTitle, typeof i21.ClrDatagridDetail, typeof i22.ClrIfDetail, typeof i23.ClrDatagridDetailHeader, typeof i24.ClrDatagridDetailBody, typeof i25.WrappedCell, typeof i26.WrappedColumn, typeof i27.WrappedRow, typeof i28.DatagridMainRenderer, typeof i29.DatagridHeaderRenderer, typeof i30.DatagridRowRenderer, typeof i31.DatagridCellRenderer, typeof i32.DatagridWillyWonka, typeof i33.ActionableOompaLoompa, typeof i34.ExpandableOompaLoompa, typeof i35.DatagridStringFilter, typeof i36.DatagridNumericFilter], [typeof i37.CommonModule, typeof i38.ClrIconModule, typeof i39.ClrFormsModule, typeof i40.FormsModule, typeof i41.ClrLoadingModule, typeof i42.ClrConditionalModule, typeof i43.ClrOutsideClickModule, typeof i44.ClrExpandableAnimationModule, typeof i45.ClrDragAndDropModule, typeof i46.ClrSpinnerModule, typeof i47.ClrPopoverModuleNext, typeof i48.ClrFocusTrapModule, typeof i49.ClrFocusOnViewInitModule], [typeof i1.ClrDatagrid, typeof i2.ClrDatagridActionBar, typeof i3.ClrDatagridActionOverflow, typeof i4.ClrDatagridColumn, typeof i5.ClrDatagridColumnSeparator, typeof i6.ClrDatagridColumnToggle, typeof i7.ClrDatagridHideableColumn, typeof i8.ClrDatagridFilter, typeof i9.ClrDatagridItems, typeof i10.ClrDatagridItemsTrackBy, typeof i11.ClrDatagridRow, typeof i12.ClrDatagridRowDetail, typeof i13.DatagridDetailRegisterer, typeof i14.ClrDatagridCell, typeof i15.ClrDatagridFooter, typeof i16.ClrDatagridPagination, typeof i17.ClrDatagridPageSize, typeof i18.ClrDatagridPlaceholder, typeof i19.ClrDatagridColumnToggleButton, typeof i20.ClrDatagridColumnToggleTitle, typeof i21.ClrDatagridDetail, typeof i22.ClrIfDetail, typeof i23.ClrDatagridDetailHeader, typeof i24.ClrDatagridDetailBody, typeof i25.WrappedCell, typeof i26.WrappedColumn, typeof i27.WrappedRow, typeof i28.DatagridMainRenderer, typeof i29.DatagridHeaderRenderer, typeof i30.DatagridRowRenderer, typeof i31.DatagridCellRenderer, typeof i32.DatagridWillyWonka, typeof i33.ActionableOompaLoompa, typeof i34.ExpandableOompaLoompa, typeof i35.DatagridStringFilter, typeof i36.DatagridNumericFilter]>;
 }
 
 export interface ClrDatagridNumericFilterInterface<T> {
@@ -710,6 +828,8 @@ export declare class ClrDatagridPageSize {
     pageSizeOptions: number[];
     constructor(page: Page);
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridPageSize, "clr-dg-page-size", never, { "pageSizeOptions": "clrPageSizeOptions"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridPageSize, never>;
 }
 
 export declare class ClrDatagridPagination implements OnDestroy, OnInit {
@@ -737,11 +857,15 @@ export declare class ClrDatagridPagination implements OnDestroy, OnInit {
     ngOnInit(): void;
     previous(): void;
     updateCurrentPage(event: any): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridPagination, "clr-dg-pagination", never, { "disableCurrentPageInput": "clrDgPageInputDisabled"; "pageSize": "clrDgPageSize"; "totalItems": "clrDgTotalItems"; "lastPage": "clrDgLastPage"; "currentPage": "clrDgPage"; }, { "currentChanged": "clrDgPageChange"; }, ["_pageSizeComponent"], ["clr-dg-page-size", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridPagination, never>;
 }
 
 export declare class ClrDatagridPlaceholder<T = any> {
     get emptyDatagrid(): boolean;
     constructor(items: Items<T>);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridPlaceholder<any>, "clr-dg-placeholder", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridPlaceholder<any>, never>;
 }
 
 export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit {
@@ -786,6 +910,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     ngOnInit(): void;
     toggle(selected?: boolean): void;
     toggleExpand(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridRow<any>, "clr-dg-row", never, { "item": "clrDgItem"; "selected": "clrDgSelected"; "clrDgSelectable": "clrDgSelectable"; "expanded": "clrDgExpanded"; "clrDgDetailOpenLabel": "clrDgDetailOpenLabel"; "clrDgDetailCloseLabel": "clrDgDetailCloseLabel"; }, { "selectedChanged": "clrDgSelectedChange"; "expandedChange": "clrDgExpandedChange"; }, ["dgCells"], ["clr-dg-row-detail", "clr-dg-action-overflow", "clr-dg-cell"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridRow<any>, never>;
 }
 
 export declare class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
@@ -805,6 +931,8 @@ export declare class ClrDatagridRowDetail implements AfterContentInit, OnDestroy
     constructor(selection: Selection, rowActionService: RowActionService, expand: DatagridIfExpandService, expandableRows: ExpandableRowsCount, commonStrings: ClrCommonStringsService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridRowDetail, "clr-dg-row-detail", never, { "replace": "clrDgReplace"; "_beginningOfExpandableContentAriaText": "clrRowDetailBeginningAriaText"; "_endOfExpandableContentAriaText": "clrRowDetailEndAriaText"; }, {}, ["cells"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridRowDetail, never>;
 }
 
 export declare enum ClrDatagridSortOrder {
@@ -837,12 +965,16 @@ export declare class ClrDatalist implements AfterContentInit {
     constructor(datalistIdService: DatalistIdService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDatalist, "datalist", never, { "id": "id"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatalist, [{ optional: true; }]>;
 }
 
 export declare class ClrDatalistContainer extends ClrAbstractContainer {
     focus: boolean;
     protected ifControlStateService: IfControlStateService;
     constructor(controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, focusService: FocusService, ifControlStateService: IfControlStateService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatalistContainer, "clr-datalist-container", never, {}, {}, never, ["label", "[clrDatalistInput]", "datalist", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatalistContainer, [null, { optional: true; }, null, null, null]>;
 }
 
 export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistContainer> implements AfterContentInit {
@@ -851,13 +983,21 @@ export declare class ClrDatalistInput extends WrappedFormControl<ClrDatalistCont
     ngAfterContentInit(): void;
     triggerFocus(): void;
     triggerValidation(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDatalistInput, "[clrDatalistInput]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatalistInput, [{ optional: true; }, null, null, { optional: true; self: true; }, null, null, null]>;
 }
 
 export declare class ClrDatalistModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatalistModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDatalistModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDatalistModule, [typeof i1.ClrDatalist, typeof i2.ClrDatalistInput, typeof i3.ClrDatalistContainer], [typeof i4.CommonModule, typeof i5.ClrInputModule, typeof i6.ClrIconModule], [typeof i1.ClrDatalist, typeof i2.ClrDatalistInput, typeof i3.ClrDatalistContainer]>;
 }
 
 export declare class ClrDataModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDataModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDataModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDataModule, never, never, [typeof i1.ClrDatagridModule, typeof i2.ClrStackViewModule, typeof i3.ClrTreeViewModule]>;
 }
 
 export declare class ClrDateContainer extends ClrAbstractContainer implements AfterViewInit {
@@ -875,6 +1015,8 @@ export declare class ClrDateContainer extends ClrAbstractContainer implements Af
     get popoverPosition(): ClrPopoverPosition;
     constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngAfterViewInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDateContainer, "clr-date-container", never, { "clrPosition": "clrPosition"; }, {}, never, ["label", "[clrDate]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDateContainer, [null, null, null, null, null, null, null, null, { optional: true; }, null, null]>;
 }
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {
@@ -898,10 +1040,15 @@ export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> i
     setFocusStates(): void;
     triggerValidation(): void;
     static ngAcceptInputType_date: Date | null | string;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDateInput, "[clrDate]", never, { "placeholder": "placeholder"; "date": "clrDate"; "min": "min"; "max": "max"; "disabled": "disabled"; }, { "dateChange": "clrDateChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDateInput, [null, null, null, null, { optional: true; self: true; }, { optional: true; }, { optional: true; }, { optional: true; }, { optional: true; }, { optional: true; }, null, { optional: true; }, null]>;
 }
 
 export declare class ClrDatepickerModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatepickerModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDatepickerModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDatepickerModule, [typeof i1.ClrDay, typeof i2.ClrDateContainer, typeof i3.ClrDateInput, typeof i4.ClrDatepickerViewManager, typeof i5.ClrMonthpicker, typeof i6.ClrYearpicker, typeof i7.ClrDaypicker, typeof i8.ClrCalendar], [typeof i9.CommonModule, typeof i10.ClrHostWrappingModule, typeof i11.ClrConditionalModule, typeof i12.ClrPopoverModuleNext, typeof i13.ClrIconModule, typeof i14.ClrFocusTrapModule, typeof i15.ClrCommonFormsModule], [typeof i1.ClrDay, typeof i2.ClrDateContainer, typeof i3.ClrDateInput, typeof i4.ClrDatepickerViewManager, typeof i5.ClrMonthpicker, typeof i6.ClrYearpicker, typeof i7.ClrDaypicker, typeof i8.ClrCalendar]>;
 }
 
 export declare class ClrDatepickerViewManager {
@@ -909,6 +1056,8 @@ export declare class ClrDatepickerViewManager {
     get isMonthView(): boolean;
     get isYearView(): boolean;
     constructor(viewManagerService: ViewManagerService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatepickerViewManager, "clr-datepicker-view-manager", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatepickerViewManager, never>;
 }
 
 export declare class ClrDay {
@@ -918,6 +1067,8 @@ export declare class ClrDay {
     constructor(_dateNavigationService: DateNavigationService, _toggleService: ClrPopoverToggleService, dateFormControlService: DateFormControlService);
     onDayViewFocus(): void;
     selectDay(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDay, "clr-day", never, { "dayView": "clrDayView"; }, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDay, never>;
 }
 
 export declare class ClrDaypicker {
@@ -932,9 +1083,14 @@ export declare class ClrDaypicker {
     currentMonth(): void;
     nextMonth(): void;
     previousMonth(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDaypicker, "clr-daypicker", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDaypicker, never>;
 }
 
 export declare class ClrDragAndDropModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDragAndDropModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDragAndDropModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDragAndDropModule, [typeof i1.ClrDraggable, typeof i2.ClrDroppable, typeof i3.ClrIfDragged, typeof i4.ClrDragHandle, typeof i5.ClrDraggableGhost], [typeof i6.CommonModule], [typeof i1.ClrDraggable, typeof i2.ClrDroppable, typeof i3.ClrIfDragged, typeof i4.ClrDragHandle, typeof i5.ClrDraggableGhost]>;
 }
 
 export declare class ClrDragEvent<T> {
@@ -957,6 +1113,8 @@ export declare class ClrDraggable<T> implements AfterContentInit, OnDestroy {
     constructor(el: ElementRef, dragEventListener: DragEventListenerService<T>, dragHandleRegistrar: DragHandleRegistrarService<T>, viewContainerRef: ViewContainerRef, cfr: ComponentFactoryResolver, injector: Injector, draggableSnapshot: DraggableSnapshotService<T>, globalDragMode: GlobalDragModeService);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDraggable<any>, "[clrDraggable]", never, { "dataTransfer": "clrDraggable"; "group": "clrGroup"; "dragStartDelay": "clrDragStartDelay"; }, { "dragStartEmitter": "clrDragStart"; "dragMoveEmitter": "clrDragMove"; "dragEndEmitter": "clrDragEnd"; }, ["customGhost"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDraggable<any>, never>;
 }
 
 export declare class ClrDraggableGhost<T> implements OnDestroy {
@@ -969,11 +1127,15 @@ export declare class ClrDraggableGhost<T> implements OnDestroy {
     };
     constructor(el: ElementRef, dragEventListener: DragEventListenerService<T>, draggableSnapshot: DraggableSnapshotService<T>, renderer: Renderer2, ngZone: NgZone);
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDraggableGhost<any>, "clr-draggable-ghost", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDraggableGhost<any>, [null, { optional: true; }, { optional: true; }, null, null]>;
 }
 
 export declare class ClrDragHandle<T> implements OnDestroy {
     constructor(el: ElementRef, dragHandleRegistrar: DragHandleRegistrarService<T>);
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDragHandle<any>, "[clrDragHandle]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDragHandle<any>, [null, { optional: true; }]>;
 }
 
 export declare class ClrDropdown implements OnDestroy {
@@ -982,6 +1144,8 @@ export declare class ClrDropdown implements OnDestroy {
     toggleService: ClrPopoverToggleService;
     constructor(parent: ClrDropdown, toggleService: ClrPopoverToggleService, cdr: ChangeDetectorRef, dropdownService: RootDropdownService);
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDropdown, "clr-dropdown", never, { "isMenuClosable": "clrCloseMenuOnItemClick"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDropdown, [{ optional: true; skipSelf: true; }, null, null, null]>;
 }
 
 export declare class ClrDropdownItem implements AfterViewInit {
@@ -996,6 +1160,8 @@ export declare class ClrDropdownItem implements AfterViewInit {
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onDropdownItemClick(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDropdownItem, "[clrDropdownItem]", never, { "disabled": "clrDisabled"; "disabledDeprecated": "disabled"; "dropdownItemId": "id"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDropdownItem, never>;
 }
 
 export declare class ClrDropdownMenu extends AbstractPopover implements AfterContentInit, OnDestroy {
@@ -1004,9 +1170,14 @@ export declare class ClrDropdownMenu extends AbstractPopover implements AfterCon
     constructor(injector: Injector, parentHost: ElementRef<HTMLElement>, nested: ClrDropdownMenu, focusHandler: DropdownFocusHandler);
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDropdownMenu, "clr-dropdown-menu", never, { "position": "clrPosition"; }, {}, ["items"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDropdownMenu, [null, { optional: true; }, { optional: true; skipSelf: true; }, null]>;
 }
 
 export declare class ClrDropdownModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDropdownModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrDropdownModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrDropdownModule, [typeof i1.ClrDropdown, typeof i2.ClrDropdownMenu, typeof i3.ClrDropdownTrigger, typeof i4.ClrDropdownItem], [typeof i5.CommonModule], [typeof i1.ClrDropdown, typeof i2.ClrDropdownMenu, typeof i3.ClrDropdownTrigger, typeof i4.ClrDropdownItem, typeof i6.ClrConditionalModule, typeof i7.ClrIconModule]>;
 }
 
 export declare class ClrDropdownTrigger {
@@ -1014,6 +1185,8 @@ export declare class ClrDropdownTrigger {
     isRootLevelToggle: boolean;
     constructor(dropdown: ClrDropdown, toggleService: ClrPopoverToggleService, el: ElementRef<HTMLElement>, focusHandler: DropdownFocusHandler);
     onDropdownTriggerClick(event: any): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDropdownTrigger, "[clrDropdownTrigger],[clrDropdownToggle]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDropdownTrigger, never>;
 }
 
 export declare class ClrDroppable<T> implements OnInit, OnDestroy {
@@ -1030,6 +1203,8 @@ export declare class ClrDroppable<T> implements OnInit, OnDestroy {
     constructor(el: ElementRef, eventBus: DragAndDropEventBusService<T>, domAdapter: DomAdapter, renderer: Renderer2);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrDroppable<any>, "[clrDroppable]", never, { "group": "clrGroup"; "dropTolerance": "clrDropTolerance"; }, { "dragStartEmitter": "clrDragStart"; "dragMoveEmitter": "clrDragMove"; "dragEndEmitter": "clrDragEnd"; "dragLeaveEmitter": "clrDragLeave"; "dragEnterEmitter": "clrDragEnter"; "dropEmitter": "clrDrop"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDroppable<any>, never>;
 }
 
 export interface ClrDropToleranceInterface {
@@ -1040,6 +1215,9 @@ export interface ClrDropToleranceInterface {
 }
 
 export declare class ClrEmphasisModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrEmphasisModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrEmphasisModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrEmphasisModule, never, never, [typeof i1.ClrAlertModule]>;
 }
 
 export declare class ClrExpandableAnimation {
@@ -1054,6 +1232,8 @@ export declare class ClrExpandableAnimation {
     constructor(element: ElementRef, domAdapter: DomAdapter);
     animationDone(): void;
     updateStartHeight(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrExpandableAnimation, "clr-expandable-animation", never, { "clrExpandTrigger": "clrExpandTrigger"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrExpandableAnimation, never>;
 }
 
 export declare class ClrFocusOnViewInit implements AfterViewInit {
@@ -1061,9 +1241,14 @@ export declare class ClrFocusOnViewInit implements AfterViewInit {
     constructor(el: ElementRef, platformId: any, focusOnViewInit: boolean, document: any, renderer: Renderer2);
     ngAfterViewInit(): void;
     onFocusout(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrFocusOnViewInit, "[clrFocusOnViewInit]", never, { "isEnabled": "clrFocusOnViewInit"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrFocusOnViewInit, never>;
 }
 
 export declare class ClrFocusOnViewInitModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrFocusOnViewInitModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrFocusOnViewInitModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrFocusOnViewInitModule, [typeof i1.ClrFocusOnViewInit], [typeof i2.CommonModule], [typeof i1.ClrFocusOnViewInit]>;
 }
 
 export declare class ClrForm {
@@ -1073,6 +1258,8 @@ export declare class ClrForm {
     constructor(layoutService: LayoutService, markControlService: MarkControlService);
     markAsTouched(): void;
     onFormSubmit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrForm, "[clrForm]", never, { "labelSize": "clrLabelSize"; }, {}, ["labels"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrForm, never>;
 }
 
 export declare enum ClrFormLayout {
@@ -1082,6 +1269,9 @@ export declare enum ClrFormLayout {
 }
 
 export declare class ClrFormsModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrFormsModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrFormsModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrFormsModule, never, [typeof i1.CommonModule], [typeof i2.ClrCommonFormsModule, typeof i3.ClrCheckboxModule, typeof i4.ClrComboboxModule, typeof i5.ClrDatepickerModule, typeof i6.ClrInputModule, typeof i7.ClrPasswordModule, typeof i8.ClrRadioModule, typeof i9.ClrSelectModule, typeof i10.ClrTextareaModule, typeof i11.ClrRangeModule, typeof i12.ClrDatalistModule]>;
 }
 
 export declare class ClrHeader implements OnDestroy {
@@ -1096,12 +1286,19 @@ export declare class ClrHeader implements OnDestroy {
     ngOnDestroy(): void;
     resetNavTriggers(): void;
     toggleNav(navLevel: number): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrHeader, "clr-header", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrHeader, never>;
 }
 
 export declare class ClrIconCustomTag {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIconCustomTag, "clr-icon", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIconCustomTag, never>;
 }
 
 export declare class ClrIconModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIconModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrIconModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrIconModule, [typeof i1.ClrIconCustomTag, typeof i1.CdsIconCustomTag], [typeof i2.CommonModule], [typeof i1.ClrIconCustomTag, typeof i1.CdsIconCustomTag]>;
 }
 
 export declare class ClrIfActive implements OnDestroy {
@@ -1111,6 +1308,8 @@ export declare class ClrIfActive implements OnDestroy {
     constructor(ifActiveService: IfActiveService, id: number, template: TemplateRef<any>, container: ViewContainerRef);
     ngOnDestroy(): void;
     updateView(value: boolean): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfActive, "[clrIfActive]", never, { "active": "clrIfActive"; }, { "activeChange": "clrIfActiveChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfActive, never>;
 }
 
 export declare class ClrIfDetail implements OnInit, OnDestroy {
@@ -1119,17 +1318,23 @@ export declare class ClrIfDetail implements OnInit, OnDestroy {
     constructor(templateRef: TemplateRef<any>, viewContainer: ViewContainerRef, detailService: DetailService);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfDetail, "[clrIfDetail]", never, { "state": "clrIfDetail"; }, { "stateChange": "clrIfDetailChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfDetail, never>;
 }
 
 export declare class ClrIfDragged<T> implements OnDestroy {
     constructor(template: TemplateRef<any>, container: ViewContainerRef, dragEventListener: DragEventListenerService<T>);
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfDragged<any>, "[clrIfDragged]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfDragged<any>, [null, { optional: true; skipSelf: true; }, { optional: true; }]>;
 }
 
 export declare class ClrIfError extends AbstractIfState {
     error: string;
     constructor(ifControlStateService: IfControlStateService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
     protected handleState(state: CONTROL_STATE): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfError, "[clrIfError]", never, { "error": "clrIfError"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfError, [{ optional: true; }, { optional: true; }, null, null]>;
 }
 
 export declare class ClrIfExpanded implements OnInit, OnDestroy {
@@ -1139,6 +1344,8 @@ export declare class ClrIfExpanded implements OnInit, OnDestroy {
     constructor(template: TemplateRef<any>, container: ViewContainerRef, el: ElementRef, renderer: Renderer2, expand: IfExpandService);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfExpanded, "[clrIfExpanded]", never, { "expanded": "clrIfExpanded"; }, { "expandedChange": "clrIfExpandedChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfExpanded, [{ optional: true; }, null, null, null, null]>;
 }
 
 export declare class ClrIfOpen implements OnDestroy {
@@ -1149,23 +1356,34 @@ export declare class ClrIfOpen implements OnDestroy {
     ngOnDestroy(): void;
     updateView(value: boolean): void;
     static ngAcceptInputType_open: boolean | '';
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfOpen, "[clrIfOpen]", never, { "open": "clrIfOpen"; }, { "openChange": "clrIfOpenChange"; }, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfOpen, never>;
 }
 
 export declare class ClrIfSuccess extends AbstractIfState {
     constructor(ifControlStateService: IfControlStateService, ngControlService: NgControlService, template: TemplateRef<any>, container: ViewContainerRef);
     protected handleState(state: CONTROL_STATE): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrIfSuccess, "[clrIfSuccess]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrIfSuccess, [{ optional: true; }, { optional: true; }, null, null]>;
 }
 
 export declare class ClrInput extends WrappedFormControl<ClrInputContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrInput, "[clrInput]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrInput, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrInputContainer extends ClrAbstractContainer {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrInputContainer, "clr-input-container", never, {}, {}, never, ["label", "[clrInput]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrInputContainer, never>;
 }
 
 export declare class ClrInputModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrInputModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrInputModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrInputModule, [typeof i1.ClrInput, typeof i2.ClrInputContainer], [typeof i3.CommonModule, typeof i4.FormsModule, typeof i5.ClrIconModule, typeof i6.ClrCommonFormsModule], [typeof i6.ClrCommonFormsModule, typeof i1.ClrInput, typeof i2.ClrInputContainer]>;
 }
 
 export declare class ClrLabel implements OnInit, OnDestroy {
@@ -1175,6 +1393,8 @@ export declare class ClrLabel implements OnInit, OnDestroy {
     disableGrid(): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrLabel, "label", never, { "forAttr": "for"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLabel, [{ optional: true; }, { optional: true; }, { optional: true; }, null, null]>;
 }
 
 export declare class ClrLayout implements OnInit {
@@ -1182,9 +1402,14 @@ export declare class ClrLayout implements OnInit {
     layoutService: LayoutService;
     constructor(layoutService: LayoutService);
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrLayout, "[clrForm][clrLayout]", never, { "layout": "clrLayout"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLayout, never>;
 }
 
 export declare class ClrLayoutModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLayoutModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrLayoutModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrLayoutModule, never, never, [typeof i1.ClrMainContainerModule, typeof i2.ClrNavigationModule, typeof i3.ClrTabsModule, typeof i4.ClrVerticalNavModule]>;
 }
 
 export declare class ClrLoading implements OnDestroy {
@@ -1193,6 +1418,8 @@ export declare class ClrLoading implements OnDestroy {
     constructor(listener: LoadingListener);
     ngOnDestroy(): void;
     static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null | string;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrLoading, "[clrLoading]", never, { "loadingState": "clrLoading"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLoading, [{ optional: true; }]>;
 }
 
 export declare class ClrLoadingButton implements LoadingListener {
@@ -1203,12 +1430,20 @@ export declare class ClrLoadingButton implements LoadingListener {
     state: ClrLoadingState;
     constructor(el: ElementRef, renderer: Renderer2);
     loadingStateChange(state: ClrLoadingState): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrLoadingButton, "button[clrLoading]", never, { "disabled": "disabled"; }, { "clrLoadingChange": "clrLoadingChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLoadingButton, never>;
 }
 
 export declare class ClrLoadingButtonModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLoadingButtonModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrLoadingButtonModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrLoadingButtonModule, [typeof i1.ClrLoadingButton], [typeof i2.CommonModule], [typeof i1.ClrLoadingButton]>;
 }
 
 export declare class ClrLoadingModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrLoadingModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrLoadingModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrLoadingModule, [typeof i1.ClrLoading], [typeof i2.CommonModule], [typeof i1.ClrLoading]>;
 }
 
 export declare enum ClrLoadingState {
@@ -1224,9 +1459,14 @@ export declare class ClrMainContainer implements OnDestroy, OnInit {
     ngOnDestroy(): void;
     ngOnInit(): void;
     processMessage(message: ResponsiveNavControlMessage): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrMainContainer, "clr-main-container", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrMainContainer, never>;
 }
 
 export declare class ClrMainContainerModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrMainContainerModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrMainContainerModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrMainContainerModule, [typeof i1.ClrMainContainer], [typeof i2.CommonModule, typeof i3.ClrIconModule], [typeof i1.ClrMainContainer]>;
 }
 
 export declare class ClrModal implements OnChanges, OnDestroy {
@@ -1250,15 +1490,22 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     }): void;
     ngOnDestroy(): void;
     open(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrModal, "clr-modal", never, { "_open": "clrModalOpen"; "closable": "clrModalClosable"; "size": "clrModalSize"; "staticBackdrop": "clrModalStaticBackdrop"; "skipAnimation": "clrModalSkipAnimation"; "bypassScrollService": "clrModalOverrideScrollService"; "stopClose": "clrModalPreventClose"; }, { "_openChanged": "clrModalOpenChange"; "altClose": "clrModalAlternateClose"; }, never, [".modal-nav", ".modal-title", ".modal-body", ".modal-footer"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrModal, never>;
 }
 
 export declare class ClrModalBody implements OnDestroy {
     constructor(ngZone: NgZone, renderer: Renderer2, host: ElementRef<HTMLElement>);
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrModalBody, ".modal-body", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrModalBody, never>;
 }
 
 export declare class ClrModalModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrModalModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrModalModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrModalModule, [typeof i1.ClrModal, typeof i2.ClrModalBody], [typeof i3.CommonModule, typeof i4.ClrIconModule, typeof i5.ClrFocusTrapModule, typeof i6.ClrFocusOnViewInitModule], [typeof i1.ClrModal, typeof i2.ClrModalBody, typeof i4.ClrIconModule, typeof i6.ClrFocusOnViewInitModule]>;
 }
 
 export declare class ClrMonthpicker implements AfterViewInit {
@@ -1269,9 +1516,14 @@ export declare class ClrMonthpicker implements AfterViewInit {
     getTabIndex(monthIndex: number): number;
     ngAfterViewInit(): void;
     onKeyDown(event: KeyboardEvent): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrMonthpicker, "clr-monthpicker", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrMonthpicker, never>;
 }
 
 export declare class ClrNavigationModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrNavigationModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrNavigationModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrNavigationModule, [typeof i1.ClrHeader, typeof i2.ClrNavLevel, typeof i3.NavDetectionOompaLoompa, typeof i4.MainContainerWillyWonka], [typeof i5.CommonModule, typeof i6.ClrIconModule, typeof i7.ClrDropdownModule], [typeof i1.ClrHeader, typeof i2.ClrNavLevel, typeof i3.NavDetectionOompaLoompa, typeof i4.MainContainerWillyWonka]>;
 }
 
 export declare class ClrNavLevel implements OnInit {
@@ -1285,6 +1537,8 @@ export declare class ClrNavLevel implements OnInit {
     ngOnInit(): void;
     onMouseClick(target: any): void;
     open(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrNavLevel, "[clr-nav-level]", never, { "_level": "clr-nav-level"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrNavLevel, never>;
 }
 
 export declare class ClrOption<T> implements OnInit {
@@ -1300,6 +1554,8 @@ export declare class ClrOption<T> implements OnInit {
     constructor(elRef: ElementRef, commonStrings: ClrCommonStringsService, focusHandler: ComboboxFocusHandler<T>, optionSelectionService: OptionSelectionService<T>, autoId: string);
     ngOnInit(): void;
     onClick(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrOption<any>, "clr-option", never, { "optionId": "id"; "value": "clrValue"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrOption<any>, never>;
 }
 
 export declare class ClrOptionItems<T> implements DoCheck, OnDestroy {
@@ -1310,6 +1566,8 @@ export declare class ClrOptionItems<T> implements DoCheck, OnDestroy {
     constructor(template: TemplateRef<NgForOfContext<T>>, differs: IterableDiffers, optionService: OptionSelectionService<T>, positionService: ClrPopoverPositionService, vcr: ViewContainerRef);
     ngDoCheck(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrOptionItems<any>, "[clrOptionItems][clrOptionItemsOf]", never, { "rawItems": "clrOptionItemsOf"; "trackBy": "clrOptionItemsTrackBy"; "field": "clrOptionItemsField"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrOptionItems<any>, never>;
 }
 
 export declare class ClrOptions<T> implements AfterViewInit, LoadingListener, OnDestroy {
@@ -1328,6 +1586,8 @@ export declare class ClrOptions<T> implements AfterViewInit, LoadingListener, On
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     searchText(input: string): string;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrOptions<any>, "clr-options", never, { "optionsId": "id"; }, {}, ["items"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrOptions<any>, [null, null, null, null, null, null, null, { optional: true; }, null]>;
 }
 
 export declare class ClrOptionSelected<T> {
@@ -1338,6 +1598,8 @@ export declare class ClrOptionSelected<T> {
     constructor(template: TemplateRef<{
         $implicit: T;
     }>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrOptionSelected<any>, "[clrOptionSelected]", never, { "selected": "clrOptionSelected"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrOptionSelected<any>, never>;
 }
 
 export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer> implements OnInit, OnDestroy {
@@ -1345,6 +1607,8 @@ export declare class ClrPassword extends WrappedFormControl<ClrPasswordContainer
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef, focusService: FocusService, toggleService: BehaviorSubject<boolean>);
     triggerFocus(): void;
     triggerValidation(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrPassword, "[clrPassword]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPassword, [null, null, { optional: true; self: true; }, null, null, { optional: true; }, { optional: true; }]>;
 }
 
 export declare class ClrPasswordContainer extends ClrAbstractContainer {
@@ -1356,14 +1620,21 @@ export declare class ClrPasswordContainer extends ClrAbstractContainer {
     show: boolean;
     constructor(ifControlStateService: IfControlStateService, layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, focusService: FocusService, toggleService: BehaviorSubject<boolean>, commonStrings: ClrCommonStringsService);
     toggle(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrPasswordContainer, "clr-password-container", never, { "clrToggle": "clrToggle"; }, {}, never, ["label", "[clrPassword]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPasswordContainer, [null, { optional: true; }, null, null, null, null, null]>;
 }
 
 export declare class ClrPasswordModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPasswordModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrPasswordModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrPasswordModule, [typeof i1.ClrPassword, typeof i2.ClrPasswordContainer], [typeof i3.CommonModule, typeof i4.FormsModule, typeof i5.ClrIconModule, typeof i6.ClrCommonFormsModule], [typeof i6.ClrCommonFormsModule, typeof i1.ClrPassword, typeof i2.ClrPasswordContainer]>;
 }
 
 export declare class ClrPopoverAnchor {
     constructor(smartEventService: ClrPopoverEventsService, element: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrPopoverAnchor, "[clrPopoverAnchor]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverAnchor, never>;
 }
 
 export declare class ClrPopoverContent implements AfterContentChecked, OnDestroy {
@@ -1375,6 +1646,8 @@ export declare class ClrPopoverContent implements AfterContentChecked, OnDestroy
     ngAfterContentChecked(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrPopoverContent, "[clrPopoverContent]", never, { "open": "clrPopoverContent"; "contentAt": "clrPopoverContentAt"; "outsideClickClose": "clrPopoverContentOutsideClickToClose"; "scrollToClose": "clrPopoverContentScrollToClose"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverContent, never>;
 }
 
 export declare class ClrPopoverEventsService implements OnDestroy {
@@ -1397,9 +1670,14 @@ export declare class ClrPopoverEventsService implements OnDestroy {
     removeScrollListener(): void;
     setAnchorFocus(): void;
     setCloseFocus(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverEventsService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ClrPopoverEventsService>;
 }
 
 export declare class ClrPopoverModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrPopoverModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrPopoverModule, never, never, [typeof i1.ClrDropdownModule, typeof i2.ClrSignpostModule, typeof i3.ClrTooltipModule]>;
 }
 
 export interface ClrPopoverPosition {
@@ -1417,6 +1695,8 @@ export declare class ClrPopoverPositionService {
     constructor(eventService: ClrPopoverEventsService, platformId: any);
     alignContent(content: HTMLElement): ClrPopoverContentOffset;
     realign(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverPositionService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ClrPopoverPositionService>;
 }
 
 export declare class ClrPopoverToggleService {
@@ -1430,6 +1710,8 @@ export declare class ClrPopoverToggleService {
     getEventChange(): Observable<Event>;
     popoverAlignedEmit(popoverNode: HTMLElement): void;
     toggleWithEvent(event: any): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrPopoverToggleService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ClrPopoverToggleService>;
 }
 
 export declare class ClrProgressBar {
@@ -1457,13 +1739,20 @@ export declare class ClrProgressBar {
     get value(): number | string;
     set value(value: number | string);
     displayStringValue(): boolean;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrProgressBar, "clr-progress-bar", never, { "id": "id"; "max": "clrMax"; "displayval": "clrDisplayval"; "value": "clrValue"; "clrLabeled": "clrLabeled"; "clrFade": "clrFade"; "clrLoop": "clrLoop"; "clrSuccess": "clrSuccess"; "clrDanger": "clrDanger"; "clrFlash": "clrFlash"; "clrFlashDanger": "clrFlashDanger"; }, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrProgressBar, never>;
 }
 
 export declare class ClrProgressBarModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrProgressBarModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrProgressBarModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrProgressBarModule, [typeof i1.ClrProgressBar], [typeof i2.CommonModule], [typeof i1.ClrProgressBar]>;
 }
 
 export declare class ClrRadio extends WrappedFormControl<ClrRadioWrapper> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrRadio, "[clrRadio]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRadio, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrRadioContainer extends ClrAbstractContainer implements AfterContentInit {
@@ -1477,20 +1766,29 @@ export declare class ClrRadioContainer extends ClrAbstractContainer implements A
     role: string;
     constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngAfterContentInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrRadioContainer, "clr-radio-container", never, { "clrInline": "clrInline"; }, {}, ["radios"], ["label", "clr-radio-wrapper", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRadioContainer, [{ optional: true; }, null, null, null]>;
 }
 
 export declare class ClrRadioModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRadioModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrRadioModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrRadioModule, [typeof i1.ClrRadio, typeof i2.ClrRadioContainer, typeof i3.ClrRadioWrapper], [typeof i4.CommonModule, typeof i5.ClrCommonFormsModule, typeof i6.ClrHostWrappingModule, typeof i7.ClrIconModule], [typeof i5.ClrCommonFormsModule, typeof i1.ClrRadio, typeof i2.ClrRadioContainer, typeof i3.ClrRadioWrapper]>;
 }
 
 export declare class ClrRadioWrapper implements DynamicWrapper, OnInit {
     _dynamic: boolean;
     label: ClrLabel;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrRadioWrapper, "clr-radio-wrapper", never, {}, {}, ["label"], ["[clrRadio]", "label"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRadioWrapper, never>;
 }
 
 export declare class ClrRange extends WrappedFormControl<ClrRangeContainer> {
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrRange, "[clrRange]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRange, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrRangeContainer extends ClrAbstractContainer {
@@ -1499,10 +1797,15 @@ export declare class ClrRangeContainer extends ClrAbstractContainer {
     protected ifControlStateService: IfControlStateService;
     constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, renderer: Renderer2, idService: ControlIdService, ifControlStateService: IfControlStateService);
     getRangeProgressFillWidth(): string;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrRangeContainer, "clr-range-container", never, { "hasProgress": "clrRangeHasProgress"; }, {}, never, ["label", "[clrRange]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRangeContainer, [{ optional: true; }, null, null, null, null, null]>;
 }
 
 export declare class ClrRangeModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRangeModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrRangeModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrRangeModule, [typeof i1.ClrRange, typeof i2.ClrRangeContainer], [typeof i3.CommonModule, typeof i4.ClrCommonFormsModule, typeof i5.ClrHostWrappingModule, typeof i6.ClrIconModule], [typeof i4.ClrCommonFormsModule, typeof i1.ClrRange, typeof i2.ClrRangeContainer]>;
 }
 
 export declare class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
@@ -1511,6 +1814,8 @@ export declare class ClrRecursiveForOf<T> implements OnChanges, OnDestroy {
     constructor(template: TemplateRef<ClrRecursiveForOfContext<T>>, featuresService: TreeFeaturesService<T>, cdr: ChangeDetectorRef);
     ngOnChanges(): void;
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrRecursiveForOf<any>, "[clrRecursiveFor][clrRecursiveForOf]", never, { "nodes": "clrRecursiveForOf"; "getChildren": "clrRecursiveForGetChildren"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrRecursiveForOf<any>, never>;
 }
 
 export interface ClrRecursiveForOfContext<T> {
@@ -1521,6 +1826,8 @@ export interface ClrRecursiveForOfContext<T> {
 export declare class ClrSelect extends WrappedFormControl<ClrSelectContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrSelect, "[clrSelect]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSelect, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrSelectContainer extends ClrAbstractContainer {
@@ -1532,6 +1839,8 @@ export declare class ClrSelectContainer extends ClrAbstractContainer {
     constructor(layoutService: LayoutService, controlClassService: ControlClassService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngOnInit(): void;
     wrapperClass(): "clr-multiselect-wrapper" | "clr-select-wrapper";
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrSelectContainer, "clr-select-container", never, {}, {}, ["multiple"], ["label", "[clrSelect]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSelectContainer, [{ optional: true; }, null, null, null]>;
 }
 
 export declare enum ClrSelectedState {
@@ -1542,6 +1851,9 @@ export declare enum ClrSelectedState {
 
 export declare class ClrSelectModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSelectModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrSelectModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrSelectModule, [typeof i1.ClrSelect, typeof i2.ClrSelectContainer], [typeof i3.CommonModule, typeof i4.FormsModule, typeof i5.ClrIconModule, typeof i6.ClrCommonFormsModule], [typeof i6.ClrCommonFormsModule, typeof i1.ClrSelect, typeof i2.ClrSelectContainer]>;
 }
 
 export declare enum ClrSide {
@@ -1554,6 +1866,8 @@ export declare class ClrSignpost {
     set customTrigger(trigger: ClrSignpostTrigger);
     useCustomTrigger: boolean;
     constructor(commonStrings: ClrCommonStringsService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrSignpost, "clr-signpost", never, {}, {}, ["customTrigger"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSignpost, never>;
 }
 
 export declare class ClrSignpostContent extends AbstractPopover implements OnDestroy {
@@ -1564,10 +1878,15 @@ export declare class ClrSignpostContent extends AbstractPopover implements OnDes
     constructor(injector: Injector, parentHost: ElementRef, commonStrings: ClrCommonStringsService, signpostContentId: string, signpostIdService: SignpostIdService, signpostFocusManager: SignpostFocusManager, platformId: any, document: any);
     close(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrSignpostContent, "clr-signpost-content", never, { "position": "clrPosition"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSignpostContent, [null, { optional: true; }, null, null, null, null, null, null]>;
 }
 
 export declare class ClrSignpostModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSignpostModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrSignpostModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrSignpostModule, [typeof i1.ClrSignpost, typeof i2.ClrSignpostContent, typeof i3.ClrSignpostTrigger], [typeof i4.CommonModule, typeof i5.ClrIconModule, typeof i6.ClrFocusOnViewInitModule], [typeof i1.ClrSignpost, typeof i2.ClrSignpostContent, typeof i3.ClrSignpostTrigger, typeof i7.ClrConditionalModule]>;
 }
 
 export declare class ClrSignpostTrigger implements OnDestroy {
@@ -1579,6 +1898,8 @@ export declare class ClrSignpostTrigger implements OnDestroy {
     ngOnDestroy(): void;
     ngOnInit(): void;
     onSignpostTriggerClick(event: Event): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrSignpostTrigger, "[clrSignpostTrigger]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSignpostTrigger, never>;
 }
 
 export declare class ClrSpinner {
@@ -1591,9 +1912,14 @@ export declare class ClrSpinner {
     get mediumClass(): boolean;
     get smallClass(): boolean;
     get spinnerClass(): boolean;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrSpinner, "clr-spinner", never, { "clrInline": "clrInline"; "clrInverse": "clrInverse"; "clrSmall": "clrSmall"; "clrMedium": "clrMedium"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSpinner, never>;
 }
 
 export declare class ClrSpinnerModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrSpinnerModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrSpinnerModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrSpinnerModule, [typeof i1.ClrSpinner], [typeof i2.CommonModule], [typeof i1.ClrSpinner]>;
 }
 
 export declare class ClrStackBlock implements OnInit {
@@ -1618,27 +1944,37 @@ export declare class ClrStackBlock implements OnInit {
     getStackChildrenId(): string;
     ngOnInit(): void;
     toggleExpand(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackBlock, "clr-stack-block", never, { "expanded": "clrSbExpanded"; "expandable": "clrSbExpandable"; "setChangedValue": "clrSbNotifyChange"; "ariaLevel": "clrStackViewLevel"; "ariaSetsize": "clrStackViewSetsize"; "ariaPosinset": "clrStackViewPosinset"; }, { "expandedChange": "clrSbExpandedChange"; }, never, ["clr-stack-label", "*", "clr-stack-block"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackBlock, [{ optional: true; skipSelf: true; }, null, null]>;
 }
 
 export declare class ClrStackContentInput {
     uniqueId: string;
     constructor(uniqueId: string);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrStackContentInput, "[clrStackInput]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackContentInput, never>;
 }
 
 export declare class ClrStackHeader {
     stackView: ClrStackView;
     constructor(stackView: ClrStackView);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackHeader, "clr-stack-header", never, {}, {}, never, ["*", ".stack-action"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackHeader, never>;
 }
 
 export declare class ClrStackInput extends StackControl {
     stackView: ClrStackView;
     type: string;
     constructor(stackView: ClrStackView);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackInput, "clr-stack-input", never, { "model": "clrModel"; "type": "type"; }, { "modelChange": "clrModelChange"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackInput, never>;
 }
 
 export declare class ClrStackSelect extends StackControl {
     stackView: ClrStackView;
     constructor(stackView: ClrStackView);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackSelect, "clr-stack-select", never, { "model": "clrModel"; }, { "modelChange": "clrModelChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackSelect, never>;
 }
 
 export declare class ClrStackView {
@@ -1647,13 +1983,20 @@ export declare class ClrStackView {
     set editing(value: boolean);
     editingChange: EventEmitter<boolean>;
     save: EventEmitter<void>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackView, "clr-stack-view", never, {}, { "save": "clrStackSave"; }, never, ["clr-stack-header", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackView, never>;
 }
 
 export declare class ClrStackViewCustomTags {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrStackViewCustomTags, "clr-stack-label, clr-stack-content", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackViewCustomTags, never>;
 }
 
 export declare class ClrStackViewModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackViewModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrStackViewModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrStackViewModule, [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect], [typeof i8.CommonModule, typeof i9.FormsModule, typeof i10.ClrIconModule, typeof i11.ClrExpandableAnimationModule], [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect]>;
 }
 
 export declare class ClrStepButton implements OnInit {
@@ -1662,6 +2005,8 @@ export declare class ClrStepButton implements OnInit {
     constructor(clrStep: ClrStepperPanel, stepperService: StepperService);
     navigateToNextPanel(): void;
     ngOnInit(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrStepButton, "[clrStepButton]", never, { "type": "clrStepButton"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStepButton, never>;
 }
 
 export declare enum ClrStepButtonType {
@@ -1679,9 +2024,14 @@ export declare class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnD
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStepper, "form[clrStepper]", never, { "initialPanel": "clrInitialStep"; }, {}, ["panels"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStepper, [{ optional: true; }, { optional: true; }, null]>;
 }
 
 export declare class ClrStepperModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStepperModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrStepperModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrStepperModule, [typeof i1.ClrStepper, typeof i2.ClrStepButton, typeof i3.ClrStepperPanel, typeof i4.StepperOompaLoompa, typeof i5.StepperWillyWonka], [typeof i6.CommonModule, typeof i7.ClrIconModule, typeof i8.ClrAccordionModule], [typeof i1.ClrStepper, typeof i2.ClrStepButton, typeof i3.ClrStepperPanel, typeof i4.StepperOompaLoompa, typeof i5.StepperWillyWonka, typeof i8.ClrAccordionModule]>;
 }
 
 export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
@@ -1694,6 +2044,8 @@ export declare class ClrStepperPanel extends ClrAccordionPanel implements OnInit
     constructor(platformId: any, commonStrings: ClrCommonStringsService, formGroupName: FormGroupName, ngModelGroup: NgModelGroup, stepperService: StepperService, ifExpandService: IfExpandService, id: string);
     ngOnDestroy(): void;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStepperPanel, "clr-stepper-panel", never, {}, {}, never, ["clr-accordion-title, clr-step-title", "clr-accordion-description, clr-step-description", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStepperPanel, [null, null, { optional: true; }, { optional: true; }, null, null, null]>;
 }
 
 export declare class ClrTab {
@@ -1704,6 +2056,8 @@ export declare class ClrTab {
     tabLink: ClrTabLink;
     constructor(ifActiveService: IfActiveService, id: number, tabsService: TabsService);
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTab, "clr-tab", never, {}, {}, ["tabLink", "tabContent"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTab, never>;
 }
 
 export declare class ClrTabContent implements OnDestroy {
@@ -1715,6 +2069,8 @@ export declare class ClrTabContent implements OnDestroy {
     set tabContentId(id: string);
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, tabsService: TabsService);
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTabContent, "clr-tab-content", never, { "tabContentId": "id"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTabContent, never>;
 }
 
 export declare class ClrTabLink {
@@ -1732,9 +2088,13 @@ export declare class ClrTabLink {
     templateRefContainer: TemplateRefContainer;
     constructor(ifActiveService: IfActiveService, id: number, ariaService: AriaService, el: ElementRef, cfr: ComponentFactoryResolver, viewContainerRef: ViewContainerRef, tabsService: TabsService, tabsId: number);
     activate(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrTabLink, "[clrTabLink]", never, { "inOverflow": "clrTabLinkInOverflow"; "tabLinkId": "id"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTabLink, never>;
 }
 
 export declare class ClrTabOverflowContent {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTabOverflowContent, "clr-tab-overflow-content", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTabOverflowContent, never>;
 }
 
 export declare class ClrTabs implements AfterContentInit, OnDestroy {
@@ -1765,27 +2125,41 @@ export declare class ClrTabs implements AfterContentInit, OnDestroy {
     resetKeyFocusCurrentToActive(event: FocusEvent): void;
     toggleOverflowOnClick(): void;
     toggleOverflowOnPosition(position: number): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTabs, "clr-tabs", never, { "layout": "clrLayout"; }, {}, ["tabs"], never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTabs, never>;
 }
 
 export declare class ClrTabsModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTabsModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrTabsModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrTabsModule, [typeof i1.ClrTabContent, typeof i2.ClrTab, typeof i3.ClrTabs, typeof i4.ClrTabOverflowContent, typeof i5.ClrTabLink, typeof i6.TabsWillyWonka, typeof i7.ActiveOompaLoompa], [typeof i8.CommonModule, typeof i9.ClrConditionalModule, typeof i10.ClrIconModule, typeof i11.ClrTemplateRefModule, typeof i12.ClrKeyFocusModule], [typeof i1.ClrTabContent, typeof i2.ClrTab, typeof i3.ClrTabs, typeof i4.ClrTabOverflowContent, typeof i5.ClrTabLink, typeof i6.TabsWillyWonka, typeof i7.ActiveOompaLoompa, typeof i9.ClrConditionalModule]>;
 }
 
 export declare class ClrTextarea extends WrappedFormControl<ClrTextareaContainer> {
     protected index: number;
     constructor(vcr: ViewContainerRef, injector: Injector, control: NgControl, renderer: Renderer2, el: ElementRef);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrTextarea, "[clrTextarea]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTextarea, [null, null, { optional: true; self: true; }, null, null]>;
 }
 
 export declare class ClrTextareaContainer extends ClrAbstractContainer {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTextareaContainer, "clr-textarea-container", never, {}, {}, never, ["label", "[clrTextarea]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTextareaContainer, never>;
 }
 
 export declare class ClrTextareaModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTextareaModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrTextareaModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrTextareaModule, [typeof i1.ClrTextarea, typeof i2.ClrTextareaContainer], [typeof i3.CommonModule, typeof i4.FormsModule, typeof i5.ClrIconModule, typeof i6.ClrCommonFormsModule], [typeof i6.ClrCommonFormsModule, typeof i1.ClrTextarea, typeof i2.ClrTextareaContainer]>;
 }
 
 export declare class ClrTimeline {
     get isVertical(): boolean;
     layout: ClrTimelineLayout;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTimeline, "clr-timeline", never, { "layout": "clrLayout"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimeline, never>;
 }
 
 export declare enum ClrTimelineLayout {
@@ -1795,6 +2169,9 @@ export declare enum ClrTimelineLayout {
 
 export declare class ClrTimelineModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimelineModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrTimelineModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrTimelineModule, [typeof i1.ClrTimeline, typeof i2.ClrTimelineStep, typeof i3.ClrTimelineStepDescription, typeof i4.ClrTimelineStepHeader, typeof i5.ClrTimelineStepTitle], [typeof i6.CommonModule, typeof i7.ClrIconModule, typeof i8.ClrSpinnerModule], [typeof i1.ClrTimeline, typeof i2.ClrTimelineStep, typeof i3.ClrTimelineStepDescription, typeof i4.ClrTimelineStepHeader, typeof i5.ClrTimelineStepTitle, typeof i7.ClrIconModule, typeof i8.ClrSpinnerModule]>;
 }
 
 export declare class ClrTimelineStep {
@@ -1808,12 +2185,18 @@ export declare class ClrTimelineStep {
     stepTitleText: string;
     constructor(iconAttributeService: TimelineIconAttributeService, platformId: any);
     ngAfterContentInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTimelineStep, "clr-timeline-step", never, { "state": "clrState"; }, {}, ["stepTitle"], ["clr-timeline-step-header", "clr-timeline-step-title", "clr-timeline-step-description"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimelineStep, never>;
 }
 
 export declare class ClrTimelineStepDescription {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTimelineStepDescription, "clr-timeline-step-description", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimelineStepDescription, never>;
 }
 
 export declare class ClrTimelineStepHeader {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTimelineStepHeader, "clr-timeline-step-header", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimelineStepHeader, never>;
 }
 
 export declare enum ClrTimelineStepState {
@@ -1825,9 +2208,13 @@ export declare enum ClrTimelineStepState {
 }
 
 export declare class ClrTimelineStepTitle {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTimelineStepTitle, "clr-timeline-step-title", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTimelineStepTitle, never>;
 }
 
 export declare class ClrTooltip {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTooltip, "clr-tooltip", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTooltip, never>;
 }
 
 export declare class ClrTooltipContent extends AbstractPopover {
@@ -1839,9 +2226,14 @@ export declare class ClrTooltipContent extends AbstractPopover {
     set size(size: string);
     uniqueId: string;
     constructor(injector: Injector, parentHost: ElementRef, uniqueId: string, tooltipIdService: TooltipIdService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTooltipContent, "clr-tooltip-content", never, { "id": "id"; "position": "clrPosition"; "size": "clrSize"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTooltipContent, [null, { optional: true; }, null, null]>;
 }
 
 export declare class ClrTooltipModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTooltipModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrTooltipModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrTooltipModule, [typeof i1.ClrTooltip, typeof i2.ClrTooltipTrigger, typeof i3.ClrTooltipContent], [typeof i4.CommonModule], [typeof i1.ClrTooltip, typeof i2.ClrTooltipTrigger, typeof i3.ClrTooltipContent, typeof i5.ClrConditionalModule, typeof i6.ClrIconModule]>;
 }
 
 export declare class ClrTooltipTrigger {
@@ -1850,6 +2242,8 @@ export declare class ClrTooltipTrigger {
     hideTooltip(): void;
     ngOnDestroy(): void;
     showTooltip(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrTooltipTrigger, "[clrTooltipTrigger]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTooltipTrigger, never>;
 }
 
 export declare class ClrTree<T> implements AfterContentInit, OnDestroy {
@@ -1861,6 +2255,8 @@ export declare class ClrTree<T> implements AfterContentInit, OnDestroy {
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     onFocusIn(event: FocusEvent): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTree<any>, "clr-tree", never, { "lazy": "clrLazy"; }, {}, ["rootNodes"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTree<any>, never>;
 }
 
 export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
@@ -1888,15 +2284,22 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     ngOnDestroy(): void;
     ngOnInit(): void;
     onKeyDown(event: KeyboardEvent): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrTreeNode<any>, "clr-tree-node", never, { "selected": "clrSelected"; "expandable": "clrExpandable"; "expanded": "clrExpanded"; }, { "selectedChange": "clrSelectedChange"; "expandedChange": "clrExpandedChange"; }, ["treeNodeLinkList"], ["*", "clr-tree-node", "[clrIfExpanded]"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTreeNode<any>, [null, null, { optional: true; skipSelf: true; }, null, null, null, null, null]>;
 }
 
 export declare class ClrTreeNodeLink {
     constructor(el: ElementRef);
     activate(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrTreeNodeLink, ".clr-treenode-link", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTreeNodeLink, never>;
 }
 
 export declare class ClrTreeViewModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrTreeViewModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrTreeViewModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrTreeViewModule, [typeof i1.ClrTree, typeof i2.ClrTreeNode, typeof i3.ClrRecursiveForOf, typeof i4.ClrTreeNodeLink, typeof i5.RecursiveChildren], [typeof i6.CommonModule, typeof i7.ClrIconModule, typeof i8.ClrLoadingModule], [typeof i1.ClrTree, typeof i2.ClrTreeNode, typeof i3.ClrRecursiveForOf, typeof i4.ClrTreeNodeLink]>;
 }
 
 export declare class ClrVerticalNav implements OnDestroy {
@@ -1911,6 +2314,8 @@ export declare class ClrVerticalNav implements OnDestroy {
     constructor(_navService: VerticalNavService, _navIconService: VerticalNavIconService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, commonStrings: ClrCommonStringsService);
     ngOnDestroy(): void;
     toggleByButton(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNav, "clr-vertical-nav", never, { "collapsible": "clrVerticalNavCollapsible"; "collapsed": "clrVerticalNavCollapsed"; }, { "_collapsedChanged": "clrVerticalNavCollapsedChange"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNav, never>;
 }
 
 export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
@@ -1928,23 +2333,34 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleExpand(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNavGroup, "clr-vertical-nav-group", never, { "userExpandedInput": "clrVerticalNavGroupExpanded"; }, { "expandedChange": "clrVerticalNavGroupExpandedChange"; }, never, ["[clrVerticalNavLink]", "[clrVerticalNavIcon]", "*", "[clrIfExpanded], clr-vertical-nav-group-children"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavGroup, never>;
 }
 
 export declare class ClrVerticalNavGroupChildren {
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNavGroupChildren, "clr-vertical-nav-group-children", never, {}, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavGroupChildren, never>;
 }
 
 export declare class ClrVerticalNavIcon implements OnDestroy {
     constructor(_verticalNavIconService: VerticalNavIconService);
     ngOnDestroy(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrVerticalNavIcon, "[clrVerticalNavIcon]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavIcon, never>;
 }
 
 export declare class ClrVerticalNavLink {
     constructor(_navGroupService: VerticalNavGroupService);
     expandParentNavGroup(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNavLink, "[clrVerticalNavLink]", never, {}, {}, never, ["[clrVerticalNavIcon]", "*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavLink, [{ optional: true; }]>;
 }
 
 export declare class ClrVerticalNavModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrVerticalNavModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrVerticalNavModule, [typeof i1.ClrVerticalNav, typeof i2.ClrVerticalNavLink, typeof i3.ClrVerticalNavGroup, typeof i4.ClrVerticalNavGroupChildren, typeof i5.ClrVerticalNavIcon], [typeof i6.CommonModule, typeof i7.ClrIconModule, typeof i8.ClrConditionalModule, typeof i9.ClrFocusOnViewInitModule], [typeof i1.ClrVerticalNav, typeof i2.ClrVerticalNavLink, typeof i3.ClrVerticalNavGroup, typeof i4.ClrVerticalNavGroupChildren, typeof i5.ClrVerticalNavIcon, typeof i8.ClrConditionalModule, typeof i7.ClrIconModule, typeof i9.ClrFocusOnViewInitModule]>;
 }
 
 export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
@@ -2000,6 +2416,8 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     previous(): void;
     reset(): void;
     toggle(open: boolean): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizard, "clr-wizard", never, { "size": "clrWizardSize"; "closable": "clrWizardClosable"; "forceForward": "clrWizardForceForwardNavigation"; "clrWizardOpen": "clrWizardOpen"; "stopNext": "clrWizardPreventDefaultNext"; "stopCancel": "clrWizardPreventDefaultCancel"; "stopNavigation": "clrWizardPreventNavigation"; "disableStepnav": "clrWizardDisableStepnav"; "_stopModalAnimations": "clrWizardPreventModalAnimation"; }, { "_openChanged": "clrWizardOpenChange"; "onCancel": "clrWizardOnCancel"; "wizardFinished": "clrWizardOnFinish"; "onReset": "clrWizardOnReset"; "currentPageChanged": "clrWizardCurrentPageChanged"; "onMoveNext": "clrWizardOnNext"; "onMovePrevious": "clrWizardOnPrevious"; }, ["pages", "headerActions"], ["clr-wizard-title", "clr-wizard-header-action", "*", "clr-wizard-button"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizard, never>;
 }
 
 export declare class ClrWizardButton {
@@ -2020,9 +2438,13 @@ export declare class ClrWizardButton {
     wasClicked: EventEmitter<string>;
     constructor(navService: WizardNavigationService, buttonService: ButtonHubService);
     click(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardButton, "clr-wizard-button", never, { "type": "type"; "disabled": "clrWizardButtonDisabled"; "hidden": "clrWizardButtonHidden"; }, { "wasClicked": "clrWizardButtonClicked"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardButton, never>;
 }
 
 export declare class ClrWizardCustomTags {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrWizardCustomTags, "clr-wizard-title, clr-wizard-pagetitle", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardCustomTags, never>;
 }
 
 export declare class ClrWizardHeaderAction {
@@ -2032,10 +2454,15 @@ export declare class ClrWizardHeaderAction {
     get id(): string;
     title: string;
     click(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardHeaderAction, "clr-wizard-header-action", never, { "title": "title"; "_id": "id"; "disabled": "clrWizardHeaderActionDisabled"; }, { "headerActionClicked": "actionClicked"; }, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardHeaderAction, never>;
 }
 
 export declare class ClrWizardModule {
     constructor();
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardModule, never>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<ClrWizardModule>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrWizardModule, [typeof i1.ClrWizard, typeof i2.ClrWizardPage, typeof i3.ClrWizardStepnav, typeof i4.ClrWizardStepnavItem, typeof i5.ClrWizardButton, typeof i6.ClrWizardHeaderAction, typeof i7.ClrWizardCustomTags, typeof i8.ClrWizardPageTitle, typeof i9.ClrWizardPageNavTitle, typeof i10.ClrWizardPageButtons, typeof i11.ClrWizardPageHeaderActions], [typeof i12.CommonModule, typeof i13.ClrModalModule, typeof i14.ClrAlertModule], [typeof i1.ClrWizard, typeof i2.ClrWizardPage, typeof i3.ClrWizardStepnav, typeof i4.ClrWizardStepnavItem, typeof i5.ClrWizardButton, typeof i6.ClrWizardHeaderAction, typeof i7.ClrWizardCustomTags, typeof i8.ClrWizardPageTitle, typeof i9.ClrWizardPageNavTitle, typeof i10.ClrWizardPageButtons, typeof i11.ClrWizardPageHeaderActions]>;
 }
 
 export declare class ClrWizardPage implements OnInit {
@@ -2087,31 +2514,43 @@ export declare class ClrWizardPage implements OnInit {
     constructor(navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService);
     makeCurrent(): void;
     ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardPage, "clr-wizard-page", never, { "nextStepDisabled": "clrWizardPageNextDisabled"; "previousStepDisabled": "clrWizardPagePreviousDisabled"; "hasError": "clrWizardPageHasError"; "preventDefault": "clrWizardPagePreventDefault"; "stopCancel": "clrWizardPagePreventDefaultCancel"; "stopNext": "clrWizardPagePreventDefaultNext"; "_id": "id"; }, { "nextStepDisabledChange": "clrWizardPageNextDisabledChange"; "previousStepDisabledChange": "clrWizardPagePreviousDisabledChange"; "stopCancelChange": "clrWizardPagePreventDefaultCancelChange"; "onCommit": "clrWizardPageOnCommit"; "onLoad": "clrWizardPageOnLoad"; "pageOnCancel": "clrWizardPageOnCancel"; "finishButtonClicked": "clrWizardPageFinish"; "previousButtonClicked": "clrWizardPagePrevious"; "nextButtonClicked": "clrWizardPageNext"; "dangerButtonClicked": "clrWizardPageDanger"; "primaryButtonClicked": "clrWizardPagePrimary"; "customButtonClicked": "clrWizardPageCustomButton"; }, ["pageTitle", "pageNavTitle", "_buttons", "_headerActions"], ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardPage, never>;
 }
 
 export declare class ClrWizardPageButtons {
     pageButtonsTemplateRef: TemplateRef<any>;
     constructor(pageButtonsTemplateRef: TemplateRef<any>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrWizardPageButtons, "[clrPageButtons]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardPageButtons, never>;
 }
 
 export declare class ClrWizardPageHeaderActions {
     pageHeaderActionsTemplateRef: TemplateRef<any>;
     constructor(pageHeaderActionsTemplateRef: TemplateRef<any>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrWizardPageHeaderActions, "[clrPageHeaderActions]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardPageHeaderActions, never>;
 }
 
 export declare class ClrWizardPageNavTitle {
     pageNavTitleTemplateRef: TemplateRef<any>;
     constructor(pageNavTitleTemplateRef: TemplateRef<any>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrWizardPageNavTitle, "[clrPageNavTitle]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardPageNavTitle, never>;
 }
 
 export declare class ClrWizardPageTitle {
     pageTitleTemplateRef: TemplateRef<any>;
     constructor(pageTitleTemplateRef: TemplateRef<any>);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrWizardPageTitle, "[clrPageTitle]", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardPageTitle, never>;
 }
 
 export declare class ClrWizardStepnav {
     pageService: PageCollectionService;
     constructor(pageService: PageCollectionService);
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardStepnav, "clr-wizard-stepnav", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardStepnav, never>;
 }
 
 export declare class ClrWizardStepnavItem {
@@ -2127,6 +2566,8 @@ export declare class ClrWizardStepnavItem {
     get stepAriaCurrent(): string;
     constructor(navService: WizardNavigationService, pageCollection: PageCollectionService);
     click(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardStepnavItem, "[clr-wizard-stepnav-item]", never, { "page": "page"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardStepnavItem, never>;
 }
 
 export declare class ClrYearpicker implements AfterViewInit {
@@ -2141,6 +2582,8 @@ export declare class ClrYearpicker implements AfterViewInit {
     ngAfterViewInit(): void;
     onKeyDown(event: KeyboardEvent): void;
     previousDecade(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrYearpicker, "clr-yearpicker", never, {}, {}, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrYearpicker, never>;
 }
 
 export declare function collapse(): AnimationMetadata[];
@@ -2167,6 +2610,8 @@ export declare class DatagridNumericFilter<T = any> extends DatagridFilterRegist
     constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStringsService, popoverToggleService: ClrPopoverToggleService);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DatagridNumericFilter<any>, "clr-dg-numeric-filter", never, { "customNumericFilter": "clrDgNumericFilter"; "value": "clrFilterValue"; }, { "filterValueChange": "clrFilterValueChange"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DatagridNumericFilter<any>, never>;
 }
 
 export declare class DatagridPropertyComparator<T = any> implements ClrDatagridComparatorInterface<T> {
@@ -2201,6 +2646,8 @@ export declare class DatagridStringFilter<T = any> extends DatagridFilterRegistr
     constructor(filters: FiltersProvider<T>, domAdapter: DomAdapter, commonStrings: ClrCommonStringsService, smartToggleService: ClrPopoverToggleService);
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DatagridStringFilter<any>, "clr-dg-string-filter", never, { "customStringFilter": "clrDgStringFilter"; "value": "clrFilterValue"; }, { "filterValueChange": "clrFilterValueChange"; }, never, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DatagridStringFilter<any>, never>;
 }
 
 export declare const DEFAULT_BUTTON_TYPES: any;
@@ -2229,11 +2676,15 @@ export declare abstract class LoadingListener {
 }
 
 export declare class MainContainerWillyWonka extends WillyWonka {
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MainContainerWillyWonka, "clr-main-container", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MainContainerWillyWonka, never>;
 }
 
 export declare class NavDetectionOompaLoompa extends OompaLoompa {
     get flavor(): number;
     constructor(cdr: ChangeDetectorRef, willyWonka: MainContainerWillyWonka, responsiveNavService: ResponsiveNavigationService);
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NavDetectionOompaLoompa, "clr-header", never, {}, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NavDetectionOompaLoompa, [null, { optional: true; }, null]>;
 }
 
 export declare function slide(direction: string): AnimationMetadata[];
@@ -2264,4 +2715,6 @@ export declare class WrappedFormControl<W extends DynamicWrapper> implements OnI
     ngOnDestroy(): void;
     ngOnInit(): void;
     triggerValidation(): void;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<WrappedFormControl<any>, never, never, { "id": "id"; }, {}, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WrappedFormControl<any>, never>;
 }

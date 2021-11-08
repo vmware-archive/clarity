@@ -19,9 +19,9 @@
     "url": "https://github.com/vmware/clarity/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^12.0.0",
-    "@angular/core": "^12.0.0",
-    "@cds/core": "^5.0.0",
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@cds/core": "^5.7.0",
     "@clr/ui": "@VERSION"
   },
   "schematics": "./schematics/collection.json",

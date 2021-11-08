@@ -15,6 +15,11 @@
       "version": "5.0.0",
       "factory": "./update/update-5.0.0",
       "description": "Updates for Clarity 5.0.0"
+    },
+    "migration-13.0": {
+      "version": "13.0.0",
+      "factory": "./update/update-13.0.0",
+      "description": "Updates for Clarity 13.0.0"
     }
   }
 }

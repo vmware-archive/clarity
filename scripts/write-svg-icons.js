@@ -22,11 +22,9 @@ let createContainerDir = dirPath => {
       reject(new Error(`${dirPath} already exists!`));
     }
 
-    mkdirp(dirPath, err => {
-      if (err) reject(err);
-
-      resolve(dirPath);
-    });
+    mkdirp(dirPath)
+      .then(() => resolve(dirPath))
+      .catch(error => reject(error));
   });
 };
 

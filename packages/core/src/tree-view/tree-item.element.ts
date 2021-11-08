@@ -8,14 +8,12 @@ import {
   Animatable,
   animate,
   AnimationTreeItemExpandName,
-  AriaBooleanAttributeValues,
   baseStyles,
   createId,
   event,
   EventEmitter,
   i18n,
   I18nService,
-  state,
   property,
   querySlot,
   querySlotAll,
@@ -63,23 +61,11 @@ import styles from './tree-item.element.scss';
 export class CdsTreeItem extends LitElement implements Animatable {
   @i18n() i18n = I18nService.keys.treeview;
 
-  @state({ type: String, reflect: true, attribute: 'role' })
-  role = 'treeitem';
-
   @property({ type: String })
   cdsMotion = 'on';
 
   @event()
   cdsMotionChange: EventEmitter<string>;
-
-  @state({ type: String, reflect: true, attribute: 'aria-disabled' })
-  ariaDisabled: AriaBooleanAttributeValues | undefined = 'false';
-
-  @state({ type: String, reflect: true, attribute: 'aria-expanded' })
-  ariaExpanded: AriaBooleanAttributeValues | undefined = 'false';
-
-  @state({ type: String, reflect: true, attribute: 'aria-selected' })
-  ariaSelected: AriaBooleanAttributeValues | undefined = 'false';
 
   @property({ type: Boolean, reflect: true, attribute: 'multi-select' })
   multiSelect = false;
@@ -118,6 +104,7 @@ export class CdsTreeItem extends LitElement implements Animatable {
   connectedCallback() {
     super.connectedCallback();
     this.tabIndex = -1;
+    this.role = 'treeitem';
     if (!this.id) {
       this.id = createId();
     }
@@ -133,13 +120,13 @@ export class CdsTreeItem extends LitElement implements Animatable {
     if (this.expandable) {
       this.ariaExpanded = this.expanded ? 'true' : 'false';
     } else {
-      this.ariaExpanded = undefined;
+      this.ariaExpanded = null;
     }
 
     if (this.multiSelect) {
       this.ariaSelected = this.selected ? 'true' : 'false';
     } else {
-      this.ariaSelected = undefined;
+      this.ariaSelected = null;
     }
 
     this.ariaDisabled = this.disabled ? 'true' : 'false';

@@ -84,9 +84,6 @@ export class CdsNavigation extends LitElement implements Animatable {
   @property({ type: String })
   cdsMotion = 'on';
 
-  @property({ type: String })
-  role = 'list';
-
   @event()
   protected expandedChange: EventEmitter<boolean>;
 
@@ -101,12 +98,6 @@ export class CdsNavigation extends LitElement implements Animatable {
    */
   @state({ type: Boolean })
   protected groupItem = true;
-
-  /**
-   * Set and update the aria-active descended value onto the navigation.
-   */
-  @state({ type: String })
-  ariaActiveDescendant: any;
 
   /**
    *
@@ -182,6 +173,8 @@ export class CdsNavigation extends LitElement implements Animatable {
    */
   @querySlotAll('cds-navigation-group')
   protected navigationGroupRefs: NodeListOf<CdsNavigationGroup>;
+
+  role = 'list';
 
   private toggle() {
     this.expandedChange.emit(!this.expanded);
@@ -310,7 +303,7 @@ export class CdsNavigation extends LitElement implements Animatable {
       if (this.currentActiveItem?.tagName === 'CDS-NAVIGATION-ITEM' && !!groupParent) {
         const groupStartElement = groupParent?.querySelector('cds-navigation-start');
         removeFocus(this.currentActiveItem as FocusableElement);
-        this.ariaActiveDescendant = groupStartElement?.id;
+        this.ariaActiveDescendant = groupStartElement?.id ?? null;
         setFocus(groupStartElement as FocusableElement);
         return;
       }
@@ -389,7 +382,7 @@ export class CdsNavigation extends LitElement implements Animatable {
       ${this.startTemplate}
       <slot name="cds-navigation-substart"></slot>
       <nav class="navigation-body-wrapper">
-        <div aria-activedescendant="${this.ariaActiveDescendant}" tabindex="0" id="item-container">
+        <div .ariaActiveDescendant=${this.ariaActiveDescendant} tabindex="0" id="item-container">
           <div class="navigation-body" cds-layout="vertical wrap:none align:horizontal-stretch">
             <slot></slot>
           </div>

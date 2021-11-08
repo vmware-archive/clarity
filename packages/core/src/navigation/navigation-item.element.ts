@@ -50,9 +50,6 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
-  @property({ type: String, reflect: true })
-  role = 'listitem';
-
   @state({ type: Boolean })
   expanded = false;
 
@@ -73,6 +70,8 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
 
   @querySlotAll('[cds-navigation-sr-text]')
   itemText: NodeListOf<HTMLSpanElement>;
+
+  role = 'listitem';
 
   connectedCallback() {
     super.connectedCallback();

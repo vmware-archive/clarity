@@ -1,5 +1,5 @@
 import { css } from 'lit';
-import { property, globalStyle } from '@cds/core/internal';
+import { globalStyle } from '@cds/core/internal';
 import { CdsInternalPanel } from '@cds/core/internal-components/panel';
 import styles from './card.element.scss';
 
@@ -49,7 +49,7 @@ import styles from './card.element.scss';
  * @cssprop --cds-card-remove-margin
  */
 export class CdsCard extends CdsInternalPanel {
-  @property({ type: String, reflect: true }) role = 'region';
+  role = 'region';
 
   @globalStyle() globalStyles = css`
     [cds-card-remove-margin] {

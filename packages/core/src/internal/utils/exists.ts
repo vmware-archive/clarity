@@ -14,7 +14,8 @@ export const existsIn = curryN(2, (pathToCheck: string[], obj: object): boolean 
   return typeof pathExists !== 'undefined';
 });
 
-export function elementExists(tagName: string, registry?: { get: (name: string) => {} }): boolean {
+export function elementExists(tagName: string, registry?: any): boolean {
+  // any should be CustomElementRegistry but waiting until TS 4.4.x adopted through other @cds/* libraries. Cane be updated in 6.0
   if (!registry) {
     registry = window && window.customElements;
   }

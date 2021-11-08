@@ -47,6 +47,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/tokens/tokens.json': '/dist/core/tokens/tokens.json',
 
             '@cds/core': '/dist/core/index.js',
+            '@cds/core/polyfills': '/dist/core/polyfills/index.js',
             '@cds/core/icon': '/dist/core/icon/index.js',
             '@cds/core/icon/register.js': '/dist/core/icon/register.js',
             '@cds/core/icon/icon.service.js': '/dist/core/icon/icon.service.js',

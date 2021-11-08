@@ -71,12 +71,6 @@ export class CdsAlertGroup extends LitElement {
   type: AlertGroupTypes = 'default';
 
   /**
-   * Autosets the alert groups aria role to 'region'
-   */
-  @property({ type: String })
-  role = 'region';
-
-  /**
    * Sets the status of the alerts inside the alert group
    * @type {neutral | info | success | warning | danger | alt | loading}
    */
@@ -109,6 +103,11 @@ export class CdsAlertGroup extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.role = 'region';
   }
 
   firstUpdated(props: Map<string, any>) {

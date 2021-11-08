@@ -24,15 +24,11 @@ export class CdsBaseButton extends LitElement {
 
   @property({ type: Boolean }) disabled = false;
 
-  @state({ type: String, attribute: 'aria-disabled', reflect: true }) ariaDisabled: 'true' | 'false' | null = 'false';
-
   @state({ type: Number, attribute: 'tabindex', reflect: true }) protected tabIndexAttr: number | null; // don't override native prop as it stops native focus behavior
 
   @state({ type: Boolean, reflect: true }) protected focused = false;
 
   @state({ type: Boolean, reflect: true }) protected active = false;
-
-  @state({ type: String, reflect: true, attribute: 'role' }) protected role: string | null = 'button';
 
   @state({ type: Boolean, reflect: true }) protected isAnchor = false;
 
@@ -56,6 +52,7 @@ export class CdsBaseButton extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0; // initialize immediately so button can be focused synchronously
+    this.role = 'button';
   }
 
   protected updated(props: Map<string, any>) {

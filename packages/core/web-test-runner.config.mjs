@@ -26,6 +26,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       '**/node_modules/**',
       '**/test/**',
       '**/dist/core/**/index.js',
+      '**/dist/core/polyfills/*.js',
       '**/dist/core/**/register.js',
     ],
     report: true,

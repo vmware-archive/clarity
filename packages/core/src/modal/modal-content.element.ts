@@ -35,7 +35,8 @@ export class CdsModalContent extends LitElement {
   // inside modal-content with a tabindex of -1. we need the tabindex so a
   // modal's content can scroll if it needs to.
   /** @private */
-  static get shadowRootOptions() {
+  static get shadowRootOptions(): any {
+    // any is used until TS 4.4.x adopted through other @cds/* libraries. Can be removed in 6.0
     return { ...super.shadowRootOptions, delegatesFocus: true };
   }
 

@@ -168,9 +168,10 @@ export const addComponentEntryPoints = (packageFile, config) => {
     ${[modules, explicitExports, components, styles].join(',')}
   }`);
 
-  const sideEffects = config.entryPoints.components.map(
-    name => `.${resolve(name).replace(resolve(config.baseDir), '')}/register.js`
-  );
+  const sideEffects = [
+    ...config.entryPoints.components.map(name => `.${resolve(name).replace(resolve(config.baseDir), '')}/register.js`),
+    ...config.entryPoints.explicitSideEffects,
+  ];
 
   return JSON.stringify({ ...JSON.parse(packageFile), sideEffects, exports }, null, 2);
 };

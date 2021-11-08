@@ -29,7 +29,7 @@ const config = {
   baseDir: './src',
   outDir: './dist/core',
   entryPoints: {
-    modules: ['./src', './src/internal', './src/test'],
+    modules: ['./src', './src/internal', './src/polyfills', './src/test'],
     components: [
       './src/accordion',
       './src/alert',
@@ -83,6 +83,7 @@ const config = {
     explicitExports: [
       { input: './icon/shapes/*', output: './icon/shapes/*' },
       { input: './icon/icon.service.js', output: './icon/icon.service.js' },
+      { input: './polyfills/index.js', output: './polyfills/index.js' },
       { input: './tokens/tokens.js', output: './tokens/tokens.js' },
       { input: './tokens/tokens.d.ts', output: './tokens/tokens.d.ts' },
       { input: './tokens/tokens.json', output: './tokens/tokens.json' },
@@ -90,6 +91,7 @@ const config = {
       { input: './tokens/tokens.ios.swift', output: './tokens/tokens.ios.swift' },
       { input: './tokens/tokens.android.xml', output: './tokens/tokens.android.xml' },
     ],
+    explicitSideEffects: ['./polyfills/index.js', './polyfills/aria-reflect.js'],
   },
 };
 

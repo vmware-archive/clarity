@@ -51,13 +51,12 @@ export class CdsPassword extends CdsControl {
     ClarityIcons.addIcons(eyeIcon, eyeHideIcon);
   }
 
-  private get ariaLabel() {
-    return this.showPassword ? this.i18n.hideButtonAriaLabel : this.i18n.showButtonAriaLabel;
-  }
-
   protected get suffixDefaultTemplate() {
     return html`
-      <cds-control-action @click=${() => this.togglePasswordVisibility()} aria-label="${this.ariaLabel}">
+      <cds-control-action
+        @click=${() => this.togglePasswordVisibility()}
+        .ariaLabel=${this.showPassword ? this.i18n.hideButtonAriaLabel : this.i18n.showButtonAriaLabel}
+      >
         <cds-icon shape="${this.showPassword ? 'eye-hide' : 'eye'}"></cds-icon>
       </cds-control-action>
     `;

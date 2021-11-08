@@ -4,10 +4,10 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-/** @internal private module to Clarity Core */
-
+import '@cds/core/polyfills';
 import styles from './base/base.element.scss';
 
+/** @internal private module to Clarity Core */
 export const baseStyles = styles;
 export * from './base/button.base.js';
 export * from './base/focus-trap.base.js';

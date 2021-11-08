@@ -5,11 +5,9 @@
  */
 
 import {
-  AriaBooleanAttributeValues,
   arrayHead,
   arrayTail,
   baseStyles,
-  state,
   isVisible,
   nextInArray,
   onAnyKey,
@@ -44,17 +42,8 @@ import styles from './tree.element.scss';
  * @slot - Content slot for inside the tree
  */
 export class CdsTree extends LitElement {
-  @state({ type: String, reflect: true, attribute: 'role' })
-  role = 'tree';
-
   @property({ type: Boolean, attribute: 'multi-select' })
   multiSelect = false;
-
-  @state({ type: String, reflect: true, attribute: 'aria-activedescendant' })
-  ariaActiveDescendant: string;
-
-  @state({ type: String, reflect: true, attribute: 'aria-multiselectable' })
-  ariaMultiSelectable: AriaBooleanAttributeValues = 'false';
 
   @querySlot('cds-tree-item') private firstChildItem: CdsTreeItem;
 
@@ -63,6 +52,7 @@ export class CdsTree extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.tabIndex = 0;
+    this.role = 'tree';
     this.addEventListener('focus', this.initAriaActiveDescendant);
     this.addEventListener('click', this.clickHandler);
     this.addEventListener('keydown', this.keyboardNavigationHandler);

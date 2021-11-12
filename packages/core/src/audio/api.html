@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <!-- basic -->
+    <cds-audio events="click" sound="mySound">
+      <cds-button>Click me</cds-button>
+    </cds-audio>
+    <script>
+      let mySound = 'Yes';
+      // With a full pallet of sounds mySound could be
+      // Notes: C1,C2, C3, C4, C5, C6 ...
+      // Scales:
+      // compositional sounds: Notify, error, complete/success, button, navigation
+      //
+      // When the click event bubbles down to this element before it gets to its target
+      // cds-audio will hear the click event and tell the global audio service to play the Yes sound.
+    </script>
+  </body>
+</html>

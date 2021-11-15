@@ -15,6 +15,7 @@ export interface CDSGlobal {
   _supports: FeatureSupportMatrix;
   _isStateProxied: boolean;
   _state: Readonly<CDSState>;
+  _audioContext: AudioContext;
   getDetails: () => any;
   logDetails: () => void;
   environment: {
@@ -69,10 +70,12 @@ function getDetails() {
     angularJSVersion: getAngularJSVersion(false),
     reactVersion: getReactVersion(false),
     vueVersion: getVueVersion(false),
+    audioContext: window.CDS._audioContext,
     state: {
       ...window.CDS._state,
       iconRegistry: Object.keys(window.CDS._state.iconRegistry),
       motionRegistry: Object.keys(window.CDS._state.motionRegistry),
+      audioRegistry: Object.keys(window.CDS._state.audioRegistry),
       focusTrapRegistry: Object.keys(window.CDS._state.focusTrapItems.map(i => i.focusTrapId)),
     },
   };
@@ -82,18 +85,22 @@ function logDetails() {
   LogService.log(JSON.stringify(getDetails(), null, 2));
 }
 
+const fallbackAudioContext = window.AudioContext || (window as any).webkitAudioContext;
+
 function initializeCDSGlobal() {
   window.CDS = window.CDS || {
     _version: [],
     _react: { version: undefined },
     _supports: browserFeatures.supports,
     _isStateProxied: false,
+    _audioContext: new fallbackAudioContext(),
     _state: {
       focusTrapItems: [],
       i18nRegistry: {},
       elementRegistry: {},
       iconRegistry: {},
       motionRegistry: {},
+      audioRegistry: {},
     },
     environment: {
       production: false,

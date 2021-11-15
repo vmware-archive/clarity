@@ -12,6 +12,7 @@ export interface Audible {
   cdsAudioConfig: object;
 }
 
+export type SoundTuple = [string, { play: (context: AudioContext) => void }];
 export class CdsAudio extends LitElement {
   /**
    * Obviously there is a bunch wrong with this pseudo code, but this is the idea

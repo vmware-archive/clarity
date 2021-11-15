@@ -4,6 +4,55 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { GlobalStateService } from '../internal/services/global.service.js';
+
+/**
+ *
+ * The ClarityAudio service is a static class that gives users the ability to retrieve
+ * and override sound/audio player configurations based on the Web Animations API that are targeted
+ * at a CSS selector defined in the configuration.
+ *
+ */
+export class ClarityAudio {
+  /**
+   * Returns a readonly reference of the registry of animations.
+   */
+  static get registry(): Readonly<{}> {
+    return { ...GlobalStateService.state.audioRegistry };
+  }
+
+  static get player(): AudioContext {
+    return window.CDS.getDetails().audioContext;
+  }
+
+  static play(sound: string) {
+    const soundConfig = (ClarityAudio as any).get(sound);
+    if (!!soundConfig) {
+      soundConfig(ClarityAudio.player);
+    }
+  }
+
+  static has(name: string): boolean {
+    return !!name && !!(ClarityAudio as any).registry[name];
+  }
+
+  static get(name: string): any {
+    return (ClarityAudio as any).registry[name] || [];
+  }
+
+  // could do the icon tuple thing here is we wanted. just not doing it right now.
+  static add(soundName: string, config: any) {
+    if (!soundName || !config) {
+      return;
+    }
+
+    GlobalStateService.state.audioRegistry = {
+      ...GlobalStateService.state.audioRegistry,
+      [soundName]: config,
+    };
+  }
+}
+
 /**
  * Obviously there is a bunch wrong with this pseudo code, but this is the idea
  * we have a global registry of predefined functions
@@ -12,36 +61,22 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Advanced_techniques
 // https://github.com/mdn/webaudio-examples
 
-const CdsAudioRegistry = {
-  yes: function success(context) {
-    const successNoise = context.createOscillator();
-    successNoise.frequency = '600';
-    successNoise.type = 'sine';
-    successNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
-    successNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
+const yesSoundConfig = function success(context: AudioContext) {
+  const successNoise = context.createOscillator();
+  // successNoise.frequency = '600';
+  successNoise.type = 'sine';
+  successNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
+  successNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
 
-    successGain = context.createGain();
-    successGain.gain.exponentialRampToValueAtTime(0.01, context.currentTime + 0.3);
+  const successGain = context.createGain();
+  successGain.gain.exponentialRampToValueAtTime(0.01, context.currentTime + 0.3);
 
-    successFilter = context.createBiquadFilter('bandpass');
-    successFilter.Q = 0.01;
+  const successFilter = context.createBiquadFilter();
+  // successFilter.Q = 0.01;
 
-    successNoise.connect(successFilter).connect(successGain).connect(context.destination);
-    successNoise.start();
-    successNoise.stop(context.currentTime + 0.2);
-  },
+  successNoise.connect(successFilter).connect(successGain).connect(context.destination);
+  successNoise.start();
+  successNoise.stop(context.currentTime + 0.2);
 };
 
-export class ClarityAudio {
-  //
-  // create and maintain a global audio context (better to control volume, oscillators, nodes, channels etc)
-  // play a given sound from the AudioRegistry ( a registry of functions ) when asked
-  // CdsAudioRegistry.yes();
-  private cdsAudioContext = new AudioContext();
-
-  static playSound(soundName: string): void {
-    // Call the function for the soundName and pass it the audio context
-    // CdsAudioRegistry is a registry of functions that can be called with an AudioContext ¯\_(ツ)_/¯
-    CdsAudioRegistry[soundName](this.cdsAudioContext);
-  }
-}
+ClarityAudio.add('yes', yesSoundConfig);

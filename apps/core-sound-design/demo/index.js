@@ -27,38 +27,73 @@ eventButton.addEventListener('click', () => {
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
-const success = 1000;
-const error = 99;
-const question = 461.63;
-const event = 6500;
+const success = 900;
+const error = 300;
+const question = 600;
+const event = 2500;
 
 function playAudio(sound) {
   console.log('sounding: ', sound);
+  let frequency;
   const osc = audioCtx.createOscillator();
   osc.type = 'sine';
 
   switch (sound) {
     case 'success':
-      osc.frequency.value = success;
+      frequency = success;
       break;
     case 'error':
-      osc.frequency.value = error;
+      frequency = error;
       break;
     case 'question':
-      osc.frequency.value = question;
+      frequency = question;
       break;
     case 'event':
-      osc.frequency.value = event;
+      frequency = event;
       break;
     default:
   }
 
-  const volume = audioCtx.createGain();
-  volume.gain.value = 0.1; // 10% volume
-  osc.connect(volume);
+  osc.frequency.value = frequency;
 
-  osc.start(0);
-  // volume.gain.exponentialRampToValueAtTime(1, audioCtx.currentTime + 0.5);
+  const volume = audioCtx.createGain();
+  volume.gain.setValueAtTime(0.1, 0);
+
+  if (sound === 'error') {
+    osc.frequency.setValueAtTime(
+      frequency / Math.pow(3.5, 1 / 12),
+      audioCtx.currentTime + 0.1
+    );
+    osc.frequency.setValueAtTime(
+      frequency / Math.pow(3.5, 2 / 12),
+      audioCtx.currentTime + 0.2
+    );
+  } else if (sound === 'success') {
+    volume.gain.setValueAtTime(0.1, 0.1);
+    osc.frequency.setValueAtTime(
+      frequency * Math.pow(3.5, 1 / 12),
+      audioCtx.currentTime + 0.1
+    );
+    osc.frequency.setValueAtTime(
+      frequency * Math.pow(3.5, 2 / 12),
+      audioCtx.currentTime + 0.2
+    );
+  } else if (sound === 'question') {
+    osc.frequency.setValueAtTime(
+      frequency / Math.pow(7, 1 / 12),
+      audioCtx.currentTime + 0.1
+    );
+    osc.frequency.setValueAtTime(
+      frequency * Math.pow(3.5, 2 / 12),
+      audioCtx.currentTime + 0.2
+    );
+  } else {
+    osc.frequency.setValueAtTime(0, audioCtx.currentTime + 0.1);
+    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime + 0.2);
+  }
+
+  osc.connect(volume);
   osc.connect(audioCtx.destination);
-  osc.stop(audioCtx.currentTime + 0.5);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.3);
 }

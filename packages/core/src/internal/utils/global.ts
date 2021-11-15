@@ -15,6 +15,7 @@ export interface CDSGlobal {
   _supports: FeatureSupportMatrix;
   _isStateProxied: boolean;
   _state: Readonly<CDSState>;
+  _audioContext: AudioContext;
   getDetails: () => any;
   logDetails: () => void;
   environment: {
@@ -29,6 +30,7 @@ export interface CDSState {
   elementRegistry: Readonly<{ [key: string]: any }>;
   iconRegistry: Readonly<{}>;
   motionRegistry: Readonly<{}>;
+  audioRegistry: Readonly<{}>;
 }
 
 declare global {
@@ -69,10 +71,12 @@ function getDetails() {
     angularJSVersion: getAngularJSVersion(false),
     reactVersion: getReactVersion(false),
     vueVersion: getVueVersion(false),
+    audioContext: window.CDS._audioContext,
     state: {
       ...window.CDS._state,
       iconRegistry: Object.keys(window.CDS._state.iconRegistry),
       motionRegistry: Object.keys(window.CDS._state.motionRegistry),
+      audioRegistry: Object.keys(window.CDS._state.audioRegistry),
       focusTrapRegistry: Object.keys(window.CDS._state.focusTrapItems.map(i => i.focusTrapId)),
     },
   };
@@ -88,12 +92,14 @@ function initializeCDSGlobal() {
     _react: { version: undefined },
     _supports: browserFeatures.supports,
     _isStateProxied: false,
+    _audioContext: new AudioContext(),
     _state: {
       focusTrapItems: [],
       i18nRegistry: {},
       elementRegistry: {},
       iconRegistry: {},
       motionRegistry: {},
+      audioRegistry: {},
     },
     environment: {
       production: false,

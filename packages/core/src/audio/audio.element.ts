@@ -7,6 +7,11 @@ import { LitElement } from 'lit';
 import { property } from '@cds/core/internal';
 import { ClarityAudio } from './audio.service';
 
+export interface Audible {
+  cdsAudio: string;
+  cdsAudioConfig: object;
+}
+
 export class CdsAudio extends LitElement {
   /**
    * Obviously there is a bunch wrong with this pseudo code, but this is the idea
@@ -27,7 +32,7 @@ export class CdsAudio extends LitElement {
   }
 
   private play = () => {
-    ClarityAudio.playSound(this.sound);
+    ClarityAudio.play(this.sound);
     console.log('I am playing sound!');
   };
   // events property is an event or list of events that notify the system to play a sound

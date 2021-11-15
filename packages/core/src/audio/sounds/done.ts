@@ -1,21 +1,36 @@
 import { SoundTuple } from '../audio.element.js';
 
-export function donedid(context: AudioContext) {
-  const finishedNoise = context.createOscillator();
-  finishedNoise.frequency.value = 2000;
-  finishedNoise.type = 'sine';
-  finishedNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
-  finishedNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
+export async function donedid(context: AudioContext) {
+  // const notes = [[261.63, 0.25], [349.23, 0.25], [392, 0.25]]; // <= 4
+  const notes = [
+    [523.25, 0.1875, 0.25],
+    [698.46, 0.1875, 0.67],
+    [1046.5, 0.1875, 1.0],
+  ]; // <= 5
+  const vco = context.createOscillator();
+  vco.type = 'triangle';
 
-  const gain = context.createGain();
-  // successGain.gain.exponentialRampToValueAtTime(0.01, context.currentTime + 0.3);
+  vco.start(0);
 
-  // const successFilter = context.createBiquadFilter();
-  // successFilter.Q = 0.01;
+  const vca = context.createGain();
 
-  finishedNoise.connect(gain).connect(context.destination);
-  finishedNoise.start();
-  finishedNoise.stop(context.currentTime + 1.2);
+  vca.gain.value = 1;
+
+  vco.connect(vca).connect(context.destination);
+
+  let time = context.currentTime;
+
+  for (let i = 0; i < notes.length; i++) {
+    // 120 bpm = 1 beat every 0.5 seconds
+    const secondsPerBeat = 0.5;
+    const [note, noteLength, volume] = notes[i];
+    vca.gain.setValueAtTime(volume, time);
+    vco.frequency.setValueAtTime(note, time);
+    time = time + secondsPerBeat * noteLength;
+  }
+
+  vca.gain.setValueAtTime(0, time);
+  vco.stop(time);
 }
 
 export const doneSoundName = 'done';

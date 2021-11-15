@@ -28,7 +28,7 @@ export class ClarityAudio {
   static play(sound: string) {
     const soundConfig = (ClarityAudio as any).get(sound);
     if (!!soundConfig) {
-      soundConfig(ClarityAudio.player);
+      soundConfig.play(ClarityAudio.player);
     }
   }
 
@@ -61,22 +61,22 @@ export class ClarityAudio {
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Advanced_techniques
 // https://github.com/mdn/webaudio-examples
 
-const yesSoundConfig = function success(context: AudioContext) {
-  const successNoise = context.createOscillator();
-  // successNoise.frequency = '600';
-  successNoise.type = 'sine';
-  successNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
-  successNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
+// const yesSoundConfig = function success(context: AudioContext) {
+//   const successNoise = context.createOscillator();
+//   // successNoise.frequency = '600';
+//   successNoise.type = 'sine';
+//   successNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
+//   successNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
 
-  const successGain = context.createGain();
-  successGain.gain.exponentialRampToValueAtTime(0.01, context.currentTime + 0.3);
+//   const successGain = context.createGain();
+//   successGain.gain.exponentialRampToValueAtTime(0.01, context.currentTime + 0.3);
 
-  const successFilter = context.createBiquadFilter();
-  // successFilter.Q = 0.01;
+//   const successFilter = context.createBiquadFilter();
+//   // successFilter.Q = 0.01;
 
-  successNoise.connect(successFilter).connect(successGain).connect(context.destination);
-  successNoise.start();
-  successNoise.stop(context.currentTime + 0.2);
-};
+//   successNoise.connect(successFilter).connect(successGain).connect(context.destination);
+//   successNoise.start();
+//   successNoise.stop(context.currentTime + 0.2);
+// };
 
-ClarityAudio.add('yes', yesSoundConfig);
+// ClarityAudio.add('yes', yesSoundConfig);

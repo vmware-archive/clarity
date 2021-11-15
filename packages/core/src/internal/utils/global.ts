@@ -86,13 +86,15 @@ function logDetails() {
   LogService.log(JSON.stringify(getDetails(), null, 2));
 }
 
+const fallbackAudioContext = window.AudioContext || (window as any).webkitAudioContext;
+
 function initializeCDSGlobal() {
   window.CDS = window.CDS || {
     _version: [],
     _react: { version: undefined },
     _supports: browserFeatures.supports,
     _isStateProxied: false,
-    _audioContext: new AudioContext(),
+    _audioContext: new fallbackAudioContext(),
     _state: {
       focusTrapItems: [],
       i18nRegistry: {},

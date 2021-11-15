@@ -16,3 +16,30 @@
     </script>
   </body>
 </html>
+
+<!--
+  @smathis
+
+  Web Audio API is a DSP synth that uses oscillators to create sounds but can also play samples. Much like motion,
+  I don't know if there is utility to having it exist outside a component context.
+
+  I'd hazard that it would look something like...
+
+  -- myComponent --
+  import { successAudioTuple } from '@cds/core/audio/sounds/success.js';
+  import { dingSound } from '@cds/core/audio/sounds/ding.js';
+  import { CdsAudioService } from '@cds/core/internal/services/audio.js';
+
+  CdsAudioService.add(successAudioTuple, ['my-component-alert', dingSound]);
+
+  class MyComponet extends AudibleElement {
+    @property({ type: String})
+    cdsAudio = "on"; // <= this is where we could turn audio "off" or "theme" it...
+
+    @property({ type: Object })
+    cdsAudioConfig = {}; // <= exposed publically so it can be overwritten, similar to cds-i18n
+
+    audioController = new CdsAudioController(this, this.cdsAudioConfig)
+  }
+
+-->

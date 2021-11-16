@@ -11,6 +11,13 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
 
   plugins: [esbuildPlugin({ target: 'auto', ts: true })],
 
+  mimeTypes: [
+    {
+      '.mp3': 'audio/mpeg',
+    },
+    { '.wav': 'audio/wav' },
+  ],
+
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto'
 

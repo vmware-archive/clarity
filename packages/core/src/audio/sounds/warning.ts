@@ -1,10 +1,10 @@
 import { SoundTuple } from '../audio.element.js';
-import audioFile from '../files/SoundFX_beeps.mp3';
+import audioFile from '../files/SoundFX_thunk.mp3';
 
 let cachedAudio: HTMLAudioElement;
 let keepTypescriptHappy: any;
 
-export function alert(context: AudioContext) {
+export function warning(context: AudioContext) {
   if (!cachedAudio || !keepTypescriptHappy) {
     cachedAudio = new Audio(audioFile);
     keepTypescriptHappy = context;
@@ -13,10 +13,10 @@ export function alert(context: AudioContext) {
   cachedAudio.play();
 }
 
-export const alertSoundName = 'alert';
-export const alertSound: SoundTuple = [
-  alertSoundName,
+export const warningSoundName = 'warning';
+export const warningSound: SoundTuple = [
+  warningSoundName,
   {
-    play: alert,
+    play: warning,
   },
 ];

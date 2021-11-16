@@ -14,11 +14,17 @@ import { yesSound } from './sounds/yes.js';
 import { noSound } from './sounds/no.js';
 import { doneSound } from './sounds/done.js';
 import { alertSound } from './sounds/alert.js';
+import { activeSound } from './sounds/active';
+import { slideSound } from './sounds/slide';
+import { warningSound } from './sounds/warning';
 
 ClarityAudio.add(...yesSound);
 ClarityAudio.add(...noSound);
 ClarityAudio.add(...doneSound);
 ClarityAudio.add(...alertSound);
+ClarityAudio.add(...activeSound);
+ClarityAudio.add(...slideSound);
+ClarityAudio.add(...warningSound);
 
 export default {
   title: 'Stories/Audio',
@@ -31,7 +37,7 @@ export default {
 @customElement('cds-noisy-button')
 class NoisyButton extends LitElement implements Audible {
   @property({ type: String })
-  audio: 'yes' | 'no' | 'done' | 'alert' = 'yes';
+  audio: 'yes' | 'no' | 'done' | 'alert' | 'active' | 'slide' | 'warning' = 'yes';
 
   @property({ type: String })
   cdsAudio = 'on';
@@ -43,22 +49,26 @@ class NoisyButton extends LitElement implements Audible {
   cdsAudioConfig = {};
 
   playSound() {
-    console.log('🐈: ohai! ', this.audio);
     ClarityAudio.play(this.audio);
   }
 
   render() {
-    return html`<cds-button status=${this.status} @click=${this.playSound}>Ohai</cds-button>`;
+    return html`<cds-button status=${this.status} @click=${this.playSound}><slot></slot></cds-button>`;
   }
 }
 
 export function testme() {
   return html`
-    <div cds-layout="horizontal gap:md">
+    <div cds-layout="horizontal gap:md p-b:md">
       <cds-noisy-button status="success" audio="yes">Yes</cds-noisy-button>
       <cds-noisy-button status="danger" audio="no">No</cds-noisy-button>
       <cds-noisy-button audio="done">Done</cds-noisy-button>
+    </div>
+    <div cds-layout="horizontal gap:md">
       <cds-noisy-button audio="alert">Alert</cds-noisy-button>
+      <cds-noisy-button audio="active">Active</cds-noisy-button>
+      <cds-noisy-button audio="slide">Slide</cds-noisy-button>
+      <cds-noisy-button audio="warning">Warning</cds-noisy-button>
     </div>
   `;
 }

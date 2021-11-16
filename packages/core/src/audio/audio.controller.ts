@@ -16,6 +16,7 @@ export class CdsAudioController {
     this.host.addController(this);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async hostConnected() {
     // await this.host.updateComplete;
   }

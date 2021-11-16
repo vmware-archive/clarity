@@ -19,15 +19,23 @@
   <body cds-theme="" cds-text="body" cds-layout="vertical gap:lg p:lg">
     <!-- cds-theme="dark" to preview in dark theme -->
 
-    <h1 cds-text="heading">Clarity Sound Design</h1>
-
+    <h1 cds-text="heading">
+      Clarity Sound Design
+      <cds-icon shape="headphones"></cds-icon>
+    </h1>
+    <h2>Hard coded audio code</h2>
     <section cds-layout="horizontal align:stretch gap:lg">
       <cds-button id="success">Success</cds-button>
       <cds-button id="error">Error</cds-button>
       <cds-button id="question">Question</cds-button>
       <cds-button id="event">Event</cds-button>
     </section>
-
+    <h2>@cds/core/audio</h2>
+    <section cds-layout="horizontal align:stretch gap:lg">
+      <cds-button id="cds-done">Done</cds-button>
+      <cds-button id="cds-yes">Yes</cds-button>
+      <cds-button id="cds-no">No</cds-button>
+    </section>
     <!-- your addon -->
     <!--    <cda-counter></cda-counter>-->
 

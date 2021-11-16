@@ -1,8 +1,15 @@
 import '@cds/core/button/register';
-import '../dist/src/counter/register.js';
+import { ClarityIcons, userIcon } from '@cds/core/icon';
 
-const counter = document.querySelector('cda-counter');
-const currentCount = document.querySelector('#current-count');
+ClarityIcons.addIcons(userIcon);
+import { ClarityAudio } from '@cds/core/audio';
+import { yesSound } from '@cds/core/audio/sounds/yes.js';
+import { noSound } from '@cds/core/audio/sounds/no.js';
+import { doneSound } from '@cds/core/audio/sounds/done.js';
+
+ClarityAudio.add(...yesSound);
+ClarityAudio.add(...noSound);
+ClarityAudio.add(...doneSound);
 
 const successButton = document.querySelector('#success');
 const errorButton = document.querySelector('#error');
@@ -22,8 +29,7 @@ eventButton.addEventListener('click', () => {
   playAudio('event');
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-typ
-
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
@@ -97,3 +103,18 @@ function playAudio(sound) {
   osc.start();
   osc.stop(audioCtx.currentTime + 0.3);
 }
+
+// Use @cds/core/audio
+const cdsDone = document.querySelector('#cds-done');
+const cdsNo = document.querySelector('#cds-no');
+const cdsYes = document.querySelector('#cds-yes');
+
+cdsDone.addEventListener('click', () => {
+  ClarityAudio.play('done');
+});
+cdsNo.addEventListener('click', () => {
+  ClarityAudio.play('no');
+});
+cdsYes.addEventListener('click', () => {
+  ClarityAudio.play('yes');
+});

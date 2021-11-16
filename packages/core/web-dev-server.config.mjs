@@ -11,6 +11,7 @@ const hmr = process.argv.includes('--hmr');
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   nodeResolve: true,
+  mimeTypes: [{ '.mp3': 'audio/mpeg' }],
   open: './',
   watch: !hmr,
   plugins: [
@@ -71,7 +72,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
     hmr &&
       hmrPlugin({
         include: ['./dist/core/**/*'],
-        exclude: ['**/*/node_modules/**/*', '**/*.json'],
+        exclude: ['**/*/node_modules/**/*', '**/*.json', '**/*.mp3'],
         presets: [presets.lit],
       }),
   ],

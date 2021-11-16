@@ -8,6 +8,7 @@
 const image = require('@rollup/plugin-image');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
+const url = require('@rollup/plugin-url');
 const typescript = require('@rollup/plugin-typescript');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const styles = require('rollup-plugin-styles');
@@ -34,6 +35,11 @@ module.exports = {
       image(),
       json(),
       styles(),
+      url({
+        fileName: '[name][extname]',
+        include: '**/*.mp3',
+        limit: 100000,
+      }),
       typescript({ tsconfig: path.resolve(path.resolve(__dirname), './tsconfig.storybook.json') }),
       ...config.plugins,
       terser.terser({ ecma: 2020, warnings: true, module: true, compress: { unsafe: true, passes: 2 } }),

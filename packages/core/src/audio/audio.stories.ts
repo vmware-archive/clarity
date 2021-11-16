@@ -13,10 +13,12 @@ import { ClarityAudio } from './audio.service.js';
 import { yesSound } from './sounds/yes.js';
 import { noSound } from './sounds/no.js';
 import { doneSound } from './sounds/done.js';
+import { alertSound } from './sounds/alert.js';
 
 ClarityAudio.add(...yesSound);
 ClarityAudio.add(...noSound);
 ClarityAudio.add(...doneSound);
+ClarityAudio.add(...alertSound);
 
 export default {
   title: 'Stories/Audio',
@@ -29,7 +31,7 @@ export default {
 @customElement('cds-noisy-button')
 class NoisyButton extends LitElement implements Audible {
   @property({ type: String })
-  audio: 'yes' | 'no' | 'done' = 'yes';
+  audio: 'yes' | 'no' | 'done' | 'alert' = 'yes';
 
   @property({ type: String })
   cdsAudio = 'on';
@@ -56,6 +58,7 @@ export function testme() {
       <cds-noisy-button status="success" audio="yes">Yes</cds-noisy-button>
       <cds-noisy-button status="danger" audio="no">No</cds-noisy-button>
       <cds-noisy-button audio="done">Done</cds-noisy-button>
+      <cds-noisy-button audio="alert">Alert</cds-noisy-button>
     </div>
   `;
 }

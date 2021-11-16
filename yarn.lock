@@ -6267,6 +6267,15 @@
     "@rollup/pluginutils" "^3.1.0"
     resolve "^1.17.0"
 
+"@rollup/plugin-url@6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-url/-/plugin-url-6.1.0.tgz#1234bba9aa30b5972050bdfcf8fcbb1cb8070465"
+  integrity sha512-FJNWBnBB7nLzbcaGmu1no+U/LlRR67TtgfRFP+VEKSrWlDTE6n9jMns/N4Q/VL6l4x6kTHQX4HQfwTcldaAfHQ==
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    make-dir "^3.1.0"
+    mime "^2.4.6"
+
 "@rollup/plugin-virtual@2.0.3", "@rollup/plugin-virtual@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-virtual/-/plugin-virtual-2.0.3.tgz#0afc88d75c1e1378ab290b8e9898d4edb5be0d74"

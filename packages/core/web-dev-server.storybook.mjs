@@ -9,6 +9,7 @@ import { rollupAdapter } from '@web/dev-server-rollup';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import image from '@rollup/plugin-image';
 import styles from 'rollup-plugin-styles';
+import url from '@rollup/plugin-url';
 import baseConfig from './web-dev-server.config.mjs';
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
@@ -17,12 +18,20 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   mimeTypes: {
     '**/*.json': 'js',
     '**/*.css': 'js',
+    '.mp3': 'audio/mpeg',
   },
   plugins: [
     storybookPlugin({ type: 'web-components', configDir: '.storybook' }),
     esbuildPlugin({ ts: true, json: true, target: 'esnext' }),
     rollupAdapter(styles()),
     rollupAdapter(image()),
+    rollupAdapter(
+      url({
+        fileName: '[name][extname]',
+        include: '**/*.mp3',
+        limit: 100000,
+      })
+    ),
     ...baseConfig.plugins,
   ],
 });

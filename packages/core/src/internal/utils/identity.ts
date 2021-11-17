@@ -65,6 +65,31 @@ export function createId(prefix = '_') {
   return `${prefix}${Math.random().toString(36).substr(2, 9)}`;
 }
 
+// simplistic way to test objects for equality
+// note that it ignores/removes methods from objects
+export function objectNaiveDeepEquals(obj1: {}, obj2: {}) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+export function getFromObjectPath(path: string, dataObj: any, fallback = `$\{${path}}`) {
+  return path.split('.').reduce((res, key) => {
+    try {
+      const val = res[key];
+      switch (true) {
+        case val === null:
+        case val === false:
+        case val === '':
+        case val === 0:
+          return val;
+        default:
+          return val || fallback;
+      }
+    } catch {
+      return fallback;
+    }
+  }, dataObj);
+}
+
 // used by deepClone() tested through integration
 function cloneMap(mp: Map<any, any>): Map<any, any> {
   const clonedMap = new Map();
@@ -82,7 +107,14 @@ export function deepClone(obj: any) {
   // this will clone almost anything (maps, arrays, objects, etc.) to the lowest of the low levels
   // be careful using this carelessly b/c it CAN have performance implications!
 
-  return isMap(obj) ? cloneMap(obj) : JSON.parse(JSON.stringify(obj));
+  switch (true) {
+    case isMap(obj):
+      return cloneMap(obj);
+    case isObject(obj) && !Array.isArray(obj):
+      return mergeObjects({}, obj);
+    default:
+      return JSON.parse(JSON.stringify(obj));
+  }
 }
 
 type ObjectPropertyNameAndValueTuples =
@@ -249,4 +281,28 @@ export function allAreDefined<U>(...items: U[]): boolean {
     return val !== undefined;
   };
   return allAre(testFn, ...items);
+}
+
+export function mergeObjects(...objs: object[]): object {
+  const returnObj = {};
+  const clones: object[] = objs.map(o => {
+    // cloning here so we don't get messed up with object references
+    return isObject(o) ? { ...o } : {};
+  });
+
+  clones.forEach(srcObj => {
+    Object.keys(srcObj).forEach(prop => {
+      const propVal = (srcObj as any)[prop];
+
+      if (Array.isArray(propVal)) {
+        (returnObj as any)[prop] = Array.from(propVal);
+      } else if (isObject(propVal)) {
+        (returnObj as any)[prop] = mergeObjects((returnObj as any)[prop] || {}, propVal);
+      } else {
+        (returnObj as any)[prop] = propVal;
+      }
+    });
+  });
+
+  return returnObj;
 }

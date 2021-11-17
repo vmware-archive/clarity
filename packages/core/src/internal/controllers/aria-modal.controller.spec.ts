@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaModalController, ariaModal } from '@cds/core/internal';
+import { customElement, ariaModal } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
 @ariaModal<AriaModalControllerTestElement>()

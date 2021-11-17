@@ -7,6 +7,7 @@
 import {
   camelCaseToKebabCase,
   convertStringPropertyToObjectConfig,
+  interpolateNaively,
   setStyles,
   setPropStyles,
   transformToSpacedString,
@@ -387,6 +388,114 @@ describe('Functional Helper: ', () => {
       const testMeTrimmed = transformSpacedStringToArray('  4 5   6 ');
       expect(testMe).toEqual(['1', '2', '3']);
       expect(testMeTrimmed).toEqual(['4', '5', '6']);
+    });
+  });
+
+  describe('interpolateNaively()', () => {
+    const testObj = {
+      location: 'forest',
+      creature: 'jabberwocky',
+    };
+
+    const numberObj = {
+      currentPage: 8,
+      totalPages: 100,
+    };
+
+    const nestedObj = {
+      person: {
+        name: 'Saul',
+        preferred_contact: 'call',
+      },
+      location: {
+        city: 'Roswell',
+        state: {
+          name: 'New Mexico',
+          addl_info: {
+            abbrev: 'NM',
+          },
+        },
+        country: 'USA',
+      },
+    };
+
+    function ohai() {
+      return true;
+    }
+
+    const badObj: { nope: null; [key: string]: any } = {
+      func: ohai,
+      inlineFunc: () => {
+        return false;
+      },
+      arry: [1, 2, 3, '500'],
+      nope: null,
+      empty: '',
+      bool: false,
+    };
+
+    it('substitutes tokens for object properties', () => {
+      const testMe = interpolateNaively('In the ${location}, there are lots of ${creature}', testObj);
+      const expected = 'In the forest, there are lots of jabberwocky';
+      expect(testMe).toBe(expected);
+    });
+
+    it('does alright with numbers', () => {
+      const testMe = interpolateNaively('Reading page ${currentPage} of ${totalPages}', numberObj);
+      const expected = 'Reading page 8 of 100';
+      expect(testMe).toBe(expected);
+    });
+
+    it('does alright with nested properties', () => {
+      const testMe = interpolateNaively(
+        'In ${location.city}, ${location.state.name} (${location.country}), you better ${person.preferred_contact} ${person.name}',
+        nestedObj
+      );
+      const expected = 'In Roswell, New Mexico (USA), you better call Saul';
+      expect(testMe).toBe(expected);
+    });
+
+    it('ignores whitespace before and after the path', () => {
+      const testMe = interpolateNaively(
+        'You better ${person.preferred_contact   } ${      person.name     }',
+        nestedObj
+      );
+      const expected = 'You better call Saul';
+      expect(testMe).toBe(expected);
+    });
+
+    it('uses fallback if object property is not found', () => {
+      const testMe = interpolateNaively('${greeting.display}, ${location}', testObj);
+      const expected = '${greeting.display}, forest';
+      expect(testMe).toBe(expected);
+    });
+
+    it('displays token and path as fallback if none is given', () => {
+      const testMe = interpolateNaively('${greeting.display}, ${location}', testObj, 'Howdy');
+      const expected = 'Howdy, forest';
+      expect(testMe).toBe(expected);
+    });
+
+    it('does not die on functions (1 of 2)', () => {
+      const testMe = interpolateNaively('${func}', badObj);
+      expect(testMe.indexOf('function ohai()') > -1).toBe(true);
+    });
+
+    it('does not die on functions (2 of 2)', () => {
+      const testMe = interpolateNaively('${inlineFunc}', badObj);
+      expect(testMe.indexOf('() => {') > -1).toBe(true);
+    });
+
+    it('does not die on arrays', () => {
+      const testMe = interpolateNaively('${arry}', badObj);
+      expect(testMe).toBe('1,2,3,500');
+    });
+
+    it('does not die on null, empty strings, or booleans', () => {
+      expect(interpolateNaively('this is... ${nope}', badObj)).toBe('this is... null');
+      expect(interpolateNaively('this is... ${empty}', badObj)).toBe('this is... ');
+      expect(interpolateNaively('this is... ${bool}', badObj)).toBe('this is... false');
+      expect(interpolateNaively('this is... ${undef}', badObj)).toBe('this is... ${undef}');
     });
   });
 });

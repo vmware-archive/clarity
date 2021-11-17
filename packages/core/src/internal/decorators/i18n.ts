@@ -4,14 +4,19 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property } from './property.js';
+import { property } from 'lit/decorators/property.js';
+import { ReactiveElement } from 'lit';
 import { GlobalStateService } from '../services/global.service.js';
 import { I18nService } from '../services/i18n.service.js';
+import { isNilOrEmpty, mergeObjects, objectNaiveDeepEquals } from '../utils/identity.js';
+import { LogService } from '../services/log.service.js';
 
 // Legacy TS Decorator
-function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
+function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: Record<string, unknown>, name: PropertyKey) {
+  // NOTE: ALWAYS GOES HERE IN STORYBOOK (A.K.A. TS RUNTIME)
   const desc = Object.defineProperty(protoOrDescriptor, name, descriptor);
   return property({ type: Object, attribute: 'cds-i18n' })(desc, name);
+  // NOTE: REFLECT DOES NOTHING FOR US HERE
 }
 
 // TC39 Decorators proposal
@@ -22,7 +27,6 @@ function standardI18n(descriptor: PropertyDescriptor, element: { key: string }) 
     key: element.key,
     descriptor,
   };
-
   return property({ type: Object })(desc);
 }
 
@@ -30,7 +34,7 @@ function standardI18n(descriptor: PropertyDescriptor, element: { key: string }) 
  * This decorator stores the i18n strings in a private variable __i18n.
  * Due to TypeScript decorators being dynamic a type cast is needed here.
  */
-type I18nElement = HTMLElement & { __i18n: {}; __i18nKey: string };
+export type I18nElement = ReactiveElement & { __i18n: Record<string, unknown>; __i18nKey: string };
 
 /**
  * A property decorator which accesses a set of string values for use
@@ -78,13 +82,24 @@ export function i18n() {
 
     const descriptor = {
       get(this: I18nElement) {
-        return { ...(I18nService.keys as any)[this.__i18nKey], ...this.__i18n };
+        const i18nObj = mergeObjects((I18nService.keys as any)[this.__i18nKey], this.__i18n || {});
+        return I18nService.hydrate(i18nObj, this);
       },
-      set(this: I18nElement, value: {}) {
-        (this.__i18nKey as any) = Object.keys(I18nService.keys).find(key => (I18nService.keys as any)[key] === value);
+      set(this: I18nElement, value: Record<string, unknown>) {
+        const newValues = getI18nValues(value, this);
+        const testKey = I18nService.findKey(newValues);
+        const strat = getI18nUpdateStrategy(testKey || '', this.__i18nKey, newValues, this.__i18n);
 
-        if (!this.__i18nKey) {
-          this.__i18n = value;
+        if (typeof strat.key !== 'undefined') {
+          this.__i18nKey = strat.key + '';
+        }
+
+        if (typeof strat.values !== 'undefined') {
+          this.__i18n = { ...strat.values };
+        }
+
+        if (strat.update === true) {
+          this.requestUpdate();
         }
       },
       enumerable: true,
@@ -95,4 +110,46 @@ export function i18n() {
       ? legacyI18n(descriptor, protoOrDescriptor, name)
       : standardI18n(descriptor, protoOrDescriptor);
   };
+}
+
+export function getI18nValues(values: Record<string, unknown>, component: I18nElement): Record<string, unknown> {
+  if (isNilOrEmpty(values)) {
+    let returnVal = {};
+
+    if (component.hasAttribute('cds-i18n')) {
+      const stringVal = component.getAttribute('cds-i18n') + '';
+      if (isNilOrEmpty(stringVal)) {
+        returnVal = {};
+      } else {
+        try {
+          returnVal = JSON.parse(stringVal);
+        } catch {
+          LogService.warn('Clarity i18n: Invalid JSON passed to cds-i18n');
+          returnVal = {};
+        }
+      }
+    }
+    return returnVal;
+  } else {
+    return values;
+  }
+}
+
+export function getI18nUpdateStrategy(
+  newKey: string,
+  oldKey: string,
+  newValues: Record<string, unknown>,
+  oldValues: Record<string, unknown>
+): { values?: object; key?: string; update: boolean } {
+  if (!isNilOrEmpty(newKey)) {
+    if (newKey === oldKey) {
+      return { update: false, values: {} };
+    } else {
+      return { update: true, key: newKey, values: {} };
+    }
+  } else if (!objectNaiveDeepEquals(newValues, oldValues)) {
+    return { update: true, values: newValues };
+  }
+
+  return { update: false };
 }

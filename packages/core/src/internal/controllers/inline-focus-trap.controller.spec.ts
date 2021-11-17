@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { customElement, firstFocus, focusTrap, InlineFocusTrapController } from '@cds/core/internal';
+import { customElement, firstFocus, focusTrap } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
 @focusTrap<InlineFocusTrapControllerTestElement>()
@@ -20,7 +20,7 @@ class InlineFocusTrapControllerTestElement extends LitElement {
 describe('inline-focus-trap.controller', () => {
   let component: HTMLElement;
   let element: HTMLElement;
-  let root: any;
+  // let root: HTMLDocument | ShadowRoot;
   let shadowRoot: ShadowRoot;
 
   beforeEach(async () => {
@@ -36,7 +36,7 @@ describe('inline-focus-trap.controller', () => {
     component = element.querySelector<InlineFocusTrapControllerTestElement>(
       'inline-focus-trap-controller-test-element'
     );
-    root = component.getRootNode() as any;
+    // root = component.getRootNode() as any;
     shadowRoot = component.shadowRoot as any;
   });
 

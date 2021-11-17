@@ -1,6 +1,8 @@
 import { html, LitElement, PropertyValues } from 'lit';
+import { query } from 'lit/decorators/query.js';
 import { state, customElement } from '@cds/core/internal';
 import { DemoGrid, DemoService } from '@cds/core/demo';
+import { CdsGrid } from '@cds/core/grid';
 
 export default {
   title: 'Stories/Grid',
@@ -11,6 +13,8 @@ export function asyncData() {
   @customElement('demo-grid-async-data')
   class DemoGridAsyncData extends LitElement {
     @state() private grid: DemoGrid = { label: '', rowActions: [], columns: [], rows: [] } as unknown as DemoGrid;
+
+    @query('cds-grid') private gridElement: CdsGrid;
 
     render() {
       return html`
@@ -39,6 +43,7 @@ export function asyncData() {
     private async load() {
       this.grid = { label: '', rowActions: [], columns: [], rows: [] } as unknown as DemoGrid;
       this.grid = (await DemoService.asyncData).grid;
+      this.gridElement.requestUpdate(); // <- we need this so the i18n hydrates itself after load
     }
   }
 

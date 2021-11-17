@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
 import { queryAll } from 'lit/decorators.js';
 import { customElement, getInputValueType, state } from '@cds/core/internal';
 import { DemoGridCell, DemoService, exportElementsToCSV, parseCSV } from '@cds/core/demo';

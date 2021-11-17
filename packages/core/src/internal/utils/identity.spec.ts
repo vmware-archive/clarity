@@ -9,10 +9,13 @@ import { html } from 'lit';
 import {
   allAre,
   allAreDefined,
+  anyOrAllPropertiesPass,
+  convertStringPropValuePairsToTuple,
   createId,
   deepClone,
   doesPropertyPass,
   getEnumValues,
+  getFromObjectPath,
   hasPropertyChanged,
   hasStringPropertyChanged,
   hasStringPropertyChangedAndNotNil,
@@ -25,10 +28,10 @@ import {
   isString,
   isStringOrNil,
   isStringAndNotNilOrEmpty,
-  anyOrAllPropertiesPass,
-  convertStringPropValuePairsToTuple,
   anyPropertiesPass,
   convertAttributeStringValuesToValue,
+  mergeObjects,
+  objectNaiveDeepEquals,
 } from './identity.js';
 
 enum TestEnum {
@@ -268,14 +271,14 @@ describe('Functional Helper: ', () => {
     it('performs deep clones of arrays', () => {
       const deepArray = ['a', 'b', ['c', ['d', 'e', 'f']]];
       const clonedArray = deepClone(deepArray);
-      clonedArray[2][1][3] = 'g';
-      expect(clonedArray[2][1][3]).toBe('g');
+      (clonedArray as any[])[2][1][3] = 'g';
+      expect((clonedArray as any[])[2][1][3]).toBe('g');
       expect(deepArray[2][1][3]).not.toBeDefined('cloned array should not be a reference');
     });
 
     it('performs deep clones of objects', () => {
       const deepObject = { a: 1, b: 2, c: { d: 3, e: 4, f: 5 } };
-      const clonedObject = deepClone(deepObject);
+      const clonedObject = deepClone(deepObject) as any;
       clonedObject.c.g = 6;
       expect(clonedObject.c.g).toBe(6);
       expect(Object.prototype.hasOwnProperty.call(deepObject.c, 'g')).toBe(
@@ -290,7 +293,7 @@ describe('Functional Helper: ', () => {
         ['b', new Map([['e', 4]])],
         ['c', new Map([['f', 5]])],
       ]);
-      const clonedMap = deepClone(deepMap);
+      const clonedMap = deepClone(deepMap) as Map<string, any>;
       clonedMap.get('c').set('f', 12);
       expect(clonedMap.get('b')).toBeDefined('expect cloned map to be a map');
       expect(clonedMap.get('b').get('e')).toBe(4, 'expect cloned map to be a map (deeply)');
@@ -509,6 +512,227 @@ describe('Functional Helper: ', () => {
 
     it('returns false if it is given an undefined value', () => {
       expect(allAreDefined('ohai', 'howdy', void 0, 'svirfneblin')).toBe(false);
+    });
+  });
+
+  describe('getObjectFromPath: ', () => {
+    const testObject = {
+      single: 'a',
+      nested: {
+        i: 'b',
+        ii: 'c',
+        iii: (name: string) => `ohai ${name}`,
+      },
+      deepnested: {
+        iv: {
+          v: {
+            vi: 'd',
+          },
+        },
+      },
+    };
+
+    const badObject: Record<string, any> = {
+      empty: '',
+      falsish: {
+        nope: null,
+        undef: void 0,
+        zero: 0,
+      },
+      actualFalse: false,
+    };
+
+    it('should return path string as default fallback if not found and not given a fallback', () => {
+      expect(getFromObjectPath('howdy.ohai', testObject)).toBe('${howdy.ohai}');
+    });
+
+    it('should return fallback if given one and path is not found', () => {
+      expect(getFromObjectPath('howdy.ohai', testObject, 'nope')).toBe('nope');
+    });
+
+    it('should return top-level as expected', () => {
+      expect(getFromObjectPath('single', testObject)).toBe('a');
+    });
+
+    it('should handle non-existent top-level as expected', () => {
+      expect(getFromObjectPath('signle', testObject)).toBe('${signle}');
+    });
+
+    it('should return nested as expected (1 of 3 - simple)', () => {
+      expect(getFromObjectPath('nested.i', testObject)).toBe('b');
+      expect(getFromObjectPath('nested.ii', testObject)).toBe('c');
+    });
+
+    it('should return nested as expected (2 of 3 - functions too)', () => {
+      const iGotAFunction = getFromObjectPath('nested.iii', testObject);
+      expect(iGotAFunction('bob')).toBe('ohai bob');
+    });
+
+    it('should return nested as expected (3 of 3 - deep)', () => {
+      expect(getFromObjectPath('deepnested.iv.v.vi', testObject)).toBe('d');
+    });
+
+    it('should return bad values except undefined', () => {
+      expect(getFromObjectPath('empty', badObject, 'ohai')).toEqual('');
+      expect(getFromObjectPath('falsish.nope', badObject, 'ohai')).toEqual(null);
+      expect(getFromObjectPath('falsish.zero', badObject, 'ohai')).toEqual(0);
+      expect(getFromObjectPath('actualFalse', badObject, 'ohai')).toEqual(false);
+      expect(getFromObjectPath('falsish.undef', badObject, 'ohai')).toEqual('ohai');
+      expect(getFromObjectPath('falsish.yo', badObject, 'ohai')).toEqual('ohai');
+    });
+  });
+
+  describe('getObjectFromPath: ', () => {
+    const testObject = {
+      a: 1,
+      b: {
+        i: 'A',
+        ii: 'B',
+      },
+      c: {
+        I: {
+          A: {
+            i: 'A',
+          },
+        },
+      },
+    };
+
+    it('should return true against itself', () => {
+      expect(objectNaiveDeepEquals(testObject, testObject)).toBe(true);
+    });
+
+    it('should return true against clone', () => {
+      const myClone = deepClone(testObject);
+      expect(objectNaiveDeepEquals(testObject, myClone)).toBe(true);
+    });
+
+    it('should return false if slightly different', () => {
+      const myBadClone = deepClone(testObject) as any;
+      myBadClone.d = 'ohai';
+      expect(objectNaiveDeepEquals(testObject, myBadClone)).toBe(false);
+    });
+
+    it('should be okay with array properties', () => {
+      const testClone = deepClone(testObject) as any;
+      testClone.d = ['ohai', 'kthxbye', 0, 1, -1];
+      const arrayClone = deepClone(testClone);
+
+      expect(objectNaiveDeepEquals(testClone, arrayClone)).toBe(true);
+      // confirm depth
+      expect(objectNaiveDeepEquals(testClone.c.I.A, arrayClone.c.I.A)).toBe(true, 'confirm depth');
+    });
+
+    it('ignores any methods in objects due to naivety', () => {
+      const functionalObject_1 = {
+        a: {
+          i: 'ohai',
+          ii: () => {
+            return 'ohai';
+          },
+        },
+        b: function () {
+          return 'kthxbyes';
+        },
+        c: 'doh',
+      };
+
+      const functionalObject_2 = {
+        a: {
+          i: 'ohai',
+          ii: () => {
+            return 'ohai';
+          },
+        },
+        b: function () {
+          return 'kthxbyes';
+        },
+        c: 'doh',
+      };
+
+      const badFunctionalObject = {
+        a: {
+          i: 'ohai',
+          ii: () => {
+            return 'howdy';
+          },
+        },
+        b: function () {
+          return 'kthxbyes';
+        },
+        c: 'donut',
+      };
+
+      expect(objectNaiveDeepEquals(functionalObject_2, functionalObject_1)).toBe(true);
+      expect(objectNaiveDeepEquals(functionalObject_1, badFunctionalObject)).toBe(false);
+    });
+  });
+
+  describe('mergeObjects()', () => {
+    it('merges as expected', () => {
+      const a: any = {
+        p1: 'p1a',
+        p2: ['a', 'b', 'c'],
+        p3: true,
+        p5: null,
+        p6: {
+          p61: 'p61a',
+          p62: 'p62a',
+          p63: ['aa', 'bb', 'cc'],
+          p64: {
+            p641: 'p641a',
+          },
+        },
+      };
+
+      const b: any = {
+        p1: 'p1b',
+        p2: ['d', 'e', 'f'],
+        p3: false,
+        p4: true,
+        p6: {
+          p61: 'p61b',
+          p64: {
+            p642: 'p642b',
+          },
+        },
+      };
+
+      const c: any = {
+        p1: 'p1c',
+        p3: null,
+        p6: {
+          p62: 'p62c',
+          p64: {
+            p643: 'p643c',
+          },
+        },
+      };
+
+      const testMe: any = mergeObjects(a, b, c);
+      expect(testMe.p1).toBe('p1c');
+      expect(testMe.p2).toEqual(['d', 'e', 'f']);
+      expect(testMe.p3).toBe(null);
+      expect(testMe.p4).toBe(true);
+      expect(testMe.p5).toBe(null);
+      expect(testMe.p6.p61).toBe('p61b');
+      expect(testMe.p6.p62).toBe('p62c');
+      expect(testMe.p6.p63).toEqual(['aa', 'bb', 'cc']);
+      expect(testMe.p6.p64.p641).toBe('p641a');
+      expect(testMe.p6.p64.p642).toBe('p642b');
+      expect(testMe.p6.p64.p643).toBe('p643c');
+    });
+
+    it('deals okay with bad values', () => {
+      const a = { p1: 'p1a', p2: { p21: 'p21a', p22: 'p22a' } };
+      const b = { p2: { p22: 'p22b' }, p3: true };
+      const testUndefined: any = mergeObjects(void 0, a, b);
+      const testNull: any = mergeObjects(a, null, b);
+      const testBad: any = mergeObjects(a, b, [1, 2, 3]);
+
+      expect(testUndefined.p1).toBe('p1a', 'undefined p1');
+      expect(testNull.p1).toBe('p1a', 'null p1');
+      expect(testBad.p1).toBe('p1a', 'not an object p1');
     });
   });
 });

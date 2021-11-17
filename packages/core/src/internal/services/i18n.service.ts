@@ -5,7 +5,8 @@
  */
 
 import { GlobalStateService } from './global.service.js';
-
+import { interpolateNaively } from '../utils/string.js';
+import { mergeObjects, objectNaiveDeepEquals } from '../utils/identity.js';
 export interface I18nStrings {
   custom?: any;
   actions: {
@@ -183,17 +184,43 @@ export class I18nService {
   static get keys(): Readonly<I18nStrings> {
     // intialize registry if not yet set
     if (Object.keys(GlobalStateService.state.i18nRegistry).length === 0) {
-      GlobalStateService.state.i18nRegistry = { ...componentStringsDefault, ...GlobalStateService.state.i18nRegistry };
+      GlobalStateService.state.i18nRegistry = mergeObjects(
+        componentStringsDefault,
+        GlobalStateService.state.i18nRegistry
+      );
     }
 
-    return { ...componentStringsDefault, ...GlobalStateService.state.i18nRegistry };
+    return mergeObjects(componentStringsDefault, GlobalStateService.state.i18nRegistry) as I18nStrings;
+  }
+
+  static findKey(keyValueObj: any) {
+    const keyVals = I18nService.keys;
+    return Object.keys(keyVals).find(key => objectNaiveDeepEquals((keyVals as any)[key], keyValueObj));
+  }
+
+  static get(key: string) {
+    if (!key) {
+      return {};
+    }
+
+    return (I18nService.keys as any)[key] || {};
+  }
+
+  /** @private */
+  static reset() {
+    // largely useful for unit testing
+    GlobalStateService.state.i18nRegistry = mergeObjects({}, componentStringsDefault);
+  }
+
+  static hydrate(i18nObject: object, componentInstance: any) {
+    return JSON.parse(interpolateNaively(JSON.stringify(i18nObject), componentInstance));
   }
 
   static localize(overrides: PartialRecursive<I18nStrings>) {
-    GlobalStateService.state.i18nRegistry = {
-      ...componentStringsDefault,
-      ...GlobalStateService.state.i18nRegistry,
-      ...(overrides as I18nStrings),
-    };
+    GlobalStateService.state.i18nRegistry = mergeObjects(
+      componentStringsDefault,
+      GlobalStateService.state.i18nRegistry,
+      overrides as I18nStrings
+    );
   }
 }

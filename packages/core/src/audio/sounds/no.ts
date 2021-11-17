@@ -3,7 +3,7 @@ import { SoundTuple } from '../audio.element.js';
 export function no(context: AudioContext) {
   const errorNoise = context.createOscillator();
   errorNoise.frequency.value = 200;
-  errorNoise.type = 'triangle';
+  errorNoise.type = 'sine';
   errorNoise.frequency.exponentialRampToValueAtTime(800, context.currentTime + 0.05);
   errorNoise.frequency.exponentialRampToValueAtTime(1000, context.currentTime + 0.15);
 

@@ -17,6 +17,10 @@ import { alertSound } from './sounds/alert.js';
 import { activeSound } from './sounds/active';
 import { slideSound } from './sounds/slide';
 import { warningSound } from './sounds/warning';
+import { successSound } from './sounds/success';
+import { errorSound } from './sounds/error';
+import { eventSound } from './sounds/event';
+import { questionSound } from './sounds/question';
 
 ClarityAudio.add(...yesSound);
 ClarityAudio.add(...noSound);
@@ -25,6 +29,10 @@ ClarityAudio.add(...alertSound);
 ClarityAudio.add(...activeSound);
 ClarityAudio.add(...slideSound);
 ClarityAudio.add(...warningSound);
+ClarityAudio.add(...successSound);
+ClarityAudio.add(...errorSound);
+ClarityAudio.add(...eventSound);
+ClarityAudio.add(...questionSound);
 
 export default {
   title: 'Stories/Audio',
@@ -37,13 +45,13 @@ export default {
 @customElement('cds-noisy-button')
 class NoisyButton extends LitElement implements Audible {
   @property({ type: String })
-  audio: 'yes' | 'no' | 'done' | 'alert' | 'active' | 'slide' | 'warning' = 'yes';
+  audio: 'question' | 'error' | 'event' | 'success' | 'yes' | 'no' | 'done' | 'alert' | 'active' | 'slide' | 'warning' = 'yes';
 
   @property({ type: String })
   cdsAudio = 'on';
 
   @property({ type: String })
-  status: 'primary' | 'success' | 'danger' = 'primary';
+  status: 'warning' | 'primary' | 'success' | 'danger' = 'primary';
 
   @property({ type: Object })
   cdsAudioConfig = {};
@@ -69,6 +77,17 @@ export function testme() {
       <cds-noisy-button audio="active">Active</cds-noisy-button>
       <cds-noisy-button audio="slide">Slide</cds-noisy-button>
       <cds-noisy-button audio="warning">Warning</cds-noisy-button>
+    </div>
+  `;
+}
+
+export function modulation() {
+  return html`
+    <div cds-layout="horizontal gap:md">
+      <cds-noisy-button status="success" audio="success">Success</cds-noisy-button>
+      <cds-noisy-button status="danger" audio="error">Error</cds-noisy-button>
+      <cds-noisy-button audio="event">Event</cds-noisy-button>
+      <cds-noisy-button status="warning" audio="question">Question</cds-noisy-button>
     </div>
   `;
 }

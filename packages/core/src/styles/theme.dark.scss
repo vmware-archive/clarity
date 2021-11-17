@@ -16,28 +16,26 @@
   --cds-global-typography-link-color-visited-hover: #{$cds-global-color-lavender-400};
 
   --cds-alias-object-app-background: #{$cds-global-color-construction-1000};
-  --cds-alias-object-app-border-color: #{$cds-global-color-black};
   --cds-alias-object-container-background: #{$cds-global-color-construction-900};
   --cds-alias-object-container-background-tint: #{$cds-global-color-construction-1000};
   --cds-alias-object-container-background-shade: #{$cds-global-color-construction-800};
   --cds-alias-object-container-border-color: #{$cds-global-color-black};
   --cds-alias-object-overlay-background: #{$cds-global-color-construction-900};
-  --cds-alias-object-overlay-border-color: #{$cds-global-color-black};
   --cds-alias-object-border-color: #{$cds-global-color-construction-500};
   --cds-alias-object-border-color-tint: #{$cds-global-color-construction-400};
   --cds-alias-object-border-color-shade: #{$cds-global-color-construction-600};
-  --cds-alias-object-shadow-100: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.5);
-  --cds-alias-object-shadow-200: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.3);
-  --cds-alias-object-shadow-300: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 rgba(0, 0, 0, 0.2);
+  --cds-alias-object-shadow-100: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 #{$cds-alias-object-opacity-300};
+  --cds-alias-object-shadow-200: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 #{$cds-alias-object-opacity-200};
+  --cds-alias-object-shadow-300: 0 #{$cds-global-space-1} #{$cds-global-space-2} 0 #{$cds-alias-object-opacity-100};
   --cds-alias-object-interaction-color: #{$cds-global-color-construction-200};
   --cds-alias-object-interaction-color-hover: #{$cds-global-color-construction-50};
   --cds-alias-object-interaction-color-active: #{$cds-global-color-construction-100};
   --cds-alias-object-interaction-color-selected: #{$cds-global-color-construction-200};
   --cds-alias-object-interaction-color-disabled: #{$cds-global-color-construction-600};
   --cds-alias-object-interaction-background: #{$cds-global-color-construction-900};
-  --cds-alias-object-interaction-background-hover: #{$cds-global-color-cool-gray-800};
-  --cds-alias-object-interaction-background-active: #{$cds-global-color-cool-gray-900};
-  --cds-alias-object-interaction-background-selected: #{$cds-global-color-cool-gray-800};
+  --cds-alias-object-interaction-background-hover: #{$cds-global-color-construction-700};
+  --cds-alias-object-interaction-background-active: #{$cds-global-color-construction-800};
+  --cds-alias-object-interaction-background-selected: #{$cds-global-color-construction-700};
   --cds-alias-object-interaction-background-disabled: #{$cds-global-color-construction-900};
   --cds-alias-object-interaction-background-highlight: #{$cds-global-color-blue-400};
 

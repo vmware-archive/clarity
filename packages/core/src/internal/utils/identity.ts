@@ -107,7 +107,14 @@ export function deepClone(obj: any) {
   // this will clone almost anything (maps, arrays, objects, etc.) to the lowest of the low levels
   // be careful using this carelessly b/c it CAN have performance implications!
 
-  return isMap(obj) ? cloneMap(obj) : JSON.parse(JSON.stringify(obj));
+  switch (true) {
+    case isMap(obj):
+      return cloneMap(obj);
+    case isObject(obj) && !Array.isArray(obj):
+      return mergeObjects({}, obj);
+    default:
+      return JSON.parse(JSON.stringify(obj));
+  }
 }
 
 type ObjectPropertyNameAndValueTuples =
@@ -274,4 +281,28 @@ export function allAreDefined<U>(...items: U[]): boolean {
     return val !== undefined;
   };
   return allAre(testFn, ...items);
+}
+
+export function mergeObjects(...objs: object[]): object {
+  const returnObj = {};
+  const clones: object[] = objs.map(o => {
+    // cloning here so we don't get messed up with object references
+    return isObject(o) ? { ...o } : {};
+  });
+
+  clones.forEach(srcObj => {
+    Object.keys(srcObj).forEach(prop => {
+      const propVal = (srcObj as any)[prop];
+
+      if (Array.isArray(propVal)) {
+        (returnObj as any)[prop] = Array.from(propVal);
+      } else if (isObject(propVal)) {
+        (returnObj as any)[prop] = mergeObjects((returnObj as any)[prop] || {}, propVal);
+      } else {
+        (returnObj as any)[prop] = propVal;
+      }
+    });
+  });
+
+  return returnObj;
 }

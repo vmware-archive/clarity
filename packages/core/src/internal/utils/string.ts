@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { isNilOrEmpty, isNumericString } from './identity.js';
+import { getFromObjectPath, isNilOrEmpty, isNumericString } from './identity.js';
 
 export function transformToString(delimiter: string, fns: any[], ...args: any[]): string {
   return fns
@@ -160,4 +160,13 @@ export function pluckValueFromStringUnit(val: string, unit: string) {
 
 export function pluckPixelValue(val: string): number {
   return !val ? 0 : pluckValueFromStringUnit(val.trim(), 'px');
+}
+
+export function interpolateNaively(template: string, dataObj: any, fallback?: string) {
+  const interpolatedString = template.replace(/\$\{.+?\}/g, match => {
+    const path = match.substr(2, match.length - 3).trim();
+    const value = getFromObjectPath(path, dataObj, fallback);
+    return value;
+  });
+  return interpolatedString;
 }

@@ -1,3 +1,4 @@
+import './index.css';
 import '@cds/core/button/register';
 import '@cds/core/navigation/register.js';
 import '@cds/core/toggle/register.js';
@@ -197,7 +198,6 @@ password.addEventListener('invalid', () => ClarityAudio.play('error'));
 form.addEventListener('submit', e => {
   e.preventDefault();
   ClarityAudio.play('success');
-  console.log(email.value);
   password.value = '';
   email.value = '';
 });

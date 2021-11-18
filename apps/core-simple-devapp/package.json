@@ -1,8 +1,8 @@
 {
   "name": "clarity-addons",
   "version": "0.0.0",
-  "description": "Webcomponent clarity-addons following open-wc recommendations",
-  "author": "clarity-addons",
+  "description": "Clarity Sound Design",
+  "author": "clarity-labs",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",

@@ -191,5 +191,13 @@ rows.forEach(r => {
 // Form
 const email = document.querySelector('input[name="email"]');
 const password = document.querySelector('input[name="password"]');
+const form = document.querySelector('form');
 email.addEventListener('invalid', () => ClarityAudio.play('error'));
 password.addEventListener('invalid', () => ClarityAudio.play('error'));
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  ClarityAudio.play('success');
+  console.log(email.value);
+  password.value = '';
+  email.value = '';
+});

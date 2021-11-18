@@ -187,3 +187,9 @@ rows.forEach(r => {
     ClarityAudio.play('event');
   });
 });
+
+// Form
+const email = document.querySelector('input[name="email"]');
+const password = document.querySelector('input[name="password"]');
+email.addEventListener('invalid', () => ClarityAudio.play('error'));
+password.addEventListener('invalid', () => ClarityAudio.play('error'));

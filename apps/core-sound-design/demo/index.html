@@ -123,12 +123,17 @@
           <cds-form-group layout="vertical" validate>
             <cds-input layout="vertical">
               <label>email input (required)</label>
-              <input type="email" placeholder="example@example.com" required />
+              <input
+                name="email"
+                type="email"
+                placeholder="example@example.com"
+                required
+              />
             </cds-input>
 
             <cds-password layout="vertical">
               <label>password</label>
-              <input type="password" />
+              <input name="password" type="password" required />
             </cds-password>
           </cds-form-group>
           <cds-button

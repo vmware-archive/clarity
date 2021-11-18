@@ -1,3 +1,33 @@
 body:not([cds-version]) {
   display: none;
 }
+
+cds-navigation {
+  box-shadow: var(--cds-alias-object-shadow-300);
+  overflow: auto;
+  position: fixed;
+  inset: 64px auto 0 0;
+  z-index: 999;
+}
+
+#app-header {
+  height: 4rem;
+  width: 100%;
+}
+
+main {
+  padding: 36px 24px 36px 64px;
+}
+
+main[expanded] {
+  padding: 36px 24px 24px 264px;
+  z-index: -1;
+}
+
+tr:hover {
+  --row-border: 1px solid deeppink; /* Row border separator style */
+}
+
+form {
+  max-width: 35vw;
+}

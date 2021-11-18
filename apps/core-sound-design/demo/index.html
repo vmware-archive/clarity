@@ -10,41 +10,132 @@
       href="/node_modules/@cds/core/styles/theme.dark.min.css"
       rel="stylesheet"
     />
+    <link href="/node_modules/@cds/core/table/table.min.css" rel="stylesheet" />
     <link
       href="/node_modules/@cds/city/css/bundles/default.min.css"
       rel="stylesheet"
     />
     <link href="./index.css" rel="stylesheet" />
   </head>
-  <body cds-theme="" cds-text="body" cds-layout="vertical gap:lg p:lg">
-    <!-- cds-theme="dark" to preview in dark theme -->
+  <body cds-theme="" cds-text="body">
+    <header id="app-header">
+      <h1 cds-layout="p-l:xs">
+        <cds-icon shape="headphones" size="lg"></cds-icon>
+        Clarity Sound Design
+      </h1>
+    </header>
+    <cds-navigation role="list" expanded>
+      <cds-navigation-start></cds-navigation-start>
+      <cds-navigation-item>
+        <a href="/">
+          Sounds
+        </a>
+      </cds-navigation-item>
+      <cds-navigation-item>
+        <a href="table/">
+          Table
+        </a>
+      </cds-navigation-item>
+      <cds-navigation-item>
+        <a href="form/">
+          Form
+        </a>
+      </cds-navigation-item>
+      <cds-navigation-item slot="cds-navigation-end">
+        <div cds-layout="vertical align:vertical-center">
+          <cds-toggle>
+            <label>Dark Theme</label>
+            <input type="checkbox" id="dark-theme-toggle" />
+          </cds-toggle>
+        </div>
+      </cds-navigation-item>
+    </cds-navigation>
+    <main cds-layout="container:lg" expanded>
+      <div id="sound">
+        <h2>@cds/core/audio sounds</h2>
+        <section cds-layout="vertical gap:lg">
+          <cds-button id="cds-done">Done</cds-button>
+          <cds-button id="cds-yes">Yes</cds-button>
+          <cds-button id="cds-no">No</cds-button>
+          <cds-button id="cds-success">Success</cds-button>
+          <cds-button id="cds-error">Error</cds-button>
+          <cds-button id="cds-question">Question</cds-button>
+          <cds-button id="cds-event">Event</cds-button>
+          <cds-button id="cds-expand">Expand</cds-button>
+          <cds-button id="cds-collapse">Collapse</cds-button>
+        </section>
+      </div>
+      <div id="table">
+        <table cds-table="border:row border:outside">
+          <caption>
+            List of nearby spiral galaxies
+          </caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Constellation</th>
+              <th>Number of stars</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Milky Way</td>
+              <td>none</td>
+              <td>200 billion</td>
+              <td>Barred Spiral</td>
+            </tr>
+            <tr>
+              <td>Andromeda</td>
+              <td>Andromeda</td>
+              <td>1 trillion</td>
+              <td>Barred Spiral</td>
+            </tr>
+            <tr>
+              <td>Pinwheel</td>
+              <td>Ursa Major</td>
+              <td>1 trillion</td>
+              <td>Spiral</td>
+            </tr>
+            <tr>
+              <td>Messier 63</td>
+              <td>Canes Venatici</td>
+              <td>400 billion</td>
+              <td>Spiral</td>
+            </tr>
+            <tr>
+              <td>Triangulum</td>
+              <td>Triangulum</td>
+              <td>40 billion</td>
+              <td>Spiral</td>
+            </tr>
+            <tr>
+              <td>Whirlpool</td>
+              <td>Canes Venatici</td>
+              <td>40 billion</td>
+              <td>Spiral</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="form">
+        <form>
+          <cds-form-group layout="vertical" validate>
+            <cds-input layout="vertical">
+              <label>email input (required)</label>
+              <input type="email" placeholder="example@example.com" required />
+            </cds-input>
 
-    <h1 cds-text="heading">
-      Clarity Sound Design
-      <cds-icon shape="headphones"></cds-icon>
-    </h1>
-    <h2>Hard coded audio code</h2>
-    <section cds-layout="horizontal align:stretch gap:lg">
-      <cds-button id="success">Success</cds-button>
-      <cds-button id="error">Error</cds-button>
-      <cds-button id="question">Question</cds-button>
-      <cds-button id="event">Event</cds-button>
-    </section>
-    <h2>@cds/core/audio</h2>
-    <section cds-layout="horizontal align:stretch gap:lg">
-      <cds-button id="cds-done">Done</cds-button>
-      <cds-button id="cds-yes">Yes</cds-button>
-      <cds-button id="cds-no">No</cds-button>
-    </section>
-    <audio controls>
-      <source src="SoundFX_slide.mp3" type="audio/mpeg" />
-      Yo, your browser is old...
-    </audio>
-    <!-- your addon -->
-    <!--    <cda-counter></cda-counter>-->
+            <cds-password layout="vertical">
+              <label>password</label>
+              <input type="password" />
+            </cds-password>
 
-    <!--    <p cds-text="body">Current Count: <span id="current-count"></span></p>-->
-
+            <cds-button>Login</cds-button>
+          </cds-form-group>
+        </form>
+      </div>
+    </main>
     <script type="module" src="./index.js"></script>
     <script type="text/javascript">
       window.onload = function () {

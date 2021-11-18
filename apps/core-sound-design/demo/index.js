@@ -1,120 +1,190 @@
 import '@cds/core/button/register';
-import { ClarityIcons, userIcon } from '@cds/core/icon';
+import '@cds/core/navigation/register.js';
+import '@cds/core/toggle/register.js';
+import '@cds/core/alert/register.js';
+import '@cds/core/password/register.js';
+import '@cds/core/input/register.js';
+import '@cds/core/forms/register.js';
+import { ClarityIcons, userIcon, headphonesIcon } from '@cds/core/icon';
 
-ClarityIcons.addIcons(userIcon);
-import { ClarityAudio } from '@cds/core/audio';
+ClarityIcons.addIcons(userIcon, headphonesIcon);
+
+import { ClarityAudio } from '@cds/core/audio/audio.service.js';
 import { yesSound } from '@cds/core/audio/sounds/yes.js';
 import { noSound } from '@cds/core/audio/sounds/no.js';
 import { doneSound } from '@cds/core/audio/sounds/done.js';
+import { successSound } from '@cds/core/audio/sounds/success.js';
+import { errorSound } from '@cds/core/audio/sounds/error.js';
+import { eventSound } from '@cds/core/audio/sounds/event.js';
+import { questionSound } from '@cds/core/audio/sounds/question.js';
+import { expandSound } from '@cds/core/audio/sounds/expand.js';
+import { collapseSound } from '@cds/core/audio/sounds/collapse.js';
 
 ClarityAudio.add(...yesSound);
 ClarityAudio.add(...noSound);
 ClarityAudio.add(...doneSound);
+ClarityAudio.add(...successSound);
+ClarityAudio.add(...errorSound);
+ClarityAudio.add(...eventSound);
+ClarityAudio.add(...questionSound);
+ClarityAudio.add(...expandSound);
+ClarityAudio.add(...collapseSound);
 
-const successButton = document.querySelector('#success');
-const errorButton = document.querySelector('#error');
-const questionButton = document.querySelector('#question');
-const eventButton = document.querySelector('#event');
-
-successButton.addEventListener('click', () => {
-  playAudio('success');
-});
-errorButton.addEventListener('click', () => {
-  playAudio('error');
-});
-questionButton.addEventListener('click', () => {
-  playAudio('question');
-});
-eventButton.addEventListener('click', () => {
-  playAudio('event');
-});
-
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-const audioCtx = new AudioContext();
-
-const success = 900;
-const error = 300;
-const question = 600;
-const event = 2500;
-
-function playAudio(sound) {
-  console.log('sounding: ', sound);
-  let frequency;
-  const osc = audioCtx.createOscillator();
-  osc.type = 'sine';
-
-  switch (sound) {
-    case 'success':
-      frequency = success;
-      break;
-    case 'error':
-      frequency = error;
-      break;
-    case 'question':
-      frequency = question;
-      break;
-    case 'event':
-      frequency = event;
-      break;
-    default:
-  }
-
-  osc.frequency.value = frequency;
-
-  const volume = audioCtx.createGain();
-  volume.gain.setValueAtTime(0.1, 0);
-
-  if (sound === 'error') {
-    osc.frequency.setValueAtTime(
-      frequency / Math.pow(3.5, 1 / 12),
-      audioCtx.currentTime + 0.1
-    );
-    osc.frequency.setValueAtTime(
-      frequency / Math.pow(3.5, 2 / 12),
-      audioCtx.currentTime + 0.2
-    );
-  } else if (sound === 'success') {
-    volume.gain.setValueAtTime(0.1, 0.1);
-    osc.frequency.setValueAtTime(
-      frequency * Math.pow(3.5, 1 / 12),
-      audioCtx.currentTime + 0.1
-    );
-    osc.frequency.setValueAtTime(
-      frequency * Math.pow(3.5, 2 / 12),
-      audioCtx.currentTime + 0.2
-    );
-  } else if (sound === 'question') {
-    osc.frequency.setValueAtTime(
-      frequency / Math.pow(7, 1 / 12),
-      audioCtx.currentTime + 0.1
-    );
-    osc.frequency.setValueAtTime(
-      frequency * Math.pow(3.5, 2 / 12),
-      audioCtx.currentTime + 0.2
-    );
-  } else {
-    osc.frequency.setValueAtTime(0, audioCtx.currentTime + 0.1);
-    osc.frequency.setValueAtTime(frequency, audioCtx.currentTime + 0.2);
-  }
-
-  osc.connect(volume);
-  osc.connect(audioCtx.destination);
-  osc.start();
-  osc.stop(audioCtx.currentTime + 0.3);
-}
-
-// Use @cds/core/audio
 const cdsDone = document.querySelector('#cds-done');
 const cdsNo = document.querySelector('#cds-no');
 const cdsYes = document.querySelector('#cds-yes');
+const cdsSuccess = document.querySelector('#cds-success');
+const cdsError = document.querySelector('#cds-error');
+const cdsEvent = document.querySelector('#cds-event');
+const cdsQuestion = document.querySelector('#cds-question');
+const cdsExpand = document.querySelector('#cds-expand');
+const cdsCollapse = document.querySelector('#cds-collapse');
 
-cdsDone.addEventListener('click', () => {
+cdsDone?.addEventListener('click', () => {
   ClarityAudio.play('done');
 });
-cdsNo.addEventListener('click', () => {
+cdsNo?.addEventListener('click', () => {
   ClarityAudio.play('no');
 });
-cdsYes.addEventListener('click', () => {
+cdsYes?.addEventListener('click', () => {
   ClarityAudio.play('yes');
+});
+cdsSuccess?.addEventListener('click', () => {
+  ClarityAudio.play('success');
+});
+cdsError?.addEventListener('click', () => {
+  ClarityAudio.play('error');
+});
+cdsEvent?.addEventListener('click', () => {
+  ClarityAudio.play('event');
+});
+cdsQuestion?.addEventListener('click', () => {
+  ClarityAudio.play('question');
+});
+cdsExpand?.addEventListener('click', () => {
+  ClarityAudio.play('expand');
+});
+cdsCollapse?.addEventListener('click', () => {
+  ClarityAudio.play('collapse');
+});
+
+function toggleTheme() {
+  if (document.body.getAttribute('cds-theme') === 'dark') {
+    document.body.setAttribute('cds-theme', '');
+    themeToggle.checked = false;
+    ClarityAudio.play('no');
+  } else {
+    document.body.setAttribute('cds-theme', 'dark');
+    themeToggle.checked = true;
+    ClarityAudio.play('yes');
+  }
+}
+
+// theme
+const themeToggle = document.querySelector('#dark-theme-toggle');
+themeToggle.addEventListener('change', () => toggleTheme());
+
+// nav
+const nav = document.querySelector('cds-navigation');
+const main = document.querySelector('main');
+setNavSize();
+
+nav.addEventListener('expandedChange', () => {
+  nav.expanded = !nav.expanded;
+  nav.expanded && document.documentElement.clientWidth > 1024
+    ? main.setAttribute('expanded', '')
+    : main.removeAttribute('expanded');
+  if (nav.expanded) {
+    ClarityAudio.play('expand');
+  } else {
+    ClarityAudio.play('collapse');
+  }
+});
+
+window.addEventListener('resize', () => setNavSize());
+
+function setNavSize() {
+  if (document.documentElement.clientWidth > 1024) {
+    main.setAttribute('expanded', '');
+    nav.expanded = true;
+  } else {
+    main.removeAttribute('expanded');
+    nav.expanded = false;
+  }
+}
+
+const navItems = document.querySelectorAll('cds-navigation-item');
+navItems.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    ClarityAudio.play('event');
+  });
+});
+
+const contentNodes = document.querySelectorAll('#sound, #table, #form');
+const content = Array.from(contentNodes);
+
+showSound();
+
+function showSound() {
+  content
+    .filter(node => node.id !== 'sound')
+    .forEach(c => {
+      c.style.display = 'none';
+    });
+  content
+    .filter(node => node.id === 'sound')
+    .forEach(c => {
+      c.style.display = 'block';
+    });
+}
+
+function showTable() {
+  content
+    .filter(node => node.id !== 'table')
+    .forEach(c => {
+      c.style.display = 'none';
+    });
+  content
+    .filter(node => node.id === 'table')
+    .forEach(c => {
+      c.style.display = 'block';
+    });
+}
+
+function showForm() {
+  content
+    .filter(node => node.id !== 'form')
+    .forEach(c => {
+      c.style.display = 'none';
+    });
+  content
+    .filter(node => node.id === 'form')
+    .forEach(c => {
+      c.style.display = 'block';
+    });
+}
+
+const rootRoute = document.querySelector('a[href="/"]');
+rootRoute.addEventListener('click', e => {
+  e.preventDefault();
+  showSound();
+});
+
+const tableRoute = document.querySelector('a[href="table/"]');
+tableRoute.addEventListener('click', e => {
+  e.preventDefault();
+  showTable();
+});
+
+const formRoute = document.querySelector('a[href="form/"]');
+formRoute.addEventListener('click', e => {
+  e.preventDefault();
+  showForm();
+});
+
+const rows = document.querySelectorAll('tr');
+rows.forEach(r => {
+  r.addEventListener('mouseover', () => {
+    ClarityAudio.play('event');
+  });
 });

@@ -9,7 +9,7 @@ export async function donedid(context: AudioContext) {
     [1046.5, 0.1875, 0.99],
   ]; // <= 5
   // playNotes(context, notes);
-  playNotes(context, notes.reverse());
+  playNotes(context, notes.reverse(), 9, 0.5);
 }
 
 export const doneSoundName = 'done';

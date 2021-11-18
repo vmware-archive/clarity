@@ -21,6 +21,8 @@ import { successSound } from './sounds/success';
 import { errorSound } from './sounds/error';
 import { eventSound } from './sounds/event';
 import { questionSound } from './sounds/question';
+import { expandSound } from './sounds/expand';
+import { collapseSound } from './sounds/collapse';
 
 ClarityAudio.add(...yesSound);
 ClarityAudio.add(...noSound);
@@ -33,6 +35,8 @@ ClarityAudio.add(...successSound);
 ClarityAudio.add(...errorSound);
 ClarityAudio.add(...eventSound);
 ClarityAudio.add(...questionSound);
+ClarityAudio.add(...expandSound);
+ClarityAudio.add(...collapseSound);
 
 export default {
   title: 'Stories/Audio',
@@ -45,7 +49,20 @@ export default {
 @customElement('cds-noisy-button')
 class NoisyButton extends LitElement implements Audible {
   @property({ type: String })
-  audio: 'question' | 'error' | 'event' | 'success' | 'yes' | 'no' | 'done' | 'alert' | 'active' | 'slide' | 'warning' = 'yes';
+  audio:
+    | 'collapse'
+    | 'expand'
+    | 'question'
+    | 'error'
+    | 'event'
+    | 'success'
+    | 'yes'
+    | 'no'
+    | 'done'
+    | 'alert'
+    | 'active'
+    | 'slide'
+    | 'warning' = 'yes';
 
   @property({ type: String })
   cdsAudio = 'on';
@@ -88,6 +105,8 @@ export function modulation() {
       <cds-noisy-button status="danger" audio="error">Error</cds-noisy-button>
       <cds-noisy-button audio="event">Event</cds-noisy-button>
       <cds-noisy-button status="warning" audio="question">Question</cds-noisy-button>
+      <cds-noisy-button audio="expand">Expand</cds-noisy-button>
+      <cds-noisy-button audio="collapse">Collapse</cds-noisy-button>
     </div>
   `;
 }

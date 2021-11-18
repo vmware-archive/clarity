@@ -4,22 +4,19 @@ import browsersync from 'rollup-plugin-browsersync';
 import { terser } from 'rollup-plugin-terser';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import styles from 'rollup-plugin-styles';
-import copy from 'rollup-plugin-copy';
+// import commonjs from '@rollup/plugin-commonjs';
+// import copy from 'rollup-plugin-copy';
 
 const prod = !process.env.ROLLUP_WATCH;
 
 export default {
-  input: 'demo/index.html',
+  input: 'demo/index.js',
   output: { dir: 'dist', format: 'esm' },
   plugins: [
-    nodeResolve({
-      browser: true,
-    }),
+    nodeResolve(),
+    // commonjs(),
     html(),
     styles(),
-    copy({
-      targets: [{ src: 'src/favicon.ico', dest: 'dist' }],
-    }),
     prod ? minifyHTML() : [],
     prod
       ? terser({

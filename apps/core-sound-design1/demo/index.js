@@ -1,5 +1,5 @@
-import './index.css';
-import '@cds/core/button/register';
+// import './index.css';
+import '@cds/core/button/register.js';
 import '@cds/core/navigation/register.js';
 import '@cds/core/toggle/register.js';
 import '@cds/core/alert/register.js';
@@ -69,6 +69,13 @@ cdsCollapse?.addEventListener('click', () => {
   ClarityAudio.play('collapse');
 });
 
+// theme
+const themeToggle = document.querySelector('#dark-theme-toggle');
+console.log('themeToggle', themeToggle);
+themeToggle?.addEventListener('change', () => {
+  toggleTheme();
+});
+
 function toggleTheme() {
   if (document.body.getAttribute('cds-theme') === 'dark') {
     document.body.setAttribute('cds-theme', '');
@@ -80,10 +87,6 @@ function toggleTheme() {
     ClarityAudio.play('yes');
   }
 }
-
-// theme
-const themeToggle = document.querySelector('#dark-theme-toggle');
-themeToggle.addEventListener('change', () => toggleTheme());
 
 // nav
 const nav = document.querySelector('cds-navigation');

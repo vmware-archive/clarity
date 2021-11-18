@@ -1,10 +1,10 @@
-@import 'modern-normalize/modern-normalize.css';
-@import '@cds/core/global.min.css';
-@import '@cds/city/css/bundles/default.min.css';
-@import 'normalize.css/normalize.css';
-@import '@cds/core/table/table.min.css';
-@import '@cds/core/styles/theme.dark.css';
-@import '@cds/city/css/bundles/default.min.css';
+/*@import 'modern-normalize/modern-normalize.css';*/
+/*@import '@cds/core/global.min.css';*/
+/*@import '@cds/city/css/bundles/default.min.css';*/
+/*@import 'normalize.css/normalize.css';*/
+/*@import '@cds/core/table/table.min.css';*/
+/*@import '@cds/core/styles/theme.dark.css';*/
+/*@import '@cds/city/css/bundles/default.min.css';*/
 
 body:not([cds-version]) {
   display: none;

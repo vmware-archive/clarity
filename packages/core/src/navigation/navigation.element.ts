@@ -33,7 +33,7 @@ import {
   removeFocus,
   setFocus,
   visibleElement,
-} from './utils/index.js';
+} from './utils/utils.js';
 import { CdsNavigationGroup } from './navigation-group.element.js';
 import { CdsNavigationStart } from './navigation-start.element.js';
 import { CdsNavigationItem } from './navigation-item.element.js';

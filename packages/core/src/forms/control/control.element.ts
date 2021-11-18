@@ -36,7 +36,7 @@ import {
   defaultFormLayout,
   defaultControlWidth,
   getCurrentMessageStatus,
-} from '../utils/index.js';
+} from '../utils/utils.js';
 import { CdsInternalControlLabel } from '../control-label/control-label.element.js';
 import { CdsControlAction } from '../control-action/control-action.element.js';
 

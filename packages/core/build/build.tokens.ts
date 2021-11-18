@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
 import * as fs from 'fs';
+import * as csso from 'csso';
 import { baseTheme } from './tokens';
 import { Token } from './token-utils';
 
@@ -114,6 +115,7 @@ ${tokens.map(token => `  --cds-${camelCaseToKebab(token.name)}: ${convertCSSValu
 }`;
 
   fs.writeFileSync(path, cssTokens);
+  fs.writeFileSync(path.replace('.css', '.min.css'), csso.minify(cssTokens).css);
 }
 
 function buildInternalSassTokens(path) {

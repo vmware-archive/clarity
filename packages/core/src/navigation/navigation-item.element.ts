@@ -17,7 +17,7 @@ import {
   spanWrapper,
 } from '@cds/core/internal';
 import styles from './navigation-item.element.scss';
-import { manageScreenReaderElements, NAVIGATION_TEXT_WRAPPER } from './utils/index.js';
+import { manageScreenReaderElements, NAVIGATION_TEXT_WRAPPER } from './utils/utils.js';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { FocusableItem, NavigationFocusState } from './interfaces/navigation.interfaces.js';
 

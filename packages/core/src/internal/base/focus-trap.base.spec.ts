@@ -6,7 +6,7 @@
 
 import { html } from 'lit';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
-import { registerElementSafely } from '../utils/register.js';
+import { registerElementSafely } from '../utils/registration.js';
 import { CdsBaseFocusTrap } from './focus-trap.base.js';
 import '@cds/core/button/register.js';
 

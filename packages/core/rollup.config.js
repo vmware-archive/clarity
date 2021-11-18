@@ -6,7 +6,6 @@
  */
 
 import * as fs from 'fs-extra';
-import autoprefixer from 'autoprefixer';
 import typescript from '@rollup/plugin-typescript';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -18,7 +17,7 @@ import { terser } from 'rollup-plugin-terser';
 import {
   packageCheck,
   webComponentAnalyer,
-  addComponentEntryPoints,
+  createPackageModuleMetadata,
   createLibraryEntryPoints,
   litSass,
   globalStyles,
@@ -28,72 +27,33 @@ import {
 const config = {
   baseDir: './src',
   outDir: './dist/core',
-  entryPoints: {
-    modules: ['./src', './src/internal', './src/polyfills', './src/test'],
-    components: [
-      './src/accordion',
-      './src/alert',
-      './src/badge',
-      './src/breadcrumb',
-      './src/button',
-      './src/card',
-      './src/checkbox',
-      './src/datalist',
-      './src/date',
-      './src/divider',
-      './src/dropdown',
-      './src/file',
-      './src/forms',
-      './src/icon',
-      './src/input',
-      './src/internal-components/close-button',
-      './src/internal-components/overlay',
-      './src/internal-components/panel',
-      './src/internal-components/visual-checkbox',
-      './src/internal-components/popup',
-      './src/modal',
-      './src/navigation',
-      './src/pagination',
-      './src/password',
-      './src/progress-circle',
-      './src/radio',
-      './src/range',
-      './src/search',
-      './src/select',
-      './src/selection-panels/checkbox',
-      './src/selection-panels/radio',
-      './src/tag',
-      './src/textarea',
-      './src/test-dropdown',
-      './src/time',
-      './src/toggle',
-      './src/tree-view',
+  assets: ['./README.md'],
+  modules: {
+    entryPoints: ['./src/**/index.ts', './src/**/register.ts'],
+    sideEffects: ['./src/**/register.ts', './src/polyfills/*.ts'],
+  },
+  styles: [
+    { input: './src/styles/global.scss', output: './dist/core/global.css' },
+    './src/styles/module.layout.scss',
+    './src/styles/module.reset.scss',
+    './src/styles/module.shims.scss',
+    './src/styles/module.typography.scss',
+    './src/styles/theme.dark.scss',
+    './src/styles/theme.low-motion.scss',
+    './src/list/list.scss',
+    './src/table/table.scss',
+  ],
+  package: {
+    exports: [
+      './icon/shapes/*',
+      './icon/icon.service.js',
+      './tokens/tokens.js',
+      './tokens/tokens.d.ts',
+      './tokens/tokens.json',
+      './tokens/tokens.scss',
+      './tokens/tokens.ios.swift',
+      './tokens/tokens.android.xml',
     ],
-    styles: [
-      { input: './src/styles/global.scss', output: './dist/core/global.css' },
-      { input: './dist/core/styles/module.tokens.css', output: './dist/core/styles/module.tokens.css' },
-      './src/styles/module.layout.scss',
-      './src/styles/module.reset.scss',
-      './src/styles/module.shims.scss',
-      './src/styles/module.typography.scss',
-      './src/styles/theme.dark.scss',
-      './src/styles/theme.low-motion.scss',
-      './src/list/list.scss',
-      './src/table/table.scss',
-    ],
-    assets: ['./README.md'],
-    explicitExports: [
-      { input: './icon/shapes/*', output: './icon/shapes/*' },
-      { input: './icon/icon.service.js', output: './icon/icon.service.js' },
-      { input: './polyfills/index.js', output: './polyfills/index.js' },
-      { input: './tokens/tokens.js', output: './tokens/tokens.js' },
-      { input: './tokens/tokens.d.ts', output: './tokens/tokens.d.ts' },
-      { input: './tokens/tokens.json', output: './tokens/tokens.json' },
-      { input: './tokens/tokens.scss', output: './tokens/tokens.scss' },
-      { input: './tokens/tokens.ios.swift', output: './tokens/tokens.ios.swift' },
-      { input: './tokens/tokens.android.xml', output: './tokens/tokens.android.xml' },
-    ],
-    explicitSideEffects: ['./polyfills/index.js', './polyfills/aria-reflect.js'],
   },
 };
 
@@ -101,11 +61,7 @@ const prod = !process.env.ROLLUP_WATCH;
 const version = fs.readJsonSync('./npm.json').version;
 
 export default [
-  ...globalStyles({
-    baseDir: config.baseDir,
-    outDir: config.outDir,
-    styles: config.entryPoints.styles,
-  }),
+  ...globalStyles(config),
   {
     external: [/^tslib/, /^ramda/, /^@lit/, /^lit/, /^lit-html/, /^lit-element/, /^@cds\/core/],
     input: 'library-entry-points',
@@ -120,8 +76,8 @@ export default [
       minifyInternalExports: prod,
     },
     plugins: [
-      createLibraryEntryPoints(config.entryPoints),
-      styles({ mode: 'emit', plugins: [autoprefixer] }),
+      createLibraryEntryPoints(config.modules.entryPoints),
+      styles({ mode: 'emit' }),
       litSass(),
       nodeResolve(),
       typescript({ tsconfig: './tsconfig.lib.json' }),
@@ -132,18 +88,23 @@ export default [
             src: './npm.json',
             rename: 'package.json',
             dest: config.outDir,
-            transform: p => addComponentEntryPoints(p, config),
+            transform: p => createPackageModuleMetadata(p, config),
           },
-          ...config.entryPoints.assets.map(src => ({ src, dest: config.outDir })),
+          ...config.assets.map(src => ({ src, dest: config.outDir })),
         ],
       }),
       !prod ? esmCache(config.outDir) : [],
       prod ? minifyHTML() : [],
-      prod ? terser({ ecma: 2020, warnings: true, module: true, compress: { unsafe: true, passes: 2 } }) : [],
+      prod
+        ? terser({ ecma: 2020, module: true, format: { comments: false }, compress: { passes: 2, unsafe: true } })
+        : [],
       prod ? replace({ preventAssignment: false, values: { PACKAGE_VERSION: version } }) : [],
       prod ? webComponentAnalyer(config.outDir) : [],
       prod ? packageCheck(config.outDir) : [],
-      del({ targets: ['./dist/**/assets', './dist/core/.tsbuildinfo', './dist/_virtual/'], hook: 'writeBundle' }),
+      del({
+        targets: ['./dist/core/**/assets', './dist/core/**/.tsbuildinfo', './dist/core/**/_virtual'],
+        hook: 'writeBundle',
+      }),
     ],
   },
 ];

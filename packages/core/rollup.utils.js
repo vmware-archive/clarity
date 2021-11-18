@@ -7,6 +7,7 @@
 import * as fs from 'fs-extra';
 import execute from 'rollup-plugin-shell';
 import { resolve, dirname, extname } from 'path';
+import * as glob from 'glob';
 import * as csso from 'csso';
 import autoprefixer from 'autoprefixer';
 import * as PurgeCSSDefault from 'purgecss';
@@ -29,7 +30,7 @@ export const packageCheck = dir => {
 export const webComponentAnalyer = outDir => {
   return execute({
     commands: [
-      `cd ${resolve(outDir)} && cem analyze --litelement`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
+      `cd dist/core && cem analyze --config ${resolve('./custom-elements-manifest.config.mjs')}`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
       `wca analyze ${resolve(outDir)} --silent --format=json --outFile ${resolve(
         outDir,
         'custom-elements.legacy.json'
@@ -47,12 +48,7 @@ export const webComponentAnalyer = outDir => {
  * build all entrypoints without needing a single explicit index.js to read.
  */
 export const createLibraryEntryPoints = entryPoints => {
-  const paths = [
-    ...entryPoints.modules.map(e => `${e}/index.ts`),
-    ...entryPoints.components.flatMap(e => [`${e}/index.ts`, `${e}/register.ts`]),
-  ]
-    .map(entry => `export * from '${entry}';`)
-    .join('\n');
+  const paths = [...entryPoints.flatMap(i => glob.sync(i))].map(entry => `export * from '${entry}';`).join('\n');
 
   return virtual({ 'library-entry-points': paths });
 };
@@ -131,46 +127,42 @@ async function treeshakeCSS(content, css) {
  * Creates package.json file for publishing
  * Adds entrypoints and side effects
  */
-export const addComponentEntryPoints = (packageFile, config) => {
+export const createPackageModuleMetadata = (packageFile, config) => {
   // https://lit.dev/docs/tools/publishing/
   // https://justinfagnani.com/2019/11/01/how-to-publish-web-components-to-npm
   // https://nodejs.org/api/packages.html#packages_subpath_exports
 
-  const explicitExports = config.entryPoints.explicitExports.map(m => `"${m.input}": "${m.output}"`);
+  const moduleExports = config.modules.entryPoints
+    .flatMap(i => glob.sync(i))
+    .flatMap(m => {
+      const path = `.${resolve(m).replace(resolve(config.baseDir), '').replace('.ts', '.js')}`;
 
-  const modules = config.entryPoints.modules.map(m => {
-    const path = `.${resolve(m).replace(resolve(config.baseDir), '')}/index.js`;
-    return `"${dirname(path)}": "${path}"`;
-  });
+      if (path.includes('index.js')) {
+        return [`"./${resolve(dirname(m)).replace(resolve(config.baseDir), '').replace('/', '')}": "${path}"`];
+      } else {
+        return [`"${path}": "${path}"`, `"${path.replace('.js', '')}": "${path}"`];
+      }
+    });
 
-  const components = config.entryPoints.components.flatMap(m => {
-    const path = `.${resolve(m).replace(resolve(config.baseDir), '')}`;
-    return [
-      `"${path}": "${path}/index.js"`,
-      `"${path}/register": "${path}/register.js"`,
-      `"${path}/register.js": "${path}/register.js"`,
-    ];
-  });
-
-  const styles = config.entryPoints.styles.flatMap(m => {
+  const styleExports = config.styles.flatMap(m => {
     const output = typeof m === 'string' ? m : m.output;
-    const path = `.${resolve(output)
-      .replace(resolve(config.baseDir), '')
-      .replace(resolve(config.outDir), '')
-      .replace(extname(output), '.css')}`;
+    const path = `.${resolve(output).replace(resolve(config.baseDir), '').replace(extname(output), '.css')}`;
     const minPath = path.replace(extname(path), '.min.css');
     return [`"${path}": "${path}"`, `"${minPath}": "${minPath}"`];
   });
 
+  const packageExports = config.package.exports.map(m => (m.input ? `"${m.input}": "${m.output}"` : `"${m}": "${m}"`));
+
   const exports = JSON.parse(`{
-    "./package.json": "./package.json",
-    "./custom-elements.json": "./custom-elements.json",
-    ${[modules, explicitExports, components, styles].join(',')}
-  }`);
+     "./package.json": "./package.json",
+     "./custom-elements.json": "./custom-elements.json",
+     ${[moduleExports, styleExports, packageExports].join(',')}
+   }`);
 
   const sideEffects = [
-    ...config.entryPoints.components.map(name => `.${resolve(name).replace(resolve(config.baseDir), '')}/register.js`),
-    ...config.entryPoints.explicitSideEffects,
+    ...config.modules.sideEffects
+      .flatMap(i => glob.sync(i))
+      .map(i => `.${resolve(i).replace(resolve(config.baseDir), '').replace('.ts', '.js')}`),
   ];
 
   return JSON.stringify({ ...JSON.parse(packageFile), sideEffects, exports }, null, 2);

@@ -78,21 +78,15 @@ function writeComponentSubModules(modules) {
 
 function findEntryPointModules(modules) {
   return modules
-    .filter(module => module.path.includes('/register.d.ts'))
-    .map(module => metadata.modules.find(m => m.path === `${path.dirname(module.path)}/index.d.ts`))
+    .filter(module => module.path.includes('/register.js'))
+    .map(module => metadata.modules.find(m => m.path === `${path.dirname(module.path)}/index.js`))
     .filter(m => m?.exports);
 }
 
 function findModuleElements(exports) {
   const elements = exports
     .filter(m => !!m.declaration.package)
-    .map(e =>
-      findCustomElements().find(c => {
-        return (
-          path.basename(c.path).replace('.d.ts', '.js') === path.basename(e.declaration.package).replace('.d.ts', '.js')
-        );
-      })
-    )
+    .map(e => findCustomElements().find(c => path.basename(c.path) === path.basename(e.declaration.package)))
     .flatMap(m => m?.declarations)
     .filter(e => !!e?.tagName);
   return elements;
@@ -133,6 +127,8 @@ function createDirective(element, module) {
 function getDirectiveProps(props) {
   return props
     .filter(prop => prop.privacy === undefined) // public
+    .filter(prop => !prop.static)
+    .filter(prop => !prop.readonly)
     .filter(prop => prop.type && prop.type.text && !prop.type.text.includes('EventEmitter')) // exclude events
     .map(prop => ({ name: prop.name, isBoolean: prop?.type?.text === 'boolean' }));
 }

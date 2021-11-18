@@ -33,6 +33,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     renderPerformancePlugin(),
     bundlePerformancePlugin({
       aliases,
+      optimize: false,
       // writePath: `./dist/performance`, // uncomment to see bundle output with sourcemaps
       // external: [] // externals are not used so each bundle measured includes all third party dependencies
     }),

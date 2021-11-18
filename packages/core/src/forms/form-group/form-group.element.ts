@@ -19,7 +19,7 @@ import { CdsInternalControlGroup } from '../control-group/control-group.element.
 import { CdsInternalControlInline } from '../control-inline/control-inline.element.js';
 import { CdsControl } from '../control/control.element.js';
 import { FormLayout, ControlWidth } from '../utils/interfaces.js';
-import { getLargestPrimaryLabelWidth, isVerticalLayout, defaultFormLayout } from '../utils/index.js';
+import { getLargestPrimaryLabelWidth, isVerticalLayout, defaultFormLayout } from '../utils/utils.js';
 import styles from './form-group.element.scss';
 
 /**

@@ -18,7 +18,7 @@ import {
   removeFocus,
   setFocus,
   visibleElement,
-} from './index.js';
+} from './utils.js';
 
 describe('navigation internal utilities', () => {
   let groupElement: CdsNavigationGroup;

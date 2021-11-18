@@ -122,7 +122,6 @@ navItems.forEach(item => {
 
 const contentNodes = document.querySelectorAll('#sound, #table, #form');
 const content = Array.from(contentNodes);
-
 showSound();
 
 function showSound() {

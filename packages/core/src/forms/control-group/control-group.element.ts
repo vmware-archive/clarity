@@ -34,7 +34,7 @@ import {
   defaultFormLayout,
   defaultControlWidth,
   getCurrentMessageStatus,
-} from '../utils/index.js';
+} from '../utils/utils.js';
 
 /**
  * Internal Control Group

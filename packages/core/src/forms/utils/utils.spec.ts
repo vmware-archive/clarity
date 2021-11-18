@@ -12,7 +12,7 @@ import {
   getCurrentMessageStatus,
   getStatusIcon,
   isVerticalLayout,
-} from './index.js';
+} from './utils.js';
 import '@cds/core/forms/register.js';
 
 describe('form internal utilities', () => {

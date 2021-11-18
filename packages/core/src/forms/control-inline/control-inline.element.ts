@@ -8,7 +8,7 @@ import { html } from 'lit';
 import { EventEmitter, property, event, getElementUpdates, state } from '@cds/core/internal';
 import styles from './control-inline.element.scss';
 import { CdsControl } from '../control/control.element.js';
-import { getStatusIcon } from '../utils/index.js';
+import { getStatusIcon } from '../utils/utils.js';
 
 /**
  * Internal Control Inline (boolean types)

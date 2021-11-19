@@ -1,27 +1,30 @@
-# CoreSoundDesign
+# Clarity Core – Simple Web Dev Environment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+This environment was carried over from the [Clarity Core starter kit](https://github.com/coryrylan/clarity-addon-kit) to provide a simple, lightweight dev environment for those working Clarity Core components. This dev environment is boot-strapped with [open-wc](https://open-wc.org/) using `npm init @open-wc` and pre-installed with Clarity Core.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To run the project, install the dependencies by running `yarn`.
+Once installed, start the local project by running `yarn run start`.
 
-## Code scaffolding
+## Commands
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `start`: runs local dev build and server in watch mode.
+- `clean`: cleans any prior build artifacts.
+- `build`: builds library into dist directory for publication.
+- `test`: runs unit tests
+- `test:watch`: runs unit tests in a watch mode
+- `lint`: runs code linting
+- `format`: runs code formatting (prettier)
 
-## Build
+## Additional Resources
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Intro to Web Components](https://coryrylan.com/blog/state-of-web-components-in-2020)
 
-## Running unit tests
+- [Get started with Lit](https://lit.dev)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Web Component Authoring best practices](https://open-wc.org/)
 
-## Running end-to-end tests
+- [Web Component Performance best practices](https://medium.com/claritydesignsystem/design-system-performance-with-clarity-core-web-components-fbab56516f30).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Clarity Core Internal Library Architecture](https://clarity.design/storybook/core/?path=/story/internal-documentation-getting-started--page)

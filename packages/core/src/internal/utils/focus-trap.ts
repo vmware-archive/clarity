@@ -51,7 +51,7 @@ export function refocusIfOutsideFocusTrapElement(
     const focusableChildren = queryAllFocusable(focusTrapElement);
     const orderedFocusableChildrenAsArray = reorderCloseButtonSlot(Array.from(focusableChildren));
 
-    if (isReboundEl !== null && orderedFocusableChildrenAsArray !== []) {
+    if (isReboundEl !== null) {
       if (isReboundEl === 'top') {
         elementToRefocus = arrayTail(orderedFocusableChildrenAsArray) as HTMLElement;
       } else if (isReboundEl === 'bottom') {

@@ -5,7 +5,10 @@
  */
 
 // we export any non component code such as utilities at the root '@clr/core'
-export { I18nService, componentStringsDefault } from '@cds/core/internal';
+export { I18nService } from '@cds/core/internal';
+
+// we don't re-export componentStringsDefault from @cds/internal to prevent rollup complaining about a unsed import being rexported
+export { componentStringsDefault } from './internal/services/i18n.service.js';
 
 // type global attribute utilities
 declare global {

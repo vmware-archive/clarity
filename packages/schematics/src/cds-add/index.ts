@@ -80,7 +80,7 @@ function addAssetsToConfigFile(host: Tree, context: SchematicContext): void {
     const target = json.projects[project].targets || json.projects[project].architect;
     const pathPrefix = json.apps ? '../' : '';
     const assets = [
-      'node_modules/normalize.css/normalize.css',
+      'node_modules/modern-normalize.css/modern-normalize.css',
       'node_modules/@cds/core/global.min.css',
       'node_modules/@cds/core/styles/module.shims.min.css',
       'node_modules/@cds/city/css/bundles/default.min.css',

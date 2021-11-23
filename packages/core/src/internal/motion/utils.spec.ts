@@ -109,7 +109,7 @@ describe('Animation Helpers: ', () => {
   ];
 
   describe('runPropertyAnimations()', () => {
-    it('logs a warning if the element it is passed is not animatable', async done => {
+    it('logs a warning if the element it is passed is not animatable', async () => {
       const testElement = await createTestElement(html`<div>ohai</div>`);
       spyOn(LogService, 'warn');
       expect(testElement).toBeDefined();
@@ -117,10 +117,9 @@ describe('Animation Helpers: ', () => {
       expect(LogService.warn).toHaveBeenCalled();
       expect(didRun).toBe(false);
       removeTestElement(testElement);
-      done();
     });
 
-    it('bails if the host element does not have the property (weird edge case)', async done => {
+    it('bails if the host element does not have the property (weird edge case)', async () => {
       const testElement = await createTestElement(html`<div>ohai</div>`);
       const propMap: Map<string, any> = new Map();
       propMap.set('jabberwocky', 'wat');
@@ -128,10 +127,9 @@ describe('Animation Helpers: ', () => {
       const didRun = await runPropertyAnimations(propMap, (testElement as unknown) as AnimatableElement);
       expect(didRun).toBe(false);
       removeTestElement(testElement);
-      done();
     });
 
-    it('bails if the host element property and the new propval have not changed (another weird edge case)', async done => {
+    it('bails if the host element property and the new propval have not changed (another weird edge case)', async () => {
       const testElement = await createTestElement(html`<test-animate-utils-element>ohai</test-animate-utils-element>`);
       const component = testElement.querySelector<TestAnimateUtilsElement & AnimatableElement>(
         'test-animate-utils-element'
@@ -144,10 +142,9 @@ describe('Animation Helpers: ', () => {
       const didRun = await runPropertyAnimations(propMap, component);
       expect(didRun).toBe(false);
       removeTestElement(testElement);
-      done();
     });
 
-    it('bails if there is no animation associated with the property value', async done => {
+    it('bails if there is no animation associated with the property value', async () => {
       const testElement = await createTestElement(html`<div class="hayy">ohai</div>`);
       const component = testElement.querySelector('.hayy');
       const propMap: Map<string, any> = new Map();
@@ -156,10 +153,9 @@ describe('Animation Helpers: ', () => {
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
       expect(didRun).toBe(false);
       removeTestElement(testElement);
-      done();
     });
 
-    it('runs if there is an animation associated with the property value', async done => {
+    it('runs if there is an animation associated with the property value', async () => {
       const testElement = await createTestElement(html`<test-animate-utils-element>ohai</test-animate-utils-element>`);
       const component = testElement.querySelector<TestAnimateUtilsElement>('test-animate-utils-element');
       ClarityMotion.add('something', [{ animation: [{ opacity: 0 }, { opacity: 1 }] }]);
@@ -170,10 +166,9 @@ describe('Animation Helpers: ', () => {
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
       expect(didRun).toBe(true);
       removeTestElement(testElement);
-      done();
     });
 
-    it('does NOT run if there is an animation label associated with the property value but no animation in ClarityMotion', async done => {
+    it('does NOT run if there is an animation label associated with the property value but no animation in ClarityMotion', async () => {
       const testElement = await createTestElement(html`<test-animate-utils-element>ohai</test-animate-utils-element>`);
       const component = testElement.querySelector<TestAnimateUtilsElement>('test-animate-utils-element');
       component.everythingIsFine = false;
@@ -183,7 +178,6 @@ describe('Animation Helpers: ', () => {
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
       expect(didRun).toBe(false);
       removeTestElement(testElement);
-      done();
     });
   });
 

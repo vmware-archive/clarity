@@ -23,6 +23,7 @@ import {
   reverseAnimation,
   setAttributes,
   setPopupPosition,
+  state,
 } from '@cds/core/internal';
 import { html } from 'lit';
 import { query } from 'lit/decorators/query.js';
@@ -102,7 +103,7 @@ export class CdsInternalPopup extends CdsInternalStaticOverlay implements Animat
    * positioning logic may override your changes.
    */
   /** @private */
-  @property({ type: Boolean, reflect: true })
+  @state({ type: Boolean, reflect: true, attribute: 'responsive' })
   responsive = false;
 
   @event()

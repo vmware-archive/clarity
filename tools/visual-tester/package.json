@@ -33,6 +33,6 @@
     "mz": "^2.7.0",
     "resemblejs": "^3.2.5",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.4.2"
   }
 }

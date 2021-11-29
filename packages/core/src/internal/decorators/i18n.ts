@@ -9,7 +9,7 @@ import { GlobalStateService } from '../services/global.service.js';
 import { I18nService } from '../services/i18n.service.js';
 
 // Legacy TS Decorator
-function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
+function legacyI18n(descriptor: PropertyDescriptor, protoOrDescriptor: Record<string, unknown>, name: PropertyKey) {
   const desc = Object.defineProperty(protoOrDescriptor, name, descriptor);
   return property({ type: Object, attribute: 'cds-i18n' })(desc, name);
 }
@@ -30,7 +30,7 @@ function standardI18n(descriptor: PropertyDescriptor, element: { key: string }) 
  * This decorator stores the i18n strings in a private variable __i18n.
  * Due to TypeScript decorators being dynamic a type cast is needed here.
  */
-type I18nElement = HTMLElement & { __i18n: {}; __i18nKey: string };
+type I18nElement = HTMLElement & { __i18n: Record<string, unknown>; __i18nKey: string };
 
 /**
  * A property decorator which accesses a set of string values for use
@@ -80,7 +80,7 @@ export function i18n() {
       get(this: I18nElement) {
         return { ...(I18nService.keys as any)[this.__i18nKey], ...this.__i18n };
       },
-      set(this: I18nElement, value: {}) {
+      set(this: I18nElement, value: Record<string, unknown>) {
         (this.__i18nKey as any) = Object.keys(I18nService.keys).find(key => (I18nService.keys as any)[key] === value);
 
         if (!this.__i18nKey) {

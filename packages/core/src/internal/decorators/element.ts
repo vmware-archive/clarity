@@ -56,7 +56,8 @@ interface ClassElement {
   kind: 'field' | 'method';
   key: PropertyKey;
   placement: 'static' | 'prototype' | 'own';
-  initializer?: Function;
+  // TODO: type the function expected here; alt fix would be to tslint:disable-next-line: ban-types for Function type
+  initializer?: (...args: any[]) => any;
   extras?: ClassElement[];
   finisher?: <T>(classDef: Constructor<T>) => undefined | Constructor<T>;
   descriptor?: PropertyDescriptor;

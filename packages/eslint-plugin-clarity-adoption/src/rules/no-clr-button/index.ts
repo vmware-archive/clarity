@@ -40,7 +40,6 @@ export default createESLintRule({
     type: 'problem',
     docs: {
       description: 'Disallow use of clr-button',
-      category: 'Best Practices',
       recommended: 'warn',
     },
     fixable: 'code',

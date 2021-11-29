@@ -15,8 +15,8 @@
     "importHelpers": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2017",
-    "lib": ["es2018", "dom"],
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
     "typeRoots": ["node_modules/@types", "../../node_modules/@types"]
   },
   "angularCompilerOptions": {

@@ -47,6 +47,7 @@ import {
   CdsTimeDirective,
   CdsToggleGroupDirective,
   CdsToggleDirective,
+  CdsDropdownDirective,
   CdsModule,
 } from './public-api';
 
@@ -410,6 +411,26 @@ describe('CDS Control Action', () => {
   });
 });
 
+// describe('CDS Dropdown', () => {
+//   let fixture: ComponentFixture<any>;
+//   let instance: DropdownTestComponent;
+//
+//   beforeEach(function () {
+//     TestBed.configureTestingModule({
+//       imports: [CdsModule],
+//       declarations: [DropdownTestComponent],
+//     });
+//
+//     fixture = TestBed.createComponent(DropdownTestComponent);
+//     fixture.detectChanges();
+//     instance = fixture.componentInstance;
+//   });
+//
+//   it('cds-dropdown should be defined', () => {
+//     expect(instance.vcCdsDropdownDirective).toBeDefined();
+//   });
+// });
+
 describe('CDS Internal Control Group', () => {
   let fixture: ComponentFixture<any>;
   let instance: InternalControlGroupTestComponent;
@@ -670,25 +691,25 @@ describe('CDS Modal Header', () => {
   });
 });
 
-describe('CDS Modal', () => {
-  let fixture: ComponentFixture<any>;
-  let instance: ModalTestComponent;
-
-  beforeEach(function () {
-    TestBed.configureTestingModule({
-      imports: [CdsModule],
-      declarations: [ModalTestComponent],
-    });
-
-    fixture = TestBed.createComponent(ModalTestComponent);
-    fixture.detectChanges();
-    instance = fixture.componentInstance;
-  });
-
-  it('cds-modal should be defined', () => {
-    expect(instance.vcCdsModalDirective).toBeDefined();
-  });
-});
+// describe('CDS Modal', () => {
+//   let fixture: ComponentFixture<any>;
+//   let instance: ModalTestComponent;
+//
+//   beforeEach(function () {
+//     TestBed.configureTestingModule({
+//       imports: [CdsModule],
+//       declarations: [ModalTestComponent],
+//     });
+//
+//     fixture = TestBed.createComponent(ModalTestComponent);
+//     fixture.detectChanges();
+//     instance = fixture.componentInstance;
+//   });
+//
+//   it('cds-modal should be defined', () => {
+//     expect(instance.vcCdsModalDirective).toBeDefined();
+//   });
+// });
 
 describe('CDS Password', () => {
   let fixture: ComponentFixture<any>;
@@ -1168,6 +1189,21 @@ class FormGroupTestComponent {
 })
 class ControlTestComponent {
   @ViewChild(CdsControlDirective) vcCdsControlDirective: CdsControlDirective;
+}
+
+@Component({
+  template: `
+    <cds-dropdown aria-labelledby="basic-dropdown-title" id="demo-dropdown-basic-dd">
+      <div cds-layout="vertical gap:lg p:lg align:stretch">
+        <h3 cds-first-focus cds-text="section" id="basic-dropdown-title">Dropdown</h3>
+        <p cds-text="body">Any content can be placed inside a generic dropdown.</p>
+        <cds-button style="max-height: 36px" type="button">Close Dropdown</cds-button>
+      </div>
+    </cds-dropdown>
+  `,
+})
+class DropdownTestComponent {
+  @ViewChild(CdsDropdownDirective) vcCdsDropdownDirective: CdsDropdownDirective;
 }
 
 @Component({

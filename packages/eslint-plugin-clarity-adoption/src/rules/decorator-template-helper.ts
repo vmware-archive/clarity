@@ -1,6 +1,5 @@
 import { TSESTree } from '@typescript-eslint/experimental-utils';
 import { RuleContext } from '@typescript-eslint/experimental-utils/dist/ts-eslint';
-import { SourceLocation } from '@typescript-eslint/types/dist/ts-estree';
 import { JSDOM } from 'jsdom';
 
 export interface DomElementLocation {
@@ -65,7 +64,7 @@ const getDecoratorPropertyValue = (
   return property.value as any;
 };
 
-function calculateLocation(templateContent: TSESTree.BaseNode, elementLocation: DomElementLocation): SourceLocation {
+function calculateLocation(templateContent: TSESTree.BaseNode, elementLocation: DomElementLocation) {
   const start = {
     line: elementLocation.startLine + templateContent.loc.start.line - 1,
     column: elementLocation.startCol - 1,

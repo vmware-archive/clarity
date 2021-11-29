@@ -15,7 +15,6 @@ export default createESLintRule({
     type: 'problem',
     docs: {
       description: 'Disallow use of clrRadio',
-      category: 'Best Practices',
       recommended: 'warn',
     },
     fixable: 'code',

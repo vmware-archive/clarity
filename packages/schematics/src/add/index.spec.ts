@@ -25,7 +25,7 @@ describe('ng add @clr/angular', () => {
     }
   });
 
-  describe('in a new Angular workspace', async () => {
+  describe('in a new Angular workspace', () => {
     let runner: SchematicTestRunner;
     let workspaceTree: UnitTestTree;
 

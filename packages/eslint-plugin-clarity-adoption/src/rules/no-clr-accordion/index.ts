@@ -1,5 +1,5 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
-import { HTMLElement } from '../../types/index';
+import { HTMLElement } from '../../types';
 import { lintDecoratorTemplate } from '../decorator-template-helper';
 
 export const createESLintRule = ESLintUtils.RuleCreator(() => ``);
@@ -13,7 +13,6 @@ export default createESLintRule({
     type: 'problem',
     docs: {
       description: 'Disallow use of clr-accordion',
-      category: 'Best Practices',
       recommended: 'warn',
     },
     fixable: 'code',

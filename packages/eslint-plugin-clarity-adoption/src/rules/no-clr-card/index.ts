@@ -17,7 +17,6 @@ export default createESLintRule({
     type: 'problem',
     docs: {
       description: 'Disallow use of clr-card',
-      category: 'Best Practices',
       recommended: 'warn',
     },
     fixable: 'code',

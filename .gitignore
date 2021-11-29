@@ -30,7 +30,6 @@ packages/angular/projects/cds-angular/*
 /.ng_build
 src/clr-angular/.ng_build
 src/clr-angular/.ng_pkg_build
-
 /reports
 
 # dependencies
@@ -65,6 +64,7 @@ testem.log
 sauceconnect.log
 .env
 *.tsbuildinfo
+.angular
 
 # e2e
 /e2e/*.js

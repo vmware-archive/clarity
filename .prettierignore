@@ -10,6 +10,7 @@ golden/
 **/web_modules/**
 .cache
 .netlify
+packages/angular/.angular/**
 packages/core/**/*.css.ts
 packages/core/custom-elements.json
 packages/core/src/styles/tokens/generated/**

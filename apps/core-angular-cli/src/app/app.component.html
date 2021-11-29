@@ -5,6 +5,10 @@
     </cds-alert>
   </cds-alert-group>
 
+  <cds-button (click)="modalHidden = !modalHidden">Open modal</cds-button>
+
+  <cds-modal [hidden]="modalHidden"></cds-modal>
+
   <cds-button status="success" (click)="show = true">Open Alert</cds-button>
 
   <cds-tag status="success" readonly>Should not be focusable, readonly</cds-tag>
@@ -38,7 +42,7 @@
       <cds-form-group layout="horizontal-inline">
         <cds-input>
           <label>name</label>
-          <input placeholder="placeholder text" formControlName="name" />
+          <input placeholder="placeholder text" formControlName="name"/>
           <cds-control-message status="error" *ngIf="nameInvalid">required</cds-control-message>
         </cds-input>
         <cds-select>
@@ -53,7 +57,7 @@
 
         <cds-datalist>
           <label>datalist label</label>
-          <input placeholder="placeholder text" formControlName="datalist" />
+          <input placeholder="placeholder text" formControlName="datalist"/>
           <datalist>
             <option value="Item 1"></option>
             <option value="Item 2"></option>
@@ -63,7 +67,7 @@
 
         <cds-password>
           <label>password label</label>
-          <input type="password" placeholder="password" formControlName="password" />
+          <input type="password" placeholder="password" formControlName="password"/>
           <cds-control-message status="error" *ngIf="passwordRequired">required</cds-control-message>
           <cds-control-message status="error" *ngIf="passwordMinLength">
             must be at least 6 characters
@@ -72,12 +76,12 @@
 
         <cds-search>
           <label>search label</label>
-          <input type="search" placeholder="search" formControlName="search" />
+          <input type="search" placeholder="search" formControlName="search"/>
         </cds-search>
 
         <cds-time>
           <label>time label</label>
-          <input type="time" min="09:00" max="18:00" value="11:00" formControlName="time" />
+          <input type="time" min="09:00" max="18:00" value="11:00" formControlName="time"/>
         </cds-time>
 
         <cds-input-group>
@@ -91,7 +95,7 @@
           </cds-select>
           <cds-input>
             <label>Host Port</label>
-            <input placeholder="localhost:8000" type="url" formControlName="inputGroupPort" />
+            <input placeholder="localhost:8000" type="url" formControlName="inputGroupPort"/>
             <cds-control-action action="suffix" readonly aria-label="host status stable" title="host status stable">
               <cds-icon shape="cloud" badge="success"></cds-icon>
             </cds-control-action>
@@ -101,7 +105,7 @@
 
         <cds-range>
           <label>range label</label>
-          <input type="range" min="0" max="100" value="75" step="5" formControlName="range" />
+          <input type="range" min="0" max="100" value="75" step="5" formControlName="range"/>
           <cds-control-message>CPU Utilization</cds-control-message>
         </cds-range>
 
@@ -109,17 +113,17 @@
           <label>checkbox group label</label>
           <cds-checkbox>
             <label>checkbox 1</label>
-            <input type="checkbox" formControlName="checkboxGroup1" />
+            <input type="checkbox" formControlName="checkboxGroup1"/>
           </cds-checkbox>
 
           <cds-checkbox>
             <label>checkbox 2</label>
-            <input type="checkbox" formControlName="checkboxGroup2" />
+            <input type="checkbox" formControlName="checkboxGroup2"/>
           </cds-checkbox>
 
           <cds-checkbox>
             <label>checkbox 3</label>
-            <input type="checkbox" formControlName="checkboxGroup3" />
+            <input type="checkbox" formControlName="checkboxGroup3"/>
           </cds-checkbox>
         </cds-checkbox-group>
 
@@ -127,15 +131,15 @@
           <label>radio group label</label>
           <cds-radio>
             <label>North America</label>
-            <input type="radio" value="north-america" formControlName="radioGroup" />
+            <input type="radio" value="north-america" formControlName="radioGroup"/>
           </cds-radio>
           <cds-radio>
             <label>South America</label>
-            <input type="radio" value="south-america" formControlName="radioGroup" />
+            <input type="radio" value="south-america" formControlName="radioGroup"/>
           </cds-radio>
           <cds-radio>
             <label>Europe</label>
-            <input type="radio" value="europe" formControlName="radioGroup" />
+            <input type="radio" value="europe" formControlName="radioGroup"/>
           </cds-radio>
         </cds-radio-group>
 
@@ -143,17 +147,17 @@
           <label>toggle group</label>
           <cds-toggle>
             <label>toggle 1</label>
-            <input type="checkbox" formControlName="toggle1" />
+            <input type="checkbox" formControlName="toggle1"/>
           </cds-toggle>
           <cds-toggle>
             <label>toggle 2</label>
-            <input type="checkbox" formControlName="toggle2" />
+            <input type="checkbox" formControlName="toggle2"/>
           </cds-toggle>
         </cds-toggle-group>
 
         <cds-file>
           <label>file label</label>
-          <input type="file" multiple formControlName="file" />
+          <input type="file" multiple formControlName="file"/>
         </cds-file>
 
         <cds-select>
@@ -177,7 +181,7 @@
     </form>
 
     <pre cds-layout="col@md:4"
-      >{{ formValue | async | json }}
+    >{{ formValue | async | json }}
     </pre>
   </section>
 </main>

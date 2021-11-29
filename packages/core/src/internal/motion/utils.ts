@@ -355,12 +355,12 @@ export function sizeDimensionKeyframes(
   }
 
   return animationKeyframes.map((kf: Keyframe) => {
-    if (kf?.hasOwnProperty('height') && isPrefixedBy(kf?.height?.toString() || '', 'from:')) {
+    if (Object.prototype.hasOwnProperty.call(kf, 'height') && isPrefixedBy(kf?.height?.toString() || '', 'from:')) {
       const selector = removePrefix(kf?.height?.toString() || '', 'from:');
       const measureTarget = queryChildFromLightOrShadowDom(hostEl, selector) || null;
       kf.height = !measureTarget ? 'auto' : measureTarget.getBoundingClientRect().height + 'px';
     }
-    if (kf?.hasOwnProperty('width') && isPrefixedBy(kf?.width?.toString() || '', 'from:')) {
+    if (Object.prototype.hasOwnProperty.call(kf, 'width') && isPrefixedBy(kf?.width?.toString() || '', 'from:')) {
       const selector = removePrefix(kf?.width?.toString() || '', 'from:');
       const measureTarget = queryChildFromLightOrShadowDom(hostEl, selector) || null;
       kf.width = !measureTarget ? 'auto' : measureTarget.getBoundingClientRect().width + 'px';

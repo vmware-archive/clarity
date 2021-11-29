@@ -20,7 +20,5 @@ export function getTypeScriptSourceFile(host: Tree, path: string): ts.SourceFile
   }
 
   const content = buffer.toString();
-  const sourceFile = ts.createSourceFile(path, content, ts.ScriptTarget.Latest, true);
-
-  return sourceFile;
+  return ts.createSourceFile(path, content, ts.ScriptTarget.Latest, true);
 }

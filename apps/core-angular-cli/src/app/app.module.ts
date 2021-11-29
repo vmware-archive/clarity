@@ -24,6 +24,7 @@ import { CdsToggleModule } from '@cds/angular/toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CdsModalModule } from '@cds/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,9 +50,10 @@ import { AppComponent } from './app.component';
     CdsTextareaModule,
     CdsTimeModule,
     CdsToggleModule,
+    CdsModalModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor() {

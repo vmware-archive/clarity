@@ -12,6 +12,8 @@ export class AppComponent {
   show = false;
   panel1Expanded = true;
 
+  modalHidden = true;
+
   form: FormGroup;
   formValue: Observable<{}>;
 

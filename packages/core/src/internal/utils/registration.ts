@@ -13,7 +13,7 @@ import { applyCSSGapShim } from '../base/css-gap.base.js';
 
 const addElementToRegistry = curryN(
   3,
-  (tagName: string, elementClass: any, registry: { define: (a: string, b: any) => {} }) => {
+  (tagName: string, elementClass: any, registry: { define: (a: string, b: any) => Record<string, unknown> }) => {
     if (elementExists(tagName) && !isStorybook()) {
       LogService.warn(`${tagName} has already been registered`);
     } else {

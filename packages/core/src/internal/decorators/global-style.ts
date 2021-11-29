@@ -7,7 +7,7 @@
 import { CSSResult } from 'lit';
 
 // Legacy TS Decorator
-function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: {}, name: PropertyKey) {
+function legacyEvent(descriptor: PropertyDescriptor, protoOrDescriptor: Record<string, unknown>, name: PropertyKey) {
   Object.defineProperty(protoOrDescriptor, name, descriptor);
 }
 

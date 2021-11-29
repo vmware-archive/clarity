@@ -14,6 +14,7 @@ import { runPropertyAnimations } from '../motion/utils.js';
 
 // https://www.typescriptlang.org/docs/handbook/decorators.html#class-decorators
 export function animate(config: PropertyDrivenAnimation) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   return function _DecoratorName<T extends { new (...args: any[]): {} }>(constr: T) {
     const _constr = constr as any;
     return (class extends _constr {

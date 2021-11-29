@@ -10,7 +10,7 @@ import { LogService, notProductionEnvironment } from '../services/log.service.js
 // Slot Query decorators are similar to the query decorator in lit.
 // Instead of querying the component template they query the content slot of the component.
 
-const legacyQuery = (descriptor: PropertyDescriptor, proto: {}, name: PropertyKey) => {
+const legacyQuery = (descriptor: PropertyDescriptor, proto: Record<string, unknown>, name: PropertyKey) => {
   Object.defineProperty(proto, name, descriptor);
 };
 
@@ -26,8 +26,8 @@ export interface QuerySlotConfig {
   requiredMessage?: string;
   /** auto assign found element to a particular slot */
   assign?: string;
-  /* 
-    A callback function to determine whether to exempt it from required; 
+  /*
+    A callback function to determine whether to exempt it from required;
     @param {self} refers to the component element itself here.
   */
   exemptOn?: (self: any) => boolean;
@@ -40,7 +40,7 @@ export interface QuerySlotConfig {
  * @ExportDecoratedItems
  */
 export function querySlot(selector: string, config?: QuerySlotConfig) {
-  return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
+  return (protoOrDescriptor: Record<string, unknown> | any, name?: PropertyKey): any => {
     const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
     function firstUpdated(this: any): void {
@@ -78,7 +78,7 @@ export function querySlot(selector: string, config?: QuerySlotConfig) {
       configurable: true,
     };
     return name !== undefined
-      ? legacyQuery(descriptor, protoOrDescriptor as {}, name)
+      ? legacyQuery(descriptor, protoOrDescriptor as Record<string, unknown>, name)
       : standardQuery(descriptor, protoOrDescriptor as any);
   };
 }
@@ -90,7 +90,7 @@ export function querySlot(selector: string, config?: QuerySlotConfig) {
  * @ExportDecoratedItems
  */
 export function querySlotAll(selector: string, config?: QuerySlotConfig) {
-  return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
+  return (protoOrDescriptor: Record<string, unknown> | any, name?: PropertyKey): any => {
     const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
     function firstUpdated(this: any, props: Map<string, any>): void {
@@ -115,7 +115,7 @@ export function querySlotAll(selector: string, config?: QuerySlotConfig) {
       configurable: true,
     };
     return name !== undefined
-      ? legacyQuery(descriptor, protoOrDescriptor as {}, name)
+      ? legacyQuery(descriptor, protoOrDescriptor as Record<string, unknown>, name)
       : standardQuery(descriptor, protoOrDescriptor as any);
   };
 }

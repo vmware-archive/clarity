@@ -7,7 +7,7 @@
 import { LitElement } from 'lit';
 import { createId } from './../utils/identity.js';
 
-const legacyId = (descriptor: PropertyDescriptor, proto: {}, name: PropertyKey) => {
+const legacyId = (descriptor: PropertyDescriptor, proto: Record<string, unknown>, name: PropertyKey) => {
   Object.defineProperty(proto, name, descriptor);
 };
 
@@ -19,7 +19,7 @@ const standardId = (descriptor: PropertyDescriptor, element: any) => ({
 });
 
 export function id() {
-  return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
+  return (protoOrDescriptor: Record<string, unknown> | any, name?: PropertyKey): any => {
     const descriptor = {
       get(this: LitElement) {
         const propertyName = name !== undefined ? name : protoOrDescriptor.key;
@@ -33,7 +33,7 @@ export function id() {
       configurable: true,
     };
     return name !== undefined
-      ? legacyId(descriptor, protoOrDescriptor as {}, name)
+      ? legacyId(descriptor, protoOrDescriptor as Record<string, unknown>, name)
       : standardId(descriptor, protoOrDescriptor as any);
   };
 }

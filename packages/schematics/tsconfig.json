@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "../../dist/clr-angular/schematics",
     "baseUrl": "tsconfig",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2020", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmitOnError": true,
@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es6",
+    "target": "es2020",
     "types": ["jasmine", "node"]
   },
   "include": ["src/**/*"],

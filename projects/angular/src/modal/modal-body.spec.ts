@@ -50,17 +50,38 @@ describe('ClrModalBody Directive', () => {
 
     expect(spy.calls.count()).toEqual(0);
   });
+
+  it('remove tabindex from modal body when content has no scrollbar', () => {
+    fixture.componentInstance.testButton.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(modalBodyEl.getAttribute('tabindex')).toBeNull();
+  });
 });
 
 @Component({
   template: `
     <div class="modal-body" #testElement>
-      <label #testLabel>test label</label>
+      <label #testLabel *ngIf="hasChildren">test label</label>
+      <button #testButton (click)="hasChildren = false" *ngIf="hasChildren">Remove Content</button>
     </div>
+    <style>
+      div.modal-body {
+        height: 50px;
+      }
+
+      label {
+        line-height: 100px;
+      }
+    </style>
   `,
 })
 class TestComponent {
   @ViewChild('testLabel') testLabel: ElementRef<HTMLElement>;
 
+  @ViewChild('testButton') testButton: ElementRef<HTMLElement>;
+
   @ViewChild('testElement') testElement: ElementRef<HTMLElement>;
+
+  hasChildren = true;
 }

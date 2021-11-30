@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Directive, ElementRef, NgZone, OnDestroy, Renderer2 } from '@angular/core';
+import { AfterViewChecked, Directive, ElementRef, NgZone, OnDestroy, Renderer2 } from '@angular/core';
 
 /**
  * Allows modal overflow area to be scrollable via keyboard.
@@ -13,18 +13,21 @@ import { Directive, ElementRef, NgZone, OnDestroy, Renderer2 } from '@angular/co
  * the overflow scroll being focused.
  */
 @Directive({ selector: '.modal-body' })
-export class ClrModalBody implements OnDestroy {
+export class ClrModalBody implements AfterViewChecked, OnDestroy {
   private tabindex = '0';
   private unlisteners: VoidFunction[] = [];
 
-  constructor(ngZone: NgZone, renderer: Renderer2, host: ElementRef<HTMLElement>) {
-    renderer.setAttribute(host.nativeElement, 'tabindex', this.tabindex);
-
+  constructor(ngZone: NgZone, private renderer: Renderer2, private host: ElementRef<HTMLElement>) {
     ngZone.runOutsideAngular(() => {
       this.unlisteners.push(
         renderer.listen(host.nativeElement, 'mouseup', () => {
-          // set the tabindex binding back when click is completed with mouseup
-          renderer.setAttribute(host.nativeElement, 'tabindex', this.tabindex);
+          const { clientHeight, scrollHeight, clientWidth, scrollWidth } = host.nativeElement;
+
+          // set tabindex if only content is scrollable
+          if (clientHeight < scrollHeight || clientWidth < scrollWidth) {
+            // set the tabindex binding back when click is completed with mouseup
+            renderer.setAttribute(host.nativeElement, 'tabindex', this.tabindex);
+          }
         }),
         renderer.listen(host.nativeElement, 'mousedown', () => {
           // tabindex = 0 binding should be removed
@@ -33,6 +36,17 @@ export class ClrModalBody implements OnDestroy {
         })
       );
     });
+  }
+
+  ngAfterViewChecked(): void {
+    const { clientHeight, scrollHeight, clientWidth, scrollWidth } = this.host.nativeElement;
+
+    // set tabindex if only content is scrollable
+    if (clientHeight < scrollHeight || clientWidth < scrollWidth) {
+      this.renderer.setAttribute(this.host.nativeElement, 'tabindex', this.tabindex);
+    } else {
+      this.renderer.removeAttribute(this.host.nativeElement, 'tabindex');
+    }
   }
 
   ngOnDestroy(): void {

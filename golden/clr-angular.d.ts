@@ -1494,8 +1494,9 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrModal, never>;
 }
 
-export declare class ClrModalBody implements OnDestroy {
+export declare class ClrModalBody implements AfterViewChecked, OnDestroy {
     constructor(ngZone: NgZone, renderer: Renderer2, host: ElementRef<HTMLElement>);
+    ngAfterViewChecked(): void;
     ngOnDestroy(): void;
     static ɵdir: i0.ɵɵDirectiveDeclaration<ClrModalBody, ".modal-body", never, {}, {}, never>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrModalBody, never>;

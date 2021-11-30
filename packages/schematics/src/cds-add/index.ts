@@ -82,7 +82,6 @@ function addAssetsToConfigFile(host: Tree, context: SchematicContext): void {
     const assets = [
       'node_modules/modern-normalize.css/modern-normalize.css',
       'node_modules/@cds/core/global.min.css',
-      'node_modules/@cds/core/styles/module.shims.min.css',
       'node_modules/@cds/city/css/bundles/default.min.css',
     ];
 

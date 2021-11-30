@@ -36,7 +36,6 @@ const config = {
     { input: './src/styles/global.scss', output: './dist/core/global.css' },
     './src/styles/module.layout.scss',
     './src/styles/module.reset.scss',
-    './src/styles/module.shims.scss',
     './src/styles/module.typography.scss',
     './src/styles/theme.dark.scss',
     './src/styles/theme.low-motion.scss',

@@ -9,7 +9,6 @@ import { elementExists, existsInWindow, isBrowser } from './exists.js';
 import { CDSState, setupCDSGlobal } from './global.js';
 import { isStorybook } from './framework.js';
 import { LogService } from '../services/log.service.js';
-import { applyCSSGapShim } from '../base/css-gap.base.js';
 
 const addElementToRegistry = curryN(
   3,
@@ -17,7 +16,7 @@ const addElementToRegistry = curryN(
     if (elementExists(tagName) && !isStorybook()) {
       LogService.warn(`${tagName} has already been registered`);
     } else {
-      registry.define(tagName, applyCSSGapShim(elementClass));
+      registry.define(tagName, elementClass);
       setupCDSGlobal();
 
       if (window && !Object.keys(window.CDS._state.elementRegistry).some(i => i === tagName)) {

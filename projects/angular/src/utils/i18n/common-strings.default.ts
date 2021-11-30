@@ -52,7 +52,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   datagridFilterAriaLabel: 'Filter dialog',
   datagridFilterDialogAriaLabel: 'Toggle column filter',
   columnSeparatorAriaLabel: 'Column resize handle',
-  columnSeparatorDescription: 'Not necessary to use this button',
+  columnSeparatorDescription: 'Use left or right key to resize the column',
   // Alert
   alertCloseButtonAriaLabel: 'Close alert',
   // Date Picker

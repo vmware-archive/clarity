@@ -27,10 +27,6 @@
   color: var(--color);
 }
 
-:host([_nfg]) {
-  overflow: hidden;
-}
-
 :host(:hover) {
   --color: #{$cds-alias-object-interaction-color-hover};
   --background: #{$cds-alias-object-interaction-background-hover};

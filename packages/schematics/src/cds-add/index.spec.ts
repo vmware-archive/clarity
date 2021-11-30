@@ -117,7 +117,6 @@ describe('ng add @cds/angular', () => {
 
       expect(styles.includes('node_modules/modern-normalize.css/modern-normalize.css')).toBeTruthy();
       expect(styles.includes('node_modules/@cds/core/global.min.css')).toBeTruthy();
-      expect(styles.includes('node_modules/@cds/core/styles/module.shims.min.css')).toBeTruthy();
       expect(styles.includes('node_modules/@cds/city/css/bundles/default.min.css')).toBeTruthy();
     });
 

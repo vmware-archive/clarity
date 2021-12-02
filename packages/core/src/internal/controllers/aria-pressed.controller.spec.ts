@@ -1,17 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaPressedController, property } from '@cds/core/internal';
+import { customElement, property, ariaPressed } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaPressed<AriaPressedControllerTestElement>()
 @customElement('aria-pressed-controller-test-element')
 class AriaPressedControllerTestElement extends LitElement {
   @property({ type: Boolean }) pressed: boolean;
-  disabled = false;
-  readonly = false;
-  ariaPressedController = new AriaPressedController(this);
-
-  render() {
-    return html`...`;
-  }
 }
 
 describe('aria-pressed.controller', () => {

@@ -59,12 +59,16 @@ export function renderBefore(value: unknown, container: HTMLElement | DocumentFr
   const el = document.createElement('div');
   container.prepend(el);
   render(value, container, { renderBefore: el, ...options });
+  const rendered = el.previousSibling;
   el.remove();
+  return rendered;
 }
 
 export function renderAfter(value: unknown, container: HTMLElement | DocumentFragment, options?: RenderOptions) {
   const el = document.createElement('div');
   container.appendChild(el);
   render(value, container, { renderBefore: el, ...options });
+  const rendered = el.previousSibling;
   el.remove();
+  return rendered;
 }

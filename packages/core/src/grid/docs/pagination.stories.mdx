@@ -1,4 +1,4 @@
-import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Data Grid (Preview)/Pagination" />
 
@@ -11,8 +11,10 @@ import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/
   </cds-alert>
 </cds-alert-group>
 
-Data Grid pagination uses the stand alone `cds-pagination` component. Use the `cds-pagination-button`
-to listen for click events to determine the rows that should be rendered for your Grid's current page.
+The `cds-grid-pagination` component provides a standard pagination UI to the datagrid footer.
+It provides stateless properties on setting the active pagination state and events like `pageChange` and `pageSizeChage`.
+If you want a more customizable pagination UI you can swap `cds-grid-pagination` for the stand alone
+[cds-pagination](./?path=/story/components-pagination--page) component.
 
 ```html
 <cds-grid>
@@ -65,24 +67,24 @@ in place of `cds-grid-pagination`.
 
 ### cds-grid-pagination
 
-<Props of={'cds-grid-pagination'} />
+<ArgsTable of={'cds-grid-pagination'} />
 
 ### cds-grid
 
-<Props of={'cds-grid'} />
+<ArgsTable of={'cds-grid'} />
 
 ### cds-grid-column
 
-<Props of={'cds-grid-column'} />
+<ArgsTable of={'cds-grid-column'} />
 
 ### cds-grid-row
 
-<Props of={'cds-grid-row'} />
+<ArgsTable of={'cds-grid-row'} />
 
 ### cds-grid-cell
 
-<Props of={'cds-grid-cell'} />
+<ArgsTable of={'cds-grid-cell'} />
 
 ### cds-grid-footer
 
-<Props of={'cds-grid-footer'} />
+<ArgsTable of={'cds-grid-footer'} />

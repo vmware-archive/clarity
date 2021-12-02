@@ -1,20 +1,21 @@
 import { html, LitElement, PropertyValues } from 'lit';
 import {
-  AriaModalController,
-  AriaPopupController,
   baseStyles,
   ClosableController,
-  InlineFocusTrapController,
   i18n,
   I18nService,
   property,
   ResponsiveController,
   state,
-  FirstFocusController,
   listenForAttributeChange,
   propUpdated,
   renderAfter,
-  LayerController,
+  ariaModal,
+  firstFocus,
+  focusTrap,
+  ariaPopup,
+  layer,
+  closable,
 } from '@cds/core/internal';
 import { CdsGrid } from '../grid/grid.element.js';
 import styles from './grid-detail.element.scss';
@@ -37,6 +38,13 @@ import styles from './grid-detail.element.scss';
  * @cssprop --inset-inline-end
  * @cssprop --backdrop-background
  */
+
+@layer<CdsGridDetail>()
+@closable<CdsGridDetail>()
+@ariaModal<CdsGridDetail>()
+@ariaPopup<CdsGridDetail>()
+@focusTrap<CdsGridDetail>()
+@firstFocus<CdsGridDetail>()
 export class CdsGridDetail extends LitElement {
   @property({ type: String }) anchor: HTMLElement | string | null;
 
@@ -46,23 +54,13 @@ export class CdsGridDetail extends LitElement {
 
   @state({ type: String, reflect: true }) protected overlay: '' | 'full' = '';
 
-  protected ariaModalController = new AriaModalController(this);
-
-  protected ariaPopupController = new AriaPopupController(this);
-
-  protected closableController = new ClosableController(this);
-
-  protected inlineFocusTrapController = new InlineFocusTrapController(this);
-
-  protected firstFocusController = new FirstFocusController(this);
-
-  protected layerController = new LayerController(this);
+  protected closableController: ClosableController<this>;
 
   protected responsiveController = new ResponsiveController(this, { element: this.parentElement });
 
-  #observer: MutationObserver;
+  private observer: MutationObserver;
 
-  get #grid() {
+  private get grid() {
     return this.parentElement as CdsGrid;
   }
 
@@ -74,7 +72,7 @@ export class CdsGridDetail extends LitElement {
 
   static styles = [baseStyles, styles];
 
-  get #closeButton() {
+  private get closeButton() {
     // safari https://bugs.webkit.org/show_bug.cgi?id=174667
     return html` <cds-action
       @click=${() => this.closableController.close()}
@@ -84,7 +82,7 @@ export class CdsGridDetail extends LitElement {
     ></cds-action>`;
   }
 
-  get #triggerRow() {
+  private get triggerRow() {
     return this.trigger?.closest('cds-grid-row');
   }
 
@@ -100,12 +98,12 @@ export class CdsGridDetail extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    renderAfter(this.#closeButton, this);
+    renderAfter(this.closeButton, this);
     this.addEventListener('cdsResizeChange', (e: any) => (this.overlay = e.detail.width > 500 ? '' : 'full'));
-    this.#observer = listenForAttributeChange(this, 'hidden', (hidden: string) => {
-      this.#grid.scrollLock = !hidden;
-      this.#setDetailWidthAlignment();
-      this.#toggleAnchorHover();
+    this.observer = listenForAttributeChange(this, 'hidden', (hidden: string) => {
+      this.grid.scrollLock = !hidden;
+      this.setDetailWidthAlignment();
+      this.toggleAnchorHover();
     });
   }
 
@@ -114,36 +112,36 @@ export class CdsGridDetail extends LitElement {
     await this.updateComplete;
 
     if (propUpdated(this, props, 'anchor')) {
-      this.#setAnchorPointer(props.get('anchor') as HTMLElement);
+      this.setAnchorPointer(props.get('anchor') as HTMLElement);
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.#observer.disconnect();
-    this.#triggerRow?.removeAttribute('_detail-row');
+    this.observer.disconnect();
+    this.triggerRow?.removeAttribute('_detail-row');
   }
 
-  #toggleAnchorHover() {
+  private toggleAnchorHover() {
     if (this.hidden) {
-      this.#triggerRow?.removeAttribute('_detail-row');
+      this.triggerRow?.removeAttribute('_detail-row');
     } else {
-      this.#triggerRow?.setAttribute('_detail-row', '');
+      this.triggerRow?.setAttribute('_detail-row', '');
     }
   }
 
-  #setAnchorPointer(previousAnchor?: HTMLElement) {
+  private setAnchorPointer(previousAnchor?: HTMLElement) {
     if (previousAnchor?.closest) {
       previousAnchor?.closest('cds-grid-row')?.removeAttribute('_detail-row');
     }
 
-    this.#toggleAnchorHover();
+    this.toggleAnchorHover();
     const top = this.trigger?.getBoundingClientRect()?.top - this?.getBoundingClientRect().top - 8;
     this.style.setProperty('--caret-top', `${top}px`);
   }
 
-  #setDetailWidthAlignment() {
-    const rowheader = Array.from(this.#triggerRow?.cells ?? []).find((c: any) => c.role === 'rowheader') as HTMLElement;
+  private setDetailWidthAlignment() {
+    const rowheader = Array.from(this.triggerRow?.cells ?? []).find((c: any) => c.role === 'rowheader') as HTMLElement;
     if (rowheader) {
       const cellRect = rowheader.getBoundingClientRect();
       const gridRect = this.parentElement.getBoundingClientRect();

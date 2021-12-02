@@ -1,4 +1,4 @@
-import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
 <Meta title="Data Grid (Preview)/Cell Editable" />
 
@@ -11,9 +11,8 @@ import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/
   </cds-alert>
 </cds-alert-group>
 
-Cell editing can be created by leveraging the `cds-input` form component. Using `cds-action`
-toggle the visibility of the `cds-input` to enable the user to edit the input. Once the `enter` key is pressed
-re-focus back to the `cds-action`. Any cell not editable should have the [`aria-readonly="true"` attribute](https://www.w3.org/TR/wai-aria-1.1/#aria-readonly).
+Cell editing can be created by leveraging the `cds-input` to enable the user to edit the cell. Once the `enter` key is pressed
+re-focus back to the `cds-grid-cell`. Any cell not editable should have the [`aria-readonly="true"` attribute](https://www.w3.org/TR/wai-aria-1.1/#aria-readonly).
 If no cells are editable the `aria-readonly="true"` attribute can be omitted all together.
 
 <Story id="stories-grid--cell-editable" />
@@ -26,36 +25,43 @@ If no cells are editable the `aria-readonly="true"` attribute can be omitted all
   <cds-grid-row>
     <cds-grid-cell aria-readonly="true">vm-host-001</cds-grid-cell>
     <cds-grid-cell>
-      <cds-input hidden>
+      <cds-input>
         <input type="text" value="1000" aria-label="host about" />
       </cds-input>
-      <cds-action shape="pencil" aria-label="edit host about"></cds-action>
-      <span>about notes...</span>
     </cds-grid-cell>
-    <cds-grid-cell aria-readonly="true">25%</p></cds-grid-cell>
-    <cds-grid-cell aria-readonly="true">50%</p></cds-grid-cell>
+    <cds-grid-cell aria-readonly="true">
+      <cds-input>
+        <input type="number" value="25" aria-label="CPU" readonly />
+      </cds-input>
+    </cds-grid-cell>
   </cds-grid-row>
 </cds-grid>
 ```
+
+## Avanced CSV
+
+Combining editable cells, file upload input and simple utilitiy functions you can create an editable import/export CSV datagrid.
+
+<Story id="stories-grid--csv" />
 
 ## API
 
 ### cds-grid
 
-<Props of={'cds-grid'} />
+<ArgsTable of={'cds-grid'} />
 
 ### cds-grid-column
 
-<Props of={'cds-grid-column'} />
+<ArgsTable of={'cds-grid-column'} />
 
 ### cds-grid-row
 
-<Props of={'cds-grid-row'} />
+<ArgsTable of={'cds-grid-row'} />
 
 ### cds-grid-cell
 
-<Props of={'cds-grid-cell'} />
+<ArgsTable of={'cds-grid-cell'} />
 
 ### cds-grid-footer
 
-<Props of={'cds-grid-footer'} />
+<ArgsTable of={'cds-grid-footer'} />

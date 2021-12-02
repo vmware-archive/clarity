@@ -17,6 +17,20 @@ export interface AriaGrid {
   placeholderCell?: HTMLElement;
 }
 
+export type AriaGridConfig = { update: 'mutation' | 'slot' };
+
+export function ariaGrid<T extends ReactiveElement & AriaGrid>(
+  config: AriaGridConfig = { update: 'slot' }
+): ClassDecorator {
+  return (target: any) => {
+    target.addInitializer((instance: T & { ariaGridController?: AriaGridController<T> }) => {
+      if (!instance.ariaGridController) {
+        instance.ariaGridController = new AriaGridController(instance, config);
+      }
+    });
+  };
+}
+
 /**
  * Provides all nessesary role/aria-* attributes to create a vaild aria grid
  * https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html
@@ -26,7 +40,7 @@ export class AriaGridController<T extends ReactiveElement & AriaGrid> implements
 
   private grid: AriaGrid;
 
-  constructor(private host: T, private config: { update: 'mutation' | 'slot' } = { update: 'slot' }) {
+  constructor(private host: T, private config: AriaGridConfig = { update: 'slot' }) {
     host.addController(this);
   }
 

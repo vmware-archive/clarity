@@ -5,9 +5,21 @@ import { TriggerRefController } from './trigger-ref.controller.js';
 
 export type CloseChangeType = 'focusout' | 'backdrop-click' | 'escape-keypress' | 'close-button-click' | 'custom';
 
+export type Closable = ReactiveElement & { trigger?: HTMLElement };
+
 export interface ClosableControllerConfig {
   escape?: boolean;
   focusout?: boolean;
+}
+
+export function closable<T extends Closable>(config?: ClosableControllerConfig): ClassDecorator {
+  return (target: any) => {
+    target.addInitializer((instance: T & { closableController?: ClosableController<T> }) => {
+      if (!instance.closableController) {
+        instance.closableController = new ClosableController(instance, config);
+      }
+    });
+  };
 }
 
 /**
@@ -15,7 +27,7 @@ export interface ClosableControllerConfig {
  * - close on escape
  * - focus to trigger if available
  */
-export class ClosableController<T extends ReactiveElement & { trigger?: HTMLElement }> implements ReactiveController {
+export class ClosableController<T extends Closable> implements ReactiveController {
   private observer: MutationObserver;
 
   private trigger: TriggerRefController<T>;

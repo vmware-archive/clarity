@@ -7,16 +7,15 @@
 import { html, LitElement } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import { queryAll } from 'lit/decorators/query-all.js';
-import { customElement, KeyNavigationGridController } from '@cds/core/internal';
+import { customElement, keyNavigationGrid } from '@cds/core/internal';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 
+@keyNavigationGrid<GridKeyNavigationControllerTestElement>()
 @customElement('grid-key-navigation-controller-test-element')
 class GridKeyNavigationControllerTestElement extends LitElement {
   @query('section') rowGroup: HTMLElement;
   @queryAll('section > div') rows: NodeListOf<HTMLElement>;
   @queryAll('section > div > *') cells: NodeListOf<HTMLElement>;
-
-  keyNavigationGridController = new KeyNavigationGridController(this);
 
   render() {
     return html`

@@ -131,6 +131,6 @@
     "web-component-analyzer": "1.2.0-next.0",
     "web-test-runner-jasmine": "^0.0.1",
     "web-test-runner-performance": "^0.1.4",
-    "web-test-runner-voiceover": "^0.0.6"
+    "web-test-runner-voiceover": "^0.0.7"
   }
 }

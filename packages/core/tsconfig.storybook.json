@@ -11,10 +11,10 @@
   "outDir": "../dist/website/storybook/core",
   "compilerOptions": {
     "rootDirs": ["src", "docs"],
-    "target": "es2017",
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": ["es2017", "dom"],
+    "lib": ["esnext", "dom"],
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,

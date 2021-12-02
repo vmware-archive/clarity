@@ -7,6 +7,10 @@ let dragSrcEl: HTMLElement | null = null;
 
 export type DraggableItem = HTMLElement & { cdsDraggableItem?: 'item' | 'dropzone' };
 
+export function draggableList<T extends ReactiveElement>(config?: DraggableListControllerConfig): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new DraggableListController(instance, config));
+}
+
 export interface DraggableListControllerConfig {
   shadowRoot?: boolean;
   layout?: 'both' | 'horizontal' | 'vertical';

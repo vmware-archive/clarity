@@ -5,6 +5,12 @@ interface ResponsiveConfig {
   element?: HTMLElement;
 }
 
+export function responsive<T extends ReactiveElement>(
+  config: ResponsiveConfig = { skipFirst: false, element: null }
+): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new ResponsiveController(instance, config));
+}
+
 /**
  * Provides a `cdsResizeChange` event when component dimensions are resized
  */

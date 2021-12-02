@@ -4,6 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { PropertyValues } from 'lit';
+import { assignSlotNames, property } from '@cds/core/internal';
 import { CdsAction } from '@cds/core/actions';
 
 /**
@@ -18,7 +20,15 @@ import { CdsAction } from '@cds/core/actions';
  *
  * </cds-control-action>
  * ```
+ *
  * @element cds-control-action
  * @slot - For projecting text content or cds-icon
  */
-export class CdsControlAction extends CdsAction {}
+export class CdsControlAction extends CdsAction {
+  @property({ type: String, reflect: true }) action: 'label' | 'prefix' | 'suffix';
+
+  updated(props: PropertyValues) {
+    super.updated(props);
+    assignSlotNames([this, this.action ?? false]);
+  }
+}

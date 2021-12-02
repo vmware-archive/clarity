@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit';
-import { customElement, state, groupArray } from '@cds/core/internal';
+import { css, html, LitElement } from 'lit';
+import { customElement, state, groupArray, baseStyles } from '@cds/core/internal';
 import { DemoService } from '@cds/core/demo';
 import { CdsGridCell } from '@cds/core/grid';
 
@@ -46,6 +46,8 @@ export function rangeSelectContextMenu() {
     @state() private anchor: HTMLElement = null;
     @state() private csv: string;
 
+    static styles = [baseStyles, css`:host { contain: none }`];
+
     render() {
       return html`
         <cds-grid aria-label="range select context menu datagrid demo" @rangeSelectionChange=${(e: any) => this.activeCells = e.detail} height="490">
@@ -57,8 +59,10 @@ export function rangeSelectContextMenu() {
           <cds-grid-footer></cds-grid-footer>
         </cds-grid>
         <cds-dropdown ?hidden=${!this.anchor} .anchor=${this.anchor} @closeChange=${() => (this.anchor = null) as void}>
-          <cds-button action="flat" size="sm" @click=${() => this.log()}>Log</cds-button>
-          <cds-button action="flat" size="sm" @click=${() => this.log()}>Alert</cds-button>
+          <div cds-layout="vertical align:stretch p:md">
+            <cds-button action="flat" size="sm" @click=${() => this.log()}>Log</cds-button>
+            <cds-button action="flat" size="sm" @click=${() => this.log()}>Alert</cds-button>
+          </div>
         </cds-dropdown>
         <pre cds-text="body">${this.csv}</pre>`;
     }

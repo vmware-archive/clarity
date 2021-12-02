@@ -2,6 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+// todo: cory tests
 @customElement('draggable-list-controller-test-element')
 class DraggableListControllerTestElement extends LitElement {
   render() {

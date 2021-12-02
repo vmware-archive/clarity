@@ -38,6 +38,7 @@ export class CdsActionResize extends LitElement {
 
   static styles = [styles];
 
+  // todo: cory badge support
   render() {
     return html`
       <div class="private-host">
@@ -51,14 +52,14 @@ export class CdsActionResize extends LitElement {
 
     if (this.range) {
       this.readonly = false;
-      this.#listenForMouseResize();
+      this.listenForMouseResize();
       this.range.ariaLabel ? this.range.ariaLabel : this.i18n.resize;
       this.range.addEventListener('focus', () => (this.focused = true));
       this.range.addEventListener('blur', () => (this.focused = false));
     }
   }
 
-  #listenForMouseResize() {
+  private listenForMouseResize() {
     let pos: any;
     this.addEventListener(
       'mousedown',
@@ -85,17 +86,17 @@ export class CdsActionResize extends LitElement {
         if (host.direction === 'vertical') {
           const dx = pos - e.x;
           pos = e.x;
-          host.#emit(-dx);
+          host.emit(-dx);
         } else {
           const dy = pos - e.y;
           pos = e.y;
-          host.#emit(-dy);
+          host.emit(-dy);
         }
       });
     }
   }
 
-  #emit(size: number) {
+  private emit(size: number) {
     if (this.range) {
       this.range.value = (parseInt(this.range.value) + size) as any;
       requestAnimationFrame(() => this.range.dispatchEvent(new Event('input')));

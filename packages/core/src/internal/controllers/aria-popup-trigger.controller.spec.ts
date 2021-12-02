@@ -1,14 +1,12 @@
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { AriaPopupTriggerController } from './aria-popup-trigger.controller.js';
+import { customElement, property } from '@cds/core/internal';
+import { ariaPopupTrigger } from './aria-popup-trigger.controller.js';
 
+@ariaPopupTrigger<AriaPopupTriggerControllerTestElement>()
 @customElement('aria-popup-controller-test-element')
 class AriaPopupTriggerControllerTestElement extends LitElement {
-  ariaPopupTriggerController = new AriaPopupTriggerController(this);
-  render() {
-    return html`...`;
-  }
+  @property({ type: String }) popup: string;
 }
 
 describe('aria-popup-trigger.controller', () => {

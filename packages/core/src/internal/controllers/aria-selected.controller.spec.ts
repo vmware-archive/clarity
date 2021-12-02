@@ -1,16 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaSelectedController, property } from '@cds/core/internal';
+import { customElement, property, ariaSelected } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaSelected<AriaSelectedControllerTestElement>()
 @customElement('aria-selected-controller-test-element')
 class AriaSelectedControllerTestElement extends LitElement {
   @property({ type: Boolean }) selected: boolean;
-  @property({ type: Boolean }) readonly: boolean;
-  ariaSelectedController = new AriaSelectedController(this);
-
-  render() {
-    return html`...`;
-  }
 }
 
 describe('aria-selected.controller', () => {

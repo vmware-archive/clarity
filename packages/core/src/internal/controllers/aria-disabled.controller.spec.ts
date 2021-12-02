@@ -1,15 +1,12 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaDisabledController, property } from '@cds/core/internal';
+import { customElement, property, ariaDisabled } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaDisabled<AriaDisabledControllerTestElement>()
 @customElement('aria-disabled-controller-test-element')
 class AriaDisabledControllerTestElement extends LitElement {
-  @property({ type: Boolean }) disabled: boolean;
-  ariaDisabledController = new AriaDisabledController(this);
-
-  render() {
-    return html`...`;
-  }
+  @property({ type: Boolean }) disabled = false;
+  @property({ type: Boolean }) readonly = false;
 }
 
 describe('aria-disabled.controller', () => {
@@ -41,5 +38,11 @@ describe('aria-disabled.controller', () => {
     component.disabled = false;
     await componentIsStable(component);
     expect(component.ariaDisabled).toBe('false');
+  });
+
+  it('should remove aria disabled if readonly', async () => {
+    component.readonly = true;
+    await componentIsStable(component);
+    expect(component.ariaDisabled).toBe(null);
   });
 });

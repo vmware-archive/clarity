@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { addClassnames, baseStyles, CdsBaseButton } from '@cds/core/internal';
+import { addClassnames, baseStyles, CdsBaseButton, querySlot } from '@cds/core/internal';
 import { html } from 'lit';
 import styles from './inline-button.element.scss';
 
@@ -29,6 +29,8 @@ import styles from './inline-button.element.scss';
  * @cssprop --letter-spacing
  */
 export class CdsInlineButton extends CdsBaseButton {
+  @querySlot('cds-icon') protected icon: HTMLElement;
+
   connectedCallback(): void {
     super.connectedCallback();
 

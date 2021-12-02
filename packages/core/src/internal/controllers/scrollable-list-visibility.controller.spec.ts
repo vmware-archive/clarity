@@ -6,8 +6,9 @@
 
 import { html, css, LitElement } from 'lit';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
-import { customElement, ScrollableVisibilityController } from '@cds/core/internal';
+import { customElement, scrollableVisibility } from '@cds/core/internal';
 
+@scrollableVisibility<ScrollableListVisibilityTestElement>()
 @customElement('scrollable-list-visibility-test-element')
 class ScrollableListVisibilityTestElement extends LitElement {
   gridBody: HTMLElement;
@@ -18,7 +19,6 @@ class ScrollableListVisibilityTestElement extends LitElement {
       }
     `,
   ];
-  protected scrollableVisibilityController = new ScrollableVisibilityController(this);
 }
 
 describe('scrollable-list-visibility.controller', () => {

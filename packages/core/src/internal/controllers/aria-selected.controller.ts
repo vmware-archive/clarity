@@ -1,9 +1,15 @@
 import { ReactiveController, ReactiveElement } from 'lit';
 
+export type AriaSelected = ReactiveElement & { selected: boolean };
+
+export function ariaSelected<T extends AriaSelected>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new AriaSelectedController(instance));
+}
+
 /**
- * Provides all nessesary aria-* attributes to create valid selection state
+ * Provides all nessesary aria-* attributes to create valid aria selection state.
  */
-export class AriaSelectedController<T extends ReactiveElement & { selected: boolean }> implements ReactiveController {
+export class AriaSelectedController<T extends AriaSelected> implements ReactiveController {
   constructor(private host: T) {
     this.host.addController(this);
   }

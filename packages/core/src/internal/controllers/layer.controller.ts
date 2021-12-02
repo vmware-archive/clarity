@@ -8,6 +8,16 @@ import { ReactiveController, ReactiveElement } from 'lit';
 import { listenForAttributeChange } from '../utils/events.js';
 import { GlobalStateService } from '../services/global.service.js';
 
+export function layer<T extends ReactiveElement>(): ClassDecorator {
+  return (target: any) => {
+    target.addInitializer((instance: T & { layerController?: LayerController<T> }) => {
+      if (!instance.layerController) {
+        instance.layerController = new LayerController(instance);
+      }
+    });
+  };
+}
+
 /**
  * LayerController provides manage layer tracking for components. Ensures any component
  * that may be a layer on top of other components is given a ordered index relative
@@ -57,7 +67,7 @@ export class LayerController<T extends ReactiveElement> implements ReactiveContr
       this.addLayer();
     }
 
-    this.updateLayerIndexes();
+    this.layers.forEach((layer, i) => layer.setAttribute('cds-layer', `${i}`));
   }
 
   private addLayer() {
@@ -81,9 +91,5 @@ export class LayerController<T extends ReactiveElement> implements ReactiveContr
     if (nextModal) {
       nextModal.role = 'dialog';
     }
-  }
-
-  private updateLayerIndexes() {
-    this.layers.forEach((layer, i) => layer.setAttribute('cds-layer', `${i}`));
   }
 }

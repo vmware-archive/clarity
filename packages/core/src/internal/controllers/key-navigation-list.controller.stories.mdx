@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
-<Meta title="Internal API/Key Navigation List Controller" />
+<Meta title="Internal Controllers/Key Navigation List Controller" />
 
 # Key Navigation - List
 
@@ -10,16 +10,16 @@ import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/add
 
 The key navigation controllers are generic key handlers that enable various keyboard navigation behavior.
 
-The `KeyNavigationListController` enables a component to support key navigation through a
+The `@keyNavigationList` controller enables a component to support key navigation through a
 one dimentional linear list of elements. The controller also provides shortcut keys such
 as `Home`, `End`, `PageUp` and `PageDown`.
 
 ```typescript
+@keyNavigationList<DemoKeyNavigationList>()
 class DemoKeyNavigationList extends LitElement {
-  @state() private items = Array.from(Array(10).keys());
-
   @queryAll('section > div') keyListItems: NodeListOf<HTMLElement>;
-  protected keyNavigationListController = new KeyNavigationListController(this);
+
+  @state() private items = Array.from(Array(10).keys());
 
   render() {
     return html`

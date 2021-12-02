@@ -1,7 +1,7 @@
 import { css, html, LitElement } from 'lit';
 import { queryAll } from 'lit/decorators.js';
 import { customElement, getInputValueType, state } from '@cds/core/internal';
-import { DemoGridCell, DemoService } from '@cds/core/demo';
+import { DemoGridCell, DemoService, exportElementsToCSV, parseCSV } from '@cds/core/demo';
 import { pencilIcon } from '@cds/core/icon/shapes/pencil.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { CdsGridCell, CdsGridColumn, CdsGridRow } from '@cds/core/grid';
@@ -23,15 +23,14 @@ export function cellEditable() {
       return html`
         <cds-grid aria-label="cell editable datagrid demo" height="360">
           ${this.grid.columns.map(column => html`<cds-grid-column>${column.label}</cds-grid-column>`)}
-          ${this.grid.rows.map((row, ri) => html`
+          ${this.grid.rows.map(row => html`
           <cds-grid-row>
-            ${row.cells.map((cell, i) => html`<cds-grid-cell @keyup=${(e: any) => this.toggleEdit(e, cell)} @dblclick=${(e: any) => this.toggleEdit(e, cell)}>
+            ${row.cells.map(cell => html`<cds-grid-cell @keyup=${(e: any) => this.toggleEdit(e, cell)} @dblclick=${(e: any) => this.toggleEdit(e, cell)}>
               <cds-input>
-                <input ?readonly=${!cell.selected} class="${ri}-${i}-input" type="text" value="${cell.value}" aria-label="${cell.label}" @change=${(e: any) => cell.value = e.target.value} @blur=${(e: any) => this.toggleEdit(e, cell)} />
+                <input ?readonly=${!cell.selected} value=${cell.value} aria-label=${cell.label} @change=${(e: any) => cell.value = e.target.value} @blur=${(e: any) => this.toggleEdit(e, cell)} />
               </cds-input>
             </cds-grid-cell>`)}
           </cds-grid-row>`)}
-          <cds-grid-footer></cds-grid-footer>
         </cds-grid>`;
     }
 
@@ -60,32 +59,6 @@ export function csv() {
     @queryAll('cds-grid-row') rows: NodeListOf<CdsGridRow>;
     @queryAll('cds-grid-cells') cells: NodeListOf<CdsGridCell>;
 
-    static styles =  [css`
-      cds-grid-cell > input {
-        border: 0;
-        padding: 0;
-        background: none;
-        width: 100%;
-        height: 100%;
-        padding-inline-start: var(--padding-inline-start);
-        padding-inline-end: var(--padding-inline-end);
-        padding-block: var(--padding-block);
-        margin-inline-start: calc(var(--padding-inline-start) * -1);
-        margin-inline-end: calc(var(--padding-inline-end) * -1);
-        margin-block: calc(var(--padding-block) * -1);
-        outline-offset: -3px;
-        border-radius: 0;
-        font-family: 'Clarity City';
-        color: var(--cds-global-typography-color-400);
-      }
-
-      cds-grid-cell > input:focus:not([readonly]) {
-        outline: 0;
-        box-shadow: inset 0 0 4px var(--cds-alias-object-border-color);
-        background: var(--cds-alias-object-container-background);
-      }
-    `];
-
     render() {
       return html`
         <cds-button size="sm" action="outline" @click=${this.setCSV}>generate csv</cds-button>
@@ -102,7 +75,6 @@ export function csv() {
               </cds-input>
             </cds-grid-cell>`)}
           </cds-grid-row>`)}
-
           ${this.data.rows.length === 0 ? html`
           <cds-grid-placeholder>
             <cds-file control-width="shrink">
@@ -159,29 +131,6 @@ export function csv() {
   }
 
   return html`<demo-csv></demo-csv>`;
-}
-
-export function parseCSV(text: string) {
-  const arr = text
-    .trim()
-    .split('\n')
-    .map(i => i.split(','));
-
-  const csv = {
-    columns: arr[0],
-    rows: arr.slice(1).map(cells => cells.map(c => c.trim())),
-  };
-
-  return csv;
-}
-
-export function exportElementsToCSV(columnElements: NodeListOf<HTMLElement>, rowElements: NodeListOf<HTMLElement>) {
-  const columns = Array.from(columnElements).map(c => c.textContent.trim());
-  const rows = Array.from(rowElements).map(r =>
-    Array.from(r.children).map(c => `${c.textContent}${c.querySelector('input')?.value}`)
-  );
-  const csv = `${columns.join(',')}\n${rows.map(cells => `${cells.map(c => c.trim()).join(',')}`).join('\n')}`;
-  return csv;
 }
 
 export const demoCSVFile = `

@@ -1,6 +1,6 @@
 import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/addon-docs/blocks.js';
 
-<Meta title="Internal API/Key Navigation Grid Controller" />
+<Meta title="Internal Controllers/Key Navigation Grid Controller" />
 
 # Key Navigation - Grid
 
@@ -10,17 +10,16 @@ import { Meta, Props, Story, Preview, Canvas } from '@web/storybook-prebuilt/add
 
 The key navigation controllers are generic key handlers that enable various keyboard navigation behavior.
 
-The `KeyNavigationGridController` enables a component to support key navigation through a
+The `@keyNavigationGrid` controller enables a component to support key navigation through a
 two dimentional grid of elements. The controller provides a set of keyboard shortcuts implementing the
 [W3 Aria Datagrid Spec](https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html#kbd_label).
 
 ```typescript
+@keyNavigationGrid<DemoKeyNavigationGridController>()
 class DemoKeyNavigationGridController extends LitElement implements KeyGrid {
-  @query('section') keyGrid: HTMLElement;
-  @queryAll('section div') keyGridRows: NodeListOf<HTMLElement>;
-  @queryAll('section button') keyGridCells: NodeListOf<HTMLElement>;
-
-  protected gridKeyNavigationController = new KeyNavigationGridController(this);
+  @query('section') rowGroup: HTMLElement;
+  @queryAll('section > div') rows: NodeListOf<HTMLElement>;
+  @queryAll('section > div > button') cells: NodeListOf<HTMLElement>;
 
   @state() private items = Array.from(Array(10).keys()).map(() => Array.from(Array(10).keys()));
 

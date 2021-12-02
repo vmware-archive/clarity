@@ -1,5 +1,9 @@
 import { ReactiveController, ReactiveElement } from 'lit';
 
+export function scrollableVisibility<T extends ReactiveElement>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new ScrollableVisibilityController(instance));
+}
+
 /**
  * List items default to `content-visibility: auto` for lazy initial render.
  * On scroll set all row items to `content-visibility: visible` for eager render.

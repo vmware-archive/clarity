@@ -26,7 +26,7 @@ export function columnFilter() {
         ${this.grid.columns.map((column, i) => html`
         <cds-grid-column>
           ${column.label}
-          ${i === 0 ? html`<cds-action popup="column-filter" @click=${(e: any) => (this.anchor = e.target)} shape="filter" .pressed=${!!this.search} aria-label="search ${column.label}"></cds-action>` : ''}
+          ${i === 0 ? html`<cds-action popup="column-filter" @click=${(e: any) => (this.anchor = e.target)} shape="filter" .pressed=${!!this.search.length} aria-label="search ${column.label}"></cds-action>` : ''}
         </cds-grid-column>`)}
         ${this.filteredRows.map(row => html`
         <cds-grid-row>

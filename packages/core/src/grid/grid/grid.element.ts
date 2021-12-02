@@ -6,17 +6,17 @@ import {
   createId,
   state,
   property,
-  DraggableListController,
-  KeyNavigationGridController,
   AriaGridController,
   querySlotAll,
-  GridRangeSelectionController,
-  ScrollableVisibilityController,
   i18n,
   I18nService,
-  AriaMultiSelectableController,
-  AriaGrid,
   querySlot,
+  scrollableVisibility,
+  ariaMultiSelectable,
+  ariaGrid,
+  gridRangeSelection,
+  keyNavigationGrid,
+  draggableList,
 } from '@cds/core/internal';
 import { CdsGridRow } from '../row/grid-row.element.js';
 import { CdsGridCell } from '../cell/grid-cell.element.js';
@@ -45,7 +45,23 @@ import { CdsGridPlaceholder } from '../placeholder/grid-placeholder.element.js';
  * @cssprop --column-text-align
  * @cssprop --cell-text-algin
  */
-export class CdsGrid extends LitElement implements AriaGrid {
+@ariaGrid<CdsGrid>()
+@ariaMultiSelectable<CdsGrid>()
+@keyNavigationGrid<CdsGrid>()
+@gridRangeSelection<CdsGrid>()
+@scrollableVisibility<CdsGrid>()
+@draggableList<CdsGrid>({
+  layout: 'horizontal',
+  item: 'cds-grid-column',
+  dropZone: 'cds-grid-column',
+})
+@draggableList<CdsGrid>({
+  layout: 'vertical',
+  item: 'cds-grid-row',
+  dropZone: 'cds-grid-placeholder',
+  manageFocus: false,
+})
+export class CdsGrid extends LitElement {
   @i18n() i18n = I18nService.keys.grid;
 
   @property({ type: String }) columnLayout: 'fixed' | 'flex' = 'fixed';
@@ -62,30 +78,9 @@ export class CdsGrid extends LitElement implements AriaGrid {
 
   @state({ type: String, reflect: true }) protected _id = createId();
 
-  protected ariaGridController = new AriaGridController(this);
-
-  protected ariaMultiSelectableController = new AriaMultiSelectableController(this);
+  protected ariaGridController: AriaGridController<this>;
 
   protected gridLayoutController = new GridLayoutController(this);
-
-  protected keyNavigationGridController = new KeyNavigationGridController(this);
-
-  protected gridRangeSelectionController = new GridRangeSelectionController(this);
-
-  protected scrollableVisibilityController = new ScrollableVisibilityController(this);
-
-  protected draggableColumnController = new DraggableListController(this, {
-    layout: 'horizontal',
-    item: 'cds-grid-column',
-    dropZone: 'cds-grid-column',
-  });
-
-  protected draggableListController = new DraggableListController(this, {
-    layout: 'vertical',
-    item: 'cds-grid-row',
-    dropZone: 'cds-grid-placeholder',
-    manageFocus: false,
-  });
 
   static styles = [baseStyles, styles];
 

@@ -6,20 +6,18 @@ export type GridRowPosition = ReactiveControllerHost &
   };
 
 export class GridRowPositionController {
-  #host: GridRowPosition;
-
-  constructor(host: GridRowPosition) {
-    this.#host = host;
-    this.#host.addController(this);
+  constructor(private host: GridRowPosition) {
+    this.host = host;
+    this.host.addController(this);
   }
 
   hostUpdated() {
-    if (this.#host.position === 'fixed' || this.#host.position === 'sticky') {
-      this.#setScrollTop('calc(var(--row-height) * 2)');
+    if (this.host.position === 'fixed' || this.host.position === 'sticky') {
+      this.setScrollTop('calc(var(--row-height) * 2)');
     }
   }
 
-  #setScrollTop(value: string) {
-    this.#host.parentElement.style.setProperty('--scroll-padding-top', value);
+  private setScrollTop(value: string) {
+    this.host.parentElement.style.setProperty('--scroll-padding-top', value);
   }
 }

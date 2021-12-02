@@ -36,25 +36,16 @@ import styles from './action.element.scss';
 export class CdsAction extends CdsBaseButton {
   @property({ type: String }) shape = 'ellipsis-vertical';
 
-  @property({ type: Boolean }) readonly = false;
-
-  @property({ type: Boolean }) pressed: boolean;
+  @property({ type: String, reflect: true }) action: string;
 
   @state({ type: Boolean, reflect: true, attribute: 'cds-action' }) protected cdsAction = true;
-
-  /** Set the action type placement within the supporting input control */
-  @property({ type: String, reflect: true }) action: 'label' | 'prefix' | 'suffix' | string;
-
-  get #isControlAction() {
-    return this.action === 'label' || this.action === 'prefix' || this.action === 'suffix';
-  }
 
   static styles = [baseStyles, styles];
 
   render() {
     return html`
       <div class="private-host">
-        <slot><cds-icon .shape=${this.shape} ?solid=${this.ariaPressed === 'true'} inner-offset=${1}></cds-icon></slot>
+        <slot><cds-icon .shape=${this.shape} ?solid=${this.pressed} inner-offset=${1}></cds-icon></slot>
       </div>
     `;
   }
@@ -68,10 +59,6 @@ export class CdsAction extends CdsBaseButton {
 
     if (props.has('readonly')) {
       this.readonly && !this.hasAttribute('aria-label') ? (this.ariaHidden = 'true') : (this.ariaHidden = null);
-    }
-
-    if (props.has('action') && this.#isControlAction) {
-      assignSlotNames([this, this.action ?? false]);
     }
   }
 }

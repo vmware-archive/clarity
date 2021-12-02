@@ -6,9 +6,10 @@
 
 import { html, LitElement } from 'lit';
 import { queryAll, query } from 'lit/decorators.js';
-import { customElement, AriaGridController } from '@cds/core/internal';
+import { customElement, AriaGridController, ariaGrid } from '@cds/core/internal';
 import { createTestElement, removeTestElement, componentIsStable } from '@cds/core/test';
 
+@ariaGrid({ update: 'mutation' })
 @customElement('grid-a11y-test-element')
 class GridA11yTestElement extends LitElement {
   @queryAll('.column') columns: NodeListOf<HTMLElement>;
@@ -18,7 +19,7 @@ class GridA11yTestElement extends LitElement {
   @query('.column-row', true) columnRow: HTMLElement;
   @query('.column-group', true) columnRowGroup: HTMLElement;
 
-  protected ariaGridController = new AriaGridController(this, { update: 'mutation' });
+  protected ariaGridController: AriaGridController<this>;
 
   render() {
     return html`

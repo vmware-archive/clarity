@@ -52,24 +52,16 @@ export class CdsPaginationButton extends CdsAction {
   /**
    * Sets the action from a predefined list of actions
    */
-  @property({ type: String })
-  action: 'first' | 'prev' | 'next' | 'last';
+  @property({ type: String }) action: 'first' | 'prev' | 'next' | 'last';
 
-  @state() direction: 'up' | 'right' | 'down' | 'left';
+  @state() private direction: 'up' | 'right' | 'down' | 'left';
 
   get cdsIcon() {
     return this.shadowRoot.querySelector('cds-icon');
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.type = 'button';
-  }
-
   updated(props: PropertyValues) {
     super.updated(props);
-
-    assignSlotNames([this, false]);
 
     switch (this.action) {
       case CdsPaginationButtonAction.Next:

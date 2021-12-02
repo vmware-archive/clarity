@@ -3,6 +3,12 @@ import { focusable, focusElement, ignoreFocus } from '../utils/focus.js';
 import { listenForAttributeChange } from '../utils/events.js';
 import { getFlattenedDOMTree } from '../utils/traversal.js';
 
+export function firstFocus<T extends ReactiveElement>(
+  config: FirstFocusConfig = { fallback: 'focusable' }
+): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new FirstFocusController(instance, config));
+}
+
 export interface FirstFocusConfig {
   fallback: 'none' | 'host' | 'focusable';
 }

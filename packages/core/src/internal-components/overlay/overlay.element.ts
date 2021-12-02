@@ -16,18 +16,24 @@ import {
   state,
   property,
   reverseAnimation,
-  FirstFocusController,
   ClosableController,
-  InlineFocusTrapController,
-  AriaModalController,
+  focusTrap,
   CloseChangeType,
   LayerController,
+  ariaModal,
+  firstFocus,
+  layer,
+  closable,
 } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import styles from './overlay.element.scss';
 import sharedStyles from './shared.element.scss';
 
-/** @private */
+@layer<CdsInternalStaticOverlay>()
+@closable<CdsInternalStaticOverlay>()
+@focusTrap<CdsInternalStaticOverlay>()
+@ariaModal<CdsInternalStaticOverlay>()
+@firstFocus<CdsInternalStaticOverlay>()
 export class CdsInternalStaticOverlay extends LitElement {
   @property({ type: Boolean }) closable = false;
 
@@ -35,15 +41,9 @@ export class CdsInternalStaticOverlay extends LitElement {
 
   @i18n() i18n = I18nService.keys.overlay;
 
-  protected layerController = new LayerController(this);
+  protected layerController: LayerController<this>;
 
-  protected ariaModalController = new AriaModalController(this);
-
-  protected firstFocusController = new FirstFocusController(this);
-
-  protected inlineFocusTrapController = new InlineFocusTrapController(this);
-
-  protected closableController = new ClosableController(this);
+  protected closableController: ClosableController<this>;
 
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM inside an element with aria-modal set to true
   static get shadowRootOptions(): any {

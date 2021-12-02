@@ -4,28 +4,29 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { css, html, LitElement, PropertyValues } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { query, queryAll } from 'lit/decorators.js';
 import {
   baseStyles,
-  DraggableListController,
-  AriaGridController,
-  KeyNavigationGridController,
-  KeyNavigationListController,
   state,
-  AriaPopupController,
-  AriaPopupTriggerController,
-  ResponsiveController,
-  GridRangeSelectionController,
   customElement,
-  ClosableController,
-  FirstFocusController,
   LayerController,
+  firstFocus,
+  focusTrap,
+  querySlotAll,
+  ariaPopup,
+  responsive,
+  ariaPopupTrigger,
+  layer,
+  closable,
+  ariaGrid,
+  gridRangeSelection,
+  keyNavigationList,
+  keyNavigationGrid,
+  draggableList,
 } from '@cds/core/internal';
 import '@cds/core/badge/register.js';
 import { DemoService, swapItems } from '@cds/core/demo';
-import { InlineFocusTrapController } from './inline-focus-trap.controller';
-import { querySlotAll } from '../decorators/query-slot';
 
 export default {
   title: 'Internal Stories/Controllers',
@@ -74,6 +75,7 @@ const buttonGridStyles = css`
 `;
 
 export function keyNavigationListController() {
+  @keyNavigationList<DemoKeyNavigationList>()
   @customElement('demo-key-navigation-list')
   class DemoKeyNavigationList extends LitElement {
     @state() private items = Array.from(Array(10).keys());
@@ -81,7 +83,6 @@ export function keyNavigationListController() {
     @state() private active = '';
     @queryAll('section > div') keyListItems: NodeListOf<HTMLElement>;
 
-    protected keyNavigationListController = new KeyNavigationListController(this);
     static styles = [baseStyles, buttonGridStyles];
 
     render() {
@@ -110,16 +111,15 @@ export function keyNavigationListController() {
         </div>
       `;
     }
-
-    firstUpdated(props: PropertyValues) {
-      super.firstUpdated(props);
-      this.keyNavigationListController.initializeKeyList();
-    }
   }
   return html`<demo-key-navigation-list></demo-key-navigation-list>`;
 }
 
 export function keyNavigationListControllerVertical() {
+  @keyNavigationList<DemoKeyNavigationListVertical>({
+    keyListItems: 'verticalKeyListItems',
+    layout: 'vertical',
+  })
   @customElement('demo-key-navigation-list-vertical')
   class DemoKeyNavigationListVertical extends LitElement {
     @state() private items = Array.from(Array(10).keys());
@@ -127,10 +127,6 @@ export function keyNavigationListControllerVertical() {
     @state() private active = '';
 
     @queryAll('section > div') verticalKeyListItems: NodeListOf<HTMLElement>;
-    protected keyNavigationListController = new KeyNavigationListController(this, {
-      keyListItems: 'verticalKeyListItems',
-      layout: 'vertical',
-    });
 
     static styles = [baseStyles, buttonGridStyles];
 
@@ -159,30 +155,25 @@ export function keyNavigationListControllerVertical() {
           </div>
         </div>
       `;
-    }
-
-    firstUpdated(props: PropertyValues) {
-      super.firstUpdated(props);
-      this.keyNavigationListController.initializeKeyList();
     }
   }
   return html`<demo-key-navigation-list-vertical></demo-key-navigation-list-vertical>`;
 }
 
 export function keyNavigationListControllerLoop() {
+  @keyNavigationList({
+    keyListItems: 'verticalKeyListItems',
+    layout: 'vertical',
+    loop: true,
+  })
   @customElement('demo-key-navigation-list-loop')
   class DemoKeyNavigationListLoop extends LitElement {
     @state() private items = Array.from(Array(5).keys());
     @state() private selected = '0';
     @state() private active = '';
-    static styles = [baseStyles, buttonGridStyles];
-
     @queryAll('section > div') verticalKeyListItems: NodeListOf<HTMLElement>;
-    protected keyNavigationListController = new KeyNavigationListController(this, {
-      keyListItems: 'verticalKeyListItems',
-      layout: 'vertical',
-      loop: true,
-    });
+
+    static styles = [baseStyles, buttonGridStyles];
 
     render() {
       return html`
@@ -210,19 +201,14 @@ export function keyNavigationListControllerLoop() {
         </div>
       `;
     }
-
-    firstUpdated(props: PropertyValues) {
-      super.firstUpdated(props);
-      this.keyNavigationListController.initializeKeyList();
-    }
   }
   return html`<demo-key-navigation-list-loop></demo-key-navigation-list-loop>`;
 }
 
 export function keyNavigationGridController() {
+  @keyNavigationGrid<DemoKeyNavigationGridController>()
   @customElement('demo-key-navigation-grid')
   class DemoKeyNavigationGridController extends LitElement {
-    protected gridKeyNavigationController = new KeyNavigationGridController(this);
     static styles = [buttonGridStyles];
 
     @query('section') rowGroup: HTMLElement;
@@ -262,6 +248,7 @@ export function keyNavigationGridController() {
 }
 
 export function draggableListController() {
+  @draggableList<DemoDraggableListController>({ shadowRoot: true })
   @customElement('demo-draggable-list-controller')
   class DemoDraggableListController extends LitElement {
     static get styles() {
@@ -289,8 +276,6 @@ export function draggableListController() {
     }
 
     @state() private items = Array.from(Array(10).keys()).map(id => ({ id: `${id}` }));
-
-    protected draggableListController = new DraggableListController(this, { shadowRoot: true });
 
     render() {
       return html`
@@ -334,9 +319,9 @@ export function ariaPopupController() {
     }
   `;
 
+  @ariaPopup<DemoAriaPopup>()
   @customElement('demo-popup')
   class DemoAriaPopup extends LitElement {
-    ariaPopupController = new AriaPopupController(this);
     static styles = [styles];
 
     get trigger() {
@@ -348,9 +333,11 @@ export function ariaPopupController() {
     }
   }
 
+  @ariaPopupTrigger<DemoAriaPopupTrigger>()
   @customElement('demo-trigger')
   class DemoAriaPopupTrigger extends LitElement {
-    ariaPopupTriggerController = new AriaPopupTriggerController(this);
+    disabled = false;
+    popup: string;
     static styles = [styles];
 
     render() {
@@ -377,9 +364,9 @@ export function ariaPopupController() {
 }
 
 export function responsiveController() {
+  @responsive<DemoResponsiveController>()
   @customElement('demo-responsive-controller')
   class DemoResponsiveController extends LitElement {
-    protected responsiveController = new ResponsiveController(this);
     @state() rect = {};
     static get styles() {
       return [
@@ -410,24 +397,23 @@ export function responsiveController() {
 }
 
 export function ariaGridController() {
+  @ariaGrid<DemoAriaGridController>({ update: 'mutation' })
+  @keyNavigationGrid<DemoAriaGridController>()
+  @gridRangeSelection<DemoAriaGridController>()
   @customElement('grid-a11y-test-element')
   class DemoAriaGridController extends LitElement {
     @query('.grid', true) grid: HTMLElement;
     @query('.rowgroup', true) rowGroup: HTMLElement;
     @query('.columnrow', true) columnRow: HTMLElement;
-    @query('.columngroup', true) columnGroup: HTMLElement;
+    @query('.columnrowgroup', true) columnRowGroup: HTMLElement;
     @queryAll('.row') rows: NodeListOf<HTMLElement>;
     @queryAll('.cell') cells: NodeListOf<HTMLElement>;
     @queryAll('.column') columns: NodeListOf<HTMLElement>;
 
-    protected ariaGridController = new AriaGridController(this, { update: 'mutation' });
-    protected gridKeyNavigationController = new KeyNavigationGridController(this);
-    protected gridRangeSelectionController = new GridRangeSelectionController(this);
-
     render() {
       return html`
         <div class="grid">
-          <div class="columngroup">
+          <div class="columnrowgroup">
             <div class="columnrow">
               ${DemoService.data.grid.columns.map(column => html`<div class="column">${column.label}</div>`)}
             </div>
@@ -515,7 +501,9 @@ export function ariaGridController() {
   return html`<grid-a11y-test-element></grid-a11y-test-element>`;
 }
 
-export function gridRangeSelection() {
+export function gridRangeSelectionController() {
+  @keyNavigationGrid<DemoGridRangeSelectionController>()
+  @gridRangeSelection<DemoGridRangeSelectionController>()
   @customElement('grid-range-selection-test-element')
   class DemoGridRangeSelectionController extends LitElement {
     @query('section') grid: HTMLElement;
@@ -523,8 +511,6 @@ export function gridRangeSelection() {
     @queryAll('section .row') rows: NodeListOf<HTMLElement>;
     @queryAll('section .cell') cells: NodeListOf<HTMLElement>;
 
-    protected gridRangeSelectionController = new GridRangeSelectionController(this);
-    protected gridKeyNavigationController = new KeyNavigationGridController(this);
     static styles = [baseStyles, buttonGridStyles];
 
     @state() private items = Array.from(Array(10).keys()).map(() => Array.from(Array(10).keys()));
@@ -564,10 +550,9 @@ export function gridRangeSelection() {
 }
 
 export function inlineFocusTrap() {
+  @focusTrap<DemoInlineFocusTrap>()
   @customElement('inline-focus-trap-demo')
   class DemoInlineFocusTrap extends LitElement {
-    protected inlineFocusTrapController = new InlineFocusTrapController(this);
-
     static styles = [
       css`
         :host {
@@ -604,12 +589,12 @@ export function inlineFocusTrap() {
 }
 
 export function nestedInlineFocusTrap() {
+  @closable<InlineTrapDemo>()
+  @focusTrap<InlineTrapDemo>()
+  @firstFocus<InlineTrapDemo>()
   @customElement('inline-trap-demo')
   class InlineTrapDemo extends LitElement {
     @querySlotAll(':scope > *') keyListItems: NodeListOf<HTMLElement>;
-    protected inlineFocusTrapController = new InlineFocusTrapController(this);
-    protected firstFocusController = new FirstFocusController(this);
-    protected closableController = new ClosableController(this);
 
     static styles = [
       css`
@@ -687,9 +672,10 @@ export function nestedInlineFocusTrap() {
 }
 
 export function layerController() {
+  @layer<LayerDemoElement>()
   @customElement('layer-demo')
   class LayerDemoElement extends LitElement {
-    layerController = new LayerController(this);
+    layerController: LayerController<this>;
 
     static styles = [
       css`

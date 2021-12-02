@@ -13,6 +13,16 @@ export interface KeyNavigationListConfig {
   dir?: string;
 }
 
+export function keyNavigationList<T extends ReactiveElement>(config?: KeyNavigationListConfig): ClassDecorator {
+  return (target: any) => {
+    target.addInitializer((instance: T & { keyNavigationListController?: KeyNavigationListController<T> }) => {
+      if (!instance.keyNavigationListController) {
+        instance.keyNavigationListController = new KeyNavigationListController(instance, config);
+      }
+    });
+  };
+}
+
 /**
  * Provides key list naviation behavior
  * https://webaim.org/techniques/keyboard/
@@ -66,9 +76,7 @@ export class KeyNavigationListController<T extends ReactiveElement> implements R
         }
       }
     });
-  }
 
-  initializeKeyList() {
     if (this.config.manageFocus && this.config.manageTabindex) {
       Array.from(this.listItems).forEach((i: HTMLElement) => i.setAttribute('tabindex', '-1'));
       const firstCell = this.listItems[0];

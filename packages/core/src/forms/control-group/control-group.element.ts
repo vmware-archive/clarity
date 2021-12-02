@@ -18,8 +18,8 @@ import {
   describeElementByElements,
   setAttributes,
   syncProps,
-  ResponsiveController,
   calculateOptimalLayout,
+  responsive,
 } from '@cds/core/internal';
 import { CdsControl } from '../control/control.element.js';
 import styles from './control-group.element.scss';
@@ -61,6 +61,7 @@ import {
  * @element cds-internal-control-group
  * @slot - For projecting control group
  */
+@responsive<CdsInternalControlGroup>()
 export class CdsInternalControlGroup extends LitElement {
   /**
    * Set the status of control group validation
@@ -113,8 +114,6 @@ export class CdsInternalControlGroup extends LitElement {
   protected isInlineControlGroup = false;
 
   protected isControlGroup = true;
-
-  protected responsiveController = new ResponsiveController(this);
 
   static styles = [baseStyles, styles];
 

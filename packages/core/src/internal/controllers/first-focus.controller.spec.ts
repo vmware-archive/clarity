@@ -1,10 +1,10 @@
 import { html, LitElement } from 'lit';
-import { customElement, FirstFocusController, renderBefore } from '@cds/core/internal';
+import { customElement, firstFocus, FirstFocusController, renderBefore } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@firstFocus<FirstFocusControllerTestElement>()
 @customElement('first-focus-controller-test-element')
 class FirstFocusControllerTestElement extends LitElement {
-  firstFocusController = new FirstFocusController(this);
   render() {
     return html`
       <slot></slot>
@@ -74,9 +74,9 @@ describe('first-focus.controller default', () => {
   });
 });
 
+@firstFocus({ fallback: 'none' })
 @customElement('first-focus-inert-controller-test-element')
 class FirstFocusInertControllerTestElement extends LitElement {
-  firstFocusController = new FirstFocusController(this, { fallback: 'none' });
   render() {
     return html`
       <slot></slot>

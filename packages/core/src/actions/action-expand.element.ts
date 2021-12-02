@@ -32,7 +32,7 @@ export class CdsActionExpand extends CdsAction {
     return [super.styles, styles];
   }
 
-  get #iconDirection() {
+  private get iconDirection() {
     if (this.action === 'vertical') {
       return this.pressed ? 'down' : 'right';
     } else if (this.action === 'horizontal') {
@@ -42,7 +42,7 @@ export class CdsActionExpand extends CdsAction {
     }
   }
 
-  get #iconShape() {
+  private get iconShape() {
     if (this.action === 'detail') {
       return this.pressed ? 'detail-collapse' : 'detail-expand';
     } else {
@@ -53,7 +53,7 @@ export class CdsActionExpand extends CdsAction {
   render() {
     return html`
       <div class="private-host">
-        <cds-icon .shape=${this.#iconShape} .direction=${this.#iconDirection}></cds-icon>
+        <cds-icon .shape=${this.iconShape} .direction=${this.iconDirection}></cds-icon>
       </div>
     `;
   }

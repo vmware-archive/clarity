@@ -21,8 +21,8 @@ import {
   pxToRem,
   getElementUpdates,
   hasAriaLabelTypeAttr,
-  ResponsiveController,
   calculateOptimalLayout,
+  responsive,
 } from '@cds/core/internal';
 import { CdsControlAction } from '../control-action/control-action.element.js';
 import { CdsControlMessage } from './../control-message/control-message.element.js';
@@ -65,6 +65,7 @@ export const enum ControlLabelLayout {
  * @slot - For projecting input and label
  * @cssprop --label-width
  */
+@responsive<CdsControl>()
 export class CdsControl extends LitElement {
   /**
    * Set the status of form control validation
@@ -161,8 +162,6 @@ export class CdsControl extends LitElement {
   @event() layoutChange: EventEmitter<ControlLayout>;
 
   protected observers: (MutationObserver | ResizeObserver)[] = [];
-
-  protected responsiveController = new ResponsiveController(this);
 
   static get styles() {
     return [baseStyles, styles];

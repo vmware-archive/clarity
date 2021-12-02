@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit';
-import { customElement, state } from '@cds/core/internal';
+import { css, html, LitElement } from 'lit';
+import { baseStyles, customElement, state } from '@cds/core/internal';
 import { DemoGridRow, DemoService, swapBetweenLists, swapItems } from '@cds/core/demo';
 
 export default {
@@ -17,49 +17,55 @@ export function rowSwappable() {
     @state() private ariaLiveMessage = '';
     @state() private anchor: HTMLElement;
 
+    static styles = [baseStyles, css`:host { contain: none }`];
+
     render() {
       return html`
-        <cds-grid aria-label="production VMs" @cdsDraggableChange=${this.sortOne} height="360">
-          <cds-grid-column type="action"></cds-grid-column>
-          <cds-grid-column type="action"></cds-grid-column>
-          ${this.grid.columns.map(column => html`<cds-grid-column>${column.label}</cds-grid-column>`)}
-          ${this.listOne.map(row => html`
-          <cds-grid-row draggable="true" id=${row.id}>
-            <cds-grid-cell>
-              <cds-action-handle aria-label="sort ${row.id}"></cds-action-handle>
-            </cds-grid-cell>
-            <cds-grid-cell>
-              <cds-action popup="migrate-dropdown" aria-label="${row.id} actions" @click=${(e: any) => this.selectEntry(row, e.target)}></cds-action>
-            </cds-grid-cell>
-            ${row.cells.map(cell => html`<cds-grid-cell>${cell.label}</cds-grid-cell>`)}
-          </cds-grid-row>`)}
-          <cds-grid-placeholder draggable="false">Production Environment</cds-grid-placeholder>
-          <cds-grid-footer>List One: ${this.listOne.map(i => html`${i.id} `)}</cds-grid-footer>
-        </cds-grid>
+        <div cds-layout="vertical gap:lg">
+          <cds-grid aria-label="production VMs" @cdsDraggableChange=${this.sortOne} height="360">
+            <cds-grid-column type="action"></cds-grid-column>
+            <cds-grid-column type="action"></cds-grid-column>
+            ${this.grid.columns.map(column => html`<cds-grid-column>${column.label}</cds-grid-column>`)}
+            ${this.listOne.map(row => html`
+            <cds-grid-row draggable="true" id=${row.id}>
+              <cds-grid-cell>
+                <cds-action-handle aria-label="sort ${row.id}"></cds-action-handle>
+              </cds-grid-cell>
+              <cds-grid-cell>
+                <cds-action popup="migrate-dropdown" aria-label="${row.id} actions" @click=${(e: any) => this.selectEntry(row, e.target)}></cds-action>
+              </cds-grid-cell>
+              ${row.cells.map(cell => html`<cds-grid-cell>${cell.label}</cds-grid-cell>`)}
+            </cds-grid-row>`)}
+            <cds-grid-placeholder draggable="false">Production Environment</cds-grid-placeholder>
+            <cds-grid-footer>List One: ${this.listOne.map(i => html`${i.id} `)}</cds-grid-footer>
+          </cds-grid>
 
-        <br />
-        <p>aria-live:</p>
-        <div aria-live="assertive" role="log" aria-atomic="true">${this.ariaLiveMessage}</div>
+          <p cds-text="body">
+            aria-live: <span aria-live="assertive" role="log" aria-atomic="true">${this.ariaLiveMessage}</span>
+          </p>
 
-        <cds-grid aria-label="staging VMs" @cdsDraggableChange=${this.sortTwo} height="360">
-          <cds-grid-column type="action"></cds-grid-column>
-          <cds-grid-column type="action"></cds-grid-column>
-          ${this.grid.columns.map(column => html`<cds-grid-column>${column.label}</cds-grid-column>`)}
-          ${this.listTwo.map(row => html`
-          <cds-grid-row draggable="true" id=${row.id}>
-            <cds-grid-cell>
-              <cds-action-handle aria-label="sort ${row.id}"></cds-action-handle>
-            </cds-grid-cell>
-            <cds-grid-cell>
-              <cds-action popup="migrate-dropdown" aria-label="${row.id} actions" @click=${(e: any) => this.selectEntry(row, e.target)}></cds-action>
-            </cds-grid-cell>
-            ${row.cells.map(cell => html`<cds-grid-cell>${cell.label}</cds-grid-cell>`)}
-          </cds-grid-row>`)}
-          <cds-grid-placeholder draggable="false">Staging Environment</cds-grid-placeholder>
-          <cds-grid-footer>List Two: ${this.listTwo.map(j => html`${j.id} `)}</cds-grid-footer>
-        </cds-grid>
+          <cds-grid aria-label="staging VMs" @cdsDraggableChange=${this.sortTwo} height="360">
+            <cds-grid-column type="action"></cds-grid-column>
+            <cds-grid-column type="action"></cds-grid-column>
+            ${this.grid.columns.map(column => html`<cds-grid-column>${column.label}</cds-grid-column>`)}
+            ${this.listTwo.map(row => html`
+            <cds-grid-row draggable="true" id=${row.id}>
+              <cds-grid-cell>
+                <cds-action-handle aria-label="sort ${row.id}"></cds-action-handle>
+              </cds-grid-cell>
+              <cds-grid-cell>
+                <cds-action popup="migrate-dropdown" aria-label="${row.id} actions" @click=${(e: any) => this.selectEntry(row, e.target)}></cds-action>
+              </cds-grid-cell>
+              ${row.cells.map(cell => html`<cds-grid-cell>${cell.label}</cds-grid-cell>`)}
+            </cds-grid-row>`)}
+            <cds-grid-placeholder draggable="false">Staging Environment</cds-grid-placeholder>
+            <cds-grid-footer>List Two: ${this.listTwo.map(j => html`${j.id} `)}</cds-grid-footer>
+          </cds-grid>
+        </div>
         <cds-dropdown id="migrate-dropdown" ?hidden=${!this.selectedEntryId} .anchor=${this.anchor} @closeChange=${() => (this.selectedEntryId = null) as any}>
-          <cds-button @click=${this.appendToOtherGrid} action="flat" size="sm">Move to <span>${this.listOne.find(i => i.id === this.selectedEntryId) ? 'Staging' : 'Production'}</span></cds-button>
+          <div cds-layout="vertical align:stretch p:md">
+            <cds-button @click=${this.appendToOtherGrid} action="flat" size="sm">Move to <span>${this.listOne.find(i => i.id === this.selectedEntryId) ? 'Staging' : 'Production'}</span></cds-button>
+          </div>
         </cds-dropdown>
       `;
     }

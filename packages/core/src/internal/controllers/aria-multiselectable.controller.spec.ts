@@ -1,17 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, AriaMultiSelectableController } from '@cds/core/internal';
+import { customElement, property, ariaMultiSelectable } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaMultiSelectable<AriaMultiSelectableControllerTestElement>()
 @customElement('aria-multiselectable-controller-test-element')
 class AriaMultiSelectableControllerTestElement extends LitElement {
   @property({ type: String }) selectable: 'multi' | 'single' | null;
-  disabled = false;
-  readonly = false;
-  ariaMultiSelectableController = new AriaMultiSelectableController(this);
-
-  render() {
-    return html`...`;
-  }
 }
 
 describe('aria-multiselectable.controller', () => {

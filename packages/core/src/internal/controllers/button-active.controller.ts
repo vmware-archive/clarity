@@ -1,5 +1,14 @@
 import { ReactiveController, ReactiveElement } from 'lit';
 
+export interface ButtonActive extends ReactiveElement {
+  readonly: boolean;
+  disabled: boolean;
+}
+
+export function buttonActive<T extends ButtonActive>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new ButtonActiveController(instance));
+}
+
 /**
  * This mimics the mouse-click visual behavior for keyboard only users and screen readers.
  * Browsers do not apply the CSS psuedo-selector :active in those instances. So we need this
@@ -8,7 +17,7 @@ import { ReactiveController, ReactiveElement } from 'lit';
  * Make sure to update a component's CSS to account for the presence of the [cds-active] attribute
  * in all instance where :active is defined.
  */
-export class ActiveInteractionController<T extends ReactiveElement> implements ReactiveController {
+export class ButtonActiveController<T extends ButtonActive> implements ReactiveController {
   constructor(private host: T) {
     this.host.addController(this);
   }
@@ -23,9 +32,8 @@ export class ActiveInteractionController<T extends ReactiveElement> implements R
   }
 
   private emulateActive(e: any) {
-    if (!this.host.hasAttribute('disabled') && !this.host.hasAttribute('readonly')) {
+    if (!this.host.disabled && !this.host.readonly) {
       this.host?.setAttribute('cds-active', '');
-      this.emit(true);
     }
 
     if (e.code === 'Space' && e.target === this.host) {
@@ -35,10 +43,5 @@ export class ActiveInteractionController<T extends ReactiveElement> implements R
 
   private emulateInactive() {
     this.host.removeAttribute('cds-active');
-    this.emit(false);
-  }
-
-  private emit(detail: boolean) {
-    this.host.dispatchEvent(new CustomEvent('cdsActiveChange', { detail }));
   }
 }

@@ -28,8 +28,10 @@ export function columnDraggable() {
           </cds-grid-row>`)}
           <cds-grid-footer></cds-grid-footer>
         </cds-grid>
-        <p>aria-live:</p>
-        <div aria-live="assertive" role="log" aria-atomic="true">${this.ariaLiveMessage}</div>`;
+
+        <p cds-text="body">
+          aria-live: <span aria-live="assertive" role="log" aria-atomic="true">${this.ariaLiveMessage}</span>
+        </p>`;
     }
 
     private sortColumns(e: any) {

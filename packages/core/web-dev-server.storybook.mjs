@@ -21,7 +21,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   plugins: [
     ...baseConfig.plugins,
     storybookPlugin({ type: 'web-components', configDir: '.storybook' }),
-    esbuildPlugin({ ts: true, json: true, target: 'auto' }),
+    esbuildPlugin({ ts: true, json: true, target: 'esnext' }),
     rollupAdapter(styles()),
     rollupAdapter(image()),
   ],

@@ -1,14 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaPopupController, state } from '@cds/core/internal';
+import { customElement, property, ariaPopup } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaPopup<AriaPopupControllerTestElement>()
 @customElement('aria-popup-controller-test-element')
 class AriaPopupControllerTestElement extends LitElement {
-  @state() trigger: HTMLElement;
-  ariaPopupController = new AriaPopupController(this);
-  render() {
-    return html`...`;
-  }
+  @property({ type: Object }) trigger: HTMLElement;
 }
 
 describe('aria-popup.controller', () => {

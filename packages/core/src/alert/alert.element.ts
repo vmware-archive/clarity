@@ -17,6 +17,7 @@ import {
   I18nService,
   i18n,
   ClosableController,
+  closable,
 } from '@cds/core/internal';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
@@ -131,6 +132,7 @@ export function getAlertContentLayout(
  * @cssprop --close-icon-color
  * @cssprop --close-icon-color-hover
  */
+@closable<CdsAlert>({ escape: false })
 export class CdsAlert extends LitElement {
   /**
    * Sets the overall height and width of the alert and icon based on value
@@ -173,7 +175,7 @@ export class CdsAlert extends LitElement {
 
   @querySlot('cds-internal-close-button', { assign: 'close-button' }) protected closeButton: HTMLElement;
 
-  protected closableController = new ClosableController(this, { escape: false });
+  protected closableController: ClosableController<this>;
 
   connectedCallback() {
     super.connectedCallback();

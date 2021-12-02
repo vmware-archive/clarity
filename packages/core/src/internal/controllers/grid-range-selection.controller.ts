@@ -7,6 +7,10 @@ type GridRange = {
   rangeSelection?: boolean;
 };
 
+export function gridRangeSelection<T extends ReactiveElement & GridRange>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new GridRangeSelectionController(instance));
+}
+
 /**
  * Given a 2d array grid structure provide a highlight/range selection of given cells
  */

@@ -1,13 +1,14 @@
 import { html, LitElement } from 'lit';
 import { queryAll } from 'lit/decorators/query-all.js';
-import { customElement, KeyNavigationListController } from '@cds/core/internal';
+import { customElement, keyNavigationList, KeyNavigationListController } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@keyNavigationList<KeyNavigationListControllerTestElement>()
 @customElement('key-navigation-list-controller-test-element')
 class KeyNavigationListControllerTestElement extends LitElement {
   @queryAll('section > div') keyListItems: NodeListOf<HTMLElement>;
 
-  keyNavigationListController = new KeyNavigationListController(this);
+  keyNavigationListController: KeyNavigationListController<this>;
 
   render() {
     return html`
@@ -42,15 +43,11 @@ describe('key-navigation-list.controller', () => {
 
   it('should initialize first item if focus management is enabled', async () => {
     await componentIsStable(component);
-    component.keyNavigationListController.initializeKeyList();
     expect(component.keyListItems[0].tabIndex).toBe(0);
     expect(component.keyListItems[1].tabIndex).toBe(-1);
   });
 
   it('should set activate a item on click', async () => {
-    await componentIsStable(component);
-    component.keyNavigationListController.initializeKeyList();
-
     await componentIsStable(component);
     component.keyListItems[2].click();
     expect(component.keyListItems[0].getAttribute('tabindex')).toBe('-1');
@@ -60,12 +57,10 @@ describe('key-navigation-list.controller', () => {
 
   it('should support horizontal arrow key navigation', async () => {
     await componentIsStable(component);
-    component.keyNavigationListController.initializeKeyList();
-
     component.keyListItems[0].dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight', bubbles: true }));
     component.keyListItems[1].dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight', bubbles: true }));
-    await componentIsStable(component);
 
+    await componentIsStable(component);
     expect(component.keyListItems[0].getAttribute('tabindex')).toBe('-1');
     expect(component.keyListItems[1].getAttribute('tabindex')).toBe('-1');
     expect(component.keyListItems[2].getAttribute('tabindex')).toBe('0');
@@ -81,13 +76,12 @@ describe('key-navigation-list.controller', () => {
 
   it('should support vertical arrow key navigation', async () => {
     component.keyNavigationListController = new KeyNavigationListController(component, { layout: 'vertical' });
-    await componentIsStable(component);
-    component.keyNavigationListController.initializeKeyList();
 
+    await componentIsStable(component);
     component.keyListItems[0].dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown', bubbles: true }));
     component.keyListItems[1].dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown', bubbles: true }));
-    await componentIsStable(component);
 
+    await componentIsStable(component);
     expect(component.keyListItems[0].getAttribute('tabindex')).toBe('-1');
     expect(component.keyListItems[1].getAttribute('tabindex')).toBe('-1');
     expect(component.keyListItems[2].getAttribute('tabindex')).toBe('0');

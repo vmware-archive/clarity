@@ -1,14 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, ClosableController } from '@cds/core/internal';
+import { customElement, ClosableController, closable } from '@cds/core/internal';
 import { componentIsStable, createTestElement, onceEvent, removeTestElement } from '@cds/core/test';
 
+@closable<ClosableControllerTestElement>()
 @customElement('closable-controller-test-element')
 class ClosableControllerTestElement extends LitElement {
-  closableController = new ClosableController(this);
-
-  render() {
-    return html`...`;
-  }
+  closableController: ClosableController<this>;
 }
 
 describe('closable.controller', () => {

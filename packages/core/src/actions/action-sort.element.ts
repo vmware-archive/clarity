@@ -48,14 +48,14 @@ export class CdsActionSort extends CdsAction {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('click', () => this.#sortClick());
+    this.addEventListener('click', () => this.sortClick());
 
     if (this.ariaLabel) {
       this.ariaLabel = this.i18n.sort;
     }
   }
 
-  #sortClick() {
+  private sortClick() {
     let sort = this.sort;
     switch (sort) {
       case 'ascending':

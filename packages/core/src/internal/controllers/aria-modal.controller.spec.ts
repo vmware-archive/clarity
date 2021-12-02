@@ -1,15 +1,10 @@
 import { html, LitElement } from 'lit';
-import { customElement, AriaModalController } from '@cds/core/internal';
+import { customElement, AriaModalController, ariaModal } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@ariaModal<AriaModalControllerTestElement>()
 @customElement('aria-modal-controller-test-element')
-class AriaModalControllerTestElement extends LitElement {
-  ariaModalController = new AriaModalController(this);
-
-  render() {
-    return html`...`;
-  }
-}
+class AriaModalControllerTestElement extends LitElement {}
 
 describe('aria-modal.controller', () => {
   let component: HTMLElement;

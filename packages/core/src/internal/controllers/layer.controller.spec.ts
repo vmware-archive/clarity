@@ -1,10 +1,11 @@
 import { html, LitElement } from 'lit';
-import { customElement, LayerController } from '@cds/core/internal';
+import { customElement, layer, LayerController } from '@cds/core/internal';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
+@layer<LayerControllerTestElement>()
 @customElement('layer-controller-test-element')
 class LayerControllerTestElement extends LitElement {
-  layerController = new LayerController(this);
+  layerController: LayerController<this>;
 }
 
 describe('layer.controller', () => {

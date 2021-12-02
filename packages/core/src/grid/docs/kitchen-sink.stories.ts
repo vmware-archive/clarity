@@ -115,7 +115,7 @@ export function kitchenSink() {
           </cds-grid-detail>
         </cds-grid>
         <cds-dropdown id="id-filter" ?hidden=${!this.state.idFilterAnchor} @closeChange=${() => (this.state = { ...this.state, idFilterAnchor: null as any })} .anchor=${this.state.idFilterAnchor}>
-          <div cds-layout="vertical align:stretch p:md">  
+          <div cds-layout="vertical align:stretch p:md">
             <cds-input>
               <input type="text" placeholder="Search" aria-label="search rows" .value=${this.state.search} @input=${(e: any) => this.search(e.target.value)} />
             </cds-input>

@@ -1,6 +1,6 @@
 /**
  * Storybook Web Dev Server
- * 
+ *
  * Provides a local env for running storybook with modern ESM JavaScript
  */
 
@@ -20,7 +20,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   },
   plugins: [
     storybookPlugin({ type: 'web-components', configDir: '.storybook' }),
-    esbuildPlugin({ ts: true, json: true, target: 'auto' }),
+    esbuildPlugin({ ts: true, json: true, target: 'esnext' }),
     rollupAdapter(styles()),
     rollupAdapter(image()),
     ...baseConfig.plugins,

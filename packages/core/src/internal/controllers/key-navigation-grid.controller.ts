@@ -11,13 +11,13 @@ export interface KeyNavigationGridConfig {
   cells: NodeListOf<HTMLElement>;
 }
 
+/**
+ * Given a 2d array grid structure provide keyboard navigation following aria grid spec
+ */
 export function keyNavigationGrid<T extends ReactiveElement & KeyNavigationGridConfig>(): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new KeyNavigationGridController(instance));
 }
 
-/**
- * Given a 2d array grid structure provide keyboard navigation following aria grid spec
- */
 export class KeyNavigationGridController<T extends ReactiveElement & KeyNavigationGridConfig>
   implements ReactiveController {
   private observers: MutationObserver[] = [];

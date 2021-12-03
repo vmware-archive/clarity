@@ -325,7 +325,9 @@ export function ariaPopupController() {
     static styles = [styles];
 
     get trigger() {
-      return (this.getRootNode() as HTMLElement).querySelector<HTMLElement>(`#${this.getAttribute('anchor')}`);
+      return (this.getRootNode() as HTMLElement).querySelector<HTMLElement>(
+        `#${this.getAttribute('anchor')}`
+      ) as HTMLElement;
     }
 
     render() {
@@ -707,7 +709,10 @@ export function layerController() {
 
     firstUpdated(props: any) {
       super.firstUpdated(props);
-      this.style.setProperty('--index', `${this.layerController.layerIndex + 1}`);
+      this.style.setProperty(
+        '--index',
+        `${this.layerController.layerIndex !== null ? this.layerController.layerIndex + 1 : 'initial'}`
+      );
       this.style.setProperty(
         '--background',
         this.layerController.isActiveLayer ? '#6c8ece4a' : 'hsla(0, 0%, 0%, 0.04)'

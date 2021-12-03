@@ -3,12 +3,6 @@ import { focusable, focusElement, ignoreFocus } from '../utils/focus.js';
 import { listenForAttributeChange } from '../utils/events.js';
 import { getFlattenedDOMTree } from '../utils/traversal.js';
 
-export function firstFocus<T extends ReactiveElement>(
-  config: FirstFocusConfig = { fallback: 'focusable' }
-): ClassDecorator {
-  return (target: any) => target.addInitializer((instance: T) => new FirstFocusController(instance, config));
-}
-
 export interface FirstFocusConfig {
   fallback: 'none' | 'host' | 'focusable';
 }
@@ -16,6 +10,12 @@ export interface FirstFocusConfig {
 /**
  * Provides a focus first behavior to any component via the cds-first-focus attribute
  */
+export function firstFocus<T extends ReactiveElement>(
+  config: FirstFocusConfig = { fallback: 'focusable' }
+): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new FirstFocusController(instance, config));
+}
+
 export class FirstFocusController<T extends ReactiveElement> implements ReactiveController {
   private observer: MutationObserver;
 
@@ -46,7 +46,10 @@ export class FirstFocusController<T extends ReactiveElement> implements Reactive
           : null;
       const host = this.config.fallback === 'none' ? null : rootHost;
 
-      focusElement(firstFocus ?? focusableElement ?? host);
+      const focus = firstFocus ?? focusableElement ?? host;
+      if (focus) {
+        focusElement(focus);
+      }
     }
   }
 }

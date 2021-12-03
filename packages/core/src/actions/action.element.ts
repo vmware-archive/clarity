@@ -5,7 +5,7 @@
  */
 
 import { html, PropertyValues } from 'lit';
-import { property, baseStyles, CdsBaseButton, LogService, state, assignSlotNames } from '@cds/core/internal';
+import { property, baseStyles, CdsBaseButton, LogService, state } from '@cds/core/internal';
 import styles from './action.element.scss';
 
 /**

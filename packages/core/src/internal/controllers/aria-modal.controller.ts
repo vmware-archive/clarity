@@ -1,13 +1,13 @@
 import { ReactiveController, ReactiveElement } from 'lit';
 
-export function ariaModal<T extends ReactiveElement>(): ClassDecorator {
-  return (target: any) => target.addInitializer((instance: T) => new AriaModalController(instance));
-}
-
 /**
  * Provides all nessesary aria-* attributes to create a valid aria modal.
  * Recommended use with `@focusTrap` controller.
  */
+export function ariaModal<T extends ReactiveElement>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new AriaModalController(instance));
+}
+
 export class AriaModalController<T extends ReactiveElement> implements ReactiveController {
   constructor(private host: T) {
     this.host.addController(this);

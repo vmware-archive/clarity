@@ -3,8 +3,8 @@ import { isNumericString, listenForAttributeListChange, onFirstInteraction } fro
 
 export type GridColumnSize = ReactiveControllerHost &
   HTMLElement & {
-    width?: string;
-    type?: string;
+    width: string;
+    type: string;
   };
 
 export class GridColumnSizeController {

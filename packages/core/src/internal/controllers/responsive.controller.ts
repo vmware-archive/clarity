@@ -5,23 +5,21 @@ interface ResponsiveConfig {
   element?: HTMLElement;
 }
 
-export function responsive<T extends ReactiveElement>(
-  config: ResponsiveConfig = { skipFirst: false, element: null }
-): ClassDecorator {
-  return (target: any) => target.addInitializer((instance: T) => new ResponsiveController(instance, config));
-}
-
 /**
  * Provides a `cdsResizeChange` event when component dimensions are resized
  */
+export function responsive<T extends ReactiveElement>(config: ResponsiveConfig = { skipFirst: false }): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new ResponsiveController(instance, config));
+}
+
 export class ResponsiveController<T extends ReactiveElement> implements ReactiveController {
   private observer: ResizeObserver;
   private resizeElement: HTMLElement;
   private skipFirst = false;
 
-  constructor(private host: T, config: ResponsiveConfig = { skipFirst: false, element: null }) {
+  constructor(private host: T, config: ResponsiveConfig = { skipFirst: false }) {
     host.addController(this);
-    this.skipFirst = config.skipFirst;
+    this.skipFirst = !!config.skipFirst;
     this.resizeElement = config.element ? config.element : this.host;
   }
 

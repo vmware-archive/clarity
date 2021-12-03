@@ -8,9 +8,9 @@ import {
 } from '@cds/core/internal';
 
 export type Column = HTMLElement & {
-  width?: string;
-  ariaColIndex?: string;
-  type?: string;
+  width: string;
+  ariaColIndex: string;
+  type: string;
 };
 
 type Grid = HTMLElement & {
@@ -48,7 +48,7 @@ export class GridLayoutController {
     this.observers.push(
       onChildListMutation(this.host, async mutation => {
         await this.host.updateComplete;
-        if (this.columnAddedOrRemoved(mutation)) {
+        if (mutation && this.columnAddedOrRemoved(mutation)) {
           this.updateLayout();
         }
       })

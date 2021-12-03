@@ -4,16 +4,22 @@ import { getNextKeyListItem, validKeyNavigationCode } from '../utils/keycodes.js
 import { getFlattenedFocusableItems } from '../utils/traversal.js';
 
 export interface KeyNavigationListConfig {
-  shadowRoot?: boolean;
-  keyListItems?: string;
-  layout?: 'both' | 'horizontal' | 'vertical';
-  manageFocus?: boolean;
-  manageTabindex?: boolean;
-  loop?: boolean;
-  dir?: string;
+  shadowRoot: boolean;
+  keyListItems: string;
+  layout: 'both' | 'horizontal' | 'vertical';
+  manageFocus: boolean;
+  manageTabindex: boolean;
+  loop: boolean;
+  dir: string | null;
 }
 
-export function keyNavigationList<T extends ReactiveElement>(config?: KeyNavigationListConfig): ClassDecorator {
+/**
+ * Provides key list naviation behavior
+ * https://webaim.org/techniques/keyboard/
+ */
+export function keyNavigationList<T extends ReactiveElement>(
+  config: Partial<KeyNavigationListConfig> = {}
+): ClassDecorator {
   return (target: any) => {
     target.addInitializer((instance: T & { keyNavigationListController?: KeyNavigationListController<T> }) => {
       if (!instance.keyNavigationListController) {
@@ -23,20 +29,18 @@ export function keyNavigationList<T extends ReactiveElement>(config?: KeyNavigat
   };
 }
 
-/**
- * Provides key list naviation behavior
- * https://webaim.org/techniques/keyboard/
- */
 export class KeyNavigationListController<T extends ReactiveElement> implements ReactiveController {
   private get listItems() {
     return (this.host as any)[this.config.keyListItems] as NodeListOf<HTMLElement>;
   }
 
   private get hostRoot() {
-    return this.config.shadowRoot ? this.host.shadowRoot : this.host;
+    return this.config.shadowRoot ? (this.host.shadowRoot as ShadowRoot) : this.host;
   }
 
-  constructor(private host: T, private config?: KeyNavigationListConfig) {
+  private config: KeyNavigationListConfig;
+
+  constructor(private host: T, config: Partial<KeyNavigationListConfig> = {}) {
     this.config = {
       shadowRoot: true,
       keyListItems: 'keyListItems',

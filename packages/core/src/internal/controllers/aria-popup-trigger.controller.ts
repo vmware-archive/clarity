@@ -1,6 +1,6 @@
 import { ReactiveController, ReactiveElement } from 'lit';
 
-export type AriaPopupTrigger = { popup: string | HTMLElement };
+export type AriaPopupTrigger = { popup: string };
 
 export function ariaPopupTrigger<T extends ReactiveElement & AriaPopupTrigger>(): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new AriaPopupTriggerController(instance));
@@ -16,10 +16,8 @@ export class AriaPopupTriggerController<T extends ReactiveElement & AriaPopupTri
   }
 
   hostConnected() {
-    const popupElementId = (this.host.popup as HTMLElement)?.id;
-    const popupId = popupElementId ? popupElementId : this.host.getAttribute('popup');
-    if (popupId) {
-      this.host.ariaControls = popupId;
+    if (this.host.popup) {
+      this.host.ariaControls = this.host.popup;
       this.host.ariaHasPopup = 'true';
       this.host.ariaExpanded = 'false';
     }

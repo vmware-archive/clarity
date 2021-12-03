@@ -4,7 +4,7 @@ import { onChildListMutation } from '../utils/events.js';
 import { getFlattenedFocusableItems } from '../utils/traversal.js';
 
 export interface AriaGrid {
-  grid?: HTMLElement;
+  grid: HTMLElement;
   columnRowGroup: HTMLElement;
   columnRow: HTMLElement;
   columns: NodeListOf<HTMLElement>;
@@ -19,6 +19,10 @@ export interface AriaGrid {
 
 export type AriaGridConfig = { update: 'mutation' | 'slot' };
 
+/**
+ * Provides all nessesary role/aria-* attributes to create a vaild aria grid
+ * https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html
+ */
 export function ariaGrid<T extends ReactiveElement & AriaGrid>(
   config: AriaGridConfig = { update: 'slot' }
 ): ClassDecorator {
@@ -31,10 +35,6 @@ export function ariaGrid<T extends ReactiveElement & AriaGrid>(
   };
 }
 
-/**
- * Provides all nessesary role/aria-* attributes to create a vaild aria grid
- * https://www.w3.org/TR/wai-aria-practices/examples/grid/dataGrids.html
- */
 export class AriaGridController<T extends ReactiveElement & AriaGrid> implements ReactiveController {
   private observers: MutationObserver[] = [];
 
@@ -50,7 +50,9 @@ export class AriaGridController<T extends ReactiveElement & AriaGrid> implements
     this.update();
 
     if (this.config.update === 'slot') {
-      this.host.shadowRoot.addEventListener('slotchange', () => this.host.updateComplete.then(() => this.update()));
+      (this.host.shadowRoot as ShadowRoot).addEventListener('slotchange', () =>
+        this.host.updateComplete.then(() => this.update())
+      );
     } else {
       this.observers.push(onChildListMutation(this.host, () => this.host.updateComplete.then(() => this.update())));
     }
@@ -144,13 +146,13 @@ export class AriaGridController<T extends ReactiveElement & AriaGrid> implements
   }
 
   private intializeFooter() {
-    if (this.host.footerRowGroup) {
+    if (this.grid.footerRowGroup && this.grid.footerRow) {
       this.grid.footerRowGroup.role = 'rowgroup';
       this.grid.footerRow.role = 'row';
       this.grid.footerRow.ariaRowIndex = `${this.grid.rows.length + 2}`; // offset for header row
-      this.grid.footerCells.forEach(c => (c.role = 'gridcell'));
+      this.grid.footerCells?.forEach(c => (c.role = 'gridcell'));
 
-      if (this.grid.footerCells.length === 1) {
+      if (this.grid.footerCells?.length === 1) {
         this.grid.footerCells[0].ariaColSpan = this.grid.grid.ariaColCount;
       }
     }
@@ -171,7 +173,7 @@ export class AriaGridController<T extends ReactiveElement & AriaGrid> implements
   private patchInvalidScreenReaderBehavior(c: HTMLElement) {
     if (isSafari() || isWindows()) {
       const fousableItems = getFlattenedFocusableItems(c).filter((c: any) => !c.readonly);
-      const label = c.ariaLabel ? c.ariaLabel : c.textContent.trim();
+      const label = c.ariaLabel ? c.ariaLabel : c?.textContent?.trim();
       // todo: generic catch for resizable component
       if ((fousableItems.length || (c as any).resizable) && label.length) {
         c.ariaLabel = label;

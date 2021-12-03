@@ -7,13 +7,13 @@ type GridRange = {
   rangeSelection?: boolean;
 };
 
+/**
+ * Given a 2d array grid structure provide a highlight/range selection of given cells
+ */
 export function gridRangeSelection<T extends ReactiveElement & GridRange>(): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new GridRangeSelectionController(instance));
 }
 
-/**
- * Given a 2d array grid structure provide a highlight/range selection of given cells
- */
 export class GridRangeSelectionController<T extends ReactiveElement & GridRange> implements ReactiveController {
   private selectionActive = false;
   private firstCell: HTMLElement;
@@ -102,13 +102,13 @@ export class GridRangeSelectionController<T extends ReactiveElement & GridRange>
   private calculateSelection() {
     const x1 = parseInt(this.firstCell.ariaColIndex);
     const x2 = parseInt(this.activeCell.ariaColIndex);
-    const y1 = parseInt(this.firstCell.parentElement.ariaRowIndex);
-    const y2 = parseInt(this.activeCell.parentElement.ariaRowIndex);
+    const y1 = parseInt(this.firstCell.parentElement?.ariaRowIndex);
+    const y2 = parseInt(this.activeCell.parentElement?.ariaRowIndex);
 
     this.resetAllActiveCells();
     this.host.cells.forEach((cell: HTMLElement) => {
       const colIndex = parseInt(cell.ariaColIndex);
-      const rowIndex = parseInt(cell.parentElement.ariaRowIndex);
+      const rowIndex = parseInt(cell.parentElement?.ariaRowIndex);
       if ((x1 <= x2 && colIndex >= x1 && colIndex <= x2) || (x1 >= x2 && colIndex <= x1 && colIndex >= x2)) {
         if ((y1 <= y2 && rowIndex >= y1 && rowIndex <= y2) || (y1 >= y2 && rowIndex <= y1 && rowIndex >= y2)) {
           cell.setAttribute('highlight', '');

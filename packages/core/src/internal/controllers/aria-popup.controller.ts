@@ -10,14 +10,14 @@ import { TriggerRefController } from './trigger-ref.controller.js';
 
 export type AriaPopup = ReactiveElement & { trigger?: HTMLElement };
 
-export function ariaPopup<T extends AriaPopup>(): ClassDecorator {
-  return (target: any) => target.addInitializer((instance: T) => new AriaPopupController(instance));
-}
-
 /**
  * Provides all nessesary aria-* attributes to create a vaild aria popup.
  * Used in combination of the `@ariaPopupTrigger` controller.
  */
+export function ariaPopup<T extends AriaPopup>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new AriaPopupController(instance));
+}
+
 export class AriaPopupController<T extends AriaPopup> implements ReactiveController {
   private observer: MutationObserver;
 

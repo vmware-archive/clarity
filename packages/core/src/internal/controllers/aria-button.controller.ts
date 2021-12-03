@@ -5,13 +5,13 @@ export interface AriaButton extends ReactiveElement {
   disabled: boolean;
 }
 
+/**
+ * Provides nessesary attributes for indicating a non-button element as an accessible button type.
+ */
 export function ariaButton<T extends AriaButton>(): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new AriaButtonController(instance));
 }
 
-/**
- * Provides nessesary attributes for indicating a non-button element as an accessible button type.
- */
 export class AriaButtonController<T extends AriaButton> implements ReactiveController {
   constructor(private host: T) {
     this.host.addController(this);

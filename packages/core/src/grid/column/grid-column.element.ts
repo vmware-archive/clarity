@@ -23,17 +23,17 @@ import styles from './grid-column.element.scss';
 export class CdsGridColumn extends LitElement {
   @i18n() i18n = I18nService.keys.grid;
 
-  @property({ type: String }) width?: string | null;
-
-  @property({ type: String }) type: '' | 'action';
+  @property({ type: String }) width: string;
 
   @property({ type: Boolean }) resizable = false;
 
+  @property({ type: String }) type: '' | 'action' = '';
+
   @property({ type: String }) position: '' | 'sticky' | 'fixed' = '';
 
-  @state({ type: String, attribute: 'slot', reflect: true }) slot = 'columns';
-
   @event() resizeChange: EventEmitter<number>;
+
+  @state({ type: String, attribute: 'slot', reflect: true }) slot = 'columns';
 
   protected gridColumnSizeController = new GridColumnSizeController(this);
 

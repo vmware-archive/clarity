@@ -168,7 +168,7 @@ export interface KeyListConfig {
   code: KeyNavigationCode;
   loop?: boolean;
   layout?: 'horizontal' | 'vertical' | 'both';
-  dir?: string;
+  dir: string | null | undefined;
 }
 
 export function getNextKeyListItem(item: HTMLElement, items: HTMLElement[], config: KeyListConfig) {
@@ -211,8 +211,8 @@ export function getNextKeyGridItem(
   rows: HTMLElement[],
   config: { code: KeyNavigationCode | string; ctrlKey: boolean; dir: string }
 ) {
-  const currentCell = cells.find(i => i.getAttribute('tabindex') === '0');
-  const currentRow = rows.find(r => getFlattenedDOMTree(r).find(c => c === currentCell));
+  const currentCell = cells.find(i => i.getAttribute('tabindex') === '0') as HTMLElement;
+  const currentRow = rows.find(r => getFlattenedDOMTree(r).find(c => c === currentCell)) as HTMLElement;
   const currentRowCells = Array.from(getFlattenedDOMTree(currentRow)).filter((c: any) => !!cells.find(i => i === c));
   const numOfRows = rows.length - 1;
   const numOfColumns = currentRowCells.length - 1;

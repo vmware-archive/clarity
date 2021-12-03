@@ -18,6 +18,6 @@ export class GridRowPositionController {
   }
 
   private setScrollTop(value: string) {
-    this.host.parentElement.style.setProperty('--scroll-padding-top', value);
+    this.host.parentElement?.style.setProperty('--scroll-padding-top', value);
   }
 }

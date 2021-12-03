@@ -5,7 +5,7 @@
  */
 
 import { PropertyValues } from 'lit';
-import { assignSlotNames, property } from '@cds/core/internal';
+import { property } from '@cds/core/internal';
 import { state } from 'lit/decorators/state.js';
 import { CdsAction } from '@cds/core/actions';
 
@@ -57,7 +57,7 @@ export class CdsPaginationButton extends CdsAction {
   @state() private direction: 'up' | 'right' | 'down' | 'left';
 
   get cdsIcon() {
-    return this.shadowRoot.querySelector('cds-icon');
+    return this.shadowRoot?.querySelector('cds-icon');
   }
 
   updated(props: PropertyValues) {

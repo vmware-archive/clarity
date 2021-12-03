@@ -7,6 +7,9 @@ let dragSrcEl: HTMLElement | null = null;
 
 export type DraggableItem = HTMLElement & { cdsDraggableItem?: 'item' | 'dropzone' };
 
+/**
+ * Provides support for HTML5 native drag and drop to a component
+ */
 export function draggableList<T extends ReactiveElement>(config?: DraggableListControllerConfig): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new DraggableListController(instance, config));
 }
@@ -27,8 +30,8 @@ export enum CdsDraggableChangeType {
 
 async function dispatchDraggableChange(
   host: HTMLElement,
-  from: HTMLElement,
-  target: HTMLElement,
+  from: HTMLElement | null | undefined,
+  target: HTMLElement | null | undefined,
   type: CdsDraggableChangeType
 ) {
   if ((host as any)?.updateComplete) {
@@ -37,9 +40,6 @@ async function dispatchDraggableChange(
   host.dispatchEvent(new CustomEvent('cdsDraggableChange', { detail: { from, target, type }, bubbles: true }));
 }
 
-/**
- * Provides support for HTML5 native drag and drop to a component
- */
 export class DraggableListController<T extends ReactiveElement> implements ReactiveController {
   private get items() {
     return Array.from(this.hostRoot.querySelectorAll<DraggableItem>(`${this.config.item}[draggable=true]`));
@@ -50,7 +50,7 @@ export class DraggableListController<T extends ReactiveElement> implements React
   }
 
   private get hostRoot() {
-    return this.config.shadowRoot ? this.host.shadowRoot : this.host;
+    return this.config.shadowRoot ? (this.host.shadowRoot as ShadowRoot) : this.host;
   }
 
   private observer: MutationObserver;
@@ -59,7 +59,7 @@ export class DraggableListController<T extends ReactiveElement> implements React
 
   private id = `__${createId()}`;
 
-  constructor(private host: T, config: DraggableListControllerConfig) {
+  constructor(private host: T, config?: DraggableListControllerConfig) {
     this.config = { shadowRoot: false, layout: 'both', item: '', dropZone: '', manageFocus: true, ...config };
     host.addController(this);
   }
@@ -72,9 +72,11 @@ export class DraggableListController<T extends ReactiveElement> implements React
       this.addKeyboardEventListeners();
       this.initializeKeyListController();
       this.observer = onChildListMutation(this.host, mutation => {
-        const items = (Array.from(mutation.addedNodes) as HTMLElement[]).filter(i => i.draggable) as DraggableItem[];
-        if (items.length) {
-          this.addDragEventListeners(items);
+        if (mutation) {
+          const items = (Array.from(mutation.addedNodes) as HTMLElement[]).filter(i => i.draggable) as DraggableItem[];
+          if (items.length) {
+            this.addDragEventListeners(items);
+          }
         }
       });
     }
@@ -168,8 +170,8 @@ function handleDrop(e: any) {
   const items: DraggableItem[] = Array.from(e.currentTarget.parentElement.querySelectorAll('[draggable]'));
   const from = dragSrcEl;
   const target = items.find(i => i === e.currentTarget);
-  from.removeAttribute('cds-draggable');
-  target.removeAttribute('cds-draggable');
+  from?.removeAttribute('cds-draggable');
+  target?.removeAttribute('cds-draggable');
   dispatchDraggableChange(e.currentTarget, from, target, CdsDraggableChangeType.Reordered);
   return false;
 }

@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": [],
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "rootDir": "./src",
     "incremental": true,
     "isolatedModules": true,

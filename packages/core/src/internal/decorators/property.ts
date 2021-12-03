@@ -114,7 +114,7 @@ function getRequiredMessage(level = 'warning', propertyName: string, tagName: st
  */
 export function property(options?: PropertyConfig) {
   return (protoOrDescriptor: any, name?: PropertyKey) => {
-    if (options.required) {
+    if (options?.required) {
       requirePropertyCheck(protoOrDescriptor, name as string, options);
     }
     return _property(getDefaultOptions(name as string, options))(protoOrDescriptor, name);
@@ -131,7 +131,7 @@ export function property(options?: PropertyConfig) {
  * @ExportDecoratedItems
  */
 export function state(options?: PropertyConfig) {
-  return (protoOrDescriptor: any, name?: string) => {
+  return (protoOrDescriptor: any, name: string) => {
     const defaultOptions: any = getDefaultOptions(name, options);
 
     if (defaultOptions) {

@@ -13,13 +13,13 @@ export type ButtonSubmit = ReactiveElement &
     readonly: boolean;
   };
 
+/**
+ * Shim for allowing native submit type events with custom element buttons as Safari prevents use of extending native element types
+ */
 export function buttonSubmit<T extends ButtonSubmit>(): ClassDecorator {
   return (target: any) => target.addInitializer((instance: T) => new ButtonSubmitController(instance));
 }
 
-/**
- * Shim for allowing native submit type events with custom element buttons as Safari prevents use of extending native element types
- */
 export class ButtonSubmitController<T extends ButtonSubmit> implements ReactiveController {
   private triggerNativeButtonBehaviorHandler = this.triggerNativeButtonBehavior.bind(this);
   private emulateKeyBoardEventBehaviorHandler = this.emulateKeyBoardEventBehavior.bind(this);
@@ -83,8 +83,8 @@ export class ButtonSubmitController<T extends ButtonSubmit> implements ReactiveC
         this.host
       );
 
-      submitButton.dispatchEvent(new MouseEvent('click', { relatedTarget: this.host, composed: true }));
-      submitButton.remove();
+      submitButton?.dispatchEvent(new MouseEvent('click', { relatedTarget: this.host, composed: true }));
+      submitButton?.remove();
     }
   }
 }

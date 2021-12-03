@@ -46,7 +46,7 @@ import styles from './grid-detail.element.scss';
 @focusTrap<CdsGridDetail>()
 @firstFocus<CdsGridDetail>()
 export class CdsGridDetail extends LitElement {
-  @property({ type: String }) anchor: HTMLElement | string | null;
+  @property({ type: String }) anchor: HTMLElement | string;
 
   @i18n() i18n = I18nService.keys.grid;
 
@@ -56,7 +56,7 @@ export class CdsGridDetail extends LitElement {
 
   protected closableController: ClosableController<this>;
 
-  protected responsiveController = new ResponsiveController(this, { element: this.parentElement });
+  protected responsiveController = new ResponsiveController(this, { element: this.parentElement as HTMLElement });
 
   private observer: MutationObserver;
 
@@ -66,7 +66,7 @@ export class CdsGridDetail extends LitElement {
 
   get trigger(): HTMLElement {
     return typeof this.anchor === 'string'
-      ? (this.getRootNode() as HTMLElement).querySelector(`#${this.anchor}`)
+      ? ((this.getRootNode() as HTMLElement).querySelector<HTMLElement>(`#${this.anchor}`) as HTMLElement)
       : this.anchor;
   }
 
@@ -100,7 +100,7 @@ export class CdsGridDetail extends LitElement {
     super.connectedCallback();
     renderAfter(this.closeButton, this);
     this.addEventListener('cdsResizeChange', (e: any) => (this.overlay = e.detail.width > 500 ? '' : 'full'));
-    this.observer = listenForAttributeChange(this, 'hidden', (hidden: string) => {
+    this.observer = listenForAttributeChange(this, 'hidden', hidden => {
       this.grid.scrollLock = !hidden;
       this.setDetailWidthAlignment();
       this.toggleAnchorHover();
@@ -136,7 +136,7 @@ export class CdsGridDetail extends LitElement {
     }
 
     this.toggleAnchorHover();
-    const top = this.trigger?.getBoundingClientRect()?.top - this?.getBoundingClientRect().top - 8;
+    const top = this.trigger?.getBoundingClientRect()?.top - (this?.getBoundingClientRect().top as number) - 8;
     this.style.setProperty('--caret-top', `${top}px`);
   }
 
@@ -144,8 +144,8 @@ export class CdsGridDetail extends LitElement {
     const rowheader = Array.from(this.triggerRow?.cells ?? []).find((c: any) => c.role === 'rowheader') as HTMLElement;
     if (rowheader) {
       const cellRect = rowheader.getBoundingClientRect();
-      const gridRect = this.parentElement.getBoundingClientRect();
-      const rtl = this.parentElement.getAttribute('dir') === 'rtl';
+      const gridRect = this.parentElement?.getBoundingClientRect() as DOMRect;
+      const rtl = this.parentElement?.getAttribute('dir') === 'rtl';
       this.style.setProperty('--width', 'auto');
 
       if (rtl) {

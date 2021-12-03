@@ -8,6 +8,14 @@ import { ReactiveController, ReactiveElement } from 'lit';
 import { listenForAttributeChange } from '../utils/events.js';
 import { GlobalStateService } from '../services/global.service.js';
 
+/**
+ * LayerController provides manage layer tracking for components. Ensures any component
+ * that may be a layer on top of other components is given a ordered index relative
+ * to other existing layers on the page.
+ *
+ * This makes layer tracking easier for CSS, such as targeting the top or bottom
+ * layer element or setting a z-index ordering.
+ */
 export function layer<T extends ReactiveElement>(): ClassDecorator {
   return (target: any) => {
     target.addInitializer((instance: T & { layerController?: LayerController<T> }) => {
@@ -18,14 +26,6 @@ export function layer<T extends ReactiveElement>(): ClassDecorator {
   };
 }
 
-/**
- * LayerController provides manage layer tracking for components. Ensures any component
- * that may be a layer on top of other components is given a ordered index relative
- * to other existing layers on the page.
- *
- * This makes layer tracking easier for CSS, such as targeting the top or bottom
- * layer element or setting a z-index ordering.
- */
 export class LayerController<T extends ReactiveElement> implements ReactiveController {
   private observer: MutationObserver;
 

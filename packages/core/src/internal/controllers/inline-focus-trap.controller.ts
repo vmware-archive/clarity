@@ -3,16 +3,16 @@ import { getFlattenedFocusableItems } from '../utils/traversal.js';
 import { renderAfter, renderBefore } from '../utils/lit.js';
 import { ignoreFocus } from '../utils/focus.js';
 
-export function focusTrap<T extends ReactiveElement>(): ClassDecorator {
-  return (target: any) => target.addInitializer((instance: T) => new InlineFocusTrapController(instance));
-}
-
 /**
  * Focus Trap that given a DOM element creates a flattened tree traversal
  * between both Shadow DOM and Light DOM
  *
  * safari https://bugs.webkit.org/show_bug.cgi?id=174667
  */
+export function focusTrap<T extends ReactiveElement>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new InlineFocusTrapController(instance));
+}
+
 export class InlineFocusTrapController<T extends ReactiveElement> implements ReactiveController {
   constructor(private host: T) {
     this.host.addController(this);

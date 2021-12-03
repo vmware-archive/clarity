@@ -16,7 +16,7 @@ export function getA11ySnapshotNodes(node: PlaywrightA11ySnapshotNode): Playwrig
   return node.children
     .reduce((prev, next) => [...prev, ...getA11ySnapshotNodes(next)], [node])
     .map(node => {
-      delete node.children;
+      delete (node as any).children;
       return node;
     });
 }

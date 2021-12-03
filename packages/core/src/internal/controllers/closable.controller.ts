@@ -8,11 +8,16 @@ export type CloseChangeType = 'focusout' | 'backdrop-click' | 'escape-keypress' 
 export type Closable = ReactiveElement & { trigger?: HTMLElement };
 
 export interface ClosableControllerConfig {
-  escape?: boolean;
-  focusout?: boolean;
+  escape: boolean;
+  focusout: boolean;
 }
 
-export function closable<T extends Closable>(config?: ClosableControllerConfig): ClassDecorator {
+/**
+ * Given a closable component provides the following
+ * - close on escape
+ * - focus to trigger if available
+ */
+export function closable<T extends Closable>(config: Partial<ClosableControllerConfig> = {}): ClassDecorator {
   return (target: any) => {
     target.addInitializer((instance: T & { closableController?: ClosableController<T> }) => {
       if (!instance.closableController) {
@@ -22,17 +27,14 @@ export function closable<T extends Closable>(config?: ClosableControllerConfig):
   };
 }
 
-/**
- * Given a closable component provides the following
- * - close on escape
- * - focus to trigger if available
- */
 export class ClosableController<T extends Closable> implements ReactiveController {
   private observer: MutationObserver;
 
   private trigger: TriggerRefController<T>;
 
-  constructor(private host: T, private config?: ClosableControllerConfig) {
+  private config: ClosableControllerConfig;
+
+  constructor(private host: T, config: Partial<ClosableControllerConfig> = {}) {
     this.config = { escape: true, focusout: false, ...config };
     this.host.addController(this);
     this.trigger = new TriggerRefController(this.host);

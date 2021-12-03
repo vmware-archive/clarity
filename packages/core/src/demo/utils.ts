@@ -31,9 +31,15 @@ export function swapBetweenLists<T>(
   fromList: (T & { id: string })[],
   detail: { from: { id: string }; target: { id: string } }
 ) {
-  const item = fromList.splice(fromList.indexOf(fromList.find(i => i.id === detail.from.id)), 1)[0];
-  const targetIndex = targetList.indexOf(targetList.find(i => i.id === detail.target.id));
-  targetIndex === -1 ? targetList.push(item) : targetList.splice(targetIndex, 0, item);
+  const itemId = fromList.find(i => i.id === detail.from.id);
+  const targetId = targetList.find(i => i.id === detail.target.id);
+
+  if (itemId && targetId) {
+    const item = fromList.splice(fromList.indexOf(itemId), 1)[0];
+    const targetIndex = targetList.indexOf(targetId);
+    targetIndex === -1 ? targetList.push(item) : targetList.splice(targetIndex, 0, item);
+  }
+
   return { targetList: [...targetList], fromList: [...fromList] };
 }
 
@@ -86,7 +92,7 @@ export function parseCSV(text: string) {
  * This is a demo function used to standardize demos across framework examples. Do not use in production.
  */
 export function exportElementsToCSV(columnElements: NodeListOf<HTMLElement>, rowElements: NodeListOf<HTMLElement>) {
-  const columns = Array.from(columnElements).map(c => c.textContent.trim());
+  const columns = Array.from(columnElements).map(c => c.textContent?.trim());
   const rows = Array.from(rowElements).map(r =>
     Array.from(r.children).map(c => `${c.textContent}${c.querySelector('input')?.value}`)
   );

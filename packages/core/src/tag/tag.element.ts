@@ -4,16 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  assignSlotNames,
-  baseStyles,
-  CdsBaseButton,
-  id,
-  property,
-  querySlot,
-  StatusTypes,
-  syncProps,
-} from '@cds/core/internal';
+import { baseStyles, CdsBaseButton, id, property, querySlot, StatusTypes, syncProps } from '@cds/core/internal';
 import { html } from 'lit';
 import styles from './tag.element.scss';
 

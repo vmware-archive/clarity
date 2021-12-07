@@ -64,7 +64,7 @@
     .clr-subtext {
       @include css-var(
         color,
-        cclr-forms-subtext-disabled-color,
+        clr-forms-subtext-disabled-color,
         $clr-forms-subtext-disabled-color,
         $clr-use-custom-properties
       );

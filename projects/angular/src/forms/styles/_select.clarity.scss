@@ -34,7 +34,7 @@
         @include css-var(background, $hoverCssVar, $hoverSassVar, $clr-use-custom-properties);
       }
 
-      &:disabled {
+      &:disabled option {
         @include disabled-form-fields();
       }
 

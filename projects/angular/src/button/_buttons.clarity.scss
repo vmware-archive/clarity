@@ -306,11 +306,13 @@
   .btn-success .btn {
     @include populateButtonProperties(success);
   }
+  .btn.btn-warning,
+  .btn-warning .btn {
+    @include populateButtonProperties(warning);
+  }
 
   .btn.btn-danger,
-  .btn.btn-warning,
-  .btn-danger .btn,
-  .btn-warning .btn {
+  .btn-danger .btn {
     @include populateButtonProperties(danger);
   }
 
@@ -329,15 +331,17 @@
   .btn-outline-success .btn {
     @include populateButtonProperties(success-outline);
   }
+  .btn.btn-warning-outline,
+  .btn.btn-outline-warning,
+  .btn-warning-outline .btn,
+  .btn-outline-warning .btn {
+    @include populateButtonProperties(warning-outline);
+  }
 
   .btn.btn-danger-outline,
   .btn.btn-outline-danger,
-  .btn.btn-warning-outline,
-  .btn.btn-outline-warning,
   .btn-danger-outline .btn,
-  .btn-outline-danger .btn,
-  .btn-warning-outline .btn,
-  .btn-outline-warning .btn {
+  .btn-outline-danger .btn {
     @include populateButtonProperties(danger-outline);
   }
 
@@ -396,7 +400,10 @@
 
     &.disabled,
     &:disabled {
-      @include button-css-var(icon, color, disabled-color, $clr-use-custom-properties);
+      cds-icon,
+      clr-icon {
+        @include css-var(color, clr-btn-icon-disabled-color, $clr-color-neutral-400, $clr-use-custom-properties);
+      }
     }
   }
 
@@ -483,8 +490,11 @@
       @include btn-checked-styles(success);
     }
 
-    &.btn-danger,
     &.btn-warning {
+      @include btn-checked-styles(warning);
+    }
+
+    &.btn-danger {
       @include btn-checked-styles(danger);
     }
 
@@ -494,10 +504,13 @@
     }
 
     &.btn-danger-outline,
-    &.btn-outline-danger,
+    &.btn-outline-danger {
+      @include btn-checked-styles(outline-danger);
+    }
+
     &.btn-warning-outline,
     &.btn-outline-warning {
-      @include btn-checked-styles(outline-danger);
+      @include btn-checked-styles(outline-warning);
     }
 
     &.btn-link {
@@ -541,8 +554,11 @@
       @include btn-checked-styles(success, radio);
     }
 
-    &.btn-danger,
     &.btn-warning {
+      @include btn-checked-styles(warning, radio);
+    }
+
+    &.btn-danger {
       @include btn-checked-styles(danger, radio);
     }
 
@@ -551,10 +567,13 @@
       @include btn-checked-styles(success-outline, radio);
     }
 
-    &.btn-danger-outline,
-    &.btn-outline-danger,
     &.btn-warning-outline,
     &.btn-outline-warning {
+      @include btn-checked-styles(warning-outline, radio);
+    }
+
+    &.btn-danger-outline,
+    &.btn-outline-danger {
       @include btn-checked-styles(danger-outline, radio);
     }
 

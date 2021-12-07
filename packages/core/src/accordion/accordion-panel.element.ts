@@ -15,6 +15,7 @@ import {
   property,
   querySlot,
 } from '@cds/core/internal';
+import { CdsAccordionHeader } from './accordion-header.element.js';
 import styles from './accordion-panel.element.scss';
 
 /**
@@ -66,7 +67,7 @@ export class CdsAccordionPanel extends LitElement {
 
   @property({ type: Boolean }) expanded = false;
 
-  @querySlot('cds-accordion-header') private header: HTMLElement;
+  @querySlot('cds-accordion-header') private header: CdsAccordionHeader;
 
   @querySlot('cds-accordion-content') private content: HTMLElement;
 
@@ -82,6 +83,7 @@ export class CdsAccordionPanel extends LitElement {
     if (this.content && this.header) {
       this.content.setAttribute('aria-labelledby', this.header.id);
       this.header.setAttribute('aria-controls', this.content.id);
+      this.header.expanded = this.expanded;
     }
   }
 

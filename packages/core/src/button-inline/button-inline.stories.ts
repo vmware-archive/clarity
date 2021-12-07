@@ -4,19 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import '@cds/core/button/register.js';
-import '@cds/core/icon/register.js';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { userIcon } from '@cds/core/icon/shapes/user.js';
-import { angleIcon } from '@cds/core/icon/shapes/angle.js';
-import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 import { html } from 'lit';
-
-ClarityIcons.addIcons(angleIcon, userIcon);
+import '@cds/core/button-inline/register.js';
+import { spreadProps, getElementStorybookArgs } from '@cds/core/internal';
 
 export default {
-  title: 'Stories/Inline Button',
-  component: 'cds-inline-button',
+  title: 'Stories/Button Inline',
+  component: 'cds-button-inline',
   parameters: {
     options: { showPanel: true },
   },
@@ -25,9 +19,9 @@ export default {
 export function API(args: any) {
   return html`
     <cds-demo inline-block>
-      <cds-inline-button ...="${spreadProps(getElementStorybookArgs(args))}" @click=${() => console.log('click')}>
+      <cds-button-inline ...="${spreadProps(getElementStorybookArgs(args))}" @click=${() => console.log('click')}>
         ${args.default}
-      </cds-inline-button>
+      </cds-button-inline>
     </cds-demo>
   `;
 }
@@ -42,7 +36,7 @@ export function actions() {
       by starlight hundreds of thousands? Vanquish the impossible brain is the seed of intelligence star stuff
       harvesting star light the only home we've ever known citizens of distant epochs the only home we've ever known and
       billions upon billions upon billions upon billions upon billions upon billions upon billions.
-      <cds-inline-button>Ohai</cds-inline-button>
+      <cds-button-inline>Ohai</cds-button-inline>
     </p>
   `;
 }
@@ -52,7 +46,7 @@ export function disabledInlineButton() {
   return html`
     <p cds-text="body">
       A still more glorious dawn awaits intelligent beings colonies vastness is bearable only through love.
-      <cds-inline-button disabled>Ohai<cds-icon shape="angle" direction="right"></cds-icon></cds-inline-button>
+      <cds-button-inline disabled>Ohai<cds-icon shape="angle" direction="right"></cds-icon></cds-button-inline>
     </p>
   `;
 }
@@ -62,8 +56,8 @@ export function various() {
   return html`
     <div cds-layout="vertical gap:md">
       <p cds-text="body">
-        Hearts of the stars stirred by starlight hundreds of thousands? <cds-inline-button>Ohai</cds-inline-button>
-        <cds-inline-button>Kthxbye</cds-inline-button>
+        Hearts of the stars stirred by starlight hundreds of thousands? <cds-button-inline>Ohai</cds-button-inline>
+        <cds-button-inline>Kthxbye</cds-button-inline>
       </p>
       <p cds-text="body">
         Birth Rig Veda great turbulent clouds corpus callosum preserve and cherish that pale blue dot prime number.
@@ -72,7 +66,7 @@ export function various() {
         the stars stirred by starlight hundreds of thousands? Vanquish the impossible brain is the seed of intelligence
         star stuff harvesting star light the only home we've ever known citizens of distant epochs the only home we've
         ever known and billions upon billions upon billions upon billions upon billions upon billions upon billions.
-        <cds-inline-button>Ohai</cds-inline-button> <cds-inline-button>Kthxbye</cds-inline-button>
+        <cds-button-inline>Ohai</cds-button-inline> <cds-button-inline>Kthxbye</cds-button-inline>
       </p>
     </div>
   `;
@@ -84,22 +78,22 @@ export function withIcons() {
     <div cds-layout="vertical gap:md">
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
-        <cds-inline-button><cds-icon shape="user"></cds-icon>Ohai</cds-inline-button>
-        <cds-inline-button><cds-icon shape="user"></cds-icon>Kthxbye</cds-inline-button>
+        <cds-button-inline><cds-icon shape="user"></cds-icon>Ohai</cds-button-inline>
+        <cds-button-inline><cds-icon shape="user"></cds-icon>Kthxbye</cds-button-inline>
       </p>
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
-        <cds-inline-button>Ohai<cds-icon shape="angle" direction="right"></cds-icon></cds-inline-button>
-        <cds-inline-button>Kthxbye<cds-icon shape="angle" direction="right"></cds-icon></cds-inline-button>
+        <cds-button-inline>Ohai<cds-icon shape="angle" direction="right"></cds-icon></cds-button-inline>
+        <cds-button-inline>Kthxbye<cds-icon shape="angle" direction="right"></cds-icon></cds-button-inline>
       </p>
       <p cds-text="body">
         Finite but unbounded a still more glorious dawn awaits.
-        <cds-inline-button
+        <cds-button-inline
           ><cds-icon shape="user"></cds-icon>Ohai<cds-icon shape="angle" direction="right"></cds-icon
-        ></cds-inline-button>
-        <cds-inline-button
+        ></cds-button-inline>
+        <cds-button-inline
           ><cds-icon shape="user"></cds-icon>Kthxbye<cds-icon shape="angle" direction="right"></cds-icon
-        ></cds-inline-button>
+        ></cds-button-inline>
       </p>
     </div>
   `;
@@ -116,11 +110,11 @@ export function inlineButtonLinks() {
       <p cds-text="body">
         Optionally you can wrap the
         <a href="javascript:void(0)"
-          ><cds-inline-button><cds-icon shape="user"></cds-icon>inline button</cds-inline-button></a
+          ><cds-button-inline><cds-icon shape="user"></cds-icon>inline button</cds-button-inline></a
         >
         with an
         <a href="javascript:void(0)"
-          ><cds-inline-button disabled>anchor<cds-icon direction="down" shape="angle"></cds-icon></cds-inline-button
+          ><cds-button-inline disabled>anchor<cds-icon direction="down" shape="angle"></cds-icon></cds-button-inline
         ></a>
         for improved icon alignment.
       </p>
@@ -148,6 +142,6 @@ export function customStyles() {
         --text-decoration: underline;
       }
     </style>
-    <cds-inline-button class="btn-branding"><cds-icon shape="user"></cds-icon>Helloworld</cds-inline-button>
+    <cds-button-inline class="btn-branding"><cds-icon shape="user"></cds-icon>Helloworld</cds-button-inline>
   `;
 }

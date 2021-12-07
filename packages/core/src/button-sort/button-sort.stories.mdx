@@ -1,0 +1,39 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Components/Button Sort" />
+
+# Button Handle
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Action buttons are icon style buttons with defined behaviors. The standard `cds-button-action` button
+provides the proper touch target and states for icon buttons. The `cds-button-sort` provides the
+proper accessible aria attributes for sortable type features. To defined the current sort state
+set the `sort` attribute/property to one of the following `ascending/descending/none`.
+
+## Installation
+
+```typescript
+import '@cds/core/button-sort/register.js';
+```
+
+## Usage
+
+```html
+<cds-button-sort sort="none" aria-label="sort item"></cds-button-sort>
+<cds-button-sort sort="ascending" aria-label="sort item"></cds-button-sort>
+<cds-button-sort sort="descending" aria-label="sort item"></cds-button-sort>
+```
+
+<Story id="stories-button-sort--basic" />
+
+## API
+
+<ArgsTable of={'cds-button-sort'} />
+
+<ArgsTable of={'cds-button-action'} />

@@ -15,13 +15,10 @@ import {
 } from '@cds/core/internal';
 import { CdsTree } from './tree.element.js';
 import { CdsTreeItem } from './tree-item.element.js';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 
 registerElementSafely('cds-tree', CdsTree);
 registerElementSafely('cds-tree-item', CdsTreeItem);
 
-ClarityIcons.addIcons(angleIcon);
 ClarityMotion.add(AnimationTreeItemExpandName, AnimationTreeItemExpandConfig);
 
 declare global {

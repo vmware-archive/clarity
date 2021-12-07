@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsButtonAction snapshot 1`] = `
+<div>
+  <CdsButtonAction
+    shape="close"
+  >
+    <CdsButtonAction
+      l={null}
+      shape="close"
+    >
+      <cds-button-action
+        l={null}
+      />
+    </CdsButtonAction>
+  </CdsButtonAction>
+</div>
+`;

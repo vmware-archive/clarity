@@ -8,7 +8,6 @@ import { html } from 'lit';
 import '@cds/core/alert/register.js';
 import '@cds/core/icon/register.js';
 import { CdsAlert, getIconStatusTuple, iconShapeIsAlertStatusType } from '@cds/core/alert';
-import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { infoStandardIcon } from '@cds/core/icon/shapes/info-standard.js';
 import {
   componentIsStable,
@@ -235,13 +234,6 @@ describe('Alert element – ', () => {
       expect(slots.default.trim()).toBe(`${placeholderText}`);
     });
 
-    it('close-button should be size "20"', async () => {
-      await componentIsStable(component);
-      const closeBtn = component.shadowRoot.querySelector<CdsInternalCloseButton>('cds-internal-close-button');
-      expect(!!closeBtn).not.toBe(false, 'close-button should exist');
-      expect(closeBtn.iconSize).toBe('20', 'close-button icon size should be 20');
-    });
-
     it('should show neutral spinner if set to loading status', async () => {
       await componentIsStable(component);
       component.setAttribute('status', 'loading');
@@ -308,19 +300,6 @@ describe('Alert element – ', () => {
       const event = onceEvent(component, 'closeChange');
       getCloseButton().click();
       expect((await event).detail).toBe(true);
-    });
-
-    it('sets 16 as the default icon size', async () => {
-      await componentIsStable(component);
-
-      component.closable = true;
-      component.type = 'default';
-      await componentIsStable(component);
-
-      const icon = getCloseButton().shadowRoot.querySelector<CdsIcon>('cds-icon');
-      expect(icon).not.toBeNull();
-      expect(icon.hasAttribute('size')).toBe(true);
-      expect(icon.getAttribute('size')).toBe('16');
     });
   });
 

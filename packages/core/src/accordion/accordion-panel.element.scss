@@ -55,7 +55,6 @@
 
   ::slotted(cds-accordion-header) {
     --background: #{$cds-alias-object-interaction-background-selected};
-    --icon-transform: rotate(180deg);
   }
 }
 

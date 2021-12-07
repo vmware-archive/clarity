@@ -10,8 +10,7 @@
   --background: #{$cds-alias-object-container-background-tint};
   --font-size: #{$cds-global-typography-secondary-font-size};
   --font-weight: #{$cds-global-typography-secondary-font-weight};
-  --icon-color: var(--color);
-  --icon-transform: rotate(90deg);
+  --padding: calc(#{$cds-global-space-5} + #{$cds-global-space-2});
   cursor: pointer;
   width: 100%;
   contain: inherit;
@@ -19,7 +18,7 @@
 
 .private-host {
   background: var(--background);
-  padding: #{$cds-global-space-6};
+  padding: var(--padding);
   cursor: inherit;
   border: 0;
   font-size: var(--font-size);
@@ -35,11 +34,4 @@
 :host(:active) {
   --color: #{$cds-alias-object-interaction-color-active};
   --background: #{$cds-alias-object-interaction-background-active};
-}
-
-cds-icon {
-  --color: var(--icon-color);
-  cursor: inherit;
-  transform: var(--icon-transform);
-  transition: transform var(--animation-duration);
 }

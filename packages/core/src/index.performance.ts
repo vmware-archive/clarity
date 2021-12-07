@@ -26,6 +26,11 @@ describe('performance', () => {
       import '@cds/core/badge/register.js';
       import '@cds/core/breadcrumb/register.js';
       import '@cds/core/button/register.js';
+      import '@cds/core/button-action/register.js';
+      import '@cds/core/button-expand/register.js';
+      import '@cds/core/button-handle/register.js';
+      import '@cds/core/button-inline/register.js';
+      import '@cds/core/button-sort/register.js';
       import '@cds/core/card/register.js';
       import '@cds/core/checkbox/register.js';
       import '@cds/core/datalist/register.js';
@@ -50,6 +55,6 @@ describe('performance', () => {
       import '@cds/core/toggle/register.js';
       import '@cds/core/tree-view/register.js';`;
 
-    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(46.5);
+    expect((await testBundleSize(bundle, { optimize: true })).kb).toBeLessThan(47);
   });
 });

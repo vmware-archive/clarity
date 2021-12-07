@@ -98,7 +98,7 @@ describe('cds-control with prefix/suffix icon', () => {
   it('should apply padding inline styles when suffix/prefix controls are applied in input', async () => {
     await componentIsStable(control);
     expect(input.getAttribute('style')).toBe(
-      'padding-left: calc((30 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((30 / var(--cds-global-base)) * 1rem) !important;'
+      'padding-left: calc((22 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((22 / var(--cds-global-base)) * 1rem) !important;'
     );
   });
 });

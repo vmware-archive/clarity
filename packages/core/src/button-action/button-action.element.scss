@@ -1,0 +1,109 @@
+// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './../styles/tokens/generated/index';
+
+:host {
+  --icon-width: #{$cds-global-space-7};
+  --icon-height: #{$cds-global-space-7};
+  --width: var(--icon-width);
+  --height: var(--icon-width);
+  --cursor: pointer;
+  --color: #{$cds-global-typography-color-300};
+  --font-size: #{$cds-global-typography-font-size-3};
+  --background: transparent;
+  --padding: 0;
+  --outline: #{$cds-alias-object-interaction-outline};
+  --outline-offset: calc(#{$cds-alias-object-interaction-outline-offset} * -1);
+  pointer-events: none;
+  display: inline-block;
+  outline: 0 !important;
+}
+
+:host([role='button']) {
+  pointer-events: initial;
+  cursor: var(--cursor) !important;
+}
+
+:host([status='active']) {
+  --color: #{$cds-alias-status-info};
+}
+
+:host([shape='close']),
+:host([shape='info-circle']),
+::slotted([shape='close']),
+::slotted([shape='times']),
+::slotted([shape='info-circle']) {
+  --icon-width: #{$cds-global-space-8};
+  --icon-height: #{$cds-global-space-8};
+}
+
+:host(:hover) {
+  --color: #{$cds-alias-object-interaction-color-hover};
+}
+
+:host(:active) {
+  --color: #{$cds-alias-object-interaction-color-active};
+}
+
+:host(:active) .private-host {
+  transform: translateY(calc(#{$cds-global-space-1} / 2));
+}
+
+:host([disabled]) {
+  --color: #{$cds-alias-object-interaction-color-disabled};
+}
+
+.private-host {
+  --icon-color: var(--color);
+  background: var(--background);
+  padding: var(--padding);
+  color: var(--color);
+  font-size: var(--font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--width);
+  min-height: var(--height);
+}
+
+cds-icon,
+::slotted(cds-icon) {
+  width: var(--icon-width);
+  height: var(--icon-height);
+  pointer-events: none;
+}
+
+cds-icon,
+::slotted(cds-icon:not([status])) {
+  --color: var(--icon-color);
+}
+
+:host([disabled]:active) {
+  pointer-events: none !important;
+}
+
+.private-host::after {
+  content: '';
+  position: absolute;
+  left: calc(calc(-1 * var(--width)) - 1);
+  top: calc(calc(-1 * var(--height)) - 1);
+  width: $cds-alias-object-interaction-touch-target;
+  height: $cds-alias-object-interaction-touch-target;
+}
+
+:host([disabled]) .private-host::after {
+  outline: 0 !important;
+}
+
+:host(:focus) .private-host::after {
+  outline: var(--outline);
+  outline-offset: var(--outline-offset);
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host(:focus) .private-host::after {
+    outline-color: -webkit-focus-ring-color;
+  }
+}

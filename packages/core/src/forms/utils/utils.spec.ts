@@ -53,15 +53,15 @@ describe('form internal utilities', () => {
 
   it('getStatusIcon', async () => {
     const element = (await createTestElement(html`${getStatusIcon('neutral')}`)) as HTMLInputElement;
-    expect(element.querySelector('cds-control-action')).toBe(null);
+    expect(element.querySelector('cds-button-action')).toBe(null);
 
     render(html`${getStatusIcon('error')}`, element);
-    expect(element.querySelector('cds-control-action')).toBeTruthy();
+    expect(element.querySelector('cds-button-action')).toBeTruthy();
     expect(element.querySelector('cds-icon').getAttribute('status')).toBe('danger');
     expect(element.querySelector('cds-icon').getAttribute('shape')).toBe('exclamation-circle');
 
     render(html`${getStatusIcon('success')}`, element);
-    expect(element.querySelector('cds-control-action')).toBeTruthy();
+    expect(element.querySelector('cds-button-action')).toBeTruthy();
     expect(element.querySelector('cds-icon').getAttribute('status')).toBe('success');
     expect(element.querySelector('cds-icon').getAttribute('shape')).toBe('check-circle');
   });

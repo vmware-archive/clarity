@@ -71,7 +71,7 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   cursor: default;
 }
 
-cds-control-action.status {
+[cds-button-action].status {
   height: $cds-global-space-7;
   padding-top: $cds-global-space-3;
 }

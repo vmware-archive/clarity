@@ -4,17 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import {
-  baseStyles,
-  CdsBaseButton,
-  LogService,
-  notProductionEnvironment,
-  property,
-  querySlot,
-} from '@cds/core/internal';
-import { html } from 'lit';
+import { PropertyValues } from 'lit';
+import { CdsIcon } from '@cds/core/icon/icon.element.js';
+import { property } from '@cds/core/internal';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
-import styles from './pagination-button.element.scss';
+import { CdsButtonAction } from '@cds/core/button-action';
+import { getPaginationIconConfig } from './utils.js';
 
 /**
  * Web component pagination button to be used inside pagination.
@@ -45,58 +41,28 @@ import styles from './pagination-button.element.scss';
  * @cssprop --box-shadow
  * @cssprop --min-height
  * @cssprop --min-width
+ * @property disabled
  */
 
-export class CdsPaginationButton extends CdsBaseButton {
+export class CdsPaginationButton extends CdsButtonAction {
   /**
    * Sets the action from a predefined list of actions
    */
-  @property({ type: String })
-  action: 'first' | 'prev' | 'next' | 'last';
+  @property({ type: String }) action: 'first' | 'prev' | 'next' | 'last';
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.type = 'button';
-  }
+  @state() private direction: 'up' | 'right' | 'down' | 'left';
 
-  @querySlot('cds-icon', { assign: 'cds-icon-slot' }) cdsIcon: HTMLElement;
+  @query('cds-icon') private cdsIcon: CdsIcon;
 
-  @query('cds-icon') private cdsIconDefault: HTMLElement;
+  updated(props: PropertyValues) {
+    super.updated(props);
 
-  private get customContent() {
-    return !this.action && !this.cdsIconDefault;
-  }
+    const { shape, direction } = getPaginationIconConfig(this.action);
+    this.shape = shape;
+    this.direction = direction;
 
-  render() {
-    return html`
-      <div class="private-host" cds-layout="horizontal align:center ${this.customContent ? 'p-x:sm' : ''}">
-        <slot name="cds-icon-slot">
-          ${this.action === 'next' ? html`<cds-icon shape="angle" direction="right"></cds-icon>` : ''}
-          ${this.action === 'last' ? html`<cds-icon shape="step-forward-2" direction="up"></cds-icon>` : ''}
-          ${this.action === 'prev' ? html`<cds-icon shape="angle" direction="left"></cds-icon>` : ''}
-          ${this.action === 'first' ? html`<cds-icon shape="step-forward-2" direction="down"></cds-icon>` : ''}
-        </slot>
-        <slot></slot>
-      </div>
-    `;
-  }
-
-  static get styles() {
-    return [baseStyles, styles];
-  }
-
-  firstUpdated(props: Map<string, any>) {
-    super.firstUpdated(props);
-    this.validateAriaLabel();
-  }
-
-  private validateAriaLabel() {
-    if (
-      notProductionEnvironment() &&
-      (this.cdsIcon || this.cdsIconDefault) &&
-      !this.getAttribute('aria-label')?.length
-    ) {
-      LogService.warn('An aria-label is missing', this);
+    if (this.cdsIcon) {
+      this.cdsIcon.direction = this.direction;
     }
   }
 }

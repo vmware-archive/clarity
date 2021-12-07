@@ -48,14 +48,14 @@ export const layoutGroupToControlMapper: { [key: string]: ControlLayout } = {
 
 export function getStatusIcon(status: 'error' | 'success' | 'neutral') {
   return html`${status !== 'neutral'
-    ? html` <cds-control-action readonly class="status" cds-layout="align:shrink">
+    ? html` <cds-button-action readonly class="status" cds-layout="align:shrink">
         <cds-icon
           status="${status === 'error' ? 'danger' : 'success'}"
           shape="${status === 'error' ? 'exclamation-circle' : 'check-circle'}"
           size="16"
           inner-offset=${4}
         ></cds-icon>
-      </cds-control-action>`
+      </cds-button-action>`
     : ''} `;
 }
 

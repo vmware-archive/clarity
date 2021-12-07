@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -45,6 +45,8 @@ import { viewColumnsIcon, viewColumnsIconName } from '../shapes/view-columns.js'
 import { vmBugInverseIcon, vmBugInverseIconName } from '../shapes/vm-bug-inverse.js';
 import { vmBugIcon, vmBugIconName } from '../shapes/vm-bug.js';
 import { warningStandardIcon, warningStandardIconName } from '../shapes/warning-standard.js';
+import { detailExpandIcon, detailExpandIconName } from '../shapes/detail-expand.js';
+import { detailCollapseIcon, detailCollapseIconName } from '../shapes/detail-collapse.js';
 
 export const coreCollectionIcons: IconShapeTuple[] = [
   angleIcon,
@@ -84,6 +86,8 @@ export const coreCollectionIcons: IconShapeTuple[] = [
   vmBugIcon,
   vmBugInverseIcon,
   warningStandardIcon,
+  detailExpandIcon,
+  detailCollapseIcon,
 ];
 
 export const coreCollectionAliases: IconAlias[] = [
@@ -158,5 +162,7 @@ declare module '@cds/core/internal' {
     [vmBugIconName]: string;
     [vmBugInverseIconName]: string;
     [warningStandardIconName]: string;
+    [detailExpandIconName]: string;
+    [detailCollapseIconName]: string;
   }
 }

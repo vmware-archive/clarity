@@ -55,6 +55,13 @@ export interface I18nStrings {
 }
 
 export const componentStringsDefault = {
+  actions: {
+    sort: 'Sort',
+    expand: 'Expand',
+    close: 'Close',
+    resize: 'Resize',
+    filter: 'Filter',
+  },
   alert: {
     closeButtonAriaLabel: 'Close',
     loading: 'Loading',

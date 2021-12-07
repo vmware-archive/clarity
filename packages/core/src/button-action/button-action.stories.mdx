@@ -1,0 +1,37 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Components/Button Action" />
+
+# Button Action
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Action buttons are icon type buttons with defined behaviors. The standard `cds-button-action`
+provides the proper touch target and states for standard icon actions. Several extended types
+are also provided which add specific accessible micro-interactions.
+
+## Installation
+
+```typescript
+import '@cds/core/button-action/register.js';
+```
+
+## Usage
+
+```html
+<cds-button-action aria-label="open options"></cds-button-action>
+<cds-button-action shape="bars" aria-label="open menu"></cds-button-action>
+<cds-button-action shape="filter" aria-label="filter column"></cds-button-action>
+<cds-button-action shape="close" aria-label="close message"></cds-button-action>
+```
+
+<Story id="stories-button-action--button-action" />
+
+## API
+
+<ArgsTable of={'cds-button-action'} />

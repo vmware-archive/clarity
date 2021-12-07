@@ -8,9 +8,6 @@ import { html } from 'lit';
 import { state } from '@cds/core/internal';
 import { i18n, I18nService } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { folderIcon } from '@cds/core/icon/shapes/folder.js';
-import { timesIcon } from '@cds/core/icon/shapes/times.js';
 import styles from './file.element.scss';
 
 /**
@@ -45,7 +42,7 @@ export class CdsFile extends CdsControl {
 
   protected get inputTemplate() {
     return html`
-      <div>
+      <div cds-layout="horizontal gap:sm align:vertical-center">
         <cds-button size="sm" action="outline" @click="${() => this.label.click()}" ?disabled=${this.disabled}>
           <cds-icon shape="folder" aria-hidden="true"></cds-icon>
           <span>${this.buttonLabel}</span>
@@ -57,9 +54,11 @@ export class CdsFile extends CdsControl {
 
   protected get clearFilesControlTemplate() {
     return this.inputControl.files?.length && !this.disabled
-      ? html` <cds-control-action @click="${() => this.clearFiles()}" aria-label="${this.i18n.removeFile}">
-          <cds-icon shape="times"></cds-icon>
-        </cds-control-action>`
+      ? html`<cds-button-action
+          shape="times"
+          @click=${() => this.clearFiles()}
+          aria-label="${this.i18n.removeFile}"
+        ></cds-button-action>`
       : html``;
   }
 
@@ -98,10 +97,5 @@ export class CdsFile extends CdsControl {
     } else {
       this.clearFiles(false);
     }
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(folderIcon, timesIcon);
   }
 }

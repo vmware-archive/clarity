@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsButtonInline snapshot 1`] = `
+<div>
+  <CdsButtonInline>
+    <CdsButtonInline
+      l={null}
+    >
+      <cds-button-inline
+        l={null}
+      />
+    </CdsButtonInline>
+  </CdsButtonInline>
+</div>
+`;

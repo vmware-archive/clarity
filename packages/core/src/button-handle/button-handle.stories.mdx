@@ -1,0 +1,37 @@
+import { Meta, ArgsTable, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Components/Button Handle" />
+
+# Button Handle
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Action buttons are icon style buttons with defined behaviors. The standard `cds-button-action` button
+provides the proper touch target and states for icon buttons. The `cds-button-handle`
+provides an anchor/handle for users to use for drag and
+drop style features.
+
+## Installation
+
+```typescript
+import '@cds/core/button-handle/register.js';
+```
+
+## Usage
+
+```html
+<cds-button-handle aria-label="move item"></cds-button-handle>
+```
+
+<Story id="stories-button-handle--basic" />
+
+## API
+
+<ArgsTable of={'cds-button-handle'} />
+
+<ArgsTable of={'cds-button-action'} />

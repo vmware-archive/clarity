@@ -5,7 +5,6 @@
  */
 
 import { property } from '@cds/core/internal';
-import styles from './icon-button.element.scss';
 import { CdsButton } from './button.element.js';
 
 /**
@@ -42,7 +41,8 @@ export class CdsIconButton extends CdsButton {
   @property({ type: String, required: 'warning' })
   ariaLabel: string;
 
-  static get styles() {
-    return [super.styles, styles];
+  constructor() {
+    super();
+    this.size = 'icon';
   }
 }

@@ -53,6 +53,15 @@
   margin: 0 !important;
 }
 
+:host {
+  --icon-color: var(--color);
+}
+
+[cds-button-action],
+::slotted([cds-button-action]) {
+  --color: var(--icon-color);
+}
+
 .input-container {
   transition: var(--transition);
   background: var(--background);

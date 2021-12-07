@@ -4,9 +4,9 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { addClassnames, baseStyles, CdsBaseButton } from '@cds/core/internal';
+import { addClassnames, baseStyles, CdsBaseButton, querySlot } from '@cds/core/internal';
 import { html } from 'lit';
-import styles from './inline-button.element.scss';
+import styles from './button-inline.element.scss';
 
 /**
  * Inline buttons are used inside and alongside textual content within Clarity components.
@@ -17,10 +17,10 @@ import styles from './inline-button.element.scss';
  * ```
  *
  * ```html
- * <cds-inline-button>Button text goes here</cds-inline-button>
+ * <cds-button-inline>Button text goes here</cds-button-inline>
  * ```
  *
- * @element cds-inline-button
+ * @element cds-button-inline
  * @slot - Content slot for inside the button
  * @cssprop --text-decoration
  * @cssprop --color
@@ -28,7 +28,9 @@ import styles from './inline-button.element.scss';
  * @cssprop --line-height
  * @cssprop --letter-spacing
  */
-export class CdsInlineButton extends CdsBaseButton {
+export class CdsButtonInline extends CdsBaseButton {
+  @querySlot('cds-icon') protected icon: HTMLElement;
+
   connectedCallback(): void {
     super.connectedCallback();
 
@@ -47,3 +49,9 @@ export class CdsInlineButton extends CdsBaseButton {
     return [baseStyles, styles];
   }
 }
+
+/**
+ * @deprecated
+ * renamed to `cds-button-inline` in 6.0 to align to rest of the `cds-button-*` APIs
+ */
+export class CdsInlineButton extends CdsButtonInline {}

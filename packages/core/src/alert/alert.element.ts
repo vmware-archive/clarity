@@ -195,7 +195,7 @@ export class CdsAlert extends LitElement {
       <div
         class="private-host"
         cds-layout="${this.type === 'banner'
-          ? 'horizontal wrap:none gap:sm align:vertical-center align:horizontal-center'
+          ? 'horizontal wrap:none gap:sm align:center'
           : 'horizontal wrap:none gap:sm'}"
       >
         ${this.type === 'banner' && !this.parentGroupHasPager
@@ -251,14 +251,13 @@ export class CdsAlert extends LitElement {
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`
           : html``}
         ${this.type !== 'light' && this.closable
-          ? html`<span class="alert-close-wrapper"
-              ><slot name="close-button"
-                ><cds-internal-close-button
-                  icon-size="${this.type === 'banner' ? '20' : '16'}"
-                  @click="${() => this.closeAlert()}"
-                  aria-label="${this.i18n.closeButtonAriaLabel}"
-                ></cds-internal-close-button></slot
-            ></span>`
+          ? html`<slot name="close-button">
+              <cds-internal-close-button
+                icon-size="${this.type === 'banner' ? '20' : '16'}"
+                @click="${() => this.closeAlert()}"
+                aria-label="${this.i18n.closeButtonAriaLabel}"
+              ></cds-internal-close-button
+            ></slot>`
           : html``}
       </div>
     `;

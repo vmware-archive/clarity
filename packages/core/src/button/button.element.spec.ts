@@ -174,23 +174,6 @@ describe('button element', () => {
       expect(component.getAttribute('aria-disabled')).toBe('true');
     });
 
-    it('should add or remove button event listeners when readonly updates ', async () => {
-      await componentIsStable(component);
-      expect(component.getAttribute('readonly')).toBe(null);
-
-      spyOn(component, 'removeEventListener').and.callThrough();
-      component.readonly = true;
-      await componentIsStable(component);
-      expect(component.removeEventListener).toHaveBeenCalledWith('click', jasmine.any(Function));
-      expect(component.removeEventListener).toHaveBeenCalledWith('keydown', jasmine.any(Function));
-
-      spyOn(component, 'addEventListener').and.callThrough();
-      component.readonly = false;
-      await componentIsStable(component);
-      expect(component.addEventListener).toHaveBeenCalledWith('click', jasmine.any(Function));
-      expect(component.addEventListener).toHaveBeenCalledWith('keydown', jasmine.any(Function));
-    });
-
     it('should keep disabled and aria-disabled in sync', async () => {
       await componentIsStable(component);
       expect(component.getAttribute('aria-disabled')).toBe('false');
@@ -222,9 +205,9 @@ describe('button element', () => {
     //   expect(button).toBeNull();
     // });
 
-    it('should not have a tabIndex attribute', async () => {
+    it('should not be in tabflow', async () => {
       await componentIsStable(component);
-      expect(component.getAttribute('tabindex')).toBeNull();
+      expect(component.tabIndex).toBe(-1);
     });
 
     it('should not have a role attribute', async () => {
@@ -370,43 +353,5 @@ describe('buttonSlots: ', () => {
     const component = elem.querySelector<CdsButton>('cds-button');
     const slots = getComponentSlotContent(component);
     expect(slots.default).toContain('Text slot');
-  });
-});
-
-describe('button keyboard interaction: ', () => {
-  it('should add active attr on click', async () => {
-    const element = await createTestElement(html`<cds-button>Text slot</cds-button>`);
-    const component = element.querySelector('cds-button');
-    expect(component.hasAttribute('_active')).toBe(false);
-
-    component.dispatchEvent(new MouseEvent('mousedown'));
-    await componentIsStable(component);
-    expect(component.hasAttribute('_active')).toBe(true);
-
-    removeTestElement(element);
-  });
-
-  it('should NOT add active attr if button is disabled', async () => {
-    const element = await createTestElement(html`<cds-button disabled>Text slot</cds-button>`);
-    const component = element.querySelector('cds-button');
-    await componentIsStable(component);
-    expect(component.hasAttribute('_active')).toBe(false);
-
-    component.dispatchEvent(new MouseEvent('mousedown'));
-    await componentIsStable(component);
-    expect(component.hasAttribute('_active')).toBe(false);
-    removeTestElement(element);
-  });
-
-  it('should NOT add active attr if button is readonly', async () => {
-    const element = await createTestElement(html`<cds-button readonly>Text slot</cds-button>`);
-    const component = element.querySelector('cds-button');
-    await componentIsStable(component);
-    expect(component.hasAttribute('_active')).toBe(false);
-
-    component.dispatchEvent(new MouseEvent('mousedown'));
-    await componentIsStable(component);
-    expect(component.hasAttribute('_active')).toBe(false);
-    removeTestElement(element);
   });
 });

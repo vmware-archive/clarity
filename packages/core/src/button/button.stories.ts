@@ -261,13 +261,17 @@ export function links() {
 export function sizes() {
   return html`
     <div cds-layout="vertical gap:md">
-      <div cds-layout="horizontal align-items:left gap:sm">
+      <div cds-layout="horizontal gap:sm">
         <cds-button>Default ('md')</cds-button>
         <cds-button action="outline">Default ('md')</cds-button>
       </div>
-      <div cds-layout="horizontal align-items:left gap:sm">
+      <div cds-layout="horizontal gap:sm">
         <cds-button size="sm">Compact ('sm')</cds-button>
         <cds-button action="outline" size="sm">Compact ('sm')</cds-button>
+      </div>
+      <div cds-layout="horizontal gap:sm">
+        <cds-button size="icon"><cds-icon shape="user"></cds-icon></cds-button>
+        <cds-button action="outline" size="icon"><cds-icon shape="user"></cds-icon></cds-button>
       </div>
     </div>
   `;

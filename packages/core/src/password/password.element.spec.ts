@@ -39,12 +39,12 @@ describe('cds-password', () => {
     expect(component.inputControl.type).toBe('password');
     expect(component.shadowRoot.querySelector('cds-icon').shape).toBe('eye');
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
     expect(component.inputControl.type).toBe('text');
     expect(component.shadowRoot.querySelector('cds-icon').shape).toBe('eye-hide');
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
     expect(component.inputControl.type).toBe('password');
     expect(component.shadowRoot.querySelector('cds-icon').shape).toBe('eye');
@@ -54,31 +54,25 @@ describe('cds-password', () => {
     await componentIsStable(component);
     expect(document.activeElement).not.toEqual(component.inputControl);
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
     expect(document.activeElement).toEqual(component.inputControl);
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
     expect(document.activeElement).toEqual(component.inputControl);
   });
 
   it('should have the correct aria-label for the show/hide button', async () => {
     await componentIsStable(component);
-    expect(component.shadowRoot.querySelector('cds-control-action').getAttribute('aria-label')).toEqual(
-      'Show password'
-    );
+    expect(component.shadowRoot.querySelector('cds-button-action').getAttribute('aria-label')).toEqual('Show password');
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
-    expect(component.shadowRoot.querySelector('cds-control-action').getAttribute('aria-label')).toEqual(
-      'Hide password'
-    );
+    expect(component.shadowRoot.querySelector('cds-button-action').getAttribute('aria-label')).toEqual('Hide password');
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
-    expect(component.shadowRoot.querySelector('cds-control-action').getAttribute('aria-label')).toEqual(
-      'Show password'
-    );
+    expect(component.shadowRoot.querySelector('cds-button-action').getAttribute('aria-label')).toEqual('Show password');
   });
 });

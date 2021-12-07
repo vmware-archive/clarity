@@ -9,7 +9,6 @@ import { globalStyle } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
 import globalStyles from './search.global.scss';
-import styles from './search.element.scss';
 
 /**
  * Search
@@ -43,12 +42,10 @@ export class CdsSearch extends CdsControl {
   @globalStyle() protected globalStyles = globalStyles;
 
   protected get prefixDefaultTemplate() {
-    return html`<cds-control-action readonly
-      ><cds-icon class="icon" shape="search" size="18"></cds-icon
-    ></cds-control-action>`;
+    return html`<cds-button-action shape="search" readonly></cds-button-action>`;
   }
 
   static get styles() {
-    return [...super.styles, inputStyles, styles];
+    return [...super.styles, inputStyles];
   }
 }

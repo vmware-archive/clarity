@@ -1,4 +1,5 @@
-import { CdsButton as Button, CdsIconButton as IconButton, CdsInlineButton as InlineButton } from '@cds/core/button';
+import { CdsButton as Button, CdsIconButton as IconButton } from '@cds/core/button';
+import { CdsButtonInline as InlineButton } from '@cds/core/button-inline';
 import '@cds/core/button/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';

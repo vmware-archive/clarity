@@ -12,8 +12,12 @@ import {
   CdsAlertDirective,
   CdsBadgeDirective,
   CdsButtonDirective,
+  CdsButtonActionDirective,
+  CdsButtonExpandDirective,
+  CdsButtonHandleDirective,
+  CdsButtonInlineDirective,
+  CdsButtonSortDirective,
   CdsIconButtonDirective,
-  CdsInlineButtonDirective,
   CdsCheckboxGroupDirective,
   CdsCheckboxDirective,
   CdsDatalistDirective,
@@ -251,23 +255,103 @@ describe('CDS Icon Button', () => {
   });
 });
 
-describe('CDS Inline Button', () => {
+describe('CDS Button Action', () => {
   let fixture: ComponentFixture<any>;
-  let instance: InlineButtonTestComponent;
+  let instance: ButtonActionTestComponent;
 
   beforeEach(function () {
     TestBed.configureTestingModule({
       imports: [CdsModule],
-      declarations: [InlineButtonTestComponent],
+      declarations: [ButtonActionTestComponent],
     });
 
-    fixture = TestBed.createComponent(InlineButtonTestComponent);
+    fixture = TestBed.createComponent(ButtonActionTestComponent);
     fixture.detectChanges();
     instance = fixture.componentInstance;
   });
 
-  it('cds-inline-button should be defined', () => {
-    expect(instance.vcCdsInlineButtonDirective).toBeDefined();
+  it('cds-button-inline should be defined', () => {
+    expect(instance.vcCdsButtonActionDirective).toBeDefined();
+  });
+});
+
+describe('CDS Button Expand', () => {
+  let fixture: ComponentFixture<any>;
+  let instance: ButtonExpandTestComponent;
+
+  beforeEach(function () {
+    TestBed.configureTestingModule({
+      imports: [CdsModule],
+      declarations: [ButtonExpandTestComponent],
+    });
+
+    fixture = TestBed.createComponent(ButtonExpandTestComponent);
+    fixture.detectChanges();
+    instance = fixture.componentInstance;
+  });
+
+  it('cds-button-expand should be defined', () => {
+    expect(instance.vcCdsButtonExpandDirective).toBeDefined();
+  });
+});
+
+describe('CDS Button Handle', () => {
+  let fixture: ComponentFixture<any>;
+  let instance: ButtonHandleTestComponent;
+
+  beforeEach(function () {
+    TestBed.configureTestingModule({
+      imports: [CdsModule],
+      declarations: [ButtonHandleTestComponent],
+    });
+
+    fixture = TestBed.createComponent(ButtonHandleTestComponent);
+    fixture.detectChanges();
+    instance = fixture.componentInstance;
+  });
+
+  it('cds-button-handle should be defined', () => {
+    expect(instance.vcCdsButtonHandleDirective).toBeDefined();
+  });
+});
+
+describe('CDS Button Inline', () => {
+  let fixture: ComponentFixture<any>;
+  let instance: ButtonInlineTestComponent;
+
+  beforeEach(function () {
+    TestBed.configureTestingModule({
+      imports: [CdsModule],
+      declarations: [ButtonInlineTestComponent],
+    });
+
+    fixture = TestBed.createComponent(ButtonInlineTestComponent);
+    fixture.detectChanges();
+    instance = fixture.componentInstance;
+  });
+
+  it('cds-button-inline should be defined', () => {
+    expect(instance.vcCdsButtonInlineDirective).toBeDefined();
+  });
+});
+
+describe('CDS Button Sort', () => {
+  let fixture: ComponentFixture<any>;
+  let instance: ButtonSortTestComponent;
+
+  beforeEach(function () {
+    TestBed.configureTestingModule({
+      imports: [CdsModule],
+      declarations: [ButtonSortTestComponent],
+    });
+
+    fixture = TestBed.createComponent(ButtonSortTestComponent);
+    fixture.detectChanges();
+    instance = fixture.componentInstance;
+  });
+
+  it('cds-button-handle should be defined', () => {
+    expect(instance.vcCdsButtonSortDirective).toBeDefined();
   });
 });
 
@@ -1044,10 +1128,38 @@ class IconButtonTestComponent {
 }
 
 @Component({
-  template: ` <cds-inline-button></cds-inline-button> `,
+  template: ` <cds-button-action></cds-button-action> `,
 })
-class InlineButtonTestComponent {
-  @ViewChild(CdsInlineButtonDirective) vcCdsInlineButtonDirective: CdsInlineButtonDirective;
+class ButtonActionTestComponent {
+  @ViewChild(CdsButtonActionDirective) vcCdsButtonActionDirective: CdsButtonActionDirective;
+}
+
+@Component({
+  template: ` <cds-button-expand></cds-button-expand> `,
+})
+class ButtonExpandTestComponent {
+  @ViewChild(CdsButtonExpandDirective) vcCdsButtonExpandDirective: CdsButtonExpandDirective;
+}
+
+@Component({
+  template: ` <cds-button-handle></cds-button-handle> `,
+})
+class ButtonHandleTestComponent {
+  @ViewChild(CdsButtonHandleDirective) vcCdsButtonHandleDirective: CdsButtonHandleDirective;
+}
+
+@Component({
+  template: ` <cds-button-inline></cds-button-inline> `,
+})
+class ButtonInlineTestComponent {
+  @ViewChild(CdsButtonInlineDirective) vcCdsButtonInlineDirective: CdsButtonInlineDirective;
+}
+
+@Component({
+  template: ` <cds-button-sort></cds-button-sort> `,
+})
+class ButtonSortTestComponent {
+  @ViewChild(CdsButtonSortDirective) vcCdsButtonSortDirective: CdsButtonSortDirective;
 }
 
 @Component({

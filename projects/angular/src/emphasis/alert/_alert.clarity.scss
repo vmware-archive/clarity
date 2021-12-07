@@ -125,6 +125,8 @@
 @include exports('alert.clarity') {
   $alertIconWidth: $clr_baselineRem_1 + $clr_baselineRem_1px;
 
+  $alertTypes: info, warning, danger, success;
+
   .alert-icon {
     $alert-icon-dim: $clr_baselineRem_1;
     @include equilateral($alert-icon-dim);
@@ -503,6 +505,18 @@
 
   .alerts-pager {
     @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+
+    @each $alertType in $alertTypes {
+      .alert-#{$alertType} & {
+        @include css-var(
+          color,
+          clr-app-alert-#{$alertType}-pager-font-color,
+          $clr-color-neutral-0,
+          $clr-use-custom-properties
+        );
+      }
+    }
+
     font-size: $clr-alert-font-size;
     letter-spacing: $clr-alert-letter-spacing;
     float: left;
@@ -519,6 +533,17 @@
     cds-icon,
     clr-icon {
       @include css-var(color, clr-app-alert-pager-text-color, $clr-color-neutral-0, $clr-use-custom-properties);
+
+      @each $alertType in $alertTypes {
+        .alert-#{$alertType} & {
+          @include css-var(
+            color,
+            clr-app-alert-#{$alertType}-pager-font-color,
+            $clr-color-neutral-0,
+            $clr-use-custom-properties
+          );
+        }
+      }
     }
   }
 

@@ -36,8 +36,8 @@
     &:hover {
       @include css-var(
         background-color,
-        clr-accordion-header-background-color,
-        $clr-accordion-header-background-color,
+        clr-accordion-header-hover-background-color,
+        $clr-accordion-header-hover-background-color,
         $clr-use-custom-properties
       );
     }

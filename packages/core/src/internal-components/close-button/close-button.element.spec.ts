@@ -13,12 +13,11 @@ import { componentIsStable, createTestElement, removeTestElement } from '@cds/co
 describe('internal close button element', () => {
   let testElement: HTMLElement;
   let component: CdsInternalCloseButton;
-  const placeholderText = 'ohai';
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
       <form>
-        <cds-internal-close-button>${placeholderText}</cds-internal-close-button>
+        <cds-internal-close-button></cds-internal-close-button>
       </form>
     `);
 
@@ -31,34 +30,10 @@ describe('internal close button element', () => {
     removeTestElement(testElement);
   });
 
-  it('should create the component but not project content into the slot', () => {
-    expect(component.innerText).not.toBe(placeholderText);
-  });
-
-  it('should default to icon size of 18', () => {
+  it('should default to iconShape of "close"', () => {
     const myIcon = component.shadowRoot.querySelector<HTMLElement>('cds-icon');
-    expect(component.iconSize).toBe('18', 'default set');
-    expect(myIcon.getAttribute('size')).toBe('18', 'size set');
-  });
-
-  it('should allow me to change icon size', async () => {
-    const myIcon = component.shadowRoot.querySelector<HTMLElement>('cds-icon');
-    component.iconSize = '49';
-    await componentIsStable(component);
-    expect(myIcon.getAttribute('size')).toBe('49', 'size set');
-  });
-
-  it('should default to iconShape of "times"', () => {
-    const myIcon = component.shadowRoot.querySelector<HTMLElement>('cds-icon');
-    expect(component.iconShape).toBe('times', 'default set');
-    expect(myIcon.getAttribute('shape')).toBe('times', 'shape set');
-  });
-
-  it('should allow me to change icon shape', async () => {
-    const myIcon = component.shadowRoot.querySelector<HTMLElement>('cds-icon');
-    component.iconShape = 'jabberwocky';
-    await componentIsStable(component);
-    expect(myIcon.getAttribute('shape')).toBe('jabberwocky', 'shape set');
+    expect(component.shape).toBe('close', 'default set');
+    expect(myIcon.getAttribute('shape')).toBe('close', 'shape set');
   });
 
   it('should load the times icon into the icons registry', () => {

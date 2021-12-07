@@ -89,6 +89,16 @@ describe('tree item element', () => {
     expect((await event).detail).toBe(true);
   });
 
+  it('should set action pressed state when panel is expanded', async () => {
+    component.expandable = true;
+    await componentIsStable(component);
+    expect(component.shadowRoot.querySelector('cds-button-expand').pressed).toBe(false);
+
+    component.expanded = true;
+    await componentIsStable(component);
+    expect(component.shadowRoot.querySelector('cds-button-expand').pressed).toBe(true);
+  });
+
   it('should emit a selectedChange event when an item is clicked', async () => {
     await componentIsStable(component);
     const event = onceEvent(component, 'selectedChange');

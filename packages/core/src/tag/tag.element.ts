@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { assignSlotNames, baseStyles, CdsBaseButton, id, property, StatusTypes, syncProps } from '@cds/core/internal';
+import { baseStyles, CdsBaseButton, id, property, querySlot, StatusTypes, syncProps } from '@cds/core/internal';
 import { html } from 'lit';
 import styles from './tag.element.scss';
 
@@ -59,10 +59,9 @@ export class CdsTag extends CdsBaseButton {
 
   @id() private groupLabelId: string;
 
-  connectedCallback() {
-    super.connectedCallback();
-    assignSlotNames([this.icon, 'tag-icon'], [this.badge, 'tag-badge']);
-  }
+  @querySlot('cds-icon', { assign: 'tag-icon' }) protected icon: HTMLElement;
+
+  @querySlot('cds-badge', { assign: 'tag-badge' }) protected badge: HTMLElement;
 
   updated(props: Map<string, string | boolean | null | undefined>) {
     super.updated(props);
@@ -82,7 +81,7 @@ export class CdsTag extends CdsBaseButton {
         class="private-host"
         role="group"
         aria-labelledby="${this.groupLabelId}"
-        cds-layout="horizontal align:center"
+        cds-layout="horizontal align:center wrap:none"
       >
         <slot name="tag-icon"></slot>
         <span id="${this.groupLabelId}" class="tag-content" cds-text="lhe"><slot></slot></span>

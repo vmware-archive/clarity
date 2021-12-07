@@ -53,12 +53,13 @@ export class CdsPassword extends CdsControl {
 
   protected get suffixDefaultTemplate() {
     return html`
-      <cds-control-action
+      <cds-button-action
         @click=${() => this.togglePasswordVisibility()}
+        .pressed=${this.showPassword}
         .ariaLabel=${this.showPassword ? this.i18n.hideButtonAriaLabel : this.i18n.showButtonAriaLabel}
       >
         <cds-icon shape="${this.showPassword ? 'eye-hide' : 'eye'}"></cds-icon>
-      </cds-control-action>
+      </cds-button-action>
     `;
   }
 

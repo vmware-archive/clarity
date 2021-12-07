@@ -1,16 +1,25 @@
-import { ReactiveControllerHost } from 'lit';
-import { setAttributes } from '../utils/dom.js';
+import { ReactiveController, ReactiveElement } from 'lit';
 
-export class AriaPopupTriggerController {
-  constructor(private host: ReactiveControllerHost & HTMLElement) {
+export type AriaPopupTrigger = { popup: string };
+
+/**
+ * Provides all nessesary aria-* attributes to create a vaild aria popup trigger.
+ * Used in combination of the `@ariaPopup` controller.
+ */
+export function ariaPopupTrigger<T extends ReactiveElement & AriaPopupTrigger>(): ClassDecorator {
+  return (target: any) => target.addInitializer((instance: T) => new AriaPopupTriggerController(instance));
+}
+
+export class AriaPopupTriggerController<T extends ReactiveElement & AriaPopupTrigger> implements ReactiveController {
+  constructor(private host: T) {
     this.host.addController(this);
   }
 
   hostConnected() {
-    /* c8 ignore next */
-    const popup = this.host.getAttribute('popup');
-    if (popup) {
-      setAttributes(this.host, ['aria-controls', popup], ['aria-haspopup', 'true'], ['aria-expanded', 'false']);
+    if (this.host.popup) {
+      this.host.ariaControls = this.host.popup;
+      this.host.ariaHasPopup = 'true';
+      this.host.ariaExpanded = 'false';
     }
   }
 }

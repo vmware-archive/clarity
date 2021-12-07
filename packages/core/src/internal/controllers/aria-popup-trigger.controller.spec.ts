@@ -1,14 +1,12 @@
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
-import { AriaPopupTriggerController } from './aria-popup-trigger.controller.js';
+import { customElement, property } from '@cds/core/internal';
+import { ariaPopupTrigger } from './aria-popup-trigger.controller.js';
 
+@ariaPopupTrigger<AriaPopupTriggerControllerTestElement>()
 @customElement('aria-popup-controller-test-element')
 class AriaPopupTriggerControllerTestElement extends LitElement {
-  ariaPopupTriggerController = new AriaPopupTriggerController(this);
-  render() {
-    return html`...`;
-  }
+  @property({ type: String }) popup: string;
 }
 
 describe('aria-popup-trigger.controller', () => {
@@ -33,16 +31,16 @@ describe('aria-popup-trigger.controller', () => {
 
   it('should initialize aria attributes for popup type triggers', async () => {
     await componentIsStable(component);
-    expect(component.getAttribute('aria-controls')).toBe('popup-el');
-    expect(component.getAttribute('aria-haspopup')).toBe('true');
-    expect(component.getAttribute('aria-expanded')).toBe('false');
+    expect(component.ariaControls).toBe('popup-el');
+    expect(component.ariaHasPopup).toBe('true');
+    expect(component.ariaExpanded).toBe('false');
   });
 
   it('should NOT initialize aria attributes for triggers without a popup id', async () => {
     await componentIsStable(noponent);
     expect(noponent.hasAttribute('popup')).toBe(false);
-    expect(noponent.hasAttribute('aria-controls')).toBe(false);
-    expect(noponent.hasAttribute('aria-haspopup')).toBe(false);
-    expect(noponent.hasAttribute('aria-expanded')).toBe(false);
+    expect(noponent.ariaControls).toBe(undefined);
+    expect(noponent.ariaHasPopup).toBe(null);
+    expect(noponent.ariaExpanded).toBe(null);
   });
 });

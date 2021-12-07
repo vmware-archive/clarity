@@ -201,7 +201,12 @@ export class CdsTreeItem extends LitElement {
     } else if (this.expandable) {
       return html`
         <div @click="${() => this.toggleExpanded()}">
-          <cds-icon class="expand-collapse-icon" part="expand-collapse-icon" shape="angle"></cds-icon>
+          <cds-button-expand
+            .pressed=${this.expanded}
+            readonly
+            action="vertical"
+            part="expand-collapse-icon"
+          ></cds-button-expand>
         </div>
       `;
     } else {

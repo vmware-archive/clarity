@@ -6,12 +6,9 @@
 
 import { registerElementSafely } from '@cds/core/internal';
 import { CdsSelect } from './select.element.js';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import '@cds/core/forms/register.js';
-import '@cds/core/icon/register.js';
+import '@cds/core/button-expand/register.js';
 
-ClarityIcons.addIcons(angleIcon);
 registerElementSafely('cds-select', CdsSelect);
 
 declare global {

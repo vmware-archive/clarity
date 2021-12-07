@@ -14,7 +14,7 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   display: none !important;
 }
 
-.input-container {
+:host([layout='compact']:not([control-width='shrink'])) .input-container {
   min-width: initial;
 }
 

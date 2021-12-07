@@ -2,10 +2,10 @@
 
 exports[`CdsTime snapshot 1`] = `
 <div>
-  <m
+  <c
     control-width="shrink"
   >
-    <m
+    <c
       control-width="shrink"
       l={null}
     >
@@ -34,7 +34,7 @@ exports[`CdsTime snapshot 1`] = `
           </n>
         </n>
       </cds-time>
-    </m>
-  </m>
+    </c>
+  </c>
 </div>
 `;

@@ -8,8 +8,6 @@ import { html } from 'lit';
 import { querySlot, globalStyle } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import { inputStyles } from '@cds/core/input';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { angleIcon } from '@cds/core/icon/shapes/angle.js';
 import styles from './datalist.global.scss';
 
 /**
@@ -51,15 +49,10 @@ export class CdsDatalist extends CdsControl {
   @querySlot('datalist', { required: 'error' }) protected datalistControl: HTMLDataListElement;
 
   protected get suffixDefaultTemplate() {
-    return html`<cds-control-action readonly><cds-icon shape="angle" direction="down"></cds-icon></cds-control-action>`;
+    return html`<cds-button-expand pressed readonly></cds-button-expand>`;
   }
 
   static get styles() {
     return [...super.styles, inputStyles];
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(angleIcon);
   }
 }

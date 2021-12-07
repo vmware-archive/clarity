@@ -251,6 +251,15 @@ cds-progress-circle {
   width: 100%;
 }
 
+:host([size='icon']) {
+  --padding: calc(#{$cds-global-space-6} - var(--border-width))
+    calc(#{$cds-global-space-6} - #{$cds-global-space-2} - var(--border-width));
+}
+
+:host([size='icon']) .private-host {
+  min-width: 0;
+}
+
 :host([size='sm']) .private-host {
   --letter-spacing: 0.073em;
 }

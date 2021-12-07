@@ -83,11 +83,16 @@ export const customPaginationContent = () => {
         --color: white;
       }
       .outline-pagination-items cds-pagination-button {
-        --border-width: 1px;
+        border: 1px solid #666666;
+        --padding: 0;
+      }
+      .show-pages cds-pagination-button {
+        --padding: 6px;
+        border-radius: 4px;
       }
     </style>
     <div cds-layout="m-y:lg">
-      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:xxs align:center">
+      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:lg align:center">
         <cds-pagination-button aria-label="go to previous" disabled>
           <cds-icon shape="arrow" direction="left"></cds-icon>
         </cds-pagination-button>
@@ -97,7 +102,7 @@ export const customPaginationContent = () => {
       </cds-pagination>
     </div>
     <div cds-layout="m-y:lg">
-      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:xxs align:center">
+      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:lg align:center">
         <cds-pagination-button disabled>First</cds-pagination-button>
         <cds-pagination-button disabled>Prev</cds-pagination-button>
         <cds-pagination-button>Next</cds-pagination-button>
@@ -186,9 +191,7 @@ export const customPaginationStyles = () => {
       }
 
       .custom-outline-pagination-items cds-pagination-button {
-        --border-color: #666666;
-        --border-width: 1px;
-        --border-radius: 0;
+        border: 1px solid #666666;
       }
 
       .custom-outline-pagination-items cds-pagination-button[disabled] {
@@ -198,6 +201,8 @@ export const customPaginationStyles = () => {
 
       .custom-outline-pagination-items cds-input {
         --border-radius: 0;
+        --width: 12px;
+        --height: 12px;
       }
 
       .custom-outline-pagination-items cds-pagination-button:not([disabled]):hover {
@@ -206,7 +211,7 @@ export const customPaginationStyles = () => {
       }
     </style>
     <div cds-layout="m-y:sm" class="custom-pagination-color">
-      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:xs align:center">
+      <cds-pagination aria-label="pagination" cds-layout="horizontal gap:lg align:center">
         <cds-pagination-button aria-label="go to first" action="first" disabled></cds-pagination-button>
         <cds-pagination-button aria-label="go to previous" action="prev" disabled></cds-pagination-button>
         <cds-input cds-pagination-number>

@@ -16,7 +16,7 @@
   width: auto;
 }
 
-cds-control-action.status {
+[cds-button-action].status {
   height: #{$cds-global-space-7};
   padding-top: $cds-global-space-3;
 }

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, createId } from '@cds/core/internal';
+import { baseStyles, createId, state } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import styles from './accordion-header.element.scss';
 
@@ -41,6 +41,9 @@ import styles from './accordion-header.element.scss';
  * @cssprop --icon-transform
  */
 export class CdsAccordionHeader extends LitElement {
+  /** @private */
+  @state() expanded = false;
+
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('slot', 'accordion-header');
@@ -52,7 +55,7 @@ export class CdsAccordionHeader extends LitElement {
 
   render() {
     return html`<div class="private-host" cds-layout="horizontal gap:md align:vertical-center wrap:none">
-      <cds-icon class="accordion-angle" shape="angle" size="9" inner-offset="2"></cds-icon>
+      <cds-button-expand .pressed=${this.expanded} readonly action="vertical"></cds-button-expand>
       <div cds-layout="align:stretch"><slot></slot></div>
     </div>`;
   }

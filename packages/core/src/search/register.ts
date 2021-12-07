@@ -8,6 +8,7 @@ import { registerElementSafely } from '@cds/core/internal';
 import { CdsSearch } from './search.element.js';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { searchIcon } from '@cds/core/icon/shapes/search.js';
+import '@cds/core/button-action/register.js';
 import '@cds/core/icon/register.js';
 import '@cds/core/forms/register.js';
 

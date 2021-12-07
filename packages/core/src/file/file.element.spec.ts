@@ -78,7 +78,7 @@ describe('cds-file', () => {
   it('clear action should not be visible if there are no files to clear', async () => {
     await componentIsStable(component);
     expect(component.inputControl.files.length).toBe(0, 'files length is zero by default');
-    expect(component.shadowRoot.querySelector('cds-control-action')).toBeNull('no files, no clear action');
+    expect(component.shadowRoot.querySelector('cds-button-action')).toBeNull('no files, no clear action');
 
     Object.defineProperty(component, 'inputControl', {
       get: () => ({ files: [{ name: 'test.png' }] }),
@@ -87,15 +87,13 @@ describe('cds-file', () => {
     component.requestUpdate();
     await componentIsStable(component);
     expect(component.inputControl.files.length).toBe(1, 'we have files now');
-    expect(component.shadowRoot.querySelector('cds-control-action')).not.toBeNull(
-      'we have files, we have clear action'
-    );
+    expect(component.shadowRoot.querySelector('cds-button-action')).not.toBeNull('we have files, we have clear action');
 
     Object.defineProperty(component, 'inputControl', { get: () => ({ files: void 0 }) });
     component.requestUpdate();
     await componentIsStable(component);
     expect(component.inputControl.files).toBeUndefined('files winding up undefined somehow');
-    expect(component.shadowRoot.querySelector('cds-control-action')).toBeNull('no files, no clear action');
+    expect(component.shadowRoot.querySelector('cds-button-action')).toBeNull('no files, no clear action');
   });
 
   it('should clear file input', async () => {
@@ -105,7 +103,7 @@ describe('cds-file', () => {
     component.requestUpdate();
     await componentIsStable(component);
 
-    component.shadowRoot.querySelector('cds-control-action').click();
+    component.shadowRoot.querySelector('cds-button-action').click();
     await componentIsStable(component);
     expect(document.activeElement).toBe(component);
     expect(button.innerText.trim().toLocaleLowerCase()).toBe('browse');

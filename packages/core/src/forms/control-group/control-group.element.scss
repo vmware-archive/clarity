@@ -18,7 +18,7 @@ $fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
   flex-basis: 0;
 }
 
-cds-control-action.status {
+[cds-button-action].status {
   height: #{$cds-global-space-7};
 }
 

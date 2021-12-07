@@ -65,7 +65,7 @@ export class CdsButton extends CdsBaseButton {
    * Sets the overall height and width of the button based on the following string values:
    */
   @property({ type: String })
-  size: 'sm' | 'md' = 'md';
+  size: 'icon' | 'sm' | 'md' = 'md';
 
   /** Sets if the button should be full width with display block */
   @property({ type: Boolean })

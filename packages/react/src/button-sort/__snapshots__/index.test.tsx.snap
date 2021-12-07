@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsButtonSort snapshot 1`] = `
+<div>
+  <CdsButtonSort>
+    <CdsButtonSort
+      l={null}
+    >
+      <cds-button-sort
+        l={null}
+      />
+    </CdsButtonSort>
+  </CdsButtonSort>
+</div>
+`;

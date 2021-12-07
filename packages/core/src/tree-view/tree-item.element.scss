@@ -13,7 +13,6 @@
   --focus-width: #{$cds-alias-object-border-width-300};
   --font-size: #{$cds-global-typography-font-size-3};
   --font-weight: #{$cds-global-typography-body-font-weight};
-  --icon-transform: rotate(90deg);
   cursor: pointer;
 }
 
@@ -40,12 +39,6 @@
 
 .lhs-container {
   width: #{$cds-global-space-7};
-}
-
-.expand-collapse-icon {
-  --color: #{$cds-alias-object-interaction-color};
-  transform: var(--icon-transform);
-  transition: transform var(--animation-duration);
 }
 
 :host(:focus) {
@@ -113,10 +106,6 @@
       transform: none;
     }
   }
-}
-
-:host([expanded]) {
-  --icon-transform: rotate(180deg);
 }
 
 // bar is used for focus but should be outline focus

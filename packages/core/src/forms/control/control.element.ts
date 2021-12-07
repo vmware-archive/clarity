@@ -149,7 +149,7 @@ export class CdsControl extends LitElement {
 
   @querySlotAll('cds-control-message') protected messages: NodeListOf<CdsControlMessage>;
 
-  @querySlotAll('cds-control-action') protected controlActions: NodeListOf<CdsControlAction>;
+  @querySlotAll('[cds-button-action]') protected controlActions: NodeListOf<CdsControlAction>;
 
   @query('.prefix') private prefixAction: HTMLElement;
 

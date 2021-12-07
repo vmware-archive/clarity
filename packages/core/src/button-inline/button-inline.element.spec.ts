@@ -5,24 +5,24 @@
  */
 
 import { html } from 'lit';
-import '@cds/core/button/register.js';
+import '@cds/core/button-inline/register.js';
 import '@cds/core/icon/register.js';
-import { CdsInlineButton } from '@cds/core/button';
+import { CdsButtonInline } from '@cds/core/button-inline';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
 describe('Inline button element', () => {
   let testElement: HTMLElement;
-  let component: CdsInlineButton;
+  let component: CdsButtonInline;
   const placeholderText = 'ohai';
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
       <form>
-        <cds-inline-button>${placeholderText}</cds-inline-button>
+        <cds-button-inline>${placeholderText}</cds-button-inline>
       </form>
     `);
-    component = testElement.querySelector<CdsInlineButton>('cds-inline-button');
+    component = testElement.querySelector<CdsButtonInline>('cds-button-inline');
   });
 
   afterEach(() => {
@@ -39,11 +39,11 @@ describe('Inline button element with icon', () => {
   it('add the anchored-icon classname to icons', async () => {
     const testElement = await createTestElement(html`
       <form>
-        <cds-inline-button><cds-icon shape="go-niners"></cds-icon>kthxbye</cds-inline-button>
+        <cds-button-inline><cds-icon shape="go-niners"></cds-icon>kthxbye</cds-button-inline>
       </form>
     `);
 
-    const component = testElement.querySelector<CdsInlineButton>('cds-inline-button');
+    const component = testElement.querySelector<CdsButtonInline>('cds-button-inline');
     const icon = component.querySelector<CdsIcon>('cds-icon');
     await componentIsStable(component);
 

@@ -39,7 +39,7 @@ describe('cds-search', () => {
   it('should apply prefix padding for search icon', async () => {
     await componentIsStable(component);
     expect(input.getAttribute('style')).toBe(
-      'padding-left: calc((24 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((6 / var(--cds-global-base)) * 1rem) !important;'
+      'padding-left: calc((22 / var(--cds-global-base)) * 1rem) !important; padding-right: calc((6 / var(--cds-global-base)) * 1rem) !important;'
     );
   });
 });

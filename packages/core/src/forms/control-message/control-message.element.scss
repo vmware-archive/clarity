@@ -35,6 +35,6 @@
   --color: #{$cds-alias-status-disabled};
 }
 
-::slotted(cds-control-action) {
+::slotted([cds-button-action]) {
   margin-bottom: calc(-1 * #{$cds-global-space-5});
 }

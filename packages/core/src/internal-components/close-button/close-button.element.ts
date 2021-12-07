@@ -4,16 +4,13 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit';
-import { CdsBaseButton, baseStyles, property } from '@cds/core/internal';
-import { ClarityIcons } from '@cds/core/icon/icon.service.js';
-import { timesIcon } from '@cds/core/icon/shapes/times.js';
-import styles from './close-button.element.scss';
+import { property } from '@cds/core/internal';
+import { CdsButtonAction } from '@cds/core/button-action';
 
 export const CdsCloseButtonTagName = 'cds-internal-close-button';
 
 /**
- * Standard close button for Clarity Components
+ * Standard close button for Clarity Components extends default cds-button-action
  *
  * ```typescript
  * import '@cds/core/internal-components/close-button/register.js';
@@ -24,32 +21,12 @@ export const CdsCloseButtonTagName = 'cds-internal-close-button';
  * ```
  *
  * @element cds-internal-close-button
- * @cssprop --background
- * @cssprop --color
- * @cssprop --opacity
- * @cssprop --padding
  */
-export class CdsInternalCloseButton extends CdsBaseButton {
-  @property({ type: String })
-  iconSize = '18';
+export class CdsInternalCloseButton extends CdsButtonAction {
+  @property({ type: String }) shape = 'close';
 
-  @property({ type: String })
-  iconShape = 'times';
-
-  render() {
-    return html`
-      <div class="private-host">
-        <cds-icon shape="${this.iconShape}" size="${this.iconSize}"></cds-icon>
-      </div>
-    `;
-  }
-
-  static get styles() {
-    return [baseStyles, styles];
-  }
-
-  constructor() {
-    super();
-    ClarityIcons.addIcons(timesIcon);
+  connectedCallback() {
+    super.connectedCallback();
+    this.ariaLabel = this.ariaLabel ? this.ariaLabel : this.i18n.close;
   }
 }

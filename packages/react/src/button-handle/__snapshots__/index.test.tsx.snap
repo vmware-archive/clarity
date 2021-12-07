@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsButtonAction snapshot 1`] = `
+<div>
+  <CdsButtonHandle>
+    <CdsButtonHandle
+      l={null}
+    >
+      <cds-button-handle
+        l={null}
+      />
+    </CdsButtonHandle>
+  </CdsButtonHandle>
+</div>
+`;

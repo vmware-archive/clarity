@@ -12,6 +12,8 @@ const bannedTSTypes = {
 
 // only adding rules that override the defaults or enforce new standards
 const rules = {
+  'no-unused-vars': 'off', // tsc checks this
+  '@typescript-eslint/no-unused-vars': [ERROR, { varsIgnorePattern: 'Demo|Test' }], // ignore side effect demo custom element definition classes
   '@typescript-eslint/explicit-function-return-type': OFF, // too much work at the moment
   '@typescript-eslint/no-explicit-any': OFF, // would LOVE to turn this on
   // cause slow analysis on TS files with Storybook, see

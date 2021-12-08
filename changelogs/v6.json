@@ -1,0 +1,82 @@
+{
+  "$schema": "./schema.json",
+  "releases": [
+    {
+      "version": "6.0.0-next.0",
+      "date": "2021-12-08",
+      "description": "This is a beta release for our next major version.",
+      "feat": [
+        {
+          "issue": 6408,
+          "title": "Popup component",
+          "project": "core",
+          "scope": "popup"
+        }
+      ],
+      "fix": [
+        {
+          "issue": 6494,
+          "title": "Remove css flex gap shim",
+          "project": "core",
+          "scope": "core",
+          "breaking": true
+        },
+        {
+          "issue": 6486,
+          "title": "Modern-normalize import instead of normalize",
+          "project": "schematics",
+          "scope": "core",
+          "breaking": true
+        },
+        {
+          "issue": 6497,
+          "title": "Update dependencies for angular 13",
+          "project": "angular",
+          "scope": ""
+        },
+        {
+          "issue": 6476,
+          "title": "Align dark theme to figma",
+          "project": "core",
+          "scope": "core"
+        },
+        {
+          "issue": 6456,
+          "title": "Support native aria property reflection",
+          "project": "core",
+          "scope": "core"
+        },
+        {
+          "issue": 6440,
+          "title": "Token/figma alignment",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6444,
+          "title": "Intelligently default aria label to i18n string",
+          "project": "core",
+          "scope": "progress-circle"
+        },
+        {
+          "issue": 6434,
+          "title": "Support nested module folders",
+          "project": "angular",
+          "scope": ""
+        },
+        {
+          "issue": 6433,
+          "title": "Add datalist fixer",
+          "project": "eslint-plugin-clarity-adoption",
+          "scope": ""
+        },
+        {
+          "issue": 6436,
+          "title": "Support non-equilateral icon sizing",
+          "project": "core",
+          "scope": "icon"
+        }
+      ]
+    }
+  ]
+}

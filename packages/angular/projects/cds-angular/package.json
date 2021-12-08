@@ -1,6 +1,6 @@
 {
   "name": "@cds/angular",
-  "version": "5.6.0",
+  "version": "5.6.1",
   "description": "Core component modules for Clarity Angular",
   "keywords": [
     "ng-add",

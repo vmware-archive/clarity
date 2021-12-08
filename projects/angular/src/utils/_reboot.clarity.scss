@@ -427,6 +427,9 @@
   a:visited {
     @include css-var(color, clr-link-visited-color, $clr-link-visited-color, $clr-use-custom-properties);
     text-decoration: none;
+    &:hover {
+      @include css-var(color, clr-link-visited-color-hover, $clr-link-visited-color, $clr-use-custom-properties);
+    }
   }
 
   a:hover {

@@ -21,7 +21,7 @@
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
-    "@cds/core": "^5.7.0",
+    "@cds/core": "next || ^6.0.0 || ^5.6.0",
     "@clr/ui": "@VERSION"
   },
   "schematics": "./schematics/collection.json",

@@ -146,7 +146,9 @@ export const createPackageModuleMetadata = (packageFile, config) => {
 
   const styleExports = config.styles.flatMap(m => {
     const output = typeof m === 'string' ? m : m.output;
-    const path = `.${resolve(output).replace(resolve(config.baseDir), '').replace(extname(output), '.css')}`;
+    const path = `.${resolve(output)
+      .replace(resolve(m.output ? config.outDir : config.baseDir), '')
+      .replace(extname(output), '.css')}`;
     const minPath = path.replace(extname(path), '.min.css');
     return [`"${path}": "${path}"`, `"${minPath}": "${minPath}"`];
   });

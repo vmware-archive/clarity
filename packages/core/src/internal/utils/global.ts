@@ -28,7 +28,7 @@ export interface CDSState {
   i18nRegistry: Readonly<Record<string, unknown>>;
   elementRegistry: Readonly<{ [key: string]: any }>;
   iconRegistry: Readonly<Record<string, unknown>>;
-  motionRegistry: Readonly<Record<string, unknown>>;
+  motionRegistry: Readonly<Record<string, any>>;
 }
 
 declare global {

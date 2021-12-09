@@ -122,7 +122,7 @@ cds-internal-close-button {
 
 :host([_type='default'][status='warning']),
 :host([_type='banner'][status='warning']) {
-  --color: #{$cds-global-color-black};
+  --color: #{$cds-global-color-construction-900};
 
   cds-alert-actions {
     --action-hover-text-color: var(--color);

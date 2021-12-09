@@ -51,7 +51,7 @@
 
 :host([status='warning']) {
   --background: #{$cds-alias-status-warning-shade};
-  --color: #{$cds-global-color-black};
+  --color: #{$cds-global-color-construction-900};
 }
 
 :host([status='danger']) {

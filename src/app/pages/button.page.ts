@@ -49,7 +49,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -57,7 +57,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -68,7 +68,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -76,7 +76,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -87,7 +87,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -95,7 +95,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -106,7 +106,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.4.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -114,7 +114,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.4.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -125,7 +125,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.5.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -133,7 +133,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.5.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -144,7 +144,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.6.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -152,7 +152,7 @@ export class ButtonPage {
       files: {
         'src/app/app.component.ts': 'button/button.6.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

@@ -31,7 +31,7 @@ export class BadgePage {
       files: {
         'src/app/app.component.ts': 'badges/badge.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -39,7 +39,7 @@ export class BadgePage {
       files: {
         'src/app/app.component.ts': 'badges/badge.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -50,7 +50,7 @@ export class BadgePage {
       files: {
         'src/app/app.component.ts': 'badges/badge.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -58,7 +58,7 @@ export class BadgePage {
       files: {
         'src/app/app.component.ts': 'badges/badge.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

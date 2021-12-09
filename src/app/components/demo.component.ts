@@ -15,26 +15,17 @@ import { SupportedTemplates } from '../templates';
 // Icons
 import {
   ClarityIcons,
-  landscapeIcon,
   boltIcon,
-  terminalIcon,
-  codeIcon,
-  betaIcon,
-  viewColumnsIcon,
 } from '@cds/core/icon';
 
-ClarityIcons.addIcons(landscapeIcon, boltIcon, terminalIcon, codeIcon, betaIcon, viewColumnsIcon);
+ClarityIcons.addIcons(boltIcon);
 
 export interface DemoTabData {
-  id?: string;
   name: string;
   files: { [filename: string]: string };
   language?: SourceCodeLanguages;
   template: SupportedTemplates;
 }
-
-// Generate Preview IDs
-let PreviewID = 0;
 
 @Component({
   selector: 'demo',
@@ -60,30 +51,9 @@ let PreviewID = 0;
   providers: [StackblitzService],
 })
 export class Demo {
-  inOverflow = true;
-
   @Input('tabs') tabs: DemoTabData[] = [];
 
   constructor(private stackblitz: StackblitzService) {}
-
-  ngOnInit(): void {
-    if (Array.isArray(this.tabs)) {
-      // auto attach unique id for every tab - later used for embedding the preview
-      this.tabs = this.tabs.map(tab => {
-        tab.id = this.generateId();
-        return tab;
-      });
-    }
-  }
-
-  /**
-   * Generate hash key for attaching preview container
-   *
-   * @returns number
-   */
-  public generateId(): string {
-    return PreviewID++ + '';
-  }
 
   public async openStackblitz(tab: DemoTabData): Promise<void> {
     await this.stackblitz.open(tab.template, tab.files);

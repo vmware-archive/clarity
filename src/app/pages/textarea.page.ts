@@ -30,7 +30,7 @@ export class TextareaPage {
       files: {
         'src/app/app.component.ts': 'textarea/textarea.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -38,7 +38,7 @@ export class TextareaPage {
       files: {
         'src/app/app.component.ts': 'textarea/textarea.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -49,7 +49,7 @@ export class TextareaPage {
       files: {
         'src/app/app.component.ts': 'textarea/textarea.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -57,7 +57,7 @@ export class TextareaPage {
       files: {
         'src/app/app.component.ts': 'textarea/textarea.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

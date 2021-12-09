@@ -41,7 +41,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -49,7 +49,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -60,7 +60,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -68,7 +68,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -79,7 +79,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -87,7 +87,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -98,7 +98,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.4.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -106,7 +106,7 @@ export class IconsPage {
       files: {
         'src/app/app.component.ts': 'icons/icons.4.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

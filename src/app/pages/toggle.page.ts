@@ -32,7 +32,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -40,7 +40,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -50,7 +50,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -58,7 +58,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -69,7 +69,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -77,7 +77,7 @@ export class TogglePage {
       files: {
         'src/app/app.component.ts': 'toggle/toggle.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

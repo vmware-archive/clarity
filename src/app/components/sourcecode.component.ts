@@ -30,7 +30,7 @@ export type SourceCodeLanguages = 'ts' | 'js' | 'html' | 'bash' | 'json' | undef
 export class SourceCodeComponent {
   @Input() content: string | null = '';
   @Input() language: SourceCodeLanguages = 'ts';
-  @Input() src = '';
+  @Input() src: string = '' ;
   formattedContent = '';
 
   ngOnInit() {

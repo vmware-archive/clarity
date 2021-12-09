@@ -42,7 +42,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -50,7 +50,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -61,7 +61,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -69,7 +69,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -80,7 +80,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -88,7 +88,7 @@ export class AlertPage {
       files: {
         'src/app/app.component.ts': 'alert/alert.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

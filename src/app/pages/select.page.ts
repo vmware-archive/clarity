@@ -30,7 +30,7 @@ export class SelectPage {
       files: {
         'src/app/app.component.ts': 'select/select.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -38,7 +38,7 @@ export class SelectPage {
       files: {
         'src/app/app.component.ts': 'select/select.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -49,7 +49,7 @@ export class SelectPage {
       files: {
         'src/app/app.component.ts': 'select/select.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -57,7 +57,7 @@ export class SelectPage {
       files: {
         'src/app/app.component.ts': 'select/select.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

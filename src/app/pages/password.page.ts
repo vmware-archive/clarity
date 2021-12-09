@@ -27,7 +27,7 @@ export class PasswordPage {
       files: {
         'src/app/app.component.ts': 'password/password.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -35,7 +35,7 @@ export class PasswordPage {
       files: {
         'src/app/app.component.ts': 'password/password.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -46,7 +46,7 @@ export class PasswordPage {
       files: {
         'src/app/app.component.ts': 'password/password.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -54,7 +54,7 @@ export class PasswordPage {
       files: {
         'src/app/app.component.ts': 'password/password.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

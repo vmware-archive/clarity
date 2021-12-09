@@ -26,7 +26,7 @@ import { DemoTabData } from '../components/demo.component';
     </status-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With expanded, disabled and exapandable panels</h3>
+      <h3 cds-text="section">With expanded, disabled and expandable panels</h3>
     </demo>
   `,
 })
@@ -37,7 +37,7 @@ export class AccordionPage {
       files: {
         'src/app/app.component.ts': 'accordion/accordion.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -45,7 +45,7 @@ export class AccordionPage {
       files: {
         'src/app/app.component.ts': 'accordion/accordion.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

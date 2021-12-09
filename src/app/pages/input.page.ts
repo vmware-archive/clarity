@@ -33,7 +33,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -41,7 +41,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -52,7 +52,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -60,7 +60,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -71,7 +71,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.4.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -79,7 +79,7 @@ export class InputPage {
       files: {
         'src/app/app.component.ts': 'input/input.4.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

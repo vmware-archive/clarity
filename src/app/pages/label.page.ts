@@ -39,7 +39,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.0.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -47,7 +47,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.0.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -58,7 +58,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -66,7 +66,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -77,7 +77,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -85,7 +85,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -96,7 +96,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -104,7 +104,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -115,7 +115,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.4.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -123,7 +123,7 @@ export class LabelPage {
       files: {
         'src/app/app.component.ts': 'labels/label.4.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

@@ -29,7 +29,7 @@ export class DatalistPage {
       files: {
         'src/app/app.component.ts': 'datalist/datalist.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -37,7 +37,7 @@ export class DatalistPage {
       files: {
         'src/app/app.component.ts': 'datalist/datalist.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -48,7 +48,7 @@ export class DatalistPage {
       files: {
         'src/app/app.component.ts': 'datalist/datalist.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -56,7 +56,7 @@ export class DatalistPage {
       files: {
         'src/app/app.component.ts': 'datalist/datalist.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

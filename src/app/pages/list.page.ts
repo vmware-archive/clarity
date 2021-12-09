@@ -32,7 +32,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -40,7 +40,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -51,7 +51,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -59,7 +59,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -70,7 +70,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.3.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -78,7 +78,7 @@ export class ListPage {
       files: {
         'src/app/app.component.ts': 'list/list.3.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

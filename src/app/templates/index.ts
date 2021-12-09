@@ -11,7 +11,7 @@ export const templateCore: StackblitzProject = {
   template: 'node',
   tags: ['clarity', 'core', '@cds/core'],
   files: {
-    'package.json': 'core.package.json.txt',
+    'package.json': 'v5/core.package.json.txt',
     'tsconfig.json': 'tsconfig.json.txt',
     'angular.json': 'core.angular.json.txt',
     'src/polyfills.ts': 'polyfills.ts.txt',
@@ -30,7 +30,7 @@ export const templateAngular: StackblitzProject = {
   template: 'node',
   tags: ['clarity', 'angular', '@cds/angular', '@cds/core'],
   files: {
-    'package.json': 'angular.package.json.txt',
+    'package.json': 'v5/angular.package.json.txt',
     'tsconfig.json': 'tsconfig.json.txt',
     'angular.json': 'angular.angular.json.txt',
     'src/polyfills.ts': 'polyfills.ts.txt',
@@ -49,7 +49,7 @@ export const templateHybrid: StackblitzProject = {
   template: 'node',
   tags: ['clarity', 'angular', '@cds/angular', '@cds/core'],
   files: {
-    'package.json': 'angular.package.json.txt',
+    'package.json': 'v5/angular.package.json.txt',
     'tsconfig.json': 'tsconfig.json.txt',
     'angular.json': 'hybrid.angular.json.txt',
     'src/polyfills.ts': 'polyfills.ts.txt',

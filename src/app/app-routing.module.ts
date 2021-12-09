@@ -46,7 +46,7 @@ import { LandingPage } from './pages/landing.page';
 import { OverviewPage } from './pages/overview.page';
 import { ApproachesPage } from './pages/approaches.page';
 import { DifferencesPage } from './pages/differences.page';
-
+import { TemplateBuilderPage } from './pages/template-builder.page';
 export const componentRoutes = [
   { path: 'overview', component: OverviewPage },
   { path: 'accordion', component: AccordionPage },
@@ -88,6 +88,7 @@ export const getStartedRoutes = [
   { path: 'get-started', component: GettingStartedPage },
   { path: 'differences', component: DifferencesPage },
   { path: 'approaches', component: ApproachesPage },
+  { path: 'builder', component: TemplateBuilderPage },
 ];
 
 const routes: Routes = [

@@ -29,7 +29,7 @@ export class CheckboxPage {
       files: {
         'src/app/app.component.ts': 'checkbox/checkbox.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -37,7 +37,7 @@ export class CheckboxPage {
       files: {
         'src/app/app.component.ts': 'checkbox/checkbox.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];
@@ -48,7 +48,7 @@ export class CheckboxPage {
       files: {
         'src/app/app.component.ts': 'checkbox/checkbox.2.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -56,7 +56,7 @@ export class CheckboxPage {
       files: {
         'src/app/app.component.ts': 'checkbox/checkbox.2.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

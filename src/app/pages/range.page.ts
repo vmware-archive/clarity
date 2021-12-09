@@ -26,7 +26,7 @@ export class RangePage {
       files: {
         'src/app/app.component.ts': 'range/range.1.angular.txt',
       },
-      language: 'ts',
+
       template: 'angular',
     },
     {
@@ -34,7 +34,7 @@ export class RangePage {
       files: {
         'src/app/app.component.ts': 'range/range.1.core.txt',
       },
-      language: 'ts',
+
       template: 'core',
     },
   ];

@@ -58,6 +58,8 @@ import { ApproachesPage } from './pages/approaches.page';
 import { MenuTitlePipe } from './pipes/menu-title.pipe';
 import { OverviewPage } from './pages/overview.page';
 import { DifferencesPage } from './pages/differences.page';
+import { TemplateBuilderPage } from './pages/template-builder.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { DifferencesPage } from './pages/differences.page';
     TooltipPage,
     AdoptionToolingPage,
 
+    TemplateBuilderPage,
+
     /* Interface Components */
     EslintIntroBlockComponent,
     SourceCodeComponent,
@@ -114,7 +118,7 @@ import { DifferencesPage } from './pages/differences.page';
 
     MenuTitlePipe,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, CdsModule, AppRoutingModule, ClarityModule],
+  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, CdsModule, AppRoutingModule, ClarityModule],
   providers: [],
   bootstrap: [AppComponent],
 })

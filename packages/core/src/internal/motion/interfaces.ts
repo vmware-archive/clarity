@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { ReactiveElement } from 'lit';
 import { EventEmitter } from '../decorators/event';
 
 /* GLOBALS */
@@ -64,9 +65,9 @@ export interface MotionRegistry {
 
 /* ANIMATED COMPONENTS */
 
-export interface Animatable {
+export type AnimatableElement = ReactiveElement & {
   cdsMotion: string;
   cdsMotionChange: EventEmitter<string>;
-}
-
-export type AnimatableElement = HTMLElement & Animatable & { [key: string]: any; _animations: PropertyDrivenAnimation };
+  _animations?: PropertyDrivenAnimation;
+  '_cds-animation-status'?: string;
+};

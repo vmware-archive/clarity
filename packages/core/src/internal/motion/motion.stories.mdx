@@ -34,13 +34,12 @@ Clarity Motion is customizable at several levels:
 
 ## Installation
 
-To animate a component with ClarityMotion, import the `animate` decorator and `Animatable` interface in your JavaScript. The `Animatable` interface will require the animated component to have a `cdsMotion` property and `motionChange` event emitter.
+To animate a component with ClarityMotion, import the `animate` decorator. The `@animate` decorator will require the component to have a `cdsMotion` property and `cdsMotionChange` event emitter.
 
 ```typescript
 // custom-animated-component/custom-animated-component.element.ts
 
 import {
-  Animatable,
   animate,
   event,
   property,
@@ -53,12 +52,12 @@ import { LitElement } from 'lit';
     false: 'shake-me'
   },
 })
-export class CustomAnimatedComponent extends LitElement implements Animatable {
+export class CustomAnimatedComponent extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 
   @event()
-  motionChange: EventEmitter<string>;
+  cdsMotionChange: EventEmitter<string>;
 
   @property({ type: Boolean })
   isValid = true;
@@ -110,7 +109,6 @@ Saying an animation is _property-driven_ means that the thing which makes the an
 // custom-animated-component/custom-animated-component.element.ts
 
 import {
-  Animatable,
   animate,
   event,
   property,
@@ -142,7 +140,7 @@ import { LitElement } from 'lit';
     false: 'shake-me'
   },
 })
-export class CustomAnimatedComponent extends LitElement implements Animatable {
+export class CustomAnimatedComponent extends LitElement {
   @property({ type: Boolean })
   isValid = true; // This is the property that will trigger the shake animation
 
@@ -349,7 +347,6 @@ In the next example, we have extended the modal so that it will slide in and out
 // custom-sliding-modal/custom-sliding-modal.element.ts
 
 import {
-  Animatable,
   animate,
   event,
   property
@@ -362,7 +359,7 @@ import { CdsModal } from '@cds/core/modal';
     false: 'modal-slide-left',
   },
 })
-export class CustomSlidingModal extends CdsModal implements Animatable {
+export class CustomSlidingModal extends CdsModal {
   @property({ type: String })
   cdsMotion = 'on';
 

@@ -7,7 +7,6 @@
 import { html, LitElement, PropertyValues } from 'lit';
 
 import {
-  Animatable,
   animate,
   AnimationNavigationGroupOpenName,
   baseStyles,
@@ -58,7 +57,7 @@ export const CdsNavigationGroupTagName = 'cds-navigation-group';
     false: reverseAnimation(AnimationNavigationGroupOpenName),
   },
 })
-export class CdsNavigationGroup extends LitElement implements Animatable {
+export class CdsNavigationGroup extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 

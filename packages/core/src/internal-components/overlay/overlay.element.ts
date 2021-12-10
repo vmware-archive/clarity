@@ -5,7 +5,6 @@
  */
 
 import {
-  Animatable,
   AnimationModalEnterName,
   animate,
   baseStyles,
@@ -223,7 +222,7 @@ export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
     false: AnimationModalEnterName,
   },
 })
-export class CdsInternalOverlay extends CdsInternalStaticOverlay implements Animatable {
+export class CdsInternalOverlay extends CdsInternalStaticOverlay {
   @property({ type: String })
   cdsMotion = 'on';
 

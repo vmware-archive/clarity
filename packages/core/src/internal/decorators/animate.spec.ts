@@ -5,14 +5,7 @@
  */
 
 import { animate } from './animate.js';
-import {
-  Animatable,
-  AnimatableElement,
-  event,
-  EventEmitter,
-  property,
-  registerElementSafely,
-} from '@cds/core/internal';
+import { AnimatableElement, event, EventEmitter, property, registerElementSafely } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 
@@ -29,7 +22,7 @@ declare global {
     no: 'nothing',
   },
 })
-class TestAnimateElement extends LitElement implements Animatable {
+class TestAnimateElement extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 
@@ -43,7 +36,7 @@ class TestAnimateElement extends LitElement implements Animatable {
 
 // sanity check if bad data comes through
 @animate(null)
-class TestEmptyAnimateElement extends LitElement implements Animatable {
+class TestEmptyAnimateElement extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 
@@ -78,13 +71,13 @@ describe('animate decorator', () => {
 
   it('should set _animations hidden property', async () => {
     await componentIsStable(component);
-    expect(component._animations).toBeDefined();
+    expect(component._animations).not.toBeNull();
     expect(component._animations.isValid.yes).toBe('something');
     expect(component._animations.isValid.no).toBe('nothing');
   });
 
   it('should handle bad data', async () => {
     await componentIsStable(emptyComponent);
-    expect(emptyComponent._animations).toBeUndefined();
+    expect(emptyComponent._animations).toBeNull();
   });
 });

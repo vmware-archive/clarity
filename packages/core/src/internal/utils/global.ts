@@ -8,6 +8,7 @@ import { isBrowser } from './exists.js';
 import { getAngularVersion, getReactVersion, getVueVersion, getAngularJSVersion } from './framework.js';
 import { FeatureSupportMatrix, browserFeatures } from './supports.js';
 import { LogService } from '../services/log.service.js';
+import { MotionRegistry } from '../motion/interfaces.js';
 
 export interface CDSGlobal {
   _version: string[];
@@ -28,7 +29,7 @@ export interface CDSState {
   i18nRegistry: Readonly<Record<string, unknown>>;
   elementRegistry: Readonly<{ [key: string]: any }>;
   iconRegistry: Readonly<Record<string, unknown>>;
-  motionRegistry: Readonly<Record<string, any>>;
+  motionRegistry: Readonly<MotionRegistry>;
 }
 
 declare global {

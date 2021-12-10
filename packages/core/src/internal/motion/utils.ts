@@ -61,13 +61,13 @@ export async function runPropertyAnimations(props: Map<string, any>, hostEl: Ani
     propertyAnimations.map((propNameAnimationTuple: TargetedAnimationAsPropertyTuple) => {
       const [propname, propertyAnimationsByValue] = propNameAnimationTuple;
 
-      if (props.get(propname) === hostEl[propname]) {
+      if (props.get(propname) === (hostEl as any)[propname]) {
         // a weird/unlikely state where an update is sent but the property value didn't actually change
         return false;
       }
 
       // gets animations to run based on the property's value
-      const animatedPropertyValueAsString = propertyAnimationsByValue[hostEl[propname].toString()];
+      const animatedPropertyValueAsString = propertyAnimationsByValue[(hostEl as any)[propname].toString()];
       const cdsMotionValue = hostEl.cdsMotion;
 
       // looping through each tuple value in order, getAnimationConfigForPropertyValue()
@@ -77,7 +77,7 @@ export async function runPropertyAnimations(props: Map<string, any>, hostEl: Ani
 
       const [motionName, returnedMotion] = getAnimationConfigForPropertyValue(
         animatedPropertyValueAsString,
-        getInlineOverride(cdsMotionValue, propname, hostEl[propname].toString())
+        getInlineOverride(cdsMotionValue, propname, (hostEl as any)[propname].toString())
       );
       let motionForMyValue = clone(returnedMotion); // have to jump through this hoop to keep typescript happy
 

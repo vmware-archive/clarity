@@ -10,7 +10,6 @@ import { componentIsStable, createTestElement, removeTestElement } from '@cds/co
 import { registerElementSafely, property, event, EventEmitter } from '@cds/core/internal';
 import { animate } from '../decorators/animate.js';
 import {
-  Animatable,
   AnimatableElement,
   CLARITY_MOTION_FALLBACK_EASING,
   CLARITY_MOTION_FALLBACK_DURATION_IN_MS,
@@ -57,7 +56,7 @@ type PropMap = Map<string, any>;
     false: 'nothing',
   },
 })
-export class TestAnimateUtilsElement extends LitElement implements Animatable {
+export class TestAnimateUtilsElement extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 

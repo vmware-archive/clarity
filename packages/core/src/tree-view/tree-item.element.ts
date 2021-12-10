@@ -5,7 +5,6 @@
  */
 
 import {
-  Animatable,
   animate,
   AnimationTreeItemExpandName,
   baseStyles,
@@ -58,7 +57,7 @@ import styles from './tree-item.element.scss';
     false: reverseAnimation(AnimationTreeItemExpandName),
   },
 })
-export class CdsTreeItem extends LitElement implements Animatable {
+export class CdsTreeItem extends LitElement {
   @i18n() i18n = I18nService.keys.treeview;
 
   @property({ type: String })

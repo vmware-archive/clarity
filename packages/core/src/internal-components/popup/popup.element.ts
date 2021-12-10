@@ -6,7 +6,6 @@
 
 import {
   animate,
-  Animatable,
   AnimationResponsivePopupEnterName,
   AriaPopupController,
   AxisAligns,
@@ -87,7 +86,7 @@ import { CdsInternalPointer } from './pointer.element.js';
     false: AnimationResponsivePopupEnterName,
   },
 })
-export class CdsInternalPopup extends CdsInternalStaticOverlay implements Animatable, PositionableElement {
+export class CdsInternalPopup extends CdsInternalStaticOverlay implements PositionableElement {
   // --- mixins/composables ---
 
   protected ariaPopupController = new AriaPopupController(this);

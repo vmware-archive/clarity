@@ -8,7 +8,6 @@ import { html, TemplateResult } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import {
   animate,
-  Animatable,
   AnimationModalEnterName,
   i18n,
   I18nService,
@@ -69,7 +68,7 @@ import { CdsModalActions } from './modal-actions.element';
     false: AnimationModalEnterName,
   },
 })
-export class CdsModal extends CdsInternalOverlay implements Animatable {
+export class CdsModal extends CdsInternalOverlay {
   protected get customBumpers(): [HTMLElement, HTMLElement] {
     return [this.modalHeader, this.modalFooter];
   }

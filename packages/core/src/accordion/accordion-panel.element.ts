@@ -8,7 +8,6 @@ import { html, LitElement } from 'lit';
 import {
   AnimationAccordionPanelOpenName,
   reverseAnimation,
-  Animatable,
   animate,
   baseStyles,
   event,
@@ -56,7 +55,7 @@ import styles from './accordion-panel.element.scss';
     false: reverseAnimation(AnimationAccordionPanelOpenName),
   },
 })
-export class CdsAccordionPanel extends LitElement implements Animatable {
+export class CdsAccordionPanel extends LitElement {
   @property({ type: String })
   cdsMotion = 'on';
 

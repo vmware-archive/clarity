@@ -154,7 +154,7 @@ describe('Alert groups – ', () => {
       expect(layout.includes('vertical')).toBe(true, 'Default alert group should include vertical layout');
       expect(layout.includes('wrap:none')).toBe(true, 'Default alert group should include wrap:none layout');
       expect(layout.includes('gap:none')).toBe(false, 'Default alert group should NOT include gap:none layout');
-      expect(layout.includes('gap:sm')).toBe(true, 'Default alert group should include gap:sm layout');
+      expect(layout.includes('gap:xs')).toBe(true, 'Default alert group should include gap:sm layout');
       expect(layout.includes('align:horizontal-stretch')).toBe(
         true,
         'Default alert group should include horizontal stretch layout'

@@ -4,6 +4,7 @@
 
 $cds-layout-sizes: (
   'none': 0,
+  'xxxs': $cds-global-layout-space-xxxs,
   'xxs': $cds-global-layout-space-xxs,
   'xs': $cds-global-layout-space-xs,
   'sm': $cds-global-layout-space-sm,
@@ -11,6 +12,7 @@ $cds-layout-sizes: (
   'lg': $cds-global-layout-space-lg,
   'xl': $cds-global-layout-space-xl,
   'xxl': $cds-global-layout-space-xxl,
+  'xxxl': $cds-global-layout-space-xxxl,
 );
 
 $cds-layout-breakpoints: (

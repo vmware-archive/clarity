@@ -96,7 +96,7 @@ export class CdsAlertGroup extends LitElement {
         <div class="alert-group-wrapper">
           <div
             class="alerts"
-            cds-layout="vertical wrap:none align:horizontal-stretch fill ${this.size === 'sm' ? 'gap:none' : 'gap:sm'}"
+            cds-layout="vertical wrap:none align:horizontal-stretch fill ${this.size === 'sm' ? 'gap:none' : 'gap:xs'}"
           >
             <slot></slot>
           </div>

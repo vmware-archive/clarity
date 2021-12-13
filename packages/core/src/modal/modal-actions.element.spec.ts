@@ -15,7 +15,7 @@ describe('modal-actions element', () => {
   let component: CdsModalActions;
   let componentWithLayout: CdsModalActions;
   const placeholderContent = 'Modal Placeholder';
-  const defaultLayout = ['horizontal', 'gap:sm', 'align:right'];
+  const defaultLayout = ['horizontal', 'gap:xs', 'align:right'];
 
   beforeEach(async () => {
     testElement = await createTestElement(html`<cds-modal-actions>${placeholderContent}</cds-modal-actions>`);

@@ -132,7 +132,7 @@ describe('cds-form-group', () => {
 
     formGroup.layout = 'compact';
     await componentIsStable(formGroup);
-    expect(formGroup.shadowRoot.innerHTML).toContain('vertical gap:md');
+    expect(formGroup.shadowRoot.innerHTML).toContain('vertical gap:sm');
   });
 
   it('should determine label width when visible', async () => {

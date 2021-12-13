@@ -13,19 +13,19 @@ import styles from './card.element.scss';
  * ```html
  * <cds-card aria-labelledby="{label your card}">
     <div cds-layout="vertical gap:md">
-      <h2 id="{label your card}" cds-text="section" cds-layout="p-y:sm">
+      <h2 id="{label your card}" cds-text="section">
         <!-- Card title -->
       </h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         <!-- Card content -->
       </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:sm align:vertical-center">
         <cds-button action="flat-inline">View</cds-button>
       </div>
     </div>

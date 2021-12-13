@@ -16,12 +16,12 @@ export default {
 
 export const core = () => {
   return html`
-    <section cds-layout="vertical gap:xl align:center m-t:xxl" cds-text="center">
+    <section cds-layout="vertical gap:xxl align:center m-t:xxxl" cds-text="center">
       <img
         src="${img}"
         alt="Clarity Core"
         cds-layout="fill"
-        style="max-width: calc(var(--cds-global-layout-space-xl) * 3)"
+        style="max-width: calc(var(--cds-global-layout-space-xxl) * 3)"
       />
       <h1 cds-text="display">
         Clarity Core

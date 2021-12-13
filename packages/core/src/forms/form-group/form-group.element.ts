@@ -89,7 +89,7 @@ export class CdsFormGroup extends LitElement {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="vertical gap:${this.layout === 'compact' ? 'md' : 'lg'}">
+      <div class="private-host" cds-layout="vertical gap:${this.layout === 'compact' ? 'sm' : 'lg'}">
         <slot></slot>
       </div>
     `;

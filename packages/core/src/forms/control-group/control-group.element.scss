@@ -4,7 +4,7 @@
 
 @import './../../styles/tokens/generated/index';
 
-$fallback-width: calc(#{$cds-global-layout-space-xxl} * 2);
+$fallback-width: calc(#{$cds-global-layout-space-xxxl} * 3);
 
 :host {
   width: 100%;

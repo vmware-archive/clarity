@@ -98,7 +98,7 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
     return html`
       <div
         class="private-host ${this.groupItem ? 'group-item' : ''}"
-        cds-layout="horizontal align:horizontal-stretch wrap:none gap:md"
+        cds-layout="horizontal align:horizontal-stretch wrap:none gap:sm"
       >
         <slot @slotchange=${this.handleItemAnchorText}></slot>
       </div>

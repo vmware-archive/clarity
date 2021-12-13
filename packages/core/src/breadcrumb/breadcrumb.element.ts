@@ -32,10 +32,10 @@ export class CdsBreadcrumb extends LitElement {
   render() {
     return html`
       <div class="private-host">
-        <ol cds-layout="horizontal gap:sm align:vertical-center">
+        <ol cds-layout="horizontal gap:xs align:vertical-center">
           ${this.slotNames.map(
             slotName => html`
-              <li cds-layout="horizontal gap:sm align:vertical-center">
+              <li cds-layout="horizontal gap:xs align:vertical-center">
                 <slot name="${slotName}"></slot>
                 <span part="separator" aria-hidden="true">${this.separator}</span>
               </li>

@@ -120,7 +120,7 @@ export class CdsInternalControlGroup extends LitElement {
   protected get messagesTemplate() {
     return html` <div
       ?hidden=${this.messages.length === 0}
-      cds-layout="horizontal align:shrink gap:sm wrap:none"
+      cds-layout="horizontal align:shrink gap:xs wrap:none"
       class="messages-container"
     >
       ${!this.isInlineControlGroup ? getStatusIcon(this.status) : ''}
@@ -133,7 +133,7 @@ export class CdsInternalControlGroup extends LitElement {
   protected get controlsTemplate() {
     return this.isInlineControlGroup
       ? html`
-          <div cds-layout="horizontal gap:sm align:horizontal-stretch" class="input-container">
+          <div cds-layout="horizontal gap:xs align:horizontal-stretch" class="input-container">
             <div class="controls" cds-layout="horizontal align:horizontal-stretch wrap:none">
               <slot name="controls"></slot>
             </div>
@@ -150,17 +150,17 @@ export class CdsInternalControlGroup extends LitElement {
   }
 
   private get inlineControlLayout(): string {
-    return `${!this.layout.includes('inline') && this.layout !== 'compact' ? 'vertical gap:sm' : 'horizontal gap:md'} ${
+    return `${!this.layout.includes('inline') && this.layout !== 'compact' ? 'vertical gap:xs' : 'horizontal gap:sm'} ${
       !this.layout.includes('vertical') ? 'wrap:none' : ''
     }`;
   }
 
   private get primaryLabelLayout() {
-    return !this.layout.includes('vertical') ? 'horizontal gap:lg' : 'vertical gap:sm';
+    return !this.layout.includes('vertical') ? 'horizontal gap:lg' : 'vertical gap:xs';
   }
 
   private get controlMessageLayout() {
-    return `${this.layout === 'compact' ? 'horizontal' : 'vertical'} gap:sm wrap:none align:stretch`;
+    return `${this.layout === 'compact' ? 'horizontal' : 'vertical'} gap:xs wrap:none align:stretch`;
   }
 
   render() {

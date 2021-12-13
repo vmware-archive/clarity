@@ -158,7 +158,7 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
   private renderGroupStart() {
     return html`
       <button aria-expanded="${this.expanded}" id="${this.isGroupStart ? this.navigationGroupId : ''}" type="button">
-        <div cds-layout="horizontal wrap:none align:vertical-center gap:md">
+        <div cds-layout="horizontal wrap:none align:vertical-center gap:sm">
           <slot @slotchange=${this.handleStartButtonText}></slot>
           <span class="icon-slot" cds-layout="${this.expandedRoot ? 'align:right' : 'align:left'}">
             <slot name="cds-icon-slot">

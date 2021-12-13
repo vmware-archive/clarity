@@ -7,22 +7,22 @@
   --border-radius: #{$cds-alias-object-border-radius-100};
   --background: #{$cds-alias-object-overlay-background};
   --box-shadow: #{$cds-alias-object-shadow-100};
-  --width: calc(8 * #{$cds-global-space-13});
+  --width: calc(8 * #{$cds-global-space-14});
   --content-overflow: hidden auto;
   --max-height: 70vh;
   --tablet-max-height: 55vh;
 }
 
 :host([size='sm']) {
-  --width: calc(4 * #{$cds-global-space-13});
+  --width: calc(4 * #{$cds-global-space-14});
 }
 
 :host([size='lg']) {
-  --width: calc(12 * #{$cds-global-space-13});
+  --width: calc(12 * #{$cds-global-space-14});
 }
 
 :host([size='xl']) {
-  --width: calc(16 * #{$cds-global-space-13});
+  --width: calc(16 * #{$cds-global-space-14});
 }
 
 :host([_demo-mode]) {

@@ -57,30 +57,21 @@ React elements created in the render method. Because web components' lifecycle l
 lifecycle our components provide a way to use refs when the underlying web component has finished rendering:
 
 ```typescript
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CdsButton } from '@cds/react/button';
 
-export default class App extends React.Component<{}, {}> {
-  buttonRef: React.RefObject<CdsButton>;
+export function App() {
+  const buttonRef = useRef<typeof CdsButton & HTMLElement>();
 
-  constructor(props: any) {
-    super(props);
-    this.buttonRef = React.createRef<CdsButton>();
-  }
+  useEffect(() => {
+    buttonRef.current?.focus();
+  }, []);
 
-  componentDidMount() {
-    this.buttonRef.current.nativeElement.then(element => {
-      element.focus();
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <CdsButton ref={this.buttonRef}>My button</CdsButton>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <CdsButton ref={buttonRef}>My button</CdsButton>
+    </div>
+  );
 }
 ```
 

@@ -36,7 +36,7 @@ export class CdsInternalControlLabel extends LitElement {
 
   render() {
     return html`
-      <div class="private-host" cds-layout="horizontal gap:sm align:shrink">
+      <div class="private-host" cds-layout="horizontal gap:xs align:shrink">
         <slot></slot>
       </div>
     `;

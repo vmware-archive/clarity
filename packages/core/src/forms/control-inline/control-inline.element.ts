@@ -60,10 +60,10 @@ export class CdsInternalControlInline extends CdsControl {
     return html`
       <div
         class="private-host"
-        cds-layout="${this.isControlGroup ? 'horizontal align:vertical-center' : 'vertical'} gap:sm"
+        cds-layout="${this.isControlGroup ? 'horizontal align:vertical-center' : 'vertical'} gap:xs"
       >
         <div
-          cds-layout="horizontal gap:sm wrap:none align:vertical-center ${this.controlAlign === 'right'
+          cds-layout="horizontal gap:xs wrap:none align:vertical-center ${this.controlAlign === 'right'
             ? 'order:reverse'
             : ''}"
         >
@@ -72,7 +72,7 @@ export class CdsInternalControlInline extends CdsControl {
           ${this.internalLabelTemplate}
         </div>
         ${this.messages?.length
-          ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:sm' : ''}">
+          ? html` <div cds-layout="horizontal wrap:none ${this.messages?.length ? 'gap:xs' : ''}">
               ${getStatusIcon(this.status)}
               <div cds-layout="align:vertical-center" class="messages">
                 <slot name="message"></slot>

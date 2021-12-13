@@ -154,16 +154,16 @@ export class CdsTreeItem extends LitElement {
   render() {
     return html`
       <div class="private-host" cds-layout="p-l:md">
-        <div cds-layout="horizontal align:vertical-center ${this.multiSelect ? 'gap:md' : 'gap:sm'}">
+        <div cds-layout="horizontal align:vertical-center ${this.multiSelect ? 'gap:xs' : 'gap:xxs'}">
           <div class="lhs-container">
             ${this.treeItemLeftHandSideTemplate}
           </div>
           <div
             class="item-content"
-            cds-layout="p:sm ${this.multiSelect ? 'p-x:md' : ''} align:stretch"
+            cds-layout="horizontal p:xxs align:vertical-center align:stretch"
             @click="${() => this.toggleSelected()}"
           >
-            <span cds-layout="horizontal align:vertical-center gap:md" cds-text="lhe">
+            <span cds-layout="horizontal align:vertical-center gap:sm" cds-text="lhe">
               ${this.multiSelect
                 ? html`
                     <cds-internal-visual-checkbox

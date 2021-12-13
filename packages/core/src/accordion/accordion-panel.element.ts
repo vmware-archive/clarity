@@ -91,7 +91,7 @@ export class CdsAccordionPanel extends LitElement {
     return html`<div class="private-host" role="group">
       <button
         class="accordion-header-button"
-        cds-layout="horizontal align:vertical-center gap:md"
+        cds-layout="horizontal align:vertical-center gap:sm"
         type="button"
         @click="${() => this.toggle()}"
         ?disabled="${this.disabled}"

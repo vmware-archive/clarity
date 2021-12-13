@@ -69,7 +69,9 @@ export const litSass = () => {
         }
 
         return {
-          code: `import { css } from 'lit';export default css\`${prod ? csso.minify(css).css : css}\``,
+          code: `import { css } from 'lit';export default css\`${
+            prod ? csso.minify(css, { comments: false }).css : css
+          }\``,
           map: { mappings: '' },
         };
       } else {
@@ -96,12 +98,12 @@ export const globalStyles = config => {
         file: resolve(output).replace(resolve(config.baseDir), resolve(config.outDir)).replace(extname(output), '.css'),
       },
       plugins: [
-        styles({ mode: 'extract', plugins: [autoprefixer] }),
+        styles({ mode: 'extract', plugins: [autoprefixer({ flexbox: false })] }),
         {
           writeBundle(outputOptions, bundle) {
             const css = Object.entries(bundle)[1][1].source;
             fs.writeFileSync(outputOptions.file, css);
-            fs.writeFileSync(outputOptions.file.replace('.css', '.min.css'), csso.minify(css).css);
+            fs.writeFileSync(outputOptions.file.replace('.css', '.min.css'), csso.minify(css, { comments: false }).css);
           },
           buildStart() {
             this.addWatchFile(input);

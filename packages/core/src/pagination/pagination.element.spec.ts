@@ -36,7 +36,7 @@ describe('Pagination Element', () => {
   it('should have default layout wrapper for content', async () => {
     await componentIsStable(defaultLayoutComponent);
     const wrapper = defaultLayoutComponent.shadowRoot.querySelector('div');
-    expect(wrapper.getAttribute('cds-layout')).toBe('horizontal gap:md align:center');
+    expect(wrapper.getAttribute('cds-layout')).toBe('horizontal gap:sm align:center');
   });
 
   it('should allow custom layout for content', async () => {

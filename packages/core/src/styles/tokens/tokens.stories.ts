@@ -34,16 +34,12 @@ interface Token {
 }
 
 function getTokenTable(key: string, globals: any = {}) {
-  return html` <style>
-      .token-table {
-        width: 100%;
-      }
-
-      .token-table td > div {
-        line-height: 1em;
-      }
-    </style>
-    <table cds-layout="display@sm:none" class="token-table" cds-table="border:row border:outside" cds-text="left">
+  return html` <table
+      cds-layout="display@sm:none"
+      class="token-table"
+      cds-table="border:row border:outside"
+      cds-text="left"
+    >
       <thead>
         <tr cds-layout="grid cols:12">
           <th cds-layout="p-y:md p-x:lg display:block display@md:none">Token/Value/Demo</th>
@@ -63,31 +59,33 @@ function getTokenTable(key: string, globals: any = {}) {
         })}
       </tbody>
     </table>
-    <table
-      class="token-table"
-      cds-layout="display:none display@sm:block"
-      cds-table="border:row border:outside"
-      cds-text="left"
-    >
-      <thead>
-        <tr cds-layout="grid cols:4">
-          <th cds-layout="p-y:md p-x:lg">Token</th>
-          <th cds-layout="p-y:md p-x:lg">Value</th>
-          <th cds-layout="p-y:md p-x:lg">Demo</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${getTokens(key, globals).map((token: any) => {
-          return html`<tr cds-layout="grid cols:4 align:stretch">
-            <td cds-layout="p:lg">
-              <span cds-text="body">${token.name}</span>
-            </td>
-            <td cds-layout="p:lg">${token.formattedValue}</td>
-            <td cds-layout="p:lg">${token.demo}</td>
-          </tr>`;
-        })}
-      </tbody>
-    </table>`;
+    <div cds-layout="display:none display@sm:block">
+      <table
+        class="token-table"
+        cds-table="border:row border:outside"
+        cds-text="left"
+        style="--cell-padding: var(--cds-global-space-7)"
+      >
+        <thead>
+          <tr cds-layout="grid cols:4">
+            <th>Token</th>
+            <th>Value</th>
+            <th>Demo</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${getTokens(key, globals).map((token: any) => {
+            return html`<tr cds-layout="grid cols:4 align:stretch">
+              <td>
+                <span cds-text="body">${token.name}</span>
+              </td>
+              <td>${token.formattedValue}</td>
+              <td>${token.demo}</td>
+            </tr>`;
+          })}
+        </tbody>
+      </table>
+    </div>`;
 }
 
 let currentTheme = getThemeStyleMap(':root');
@@ -192,7 +190,7 @@ function isSpaceToken(token: Token) {
 function setNumberToken(token: Token) {
   token.formattedValue = html` <div cds-layout="vertical gap:md">
     ${token.alias ? html`<p cds-text="secondary">${token.alias}</p>` : ''}
-    <p cds-text="secondary">Web: <span cds-text="code">${token.computedValue}</span></p>
+    <p cds-text="secondary">Web: <span cds-text="code">${(token.value as any) / 20}rem</span></p>
     <p cds-text="secondary">Android: <span cds-text="code">${token.value}dp</span></p>
     <p cds-text="secondary">iOS: <span cds-text="code">${token.value}pt</span></p>
   </div>`;

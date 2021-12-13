@@ -30,6 +30,7 @@
   color: var(--color);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
+  min-height: $cds-alias-object-interaction-touch-target;
 }
 
 .item-content:hover {

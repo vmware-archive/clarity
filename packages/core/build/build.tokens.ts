@@ -102,7 +102,7 @@ function buildJSONTokens(path) {
 
 function buildSassTokens(path) {
   const values = tokens
-    .map(token => `${tokenToSass(token, false)}\n`)
+    .map(token => `${tokenToSass(token)}\n`)
     .join('')
     .trim();
   fs.writeFileSync(path, `// ${experimental}\n${values}`);
@@ -111,7 +111,7 @@ function buildSassTokens(path) {
 function buildCSSTokens(path) {
   const cssTokens = `
 :root {
-${tokens.map(token => `  --cds-${camelCaseToKebab(token.name)}: ${convertCSSValue(token, 20, false)};`).join('\n')}
+${tokens.map(token => `  ${getTokenCSSName(token)}: ${convertCSSValue(token, false)};`).join('\n')}
 }`;
 
   fs.writeFileSync(path, cssTokens);
@@ -132,21 +132,23 @@ ${tokens
 
 function tokenToSass(token: Token, fallback = false) {
   const propName = camelCaseToKebab(token.name);
-  let staticValue;
+  let fallbackValue = convertCSSValue(token);
 
   if (typeof token.value === 'number') {
-    staticValue = convertCSSValue(token);
-  } else if ((typeof token.value === 'string' && token.value.slice(-2) === 'em') || token.config.static) {
-    staticValue = token.value;
+    fallbackValue = `${token.value / 16}rem`; // worst case scenario, fallback to base 16 if base 20 not set at root
   }
 
-  const dynamicVar = `$cds-${propName}: var(--cds-${camelCaseToKebab(token.name)}${
-    fallback ? `, ${convertCSSValue(token)}` : ''
-  })${fallback ? '' : ' !default'};`;
+  if (token.config.raw) {
+    fallbackValue = token.value;
+  }
 
-  return `${dynamicVar}${
-    token.config.static ? `\n$cds-${propName}-static: ${staticValue}${fallback ? '' : ' !default'};` : ''
-  }`;
+  const dynamicValue = `$cds-${propName}: var(${getTokenCSSName(token)}${
+    fallback ? `, ${fallbackValue}` : ''
+  }) !default;`;
+  const staticValue =
+    token.config.static || typeof token.value === 'number' ? `\n$cds-${propName}-static: ${token.value} !default;` : '';
+
+  return `${dynamicValue}${staticValue}`;
 }
 
 function flattenTokens(theme: any) {
@@ -168,22 +170,28 @@ function flattenTokens(theme: any) {
   return flatten(theme);
 }
 
-function convertCSSValue(token: Token, base = 20, fallback = true) {
+function convertCSSValue(token: Token, fallback = true) {
   let value = token.value;
 
   if (token.alias instanceof Token) {
     value = `var(--cds-${camelCaseToKebab(token.alias.name)}${
-      fallback ? `, ${convertCSSValue(token.alias, 20, fallback)}` : ''
+      fallback ? `, ${convertCSSValue(token.alias, fallback)}` : ''
     })`;
-  } else if (token.config.static) {
+  } else if (token.config.raw) {
     value = token.value;
+  } else if (token.config.scale) {
+    value = `calc(${token.value} * var(--cds-${camelCaseToKebab(token.config.scale.name)}))`;
   } else if (typeof token.value === 'number') {
-    value = `calc((${token.value} / var(--cds-global-base, ${base})) * 1rem)`;
+    value = `calc(${token.value} * (1rem / var(--cds-global-base)))`;
   } else if (isHSL(token.value)) {
     value = `hsl(${token.value[0]}, ${token.value[1]}%, ${token.value[2]}%)`;
   }
 
   return value;
+}
+
+function getTokenCSSName(token: Token) {
+  return `--cds-${camelCaseToKebab(token.name)}`;
 }
 
 function camelCaseToKebab(val: string) {

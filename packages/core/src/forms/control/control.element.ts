@@ -181,7 +181,7 @@ export class CdsControl extends LitElement {
           ></span>`
         : ''}
       <div
-        cds-layout="${this.layout === 'vertical' ? 'vertical gap:sm' : 'horizontal gap:lg'} align:stretch"
+        cds-layout="${this.layout === 'vertical' ? 'vertical gap:xs' : 'horizontal gap:lg'} align:stretch"
         class="private-host ${this.isRTL ? 'rtl' : ''}"
       >
         ${this.primaryLabelTemplate}
@@ -191,9 +191,9 @@ export class CdsControl extends LitElement {
           wrap:none
           ${this.layout === 'compact' ? 'horizontal' : 'vertical'}
           ${this.controlWidth === 'stretch' && !this.fixedControlWidth ? 'align:horizontal-stretch' : ''}
-          ${this.messages?.length ? 'gap:sm' : ''}"
+          ${this.messages?.length ? 'gap:xs' : ''}"
         >
-          <div cds-layout="horizontal gap:sm wrap:none">
+          <div cds-layout="horizontal gap:xs wrap:none">
             <div
               cds-layout="horizontal align:top wrap:none ${this.controlWidth === 'shrink' || this.fixedControlWidth
                 ? 'align:shrink'
@@ -258,7 +258,7 @@ export class CdsControl extends LitElement {
   private get prefixTemplate() {
     return html`
       <div cds-layout="align:shrink align:vertical-center" class="prefix">
-        <div cds-layout="horizontal gap:xs">
+        <div cds-layout="horizontal gap:xxs">
           ${this.prefixDefaultTemplate}
           <slot name="prefix"></slot>
         </div>
@@ -269,7 +269,7 @@ export class CdsControl extends LitElement {
   private get suffixTemplate() {
     return html`
       <div cds-layout="align:shrink align:vertical-center" class="suffix">
-        <div cds-layout="horizontal gap:xs">
+        <div cds-layout="horizontal gap:xxs">
           <slot name="suffix"></slot>
           ${this.suffixDefaultTemplate}
         </div>

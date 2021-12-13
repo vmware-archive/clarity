@@ -24,7 +24,7 @@
   font-size: var(--font-size) !important;
   resize: vertical !important;
   width: 100% !important;
-  min-height: $cds-global-layout-space-xxl !important;
+  min-height: $cds-global-space-15 !important;
 }
 
 :host([status='error']) {

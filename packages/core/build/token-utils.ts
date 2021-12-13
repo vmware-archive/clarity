@@ -5,7 +5,9 @@
  */
 
 export interface CdsTheme {
+  internal: Tokens;
   global: {
+    scale: Tokens;
     layout: Tokens;
     space: Tokens;
     color: Tokens;
@@ -20,11 +22,17 @@ export interface Tokens {
   [key: string]: Token | Tokens;
 }
 
-export function token(value: any, config: any = {}) {
+export function token(value: any, config: TokenConfig = {}) {
   return new Token(value, config);
 }
 
 export type HSL = [number, number, number];
+
+export interface TokenConfig {
+  raw?: boolean; // generate token with no format type conversions (px to rem)
+  static?: boolean; // generate secondary static variable (wont generate dynamice css var usefull for media queries, calc)
+  scale?: Token; // set a token scale multiplier on numeric types
+}
 
 export class Token {
   name = '';
@@ -38,7 +46,7 @@ export class Token {
     return this._value instanceof Token ? this._value : null;
   }
 
-  constructor(value: Token | number | string | HSL, public config: { static?: boolean } = {}) {
+  constructor(value: Token | number | string | HSL, public config: TokenConfig = {}) {
     this._value = value;
   }
 

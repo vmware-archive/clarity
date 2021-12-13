@@ -46,7 +46,7 @@ export class CdsPagination extends LitElement {
 
   render() {
     const userLayout = html`<slot></slot>`;
-    const defaultLayout = html`<div cds-layout="horizontal gap:md align:center"><slot></slot></div>`;
+    const defaultLayout = html`<div cds-layout="horizontal gap:sm align:center"><slot></slot></div>`;
 
     return html`${cache(this.hasAttribute('cds-layout') ? userLayout : defaultLayout)}`;
   }

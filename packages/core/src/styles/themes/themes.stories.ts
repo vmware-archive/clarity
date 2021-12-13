@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, TemplateResult } from 'lit';
+import { html } from 'lit';
 import { default as tokenData } from '@cds/core/tokens/tokens.json';
 
 export default {
@@ -13,39 +13,6 @@ export default {
     options: { showPanel: true },
   },
 };
-
-interface Token {
-  name: string;
-  value: string | number | number[];
-  formattedValue: string | TemplateResult;
-}
-
-function getTokens(val: string) {
-  return Object.entries(tokenData)
-    .filter(([key]) => key.includes(val))
-    .map((token: any) => {
-      return getTokenValue({
-        name: `--cds-${token[0].replace(/([A-Z]|\d+)/g, '-$1').toLocaleLowerCase()}`,
-        value: token[1].value,
-        formattedValue: '',
-      });
-    });
-}
-
-function getTokenValue(token: Token) {
-  if (Array.isArray(token.value) && token.value.length === 3) {
-    const hsl = `hsl(${token.value[0]}, ${token.value[1]}%, ${token.value[2]}%)`;
-    token.value = hsl;
-    token.formattedValue = html`<span cds-text="code">${hsl}</span>
-      <div style="background: ${hsl}; width: 10px; height: 10px; display: inline-block;"></div>`;
-  } else if (typeof token.value === 'number') {
-    token.formattedValue = html`<span cds-text="code">${(token.value / 20).toFixed(2)}rem (${token.value}px)</span>`;
-  } else {
-    token.formattedValue = html`<span cds-text="code">${token.value}</span>`;
-  }
-
-  return token;
-}
 
 /** @website */
 export function lightTheme() {
@@ -158,10 +125,15 @@ export function dynamicTheme() {
   };
 
   function renderTokens() {
-    const demo = document.querySelector<HTMLElement>('#dynamic-theme-demo');
+    const theme = document.querySelector<HTMLElement>('[cds-theme]');
+    const root = document.documentElement;
+
     Object.keys(dynamicTokens)
       .filter(token => dynamicTokens[token])
-      .forEach(token => demo.style.setProperty(token, `${dynamicTokens[token]}`));
+      .forEach(token => {
+        theme.style.setProperty(token, `${dynamicTokens[token]}`, 'important');
+        root.style.setProperty(token, `${dynamicTokens[token]}`, 'important');
+      });
   }
 
   function hexToHSL(hex: string) {
@@ -225,28 +197,6 @@ export function dynamicTheme() {
     renderTokens();
   }
 
-  function updateDensity(event: Event) {
-    getTokens('globalLayoutSpace').forEach((space: any) => {
-      const value = space.value * (parseInt((event.target as HTMLInputElement).value) / 100);
-      dynamicTokens[space.name] = `${value / 20}rem`;
-      // layout space tokens are optimized "minified" so for demo we are altering them in isolation
-      const optimizationName: any = {
-        xxs: 'δ1',
-        xs: 'δ2',
-        sm: 'δ3',
-        md: 'δ4',
-        lg: 'δ5',
-        xl: 'δ6',
-        xxl: 'δ7',
-      };
-      dynamicTokens[`--${optimizationName[space.name.split('-').pop()]}`] = `${value / 20}rem`;
-    });
-    document.querySelector<HTMLElement>('.density-label').innerHTML = `Density: ${
-      (event.target as HTMLInputElement).value
-    }%`;
-    renderTokens();
-  }
-
   function updateBorderWidth(e: Event) {
     const value = parseInt((e.target as HTMLInputElement).value) / 100;
     dynamicTokens['--cds-alias-object-border-width-100'] = `${
@@ -261,12 +211,28 @@ export function dynamicTheme() {
     renderTokens();
   }
 
-  function updateScale(event: Event) {
-    document.documentElement.style.fontSize = `${(parseInt((event.target as HTMLInputElement).value) / 100) * 16}px`;
+  function updateScaleTypography(event: Event) {
+    dynamicTokens['--cds-global-scale-typography'] = parseFloat((event.target as HTMLInputElement).value) / 100;
+    document.querySelector<HTMLElement>('.scale-typography-label').innerHTML = `--cds-global-scale-typography: ${
+      dynamicTokens['--cds-global-scale-typography']
+    } (${(event.target as HTMLInputElement).value}%)`;
+    renderTokens();
+  }
 
-    document.querySelector<HTMLElement>('.scale-label').innerHTML = `Scale: ${
-      (event.target as HTMLInputElement).value
-    }%`;
+  function updateDensity(event: Event) {
+    dynamicTokens['--cds-global-scale-layout-space'] = parseFloat((event.target as HTMLInputElement).value) / 100;
+    document.querySelector<HTMLElement>('.density-label').innerHTML = `--cds-global-scale-layout-space: ${
+      dynamicTokens['--cds-global-scale-layout-space']
+    } (${(event.target as HTMLInputElement).value}%)`;
+    renderTokens();
+  }
+
+  function updateScale(event: Event) {
+    dynamicTokens['--cds-global-scale-space'] = parseFloat((event.target as HTMLInputElement).value) / 100;
+    document.querySelector<HTMLElement>('.scale-label').innerHTML = `--cds-global-scale-space: ${
+      dynamicTokens['--cds-global-scale-space']
+    } (${(event.target as HTMLInputElement).value}%)`;
+    renderTokens();
   }
 
   function updateRadius(event: Event) {
@@ -277,7 +243,7 @@ export function dynamicTheme() {
   }
 
   return html`
-    <section id="dynamic-theme-demo" cds-layout="grid align:stretch gap:md">
+    <section id="dynamic-theme-demo" cds-layout="grid align:stretch gap:md" cds-theme="">
       <div cds-layout="vertical gap:lg col:7">
         <cds-input layout="vertical">
           <label>Text Input</label>
@@ -333,7 +299,7 @@ export function dynamicTheme() {
 
         <div>
           <div cds-layout="horizontal gap:lg align:vertical-center">
-            <cds-progress-circle status="info" size="xl"></cds-progress-circle>
+            <cds-progress-circle status="info" size="md"></cds-progress-circle>
 
             <cds-button status="primary">button</cds-button>
 
@@ -364,15 +330,23 @@ export function dynamicTheme() {
           </cds-input>
 
           <cds-range layout="vertical">
-            <label>Adjust scale</label>
-            <input type="range" value="100" @input=${updateScale} min="90" max="120" />
-            <cds-control-message class="scale-label">Scale: 100%</cds-control-message>
+            <label>Space Scale (component size)</label>
+            <input type="range" value="100" @input=${updateScale} min="70" max="140" />
+            <cds-control-message class="scale-label">--cds-global-scale-space: 1 (100%)</cds-control-message>
           </cds-range>
 
           <cds-range layout="vertical">
-            <label>Adjust Density</label>
-            <input type="range" value="100" @input=${updateDensity} min="70" max="150" />
-            <cds-control-message class="density-label">Density: 100%</cds-control-message>
+            <label>Layout Space Scale (whitespace density)</label>
+            <input type="range" value="100" @input=${updateDensity} min="70" max="140" />
+            <cds-control-message class="density-label">--cds-global-scale-layout-space: 1 (100%)</cds-control-message>
+          </cds-range>
+
+          <cds-range layout="vertical">
+            <label>Typography Scale (font size)</label>
+            <input type="range" value="100" @input=${updateScaleTypography} min="90" max="120" />
+            <cds-control-message class="scale-typography-label"
+              >--cds-global-scale-typography: 1 (100%)</cds-control-message
+            >
           </cds-range>
 
           <cds-range layout="vertical">

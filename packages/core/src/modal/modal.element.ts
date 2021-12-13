@@ -134,8 +134,8 @@ export class CdsModal extends CdsInternalOverlay {
       ${this.backdropTemplate}
       <div class="modal-dialog private-host" tabindex="-1" cds-layout="m:md m@md:xl">
         <div cds-layout="display:screen-reader-only">${this.i18n.contentStart}</div>
-        <div class="modal-content" cds-layout="vertical gap:md gap@md:lg align:stretch">
-          <div cds-layout="horizontal gap:md wrap:none align:vertical-center p-x:lg p-t:lg">
+        <div class="modal-content" cds-layout="vertical gap:sm gap@md:lg align:stretch">
+          <div cds-layout="horizontal gap:sm wrap:none align:vertical-center p-x:lg p-t:lg">
             <div>
               <slot name="modal-header"></slot>
             </div>

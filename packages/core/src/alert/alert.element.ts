@@ -195,8 +195,8 @@ export class CdsAlert extends LitElement {
       <div
         class="private-host"
         cds-layout="${this.type === 'banner'
-          ? 'horizontal wrap:none gap:sm align:center'
-          : 'horizontal wrap:none gap:sm'}"
+          ? 'horizontal wrap:none gap:xs align:vertical-center align:horizontal-center'
+          : 'horizontal wrap:none gap:xs'}"
       >
         ${this.type === 'banner' && !this.parentGroupHasPager
           ? html`<span class="alert-spacer" cds-layout="align:stretch">&nbsp;</span>`

@@ -105,7 +105,7 @@ export class CdsButton extends CdsBaseButton {
   private _disabled = false;
 
   render() {
-    return html`<div class="private-host" cds-layout="horizontal gap:sm wrap:none align:center">
+    return html`<div class="private-host" cds-layout="horizontal gap:xs wrap:none align:center">
       ${this.loadingState === ClrLoadingState.success
         ? html`<cds-icon shape="check" status="success" size="18"></cds-icon>`
         : ''}

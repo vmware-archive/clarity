@@ -6,43 +6,62 @@
 
 import { token, CdsTheme } from './token-utils';
 
+// internal optimization so tokens can refer to pre-calculated values rather than generating/duplicating the same calc over many tokens
+const internal = {
+  scale1: token('calc((1rem / var(--cds-global-base)) * var(--cds-global-scale-layout-space))', { raw: true }),
+  scale2: token('calc((1rem / var(--cds-global-base)) * var(--cds-global-scale-space))', { raw: true }),
+  scale3: token('calc((1rem / var(--cds-global-base)) * var(--cds-global-scale-typography))', { raw: true }),
+};
+
+const base = token(20, { raw: true });
+
+const scale = {
+  space: token(1, { raw: true }),
+  layoutSpace: token(1, { raw: true }),
+  typography: token(1, { raw: true }),
+};
+
 const layout = {
-  space: {
-    xxs: token(2),
-    xs: token(4),
-    sm: token(6),
-    md: token(12),
-    lg: token(24),
-    xl: token(48),
-    xxl: token(96),
-  },
   grid: {
-    cols: token(12, { static: true }),
+    cols: token(12, { raw: true }),
   },
   width: {
-    xs: token('576px', { static: true }),
-    sm: token('768px', { static: true }),
-    md: token('992px', { static: true }),
-    lg: token('1200px', { static: true }),
-    xl: token('1440px', { static: true }),
+    xs: token('576px', { raw: true, static: true }),
+    sm: token('768px', { raw: true, static: true }),
+    md: token('992px', { raw: true, static: true }),
+    lg: token('1200px', { raw: true, static: true }),
+    xl: token('1440px', { raw: true, static: true }),
+  },
+  space: {
+    xxxs: token(2, { scale: internal.scale1 }),
+    xxs: token(4, { scale: internal.scale1 }),
+    xs: token(8, { scale: internal.scale1 }),
+    sm: token(12, { scale: internal.scale1 }),
+    md: token(16, { scale: internal.scale1 }),
+    lg: token(24, { scale: internal.scale1 }),
+    xl: token(32, { scale: internal.scale1 }),
+    xxl: token(48, { scale: internal.scale1 }),
+    xxxl: token(64, { scale: internal.scale1 }),
   },
 };
 
 const space = {
-  0: token(0),
-  1: token(1),
-  2: token(2),
-  3: token(4),
-  4: token(6),
-  5: token(8),
-  6: token(12),
-  7: token(16),
-  8: token(18),
-  9: token(24),
-  10: token(32),
-  11: token(36),
-  12: token(48),
-  13: token(72),
+  0: token(0, { scale: internal.scale2 }),
+  1: token(1, { scale: internal.scale2 }),
+  2: token(2, { scale: internal.scale2 }),
+  3: token(4, { scale: internal.scale2 }),
+  4: token(6, { scale: internal.scale2 }),
+  5: token(8, { scale: internal.scale2 }),
+  6: token(12, { scale: internal.scale2 }),
+  7: token(16, { scale: internal.scale2 }),
+  8: token(18, { scale: internal.scale2 }),
+  9: token(24, { scale: internal.scale2 }),
+  10: token(32, { scale: internal.scale2 }),
+  11: token(36, { scale: internal.scale2 }),
+  12: token(48, { scale: internal.scale2 }),
+  13: token(64, { scale: internal.scale2 }),
+  14: token(72, { scale: internal.scale2 }),
+  15: token(96, { scale: internal.scale2 }),
 };
 
 const color = {
@@ -342,19 +361,17 @@ const typography = {
     extrabold: token('600'),
   },
   fontSize: {
-    0: token(10),
-    1: token(11),
-    2: token(12),
-    3: token(13),
-    4: token(14),
-    5: token(16),
-    6: token(20),
-    7: token(24),
-    8: token(32),
-    9: token(40),
+    0: token(10, { scale: internal.scale3 }),
+    1: token(11, { scale: internal.scale3 }),
+    2: token(12, { scale: internal.scale3 }),
+    3: token(13, { scale: internal.scale3 }),
+    4: token(14, { scale: internal.scale3 }),
+    5: token(16, { scale: internal.scale3 }),
+    6: token(20, { scale: internal.scale3 }),
+    7: token(24, { scale: internal.scale3 }),
+    8: token(32, { scale: internal.scale3 }),
+    9: token(40, { scale: internal.scale3 }),
   },
-  baseFontSize: token('125%'), // deprecated for removal in 6.0
-  baseFontSizePx: token(20), // deprecated for removal in 6.0
   fontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
   headerFontFamily: token("'Clarity City', 'Avenir Next', sans-serif"),
   monospaceFontFamily: token('ui-monospace, Consolas, Menlo, Monaco, monospace'),
@@ -372,61 +389,61 @@ const typography = {
     },
   },
   body: {
-    fontSize: token(14),
+    fontSize: token(14, { scale: internal.scale3 }),
     lineHeight: token('1.42857em', { static: true }), // static for line height eraser calcs
     letterSpacing: token('-0.014286em'),
     fontWeight: token('400'),
   },
   display: {
-    fontSize: token(40),
+    fontSize: token(40, { scale: internal.scale3 }),
     lineHeight: token('1.1em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   heading: {
-    fontSize: token(32),
+    fontSize: token(32, { scale: internal.scale3 }),
     lineHeight: token('1.125em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   title: {
-    fontSize: token(24),
+    fontSize: token(24, { scale: internal.scale3 }),
     lineHeight: token('1.16667em', { static: true }),
     letterSpacing: token('-0.008333em'),
     fontWeight: token('400'),
   },
   section: {
-    fontSize: token(20),
+    fontSize: token(20, { scale: internal.scale3 }),
     lineHeight: token('1.2em', { static: true }),
     letterSpacing: token('-0.01em'),
     fontWeight: token('400'),
   },
   subsection: {
-    fontSize: token(16),
+    fontSize: token(16, { scale: internal.scale3 }),
     lineHeight: token('1.25em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token('400'),
   },
   message: {
-    fontSize: token(16),
+    fontSize: token(16, { scale: internal.scale3 }),
     lineHeight: token('1.25em', { static: true }),
     letterSpacing: token('-0.0125em'),
     fontWeight: token(400),
   },
   secondary: {
-    fontSize: token(13),
+    fontSize: token(13, { scale: internal.scale3 }),
     lineHeight: token('1.23077em', { static: true }),
     letterSpacing: token('-0.007692em'),
     fontWeight: token('400'),
   },
   caption: {
-    fontSize: token(11),
+    fontSize: token(11, { scale: internal.scale3 }),
     lineHeight: token('1.454545em', { static: true }),
     letterSpacing: token('0.018182em'),
     fontWeight: token('400'),
   },
   smallcaption: {
-    fontSize: token(10),
+    fontSize: token(10, { scale: internal.scale3 }),
     lineHeight: token('1.2em', { static: true }),
     letterSpacing: token('0.05em'),
     fontWeight: token('500'),
@@ -569,6 +586,7 @@ const aliases = {
 };
 
 export const baseTheme: CdsTheme = {
-  global: { layout, space, color, typography, animation, base: token(20, { static: true }) },
+  global: { base, scale, layout, space, color, typography, animation },
   aliases,
+  internal,
 };

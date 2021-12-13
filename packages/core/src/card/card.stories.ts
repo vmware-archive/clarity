@@ -36,9 +36,9 @@ export function Basic(args: { [key: string]: unknown }) {
 export function WithLayout() {
   return html` <cds-card aria-labelledby="cardWithLayout">
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithLayout" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
+      <h2 id="cardWithLayout" cds-text="section">Card Title</h2>
 
-      <div cds-text="body light" cds-layout="p-y:lg">
+      <div cds-text="body light">
         Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
         you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
         music in a couple of minutes.
@@ -46,7 +46,7 @@ export function WithLayout() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+      <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
     </div>
   </cds-card>`;
 }
@@ -54,14 +54,14 @@ export function WithLayout() {
 /** @website **/
 export function WithContainerOfCards() {
   return html`
-    <div cds-layout="grid cols@md:6 cols@lg:3 gap:md">
+    <div cds-layout="grid cols@md:6 cols@lg:3 gap:sm">
       <cds-card aria-labelledby="containerOfCards1">
         <div cds-layout="vertical gap:md">
           <h2 id="containerOfCards1" cds-text="section" cds-layout="horizontal align:vertical-center">
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body light" cds-layout="p-y:lg">
+          <div cds-text="body light">
             Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
             that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
             worth of music in a couple of minutes.
@@ -69,7 +69,7 @@ export function WithContainerOfCards() {
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
-          <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+          <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
         </div>
       </cds-card>
       <cds-card aria-labelledby="containerOfCards2">
@@ -78,7 +78,7 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body light" cds-layout="p-y:lg">
+          <div cds-text="body light">
             Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
             that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
             worth of music in a couple of minutes.
@@ -86,7 +86,7 @@ export function WithContainerOfCards() {
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
-          <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+          <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
         </div>
       </cds-card>
       <cds-card aria-labelledby="containerOfCards3">
@@ -95,7 +95,7 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body light" cds-layout="p-y:lg">
+          <div cds-text="body light">
             Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
             that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
             worth of music in a couple of minutes.
@@ -103,7 +103,7 @@ export function WithContainerOfCards() {
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
-          <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+          <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
         </div>
       </cds-card>
       <cds-card aria-labelledby="containerOfCards4">
@@ -112,7 +112,7 @@ export function WithContainerOfCards() {
             Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
           </h2>
 
-          <div cds-text="body light" cds-layout="p-y:lg">
+          <div cds-text="body light">
             Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought
             that you could record sound with digital quality fifty years ago? Now we routinely download whole albums
             worth of music in a couple of minutes.
@@ -120,7 +120,7 @@ export function WithContainerOfCards() {
 
           <cds-divider cds-card-remove-margin></cds-divider>
 
-          <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+          <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
         </div>
       </cds-card>
     </div>
@@ -136,15 +136,13 @@ export function WithAlert() {
           Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
         </div>
 
-        <div cds-text="body light" cds-layout="p-y:lg">
-          <cds-alert-group>
-            <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
-          </cds-alert-group>
-        </div>
+        <cds-alert-group>
+          <cds-alert status="info">This is an alert with a status of "info"</cds-alert>
+        </cds-alert-group>
 
         <cds-divider cds-card-remove-margin></cds-divider>
 
-        <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+        <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
       </div>
     </cds-card>
   `;
@@ -158,7 +156,7 @@ export function WithForms() {
           Card Title <cds-icon shape="times" cds-layout="align:right"></cds-icon>
         </div>
 
-        <div cds-text="body" cds-layout="p-y:lg">
+        <div cds-text="body">
           <form>
             <cds-form-group validate>
               <cds-input>
@@ -188,15 +186,13 @@ export function WithForms() {
                 <cds-control-message error="valueMissing">a email address is required to continue</cds-control-message>
                 <cds-control-message error="typeMismatch">please enter a valid email address</cds-control-message>
               </cds-input>
-
-              <cds-button>save</cds-button>
             </cds-form-group>
           </form>
         </div>
 
         <cds-divider cds-card-remove-margin></cds-divider>
 
-        <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+        <div cds-layout="horizontal gap:xs align:vertical-center">
           <cds-button>Submit</cds-button>
         </div>
       </div>
@@ -211,11 +207,11 @@ export function WithLayoutAndTwoDividers(args: { [key: string]: unknown }) {
     ...="${spreadProps(getElementStorybookArgs(args))}"
   >
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithLayoutAndDividers" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
+      <h2 id="cardWithLayoutAndDividers" cds-text="section">Card Title</h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
         you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
         music in a couple of minutes.
@@ -223,7 +219,7 @@ export function WithLayoutAndTwoDividers(args: { [key: string]: unknown }) {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center"></div>
+      <div cds-layout="horizontal gap:xs p-y:xxs align:vertical-center"></div>
     </div>
   </cds-card>`;
 }
@@ -235,11 +231,11 @@ export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown })
     ...="${spreadProps(getElementStorybookArgs(args))}"
   >
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithLayoutDividersAndButton" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
+      <h2 id="cardWithLayoutDividersAndButton" cds-text="section">Card Title</h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         Message: Can you imagine what we will be downloading in another twenty years? Who would have ever thought that
         you could record sound with digital quality fifty years ago? Now we routinely download whole albums worth of
         music in a couple of minutes.
@@ -247,7 +243,7 @@ export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown })
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:xs align:vertical-center">
         <cds-button action="flat-inline">View</cds-button>
       </div>
     </div>
@@ -257,17 +253,17 @@ export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown })
 export function WithImage() {
   return html`<cds-card aria-labelledby="cardWithImage">
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithImage" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
+      <h2 id="cardWithImage" cds-text="section">Card Title</h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         <img src="https://dummyimage.com/200x200/000/fff" alt="placeholder image" />
       </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:xs align:vertical-center">
         <cds-button action="flat-inline">View</cds-button>
       </div>
     </div>
@@ -278,13 +274,13 @@ export function WithImage() {
 export function WithLists() {
   return html`<cds-card aria-labelledby="cardWithList" style="--width: 15rem">
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithList" cds-text="section" cds-layout="horizontal gap:sm align:vertical-center">
+      <h2 id="cardWithList" cds-text="section" cds-layout="horizontal gap:xs align:vertical-center">
         Card with list
       </h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         <ul cds-list="unstyled">
           <li>The five boxing wizards jump quickly</li>
           <li>The five boxing wizards jump quickly</li>
@@ -298,7 +294,7 @@ export function WithLists() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:xs align:vertical-center">
         <cds-button action="flat-inline">Action</cds-button>
       </div>
     </div>
@@ -321,9 +317,9 @@ export function SocialPost() {
 
   return html`<cds-card aria-labelledby="cardSocialPost" style="--width: 15rem">
     <div cds-layout="vertical gap:md">
-      <h2 id="cardSocialPost" cds-text="section" cds-layout="horizontal gap:sm align:vertical-center">
+      <h2 id="cardSocialPost" cds-text="section" cds-layout="horizontal gap:xs align:vertical-center">
         <div
-          cds-layout="horizontal p:sm m-r:sm align:vertical-center"
+          cds-layout="horizontal m-r:xs align:vertical-center"
           style="border-radius: 50%; border: var(--cds-alias-object-border-width-100) solid var(--cds-alias-object-container-border-color"
         >
           <cds-icon shape="batman" size="md"></cds-icon>
@@ -334,13 +330,13 @@ export function SocialPost() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-text="body light" cds-layout="p-y:md">
+      <div cds-text="body light">
         If you can carry it to the top of the mountain you may find what you were looking for in the first place.
       </div>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:xs align:vertical-center">
         <cds-button action="flat-inline"><cds-icon shape="thumbs-up"></cds-icon> Like</cds-button>
         <cds-button action="flat-inline"><cds-icon shape="share"></cds-icon> Share</cds-button>
       </div>
@@ -351,11 +347,11 @@ export function SocialPost() {
 export function WithLayoutAndOverflow() {
   return html`<cds-card aria-labelledby="cardWithOverflow">
     <div cds-layout="vertical gap:md">
-      <h2 id="cardWithOverflow" cds-text="section" cds-layout="p-y:sm">Card Title</h2>
+      <h2 id="cardWithOverflow" cds-text="section">Card Title</h2>
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="p-y:md" cds-text="body light" style="height: 4rem; overflow: auto; height: 100px">
+      <div cds-text="body light" style="height: 4rem; overflow: auto; height: 100px">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat tortor eget quam auctor, quis
         sagittis libero auctor. Nulla augue ante, tincidunt sit amet semper vitae, tempus at ipsum. Vestibulum
         elementum, turpis quis ullamcorper fermentum, elit turpis placerat ipsum, quis convallis ex nisi sit amet lacus.
@@ -376,7 +372,7 @@ export function WithLayoutAndOverflow() {
 
       <cds-divider cds-card-remove-margin></cds-divider>
 
-      <div cds-layout="horizontal gap:sm p-y:sm align:vertical-center">
+      <div cds-layout="horizontal gap:xs align:vertical-center">
         <cds-button action="flat-inline">View</cds-button>
         <cds-button> View </cds-button>
         <cds-button status="success"> View Success </cds-button>

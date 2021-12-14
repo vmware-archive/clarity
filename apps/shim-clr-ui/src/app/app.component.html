@@ -1,0 +1,51 @@
+<div class="main-container">
+  <header class="header-2">
+    <div class="branding">
+      <a class="nav-link" routerLink="./">
+        <cds-icon shape="atom" size="lg"></cds-icon>
+        <span class="title">Tokens Mapping</span>
+      </a>
+    </div>
+    <div class="header-nav">
+      <a class="active nav-link nav-text" routerLink="./">Home</a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger>
+          <cds-icon shape="cog" inverse></cds-icon>
+          <cds-icon shape="angle" inverse direction="down" size="xs"></cds-icon>
+        </button>
+        <clr-dropdown-menu clrPosition="bottom-right" *clrIfOpen>
+          <div
+            clrDropdownItem
+            [class.active]="activeTheme === themeOptions.Light"
+            (click)="switchTheme(themeOptions.Light)"
+          >
+            Light Theme
+          </div>
+          <div
+            clrDropdownItem
+            [class.active]="activeTheme === themeOptions.Dark"
+            (click)="switchTheme(themeOptions.Dark)"
+          >
+            Dark Theme
+          </div>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </header>
+  <div class="content-container">
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true">
+      <a clrVerticalNavLink routerLink="./overview" routerLinkActive="active">Overview</a>
+      <a clrVerticalNavLink routerLink="./accordion" routerLinkActive="active">Accordion</a>
+      <a clrVerticalNavLink routerLink="./combobox" routerLinkActive="active">Combobox</a>
+      <a clrVerticalNavLink routerLink="./datagrid" routerLinkActive="active">Datagrid</a>
+      <a clrVerticalNavLink routerLink="./modal" routerLinkActive="active">Modal</a>
+      <a clrVerticalNavLink routerLink="./stepper" routerLinkActive="active">Stepper</a>
+      <a clrVerticalNavLink routerLink="./wizard" routerLinkActive="active">Wizard</a>
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,877 @@
+:root,
+[cds-theme] {
+  /* Global */
+
+  // app background
+  --clr-global-app-background: var(
+    --cds-alias-object-app-background
+  ); // #{$clr-global-app-background}; // $clr-color-neutral-50
+
+  // app selection colors
+  --clr-global-selection-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // #{$clr-global-selection-color}; // hsl(201, 29%, 88%)
+  --clr-global-on-selection-color: var(
+    --cds-alias-object-interaction-color-selected
+  ); // #{$clr-global-on-selection-color}; // $clr-color-neutral-1000
+
+  // app hover colors
+  --clr-global-hover-color: var(
+    --cds-global-typography-link-color-hover
+  ); // #{$clr-global-hover-color}; // $clr-color-neutral-200
+
+  // app font colors
+  --clr-global-content-header-font-color: var(
+    --cds-global-typography-color-400
+  ); // #{$clr-global-content-header-font-color}; // $clr-color-neutral-1000
+
+  --clr-global-font-color: var(
+    --cds-global-typography-color-500
+  ); // #{$clr-global-font-color}; // $clr-color-neutral-700
+
+  // app success/error colors
+  --clr-global-success-color: var(--cds-alias-status-success); // #{$clr-global-success-color}; // hsl(93, 67%, 38%)
+  --clr-global-error-color: var(--cds-alias-status-danger); // #{$clr-global-error-color}; // hsl(9, 100%, 38%)
+
+  // component close icon colors
+  --clr-close-color--normal: var(
+    --cds-alias-object-interaction-color
+  ); // #{$clr-close-color--normal}; // $clr-color-neutral-600
+  --clr-close-color--hover: var(
+    --cds-alias-object-interaction-color-hover
+  ); // #{$clr-close-color--hover}; // $clr-color-neutral-1000
+
+  /* Typography */
+
+  --clr-h1-color: var(--cds-global-typography-color-400);
+
+  //H2 - login_trademark, page_mainHeading
+  --clr-h2-color: var(--cds-global-typography-color-400);
+
+  //H3 - login_subtitle, modal_header, page_secondaryHeading
+  --clr-h3-color: var(--cds-global-typography-color-400);
+
+  //H4 - card titles, page_tertiaryHeading
+  --clr-h4-color: var(--cds-global-typography-color-400);
+
+  //H5 - dgrid placeholder, datagrid_column_toggle_title, form_block_label, nav_title, page_introParagraph, page_sectionHeader
+  --clr-h5-color: var(--cds-global-typography-color-400);
+
+  //H6 - sidenav_sectionHeader, toc_header
+  --clr-h6-color: var(--cds-global-typography-color-400);
+
+  // Non-header text styles
+  //P0 - Intro text
+  --clr-p0-color: var(--cds-global-typography-color-500);
+
+  //P1 - card text, dropdown_text, page_bodyText, sidenav_text, tab_text, toc_text
+  --clr-p1-color: var(--cds-global-typography-color-500);
+
+  //P2 - form_label, stackview_header
+  --clr-p2-color: var(--cds-global-typography-color-500);
+
+  //P3 - alerts, form_group_fields, stackview_text, table_text, tooltip_text
+  --clr-p3-color: var(--cds-global-typography-color-500);
+
+  //P4 - small alerts, dropdown_header, vertical_nav_header
+  --clr-p4-color: var(--cds-global-typography-color-500);
+
+  //P5
+  --clr-p5-color: var(--cds-global-typography-color-500);
+
+  //P6 - card link btns, form_subtext, table_header
+  --clr-p6-color: var(--cds-global-typography-color-500);
+
+  //P7 - label_text
+  --clr-p7-color: var(--cds-global-typography-color-500);
+
+  //P8
+  --clr-p8-color: var(--cds-global-typography-color-500);
+
+  /* Buttons */
+
+  // Shared colors
+  --clr-btn-default-bg-color: transparent;
+  --clr-btn-outline-bg-color: transparent;
+
+  // Default button colors
+  --clr-btn-default-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-default-border-color: var(--clr-btn-default-color);
+  --clr-btn-default-bg-color: var(--clr-btn-outline-bg-color); // #{$clr-btn-default-bg-color};
+  --clr-btn-default-hover-bg-color: hsla(198, 100%, 34%, 0.1); // var(--clr-color-action-50);
+  --clr-btn-default-hover-color: var(
+    --cds-alias-status-info
+  ); // var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-btn-default-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-action-500);
+
+  --clr-btn-default-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-700);
+  --clr-btn-default-disabled-bg-color: var(--clr-btn-default-bg-color);
+  --clr-btn-default-disabled-border-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-600);
+  --clr-btn-default-checked-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-default-checked-bg-color: var(--clr-btn-default-color); // var(--clr-color-action-600);
+
+  // Default outline button
+  --clr-btn-default-outline-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-default-outline-border-color: var(--clr-btn-default-outline-color);
+  --clr-btn-default-outline-bg-color: var(--clr-btn-outline-bg-color);
+  --clr-btn-default-outline-hover-bg-color: hsla(198, 100%, 34%, 0.1); // var(--clr-color-action-50);
+  --clr-btn-default-outline-hover-color: var(--cds-alias-status-info); // var(--clr-color-action-800);
+  --clr-btn-default-outline-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-action-500);
+
+  --clr-btn-default-outline-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-700);
+  --clr-btn-default-outline-disabled-bg-color: var(--clr-btn-default-outline-bg-color);
+  --clr-btn-default-outline-disabled-border-color: var(
+    --cds-alias-status-disabled-tint
+  ); // var(--cds-global-color-gray-600); // var(--clr-color-neutral-600);
+  --clr-btn-default-outline-checked-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-default-outline-checked-bg-color: var(--clr-btn-default-outline-bg-color);
+
+  // Primary button colors
+  --clr-btn-primary-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-primary-bg-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-primary-border-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-primary-hover-bg-color: var(--cds-alias-status-info); // var(--clr-color-action-800);
+  --clr-btn-primary-hover-color: var(--cds-global-typography-color-100); // var(--clr-color-action-50);
+  --clr-btn-primary-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-action-500);
+
+  --clr-btn-primary-disabled-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-700);
+  --clr-btn-primary-disabled-bg-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+  --clr-btn-primary-disabled-border-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+  --clr-btn-primary-checked-bg-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-primary-checked-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+
+  // Success button colors
+  --clr-btn-success-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-success-bg-color: var(--cds-alias-status-success); // var(--clr-color-success-700);
+  --clr-btn-success-border-color: var(--clr-btn-success-bg-color);
+  --clr-btn-success-hover-bg-color: var(--cds-alias-status-success); // var(--clr-color-success-800);
+  --clr-btn-success-hover-color: var(--clr-btn-success-color);
+  --clr-btn-success-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-success-900);
+  --clr-btn-success-disabled-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-700);
+  --clr-btn-success-disabled-bg-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+  --clr-btn-success-disabled-border-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+  --clr-btn-success-checked-bg-color: var(--clr-btn-success-bg-color);
+  --clr-btn-success-checked-color: var(--clr-btn-success-color);
+
+  // Success outline button colors
+  --clr-btn-success-outline-color: var(--cds-alias-status-success); // var(--clr-color-success-700);
+  --clr-btn-success-outline-bg-color: var(--clr-btn-outline-bg-color);
+  --clr-btn-success-outline-border-color: var(--cds-alias-status-success); // var(--clr-color-success-700);
+  --clr-btn-success-outline-hover-bg-color: hsla(93, 80%, 28%, 0.1); // var(--clr-color-success-50);
+  --clr-btn-success-outline-hover-color: var(--cds-alias-status-success); // var(--clr-color-success-900);
+  --clr-btn-success-outline-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-success-400);
+  --clr-btn-success-outline-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-700);
+  --clr-btn-success-outline-disabled-bg-color: var(--clr-btn-success-outline-bg-color);
+  --clr-btn-success-outline-disabled-border-color: var(
+    --cds-alias-status-disabled-tint
+  ); // var(--clr-color-neutral-600);
+  --clr-btn-success-outline-checked-bg-color: var(--clr-btn-success-outline-bg-color);
+  --clr-btn-success-outline-checked-color: var(--clr-btn-success-outline-color); // var(--clr-color-neutral-0);
+
+  // Danger button colors
+  --clr-btn-danger-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-danger-bg-color: var(--cds-alias-status-danger); // var(--clr-color-danger-700);
+  --clr-btn-danger-border-color: var(--clr-btn-danger-bg-color);
+  --clr-btn-danger-hover-bg-color: var(--cds-alias-status-danger); // var(--clr-color-danger-800);
+  --clr-btn-danger-hover-color: var(--clr-btn-danger-color);
+  --clr-btn-danger-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-danger-900);
+  --clr-btn-danger-disabled-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-700);
+  --clr-btn-danger-disabled-bg-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+  --clr-btn-danger-disabled-border-color: var(--clr-btn-danger-disabled-color);
+  --clr-btn-danger-checked-bg-color: var(--clr-btn-danger-bg-color); // var(--clr-color-danger-800);
+  --clr-btn-danger-checked-color: var(--clr-btn-danger-color);
+
+  // Danger outline button colors
+  --clr-btn-danger-outline-color: var(--cds-alias-status-danger); // var(--clr-color-danger-700);
+  --clr-btn-danger-outline-bg-color: var(--clr-btn-outline-bg-color);
+  --clr-btn-danger-outline-border-color: var(--cds-alias-status-danger); // var(--clr-color-danger-800);
+  --clr-btn-danger-outline-hover-bg-color: hsla(9, 100%, 44%, 0.1); // var(--clr-color-danger-100);
+  --clr-btn-danger-outline-hover-color: var(--cds-alias-status-danger); // var(--clr-color-danger-900);
+  --clr-btn-danger-outline-box-shadow-color: var(--cds-alias-object-opacity-100); // var(--clr-color-danger-200);
+  --clr-btn-danger-outline-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-700);
+  --clr-btn-danger-outline-disabled-bg-color: var(--clr-btn-danger-outline-bg-color);
+  --clr-btn-danger-outline-disabled-border-color: var(--cds-alias-status-disabled-tint);
+  --clr-btn-danger-outline-checked-bg-color: var(--clr-btn-danger-outline-bg-color); // var(--clr-color-danger-800);
+  --clr-btn-danger-outline-checked-color: var(--clr-btn-danger-outline-color); // var(--clr-color-neutral-0);
+
+  // Warning button colors
+  --clr-btn-warning-color: var(--cds-global-color-construction-900);
+  --clr-btn-warning-bg-color: var(--cds-alias-status-warning);
+  --clr-btn-warning-border-color: var(--clr-btn-warning-bg-color);
+  --clr-btn-warning-hover-bg-color: var(--cds-alias-status-warning);
+  --clr-btn-warning-hover-color: var(--clr-btn-warning-color);
+  --clr-btn-warning-box-shadow-color: var(--cds-alias-object-opacity-100);
+  --clr-btn-warning-disabled-color: var(--cds-global-typography-color-100);
+  --clr-btn-warning-disabled-bg-color: var(--cds-alias-status-disabled-tint);
+  --clr-btn-warning-disabled-border-color: var(--clr-btn-warning-disabled-color);
+  --clr-btn-warning-checked-bg-color: var(--clr-btn-warning-bg-color);
+  --clr-btn-warning-checked-color: var(--clr-btn-warning-color);
+
+  // Warning outline button colors
+  --clr-btn-warning-outline-color: var(--cds-alias-status-warning-dark);
+  --clr-btn-warning-outline-bg-color: var(--clr-btn-outline-bg-color);
+  --clr-btn-warning-outline-border-color: var(--cds-alias-status-warning-dark);
+  --clr-btn-warning-outline-hover-bg-color: hsla(40, 100%, 59%, 0.1);
+  --clr-btn-warning-outline-hover-color: var(--cds-alias-status-warning-dark);
+  --clr-btn-warning-outline-box-shadow-color: var(--cds-alias-object-opacity-100);
+  --clr-btn-warning-outline-disabled-color: var(--cds-alias-status-disabled-tint);
+  --clr-btn-warning-outline-disabled-bg-color: var(--clr-btn-warning-outline-bg-color);
+  --clr-btn-warning-outline-disabled-border-color: var(--cds-alias-status-disabled-tint);
+  --clr-btn-warning-outline-checked-bg-color: var(--clr-btn-warning-outline-bg-color);
+  --clr-btn-warning-outline-checked-color: var(--clr-btn-warning-outline-color);
+
+  // Link button colors
+  --clr-btn-link-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-btn-link-bg-color: transparent;
+  --clr-btn-link-border-color: transparent;
+  --clr-btn-link-hover-bg-color: transparent;
+  --clr-btn-link-hover-color: var(
+    --cds-alias-status-info
+  ); // var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-btn-link-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-700);
+  --clr-btn-link-disabled-bg-color: transparent;
+  --clr-btn-link-disabled-border-color: transparent;
+  --clr-btn-link-checked-bg-color: transparent;
+  --clr-btn-link-checked-color: var(
+    --cds-global-color-blue-800
+  ); // var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+
+  // Inverse button colors
+  --clr-btn-inverse-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-inverse-border-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-inverse-bg-color: transparent;
+  --clr-btn-inverse-hover-bg-color: rgba(255, 255, 255, 0.15);
+  --clr-btn-inverse-hover-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-btn-inverse-box-shadow-color: rgba(0, 0, 0, 0.25);
+  --clr-btn-inverse-disabled-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-0);
+  --clr-btn-inverse-disabled-bg-color: var(--clr-btn-inverse-bg-color);
+  --clr-btn-inverse-disabled-border-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-0);
+  --clr-btn-inverse-checked-bg-color: rgba(255, 255, 255, 0.15);
+  --clr-btn-inverse-checked-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-0);
+
+  // For theme-able icon button color
+  --clr-btn-icon-disabled-color: var(
+    --cds-global-typography-color-100
+  ); // var(--clr-btn-default-disabled-color, #{$clr-btn-default-disabled-color});
+
+  // Button groups
+
+  /* Alert Color Properties */
+
+  // Used for 'toggle' button for dropdowns on the right side of an alert
+  --clr-alert-action-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+  --clr-alert-action-active-color: var(
+    --cds-alias-object-interaction-color-active
+  ); // var(--clr-color-secondary-action-900);
+
+  // standard alert close
+  --clr-alert-close-icon-color: var(--clr-alert-action-color);
+  --clr-alert-close-icon-hover-color: var(--clr-alert-action-active-color);
+
+  // Close icon colors for APP-LEVEL ALERTS
+  --clr-app-level-alert-color: var(--cds-global-color-white); // var(--clr-color-neutral-0);
+  --clr-app-alert-close-icon-color: var(--clr-app-level-alert-color); // indirectly mapped to CDS token
+
+  // Info type
+  // Usage: ./_alert.clarity.scss
+  --clr-alert-info-bg-color: var(--cds-alias-status-info-tint); // var(--clr-color-action-50);
+  --clr-alert-info-font-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+  --clr-alert-info-border-color: var(
+    --cds-alias-status-info
+  ); // var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-alert-info-icon-color: var(
+    --cds-global-typography-color-500
+  ); // var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-alert-info-close-icon-color: var(--cds-global-typography-color-500);
+  --clr-alert-info-action-color: var(--cds-global-typography-color-500);
+
+  // Success type
+  // Usage: ./_alert.clarity.scss
+  --clr-alert-success-bg-color: var(--cds-alias-status-success-tint); // var(--clr-color-success-50);
+  --clr-alert-success-font-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+  --clr-alert-success-border-color: var(--cds-alias-status-success); // var(--clr-color-success-800);
+  --clr-alert-success-icon-color: var(--cds-global-typography-color-500); // var(--clr-color-success-800);
+  --clr-alert-success-close-icon-color: var(--cds-global-typography-color-500);
+  --clr-alert-success-action-color: var(--cds-global-typography-color-500);
+
+  // Warning type
+  // Usage: ./_alert.clarity.scss
+  --clr-alert-warning-bg-color: var(--cds-alias-status-warning-tint); // var(--clr-color-warning-100);
+  --clr-alert-warning-font-color: var(--cds-global-color-black); // var(--clr-color-neutral-900);
+  --clr-alert-warning-border-color: var(--cds-alias-status-warning); // var(--clr-color-warning-800);
+  --clr-alert-warning-icon-color: var(--cds-global-color-black); // var(--clr-color-warning-800);
+  --clr-alert-warning-close-icon-color: var(--cds-global-color-black);
+  --clr-alert-warning-action-color: var(--cds-global-color-black);
+
+  // Danger type
+  // Usage: ./_alert.clarity.scss
+  --clr-alert-danger-bg-color: var(--cds-alias-status-danger-tint); // var(--clr-color-danger-100);
+  --clr-alert-danger-font-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+  --clr-alert-danger-border-color: var(--cds-alias-status-danger); // var(--clr-color-danger-900);
+  --clr-alert-danger-icon-color: var(--cds-global-typography-color-500); // var(--clr-color-danger-900);
+  --clr-alert-danger-close-icon-color: var(--cds-global-typography-color-500);
+  --clr-alert-danger-action-color: var(--cds-global-typography-color-500);
+
+  // App Info type
+  // Usage: ./_alert.clarity.scss
+  --clr-app-alert-info-bg-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-app-alert-info-font-color: var(--cds-global-typography-color-100);
+  --clr-app-alert-info-icon-color: var(--clr-app-alert-info-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-info-action-color: var(--clr-app-alert-info-font-color); // indirectly mapped to CDS token;
+  --clr-app-alert-info-action-active-color: var(--clr-app-alert-info-font-color); // indirectly mapped to CDS token;
+  --clr-app-alert-info-close-icon-color: var(--clr-app-alert-info-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-info-close-icon-hover-color: var(--clr-app-alert-info-font-color); // indirectly mapped to CDS token
+
+  // App Warning type
+  // Usage: ./_alert.clarity.scss
+  --clr-app-alert-warning-bg-color: var(--cds-alias-status-warning);
+  --clr-app-alert-warning-font-color: var(--cds-global-color-black); // indirectly mapped to CDS token
+  --clr-app-alert-warning-icon-color: var(--clr-app-alert-warning-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-warning-close-icon-color: var(--clr-app-alert-warning-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-warning-action-color: var(--clr-app-alert-warning-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-warning-action-active-color: var(
+    --clr-app-alert-warning-font-color
+  ); // indirectly mapped to CDS token
+  --clr-app-alert-warning-close-icon-hover-color: var(
+    --clr-app-alert-warning-font-color
+  ); // indirectly mapped to CDS token
+
+  // App Danger type
+  // Usage: ./_alert.clarity.scss
+  --clr-app-alert-danger-bg-color: var(--cds-alias-status-danger); // var(--clr-color-danger-800);
+  --clr-app-alert-danger-font-color: var(--cds-global-typography-color-100); // indirectly mapped to CDS token
+  --clr-app-alert-danger-icon-color: var(--clr-app-alert-danger-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-danger-close-icon-color: var(--clr-app-alert-danger-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-danger-action-color: var(--clr-app-alert-danger-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-danger-action-active-color: var(--clr-app-alert-danger-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-danger-close-icon-hover-color: var(
+    --clr-app-alert-danger-font-color
+  ); // indirectly mapped to CDS token
+
+  // App Success type
+  // Usage: ./_alert.clarity.scss
+  --clr-app-alert-success-bg-color: var(--cds-alias-status-success); // var(--clr-color-success-700);
+  --clr-app-alert-success-font-color: var(--cds-global-typography-color-100); // indirectly mapped to CDS token
+  --clr-app-alert-success-icon-color: var(--clr-app-alert-success-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-success-close-icon-color: var(--clr-app-alert-success-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-success-action-color: var(--clr-app-alert-success-font-color); // indirectly mapped to CDS token
+  --clr-app-alert-success-action-active-color: var(--clr-app-alert-success-font-color);
+  --clr-app-alert-success-close-icon-hover-color: var(
+    --clr-app-alert-success-font-color
+  ); // indirectly mapped to CDS token
+
+  // App Alerts Pager
+  --clr-app-alert-pager-text-color: var(
+    --cds-global-typography-color-500
+  ); // var(--clr-color-neutral-0, #{$clr-color-neutral-0});
+  --clr-app-alert-info-pager-bg-color: var(
+    --cds-alias-status-info-shade
+  ); // var(--clr-color-action-800, #{$clr-color-action-800});
+  --clr-app-alert-warning-pager-bg-color: var(
+    --cds-alias-status-warning-shade
+  ); // var(--clr-color-warning-900, #{$clr-color-warning-900});
+  --clr-app-alert-danger-pager-bg-color: var(
+    --cds-alias-status-danger-shade
+  ); // var(--clr-color-danger-900, #{$clr-color-danger-900});
+
+  --clr-app-alert-info-pager-font-color: var(--cds-global-color-white); // New custom property
+  --clr-app-alert-warning-pager-font-color: var(--cds-global-color-black); // New custom property
+  --clr-app-alert-danger-pager-font-color: var(--cds-global-color-white); // New custom property
+  --clr-app-alert-success-pager-font-color: var(--cds-global-color-white); // New custom property
+
+  /* Labels */
+
+  --clr-label-font-color-light: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  --clr-label-font-color-dark: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  --clr-label-default-border-color: var(--cds-alias-status-neutral); // var(--clr-color-neutral-600);
+
+  --clr-label-bg-hover-color: var(--cds-alias-status-neutral-tint); // var(--clr-color-neutral-200);
+
+  --clr-label-gray-bg-color: var(
+    --cds-alias-status-neutral
+  ); // var(--cds-global-color-gray-600); // var(--clr-color-neutral-600); // actually border color
+  --clr-label-gray-color: var(--clr-label-font-color-light); // indirectly mapped to CDS token
+
+  --clr-label-purple-bg-color: var(--cds-global-color-violet-500); // var(--clr-color-secondary-action-500);
+  --clr-label-purple-color: var(--clr-label-font-color-light); // indirectly mapped to CDS token
+
+  --clr-label-blue-bg-color: var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-label-blue-color: var(--clr-label-font-color-light); // indirectly mapped to CDS token
+
+  --clr-label-orange-bg-color: var(--cds-global-color-ochre-800); // var(--clr-color-warning-1000);
+  --clr-label-orange-color: var(--clr-label-font-color-dark); // indirectly mapped to CDS token
+
+  --clr-label-light-blue-bg-color: var(--cds-global-color-blue-600); // var(--clr-color-action-500);
+  --clr-label-light-blue-color: var(--clr-label-font-color-dark); // indirectly mapped to CDS token
+
+  --clr-label-info-bg-color: var(--cds-alias-status-tint); // var(--clr-color-action-50);
+  --clr-label-info-font-color: var(--clr-label-font-color-light); // var(--clr-color-action-800);
+  --clr-label-info-border-color: var(--cds-alias-status-info); // var(--clr-color-action-800);
+
+  --clr-label-success-bg-color: var(--cds-alias-status-tint); // var(--clr-color-success-50);
+  --clr-label-success-font-color: var(--clr-label-font-color-light); // var(--clr-color-success-800);
+  --clr-label-success-border-color: var(--cds-alias-status-success); // var(--clr-color-success-800);
+
+  --clr-label-warning-bg-color: var(--cds-alias-status-tint); // var(--clr-color-warning-100);
+  --clr-label-warning-font-color: var(--clr-label-font-color-light); // var(--clr-color-neutral-900);
+  --clr-label-warning-border-color: var(--cds-alias-status-warning); // var(--clr-color-warning-800);
+
+  --clr-label-danger-bg-color: var(--cds-alias-status-tint); // var(--clr-color-danger-100);
+  --clr-label-danger-font-color: var(--clr-label-font-color-light); // var(--clr-color-danger-900);
+  --clr-label-danger-border-color: var(--cds-alias-status-danger); // var(--clr-color-danger-900);
+
+  /* Badges */
+
+  --clr-badge-background-color: var(--cds-alias-status-neutral-shade); // var(--clr-color-neutral-600);
+  --clr-badge-color: var(--cds-global-color-white); // var(--clr-color-on-neutral-600);
+
+  --clr-badge-info-bg-color: var(--cds-alias-status-info-shade); // var(--clr-color-action-800);
+  --clr-badge-info-color: var(--cds-global-color-white); // var(--clr-color-neutral-0);
+  --clr-badge-success-bg-color: var(--cds-alias-status-success-shade); // var(--clr-color-success-800);
+  --clr-badge-success-color: var(--cds-global-color-white); // var(--clr-color-neutral-0);
+  --clr-badge-warning-bg-color: var(--cds-alias-status-warning-shade); // var(--clr-color-warning-1000);
+  --clr-badge-warning-color: var(--cds-global-color-black); // var(--clr-color-neutral-0);
+  --clr-badge-danger-bg-color: var(--cds-alias-status-danger-shade); // var(--clr-color-danger-900);
+  --clr-badge-danger-color: var(--cds-global-color-white); // var(--clr-color-neutral-0);
+
+  --clr-badge-gray-bg-color: var(--cds-global-color-gray-600); // var(--clr-color-neutral-600);
+  --clr-badge-gray-color: var(--cds-global-color-white); // var(--clr-badge-font-color-light);
+  --clr-badge-purple-bg-color: var(--cds-global-color-violet-500); // var(--clr-color-secondary-action-500);
+  --clr-badge-purple-color: var(--cds-global-color-white); // var(--clr-badge-font-color-light);
+  --clr-badge-blue-bg-color: var(--cds-global-color-blue-800); // var(--clr-color-action-800);
+  --clr-badge-blue-color: var(--cds-global-color-white); // var(--clr-badge-font-color-light);
+  --clr-badge-orange-bg-color: var(--cds-global-color-ochre-700); // var(--clr-color-warning-1000);
+  --clr-badge-orange-color: var(--cds-global-color-black); // var(--clr-color-neutral-0);
+  --clr-badge-light-blue-bg-color: var(--cds-global-color-blue-400); // var(--clr-color-action-500);
+  --clr-badge-light-blue-color: var(--cds-global-color-black); // var(--clr-color-neutral-0);
+
+  /* Progress Bars */
+
+  --clr-progress-default-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-progress-alt-color-1: var(--cds-alias-status-success); // var(--clr-color-success-400);
+  --clr-progress-alt-color-2: var(--cds-alias-status-danger); // var(--clr-color-danger-800);
+  --clr-progress-alt-color-3: var(--clr-progress-alt-color-2); // indirectly mapped to CDS token
+  --clr-progress-bg-color: var(--cds-alias-object-border-color-tint); // var(--clr-color-neutral-200);
+
+  /* Accordion */
+
+  --clr-accordion-text-color: var(--cds-global-typography-color-500); // var(--cds-global-typography-color-500);
+
+  --clr-accordion-active-background-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // var(--clr-global-selection-color);
+  --clr-accordion-content-background-color: var(--cds-alias-object-app-background); // var(--clr-color-neutral-0);
+
+  --clr-accordion-header-background-color: var(--cds-alias-object-app-background); // var(--clr-color-neutral-50);
+  --clr-accordion-header-hover-background-color: var(
+    --cds-alias-object-interaction-background-hover
+  ); // var(--clr-color-neutral-200);
+
+  --clr-accordion-error-color: var(--cds-alias-status-danger); // var(--clr-global-error-color);
+  --clr-accordion-complete-color: var(--cds-alias-status-success); // var(--clr-global-success-color);
+  --clr-accordion-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+
+  --clr-accordion-border-left-color: var(--cds-alias-object-border-color-tint); // #{$clr-accordion-border-left-color};
+  --clr-accordion-border-left-color-complete: var(--clr-accordion-complete-color); // indirectly mapped to CDS token
+  --clr-accordion-border-left-color-error: var(--clr-accordion-error-color); // indirectly mapped to CDS token
+
+  /* Cards */
+
+  --clr-card-bg-color: var(--cds-alias-object-container-background); // var(--clr-color-neutral-0);
+  --clr-card-divider-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-300);
+  --clr-card-title-color: var(--clr-h4-color);
+
+  --clr-card-border-color: var(--cds-alias-object-container-border-color); // var(--clr-color-neutral-300);
+  --clr-card-box-shadow-color: var(--clr-card-border-color); // indirectly mapped to CDS token
+  --clr-card-clickable-border-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-500);
+  --clr-card-clickable-box-shadow-color: var(--clr-card-clickable-border-color); // indirectly mapped to CDS token
+
+  /* Forms */
+
+  // Structure
+  --clr-form-disabled-background-color: var(--cds-alias-status-disabled-tint); // var(--clr-color-neutral-400);
+
+  // Generic
+  --clr-forms-label-color: var(--cds-global-typography-color-300); // var(--clr-color-neutral-800);
+  --clr-forms-text-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  --clr-forms-invalid-color: var(--cds-alias-status-danger-shade); // var(--clr-color-danger-800);
+  --clr-forms-valid-color: var(--cds-alias-status-success); // var(--clr-color-success-700);
+  --clr-forms-valid-text-color: var(--cds-alias-status-success-shade); // var(--clr-color-success-900);
+  --clr-forms-subtext-color: var(--cds-global-typography-color-300); // var(--clr-color-neutral-600);
+  --clr-forms-placeholder-color: var(--cds-global-typography-color-200); // var(--clr-color-neutral-600);
+  --clr-forms-border-color: var(
+    --cds-alias-object-interaction-border-color
+  ); // var(--cds-global-color-gray-500); // var(--clr-color-neutral-500);
+  --clr-forms-focused-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+
+  --clr-forms-subtext-disabled-color: var(--cds-alias-status-disabled); // #{$clr-forms-subtext-disabled-color};
+  --clr-forms-border-disabled-color: var(--cds-alias-object-border-color-tint); // #{$clr-forms-border-disabled-color};
+  --clr-forms-text-disabled-color: var(--cds-alias-status-disabled); // #{$clr-forms-text-disabled-color};
+  --clr-forms-label-disabled-color: var(--cds-alias-status-disabled); // #{$clr-forms-label-disabled-color};
+
+  // Textarea
+  --clr-forms-textarea-background-color: var(--cds-alias-object-container-background); // var(--clr-color-neutral-0);
+
+  --clr-forms-select-caret-hover-color: var(
+    --cds-alias-object-interaction-color-hover
+  ); // var(--cds-global-color-gray-600); // var(--clr-color-neutral-600);
+  --clr-forms-select-caret-color: var(
+    --cds-alias-object-interaction-color
+  ); // var(--cds-global-color-gray-500); // var(--clr-color-neutral-500);
+  --clr-forms-select-option-color: var(--clr-forms-text-color); // indirectly mapped to CDS token
+  --clr-forms-select-multiple-background-color: var(--clr-forms-textarea-background-color);
+  --clr-forms-select-multiple-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-forms-select-multiple-option-color: var(--clr-forms-text-color); // indirectly mapped to CDS token
+
+  // Checkbox
+  --clr-forms-checkbox-label-color: var(--clr-forms-label-color); // indirectly mapped to CDS token
+  --clr-forms-checkbox-background-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-forms-checkbox-indeterminate-border-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-forms-checkbox-mark-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-0);
+  --clr-forms-checkbox-disabled-background-color: var(--clr-form-disabled-background-color);
+  --clr-forms-checkbox-disabled-mark-color: var(--cds-global-typography-color-100); // var(--clr-color-neutral-1000);
+
+  // Radio
+  --clr-forms-radio-label-color: var(--clr-forms-checkbox-label-color); // indirectly mapped to CDS token
+  --clr-forms-radio-disabled-background-color: var(
+    --clr-form-disabled-background-color
+  ); // indirectly mapped to CDS token
+  --clr-forms-radio-disabled-mark-color: var(
+    --clr-forms-checkbox-disabled-mark-color
+  ); // indirectly mapped to CDS token
+
+  // Range
+  --clr-forms-range-progress-fill-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-forms-range-track-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-200);
+
+  /* Combobox */
+
+  --clr-combobox-trigger-color: var(--clr-color-neutral-500);
+  --clr-combobox-input-background-color: var(--cds-alias-object-container-background-shade);
+  --clr-combobox-pill-background-color: var(
+    --cds-alias-object-interaction-background
+  ); // #{$clr-combobox-pill-background-color};
+  --clr-combobox-pill-border-color: var(--cds-alias-object-border-color); // #{$clr-combobox-pill-border-color};
+  --clr-combobox-pill-font-color: var(--cds-global-typography-color-500); // #{$clr-combobox-pill-font-color};
+  --clr-combobox-filter-highlight: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // #{$clr-combobox-filter-highlight};
+
+  /* Datepicker */
+
+  --clr-calendar-background-color: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-calendar-border-color: var(--cds-alias-object-container-border-color); // var(--clr-color-neutral-400);
+  --clr-datepicker-trigger-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-datepicker-trigger-hover-color: var(--clr-color-action-800);
+
+  --clr-calendar-btn-color: var(--cds-alias-status-info); // var(--clr-color-action-600);
+  --clr-calendar-btn-hover-focus-color: var(
+    --cds-alias-object-interaction-background-hover
+  ); // var(--clr-global-hover-color);
+
+  --clr-calendar-today-date-cell-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  --clr-calendar-active-cell-background-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // var(--clr-global-selection-color);
+  --clr-calendar-active-focus-cell-background-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // var(--clr-global-selection-color);
+  --clr-calendar-active-cell-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+
+  /* Dropdown */
+
+  --clr-dropdown-active-text-color: var(--cds-alias-object-interaction-color-active); // var(--clr-color-neutral-1000);
+  --clr-dropdown-bg-color: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-dropdown-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-dropdown-divider-color: var(--cds-alias-object-border-color-tint); // var(--clr-color-neutral-200);
+  --clr-dropdown-child-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-500);
+  --clr-dropdown-bg-hover-color: var(--cds-alias-object-interaction-background-hover); // var(--clr-global-hover-color);
+  --clr-dropdown-selection-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // var(--clr-global-selection-color);
+  --clr-dropdown-box-shadow: var(--clr-popover-box-shadow-color);
+
+  --clr-dropdown-text-color: var(--clr-p1-color);
+  --clr-dropdown-header-color: var(--cds-global-typography-color-400); // var(--clr-color-neutral-900);
+  --clr-dropdown-item-color: var(--cds-global-typography-color-300); // var(--clr-color-neutral-700);
+
+  /* Header */
+
+  // NOTE: Header variables are left not mapped to Core Tokens
+  // as they don't have corresponding alias color tokens in Core.
+
+  /* Modal */
+
+  --clr-modal-close-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-600);
+  --clr-modal-bg-color: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-modal-backdrop-color: var(--cds-alias-object-overlay-backdrop-background); // var(--clr-color-neutral-900);
+
+  /* Navigation */
+
+  --clr-link-active-color: var(--cds-global-typography-link-color);
+  --clr-link-color: var(--cds-global-typography-link-color); // var(--clr-color-action-600);
+  --clr-link-hover-color: var(--cds-global-typography-link-color-hover); // var(--clr-color-action-600);
+  --clr-link-visited-color: var(--cds-global-typography-link-color-visited);
+  --clr-link-visited-color-hover: var(--cds-global-typography-link-color-visited-hover);
+  --clr-custom-links-hover-color: var(--cds-global-color-gray-200); // var(--clr-color-neutral-200);
+
+  /* Responsive Navigation */
+
+  --clr-sliding-panel-text-color: var(--cds-global-color-gray-700); // var(--clr-color-neutral-700);
+  --clr-nav-background-color: var(--cds-global-color-gray-200); // var(--clr-color-neutral-200);
+  --clr-responsive-nav-hover-bg: var(--cds-global-color-gray-0); // var(--clr-color-neutral-0);
+  --clr-responsive-nav-trigger-bg-color: var(--cds-global-color-gray-0); // var(--clr-color-neutral-0);
+  --clr-responsive-nav-header-backdrop-bg-color: var(--cds-global-color-gray-1000); // var(--clr-color-neutral-1000);
+
+  /* Sidenav */
+
+  --clr-sidenav-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-sidenav-link-hover-color: var(--cds-alias-object-interaction-background-hover); // var(--clr-color-neutral-200);
+
+  --clr-sidenav-link-active-color: var(--cds-alias-object-interaction-color-active); // var(--clr-color-neutral-1000);
+  --clr-sidenav-link-active-bg-color: var(--clr-global-selection-color); // indirectly mapped
+
+  --clr-sidenav-header-color: var(--clr-h6-color);
+  --clr-sidenav-color: var(--clr-p1-color);
+
+  /* Signpost */
+
+  --clr-signpost-content-bg-color: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-signpost-content-border-color: var(--cds-alias-object-overlay-border-color); // var(--clr-color-neutral-500);
+
+  --clr-signpost-action-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-600);
+  --clr-signpost-action-hover-color: var(--cds-alias-object-interaction-color-hover); // var(--clr-color-action-700);
+
+  // NOTE: I had to use hardcoded border size value in order to avoid sass variables
+  --clr-signpost-border-size: 0.6rem;
+  --clr-signpost-pointer-border: var(--clr-signpost-border-size) solid var(--cds-alias-object-overlay-border-color);
+  --clr-signpost-pointer-psuedo-border: var(--clr-signpost-border-size) solid var(--clr-signpost-content-bg-color);
+
+  /* StackView */
+
+  --clr-stack-view-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-stack-view-bg-color: var(--cds-alias-object-container-background); // var(--clr-color-neutral-50);
+  --clr-stack-view-stack-block-border-bottom: var(--cds-alias-object-border-color); // var(--clr-color-neutral-300);
+  --clr-stack-view-color: var(--cds-global-typography-color-500);
+  --clr-stack-view-stack-block-label-text-color: var(--cds-global-typography-color-500); // indirectly mapped
+
+  //border-bottom for stack-view rows (not last)
+  --clr-stack-view-border-box-color: var(--cds-alias-object-border-color-tint); // var(--clr-color-neutral-300);
+  --clr-stack-block-changed-border-top-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-600);
+  --clr-stack-view-stack-block-label-and-content-bg-color: var(
+    --cds-alias-object-container-background-tint
+  ); // var(--clr-color-neutral-50);
+
+  // stkvw row bg color when not expanded
+  --clr-stack-view-stack-children-stack-block-border-bottom-color: var(
+    --cds-alias-object-border-color-tint
+  ); // var(--clr-color-neutral-200);
+
+  // children of an expanded row
+  --clr-stack-view-stack-children-stack-block-label-and-content-bg-color: var(
+    --cds-alias-object-container-background
+  ); // var(--clr-color-neutral-0);
+
+  // children of an expanded row
+  --clr-stack-view-stack-block-expanded-bg-color: var(--clr-global-selection-color); // indirectly mapped
+  --clr-stack-view-stack-block-expandable-hover: var(
+    --cds-alias-object-interaction-background-hover
+  ); // var(--clr-color-neutral-200);
+  --clr-stack-view-stack-block-content-text-color: inherit;
+  --clr-stack-view-stack-block-expanded-text-color: var(
+    --cds-global-typography-color-500
+  ); // var(--clr-color-neutral-1000);
+  --clr-stack-view-stack-block-caret-color: var(--cds-global-typography-color-500); // indirectly mapped
+
+  /* Subnav */
+
+  --clr-subnav-bg-color: var(--cds-alias-object-container-background); // var(--clr-color-neutral-0);
+
+  /* Tabs */
+
+  --clr-nav-box-shadow-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-nav-active-box-shadow-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-600);
+  --clr-nav-active-bg-color: var(--clr-global-selection-color); // indirectly mapped
+  --clr-nav-hover-bg-color: var(--clr-sidenav-link-hover-color); // indirectly mapped
+
+  --clr-nav-link-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-700);
+  --clr-nav-link-active-color: var(--cds-alias-object-interaction-color-active); // var(--clr-color-neutral-1000);
+
+  /* Timeline */
+
+  --clr-timeline-line-color: var(--cds-alias-object-border-color-shade); // var(--clr-color-neutral-500);
+  --clr-timeline-step-header-color: var(
+    --cds-alias-status-neutral
+  ); //  var(--cds-alias-object-border-color-shade); // var(--clr-color-neutral-600);
+  --clr-timeline-step-title-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-700);
+  --clr-timeline-step-description-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+
+  --clr-timeline-incomplete-step-color: var(
+    --cds-alias-object-border-color-shade
+  ); // var(--cds-global-color-gray-600); // var(--clr-color-neutral-600);
+  --clr-timeline-current-step-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-600);
+  --clr-timeline-success-step-color: var(--cds-alias-status-success); // var(--clr-color-success-400);
+  --clr-timeline-error-step-color: var(--cds-alias-status-danger); // var(--clr-color-danger-800);
+
+  /* Toggles */
+
+  // colors
+  --clr-toggle-bg-color-off: var(--cds-alias-status-neutral); // var(--clr-color-neutral-600);
+  --clr-toggle-bg-color-on: var(--cds-alias-status-success); // var(--clr-color-success-500);
+  --clr-toggle-handle-bg-color: var(--cds-global-color-construction-50); // var(--clr-color-neutral-50);
+
+  // disabled colors
+  --clr-toggle-disabled-default-border-color: var(--cds-global-color-gray-400); // var(--clr-color-neutral-400);
+  --clr-toggle-disabled-default-handle-color: var(--cds-global-color-construction-50); // var(--clr-color-neutral-0);
+  --clr-toggle-disabled-off-border-color: var(--clr-toggle-disabled-default-border-color); // indirectly mapped
+  --clr-toggle-disabled-off-bg-color: var(--clr-toggle-disabled-default-handle-color); // indirectly mapped
+  // Also sets disabled/on inner part of handle circle.
+  --clr-toggle-disabled-off-handle-border-color: var(--clr-toggle-disabled-default-border-color); // indirectly mapped
+  --clr-toggle-disabled-on-border-color: var(--clr-toggle-disabled-default-border-color); // indirectly mapped
+  --clr-toggle-disabled-on-bg-color: var(--clr-toggle-disabled-default-border-color); // indirectly mapped
+  --clr-toggle-disabled-on-handle-border-color: var(--clr-toggle-disabled-default-handle-color); // indirectly mapped
+
+  /* Tooltips */
+
+  --clr-tooltip-background-color: var(--cds-global-color-gray-1000); // var(--clr-color-neutral-1000);
+  --clr-tooltip-color: var(--cds-global-color-construction-50); // var(--clr-color-neutral-0);
+
+  /* Wizard */
+
+  --clr-wizard-main-bgcolor: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-wizard-sidenav-bgcolor: var(--cds-alias-object-container-background-tint); // var(--clr-color-neutral-50);
+  // deprecated in 3.0
+  // should become --clr-wizard-main-text-color
+  --clr-wizard-main-textColor: var(--cds-global-typography-color-500); // var(--clr-color-on-neutral-0);
+  --clr-wizard-sidenav-text: var(--cds-global-typography-color-500); // var(--clr-color-neutral-900);
+  --clr-wizard-sidenav-text--active: var(--clr-global-on-selection-color); // indirectly mapped
+  --clr-wizard-title-text: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  --clr-wizard-stepnav-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-200);
+  --clr-wizard-stepnav-border-color--active: var(--cds-alias-status-success); // var(--clr-color-success-400);
+  --clr-wizard-stepnav-active-bgcolor: var(--clr-global-selection-color); // indirectly mapped
+  --clr-wizard-header-action-color: var(--cds-global-color-gray-600); // wth? var(--clr-color-neutral-600);
+  --clr-wizard-header-action-color--hovered: var(--cds-global-color-gray-1000); // wth? var(--clr-color-neutral-1000);
+
+  --clr-wizard-step-nav-border-color: var(--cds-alias-object-border-color);
+  --clr-wizard-box-shadow-color: rgba(0, 0, 0, 0.2);
+
+  /* Tree View */
+
+  --clr-tree-node-caret-link-hover-color: var(
+    --cds-alias-object-interaction-color-hover
+  ); // var(--clr-color-neutral-1000);
+  --clr-tree-link-hover-color: var(--cds-alias-object-interaction-background-hover); // indirectly mapped
+  --clr-tree-link-selection-color: var(--clr-global-selection-color); // indirectly mapped
+  --clr-tree-link-text-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+  --clr-tree-node-caret-color: var(--cds-global-color-gray-500); // var(--clr-color-neutral-500);
+
+  /* Vertical Nav */
+
+  --clr-vertical-nav-divider-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-700);
+
+  // Vertical Nav - Icons
+  --clr-vertical-nav-icon-active-color: var(--cds-alias-object-interaction-color);
+
+  // Vertical Nav - Align
+  --clr-vertical-nav-item-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-700);
+  --clr-vertical-nav-item-active-color: var(
+    --cds-alias-object-interaction-color-active
+  ); // var(--clr-color-neutral-700);
+  --clr-vertical-nav-bg-color: var(--cds-alias-object-container-background-shade); // var(--clr-color-neutral-200);
+
+  // Note: figure out whether it should be --cds-alias-object-interaction-background-active instead. The problem is, in the dark mode,
+  // --cds-alias-object-interaction-background-active is the same as --cds-alias-object-container-background-shade.
+
+  --clr-vertical-nav-active-bg-color: var(
+    --cds-alias-object-interaction-background-selected
+  ); // var(--clr-color-neutral-0);
+  --clr-vertical-nav-hover-bg-color: var(
+    --cds-alias-object-interaction-background-hover
+  ); // var(--clr-color-neutral-400);
+
+  // Vertical Nav - Trigger
+  --clr-vertical-nav-toggle-icon-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-1000);
+  --clr-vertical-nav-trigger-divider-border-color: var(
+    --cds-alias-object-border-color
+  ); // var(--clr-color-neutral-400);
+
+  /* Tables */
+
+  // Theme variables
+  // Usage: ./data/_tables.clarity.scss
+  // Usage: ./data/datagrid/_datagrid.clarity.scss
+  --clr-table-bgcolor: var(--cds-alias-object-container-background); // var(--clr-color-neutral-0);
+  --clr-thead-bgcolor: var(--cds-alias-object-container-background-tint); // var(--clr-color-neutral-50);
+
+  // Usage: ./data/datagrid/_datagrid.clarity.scss
+  --clr-table-header-border-bottom-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-table-footer-border-top-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-table-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+
+  // Usage: ./data/_tables.clarity.scss
+  --clr-tablerow-bordercolor: var(--cds-alias-object-border-color); // var(--clr-color-neutral-200);
+
+  // Usage: ./data/_tables.clarity.scss
+  // Usage: ./data/datagrid/_datagrid.clarity.scss
+  --clr-table-font-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-700);
+
+  // Table header styles
+  --clr-thead-color: var(--cds-global-typography-color-500); // #{$clr-thead-color};
+
+  /* Datagrid */
+
+  --clr-datagrid-font-color: var(--cds-global-typography-color-500);
+  --clr-datagrid-default-border-color: var(--cds-alias-object-border-color); // var(--clr-color-neutral-400);
+  --clr-datagrid-icon-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-600);
+
+  // deprecated in 3.0
+  // should become --clr-datagrid-row-hover-color
+  --clr-datagrid-row-hover: var(--cds-alias-object-interaction-background-hover); // var(--clr-color-neutral-200);
+  --clr-datagrid-row-hover-font-color: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+  // deprecated in 3.0
+  // should become --clr-datagrid-action-toggle-color
+  --clr-datagrid-action-toggle: var(
+    --cds-alias-object-interaction-background-active
+  ); // var(--cds-global-color-gray-700); // var(--clr-color-neutral-700);
+  --clr-datagrid-pagination-btn-color: var(--cds-alias-object-interaction-color); // var(--clr-color-neutral-700);
+  --clr-datagrid-pagination-btn-disabled-color: var(--cds-alias-status-disabled); // var(--clr-color-neutral-600);
+  --clr-datagrid-pagination-input-border-color: var(--cds-alias-object-border-color); // indirectly mapped;
+  --clr-datagrid-pagination-input-border-focus-color: var(--clr-color-action-400);
+  --clr-datagrid-popover-bg-color: var(--cds-alias-object-overlay-background); // var(--clr-color-neutral-0);
+  --clr-datagrid-popover-border-color: var(--cds-alias-object-overlay-border-color); // indirectly mapped;
+  --clr-datagrid-action-popover-hover-color: var(
+    --cds-alias-object-interaction-color-hover
+  ); // var(--clr-color-neutral-200);
+  --clr-datagrid-row-selected: var(--cds-global-typography-color-500); // var(--clr-color-neutral-1000);
+
+  --clr-datagrid-column-switch-header-font-color: var(--cds-global-color-gray-500); // var(--clr-color-neutral-500);
+  --clr-datagrid-column-switch-header-font-hover-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-600);
+
+  --clr-datagrid-detail-caret-icon-open-bg-color: var(
+    --cds-alias-object-interaction-background-highlight
+  ); // var(--clr-color-action-600);
+  --clr-datagrid-detail-caret-icon-open-icon-color: var(--cds-global-color-gray-0); // var(--clr-color-neutral-0);
+
+  --clr-datagrid-placeholder-color: var(--cds-global-color-gray-700); // var(--clr-color-neutral-700);
+
+  .btn:not([disabled]):hover,
+  .btn:not([disabled]):focus,
+  .btn:not([disabled]):active {
+    filter: brightness(90%);
+  }
+
+  .btn.disabled,
+  .btn:disabled {
+    opacity: 1;
+  }
+}

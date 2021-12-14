@@ -34,6 +34,7 @@ const config = {
   },
   styles: [
     { input: './src/styles/global.scss', output: './dist/core/global.css' },
+    './src/styles/clr-tokens.map.scss',
     './src/styles/module.layout.scss',
     './src/styles/module.reset.scss',
     './src/styles/module.shims.scss',

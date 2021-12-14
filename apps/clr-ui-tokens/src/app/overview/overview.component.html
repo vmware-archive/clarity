@@ -1,0 +1,634 @@
+<h3 cds-layout="m-t:none m-b:lg">Alerts</h3>
+
+<div cds-layout="m-y:md">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
+        </div>
+        <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+        <div class="alert-actions">
+          <div class="alert-action dropdown bottom-right">
+            <button class="dropdown-toggle">
+              Actions
+              <cds-icon shape="angle" direction="down" size="xs"></cds-icon>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="javascript://">Shutdown</a>
+              <a class="dropdown-item" href="javascript://">Suspend</a>
+              <a class="dropdown-item" href="javascript://">Reboot</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-warning">
+    <button type="button" class="close" aria-label="Close">
+      <cds-icon aria-hidden="true" shape="window-close"></cds-icon>
+    </button>
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <cds-icon class="alert-icon" shape="exclamation-triangle"></cds-icon>
+        </div>
+        <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+        <div class="alert-actions">
+          <div class="alert-action dropdown bottom-right open">
+            <button class="dropdown-toggle">
+              Actions
+              <cds-icon shape="angle" direction="down" size="xs"></cds-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-info">
+    <button type="button" class="close" aria-label="Close">
+      <cds-icon aria-hidden="true" shape="window-close"></cds-icon>
+    </button>
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <cds-icon class="alert-icon" shape="info-circle"></cds-icon>
+        </div>
+        <span class="alert-text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </span>
+        <div class="alert-actions">
+          <a href="javascript://" class="alert-action">Acknowledge</a>
+          <a href="javascript://" class="alert-action">Reset to green</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-success">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <cds-icon class="alert-icon" shape="check-circle"></cds-icon>
+        </div>
+        <span class="alert-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APP LEVEL ALERTS -->
+
+<h3 cds-layout="m-t:lg">App level alerts</h3>
+
+<div cds-layout="m-y:md">
+  <clr-alert clrAlertType="info" [clrAlertAppLevel]="true" cds-layout="m-b:md">
+    <clr-alert-item>
+      <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+      <div class="alert-actions">
+        <button class="btn alert-action">Fix</button>
+      </div>
+    </clr-alert-item>
+  </clr-alert>
+
+  <clr-alert clrAlertType="warning" [clrAlertAppLevel]="true" cds-layout="m-b:md">
+    <clr-alert-item>
+      <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+      <div class="alert-actions">
+        <button class="btn alert-action">Fix</button>
+      </div>
+    </clr-alert-item>
+  </clr-alert>
+
+  <clr-alert clrAlertType="danger" [clrAlertAppLevel]="true" cds-layout="m-b:md">
+    <clr-alert-item>
+      <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+      <div class="alert-actions">
+        <button class="btn alert-action">Fix</button>
+      </div>
+    </clr-alert-item>
+  </clr-alert>
+
+  <clr-alert clrAlertType="success" [clrAlertAppLevel]="true" cds-layout="m-b:md">
+    <clr-alert-item>
+      <span class="alert-text"> Lorem ipsum dolor sit amet </span>
+      <div class="alert-actions">
+        <button class="btn alert-action">Fix</button>
+      </div>
+    </clr-alert-item>
+  </clr-alert>
+
+  <clr-alerts cds-layout="m-b:md">
+    <clr-alert clrAlertType="info" [clrAlertAppLevel]="true">
+      <clr-alert-item>
+        <span class="alert-text"> View additional alerts using the pager </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </clr-alert-item>
+    </clr-alert>
+    <clr-alert clrAlertType="warning" [clrAlertAppLevel]="true">
+      <clr-alert-item>
+        <span class="alert-text"> Application level alerts should only be used for important messages. </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </clr-alert-item>
+    </clr-alert>
+    <clr-alert clrAlertType="danger" [clrAlertAppLevel]="true">
+      <clr-alert-item>
+        <span class="alert-text"> Don't add too many of these alerts! </span>
+        <div class="alert-actions">
+          <button class="btn alert-action">Fix</button>
+        </div>
+      </clr-alert-item>
+    </clr-alert>
+  </clr-alerts>
+</div>
+
+<h3 cds-layout="m-t:lg">Info, Success, Warning and Danger Outline Buttons</h3>
+
+<div cds-layout="m-y:md">
+  <button class="btn btn-info-outline">Info</button>
+  <button class="btn btn-success-outline">Success</button>
+  <button class="btn btn-warning-outline">Warning</button>
+  <button class="btn btn-danger-outline">Danger</button>
+</div>
+
+<h3 cds-layout="m-t:lg">Info, Success, Warning and Danger Outline Disabled Buttons</h3>
+
+<div cds-layout="m-y:md">
+  <button disabled class="btn btn-info-outline">Info</button>
+  <button disabled class="btn btn-success-outline">Success</button>
+  <button disabled class="btn btn-warning-outline">Warning</button>
+  <button disabled class="btn btn-danger-outline">Danger</button>
+</div>
+
+<h3 cds-layout="m-t:lg">Primary, Success, Warning and Danger Buttons</h3>
+
+<div cds-layout="m-y:md">
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-success">Success</button>
+  <button class="btn btn-warning">Warning</button>
+  <button class="btn btn-danger">Danger</button>
+</div>
+
+<h3 cds-layout="m-t:lg">Primary, Success, Warning and Danger Disabled Buttons</h3>
+
+<div cds-layout="m-y:md">
+  <button disabled class="btn btn-primary">Disabled Info</button>
+  <button disabled class="btn btn-success">Disabled Success</button>
+  <button disabled class="btn btn-warning">Disabled Warning</button>
+  <button disabled class="btn btn-danger">Disabled Danger</button>
+</div>
+
+<h3 cds-layout="m-t:lg">Label colors</h3>
+
+<div cds-layout="m-y:md">
+  <span class="label">Seattle</span>
+  <span class="label label-purple">Austin</span>
+  <span class="label label-blue">New York</span>
+  <span class="label label-orange">Palo Alto</span>
+  <span class="label label-light-blue">San Francisco</span>
+</div>
+<div cds-layout="m-y:md">
+  <span class="label label-1">Seattle</span>
+  <span class="label label-2">Austin</span>
+  <span class="label label-3">New York</span>
+  <span class="label label-4">Palo Alto</span>
+  <span class="label label-5">San Francisco</span>
+</div>
+
+<h3 cds-layout="m-t:lg">Labels statuses</h3>
+
+<div cds-layout="m-y:md">
+  <span class="label label-info">Info</span>
+  <span class="label label-success">Success</span>
+  <span class="label label-warning">Warning</span>
+  <span class="label label-danger">Error</span>
+</div>
+
+<h3 cds-layout="m-t:lg">Labels with badges</h3>
+
+<div cds-layout="m-y:md">
+  <a href="javascript://" class="label label-purple clickable"
+    >Austin
+    <span class="badge">1</span>
+  </a>
+  <a href="javascript://" class="label label-blue clickable"
+    >New York
+    <span class="badge">2</span>
+  </a>
+  <a href="javascript://" class="label label-orange clickable"
+    >Palo Alto
+    <span class="badge">3</span>
+  </a>
+  <a href="javascript://" class="label label-light-blue clickable"
+    >San Francisco
+    <span class="badge">12</span>
+  </a>
+  <a href="javascript://" class="label clickable"
+    >Seattle
+    <span class="badge">15</span>
+  </a>
+  <a href="javascript://" class="label label-purple clickable"
+    >Chicago
+    <span class="badge">55</span>
+  </a>
+  <a href="javascript://" class="label label-blue clickable"
+    >San Jose
+    <span class="badge">66</span>
+  </a>
+  <a href="javascript://" class="label label-orange clickable"
+    >Charlotte
+    <span class="badge">88</span>
+  </a>
+  <a href="javascript://" class="label label-light-blue clickable"
+    >Atlanta
+    <span class="badge">99+</span>
+  </a>
+  <a href="javascript://" class="label clickable"
+    >Philadephia
+    <span class="badge">0</span>
+  </a>
+</div>
+
+<h3 cds-layout="m-t:lg">Spinner</h3>
+
+<div cds-layout="m-y:md">
+  <span class="spinner spinner-sm"> Loading... </span>
+  <span class="spinner spinner-md"> Loading... </span>
+  <span class="spinner spinner-lg"> Loading... </span>
+</div>
+
+<h3 cds-layout="m-t:lg">Card</h3>
+
+<div cds-layout="m-y:md">
+  <a href="#" class="card clickable">
+    <div class="card-block">
+      <h3 class="card-title">Title</h3>
+      <p class="card-text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </p>
+    </div>
+    <div class="card-footer">
+      <a href="..." class="btn btn-primary">Action</a>
+    </div>
+  </a>
+</div>
+
+<h3 cds-layout="m-t:lg">Progress bar</h3>
+
+<div cds-layout="m-y:md">
+  <h6>Labeled, Static Progress Bar</h6>
+  <div class="progress-static labeled">
+    <div class="progress-meter" data-value="55" data-displayval="Loaded 55%"></div>
+    <span>55%</span>
+  </div>
+
+  <h6>Red Static Progress Bar</h6>
+  <div class="progress-static danger">
+    <div class="progress-meter" data-value="55"></div>
+  </div>
+
+  <h6>Green Static Progress Bar</h6>
+  <div class="progress-static success">
+    <div class="progress-meter" data-value="55"></div>
+  </div>
+</div>
+
+<h3 cds-layout="m-t:lg">Dropdown</h3>
+
+<div cds-layout="m-y:md">
+  <clr-dropdown>
+    <button class="btn btn-outline-primary" clrDropdownTrigger>
+      Dropdown
+      <cds-icon shape="angle" direction="down" size="xs"></cds-icon>
+    </button>
+    <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+      <label class="dropdown-header" aria-hidden="true">Dropdown header</label>
+      <div aria-label="Dropdown header Action 1" clrDropdownItem>Action 1</div>
+      <div aria-label="Dropdown header Disabled Action" [clrDisabled]="true" clrDropdownItem>Disabled Action</div>
+      <div class="dropdown-divider" role="separator" aria-hidden="true"></div>
+      <clr-dropdown>
+        <button clrDropdownTrigger>Link 1</button>
+        <clr-dropdown-menu>
+          <button clrDropdownItem>Foo</button>
+          <clr-dropdown>
+            <button clrDropdownTrigger>Bar</button>
+            <clr-dropdown-menu clrPosition="left-top">
+              <button clrDropdownItem>Baz</button>
+            </clr-dropdown-menu>
+          </clr-dropdown>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+      <div clrDropdownItem>Link 2</div>
+    </clr-dropdown-menu>
+  </clr-dropdown>
+</div>
+
+<h3 cds-layout="m-t:lg">Timeline</h3>
+
+<div cds-layout="m-y:md">
+  <clr-timeline>
+    <clr-timeline-step [clrState]="timelineState.NOT_STARTED">
+      <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+      <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+      <clr-timeline-step-description>Root CA certificate requested.</clr-timeline-step-description>
+    </clr-timeline-step>
+    <clr-timeline-step [clrState]="timelineState.CURRENT">
+      <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+      <clr-timeline-step-title>Add KMS</clr-timeline-step-title>
+      <clr-timeline-step-description>
+        Root CA certificate requested. Upload it to the KMS to complete the connection.
+        <button class="btn btn-sm">Action</button>
+      </clr-timeline-step-description>
+    </clr-timeline-step>
+    <clr-timeline-step class="gemini-ignore" [clrState]="timelineState.PROCESSING">
+      <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+      <clr-timeline-step-title>Make vCenter trust KMS</clr-timeline-step-title>
+      <clr-timeline-step-description>
+        Root CA certificate requested. Upload it to the KMS to complete the connection. Third sentence is very long and
+        very long.
+      </clr-timeline-step-description>
+    </clr-timeline-step>
+    <clr-timeline-step [clrState]="timelineState.SUCCESS">
+      <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+      <clr-timeline-step-title>Make KMS trust vCenter</clr-timeline-step-title>
+      <clr-timeline-step-description
+        >Upload it to the KMS to complete the connection. Third sentence.
+        <button class="btn btn-sm btn-link">Action</button>
+      </clr-timeline-step-description>
+    </clr-timeline-step>
+    <clr-timeline-step [clrState]="timelineState.ERROR">
+      <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
+      <clr-timeline-step-title>Connected</clr-timeline-step-title>
+      <clr-timeline-step-description>No. It's not connected.</clr-timeline-step-description>
+    </clr-timeline-step>
+  </clr-timeline>
+</div>
+
+<h3 cds-layout="m-t:lg">Tabs</h3>
+
+<div cds-layout="m-y:md">
+  <clr-tabs>
+    <clr-tab>
+      <button clrTabLink id="link1">Tab1</button>
+      <clr-tab-content id="content1" *clrIfActive>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </clr-tab-content>
+    </clr-tab>
+    <clr-tab>
+      <button clrTabLink>Tab2</button>
+      <clr-tab-content *clrIfActive="true">
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </clr-tab-content>
+    </clr-tab>
+  </clr-tabs>
+</div>
+
+<h3 cds-layout="m-t:lg">Stack View</h3>
+
+<div cds-layout="m-y:md">
+  <clr-stack-view>
+    <clr-stack-block>
+      <clr-stack-label>Label 1</clr-stack-label>
+      <clr-stack-content>Content 1</clr-stack-content>
+    </clr-stack-block>
+
+    <clr-stack-block>
+      <clr-stack-label>Label 2</clr-stack-label>
+      <clr-stack-content>Content 2</clr-stack-content>
+      <clr-stack-block>
+        <clr-stack-label>Sub-label 1</clr-stack-label>
+        <clr-stack-content><input type="text" class="clr-input" /></clr-stack-content>
+      </clr-stack-block>
+      <clr-stack-block>
+        <clr-stack-label>Sub-label 2</clr-stack-label>
+        <clr-stack-content><input type="text" class="clr-input" /></clr-stack-content>
+      </clr-stack-block>
+      <clr-stack-block>
+        <clr-stack-label>Sub-label 3</clr-stack-label>
+        <clr-stack-content><input type="text" class="clr-input" /></clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block>
+      <clr-stack-label>Label 3</clr-stack-label>
+      <clr-stack-content>Content 3</clr-stack-content>
+      <clr-stack-block>
+        <clr-stack-label>Sub-label 4</clr-stack-label>
+        <clr-stack-content>Sub-content 4</clr-stack-content>
+      </clr-stack-block>
+      <clr-stack-block>
+        <clr-stack-label>Sub-label 5</clr-stack-label>
+        <clr-stack-content>Sub-content 5</clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-block>
+  </clr-stack-view>
+</div>
+
+<h3 cds-layout="m-t:lg">Table</h3>
+
+<div cds-layout="m-y:md">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Decimal</th>
+        <th>Hexadecimal</th>
+        <th>Binary</th>
+        <th class="hidden-xs-down">Roman Numeral</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td class="hidden-xs-down">I</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>5</td>
+        <td>101</td>
+        <td class="hidden-xs-down">V</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>A</td>
+        <td>1010</td>
+        <td class="hidden-xs-down">X</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>F</td>
+        <td>1111</td>
+        <td class="hidden-xs-down">XV</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 cds-layout="m-t:lg">Forms</h3>
+
+<div cds-layout="m-y:md">
+  <ng-template #fields>
+    <form clrForm [formGroup]="model" #inputSuccessVertical>
+      <clr-input-container>
+        <label>Input</label>
+        <input clrInput placeholder="Input control" name="input" formControlName="input" />
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'; error as err">Must be at least 5 characters</clr-control-error>
+        <clr-control-error *clrIfError="'pattern'; error as err">It must match 'asdfasdf'</clr-control-error>
+        <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Input (Only Helper)</label>
+        <input clrInput placeholder="Input control" name="input-help" formControlName="input-help" />
+        <clr-control-helper>Helper text</clr-control-helper>
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Input (Only Success)</label>
+        <input clrInput placeholder="Input control" name="input" formControlName="input" />
+        <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+      </clr-input-container>
+
+      <clr-date-container>
+        <label>Date Picker</label>
+        <input type="date" clrDate name="date" formControlName="date" />
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">We require date</clr-control-error>
+        <clr-control-success *clrIfSuccess>The date was set</clr-control-success>
+      </clr-date-container>
+
+      <clr-date-container>
+        <label>Date Picker (Only Helper)</label>
+        <input type="date" clrDate name="date-helper" formControlName="date-helper" />
+        <clr-control-helper>Helper text</clr-control-helper>
+      </clr-date-container>
+
+      <clr-date-container>
+        <label>Date Picker (Only Success)</label>
+        <input type="date" clrDate name="date-helper" formControlName="date-helper" />
+        <clr-control-success *clrIfSuccess>The date was set</clr-control-success>
+      </clr-date-container>
+
+      <clr-textarea-container>
+        <label>Textarea</label>
+        <textarea clrTextarea name="textarea" formControlName="textarea"></textarea>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+        <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+        <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+      </clr-textarea-container>
+
+      <clr-password-container>
+        <label>Password</label>
+        <input clrPassword placeholder="Password please!" name="password" formControlName="password" />
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This is a required field</clr-control-error>
+        <clr-control-error *clrIfError="'minlength'">Must be at least 5 characters</clr-control-error>
+        <clr-control-error *clrIfError="'pattern'">It must match 'asdfasdf'</clr-control-error>
+        <clr-control-success *clrIfSuccess>That's correct the input must be 'asdfasdf' </clr-control-success>
+      </clr-password-container>
+
+      <clr-radio-container>
+        <label>Radio</label>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" formControlName="options" required value="option1" />
+          <label>Option 1</label>
+        </clr-radio-wrapper>
+        <clr-radio-wrapper>
+          <input type="radio" clrRadio name="options" formControlName="options" required value="option2" />
+          <label>Option 2</label>
+        </clr-radio-wrapper>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+      </clr-radio-container>
+
+      <clr-checkbox-container>
+        <label>Checkbox</label>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox value="option1" formControlName="checkbox" name="checkbox" required />
+          <label>Option 1</label>
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+          <input type="checkbox" clrCheckbox value="option2" formControlName="checkbox" name="checkbox" required />
+          <label>Option 2</label>
+        </clr-checkbox-wrapper>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+      </clr-checkbox-container>
+
+      <clr-select-container>
+        <label>Select</label>
+        <select clrSelect name="select" required formControlName="select">
+          <option value="one">One</option>
+          <option value="two">Two</option>
+          <option value="three">Three</option>
+        </select>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+      </clr-select-container>
+
+      <clr-range-container [clrRangeHasProgress]="true">
+        <label>Range</label>
+        <input type="range" clrRange formControlName="range" name="range" />
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+      </clr-range-container>
+
+      <clr-datalist-container>
+        <label>Datalist</label>
+        <input clrDatalistInput name="datalist" formControlName="datalist" required />
+        <datalist>
+          <option *ngFor="let item of items" [value]="item"></option>
+        </datalist>
+        <clr-control-helper>Helper text</clr-control-helper>
+        <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        <clr-control-success *clrIfSuccess>Good job, mate! </clr-control-success>
+      </clr-datalist-container>
+    </form>
+  </ng-template>
+
+  <button class="btn btn-primary" type="button" (click)="validate()">Validate</button>
+  <button class="btn btn-primary" type="button" (click)="model.reset()">Reset</button>
+
+  <form clrForm #inputSuccessCompact class="clr-form-compact">
+    <ng-container *ngTemplateOutlet="fields"></ng-container>
+  </form>
+</div>
+
+<h3 cds-layout="m-t:lg">Typography</h3>
+
+<div cds-layout="m-y:lg">
+  <h1 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h1>
+  <h2 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h2>
+  <h3 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h3>
+  <h4 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h4>
+  <h5 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h5>
+  <h6 cds-layout="m:none">The quick brown fox jumps over the lazy dog</h6>
+</div>
+
+<div cds-layout="m-y:lg">
+  <p cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p0" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p2" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p3" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p4" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p5" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p6" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p7" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+  <p class="p8" cds-layout="m:none">The quick brown fox jumps over the lazy dog</p>
+</div>

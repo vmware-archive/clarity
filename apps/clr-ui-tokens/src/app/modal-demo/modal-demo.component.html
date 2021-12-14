@@ -1,0 +1,14 @@
+<h3 cds-layout="m-t:none m-b:md">Modal</h3>
+
+<div cds-layout="m-y:md">
+  <button class="btn btn-primary" (click)="open = true">Open modal</button>
+
+  <clr-modal [(clrModalOpen)]="open" clrModalSize="md">
+    <h3 class="modal-title">Modal</h3>
+    <div class="modal-body">I am a modal.</div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="open = false">Ok</button>
+    </div>
+  </clr-modal>
+</div>

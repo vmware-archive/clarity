@@ -1,0 +1,63 @@
+<h3 cds-layout="m-t:none m-b:md">Combobox</h3>
+
+<div cds-layout="m-y:md">
+  <form clrForm clrLayout="vertical">
+    <clr-combobox-container>
+      <label>My State</label>
+      <clr-combobox [(ngModel)]="vertical.three" name="three" required [disabled]="disabled">
+        <clr-options>
+          <clr-option *clrOptionItems="let state of states; field: 'name'" [clrValue]="state">
+            <cds-icon shape="world" role="img" aria-label="World is turning"></cds-icon> {{ state.name }}
+            <cds-icon shape="sun" size="12" role="img" aria-label="Sun is shining"></cds-icon>
+          </clr-option>
+        </clr-options>
+      </clr-combobox>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>There was an error</clr-control-error>
+    </clr-combobox-container>
+
+    <clr-combobox-container>
+      <label>Favorite States (Async)</label>
+      <clr-combobox
+        [(ngModel)]="vertical.four"
+        name="four"
+        clrMulti="true"
+        required
+        [disabled]="disabled"
+        [clrLoading]="loading"
+        (clrInputChange)="fetchStates($event)"
+        (clrOpenChange)="$event ? fetchStates() : null"
+      >
+        <ng-container *clrOptionSelected="let selected"
+          ><cds-icon shape="sun" size="12" role="img" aria-label="welcome home"></cds-icon>
+          {{ selected?.name }}</ng-container
+        >
+        <clr-options>
+          <clr-option *clrOptionItems="let state of asyncStates$ | async; field: 'name'" [clrValue]="state">
+            <cds-icon shape="world" role="img" aria-label="World is turning"></cds-icon> {{ state.name }}
+            <cds-icon shape="sun" size="12" role="img" aria-label="Sun is shining"></cds-icon>
+          </clr-option>
+        </clr-options>
+      </clr-combobox>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>There was an error</clr-control-error>
+    </clr-combobox-container>
+
+    <clr-combobox-container>
+      <label>Favorite States</label>
+      <clr-combobox [(ngModel)]="vertical.five" name="five" clrMulti="true" required [disabled]="disabled">
+        <ng-container *clrOptionSelected="let selected">
+          <cds-icon shape="sun" size="12" role="img" aria-label="welcome home"></cds-icon> {{ selected?.name }}
+        </ng-container>
+        <clr-options>
+          <clr-option *clrOptionItems="let state of states; field: 'name'" [clrValue]="state">
+            <cds-icon shape="world" role="img" aria-label="World is turning"></cds-icon> {{ state.name }}
+            <cds-icon shape="sun" size="12" role="img" aria-label="Sun is shining"></cds-icon>
+          </clr-option>
+        </clr-options>
+      </clr-combobox>
+      <clr-control-helper>Helper text</clr-control-helper>
+      <clr-control-error>There was an error</clr-control-error>
+    </clr-combobox-container>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<h3 cds-layout="m-t:none m-b:md">Accordion</h3>
+
+<div cds-layout="m-y:md">
+  <clr-accordion clrAccordionMultiPanel="true">
+    <clr-accordion-panel [(clrAccordionPanelOpen)]="stepOpen">
+      <clr-accordion-title>Step 1</clr-accordion-title>
+      <clr-accordion-description
+        >The full license information can be found in LICENSE in the root directory.</clr-accordion-description
+      >
+      <clr-accordion-content *clrIfExpanded>Content 1</clr-accordion-content>
+    </clr-accordion-panel>
+
+    <clr-accordion-panel [clrAccordionPanelOpen]="true">
+      <clr-accordion-title>Step 2</clr-accordion-title>
+      <clr-accordion-description
+        >The full license information can be found in LICENSE in the root directory.</clr-accordion-description
+      >
+      <clr-accordion-content *clrIfExpanded>Content 2</clr-accordion-content>
+    </clr-accordion-panel>
+
+    <clr-accordion-panel [clrAccordionPanelDisabled]="disableThirdPanel">
+      <clr-accordion-title>Step 3</clr-accordion-title>
+      <clr-accordion-description
+        ><span *ngIf="disableThirdPanel">The panel is currently disabled.</span
+        ><span *ngIf="!disableThirdPanel"
+          >The full license information can be found in LICENSE in the root directory.</span
+        >
+      </clr-accordion-description>
+      <clr-accordion-content *clrIfExpanded>Content 3</clr-accordion-content>
+    </clr-accordion-panel>
+  </clr-accordion>
+</div>

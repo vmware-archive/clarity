@@ -1,0 +1,12 @@
+header .branding {
+  width: 12rem;
+
+  .nav-link {
+    &:active cds-icon {
+      color: var(--cds-global-color-white);
+    }
+    &:visited cds-icon {
+      color: var(--cds-global-color-white);
+    }
+  }
+}

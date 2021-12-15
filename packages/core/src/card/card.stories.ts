@@ -385,3 +385,40 @@ export function WithLayoutAndOverflow() {
     </div>
   </cds-card>`;
 }
+
+export function WithinGrid() {
+  return html`<div cds-layout="grid gap:md cols:6 align:stretch">
+    <cds-card aria-labelledby="gridCard1">
+      <h3 id="gridCard1" cds-text="section" cds-layout="p-y:sm">Card Title</h3>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Card Content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat tortor eget quam
+        auctor, quis sagittis libero auctor. Nulla augue ante, tincidunt sit amet semper vitae, tempus at ipsum.
+        Vestibulum elementum, turpis quis ullamcorper fermentum, elit turpis placerat ipsum, quis convallis ex nisi sit
+        amet lacus. Ut enim ipsum, tincidunt nec luctus id, pharetra id velit.
+      </div>
+    </cds-card>
+    <cds-card aria-labelledby="gridCard2">
+      <h3 id="gridCard2" cds-text="section" cds-layout="p-y:sm">Card Title</h3>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Card Content.
+      </div>
+    </cds-card>
+    <cds-card aria-labelledby="gridCard3">
+      <h3 id="gridCard3" cds-text="section" cds-layout="p-y:sm">Card Title</h3>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Card Content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat tortor eget quam
+        auctor, quis sagittis libero auctor.
+      </div>
+    </cds-card>
+    <cds-card aria-labelledby="gridCard4">
+      <h3 id="gridCard4" cds-text="section" cds-layout="p-y:sm">Card Title</h3>
+      <div cds-text="body light" cds-layout="p-y:md">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat tortor eget quam auctor, quis
+        sagittis libero auctor. Nulla augue ante, tincidunt sit amet semper vitae, tempus at ipsum. Vestibulum
+        elementum, turpis quis ullamcorper fermentum, elit turpis placerat ipsum, quis convallis ex nisi sit amet lacus.
+        Ut enim ipsum, tincidunt nec luctus id, pharetra id velit. Aliquam nec elit ut neque lacinia mattis id ac lorem.
+        Vivamus egestas massa nulla, ac elementum purus pretium eu.
+      </div>
+    </cds-card>
+  </div>`;
+}

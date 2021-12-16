@@ -9,7 +9,7 @@
     "test": "npm-run-all -s test:unit test:performance",
     "lint": "eslint \"**/*.ts\" --ignore-pattern \"dist\" && stylelint \"./**/*.scss\" && lit-analyzer ./src",
     "storybook:start": "wds -c ./web-dev-server.storybook.mjs",
-    "storybook:build": "build-storybook --config-dir .storybook --output-dir ../../dist/website/storybook/core",
+    "storybook:build": "build-storybook --config-dir .storybook --output-dir ../../dist/storybook",
     "lint:fix": "eslint --fix \"./**/*.ts\" && stylelint --fix \"./**/*.scss\"",
     "test:watch": "wtr --watch",
     "test:unit": "wtr",

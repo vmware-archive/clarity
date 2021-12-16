@@ -22,11 +22,10 @@ jobs:
       - uses: microsoft/playwright-github-action@v1
       - run: yarn install
       - run: yarn build
-      - run: yarn website:functions
-      - name: Website Deploy
+      - name: Storybook Deploy
         continue-on-error: true
-        run: npm run website:deploy # Use NPM as a workaround for npx executing
+        run: npm run storybook:deploy # Use NPM as a workaround for npx executing
 
     env:
       CI: true
-      NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db
+      NETLIFY_SITE_ID: 8ceb07f0-393a-43b8-95a2-5485babe0cd2 # storybook.clarity.design

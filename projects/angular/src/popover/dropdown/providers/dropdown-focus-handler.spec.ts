@@ -237,6 +237,16 @@ export default function (): void {
           // but maybe that's too detailed for this unit test? It's just the easiest way to test it right now.
         });
       });
+
+      it('does not move to the first child when opened programmatically', function (this: TestContext) {
+        this.focusHandler.addChildren(this.children);
+        const moveTo = spyOn(this.focusService, 'moveTo');
+        const move = spyOn(this.focusService, 'move');
+        this.toggleService.open = true;
+
+        expect(moveTo).not.toHaveBeenCalled();
+        expect(move).not.toHaveBeenCalled();
+      });
     });
 
     describe('nested dropdown', function () {

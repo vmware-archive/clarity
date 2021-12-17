@@ -39,6 +39,9 @@ export class ClrPopoverToggleService {
   public set open(value: boolean) {
     value = !!value;
     if (this._open !== value) {
+      if (!value) {
+        this.openEvent = undefined;
+      }
       this._open = value;
       this._openChange.next(value);
     }

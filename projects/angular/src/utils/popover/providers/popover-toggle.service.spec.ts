@@ -93,7 +93,7 @@ export default function (): void {
         expect(this.toggleService.openEvent).toBe(openClickEvent);
         this.toggleService.toggleWithEvent(closeClickEvent);
         expect(this.toggleService.open).toBeFalse();
-        expect(this.toggleService.openEvent).toBe(closeClickEvent);
+        expect(this.toggleService.openEvent).toBeUndefined();
       });
 
       /**

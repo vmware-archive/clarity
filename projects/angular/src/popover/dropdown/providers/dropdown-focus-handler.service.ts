@@ -66,10 +66,11 @@ export class DropdownFocusHandler implements FocusableItem {
   handleRootFocus() {
     this.toggleService.openChange.subscribe(open => {
       if (!open) {
+        const isFocusedOnItem = this.focusService.current && this.focusService.current !== this;
         // We reset the state of the focus service both on initialization and when closing.
         this.focusService.reset(this);
         // But we only actively focus the trigger when closing, not on initialization.
-        if (this.focusBackOnTrigger) {
+        if (this.focusBackOnTrigger && isFocusedOnItem) {
           this.focus();
         }
       }

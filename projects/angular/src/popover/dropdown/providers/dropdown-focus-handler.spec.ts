@@ -155,13 +155,28 @@ export default function (): void {
         expect(spyBlur).toHaveBeenCalled();
       });
 
-      it('puts focus back on the trigger when the dropdown becomes closed', function (this: TestContext) {
+      it('puts focus back on the trigger when the dropdown becomes closed with a click', function (this: TestContext) {
+        fakeAsync(function (this: TestContext) {
+          this.focusHandler.trigger = this.trigger;
+          this.focusHandler.container = this.container;
+          this.focusHandler.addChildren(this.children);
+          expect(document.activeElement).not.toBe(this.trigger);
+          this.toggleService.toggleWithEvent({});
+          tick();
+          this.toggleService.toggleWithEvent({});
+          tick();
+          expect(document.activeElement).toBe(this.trigger);
+        });
+      });
+
+      it('puts focus back on the trigger when the dropdown becomes closed programmatically', function (this: TestContext) {
         this.focusHandler.trigger = this.trigger;
         this.focusHandler.container = this.container;
+        this.focusHandler.addChildren(this.children);
         expect(document.activeElement).not.toBe(this.trigger);
         this.toggleService.open = true;
         this.toggleService.open = false;
-        expect(document.activeElement).toBe(this.trigger);
+        expect(document.activeElement).toBe(document.body);
       });
 
       it('does not prevent moving focus to a different part of the page', fakeAsync(function (this: TestContext) {

@@ -1,0 +1,68 @@
+import { Meta, Props, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Internal Preview/Signpost" />
+
+# Signposts
+
+<cds-alert-group status="warning" cds-layout="m-b:lg">
+  <cds-alert>
+    This component or utility is offered as a preview. This means we are currently working on it and seeking feedback.
+    Please be aware that this component or utility may have breaking changes before we finish working on it.
+  </cds-alert>
+</cds-alert-group>
+
+Signposts are a variation of popups/dropdowns. They are offered as a convenience to pre-configure a popup to have the
+default options the signpost component in Clarity Angular (`@clr/angular`) did.
+
+By default, signposts are both closable and configured to have an "angle" pointer.
+
+As a public alias for an internal generic popup component, signposts have all the positioning and customization options
+available to both popups and dropdowns.
+
+## Installation
+
+To use the signpost component import the component in your JavaScript.
+
+```typescript
+import '@cds/core/signpost/register.js';
+```
+
+```html
+<cds-button popup="my-signpost" id="my-button" onclick="document.getElementById('my-signpost').hidden = false"
+  >Open Signpost</cds-button
+>
+<cds-signpost anchor="my-button" id="my-signpost" orientation="right bottom">
+  <div cds-layout="vertical gap:lg p:lg align:stretch">
+    <h3 cds-first-focus cds-text="section" id="basic-signpost-title">Dropdown Title</h3>
+    <p cds-text="body">Any content can be placed inside a generic signpost.</p>
+    <p cds-text="body">Here we've placed a title and text in the signpost.</p>
+    <p cds-text="body">Something should get immediate focus when the signpost opens. Here it is the title.</p>
+  </div>
+</cds-signpost>
+```
+
+## Signpost
+
+<Preview>
+  <Story id="stories-signpost--basic" />
+</Preview>
+
+<Preview>
+  <Story id="stories-signpost--custompointer" />
+</Preview>
+
+<Preview>
+  <Story id="stories-signpost--trigger" />
+</Preview>
+
+<Preview>
+  <Story id="stories-signpost--stacked" />
+</Preview>
+
+<Preview>
+  <Story id="stories-signpost--custom" />
+</Preview>
+
+<Preview>
+  <Story id="stories-signpost--darktheme" />
+</Preview>

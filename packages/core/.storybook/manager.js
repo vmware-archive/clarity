@@ -11,8 +11,9 @@ addons.setConfig({
       'internal-stories',
       'internal-documentation',
       'internal-api',
-      'internal-controllers',
       'internal-preview-grid',
+      'internal-preview',
+      'internal-controllers',
     ],
   },
   theme: create({

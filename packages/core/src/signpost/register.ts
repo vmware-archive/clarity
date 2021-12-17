@@ -5,13 +5,13 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { CdsDropdown } from './dropdown.element.js';
+import { CdsSignpost } from './signpost.element.js';
 import '@cds/core/internal-components/popup/register.js';
 
-registerElementSafely('cds-dropdown', CdsDropdown);
+registerElementSafely('cds-signpost', CdsSignpost);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cds-dropdown': CdsDropdown;
+    'cds-signpost': CdsSignpost;
   }
 }

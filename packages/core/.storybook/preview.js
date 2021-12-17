@@ -131,6 +131,7 @@ export const parameters = {
         ],
         'Internal API',
         ['Close Button', 'Panel', 'Motion', 'Overlay'],
+        'Internal Preview',
         'Internal Preview Grid',
         [
           'Basic',

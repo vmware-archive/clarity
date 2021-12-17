@@ -107,25 +107,15 @@ export class CdsInternalPopup extends CdsInternalStaticOverlay implements Positi
   @event()
   cdsMotionChange: EventEmitter<string>;
 
-  // --- anchor ---
-
   /**
-   *
-   * @type {HTMLElement}
-   * @memberof CdsInternalPopup
-   * Used to perform lookups for anchors. If unset, it assumes that the document is the container
-   * and will then only check for anchors in the light DOM. If set to something other than the
-   * document, it will perform checks in both the light and shadow DOM of the given container.
-   * This is useful in the situation where an anchor is wrapped up with the dropdown in a parent
-   * wrapper element.
-   *
+   * Used to force an override of the popup trigger focus recovery. Used by the closable controller.
    */
-  container: HTMLElement;
+  @property({ type: Object }) trigger: HTMLElement;
 
   /**
    * Accepts both an HTMLElement and a string
    */
-  @property({ type: String, reflect: true }) anchor: HTMLElement | string;
+  @property({ type: String }) anchor: HTMLElement | string;
 
   // this getter is stealth private so we can test it in isolation
   /** @private */
@@ -183,6 +173,14 @@ export class CdsInternalPopup extends CdsInternalStaticOverlay implements Positi
   @property({ type: String })
   pointerAlign: AxisAligns = 'start';
 
+  // TODO: TESTME
+  /**
+   * Forces a pointer to show with popup from known pointer types
+   * @type {'angle' | 'default'}
+   */
+  @property({ type: String })
+  defaultPointerType: string | null = null;
+
   @querySlot('cds-internal-pointer', { assign: 'pointer' }) pointer: CdsInternalPointer;
 
   /** @private */
@@ -211,6 +209,15 @@ export class CdsInternalPopup extends CdsInternalStaticOverlay implements Positi
         }
       })
     );
+  }
+
+  connectedCallback(): void {
+    if (!this.pointer && this.defaultPointerType) {
+      const defaultPointer = document.createElement<any>('cds-internal-pointer');
+      defaultPointer.type = this.defaultPointerType;
+      this.appendChild(defaultPointer);
+    }
+    super.connectedCallback();
   }
 
   disconnectedCallback() {

@@ -95,6 +95,9 @@
       "path": "./src/selection-panels/radio/entrypoint.tsconfig.json"
     },
     {
+      "path": "./src/signpost/entrypoint.tsconfig.json"
+    },
+    {
       "path": "./src/tag/entrypoint.tsconfig.json"
     },
     {

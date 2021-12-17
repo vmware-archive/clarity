@@ -68,6 +68,7 @@ class DemoDropdownBasic extends DemoDropdown {
         id="demo-dropdown-basic-dd"
         @closeChange=${() => (this.showOverlay = false)}
       >
+        <cds-internal-pointer type="angle"></cds-internal-pointer>
         <div cds-layout="vertical gap:lg p:lg align:stretch">
           <h3 cds-first-focus cds-text="section" id="basic-dropdown-title">Dropdown</h3>
           <p cds-text="body">Any content can be placed inside a generic dropdown.</p>

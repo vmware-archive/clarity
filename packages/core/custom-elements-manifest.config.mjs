@@ -3,6 +3,7 @@ import { readonlyPlugin } from 'cem-plugin-readonly';
 export default {
   globs: ['**/*.ts'],
   exclude: [
+    '**/*.hold',
     '**/*.spec.ts',
     '**/*.performance.ts',
     '**/*.a11y.ts',

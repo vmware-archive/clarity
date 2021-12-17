@@ -81,6 +81,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/select': '/dist/core/select/index.js',
             '@cds/core/selection-panels/checkbox': '/dist/core/selection-panels/checkbox/index.js',
             '@cds/core/selection-panels/radio': '/dist/core/selection-panels/index.js',
+            '@cds/core/signpost': '/dist/core/signpost/index.js',
             '@cds/core/tag': '/dist/core/tag/index.js',
             '@cds/core/test': '/dist/core/test/index.js',
             '@cds/core/test-dropdown': '/dist/core/test-dropdown/index.js',

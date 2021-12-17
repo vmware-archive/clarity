@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CdsSignpost snapshot 1`] = `
+<div>
+  <CdsSignpost>
+    <CdsSignpost
+      l={null}
+    >
+      <cds-signpost
+        l={null}
+      />
+    </CdsSignpost>
+  </CdsSignpost>
+  <div
+    style={
+      Object {
+        "height": "140px",
+        "marginTop": "24px",
+      }
+    }
+  >
+    <CdsSignpost
+      orientation="vertical"
+    >
+      <CdsSignpost
+        l={null}
+        orientation="vertical"
+      >
+        <cds-signpost
+          l={null}
+        >
+          1
+        </cds-signpost>
+      </CdsSignpost>
+    </CdsSignpost>
+  </div>
+</div>
+`;

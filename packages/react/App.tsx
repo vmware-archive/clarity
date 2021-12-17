@@ -40,7 +40,7 @@ import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 import { CdsInternalVisualCheckbox } from './dist/react/internal-components/visual-checkbox/index.js';
 import { CdsInternalCloseButton } from './dist/react/internal-components/close-button/index.js';
 import { CdsDropdown } from './dist/react/dropdown/index.js';
-import { CdsInternalPointer } from './dist/react/internal-components/popup/index.js';
+import { CdsSignpost } from './dist/react/signpost/index.js';
 import { CdsInternalPanel } from './dist/react/internal-components/panel/index.js';
 import { CdsGrid, CdsGridColumn, CdsGridRow, CdsGridCell, CdsGridFooter } from './dist/react/grid/index.js';
 import { CdsButtonAction } from './dist/react/button-action/index.js';
@@ -57,7 +57,7 @@ interface AppState {
   modalReady: boolean;
   modal2Ready: boolean;
   dropdownOpen: boolean;
-  pointerDropdownOpen: boolean;
+  signpostOpen: boolean;
   responsiveDropdownOpen: boolean;
   panel1Expanded: boolean;
   panel2Expanded: boolean;
@@ -84,7 +84,7 @@ export default class App extends React.Component<{}, AppState> {
       navigationOpen: true,
       navigationGroupOpen: true,
       dropdownOpen: false,
-      pointerDropdownOpen: false,
+      signpostOpen: false,
       responsiveDropdownOpen: false,
     };
     this.buttonRef = React.createRef<typeof CdsButton & HTMLButtonElement>();
@@ -112,7 +112,7 @@ export default class App extends React.Component<{}, AppState> {
     const isModal2Open = this.state.modal2Open;
     const isModalReady = this.state.modalReady;
     const isDropdownOpen = this.state.dropdownOpen;
-    const isPointerDropdownOpen = this.state.pointerDropdownOpen;
+    const isSignpostOpen = this.state.signpostOpen;
     const isResponsiveDropdownOpen = this.state.responsiveDropdownOpen;
     const panel1Expanded = this.state.panel1Expanded;
     const panel2Expanded = this.state.panel2Expanded;
@@ -394,11 +394,11 @@ export default class App extends React.Component<{}, AppState> {
               Open Responsive Dropdown
             </CdsButton>
             <CdsButton
-              id="ptr-dropdown-btn"
-              popup="my-ptr-dropdown"
+              id="signpost-btn"
+              popup="my-signpost"
               onClick={() => {
                 const timer = setTimeout(() => {
-                  this.setState({ pointerDropdownOpen: true });
+                  this.setState({ signpostOpen: true });
                   clearTimeout(timer);
                 }, 25);
               }}
@@ -448,22 +448,20 @@ export default class App extends React.Component<{}, AppState> {
           </div>
 
           <div>
-            <CdsDropdown
-              id="my-ptr-dropdown"
-              anchor="ptr-dropdown-btn"
+            <CdsSignpost
+              id="my-signpost"
+              anchor="signpost-btn"
               orientation="right bottom"
-              hidden={!isPointerDropdownOpen}
-              closable
+              hidden={!isSignpostOpen}
               onCloseChange={() => {
-                this.setState({ pointerDropdownOpen: false });
+                this.setState({ signpostOpen: false });
               }}
             >
-              <CdsInternalPointer type="angle"></CdsInternalPointer>
               <div cds-layout="p:lg" style={{ height: '150px', width: '150px' }}>
                 <h3 cds-first-focus="">Title</h3>
                 <p cds-text="body">Ohai</p>
               </div>
-            </CdsDropdown>
+            </CdsSignpost>
           </div>
 
           <h2>Light Alerts</h2>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -31,8 +31,6 @@ export type AllCardinalPositionConfigs = {
 
 export type PositionConfig = false | AllCardinalPositionConfigs;
 
-// this can't be a const enum because we need to switch back and forth with number values
-// TODO: after implementation, can we make this a const enum???
 // ordered so the highest default priority has the largest integer. this allows for number sums to be
 // followed downward without risk of preference knocking things out of whack.
 export enum Positions {

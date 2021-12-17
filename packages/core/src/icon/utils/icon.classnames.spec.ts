@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,13 @@ import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import { renderIcon } from '../icon.renderer.js';
 
-import { getSizeValue, getUpdateSizeStrategy, SizeUpdateStrategies, updateIconSizeStyle } from './icon.classnames.js';
+import {
+  getIconSizeStylesToUpdate,
+  getSizeValue,
+  getUpdateSizeStrategy,
+  SizeUpdateStrategies,
+  updateIconSizeStyle,
+} from './icon.classnames.js';
 
 describe('Icon classname helpers: ', () => {
   describe('getSizeValue', () => {
@@ -185,6 +191,46 @@ describe('Icon classname helpers: ', () => {
       expect(component.style.minWidth).toEqual(expectedSize);
       expect(component.style.height).toEqual(expectedSize);
       expect(component.style.minHeight).toEqual(expectedSize);
+    });
+  });
+
+  describe('getIconSizeStylesToUpdate: ', () => {
+    const myRem = '4rem';
+
+    function testStyles(stylesArray: [string, string][], expectAuto = false) {
+      stylesArray.forEach(tup => {
+        const [style, value] = tup;
+        if (expectAuto && (style === 'width' || style === 'height')) {
+          expect(value).toBe('auto', `${style} is set to auto as expected`);
+        } else {
+          expect(value).toBe(myRem, `${style} is set to rem as expected`);
+        }
+      });
+    }
+
+    it('should set width and height to auto if size is "fit"', () => {
+      const testme = getIconSizeStylesToUpdate('fit', myRem);
+      testStyles(testme, true);
+    });
+
+    it('should set width and height to rem value if size is undefined', () => {
+      const testme = getIconSizeStylesToUpdate(void 0, myRem);
+      testStyles(testme);
+    });
+
+    it('should set width and height to rem value if size is null', () => {
+      const testme = getIconSizeStylesToUpdate(null, myRem);
+      testStyles(testme);
+    });
+
+    it('should set width and height to rem value if size is not "fit" or nil', () => {
+      const testme = getIconSizeStylesToUpdate('500', myRem);
+      testStyles(testme);
+    });
+
+    it('should set width and height to rem value even if size is empty', () => {
+      const testme = getIconSizeStylesToUpdate('', myRem);
+      testStyles(testme);
     });
   });
 });

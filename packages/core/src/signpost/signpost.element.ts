@@ -1,28 +1,28 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { property } from '@cds/core/internal';
 import { CdsInternalPopup } from '@cds/core/internal-components/popup';
 
 /**
- * Dropdowns are generic containers that are positioned on a page dynamically
- * based on how much space is available. Any content can be placed inside
- * a dropdown.
+ * Signposts are dropdowns which default to having a pointer and a close
+ * action. Like dropdowns, signposts are generic containers that are
+ * designed to hold any type of content.
  *
  * ```typescript
- * import '@cds/core/dropdown/register.js';
+ * import '@cds/core/signpost/register.js';
  * ```
  *
  * ```html
- * <cds-dropdown>...</cds-dropdown>
+ * <cds-signpost>...</cds-signpost>
  * ```
  * @beta
- * @element cds-dropdown
- * @slot - Content slot for the content inside the popup's panel
+ * @element cds-signpost
+ * @slot - Content slot for the content inside the signpost
  * @event closeChange - Notify user when close event has occurred
- * @property anchor
  * @cssprop --active-corner-border-radius
  * @cssprop --background
  * @cssprop --backdrop-background
@@ -43,6 +43,13 @@ import { CdsInternalPopup } from '@cds/core/internal-components/popup';
  * @cssprop --width
  * @cssprop --animation-duration
  * @cssprop --animation-easing
+ * @property trigger
  *
  */
-export class CdsDropdown extends CdsInternalPopup {}
+export class CdsSignpost extends CdsInternalPopup {
+  @property({ type: Boolean })
+  closable = true;
+
+  @property({ type: String })
+  defaultPointerType: string | null = 'angle';
+}

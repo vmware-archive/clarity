@@ -4,13 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, PropertyValues } from 'lit';
+import { html, LitElement } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import '@cds/core/internal-components/popup/register.js';
 import '@cds/core/internal-components/close-button/register.js';
 import { CdsInternalPopup } from './popup.element.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
+import { getActiveElement } from '@cds/core/internal';
 
 @customElement('popup-test-default')
 class PopupTestDefault extends LitElement {
@@ -28,11 +29,6 @@ class PopupTestBasic extends LitElement {
 
   testAnchorId = 'my-anchor';
 
-  firstUpdated(props: PropertyValues<this>) {
-    super.firstUpdated(props);
-    this.popup.container = this;
-  }
-
   render() {
     return html`<div class="testAnchor" id="${this.testAnchorId}" style="width: 150px; height: 30px;">ohai</div>
       <cds-internal-popup>hallo</cds-internal-popup>`;
@@ -48,15 +44,30 @@ class PopupTestAnchors extends LitElement {
   testAnchorOneId = 'anchor-one';
   testAnchorTwoId = 'anchor-two';
 
-  firstUpdated(props: PropertyValues<this>) {
-    super.firstUpdated(props);
-    this.popup.container = this;
-  }
-
   render() {
     return html` <div class="testAnchor-1" id="${this.testAnchorOneId}">ohai</div>
       <div class="testAnchor-2" id="${this.testAnchorTwoId}">howdy</div>
       <cds-internal-popup anchor="${this.testAnchorOneId}">hallo</cds-internal-popup>`;
+  }
+}
+
+@customElement('popup-test-triggers')
+class PopupTestTriggers extends LitElement {
+  @query('cds-internal-popup') popup: CdsInternalPopup;
+  @query('.test-1') buttonOne: HTMLButtonElement;
+  @query('.test-2') buttonTwo: HTMLButtonElement;
+
+  buttonOneId = 'one';
+  buttonTwoId = 'two';
+
+  openPopup() {
+    this.popup.hidden = false;
+  }
+
+  render() {
+    return html`<button @click=${this.openPopup} class="test-1" id="${this.buttonOneId}">ohai</button>
+      <button @click=${this.openPopup} class="test-2" id="${this.buttonTwoId}">howdy</button>
+      <cds-internal-popup anchor="${this.buttonOneId}" hidden>hallo</cds-internal-popup>`;
   }
 }
 
@@ -108,10 +119,6 @@ describe('default: ', () => {
     expect(popup.anchorElement).toBeUndefined(
       'anchorElement falls through with default, undefined anchor string property'
     );
-  });
-
-  it('container', () => {
-    expect(popup.container).not.toBeDefined();
   });
 });
 
@@ -262,5 +269,95 @@ describe('closable: ', () => {
 
     const test = root.querySelectorAll('cds-internal-close-button');
     expect(test.length).toBe(1, 'has only one close button');
+  });
+});
+
+describe('triggerElement', () => {
+  const lightDomTriggerId = 'light';
+  let testElement: HTMLElement;
+  let wrapper: PopupTestTriggers;
+  let popup: CdsInternalPopup;
+
+  beforeEach(async () => {
+    testElement = await createTestElement(
+      html`<button id="${lightDomTriggerId}">ohai</button><popup-test-triggers></popup-test-triggers>`
+    );
+    wrapper = testElement.querySelector<PopupTestTriggers>('popup-test-triggers');
+    popup = wrapper.popup;
+    await componentIsStable(wrapper);
+  });
+
+  afterEach(() => {
+    removeTestElement(testElement);
+  });
+
+  it('should return focus to the previous active element if defined', async () => {
+    const button = testElement.querySelector<HTMLButtonElement>(`#${lightDomTriggerId}`);
+    popup.hidden = true;
+    button.focus();
+    await componentIsStable(popup);
+
+    popup.hidden = false;
+    await componentIsStable(popup);
+    button.blur();
+
+    popup.hidden = true;
+    await componentIsStable(popup);
+
+    expect(getActiveElement()).toEqual(button);
+  });
+
+  it('should return focus to the previous active element if defined even if it is in shadow dom', async () => {
+    const button = wrapper.buttonTwo;
+    popup.hidden = true;
+    button.focus();
+    await componentIsStable(popup);
+
+    popup.hidden = false;
+    await componentIsStable(popup);
+    button.blur();
+
+    popup.hidden = true;
+    await componentIsStable(popup);
+
+    expect(getActiveElement()).toEqual(button);
+  });
+});
+
+describe('defaultPointerType: ', () => {
+  it('should have no pointer and null if defaultPointerType is not set', async () => {
+    const testElement = await createTestElement(html`<cds-internal-popup>ohai</cds-internal-popup>`);
+    const popup = testElement.querySelector<CdsInternalPopup>('cds-internal-popup');
+    await componentIsStable(popup);
+    expect(popup.defaultPointerType).toBeNull();
+    expect(popup.pointer).toBeNull();
+    removeTestElement(testElement);
+  });
+
+  it('should inject default pointer into the light dom if default pointer type is set', async () => {
+    const testElement = await createTestElement(
+      html`<cds-internal-popup default-pointer-type="angle">ohai</cds-internal-popup>`
+    );
+    const popup = testElement.querySelector<CdsInternalPopup>('cds-internal-popup');
+    await componentIsStable(popup);
+    expect(popup.defaultPointerType).toBe('angle');
+    expect(popup.pointer).not.toBeNull();
+    expect(popup.pointer.type).toBe('angle');
+    removeTestElement(testElement);
+  });
+
+  it('should not inject a pointer if one is already defined in the light dom', async () => {
+    const testElement = await createTestElement(
+      html`<cds-internal-popup default-pointer-type="angle">
+        <cds-internal-pointer type="default"></cds-internal-pointer>
+        ohai
+      </cds-internal-popup>`
+    );
+    const popup = testElement.querySelector<CdsInternalPopup>('cds-internal-popup');
+    await componentIsStable(popup);
+    expect(popup.defaultPointerType).toBe('angle');
+    expect(popup.pointer).not.toBeNull();
+    expect(popup.pointer.type).toBe('default');
+    removeTestElement(testElement);
   });
 });

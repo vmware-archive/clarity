@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -11,6 +11,7 @@
   --border-color: #{$cds-alias-object-border-color};
   --border-width: #{$cds-alias-object-border-width-100};
   --border-radius: #{$cds-alias-object-border-radius-100};
+  --padding: #{$cds-global-space-7};
   --active-corner-border-radius: 0;
   --color: #{$cds-global-typography-color-500};
   --close-button-offset: #{$cds-global-space-1};
@@ -66,11 +67,13 @@
   border-style: solid;
   box-shadow: var(--box-shadow);
   min-width: var(--min-width);
+  padding: var(--padding);
   width: var(--width);
   max-width: var(--max-width);
   height: var(--height);
   max-height: var(--max-height);
   overflow: var(--overflow);
+  position: relative;
 }
 
 // -- styles that can square off/customize an active corner

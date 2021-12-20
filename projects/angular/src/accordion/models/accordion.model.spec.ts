@@ -55,6 +55,24 @@ describe('AccordionModel', () => {
     expect(accordion.panels[2].open).toBe(false);
   });
 
+  it('should not close all panels when closing an already closed panel', () => {
+    expect(accordion.panels[0].open).toBe(false);
+    expect(accordion.panels[1].open).toBe(false);
+    expect(accordion.panels[2].open).toBe(false);
+
+    accordion.togglePanel(panel1Id);
+
+    expect(accordion.panels[0].open).toBe(true);
+    expect(accordion.panels[1].open).toBe(false);
+    expect(accordion.panels[2].open).toBe(false);
+
+    accordion.togglePanel(panel2Id, false);
+
+    expect(accordion.panels[0].open).toBe(true);
+    expect(accordion.panels[1].open).toBe(false);
+    expect(accordion.panels[2].open).toBe(false);
+  });
+
   it('should allow multiple panels open if in multi panel mode', () => {
     accordion.setStrategy(AccordionStrategy.Multi);
 

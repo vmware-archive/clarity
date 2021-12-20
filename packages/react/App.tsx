@@ -6,7 +6,7 @@ import {
   CdsAccordionContent,
 } from './dist/react/accordion/index.js';
 import { CdsAlert, CdsAlertActions, CdsAlertGroup } from './dist/react/alert/index.js';
-import { CdsButton } from './dist/react/button/index.js';
+import { CdsButton, CdsIconButton } from './dist/react/button/index.js';
 import { CdsBadge } from './dist/react/badge/index.js';
 import { CdsCheckbox } from './dist/react/checkbox/index.js';
 import { CdsControl, CdsControlMessage, CdsFormGroup } from './dist/react/forms/index.js';
@@ -40,7 +40,7 @@ import { CdsTree, CdsTreeItem } from './dist/react/tree-view/index.js';
 import { CdsInternalVisualCheckbox } from './dist/react/internal-components/visual-checkbox/index.js';
 import { CdsInternalCloseButton } from './dist/react/internal-components/close-button/index.js';
 import { CdsDropdown } from './dist/react/dropdown/index.js';
-import { CdsInternalPointer } from './dist/react/popup/index.js';
+import { CdsInternalPointer } from './dist/react/internal-components/popup/index.js';
 import { CdsInternalPanel } from './dist/react/internal-components/panel/index.js';
 
 ClarityIcons.addIcons(userIcon, timesIcon);
@@ -475,6 +475,13 @@ export default class App extends React.Component<{}, AppState> {
 
           <h2>Internal Close button</h2>
           <CdsInternalCloseButton />
+
+          <h2>Icon Buttons</h2>
+          <div cds-layout="horizontal gap:md">
+            <CdsIconButton aria-label="My Icon Button">
+              <CdsIcon shape="user" />
+            </CdsIconButton>
+          </div>
 
           <h2>Badge</h2>
           <div cds-layout="horizontal gap:sm">

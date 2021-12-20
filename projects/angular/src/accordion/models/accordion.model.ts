@@ -43,11 +43,12 @@ export class AccordionModel {
 
   togglePanel(panelId: string, open?: boolean) {
     const panelIsOpen = this._panels[panelId].open;
-    if (this.strategy === AccordionStrategy.Default) {
+    const newOpenState = open !== undefined ? open : !panelIsOpen;
+    if (newOpenState && this.strategy === AccordionStrategy.Default) {
       this.closeAllPanels();
     }
 
-    this._panels[panelId].open = open !== undefined ? open : !panelIsOpen;
+    this._panels[panelId].open = newOpenState;
   }
 
   disablePanel(panelId: string, disabled: boolean) {

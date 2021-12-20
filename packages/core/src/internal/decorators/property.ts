@@ -88,6 +88,19 @@ export function requirePropertyCheck(protoOrDescriptor: any, name: string, optio
   protoOrDescriptor.firstUpdated = firstUpdated;
 }
 
+/**
+ * In React, DOM attributes and properties are camelCase, except for aria- and data- attributes
+ * https://reactjs.org/docs/dom-elements.html
+ *
+ * This will format aria attributes as kebab case, otherwise returning the original property name
+ */
+function getReactPropertyName(propertyName: string) {
+  if (propertyName.startsWith('aria')) {
+    return camelCaseToKebabCase(propertyName);
+  }
+  return propertyName;
+}
+
 function getRequiredMessage(level = 'warning', propertyName: string, tagName: string) {
   const tag = tagName.toLocaleLowerCase();
   return (
@@ -96,7 +109,9 @@ function getRequiredMessage(level = 'warning', propertyName: string, tagName: st
     )}: ${propertyName} is required to use ${tag} component. Set the JS Property or HTML Attribute.\n\n` +
     `${getAngularVersion() ? `Angular: <${tag} [${propertyName}]="..."></${tag}>\n` : ''}` +
     `${getVueVersion() ? `Vue: <${tag} :${propertyName}="..."></${tag}>\n` : ''}` +
-    `${getReactVersion() ? `React: <${kebabCaseToPascalCase(tag)} ${propertyName}={...} />\n` : ''}` +
+    `${
+      getReactVersion() ? `React: <${kebabCaseToPascalCase(tag)} ${getReactPropertyName(propertyName)}={...} />\n` : ''
+    }` +
     `${`HTML: <${tag} ${camelCaseToKebabCase(propertyName)}="..."></${tag}>\n`}` +
     `${`JavaScript: document.querySelector('${tag}').${propertyName} = '...';\n\n`}`
   );

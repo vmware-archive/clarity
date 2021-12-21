@@ -5,21 +5,12 @@
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { CdsButtonInline, CdsInlineButton } from './button-inline.element.js';
+import { CdsButtonInline } from './button-inline.element.js';
 
 registerElementSafely('cds-button-inline', CdsButtonInline);
 
 declare global {
   interface HTMLElementTagNameMap {
     'cds-button-inline': CdsButtonInline;
-  }
-}
-
-/** @deprecated */
-registerElementSafely('cds-inline-button', CdsInlineButton);
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'cds-inline-button': CdsInlineButton;
   }
 }

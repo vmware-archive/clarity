@@ -49,9 +49,3 @@ export class CdsButtonInline extends CdsBaseButton {
     return [baseStyles, styles];
   }
 }
-
-/**
- * @deprecated
- * renamed to `cds-button-inline` in 6.0 to align to rest of the `cds-button-*` APIs
- */
-export class CdsInlineButton extends CdsButtonInline {}

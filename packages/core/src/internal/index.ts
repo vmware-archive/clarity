@@ -47,7 +47,6 @@ export * from './services/keycodes.service.js';
 export * from './utils/conditional.js';
 export * from './utils/enum.js';
 export * from './utils/exists.js';
-export * from './utils/focus-trap.js';
 export * from './utils/framework.js';
 export * from './i18n/utils.js';
 export * from './positioning/utils.js';

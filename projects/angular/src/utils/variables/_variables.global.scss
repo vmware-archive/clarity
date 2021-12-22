@@ -2,6 +2,8 @@
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
+@use "sass:math";
+
 /* stylelint-disable-next-line meowtec/no-px */
 $clr-baseline-px: 24px; // DEPRECATED in 3.0: no longer used in Clarity SASS
 
@@ -15,14 +17,14 @@ $clr-baseline-denominator: 20 !default; // used in code to reduce impact of brow
 $browser-default-size: 16; // if font-size set to 100% on html selector, it equates to 16px
 // this takes our sizing in code, divides it by the browser default at 100%
 // and then converts it to a percentage so that browser settings sizing is not broken
-$clr-basefont-size: ($clr-baseline-denominator/$browser-default-size) * 100% !default;
+$clr-basefont-size: math.div($clr-baseline-denominator, $browser-default-size) * 100% !default;
 
 // DEPRECATED in 3.0; No longer sets anything now that we are using percentage
 $clr-font-base-size: 14 !default; // Moved from original needs a better name
 
 @function convertBaselineToBase20($size: 24) {
-  $clr-baseline-to-basefontsize-multiplier: $clr-baseline-int/$clr-baseline-denominator;
-  @return $size/$clr-baseline-int * $clr-baseline-to-basefontsize-multiplier * 1rem;
+  $clr-baseline-to-basefontsize-multiplier: math.div($clr-baseline-int, $clr-baseline-denominator);
+  @return math.div($size, $clr-baseline-int) * $clr-baseline-to-basefontsize-multiplier * 1rem;
 }
 
 //BaselineRem Variables

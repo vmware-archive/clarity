@@ -6,7 +6,7 @@
 @import '../../../projects/angular/src/utils/variables/variables.global';
 
 $full-lh-block-width: $clr_baselineRem_1_5;
-$ruler-highlight-width: $full-lh-block-width/4;
+$ruler-highlight-width: $full-lh-block-width * 0.25;
 
 .glyph-rulers {
   margin-top: $clr_baselineRem_1;

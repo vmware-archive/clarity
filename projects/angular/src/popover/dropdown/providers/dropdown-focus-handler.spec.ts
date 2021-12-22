@@ -78,23 +78,23 @@ export default function (): void {
         expect(this.fixture.debugElement.injector.get(FocusableItem, null)).toBe(this.focusHandler);
       });
 
-      it('toggles open when arrow up or down on the trigger', function (this: TestContext) {
-        fakeAsync(function (this: TestContext) {
-          expect(this.toggleService.open).toBeFalsy();
-          this.focusHandler.trigger = this.trigger;
+      it('toggles open when arrow up or down on the trigger', fakeAsync(function (this: TestContext) {
+        expect(this.toggleService.open).toBeFalsy();
+        this.focusHandler.trigger = this.trigger;
 
-          this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowup' }));
-          expect(this.toggleService.open).toBeTruthy();
+        this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowup' }));
+        tick();
+        expect(this.toggleService.open).toBeTruthy();
 
-          //once open, the up/down arrow keys control the focus on menu items, so we close again for the next test
-          this.toggleService.open = false;
-          tick();
-          expect(this.toggleService.open).toBeFalsy();
+        //once open, the up/down arrow keys control the focus on menu items, so we close again for the next test
+        this.toggleService.open = false;
+        tick();
+        expect(this.toggleService.open).toBeFalsy();
 
-          this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowdown' }));
-          expect(this.toggleService.open).toBeTruthy();
-        });
-      });
+        this.focusHandler.trigger.dispatchEvent(new KeyboardEvent('keydown', { key: 'arrowdown' }));
+        tick();
+        expect(this.toggleService.open).toBeTruthy();
+      }));
 
       it('listens to arrow keys on the trigger', function (this: TestContext) {
         const spy = spyOn(this.focusService, 'listenToArrowKeys');
@@ -222,21 +222,19 @@ export default function (): void {
         expect(this.toggleService.open).toBeTruthy();
       });
 
-      it('moves to the first child when opened with a click', function (this: TestContext) {
-        fakeAsync(function (this: TestContext) {
-          this.focusHandler.addChildren(this.children);
-          const moveTo = spyOn(this.focusService, 'moveTo');
-          const move = spyOn(this.focusService, 'move');
-          this.toggleService.toggleWithEvent({});
-          tick();
+      it('moves to the first child when opened with a click', fakeAsync(function (this: TestContext) {
+        this.focusHandler.addChildren(this.children);
+        const moveTo = spyOn(this.focusService, 'moveTo');
+        const move = spyOn(this.focusService, 'move');
+        this.toggleService.toggleWithEvent({});
+        tick();
 
-          // First we move to the clicked item, which is the trigger,
-          expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
-          // then we move down to the first item,
-          expect(move).toHaveBeenCalledWith(ArrowKeyDirection.DOWN);
-          // but maybe that's too detailed for this unit test? It's just the easiest way to test it right now.
-        });
-      });
+        // First we move to the clicked item, which is the trigger,
+        expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
+        // then we move down to the first item,
+        expect(move).toHaveBeenCalledWith(ArrowKeyDirection.DOWN);
+        // but maybe that's too detailed for this unit test? It's just the easiest way to test it right now.
+      }));
     });
 
     describe('nested dropdown', function () {
@@ -318,16 +316,16 @@ export default function (): void {
         expect(this.toggleService.open).toBeFalsy();
       });
 
-      it('moves to the first child when opened with a click', function (this: TestContext) {
-        fakeAsync(function (this: TestContext) {
-          this.focusHandler.addChildren(this.children);
-          const moveTo = spyOn(this.focusService, 'moveTo');
-          const move = spyOn(this.focusService, 'move');
-          this.toggleService.toggleWithEvent({});
-          expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
-          expect(move).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT);
-        });
-      });
+      it('moves to the first child when opened with a click', fakeAsync(function (this: TestContext) {
+        this.focusHandler.addChildren(this.children);
+        const moveTo = spyOn(this.focusService, 'moveTo');
+        const move = spyOn(this.focusService, 'move');
+        this.toggleService.toggleWithEvent({});
+        tick();
+
+        expect(moveTo).toHaveBeenCalledWith(this.focusHandler);
+        expect(move).toHaveBeenCalledWith(ArrowKeyDirection.RIGHT);
+      }));
     });
   });
 }

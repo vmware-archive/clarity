@@ -5,7 +5,7 @@
  */
 
 import { Component, ElementRef, Injector, Optional, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
@@ -22,6 +22,8 @@ class TestPopover extends AbstractPopover {
   constructor(injector: Injector, @Optional() parent: ElementRef) {
     super(injector, parent);
   }
+
+  closeOnOutsideClick = true;
 }
 
 @Component({
@@ -137,5 +139,23 @@ describe('Abstract Popover', function () {
 
     //     expect(popover.ignoredElement).toBeDefined();
     // });
+  });
+
+  describe('Open behavior', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({ declarations: [TestPopover], providers: [ClrPopoverToggleService] });
+      toggleService = TestBed.get(ClrPopoverToggleService);
+      toggleService.open = true;
+      fixture = TestBed.createComponent(TestPopover);
+      fixture.detectChanges();
+    });
+
+    it('does not close toggle service immediately after opening', fakeAsync(() => {
+      toggleService.open = true;
+      document.dispatchEvent(new Event('click'));
+      tick();
+
+      expect(toggleService.open).toBe(true);
+    }));
   });
 });

@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
@@ -97,7 +97,7 @@ export default function (): void {
       expect(compiled.textContent.trim()).not.toMatch('Foo');
     });
 
-    it('closes the menu when clicked outside of the host', () => {
+    it('closes the menu when clicked outside of the host', fakeAsync(() => {
       const dropdownToggle: HTMLElement = compiled.querySelector('.dropdown-toggle');
       const outsideButton: HTMLElement = compiled.querySelector('.outside-click-test');
 
@@ -115,6 +115,7 @@ export default function (): void {
 
       // click on the dropdown
       dropdownToggle.click();
+      tick();
       fixture.detectChanges();
       expect(compiled.querySelector('.dropdown-item')).not.toBeNull();
 
@@ -126,7 +127,7 @@ export default function (): void {
       expect(fixture.componentInstance.testCnt).toEqual(2);
       // check if the open class is added
       expect(compiled.querySelector('.dropdown-item')).toBeNull();
-    });
+    }));
 
     it('supports clrMenuClosable option. Closes the dropdown menu when clrMenuClosable is set to true', () => {
       const dropdownToggle: HTMLElement = compiled.querySelector('.dropdown-toggle');

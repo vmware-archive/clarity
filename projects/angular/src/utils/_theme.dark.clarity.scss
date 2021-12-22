@@ -32,6 +32,8 @@
  * Global variables will have an effect on or in multiple Clarity components.
  * Where possible, there is a list files affected by the variable.
  */
+@use "sass:math";
+
 $clr-use-custom-properties: false;
 
 /*********
@@ -42,8 +44,8 @@ $clr-baseline-int: 24 !default; // used by design for relational sizing
 $clr-baseline-denominator: 20 !default; // used in code to reduce impact of browser rounding
 
 @function convertBaselineToBase20($size: 24) {
-  $clr-baseline-to-basefontsize-multiplier: $clr-baseline-int/$clr-baseline-denominator;
-  @return $size/$clr-baseline-int * $clr-baseline-to-basefontsize-multiplier * 1rem;
+  $clr-baseline-to-basefontsize-multiplier: math.div($clr-baseline-int, $clr-baseline-denominator);
+  @return math.div($size, $clr-baseline-int) * $clr-baseline-to-basefontsize-multiplier * 1rem;
 }
 
 // Core rem values

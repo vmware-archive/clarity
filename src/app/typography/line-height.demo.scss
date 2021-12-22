@@ -9,7 +9,7 @@
   @if ($line-height < 1) {
     @return 0;
   }
-  @return ($line-height - 1) / 2;
+  @return ($line-height - 1) * 0.5;
 }
 
 @function getDescenderHeight($line-height: 1.2) {

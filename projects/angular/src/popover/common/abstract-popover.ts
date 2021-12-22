@@ -35,6 +35,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
       if (change) {
         this.anchor();
         this.attachESCListener();
+        this.setRecentlyOpened();
       } else {
         this.release();
         this.detachESCListener();
@@ -43,6 +44,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     if (this.toggleService.open) {
       this.anchor();
       this.attachESCListener();
+      this.setRecentlyOpened();
     }
   }
 
@@ -54,6 +56,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
   private subscription: Subscription;
 
   private updateAnchor = false;
+  private recentlyOpened = false;
 
   protected anchorElem: any;
   protected anchorPoint: Point;
@@ -142,7 +145,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
         );
       }
       this.documentClickListener = this.renderer.listen('document', 'click', event => {
-        if (event === this.ignore) {
+        if (event === this.ignore || this.recentlyOpened) {
           delete this.ignore;
         } else {
           this.toggleService.open = false;
@@ -166,5 +169,12 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
         delete this.documentClickListener;
       }
     }
+  }
+
+  private setRecentlyOpened() {
+    this.recentlyOpened = true;
+    setTimeout(() => {
+      this.recentlyOpened = false;
+    });
   }
 }

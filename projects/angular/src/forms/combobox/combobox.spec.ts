@@ -214,14 +214,14 @@ export default function (): void {
         expect(combobox.getAttribute('placeholder')).toEqual('hello world');
       });
 
-      it('should disable openClose button', () =>
-        fakeAsync(function () {
-          fixture.componentInstance.disabled = true;
-          fixture.detectChanges();
-          tick();
-          const button: HTMLButtonElement = clarityElement.querySelector('.clr-combobox-trigger');
-          expect(button.disabled).toBeTruthy();
-        }));
+      it('should disable openClose button', fakeAsync(function () {
+        fixture.componentInstance.disabled = true;
+        fixture.detectChanges();
+        tick();
+        fixture.detectChanges();
+        const button: HTMLButtonElement = clarityElement.querySelector('.clr-combobox-trigger');
+        expect(button.disabled).toBeTruthy();
+      }));
     });
   });
 }

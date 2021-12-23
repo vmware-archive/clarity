@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Directive, Input, OnDestroy, Optional } from '@angular/core';
+import { AfterViewInit, Directive, Input, OnDestroy, Optional } from '@angular/core';
 
 import { LoadingListener } from './loading-listener';
 
@@ -15,13 +15,14 @@ export enum ClrLoadingState {
 }
 
 @Directive({ selector: '[clrLoading]' })
-export class ClrLoading implements OnDestroy {
+export class ClrLoading implements AfterViewInit, OnDestroy {
   public static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null | string;
 
   // We find the first parent that handles something loading
   constructor(@Optional() private listener: LoadingListener) {}
 
   private _loadingState: ClrLoadingState | string = ClrLoadingState.DEFAULT;
+  private _viewInitialized = false;
 
   public get loadingState() {
     return this._loadingState;
@@ -40,9 +41,16 @@ export class ClrLoading implements OnDestroy {
     }
 
     this._loadingState = value;
-    if (this.listener) {
+    if (this.listener && this._viewInitialized) {
       this.listener.loadingStateChange(value);
     }
+  }
+
+  ngAfterViewInit() {
+    this._viewInitialized = true;
+    setTimeout(() => {
+      this.listener.loadingStateChange(this._loadingState);
+    });
   }
 
   ngOnDestroy() {

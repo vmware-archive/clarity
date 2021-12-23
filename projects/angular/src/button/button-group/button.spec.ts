@@ -5,7 +5,7 @@
  */
 
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ClrLoadingModule } from '../../utils/loading/loading.module';
 import { ClrLoadingState } from '../../utils/loading/loading';
@@ -198,7 +198,7 @@ export default function (): void {
     });
 
     describe('View Test', () => {
-      beforeEach(() => {
+      beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
           imports: [ClrButtonGroupModule, ClrLoadingModule],
           declarations: [ButtonViewTestComponent],
@@ -207,10 +207,12 @@ export default function (): void {
 
         fixture = TestBed.createComponent(ButtonViewTestComponent);
         fixture.detectChanges();
+        tick();
+        fixture.detectChanges();
         debugEl = fixture.debugElement;
         componentInstance = debugEl.componentInstance;
         buttons = debugEl.nativeElement.querySelectorAll('button');
-      });
+      }));
 
       afterEach(() => {
         fixture.destroy();

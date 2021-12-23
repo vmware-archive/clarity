@@ -1412,10 +1412,11 @@ export declare class ClrLayoutModule {
     static ɵmod: i0.ɵɵNgModuleDeclaration<ClrLayoutModule, never, never, [typeof i1.ClrMainContainerModule, typeof i2.ClrNavigationModule, typeof i3.ClrTabsModule, typeof i4.ClrVerticalNavModule]>;
 }
 
-export declare class ClrLoading implements OnDestroy {
+export declare class ClrLoading implements AfterViewInit, OnDestroy {
     get loadingState(): boolean | string | ClrLoadingState;
     set loadingState(value: boolean | string | ClrLoadingState);
     constructor(listener: LoadingListener);
+    ngAfterViewInit(): void;
     ngOnDestroy(): void;
     static ngAcceptInputType_loadingState: boolean | ClrLoadingState | null | string;
     static ɵdir: i0.ɵɵDirectiveDeclaration<ClrLoading, "[clrLoading]", never, { "loadingState": "clrLoading"; }, {}, never>;

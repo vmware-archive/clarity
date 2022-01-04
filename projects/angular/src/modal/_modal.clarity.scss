@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -122,7 +122,7 @@
     }
   }
 
-  .modal-body {
+  .modal-body-wrapper {
     // This doesn't do much, but at least with several paragraphs in the content
     // it doesn't mess up the modal's proportions.
     max-height: 70vh;
@@ -150,7 +150,7 @@
   }
 
   @media screen and (max-width: map-get($clr-grid-breakpoints, md)) and (orientation: landscape) {
-    .modal-body {
+    .modal-body-wrapper {
       max-height: 55vh;
     }
   }
@@ -164,7 +164,7 @@
       padding: 0 $clr_baselineRem_1 $clr_baselineRem_0_5 0;
     }
 
-    .modal-body {
+    .modal-body-wrapper {
       max-height: 55vh;
     }
 

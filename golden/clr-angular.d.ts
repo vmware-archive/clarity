@@ -1253,7 +1253,7 @@ export declare class ClrModal implements OnChanges, OnDestroy {
 }
 
 export declare class ClrModalBody implements OnDestroy {
-    constructor(ngZone: NgZone, renderer: Renderer2, host: ElementRef<HTMLElement>);
+    constructor(renderer: Renderer2, host: ElementRef<HTMLElement>, ngZone: NgZone);
     ngOnDestroy(): void;
 }
 

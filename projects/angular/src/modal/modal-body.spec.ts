@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,30 @@ describe('ClrModalBody Directive', () => {
   let fixture: ComponentFixture<TestComponent>;
   let modalBodyEl: HTMLElement;
 
+  let originalResizeObserver: typeof ResizeObserver;
+  let resizeObserverCallback: () => void;
+
+  beforeAll(() => {
+    originalResizeObserver = ResizeObserver;
+    // patching ResizeObserver appears to be the workaround now https://github.com/angular/angular/issues/31695
+    // eslint-disable-next-line no-global-assign
+    (ResizeObserver as unknown) = class {
+      constructor(c: () => void) {
+        resizeObserverCallback = c;
+      }
+      observe = jasmine.createSpy('observe');
+      disconnect = jasmine.createSpy('disconnect');
+    };
+  });
+
+  afterAll(() => {
+    // eslint-disable-next-line no-global-assign
+    (ResizeObserver as unknown) = originalResizeObserver;
+  });
+
   beforeEach(function () {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    resizeObserverCallback = () => {};
     TestBed.configureTestingModule({
       declarations: [ClrModalBody, TestComponent],
     });
@@ -21,11 +44,20 @@ describe('ClrModalBody Directive', () => {
     modalBodyEl = fixture.componentInstance.testElement.nativeElement;
   });
 
-  it('adds tabindex="0" to modal body to make content focusable and scrollable with keyboards', () => {
+  it('toggles tabindex="0" when modal body is scrollable', function () {
+    resizeObserverCallback();
+    expect(modalBodyEl.getAttribute('tabindex')).toBeNull();
+    fixture.componentInstance.scrollable = true;
+    fixture.detectChanges();
+    resizeObserverCallback();
     expect(modalBodyEl.getAttribute('tabindex')).toBe('0');
   });
 
   it('toggles tabindex="0" on mousedown and mouseup events', () => {
+    fixture.componentInstance.scrollable = true;
+    fixture.detectChanges();
+    resizeObserverCallback();
+
     modalBodyEl.dispatchEvent(new Event('mousedown'));
     expect(modalBodyEl.getAttribute('tabindex')).toBeNull();
     modalBodyEl.dispatchEvent(new Event('mouseup'));
@@ -54,8 +86,11 @@ describe('ClrModalBody Directive', () => {
 
 @Component({
   template: `
-    <div class="modal-body" #testElement>
-      <label #testLabel>test label</label>
+    <div style="height: 100px; overflow-y: auto;">
+      <div class="modal-body" #testElement>
+        <label #testLabel>test label</label>
+        <div *ngIf="scrollable" style="height: 200px;"></div>
+      </div>
     </div>
   `,
 })
@@ -63,4 +98,6 @@ class TestComponent {
   @ViewChild('testLabel') testLabel: ElementRef<HTMLElement>;
 
   @ViewChild('testElement') testElement: ElementRef<HTMLElement>;
+
+  scrollable = false;
 }

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -38,7 +38,9 @@
             <cds-icon shape="window-close"></cds-icon>
           </button>
         </div>
-        <ng-content select=".modal-body"></ng-content>
+        <div class="modal-body-wrapper">
+          <ng-content select=".modal-body"></ng-content>
+        </div>
         <ng-content select=".modal-footer"></ng-content>
       </div>
     </div>

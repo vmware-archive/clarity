@@ -10,16 +10,16 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-select',
   template: `
-    <h1>Select</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Select</h1>
 
     <app-eslint-intro-block rule="no-clr-select"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With 3 elements and label</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With 3 elements and label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Reactive form</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Reactive form</h3>
     </demo>
   `,
 })

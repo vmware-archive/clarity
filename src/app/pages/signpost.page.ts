@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-signpost',
   template: `
-    <h1>Signpost</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Signpost</h1>
     <not-ready name="Signposts"></not-ready>
   `,
 })

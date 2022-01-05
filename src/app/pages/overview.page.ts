@@ -9,23 +9,23 @@ import { componentRoutes } from '../app-routing.module';
 
 @Component({
   styles: [
-    `.item { border: .0625rem solid var(--cds-global-color-gray-400); border-radius: .1875rem; }`,
-    `.item-img { max-height: 5rem; max-width: 50%; }`,
+    `.item { border: .0625rem solid var(--cds-global-color-gray-400); border-radius: .1875rem;}`,
+    `.item-img { max-width: 160px; min-width: 160px; max-height: 100px; min-height: 100px; }`
   ],
   template: `
-    <h2 cds-text="display" cds-layout="m-t:xl">Clarity Components</h2>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Clarity Components</h1>
 
     <section cds-layout="m-y:xl grid gap:md cols@sm:12 cols@md:6 cols@lg:4 align:vertical-stretch">
-      <a [routerLink]="['/', component.path]" *ngFor="let component of components" class="item">
-        <section cds-layout="vertical" role="link" class="item-overview">
-          <h3 cds-text="section">
+      <a [routerLink]="['/', component.path]" *ngFor="let component of components">
+        <section cds-layout="vertical" role="link" class="item">
+          <h2 cds-text="section expanded">
             <div cds-layout="horizontal gap:md p:lg align:center">
               {{component.path | menuTitle}}
             </div>
-          </h3> 
-          <div cds-layout="vertical align:center p:md">
-            <img src="/assets/{{component.path}}.svg" alt="{{component.path | menuTitle}} visual example" class="item-img">
-          </div> 
+          </h2>
+          <div cds-layout="vertical align:center p:md m-b:xl">
+            <img class="item-img" src="/assets/{{component.path}}.svg" alt="{{component.path | menuTitle}} visual example">
+          </div>
         </section>
       </a>
     </section>

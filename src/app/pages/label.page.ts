@@ -10,24 +10,24 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-label',
   template: `
-    <h1>Labels</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Labels</h1>
 
     <app-eslint-intro-block rule="no-clr-label"></app-eslint-intro-block>
 
     <demo [tabs]="demo0">
-      <h3 cds-text="section">Simple label with text</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Simple label with text</h3>
     </demo>
     <demo [tabs]="demo1">
-      <h3 cds-text="section">Outline labels with badge</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Outline labels with badge</h3>
     </demo>
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Clickable outline labels</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Clickable outline labels</h3>
     </demo>
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Outline labels without badge</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Outline labels without badge</h3>
     </demo>
     <demo [tabs]="demo4">
-      <h3 cds-text="section">Labels with status</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Labels with status</h3>
       <p>Labels with colour background fill</p>
     </demo>
   `,

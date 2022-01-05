@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-dropdown',
   template: `
-    <h1>Dropdown</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Dropdown</h1>
     <not-ready name="Dropdown"></not-ready>
   `,
 })

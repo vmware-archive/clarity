@@ -10,18 +10,18 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-toggle',
   template: `
-    <h1>Toggle</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Toggle</h1>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With label</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">With subtext and forms</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With subtext and forms</h3>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Disabled</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Disabled</h3>
     </demo>
   `,
 })

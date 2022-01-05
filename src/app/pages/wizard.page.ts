@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-wizard',
   template: `
-    <h1>Wizard</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Wizard</h1>
     <not-ready name="Wizards"></not-ready>
   `,
 })

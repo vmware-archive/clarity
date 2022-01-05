@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-spinner',
   template: `
-    <h1>Spinner</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Spinner</h1>
     <not-ready name="Spinners"></not-ready>
   `,
 })

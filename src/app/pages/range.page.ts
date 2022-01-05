@@ -10,12 +10,12 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-range',
   template: `
-    <h1>Range</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Range</h1>
 
     <app-eslint-intro-block rule="no-clr-range"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With label and info message</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With label and info message</h3>
     </demo>
   `,
 })

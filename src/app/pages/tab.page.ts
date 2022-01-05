@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-tab',
   template: `
-    <h1>Tab</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Tab</h1>
     <not-ready name="Tabs"></not-ready>
   `,
 })

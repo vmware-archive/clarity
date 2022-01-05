@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-tree-view',
   template: `
-    <h1>Tree view</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Tree view</h1>
     <not-ready name="tree-view"></not-ready>
   `,
 })

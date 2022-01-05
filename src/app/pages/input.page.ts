@@ -10,18 +10,18 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-input',
   template: `
-    <h1>Input</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Input</h1>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">Input with placeholder</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Input with placeholder</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Input with label and placeholder</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Input with label and placeholder</h3>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Error and Info</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Error and Info</h3>
       <p>Input demos with info message and error message</p>
     </demo>
   `,

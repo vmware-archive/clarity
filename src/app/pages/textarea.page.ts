@@ -10,16 +10,16 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-textarea',
   template: `
-    <h1>Textarea</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Textarea</h1>
 
     <app-eslint-intro-block rule="no-clr-textarea"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With label and info message</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With label and info message</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Reactive forms</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Reactive forms</h3>
     </demo>
   `,
 })

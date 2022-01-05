@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-timeline',
   template: `
-    <h1>Timeline</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Timeline</h1>
     <not-ready name="Timeline"></not-ready>
   `,
 })

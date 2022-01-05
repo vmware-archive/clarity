@@ -10,14 +10,14 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-datalist',
   template: `
-    <h1>Datalist</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Datalist</h1>
 
     <demo [tabs]="demo">
-      <h3 cds-text="section">Datalist with text items</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Datalist with text items</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Reactive forms</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Reactive forms</h3>
       <p>Using Angular forms inside datalist</p>
     </demo>
   `,

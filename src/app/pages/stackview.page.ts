@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-stack-view',
   template: `
-    <h1>Stack View</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Stack View</h1>
     <not-ready name="Stack View"></not-ready>
   `,
 })

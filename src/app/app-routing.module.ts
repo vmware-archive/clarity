@@ -45,8 +45,9 @@ import { TabPage } from './pages/tab.page';
 import { LandingPage } from './pages/landing.page';
 import { OverviewPage } from './pages/overview.page';
 import { ApproachesPage } from './pages/approaches.page';
-import { DifferencesPage } from './pages/differences.page';
-import { TemplateBuilderPage } from './pages/template-builder.page';
+// import { TemplateBuilderPage } from './pages/template-builder.page';
+import { AdditionalLearningPage } from './pages/additional-learning.page';
+
 export const componentRoutes = [
   { path: 'overview', component: OverviewPage },
   { path: 'accordion', component: AccordionPage },
@@ -86,9 +87,9 @@ export const componentRoutes = [
 export const getStartedRoutes = [
   { path: 'introduction', component: IntroPage },
   { path: 'get-started', component: GettingStartedPage },
-  { path: 'differences', component: DifferencesPage },
-  { path: 'approaches', component: ApproachesPage },
-  { path: 'builder', component: TemplateBuilderPage },
+  { path: 'additional-learning', component: AdditionalLearningPage },
+  { path: 'additional-strategies', component: ApproachesPage },
+  // { path: 'builder', component: TemplateBuilderPage },
 ];
 
 const routes: Routes = [

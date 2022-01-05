@@ -57,9 +57,9 @@ import { IntroPage } from './pages/intro.page';
 import { ApproachesPage } from './pages/approaches.page';
 import { MenuTitlePipe } from './pipes/menu-title.pipe';
 import { OverviewPage } from './pages/overview.page';
-import { DifferencesPage } from './pages/differences.page';
 import { TemplateBuilderPage } from './pages/template-builder.page';
 import { FormsModule } from '@angular/forms';
+import { AdditionalLearningPage } from './pages/additional-learning.page';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,7 @@ import { FormsModule } from '@angular/forms';
     ButtonPage,
     CardPage,
     CheckboxPage,
-    DifferencesPage,
+    AdditionalLearningPage,
     DatalistPage,
     FormPage,
     IconsPage,

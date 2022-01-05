@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-progressbar',
   template: `
-    <h1>Progress bar</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Progress bar</h1>
     <not-ready name="Progress"></not-ready>
   `,
 })

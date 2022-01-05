@@ -10,23 +10,23 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-form',
   template: `
-    <h1>Form</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Form</h1>
     <app-eslint-intro-block rule="no-clr-form"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">Horizontal</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Horizontal</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Vertical</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Vertical</h3>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Compact</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Compact</h3>
     </demo>
 
     <demo [tabs]="demo4">
-      <h3 cds-text="section">Display helpers, errors and success messages</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Display helpers, errors and success messages</h3>
       <p>
         Clarity Core don't handle display of messages as <code>error</code> or <code>success</code> the same way as
         Clarity Angular does. This is left up to the developer to control when a given message is visible or not and how

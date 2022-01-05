@@ -1,4 +1,4 @@
-<div cds-layout="grid p:md m-y:md">
+<div cds-layout="grid  m-y:xl">
   <div cds-layout="col:12 col@sm:4 p-r:sm" cds-text="message">
     <ng-content></ng-content>
   </div>
@@ -13,7 +13,9 @@
       </dl>
       <dl cds-list cds-layout="col:6">
         <dt>Figma</dt>
-          <dd *ngIf="angularFigma || coreFigma"><a [href]="angularFigma" target="_blank" *ngIf="angularFigma">Angular figma</a> <a [href]="coreFigma" target="_blank" *ngIf="coreFigma">Core figma</a></dd>
+          <dd *ngIf="angularFigma || coreFigma">
+            <a [href]="angularFigma" target="_blank" *ngIf="angularFigma">Angular Figma</a> |
+            <a [href]="coreFigma" target="_blank" *ngIf="coreFigma"> Core Figma</a></dd>
           <dd *ngIf="!angularFigma">Not yet available</dd>
         <dt>ESLint Rule</dt>
           <dd *ngIf="eslint"><a routerLink="/adoption-tooling">Available, view documentation</a></dd>

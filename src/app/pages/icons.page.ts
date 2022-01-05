@@ -10,7 +10,7 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-icon',
   template: `
-    <h1>Icons</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Icons</h1>
 
     <app-eslint-intro-block rule="no-clr-icon"></app-eslint-intro-block>
 
@@ -21,16 +21,16 @@ import { DemoTabData } from '../components/demo.component';
     </p>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">All available icon variants</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">All available icon variants</h3>
     </demo>
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Color states</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Color states</h3>
     </demo>
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Rotation</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Rotation</h3>
     </demo>
     <demo [tabs]="demo4">
-      <h3 cds-text="section">Badges</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Badges</h3>
     </demo>
   `,
 })

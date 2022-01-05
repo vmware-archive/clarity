@@ -1,4 +1,6 @@
-<svg width="70" height="24" viewBox="0 0 70 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="70" height="24" rx="3" fill="#47A6D7"/>
-<path opacity="0.6" d="M15 12C15 10.8954 15.8954 10 17 10H52C53.1046 10 54 10.8954 54 12C54 13.1046 53.1046 14 52 14H17C15.8954 14 15 13.1046 15 12Z" fill="#E8F5F6"/>
+<svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.8">
+<rect width="70" height="24" rx="3" transform="matrix(1 0 0 -1 45 62)" fill="#0099DB"/>
+<rect opacity="0.6" x="62.4456" y="48" width="35.1088" height="4" fill="white"/>
+</g>
 </svg>

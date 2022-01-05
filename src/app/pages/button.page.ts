@@ -10,35 +10,35 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-button',
   template: `
-    <h1>Button</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Button</h1>
 
     <app-eslint-intro-block rule="no-clr-button"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">Primary button</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Primary button</h3>
       <p>Basic primary button</p>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Solid buttons</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Solid buttons</h3>
       <p>All solid buttons</p>
     </demo>
 
     <demo [tabs]="demo3">
-      <h3 cds-text="section">Outline buttons</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Outline buttons</h3>
       <p>All outline buttons</p>
     </demo>
 
     <demo [tabs]="demo4">
-      <h3 cds-text="section">Inverse buttons</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Inverse buttons</h3>
     </demo>
 
     <demo [tabs]="demo5">
-      <h3 cds-text="section">Icon buttons</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Icon buttons</h3>
     </demo>
 
     <demo [tabs]="demo6">
-      <h3 cds-text="section">Loading buttons</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Loading buttons</h3>
     </demo>
   `,
 })

@@ -10,7 +10,7 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-accordion',
   template: `
-    <h1>Accordion</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Accordion</h1>
 
     <status-block
       coreVersion="v4"
@@ -26,7 +26,7 @@ import { DemoTabData } from '../components/demo.component';
     </status-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With expanded, disabled and expandable panels</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With expanded, disabled and expandable panels</h3>
     </demo>
   `,
 })

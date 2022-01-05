@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,27 +11,24 @@ import { property } from '@cds/core/internal';
 import { SelectionPanelSizes } from '../shared/selection-panel.interfaces.js';
 
 /**
- * Checkbox
+ * Checkbox Panel
  *
  * ```typescript
- * import '@cds/core/checkbox/register.js';
+ * import '@cds/core/selection-panels/checkbox/register.js';
  * ```
  *
  * ```html
- * <cds-checkbox>
- *   <label>
- *     <div cds-layout="vertical align:center">
- *       <span cds-text="section">VM One</span>
- *       <cds-icon shape="vm" badge="info"></cds-icon>
- *       <p>Machines for orchestration and automation.</p>
- *     </div>
+ * <cds-checkbox-panel>
+ *   <label cds-layout="vertical gap:md align:center">
+ *     <span cds-text="section">VM One</span>
+ *     <span cds-text="subsection center">Orchestrate & Automate</p>
  *   </label>
- *   <input type="checkbox" />
- *   <cds-control-message>message text</cds-control-message>
- * </cds-checkbox>
+ *   <input type="radio" value="0" />
+ * </cds-checkbox-panel>
  * ```
  *
- * @element cds-checkbox
+ * @beta
+ * @element cds-checkbox-panel
  * @slot - For projecting checkbox and it's complex label
  * @cssprop --width
  * @cssprop --height

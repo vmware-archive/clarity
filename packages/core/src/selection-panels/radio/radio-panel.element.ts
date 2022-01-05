@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -11,28 +11,33 @@ import { property } from '@cds/core/internal';
 import { SelectionPanelSizes } from '../shared/selection-panel.interfaces.js';
 
 /**
- * Checkbox
+ * Radio Panel
  *
  * ```typescript
- * import '@cds/core/checkbox/register.js';
+ * import '@cds/core/selection-panels/radio/register.js';
  * ```
  *
  * ```html
- * <cds-radio>
- *   <label>
- *     <div cds-layout="vertical align:center">
+ * <cds-radio-group>
+ *   <cds-radio-panel>
+ *     <label cds-layout="vertical gap:md align:center">
  *       <span cds-text="section">VM One</span>
- *       <cds-icon shape="vm" badge="info"></cds-icon>
- *       <p>Machines for orchestration and automation.</p>
- *     </div>
- *   </label>
- *   <input type="radio" />
- *   <cds-control-message>message text</cds-control-message>
- * </cds-radio>
+ *       <span cds-text="subsection center">Orchestrate & Automate</p>
+ *     </label>
+ *     <input type="radio" value="0" />
+ *   </cds-radio-panel>
+ *   <cds-radio-panel>
+ *     <label cds-layout="vertical gap:md align:center">
+ *       <span cds-text="section">VM One</span>
+ *       <span cds-text="subsection center">Orchestrate & Automate</p>
+ *     </label>
+ *     <input type="radio" value="1" />
+ *   </cds-radio-panel>
+ * </cds-radio-group>
  * ```
- *
- * @element cds-radio
- * @slot - For projecting checkbox and it's complex label
+ * @beta
+ * @element cds-radio-panel
+ * @slot - For projecting radio and it's complex label
  * @cssprop --width
  * @cssprop --height
  * @cssprop --border

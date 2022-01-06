@@ -34,7 +34,7 @@
         top: 50%;
         transform: translateY(-50%);
         color: inherit;
-        @include equilateral($clr-dropdown-caret-icon-dimension);
+        @include min-equilateral($clr-dropdown-caret-icon-dimension);
       }
 
       // NOTE: cds-icon handles direction internally.
@@ -45,7 +45,7 @@
         position: absolute;
         top: 35%;
         color: inherit;
-        @include equilateral($clr-dropdown-caret-icon-dimension);
+        @include min-equilateral($clr-dropdown-caret-icon-dimension);
       }
 
       &.btn {

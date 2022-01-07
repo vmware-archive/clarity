@@ -143,6 +143,7 @@ export declare class ClrAlert implements OnInit, OnDestroy {
     set alertType(val: string);
     get alertType(): string;
     closable: boolean;
+    set closed(value: boolean);
     clrCloseButtonAriaLabel: string;
     set hidden(value: boolean);
     get hidden(): boolean;
@@ -153,7 +154,7 @@ export declare class ClrAlert implements OnInit, OnDestroy {
     ngOnDestroy(): void;
     ngOnInit(): void;
     open(): void;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlert, "clr-alert", never, { "isSmall": "clrAlertSizeSmall"; "closable": "clrAlertClosable"; "isAppLevel": "clrAlertAppLevel"; "clrCloseButtonAriaLabel": "clrCloseButtonAriaLabel"; "_closed": "clrAlertClosed"; "alertType": "clrAlertType"; "alertIconShape": "clrAlertIcon"; }, { "_closedChanged": "clrAlertClosedChange"; }, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrAlert, "clr-alert", never, { "isSmall": "clrAlertSizeSmall"; "closable": "clrAlertClosable"; "isAppLevel": "clrAlertAppLevel"; "clrCloseButtonAriaLabel": "clrCloseButtonAriaLabel"; "closed": "clrAlertClosed"; "alertType": "clrAlertType"; "alertIconShape": "clrAlertIcon"; }, { "_closedChanged": "clrAlertClosedChange"; }, never, ["*"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrAlert, [null, null, { optional: true; }, null]>;
 }
 

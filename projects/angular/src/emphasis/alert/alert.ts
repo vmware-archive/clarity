@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -48,7 +48,14 @@ export class ClrAlert implements OnInit, OnDestroy {
   // Aria
   @Input() clrCloseButtonAriaLabel: string = this.commonStrings.keys.alertCloseButtonAriaLabel;
 
-  @Input('clrAlertClosed') _closed = false;
+  _closed = false;
+  @Input('clrAlertClosed') set closed(value: boolean) {
+    if (value && !this._closed) {
+      this.close();
+    } else if (!value && this._closed) {
+      this.open();
+    }
+  }
   @Output('clrAlertClosedChange') _closedChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
   @Input('clrAlertType')
@@ -86,15 +93,19 @@ export class ClrAlert implements OnInit, OnDestroy {
     if (!this.closable) {
       return;
     }
+    const isCurrentAlert = this.multiAlertService?.currentAlert === this;
     this._closed = true;
     if (this.multiAlertService) {
-      this.multiAlertService.close();
+      this.multiAlertService.close(isCurrentAlert);
     }
     this._closedChanged.emit(true);
   }
 
   open(): void {
     this._closed = false;
+    if (this.multiAlertService) {
+      this.multiAlertService.open();
+    }
     this._closedChanged.emit(false);
   }
 }

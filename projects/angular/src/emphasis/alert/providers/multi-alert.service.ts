@@ -80,11 +80,27 @@ export class MultiAlertService {
     this._change.next(this._current);
   }
 
-  close() {
+  open() {
     if (this.activeAlerts.length === 0) {
       return;
     }
-    this._current = Math.max(0, this.current - 1);
+
+    if (!this.currentAlert) {
+      this._current = 0;
+    }
+
+    this._change.next(this._current);
+  }
+
+  close(isCurrentAlert: boolean) {
+    if (this.activeAlerts.length === 0) {
+      return;
+    }
+
+    if (isCurrentAlert) {
+      this._current = Math.max(0, this.current - 1);
+    }
+
     this._change.next(this._current);
   }
 

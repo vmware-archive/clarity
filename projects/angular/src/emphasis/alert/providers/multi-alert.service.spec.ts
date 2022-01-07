@@ -99,5 +99,16 @@ export default function () {
       alert.componentInstance.close();
       expect(changesEmitted).toBeTrue();
     });
+
+    it('updates current alert when alerts programmatically closed', function () {
+      let changesEmitted = false;
+      multiAlertService.changes.subscribe(() => {
+        changesEmitted = true;
+      });
+      alert.componentInstance.closed = true;
+      expect(multiAlertService.current).toBe(0);
+      expect(multiAlertService.currentAlert).toBe(anotherAlert.componentInstance);
+      expect(changesEmitted).toBeTrue();
+    });
   });
 }

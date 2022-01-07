@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -77,6 +77,15 @@ export default function () {
       queryList.notifyOnChanges();
       expect(multiAlertService.count).toBe(0);
       expect(multiAlertService.current).toBe(0);
+    });
+
+    it('notifies of changes even when closing does not change index', function () {
+      let changesEmitted = false;
+      multiAlertService.changes.subscribe(() => {
+        changesEmitted = true;
+      });
+      alert.componentInstance.close();
+      expect(changesEmitted).toBeTrue();
     });
   });
 }

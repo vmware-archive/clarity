@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -68,14 +68,16 @@ export class MultiAlertService {
   }
 
   next() {
-    this.current = this.current === this.activeAlerts.length - 1 ? 0 : this.current + 1;
+    this._current = this.current === this.activeAlerts.length - 1 ? 0 : this.current + 1;
+    this._change.next(this._current);
   }
 
   previous() {
     if (this.activeAlerts.length === 0) {
       return;
     }
-    this.current = this.current === 0 ? this.activeAlerts.length - 1 : this.current - 1;
+    this._current = this.current === 0 ? this.activeAlerts.length - 1 : this.current - 1;
+    this._change.next(this._current);
   }
 
   close() {

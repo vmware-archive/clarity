@@ -81,7 +81,11 @@ export class MultiAlertService {
   }
 
   close() {
-    this.previous();
+    if (this.activeAlerts.length === 0) {
+      return;
+    }
+    this._current = Math.max(0, this.current - 1);
+    this._change.next(this._current);
   }
 
   destroy() {

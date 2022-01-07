@@ -15,6 +15,7 @@ export default function () {
     let queryList: QueryList<ClrAlert>;
     let alert: ComponentFixture<ClrAlert>;
     let anotherAlert: ComponentFixture<ClrAlert>;
+    let thirdAlert: ComponentFixture<ClrAlert>;
     let multiAlertService: MultiAlertService;
 
     beforeEach(function () {
@@ -27,6 +28,7 @@ export default function () {
 
       alert = TestBed.createComponent(ClrAlert);
       anotherAlert = TestBed.createComponent(ClrAlert);
+      thirdAlert = TestBed.createComponent(ClrAlert);
 
       queryList = new QueryList<ClrAlert>();
       queryList.reset([alert.componentInstance, anotherAlert.componentInstance]);
@@ -61,6 +63,16 @@ export default function () {
       // Ensure current alert does not drop below 0
       alert.componentInstance.close();
       expect(multiAlertService.count).toBe(0);
+      expect(multiAlertService.current).toBe(0);
+    });
+
+    it('closing first alert show new first alert', function () {
+      queryList.reset([alert.componentInstance, anotherAlert.componentInstance, thirdAlert.componentInstance]);
+      queryList.notifyOnChanges();
+      expect(multiAlertService.count).toBe(3);
+      expect(multiAlertService.current).toBe(0);
+      alert.componentInstance.close();
+      expect(multiAlertService.count).toBe(2);
       expect(multiAlertService.current).toBe(0);
     });
 

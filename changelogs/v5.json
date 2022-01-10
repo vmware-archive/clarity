@@ -2,6 +2,70 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.6.2",
+      "date": "2022-01-10",
+      "description": "This is a patch release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6551,
+          "title": "Fix align stretch behavior for cards inside a grid layout",
+          "project": "core",
+          "scope": "card"
+        },
+        {
+          "issue": 6553,
+          "title": "Fix required message for aria attributes in React so they are not camelCase",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6550,
+          "title": "Changed react version to be >= 16.13.1 and moved to peer dependency to manage dependency conflicts",
+          "project": "react",
+          "scope": ""
+        }
+      ]
+    },
+    {
+      "version": "5.6.1",
+      "date": "2021-12-08",
+      "description": "This is a patch release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6467,
+          "title": "aria property types",
+          "project": "core",
+          "scope": "a11y"
+        },
+        {
+          "issue": 6440,
+          "title": "Token/figma alignment",
+          "project": "core",
+          "scope": "a11y"
+        },
+        {
+          "issue": 6444,
+          "title": "Intelligently default aria label to i18n string",
+          "project": "core",
+          "scope": "progress-circle"
+        },
+        {
+          "issue": 6433,
+          "title": "Add datalist fixer",
+          "project": "eslint-plugin-clarity-adoption",
+          "scope": ""
+        },
+        {
+          "issue": 6436,
+          "title": "Support non-equilateral icon sizing",
+          "project": "core",
+          "scope": "icon"
+        }
+      ]
+    },
+    {
       "version": "5.6.0",
       "date": "2021-10-28",
       "description": "This is a feature and bug fix release.",

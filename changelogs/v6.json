@@ -2,6 +2,68 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "6.0.0-next.2",
+      "date": "2022-01-10",
+      "description": "This is a beta release for our next major version.",
+      "fix": [
+        {
+          "issue": 6517,
+          "title": "Core tokens mapping for Clarity UI (@clr/ui)",
+          "project": "core",
+          "scope": "styles"
+        },
+        {
+          "issue": 6530,
+          "title": "Fix required message for aria attributes in React so they are not camelCase",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6516,
+          "title": "Refactored space design tokens – 6px to 8px, added 16px size, changed 96px to 64px; new xxxs and xxxl sizes",
+          "project": "core",
+          "scope": "layouts",
+          "breaking": true
+        },
+        {
+          "issue": 6514,
+          "title": "Fix align stretch behavior for cards inside a grid layout",
+          "project": "core",
+          "scope": "card"
+        },
+        {
+          "issue": 6505,
+          "title": "Added action button component, refactored internal actions to use new action button",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6466,
+          "title": "Changed react version to be >= 16.13.1 and moved to peer dependency to manage dependency conflicts",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6515,
+          "title": "Update ref documentation for React wrappers",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6513,
+          "title": "Removed need for Animatable interface and other performance improvements for Clarity Motion",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6501,
+          "title": "Add lime to color palette",
+          "project": "core",
+          "scope": "styles"
+        }
+      ]
+    },
+    {
       "version": "6.0.0-next.1",
       "date": "2021-12-08",
       "description": "This is a beta release for our next major version.",

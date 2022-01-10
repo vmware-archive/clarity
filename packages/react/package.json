@@ -1,6 +1,6 @@
 {
   "name": "@cds/react",
-  "version": "6.0.0-next.1",
+  "version": "6.0.0-next.2",
   "scripts": {
     "start": "npm-run-all core:build build -p build:ts:watch dev:start",
     "dev:start": "parcel index.html",
@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "@cds/core": "./dist/core",
-    "react":">= 16.13.1",
+    "react": ">= 16.13.1",
     "react-dom": ">= 16.13.1"
   },
   "devDependencies": {

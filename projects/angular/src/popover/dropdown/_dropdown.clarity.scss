@@ -23,11 +23,6 @@
       white-space: nowrap;
       cursor: pointer;
 
-      //No margins on any immediate dropdown-toggle children
-      & > * {
-        margin: 0;
-      }
-
       clr-icon[shape^='caret'],
       clr-icon[shape^='angle'] {
         position: absolute;

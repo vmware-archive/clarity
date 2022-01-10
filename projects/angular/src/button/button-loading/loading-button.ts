@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -76,19 +76,14 @@ export class ClrLoadingButton implements LoadingListener {
 
     switch (state) {
       case ClrLoadingState.DEFAULT:
-        this.renderer.removeStyle(this.el.nativeElement, 'width');
         this.renderer.removeStyle(this.el.nativeElement, 'transform'); // for chromium render bug see issue https://github.com/vmware/clarity/issues/2700
         if (!this.disabled) {
           this.renderer.removeAttribute(this.el.nativeElement, 'disabled');
         }
         break;
       case ClrLoadingState.LOADING:
-        this.setExplicitButtonWidth();
         this.renderer.setStyle(this.el.nativeElement, 'transform', 'translatez(0)'); // for chromium render bug see issue https://github.com/vmware/clarity/issues/2700
         this.renderer.setAttribute(this.el.nativeElement, 'disabled', '');
-        break;
-      case ClrLoadingState.SUCCESS:
-        this.setExplicitButtonWidth();
         break;
       case ClrLoadingState.ERROR:
         this.loadingStateChange(ClrLoadingState.DEFAULT);
@@ -97,12 +92,5 @@ export class ClrLoadingButton implements LoadingListener {
         break;
     }
     this.clrLoadingChange.emit(state);
-  }
-
-  private setExplicitButtonWidth() {
-    if (this.el.nativeElement && this.el.nativeElement.getBoundingClientRect) {
-      const boundingClientRect = this.el.nativeElement.getBoundingClientRect();
-      this.renderer.setStyle(this.el.nativeElement, 'width', `${boundingClientRect.width}px`);
-    }
   }
 }

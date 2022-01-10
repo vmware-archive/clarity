@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -86,30 +86,6 @@ describe('Loading Buttons', () => {
     fixture.detectChanges();
     expect(fixture.componentInstance.buttonState as ClrLoadingState).toEqual(ClrLoadingState.DEFAULT);
     expect(fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.disabled).toBeFalsy();
-  }));
-
-  it('sets an explicit width value of the button when [(clrButtonState)] value is set to LOADING or SUCCESS', fakeAsync(() => {
-    let style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
-    expect(style).toBeFalsy();
-
-    fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
-    fixture.detectChanges();
-    style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
-    expect(style).toBeTruthy();
-    expect(style.value).toMatch(/width:*/);
-
-    fixture.componentInstance.buttonState = ClrLoadingState.SUCCESS;
-    fixture.detectChanges();
-    style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
-    expect(style).toBeTruthy();
-    expect(style.value).toMatch(/width:*/);
-
-    tick(1000);
-    fixture.detectChanges();
-    expect(fixture.componentInstance.buttonState as ClrLoadingState).toEqual(ClrLoadingState.DEFAULT);
-    style = fixture.componentInstance.loadingButtonInstance.el.nativeElement.attributes.style;
-    // here, we check to see if style.value is falsy instead of style, because even though the style is cleared the attribute remains
-    expect(style.value).toBeFalsy();
   }));
 
   it('hides spinner when [(clrButtonState)] value is DEFAULT', () => {

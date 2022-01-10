@@ -2,6 +2,32 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.6.2",
+      "date": "2022-01-10",
+      "description": "This is a patch release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6551,
+          "title": "Fix align stretch behavior for cards inside a grid layout",
+          "project": "core",
+          "scope": "card"
+        },
+        {
+          "issue": 6553,
+          "title": "Fix required message for aria attributes in React so they are not camelCase",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6550,
+          "title": "Changed react version to be >= 16.13.1 and moved to peer dependency to manage dependency conflicts",
+          "project": "react",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "5.6.1",
       "date": "2021-12-08",
       "description": "This is a patch release.",

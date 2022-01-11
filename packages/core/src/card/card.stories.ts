@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -25,7 +25,6 @@ export default {
   },
 };
 
-/** @website **/
 export function Basic(args: { [key: string]: unknown }) {
   return html`<cds-card aria-label="Basic card" ...="${spreadProps(getElementStorybookArgs(args))}">
     <p cds-text="body light">${placeholder}</p>
@@ -301,7 +300,6 @@ export function WithLists() {
   </cds-card>`;
 }
 
-/** @website **/
 export function SocialPost() {
   ClarityIcons.addIcons([
     'batman',

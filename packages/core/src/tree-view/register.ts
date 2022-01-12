@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -7,6 +7,7 @@
 import '@cds/core/icon/register.js';
 import '@cds/core/internal-components/visual-checkbox/register.js';
 import '@cds/core/progress-circle/register.js';
+import '@cds/core/button-expand/register.js';
 import {
   ClarityMotion,
   AnimationTreeItemExpandName,

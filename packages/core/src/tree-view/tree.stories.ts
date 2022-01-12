@@ -1,14 +1,18 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import '@cds/core/alert/register.js';
+import '@cds/core/button/register.js';
 import '@cds/core/icon/register.js';
 import '@cds/core/tree-view/register.js';
 import { CdsTreeItem } from '@cds/core/tree-view';
 
-import { html } from 'lit';
+import { css, html, LitElement } from 'lit';
+import { createItems, TreeItem } from './story-utils.js';
+import { customElement } from '@cds/core/internal';
+import { state } from 'lit/decorators/state.js';
 
 export default {
   title: 'Stories/Tree View',
@@ -378,6 +382,78 @@ export const interactive = () => {
     <a href="#" cds-text="link">link</a>
   `;
 };
+
+export function conditionalItems() {
+  @customElement('demo-conditional-tree')
+  class DemoConditionalTree extends LitElement {
+    @state() nodes: TreeItem[] = [];
+    @state() show = false;
+    @state() checkAll = false;
+    @state() selectableItems = false;
+
+    static styles = [css``];
+
+    constructor() {
+      super();
+      const level1 = 5;
+      const level2 = 3;
+      const level3 = 2;
+
+      this.nodes = createItems(0, level1).map(n => {
+        n.nodes = createItems(n, level2);
+        n.nodes.forEach(c => (c.nodes = createItems(c, level3)));
+        return n;
+      });
+    }
+
+    private generateTreeItems(nodes: TreeItem[]): any {
+      return nodes.map(
+        node => html` <cds-tree-item
+          @expandedChange=${() => this.toggleNode(node)}
+          .expanded=${node.show}
+          .expandable=${node.nodes.length > 0}
+        >
+          ${node.id} content ${node.show ? this.generateTreeItems(node.nodes) : ''}
+        </cds-tree-item>`
+      );
+    }
+
+    render() {
+      return html` <section cds-layout="vertical gap:lg p:lg">
+        <h1 cds-text="heading">Conditional Tree Items</h1>
+        <cds-button @click=${() => (this.show = !this.show)}>Toggle Tree Visibility</cds-button>
+
+        <cds-tree>
+          ${this.show ? this.generateTreeItems(this.nodes) : ''}
+        </cds-tree>
+      </section>`;
+    }
+
+    track(_index: number, node: TreeItem) {
+      return node.id;
+    }
+
+    toggleAll() {
+      this.checkAll = !this.checkAll;
+      this.nodes.forEach(n => (n.selected = this.checkAll));
+    }
+
+    toggleNode(node: TreeItem) {
+      node.show = !node.show;
+      this.nodes = [...this.nodes];
+    }
+
+    toggleNodeSelection(node: TreeItem, checked: boolean) {
+      node.selected = checked;
+      this.nodes = [...this.nodes];
+    }
+
+    createRenderRoot() {
+      return this;
+    }
+  }
+  return html`<demo-conditional-tree></demo-conditional-tree>`;
+}
 
 /** @website */
 export function customStyles() {

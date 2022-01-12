@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -106,5 +106,15 @@ describe('tree item element', () => {
     expect(item).toBeDefined();
     item.click();
     expect((await event).detail).toBe(true);
+  });
+
+  it('should display the expand button when expandable', async () => {
+    await componentIsStable(component);
+    const expandButtonNull = component.shadowRoot.querySelector('cds-button-expand');
+    expect(expandButtonNull).toBeNull();
+    component.expandable = true;
+    await componentIsStable(component);
+    const expandButton = component.shadowRoot.querySelector('cds-button-expand');
+    expect(expandButton.tagName).toBe('CDS-BUTTON-EXPAND');
   });
 });

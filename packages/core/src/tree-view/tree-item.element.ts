@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -75,6 +75,14 @@ export class CdsTreeItem extends LitElement {
   @property({ type: Boolean, reflect: true })
   expanded = false;
 
+  /**
+   * @description
+   *
+   * Expandable is used (see line 124) to automatically show the cds-button-expand element when a tree-item detects that
+   * there are children. However, when doing investigation into why styles were not applied for tree-items controlled
+   * via *ngIf (or any conditional DOM and code that will put tree-item elements there at some unknown point in the
+   * future) it was re-discovered as a public property without a demo for manual usage.
+   */
   @property({ type: Boolean, reflect: true })
   expandable = false;
 

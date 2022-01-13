@@ -468,9 +468,12 @@ export default class App extends React.Component<{}, AppState> {
             <CdsButton status="primary">primary</CdsButton>
             <CdsButton status="success">success</CdsButton>
             <CdsButton status="danger">danger</CdsButton>
-            <CdsButton status="danger" disabled>
+            <CdsButton status="primary" disabled={true}>
               disabled
             </CdsButton>
+            <CdsButton loadingState="loading">Loading</CdsButton>
+            <CdsButton loadingState="success">Success</CdsButton>
+            <CdsButton loadingState="error">Error</CdsButton>
           </div>
 
           <h2>Internal Close button</h2>

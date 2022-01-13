@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -80,28 +80,36 @@ export class CdsButton extends CdsBaseButton {
    * - `success`: disables the button and shows a check mark inside the button; auto-triggers to change back to DEFAULT state after 1000 ms
    * - `error`: shows the content of the button (in the context of application, this state is usually entered from a LOADING state. the application should show appropriate error message)
    */
-  @property({ type: String }) get loadingState() {
-    return this._loadingState;
+  @property({ type: String })
+  loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
+
+  firstUpdated(props: Map<string, any>) {
+    super.firstUpdated(props);
+
+    if (!this.isDefaultLoadingState(this.loadingState)) {
+      this.disabled = true;
+    }
   }
 
-  set loadingState(value: keyof typeof ClrLoadingState) {
-    // track prior disabled state to set prior value after button is re-enabled from a loading state
-    if (this._loadingState === ClrLoadingState.default) {
-      this._disabled = this.disabled;
+  update(props: Map<string, any>) {
+    if (props.has('loadingState')) {
+      if (this.isDefaultLoadingState(props.get('loadingState'))) {
+        // track prior disabled state to set prior value after button is re-enabled from a loading state
+        this._disabled = this.disabled;
+      }
+
+      if (props.get('loadingState') !== undefined) {
+        if (this.isDefaultLoadingState(this.loadingState)) {
+          this.enableButton();
+        } else {
+          this.disableButton();
+        }
+      }
     }
 
-    if (value === ClrLoadingState.default) {
-      this.enableButton();
-    } else {
-      this.disableButton();
-    }
-
-    const oldValue = this._loadingState;
-    this._loadingState = value;
-    this.requestUpdate('loadingState', oldValue);
+    super.update(props);
   }
 
-  private _loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
   private _disabled = false;
 
   render() {
@@ -121,8 +129,11 @@ export class CdsButton extends CdsBaseButton {
 
   static styles = [baseStyles, styles];
 
-  private async disableButton() {
-    await this.updateComplete;
+  isDefaultLoadingState(state: string) {
+    return state === ClrLoadingState.default;
+  }
+
+  private disableButton() {
     this.style.width = getElementWidth(this);
     this.disabled = true;
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -277,6 +277,25 @@ describe('button element', () => {
       expect(component.getBoundingClientRect().width.toFixed(3)).toEqual(size.toFixed(3));
       expect(component.hasAttribute('disabled')).toEqual(true);
       expect(component.getAttribute('aria-disabled')).toEqual('true');
+    });
+
+    it('should go back to enabled when loadingState changes back to default', async () => {
+      await componentIsStable(component);
+      component.loadingState = ClrLoadingState.default;
+      await componentIsStable(component);
+      expect(component.disabled).not.toBeTruthy();
+
+      component.loadingState = ClrLoadingState.loading;
+      await componentIsStable(component);
+      expect(component.disabled).toBeTruthy();
+
+      component.loadingState = ClrLoadingState.success;
+      await componentIsStable(component);
+      expect(component.disabled).toBeTruthy();
+
+      component.loadingState = ClrLoadingState.default;
+      await componentIsStable(component);
+      expect(component.disabled).not.toBeTruthy();
     });
 
     it('should stay disabled when loadingState changes to default', async () => {

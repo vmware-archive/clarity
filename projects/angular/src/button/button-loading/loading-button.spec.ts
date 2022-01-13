@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -117,14 +117,23 @@ describe('Loading Buttons', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.spinner')).toBeFalsy();
   });
+
+  it('has minimum width of 42px when loading', () => {
+    fixture.componentInstance.buttonContent = '';
+    fixture.detectChanges();
+    fixture.componentInstance.buttonState = ClrLoadingState.LOADING;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('button').offsetWidth).toBe(42);
+  });
 });
 
 @Component({
-  template: ` <button [(clrLoading)]="buttonState" id="testBtn" [disabled]="disabled">Test 1</button> `,
+  template: ` <button [(clrLoading)]="buttonState" id="testBtn" [disabled]="disabled">{{ buttonContent }}</button> `,
 })
 class TestLoadingButtonComponent {
   @ViewChild(ClrLoadingButton) loadingButtonInstance: ClrLoadingButton;
 
   buttonState: ClrLoadingState = ClrLoadingState.DEFAULT;
   disabled = false;
+  buttonContent = 'Test 1';
 }

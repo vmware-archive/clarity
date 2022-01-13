@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -8,6 +8,9 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
 import { Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { ClrLoadingState } from '../../utils/loading/loading';
 import { LoadingListener } from '../../utils/loading/loading-listener';
+
+// minimum width to fit loading spinner
+const MIN_BUTTON_WIDTH = 42;
 
 @Component({
   selector: 'button[clrLoading]',
@@ -102,7 +105,8 @@ export class ClrLoadingButton implements LoadingListener {
   private setExplicitButtonWidth() {
     if (this.el.nativeElement && this.el.nativeElement.getBoundingClientRect) {
       const boundingClientRect = this.el.nativeElement.getBoundingClientRect();
-      this.renderer.setStyle(this.el.nativeElement, 'width', `${boundingClientRect.width}px`);
+      const width = Math.max(MIN_BUTTON_WIDTH, boundingClientRect.width);
+      this.renderer.setStyle(this.el.nativeElement, 'width', `${width}px`);
     }
   }
 }

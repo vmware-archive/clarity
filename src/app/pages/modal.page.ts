@@ -10,7 +10,8 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-modal',
   template: `
-    <h1>Modal</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Modal</h1>
+
     <app-eslint-intro-block rule="no-clr-modal"></app-eslint-intro-block>
 
     <p>
@@ -20,11 +21,11 @@ import { DemoTabData } from '../components/demo.component';
     </p>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With title, body and footer</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With title, body and footer</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Closable</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Closable</h3>
 
       <p>
         In some cases there is a need to prevent the user from closing the modal. To achieve this there is an option for

@@ -1,7 +1,7 @@
-<svg width="86" height="40" viewBox="0 0 86 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect opacity="0.4" x="25" y="6" width="61" height="4" rx="2" fill="#A7A7A7"/>
-<rect width="16" height="16" rx="2" fill="#47A6D7"/>
-<path d="M3.52002 8.32389L7.53497 11.841L13.52 5.38" stroke="white" stroke-width="2" stroke-linecap="round"/>
-<rect opacity="0.4" x="25" y="30" width="49" height="4" rx="2" fill="#A7A7A7"/>
-<rect x="0.5" y="24.5" width="15" height="15" rx="1.5" fill="white" stroke="#A7A7A7"/>
+<svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M62 39C62 37.8954 62.8954 37 64 37H122C123.105 37 124 37.8954 124 39C124 40.1046 123.105 41 122 41H64C62.8954 41 62 40.1046 62 39Z" fill="#C5CED8"/>
+<rect opacity="0.8" x="37" y="30" width="16" height="16" rx="2" fill="#0099DB"/>
+<path d="M40.52 38.3228L44.535 41.8399L50.52 35.3789" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+<rect x="37.5" y="54.5" width="15" height="15" rx="1.5" fill="white" stroke="#ACB9BE"/>
+<path d="M62 62C62 60.8954 62.8954 60 64 60H114C115.105 60 116 60.8954 116 62C116 63.1046 115.105 64 114 64H64C62.8954 64 62 63.1046 62 62Z" fill="#C5CED8"/>
 </svg>

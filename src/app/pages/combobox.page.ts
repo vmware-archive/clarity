@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-combobox',
   template: `
-    <h1>Combobox</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Combobox</h1>
     <not-ready name="Combobox"></not-ready>
   `,
 })

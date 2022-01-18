@@ -10,15 +10,15 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-checkbox',
   template: `
-    <h1>Checkbox</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Checkbox</h1>
 
     <app-eslint-intro-block rule="no-clr-checkbox"></app-eslint-intro-block>
 
     <demo [tabs]="demo1">
-      <h3 cds-text="section">Basic checkbox</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Basic checkbox</h3>
     </demo>
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Example of more complex form structure</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Example of more complex form structure</h3>
     </demo>
   `,
 })

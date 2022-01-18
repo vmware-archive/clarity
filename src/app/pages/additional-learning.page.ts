@@ -8,10 +8,17 @@ import { Component } from '@angular/core';
 
 @Component({
   template: `
-  <h2 cds-text="title" cds-layout="m-t:lg">Key Differences in Clarity Angular and Clarity Core</h2>
+  <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Additional Learning</h1>
+
+  <h3 cds-text="title" cds-layout="m-t:lg">Key Differences in Clarity Angular and Clarity Core</h3>
 
   <p>
-    Clarity Angular was designed to try and leverage many of the capabilities of Angular and it was aimed at solving problems with a certain approach. We had the intention to make a design system that also provided guard rails for developers to avoid common pitfalls. What we learned was those same guard rails acted like brick walls for certain valid use cases and made it harder to maintain. With Clarity Core, we've taken the learnings from our Clarity Angular architecture, blended in modern web standards, and crafted a consistent architecture that avoids the previous pitfalls and makes things easier to work with.
+    We designed Clarity Angular to try and leverage many of the capabilities of Angular, and it was aimed at
+    solving problems by using guard rails for developers to avoid common pitfalls. Unfortunately, what we learned
+    was those same guard rails acted like brick walls for certain valid use cases. And it made it harder to
+    maintain. With Clarity Core, we've taken the learnings from our Clarity Angular architecture, blended in
+    modern web standards, and crafted a consistent architecture that avoids the previous pitfalls and makes
+    things easier to work with.
   </p>
 
   <table cds-table="border:all" cds-layout="m-t:lg">
@@ -56,13 +63,17 @@ import { Component } from '@angular/core';
     </tbody>
   </table>
 
-  <h3 cds-text="subtitle" cds-layout="m-t:lg">How to learn more</h3>
+  <a cds-layout="m-t:lg" href="https://clarity.design" target="_blank" class="btn btn-primary">Get started with Clarity Core</a>
+
+  <h3 cds-text="subtitle" cds-layout="m-t:lg">Additional reading</h3>
 
   <p>
-    We have written more content in our blog about the differences and architectural choices with Clarity Core. We encourage you to familiarize yourself with them, as they are useful also to learn from to apply to your own applications.
+    We have written more content in our blog about the differences and architectural choices with Clarity Core.
+    We encourage you to familiarize yourself with them, as they are useful also to learn from to apply to your
+    own applications.
   </p>
 
-  <ul>
+  <ul cds-layout="m-t:lg">
     <li><a href="https://medium.com/claritydesignsystem/clarity-core-72f6d3a029bc">Clarity Core - Our design system’s journey to framework independence.</a></li>
     <li><a href="https://medium.com/claritydesignsystem/claritys-future-user-focused-framework-independent-accessible-enterprise-ready-and-open-61a3f62eac93">Clarity’s future: user-focused, framework-independent, accessible, enterprise-ready, and open source.</a></li>
     <li><a href="https://medium.com/claritydesignsystem/level-up-your-application-by-adopting-clarity-core-8a5f3f863139">Level Up Your Application by Adopting Clarity Core</a></li>
@@ -74,4 +85,4 @@ import { Component } from '@angular/core';
 
   `,
 })
-export class DifferencesPage {}
+export class AdditionalLearningPage {}

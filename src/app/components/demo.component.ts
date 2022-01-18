@@ -30,7 +30,7 @@ export interface DemoTabData {
 @Component({
   selector: 'demo',
   template: `
-    <div cds-layout="m-b:md">
+    <div cds-layout="m-b:md m-t:lg">
       <ng-content></ng-content>
     </div>
 

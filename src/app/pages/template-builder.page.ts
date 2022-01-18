@@ -24,7 +24,7 @@ ClarityIcons.addIcons(scrollIcon);
   selector: 'app-home',
   providers: [StackblitzService, TemplateDetailsService],
   template: `
-  <h2 cds-text="title" cds-layout="m-t:lg">Example Builder</h2>
+  <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Example Builder</h1>
 
   <p>
     Generate a demo project from a already existing template to test and learn how

@@ -5,57 +5,45 @@
  */
 
 import { Component } from '@angular/core';
-import { StackblitzService } from '../components/stackblitz/stackblitz.service';
-import { SupportedTemplates } from '../templates';
 
 @Component({
   selector: 'app-home',
-  providers: [StackblitzService],
   template: `
-  <h2 cds-text="title" cds-layout="m-t:lg">Getting Started</h2>
+    <h2 cds-text="display" cds-layout="m-t:lg">Get Started</h2>
 
-    <h3 cds-text="subtitle" cds-layout="m-t:lg">Who is this guide for?</h3>
+    <h3 cds-text="heading" cds-layout="m-t:lg">Adoption strategy</h3>
 
     <p>
-      This guide is for everyone that want and needs to adopt our new Core components into there existing Clarity
-      Angular application. It's designed to help you rework and adopt in the best way and still get the same result as
-      before. Developers will find this most useful, but we hope to also incorporate any details that might be useful
-      for designers as necessary.
+      Clarity supports you and your team during the adoption of Clarity Core. A part of our mutual success hinges on outlining
+      an adoption strategy alongside understanding how the Clarity team can assist. By adopting Clarity Core, with an adoption
+      strategy in place, coupled with the support we provide, we, together, can minimize duplication efforts and break-fix issues.
     </p>
 
-    <h3 cds-text="subtitle" cds-layout="m-t:lg">How to use this guide?</h3>
     <p>
-      The guide is structured into sections, every section will provide examples based on our Angular components and
-      their Core counterparts. Into the form of guides, snippets and corner cases that will help you with the adoption
-      of the new components and workflows. It will help to start by reviewing the <a routerLink="/differences">differences</a>
-      and <a routerLink="/approaches">approaches</a> to adopting Clarity Core.
+      There are multiple ways that you can incorporate Clarity Core into your application. There are tradeoffs between each of them,
+      and the best choice may vary from application to application. We want to emphasize that Clarity Angular and Clarity Core are fully
+      independent implementations and can be used side by side. No matter what approach you take, we support Clarity Angular as long as
+      there is widespread use.
     </p>
 
-    <h3 cds-text="subtitle" cds-layout="m-t:lg">Where to find more information?</h3>
+    <h3 cds-text="heading" cds-layout="m-t:lg">Page by Page Adoption: Recommended and supported</h3>
+
     <p>
-      This guide is updated regularly but won't have every detail about the Clarity Angular or Clarity Core APIs. Therefore you
-      should also be ready to reference both the <a href="https://angular.clarity.design" target="_blank">Clarity Angular documentation</a> and 
-      <a href="https://clarity.design/" target="_blank">Clarity Core documentation</a>
+      We recommend incorporating Clarity Core into your applications page by page as you are doing other work. For example, if your
+       application has 100 pages or routes, then each time you make a new page or modify an existing one, you can also incorporate
+       some time to update the page to use Clarity Core fully.
     </p>
 
-    <h3 cds-text="subtitle" cds-layout="m-t:lg">Project starters</h3>
-    <p>Below are few templates that could be used to start running Angular or Core based application.</p>
+    <p>
+      Advantages <br/>
+      This allows applications to rework page by page and keep the scope of changes isolated.
+      Full support of the Clarity team, specifically - having an engineer embedded to provide guidance.
+    </p>
 
-    <ul>
-      <li><a href="#" (click)="openStackblitz('angular', $event)">Clarity Angular starter</a></li>
-      <li><a href="#" (click)="openStackblitz('core', $event)">Clarity Core starter</a></li>
-      <li><a href="#" (click)="openStackblitz('hybrid', $event)">Clarity Core & Angular starter</a></li>
-    </ul>
+    <div cds-layout="m-t:lg">
+      <a href="/adoption-tooling" class="btn">Adoption Tooling</a>
+      <a href="/overview" class="btn">Components</a>
+    </div>
   `,
 })
-export class GettingStartedPage {
-  constructor(private stackblitz: StackblitzService) {}
-
-  openStackblitz(template: SupportedTemplates, event: MouseEvent): void {
-    this.stackblitz.open(template);
-
-    if (event) {
-      event.preventDefault();
-    }
-  }
-}
+export class GettingStartedPage {}

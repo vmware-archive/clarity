@@ -10,13 +10,13 @@ import { DemoTabData } from '../components/demo.component';
 @Component({
   selector: 'app-password',
   template: `
-    <h1>Password</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Password</h1>
     <demo [tabs]="demo1">
-      <h3 cds-text="section">With label</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">With label</h3>
     </demo>
 
     <demo [tabs]="demo2">
-      <h3 cds-text="section">Password with Reactive form</h3>
+      <h3 cds-text="section" cds-layout="m-b:lg">Password with Reactive form</h3>
     </demo>
   `,
 })

@@ -13,7 +13,7 @@ ClarityIcons.addIcons(checkCircleIcon);
 
 @Component({
   template: `
-    <h1>Adoption tooling</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Adoption tooling</h1>
 
     <h3>Clarity Adoption ESLint plugin</h3>
     <p>

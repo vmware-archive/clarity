@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-table',
   template: `
-    <h1>Table</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Table</h1>
     <not-ready name="Table"></not-ready>
   `,
 })

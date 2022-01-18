@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-tooltip',
   template: `
-    <h1>Tooltip</h1>
+    <h1 cds-text="heading" cds-layout="m-b:lg m-t:lg">Tooltip</h1>
     <not-ready name="Tooltip"></not-ready>
   `,
 })

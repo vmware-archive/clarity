@@ -4,6 +4,7 @@ const scopes = [
   'angular:schematics',
   'angular:datagrid',
   'angular:vertical-nav',
+  'angular:popover',
   'a11y',
   'accordion',
   'alert',

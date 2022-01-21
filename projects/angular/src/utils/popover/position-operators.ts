@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -82,6 +82,7 @@ export function align(position: ClrPopoverPosition, anchor: ClientRect, content:
       break;
     }
   }
+
   return { xOffset: xDiff, yOffset: yDiff };
 }
 
@@ -126,6 +127,16 @@ function alignHorizontal(position: ClrPopoverPosition, anchor: ClientRect, conte
     default: {
       break;
     }
+  }
+
+  /**
+   * Sometimes when the screen is smaller the calculation of the popoup position of
+   * x offset could be negative. e.g. -1
+   *
+   * This causes the position to go out of the viewport and cut some content/elements.
+   */
+  if (0 > horizontalOffset) {
+    horizontalOffset = 0;
   }
 
   return horizontalOffset;

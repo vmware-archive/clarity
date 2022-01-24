@@ -505,6 +505,8 @@ export interface ClrCommonStrings {
     verticalNavGroupToggle: string;
     verticalNavToggle: string;
     warning: string;
+    wizardStepError: string;
+    wizardStepSuccess: string;
 }
 
 export declare class ClrCommonStringsService {
@@ -2556,6 +2558,7 @@ export declare class ClrWizardStepnav {
 
 export declare class ClrWizardStepnavItem {
     get canNavigate(): boolean;
+    commonStrings: ClrCommonStringsService;
     get hasError(): boolean;
     get id(): string;
     get isComplete(): boolean;
@@ -2565,7 +2568,7 @@ export declare class ClrWizardStepnavItem {
     page: ClrWizardPage;
     pageCollection: PageCollectionService;
     get stepAriaCurrent(): string;
-    constructor(navService: WizardNavigationService, pageCollection: PageCollectionService);
+    constructor(navService: WizardNavigationService, pageCollection: PageCollectionService, commonStrings: ClrCommonStringsService);
     click(): void;
     static ɵcmp: i0.ɵɵComponentDeclaration<ClrWizardStepnavItem, "[clr-wizard-stepnav-item]", never, { "page": "page"; }, {}, never, ["*"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrWizardStepnavItem, never>;

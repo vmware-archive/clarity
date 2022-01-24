@@ -2,6 +2,32 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "6.0.0-next.3",
+      "date": "2022-01-24",
+      "description": "This is a beta release for our next major version.",
+      "fix": [
+        {
+          "issue": 6576,
+          "title": "Moved loadingStatus logic to update lifecycle hook to improve React wrapper",
+          "project": "react",
+          "scope": "button"
+        },
+        {
+          "issue": 6572,
+          "title": "Fixes to adress tree-view",
+          "project": "core",
+          "scope": "tree"
+        },
+        {
+          "issue": 6532,
+          "title": "Removed v5 deprecations from v6",
+          "project": "core",
+          "scope": "",
+          "breaking": true
+        }
+      ]
+    },
+    {
       "version": "6.0.0-next.2",
       "date": "2022-01-10",
       "description": "This is a beta release for our next major version.",

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 import { PageCollectionService } from './providers/page-collection.service';
 import { WizardNavigationService } from './providers/wizard-navigation.service';
 import { ClrWizardPage } from './wizard-page';
+import { ClrCommonStringsService } from '../utils';
 
 @Component({
   selector: '[clr-wizard-stepnav-item]',
@@ -31,6 +32,8 @@ import { ClrWizardPage } from './wizard-page';
       <span class="clr-wizard-stepnav-link-title">
         <ng-template [ngTemplateOutlet]="page.navTitle"></ng-template>
       </span>
+      <span *ngIf="hasError" class="clr-sr-only">{{ commonStrings.keys.wizardStepError }}</span>
+      <span *ngIf="!hasError && isComplete" class="clr-sr-only">{{ commonStrings.keys.wizardStepSuccess }}</span>
     </button>
   `,
   host: {
@@ -49,7 +52,11 @@ import { ClrWizardPage } from './wizard-page';
 export class ClrWizardStepnavItem {
   @Input('page') public page: ClrWizardPage;
 
-  constructor(public navService: WizardNavigationService, public pageCollection: PageCollectionService) {}
+  constructor(
+    public navService: WizardNavigationService,
+    public pageCollection: PageCollectionService,
+    public commonStrings: ClrCommonStringsService
+  ) {}
 
   private pageGuard(): void {
     if (!this.page) {

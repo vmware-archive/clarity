@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -88,4 +88,7 @@ export const commonStringsDefault: ClrCommonStrings = {
   dategridExpandableEndOf: 'End of',
   dategridExpandableRowContent: 'Expandable row content',
   dategridExpandableRowsHelperText: `Screen reader table commands may not work for viewing expanded content, please use your screen reader's browse mode to read the content exposed by this button`,
+  // Wizard
+  wizardStepSuccess: 'Completed',
+  wizardStepError: 'Error',
 };

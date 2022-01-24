@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,6 +16,7 @@ import { ClrWizardPageNavTitle } from './wizard-page-navtitle';
 import { MockPage } from './wizard-page.mock';
 import { ClrWizardStepnavItem } from './wizard-stepnav-item';
 import { ClrWizardModule } from './wizard.module';
+import { ClrCommonStringsService } from '../utils';
 
 const pageIndex = 0;
 const fakeOutPage = new MockPage(pageIndex);
@@ -476,6 +477,26 @@ export default function (): void {
           fakeOutPage.hasError = true;
           fixture.detectChanges();
           expect(myStepnavItem.querySelector('cds-icon[shape="error-standard"]')).not.toBeNull();
+        });
+
+        it('should have a span with text "Error" when page has an error', () => {
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = true;
+          fixture.detectChanges();
+          const commonStrings = new ClrCommonStringsService();
+          const spans: NodeList = myStepnavItem.querySelectorAll('span.clr-sr-only');
+          expect(spans.length).toEqual(1);
+          expect(spans[0].textContent).toEqual(commonStrings.keys.wizardStepError);
+        });
+
+        it('should have a span with text "Completed" when page is completed', () => {
+          fakeOutPage.completed = true;
+          fakeOutPage.hasError = false;
+          fixture.detectChanges();
+          const commonStrings = new ClrCommonStringsService();
+          const spans: NodeList = myStepnavItem.querySelectorAll('span.clr-sr-only');
+          expect(spans.length).toEqual(1);
+          expect(spans[0].textContent).toEqual(commonStrings.keys.wizardStepSuccess);
         });
       });
 

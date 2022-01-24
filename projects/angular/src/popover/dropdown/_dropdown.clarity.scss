@@ -40,20 +40,14 @@
         position: absolute;
         top: 35%;
         color: inherit;
-        @include min-equilateral($clr-dropdown-caret-icon-dimension);
+        min-width: $clr-dropdown-caret-icon-dimension;
+        min-height: $clr-dropdown-caret-icon-dimension;
       }
 
       &.btn {
         padding-right: $clr-btn-horizontal-padding + $clr-dropdown-caret-icon-dimension +
           $clr-dropdown-caret-left-margin;
         text-overflow: unset;
-
-        cds-icon[shape^='caret'],
-        clr-icon[shape^='caret'],
-        cds-icon[shape^='angle'],
-        clr-icon[shape^='angle'] {
-          right: $clr-btn-horizontal-padding;
-        }
       }
 
       &:not(.btn) {

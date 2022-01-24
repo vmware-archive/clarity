@@ -262,6 +262,9 @@
         cds-icon[shape^='angle'],
         clr-icon[shape^='angle'] {
           right: $clr-header-action-caret-icon-right-position;
+        }
+
+        clr-icon[shape^='angle'] {
           top: 44%;
         }
       }

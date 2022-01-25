@@ -173,8 +173,6 @@ export class CdsNavigation extends LitElement {
   @querySlotAll('cds-navigation-group')
   protected navigationGroupRefs: NodeListOf<CdsNavigationGroup>;
 
-  role = 'list';
-
   private toggle() {
     this.expandedChange.emit(!this.expanded);
   }
@@ -364,6 +362,7 @@ export class CdsNavigation extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.role = 'list';
     this.rootNavigationStart?.addEventListener('focus', this.focusRootStart.bind(this));
     this.rootNavigationStart?.addEventListener('blur', this.blurRootStart.bind(this));
     this.rootNavigationStart?.addEventListener('keydown', this.handleRootStartKeys.bind(this));

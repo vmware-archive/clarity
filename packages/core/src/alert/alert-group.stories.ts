@@ -569,15 +569,15 @@ export function lightweightAlertGroup() {
       </cds-alert>
       <cds-alert status="success">
         This example is an alert with a status of "success" and inline action buttons inside a lightweight alert group.
-        <cds-inline-button>Clickable Action</cds-inline-button>
+        <cds-button-inline>Clickable Action</cds-button-inline>
       </cds-alert>
       <cds-alert status="warning">
         This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert group.
-        <cds-inline-button>Clickable Action</cds-inline-button>
+        <cds-button-inline>Clickable Action</cds-button-inline>
       </cds-alert>
       <cds-alert status="danger">
         This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
-        <cds-inline-button>Clickable Action</cds-inline-button>
+        <cds-button-inline>Clickable Action</cds-button-inline>
       </cds-alert>
       <cds-alert status="loading">
         This example is an alert with a status of "loading" inside a lightweight alert group.
@@ -663,7 +663,7 @@ export function compactAlertGroup() {
         </cds-alert>
         <cds-alert status="danger">
           This example is an alert with a status of "danger" and an inline action inside a compact, lightweight alert
-          group.<cds-inline-button>Clickable Action</cds-inline-button>
+          group.<cds-button-inline>Clickable Action</cds-button-inline>
         </cds-alert>
         <cds-alert status="loading">
           This example is an alert with a status of "loading" inside a compact, lightweight alert group.
@@ -679,9 +679,9 @@ export function compactAlertGroup() {
           syntheses vanquish the impossible finite but unbounded not a sunrise but a galaxyrise. Intelligent beings two
           ghostly white figures in coveralls and helmets are soflty dancing something incredible is waiting to be known
           vanquish the impossible vastness is bearable only through love concept of the number one and billions upon
-          billions upon billions upon billions upon billions upon billions upon billions.<cds-inline-button
-            >Clickable Action 1</cds-inline-button
-          ><cds-inline-button>Clickable Action 2</cds-inline-button>
+          billions upon billions upon billions upon billions upon billions upon billions.<cds-button-inline
+            >Clickable Action 1</cds-button-inline
+          ><cds-button-inline>Clickable Action 2</cds-button-inline>
           <cds-alert-actions>
             <cds-button>Alert actions should not be viewable in lightweight alerts</cds-button>
           </cds-alert-actions>
@@ -704,11 +704,11 @@ export function darkTheme() {
         <cds-alert status="warning">
           This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert
           group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+          <cds-button-inline>Clickable Action</cds-button-inline>
         </cds-alert>
         <cds-alert status="danger">
           This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+          <cds-button-inline>Clickable Action</cds-button-inline>
         </cds-alert>
         <cds-alert>
           This example is a multi-line alert with a status of "default" inside a lightweight alert group. A block of
@@ -841,7 +841,7 @@ export function customStyles() {
       </cds-alert>
       <cds-alert class="alert-custom" closable>
         This example is an alert with a status of "danger" and an inline action inside a compact, lightweight alert
-        group.<cds-inline-button class="alert-custom-link">Clickable Action</cds-inline-button>
+        group.<cds-button-inline class="alert-custom-link">Clickable Action</cds-button-inline>
       </cds-alert>
     </cds-alert-group>
   `;

@@ -1,16 +1,25 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { registerElementSafely } from '@cds/core/internal';
-import { CdsButtonInline } from './button-inline.element.js';
+import { CdsButtonInline, CdsInlineButton } from './button-inline.element.js';
 
 registerElementSafely('cds-button-inline', CdsButtonInline);
 
 declare global {
   interface HTMLElementTagNameMap {
     'cds-button-inline': CdsButtonInline;
+  }
+}
+
+/** @deprecated */
+registerElementSafely('cds-inline-button', CdsInlineButton);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'cds-inline-button': CdsInlineButton;
   }
 }

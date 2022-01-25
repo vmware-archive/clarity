@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -173,8 +173,6 @@ export class CdsNavigation extends LitElement implements Animatable {
    */
   @querySlotAll('cds-navigation-group')
   protected navigationGroupRefs: NodeListOf<CdsNavigationGroup>;
-
-  role = 'list';
 
   private toggle() {
     this.expandedChange.emit(!this.expanded);
@@ -365,6 +363,7 @@ export class CdsNavigation extends LitElement implements Animatable {
 
   connectedCallback() {
     super.connectedCallback();
+    this.role = 'list';
     this.rootNavigationStart?.addEventListener('focus', this.focusRootStart.bind(this));
     this.rootNavigationStart?.addEventListener('blur', this.blurRootStart.bind(this));
     this.rootNavigationStart?.addEventListener('keydown', this.handleRootStartKeys.bind(this));

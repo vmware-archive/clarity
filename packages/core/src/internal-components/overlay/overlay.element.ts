@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -92,12 +92,6 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
   @event()
   cdsMotionChange: EventEmitter<string>;
 
-  @property({ type: String })
-  ariaModal = 'true';
-
-  @property({ type: String })
-  role = 'dialog';
-
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside an element with aria-modal set to true
   /** @private */
@@ -138,6 +132,8 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
 
   connectedCallback() {
     super.connectedCallback();
+    this.ariaModal = 'true';
+    this.role = 'dialog';
     window.addEventListener('keydown', this.fireEventOnEscape);
   }
 

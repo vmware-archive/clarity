@@ -71,10 +71,9 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
   @querySlotAll('[cds-navigation-sr-text]')
   itemText: NodeListOf<HTMLSpanElement>;
 
-  role = 'listitem';
-
   connectedCallback() {
     super.connectedCallback();
+    this.role = 'listitem';
     if (!this.id) {
       this.id = createId();
     }

@@ -63,9 +63,6 @@ export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
 
   @i18n() i18n = I18nService.keys.overlay;
 
-  @property({ type: String })
-  ariaModal = 'true';
-
   // renderRoot needs delegatesFocus so that focus can cross the shadowDOM
   // inside an element with aria-modal set to true
   /** @private */
@@ -92,6 +89,11 @@ export class CdsInternalStaticOverlay extends CdsBaseFocusTrap {
 
   /* c8 ignore next */
   @query('.overlay-backdrop') protected backdrop: HTMLElement;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.ariaModal = 'true';
+  }
 
   firstUpdated(props: Map<string, any>) {
     super.firstUpdated(props);

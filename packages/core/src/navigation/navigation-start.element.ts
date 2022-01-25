@@ -67,9 +67,6 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
   @property({ type: Boolean, reflect: true })
   isGroupStart = false;
 
-  @property({ type: String, reflect: true })
-  role = 'listitem';
-
   @property({ type: String })
   navigationGroupId: string;
 
@@ -107,6 +104,7 @@ export class CdsNavigationStart extends LitElement implements FocusableItem {
 
   connectedCallback() {
     super.connectedCallback();
+    this.role = 'listitem';
     if (!this.id) {
       this.id = createId();
     }

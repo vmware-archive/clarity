@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { AriaBooleanAttributeValues, PointerElement, property, state } from '@cds/core/internal';
 import { html, LitElement } from 'lit';
+import { PointerElement, property } from '@cds/core/internal';
 import { getPointer } from './utils/pointer.utils.js';
 import styles from './pointer.element.scss';
 
@@ -27,9 +27,6 @@ import styles from './pointer.element.scss';
  *
  */
 export class CdsInternalPointer extends LitElement implements PointerElement {
-  @state({ type: String, reflect: true, attribute: 'aria-hidden' })
-  protected ariaHiddenAttr: AriaBooleanAttributeValues = 'true';
-
   @property({ type: String })
   axisAlign: 'start' | 'center' | 'end' = 'start';
 
@@ -51,6 +48,11 @@ export class CdsInternalPointer extends LitElement implements PointerElement {
   protected render() {
     // this prevents an impossible state where you have a custom SVG inside of a typed pointer
     return this.type ? getPointer(this.type) : html`<slot></slot>`;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.ariaHidden = 'true';
   }
 
   static get styles() {

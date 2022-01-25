@@ -27,8 +27,6 @@ export class CdsBreadcrumb extends LitElement {
 
   @querySlot('[slot="cds-separator"]') private customSeparator: HTMLElement;
 
-  role = 'navigation';
-
   render() {
     return html`
       <div class="private-host">
@@ -45,6 +43,11 @@ export class CdsBreadcrumb extends LitElement {
       </div>
       <slot @slotchange=${this.assignSlots}></slot>
     `;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.role = 'navigation';
   }
 
   private get separator() {

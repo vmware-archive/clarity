@@ -30,7 +30,7 @@ export default {
 export function API(args: any) {
   return html`
     <cds-alert ...="${spreadProps(getElementStorybookArgs(args))}">
-      ${args.default} <cds-inline-button @click=${() => console.log('alertActionClicked')}>Dismiss</cds-inline-button>
+      ${args.default} <cds-button-inline @click=${() => console.log('alertActionClicked')}>Dismiss</cds-button-inline>
     </cds-alert>
   `;
 }
@@ -64,8 +64,8 @@ export function lightAlerts() {
   return html`
     <div cds-layout="vertical gap:xxs">
       <cds-alert>
-        <em>Single line alert:</em> This alert example has only a single line of text.<cds-inline-button
-          >Use Inline Buttons in Lightweight Alerts</cds-inline-button
+        <em>Single line alert:</em> This alert example has only a single line of text.<cds-button-inline
+          >Use Inline Buttons in Lightweight Alerts</cds-button-inline
         >
       </cds-alert>
       <cds-alert>
@@ -109,9 +109,9 @@ export function compact() {
   return html`
     <cds-alert-group type="light" size="sm">
       <cds-alert status="info">
-        This compact alert example has only a single line of text.<cds-inline-button
+        This compact alert example has only a single line of text.<cds-button-inline
           >Use Inline Buttons in Lightweight Alerts<cds-icon direction="right" shape="angle"></cds-icon
-        ></cds-inline-button>
+        ></cds-button-inline>
       </cds-alert>
       <cds-alert status="success">This is a compact alert with a status of "success"</cds-alert>
       <cds-alert status="warning">This is a compact alert with a status of "warning"</cds-alert>
@@ -134,11 +134,11 @@ export function darkTheme() {
         <cds-alert status="warning">
           This example is an alert with a status of "warning" and inline action buttons inside a lightweight alert
           group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+          <cds-button-inline>Clickable Action</cds-button-inline>
         </cds-alert>
         <cds-alert status="danger">
           This example is an alert with a status of "danger" and inline action buttons inside a lightweight alert group.
-          <cds-inline-button>Clickable Action</cds-inline-button>
+          <cds-button-inline>Clickable Action</cds-button-inline>
         </cds-alert>
         <cds-alert>
           This example is a multi-line alert with a status of "default" inside a lightweight alert group. A block of
@@ -164,7 +164,7 @@ export function customStyles() {
     </style>
     <cds-alert class="alert-branding"
       ><cds-icon shape="user" solid></cds-icon>A custom alert.
-      <cds-inline-button>Example Action</cds-inline-button></cds-alert
+      <cds-button-inline>Example Action</cds-button-inline></cds-alert
     >
   `;
 }

@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != 'vmware/clarity'
+    if: github.repository == 'vmware/clarity'
 
     steps:
       - uses: actions/checkout@v2
@@ -30,3 +30,4 @@ jobs:
     env:
       CI: true
       NETLIFY_SITE_ID: 03fce0dd-9568-4ab2-a3ea-211d856989db
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

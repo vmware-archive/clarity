@@ -22,3 +22,4 @@ jobs:
     env:
       CI: true
       NETLIFY_SITE_ID: e617b306-1e77-45f2-9692-86a46c70d8c0
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

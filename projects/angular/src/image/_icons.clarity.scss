@@ -8,13 +8,13 @@
 $svg_data: 'data:image/svg+xml;charset=utf8';
 
 @function deHexColorString($colorStr) {
-  @if str-index($colorStr, 'white') != null {
+  @if str-index($colorStr, 'white') {
     @return 'ffffff';
   }
-  @if str-index($colorStr, 'black') != null {
+  @if str-index($colorStr, 'black') {
     @return '000000';
   }
-  @if str-index($colorStr, '#') == null {
+  @if not str-index($colorStr, '#') {
     @return $colorStr;
   }
   @return str-slice($colorStr, 2);

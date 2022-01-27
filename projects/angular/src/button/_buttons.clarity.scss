@@ -27,7 +27,7 @@
 }
 
 @function getSassButtonColor($type: default, $property: null) {
-  @if $property == null {
+  @if not $property {
     @return null;
   }
 

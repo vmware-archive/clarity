@@ -11,7 +11,7 @@
 $imported-modules: () !default;
 @mixin exports($name) {
   //check if they have been imported
-  @if (index($imported-modules, $name) == null) {
+  @if (not index($imported-modules, $name)) {
     $imported-modules: append($imported-modules, $name) !global;
     @content;
   }
@@ -117,7 +117,7 @@ $clr-outline-spread: $clr_baselineRem_2px;
 }
 
 @function css-variablize-string($str: null) {
-  @if $str != null {
+  @if $str {
     @return #{'--' + $str};
   }
 }

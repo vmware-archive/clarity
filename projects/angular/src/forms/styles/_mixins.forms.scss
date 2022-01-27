@@ -60,7 +60,7 @@
 
   &:focus,
   &.clr-focus {
-    @if $border-color-prop == null or $use-custom-props != true {
+    @if not $border-color-prop or $use-custom-props != true {
       border-bottom-color: $border-color-sass;
     } @else {
       @include css-var(border-bottom-color, $border-color-prop, $border-color-sass, $use-custom-props);
@@ -166,7 +166,7 @@
   @include equilateral($size);
   border: $clr-global-borderwidth solid;
 
-  @if $use-custom-props != true or $border-color-prop == null {
+  @if $use-custom-props != true or not $border-color-prop {
     border-color: $border-color;
   } @else {
     @include css-var(border-color, $border-color-prop, $border-color, $use-custom-props);

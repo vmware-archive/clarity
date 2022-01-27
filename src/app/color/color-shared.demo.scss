@@ -29,7 +29,7 @@
     width: 100%;
     text-align: center;
 
-    @if $textcolor != null {
+    @if $textcolor {
       color: $textcolor;
     }
 

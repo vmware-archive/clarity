@@ -457,7 +457,7 @@ export default function (): void {
         expect(afterReplaced.classList.contains('is-replaced')).toBeTruthy();
       }));
 
-      xit('retains its own cells when row detail gets toggled', fakeAsync(function () {
+      it('retains its own cells when row detail gets toggled', fakeAsync(function () {
         expect(context.clarityElement.querySelectorAll('clr-dg-cell').length).toBe(1);
         context.testComponent.removeRowDetail = true;
         context.detectChanges();

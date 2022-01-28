@@ -22,7 +22,7 @@ class TestComponent {}
 
 export default function () {
   // Temporarily disabled while the directive is being verified to be properly sanitized.
-  xdescribe('Highlight directive', () => {
+  describe('Highlight directive', () => {
     let context: TestContext<ClrFilterHighlight<string>, TestComponent>;
     let optionService: OptionSelectionService<string>;
     beforeEach(function () {

@@ -871,18 +871,6 @@ export default function (): void {
         });
       });
 
-      // TODO: BUILD THESE TESTS OUT AT THE WIZARD LEVEL. ONLY WIZARD HANDLES CANCEL/CLOSE
-      // BECAUSE IT NEEDS TO COMMUNICATE WITH MODAL PROPERTIES
-      xdescribe('pageOnCancel', () => {
-        it('should pass page id when emitted');
-
-        it('should only emit once by default');
-
-        it('should only emit once if overridden at page level');
-
-        it('should only emit once if overridden at wizard level');
-      });
-
       describe('id', () => {
         it('should use custom id when defined in input', () => {
           expect(otherWizardPage.id).toBe('clr-wizard-page-ohai');

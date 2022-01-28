@@ -241,12 +241,6 @@ export default function (): void {
         context.detectChanges();
       });
 
-      describe('Overriding modal animation with (clrWizardPreventModalAnimation)', () => {
-        xit('should set stopModalAnimations to false when true');
-
-        xit('should default to false');
-      });
-
       describe('Current page onchange', () => {
         it('should emit pageOnLoad when wizard is created', () => {
           context.detectChanges();
@@ -443,30 +437,6 @@ export default function (): void {
             expect(finish.textContent.trim()).toBe('Ohai');
           });
         });
-
-        describe('Wizard Header Actions', () => {
-          // TODO: Header actions are not widely available atm. When they are then we should complete
-          // this test plan.
-
-          xit('header actions show up');
-
-          xit('headerActionService.wizardHeaderActions is set to wizard.headerActions');
-
-          xit('headerActionService.wizardHeaderActions updates with wizard');
-
-          xit("header actions don't show up when they aren't there");
-
-          xit('page header actions take precedence');
-
-          xit('clicking on a header action does something');
-
-          xit('wizard falls through to wizard header actions');
-
-          xit(
-            "wizard doesn't show header action when page with header actions " +
-              "changes to a page w/o header actions and the wizard doesn't have them"
-          );
-        });
       });
 
       describe('Misc Observables', () => {
@@ -609,8 +579,6 @@ export default function (): void {
           expect(wizard.size).toBe('lg');
           expect(wizardModal.classList.contains('modal-lg')).toBeTrue();
         });
-
-        xit('defaults to "xl"');
       });
 
       describe('Opening', () => {
@@ -752,49 +720,6 @@ export default function (): void {
           context.detectChanges();
         }).not.toThrowError();
         expect(wizard.pageCollection.pagesCount).toBe(0);
-      });
-    });
-
-    describe('View and Behavior', () => {
-      describe('Close X', () => {
-        xit('shows up by default');
-
-        xit('can be hidden with the clrWizardClosable input');
-      });
-
-      describe('Backdrop is static', () => {
-        xit('clrModalStaticBackdrop is set to true');
-      });
-
-      describe('Navigation', () => {
-        xit('happy path through to finish');
-
-        xit('close and open on last open page');
-
-        xit('close and open on last navigable page');
-
-        xit('sets last navigable page current when current page is removed');
-      });
-
-      describe('Custom Navigation', () => {
-        describe('Alt Cancel Override', () => {
-          xit('clrWizardPreventDefaultCancel input keeps wizard from getting cancelled');
-        });
-      });
-
-      describe('Delegates to modal', () => {
-        // validate that clrModalSize is set as expected
-        xit('clrModalSize is set as expected');
-
-        // validate that clrModalClosable is set as expected
-        xit('clrModalClosable is set as expected');
-
-        // validate that clrModalOpenChange event calls wizard.cancel
-        // both dynamically and through clicking
-        xit('clrModalOpenChange event calls wizard.cancel');
-
-        // validate that clrModalSkipAnimation is set as expected
-        xit('clrModalSkipAnimation is set as expected');
       });
     });
   });

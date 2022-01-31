@@ -37,17 +37,27 @@
       // This results in a different top value.
       cds-icon[shape^='caret'],
       cds-icon[shape^='angle'] {
+        margin-top: unset;
         position: absolute;
         top: 35%;
         color: inherit;
-        min-width: $clr-dropdown-caret-icon-dimension;
-        min-height: $clr-dropdown-caret-icon-dimension;
+        @include equilateral($clr-dropdown-caret-icon-dimension);
+        // need custom property override here to force minimum size of
+        // cds-icon to be 12px across the shadow dom...
+        --cds-global-space-7: $clr-dropdown-caret-icon-dimension;
       }
 
       &.btn {
         padding-right: $clr-btn-horizontal-padding + $clr-dropdown-caret-icon-dimension +
           $clr-dropdown-caret-left-margin;
         text-overflow: unset;
+
+        cds-icon[shape^='caret'],
+        clr-icon[shape^='caret'],
+        cds-icon[shape^='angle'],
+        clr-icon[shape^='angle'] {
+          right: $clr-btn-horizontal-padding;
+        }
       }
 
       &:not(.btn) {

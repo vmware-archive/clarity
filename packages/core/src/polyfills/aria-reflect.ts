@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -59,19 +59,15 @@ declare global {
 let roleRegistered = false;
 let ariaRegistered = false;
 
-function isNode() {
-  return (globalThis as any)?.process?.env?.JEST_WORKER_ID !== undefined; // Jest and JSDom breaks on property reflection
-}
-
 // eslint-disable-next-line
-if (!roleRegistered && !Element.prototype.hasOwnProperty('role') && !isNode()) {
+if (!roleRegistered && !Element.prototype.hasOwnProperty('role')) {
   reflect(Element.prototype, 'role', 'role');
   roleRegistered = true;
 }
 
 // https://www.w3.org/TR/wai-aria-1.0/states_and_properties
 // eslint-disable-next-line
-if (!ariaRegistered && !Element.prototype.hasOwnProperty('ariaLabel') && !isNode()) {
+if (!ariaRegistered && !Element.prototype.hasOwnProperty('ariaLabel')) {
   ariaRegistered = true;
   [
     'ActiveDescendant',

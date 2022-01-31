@@ -1,8 +1,29 @@
 import { readonlyPlugin } from 'cem-plugin-readonly';
-import { moduleFileExtensionsPlugin } from 'cem-plugin-module-file-extensions';
 
 export default {
-  globs: ['./**/*.d.ts'],
+  globs: ['**/*.ts'],
+  exclude: [
+    '**/*.spec.ts',
+    '**/*.performance.ts',
+    '**/*.a11y.ts',
+    '**/*.d.ts',
+    '**/*.stories.ts',
+    '**/*.story.ts',
+    '**/test/**',
+    '**/demo/**',
+  ],
+  outdir: '../dist/core',
   litelement: true,
-  plugins: [readonlyPlugin(), moduleFileExtensionsPlugin({ from: /\.d\.(t|j)sx?$/, to: '.js' })],
+  plugins: [readonlyPlugin(), tsExtensionPlugin()],
 };
+
+export function tsExtensionPlugin() {
+  return {
+    name: 'ts-extensions',
+    packageLinkPhase({ customElementsManifest }) {
+      customElementsManifest.modules = JSON.parse(
+        JSON.stringify(customElementsManifest.modules).replace(/\.ts"/g, '.js"')
+      );
+    },
+  };
+}

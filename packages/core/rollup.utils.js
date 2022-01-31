@@ -27,14 +27,10 @@ export const packageCheck = dir => {
 /**
  * Rollup plugin for creating custom-elements.json with the Web Component Analyzer
  */
-export const webComponentAnalyer = outDir => {
+export const webComponentAnalyer = () => {
   return execute({
     commands: [
-      `cd dist/core && cem analyze --config ${resolve('./custom-elements-manifest.config.mjs')}`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
-      `wca analyze ${resolve(outDir)} --silent --format=json --outFile ${resolve(
-        outDir,
-        'custom-elements.legacy.json'
-      )}`,
+      `cd src && cem analyze --config ${resolve('./custom-elements-manifest.config.mjs')}`, // https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer
     ],
     hook: 'writeBundle',
   });

@@ -104,5 +104,19 @@ module.exports = {
         changeOrigin: true,
       },
     },
+  },
+  configureWebpack: (config, isServer) => {
+    config.module.rules.push({
+      test: /\.js$/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-nullish-coalescing-operator'],
+          presets: [
+            ['@babel/preset-env']
+          ]
+        }
+      }
+    })
   }
 };

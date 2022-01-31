@@ -10,7 +10,7 @@
   ],
   "compilerOptions": {
     "rootDir": "./",
-    "target": "esnext",
+    "target": "es2021",
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["esnext", "dom"],

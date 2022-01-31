@@ -6,13 +6,16 @@
 
 import { importMapsPlugin } from '@web/dev-server-import-maps';
 import { hmrPlugin, presets } from '@open-wc/dev-server-hmr';
+
 /** Use Hot Module replacement by adding --hmr to the start command */
 const hmr = process.argv.includes('--hmr');
 
 export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
-  nodeResolve: true,
   open: './',
   watch: !hmr,
+  nodeResolve: {
+    exportConditions: ['development'],
+  },
   plugins: [
     importMapsPlugin({
       inject: {
@@ -61,6 +64,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
             '@cds/core/range': '/dist/core/range/index.js',
             '@cds/core/search': '/dist/core/search/index.js',
             '@cds/core/select': '/dist/core/select/index.js',
+            '@cds/core/selection-panels/checkbox': '/dist/core/selection-panels/checkbox/index.js',
+            '@cds/core/selection-panels/radio': '/dist/core/selection-panels/index.js',
             '@cds/core/tag': '/dist/core/tag/index.js',
             '@cds/core/test': '/dist/core/test/index.js',
             '@cds/core/test-dropdown': '/dist/core/test-dropdown/index.js',

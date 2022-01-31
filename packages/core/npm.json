@@ -5,7 +5,7 @@
   "author": "clarity",
   "description": "Clarity Design System Web Components",
   "homepage": "https://clarity.design",
-  "customElements": "custom-elements.json",
+  "customElements": "./custom-elements.json",
   "keywords": [
     "web component",
     "design system",
@@ -27,13 +27,12 @@
     "*"
   ],
   "dependencies": {
-    "lit": "2.0.0-rc.2",
-    "ramda": "^0.27.1",
-    "tslib": "^2.2.0"
+    "lit": "2.1.2",
+    "ramda": "^0.28.0",
+    "tslib": "^2.3.1"
   },
   "optionalDependencies": {
     "@cds/city": "^1.1.0",
-    "@types/resize-observer-browser": "^0.1.5",
     "modern-normalize": "1.1.0"
   }
 }

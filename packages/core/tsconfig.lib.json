@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": [],
+    "sourceMap": false,
     "strictNullChecks": true,
     "rootDir": "./src",
     "incremental": true,
@@ -12,11 +13,13 @@
   "allowSyntheticDefaultImports": false,
   "exclude": [
     "**/*.spec.ts",
+    "**/*.a11y.ts",
     "**/*.performance.ts",
     "dist",
     "node_modules",
     "./storybook",
     "**/*.stories.ts",
+    "**/*.story.ts",
     "./build"
   ]
 }

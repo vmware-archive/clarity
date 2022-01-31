@@ -7,7 +7,7 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { fromRollup } from '@web/dev-server-rollup';
-import { defaultReporter } from '@web/test-runner';
+import { jasmineTestRunnerConfig } from 'web-test-runner-jasmine';
 import execute from 'rollup-plugin-shell';
 import baseConfig from './web-dev-server.config.mjs';
 
@@ -15,19 +15,26 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   // uncomment open/manual to debug in browser
   // open: true,
   // manual: true,
+  ...jasmineTestRunnerConfig(),
+  testFramework: {
+    config: {
+      styles: ['./dist/core/global.min.css'],
+    },
+  },
   files: ['./src/**/*.spec.ts'],
   browsers: [playwrightLauncher({ product: 'chromium' })],
   coverageConfig: {
-    require: ['ts-node/register'],
     extension: ['.ts'],
     exclude: [
       '**/*.d.ts',
       '**/*.scss.js',
       '**/node_modules/**',
       '**/test/**',
+      '**/demo/**',
+      '**/polyfills/**',
       '**/dist/core/**/index.js',
-      '**/dist/core/polyfills/*.js',
       '**/dist/core/**/register.js',
+      '**/dist/core/icon/shapes/**',
     ],
     report: true,
     reportDir: 'dist/coverage',
@@ -39,19 +46,10 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     },
   },
   nodeResolve: true,
+  dedupe: true,
   plugins: [
     ...baseConfig.plugins,
-    esbuildPlugin({ ts: true, json: true, target: 'auto' }),
-    fromRollup(execute)({ commands: [`tsc --noEmit src/**/*.spec.ts`], hook: 'writeBundle' }),
+    esbuildPlugin({ ts: true, target: 'esnext' }),
+    fromRollup(execute)({ commands: [`tsc --noEmit src/**/*.spec.ts src/**/*.spec.*`], hook: 'writeBundle' }),
   ],
-  reporters: [defaultReporter({ reportTestResults: true, reportTestProgress: true })],
-  testRunnerHtml: (testRunnerImport, config) => `<html>
-    <head>
-      <link href="./dist/core/global.min.css" rel="stylesheet" />
-      <script>window.process = { env: { NODE_ENV: "development" } }</script>
-      <script type="text/javascript" src="./node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
-      <script type="module" src="./web-test-runner.jasmine.js"></script>
-    </head>
-    <body></body>
-  </html>`,
 });

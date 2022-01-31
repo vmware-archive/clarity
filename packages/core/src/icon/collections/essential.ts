@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -67,6 +67,7 @@ import { historyIcon, historyIconName } from '../shapes/history.js';
 import { hourglassIcon, hourglassIconName } from '../shapes/hourglass.js';
 import { idBadgeIcon, idBadgeIconName } from '../shapes/id-badge.js';
 import { keyIcon, keyIconName } from '../shapes/key.js';
+import { launchpadIcon, launchpadIconName } from '../shapes/launchpad.js';
 import { landscapeIcon, landscapeIconName } from '../shapes/landscape.js';
 import { libraryIcon, libraryIconName } from '../shapes/library.js';
 import { lightbulbIcon, lightbulbIconName } from '../shapes/lightbulb.js';
@@ -199,6 +200,7 @@ export const essentialCollectionIcons: IconShapeTuple[] = [
   idBadgeIcon,
   keyIcon,
   landscapeIcon,
+  launchpadIcon,
   libraryIcon,
   lightbulbIcon,
   listIcon,
@@ -366,6 +368,7 @@ declare module '@cds/core/internal' {
     [idBadgeIconName]: string;
     [keyIconName]: string;
     [landscapeIconName]: string;
+    [launchpadIconName]: string;
     [libraryIconName]: string;
     [lightbulbIconName]: string;
     [listIconName]: string;

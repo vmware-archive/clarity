@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { Component, ElementRef, Injector, Optional, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ClrConditionalModule } from '../../utils/conditional/conditional.module';
@@ -150,12 +150,27 @@ describe('Abstract Popover', function () {
       fixture.detectChanges();
     });
 
-    it('does not close toggle service immediately after opening', fakeAsync(() => {
+    it('should close on outside click', () => {
       toggleService.open = true;
       document.dispatchEvent(new Event('click'));
-      tick();
+      expect(toggleService.open).toBe(false);
+    });
 
+    it('should not close if outside click opens popover', () => {
+      const btn = document.createElement('button');
+      btn.setAttribute('type', 'button');
+      document.body.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        toggleService.open = true;
+      });
+
+      btn.dispatchEvent(new Event('click'));
       expect(toggleService.open).toBe(true);
-    }));
+
+      // popover should stay open if button is clicked again
+      btn.dispatchEvent(new Event('click'));
+      expect(toggleService.open).toBe(true);
+    });
   });
 });

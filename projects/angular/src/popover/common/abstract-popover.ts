@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -35,7 +35,6 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
       if (change) {
         this.anchor();
         this.attachESCListener();
-        this.setRecentlyOpened();
       } else {
         this.release();
         this.detachESCListener();
@@ -44,7 +43,6 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     if (this.toggleService.open) {
       this.anchor();
       this.attachESCListener();
-      this.setRecentlyOpened();
     }
   }
 
@@ -56,7 +54,6 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
   private subscription: Subscription;
 
   private updateAnchor = false;
-  private recentlyOpened = false;
 
   protected anchorElem: any;
   protected anchorPoint: Point;
@@ -67,8 +64,6 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
 
   protected anchor() {
     this.updateAnchor = true;
-    // Ugh
-    this.ignore = this.toggleService.originalEvent;
   }
 
   protected release() {
@@ -109,11 +104,7 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
    * a separate directive on the host. So let's do dirty but performant for now.
    */
   public closeOnOutsideClick = false;
-  private hostClickListener: () => void;
-  private documentClickListener: () => void;
   private documentESCListener: () => void;
-  private ignoredElementClickListener: () => void;
-  private ignore: any;
 
   private attachESCListener(): void {
     if (!this.popoverOptions.ignoreGlobalESCListener) {
@@ -134,47 +125,29 @@ export abstract class AbstractPopover implements AfterViewChecked, OnDestroy {
     }
   }
 
+  private closeOnOutsideClickCallback = event => {
+    // The anchor element containing the click event origin means, the click wasn't triggered outside.
+    if (this.anchorElem.contains(event.target)) {
+      return;
+    }
+    this.toggleService.open = false;
+  };
+
   private attachOutsideClickListener() {
-    if (this.closeOnOutsideClick) {
-      this.hostClickListener = this.renderer.listen(this.el.nativeElement, 'click', event => (this.ignore = event));
-      if (this.ignoredElement) {
-        this.ignoredElementClickListener = this.renderer.listen(
-          this.ignoredElement,
-          'click',
-          event => (this.ignore = event)
-        );
+    if (this.closeOnOutsideClick && this.toggleService.open) {
+      if (document && document.addEventListener) {
+        // To listen outside click, the listener should catch the event during the capturing phase.
+        // We have to do this ugly document check as Renderer2.listen doesn't allow passive/useCapture listen.
+        document.addEventListener('click', this.closeOnOutsideClickCallback, true);
       }
-      this.documentClickListener = this.renderer.listen('document', 'click', event => {
-        if (event === this.ignore || this.recentlyOpened) {
-          delete this.ignore;
-        } else {
-          this.toggleService.open = false;
-        }
-      });
     }
   }
 
   private detachOutsideClickListener() {
     if (this.closeOnOutsideClick) {
-      if (this.hostClickListener) {
-        this.hostClickListener();
-        delete this.hostClickListener;
-      }
-      if (this.ignoredElementClickListener) {
-        this.ignoredElementClickListener();
-        delete this.ignoredElementClickListener;
-      }
-      if (this.documentClickListener) {
-        this.documentClickListener();
-        delete this.documentClickListener;
+      if (document && document.removeEventListener) {
+        document.removeEventListener('click', this.closeOnOutsideClickCallback, true);
       }
     }
-  }
-
-  private setRecentlyOpened() {
-    this.recentlyOpened = true;
-    setTimeout(() => {
-      this.recentlyOpened = false;
-    });
   }
 }

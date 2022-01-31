@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "cache": {
+      "enabled": false
+    }
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -31,8 +34,6 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "node_modules/@cds/core/global.min.css",
-              "node_modules/@cds/core/styles/module.shims.min.css",
               "node_modules/@cds/city/css/bundles/default.min.css",
               "node_modules/@clr/ui/clr-ui.min.css",
 

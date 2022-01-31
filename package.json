@@ -11,7 +11,7 @@
       "@cds/core/tslib",
       "@cds/core/ramda",
       "@cds/core/@storybook/**",
-      "@cds/core/normalize.css",
+      "@cds/core/modern-normalize",
       "@cds/core/sass",
       "@cds/core/@cds/city",
       "@cds/react/**",

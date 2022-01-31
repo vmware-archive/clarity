@@ -554,12 +554,15 @@
 
   /* Combobox */
 
+  --clr-combobox-border-color: var(--cds-alias-object-border-color);
   --clr-combobox-trigger-color: var(--clr-color-neutral-500);
-  --clr-combobox-input-background-color: var(--cds-alias-object-container-background-shade);
+  --clr-combobox-input-background-color: var(--cds-alias-object-container-background-tint);
   --clr-combobox-pill-background-color: var(
     --cds-alias-object-interaction-background
   ); // #{$clr-combobox-pill-background-color};
-  --clr-combobox-pill-border-color: var(--cds-alias-object-border-color); // #{$clr-combobox-pill-border-color};
+  --clr-combobox-pill-border-color: var(
+    --cds-alias-object-interaction-border-color
+  ); // #{$clr-combobox-pill-border-color};
   --clr-combobox-pill-font-color: var(--cds-global-typography-color-500); // #{$clr-combobox-pill-font-color};
   --clr-combobox-filter-highlight: var(
     --cds-alias-object-interaction-background-highlight

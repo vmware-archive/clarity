@@ -15,8 +15,8 @@ import {
   HTMLAttributeTuple,
   property,
   reverseAnimation,
-  setAttributes,
   querySlot,
+  getElementUpdates,
 } from '@cds/core/internal';
 import { CdsInternalOverlay } from '@cds/core/internal-components/overlay';
 import styles from './modal.element.scss';
@@ -83,9 +83,6 @@ export class CdsModal extends CdsInternalOverlay {
   @property({ type: Boolean })
   closable = true;
 
-  @property({ type: Boolean })
-  hidden = true;
-
   /** Sets the overall height and width of the modal and icon based on value */
   @property({ type: String })
   size: 'default' | 'sm' | 'lg' | 'xl';
@@ -105,19 +102,6 @@ export class CdsModal extends CdsInternalOverlay {
 
   protected isScrollable = false;
 
-  updated(props: Map<string, any>) {
-    if (props.has('hidden') && props.get('hidden') === true) {
-      this.isScrollable = isScrollable(this.content);
-      setAttributes(
-        this.content,
-        ['tabindex', this.isScrollable ? '0' : false],
-        ['aria-label', this.isScrollable ? this.i18n.contentBox : false]
-      );
-    }
-
-    super.updated(props);
-  }
-
   private get modalFooterTemplate(): TemplateResult {
     if (this.modalFooter) {
       return html`<div cds-layout="align-stretch p-x:lg p-b:lg">
@@ -127,6 +111,8 @@ export class CdsModal extends CdsInternalOverlay {
       return html``;
     }
   }
+
+  protected observers: (MutationObserver | ResizeObserver)[] = [];
 
   // modal-body requires a tab index so it can be scrolled
   render() {
@@ -152,5 +138,23 @@ export class CdsModal extends CdsInternalOverlay {
         <div cds-layout="display:screen-reader-only">${this.i18n.contentEnd}</div>
       </div>
     `;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.observers.push(getElementUpdates(this, 'hidden', () => this.setScrollableProperties()));
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.observers.forEach(o => o.disconnect());
+  }
+
+  private setScrollableProperties() {
+    if (this.hidden === false) {
+      this.isScrollable = isScrollable(this.content);
+      this.content.tabIndex = this.isScrollable ? 0 : -1;
+      this.content.ariaLabel = this.isScrollable ? this.i18n.contentBox : null;
+    }
   }
 }

@@ -15,7 +15,7 @@ describe('dropdown test element', () => {
 
   beforeEach(async () => {
     testElement = await createTestElement(html`
-      <cds-test-dropdown title="custom title">
+      <cds-test-dropdown label="custom label">
         <span>hello world</span>
       </cds-test-dropdown>
     `);
@@ -46,12 +46,12 @@ describe('dropdown test element', () => {
     expect(value).toBe(true);
   });
 
-  it('should render dynamic title property', async () => {
+  it('should render dynamic label property', async () => {
     await componentIsStable(component);
     const button = component.shadowRoot.querySelector('button');
-    expect(button.innerText).toBe('custom title');
+    expect(button.innerText).toBe('custom label');
 
-    component.title = 'test';
+    component.label = 'test';
     await componentIsStable(component);
     expect(button.innerText).toBe('test');
   });

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -218,8 +218,6 @@ describe('progress circle element – ', () => {
   describe('setAriaAttributes', () => {
     it('should return expected for indeterminate progress', async () => {
       await componentIsStable(componentUnset);
-      componentUnset.setAriaAttributes();
-      await componentIsStable(componentUnset);
       expect(componentUnset.getAttribute('role')).toBe('img');
       expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false);
       expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false);
@@ -235,8 +233,6 @@ describe('progress circle element – ', () => {
       expect(componentUnset.getAttribute('aria-label')).toBe('howdy');
     });
     it('should return as expected for progress with value', async () => {
-      await componentIsStable(component);
-      component.setAriaAttributes();
       await componentIsStable(component);
       expect(component.getAttribute('role')).toBe('progressbar');
       expect(component.getAttribute('aria-valuemin')).toBe('0');
@@ -263,8 +259,6 @@ describe('progress circle element – ', () => {
     });
     it('should update as expected for indeterminate progress given a value', async () => {
       await componentIsStable(componentUnset);
-      componentUnset.setAriaAttributes();
-      await componentIsStable(componentUnset);
       expect(componentUnset.getAttribute('role')).toBe('img');
       expect(componentUnset.hasAttribute('aria-valuemin')).toBe(false);
       expect(componentUnset.hasAttribute('aria-valuemax')).toBe(false);
@@ -280,8 +274,6 @@ describe('progress circle element – ', () => {
       expect(componentUnset.getAttribute('aria-label')).toBe('Loading 66%');
     });
     it('should update as expected for progress with a value shifted to indeterminate', async () => {
-      await componentIsStable(component);
-      component.setAriaAttributes();
       await componentIsStable(component);
       expect(component.getAttribute('role')).toBe('progressbar');
       expect(component.getAttribute('aria-valuemin')).toBe('0');

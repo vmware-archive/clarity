@@ -9,9 +9,9 @@ import { testBundleSize, testRenderTime } from 'web-test-runner-performance/brow
 import '@cds/core/button-inline/register.js';
 
 describe('cds-button-inline bundle performance', () => {
-  it(`should bundle and treeshake component in under 18kb`, async () => {
+  it(`should bundle and treeshake component in under 18.5kb`, async () => {
     const result = await testBundleSize(`import '@cds/core/button-inline/register.js'`);
-    expect(result.kb).toBeLessThan(18);
+    expect(result.kb).toBeLessThan(18.5);
   });
 });
 

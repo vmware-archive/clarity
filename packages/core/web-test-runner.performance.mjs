@@ -18,6 +18,7 @@ const aliases = [
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   ...baseConfig,
+  nodeResolve: true,
   concurrency: 1,
   concurrentBrowsers: 1,
   testFramework: {

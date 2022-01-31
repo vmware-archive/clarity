@@ -108,7 +108,7 @@ iframe[resizable] {
 }
 
 pre.prismjs {
-  background: hsl(0, 0%, 98%) !important;
+  background: var(--cds-global-color-gray-50) !important;
 }
 
 .docs-story > div:last-child button {

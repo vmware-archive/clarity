@@ -1,3 +1,5 @@
+const postcssScss = require('postcss-scss');
+
 const rules = {
   'sh-waqar/declaration-use-variable': [
     [
@@ -37,9 +39,9 @@ const rules = {
 const config = {
   extends: 'stylelint-config-recommended',
   defaultSeverity: 'error',
-  syntax: 'scss',
+  customSyntax: postcssScss,
   plugins: ['stylelint-scss', 'stylelint-declaration-use-variable', 'stylelint-no-px'],
-  ignoreFiles: ['./src/styles/tokens/generated/*.scss', './dist/**/*.scss'],
+  ignoreFiles: ['./src/styles/tokens/generated/*.scss', './src/styles/shim.clr-ui.scss', './dist/**/*.scss'],
   rules,
 };
 

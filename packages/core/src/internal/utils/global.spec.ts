@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { onceEvent } from '@cds/core/test';
 import { GlobalStateService } from '../services/global.service.js';
 import { setupCDSGlobal } from './global.js';
 
@@ -34,16 +35,13 @@ describe('CDS global', () => {
       window.jasmine = jasmine;
     });
 
-    it('should emit a state change event when the global state object is updated', done => {
-      let updated = false;
-      document.addEventListener('CDS_STATE_UPDATE', () => {
-        updated = true;
-        done();
-      });
+    it('should emit a state change event when the global state object is updated', async () => {
+      const event = onceEvent(document, 'CDS_STATE_UPDATE');
 
       // cast any here since its marked as readonly for service only usage
       (window.CDS._state.iconRegistry as any) = { ...window.CDS._state.iconRegistry, 'cool-new-icon': '...' };
-      expect(updated).toBe(true);
+      await event;
+      expect(event).toBeTruthy();
     });
 
     it('should log all registered elements', () => {
@@ -68,7 +66,6 @@ describe('CDS global', () => {
     });
 
     it('should show loaded version in body attribute', () => {
-      setupCDSGlobal();
       const attrValue = (document.querySelector('body') as HTMLElement).getAttribute('cds-version');
       expect(attrValue).toEqual('PACKAGE_VERSION');
     });

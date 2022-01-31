@@ -2,6 +2,7 @@ import * as Sentry from '@sentry/browser';
 import { Vue as VueIntegration } from '@sentry/integrations';
 import VueResource from 'vue-resource';
 import Hotjar from 'vue-hotjar';
+import 'regenerator-runtime/runtime';
 
 import './filters/uppercase';
 

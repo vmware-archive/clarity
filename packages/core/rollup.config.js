@@ -98,7 +98,16 @@ export default [
       prod
         ? terser({ ecma: 2020, module: true, format: { comments: false }, compress: { passes: 2, unsafe: true } })
         : [],
-      prod ? replace({ preventAssignment: false, values: { PACKAGE_VERSION: version } }) : [],
+      prod
+        ? replace({
+            preventAssignment: false,
+            values: {
+              PACKAGE_VERSION: version,
+              'super(...arguments),': 'super(...arguments);',
+              'super(),': 'super();',
+            }, // safari 15.1 bug with minification optimization
+          })
+        : [],
       prod ? webComponentAnalyer(config.outDir) : [],
       prod ? packageCheck(config.outDir) : [],
       del({

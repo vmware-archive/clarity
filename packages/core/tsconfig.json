@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2021",
     "module": "esnext",
     "moduleResolution": "node",
-    "lib": ["es2020", "dom"],
-    "emitDecoratorMetadata": false,
+    "lib": ["esnext", "dom"],
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "outDir": "./dist/core",
@@ -35,6 +35,7 @@
         "rules": {
           "no-missing-import": "off",
           "no-unknown-attribute": "off",
+          "no-boolean-in-attribute-binding": "off",
           "globalAttributes": ["cds-layout", "cds-list", "cds-table", "cds-text"]
         }
       }

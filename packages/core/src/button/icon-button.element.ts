@@ -4,7 +4,6 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { property } from '@cds/core/internal';
 import { CdsButton } from './button.element.js';
 
 /**
@@ -31,16 +30,6 @@ import { CdsButton } from './button.element.js';
  * @cssprop --padding
  */
 export class CdsIconButton extends CdsButton {
-  /**
-   * The aria-label attribute is required for accessibility. The cds-icon-button
-   * will warn if used without the aria-label being set.
-   *
-   * Ideally, the aria-label will be specific to the button's purpose. Avoid sharing
-   * generic labels across multiple icon buttons on a page.
-   */
-  @property({ type: String, required: 'warning' })
-  ariaLabel: string;
-
   constructor() {
     super();
     this.size = 'icon';

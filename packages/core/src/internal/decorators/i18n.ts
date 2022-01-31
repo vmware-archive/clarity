@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { LitElement } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { GlobalStateService } from '../services/global.service.js';
 import { I18nService } from '../services/i18n.service.js';
@@ -30,7 +31,7 @@ function standardI18n(descriptor: PropertyDescriptor, element: { key: string }) 
  * This decorator stores the i18n strings in a private variable __i18n.
  * Due to TypeScript decorators being dynamic a type cast is needed here.
  */
-type I18nElement = HTMLElement & { __i18n: Record<string, unknown>; __i18nKey: string };
+type I18nElement = LitElement & { __i18n: Record<string, unknown>; __i18nKey: string };
 
 /**
  * A property decorator which accesses a set of string values for use
@@ -86,6 +87,8 @@ export function i18n() {
         if (!this.__i18nKey) {
           this.__i18n = value;
         }
+
+        this.requestUpdate(name);
       },
       enumerable: true,
       configurable: true,

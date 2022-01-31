@@ -1,3 +1,6 @@
+const rulesDirPlugin = require('eslint-plugin-rulesdir');
+rulesDirPlugin.RULES_DIR = ['build/eslint-rules'];
+
 const OFF = 0;
 const WARN = 1;
 const ERROR = 2;
@@ -37,10 +40,13 @@ const rules = {
       patterns: ['lit-element', 'lit-element/*', 'lit-html', 'lit-html/*', '@angular/*'],
     },
   ],
+  'lit/plugin/no-boolean-in-attribute-binding': [OFF],
   'lit-a11y/img-redundant-alt': [OFF],
   'lit-a11y/anchor-is-valid': [OFF],
   'lit-a11y/alt-text': [OFF],
   'lit-a11y/click-events-have-key-events': [OFF],
+  'rulesdir/reserved-property-names': [ERROR],
+  'rulesdir/reserved-event-names': [ERROR],
 };
 
 const parserOptions = {
@@ -49,9 +55,12 @@ const parserOptions = {
   sourceType: 'module',
 };
 
-const plugins = ['lit-a11y', 'lit', 'eslint-plugin-wc'];
+const plugins = ['@typescript-eslint', 'lit-a11y', 'lit', 'eslint-plugin-wc', 'rulesdir'];
 
 const config = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  ignorePatterns: ['dist'],
   extends: ['../../.eslintrc.js', 'plugin:lit-a11y/recommended', 'plugin:lit/recommended', 'plugin:wc/recommended'],
   parserOptions,
   rules,

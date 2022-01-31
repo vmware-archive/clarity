@@ -17,7 +17,7 @@ import styles from './test-dropdown.element.scss';
  * ```
  *
  * ```html
- * <cds-test-dropdown title="click me!">
+ * <cds-test-dropdown label="click me!">
  *   Hello World
  * </cds-test-dropdown>
  * ```
@@ -51,7 +51,7 @@ export class CdsTestDropdown extends LitElement {
 
   /** Set the dropdown button text */
   @property({ type: String })
-  title = 'dropdown';
+  label = 'dropdown';
 
   static get styles() {
     return [baseStyles, styles];
@@ -60,7 +60,7 @@ export class CdsTestDropdown extends LitElement {
   render() {
     return html`
       <div class="dropdown">
-        <button @click="${() => this.toggle()}" class="btn">${this.title}</button>
+        <button @click="${() => this.toggle()}" class="btn">${this.label}</button>
         ${this.open
           ? html` <div>
               ${I18nService.keys.dropdown.open}

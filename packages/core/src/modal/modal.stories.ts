@@ -82,7 +82,7 @@ class DemoStaticModal extends LitElement {
 
   render() {
     return html` <cds-demo popover>
-      <cds-modal _demo-mode size=${this.size} aria-labelledby=${this.labelId} .hidden=${false}>
+      <cds-modal _demo-mode size=${this.size} aria-labelledby=${this.labelId}>
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id=${this.labelId}>${this.modalDisplaySize} Modal</h3>
         </cds-modal-header>
@@ -109,7 +109,7 @@ small.element = DemoStaticModal;
 export function defaultSize() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode aria-labelledby="default-modal-title" .hidden=${false}>
+      <cds-modal _demo-mode aria-labelledby="default-modal-title">
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id="default-modal-title">Modal Example</h3>
         </cds-modal-header>
@@ -129,7 +129,7 @@ export function defaultSize() {
 export function large() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode size="lg" aria-labelledby="large-modal-title" .hidden=${false}>
+      <cds-modal _demo-mode size="lg" aria-labelledby="large-modal-title">
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id="large-modal-title">Large Modal Example</h3>
         </cds-modal-header>
@@ -149,7 +149,7 @@ export function large() {
 export function extraLarge() {
   return html`
     <cds-demo popover>
-      <cds-modal _demo-mode size="xl" aria-labelledby="xl-modal-title" .hidden=${false}>
+      <cds-modal _demo-mode size="xl" aria-labelledby="xl-modal-title">
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id="xl-modal-title">Extra Large Modal Example</h3>
         </cds-modal-header>
@@ -169,7 +169,7 @@ export function extraLarge() {
 export function darkTheme() {
   return html`
     <cds-demo popover cds-theme="dark">
-      <cds-modal _demo-mode aria-labelledby="dark-modal-title" .hidden=${false}>
+      <cds-modal _demo-mode aria-labelledby="dark-modal-title">
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id="dark-modal-title">My Modal</h3>
         </cds-modal-header>
@@ -207,7 +207,7 @@ export function customStyles() {
     </style>
 
     <cds-demo popover>
-      <cds-modal _demo-mode class="modal-branding" size="lg" aria-labelledby="custom-modal-title" .hidden=${false}>
+      <cds-modal _demo-mode class="modal-branding" size="lg" aria-labelledby="custom-modal-title">
         <cds-modal-header>
           <h3 cds-text="section" cds-first-focus id="custom-modal-title">Customizing Modal Styles</h3>
         </cds-modal-header>

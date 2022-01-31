@@ -5,7 +5,7 @@
  */
 
 import { html, LitElement } from 'lit';
-import { state, property } from '../decorators/property.js';
+import { state } from '../decorators/property.js';
 import { createId } from '../utils/identity.js';
 import { FirstFocusController } from '../controllers/first-focus.controller.js';
 import { ClosableController } from '../controllers/closable.controller.js';
@@ -27,13 +27,6 @@ export class CdsBaseFocusTrap extends LitElement {
     super();
     this.focusTrapId = createId();
   }
-
-  /**
-   * Its recommended to remove or add a focus trap element from the DOM
-   * some SSR systems can have technical constraints where the item can
-   * only be removed via CSS/hidden.
-   */
-  @property({ type: Boolean }) hidden = false;
 
   protected render() {
     return html`<slot></slot>`;

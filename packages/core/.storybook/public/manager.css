@@ -1,0 +1,75 @@
+@import '@cds/city/css/bundles/default.css';
+@import 'modern-normalize/modern-normalize.css';
+@import './../../dist/core/global.css';
+@import './../../dist/core/styles/theme.dark.css';
+
+body {
+  font-family: var(--cds-global-typography-font-family) !important;
+  font-weight: var(--cds-global-typography-body-font-weight);
+  font-size: var(--cds-global-typography-body-font-size);
+  letter-spacing: var(--cds-global-typography-body-letter-spacing);
+  line-height: var(--cds-global-typography-body-line-height);
+  background: var(--cds-alias-object-app-background) !important;
+}
+
+#storybook-preview-wrapper,
+.os-host,
+#panel-tab-content {
+  background: var(--cds-alias-object-container-background) !important;
+}
+
+.sidebar-container > .os-host,
+.search-field code {
+  background: transparent !important;
+}
+
+.sidebar-header a[title='Storybook'],
+.sidebar-header button[title='Shortcuts'] {
+  color: var(--cds-global-typography-color-500) !important;
+}
+
+.sidebar-item {
+  align-items: center !important;
+  color: var(--cds-alias-object-interaction-color) !important;
+  font-weight: 500 !important;
+  min-height: 24px !important;
+  padding-top: 3px !important;
+  padding-right: 3px !important;
+  padding-bottom: 1px !important;
+}
+
+.sidebar-item:hover {
+  background: var(--cds-alias-object-interaction-background-hover) !important;
+}
+
+.sidebar-item:active {
+  background: var(--cds-alias-object-interaction-background-active) !important;
+}
+
+.sidebar-item svg {
+  margin-top: -4px !important;
+  color: var(--cds-global-color-tangerine-500) !important;
+}
+
+.sidebar-subheading-action {
+  display: none !important;
+}
+
+.search-field:focus-within svg {
+  color: var(--cds-global-typography-color-400) !important;
+}
+
+.search-field input {
+  color: var(--cds-global-typography-color-400) !important;
+  border-color: var(--cds-alias-object-border-color) !important;
+  background: transparent !important;
+}
+
+[data-selected='true'] {
+  background: var(--cds-alias-object-interaction-background-selected) !important;
+  font-weight: 500 !important;
+}
+
+[data-selected='true']:hover {
+  background: var(--cds-alias-object-interaction-background-hover) !important;
+}

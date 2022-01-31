@@ -19,10 +19,10 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
     '**/*.css': 'js',
   },
   plugins: [
-    storybookPlugin({ type: 'web-components', configDir: '.storybook' }),
-    esbuildPlugin({ ts: true, json: true, target: 'esnext' }),
+    ...baseConfig.plugins,
     rollupAdapter(styles()),
     rollupAdapter(image()),
-    ...baseConfig.plugins,
+    storybookPlugin({ type: 'web-components', configDir: '.storybook' }),
+    esbuildPlugin({ ts: true, json: true, target: 'esnext' }),
   ],
 });

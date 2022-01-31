@@ -1,10 +1,10 @@
 @import '@cds/city/css/bundles/default.min.css';
 @import 'modern-normalize/modern-normalize.css';
-@import './../../dist/core/global.min.css';
-@import './../../dist/core/styles/theme.dark.min.css';
-@import './../../dist/core/styles/theme.low-motion.min.css';
-@import './../../dist/core/list/list.min.css';
-@import './../../dist/core/table/table.min.css';
+@import './../../dist/core/global.css';
+@import './../../dist/core/styles/theme.dark.css';
+@import './../../dist/core/styles/theme.low-motion.css';
+@import './../../dist/core/list/list.css';
+@import './../../dist/core/table/table.css';
 
 html {
   overflow-x: hidden;
@@ -14,16 +14,12 @@ body {
   box-sizing: border-box !important; /* storybook v6 inline to initial */
 }
 
-body.sb-main-fullscreen {
-  background: transparent !important;
-}
-
 body.sb-main-padded {
   padding: var(--cds-global-layout-space-lg);
 }
 
-.docblock-propstable-body li {
-  list-style-position: outside;
+#root #root-inner cds-grid {
+  max-width: 1000px;
 }
 
 /* Demo Components */
@@ -106,31 +102,13 @@ iframe[resizable] {
   padding: 0;
 }
 
-.docs-story {
-  background: var(--cds-alias-object-app-background) !important;
-}
-
-.docblock-source {
-  background: var(--cds-global-color-gray-50) !important;
-}
-
-.sbdocs.sbdocs-wrapper {
-  padding-top: 30px !important;
-  min-height: 100vh;
-  background: transparent !important;
-}
-
-.sbdocs.sbdocs-preview > div > div {
-  padding: 0 !important;
-}
-
-.sbdocs-preview {
-  background: transparent !important;
-}
-
 .docs-story div {
   /* forcing storybook to not add transforms on their story blocks. it was messing up modal/overlay/dropdown demos */
   transform: none !important;
+}
+
+pre.prismjs {
+  background: hsl(0, 0%, 98%) !important;
 }
 
 .docs-story > div:last-child button {
@@ -144,49 +122,13 @@ iframe[resizable] {
   padding: 36px 24px;
 }
 
-[id*='--dark-theme'] {
+[id*='--dark-theme']:not(a) {
   padding: 0;
 }
 
 .sb-inline-icon {
   width: 16px;
   color: #ccc;
-}
-
-.sbdocs-title,
-.sbdocs-h1,
-.sbdocs-h2,
-.sbdocs-h3,
-.sbdocs-h4,
-.sbdocs-p,
-.sbdocs-li {
-  color: var(--cds-global-typography-color-500) !important;
-  border-color: var(--cds-alias-object-border-color-tint) !important;
-  line-height: 1.5em;
-}
-
-.sbdocs a[aria-hidden='true'] > svg {
-  fill: var(--cds-global-typography-color-500) !important;
-}
-
-.sbdocs-title,
-.sbdocs-h1,
-.sbdocs-h2,
-.sbdocs-h3 {
-  font-weight: 300 !important;
-  margin-bottom: 24px !important;
-  margin: 48px 0 12px 0 !important;
-}
-
-.sbdocs-h1 {
-  margin: 12px 0 24px 0 !important;
-}
-
-.sbdocs-img,
-.sbdocs-p,
-.sbdocs-ol,
-.sbdocs-ul {
-  margin: 0 0 24px 0 !important;
 }
 
 .demo-layout {

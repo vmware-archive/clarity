@@ -1,35 +1,44 @@
-import styles from './public/demo.css';
 import { setCustomElements } from '@web/storybook-prebuilt/web-components.js';
-import pkg from '../dist/core/custom-elements.legacy.json';
+import pkg from '../dist/core/custom-elements.json';
+import previewStyles from './public/preview.css';
+import commonStyles from './public/common.css';
+import managerStyles from './public/manager.css';
 import img from './public/assets/images/clarity-logo.svg';
 
 setCustomElements(pkg);
 
 // storybook-prebuild does not run the manager.js through rollup so custom
-// styles need to be appended from the preivew.js
+// styles need to be appended from the preview.js
 if (!window.parent.document.querySelector('#clarity-storybook-styles')) {
   const style = document.createElement('style');
   style.id = 'clarity-storybook-styles';
-  style.textContent = `${styles}`;
+  style.textContent = `${commonStyles}${managerStyles}`;
   window.parent.document.head.append(style);
-  const logo = window.parent.document.querySelector('.sidebar-header a');
+
+  const logo = window.parent.document.querySelector('.sidebar-header a[title="Storybook"]');
   if (logo) {
     logo.innerHTML = `<img src="${img}" />`;
   }
+}
+
+if (!window.document.querySelector('#clarity-storybook-styles')) {
+  const style = document.createElement('style');
+  style.id = 'clarity-storybook-styles';
+  style.textContent = `${commonStyles}${previewStyles}`;
+  window.parent.document.head.append(style);
 }
 
 export const parameters = {
   passArgsFirst: true,
   docs: {
     transformSource: (_src, storyContext) => {
-      return storyContext.storyFn().strings;
+      return storyContext.originalStoryFn;
     },
     source: {
       type: 'dynamic',
     },
   },
   options: {
-    showRoots: true,
     storySort: {
       method: 'alphabetical',
       order: [
@@ -104,6 +113,7 @@ export const parameters = {
           'Unit Testing',
         ],
         'Internal API',
+        ['Close Button', 'Panel', 'Motion', 'Overlay'],
         'Stories',
         'Internal Stories',
       ],
@@ -115,21 +125,37 @@ export const globalTypes = {
   theme: {
     name: 'Themes',
     description: 'Available built in Clarity themes',
-    defaultValue: window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : window.localStorage.getItem('cds-color-theme'),
+    defaultValue: '',
     toolbar: {
+      icon: 'paintbrush',
+      showName: true,
       items: [
         { value: '', title: 'Light Theme' },
         { value: 'dark', title: 'Dark Theme' },
       ],
     },
   },
+  dataTheme: {
+    name: 'Data',
+    description: 'Available demo datasets',
+    defaultValue: 'infrastructure',
+    toolbar: {
+      icon: 'database',
+      showName: true,
+      items: [
+        { value: 'infrastructure', title: 'Infrastructure' },
+        { value: 'food', title: 'Food' },
+        { value: 'system', title: 'System' },
+      ],
+    },
+  },
   motion: {
-    name: 'Motion',
+    name: 'Animations',
     description: 'Clarity Animations',
     defaultValue: '',
     toolbar: {
+      showName: true,
+      icon: 'lightning',
       items: [
         { value: '', title: 'Enable Animations' },
         { value: 'low-motion', title: 'Disable Animations' },
@@ -141,6 +167,8 @@ export const globalTypes = {
     description: 'Base Font for Document',
     defaultValue: '20',
     toolbar: {
+      showName: true,
+      icon: 'menu',
       items: [
         { value: '20', title: 'Base 20px (Default)' },
         { value: '16', title: 'Base 16px' },
@@ -154,20 +182,17 @@ const themeDecorator = (story, { globals }) => {
   document.body.setAttribute('cds-theme', `${themes}`);
   window.parent.document.body.setAttribute('cds-theme', `${themes}`);
   document.documentElement.style.setProperty('--cds-global-base', globals.baseFont);
-
   window.localStorage.setItem('cds-theme', themes);
-
-  window.addEventListener('storage', () => {
-    const updatedTheme = window.localStorage.getItem('cds-theme');
-    if (updatedTheme) {
-      window.document.body.setAttribute('cds-theme', `${updatedTheme}`);
-    }
-  });
-
   return story();
 };
 
-export const decorators = [themeDecorator];
+const dataThemeDecorator = (story, { globals }) => {
+  localStorage.setItem('cds-data-theme', globals.dataTheme);
+  const fn = (...args) => story(args);
+  return fn();
+};
+
+export const decorators = [themeDecorator, dataThemeDecorator];
 
 // We have this here since storybook does not have a easy way to set the <html> element in demos
 // The token system generates a base 16px set of variables for apps that may not be able to easily set the base font to 125%

@@ -7,7 +7,6 @@
 import '@cds/core/card/register.js';
 import '@cds/core/divider/register.js';
 import '@cds/core/forms/register.js';
-import { getElementStorybookArgs, spreadProps } from '@cds/core/internal';
 import { html } from 'lit';
 import { ClarityIcons } from '@cds/core/icon/icon.service.js';
 import { shareIcon } from '@cds/core/icon/shapes/share.js';
@@ -25,14 +24,15 @@ export default {
   },
 };
 
-export function Basic(args: { [key: string]: unknown }) {
-  return html`<cds-card aria-label="Basic card" ...="${spreadProps(getElementStorybookArgs(args))}">
+/** @website **/
+export function basic() {
+  return html`<cds-card aria-label="Basic card">
     <p cds-text="body light">${placeholder}</p>
   </cds-card>`;
 }
 
 /** @website **/
-export function WithLayout() {
+export function withLayout() {
   return html` <cds-card aria-labelledby="cardWithLayout">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithLayout" cds-text="section">Card Title</h2>
@@ -51,7 +51,7 @@ export function WithLayout() {
 }
 
 /** @website **/
-export function WithContainerOfCards() {
+export function withContainerOfCards() {
   return html`
     <div cds-layout="grid cols@md:6 cols@lg:3 gap:sm">
       <cds-card aria-labelledby="containerOfCards1">
@@ -127,7 +127,7 @@ export function WithContainerOfCards() {
 }
 
 /** @website **/
-export function WithAlert() {
+export function withAlert() {
   return html`
     <cds-card aria-labelledby="cardWithAlert">
       <div id="cardWithAlert" cds-layout="vertical gap:md">
@@ -147,7 +147,7 @@ export function WithAlert() {
   `;
 }
 
-export function WithForms() {
+export function withForms() {
   return html`
     <cds-card aria-labelledby="cardWithForms">
       <div id="cardWithForms" cds-layout="vertical gap:md">
@@ -200,11 +200,8 @@ export function WithForms() {
 }
 
 /** @website **/
-export function WithLayoutAndTwoDividers(args: { [key: string]: unknown }) {
-  return html` <cds-card
-    aria-labelledby="cardWithLayoutAndDividers"
-    ...="${spreadProps(getElementStorybookArgs(args))}"
-  >
+export function withLayoutAndTwoDividers() {
+  return html`<cds-card aria-labelledby="cardWithLayoutAndDividers">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithLayoutAndDividers" cds-text="section">Card Title</h2>
 
@@ -224,11 +221,8 @@ export function WithLayoutAndTwoDividers(args: { [key: string]: unknown }) {
 }
 
 /** @website **/
-export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown }) {
-  return html` <cds-card
-    aria-labelledby="cardWithLayoutDividersAndButton"
-    ...="${spreadProps(getElementStorybookArgs(args))}"
-  >
+export function withLayoutTwoDividersAndButton() {
+  return html`<cds-card aria-labelledby="cardWithLayoutDividersAndButton">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithLayoutDividersAndButton" cds-text="section">Card Title</h2>
 
@@ -249,7 +243,7 @@ export function WithLayoutTwoDividersAndButton(args: { [key: string]: unknown })
   </cds-card>`;
 }
 
-export function WithImage() {
+export function withImage() {
   return html`<cds-card aria-labelledby="cardWithImage">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithImage" cds-text="section">Card Title</h2>
@@ -270,7 +264,7 @@ export function WithImage() {
 }
 
 /** @website **/
-export function WithLists() {
+export function withLists() {
   return html`<cds-card aria-labelledby="cardWithList" style="--width: 15rem">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithList" cds-text="section" cds-layout="horizontal gap:xs align:vertical-center">
@@ -300,7 +294,8 @@ export function WithLists() {
   </cds-card>`;
 }
 
-export function SocialPost() {
+/** @website **/
+export function socialPost() {
   ClarityIcons.addIcons([
     'batman',
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="29.25 -183.153 985.166 985.166">
@@ -342,7 +337,7 @@ export function SocialPost() {
   </cds-card>`;
 }
 
-export function WithLayoutAndOverflow() {
+export function withLayoutAndOverflow() {
   return html`<cds-card aria-labelledby="cardWithOverflow">
     <div cds-layout="vertical gap:md">
       <h2 id="cardWithOverflow" cds-text="section">Card Title</h2>

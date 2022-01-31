@@ -36,7 +36,7 @@ describe('cds-icon performance', () => {
       loadTextEditIconSet();
       loadTravelIconSet();
     `;
-    expect((await testBundleSize(bundle)).kb).toBeLessThan(111.6);
+    expect((await testBundleSize(bundle)).kb).toBeLessThan(112);
   });
 
   const icon = html`<cds-icon shape="ellipsis-vertical"></cds-icon>`;

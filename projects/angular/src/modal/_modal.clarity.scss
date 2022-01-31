@@ -78,6 +78,11 @@
 
     .modal-title {
       @include css-var(color, clr-modal-title-color, $clr-modal-title-color, $clr-use-custom-properties);
+      margin: 0;
+      padding: 0 $clr_baselineRem_0_125;
+    }
+
+    .modal-title:not([cds-text]) {
       font-size: $clr-modal-title-font-size;
       @include css-var(
         font-family,
@@ -93,9 +98,6 @@
       );
       line-height: $clr-modal-title-line-height;
       letter-spacing: $clr-modal-title-letter-spacing;
-
-      margin: 0;
-      padding: 0 $clr_baselineRem_0_125;
     }
 
     .close {

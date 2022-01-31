@@ -46,6 +46,9 @@
         top: 35%;
         color: inherit;
         @include equilateral($clr-dropdown-caret-icon-dimension);
+        // need custom property override here to force minimum size of
+        // cds-icon to be 12px across the shadow dom...
+        --cds-global-space-7: $clr-dropdown-caret-icon-dimension;
       }
 
       &.btn {

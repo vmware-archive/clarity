@@ -51,6 +51,7 @@ class DemoAriaPopup extends LitElement {
 class DemoAriaPopupTrigger extends LitElement {
   ariaPopupTriggerController = new AriaPopupTriggerController(this);
   static styles = [styles];
+  popup: string;
 
   render() {
     return html`<slot></slot>`;

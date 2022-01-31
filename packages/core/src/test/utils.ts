@@ -97,7 +97,7 @@ export function emulatedClick(component: HTMLElement) {
 }
 
 /** helpful for capturing a single event in a async test rather than Jasmine `done()` */
-export function onceEvent(element: HTMLElement, event: string) {
+export function onceEvent(element: HTMLElement | Document, event: string) {
   return new Promise<any>(resolve => {
     element.addEventListener(event, e => resolve(e));
   });

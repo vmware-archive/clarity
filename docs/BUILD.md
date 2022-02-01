@@ -10,16 +10,14 @@ The project structure is as follow:
 ```bash
 projects
 ├── angular     # All Angular Clarity components and styles
-├── icons       # Clarity Icons
 ├── schematics  # Auto update scripts
 ├── ui          # Common CSS
 ```
 
 ## Understanding the build
 
-We have three packages:
+We have two packages:
 
-- `@clr/icons` - Clarity Icons package, which is a standalone web component library for icons
 - `@clr/ui` - Clarity UI package, which is a standalone CSS library for Clarity styles
 - `@clr/angular` - Clarity Angular package, which depends upon the other two packages to implement a set of Angular components
 
@@ -41,16 +39,6 @@ Build Clarity Angular by running one of the following commands depending on your
 - `start` - Run the dev app project for Clarity Angular Components
 - `test:angular` - Run all tests for Clarity Angular
 - `test:angular:watch` - Continually run all tests for Clarity Angular
-
-## `@clr/icons`
-
-Build Clarity Icons by running `build:icons`, which calls the following tasks to build the package.
-
-- `build:icons:web` - Webpack compiles and bundles the TypeScript assets
-- `build:icons:css` - Sass compiles the styles
-- `build:icons:optimize` - CSSO optimizes the CSS
-- `build:icons:package` - Copy the `package.json` into the package, and set the version number
-- `build:icons:web` - Build the raw svg files and zip directories for designers
 
 ## `@clr/ui`
 

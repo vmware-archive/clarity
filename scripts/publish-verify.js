@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('../package.json');
 
-const roots = ['clr-angular', 'clr-icons', 'clr-ui'];
+const roots = ['clr-angular', 'clr-ui'];
 
 function getFile(root) {
   return `dist/${root}/package.json`;

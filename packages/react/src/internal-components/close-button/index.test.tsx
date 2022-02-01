@@ -1,24 +1,16 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CdsInternalCloseButton } from './index';
 
 describe('CdsInternalCloseButton', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsInternalCloseButton />
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsInternalCloseButton);
-    expect(renderedComponent).toBeTruthy();
+  it('renders', async () => {
+    render(<CdsInternalCloseButton />);
+
+    expect(document.querySelector('cds-internal-close-button')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsInternalCloseButton />
-      </div>
-    );
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<CdsInternalCloseButton />);
+    expect(container).toMatchSnapshot();
   });
 });

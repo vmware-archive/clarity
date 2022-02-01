@@ -2,93 +2,25 @@
 
 exports[`CdsIcon snapshot 1`] = `
 <div>
-  <CdsIcon
+  <cds-icon
     shape="user"
     size="lg"
-  >
-    <CdsIcon
-      l={null}
-      shape="user"
-      size="lg"
-    >
-      <cds-icon
-        l={null}
-        shape="user"
-        size="lg"
-      />
-    </CdsIcon>
-  </CdsIcon>
-  <CdsIcon
-    badge="info"
+  />
+  <cds-icon
     shape="user"
     size="lg"
-  >
-    <CdsIcon
-      badge="info"
-      l={null}
-      shape="user"
-      size="lg"
-    >
-      <cds-icon
-        l={null}
-        shape="user"
-        size="lg"
-      />
-    </CdsIcon>
-  </CdsIcon>
-  <CdsIcon
-    badge="success"
+  />
+  <cds-icon
     shape="user"
     size="lg"
-  >
-    <CdsIcon
-      badge="success"
-      l={null}
-      shape="user"
-      size="lg"
-    >
-      <cds-icon
-        l={null}
-        shape="user"
-        size="lg"
-      />
-    </CdsIcon>
-  </CdsIcon>
-  <CdsIcon
-    badge="danger"
+  />
+  <cds-icon
     shape="user"
     size="lg"
-  >
-    <CdsIcon
-      badge="danger"
-      l={null}
-      shape="user"
-      size="lg"
-    >
-      <cds-icon
-        l={null}
-        shape="user"
-        size="lg"
-      />
-    </CdsIcon>
-  </CdsIcon>
-  <CdsIcon
-    badge="warning-triangle"
+  />
+  <cds-icon
     shape="user"
     size="lg"
-  >
-    <CdsIcon
-      badge="warning-triangle"
-      l={null}
-      shape="user"
-      size="lg"
-    >
-      <cds-icon
-        l={null}
-        shape="user"
-        size="lg"
-      />
-    </CdsIcon>
-  </CdsIcon>
+  />
 </div>
 `;

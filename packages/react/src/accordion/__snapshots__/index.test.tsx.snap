@@ -2,50 +2,22 @@
 
 exports[`CdsAccordion snapshot 1`] = `
 <div>
-  <CdsAccordion>
-    <CdsAccordion
-      l={null}
-    >
-      <cds-accordion
-        l={null}
+  <cds-accordion>
+    <cds-accordion-panel>
+      <cds-accordion-header
+        id="my-header"
+        slot="accordion-header"
       >
-        <CdsAccordionPanel
-          expanded={true}
-        >
-          <CdsAccordionPanel
-            expanded={true}
-            l={null}
-          >
-            <cds-accordion-panel
-              l={null}
-            >
-              <CdsAccordionHeader>
-                <CdsAccordionHeader
-                  l={null}
-                >
-                  <cds-accordion-header
-                    l={null}
-                  >
-                    Item 1
-                  </cds-accordion-header>
-                </CdsAccordionHeader>
-              </CdsAccordionHeader>
-              <CdsAccordionContent>
-                <CdsAccordionContent
-                  l={null}
-                >
-                  <cds-accordion-content
-                    l={null}
-                  >
-                    Content 1
-                  </cds-accordion-content>
-                </CdsAccordionContent>
-              </CdsAccordionContent>
-            </cds-accordion-panel>
-          </CdsAccordionPanel>
-        </CdsAccordionPanel>
-      </cds-accordion>
-    </CdsAccordion>
-  </CdsAccordion>
+        Item 1
+      </cds-accordion-header>
+      <cds-accordion-content
+        id="my-content"
+        role="region"
+        slot="accordion-content"
+      >
+        Content 1
+      </cds-accordion-content>
+    </cds-accordion-panel>
+  </cds-accordion>
 </div>
 `;

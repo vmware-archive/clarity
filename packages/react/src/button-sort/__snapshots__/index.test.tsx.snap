@@ -2,14 +2,9 @@
 
 exports[`CdsButtonSort snapshot 1`] = `
 <div>
-  <CdsButtonSort>
-    <CdsButtonSort
-      l={null}
-    >
-      <cds-button-sort
-        l={null}
-      />
-    </CdsButtonSort>
-  </CdsButtonSort>
+  <cds-button-sort
+    aria-label="Sort"
+    tabindex="0"
+  />
 </div>
 `;

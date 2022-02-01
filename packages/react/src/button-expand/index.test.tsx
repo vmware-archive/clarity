@@ -1,24 +1,15 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsButtonExpand } from './index';
 
 describe('CdsButtonAction', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsButtonExpand></CdsButtonExpand>
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsButtonExpand);
-    expect(renderedComponent.at(0).html()).toMatch(/cds-button-expand/);
+  it('renders', async () => {
+    render(<CdsButtonExpand></CdsButtonExpand>);
+    expect(await screen.findByRole('button')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsButtonExpand></CdsButtonExpand>
-      </div>
-    );
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<CdsButtonExpand></CdsButtonExpand>);
+    expect(container).toMatchSnapshot();
   });
 });

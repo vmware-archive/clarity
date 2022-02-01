@@ -1,4 +1,20 @@
-import * as enzyme from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
+import '@testing-library/jest-dom/extend-expect';
 
-enzyme.configure({ adapter: new Adapter() });
+// jsdom doesn't implment IntersectionObserver
+// https://github.com/jsdom/jsdom/issues/2032
+global.IntersectionObserver = jest.fn().mockReturnValue({
+  observe: (): null => null,
+  unobserve: (): null => null,
+  disconnect: (): null => null,
+});
+
+global.ResizeObserver = jest.fn().mockReturnValue({
+  observe: (): null => null,
+  unobserve: (): null => null,
+  disconnect: (): null => null,
+});
+
+global.MutationObserver = jest.fn().mockReturnValue({
+  observe: () => {},
+  disconnect: () => {},
+});

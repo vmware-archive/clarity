@@ -2,14 +2,8 @@
 
 exports[`CdsButtonAction snapshot 1`] = `
 <div>
-  <CdsButtonExpand>
-    <CdsButtonExpand
-      l={null}
-    >
-      <cds-button-expand
-        l={null}
-      />
-    </CdsButtonExpand>
-  </CdsButtonExpand>
+  <cds-button-expand
+    tabindex="0"
+  />
 </div>
 `;

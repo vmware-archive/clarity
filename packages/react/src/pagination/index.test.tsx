@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsPagination, CdsPaginationButton } from './index';
 
 describe('CdsPagination', () => {
-  it('renders', () => {
-    const wrapper = shallow(
+  it('renders', async () => {
+    render(
       <CdsPagination aria-label="pagination">
         <CdsPaginationButton aria-label="go to first" action="first" disabled></CdsPaginationButton>
         <CdsPaginationButton aria-label="go to previous" action="prev" disabled></CdsPaginationButton>
@@ -13,19 +13,19 @@ describe('CdsPagination', () => {
         <CdsPaginationButton aria-label="go to last" action="last"></CdsPaginationButton>
       </CdsPagination>
     );
-    const renderedComponent = wrapper.find(CdsPagination);
-    expect(renderedComponent.at(0)).toBeDefined();
-    expect(renderedComponent.at(1)).toBeDefined();
-    expect(renderedComponent.at(2)).toBeDefined();
+    expect(document.querySelector('cds-pagination')).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: /go to first/i })).toBeDisabled();
+    expect(await screen.findByRole('button', { name: /go to last/i })).not.toBeDisabled();
+    expect(await screen.findByLabelText('current page')).toHaveTextContent(/1 \/ 3/i);
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <CdsPagination aria-label="pagination">
         <CdsPaginationButton aria-label="go to first" action="prev" disabled></CdsPaginationButton>
         <CdsPaginationButton aria-label="go to next" action="next"></CdsPaginationButton>
       </CdsPagination>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

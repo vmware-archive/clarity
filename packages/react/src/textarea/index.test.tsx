@@ -1,29 +1,26 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsTextarea } from './index';
 import { CdsFormGroup, CdsControlMessage } from '../forms/index';
 
 describe('CdsTextarea', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsFormGroup layout="vertical">
-          <CdsTextarea layout="vertical">
-            <label>label</label>
-            <textarea></textarea>
-            <CdsControlMessage>message text</CdsControlMessage>
-          </CdsTextarea>
-        </CdsFormGroup>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsFormGroup layout="vertical">
+        <CdsTextarea layout="vertical">
+          <label>label</label>
+          <textarea></textarea>
+          <CdsControlMessage>message text</CdsControlMessage>
+        </CdsTextarea>
+      </CdsFormGroup>
     );
 
-    const renderedComponent = wrapper.find(CdsTextarea);
-    expect(renderedComponent.at(0).html()).toMatch(/label/);
-    expect(renderedComponent.at(0).html()).toMatch(/message text/);
+    expect(await screen.findByLabelText(/label/i)).toBeInTheDocument();
+    expect(await screen.findByText(/message text/i)).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <div>
         <h3>Vertical</h3>
         <CdsFormGroup layout="vertical">
@@ -69,6 +66,6 @@ describe('CdsTextarea', () => {
       </div>
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

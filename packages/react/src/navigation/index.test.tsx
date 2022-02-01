@@ -5,53 +5,49 @@
  */
 
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsNavigation, CdsNavigationGroup, CdsNavigationStart, CdsNavigationItem } from './index';
 
 describe('CdsNavigation', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsNavigation>
-          <CdsNavigationStart>Root start</CdsNavigationStart>
+  it('renders', async () => {
+    render(
+      <CdsNavigation>
+        <CdsNavigationStart>Root start</CdsNavigationStart>
+        <CdsNavigationItem>
+          <a>Root item</a>
+        </CdsNavigationItem>
+        <CdsNavigationGroup>
+          <CdsNavigationStart>Group start</CdsNavigationStart>
           <CdsNavigationItem>
-            <a>Root item</a>
+            <a>Group item</a>
           </CdsNavigationItem>
-          <CdsNavigationGroup>
-            <CdsNavigationStart>Group start</CdsNavigationStart>
-            <CdsNavigationItem>
-              <a>Group item</a>
-            </CdsNavigationItem>
-          </CdsNavigationGroup>
-        </CdsNavigation>
-      </div>
+        </CdsNavigationGroup>
+      </CdsNavigation>
     );
-    const renderedComponent = wrapper.find(CdsNavigation);
-    expect(renderedComponent.at(0).html()).toMatch(/Root start/);
-    expect(renderedComponent.at(0).html()).toMatch(/Root item/);
-    expect(renderedComponent.at(0).html()).toMatch(/Group start/);
-    expect(renderedComponent.at(0).html()).toMatch(/Group item/);
+
+    expect(document.querySelector('cds-navigation')).toBeInTheDocument();
+    expect(await screen.findAllByRole('listitem')).toHaveLength(4);
+    expect(await screen.findByText(/Root item/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Group item/i)).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsNavigation>
-          <CdsNavigationStart>Root start</CdsNavigationStart>
-          <CdsNavigationItem>
-            <a>Root item</a>
-          </CdsNavigationItem>
-          <CdsNavigationGroup>
-            <CdsNavigationStart>
-              <CdsNavigationStart>Group start</CdsNavigationStart>
-              <CdsNavigationItem>
-                <a>Group item</a>
-              </CdsNavigationItem>
-            </CdsNavigationStart>
-          </CdsNavigationGroup>
-        </CdsNavigation>
-      </div>
+    const { container } = render(
+      <CdsNavigation>
+        <CdsNavigationStart id="nav-start">Root start</CdsNavigationStart>
+        <CdsNavigationItem id="nav-item-1">
+          <a>Root item</a>
+        </CdsNavigationItem>
+        <CdsNavigationGroup id="nav-group">
+          <CdsNavigationStart id="nav-start-1">
+            <CdsNavigationStart id="nav-start-2">Group start</CdsNavigationStart>
+            <CdsNavigationItem id="nav-item">
+              <a>Group item</a>
+            </CdsNavigationItem>
+          </CdsNavigationStart>
+        </CdsNavigationGroup>
+      </CdsNavigation>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

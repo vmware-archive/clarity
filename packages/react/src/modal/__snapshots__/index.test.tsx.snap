@@ -2,64 +2,38 @@
 
 exports[`CdsModal snapshot 1`] = `
 <div>
-  <CdsModal>
-    <CdsModal
-      l={null}
+  <cds-modal
+    aria-modal="true"
+  >
+    <cds-modal-header
+      slot="modal-header"
     >
-      <cds-modal
-        l={null}
+      <h3
+        cds-text="title"
       >
-        <CdsModalHeader>
-          <CdsModalHeader
-            l={null}
-          >
-            <cds-modal-header
-              l={null}
-            >
-              <h3
-                cds-text="title"
-              >
-                My Modal
-              </h3>
-            </cds-modal-header>
-          </CdsModalHeader>
-        </CdsModalHeader>
-        <CdsModalContent>
-          <CdsModalContent
-            l={null}
-          >
-            <cds-modal-content
-              l={null}
-            >
-              <div
-                cds-layout="vertical gap:md p-y:xs"
-              >
-                <p
-                  cds-text="body"
-                >
-                  Lorem Ipsum
-                </p>
-              </div>
-            </cds-modal-content>
-          </CdsModalContent>
-        </CdsModalContent>
-        <CdsModalActions>
-          <CdsModalActions
-            l={null}
-          >
-            <cds-modal-actions
-              l={null}
-            >
-              <div
-                cds-layout="horizontal gap:sm align:right"
-              >
-                Foo
-              </div>
-            </cds-modal-actions>
-          </CdsModalActions>
-        </CdsModalActions>
-      </cds-modal>
-    </CdsModal>
-  </CdsModal>
+        My Modal
+      </h3>
+    </cds-modal-header>
+    <cds-modal-content>
+      <div
+        cds-layout="vertical gap:md p-y:xs"
+      >
+        <p
+          cds-text="body"
+        >
+          Lorem Ipsum
+        </p>
+      </div>
+    </cds-modal-content>
+    <cds-modal-actions
+      slot="modal-actions"
+    >
+      <div
+        cds-layout="horizontal gap:sm align:right"
+      >
+        Foo
+      </div>
+    </cds-modal-actions>
+  </cds-modal>
 </div>
 `;

@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CdsRadioPanel } from './index';
 
 describe('CdsRadioPanel', () => {
   it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsRadioPanel>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsRadioPanel>
-      </div>
+    render(
+      <CdsRadioPanel>
+        <label>Hello</label>
+        <input type="checkbox" />
+      </CdsRadioPanel>
     );
-    const renderedComponent = wrapper.find('CdsRadioPanel');
-    expect(renderedComponent.html()).toMatch(/Hello/);
+    expect(document.querySelector('cds-radio')).toHaveTextContent(/Hello/i);
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsRadioPanel>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsRadioPanel>
-      </div>
+    const { container } = render(
+      <CdsRadioPanel>
+        <label>Hello</label>
+        <input type="checkbox" />
+      </CdsRadioPanel>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

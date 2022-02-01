@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsPassword } from './index';
 
 describe('CdsPassword', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsPassword layout="vertical">
-          <label>label</label>
-          <input type="password" defaultValue="123456" />
-        </CdsPassword>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsPassword layout="vertical">
+        <label>label</label>
+        <input type="password" defaultValue="123456" />
+      </CdsPassword>
     );
-    const renderedComponent = wrapper.find(CdsPassword);
-    expect(renderedComponent.html()).toMatch(/label/);
+    expect(await screen.findByLabelText('label')).toHaveValue('123456');
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsPassword layout="vertical">
-          <label>label</label>
-          <input type="password" defaultValue="123456" />
-        </CdsPassword>
-      </div>
+    const { container } = render(
+      <CdsPassword layout="vertical">
+        <label>label</label>
+        <input type="password" defaultValue="123456" />
+      </CdsPassword>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

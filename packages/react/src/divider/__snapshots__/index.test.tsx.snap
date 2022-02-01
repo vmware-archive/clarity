@@ -2,37 +2,15 @@
 
 exports[`CdsDivider snapshot 1`] = `
 <div>
-  <CdsDivider>
-    <CdsDivider
-      l={null}
+  <div>
+    <cds-divider />
+    <div
+      style="height: 140px; margin-top: 24px;"
     >
-      <cds-divider
-        l={null}
-      />
-    </CdsDivider>
-  </CdsDivider>
-  <div
-    style={
-      Object {
-        "height": "140px",
-        "marginTop": "24px",
-      }
-    }
-  >
-    <CdsDivider
-      orientation="vertical"
-    >
-      <CdsDivider
-        l={null}
-        orientation="vertical"
-      >
-        <cds-divider
-          l={null}
-        >
-          1
-        </cds-divider>
-      </CdsDivider>
-    </CdsDivider>
+      <cds-divider>
+        1
+      </cds-divider>
+    </div>
   </div>
 </div>
 `;

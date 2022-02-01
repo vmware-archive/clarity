@@ -2,14 +2,6 @@
 
 exports[`CdsInternalVisualCheckbox snapshot 1`] = `
 <div>
-  <CdsInternalVisualCheckbox>
-    <CdsInternalVisualCheckbox
-      l={null}
-    >
-      <cds-internal-visual-checkbox
-        l={null}
-      />
-    </CdsInternalVisualCheckbox>
-  </CdsInternalVisualCheckbox>
+  <cds-internal-visual-checkbox />
 </div>
 `;

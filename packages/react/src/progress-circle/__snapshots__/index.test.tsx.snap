@@ -2,45 +2,17 @@
 
 exports[`CdsProgressCircle snapshot 1`] = `
 <div>
-  <CdsProgressCircle
-    status="info"
-    value={49}
-  >
-    <CdsProgressCircle
-      l={null}
-      status="info"
-      value={49}
-    >
-      <cds-progress-circle
-        l={null}
-      />
-    </CdsProgressCircle>
-  </CdsProgressCircle>
-  <CdsProgressCircle
-    value={0}
-  >
-    <CdsProgressCircle
-      l={null}
-      value={0}
-    >
-      <cds-progress-circle
-        l={null}
-      />
-    </CdsProgressCircle>
-  </CdsProgressCircle>
-  <CdsProgressCircle
-    status="success"
-    value={100}
-  >
-    <CdsProgressCircle
-      l={null}
-      status="success"
-      value={100}
-    >
-      <cds-progress-circle
-        l={null}
-      />
-    </CdsProgressCircle>
-  </CdsProgressCircle>
+  <cds-progress-circle
+    aria-label="Loading"
+    role="img"
+  />
+  <cds-progress-circle
+    aria-label="Loading"
+    role="img"
+  />
+  <cds-progress-circle
+    aria-label="Loading"
+    role="img"
+  />
 </div>
 `;

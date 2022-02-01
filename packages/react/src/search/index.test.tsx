@@ -1,28 +1,26 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsSearch } from './index';
 import { CdsFormGroup, CdsControlMessage } from '../forms/index';
 
 describe('CdsSearch', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsFormGroup>
-          <CdsSearch>
-            <label>label</label>
-            <input type="search" />
-            <CdsControlMessage>message text</CdsControlMessage>
-          </CdsSearch>
-        </CdsFormGroup>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsFormGroup>
+        <CdsSearch>
+          <label>label</label>
+          <input type="search" />
+          <CdsControlMessage>message text</CdsControlMessage>
+        </CdsSearch>
+      </CdsFormGroup>
     );
-    const renderedComponent = wrapper.find(CdsSearch);
-    expect(renderedComponent.at(0).html()).toMatch(/label/);
-    expect(renderedComponent.at(0).html()).toMatch(/message text/);
+
+    expect(await screen.findByLabelText(/label/i)).toBeInTheDocument();
+    expect(await screen.findByText(/message text/i)).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <div>
         <h3>Vertical</h3>
         <CdsFormGroup layout="vertical">
@@ -88,6 +86,6 @@ describe('CdsSearch', () => {
         </CdsFormGroup>
       </div>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsCheckbox } from './index';
 
 describe('CdsCheckbox', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsCheckbox>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsCheckbox>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsCheckbox>
+        <label htmlFor="my-checkbox">Hello</label>
+        <input id="my-checkbox" type="checkbox" />
+      </CdsCheckbox>
     );
-    const renderedComponent = wrapper.find(CdsCheckbox);
-    expect(renderedComponent.html()).toMatch(/Hello/);
+    expect(await screen.findByRole('checkbox', { name: 'Hello' })).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsCheckbox>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsCheckbox>
-      </div>
+    const { container } = render(
+      <CdsCheckbox>
+        <label htmlFor="my-checkbox">Hello</label>
+        <input id="my-checkbox" type="checkbox" />
+      </CdsCheckbox>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

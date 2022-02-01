@@ -2,26 +2,17 @@
 
 exports[`CdsFile snapshot 1`] = `
 <div>
-  <CdsFile
+  <cds-file
+    cds-control=""
     layout="vertical"
   >
-    <CdsFile
-      l={null}
-      layout="vertical"
-    >
-      <cds-file
-        l={null}
-        layout="vertical"
-      >
-        <label>
-          label
-        </label>
-        <input
-          multiple={true}
-          type="file"
-        />
-      </cds-file>
-    </CdsFile>
-  </CdsFile>
+    <label>
+      label
+    </label>
+    <input
+      multiple=""
+      type="file"
+    />
+  </cds-file>
 </div>
 `;

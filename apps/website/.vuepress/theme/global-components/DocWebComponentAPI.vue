@@ -77,7 +77,7 @@ export default {
   props: ['component'],
   data: function () {
     const CustomElement = API.modules
-      .filter(module => module.path.includes('element.d.ts'))
+      .filter(module => module.path.includes('element.js'))
       .find(
         module =>
           module.declarations &&

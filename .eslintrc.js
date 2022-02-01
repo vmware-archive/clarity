@@ -38,6 +38,5 @@ module.exports = {
     'clarity/no-barrel-imports': OFF, // Custom check to ensure we only import directly from files
     'jasmine/no-focused-tests': ERROR, // Prevent focused tests
     'no-irregular-whitespace': [ERROR, { skipTemplates: true }], // Turn of whitespace checking inside of `` templates
-    'no-prototype-builtins': OFF,
   },
 };

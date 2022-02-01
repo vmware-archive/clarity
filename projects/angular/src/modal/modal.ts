@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -74,7 +74,7 @@ export class ClrModal implements OnChanges, OnDestroy {
 
   // Detect when _open is set to true and set no-scrolling to true
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
-    if (!this.bypassScrollService && changes && changes.hasOwnProperty('_open')) {
+    if (!this.bypassScrollService && changes && Object.prototype.hasOwnProperty.call(changes, '_open')) {
       if (changes._open.currentValue) {
         this._scrollingService.stopScrolling();
       } else {

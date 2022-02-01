@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -68,7 +68,7 @@ export default function (): void {
         expect(buttonComponent.isCancel).toBe(false, 'next button type is not cancel');
 
         for (const key in typeConstant) {
-          if (typeConstant.hasOwnProperty(key) && key !== buttonType) {
+          if (Object.prototype.hasOwnProperty.call(typeConstant, key) && key !== buttonType) {
             const typeToTest = typeConstant[key];
             const testMsg = typeToTest + ' button type is not ' + buttonType;
             component.type = typeToTest;

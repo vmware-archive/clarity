@@ -8,9 +8,7 @@ golden/
 **/node_modules/**
 **/web_modules/**
 .cache
-.netlify
 projects/schematics/src/**/*.js
 projects/schematics/src/**/*.js.map
-projects/website/src/releases/final-template/auto-generated-routes.ts
 
 .angular/cache

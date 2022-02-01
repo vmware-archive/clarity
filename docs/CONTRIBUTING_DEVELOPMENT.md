@@ -130,7 +130,6 @@ steps.
 4.  Startup the project
     - If Angular change run `yarn start`
     - If Web Component change run `yarn core:start`
-    - If Website Documentation change run `yarn website:start`
 5.  To run tests and other project-specific commands see our project [Build Guide](/docs/BUILD.md)
 
 ### Public API Changes
@@ -235,8 +234,7 @@ you should:
 The CI runs three parallel Jobs for performance.
 
 1. Build and test libraries
-2. Build website and storybook
-3. Build angular dev app
+2. Build angular dev app
 
 To ensure your PR will pass the CI you can run `yarn run build` which will run
 all three CI checks locally on your machine. This may take several minutes.

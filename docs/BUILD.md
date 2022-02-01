@@ -13,7 +13,6 @@ projects
 ├── icons       # Clarity Icons
 ├── schematics  # Auto update scripts
 ├── ui          # Common CSS
-├── website     # Website
 ```
 
 ## Understanding the build

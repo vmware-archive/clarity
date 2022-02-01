@@ -22,7 +22,7 @@ module.exports = {
     sourceType: 'module',
   },
   ignorePatterns: ['.eslintrc.js', 'postcss.config.js', 'webpack.config.js'],
-  plugins: ['@typescript-eslint', 'jasmine', 'clarity', 'unused-imports'],
+  plugins: ['@typescript-eslint', 'jasmine', 'unused-imports'],
   rules: {
     curly: 'error',
     eqeqeq: 'error',
@@ -35,7 +35,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': ERROR, // Using raw-loader in Storybook
     '@typescript-eslint/ban-ts-comment': ERROR, // There are some quirks where we do want to use ts-ignore, but should be rare
     'unused-imports/no-unused-imports-ts': ERROR, // It's not covered by default checks; needs external plug-in
-    'clarity/no-barrel-imports': OFF, // Custom check to ensure we only import directly from files
     'jasmine/no-focused-tests': ERROR, // Prevent focused tests
     'no-irregular-whitespace': [ERROR, { skipTemplates: true }], // Turn of whitespace checking inside of `` templates
   },

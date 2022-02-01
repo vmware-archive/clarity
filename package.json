@@ -15,7 +15,6 @@
     "format:file": "prettier --write .",
     "license:fix": "node scripts/update-license",
     "lint": "npm-run-all lint:ts lint:styles",
-    "prelint:ts": "npm link ./eslint/eslint-plugin-clarity",
     "lint:ts": "eslint -c .eslintrc.js \"projects/angular/**/*.ts\"",
     "lint:ts:fix": "eslint --fix -c .eslintrc.js \"projects/angular/**/*.ts\"",
     "lint:styles": "stylelint \"src/**/*.scss\" \"projects/**/*.scss\"",

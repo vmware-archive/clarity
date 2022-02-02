@@ -10,14 +10,14 @@
     "test:angular": "ng test clr-angular --watch false --source-map=false",
     "test:angular:watch": "ng test clr-angular --source-map=false",
     "test": "npm-run-all test:angular schematics:test",
-    "format": "prettier --list-different './**/*.{js,json,md,ts,scss}'",
+    "format": "prettier . -c --loglevel warn",
     "format:fix": "pretty-quick --staged",
-    "format:file": "prettier --write .",
+    "format:file": "npm run --silent format -- -w",
     "lint": "npm-run-all lint:code lint:styles",
     "lint:code": "eslint . --ext .js,.json,.ts",
     "lint:code:fix": "npm run --silent lint:code -- --fix",
-    "lint:styles": "stylelint \"src/**/*.scss\" \"projects/**/*.scss\"",
-    "lint:styles:fix": "stylelint --fix \"src/**/*.scss\" \"projects/**/*.scss\"",
+    "lint:styles": "stylelint **/*.{css,scss,sass}",
+    "lint:styles:fix": "npm run --silent lint:styles -- --fix",
     "public-api:check": "api-extractor run",
     "public-api:update": "cpy ./dist/golden/clarity.api.md ./golden/",
     "clean:build": "rimraf dist",
@@ -46,7 +46,8 @@
     "publish:next": "npm publish ./dist/clr-angular --tag next; npm publish ./dist/clr-ui --tag next;",
     "publish:local": "npm publish ./dist/clr-ui --registry http://localhost:4873 --tag local; npm publish ./dist/clr-angular --registry http://localhost:4873 --tag local;",
     "publish:verify": "node ./scripts/publish-verify.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz -s"
   },
   "private": true,
   "dependencies": {
@@ -70,14 +71,15 @@
     "@angular-devkit/schematics": "~13.0.0",
     "@angular/cli": "~13.0.0",
     "@angular/compiler-cli": "~13.0.0",
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
+    "@commitlint/cz-commitlint": "^16.1.0",
     "@microsoft/api-extractor": "7.19.4",
     "@schematics/angular": "~13.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
+    "commitizen": "^4.2.4",
+    "commitlint": "^16.1.0",
     "cpy-cli": "^3.1.0",
     "csso-cli": "^3.0.0",
     "eslint": "^8.6.0",
@@ -109,5 +111,10 @@
     "stylelint-config-recommended-scss": "^5.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.4.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   }
 }

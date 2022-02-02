@@ -13,7 +13,7 @@ import {
 import '@cds/core/navigation/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils/index';
+import { logReactVersion } from '../utils/index.js';
 
 export const CdsNavigation = createComponent(
   React,

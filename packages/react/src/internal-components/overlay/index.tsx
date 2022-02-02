@@ -2,7 +2,7 @@ import { CdsInternalOverlay as Overlay } from '@cds/core/internal-components/ove
 import '@cds/core/internal-components/overlay/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../../utils';
+import { logReactVersion } from '../../utils/index.js';
 
 export const CdsInternalOverlay = createComponent(
   React,

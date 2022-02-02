@@ -17,7 +17,7 @@ module.exports = {
     sourceType: 'module',
   },
   ignorePatterns: ['**/*.css.ts', 'tools/**'],
-  plugins: ['@typescript-eslint', 'jasmine', 'clarity'],
+  plugins: ['@typescript-eslint', 'import', 'jasmine', 'clarity'],
   rules: {
     'accessor-pairs': 'error',
     curly: 'error',

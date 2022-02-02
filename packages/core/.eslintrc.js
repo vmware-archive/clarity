@@ -24,6 +24,7 @@ const rules = {
   '@typescript-eslint/no-use-before-define': OFF,
   '@typescript-eslint/ban-types': [ERROR, { types: bannedTSTypes }],
   '@typescript-eslint/explicit-member-accessibility': [ERROR, { accessibility: 'no-public' }],
+  'import/extensions': [ERROR, 'ignorePackages'],
   'no-restricted-imports': [
     ERROR,
     {

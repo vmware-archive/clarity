@@ -10,7 +10,7 @@ import { FontPreset, fontPresets, checkForExistingPresetName, getPreset } from '
 
 @Component({
   selector: 'clr-typography-font-switcher',
-  styleUrls: ['./font-switcher.css'],
+  styleUrls: ['./font-switcher.scss'],
   templateUrl: './font-switcher.html',
 })
 export class FontSwitcher {

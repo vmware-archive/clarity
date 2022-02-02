@@ -21,7 +21,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma'),
     ],
     parallelOptions: {
-      executors: process.env.npm_lifecycle_event === 'test:watch' ? 1 : 4,
+      executors: process.env.npm_lifecycle_event && process.env.npm_lifecycle_event.endsWith(':watch') ? 1 : 4,
       shardStrategy: 'round-robin',
     },
     client: {

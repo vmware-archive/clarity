@@ -17,7 +17,7 @@
     "scss/operator-no-newline-after": null,
     "scss/operator-no-unspaced": null,
     "selector-type-no-unknown": [true, {
-      "ignoreTypes": ["/^clr-/", "/^cds-/", "/^app-/", "/^_/", "_"]
+      "ignoreTypes": ["/^clr-/", "/^cds-/", "_"]
     }],
     "selector-pseudo-element-no-unknown":[true, {
       "ignorePseudoElements": ["/^ng-deep/"]

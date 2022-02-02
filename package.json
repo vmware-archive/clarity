@@ -28,7 +28,7 @@
     "build:ui:prefix": "postcss --use autoprefixer -o ./dist/clr-ui/clr-ui.css ./dist/clr-ui/clr-ui.css; postcss --use autoprefixer -o ./dist/clr-ui/clr-ui-dark.css ./dist/clr-ui/clr-ui-dark.css",
     "build:ui:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
     "build:ui:src": "cpy '**/*.scss' '../../dist/clr-ui/' --cwd=./projects/angular/ --parents",
-    "build:ui:package": "cpy ./projects/ui/npm.json ./projects/ui/README.md ./dist/clr-ui/; mv ./dist/clr-ui/npm.json ./dist/clr-ui/package.json;",
+    "build:ui:package": "cpy ./projects/ui/package.json ./projects/ui/README.md ./dist/clr-ui/",
     "build:ui": "npm-run-all build:ui:css build:ui:prefix build:ui:optimize build:ui:src build:ui:package",
     "schematics:clean": "rimraf projects/schematics/src/**/*.{js,js.map}",
     "schematics:test": "npm-run-all schematics:build:test schematics:execute:tests",

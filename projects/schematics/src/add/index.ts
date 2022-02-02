@@ -24,7 +24,7 @@ let corePackage: any;
 if (existsSync(join(__dirname, '../../package.json'))) {
   corePackage = require('../../package.json');
 } else {
-  corePackage = require('../../../../package.json');
+  corePackage = require('../../../package.json');
 }
 
 function setProjectSettings(options: NgAddOptions) {

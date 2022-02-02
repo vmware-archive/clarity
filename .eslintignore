@@ -3,5 +3,3 @@
 /node_modules
 /dist
 /golden
-projects/schematics/src/**/*.js
-projects/schematics/src/**/*.js.map

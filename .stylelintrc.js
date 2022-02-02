@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  extends: ['stylelint-config-recommended-scss'],
+  extends: ['stylelint-config-recommended-scss', 'stylelint-config-prettier'],
   defaultSeverity: 'error',
   plugins: ['stylelint-scss'],
   rules: {

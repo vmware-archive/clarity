@@ -42,7 +42,7 @@ module.exports = function (config) {
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
     },
     mochaReporter: {
-      ignoreSkipped: true,
+      ignoreSkipped: false,
     },
     reporters: ['mocha'],
     port: 9876,

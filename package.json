@@ -96,6 +96,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-parallel": "^0.3.1",
+    "lint-staged": "^12.3.2",
     "ng-packagr": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1",

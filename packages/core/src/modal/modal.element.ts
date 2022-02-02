@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -150,8 +150,9 @@ export class CdsModal extends CdsInternalOverlay {
     this.observers.forEach(o => o.disconnect());
   }
 
-  private setScrollableProperties() {
+  private async setScrollableProperties() {
     if (this.hidden === false) {
+      await this.updateComplete; // wait until after render to measure if scrollable
       this.isScrollable = isScrollable(this.content);
       this.content.tabIndex = this.isScrollable ? 0 : -1;
       this.content.ariaLabel = this.isScrollable ? this.i18n.contentBox : null;

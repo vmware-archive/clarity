@@ -6,7 +6,7 @@
     "npm": ">= 8.1.0"
   },
   "scripts": {
-    "start": "ng serve dev",
+    "start": "ng serve demo",
     "test:angular": "ng test clr-angular --watch false --source-map=false",
     "test:angular:watch": "ng test clr-angular --source-map=false",
     "test": "npm-run-all test:angular schematics:test",
@@ -23,7 +23,7 @@
     "clean:build": "rimraf dist",
     "build:angular": "ng build clr-angular --configuration production",
     "build:angular:watch": "ng build clr-angular --configuration production --watch",
-    "build:dev": "ng build dev",
+    "build:demo": "ng build demo",
     "build:ui:css": "sass --precision=8 projects/ui/src/main.scss ./dist/clr-ui/clr-ui.css; sass --precision=8 projects/ui/src/dark-theme.scss ./dist/clr-ui/clr-ui-dark.css",
     "build:ui:prefix": "postcss --use autoprefixer -o ./dist/clr-ui/clr-ui.css ./dist/clr-ui/clr-ui.css; postcss --use autoprefixer -o ./dist/clr-ui/clr-ui-dark.css ./dist/clr-ui/clr-ui-dark.css",
     "build:ui:optimize": "csso -i ./dist/clr-ui/clr-ui.css -o ./dist/clr-ui/clr-ui.min.css -s file --no-restructure; csso -i ./dist/clr-ui/clr-ui-dark.css -o ./dist/clr-ui/clr-ui-dark.min.css -s file --no-restructure",
@@ -40,7 +40,7 @@
     "schematics:execute:tests": "jasmine dist/schematics/**/*.spec.js",
     "build:sync-versions": "node ./scripts/sync-versions.js",
     "build:release": "npm-run-all clean:build format lint test build:angular schematics:build build:ui build:sync-versions public-api:check",
-    "build:ci": "npm-run-all build:release build:dev",
+    "build:ci": "npm-run-all build:release build:demo",
     "release:setversion": "node ./scripts/set-version.js",
     "publish": "npm publish ./dist/clr-angular; npm publish ./dist/clr-ui;",
     "publish:rc": "npm publish ./dist/clr-angular --tag rc; npm publish ./dist/clr-ui --tag rc;",

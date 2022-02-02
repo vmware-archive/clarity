@@ -231,10 +231,26 @@ export interface ClrCommonStrings {
   timelineStepProcessing: string;
 
   // Datagrid Helper text for expandable rows
+  /**
+   * @deprecated Should be removed in v14
+   */
   dategridExpandableBeginningOf?: string;
+  /**
+   * @deprecated Should be removed in v14
+   */
   dategridExpandableEndOf?: string;
+  /**
+   * @deprecated Should be removed in v14
+   */
   dategridExpandableRowContent?: string;
+  /**
+   * @deprecated Should be removed in v14
+   */
   dategridExpandableRowsHelperText?: string;
+  datagridExpandableBeginningOf?: string;
+  datagridExpandableEndOf?: string;
+  datagridExpandableRowContent?: string;
+  datagridExpandableRowsHelperText?: string;
 
   /**
    * Combobox Searching Text

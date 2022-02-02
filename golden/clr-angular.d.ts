@@ -447,10 +447,26 @@ export interface ClrCommonStrings {
     danger: string;
     datagridFilterAriaLabel?: string;
     datagridFilterDialogAriaLabel?: string;
+    /**
+     * @deprecated Should be removed in v14
+     */
     dategridExpandableBeginningOf?: string;
+    /**
+     * @deprecated Should be removed in v14
+     */
     dategridExpandableEndOf?: string;
+    /**
+     * @deprecated Should be removed in v14
+     */
     dategridExpandableRowContent?: string;
+    /**
+     * @deprecated Should be removed in v14
+     */
     dategridExpandableRowsHelperText?: string;
+    datagridExpandableBeginningOf?: string;
+    datagridExpandableEndOf?: string;
+    datagridExpandableRowContent?: string;
+    datagridExpandableRowsHelperText?: string;
     datepickerCurrentDecade: string;
     datepickerCurrentMonth: string;
     datepickerNextDecade: string;

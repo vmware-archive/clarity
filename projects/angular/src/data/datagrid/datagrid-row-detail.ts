@@ -22,7 +22,8 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
   selector: 'clr-dg-row-detail',
   template: `
     <div class="clr-sr-only">
-      {{ beginningOfExpandableContentAriaText }} {{ commonStrings.keys.dategridExpandableRowsHelperText }}
+      {{ beginningOfExpandableContentAriaText }}
+      {{ commonStrings.keys.dategridExpandableRowsHelperText || commonStrings.keys.datagridExpandableRowsHelperText }}
     </div>
     <ng-content></ng-content>
     <div class="clr-sr-only">{{ endOfExpandableContentAriaText }}</div>
@@ -71,7 +72,10 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
   public get beginningOfExpandableContentAriaText() {
     return (
       this._beginningOfExpandableContentAriaText ||
-      `${this.commonStrings.keys.dategridExpandableBeginningOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+      `${
+        this.commonStrings.keys.dategridExpandableBeginningOf || this.commonStrings.keys.datagridExpandableBeginningOf
+      } 
+      ${this.commonStrings.keys.dategridExpandableRowContent || this.commonStrings.keys.datagridExpandableRowContent}`
     );
   }
 
@@ -79,7 +83,8 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
   public get endOfExpandableContentAriaText() {
     return (
       this._endOfExpandableContentAriaText ||
-      `${this.commonStrings.keys.dategridExpandableEndOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+      `${this.commonStrings.keys.dategridExpandableEndOf || this.commonStrings.keys.datagridExpandableEndOf} 
+      ${this.commonStrings.keys.dategridExpandableRowContent || this.commonStrings.keys.datagridExpandableRowContent}`
     );
   }
 }

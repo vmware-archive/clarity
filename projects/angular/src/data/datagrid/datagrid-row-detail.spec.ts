@@ -54,11 +54,14 @@ export default function (): void {
       const rows: HTMLElement[] = context.clarityElement.querySelectorAll('.clr-sr-only');
 
       const first = [
-        commonStrings.keys.dategridExpandableBeginningOf,
-        commonStrings.keys.dategridExpandableRowContent,
-        commonStrings.keys.dategridExpandableRowsHelperText,
+        commonStrings.keys.dategridExpandableBeginningOf || commonStrings.keys.datagridExpandableBeginningOf,
+        commonStrings.keys.dategridExpandableRowContent || commonStrings.keys.datagridExpandableRowContent,
+        commonStrings.keys.dategridExpandableRowsHelperText || commonStrings.keys.datagridExpandableRowsHelperText,
       ];
-      const last = [commonStrings.keys.dategridExpandableEndOf, commonStrings.keys.dategridExpandableRowContent];
+      const last = [
+        commonStrings.keys.dategridExpandableEndOf || commonStrings.keys.datagridExpandableEndOf,
+        commonStrings.keys.dategridExpandableRowContent || commonStrings.keys.datagridExpandableRowContent,
+      ];
 
       expect(rows[0].innerText).toBe(first.join(' '));
       expect(rows[1].innerText).toBe(last.join(' '));

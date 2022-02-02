@@ -108,6 +108,10 @@ iframe[resizable] {
 }
 
 pre.prismjs {
+  background: var(--cds-global-color-construction-1000) !important;
+}
+
+.docblock-source pre.prismjs {
   background: var(--cds-global-color-gray-50) !important;
 }
 

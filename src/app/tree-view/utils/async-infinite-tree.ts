@@ -44,6 +44,6 @@ export class AsyncInfiniteTree {
   private delay: Observable<number>;
 
   fetchChildren(node: string): Observable<string[]> {
-    return this.delay.pipe(map(_ => this.tree.getChildren(node)));
+    return this.delay.pipe(map(() => this.tree.getChildren(node)));
   }
 }

@@ -23,7 +23,7 @@ export class StepperDemo {
     console.log('reactive form submit', this.form.value);
   }
 
-  templateFormSubmit(templateFormValues: {}) {
+  templateFormSubmit(templateFormValues: any) {
     console.log('template form submit', templateFormValues);
   }
 

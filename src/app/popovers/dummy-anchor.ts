@@ -50,7 +50,7 @@ export class DummyAnchor {
     }
   }
 
-  onFocusOut(_event: FocusEvent) {
+  onFocusOut() {
     this.toggleService.open = false;
   }
 

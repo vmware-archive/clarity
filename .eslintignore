@@ -1,0 +1,5 @@
+!.*
+/.angular
+/node_modules
+/dist
+/golden

@@ -19,7 +19,7 @@ files.forEach(file => {
   const filePath = path.join(process.cwd(), file);
   let content = fs.readFileSync(filePath, 'utf8');
   console.log(content);
-  content = content.replace(/\@VERSION/gim, pkg.version);
+  content = content.replace(/@VERSION/gim, pkg.version);
   fs.writeFileSync(filePath, content, { encoding: 'utf8' });
 
   console.log(`The version in ${filePath} is synced to ${pkg.version}.`);

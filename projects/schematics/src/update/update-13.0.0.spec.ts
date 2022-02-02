@@ -26,6 +26,7 @@ describe('Migration to version 13.0', () => {
     if (packageJsonString === undefined) {
       fail('Could not read package.json');
     }
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const packageJson = JSON.parse(packageJsonString!);
     packageJson.dependencies['@clr/angular'] = '13.0.0';
     workspaceTree.overwrite(packageJsonPath, JSON.stringify(packageJson));
@@ -55,6 +56,7 @@ describe('Migration to version 13.0', () => {
     if (packageJsonString === undefined) {
       fail('Could not read package.json');
     }
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const packageJson = JSON.parse(packageJsonString!);
     packageJson.dependencies[clarityCorePackageName] = predefinedClarityCoreVersion;
     workspaceTree.overwrite(packageJsonPath, JSON.stringify(packageJson));

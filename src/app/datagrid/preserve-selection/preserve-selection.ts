@@ -82,7 +82,7 @@ export class DatagridPreserveSelectionDemo {
     }
   }
 
-  trackByIndex(index: number, _item: User) {
+  trackByIndex(index: number) {
     return index;
   }
 

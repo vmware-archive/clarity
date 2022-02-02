@@ -28,6 +28,6 @@ export class LazyDeclarativeTreeDemo {
       return;
     }
     this.loading[node] = true;
-    this.children[node] = this.asyncTree.fetchChildren(node).pipe(tap(_ => (this.loading[node] = false)));
+    this.children[node] = this.asyncTree.fetchChildren(node).pipe(tap(() => (this.loading[node] = false)));
   }
 }

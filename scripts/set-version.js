@@ -10,7 +10,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const { exit } = require('process');
 
 const file = path.join(process.cwd(), 'package.json');
 const pkg = require(file);

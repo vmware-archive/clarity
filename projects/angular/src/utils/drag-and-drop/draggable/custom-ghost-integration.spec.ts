@@ -23,14 +23,11 @@ import { ClrDraggable } from './draggable';
 import { generateDragPosition } from '../helpers.spec';
 
 export default function (): void {
-  // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-  xdescribe('With Custom Draggable Ghost', function () {
+  describe('With Custom Draggable Ghost', function () {
     let mockDragStartEventInt: DragEventInterface<any>;
-    let mockDragEndEventInt: DragEventInterface<any>;
 
     beforeEach(function () {
       mockDragStartEventInt = { type: DragEventType.DRAG_START, dragPosition: generateDragPosition([5, 10], [6, 11]) };
-      mockDragEndEventInt = { type: DragEventType.DRAG_END, dragPosition: generateDragPosition([5, 10], [77, 88]) };
 
       TestBed.configureTestingModule({
         imports: [ClrDragAndDropModule, ClrIconModule, NoopAnimationsModule],
@@ -63,13 +60,6 @@ export default function (): void {
       const draggableGhosts = this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost');
       expect(draggableGhosts.length).toBe(1);
       expect(draggableGhosts[0].querySelectorAll('cds-icon').length).toBe(1);
-    });
-
-    it('should remove ghost on drag end', function () {
-      this.dragEventListener.dragStarted.next(mockDragStartEventInt);
-      expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(1);
-      this.dragEventListener.dragEnded.next(mockDragEndEventInt);
-      expect(this.fixture.nativeElement.querySelectorAll('clr-draggable-ghost').length).toBe(0);
     });
   });
 }

@@ -53,18 +53,6 @@ export default function (): void {
         this.dragEventListener.dragEnded.next();
         expect(this.testElement.textContent.trim()).toBe('');
       });
-
-      // @TODO Waiting on Angular to fix https://github.com/angular/angular/issues/34066
-      xit('should create its view as sibling to parent', function () {
-        // on dragstart event
-        this.dragEventListener.dragStarted.next();
-        expect(this.testElement.textContent.trim()).toBe('Test');
-
-        expect(this.fixture.nativeElement.childNodes.length).toBe(2);
-
-        expect(this.fixture.nativeElement.childNodes[0].classList.contains('parent-vcr')).toBeTruthy();
-        expect(this.fixture.nativeElement.childNodes[1].classList.contains('if-dragged')).toBeTruthy();
-      });
     });
   });
 }

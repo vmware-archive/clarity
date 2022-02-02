@@ -76,19 +76,6 @@ export default function (): void {
       afterEach(() => {
         fixture.destroy();
       });
-
-      xit('clicking on the link opens the nav group', () => {
-        // TODO(v2): Figure out upgrade issue related to testing disconnections
-        const navGroup: ClrVerticalNavGroup = fixture.componentInstance.navGroup;
-        const link: HTMLElement = compiled.querySelector('#link2');
-        expect(navGroup.expanded).toBe(false);
-
-        link.click();
-
-        fixture.detectChanges();
-
-        expect(navGroup.expanded).toBe(true);
-      });
     });
   });
 }

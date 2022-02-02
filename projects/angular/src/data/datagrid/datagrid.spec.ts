@@ -634,16 +634,6 @@ export default function (): void {
           context.getClarityProvider(Page).current = 2;
           expect(context.clarityDirective.datagridTable.nativeElement).not.toEqual(document.activeElement);
         });
-
-        // Actually not fixed yet, my bad
-        xit("doesn't emit when the datagrid is destroyed", function () {
-          context.testComponent.filter = true;
-          context.detectChanges();
-          context.testComponent.nbRefreshed = 0;
-          context.testComponent.destroy = true;
-          context.detectChanges();
-          expect(context.testComponent.nbRefreshed).toBe(0);
-        });
       });
     });
 

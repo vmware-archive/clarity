@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -68,8 +68,14 @@
       $clr-use-custom-properties
     );
 
-    border: $clr-global-borderwidth solid $clr-combobox-border-color;
-    border-bottom: $clr-global-borderwidth solid $clr-forms-border-color;
+    border-width: $clr-global-borderwidth;
+    border-style: solid;
+    @include css-var(border-color, clr-combobox-border-color, $clr-combobox-border-color, $clr-use-custom-properties);
+
+    border-bottom-width: $clr-global-borderwidth;
+    border-bottom-style: solid;
+    @include css-var(border-bottom-color, clr-forms-border-color, $clr-forms-border-color, $clr-use-custom-properties);
+
     @include css-var(
       border-radius,
       clr-combobox-border-radius,

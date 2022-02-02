@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { Injectable, QueryList } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { ClrAlert } from '../alert';

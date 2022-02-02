@@ -1,10 +1,9 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
+/*
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
+ * This software is released under MIT license.
+ * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 
 // The interfaces below are generated from the Angular CLI configuration schema

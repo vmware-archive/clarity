@@ -3,6 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 import { POPOVER_HOST_ANCHOR } from '../../../projects/angular/src/popover/common/popover-host-anchor.token';

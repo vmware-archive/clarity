@@ -23,6 +23,7 @@ const rules = {
       varsIgnorePattern: 'React|Cds',
     },
   ],
+  'import/extensions': [ERROR, 'ignorePackages'],
 };
 
 const parserOptions = {
@@ -31,10 +32,20 @@ const parserOptions = {
   sourceType: 'module',
 };
 
+const overrides = [
+  {
+    files: ['*.test.tsx'],
+    rules: {
+      'import/extensions': OFF,
+    },
+  },
+];
+
 const config = {
   extends: '../../.eslintrc.js',
   parserOptions,
   rules,
+  overrides,
 };
 
 module.exports = config;

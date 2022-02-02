@@ -44,7 +44,8 @@
     "publish:rc": "npm publish ./dist/clr-angular --tag rc; npm publish ./dist/clr-ui --tag rc;",
     "publish:next": "npm publish ./dist/clr-angular --tag next; npm publish ./dist/clr-ui --tag next;",
     "publish:local": "npm publish ./dist/clr-ui --registry http://localhost:4873 --tag local; npm publish ./dist/clr-angular --registry http://localhost:4873 --tag local;",
-    "publish:verify": "node ./scripts/publish-verify.js"
+    "publish:verify": "node ./scripts/publish-verify.js",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -84,7 +85,7 @@
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-license-header": "^0.4.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "1.3.1",
+    "husky": "^7.0.4",
     "jasmine": "~3.6.0",
     "jasmine-core": "~3.6.0",
     "jasmine-expect": "^5.0.0",
@@ -105,11 +106,5 @@
     "stylelint-config-recommended-scss": "^5.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.4.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format:fix",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }

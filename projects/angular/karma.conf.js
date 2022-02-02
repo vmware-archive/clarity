@@ -7,6 +7,9 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+const cpusAvailable = require('os').cpus().length;
+const cpus = Math.min(cpusAvailable - 1, 8);
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -21,7 +24,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma'),
     ],
     parallelOptions: {
-      executors: process.env.npm_lifecycle_event && process.env.npm_lifecycle_event.endsWith(':watch') ? 1 : 4,
+      executors: process.env.npm_lifecycle_event && process.env.npm_lifecycle_event.endsWith(':watch') ? 1 : cpus,
       shardStrategy: 'round-robin',
     },
     client: {

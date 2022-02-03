@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -2022,40 +2022,43 @@ export function checkoutForm() {
           <input type="email" placeholder="you@example.com" />
         </cds-input>
 
-        <div cds-layout="grid cols@xs:6 gap:lg p-t:sm">
-          <cds-input>
-            <label>address</label>
-            <input type="text" placeholder="1234 Main St." />
-          </cds-input>
+        <div role="group" aria-labelledby="shipping-address-title">
+          <p id="shipping-address-title" cds-text="subsection">Shipping Address</p>
+          <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
+            <cds-input>
+              <label>address</label>
+              <input type="text" placeholder="1234 Main St." />
+            </cds-input>
 
-          <cds-input>
-            <label>address 2</label>
-            <input type="text" placeholder="Apartment or Suite" />
-            <cds-control-message>(optional)</cds-control-message>
-          </cds-input>
-        </div>
+            <cds-input>
+              <label>address 2</label>
+              <input type="text" placeholder="Apartment or Suite" />
+              <cds-control-message>(optional)</cds-control-message>
+            </cds-input>
+          </div>
 
-        <div cds-layout="grid gap:lg p-t:sm">
-          <cds-select cds-layout="col@xs:6 col@sm:5">
-            <label>Country</label>
-            <select>
-              <option>choose...</option>
-              <option>United States</option>
-            </select>
-          </cds-select>
+          <div cds-layout="grid gap:lg p-t:sm">
+            <cds-select cds-layout="col@xs:6 col@sm:5">
+              <label>Country</label>
+              <select>
+                <option>choose...</option>
+                <option>United States</option>
+              </select>
+            </cds-select>
 
-          <cds-select cds-layout="col@xs:6 col@sm:4">
-            <label>State</label>
-            <select>
-              <option>choose...</option>
-              <option>California</option>
-            </select>
-          </cds-select>
+            <cds-select cds-layout="col@xs:6 col@sm:4">
+              <label>State</label>
+              <select>
+                <option>choose...</option>
+                <option>California</option>
+              </select>
+            </cds-select>
 
-          <cds-input cds-layout="col@sm:3">
-            <label>Postal Code</label>
-            <input type="text" placeholder="" />
-          </cds-input>
+            <cds-input cds-layout="col@sm:3">
+              <label>Postal Code</label>
+              <input type="text" placeholder="" />
+            </cds-input>
+          </div>
         </div>
       </cds-form-group>
 
@@ -2089,36 +2092,39 @@ export function checkoutForm() {
           </cds-checkbox>
         </cds-checkbox-group>
 
-        <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
-          <cds-input>
-            <label>name on card</label>
-            <input type="text" />
-            <cds-control-message>full name as displayed on card</cds-control-message>
-          </cds-input>
+        <div role="group" aria-labelledby="billing-info">
+          <p id="billing-info" cds-text="subsection">Credit Card</p>
+          <div cds-layout="grid cols@xs:6 gap:lg p-t:md">
+            <cds-input>
+              <label>name on card</label>
+              <input type="text" />
+              <cds-control-message>full name as displayed on card</cds-control-message>
+            </cds-input>
 
-          <cds-input>
-            <label>credit card number</label>
-            <input type="number" />
-          </cds-input>
-        </div>
-        <div cds-layout="grid gap:lg p-t:md">
-          <cds-input cds-layout="cols@xs:6 col@sm:4">
-            <label>expiration</label>
-            <input type="text" />
-          </cds-input>
+            <cds-input>
+              <label>credit card number</label>
+              <input type="number" />
+            </cds-input>
+          </div>
+          <div cds-layout="grid gap:lg p-t:md">
+            <cds-input cds-layout="cols@xs:6 col@sm:4">
+              <label>expiration</label>
+              <input type="text" />
+            </cds-input>
 
-          <cds-input cds-layout="cols@xs:6 col@sm:3">
-            <label>CVV</label>
-            <input type="number" />
-          </cds-input>
+            <cds-input cds-layout="cols@xs:6 col@sm:3">
+              <label>CVV</label>
+              <input type="number" />
+            </cds-input>
 
-          <cds-input cds-layout="col@sm:5">
-            <label>promo code</label>
-            <input type="text" />
-            <cds-control-action action="suffix" aria-label="add promo code">
-              <cds-icon shape="plus"></cds-icon>
-            </cds-control-action>
-          </cds-input>
+            <cds-input cds-layout="col@sm:5">
+              <label>promo code</label>
+              <input type="text" />
+              <cds-control-action action="suffix" aria-label="add promo code">
+                <cds-icon shape="plus"></cds-icon>
+              </cds-control-action>
+            </cds-input>
+          </div>
         </div>
       </cds-form-group>
       <cds-button>continue to checkout</cds-button>

@@ -5,7 +5,7 @@ import { CdsAccordionPanel as AccordionPanel } from '@cds/core/accordion';
 import '@cds/core/accordion/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils/index';
+import { logReactVersion } from '../utils/index.js';
 
 // add react util here in all components.
 // Document that it needs to be part of each component in React.

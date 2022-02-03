@@ -2,7 +2,7 @@ import { CdsPagination as Pagination, CdsPaginationButton as PaginationButton } 
 import '@cds/core/pagination/register';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../utils/index';
+import { logReactVersion } from '../utils/index.js';
 
 export const CdsPagination = createComponent(React, 'cds-pagination', Pagination, {}, 'CdsPagination');
 export const CdsPaginationButton = createComponent(

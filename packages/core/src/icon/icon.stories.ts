@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -58,6 +58,7 @@ class AllIcons extends LitElement {
           icon =>
             html`<cds-icon
               size="lg"
+              role="img"
               .shape=${icon}
               aria-label="This is an example of an icon using the ${icon} shape"
             ></cds-icon>`
@@ -78,6 +79,7 @@ export function API(args: any) {
     <cds-demo inline-block>
       <cds-icon
         ...="${spreadProps(getElementStorybookArgs(args))}"
+        role="img"
         aria-label="This is an icon example that can be used to try out the Clarity icon element's API"
       ></cds-icon>
     </cds-demo>
@@ -88,6 +90,7 @@ export function API(args: any) {
 export function icon() {
   return html`<cds-icon
     shape="user"
+    role="img"
     aria-label="This is an icon example that shows how to use the icon element in an application"
   ></cds-icon>`;
 }
@@ -98,58 +101,69 @@ export function sizes() {
     <cds-icon
       shape="home"
       size="xs"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined extra small size"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="sm"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined small size"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="md"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined medium size"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="lg"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined large size"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="xl"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined extra large size"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="xxl"
+      role="img"
       aria-label="This is an example of an icon using a pre-defined extra extra large size"
     ></cds-icon>
 
     <cds-icon
       shape="home"
       size="16"
+      role="img"
       aria-label="This is an example of an icon using a custom size of 16 pixels wide and tall"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="24"
+      role="img"
       aria-label="This is an example of an icon using a custom size of 24 pixels wide and tall"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="48"
+      role="img"
       aria-label="This is an example of an icon using a custom size of 48 pixels wide and tall"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="64"
+      role="img"
       aria-label="This is an example of an icon using a custom size of 64 pixels wide and tall"
     ></cds-icon>
     <cds-icon
       shape="home"
       size="128"
       loading
+      role="img"
       aria-label="This is an example of an icon using a custom size of 128 pixels wide and tall"
     ></cds-icon>
   `;
@@ -162,30 +176,35 @@ export function badges() {
       shape="user"
       size="lg"
       badge="info"
+      role="img"
       aria-label="This is an example of an icon of a user with a blue informational badge"
     ></cds-icon>
     <cds-icon
       shape="user"
       size="lg"
       badge="success"
+      role="img"
       aria-label="This is an example of an icon of a user with a green badge indicating success"
     ></cds-icon>
     <cds-icon
       shape="user"
       size="lg"
       badge="danger"
+      role="img"
       aria-label="This is an example of an icon of a user with a red badge indicating danger or an error"
     ></cds-icon>
     <cds-icon
       shape="user"
       size="lg"
       badge="warning"
+      role="img"
       aria-label="This is an example of an icon of a user with a dark orange badge indicating a warning"
     ></cds-icon>
     <cds-icon
       shape="user"
       size="lg"
       badge="warning-triangle"
+      role="img"
       aria-label="This is an example of an icon of a user with a dark orange triangle indicating something may be wrong"
     ></cds-icon>
     <cds-demo inverse inline-block>
@@ -194,6 +213,7 @@ export function badges() {
         size="lg"
         badge="inherit-triangle"
         inverse
+        role="img"
         aria-label="This is an example of an icon of a user on a dark background with a warning triangle that is the same color as the icon"
       ></cds-icon>
     </cds-demo>
@@ -206,30 +226,35 @@ export function status() {
     <cds-icon
       shape="user"
       size="lg"
+      role="img"
       aria-label="This is an example of an icon of a user with the default color of the surrounding text"
     ></cds-icon>
     <cds-icon
       shape="user"
       status="info"
       size="lg"
+      role="img"
       aria-label="This is an example of a blue, informational icon of a user"
     ></cds-icon>
     <cds-icon
       shape="user"
       status="success"
       size="lg"
+      role="img"
       aria-label="This is an example of a green icon of a user indicating success"
     ></cds-icon>
     <cds-icon
       shape="user"
       status="warning"
       size="lg"
+      role="img"
       aria-label="This is an example of a dark orange icon of a user indicating a warning"
     ></cds-icon>
     <cds-icon
       shape="user"
       status="danger"
       size="lg"
+      role="img"
       aria-label="This is an example of a red icon of a user indicating danger or an error"
     ></cds-icon>
 
@@ -237,6 +262,7 @@ export function status() {
       shape="user"
       size="lg"
       solid
+      role="img"
       aria-label="This is an example of an icon of a user completely filled in with the default color of the surrounding text"
     ></cds-icon>
     <cds-icon
@@ -244,6 +270,7 @@ export function status() {
       status="info"
       size="lg"
       solid
+      role="img"
       aria-label="This is an example of an icon of a user completely filled in with the blue, informational color"
     ></cds-icon>
     <cds-icon
@@ -251,6 +278,7 @@ export function status() {
       status="success"
       size="lg"
       solid
+      role="img"
       aria-label="This is an example of an icon of a user completely filled in with a green color indicating success"
     ></cds-icon>
     <cds-icon
@@ -258,6 +286,7 @@ export function status() {
       status="warning"
       size="lg"
       solid
+      role="img"
       aria-label="This is an example of an icon of a user completely filled in with a dark orange color indicating warning"
     ></cds-icon>
     <cds-icon
@@ -265,6 +294,7 @@ export function status() {
       status="danger"
       size="lg"
       solid
+      role="img"
       aria-label="This is an example of an icon of a user completely filled in with a red color indicating danger or an error"
     ></cds-icon>
   `;
@@ -274,17 +304,17 @@ export function status() {
 export function statusInverse() {
   return html`
     <cds-demo inverse inline-block>
-      <cds-icon shape="user" inverse size="lg" aria-label="This is an example of an icon of a user on a dark background with the default color of the surrounding text"></cds-icon>
-      <cds-icon shape="user" inverse status="info" size="lg" aria-label="This is an example of a blue, informational icon of a user on a dark background"></cds-icon>
-      <cds-icon shape="user" inverse status="success" size="lg" aria-label="This is an example of a green icon of a user on a dark background indicating success"></cds-icon>
-      <cds-icon shape="user" inverse status="warning" size="lg" aria-label="This is an example of a dark orange icon of a user on a dark background indicating a warning"></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg" aria-label="This is an example of a red icon of a user on a dark background indicating danger or an error"></cds-icon>
+      <cds-icon shape="user" inverse size="lg" role="img" aria-label="This is an example of an icon of a user on a dark background with the default color of the surrounding text"></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg" role="img" aria-label="This is an example of a blue, informational icon of a user on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg" role="img" aria-label="This is an example of a green icon of a user on a dark background indicating success"></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg" role="img" aria-label="This is an example of a dark orange icon of a user on a dark background indicating a warning"></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" role="img" aria-label="This is an example of a red icon of a user on a dark background indicating danger or an error"></cds-icon>
 
-      <cds-icon shape="user" inverse size="lg" solid aria-label="This is an example of an icon of a user completely filled in with the default color of the surrounding text on a dark background"></cds-icon>
-      <cds-icon shape="user" inverse status="info" size="lg" solid aria-label="This is an example of an icon of a user completely filled in with the blue, informational color on a dark background"></cds-icon>
-      <cds-icon shape="user" inverse status="success" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a green color indicating success"></cds-icon>
-      <cds-icon shape="user" inverse status="warning" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a dark orange color indicating warning"></cds-icon>
-      <cds-icon shape="user" inverse status="danger" size="lg" solid aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon></cds-icon>
+      <cds-icon shape="user" inverse size="lg" solid role="img" aria-label="This is an example of an icon of a user completely filled in with the default color of the surrounding text on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="info" size="lg" solid role="img" aria-label="This is an example of an icon of a user completely filled in with the blue, informational color on a dark background"></cds-icon>
+      <cds-icon shape="user" inverse status="success" size="lg" solid role="img" aria-label="This is an example of an icon of a user on a dark background completely filled in with a green color indicating success"></cds-icon>
+      <cds-icon shape="user" inverse status="warning" size="lg" solid role="img" aria-label="This is an example of an icon of a user on a dark background completely filled in with a dark orange color indicating warning"></cds-icon>
+      <cds-icon shape="user" inverse status="danger" size="lg" solid role="img" aria-label="This is an example of an icon of a user on a dark background completely filled in with a red color indicating danger or an error"></cds-icon></cds-icon>
     </cds-demo>
   `;
 }
@@ -296,24 +326,28 @@ export function direction() {
       shape="image"
       size="lg"
       direction="up"
+      role="img"
       aria-label="This is an example of an icon whose glyph is directed with its top to point upward. This is the default icon direction."
     ></cds-icon>
     <cds-icon
       shape="image"
       size="lg"
       direction="left"
+      role="img"
       aria-label="This is an example of an icon whose glyph is directed with its top to point to the left."
     ></cds-icon>
     <cds-icon
       shape="image"
       size="lg"
       direction="down"
+      role="img"
       aria-label="This is an example of an icon whose glyph is directed with its top to point downward."
     ></cds-icon>
     <cds-icon
       shape="image"
       size="lg"
       direction="right"
+      role="img"
       aria-label="This is an example of an icon whose glyph is directed with its top to point to the right."
     ></cds-icon>
   `;

@@ -19,6 +19,7 @@ const rules = {
   '@typescript-eslint/no-use-before-define': OFF,
   '@typescript-eslint/ban-types': [ERROR, { types: bannedTSTypes }],
   '@typescript-eslint/explicit-member-accessibility': [ERROR, { accessibility: 'no-public' }],
+  'import/extensions': [ERROR, 'ignorePackages'],
   'no-restricted-imports': [
     ERROR,
     {
@@ -49,11 +50,21 @@ const parserOptions = {
 
 const plugins = ['lit-a11y', 'lit', 'eslint-plugin-wc'];
 
+const overrides = [
+  {
+    files: ['build/**/*'],
+    rules: {
+      'import/extensions': OFF,
+    },
+  },
+];
+
 const config = {
   extends: ['../../.eslintrc.js', 'plugin:lit-a11y/recommended', 'plugin:lit/recommended', 'plugin:wc/recommended'],
   parserOptions,
   rules,
   plugins,
+  overrides,
 };
 
 module.exports = config;

@@ -2,7 +2,7 @@ import { CdsCheckboxPanel as CheckboxPanel } from '@cds/core/selection-panels/ch
 import '@cds/core/selection-panels/checkbox/register.js';
 import { createComponent } from '@lit-labs/react';
 import * as React from 'react';
-import { logReactVersion } from '../../utils';
+import { logReactVersion } from '../../utils/index.js';
 
 export const CdsCheckboxPanel = createComponent(React, 'cds-checkbox', CheckboxPanel, {}, 'CdsCheckboxPanel');
 

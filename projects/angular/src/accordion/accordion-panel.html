@@ -3,7 +3,7 @@
     <ng-container *ngIf="panel.status === AccordionStatus.Error">{{commonStrings.keys.danger}}</ng-container>
   </div>
 
-  <div role="group" [ngClass]="getPanelStateClasses(panel)">
+  <div [ngClass]="getPanelStateClasses(panel)">
     <div class="clr-accordion-header">
       <button
         type="button"

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -246,7 +246,7 @@ describe('ClrAccordionPanel', () => {
     });
 
     it('should get the appropriate panel class based on current panel state', () => {
-      const panelGroup = panelElement.querySelector('[role="group"]');
+      const panelGroup = panelElement.querySelector('[class*=clr-accordion-panel]');
       const headerButton = panelElement.querySelector('button');
 
       expect(panelGroup.classList.contains('clr-accordion-panel-inactive')).toBe(true);
@@ -257,6 +257,11 @@ describe('ClrAccordionPanel', () => {
 
       expect(panelGroup.classList.contains('clr-accordion-panel-inactive')).toBe(true);
       expect(panelGroup.classList.contains('clr-accordion-panel-open')).toBe(true);
+    });
+
+    it('should not have the [role]="group" attribute', () => {
+      const panelGroup = panelElement.querySelector('[role="group"]');
+      expect(panelGroup).toBeNull('clr-accordion-panels should not have a role');
     });
 
     it('should apply the appropriate class to header if the header has a description', () => {

@@ -4,6 +4,8 @@ on:
     branches:
       - 'main'
       - 'v[0-9]+.[0-9]+.x'
+  schedule:
+    - cron: '0 8 * * *' # run at 8am UTC
 jobs:
   release:
     name: Release

@@ -107,9 +107,20 @@ const Component = () => {
 ## Testing
 
 React Testing Library is [recommended by the React team](https://reactjs.org/docs/testing.html)
-for unit testing React components. By default, RTL runs in jest using jsdom, a node-based implementation
-of browser standards. It does not have implementations of all the latest browser features,
-so there may issues rendering and interacting with Clarity components.
+for unit testing React components. Because of the way web components are rendered, the synchronous
+`get` methods of RTL might not work, use the asynchronous `find` ones instead.
+
+```javascript
+test('my test', async () => {
+  render(<CdsButton>My Button</CdsButton>);
+
+  // might not work
+  expect(screen.getByRole('button', { name: 'My Button' })).toBeInTheDocument();
+
+  // will work
+  expect(await screen.findByRole('button', { name: 'My Button' })).toBeInTheDocument();
+});
+```
 
 ### IntersectionObserver
 
@@ -128,20 +139,3 @@ window.IntersectionObserver = jest.fn().mockReturnValue({
 <a href="https://github.com/vmware/clarity/tree/next/apps" target="_blank" rel="noopener">
   <cds-button>Example Apps</cds-button>
 </a>
-
-### Finding a Clarity element
-
-Because of the way web components are rendered, the synchronous
-`get` methods of RTL might not work, use the asynchronous `find` ones instead.
-
-```javascript
-test('my test', async () => {
-  render(<CdsButton>My Button</CdsButton>);
-
-  // might not work
-  expect(screen.getByRole('button', { name: 'My Button' })).toBeInTheDocument();
-
-  // will work
-  expect(await screen.findByRole('button', { name: 'My Button' })).toBeInTheDocument();
-});
-```

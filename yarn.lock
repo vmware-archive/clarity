@@ -3241,7 +3241,7 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@cds/angular@./dist/angular":
-  version "5.6.2"
+  version "6.0.0-next.3"
   dependencies:
     jsdom "^16.5.3"
     tslib "^2.0.0"
@@ -3252,14 +3252,13 @@
   integrity sha512-S9K+Q39BGOghyLHmR0Wdcmu1i1noSUk8HcvMj+3IaohZw02WFd99aPTQDHJeseXrXZP3CNovaSlePI0R11NcFg==
 
 "@cds/core@./dist/core":
-  version "0.0.0"
+  version "6.0.0-next.3"
   dependencies:
-    lit "2.0.0-rc.2"
-    ramda "^0.27.1"
-    tslib "^2.2.0"
+    lit "2.1.2"
+    ramda "^0.28.0"
+    tslib "^2.3.1"
   optionalDependencies:
     "@cds/city" "^1.1.0"
-    "@types/resize-observer-browser" "^0.1.5"
     modern-normalize "1.1.0"
 
 "@clr/ui@12.0.0":
@@ -3985,6 +3984,11 @@
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.0.0-rc.2.tgz#f24dba16ea571a08dca70f1783bd2ca5ec8de3ee"
   integrity sha512-cujeIl5Ei8FC7UHf4/4Q3bRJOtdTe1vpJV/JEBYCggedmQ+2P8A2oz7eE+Vxi6OJ4nc0X+KZxXnBoH4QrEbmEQ==
+
+"@lit/reactive-element@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.2.1.tgz#8620d7f0baf63e12821fa93c34d21e23477736f7"
+  integrity sha512-03FYfMguIWo9E1y1qcTpXzoO8Ukpn0j5o4GjNFq/iHqJEPY6pYopsU44e7NSFIgCTorr8wdUU5PfVy8VeD6Rwg==
 
 "@mdjs/core@^0.4.1":
   version "0.4.1"
@@ -19582,6 +19586,14 @@ lit-element@^3.0.0-rc.2:
     "@lit/reactive-element" "^1.0.0-rc.2"
     lit-html "^2.0.0-rc.3"
 
+lit-element@^3.1.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-3.1.2.tgz#fe29b9a362cf6c0de93c7769f29f1b6c37c79e15"
+  integrity sha512-5VLn5a7anAFH7oz6d7TRG3KiTZQ5GEFsAgOKB8Yc+HDyuDUGOT2cL1CYTz/U4b/xlJxO+euP14pyji+z3Z3kOg==
+  dependencies:
+    "@lit/reactive-element" "^1.1.0"
+    lit-html "^2.1.0"
+
 lit-html@^1.1.1, lit-html@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.2.1.tgz#1fb933dc1e2ddc095f60b8086277d4fcd9d62cc8"
@@ -19601,6 +19613,13 @@ lit-html@^2.0.0-rc.3:
   dependencies:
     "@types/trusted-types" "^1.0.1"
 
+lit-html@^2.1.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.1.2.tgz#8ae974f3899e6aa919cb977d7b99cc8884578f94"
+  integrity sha512-fp7oBzUdc7SEmOoSUNUZ6PM8se8eaIvc3pviQ5M+iCYuCpv9E23Nnb4hlxVzGhLWMnHSrnRVooNio0aAgjjrFw==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+
 lit@2.0.0-rc.2:
   version "2.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.0.0-rc.2.tgz#724a2d621aa098001d73bf7106f3a72b7b5948ef"
@@ -19609,6 +19628,15 @@ lit@2.0.0-rc.2:
     "@lit/reactive-element" "^1.0.0-rc.2"
     lit-element "^3.0.0-rc.2"
     lit-html "^2.0.0-rc.3"
+
+lit@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/lit/-/lit-2.1.2.tgz#e08c24c950fb15a98cc328a8c17e7b4d377f5c48"
+  integrity sha512-XacK89dJXF7BJbpiZSMvzT4RxHag7Wt+yNx7tErEVgGVlOFAeN871bj7ivotCMgYeBFWVp/hjKF/PDTk6L7gMA==
+  dependencies:
+    "@lit/reactive-element" "^1.1.0"
+    lit-element "^3.1.0"
+    lit-html "^2.1.0"
 
 lit@^2.0.0:
   version "2.0.2"
@@ -24935,6 +24963,11 @@ ramda@^0.27.1:
   version "0.27.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.1.tgz#66fc2df3ef873874ffc2da6aa8984658abacf5c9"
   integrity sha512-PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==
+
+ramda@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
+  integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
 
 randexp@0.4.6:
   version "0.4.6"

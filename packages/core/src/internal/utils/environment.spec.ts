@@ -1,4 +1,4 @@
-import { isBrowser } from './environment';
+import { isBrowser } from './environment.js';
 
 describe('Environment Helper: ', () => {
   describe('isBrowser():', () => {

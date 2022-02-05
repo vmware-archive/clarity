@@ -124,12 +124,10 @@ git checkout -b topic/feature-name upstream/topic/feature-name
 Once you have the project checked out with a fork you will need to run some step
 steps.
 
-1.  Have [NodeJS](https://nodejs.org) installed and [Yarn](https://yarnpkg.com)
-2.  In the root project directory run, `yarn`
-3.  Run `yarn build` to build entire project (this may take several minutes)
-4.  Startup the project
-    - If Angular change run `yarn start`
-    - If Web Component change run `yarn core:start`
+1.  Have [NodeJS](https://nodejs.org) installed
+2.  In the root project directory run, `npm install`
+3.  Run `npm build` to build entire project (this may take several minutes)
+4.  Startup the demo project: `npm start`
 5.  To run tests and other project-specific commands see our project [Build Guide](/docs/BUILD.md)
 
 ### Public API Changes
@@ -143,10 +141,8 @@ files which track our public API surface.
 To update the Golden files follow these steps:
 
 1.  Make public API change
-2.  Run `build:ci`
-3.  Run `angular:golden:test` this should fail
-4.  Run `angular:golden:fix`
-5.  Run `angular:golden:test` this should now pass
+2.  Run `npm build`
+3.  Run `npm run public-api:update` this should fail
 
 ### Commits
 
@@ -228,16 +224,8 @@ requested some help.
 To make sure your pull request will pass our automated testing, before submitting
 you should:
 
-- Make sure `yarn test` passes for each of them.
+- Make sure `npm run build:ci` passes for each of them.
   For individual lint failures, you will have to fix them manually.
-
-The CI runs three parallel Jobs for performance.
-
-1. Build and test libraries
-2. Build angular dev app
-
-To ensure your PR will pass the CI you can run `yarn run build` which will run
-all three CI checks locally on your machine. This may take several minutes.
 
 If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
 

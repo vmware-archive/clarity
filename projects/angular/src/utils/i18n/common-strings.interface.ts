@@ -255,4 +255,11 @@ export interface ClrCommonStrings {
    * Wizard: Screen-reader text for step with error.
    */
   wizardStepError: string;
+
+  /**
+   * Password Input
+   * Screen-reader text for the hide/show password field button.
+   */
+  passwordHide: string;
+  passwordShow: string;
 }

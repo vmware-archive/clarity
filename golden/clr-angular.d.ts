@@ -479,6 +479,8 @@ export interface ClrCommonStrings {
     next: string;
     nextPage: string;
     open: string;
+    passwordHide: string;
+    passwordShow: string;
     pickColumns: string;
     previous: string;
     previousPage: string;

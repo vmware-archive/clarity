@@ -91,4 +91,11 @@ export const commonStringsDefault: ClrCommonStrings = {
   // Wizard
   wizardStepSuccess: 'Completed',
   wizardStepError: 'Error',
+
+  /**
+   * Password Input
+   * Screen-reader text for the hide/show password field button
+   */
+  passwordHide: 'Hide password',
+  passwordShow: 'Show password',
 };

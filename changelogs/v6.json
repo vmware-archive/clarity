@@ -2,6 +2,79 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "6.0.0-next.4",
+      "date": "2022-02-07",
+      "description": "This is a beta release for our next major version.",
+      "fix": [
+        {
+          "issue": 6612,
+          "title": "Fix JSDOM react testing issues",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6633,
+          "title": "Fixed close icon shape name",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6627,
+          "title": "Update React import paths to include extension",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6629,
+          "title": "Scroll check lifecycle",
+          "project": "core",
+          "scope": "modal"
+        },
+        {
+          "issue": 6621,
+          "title": "Fix Vue component for parsing core API key/values",
+          "project": "website",
+          "scope": "docs"
+        },
+        {
+          "issue": 6618,
+          "title": "Improve combobox color contrast in shim tokens",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6620,
+          "title": "Replace host shape svg",
+          "project": "core",
+          "scope": "icon"
+        },
+        {
+          "issue": 6613,
+          "title": "Add launchpad icon",
+          "project": "core",
+          "scope": "icon"
+        },
+        {
+          "issue": 6608,
+          "title": "Update icon warning color to use the dark color variation",
+          "project": "core",
+          "scope": "icon"
+        },
+        {
+          "issue": 6597,
+          "title": "Add v6 path to sidebar navigation",
+          "project": "website",
+          "scope": ""
+        },
+        {
+          "issue": 6593,
+          "title": "Property initialization",
+          "project": "core",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "6.0.0-next.3",
       "date": "2022-01-24",
       "description": "This is a beta release for our next major version.",

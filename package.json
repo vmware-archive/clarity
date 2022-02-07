@@ -100,6 +100,7 @@
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "semantic-release": "19.0.2",
+    "semantic-release-slack-bot": "3.5.2",
     "stylelint": "^14.3.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-scss": "^5.0.0",

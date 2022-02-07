@@ -37,6 +37,10 @@ The build process consists of the following five stages. Each stage can be ran i
 
    - `npm run lint:fix`: automatically fixes any linting or formatting issues if possible
 
+   - `npm run lint:changed`: same as `npm run lint`, but only for new and modified files
+
+   - `npm run lint:changed:fix`: same as `npm run lint:fix`, but only for new and modified files
+
 3. `npm run build`: builds all projects
 
 4. `npm run test`: verifies all tests pass

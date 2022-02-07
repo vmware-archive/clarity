@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -42,7 +42,11 @@
                   <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" class="nav-icon"></cds-icon>
                   <span class="nav-text">{{item.label}}</span>
                 </a>
-                <button class="nav-group-trigger" type="button">
+                <button
+                  class="nav-group-trigger"
+                  type="button"
+                  [attr.aria-label]="'Toggle ' + item.label.toLowerCase() + ' nav group'"
+                >
                   <cds-icon class="clr-nav-caret" shape="angle" [attr.direction]="'down'"></cds-icon>
                 </button>
               </div>

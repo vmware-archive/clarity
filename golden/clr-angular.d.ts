@@ -1924,6 +1924,7 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     get expanded(): boolean;
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
+    groupLabel: string;
     set userExpandedInput(value: boolean | string);
     constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStringsService);
     collapseGroup(): void;

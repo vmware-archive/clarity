@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -97,6 +97,9 @@ export class ClrVerticalNavGroup implements AfterContentInit, OnDestroy {
       this.expandedChange.emit(value);
     }
   }
+
+  @Input('clrVerticalNavGroupLabel')
+  groupLabel = this.commonStrings.keys.verticalNavGroupToggle;
 
   @Input('clrVerticalNavGroupExpanded')
   set userExpandedInput(value: boolean | string) {

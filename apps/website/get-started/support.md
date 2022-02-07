@@ -22,8 +22,9 @@ Our support policy for Clarity releases is to actively support a major release f
 
 | Version | Status             | Released     | Support Ends                   |
 | ------- | ------------------ | ------------ | ------------------------------ |
-| v12     | Actively Supported | Jul 22, 2021 | 6 months after v13 is released |
-| v5      | Actively Supported | Jan 21, 2021 | Feb 1, 2022                    |
+| v13     | Actively Supported | Jan 24, 2022 | 6 months after v14 is released |
+| v12     | Actively Supported | Jul 22, 2021 | Sep 1, 2022                    |
+| v5      | Out of support     | Jan 21, 2021 | Feb 1, 2022                    |
 | v4      | Out of support     | Aug 19, 2020 | Aug 1, 2021                    |
 | v3      | Out of support     | Feb 27, 2020 | Apr 1, 2021                    |
 | v2      | Out of support     | July 6, 2019 | Jan, 2021[^olderversion]       |
@@ -37,8 +38,9 @@ Our Clarity Angular package is designed to explicitly support specific versions 
 
 | Clarity Angular Version | Angular | Status             |
 | ----------------------- | ------- | ------------------ |
-| v12                     | v12     | Actively Supported |
-| v5                      | v11     | Actively Supported |
+| v13                     | v13     | Actively Supported |
+| v12                     | v12     | LTS                |
+| v5                      | v11     | LTS                |
 | v4                      | v10     | Out of support     |
 | v3                      | v9      | Out of support     |
 | v2                      | v8      | Out of support     |

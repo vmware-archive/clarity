@@ -17,7 +17,7 @@ export class {{directiveClassName}} {
   }
   {{! empty string is added to support boolean attrs https://github.com/angular/angular/issues/14761 }}
   @Input() set {{name}}(value{{#isBoolean}}: boolean | ''{{/isBoolean}}) {
-    this.element.{{name}} = {{#isBoolean}}!!{{/isBoolean}}value;
+    this.element.{{name}} = {{#isBoolean}}value === '' ? true : {{/isBoolean}}value;
   };
   {{/props}}
 

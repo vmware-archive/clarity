@@ -233,6 +233,19 @@ describe('CDS Button', () => {
   it('cds-button should be defined', () => {
     expect(instance.vcCdsButtonDirective).toBeDefined();
   });
+
+  it('boolean attributes should be treated as truthy', () => {
+    const element = fixture.nativeElement.querySelector('cds-button');
+    expect(instance.vcCdsButtonDirective.readonly).toBe(false);
+    expect(element.readonly).toBe(false);
+    expect(element.hasAttribute('readonly')).toBe(false);
+
+    element.setAttribute('readonly', '');
+    fixture.detectChanges();
+    expect(instance.vcCdsButtonDirective.readonly).toBe(true);
+    expect(element.readonly).toBe(true);
+    expect(element.hasAttribute('readonly')).toBe(true);
+  });
 });
 
 describe('CDS Icon Button', () => {

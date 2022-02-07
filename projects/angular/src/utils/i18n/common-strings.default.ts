@@ -91,4 +91,14 @@ export const commonStringsDefault: ClrCommonStrings = {
   datagridExpandableEndOf: 'End of',
   datagridExpandableRowContent: 'Expandable row content',
   datagridExpandableRowsHelperText: `Screen reader table commands may not work for viewing expanded content, please use your screen reader's browse mode to read the content exposed by this button`,
+  // Wizard
+  wizardStepSuccess: 'Completed',
+  wizardStepError: 'Error',
+
+  /**
+   * Password Input
+   * Screen-reader text for the hide/show password field button
+   */
+  passwordHide: 'Hide password',
+  passwordShow: 'Show password',
 };

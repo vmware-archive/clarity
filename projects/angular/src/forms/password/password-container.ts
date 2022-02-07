@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -43,6 +43,9 @@ export const TOGGLE_SERVICE_PROVIDER = { provide: TOGGLE_SERVICE, useFactory: To
               [attr.shape]="show ? 'eye-hide' : 'eye'"
               [attr.title]="show ? commonStrings.keys.hide : commonStrings.keys.show"
             ></cds-icon>
+            <span class="clr-sr-only">{{
+              show ? commonStrings.keys.passwordHide : commonStrings.keys.passwordShow
+            }}</span>
           </button>
         </div>
         <cds-icon

@@ -264,4 +264,21 @@ export interface ClrCommonStrings {
   comboboxSelected: string;
   comboboxNoResults: string;
   comboboxOpen: string;
+
+  /**
+   * Wizard: Screen-reader text for completed step.
+   */
+  wizardStepSuccess: string;
+
+  /**
+   * Wizard: Screen-reader text for step with error.
+   */
+  wizardStepError: string;
+
+  /**
+   * Password Input
+   * Screen-reader text for the hide/show password field button.
+   */
+  passwordHide: string;
+  passwordShow: string;
 }

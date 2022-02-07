@@ -2,6 +2,26 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.6.3",
+      "date": "2022-02-07",
+      "description": "This is a patch release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6612,
+          "title": "Fix JSDOM react testing issues",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6559,
+          "title": "Move loadingStatus logic to update to work with react CdsButton",
+          "project": "react",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "5.6.2",
       "date": "2022-01-10",
       "description": "This is a patch release.",

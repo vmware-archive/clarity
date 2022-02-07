@@ -1,5 +1,5 @@
 {
-  "name": "@clr/angular",
+  "name": "test-project-angular",
   "version": "@VERSION",
   "description": "Angular components for Clarity",
   "homepage": "https://clarity.design",
@@ -22,7 +22,7 @@
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
     "@cds/core": "next || ^6.0.0 || ^5.6.0",
-    "@clr/ui": "@VERSION"
+    "test-project-ui": "@VERSION"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {

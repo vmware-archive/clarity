@@ -2328,6 +2328,7 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     get expanded(): boolean;
     set expanded(value: boolean);
     expandedChange: EventEmitter<boolean>;
+    groupLabel: string;
     set userExpandedInput(value: boolean | string);
     constructor(_itemExpand: IfExpandService, _navGroupRegistrationService: VerticalNavGroupRegistrationService, _navGroupService: VerticalNavGroupService, _navService: VerticalNavService, commonStrings: ClrCommonStringsService);
     collapseGroup(): void;
@@ -2336,7 +2337,7 @@ export declare class ClrVerticalNavGroup implements AfterContentInit, OnDestroy 
     ngAfterContentInit(): void;
     ngOnDestroy(): void;
     toggleExpand(): void;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNavGroup, "clr-vertical-nav-group", never, { "userExpandedInput": "clrVerticalNavGroupExpanded"; }, { "expandedChange": "clrVerticalNavGroupExpandedChange"; }, never, ["[clrVerticalNavLink]", "[clrVerticalNavIcon]", "*", "[clrIfExpanded], clr-vertical-nav-group-children"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrVerticalNavGroup, "clr-vertical-nav-group", never, { "groupLabel": "clrVerticalNavGroupLabel"; "userExpandedInput": "clrVerticalNavGroupExpanded"; }, { "expandedChange": "clrVerticalNavGroupExpandedChange"; }, never, ["[clrVerticalNavLink]", "[clrVerticalNavIcon]", "*", "[clrIfExpanded], clr-vertical-nav-group-children"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrVerticalNavGroup, never>;
 }
 

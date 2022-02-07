@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -149,6 +149,36 @@ export default function (): void {
 
         expect(compiled.querySelector('.nav-group-children').children.length).toBeGreaterThan(0);
       });
+    });
+
+    describe('Nav Group Internals with clrVerticalNavGroupLabel', () => {
+      let navGroup: ClrVerticalNavGroup;
+      let toggleBtn: HTMLButtonElement;
+
+      beforeEach(() => {
+        fixture = TestBed.createComponent(IfExpandedTestComponent);
+        fixture.detectChanges();
+        compiled = fixture.nativeElement;
+        navGroup = fixture.componentInstance.navGroup;
+        toggleBtn = compiled.querySelector('.nav-group-trigger');
+      });
+
+      afterEach(() => {
+        fixture.destroy();
+      });
+
+      it('defaults aria-label of nav group toggle button to common strings', () => {
+        expect(toggleBtn.hasAttribute('aria-label')).toBe(true);
+        expect(toggleBtn.getAttribute('aria-label')).toBe(navGroup.commonStrings.keys.verticalNavGroupToggle);
+      });
+
+      it('overrides default aria-label if clrVerticalNavGroup is set', fakeAsync(function () {
+        navGroup.groupLabel = 'ohai';
+        fixture.detectChanges();
+        tick();
+        expect(toggleBtn.hasAttribute('aria-label')).toBe(true);
+        expect(toggleBtn.getAttribute('aria-label')).toBe('ohai');
+      }));
     });
 
     describe('Template API', () => {

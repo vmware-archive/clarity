@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -28,7 +28,10 @@
     <div class="content-container">
       <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
         <ng-container *ngFor="let item of case.items">
-          <clr-vertical-nav-group *ngIf="item['children']">
+          <clr-vertical-nav-group
+            *ngIf="item['children']"
+            [clrVerticalNavGroupLabel]="'Toggle ' + item.label.toLowerCase() + ' nav group'"
+          >
             <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></cds-icon>
             {{item.label}}
             <clr-vertical-nav-group-children *clrIfExpanded>
@@ -81,7 +84,10 @@
     <div class="content-container">
       <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapse">
         <ng-container *ngFor="let item of case.items">
-          <clr-vertical-nav-group *ngIf="item['children']">
+          <clr-vertical-nav-group
+            *ngIf="item['children']"
+            [clrVerticalNavGroupLabel]="'Toggle ' + item.label.toLowerCase() + ' nav group'"
+          >
             <a href="javascript://" clrVerticalNavLink>
               <cds-icon [attr.shape]="item.icon" *ngIf="item['icon']" clrVerticalNavIcon></cds-icon>
               {{item.label}}

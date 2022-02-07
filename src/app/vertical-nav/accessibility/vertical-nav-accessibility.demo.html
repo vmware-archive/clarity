@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -26,7 +26,7 @@
     </header>
     <div class="content-container">
       <clr-vertical-nav>
-        <clr-vertical-nav-group routerLinkActive="active">
+        <clr-vertical-nav-group routerLinkActive="active" [clrVerticalNavGroupLabel]="'Toggle The Beatles nav group'">
           <a
             [routerLink]="['./beatles']"
             routerLinkActive="active"
@@ -45,7 +45,7 @@
           </ng-template>
         </clr-vertical-nav-group>
 
-        <clr-vertical-nav-group routerLinkActive="active">
+        <clr-vertical-nav-group routerLinkActive="active" [clrVerticalNavGroupLabel]="'Toggle The Killers nav group'">
           <a
             [routerLink]="['./killers']"
             routerLinkActive="active"

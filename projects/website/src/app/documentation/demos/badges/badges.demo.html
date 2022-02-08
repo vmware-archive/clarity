@@ -24,7 +24,7 @@
                 <clr-tree>
                   <clr-tree-node>
                     <div class="margin-right-0_25">Inbox</div>
-                    <span class="badge badge-info">1 </span>
+                    <span class="badge badge-info">1 <span class="clr-sr-only">item in inbox</span></span>
                     <ng-template [(clrIfExpanded)]="expanded">
                       <clr-tree-node> New Email 1 </clr-tree-node>
                     </ng-template>
@@ -54,10 +54,15 @@
           <div class="clrweb-DoxMedia has-h4-margin">
             <div class="clr-demo-container">
               <div class="clr-row">
-                <div class="clr-col-12"><b>Notifications</b> <span class="badge badge-info">12</span></div>
+                <div class="clr-col-12">
+                  <b>Notifications</b>
+                  <span class="badge badge-info">12 <span class="clr-sr-only">notifications</span></span>
+                </div>
               </div>
               <div class="clr-row">
-                <div class="clr-col-12"><b>Alerts</b> <span class="badge badge-danger">12</span></div>
+                <div class="clr-col-12">
+                  <b>Alerts</b> <span class="badge badge-danger">12 <span class="clr-sr-only">alerts</span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -83,11 +88,11 @@
               <div class="clrweb-DoxMedia-img">
                 <span class="label label-orange">
                   London (Location)
-                  <span class="badge badge-orange">14</span>
+                  <span class="badge badge-orange">14 <span class="clr-sr-only">items</span></span>
                 </span>
                 <span class="label label-orange">
                   Austin (Location)
-                  <span class="badge badge-orange">99+</span>
+                  <span class="badge badge-orange">99+ <span class="clr-sr-only">items</span></span>
                 </span>
               </div>
             </div>

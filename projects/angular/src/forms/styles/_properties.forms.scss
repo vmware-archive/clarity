@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -16,7 +16,7 @@
       --clr-forms-valid-text-color: var(--clr-color-success-900);
       --clr-forms-subtext-color: var(--clr-color-neutral-600);
       --clr-forms-placeholder-color: var(--clr-global-color-construction-600);
-      --clr-forms-border-color: var(--clr-color-neutral-500);
+      --clr-forms-border-color: #{$clr-forms-border-color};
       --clr-forms-focused-color: var(--clr-color-action-600);
 
       --clr-forms-subtext-disabled-color: #{$clr-forms-subtext-disabled-color};

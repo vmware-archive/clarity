@@ -28,6 +28,7 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
         [(ngModel)]="value"
         class="clr-input"
         [attr.aria-label]="commonStrings.keys.filterItems"
+        [placeholder]="commonStrings.keys.filterItems"
       />
     </clr-dg-filter>
   `,

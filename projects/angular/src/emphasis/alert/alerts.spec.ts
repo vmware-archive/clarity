@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -208,6 +208,15 @@ export default function () {
         // no tests for unexpected/unrecognized values because the alert types service ignores them
         // and only changes an alert type when given a known value.
       });
+
+      it('sets an aria label on the icon', function () {
+        const myAlert: ClrAlert = fixture.componentInstance.alertsInstance.currentAlert;
+        myAlert.alertType = 'warning';
+        fixture.detectChanges();
+
+        const icon: Element = fixture.nativeElement.querySelector('cds-icon[role="img"]');
+        expect(icon.getAttribute('aria-label')).toEqual('Warning');
+      });
     });
 
     describe('Supports dynamic alerts', function () {
@@ -236,9 +245,9 @@ export default function () {
         [clrAlertClosed]="false"
         [clrAlertAppLevel]="true"
       >
-        <div class="alert-item">
+        <clr-alert-item>
           <span class="alert-text"> This is the first alert! </span>
-        </div>
+        </clr-alert-item>
       </clr-alert>
       <clr-alert
         [clrAlertType]="'alert-danger'"
@@ -246,9 +255,9 @@ export default function () {
         [clrAlertClosed]="false"
         [clrAlertAppLevel]="true"
       >
-        <div class="alert-item">
+        <clr-alert-item>
           <span class="alert-text"> This is the second alert! </span>
-        </div>
+        </clr-alert-item>
       </clr-alert>
     </clr-alerts>
   `,

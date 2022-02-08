@@ -36,8 +36,10 @@ export const parameters = {
       let storySource = storyContext.originalStoryFn.toString().split('\n');
 
       // remove function wrapper
-      storySource.shift();
-      storySource.pop();
+      if (storySource.length > 2) {
+        storySource.shift();
+        storySource.pop();
+      }
       storySource[0] = storySource[0].replace('return html`', '').trim();
       storySource[storySource.length - 1] = storySource[storySource.length - 1].replace('`;', '');
 

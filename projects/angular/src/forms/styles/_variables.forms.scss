@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -15,7 +15,8 @@ $clr-forms-valid-color: $clr-color-success-700 !default;
 $clr-forms-valid-text-color: $clr-color-success-900 !default;
 $clr-forms-subtext-color: $clr-color-neutral-600 !default;
 $clr-forms-placeholder-color: $clr-global-color-construction-600 !default;
-$clr-forms-border-color: $clr-color-neutral-500 !default;
+// Accessibility fox for vpat-7719; this aligns with core
+$clr-forms-border-color: hsl(198, 10%, 46%) !default;
 $clr-forms-focused-color: $clr-color-action-600 !default;
 $clr-forms-subtext-disabled-color: $clr-color-neutral-600 !default;
 $clr-forms-border-disabled-color: $clr-color-neutral-500 !default;

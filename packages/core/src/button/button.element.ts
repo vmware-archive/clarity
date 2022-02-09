@@ -4,8 +4,8 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html, PropertyValues } from 'lit';
 import { baseStyles, CdsBaseButton, getElementWidth, property } from '@cds/core/internal';
-import { html } from 'lit';
 import styles from './button.element.scss';
 
 export const enum ClrLoadingState {
@@ -83,7 +83,7 @@ export class CdsButton extends CdsBaseButton {
   @property({ type: String })
   loadingState: keyof typeof ClrLoadingState = ClrLoadingState.default;
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
 
     if (!this.isDefaultLoadingState(this.loadingState)) {
@@ -91,7 +91,7 @@ export class CdsButton extends CdsBaseButton {
     }
   }
 
-  update(props: Map<string, any>) {
+  update(props: PropertyValues<this>) {
     if (props.has('loadingState')) {
       if (this.isDefaultLoadingState(props.get('loadingState'))) {
         // track prior disabled state to set prior value after button is re-enabled from a loading state

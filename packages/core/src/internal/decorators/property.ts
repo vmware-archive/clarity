@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { PropertyValues } from 'lit';
 import { property as _property } from 'lit/decorators/property.js';
 import { camelCaseToKebabCase, kebabCaseToPascalCase, capitalizeFirstLetter } from '../utils/string.js';
 import { LogService } from '../services/log.service.js';
@@ -70,7 +71,7 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
 export function requirePropertyCheck(protoOrDescriptor: any, name: string, options?: PropertyConfig) {
   const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
-  function firstUpdated(this: any, props: Map<string, any>): void {
+  function firstUpdated(this: any, props: PropertyValues<any>): void {
     if (options && options.required && isNilOrEmpty(this[name])) {
       const message = options.requiredMessage || getRequiredMessage(options.required, name, this.tagName);
       if (options.required === 'error') {

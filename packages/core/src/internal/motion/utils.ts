@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,6 +26,7 @@ import { isPrefixedBy, isSuffixedBy, getNumericValueFromCssSecondsStyleValue, re
 import { queryChildFromLightOrShadowDom } from '../utils/dom.js';
 import { allPropertiesPass } from '../utils/identity.js';
 import { getMillisecondsFromSeconds } from '../utils/math.js';
+import { PropertyValues } from 'lit';
 
 /**
  * runPropertyAnimations() is a utility function called by the @animate(). It is a single point of entry
@@ -40,7 +41,7 @@ import { getMillisecondsFromSeconds } from '../utils/math.js';
  * @internal
  */
 /* c8 ignore next */
-export async function runPropertyAnimations(props: Map<string, any>, hostEl: AnimatableElement): Promise<boolean> {
+export async function runPropertyAnimations(props: PropertyValues<any>, hostEl: AnimatableElement): Promise<boolean> {
   if (!hostEl._animations) {
     LogService.warn(`${hostEl.tagName.toLocaleLowerCase()} is trying to animate but no animations are defined.`);
     return false;
@@ -372,7 +373,7 @@ export function sizeDimensionKeyframes(
 /* c8 ignore next */
 export function filterAnimationsByUpdatedProperties(
   animations: PropertyDrivenAnimation,
-  updatingProps: Map<string, any>
+  updatingProps: PropertyValues<any>
 ): PropertyDrivenAnimation | null {
   if (animations === null || animations === undefined) {
     return null;
@@ -442,7 +443,7 @@ export function getHidingAndNonHidingPropertyAnimations(
 /* c8 ignore next */
 export function getPropertyAnimations(
   animations: PropertyDrivenAnimation,
-  updatingProps: Map<string, any>
+  updatingProps: PropertyValues<any>
 ): TargetedAnimationAsPropertyTuple[] {
   const activeAnimations = filterAnimationsByUpdatedProperties(animations || {}, updatingProps);
 

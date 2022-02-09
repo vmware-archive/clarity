@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { globalStyle } from '@cds/core/internal';
 import { CdsControl } from '@cds/core/forms';
 import globalStyles from './range.global.scss';
@@ -47,7 +47,7 @@ export class CdsRange extends CdsControl {
     return html`<div class="input-track"></div>`;
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.setTrackWidth();
     this.inputControl.addEventListener('input', () => this.setTrackWidth());

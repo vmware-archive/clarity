@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -79,7 +79,7 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
     }
   }
 
-  firstUpdated(props: PropertyValues) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.handleItemAnchorText();
     manageScreenReaderElements(this, this.expanded);
@@ -108,7 +108,7 @@ export class CdsNavigationItem extends LitElement implements FocusableItem {
     return [baseStyles, styles];
   }
 
-  protected updated(props: PropertyValues) {
+  protected updated(props: PropertyValues<this>) {
     super.updated(props);
     manageScreenReaderElements(this, this.expanded);
   }

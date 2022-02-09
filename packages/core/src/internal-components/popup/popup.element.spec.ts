@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import '@cds/core/internal-components/popup/register.js';
@@ -28,7 +28,7 @@ class PopupTestBasic extends LitElement {
 
   testAnchorId = 'my-anchor';
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.popup.container = this;
   }
@@ -48,7 +48,7 @@ class PopupTestAnchors extends LitElement {
   testAnchorOneId = 'anchor-one';
   testAnchorTwoId = 'anchor-two';
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.popup.container = this;
   }

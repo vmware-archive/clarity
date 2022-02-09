@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import {
   AnimationAccordionPanelOpenName,
   reverseAnimation,
@@ -77,7 +77,7 @@ export class CdsAccordionPanel extends LitElement {
     this.expandedChange.emit(!this.expanded);
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (this.content && this.header) {

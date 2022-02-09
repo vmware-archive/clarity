@@ -1,17 +1,17 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html, LitElement, PropertyValues } from 'lit';
+import { query } from 'lit/decorators/query.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import '@cds/core/button/register.js';
 import '@cds/core/radio/register.js';
 import '@cds/core/dropdown/register.js';
 import '@cds/core/modal/register.js';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { spreadProps, getElementStorybookArgs, state, property } from '@cds/core/internal';
-import { html, LitElement } from 'lit';
-import { query } from 'lit/decorators/query.js';
 import { CdsButton } from '@cds/core/button';
 import { CdsDropdown } from '@cds/core/dropdown';
 import { CdsModal } from '@cds/core/modal';
@@ -49,7 +49,7 @@ class DemoDropdown extends LitElement {
 
 @customElement('demo-dropdown-basic')
 class DemoDropdownBasic extends DemoDropdown {
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.popup.anchor = this.popupAnchor;
   }
@@ -81,7 +81,7 @@ class DemoDropdownBasic extends DemoDropdown {
 
 @customElement('demo-dropdown-scrollable')
 class DemoDropdownScrollable extends DemoDropdown {
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.popup.anchor = this.popupAnchor;
   }
@@ -292,7 +292,7 @@ class DemoDropdownResponsive extends DemoDropdown {
 
 @customElement('demo-dropdown-closable')
 class DemoDropdownClosable extends DemoDropdown {
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.popup.anchor = this.popupAnchor;
   }

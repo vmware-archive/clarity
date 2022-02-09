@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import { baseStyles, property, querySlot, querySlotAll, syncProps } from '@cds/core/internal';
 import { CdsAlert } from './alert.element.js';
@@ -110,7 +110,7 @@ export class CdsAlertGroup extends LitElement {
     this.role = 'region';
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.setupAlertsUpdate();
   }
@@ -132,7 +132,7 @@ export class CdsAlertGroup extends LitElement {
     );
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
     this.syncAlerts({
       status: props.has('status'),

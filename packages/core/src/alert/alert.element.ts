@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import {
   baseStyles,
   event,
@@ -181,7 +181,7 @@ export class CdsAlert extends LitElement {
     setAttributes(this, ['aria-describedby', this.idForAriaDescriber], ['role', 'region']);
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
     syncDefinedProps(props, this, [this.alertActions]);
   }

@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { PropertyValues } from 'lit';
 import { querySlotAll, id } from '@cds/core/internal';
 import { CdsInternalControlGroup } from '@cds/core/forms';
 import { CdsRadio } from './radio.element.js';
@@ -42,7 +43,7 @@ export class CdsRadioGroup extends CdsInternalControlGroup {
     return [...super.styles];
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.associateRadioControls();
     this.syncRadioControls();

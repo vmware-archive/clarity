@@ -4,6 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html, LitElement, PropertyValues } from 'lit';
 import {
   baseStyles,
   hasStringPropertyChanged,
@@ -14,7 +15,6 @@ import {
   i18n,
   isNilOrEmpty,
 } from '@cds/core/internal';
-import { html, LitElement, PropertyValues } from 'lit';
 import { getProgressCircleRadius } from './progress-circle.utils.js';
 import styles from './progress-circle.element.scss';
 
@@ -119,7 +119,7 @@ export class CdsProgressCircle extends LitElement {
     this.updateAria();
   }
 
-  protected updated(props: PropertyValues) {
+  protected updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (props.has('value') || props.has('i18n')) {

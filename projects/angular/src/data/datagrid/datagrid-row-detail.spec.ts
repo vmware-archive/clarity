@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -53,15 +53,22 @@ export default function (): void {
       const commonStrings = new ClrCommonStringsService();
       const rows: HTMLElement[] = context.clarityElement.querySelectorAll('.clr-sr-only');
 
+      // TODO: @deprecated - dategrid* keys are deprecated. Remove in v14.
       const first = [
         commonStrings.keys.dategridExpandableBeginningOf,
         commonStrings.keys.dategridExpandableRowContent,
         commonStrings.keys.dategridExpandableRowsHelperText,
+        commonStrings.keys.dategridExpandableBeginningOf || commonStrings.keys.datagridExpandableBeginningOf,
+        commonStrings.keys.dategridExpandableRowContent || commonStrings.keys.datagridExpandableRowContent,
+        commonStrings.keys.dategridExpandableRowsHelperText || commonStrings.keys.datagridExpandableRowsHelperText,
       ];
-      const last = [commonStrings.keys.dategridExpandableEndOf, commonStrings.keys.dategridExpandableRowContent];
+      const last = [
+        commonStrings.keys.dategridExpandableEndOf || commonStrings.keys.datagridExpandableEndOf,
+        commonStrings.keys.dategridExpandableRowContent || commonStrings.keys.datagridExpandableRowContent,
+      ];
 
-      expect(rows[0].innerText).toBe(first.join(' '));
-      expect(rows[1].innerText).toBe(last.join(' '));
+      expect(rows[0].innerText.trim()).toBe(first.join(' ').trim());
+      expect(rows[1].innerText.trim()).toBe(last.join(' ').trim());
     });
 
     it('should add id to the root element', function () {

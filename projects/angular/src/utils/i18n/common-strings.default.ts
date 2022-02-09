@@ -84,8 +84,8 @@ export const commonStringsDefault: ClrCommonStrings = {
   comboboxNoResults: 'No results',
   comboboxOpen: 'Show options',
   // Datagrid expandable rows
-  dategridExpandableBeginningOf: 'Beginning of',
-  dategridExpandableEndOf: 'End of',
-  dategridExpandableRowContent: 'Expandable row content',
-  dategridExpandableRowsHelperText: `Screen reader table commands may not work for viewing expanded content, please use your screen reader's browse mode to read the content exposed by this button`,
+  datagridExpandableBeginningOf: 'Beginning of',
+  datagridExpandableEndOf: 'End of',
+  datagridExpandableRowContent: 'Expandable row content',
+  datagridExpandableRowsHelperText: `Screen reader table commands may not work for viewing expanded content, please use your screen reader's browse mode to read the content exposed by this button`,
 };

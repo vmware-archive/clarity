@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,9 +20,11 @@ import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service
  */
 @Component({
   selector: 'clr-dg-row-detail',
+  // TODO: @deprecated - dategrid* keys are deprecated. Remove in v14.
   template: `
     <div class="clr-sr-only">
-      {{ beginningOfExpandableContentAriaText }} {{ commonStrings.keys.dategridExpandableRowsHelperText }}
+      {{ beginningOfExpandableContentAriaText }}
+      {{ commonStrings.keys.dategridExpandableRowsHelperText || commonStrings.keys.datagridExpandableRowsHelperText }}
     </div>
     <ng-content></ng-content>
     <div class="clr-sr-only">{{ endOfExpandableContentAriaText }}</div>
@@ -67,19 +69,25 @@ export class ClrDatagridRowDetail implements AfterContentInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  // TODO: @deprecated - dategrid* keys are deprecated. Remove in v14.
   @Input('clrRowDetailBeginningAriaText') _beginningOfExpandableContentAriaText: string;
   public get beginningOfExpandableContentAriaText() {
     return (
       this._beginningOfExpandableContentAriaText ||
-      `${this.commonStrings.keys.dategridExpandableBeginningOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+      `${
+        this.commonStrings.keys.dategridExpandableBeginningOf || this.commonStrings.keys.datagridExpandableBeginningOf
+      } 
+      ${this.commonStrings.keys.dategridExpandableRowContent || this.commonStrings.keys.datagridExpandableRowContent}`
     );
   }
 
+  // TODO: @deprecated - dategrid* keys are deprecated. Remove in v14.
   @Input('clrRowDetailEndAriaText') _endOfExpandableContentAriaText: string;
   public get endOfExpandableContentAriaText() {
     return (
       this._endOfExpandableContentAriaText ||
-      `${this.commonStrings.keys.dategridExpandableEndOf} ${this.commonStrings.keys.dategridExpandableRowContent}`
+      `${this.commonStrings.keys.dategridExpandableEndOf || this.commonStrings.keys.datagridExpandableEndOf} 
+      ${this.commonStrings.keys.dategridExpandableRowContent || this.commonStrings.keys.datagridExpandableRowContent}`
     );
   }
 }

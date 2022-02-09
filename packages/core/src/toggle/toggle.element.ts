@@ -1,8 +1,9 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
+import { PropertyValues } from 'lit';
 import { property } from '@cds/core/internal';
 import { CdsInternalControlInline } from '@cds/core/forms';
 import styles from './toggle.element.scss';
@@ -38,7 +39,7 @@ export class CdsToggle extends CdsInternalControlInline {
   @property({ type: String })
   cdsMotion = 'on';
 
-  async updated(props: Map<string, any>) {
+  async updated(props: PropertyValues<this>) {
     super.updated(props);
 
     // this section fixes an issue with toggles animating when the page loads

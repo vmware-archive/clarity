@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { CdsIcon } from '@cds/core/icon/icon.element.js';
 import {
   property,
@@ -68,7 +68,7 @@ export class CdsControlAction extends CdsBaseButton {
     });
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
     if (props.has('action')) {
       this.setSlotLocation();

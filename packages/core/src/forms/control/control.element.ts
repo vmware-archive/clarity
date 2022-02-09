@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, TemplateResult } from 'lit';
+import { html, LitElement, TemplateResult, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import {
   baseStyles,
@@ -282,7 +282,7 @@ export class CdsControl extends LitElement {
     this.setAttribute('cds-control', '');
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.setupHostAttributes();
     this.setupHTML5Validation();
@@ -293,7 +293,7 @@ export class CdsControl extends LitElement {
     this.assignSlotIfInControlGroup();
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<any>) {
     super.updated(props);
     this.messages.forEach(message => syncProps(message, this, { disabled: props.has('disabled') }));
 

@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { PropertyValues } from 'lit';
 import {
   AnimatableElement,
   AnimationStatus,
@@ -23,7 +24,7 @@ export function animate(config: PropertyDrivenAnimation) {
 
       _animations = config;
 
-      updated(props: Map<string, any>) {
+      updated(props: PropertyValues<this>) {
         super.updated(props);
 
         if (!this._animationReady && !this.hasAttribute(PRIVATE_ANIMATION_STATUS_ATTR_NAME)) {

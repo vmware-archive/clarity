@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,11 +20,13 @@ export function childrenUpdateComplete(elements: LitElement[] | NodeListOf<LitEl
  * during the `firstUpdated` or `updated` lifecycle.
  */
 export function syncDefinedProps(
-  props: Map<string, any>,
+  props: PropertyValues<any>,
   source: { [prop: string]: any },
   targets: { [prop: string]: any }[]
 ) {
-  props.forEach((_value, key) => targets.filter(t => t && t[key] !== undefined).forEach(t => (t[key] = source[key])));
+  props.forEach((_value, key: any) =>
+    targets.filter(t => t && t[key] !== undefined).forEach(t => (t[key] = source[key]))
+  );
 }
 
 /**

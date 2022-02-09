@@ -18,7 +18,7 @@ import {
   querySlotAll,
   reverseAnimation,
 } from '@cds/core/internal';
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './tree-item.element.scss';
 
@@ -117,7 +117,7 @@ export class CdsTreeItem extends LitElement {
     }
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (this.treeItemChildren.length > 0) {

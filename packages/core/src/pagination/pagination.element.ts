@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { baseStyles, globalStyle, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
 import { css, html, LitElement, PropertyValues } from 'lit';
 import { cache } from 'lit/directives/cache.js';
+import { baseStyles, globalStyle, LogService, notProductionEnvironment, querySlot } from '@cds/core/internal';
 import { CdsInput } from '@cds/core/input';
 import styles from './pagination.element.scss';
 
@@ -55,7 +55,7 @@ export class CdsPagination extends LitElement {
     return [baseStyles, styles];
   }
 
-  firstUpdated(props: PropertyValues) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.setupNumberInput();
     this.validateAriaLabel();

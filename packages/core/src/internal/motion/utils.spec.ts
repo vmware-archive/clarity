@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import clone from 'ramda/es/clone.js';
 import { componentIsStable, createTestElement, removeTestElement } from '@cds/core/test';
 import { registerElementSafely, property, event, EventEmitter } from '@cds/core/internal';
@@ -120,7 +120,7 @@ describe('Animation Helpers: ', () => {
 
     it('bails if the host element does not have the property (weird edge case)', async () => {
       const testElement = await createTestElement(html`<div>ohai</div>`);
-      const propMap: Map<string, any> = new Map();
+      const propMap: PropertyValues<any> = new Map();
       propMap.set('jabberwocky', 'wat');
 
       const didRun = await runPropertyAnimations(propMap, (testElement as unknown) as AnimatableElement);
@@ -135,7 +135,7 @@ describe('Animation Helpers: ', () => {
       );
       component.everythingIsFine = false;
 
-      const propMap: Map<string, any> = new Map();
+      const propMap: PropertyValues<any> = new Map();
       propMap.set('everythingIsFine', false);
 
       const didRun = await runPropertyAnimations(propMap, component);
@@ -146,7 +146,7 @@ describe('Animation Helpers: ', () => {
     it('bails if there is no animation associated with the property value', async () => {
       const testElement = await createTestElement(html`<div class="hayy">ohai</div>`);
       const component = testElement.querySelector('.hayy');
-      const propMap: Map<string, any> = new Map();
+      const propMap: PropertyValues<any> = new Map();
       propMap.set('jabberwocky', 'wat');
       (component as any).jabberwocky = 'wat';
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
@@ -160,7 +160,7 @@ describe('Animation Helpers: ', () => {
       ClarityMotion.add('something', [{ animation: [{ opacity: 0 }, { opacity: 1 }] }]);
       component.everythingIsFine = true;
       await componentIsStable(component);
-      const propMap: Map<string, any> = new Map();
+      const propMap: PropertyValues<any> = new Map();
       propMap.set('everythingIsFine', !component.everythingIsFine); // wants to run the 'something' animation
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
       expect(didRun).toBe(true);
@@ -172,7 +172,7 @@ describe('Animation Helpers: ', () => {
       const component = testElement.querySelector<TestAnimateUtilsElement>('test-animate-utils-element');
       component.everythingIsFine = false;
       await componentIsStable(component);
-      const propMap: Map<string, any> = new Map();
+      const propMap: PropertyValues<any> = new Map();
       propMap.set('everythingIsFine', !component.everythingIsFine); // wants to run a 'nothing' animation; which does not exist!
       const didRun = await runPropertyAnimations(propMap, (component as unknown) as AnimatableElement);
       expect(didRun).toBe(false);

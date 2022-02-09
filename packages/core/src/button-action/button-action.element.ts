@@ -59,7 +59,7 @@ export class CdsButtonAction extends CdsBaseButton {
     `;
   }
 
-  updated(props: PropertyValues) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (!this.ariaLabel && !this.readonly) {

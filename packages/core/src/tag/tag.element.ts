@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { html, PropertyValues } from 'lit';
 import { baseStyles, CdsBaseButton, id, property, querySlot, StatusTypes, syncProps } from '@cds/core/internal';
-import { html } from 'lit';
 import styles from './tag.element.scss';
 
 /**
@@ -63,7 +63,7 @@ export class CdsTag extends CdsBaseButton {
 
   @querySlot('cds-badge', { assign: 'tag-badge' }) protected badge: HTMLElement;
 
-  updated(props: Map<string, string | boolean | null | undefined>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (props.has('closable') && props.get('closable') === true) {

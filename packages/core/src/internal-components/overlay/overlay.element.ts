@@ -102,7 +102,7 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
 
   private overlayIdPrefix = '_overlay-';
 
-  @event() protected closeChange: EventEmitter<CloseChangeSources>;
+  @event() closeChange: EventEmitter<CloseChangeSources>;
 
   @state({ type: Boolean })
   protected isLayered = false;

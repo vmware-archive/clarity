@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { LitElement } from 'lit';
+import { LitElement, PropertyValues } from 'lit';
 import { LogService, notProductionEnvironment } from '../services/log.service.js';
 
 // Slot Query decorators are similar to the query decorator in lit.
@@ -93,7 +93,7 @@ export function querySlotAll(selector: string, config?: QuerySlotConfig) {
   return (protoOrDescriptor: {} | any, name?: PropertyKey): any => {
     const targetFirstUpdated: () => void = protoOrDescriptor.firstUpdated;
 
-    function firstUpdated(this: any, props: Map<string, any>): void {
+    function firstUpdated(this: any, props: PropertyValues<any>): void {
       if (config?.assign) {
         Array.from(this.querySelectorAll(selector))
           .filter((i: any) => !i.hasAttribute('slot'))

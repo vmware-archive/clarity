@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { assignSlotNames, baseStyles, CdsBaseButton, id, property, StatusTypes, syncProps } from '@cds/core/internal';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import styles from './tag.element.scss';
 
 /**
@@ -64,7 +64,7 @@ export class CdsTag extends CdsBaseButton {
     assignSlotNames([this.icon, 'tag-icon'], [this.badge, 'tag-badge']);
   }
 
-  updated(props: Map<string, string | boolean | null | undefined>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (props.has('closable') && props.get('closable') === true) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -19,7 +19,7 @@ import {
   querySlotAll,
   reverseAnimation,
 } from '@cds/core/internal';
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import styles from './tree-item.element.scss';
 
@@ -110,7 +110,7 @@ export class CdsTreeItem extends LitElement implements Animatable {
     }
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
 
     if (this.treeItemChildren.length > 0) {

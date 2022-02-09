@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -16,7 +16,7 @@ import {
   i18n,
   isNilOrEmpty,
 } from '@cds/core/internal';
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import isNil from 'ramda/es/isNil.js'; // TODO: REPLACE AFTER DROPDOWN MERGE TO PREVENT CIRCULAR DEPENDENCIES
 import styles from './progress-circle.element.scss';
 import {
@@ -187,7 +187,7 @@ export class CdsProgressCircle extends LitElement {
 
   protected observers: MutationObserver[] = [];
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<any>) {
     super.firstUpdated(props);
     // FIXME: we need the mutation observer here because the i18n decorator property
     // is not firing an update as expected. maybe if we move it to a reactive
@@ -203,7 +203,7 @@ export class CdsProgressCircle extends LitElement {
 
   // note: this update logic could be reused when we introduce progress bars
   // consider promoting this to a shared utility in internal in the future
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<any>) {
     super.updated(props);
     if (props.has('value')) {
       this.setAriaAttributes(props.get('value'));

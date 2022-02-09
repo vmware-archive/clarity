@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement, render } from 'lit';
+import { html, LitElement, render, PropertyValues } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { property, state } from '../decorators/property.js';
@@ -55,7 +55,7 @@ export class CdsBaseButton extends LitElement {
     this.role = 'button';
   }
 
-  protected updated(props: Map<string, any>) {
+  protected updated(props: PropertyValues<this>) {
     if (this.hasMarkerSignificantProperty(props)) {
       if (this.markerAttached) {
         this.marker.remove();
@@ -158,7 +158,7 @@ export class CdsBaseButton extends LitElement {
   }
 
   // A marker significant property is one that should be dynamically bound to a property of the native button
-  private hasMarkerSignificantProperty(props: Map<string, any>): boolean {
+  private hasMarkerSignificantProperty(props: PropertyValues<any>): boolean {
     for (const prop of this.markerSignificantProperties) {
       if (props.has(prop)) {
         return true;

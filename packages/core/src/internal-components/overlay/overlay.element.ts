@@ -19,7 +19,7 @@ import {
   AnimationModalEnterName,
   reverseAnimation,
 } from '@cds/core/internal';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import styles from './overlay.element.scss';
 
@@ -109,12 +109,12 @@ export class CdsInternalOverlay extends CdsBaseFocusTrap implements Animatable {
 
   @query('.overlay-backdrop') protected backdrop: HTMLElement;
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.backdrop.addEventListener('click', this.fireEventOnBackdropClick);
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<this>) {
     super.updated(props);
     const oldLayered = this.isLayered;
     const newLayered = isNestedOverlay(

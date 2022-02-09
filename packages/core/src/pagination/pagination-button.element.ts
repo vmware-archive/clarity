@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -12,7 +12,7 @@ import {
   property,
   querySlot,
 } from '@cds/core/internal';
-import { html } from 'lit';
+import { html, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import styles from './pagination-button.element.scss';
 
@@ -85,7 +85,7 @@ export class CdsPaginationButton extends CdsBaseButton {
     return [baseStyles, styles];
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<this>) {
     super.firstUpdated(props);
     this.validateAriaLabel();
   }

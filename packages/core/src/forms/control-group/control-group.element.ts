@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { query } from 'lit/decorators/query.js';
 import {
   baseStyles,
@@ -181,13 +181,13 @@ export class CdsInternalControlGroup extends LitElement {
     setAttributes(this, ['role', 'group'], ['cds-control-group', '']);
   }
 
-  firstUpdated(props: Map<string, any>) {
+  firstUpdated(props: PropertyValues<any>) {
     super.firstUpdated(props);
     this.associateLabelAndGroup();
     this.setupResponsive();
   }
 
-  updated(props: Map<string, any>) {
+  updated(props: PropertyValues<any>) {
     super.updated(props);
     props.set('isControlGroup', true);
     this.controls.forEach((c: any) => (c.isControlGroup = true));

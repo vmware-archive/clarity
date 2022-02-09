@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
+import { PropertyValues } from 'lit';
 import {
   AnimatableElement,
   AnimationOptions,
@@ -38,7 +39,7 @@ import { allPropertiesPass, getMillisecondsFromSeconds } from '../utils/identity
  *
  * @internal
  */
-export async function runPropertyAnimations(props: Map<string, any>, hostEl: AnimatableElement): Promise<boolean> {
+export async function runPropertyAnimations(props: PropertyValues<any>, hostEl: AnimatableElement): Promise<boolean> {
   if (!hostEl._animations) {
     LogService.warn(`${hostEl.tagName.toLocaleLowerCase()} is trying to animate but no animations are defined.`);
     return false;
@@ -345,7 +346,7 @@ export function sizeDimensionKeyframes(animationKeyframes: AnimationKeyframes, h
 
 export function filterAnimationsByUpdatedProperties(
   animations: PropertyDrivenAnimation,
-  updatingProps: Map<string, any>
+  updatingProps: PropertyValues<any>
 ): PropertyDrivenAnimation | null {
   if (animations === null || animations === undefined) {
     return null;
@@ -409,7 +410,7 @@ export function getHidingAndNonHidingPropertyAnimations(
 
 export function getPropertyAnimations(
   animations: PropertyDrivenAnimation,
-  updatingProps: Map<string, any>
+  updatingProps: PropertyValues<any>
 ): TargetedAnimationAsPropertyTuple[] {
   const activeAnimations = filterAnimationsByUpdatedProperties(animations || {}, updatingProps);
 

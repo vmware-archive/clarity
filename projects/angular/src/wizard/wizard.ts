@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -434,7 +434,6 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     if (!pageId) {
       return;
     }
-
     this.navService.goTo(pageId);
   }
 
@@ -471,7 +470,13 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   }
 
   private listenForPageChanges(): Subscription {
-    return this.navService.currentPageChanged.subscribe(() => this.currentPageChanged.emit());
+    return this.navService.currentPageChanged.subscribe(() => {
+      // Added to address VPAT-749:
+      //   When clicking on a wizard tab, focus should move to that
+      //   tabs content to make the wizard more accessible.
+      this.wizardTitle?.nativeElement.focus();
+      this.currentPageChanged.emit();
+    });
   }
 
   private updateNavOnPageChanges(): void {

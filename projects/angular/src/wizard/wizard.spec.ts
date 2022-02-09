@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -756,6 +756,22 @@ export default function (): void {
     });
 
     describe('View and Behavior', () => {
+      let context: TestContext<ClrWizard, TemplateApiWizardTestComponent>;
+      let wizard: ClrWizard;
+
+      beforeEach(function () {
+        context = this.create(ClrWizard, TemplateApiWizardTestComponent);
+        wizard = context.clarityDirective;
+        context.detectChanges();
+      });
+      describe('Page title focus', () => {
+        it('should be placed on the page title after page change', () => {
+          wizard.pageCollection.lastPage.makeCurrent();
+          context.detectChanges();
+          const titleString = context.hostElement.querySelector('.modal-title').textContent.trim();
+          expect(titleString).toEqual(document.activeElement.textContent.trim());
+        });
+      });
       describe('Close X', () => {
         xit('shows up by default');
 

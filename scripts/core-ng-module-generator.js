@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -120,7 +120,7 @@ function createDirective(element, module) {
     directiveFileName: element.tagName,
     directiveClassName: `${element.name}Directive`,
     props: (element.members && getDirectiveProps(element.members)) || [],
-    events: (element.members && getDirectiveEvents(element.members)) || [],
+    events: (element.members && getDirectiveEvents(element.members, element.events)) || [],
     directiveFilePath: path.join(TARGET_PATH, path.dirname(module.path), `${element.tagName}.directive.ts`),
     directiveModule: path.dirname(module.path),
   };
@@ -133,15 +133,20 @@ function createDirective(element, module) {
 function getDirectiveProps(props) {
   return props
     .filter(prop => prop.privacy === undefined) // public
+    .filter(prop => !prop.static)
+    .filter(prop => !prop.readonly)
     .filter(prop => prop.type && prop.type.text && !prop.type.text.includes('EventEmitter')) // exclude events
     .map(prop => ({ name: prop.name, isBoolean: prop?.type?.text === 'boolean' }));
 }
 
-function getDirectiveEvents(events) {
-  return events
+function getDirectiveEvents(members = [], events = []) {
+  const memberEvents = members
     .filter(event => event.privacy === undefined) // public
     .filter(prop => prop.type && prop.type.text && prop.type.text.includes('EventEmitter')) // include only events
     .map(event => ({ name: event.name }));
+
+  // return distinct list of events when combining @output members and @event annotations
+  return Object.values([...memberEvents, ...events].reduce((prev, next) => ({ ...prev, [next.name]: next }), {}));
 }
 
 function writeToDisk(filename, content) {

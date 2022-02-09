@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -71,7 +71,7 @@ export class CdsAccordionPanel extends LitElement implements Animatable {
 
   @querySlot('cds-accordion-content') private content: HTMLElement;
 
-  @event() protected expandedChange: EventEmitter<boolean>;
+  @event() expandedChange: EventEmitter<boolean>;
 
   private toggle() {
     this.expandedChange.emit(!this.expanded);

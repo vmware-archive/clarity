@@ -378,6 +378,10 @@ export interface ClrCommonStrings {
     current: string;
     currentPage: string;
     danger: string;
+    datagridExpandableBeginningOf?: string;
+    datagridExpandableEndOf?: string;
+    datagridExpandableRowContent?: string;
+    datagridExpandableRowsHelperText?: string;
     datagridFilterAriaLabel?: string;
     datagridFilterDialogAriaLabel?: string;
     dategridExpandableBeginningOf?: string;

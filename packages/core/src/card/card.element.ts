@@ -49,7 +49,7 @@ import styles from './card.element.scss';
  * @cssprop --cds-card-remove-margin
  */
 export class CdsCard extends CdsInternalPanel {
-  @globalStyle() globalStyles = css`
+  @globalStyle() protected globalStyles = css`
     [cds-card-remove-margin] {
       margin-left: calc(-1 * var(--card-remove-margin));
       width: calc(100% + calc(var(--card-remove-margin) * 2));

@@ -129,7 +129,7 @@ function getDirectiveProps(props) {
     .filter(prop => prop.privacy === undefined) // public
     .filter(prop => !prop.static)
     .filter(prop => !prop.readonly)
-    .filter(prop => prop.type && prop.type.text && !prop.type.text.includes('EventEmitter')) // exclude events
+    .filter(prop => !prop.type?.text?.includes('EventEmitter')) // exclude events
     .map(prop => ({ name: prop.name, isBoolean: prop?.type?.text === 'boolean' }));
 }
 

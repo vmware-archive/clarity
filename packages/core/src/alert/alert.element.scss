@@ -20,13 +20,6 @@ $lightweight-alert-line-height: $cds-global-typography-body-line-height;
   color: var(--color);
 }
 
-:host([_type='default']) ::slotted(cds-alert-actions),
-:host([_type='banner']) ::slotted(cds-alert-actions) {
-  --action-size: calc(var(--min-height) - #{$cds-global-space-4});
-  white-space: nowrap;
-  display: block;
-}
-
 :host([_type='banner']) {
   --icon-size: #{$cds-global-space-9};
 }
@@ -70,6 +63,13 @@ cds-internal-close-button {
   --action-text-color: var(--color);
   --action-size: #{$lightweight-alert-line-height};
   display: none;
+}
+
+:host([_type='default']) ::slotted(cds-alert-actions),
+:host([_type='banner']) ::slotted(cds-alert-actions) {
+  --action-size: calc(var(--min-height) - #{$cds-global-space-4});
+  white-space: nowrap;
+  display: block;
 }
 
 :host([_type='default']) cds-internal-close-button {

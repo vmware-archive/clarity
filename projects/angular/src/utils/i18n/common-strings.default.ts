@@ -67,6 +67,11 @@ export const commonStringsDefault: ClrCommonStrings = {
   datepickerSelectYearText: 'Select year, the current year is {CALENDAR_YEAR}',
   // Stack View
   stackViewChanged: 'Value changed.',
+  // Responsive Nav
+  responsiveNavToggleOpen: 'Open navigation menu',
+  responsiveNavToggleClose: 'Close navigation menu',
+  responsiveNavOverflowOpen: 'Open navigation overflow menu',
+  responsiveNavOverflowClose: 'Close navigation overflow menu',
   //Vertical Nav
   verticalNavGroupToggle: 'Toggle vertical navigation group',
   verticalNavToggle: 'Toggle vertical navigation',

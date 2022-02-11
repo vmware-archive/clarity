@@ -488,6 +488,10 @@ export interface ClrCommonStrings {
     pickColumns: string;
     previous: string;
     previousPage: string;
+    responsiveNavOverflowClose: string;
+    responsiveNavOverflowOpen: string;
+    responsiveNavToggleClose: string;
+    responsiveNavToggleOpen: string;
     rowActions: string;
     select: string;
     selectAll: string;
@@ -1289,6 +1293,8 @@ export declare class ClrHeader implements OnDestroy {
     isNavLevel2OnPage: boolean;
     openNavLevel: number;
     responsiveNavCodes: typeof ResponsiveNavCodes;
+    get responsiveNavCommonString(): string;
+    get responsiveOverflowCommonString(): string;
     constructor(responsiveNavService: ResponsiveNavigationService, commonStrings: ClrCommonStringsService);
     closeOpenNav(): void;
     initializeNavTriggers(navList: number[]): void;

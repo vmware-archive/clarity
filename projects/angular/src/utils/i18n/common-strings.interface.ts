@@ -218,6 +218,11 @@ export interface ClrCommonStrings {
    * Stack View: Record has changed
    */
   stackViewChanged: string;
+  // Responsive Nav
+  responsiveNavToggleOpen: string;
+  responsiveNavToggleClose: string;
+  responsiveNavOverflowOpen: string;
+  responsiveNavOverflowClose: string;
   // Vertical Nav
   verticalNavToggle: string;
   verticalNavGroupToggle: string;

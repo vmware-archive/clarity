@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -15,7 +15,7 @@ const EXAMPLE = `
         </section>
         <div class="login-group">
             <clr-select-container>
-                <label class="clr-sr-only">User Role</label>
+                <label>User Role</label>
                 <select clrSelect name="type" [(ngModel)]="form.type">
                     <option value="local">Local Users</option>
                     <option value="admin">Administrator</option>

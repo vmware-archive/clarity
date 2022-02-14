@@ -2,6 +2,37 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "6.0.0-next.5",
+      "date": "2022-02-07",
+      "description": "This is a beta release for our next major version.",
+      "fix": [
+        {
+          "issue": 6639,
+          "title": "Improved event types - add additional event/output types - boolean attribute support",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6654,
+          "title": "Lit LifeCycle type - fixes change from upstream lit release",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 6656,
+          "title": "Add missing property/event types",
+          "project": "angular",
+          "scope": ""
+        },
+        {
+          "issue": 6682,
+          "title": "Render cds-alert-actions in Safari",
+          "project": "core",
+          "scope": "alert"
+        }
+      ]
+    },
+    {
       "version": "6.0.0-next.4",
       "date": "2022-02-07",
       "description": "This is a beta release for our next major version.",

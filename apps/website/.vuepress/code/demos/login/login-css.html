@@ -6,13 +6,19 @@
       <h5 class="hint">Use your Company ID to sign in or create one now</h5>
     </section>
     <div class="login-group">
-      <div class="clr-select-wrapper">
-        <select id="select-basic" class="clr-select" style="width: 100%;">
-          <option value="local">Local Users</option>
-          <option value="admin">Administrator</option>
-        </select>
+      <div class="clr-form-control">
+        <label for="select-basic" class="clr-control-label">User Role</label>
+        <div class="clr-control-container">
+          <div class="clr-select-wrapper">
+            <select id="select-basic" class="clr-select" style="width: 100%;">
+              <option value="local">Local Users</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="clr-form-control">
+        <label class="clr-sr-only" for="username">Username</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
             <input type="text" id="username" placeholder="Username" class="clr-input" />
@@ -20,9 +26,10 @@
         </div>
       </div>
       <div class="clr-form-control">
+        <label class="clr-sr-only" for="password">Password</label>
         <div class="clr-control-container">
           <div class="clr-input-wrapper">
-            <input type="password" id="basic" placeholder="Password please!" class="clr-input" />
+            <input type="password" id="password" placeholder="Password please!" class="clr-input" />
             <cds-icon class="clr-validate-icon" shape="exclamation-circle"></cds-icon>
           </div>
         </div>

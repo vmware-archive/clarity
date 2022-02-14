@@ -2,6 +2,32 @@
   "$schema": "./schema.json",
   "releases": [
     {
+      "version": "5.6.4",
+      "date": "2022-02-07",
+      "description": "This is a patch release.",
+      "feat": [],
+      "fix": [
+        {
+          "issue": 6639,
+          "title": "Improved event types - add additional event/output types - boolean attribute support",
+          "project": "core",
+          "scope": ""
+        },
+        {
+          "issue": 5985,
+          "title": "JSDOM React testing issues - Add isNode check to property syncing in cdsControl.",
+          "project": "react",
+          "scope": ""
+        },
+        {
+          "issue": 6654,
+          "title": "Lit LifeCycle type - fixes change from upstream lit release",
+          "project": "core",
+          "scope": ""
+        }
+      ]
+    },
+    {
       "version": "5.6.3",
       "date": "2022-02-07",
       "description": "This is a patch release.",

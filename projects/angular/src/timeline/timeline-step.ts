@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -17,13 +17,7 @@ import { isPlatformBrowser } from '@angular/common';
     <ng-content select="clr-timeline-step-header"></ng-content>
     <span class="clr-sr-only">{{ stepTitleText }}</span>
     <ng-container *ngIf="!isProcessing; else processing">
-      <cds-icon
-        [attr.status]="iconStatus"
-        [attr.shape]="iconShape"
-        [attr.aria-label]="iconAriaLabel"
-        [attr.aria-current]="iconAriaCurrent"
-      >
-      </cds-icon>
+      <cds-icon [attr.status]="iconStatus" [attr.shape]="iconShape" [attr.aria-label]="iconAriaLabel"> </cds-icon>
     </ng-container>
     <div class="clr-timeline-step-body">
       <ng-content select="clr-timeline-step-title"></ng-content>

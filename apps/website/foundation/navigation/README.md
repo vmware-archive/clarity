@@ -126,7 +126,7 @@ Because both patterns are horizontal, use this combination only when the seconda
 
 #### Subnav + Sidenav
 
-<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element underneath a subnav container element. There is a dotted blue line around the both the subnav container element and the sidenav container element." src="/images/foundation/navigation/header_subnav.png" />
+<ClrImage cds-layout="m-t:md" title="An image showing the viewport with a sidenav container element underneath a subnav container element. There is a dotted blue line around the both the subnav container element and the sidenav container element." src="/images/foundation/navigation/subnav_sidenav.png" />
 </div>
 <div class="clr-col" cds-layout="m-t:xl">
 

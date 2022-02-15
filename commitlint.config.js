@@ -1,9 +1,12 @@
+const commitLintConfig = require('@commitlint/config-conventional');
+
 const scopes = [
   'angular',
   'angular:form',
   'angular:schematics',
   'angular:datagrid',
   'angular:vertical-nav',
+  'angular:timeline',
   'a11y',
   'accordion',
   'alert',
@@ -55,10 +58,14 @@ const scopes = [
   'panel',
 ];
 
+// Merging what @commitlint/config-convensional has with our new two types of commit
+const types = ['a11y', 'release'].concat(commitLintConfig.rules['type-enum'][2]);
+
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'scope-enum': [2, 'always', scopes],
+    'scope-enum': [2, 'always'],
+    'type-enum': [2, 'always', types],
     'header-max-length': [2, 'always', 100],
   },
 };

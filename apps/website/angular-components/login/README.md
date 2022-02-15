@@ -18,9 +18,9 @@ The login form is flexible and should be customized removing or adding elements 
 
 ### Validation
 
-Validation can occur when a user enters information into a control or when they submit the form. I there are errors a validation message appears below the password field.
+Validation can occur when a user enters information into a control or when they submit the form. If there are errors, a validation message appears below the password field.
 
-For security reasons, doe not call out whether the error occurred in the user name or password field. The validation message text should indicate this situation; for example, “The user name or password is incorrect.”
+For security reasons, do not call out whether the error occurred in the user name or password field. The validation message text should indicate this situation; for example, “The user name or password is incorrect.”
 
 ### Responsiveness
 

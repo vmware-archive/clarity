@@ -59,11 +59,12 @@
     "build:ci": "npm-run-all build:release build:website build:dev",
     "release:setversion": "node ./scripts/set-version.js",
     "release:add-release-notes": "node ./scripts/website-add-rel-notes.js",
-    "publish": "npm publish ./dist/clr-angular; npm publish ./dist/clr-ui; npm publish ./dist/clr-icons;",
-    "publish:rc": "npm publish ./dist/clr-angular --tag rc; npm publish ./dist/clr-ui --tag rc; npm publish ./dist/clr-icons --tag rc;",
-    "publish:next": "npm publish ./dist/clr-angular --tag next; npm publish ./dist/clr-ui --tag next; npm publish ./dist/clr-icons --tag next;",
-    "publish:local": "npm publish ./dist/clr-icons --registry http://localhost:4873 --tag local; npm publish ./dist/clr-ui --registry http://localhost:4873 --tag local; npm publish ./dist/clr-angular --registry http://localhost:4873 --tag local;",
-    "publish:verify": "node ./scripts/publish-verify.js"
+    "publish": "npm publish ./dist/clr-angular --tag clr12-lts && npm publish ./dist/clr-ui --tag clr12-lts && npm publish ./dist/clr-icons --tag clr12-lts",
+    "publish:rc": "npm publish ./dist/clr-angular --tag rc && npm publish ./dist/clr-ui --tag rc && npm publish ./dist/clr-icons --tag rc",
+    "publish:next": "npm publish ./dist/clr-angular --tag next && npm publish ./dist/clr-ui --tag next && npm publish ./dist/clr-icons --tag next",
+    "publish:local": "npm publish ./dist/clr-icons --registry http://localhost:4873 --tag local && npm publish ./dist/clr-ui --registry http://localhost:4873 --tag local && npm publish ./dist/clr-angular --registry http://localhost:4873 --tag local",
+    "publish:verify": "node ./scripts/publish-verify.js",
+    "publish:verify:registry": "node ./scripts/version-validation.js"
   },
   "private": true,
   "dependencies": {

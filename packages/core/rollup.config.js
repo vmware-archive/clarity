@@ -72,7 +72,8 @@ export default [
       dir: config.outDir,
       format: 'esm',
       sourcemap: prod,
-      sourcemapExcludeSources: true,
+      // https://github.com/vmware/clarity/issues/6695
+      sourcemapExcludeSources: false,
       minifyInternalExports: prod,
     },
     plugins: [

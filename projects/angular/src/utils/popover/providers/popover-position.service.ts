@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  *
@@ -99,6 +99,7 @@ export class ClrPopoverPositionService {
       // When primary axis is HORIZONTAL and there are two viewport violations
       this.handleHorizontalAxisTwoViolations(errorSum);
     }
+
     return this.contentOffsets;
   }
 
@@ -112,7 +113,15 @@ export class ClrPopoverPositionService {
       }
       case 1: {
         // LEFT(1) is secondary and needs to nudge content right
-        this.contentOffsets = align(nudgeContent(this.position), this.currentAnchorCoords, this.currentContentCoords);
+        this.contentOffsets = align(this.position, this.currentAnchorCoords, this.currentContentCoords);
+
+        /**
+         * Even with the nudge we still have a problem. We need to check if the content is going to be clipped
+         */
+        if (this.contentOffsets.xOffset < 0) {
+          this.contentOffsets.xOffset = 10;
+        }
+
         break;
       }
       case 2: {

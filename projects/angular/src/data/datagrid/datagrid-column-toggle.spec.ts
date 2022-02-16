@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -107,6 +107,18 @@ export default function (): void {
     });
 
     describe('View', function () {
+      it('manages aria-expanded attr for toggle button', fakeAsync(function () {
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        tick();
+        // expect it to have aria-expanded = true
+        const toggleBtn = document.querySelector('.column-toggle--action');
+        expect(toggleBtn.getAttribute('aria-expanded')).toBe('true');
+        columnToggle.toggleSwitchPanel();
+        context.detectChanges();
+        tick();
+        expect(toggleBtn.getAttribute('aria-expanded')).toBe('false');
+      }));
       it('toggles switch panel', fakeAsync(function () {
         context.detectChanges();
         expect(document.querySelectorAll('.column-switch').length).toBe(0);
@@ -142,30 +154,12 @@ export default function (): void {
         );
       }));
 
-      it('toggle switch must include attr.title', fakeAsync(function () {
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        tick();
-        expect(document.querySelector('button.column-toggle--action').attributes['title'].value).toBe(
-          commonStringsDefault.pickColumns
-        );
-      }));
-
       it('toggle switch close button should have aria-label for close', fakeAsync(function () {
         /* Open it */
         columnToggle.toggleSwitchPanel();
         context.detectChanges();
         tick();
         expect(document.querySelector('button.toggle-switch-close-button').attributes['aria-label'].value).toBe(
-          commonStringsDefault.close
-        );
-      }));
-
-      it('toggle close switch must include attr.title', fakeAsync(function () {
-        columnToggle.toggleSwitchPanel();
-        context.detectChanges();
-        tick();
-        expect(document.querySelector('button.toggle-switch-close-button').attributes['title'].value).toBe(
           commonStringsDefault.close
         );
       }));

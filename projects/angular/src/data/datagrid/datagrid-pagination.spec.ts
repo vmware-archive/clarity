@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -380,9 +380,9 @@ export default function (): void {
         expect(context.clarityElement.querySelector('.pagination-current').attributes['aria-label'].value).toBe(
           commonStrings.keys.currentPage
         );
-        expect(context.clarityElement.querySelector('.pagination-list span').attributes['aria-label'].value).toBe(
-          commonStrings.keys.totalPages
-        );
+        expect(
+          context.clarityElement.querySelector('.pagination-list span:not(.clr-sr-only)').attributes['aria-label'].value
+        ).toBe(commonStrings.keys.totalPages);
       });
     });
   });

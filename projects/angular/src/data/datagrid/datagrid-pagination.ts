@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -38,6 +38,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = 1"
           [attr.aria-label]="commonStrings.keys.firstPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.firstPage }}</span>
           <cds-icon shape="step-forward-2" direction="down"></cds-icon>
         </button>
         <button
@@ -47,6 +48,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current - 1"
           [attr.aria-label]="commonStrings.keys.previousPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.previousPage }}</span>
           <cds-icon shape="angle" direction="left"></cds-icon>
         </button>
         <input
@@ -72,6 +74,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current + 1"
           [attr.aria-label]="commonStrings.keys.nextPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.nextPage }}</span>
           <cds-icon shape="angle" direction="right"></cds-icon>
         </button>
         <button
@@ -81,6 +84,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.last"
           [attr.aria-label]="commonStrings.keys.lastPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.lastPage }}</span>
           <cds-icon shape="step-forward-2" direction="up"></cds-icon>
         </button>
       </div>
@@ -97,6 +101,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current - 1"
           [attr.aria-label]="commonStrings.keys.previousPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.previousPage }}</span>
           <cds-icon shape="angle" direction="left"></cds-icon>
         </button>
         <span>{{ page.current }}</span>
@@ -107,6 +112,7 @@ import { DetailService } from './providers/detail.service';
           (click)="page.current = page.current + 1"
           [attr.aria-label]="commonStrings.keys.nextPage"
         >
+          <span class="clr-sr-only">{{ commonStrings.keys.nextPage }}</span>
           <cds-icon shape="angle" direction="right"></cds-icon>
         </button>
       </div>

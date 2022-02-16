@@ -696,7 +696,7 @@ export declare class ClrDatagridColumnSeparator implements AfterViewInit, OnDest
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridColumnSeparator, never>;
 }
 
-export declare class ClrDatagridColumnToggle {
+export declare class ClrDatagridColumnToggle implements OnDestroy {
     get allColumnsVisible(): boolean;
     set allColumnsVisible(value: boolean);
     columnSwitchId: string;
@@ -708,8 +708,9 @@ export declare class ClrDatagridColumnToggle {
     openState: boolean;
     popoverId: string;
     smartPosition: ClrPopoverPosition;
-    constructor(commonStrings: ClrCommonStringsService, columnsService: ColumnsService, columnSwitchId: string, platformId: any, zone: NgZone, popoverId: string);
+    constructor(commonStrings: ClrCommonStringsService, columnsService: ColumnsService, columnSwitchId: string, platformId: any, zone: NgZone, popoverId: string, popoverToggleService: ClrPopoverToggleService);
     allColumnsSelected(): void;
+    ngOnDestroy(): void;
     toggleColumnState(columnState: ColumnState, event: boolean): void;
     toggleSwitchPanel(): void;
     trackByFn(index: number): number;

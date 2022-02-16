@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Inject, ContentChild, ElementRef, NgZone, PLATFORM_ID, ViewChild } from '@angular/core';
+import { Component, Inject, ContentChild, ElementRef, NgZone, PLATFORM_ID, ViewChild, OnDestroy } from '@angular/core';
 
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
 import { ClrPopoverPosition } from '../../utils/popover/interfaces/popover-position.interface';
@@ -19,6 +19,7 @@ import { ColumnState } from './interfaces/column-state.interface';
 import { DatagridColumnChanges } from './enums/column-changes.enum';
 import { ClrDatagridColumnToggleTitle } from './datagrid-column-toggle-title';
 import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'clr-dg-column-toggle',
@@ -31,9 +32,10 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
       clrPopoverOpenCloseButton
       [attr.aria-controls]="popoverId"
       [attr.aria-owns]="popoverId"
-      [attr.title]="commonStrings.keys.pickColumns"
+      [attr.aria-expanded]="openState"
     >
       <cds-icon shape="view-columns" aria-hidden="true" [attr.title]="commonStrings.keys.pickColumns"></cds-icon>
+      <span class="clr-sr-only">{{ commonStrings.keys.pickColumns }}</span>
     </button>
     <div
       class="column-switch"
@@ -52,9 +54,9 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
           clrPopoverCloseButton
           type="button"
           [attr.aria-label]="commonStrings.keys.close"
-          [attr.title]="commonStrings.keys.close"
         >
           <cds-icon shape="window-close" aria-hidden="true" [attr.title]="commonStrings.keys.close"></cds-icon>
+          <span class="clr-sr-only">{{ commonStrings.keys.close }}</span>
         </button>
       </div>
       <ul class="switch-content list-unstyled">
@@ -85,8 +87,9 @@ import { ClrDatagridColumnToggleButton } from './datagrid-column-toggle-button';
   providers: [UNIQUE_ID_PROVIDER, ClrPopoverEventsService, ClrPopoverPositionService, ClrPopoverToggleService],
 })
 /** @deprecated since 2.0, remove in 3.0 */
-export class ClrDatagridColumnToggle {
+export class ClrDatagridColumnToggle implements OnDestroy {
   private _allColumnsVisible: boolean;
+  private subscription: Subscription;
 
   // Smart Popover
   public smartPosition: ClrPopoverPosition = {
@@ -116,8 +119,15 @@ export class ClrDatagridColumnToggle {
     @Inject(UNIQUE_ID) public columnSwitchId: string,
     @Inject(PLATFORM_ID) private platformId: any,
     private zone: NgZone,
-    @Inject(UNIQUE_ID) public popoverId: string
-  ) {}
+    @Inject(UNIQUE_ID) public popoverId: string,
+    private popoverToggleService: ClrPopoverToggleService
+  ) {
+    this.subscription = popoverToggleService.openChange.subscribe(change => (this.openState = change));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   get hideableColumnStates(): ColumnState[] {
     const hideables = this.columnsService.columns.filter(column => column.value.hideable);

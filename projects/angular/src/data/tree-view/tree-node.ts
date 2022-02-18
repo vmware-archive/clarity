@@ -103,7 +103,11 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     if (typeof this.expandable !== 'undefined') {
       return this.expandable;
     }
-    return !!this.expandService.expandable || (this._model.children && this._model.children.length > 0);
+    return !!this.expandService.expandable || this.isParent;
+  }
+
+  isSelectable() {
+    return this.featuresService.selectable;
   }
 
   @Input('clrSelected')
@@ -131,7 +135,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
   @Output('clrSelectedChange') selectedChange = new EventEmitter<ClrSelectedState>(false);
 
   get ariaSelected(): boolean {
-    return this.featuresService.selectable ? this._model.selected.value === ClrSelectedState.SELECTED : null;
+    return this.isSelectable() ? this._model.selected.value === ClrSelectedState.SELECTED : null;
   }
 
   // Allows the consumer to override our logic deciding if a node is expandable.
@@ -250,22 +254,35 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
         this.focusManager.focusLastVisibleNode();
         break;
       case KeyCodes.Enter:
-        this.triggerDefaultAction();
+        this.expandOrDefault();
         break;
       case KeyCodes.Space:
+      case KeyCodes.Spacebar:
         // to prevent scrolling on space key in this specific case
         event.preventDefault();
-        this.triggerDefaultAction();
+        this.expandOrDefault();
         break;
       default:
         break;
     }
   }
 
+  private get isParent() {
+    return this._model.children && this._model.children.length > 0;
+  }
+
+  private expandOrDefault() {
+    if (this.isExpandable() && !this.isSelectable()) {
+      this.expandOrFocusFirstChild();
+    } else {
+      this.triggerDefaultAction();
+    }
+  }
+
   private expandOrFocusFirstChild() {
     if (this.expanded) {
       // if the node is already expanded and has children, focus its very first child
-      if (this._model.children.length > 0) {
+      if (this.isParent) {
         this.focusManager.focusNodeBelow(this._model);
       }
     } else {
@@ -289,7 +306,7 @@ export class ClrTreeNode<T> implements OnInit, OnDestroy {
     if (this.treeNodeLink) {
       this.treeNodeLink.activate();
     } else {
-      if (this.featuresService.selectable) {
+      if (this.isSelectable()) {
         this._model.toggleSelection(this.featuresService.eager);
       }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -9,9 +9,7 @@ const HTML_EXAMPLE = `
 <div class="clr-row">
     <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12">
         <div class="card">
-            <div class="card-header">
-                Unordered Lists
-            </div>
+            <h3 class="card-header">Unordered Lists</h3>
             <div class="card-block">
                 ...
             </div>
@@ -46,9 +44,7 @@ const HTML_EXAMPLE = `
     </div>
     <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12">
         <div class="card">
-            <div class="card-header">
-                Ordered Lists
-            </div>
+            <h3 class="card-header">Ordered Lists</h3>
             <div class="card-block">
                 ...
             </div>
@@ -83,12 +79,10 @@ const HTML_EXAMPLE = `
     </div>
     <div class="clr-col-lg-4 clr-col-sm-6 clr-col-12">
         <div class="card">
-            <div class="card-header">
-                Unstyled Lists
-            </div>
+            <h3 class="card-header">Unstyled Lists</h3>
             <div class="card-block">
                 <p class="card-text">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    ...
                 </p>
             </div>
             <div class="card-block">

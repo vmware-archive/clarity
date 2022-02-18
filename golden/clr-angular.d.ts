@@ -2296,6 +2296,7 @@ export declare class ClrTreeNode<T> implements OnInit, OnDestroy {
     broadcastFocusOnContainer(): void;
     focusTreeNode(): void;
     isExpandable(): boolean;
+    isSelectable(): boolean;
     ngOnDestroy(): void;
     ngOnInit(): void;
     onKeyDown(event: KeyboardEvent): void;

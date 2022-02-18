@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -129,6 +129,18 @@
     @include css-var(font-weight, clr-card-title-font-weight, $clr-card-title-font-weight, $clr-use-custom-properties);
     font-size: $clr-card-title-font-size;
     letter-spacing: $clr-card-title-letter-spacing;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &.card-header,
+    &.card-title {
+      margin-top: 0; // removes default margin from clr-ui typography styles
+    }
   }
 
   .card-text {

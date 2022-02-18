@@ -1,6 +1,6 @@
 <h3 cds-layout="m-t:none m-b:lg">Alerts</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <div class="alert alert-danger">
     <div class="alert-items">
       <div class="alert-item static">
@@ -82,7 +82,7 @@
 
 <h3 cds-layout="m-t:lg">App level alerts</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-alert clrAlertType="info" [clrAlertAppLevel]="true" cds-layout="m-b:md">
     <clr-alert-item>
       <span class="alert-text"> Lorem ipsum dolor sit amet </span>
@@ -149,7 +149,7 @@
 
 <h3 cds-layout="m-t:lg">Info, Success, Warning and Danger Outline Buttons</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <button class="btn btn-info-outline">Info</button>
   <button class="btn btn-success-outline">Success</button>
   <button class="btn btn-warning-outline">Warning</button>
@@ -158,7 +158,7 @@
 
 <h3 cds-layout="m-t:lg">Info, Success, Warning and Danger Outline Disabled Buttons</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <button disabled class="btn btn-info-outline">Info</button>
   <button disabled class="btn btn-success-outline">Success</button>
   <button disabled class="btn btn-warning-outline">Warning</button>
@@ -167,7 +167,7 @@
 
 <h3 cds-layout="m-t:lg">Primary, Success, Warning and Danger Buttons</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <button class="btn btn-primary">Primary</button>
   <button class="btn btn-success">Success</button>
   <button class="btn btn-warning">Warning</button>
@@ -176,23 +176,55 @@
 
 <h3 cds-layout="m-t:lg">Primary, Success, Warning and Danger Disabled Buttons</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <button disabled class="btn btn-primary">Disabled Info</button>
   <button disabled class="btn btn-success">Disabled Success</button>
   <button disabled class="btn btn-warning">Disabled Warning</button>
   <button disabled class="btn btn-danger">Disabled Danger</button>
 </div>
 
+<h3 cds-layout="m-t:lg">Button Group</h3>
+
+<div cds-layout="m-t:md" class="btn-group btn-sm">
+  <button class="btn btn-primary"><cds-icon shape="plus"></cds-icon> Add</button>
+  <button class="btn btn-primary"><cds-icon shape="pencil"></cds-icon> Edit</button>
+  <button class="btn btn-primary"><cds-icon shape="download"></cds-icon> Download</button>
+  <button class="btn btn-primary"><cds-icon shape="times"></cds-icon> Delete</button>
+</div>
+
+<div cds-layout="m-t:md" class="btn-group btn-sm">
+  <button class="btn btn-primary"><cds-icon shape="plus"></cds-icon> Add</button>
+  <button class="btn btn-primary" disabled><cds-icon shape="pencil"></cds-icon> Edit</button>
+  <button class="btn btn-primary"><cds-icon shape="download"></cds-icon> Download</button>
+  <button class="btn btn-primary" disabled><cds-icon shape="times"></cds-icon> Delete</button>
+</div>
+
+<h3 cds-layout="m-t:lg">Outline Button Group</h3>
+
+<div cds-layout="m-t:md" class="btn-group btn-outline-primary btn-sm">
+  <button class="btn"><cds-icon shape="plus"></cds-icon> Add</button>
+  <button class="btn"><cds-icon shape="pencil"></cds-icon> Edit</button>
+  <button class="btn"><cds-icon shape="download"></cds-icon> Download</button>
+  <button class="btn"><cds-icon shape="times"></cds-icon> Delete</button>
+</div>
+
+<div cds-layout="m-t:md" class="btn-group btn-outline-primary btn-sm">
+  <button class="btn"><cds-icon shape="plus"></cds-icon> Add</button>
+  <button class="btn" disabled><cds-icon shape="pencil"></cds-icon> Edit</button>
+  <button class="btn"><cds-icon shape="download"></cds-icon> Download</button>
+  <button class="btn" disabled><cds-icon shape="times"></cds-icon> Delete</button>
+</div>
+
 <h3 cds-layout="m-t:lg">Label colors</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <span class="label">Seattle</span>
   <span class="label label-purple">Austin</span>
   <span class="label label-blue">New York</span>
   <span class="label label-orange">Palo Alto</span>
   <span class="label label-light-blue">San Francisco</span>
 </div>
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <span class="label label-1">Seattle</span>
   <span class="label label-2">Austin</span>
   <span class="label label-3">New York</span>
@@ -202,7 +234,7 @@
 
 <h3 cds-layout="m-t:lg">Labels statuses</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <span class="label label-info">Info</span>
   <span class="label label-success">Success</span>
   <span class="label label-warning">Warning</span>
@@ -211,7 +243,7 @@
 
 <h3 cds-layout="m-t:lg">Labels with badges</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <a href="javascript://" class="label label-purple clickable"
     >Austin
     <span class="badge">1</span>
@@ -256,7 +288,7 @@
 
 <h3 cds-layout="m-t:lg">Spinner</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <span class="spinner spinner-sm"> Loading... </span>
   <span class="spinner spinner-md"> Loading... </span>
   <span class="spinner spinner-lg"> Loading... </span>
@@ -264,7 +296,7 @@
 
 <h3 cds-layout="m-t:lg">Card</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <a href="#" class="card clickable">
     <div class="card-block">
       <h3 class="card-title">Title</h3>
@@ -281,7 +313,7 @@
 
 <h3 cds-layout="m-t:lg">Progress bar</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <h6>Labeled, Static Progress Bar</h6>
   <div class="progress-static labeled">
     <div class="progress-meter" data-value="55" data-displayval="Loaded 55%"></div>
@@ -301,7 +333,7 @@
 
 <h3 cds-layout="m-t:lg">Dropdown</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-dropdown>
     <button class="btn btn-outline-primary" clrDropdownTrigger>
       Dropdown
@@ -331,7 +363,7 @@
 
 <h3 cds-layout="m-t:lg">Timeline</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-timeline>
     <clr-timeline-step [clrState]="timelineState.NOT_STARTED">
       <clr-timeline-step-header>11:59 am</clr-timeline-step-header>
@@ -372,7 +404,7 @@
 
 <h3 cds-layout="m-t:lg">Tabs</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-tabs>
     <clr-tab>
       <button clrTabLink id="link1">Right Toggle Switches</button>
@@ -423,7 +455,7 @@
   </clr-tabs>
 </div>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-tabs clrLayout="vertical">
     <clr-tab>
       <button clrTabLink id="link1">Header typography</button>
@@ -455,7 +487,7 @@
 
 <h3 cds-layout="m-t:lg">Stack View</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <clr-stack-view>
     <clr-stack-block>
       <clr-stack-label>Label 1</clr-stack-label>
@@ -496,7 +528,7 @@
 
 <h3 cds-layout="m-t:lg">Table</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <table class="table">
     <thead>
       <tr>
@@ -537,7 +569,7 @@
 
 <h3 cds-layout="m-t:lg">Forms</h3>
 
-<div cds-layout="m-y:md">
+<div cds-layout="m-t:md">
   <ng-template #fields>
     <form clrForm [formGroup]="model" #inputSuccessVertical>
       <clr-input-container>

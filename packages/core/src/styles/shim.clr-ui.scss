@@ -257,7 +257,7 @@
 
   // For theme-able icon button color
   --clr-btn-icon-disabled-color: var(
-    --cds-global-typography-color-100
+    --cds-alias-status-disabled-tint
   ); // var(--clr-btn-default-disabled-color, #{$clr-btn-default-disabled-color});
 
   // Button groups
@@ -883,5 +883,11 @@
   .btn.disabled,
   .btn:disabled {
     opacity: 1;
+  }
+  .btn-primary,
+  .btn-success,
+  .btn-warning,
+  .btn-danger {
+    --clr-btn-icon-disabled-color: var(--cds-global-typography-color-100);
   }
 }

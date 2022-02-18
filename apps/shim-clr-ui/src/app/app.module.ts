@@ -3,7 +3,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { angleIcon, cogIcon, ClarityIcons, sunIcon, worldIcon, atomIcon } from '@cds/core/icon';
+import {
+  angleIcon,
+  cogIcon,
+  ClarityIcons,
+  sunIcon,
+  worldIcon,
+  atomIcon,
+  plusIcon,
+  pencilIcon,
+  downloadIcon,
+  timesIcon,
+} from '@cds/core/icon';
 import { CdsIconModule } from '@cds/angular/icon';
 import { CdsAccordionModule } from '@cds/angular/accordion';
 import { CdsAlertModule } from '@cds/angular/alert';
@@ -83,5 +94,10 @@ export class AppModule {
     ClarityIcons.addIcons(sunIcon);
     ClarityIcons.addIcons(atomIcon);
     ClarityIcons.addIcons(worldIcon);
+
+    ClarityIcons.addIcons(plusIcon);
+    ClarityIcons.addIcons(pencilIcon);
+    ClarityIcons.addIcons(downloadIcon);
+    ClarityIcons.addIcons(timesIcon);
   }
 }

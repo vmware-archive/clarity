@@ -16,7 +16,7 @@ import { ViewManagerService } from './providers/view-manager.service';
   host: {
     '[class.datepicker]': 'true',
     '[attr.aria-modal]': 'true',
-    role: 'modal',
+    role: 'dialog',
   },
 })
 export class ClrDatepickerViewManager {

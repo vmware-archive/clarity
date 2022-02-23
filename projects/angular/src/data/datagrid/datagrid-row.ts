@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -187,6 +187,15 @@ export class ClrDatagridRow<T = any> implements AfterContentInit, AfterViewInit 
   }
   get clrDgDetailCloseLabel(): string {
     return this._detailCloseLabel ? this._detailCloseLabel : this.commonStrings.keys.close;
+  }
+
+  private _rowAriaLabel = '';
+  @Input()
+  set clrDgRowAriaLabel(label: string) {
+    this._rowAriaLabel = label;
+  }
+  get clrDgRowAriaLabel(): string {
+    return this._rowAriaLabel ? this._rowAriaLabel : this.commonStrings.keys.select;
   }
 
   /*****

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -46,7 +46,11 @@
     <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of clientNoTrackByUsers" [clrDgItem]="user">
+  <clr-dg-row
+    *clrDgItems="let user of clientNoTrackByUsers"
+    [clrDgItem]="user"
+    [clrDgRowAriaLabel]="'Select row for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -79,7 +83,11 @@
     <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of clientTrackByIndexUsers; trackBy: trackByIndex" [clrDgItem]="user">
+  <clr-dg-row
+    *clrDgItems="let user of clientTrackByIndexUsers; trackBy: trackByIndex"
+    [clrDgItem]="user"
+    [clrDgRowAriaLabel]="'Select row for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -112,7 +120,11 @@
     <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of clientTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+  <clr-dg-row
+    *clrDgItems="let user of clientTrackByIdUsers; trackBy: trackById"
+    [clrDgItem]="user"
+    [clrDgRowAriaLabel]="'Select row for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -145,7 +157,11 @@
     <ng-container *clrDgHideableColumn> Favorite color </ng-container>
   </clr-dg-column>
 
-  <clr-dg-row *ngFor="let user of serverTrackByIdUsers; trackBy: trackById" [clrDgItem]="user">
+  <clr-dg-row
+    *ngFor="let user of serverTrackByIdUsers; trackBy: trackById"
+    [clrDgItem]="user"
+    [clrDgRowAriaLabel]="'Select row for ' + user.name"
+  >
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

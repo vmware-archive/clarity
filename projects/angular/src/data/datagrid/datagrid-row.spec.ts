@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -125,12 +125,26 @@ export default function (): void {
       let context: TestContext<ClrDatagridRow, SelectableRowOrder>;
       let selectionProvider: Selection;
       let checkbox: HTMLElement;
+      let radio: HTMLInputElement;
 
       beforeEach(function () {
         context = this.create(ClrDatagridRow, SelectableRowOrder, DATAGRID_SPEC_PROVIDERS);
         selectionProvider = TestBed.get(Selection);
         TestBed.get(Items).all = [{ id: 1 }, { id: 2 }];
       });
+
+      it('should provide a selection input aria-labels', fakeAsync(function () {
+        // Test multi select rows
+        selectionProvider.selectionType = SelectionType.Multi;
+        context.detectChanges();
+        checkbox = context.clarityElement.querySelector("input[type='checkbox']");
+        expect(checkbox.getAttribute('aria-label')).toBeString('uniq aria-label');
+        // Test single select row
+        selectionProvider.selectionType = SelectionType.Single;
+        context.detectChanges();
+        radio = context.clarityElement.querySelector("input[type='radio']");
+        expect(radio.getAttribute('aria-label')).toBeString('uniq aria-label');
+      }));
 
       it('should toggle when clrDgSelectable is false for type  SelectionType.Multi', () => {
         selectionProvider.selectionType = SelectionType.Multi;
@@ -494,11 +508,14 @@ class SelectableRow {
 }
 
 @Component({
-  template: `<clr-dg-row [clrDgSelectable]="clrDgSelectable" [clrDgItem]="item">None</clr-dg-row>`,
+  template: `<clr-dg-row [clrDgSelectable]="clrDgSelectable" [clrDgItem]="item" [clrDgRowAriaLabel]="ariaLabel"
+    >None</clr-dg-row
+  >`,
 })
 class SelectableRowOrder {
   clrDgSelectable = undefined;
   item: Item = { id: 42 };
+  ariaLabel = 'uniq aria-label';
 }
 
 @Component({ template: `<clr-dg-row [clrDgItem]="item" [(clrDgSelected)]="selected">Hello world</clr-dg-row>` })

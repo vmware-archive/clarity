@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -10,6 +10,7 @@ import { Selection } from './providers/selection';
 import { SelectionType } from './enums/selection-type';
 import { ColumnsService } from './providers/columns.service';
 import { DetailService } from './providers/detail.service';
+import { ClrCommonStringsService } from '../../utils';
 
 @Component({
   selector: 'clr-dg-footer',
@@ -19,6 +20,7 @@ import { DetailService } from './providers/detail.service';
         <clr-checkbox-wrapper class="datagrid-footer-select">
           <input clrCheckbox type="checkbox" checked="checked" disabled />
           <label>{{ selection.current.length }}</label>
+          <span class="clr-sr-only">{{ commonStrings.keys.selectedRows }}</span>
         </clr-checkbox-wrapper>
       </div>
     </ng-container>
@@ -39,7 +41,8 @@ export class ClrDatagridFooter<T = any> {
   constructor(
     public selection: Selection<T>,
     public detailService: DetailService,
-    private columnsService: ColumnsService
+    private columnsService: ColumnsService,
+    public commonStrings: ClrCommonStringsService
   ) {}
 
   /* reference to the enum so that template can access */

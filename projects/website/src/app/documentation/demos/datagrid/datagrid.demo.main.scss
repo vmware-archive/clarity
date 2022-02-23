@@ -11,3 +11,18 @@
   column-count: 3;
   list-style-position: inside;
 }
+
+::ng-deep.clr-accordion:not(.clr-stepper-forms) .clr-accordion-inner-content {
+  margin: 0;
+  padding: 0;
+
+  table {
+    margin: 0;
+  }
+}
+
+::ng-deep.clr-accordion-inner-content {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}

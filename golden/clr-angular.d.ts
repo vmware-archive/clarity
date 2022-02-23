@@ -496,6 +496,7 @@ export interface ClrCommonStrings {
     rowActions: string;
     select: string;
     selectAll: string;
+    selectedRows: string;
     selection?: string;
     show: string;
     showColumns: string;
@@ -787,11 +788,12 @@ export interface ClrDatagridFilterInterface<T, S = any> {
 
 export declare class ClrDatagridFooter<T = any> {
     SELECTION_TYPE: typeof SelectionType;
+    commonStrings: ClrCommonStringsService;
     detailService: DetailService;
     get hasHideableColumns(): boolean;
     selection: Selection<T>;
     toggle: ClrDatagridColumnToggle;
-    constructor(selection: Selection<T>, detailService: DetailService, columnsService: ColumnsService);
+    constructor(selection: Selection<T>, detailService: DetailService, columnsService: ColumnsService, commonStrings: ClrCommonStringsService);
     static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridFooter<any>, "clr-dg-footer", never, {}, {}, ["toggle"], ["clr-dg-column-toggle", "*", "clr-dg-pagination"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridFooter<any>, never>;
 }
@@ -894,6 +896,8 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     get clrDgDetailCloseLabel(): string;
     set clrDgDetailOpenLabel(label: string);
     get clrDgDetailOpenLabel(): string;
+    set clrDgRowAriaLabel(label: string);
+    get clrDgRowAriaLabel(): string;
     set clrDgSelectable(value: boolean | string);
     get clrDgSelectable(): boolean | string;
     commonStrings: ClrCommonStringsService;
@@ -925,7 +929,7 @@ export declare class ClrDatagridRow<T = any> implements AfterContentInit, AfterV
     ngOnInit(): void;
     toggle(selected?: boolean): void;
     toggleExpand(): void;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridRow<any>, "clr-dg-row", never, { "item": "clrDgItem"; "selected": "clrDgSelected"; "clrDgSelectable": "clrDgSelectable"; "expanded": "clrDgExpanded"; "clrDgDetailOpenLabel": "clrDgDetailOpenLabel"; "clrDgDetailCloseLabel": "clrDgDetailCloseLabel"; }, { "selectedChanged": "clrDgSelectedChange"; "expandedChange": "clrDgExpandedChange"; }, ["dgCells"], ["clr-dg-row-detail", "clr-dg-action-overflow", "clr-dg-cell"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrDatagridRow<any>, "clr-dg-row", never, { "item": "clrDgItem"; "selected": "clrDgSelected"; "clrDgSelectable": "clrDgSelectable"; "expanded": "clrDgExpanded"; "clrDgDetailOpenLabel": "clrDgDetailOpenLabel"; "clrDgDetailCloseLabel": "clrDgDetailCloseLabel"; "clrDgRowAriaLabel": "clrDgRowAriaLabel"; }, { "selectedChanged": "clrDgSelectedChange"; "expandedChange": "clrDgExpandedChange"; }, ["dgCells"], ["clr-dg-row-detail", "clr-dg-action-overflow", "clr-dg-cell"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrDatagridRow<any>, never>;
 }
 

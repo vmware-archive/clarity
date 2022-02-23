@@ -284,4 +284,9 @@ export interface ClrCommonStrings {
    */
   passwordHide: string;
   passwordShow: string;
+
+  /**
+   * Datagrid footer; sr-only text after the number of selected rows.
+   */
+  selectedRows: string;
 }

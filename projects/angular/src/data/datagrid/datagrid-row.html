@@ -50,7 +50,7 @@
               [id]="checkboxId"
               [attr.disabled]="clrDgSelectable ? null : true"
               [attr.aria-disabled]="clrDgSelectable ? null : true"
-              [attr.aria-label]="commonStrings.keys.select"
+              [attr.aria-label]="clrDgRowAriaLabel"
             />
             <!-- Usage of class clr-col-null here prevents clr-col-* classes from being added when a datagrid is wrapped inside clrForm -->
             <label [for]="checkboxId" class="clr-control-label clr-col-null">
@@ -78,7 +78,7 @@
             [checked]="selection.currentSingle === item"
             [attr.disabled]="clrDgSelectable ? null : true"
             [attr.aria-disabled]="clrDgSelectable ? null : true"
-            [attr.aria-label]="commonStrings.keys.select"
+            [attr.aria-label]="clrDgRowAriaLabel"
           />
         </div>
         <div
@@ -120,7 +120,7 @@
             #detailButton
             class="datagrid-detail-caret-button"
             [class.is-open]="detailService.isRowOpen(item)"
-            [attr.aria-label]="detailService.isOpen ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
+            [attr.aria-label]="detailService.isRowOpen(item) ? clrDgDetailCloseLabel : clrDgDetailOpenLabel"
             [attr.aria-expanded]="detailService.isOpen"
             [attr.aria-controls]="detailService.id"
             aria-haspopup="dialog"

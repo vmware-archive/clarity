@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -36,7 +36,7 @@
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user" [clrDgRowAriaLabel]="'Select row for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
@@ -64,7 +64,7 @@
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
-  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user">
+  <clr-dg-row *clrDgItems="let user of users" [clrDgItem]="user" [clrDgRowAriaLabel]="'Select row for ' + user.name">
     <clr-dg-cell>{{user.id}}</clr-dg-cell>
     <clr-dg-cell>{{user.name}}</clr-dg-cell>
     <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>

@@ -390,6 +390,7 @@ export interface ClrCommonStrings {
     dategridExpandableRowsHelperText?: string;
     datepickerCurrentDecade: string;
     datepickerCurrentMonth: string;
+    datepickerDialogLabel: string;
     datepickerNextDecade: string;
     datepickerNextMonth: string;
     datepickerPreviousDecade: string;
@@ -909,10 +910,11 @@ export declare class ClrDatepickerModule {
 }
 
 export declare class ClrDatepickerViewManager {
+    commonStrings: ClrCommonStringsService;
     get isDayView(): boolean;
     get isMonthView(): boolean;
     get isYearView(): boolean;
-    constructor(viewManagerService: ViewManagerService);
+    constructor(commonStrings: ClrCommonStringsService, viewManagerService: ViewManagerService);
 }
 
 export declare class ClrDay {

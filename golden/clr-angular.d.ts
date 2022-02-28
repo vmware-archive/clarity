@@ -1952,9 +1952,12 @@ export declare class ClrStackBlock implements OnInit {
     expandedChange: EventEmitter<boolean>;
     focused: boolean;
     get getChangedValue(): boolean;
+    get headingLevel(): string;
+    get labelledById(): any;
     get onStackLabelFocus(): boolean;
     get role(): string;
     set setChangedValue(value: boolean);
+    stackBlockTitle: any;
     get tabIndex(): string;
     uniqueId: string;
     constructor(parent: ClrStackBlock, uniqueId: string, commonStrings: ClrCommonStringsService);
@@ -1962,7 +1965,7 @@ export declare class ClrStackBlock implements OnInit {
     getStackChildrenId(): string;
     ngOnInit(): void;
     toggleExpand(): void;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackBlock, "clr-stack-block", never, { "expanded": "clrSbExpanded"; "expandable": "clrSbExpandable"; "setChangedValue": "clrSbNotifyChange"; "ariaLevel": "clrStackViewLevel"; "ariaSetsize": "clrStackViewSetsize"; "ariaPosinset": "clrStackViewPosinset"; }, { "expandedChange": "clrSbExpandedChange"; }, never, ["clr-stack-label", "*", "clr-stack-block"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackBlock, "clr-stack-block", never, { "expanded": "clrSbExpanded"; "expandable": "clrSbExpandable"; "setChangedValue": "clrSbNotifyChange"; "ariaLevel": "clrStackViewLevel"; "ariaSetsize": "clrStackViewSetsize"; "ariaPosinset": "clrStackViewPosinset"; }, { "expandedChange": "clrSbExpandedChange"; }, ["stackBlockTitle"], ["clr-stack-label", "*", "clr-stack-block"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackBlock, [{ optional: true; skipSelf: true; }, null, null]>;
 }
 
@@ -2006,15 +2009,24 @@ export declare class ClrStackView {
 }
 
 export declare class ClrStackViewCustomTags {
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrStackViewCustomTags, "clr-stack-label, clr-stack-content", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ClrStackViewCustomTags, "clr-stack-content", never, {}, {}, never>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackViewCustomTags, never>;
+}
+
+export declare class ClrStackViewLabel implements OnInit {
+    set id(val: string);
+    get id(): string;
+    constructor(uniqueId: string);
+    ngOnInit(): void;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrStackViewLabel, "clr-stack-label", never, { "id": "id"; }, {}, never, ["*"]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackViewLabel, never>;
 }
 
 export declare class ClrStackViewModule {
     constructor();
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrStackViewModule, never>;
     static ɵinj: i0.ɵɵInjectorDeclaration<ClrStackViewModule>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrStackViewModule, [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect], [typeof i8.CommonModule, typeof i9.FormsModule, typeof i10.ClrIconModule, typeof i11.ClrExpandableAnimationModule], [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ClrStackViewModule, [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewLabel, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect], [typeof i8.CommonModule, typeof i9.FormsModule, typeof i10.ClrIconModule, typeof i11.ClrExpandableAnimationModule], [typeof i1.ClrStackView, typeof i2.ClrStackHeader, typeof i3.ClrStackBlock, typeof i4.ClrStackContentInput, typeof i5.ClrStackViewLabel, typeof i5.ClrStackViewCustomTags, typeof i6.ClrStackInput, typeof i7.ClrStackSelect]>;
 }
 
 export declare class ClrStepButton implements OnInit {

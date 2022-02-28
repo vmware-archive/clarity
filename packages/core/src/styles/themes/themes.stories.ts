@@ -1,11 +1,14 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
 import { html } from 'lit';
 import { default as tokenData } from '@cds/core/tokens/tokens.json';
+import light from '../../../.storybook/public/assets/images/clarity-high-contrast-light.png';
+import dark from '../../../.storybook/public/assets/images/clarity-high-contrast-dark.png';
+import clrui from '../../../.storybook/public/assets/images/clarity-ui-theme.png';
 
 export default {
   title: 'Stories/Themes',
@@ -383,4 +386,92 @@ export function lowMotionTheme() {
       </div>
     </div>
   `;
+}
+
+export function windowsHighContrastTheme() {
+  return html`
+    <div cds-layout="grid gap:sm cols@md:6">
+      <img src=${light} alt="clarity windows high contrast light" cds-layout="fill" />
+      <img src=${dark} alt="clarity windows high contrast dark" cds-layout="fill" />
+    </div>
+  `;
+}
+
+export function highContrastTheme() {
+  const update = (e: any) =>
+    document.querySelector('#high-contrast').setAttribute('cds-theme', `${e.target.checked ? 'high-contrast' : ''}`);
+  return html`
+    <section cds-layout="vertical gap:lg">
+      <cds-toggle>
+        <label>high contrast</label>
+        <input type="checkbox" @change=${update} checked />
+      </cds-toggle>
+      <cds-demo id="high-contrast" cds-theme="high-contrast" resizable style="max-width: 540px; min-width: 260px">
+        <cds-form-group layout="horizontal-inline">
+          <cds-input>
+            <label>text label</label>
+            <input placeholder="place holder text" />
+            <cds-control-message>message text</cds-control-message>
+          </cds-input>
+
+          <cds-select>
+            <label>select label</label>
+            <select>
+              <option>Option One</option>
+              <option>Option Two</option>
+              <option>Option Three</option>
+            </select>
+            <cds-control-message>message text</cds-control-message>
+          </cds-select>
+
+          <cds-password>
+            <label>password label</label>
+            <input type="password" placeholder="password" />
+          </cds-password>
+
+          <cds-search>
+            <label>search label</label>
+            <input type="search" placeholder="search" />
+          </cds-search>
+
+          <cds-range>
+            <label>range label</label>
+            <input type="range" min="0" max="100" value="75" step="5" />
+            <cds-control-message>CPU Utilization</cds-control-message>
+          </cds-range>
+
+          <cds-radio-group name="region">
+            <label>radio group label</label>
+            <cds-radio>
+              <label>North America</label>
+              <input type="radio" value="north-america" checked />
+            </cds-radio>
+            <cds-radio>
+              <label>South America</label>
+              <input type="radio" value="south-america" />
+            </cds-radio>
+            <cds-radio>
+              <label>Europe</label>
+              <input type="radio" value="europe" />
+            </cds-radio>
+          </cds-radio-group>
+
+          <cds-textarea>
+            <label>textarea label</label>
+            <textarea></textarea>
+          </cds-textarea>
+
+          <cds-button action="outline">save</cds-button>
+        </cds-form-group>
+      </cds-demo>
+    </section>
+  `;
+}
+
+export function clrTheme() {
+  return html`<img
+    src=${clrui}
+    alt="clarity ui theme example with clr-angular and clarity components side by side"
+    style="width: 100%; max-width: 700px;"
+  />`;
 }

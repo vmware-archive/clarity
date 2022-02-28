@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -74,16 +74,7 @@ slot {
 :host([_focused]) [focusable],
 :host([_focused]) .input,
 [tabindex='0'][focusable]:focus {
-  outline: #{$cds-alias-object-interaction-outline};
+  outline: #{$cds-alias-object-interaction-outline-static};
+  outline: #{$cds-alias-object-interaction-outline-webkit-static};
   outline-offset: #{$cds-alias-object-interaction-outline-offset};
-}
-
-@media (-webkit-min-device-pixel-ratio: 0) {
-  :host([tabindex='0']:focus),
-  :host([tabindex='0']:focus) [focusable],
-  :host([_focused]) [focusable],
-  :host([_focused]) .input,
-  [tabindex='0'][focusable]:focus {
-    outline: #{$cds-alias-object-interaction-outline-webkit};
-  }
 }

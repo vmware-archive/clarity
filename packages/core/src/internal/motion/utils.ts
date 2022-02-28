@@ -452,7 +452,7 @@ export function getPropertyAnimations(
   }
 
   const hidingAndOtherAnimationsAsTuple = getHidingAndNonHidingPropertyAnimations(activeAnimations);
-  const isHiding = updatingProps.get(CLARITY_MOTION_ENTER_LEAVE_PROPERTY);
+  const isHiding = updatingProps.get(CLARITY_MOTION_ENTER_LEAVE_PROPERTY) as boolean;
 
   return flattenAndSortAnimations(hidingAndOtherAnimationsAsTuple, isHiding);
 }

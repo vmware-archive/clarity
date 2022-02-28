@@ -81,7 +81,7 @@ export const parameters = {
           'Internationalization',
         ],
         'Themes',
-        ['Getting Started', 'Dark Theme', 'Low Motion Theme', 'Dynamic Themes'],
+        ['Getting Started', 'Dark Theme', 'Low Motion Theme', 'High Contrast', 'Dynamic Themes', 'Clarity UI'],
         'Layout',
         ['Get Started', 'Horizontal', 'Vertical', 'Grid', 'Spacing', 'Utilities', 'Patterns', 'All'],
         'Components',
@@ -145,6 +145,8 @@ export const globalTypes = {
       items: [
         { value: '', title: 'Light Theme' },
         { value: 'dark', title: 'Dark Theme' },
+        { value: 'low-motion', title: 'Low Motion Theme' },
+        { value: 'high-contrast', title: 'High Contrast Theme' },
       ],
     },
   },

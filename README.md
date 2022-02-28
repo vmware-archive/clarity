@@ -22,7 +22,7 @@ and example usage, see [our website](https://angular.clarity.design).
 ## Contributing
 
 The Clarity project team welcomes contributions from the community. For more
-detailed information, see [CONTRIBUTING.md](CONTRIBUTING.md).
+detailed information, see [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 ## Licenses
 

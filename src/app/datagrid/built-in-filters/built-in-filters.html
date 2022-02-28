@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+  ~ Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
@@ -46,12 +46,20 @@
   <clr-dg-column> Name </clr-dg-column>
   <clr-dg-column>
     User ID
-    <clr-dg-numeric-filter [clrDgNumericFilter]="idFilter"></clr-dg-numeric-filter>
+    <clr-dg-numeric-filter
+      datagridFilterAppliedAriaLabel="Uniq applied filter for user ID column"
+      datagridFilterAriaLabel="Uniq filter for user ID column"
+      [clrDgNumericFilter]="idFilter"
+    ></clr-dg-numeric-filter>
   </clr-dg-column>
   <clr-dg-column>Creation date</clr-dg-column>
   <clr-dg-column>
     Pokemon
-    <clr-dg-string-filter [clrDgStringFilter]="pokemonFilter"></clr-dg-string-filter>
+    <clr-dg-string-filter
+      datagridFilterAppliedAriaLabel="Uniq applied filter for Pokemon column"
+      datagridFilterAriaLabel="Uniq filter for Pokemon column"
+      [clrDgStringFilter]="pokemonFilter"
+    ></clr-dg-string-filter>
   </clr-dg-column>
   <clr-dg-column>Favorite color</clr-dg-column>
 
@@ -95,6 +103,8 @@
   <clr-dg-column>
     Pokemon
     <clr-dg-string-filter
+      datagridFilterAppliedAriaLabel="Uniq applied filter for Pokemon column"
+      datagridFilterAriaLabel="Uniq filter for Pokemon column"
       *ngIf="displayFilter"
       [clrDgStringFilter]="pokemonFilter"
       [(clrFilterValue)]="myFilterValue2"

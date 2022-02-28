@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -14,6 +14,8 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+
+// /[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/
 
 import { ClrDatagridFilterInterface } from './interfaces/filter.interface';
 import { CustomFilter } from './providers/custom-filter';
@@ -43,7 +45,7 @@ import { isPlatformBrowser } from '@angular/common';
       class="datagrid-filter-toggle"
       type="button"
       #anchor
-      [attr.aria-label]="commonStrings.keys.datagridFilterAriaLabel"
+      [attr.aria-label]="filterAriaLabel"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="popoverId"
       clrPopoverAnchor
@@ -140,11 +142,29 @@ export class ClrDatagridFilter<T = any>
    * Indicates if the filter is currently active
    */
   public get active() {
+    console.log('iam active');
     return !!this.filter && this.filter.isActive();
   }
 
   ngOnDestroy(): void {
     super.ngOnDestroy();
     this.subs.forEach(sub => sub.unsubscribe());
+  }
+
+  private _datagridFilterAriaLabel = this.commonStrings.keys.datagridFilterAriaLabel;
+  private _datagridFilterAppliedAriaLabel = this.commonStrings.keys.datagridFilterAppliedAriaLabel;
+
+  @Input()
+  set datagridFilterAppliedAriaLabel(value: string) {
+    this._datagridFilterAppliedAriaLabel = value;
+  }
+
+  @Input()
+  set datagridFilterAriaLabel(value: string) {
+    this._datagridFilterAriaLabel = value;
+  }
+
+  get filterAriaLabel(): string {
+    return this.active ? this._datagridFilterAppliedAriaLabel : this._datagridFilterAriaLabel;
   }
 }

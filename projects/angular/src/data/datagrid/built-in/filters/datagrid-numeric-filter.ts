@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -20,7 +20,12 @@ import { ClrPopoverToggleService } from '../../../../utils/popover/providers/pop
   selector: 'clr-dg-numeric-filter',
   providers: [{ provide: CustomFilter, useExisting: DatagridNumericFilter }],
   template: `
-    <clr-dg-filter [clrDgFilter]="registered" [(clrDgFilterOpen)]="open">
+    <clr-dg-filter
+      [datagridFilterAppliedAriaLabel]="datagridFilterAppliedAriaLabel"
+      [datagridFilterAriaLabel]="datagridFilterAriaLabel"
+      [clrDgFilter]="registered"
+      [(clrDgFilterOpen)]="open"
+    >
       <input
         class="datagrid-numeric-filter-input"
         #input_low
@@ -179,4 +184,23 @@ export class DatagridNumericFilter<T = any>
   }
 
   @Output('clrFilterValueChange') filterValueChange = new EventEmitter();
+
+  private _datagridFilterAriaLabel = this.commonStrings.keys.datagridFilterAriaLabel;
+  private _datagridFilterAppliedAriaLabel = this.commonStrings.keys.datagridFilterAppliedAriaLabel;
+
+  @Input()
+  set datagridFilterAppliedAriaLabel(value: string) {
+    this._datagridFilterAppliedAriaLabel = value;
+  }
+  get datagridFilterAppliedAriaLabel() {
+    return this._datagridFilterAriaLabel;
+  }
+
+  @Input()
+  set datagridFilterAriaLabel(value: string) {
+    this._datagridFilterAriaLabel = value;
+  }
+  get datagridFilterAriaLabel() {
+    return this._datagridFilterAriaLabel;
+  }
 }

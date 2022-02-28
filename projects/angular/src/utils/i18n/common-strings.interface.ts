@@ -129,9 +129,13 @@ export interface ClrCommonStrings {
    */
   maxValue: string;
   /**
-   * Datagrid filter toggle button
+   * Datagrid filter toggle button (un-applied)
    */
   datagridFilterAriaLabel?: string;
+  /**
+   * Datagrid filter toggle button (applied)
+   */
+  datagridFilterAppliedAriaLabel: string;
   /**
    * Datagrid filter dialog
    */

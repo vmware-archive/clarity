@@ -40,6 +40,7 @@ const config = {
     './src/styles/module.typography.scss',
     './src/styles/theme.dark.scss',
     './src/styles/theme.low-motion.scss',
+    './src/styles/theme.high-contrast.scss',
     './src/list/list.scss',
     './src/table/table.scss',
   ],

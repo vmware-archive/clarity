@@ -3,6 +3,7 @@
 @import './../../dist/core/global.css';
 @import './../../dist/core/styles/theme.dark.css';
 @import './../../dist/core/styles/theme.low-motion.css';
+@import './../../dist/core/styles/theme.high-contrast.css';
 @import './../../dist/core/list/list.css';
 @import './../../dist/core/table/table.css';
 

@@ -93,7 +93,7 @@ export class CdsButton extends CdsBaseButton {
 
   update(props: PropertyValues<this>) {
     if (props.has('loadingState')) {
-      if (this.isDefaultLoadingState(props.get('loadingState'))) {
+      if (this.isDefaultLoadingState(props.get('loadingState') as string)) {
         // track prior disabled state to set prior value after button is re-enabled from a loading state
         this._disabled = this.disabled;
       }

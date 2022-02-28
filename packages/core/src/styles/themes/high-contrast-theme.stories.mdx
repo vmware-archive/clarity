@@ -1,0 +1,34 @@
+import { Meta, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Themes/High Contrast" />
+
+# High Contrast Theme
+
+Clarity provides a built in high contrast theme which can be loaded and dynamically enabled
+in the browser. This enables compatibility with Windows high contrast mode but can also
+be used in other OS enviroments.
+
+```scss
+// import into sass or css
+@import '~@cds/core/styles/theme.high-contrast.min.css';
+
+// or import in html
+<link href="/node_modules/@cds/core/styles/theme.high-contrast.min.css" rel="stylesheet">
+```
+
+```javascript
+if (window.matchMedia('(-ms-high-contrast: active)')).matches || window.matchMedia('(forced-colors: active)')).matches) {
+  document.body.setAttribute('cds-theme', 'high-contrast');
+}
+```
+
+The high contrast theme uses the System Colors pallete to ensure proper contrast
+defined by the host OS. https://www.w3.org/TR/css-color-4/#typedef-system-color
+Sample form in high contrast mode.
+
+<Story id="stories-themes--high-contrast-theme" />
+
+Below are sample screenshots of the high contrast theme when using Windows High Contrast Mode
+light and dark.
+
+<Story id="stories-themes--windows-high-contrast-theme" />

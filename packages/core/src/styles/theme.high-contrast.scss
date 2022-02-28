@@ -1,0 +1,39 @@
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
+// This software is released under MIT license.
+// The full license information can be found in LICENSE in the root directory of this project.
+
+@import './tokens/generated/index';
+
+[cds-theme~='high-contrast'] {
+  --cds-global-typography-color-500: CanvasText;
+  --cds-global-typography-color-400: CanvasText;
+  --cds-global-typography-color-300: CanvasText;
+  --cds-global-typography-link-color: LinkText;
+  --cds-global-typography-link-color-hover: ActiveText;
+  --cds-global-typography-link-color-visited: VisitedText;
+  --cds-global-typography-link-color-visited-hover: VisitedText;
+  --cds-alias-status-info: CanvasText;
+  --cds-alias-status-success: CanvasText;
+  --cds-alias-status-warning: CanvasText;
+  --cds-alias-status-danger: CanvasText;
+  --cds-alias-status-neutral: GrayText;
+  --cds-alias-status-neutral-tint: GrayText;
+  --cds-alias-status-neutral-shade: GrayText;
+  --cds-alias-object-border-color: CanvasText;
+  --cds-alias-object-border-color-tint: CanvasText;
+  --cds-alias-object-border-color-shade: CanvasText;
+  --cds-alias-object-container-border-color: CanvasText;
+  --cds-alias-object-app-background: Canvas;
+  --cds-alias-object-interaction-color: ButtonText;
+  --cds-alias-object-interaction-color-hover: HighlightText;
+  --cds-alias-object-interaction-color-active: ActiveText;
+  --cds-alias-object-interaction-color-selected: SelectedItemText;
+  --cds-alias-object-interaction-color-disabled: GrayText;
+  --cds-alias-object-interaction-border-color: CanvasText;
+  --cds-alias-object-interaction-background: ButtonFace;
+  --cds-alias-object-interaction-background-hover: Highlight;
+  --cds-alias-object-interaction-background-active: Highlight;
+  --cds-alias-object-interaction-background-selected: SelectedItem;
+  --cds-alias-object-interaction-background-disabled: Canvas;
+  --cds-alias-object-interaction-background-highlight: Highlight;
+}

@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+// Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
 // This software is released under MIT license.
 // The full license information can be found in LICENSE in the root directory of this project.
 
@@ -8,7 +8,7 @@
   --width: #{$cds-global-space-7};
   --height: #{$cds-global-space-7};
   --border: #{$cds-alias-object-border-width-100} solid #{$cds-alias-object-interaction-border-color};
-  --fill-box-shadow: none;
+  --background: none;
 }
 
 .input {
@@ -16,21 +16,13 @@
   height: var(--height);
   min-width: var(--width); // for compact forms with long text
   border: var(--border);
-  box-shadow: var(--fill-box-shadow);
-  display: inline-block;
+  background: var(--background);
   border-radius: #{$cds-alias-object-border-radius-300};
   content: '';
   cursor: pointer;
-}
-
-.input::after {
-  width: var(--width);
-  height: var(--height);
-  border-radius: #{$cds-alias-object-border-radius-300};
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 :host([status='error']) {
@@ -38,8 +30,16 @@
 }
 
 :host([_checked]) {
-  --fill-box-shadow: inset 0 0 0 #{$cds-global-space-4} #{$cds-alias-status-info};
   --border: 0 !important;
+  --background: #{$cds-alias-status-info};
+}
+
+:host([_checked]) .input::after {
+  border-radius: #{$cds-alias-object-border-radius-300};
+  content: '';
+  background: #{$cds-global-typography-color-100};
+  width: #{$cds-global-space-3};
+  height: #{$cds-global-space-3};
 }
 
 :host([_disabled]) {
@@ -51,6 +51,6 @@
 }
 
 :host([_disabled][_checked]) {
-  --fill-box-shadow: inset 0 0 0 #{$cds-global-space-4} #{$cds-alias-status-disabled-tint};
   --border: 0 !important;
+  --background: #{$cds-alias-status-disabled-tint};
 }

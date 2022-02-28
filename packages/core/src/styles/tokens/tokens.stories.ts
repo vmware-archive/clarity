@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -212,10 +212,11 @@ function setAnimationToken(token: Token) {
 }
 
 function setColorToken(token: Token) {
-  const hsl = /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/g
-    .exec(token.computedValue)
-    .slice(1)
-    .map(v => parseInt(v.replace('%', '')));
+  const hsl =
+    /hsl\(\s*(\d+)\s*,\s*(\d+(?:\.\d+)?%)\s*,\s*(\d+(?:\.\d+)?%)\)/g
+      ?.exec(token.computedValue)
+      ?.slice(1)
+      ?.map(v => parseInt(v.replace('%', ''))) ?? [];
   const rgb = hslToRgb(hsl[0], hsl[1], hsl[2]);
   const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
 

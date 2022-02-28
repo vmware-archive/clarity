@@ -35,7 +35,7 @@
     "clarity",
     "ui"
   ],
-  "description": "Clarity Design System Web Components",
+  "description": "Clarity Design System - common components, themes, and utilties",
   "homepage": "https://clarity.design",
   "repository": {
     "type": "git",

@@ -24,18 +24,14 @@ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 }
 
 // automatically set high contrast styles based on OS (Edge/Firefox only) https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast
-if (window.matchMedia('(-ms-high-contrast: active)')).matches || window.matchMedia('(prefers-contrast: high)')).matches) {
-  document.body.style.setProperty('--cds-global-color-blue-600', value);
-}
-
-// automatically set inverted colors based on browser preferences https://developer.mozilla.org/en-US/docs/Web/CSS/@media/inverted-colors
-if (window.matchMedia('(inverted-colors: inverted)')).matches) {
-  // invert css colors
+// see for more contrast options https://blogs.windows.com/msedgedev/2020/09/17/styling-for-windows-high-contrast-with-new-standards-for-forced-colors/
+if (window.matchMedia('(-ms-high-contrast: active)')).matches || window.matchMedia('(forced-colors: active)')).matches) {
+  document.body.setAttribute('cds-theme', 'high-contrast');
 }
 
 // automatically disable CSS animations based on browser preferences https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
 if (window.matchMedia('(prefers-reduced-motion: reduce)')).matches) {
-  // disabled css timing properties
+  body.setAttribute('cds-theme', 'low-motion');
 }
 
 // automatically adjust spacing based on the type of pointer input https://developer.mozilla.org/en-US/docs/Web/CSS/@media/any-pointer

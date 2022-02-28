@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -507,9 +507,9 @@ const aliases = {
       300: token('hsla(0, 0%, 0%, 0.6)'),
     },
     interaction: {
-      outline: token('Highlight solid 2px'),
-      outlineWebkit: token('5px auto -webkit-focus-ring-color'), // https://coryrylan.com/blog/dont-override-css-outline-focus-styles
-      outlineOffset: token('1px'),
+      outline: token('Highlight solid 2px', { raw: true, static: true }),
+      outlineWebkit: token('5px auto -webkit-focus-ring-color', { raw: true, static: true }), // https://coryrylan.com/blog/dont-override-css-outline-focus-styles
+      outlineOffset: token('1px', { raw: true, static: true }),
       touchTarget: token(36),
       borderColor: token(color.construction[500]),
       background: {

@@ -1,0 +1,27 @@
+import { Meta, Story, Preview } from '@web/storybook-prebuilt/addon-docs/blocks.js';
+
+<Meta title="Themes/Clarity UI" />
+
+# Clarity UI Theme
+
+Clarity provides a theme the enables the `@clr/ui` package to consume the Clarity design tokens
+and theme system. Once installed clr-ui applications will be able to use all standard Clarity
+themes available today. If your application does not use `@clr/ui` this theme is not needed.
+
+- [Repository Demo](https://github.com/vmware/clarity/tree/next/apps/shim-clr-ui)
+- [Stackblitz Demo](https://stackblitz.com/edit/clarity-with-clr-angular)
+
+```scss
+// import into sass or css
+@import '@cds/core/styles/shim.clr-ui.min.css';
+
+// or import in html
+<link href="/node_modules/@cds/core/styles/shim.clr-ui.min.css" rel="stylesheet">
+```
+
+Import and load the CSS shim file last after `clr-ui` global CSS. This will ensure
+that the shim can override the `clr-ui` values appropriately.
+
+Screenshot of demo with clr-angular and Clarity components side by side with clr-ui theme.
+
+<Story id="stories-themes--clr-theme" />

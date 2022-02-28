@@ -18,8 +18,8 @@ our development environment on your computer. You will need to have
 2.  Clone the Clarity Repository
 
     ```bash
-    ## Clone your forked repository
-    git clone git@github.com:<github username>/clarity.git
+    ## Clone your forked repository, using the angular branch
+    git clone --branch angular git@github.com:<github username>/clarity.git
 
     ## Navigate to the directory
     cd clarity
@@ -53,4 +53,4 @@ our development environment on your computer. You will need to have
 The source code for the Clarity Documentation is located in the `projects/website` folder.
 Once you have made the changes and are happy with the results you can submit and
 open a [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
-by following our [Development Contribution Guidelines](/docs/CONTRIBUTING_DEVELOPMENT.md).
+by following our [Development Contribution Guidelines](CONTRIBUTING_DEVELOPMENT.md).

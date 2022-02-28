@@ -1,6 +1,6 @@
 # Local setup
 
-Clarity uses NodeJS 14+ and Yarn 1.22.4+ for development, so ensure you have them installed and up to date. To find the exact
+Clarity uses NodeJS 14+ for development, so ensure you have it installed and up to date. To find the exact
 version you could check `.nvmrc` file and if you have NVM installed just run `nvm use` to install the same version.
 
 It also uses Docker for running visual diff tests, so if you plan to run those tests, you'll have to have Docker installed and running.
@@ -30,7 +30,7 @@ mode while you develop.
 
 ## Full Project Build
 
-To build the entire repo and all projects run the command `npm run build`.
+To build the entire repo and all projects run the command `npm run build:ci`.
 This command is useful to run before submitting a PR to ensure everything will
 pass the CI build.
 

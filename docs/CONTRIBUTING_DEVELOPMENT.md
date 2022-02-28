@@ -88,7 +88,7 @@ First, make sure you:
 When we post on the issue to approve your proposal, the person on the team
 who'll be your primary contact will post a link to a topic branch against which
 you will submit your pull requests. The topic branch will be branched from the
-latest `next` and named `topic/{feature-name}`. To merge any pull request into
+latest `angular` and named `topic/{feature-name}`. To merge any pull request into
 this branch, it will need 2 approvals from team members.
 
 Start by [forking](https://help.github.com/articles/fork-a-repo/) the main
@@ -101,8 +101,8 @@ above.
 For instance, this setup part could look like this:
 
 ```shell
-## Clone your forked repository
-git clone git@github.com:<github username>/clarity.git
+## Clone your forked repository, using the angular branch
+git clone --branch angular git@github.com:<github username>/clarity.git
 
 ## Navigate to the directory
 cd clarity
@@ -124,14 +124,13 @@ git checkout -b topic/feature-name upstream/topic/feature-name
 Once you have the project checked out with a fork you will need to run some step
 steps.
 
-1.  Have [NodeJS](https://nodejs.org) installed and [Yarn](https://yarnpkg.com)
-2.  In the root project directory run, `yarn`
-3.  Run `yarn build` to build entire project (this may take several minutes)
+1.  Have [NodeJS](https://nodejs.org) installed
+2.  In the root project directory run, `npm install`
+3.  Run `npm run build:ci` to build entire project (this may take several minutes)
 4.  Startup the project
-    - If Angular change run `yarn start`
-    - If Web Component change run `yarn core:start`
-    - If Website Documentation change run `yarn website:start`
-5.  To run tests and other project-specific commands see our project [Build Guide](/docs/BUILD.md)
+    - If Angular change run `npm run start`
+    - If Website Documentation change run `npm run start:website`
+5.  To run tests and other project-specific commands see our project [Build Guide](BUILD.md)
 
 ### Public API Changes
 
@@ -216,12 +215,12 @@ These documents provide guidance creating a well-crafted commit message:
 As you implement your contribution, make sure all work stays on your local topic
 branch. When an isolated part of the feature is complete with unit tests, make
 sure to submit your pull request **against the topic branch** on the main
-Clarity repository instead of `next`. This will allow us to accept and merge
+Clarity repository instead of `angular`. This will allow us to accept and merge
 partial changes that shouldn't make it into a production release of Clarity yet.
 We expect every pull request to come with exhaustive unit tests for the
 submitted code.
 
-**Do not, at any point, rebase your local topic branch on newer versions of `next` while your work is still in progress!**
+**Do not, at any point, rebase your local topic branch on newer versions of `angular` while your work is still in progress!**
 This will create issues both for you, the reviewers, and maybe even other
 developers who might submit additional commits to your topic branch if you
 requested some help.
@@ -229,7 +228,7 @@ requested some help.
 To make sure your pull request will pass our automated testing, before submitting
 you should:
 
-- Make sure `yarn test` passes for each of them.
+- Make sure `npm test` passes for each of them.
   For individual lint failures, you will have to fix them manually.
 
 The CI runs three parallel Jobs for performance.
@@ -238,7 +237,7 @@ The CI runs three parallel Jobs for performance.
 2. Build website and storybook
 3. Build angular dev app
 
-To ensure your PR will pass the CI you can run `yarn run build` which will run
+To ensure your PR will pass the CI you can run `npm run build:ci` which will run
 all three CI checks locally on your machine. This may take several minutes.
 
 If everything passes, you can push your changes to your fork of Clarity, and [submit a pull request](https://help.github.com/articles/about-pull-requests/).
@@ -260,11 +259,11 @@ as soon as possible.
 ### Shipping it
 
 Once your contribution is fully implemented, reviewed, and ready, we will rebase
-the topic branch on the newest `next` and squash down to fewer commits if
+the topic branch on the newest `angular` and squash down to fewer commits if
 needed (keeping you as the author, obviously).
 
 ```bash
-$ git rebase -i next
+$ git rebase -i angular
 
 # Rebase commits and resolve conflict, if any.
 
@@ -273,7 +272,7 @@ $ git push origin branch -f
 
 Chances are, we will be more familiar with potential conflicts that might happen,
 but we can work with you if you want to solve some conflicts yourself. Once
-rebased, we will merge the topic branch into `next`, which involves a quick
+rebased, we will merge the topic branch into `angular`, which involves a quick
 internal pull request you don't have to worry about, and we will finally delete
 the topic branch.
 

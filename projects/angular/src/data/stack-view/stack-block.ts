@@ -1,11 +1,23 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, EventEmitter, HostBinding, Inject, Input, OnInit, Optional, Output, SkipSelf } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  EventEmitter,
+  HostBinding,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  Output,
+  SkipSelf,
+} from '@angular/core';
 import { ClrCommonStringsService } from '../../utils/i18n/common-strings.service';
 import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-generator.service';
+import { ClrStackViewLabel } from './stack-view-custom-tags';
 
 @Component({
   selector: 'clr-stack-block',
@@ -22,9 +34,6 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       [attr.tabindex]="tabIndex"
       [attr.aria-expanded]="ariaExpanded"
       [attr.aria-controls]="getStackChildrenId()"
-      [attr.aria-posinset]="ariaPosinset"
-      [attr.aria-level]="ariaLevel"
-      [attr.aria-setsize]="ariaSetsize"
     >
       <cds-icon shape="angle" class="stack-block-caret" *ngIf="expandable" [attr.direction]="caretDirection"></cds-icon>
       <span class="clr-sr-only" *ngIf="getChangedValue">{{ commonStrings.keys.stackViewChanged }}</span>
@@ -38,8 +47,14 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
       </div>
     </div>
 
-    <clr-expandable-animation [clrExpandTrigger]="expanded" class="stack-children" [attr.id]="getStackChildrenId()">
-      <div [style.height]="expanded ? 'auto' : 0" role="region" *ngIf="expanded">
+    <clr-expandable-animation [clrExpandTrigger]="expanded" class="stack-children">
+      <div
+        [style.height]="expanded ? 'auto' : 0"
+        role="region"
+        *ngIf="expanded"
+        [attr.id]="getStackChildrenId()"
+        [attr.aria-labelledby]="labelledById"
+      >
         <ng-content select="clr-stack-block"></ng-content>
       </div>
     </clr-expandable-animation>
@@ -53,17 +68,25 @@ import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../../utils/id-generator/id-gener
     `,
   ],
   // Make sure the host has the proper class for styling purposes
-  host: { '[class.stack-block]': 'true' },
+  host: {
+    '[class.stack-block]': 'true',
+    '[attr.role]': '"heading"',
+    '[attr.aria-level]': 'headingLevel',
+  },
   providers: [UNIQUE_ID_PROVIDER],
 })
 export class ClrStackBlock implements OnInit {
   @HostBinding('class.stack-block-expanded')
   @Input('clrSbExpanded')
   expanded = false;
+
   @Output('clrSbExpandedChange') expandedChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   @HostBinding('class.stack-block-expandable')
   @Input('clrSbExpandable')
   expandable = false;
+
+  @ContentChild(ClrStackViewLabel)
+  stackBlockTitle: any;
 
   focused = false;
   private _changedChildren = 0;
@@ -88,18 +111,38 @@ export class ClrStackBlock implements OnInit {
     }
   }
 
+  get labelledById() {
+    return this.stackBlockTitle.id;
+  }
+
+  get headingLevel() {
+    if (this.ariaLevel) {
+      return this.ariaLevel + '';
+    }
+
+    return this.parent ? '4' : '3';
+  }
+
   /**
    * Depth of the stack view starting from 1 for first level
    */
   @Input('clrStackViewLevel') ariaLevel: number;
 
   /**
+   * @deprecated
    * Total number of rows in a given group
+   * - removed per a11y (see: VPAT-592)
+   * - remains here and unused to avoid breaking change to the public API
+   * - remove in v14
    */
   @Input('clrStackViewSetsize') ariaSetsize: number;
 
   /**
+   * @deprecated
    * The position of the row inside the grouped by level rows
+   * - removed per a11y (see: VPAT-592)
+   * - remains here and unused to avoid breaking change to the public API
+   * - remove in v14
    */
   @Input('clrStackViewPosinset') ariaPosinset: number;
 

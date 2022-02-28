@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 import { Component, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -109,26 +109,10 @@ export default function (): void {
     }
 
     describe('Accessibility', () => {
-      let label: HTMLElement;
       beforeEach(() => {
         fixture = TestBed.createComponent(BasicBlock);
         fixture.componentInstance.ariaLevel = 42;
-        fixture.componentInstance.ariaPosinset = 32;
-        fixture.componentInstance.ariaSetsize = 100;
         fixture.detectChanges();
-        label = fixture.nativeElement.querySelector('.stack-block-label');
-      });
-
-      it('should attach aria-level to dd.stack-block-content', () => {
-        expect(label.getAttribute('aria-level')).toBe(fixture.componentInstance.ariaLevel.toString());
-      });
-
-      it('should attach aria-posinset to dd.stack-block-content', () => {
-        expect(label.getAttribute('aria-posinset')).toBe(fixture.componentInstance.ariaPosinset.toString());
-      });
-
-      it('should attach aria-setsize to dd.stack-block-content', () => {
-        expect(label.getAttribute('aria-setsize')).toBe(fixture.componentInstance.ariaSetsize.toString());
       });
     });
 
@@ -338,8 +322,54 @@ export default function (): void {
       fixture.detectChanges();
       const controlsId = stackLabel.getAttribute('aria-controls');
       expect(controlsId).not.toBeNull();
-      const childrenId = fixture.nativeElement.querySelector('.stack-children').getAttribute('id');
+      const childrenId = fixture.nativeElement.querySelector('.stack-children > [role="region"]').getAttribute('id');
       expect(childrenId).toBe(controlsId);
     });
+
+    it('expandable child block is aria-labelledby the stack block title', () => {
+      fixture = TestBed.createComponent(DynamicBlock);
+      fixture.detectChanges();
+      const component: ClrStackBlock = fixture.componentInstance;
+      component.expanded = true;
+      fixture.detectChanges();
+      const stackLabel = fixture.nativeElement.querySelector('clr-stack-label');
+      const stackLabelId = stackLabel.getAttribute('id');
+      expect(stackLabelId).not.toBeNull();
+      const blockLabelledBy = fixture.nativeElement
+        .querySelector('.stack-children > [role="region"]')
+        .getAttribute('aria-labelledby');
+      expect(blockLabelledBy).not.toBeNull();
+      expect(blockLabelledBy).toBe(stackLabelId);
+
+      // but still works if id is removed
+      stackLabel.setAttribute('id', null);
+      fixture.detectChanges();
+      const defaultStackLabelId = stackLabel.getAttribute('id');
+      expect(defaultStackLabelId).not.toBeNull();
+      const defaultBlockLabelledBy = fixture.nativeElement
+        .querySelector('.stack-children > [role="region"]')
+        .getAttribute('aria-labelledby');
+      expect(defaultBlockLabelledBy).not.toBeNull();
+      expect(defaultBlockLabelledBy).toBe(stackLabelId);
+    });
+
+    it('should have expected heading roles and aria heading levels', fakeAsync(() => {
+      fixture = TestBed.createComponent(NestedBlocks);
+      fixture.detectChanges();
+      const component = fixture.componentInstance;
+      component.blockInstance.expanded = true;
+      tick();
+      fixture.detectChanges();
+
+      const topLevelBlock = fixture.nativeElement.querySelector('.stack-block-expandable');
+      expect(topLevelBlock.getAttribute('role')).toBe('heading');
+      expect(topLevelBlock.getAttribute('aria-level')).toBe('3');
+
+      const childBlocks = fixture.nativeElement.querySelectorAll('.stack-children .stack-block');
+      childBlocks.forEach(blok => {
+        expect(blok.getAttribute('role')).toBe('heading');
+        expect(blok.getAttribute('aria-level')).toBe('4');
+      });
+    }));
   });
 }

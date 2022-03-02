@@ -1614,9 +1614,12 @@ export declare class ClrStackBlock implements OnInit {
     expandedChange: EventEmitter<boolean>;
     focused: boolean;
     get getChangedValue(): boolean;
+    get headingLevel(): string;
+    get labelledById(): any;
     get onStackLabelFocus(): boolean;
     get role(): string;
     set setChangedValue(value: boolean);
+    stackBlockTitle: any;
     get tabIndex(): string;
     uniqueId: string;
     constructor(parent: ClrStackBlock, uniqueId: string, commonStrings: ClrCommonStringsService);
@@ -1656,6 +1659,13 @@ export declare class ClrStackView {
 }
 
 export declare class ClrStackViewCustomTags {
+}
+
+export declare class ClrStackViewLabel implements OnInit {
+    set id(val: string);
+    get id(): string;
+    constructor(uniqueId: string);
+    ngOnInit(): void;
 }
 
 export declare class ClrStackViewModule {

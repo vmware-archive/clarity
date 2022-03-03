@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -30,6 +30,7 @@ import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-e
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
 import { ViewManagerService } from './providers/view-manager.service';
 import { IfControlStateService, CONTROL_STATE } from '../common/if-control-state/if-control-state.service';
+import { DayModel } from './model/day.model';
 
 const DATEPICKER_PROVIDERS: any[] = [
   ClrPopoverEventsService,
@@ -54,6 +55,7 @@ export default function () {
     let context: TestContext<ClrDateContainer, TestComponent>;
     let enabledService: MockDatepickerEnabledService;
     let dateFormControlService: DateFormControlService;
+    let dateNavigationService: DateNavigationService;
     let toggleService: ClrPopoverToggleService;
     let container: any;
 
@@ -72,6 +74,7 @@ export default function () {
       enabledService = context.getClarityProvider(DatepickerEnabledService) as MockDatepickerEnabledService;
       dateFormControlService = context.getClarityProvider(DateFormControlService);
       toggleService = context.getClarityProvider(ClrPopoverToggleService);
+      dateNavigationService = context.getClarityProvider(DateNavigationService);
       container = context.clarityDirective;
     });
 
@@ -163,14 +166,17 @@ export default function () {
         expect(context.clarityElement.className).toContain('clr-form-control-disabled');
       });
 
-      it('has an accessible title on the calendar toggle button', () => {
+      it('has an accessible title and aria-label on the calendar toggle button', async () => {
         const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
-        expect(toggleButton.title).toEqual('Toggle datepicker');
-      });
+        expect(toggleButton.title).toEqual('Choose date');
+        expect(toggleButton.attributes['aria-label'].value).toEqual('Choose date');
 
-      it('has an accessible aria-label on the calendar toggle button', () => {
-        const toggleButton: HTMLButtonElement = context.clarityElement.querySelector('.clr-input-group-icon-action');
-        expect(toggleButton.attributes['aria-label'].value).toEqual('Toggle datepicker');
+        dateNavigationService.notifySelectedDayChanged(new DayModel(2022, 1, 1));
+        context.detectChanges();
+        await context.fixture.whenStable();
+
+        expect(toggleButton.title).toEqual('Change date, 02/01/2022');
+        expect(toggleButton.attributes['aria-label'].value).toEqual('Change date, 02/01/2022');
       });
 
       it('supports clrPosition option', () => {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -65,6 +65,8 @@ export class ClrModal implements OnChanges, OnDestroy {
   @Input('clrModalOverrideScrollService') bypassScrollService = false;
   @Input('clrModalPreventClose') stopClose = false;
   @Output('clrModalAlternateClose') altClose: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+
+  @Input('clrModalLabelledById') labelledBy = this.modalId;
 
   constructor(
     private _scrollingService: ScrollingService,

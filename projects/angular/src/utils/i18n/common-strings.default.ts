@@ -58,6 +58,8 @@ export const commonStringsDefault: ClrCommonStrings = {
   // Date Picker
   datepickerDialogLabel: 'Choose date',
   datepickerToggle: 'Toggle datepicker',
+  datepickerToggleChooseDateLabel: 'Choose date',
+  datepickerToggleChangeDateLabel: 'Change date, {SELECTED_DATE}',
   datepickerPreviousMonth: 'Previous month',
   datepickerCurrentMonth: 'Current month',
   datepickerNextMonth: 'Next month',

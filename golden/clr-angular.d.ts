@@ -465,6 +465,8 @@ export interface ClrCommonStrings {
     datepickerSelectMonthText: string;
     datepickerSelectYearText: string;
     datepickerToggle: string;
+    datepickerToggleChangeDateLabel: string;
+    datepickerToggleChooseDateLabel: string;
     delete?: string;
     detailExpandableAriaLabel: string;
     detailPaneEnd: string;
@@ -1032,10 +1034,11 @@ export declare class ClrDateContainer extends ClrAbstractContainer implements Af
     protected ngControlService: NgControlService;
     get open(): boolean;
     get popoverPosition(): ClrPopoverPosition;
-    constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
+    protected renderer: Renderer2;
+    constructor(renderer: Renderer2, toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, dateIOService: DateIOService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngAfterViewInit(): void;
     static ɵcmp: i0.ɵɵComponentDeclaration<ClrDateContainer, "clr-date-container", never, { "clrPosition": "clrPosition"; }, {}, never, ["label", "[clrDate]", "clr-control-helper", "clr-control-error", "clr-control-success"]>;
-    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDateContainer, [null, null, null, null, null, null, null, null, { optional: true; }, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ClrDateContainer, [null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null]>;
 }
 
 export declare class ClrDateInput extends WrappedFormControl<ClrDateContainer> implements OnInit, AfterViewInit, OnDestroy {

@@ -207,6 +207,8 @@ export interface ClrCommonStrings {
    */
   datepickerDialogLabel: string;
   datepickerToggle: string;
+  datepickerToggleChooseDateLabel: string;
+  datepickerToggleChangeDateLabel: string;
   datepickerPreviousMonth: string;
   datepickerCurrentMonth: string;
   datepickerNextMonth: string;

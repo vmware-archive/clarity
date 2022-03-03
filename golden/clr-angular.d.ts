@@ -1499,6 +1499,7 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     closable: boolean;
     commonStrings: ClrCommonStringsService;
     focusTrap: FocusTrapDirective;
+    labelledBy: string;
     modalId: string;
     size: string;
     skipAnimation: string;
@@ -1512,7 +1513,7 @@ export declare class ClrModal implements OnChanges, OnDestroy {
     }): void;
     ngOnDestroy(): void;
     open(): void;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ClrModal, "clr-modal", never, { "_open": "clrModalOpen"; "closable": "clrModalClosable"; "size": "clrModalSize"; "staticBackdrop": "clrModalStaticBackdrop"; "skipAnimation": "clrModalSkipAnimation"; "bypassScrollService": "clrModalOverrideScrollService"; "stopClose": "clrModalPreventClose"; }, { "_openChanged": "clrModalOpenChange"; "altClose": "clrModalAlternateClose"; }, never, [".modal-nav", ".modal-title", ".modal-body", ".modal-footer"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ClrModal, "clr-modal", never, { "_open": "clrModalOpen"; "closable": "clrModalClosable"; "size": "clrModalSize"; "staticBackdrop": "clrModalStaticBackdrop"; "skipAnimation": "clrModalSkipAnimation"; "bypassScrollService": "clrModalOverrideScrollService"; "stopClose": "clrModalPreventClose"; "labelledBy": "clrModalLabelledById"; }, { "_openChanged": "clrModalOpenChange"; "altClose": "clrModalAlternateClose"; }, never, [".modal-nav", ".modal-title", ".modal-body", ".modal-footer"]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClrModal, never>;
 }
 
@@ -2434,8 +2435,9 @@ export declare class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     set stopNext(value: boolean);
     get stopNext(): boolean;
     wizardFinished: EventEmitter<any>;
+    wizardId: string;
     wizardTitle: ElementRef;
-    constructor(platformId: any, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers);
+    constructor(platformId: any, navService: WizardNavigationService, pageCollection: PageCollectionService, buttonService: ButtonHubService, headerActionService: HeaderActionService, elementRef: ElementRef, differs: IterableDiffers, wizardId: string);
     cancel(): void;
     checkAndCancel(): void;
     close(): void;

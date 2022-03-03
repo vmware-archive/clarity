@@ -23,6 +23,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { UNIQUE_ID, UNIQUE_ID_PROVIDER } from '../utils/id-generator/id-generator.service';
 
 import { ButtonHubService } from './providers/button-hub.service';
 import { HeaderActionService } from './providers/header-actions.service';
@@ -33,7 +34,13 @@ import { ClrWizardPage } from './wizard-page';
 
 @Component({
   selector: 'clr-wizard',
-  providers: [WizardNavigationService, PageCollectionService, ButtonHubService, HeaderActionService],
+  providers: [
+    WizardNavigationService,
+    PageCollectionService,
+    ButtonHubService,
+    HeaderActionService,
+    UNIQUE_ID_PROVIDER,
+  ],
   templateUrl: './wizard.html',
   host: {
     '[class.clr-wizard]': 'true',
@@ -242,7 +249,8 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
     public buttonService: ButtonHubService,
     public headerActionService: HeaderActionService,
     private elementRef: ElementRef,
-    differs: IterableDiffers
+    differs: IterableDiffers,
+    @Inject(UNIQUE_ID) public wizardId: string
   ) {
     this.subscriptions.push(
       this.listenForNextPageChanges(),
@@ -450,14 +458,14 @@ export class ClrWizard implements OnDestroy, AfterContentInit, DoCheck {
   private listenForNextPageChanges(): Subscription {
     return this.navService.movedToNextPage.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(() => {
       this.onMoveNext.emit();
-      this.wizardTitle.nativeElement.focus();
+      this.wizardTitle?.nativeElement.focus();
     });
   }
 
   private listenForPreviousPageChanges(): Subscription {
     return this.navService.movedToPreviousPage.pipe(filter(() => isPlatformBrowser(this.platformId))).subscribe(() => {
       this.onMovePrevious.emit();
-      this.wizardTitle.nativeElement.focus();
+      this.wizardTitle?.nativeElement.focus();
     });
   }
 

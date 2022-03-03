@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -265,6 +265,15 @@ describe('Modal', () => {
 
   it('close button should have attribute aria-label', () => {
     expect(compiled.querySelector('.close').getAttribute('aria-label')).toBe(commonStrings.keys.close);
+  });
+
+  it('should add expected aria-labelledby', () => {
+    // open modal
+    getModalInstance(fixture).open();
+    fixture.detectChanges();
+    expect(compiled.querySelector('.modal-dialog').getAttribute('aria-labelledby')).toBe(
+      getModalInstance(fixture).modalId
+    );
   });
 
   it('should have text based boundaries for screen readers', fakeAsync(() => {

@@ -764,6 +764,7 @@ export default function (): void {
         wizard = context.clarityDirective;
         context.detectChanges();
       });
+
       describe('Page title focus', () => {
         it('should be placed on the page title after page change', () => {
           wizard.pageCollection.lastPage.makeCurrent();
@@ -772,6 +773,7 @@ export default function (): void {
           expect(titleString).toEqual(document.activeElement.textContent.trim());
         });
       });
+
       describe('Close X', () => {
         xit('shows up by default');
 
@@ -811,6 +813,27 @@ export default function (): void {
 
         // validate that clrModalSkipAnimation is set as expected
         xit('clrModalSkipAnimation is set as expected');
+      });
+    });
+
+    describe('Accessibility', () => {
+      let context: TestContext<ClrWizard, TemplateApiWizardTestComponent>;
+      let wizard: ClrWizard;
+
+      beforeEach(function () {
+        context = this.create(ClrWizard, TemplateApiWizardTestComponent);
+        wizard = context.clarityDirective;
+        context.detectChanges();
+      });
+
+      describe('aria-labelledby', () => {
+        it('should be placed on the page title after page change', () => {
+          wizard.pageCollection.lastPage.makeCurrent();
+          context.detectChanges();
+          const modalWrapper = context.hostElement.querySelector('.modal-dialog');
+          const wizardId = wizard.wizardId;
+          expect(modalWrapper.getAttribute('aria-labelledby')).toBe(wizardId);
+        });
       });
     });
   });

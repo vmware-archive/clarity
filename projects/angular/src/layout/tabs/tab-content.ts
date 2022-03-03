@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -21,7 +21,6 @@ let nbTabContentComponents = 0;
         [class.active]="active"
         [hidden]="!active"
         [attr.aria-labelledby]="ariaLabelledBy"
-        [attr.aria-expanded]="active"
         [attr.aria-hidden]="!active"
       >
         <ng-content></ng-content>

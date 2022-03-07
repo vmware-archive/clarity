@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -291,23 +291,26 @@ export { dashboardIcon, dashboardIconName } from './shapes/dashboard.js';
 export { dataClusterIcon, dataClusterIconName } from './shapes/data-cluster.js';
 export { deployIcon, deployIconName } from './shapes/deploy.js';
 export { devicesIcon, devicesIconName } from './shapes/devices.js';
+export { digitalSignatureIcon, digitalSignatureIconName } from './shapes/digital-signature.js';
 export { disconnectIcon, disconnectIconName } from './shapes/disconnect.js';
 export { displayIcon, displayIconName } from './shapes/display.js';
 export { downloadCloudIcon, downloadCloudIconName } from './shapes/download-cloud.js';
 export { exportIcon, exportIconName } from './shapes/export.js';
-export { fileShareIcon, fileShareIconName } from './shapes/file-share.js';
 export { fileShare2Icon, fileShare2IconName } from './shapes/file-share-2.js';
+export { fileShareIcon, fileShareIconName } from './shapes/file-share.js';
 export { flaskIcon, flaskIconName } from './shapes/flask.js';
 export { floppyIcon, floppyIconName } from './shapes/floppy.js';
+export { forkingIcon, forkingIconName } from './shapes/forking.js';
 export { hardDiskIcon, hardDiskIconName } from './shapes/hard-disk.js';
-export { hardDriveIcon, hardDriveIconName } from './shapes/hard-drive.js';
 export { hardDriveDisksIcon, hardDriveDisksIconName } from './shapes/hard-drive-disks.js';
+export { hardDriveIcon, hardDriveIconName } from './shapes/hard-drive.js';
 export { helixIcon, helixIconName } from './shapes/helix.js';
-export { hostIcon, hostIconName } from './shapes/host.js';
 export { hostGroupIcon, hostGroupIconName } from './shapes/host-group.js';
+export { hostIcon, hostIconName } from './shapes/host.js';
 export { importIcon, importIconName } from './shapes/import.js';
 export { inductorIcon, inductorIconName } from './shapes/inductor.js';
 export { installIcon, installIconName } from './shapes/install.js';
+export { internetOfThingsIcon, internetOfThingsIconName } from './shapes/internet-of-things.js';
 export { keyboardIcon, keyboardIconName } from './shapes/keyboard.js';
 export { layersIcon, layersIconName } from './shapes/layers.js';
 export { linkIcon, linkIconName } from './shapes/link.js';
@@ -319,10 +322,10 @@ export { namespaceIcon, namespaceIconName } from './shapes/namespace.js';
 export { networkGlobeIcon, networkGlobeIconName } from './shapes/network-globe.js';
 export { networkSettingsIcon, networkSettingsIconName } from './shapes/network-settings.js';
 export { networkSwitchIcon, networkSwitchIconName } from './shapes/network-switch.js';
-export { noWifiIcon, noWifiIconName } from './shapes/no-wifi.js';
-export { nodeIcon, nodeIconName } from './shapes/node.js';
 export { nodeGroupIcon, nodeGroupIconName } from './shapes/node-group.js';
+export { nodeIcon, nodeIconName } from './shapes/node.js';
 export { nodesIcon, nodesIconName } from './shapes/nodes.js';
+export { noWifiIcon, noWifiIconName } from './shapes/no-wifi.js';
 export { nvmeIcon, nvmeIconName } from './shapes/nvme.js';
 export { phoneHandsetIcon, phoneHandsetIconName } from './shapes/phone-handset.js';
 export { pluginIcon, pluginIconName } from './shapes/plugin.js';
@@ -335,24 +338,29 @@ export { resistorIcon, resistorIconName } from './shapes/resistor.js';
 export { resourcePoolIcon, resourcePoolIconName } from './shapes/resource-pool.js';
 export { routerIcon, routerIconName } from './shapes/router.js';
 export { rulerPencilIcon, rulerPencilIconName } from './shapes/ruler-pencil.js';
-export { shieldIcon, shieldIconName } from './shapes/shield.js';
+export { scriptExecuteIcon, scriptExecuteIconName } from './shapes/script-execute.js';
+export { scriptScheduleIcon, scriptScheduleIconName } from './shapes/script-schedule.js';
 export { shieldCheckIcon, shieldCheckIconName } from './shapes/shield-check.js';
+export { shieldIcon, shieldIconName } from './shapes/shield.js';
 export { shieldXIcon, shieldXIconName } from './shapes/shield-x.js';
 export { squidIcon, squidIconName } from './shapes/squid.js';
 export { ssdIcon, ssdIconName } from './shapes/ssd.js';
-export { storageIcon, storageIconName } from './shapes/storage.js';
 export { storageAdapterIcon, storageAdapterIconName } from './shapes/storage-adapter.js';
+export { storageIcon, storageIconName } from './shapes/storage.js';
 export { tabletIcon, tabletIconName } from './shapes/tablet.js';
 export { tapeDriveIcon, tapeDriveIconName } from './shapes/tape-drive.js';
 export { terminalIcon, terminalIconName } from './shapes/terminal.js';
+export { thinClientIcon, thinClientIconName } from './shapes/thin-client.js';
 export { unarchiveIcon, unarchiveIconName } from './shapes/unarchive.js';
 export { uninstallIcon, uninstallIconName } from './shapes/uninstall.js';
 export { unlinkIcon, unlinkIconName } from './shapes/unlink.js';
+export { updateIcon, updateIconName } from './shapes/update.js';
 export { uploadCloudIcon, uploadCloudIconName } from './shapes/upload-cloud.js';
 export { usbIcon, usbIconName } from './shapes/usb.js';
 export { vmIcon, vmIconName } from './shapes/vm.js';
 export { vmwAppIcon, vmwAppIconName } from './shapes/vmw-app.js';
 export { wifiIcon, wifiIconName } from './shapes/wifi.js';
+export { xlsFileIcon, xlsFileIconName } from './shapes/xls-file.js';
 
 // SHAPES - SOCIAL
 export { bookmarkIcon, bookmarkIconName } from './shapes/bookmark.js';

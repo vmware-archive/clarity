@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { Component, Optional, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
+import { Component, Optional, ViewChild, ElementRef, Input, AfterViewInit, Renderer2 } from '@angular/core';
+import { startWith } from 'rxjs/operators';
 
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ControlClassService } from '../common/providers/control-class.service';
@@ -12,6 +13,7 @@ import { FocusService } from '../common/providers/focus.service';
 import { LayoutService } from '../common/providers/layout.service';
 import { NgControlService } from '../common/providers/ng-control.service';
 
+import { DayModel } from './model/day.model';
 import { DateFormControlService } from './providers/date-form-control.service';
 import { DateIOService } from './providers/date-io.service';
 import { DateNavigationService } from './providers/date-navigation.service';
@@ -40,8 +42,6 @@ import { ClrAbstractContainer } from '../common/abstract-container';
             type="button"
             clrPopoverOpenCloseButton
             class="clr-input-group-icon-action"
-            [attr.title]="commonStrings.keys.datepickerToggle"
-            [attr.aria-label]="commonStrings.keys.datepickerToggle"
             [disabled]="isInputDateDisabled"
             *ngIf="isEnabled"
           >
@@ -119,10 +119,12 @@ export class ClrDateContainer extends ClrAbstractContainer implements AfterViewI
   }
 
   constructor(
+    protected renderer: Renderer2,
     private toggleService: ClrPopoverToggleService,
     private dateNavigationService: DateNavigationService,
     private datepickerEnabledService: DatepickerEnabledService,
     private dateFormControlService: DateFormControlService,
+    private dateIOService: DateIOService,
     public commonStrings: ClrCommonStringsService,
     private focusService: FocusService,
     private viewManagerService: ViewManagerService,
@@ -156,6 +158,8 @@ export class ClrDateContainer extends ClrAbstractContainer implements AfterViewI
         }
       })
     );
+
+    this.subscriptions.push(this.listenForDateChanges());
   }
 
   /**
@@ -173,6 +177,37 @@ export class ClrDateContainer extends ClrAbstractContainer implements AfterViewI
     return (
       (this.control && this.control.disabled) || (this.dateFormControlService && this.dateFormControlService.disabled)
     );
+  }
+
+  /**
+   * Return the label for the toggle button.
+   * If there's a selected date, the date is included in the label.
+   */
+  private getToggleButtonLabel(day: DayModel): string {
+    if (day) {
+      const formattedDate = this.dateIOService.toLocaleDisplayFormatString(day.toDate());
+
+      return (
+        this.commonStrings.parse(this.commonStrings.keys.datepickerToggleChangeDateLabel, {
+          SELECTED_DATE: formattedDate,
+        }) || this.commonStrings.keys.datepickerToggle
+      );
+    }
+    return this.commonStrings.keys.datepickerToggleChooseDateLabel || this.commonStrings.keys.datepickerToggle;
+  }
+
+  private listenForDateChanges() {
+    // because date-input.ts initializes the input in ngAfterViewInit,
+    // using a databound attribute to change the button labels results in ExpressionChangedAfterItHasBeenCheckedError.
+    // so instead, update the attribute directly on the element
+    return this.dateNavigationService.selectedDayChange
+      .pipe(startWith(this.dateNavigationService.selectedDay))
+      .subscribe(day => {
+        const label = this.getToggleButtonLabel(day);
+        const toggleEl = this.toggleButton.nativeElement;
+        this.renderer.setAttribute(toggleEl, 'aria-label', label);
+        this.renderer.setAttribute(toggleEl, 'title', label);
+      });
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -127,6 +127,15 @@ export default function () {
         const dayBtn: HTMLButtonElement = context.clarityElement.children[0];
         const dvm: DayViewModel = context.clarityDirective.dayView;
         expect(dayBtn.attributes['aria-label'].value).toEqual(dvm.dayModel.toDateString());
+      });
+
+      it('sets aria-selected when the date is selected', () => {
+        const button: HTMLButtonElement = context.clarityElement.children[0];
+        expect(button.attributes['aria-selected'].value).toBe('false');
+        context.testComponent.dayView.isSelected = true;
+
+        context.detectChanges();
+        expect(button.attributes['aria-selected'].value).toBe('true');
       });
 
       it('updates the focusable date when a button is focused', () => {

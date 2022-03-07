@@ -398,6 +398,8 @@ export interface ClrCommonStrings {
     datepickerSelectMonthText: string;
     datepickerSelectYearText: string;
     datepickerToggle: string;
+    datepickerToggleChangeDateLabel: string;
+    datepickerToggleChooseDateLabel: string;
     delete?: string;
     detailExpandableAriaLabel: string;
     detailPaneEnd: string;
@@ -878,7 +880,8 @@ export declare class ClrDateContainer extends ClrAbstractContainer implements Af
     protected ngControlService: NgControlService;
     get open(): boolean;
     get popoverPosition(): ClrPopoverPosition;
-    constructor(toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
+    protected renderer: Renderer2;
+    constructor(renderer: Renderer2, toggleService: ClrPopoverToggleService, dateNavigationService: DateNavigationService, datepickerEnabledService: DatepickerEnabledService, dateFormControlService: DateFormControlService, dateIOService: DateIOService, commonStrings: ClrCommonStringsService, focusService: FocusService, viewManagerService: ViewManagerService, controlClassService: ControlClassService, layoutService: LayoutService, ngControlService: NgControlService, ifControlStateService: IfControlStateService);
     ngAfterViewInit(): void;
 }
 

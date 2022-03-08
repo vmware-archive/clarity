@@ -10,3 +10,7 @@
 
   --card-remove-margin: var(--cds-global-space-8);
 }
+
+::slotted([cds-card-remove-margin]) {
+  --color: #{$cds-alias-object-container-border-color};
+}

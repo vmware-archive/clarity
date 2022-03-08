@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -24,6 +24,7 @@ import {
   spanWrapper,
   isFocusable,
   queryChildFromLightOrShadowDom,
+  coerceBooleanProperty,
 } from './dom.js';
 
 /** @element test-dom-spec-element */
@@ -590,6 +591,18 @@ describe('Functional Helper: ', () => {
       expect(el).not.toBeNull();
       expect(el.id).toBe('found');
       removeTestElement(nonShadyHost);
+    });
+  });
+
+  describe('coerceBooleanProperty():', () => {
+    it('should coerse a value to a boolean', () => {
+      expect(coerceBooleanProperty(null)).toBe(false);
+      expect(coerceBooleanProperty(undefined)).toBe(false);
+      expect(coerceBooleanProperty(false)).toBe(false);
+      expect(coerceBooleanProperty(true)).toBe(true);
+      expect(coerceBooleanProperty('false')).toBe(false);
+      expect(coerceBooleanProperty('true')).toBe(true);
+      expect(coerceBooleanProperty('')).toBe(true);
     });
   });
 });

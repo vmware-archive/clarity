@@ -10,6 +10,7 @@ import { camelCaseToKebabCase, kebabCaseToPascalCase, capitalizeFirstLetter } fr
 import { LogService } from '../services/log.service.js';
 import { getAngularVersion, getReactVersion, getVueVersion } from '../utils/framework.js';
 import { isNilOrEmpty } from '../utils/identity.js';
+import { coerceBooleanProperty } from '../utils/dom.js';
 
 export interface CustomPropertyConfig {
   type: unknown;
@@ -49,7 +50,7 @@ export function getDefaultOptions(propertyKey: string, options?: PropertyConfig)
           // Mimic standard HTML boolean attributes + support "false" attribute values
           // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes
           toAttribute: (value: string) => (value ? '' : null),
-          fromAttribute: (value: string) => value !== 'false' && value !== null,
+          fromAttribute: (value: string) => coerceBooleanProperty(value),
         },
         ...options,
       };

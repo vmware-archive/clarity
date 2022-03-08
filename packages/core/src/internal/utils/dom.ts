@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -165,4 +165,11 @@ export function queryChildFromLightOrShadowDom(hostEl: Element, selector?: strin
   }
 
   return hostEl.querySelector(selector) || hostEl?.shadowRoot?.querySelector(selector) || null;
+}
+
+export type BooleanProperty = string | boolean | null | undefined;
+
+/** Coerces attribute/property value to a boolean */
+export function coerceBooleanProperty(value: any): boolean {
+  return value !== null && value !== undefined && `${value}` !== 'false';
 }

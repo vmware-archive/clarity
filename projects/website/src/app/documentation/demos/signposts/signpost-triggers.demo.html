@@ -3,7 +3,9 @@
     <div class="signpost-item">
       <h6>Clarity Icon</h6>
       <clr-signpost>
-        <clr-icon shape="avatar" class="is-solid has-badge-info" clrSignpostTrigger> </clr-icon>
+        <button class="btn btn-link btn-icon" aria-label="Icon Button Trigger" clrSignpostTrigger>
+          <clr-icon shape="avatar" class="is-solid has-badge-info"> </clr-icon>
+        </button>
         <clr-signpost-content *clrIfOpen [clrPosition]="'bottom-middle'"> Lorem ipsum... </clr-signpost-content>
       </clr-signpost>
     </div>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -26,10 +26,10 @@ export class SignpostTriggersDemo extends ClarityDocComponent {
         <div class="signpost-item">
             <h6>Clarity Icon</h6>
             <clr-signpost>
-                <clr-icon shape="avatar" 
-                          class="is-solid has-badge-info" 
-                          clrSignpostTrigger>
-                </clr-icon>
+                <button class="btn btn-link btn-icon" aria-label="Icon Button Trigger" clrSignpostTrigger>
+                    <clr-icon shape="avatar" class="is-solid has-badge-info">
+                    </clr-icon>
+                </button>
                 <clr-signpost-content [clrPosition]="'bottom-middle'" *clrIfOpen>
                     Lorem ipsum...
                 </clr-signpost-content>

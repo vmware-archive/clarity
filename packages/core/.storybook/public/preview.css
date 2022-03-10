@@ -116,6 +116,10 @@ pre.prismjs {
   background: var(--cds-global-color-gray-50) !important;
 }
 
+.docs-story [class*='css-'] {
+  height: unset;
+}
+
 .docs-story > div:last-child button {
   background: var(--cds-alias-object-container-background) !important;
   color: var(--cds-global-typography-color-500) !important;

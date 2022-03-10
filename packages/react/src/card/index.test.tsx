@@ -1,24 +1,32 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsCard } from './index';
 
 describe('CdsCard', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsCard>Placeholder</CdsCard>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsCard>
+        <div cds-layout="vertical gap:md">
+          <h2 id="myCardTitle" cds-text="section">
+            Card Title
+          </h2>
+        </div>
+      </CdsCard>
     );
-    const renderedComponent = wrapper.find(CdsCard);
-    expect(renderedComponent.at(0).html()).toMatch(/Placeholder/);
+    expect(await screen.findByRole('region'));
+    expect(await screen.findByRole('heading', { name: 'Card Title' }));
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsCard>Placeholder</CdsCard>
-      </div>
+    const { container } = render(
+      <CdsCard>
+        <div cds-layout="vertical gap:md">
+          <h2 id="myCardTitle" cds-text="section">
+            Card Title
+          </h2>
+        </div>
+      </CdsCard>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

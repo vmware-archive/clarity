@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsProgressCircle } from './index';
 
 describe('CdsProgressCircle', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
+  it('renders', async () => {
+    render(
+      <>
         <CdsProgressCircle status="info" value={49}></CdsProgressCircle>
         <CdsProgressCircle value={0}></CdsProgressCircle>
         <CdsProgressCircle status="success" value={100}></CdsProgressCircle>
-      </div>
+      </>
     );
-    const renderedComponent = wrapper.find(CdsProgressCircle);
-    expect(renderedComponent.at(0)).toBeDefined();
-    expect(renderedComponent.at(1)).toBeDefined();
-    expect(renderedComponent.at(2)).toBeDefined();
+    expect(document.querySelectorAll('cds-progress-circle')).toHaveLength(3);
+    expect(await screen.findAllByRole('img')).toHaveLength(3);
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
+    const { container } = render(
+      <>
         <CdsProgressCircle status="info" value={49}></CdsProgressCircle>
         <CdsProgressCircle value={0}></CdsProgressCircle>
         <CdsProgressCircle status="success" value={100}></CdsProgressCircle>
-      </div>
+      </>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

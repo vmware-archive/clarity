@@ -2,16 +2,20 @@
 
 exports[`CdsCard snapshot 1`] = `
 <div>
-  <CdsCard>
-    <CdsCard
-      l={null}
+  <cds-card
+    role="region"
+  >
+    <style />
+    <div
+      cds-layout="vertical gap:md"
     >
-      <cds-card
-        l={null}
+      <h2
+        cds-text="section"
+        id="myCardTitle"
       >
-        Placeholder
-      </cds-card>
-    </CdsCard>
-  </CdsCard>
+        Card Title
+      </h2>
+    </div>
+  </cds-card>
 </div>
 `;

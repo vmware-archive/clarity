@@ -1,30 +1,25 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CdsCheckboxPanel } from './index';
 
 describe('CdsCheckboxPanel', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsCheckboxPanel>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsCheckboxPanel>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsCheckboxPanel>
+        <label>Hello</label>
+        <input type="checkbox" />
+      </CdsCheckboxPanel>
     );
-    const renderedComponent = wrapper.find('CdsCheckboxPanel');
-    expect(renderedComponent.html()).toMatch(/Hello/);
+    expect(document.querySelector('cds-checkbox')).toHaveTextContent(/Hello/i);
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsCheckboxPanel>
-          <label>Hello</label>
-          <input type="checkbox" />
-        </CdsCheckboxPanel>
-      </div>
+    const { container } = render(
+      <CdsCheckboxPanel>
+        <label>Hello</label>
+        <input type="checkbox" />
+      </CdsCheckboxPanel>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

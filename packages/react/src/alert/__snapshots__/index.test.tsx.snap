@@ -2,95 +2,43 @@
 
 exports[`CdsAlert snapshot 1`] = `
 <div>
-  <CdsAlert
-    status="success"
-  >
-    <CdsAlert
-      l={null}
-      status="success"
+  <div>
+    <cds-alert
+      aria-describedby="_75380t13p"
+      role="region"
+    >
+      Foo
+    </cds-alert>
+    <cds-alert-group
+      role="region"
     >
       <cds-alert
-        l={null}
+        aria-describedby="_dklm69g43"
+        role="region"
       >
-        Foo
+        Bar
+        <cds-alert-actions
+          slot="actions"
+        >
+          Baz
+        </cds-alert-actions>
       </cds-alert>
-    </CdsAlert>
-  </CdsAlert>
-  <CdsAlertGroup
-    status="info"
-  >
-    <CdsAlertGroup
-      l={null}
-      status="info"
+    </cds-alert-group>
+    <cds-alert-group
+      role="region"
     >
-      <cds-alert-group
-        l={null}
+      <cds-alert
+        aria-describedby="_8d5fvsv02"
+        role="region"
       >
-        <CdsAlert
-          closable={true}
+        Foobar
+        <cds-alert-actions
+          slot="actions"
         >
-          <CdsAlert
-            closable={true}
-            l={null}
-          >
-            <cds-alert
-              l={null}
-            >
-              Bar
-              <CdsAlertActions>
-                <CdsAlertActions
-                  l={null}
-                >
-                  <cds-alert-actions
-                    l={null}
-                  >
-                    Baz
-                  </cds-alert-actions>
-                </CdsAlertActions>
-              </CdsAlertActions>
-            </cds-alert>
-          </CdsAlert>
-        </CdsAlert>
-      </cds-alert-group>
-    </CdsAlertGroup>
-  </CdsAlertGroup>
-  <CdsAlertGroup
-    type="banner"
-  >
-    <CdsAlertGroup
-      l={null}
-      type="banner"
-    >
-      <cds-alert-group
-        l={null}
-      >
-        <CdsAlert
-          status="info"
-        >
-          <CdsAlert
-            l={null}
-            status="info"
-          >
-            <cds-alert
-              l={null}
-            >
-              Foobar
-              <CdsAlertActions>
-                <CdsAlertActions
-                  l={null}
-                >
-                  <cds-alert-actions
-                    l={null}
-                  >
-                    Test
-                  </cds-alert-actions>
-                </CdsAlertActions>
-              </CdsAlertActions>
-            </cds-alert>
-          </CdsAlert>
-        </CdsAlert>
-      </cds-alert-group>
-    </CdsAlertGroup>
-  </CdsAlertGroup>
+          Test
+        </cds-alert-actions>
+      </cds-alert>
+    </cds-alert-group>
+  </div>
 </div>
 `;

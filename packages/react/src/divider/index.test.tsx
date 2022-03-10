@@ -1,16 +1,11 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CdsDivider } from './index';
 
 describe('CdsDivider', () => {
   it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsDivider></CdsDivider>
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsDivider);
-    expect(renderedComponent).toBeDefined();
+    render(<CdsDivider></CdsDivider>);
+    expect(document.querySelector('cds-divider')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
@@ -18,7 +13,7 @@ describe('CdsDivider', () => {
       height: '140px',
       marginTop: '24px',
     };
-    const wrapper = mount(
+    const { container } = render(
       <div>
         <CdsDivider></CdsDivider>
         <div style={vertDivStyle}>
@@ -26,6 +21,6 @@ describe('CdsDivider', () => {
         </div>
       </div>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

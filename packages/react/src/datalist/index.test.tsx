@@ -1,40 +1,37 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsDatalist } from './index';
 
 describe('CdsDatalist', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsDatalist>
-          <label>datalist</label>
-          <input placeholder="placeholder text" />
-          <datalist>
-            <option value="Item 1"></option>
-            <option value="Item 2"></option>
-            <option value="Item 3"></option>
-          </datalist>
-        </CdsDatalist>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsDatalist>
+        <label htmlFor="my-input">My datalist</label>
+        <input id="my-input" list="my-list" placeholder="placeholder text" />
+        <datalist id="my-list">
+          <option value="Item 1"></option>
+          <option value="Item 2"></option>
+          <option value="Item 3"></option>
+        </datalist>
+      </CdsDatalist>
     );
-    const renderedComponent = wrapper.find(CdsDatalist);
-    expect(renderedComponent.html()).toMatch(/datalist/);
+    expect(await screen.getByLabelText('My datalist')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
+    const { container } = render(
+      <CdsDatalist>
         <CdsDatalist>
-          <label>datalist</label>
-          <input placeholder="placeholder text" />
-          <datalist>
+          <label htmlFor="my-input">datalist</label>
+          <input id="my-input" list="my-list" placeholder="placeholder text" />
+          <datalist id="my-list">
             <option value="Item 1"></option>
             <option value="Item 2"></option>
             <option value="Item 3"></option>
           </datalist>
         </CdsDatalist>
-      </div>
+      </CdsDatalist>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

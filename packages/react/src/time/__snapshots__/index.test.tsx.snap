@@ -2,39 +2,25 @@
 
 exports[`CdsTime snapshot 1`] = `
 <div>
-  <c
+  <cds-time
+    cds-control=""
     control-width="shrink"
   >
-    <c
-      control-width="shrink"
-      l={null}
+    <style />
+    <label>
+      Time input
+    </label>
+    <input
+      max="18:00"
+      min="09:00"
+      type="time"
+      value="11:00"
+    />
+    <cds-control-message
+      slot="message"
     >
-      <cds-time
-        control-width="shrink"
-        l={null}
-      >
-        <label>
-          Time input
-        </label>
-        <input
-          defaultValue="11:00"
-          max="18:00"
-          min="09:00"
-          type="time"
-        />
-        <n>
-          <n
-            l={null}
-          >
-            <cds-control-message
-              l={null}
-            >
-              message text
-            </cds-control-message>
-          </n>
-        </n>
-      </cds-time>
-    </c>
-  </c>
+      message text
+    </cds-control-message>
+  </cds-time>
 </div>
 `;

@@ -2,32 +2,38 @@
 
 exports[`CdsDatalist snapshot 1`] = `
 <div>
-  <CdsDatalist>
-    <CdsDatalist
-      l={null}
+  <cds-datalist
+    cds-control=""
+  >
+    <style />
+    <cds-datalist
+      cds-control=""
     >
-      <cds-datalist
-        l={null}
+      <style />
+      <label
+        for="my-input"
       >
-        <label>
-          datalist
-        </label>
-        <input
-          placeholder="placeholder text"
+        datalist
+      </label>
+      <input
+        id="my-input"
+        list="my-list"
+        placeholder="placeholder text"
+      />
+      <datalist
+        id="my-list"
+      >
+        <option
+          value="Item 1"
         />
-        <datalist>
-          <option
-            value="Item 1"
-          />
-          <option
-            value="Item 2"
-          />
-          <option
-            value="Item 3"
-          />
-        </datalist>
-      </cds-datalist>
-    </CdsDatalist>
-  </CdsDatalist>
+        <option
+          value="Item 2"
+        />
+        <option
+          value="Item 3"
+        />
+      </datalist>
+    </cds-datalist>
+  </cds-datalist>
 </div>
 `;

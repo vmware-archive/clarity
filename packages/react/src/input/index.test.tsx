@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsInput, CdsInputGroup } from './index';
 
 describe('CdsInput', () => {
-  it('renders', () => {
-    const wrapper = shallow(
+  it('renders', async () => {
+    render(
       <div>
         <CdsInputGroup>
           <CdsInput layout="vertical">
             <label>label</label>
-            <input placeholder="name" />
+            <input placeholder="placeholder" />
           </CdsInput>
           <CdsInput layout="vertical">
             <label>disabled</label>
@@ -18,26 +18,24 @@ describe('CdsInput', () => {
         </CdsInputGroup>
       </div>
     );
-    const renderedComponent = wrapper.find(CdsInput);
-    expect(renderedComponent.at(0).html()).toMatch(/label/);
-    expect(renderedComponent.at(1).html()).toMatch(/disabled/);
+
+    expect(await screen.findByPlaceholderText('placeholder')).toBeInTheDocument();
+    expect(await screen.findByLabelText('disabled')).toBeDisabled();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsInputGroup>
-          <CdsInput layout="vertical">
-            <label>label</label>
-            <input placeholder="name" />
-          </CdsInput>
-          <CdsInput layout="vertical">
-            <label>disabled</label>
-            <input placeholder="name" disabled />
-          </CdsInput>
-        </CdsInputGroup>
-      </div>
+    const { container } = render(
+      <CdsInputGroup>
+        <CdsInput layout="vertical">
+          <label>label</label>
+          <input placeholder="name" />
+        </CdsInput>
+        <CdsInput layout="vertical">
+          <label>disabled</label>
+          <input placeholder="name" disabled />
+        </CdsInput>
+      </CdsInputGroup>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

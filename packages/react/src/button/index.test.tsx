@@ -1,37 +1,36 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsButton } from './index';
 
 describe('CdsButton', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
+  it('renders', async () => {
+    render(
+      <>
         <CdsButton status="primary">primary</CdsButton>
         <CdsButton status="success">success</CdsButton>
         <CdsButton status="danger">danger</CdsButton>
         <CdsButton status="danger" disabled>
           disabled
         </CdsButton>
-      </div>
+      </>
     );
-    const renderedComponent = wrapper.find(CdsButton);
-    expect(renderedComponent.at(0).html()).toMatch(/primary/);
-    expect(renderedComponent.at(1).html()).toMatch(/success/);
-    expect(renderedComponent.at(2).html()).toMatch(/danger/);
-    expect(renderedComponent.at(3).html()).toMatch(/disabled/);
+
+    expect(await screen.findByRole('button', { name: 'primary' })).toHaveAttribute('status', 'primary');
+    expect(await screen.findByRole('button', { name: 'success' })).toHaveAttribute('status', 'success');
+    expect(await screen.findByRole('button', { name: 'disabled' })).toHaveAttribute('disabled', '');
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
+    const { container } = render(
+      <>
         <CdsButton status="primary">primary</CdsButton>
         <CdsButton status="success">success</CdsButton>
         <CdsButton status="danger">danger</CdsButton>
         <CdsButton status="danger" disabled>
           disabled
         </CdsButton>
-      </div>
+      </>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

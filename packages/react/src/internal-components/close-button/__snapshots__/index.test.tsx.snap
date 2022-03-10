@@ -2,14 +2,6 @@
 
 exports[`CdsInternalCloseButton snapshot 1`] = `
 <div>
-  <CdsInternalCloseButton>
-    <CdsInternalCloseButton
-      l={null}
-    >
-      <cds-internal-close-button
-        l={null}
-      />
-    </CdsInternalCloseButton>
-  </CdsInternalCloseButton>
+  <cds-internal-close-button />
 </div>
 `;

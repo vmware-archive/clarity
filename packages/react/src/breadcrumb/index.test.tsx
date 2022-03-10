@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsBreadcrumb } from './index';
 
 describe('CdsBreadcrumb', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsBreadcrumb>
-          <a href="#">link 1</a>
-          <a href="#">link 2</a>
-        </CdsBreadcrumb>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsBreadcrumb>
+        <a href="#">link 1</a>
+        <a href="#">link 2</a>
+      </CdsBreadcrumb>
     );
-    const renderedComponent = wrapper.find(CdsBreadcrumb);
-    expect(renderedComponent.at(0).html()).toMatch(/link 1/);
+
+    expect(await screen.findByRole('navigation')).toBeInTheDocument();
+    expect(screen.getAllByRole('link')).toHaveLength(2);
+    expect(screen.getByRole('link', { name: 'link 2' }));
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsBreadcrumb>
-          <a href="#">link 1</a>
-          <a href="#">link 2</a>
-        </CdsBreadcrumb>
-      </div>
+    const { container } = render(
+      <CdsBreadcrumb>
+        <a href="#">link 1</a>
+        <a href="#">link 2</a>
+      </CdsBreadcrumb>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,30 +1,26 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsFile } from './index';
 
 describe('CdsFile', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsFile layout="vertical">
-          <label>File</label>
-          <input type="file" multiple />
-        </CdsFile>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsFile layout="vertical">
+        <label>File</label>
+        <input type="file" multiple />
+      </CdsFile>
     );
-    const renderedComponent = wrapper.find(CdsFile);
-    expect(renderedComponent.html()).toMatch(/File/);
+
+    expect(await screen.findByLabelText('File')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsFile layout="vertical">
-          <label>label</label>
-          <input type="file" multiple />
-        </CdsFile>
-      </div>
+    const { container } = render(
+      <CdsFile layout="vertical">
+        <label>label</label>
+        <input type="file" multiple />
+      </CdsFile>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

@@ -1,24 +1,16 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { CdsInternalPanel } from './index';
 
 describe('CdsInternalPanel', () => {
   it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsInternalPanel>Hello!</CdsInternalPanel>
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsInternalPanel);
-    expect(renderedComponent.at(0).html()).toMatch('Hello!');
+    render(<CdsInternalPanel>Hello!</CdsInternalPanel>);
+
+    expect(document.querySelector('cds-internal-panel')).toHaveTextContent('Hello!');
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsInternalPanel>Hello!</CdsInternalPanel>
-      </div>
-    );
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<CdsInternalPanel>Hello!</CdsInternalPanel>);
+    expect(container).toMatchSnapshot();
   });
 });

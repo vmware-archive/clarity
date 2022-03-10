@@ -2,231 +2,101 @@
 
 exports[`CdsTextarea snapshot 1`] = `
 <div>
-  <h3>
-    Vertical
-  </h3>
-  <m
-    layout="vertical"
-  >
-    <m
-      l={null}
-      layout="vertical"
-    >
-      <cds-form-group
-        l={null}
+  <div>
+    <h3>
+      Vertical
+    </h3>
+    <cds-form-group>
+      <cds-textarea
+        cds-control=""
+        layout="vertical"
       >
-        <CdsTextarea
-          layout="vertical"
+        <label>
+          label
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
         >
-          <CdsTextarea
-            l={null}
-            layout="vertical"
-          >
-            <cds-textarea
-              l={null}
-              layout="vertical"
-            >
-              <label>
-                label
-              </label>
-              <textarea />
-              <n>
-                <n
-                  l={null}
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    message text
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-        <CdsTextarea
-          layout="vertical"
-          status="error"
-        >
-          <CdsTextarea
-            l={null}
-            layout="vertical"
-            status="error"
-          >
-            <cds-textarea
-              l={null}
-              layout="vertical"
-            >
-              <label>
-                error status
-              </label>
-              <textarea />
-              <n
-                status="error"
-              >
-                <n
-                  l={null}
-                  status="error"
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    error message
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-        <CdsTextarea
-          layout="vertical"
-          status="success"
-        >
-          <CdsTextarea
-            l={null}
-            layout="vertical"
-            status="success"
-          >
-            <cds-textarea
-              l={null}
-              layout="vertical"
-            >
-              <label>
-                success status
-              </label>
-              <textarea />
-              <n
-                status="success"
-              >
-                <n
-                  l={null}
-                  status="success"
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    success message
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-      </cds-form-group>
-    </m>
-  </m>
-  <h3>
-    Horizontal
-  </h3>
-  <m
-    layout="horizontal"
-  >
-    <m
-      l={null}
-      layout="horizontal"
-    >
-      <cds-form-group
-        l={null}
+          message text
+        </cds-control-message>
+      </cds-textarea>
+      <cds-textarea
+        cds-control=""
+        layout="vertical"
       >
-        <CdsTextarea
-          layout="horizontal"
+        <label>
+          error status
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
         >
-          <CdsTextarea
-            l={null}
-            layout="horizontal"
-          >
-            <cds-textarea
-              l={null}
-              layout="horizontal"
-            >
-              <label>
-                label
-              </label>
-              <textarea />
-              <n>
-                <n
-                  l={null}
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    message text
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-        <CdsTextarea
-          layout="horizontal"
-          status="error"
+          error message
+        </cds-control-message>
+      </cds-textarea>
+      <cds-textarea
+        cds-control=""
+        layout="vertical"
+      >
+        <label>
+          success status
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
         >
-          <CdsTextarea
-            l={null}
-            layout="horizontal"
-            status="error"
-          >
-            <cds-textarea
-              l={null}
-              layout="horizontal"
-            >
-              <label>
-                error status
-              </label>
-              <textarea />
-              <n
-                status="error"
-              >
-                <n
-                  l={null}
-                  status="error"
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    error message
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-        <CdsTextarea
-          layout="horizontal"
-          status="success"
+          success message
+        </cds-control-message>
+      </cds-textarea>
+    </cds-form-group>
+    <h3>
+      Horizontal
+    </h3>
+    <cds-form-group>
+      <cds-textarea
+        cds-control=""
+        layout="horizontal"
+      >
+        <label>
+          label
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
         >
-          <CdsTextarea
-            l={null}
-            layout="horizontal"
-            status="success"
-          >
-            <cds-textarea
-              l={null}
-              layout="horizontal"
-            >
-              <label>
-                success status
-              </label>
-              <textarea />
-              <n
-                status="success"
-              >
-                <n
-                  l={null}
-                  status="success"
-                >
-                  <cds-control-message
-                    l={null}
-                  >
-                    success message
-                  </cds-control-message>
-                </n>
-              </n>
-            </cds-textarea>
-          </CdsTextarea>
-        </CdsTextarea>
-      </cds-form-group>
-    </m>
-  </m>
+          message text
+        </cds-control-message>
+      </cds-textarea>
+      <cds-textarea
+        cds-control=""
+        layout="horizontal"
+      >
+        <label>
+          error status
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
+        >
+          error message
+        </cds-control-message>
+      </cds-textarea>
+      <cds-textarea
+        cds-control=""
+        layout="horizontal"
+      >
+        <label>
+          success status
+        </label>
+        <textarea />
+        <cds-control-message
+          slot="message"
+        >
+          success message
+        </cds-control-message>
+      </cds-textarea>
+    </cds-form-group>
+  </div>
 </div>
 `;

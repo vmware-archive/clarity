@@ -1,24 +1,16 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsButtonInline } from './index';
 
 describe('CdsButtonInline', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsButtonInline></CdsButtonInline>
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsButtonInline);
-    expect(renderedComponent.at(0).html()).toMatch(/cds-button-inline/);
+  it('renders', async () => {
+    render(<CdsButtonInline></CdsButtonInline>);
+
+    expect(await screen.findByRole('button')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsButtonInline></CdsButtonInline>
-      </div>
-    );
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<CdsButtonInline></CdsButtonInline>);
+    expect(container).toMatchSnapshot();
   });
 });

@@ -2,37 +2,15 @@
 
 exports[`CdsTag snapshot 1`] = `
 <div>
-  <CdsTag
-    readonly={true}
-    status="info"
+  <cds-tag
+    tabindex="0"
   >
-    <CdsTag
-      l={null}
-      readonly={true}
-      status="info"
-    >
-      <cds-tag
-        l={null}
-      >
-        Info
-      </cds-tag>
-    </CdsTag>
-  </CdsTag>
-  <CdsTag
-    readonly={true}
-    status="success"
+    Info
+  </cds-tag>
+  <cds-tag
+    tabindex="0"
   >
-    <CdsTag
-      l={null}
-      readonly={true}
-      status="success"
-    >
-      <cds-tag
-        l={null}
-      >
-        Success
-      </cds-tag>
-    </CdsTag>
-  </CdsTag>
+    Success
+  </cds-tag>
 </div>
 `;

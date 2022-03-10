@@ -1,24 +1,16 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsInternalOverlay } from './index';
 
 describe('CdsInternalOverlay', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsInternalOverlay>Internal Overlay</CdsInternalOverlay>
-      </div>
-    );
-    const renderedComponent = wrapper.find(CdsInternalOverlay);
-    expect(renderedComponent.at(0).html()).toMatch(/Internal Overlay/);
+  it('renders', async () => {
+    render(<CdsInternalOverlay>Internal Overlay</CdsInternalOverlay>);
+
+    expect(await screen.findByText('Internal Overlay')).toHaveAttribute('aria-modal', 'true');
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsInternalOverlay>Internal Overlay</CdsInternalOverlay>
-      </div>
-    );
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<CdsInternalOverlay>Internal Overlay</CdsInternalOverlay>);
+    expect(container).toMatchSnapshot();
   });
 });

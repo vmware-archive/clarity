@@ -1,35 +1,32 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsAccordion, CdsAccordionPanel, CdsAccordionHeader, CdsAccordionContent } from './index';
 
 describe('CdsAccordion', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsAccordion>
-          <CdsAccordionPanel expanded>
-            <CdsAccordionHeader>Item 1</CdsAccordionHeader>
-            <CdsAccordionContent>Content 1</CdsAccordionContent>
-          </CdsAccordionPanel>
-        </CdsAccordion>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsAccordion>
+        <CdsAccordionPanel expanded>
+          <CdsAccordionHeader>Item 1</CdsAccordionHeader>
+          <CdsAccordionContent>Content 1</CdsAccordionContent>
+        </CdsAccordionPanel>
+      </CdsAccordion>
     );
-    const renderedComponent = wrapper.find(CdsAccordion);
-    expect(renderedComponent.at(0).html()).toMatch(/Item 1/);
-    expect(renderedComponent.at(0).html()).toMatch(/Content 1/);
+
+    expect(await document.querySelector('cds-accordion')).toBeInTheDocument();
+    expect(await screen.findByText(/item 1/i)).toBeInTheDocument();
+    expect(await screen.findByText(/content 1/i)).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
-        <CdsAccordion>
-          <CdsAccordionPanel expanded>
-            <CdsAccordionHeader>Item 1</CdsAccordionHeader>
-            <CdsAccordionContent>Content 1</CdsAccordionContent>
-          </CdsAccordionPanel>
-        </CdsAccordion>
-      </div>
+    const { container } = render(
+      <CdsAccordion>
+        <CdsAccordionPanel expanded>
+          <CdsAccordionHeader id="my-header">Item 1</CdsAccordionHeader>
+          <CdsAccordionContent id="my-content">Content 1</CdsAccordionContent>
+        </CdsAccordionPanel>
+      </CdsAccordion>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

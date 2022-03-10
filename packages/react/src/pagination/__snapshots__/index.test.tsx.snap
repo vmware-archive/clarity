@@ -1,50 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CdsPagination snapshot 1`] = `
-<CdsPagination
-  aria-label="pagination"
->
-  <CdsPagination
+<div>
+  <cds-pagination
     aria-label="pagination"
-    l={null}
   >
-    <cds-pagination
-      aria-label="pagination"
-      l={null}
-    >
-      <CdsPaginationButton
-        action="prev"
-        aria-label="go to first"
-        disabled={true}
-      >
-        <CdsPaginationButton
-          action="prev"
-          aria-label="go to first"
-          disabled={true}
-          l={null}
-        >
-          <cds-pagination-button
-            aria-label="go to first"
-            l={null}
-          />
-        </CdsPaginationButton>
-      </CdsPaginationButton>
-      <CdsPaginationButton
-        action="next"
-        aria-label="go to next"
-      >
-        <CdsPaginationButton
-          action="next"
-          aria-label="go to next"
-          l={null}
-        >
-          <cds-pagination-button
-            aria-label="go to next"
-            l={null}
-          />
-        </CdsPaginationButton>
-      </CdsPaginationButton>
-    </cds-pagination>
-  </CdsPagination>
-</CdsPagination>
+    <style />
+    <cds-pagination-button
+      aria-label="go to first"
+      tabindex="0"
+    />
+    <cds-pagination-button
+      aria-label="go to next"
+      tabindex="0"
+    />
+  </cds-pagination>
+</div>
 `;

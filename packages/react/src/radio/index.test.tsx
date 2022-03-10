@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsRadio, CdsRadioGroup } from './index';
 
 describe('CdsRadio', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
+  it('renders', async () => {
+    render(
+      <>
         <CdsRadioGroup>
           <label>radio group</label>
           <CdsRadio>
@@ -23,17 +23,17 @@ describe('CdsRadio', () => {
             <input type="radio" />
           </CdsRadio>
         </CdsRadioGroup>
-      </div>
+      </>
     );
-    const renderedComponent = wrapper.find(CdsRadio);
-    expect(renderedComponent.at(0).html()).toMatch(/radio 1/);
-    expect(renderedComponent.at(1).html()).toMatch(/radio 2/);
-    expect(renderedComponent.at(2).html()).toMatch(/radio 3/);
+
+    expect(document.querySelectorAll('cds-radio')).toHaveLength(3);
+    expect(await screen.findByLabelText(/radio group/i)).toBeInTheDocument();
+    expect(await screen.findByLabelText(/radio 1/i)).toBeChecked();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
+    const { container } = render(
+      <>
         <CdsRadioGroup>
           <label>radio group</label>
           <CdsRadio>
@@ -51,8 +51,8 @@ describe('CdsRadio', () => {
             <input type="radio" />
           </CdsRadio>
         </CdsRadioGroup>
-      </div>
+      </>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

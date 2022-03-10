@@ -1,33 +1,31 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsSelect } from './index';
 import { CdsFormGroup, CdsControlMessage } from '../forms/index';
 
 describe('CdsSelect', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
-        <CdsFormGroup>
-          <CdsSelect>
-            <label>label</label>
-            <select>
-              <option>option one</option>
-              <option>option two</option>
-              <option>option three</option>
-            </select>
-            <CdsControlMessage>message text</CdsControlMessage>
-          </CdsSelect>
-        </CdsFormGroup>
-      </div>
+  it('renders', async () => {
+    render(
+      <CdsFormGroup>
+        <CdsSelect>
+          <label>label</label>
+          <select>
+            <option>option one</option>
+            <option>option two</option>
+            <option>option three</option>
+          </select>
+          <CdsControlMessage>message text</CdsControlMessage>
+        </CdsSelect>
+      </CdsFormGroup>
     );
 
-    const renderedComponent = wrapper.find(CdsSelect);
-    expect(renderedComponent.at(0).html()).toMatch(/label/);
-    expect(renderedComponent.at(0).html()).toMatch(/message text/);
+    expect(await screen.findByLabelText(/label/i)).toBeInTheDocument();
+    expect(await screen.findByText(/message text/i)).toBeInTheDocument();
+    expect(await screen.findAllByRole('option')).toHaveLength(3);
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <div>
         <h3>Selects</h3>
 
@@ -78,6 +76,6 @@ describe('CdsSelect', () => {
       </div>
     );
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

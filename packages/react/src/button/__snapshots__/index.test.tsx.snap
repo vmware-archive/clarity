@@ -2,63 +2,25 @@
 
 exports[`CdsButton snapshot 1`] = `
 <div>
-  <CdsButton
-    status="primary"
+  <cds-button
+    tabindex="0"
   >
-    <CdsButton
-      l={null}
-      status="primary"
-    >
-      <cds-button
-        l={null}
-      >
-        primary
-      </cds-button>
-    </CdsButton>
-  </CdsButton>
-  <CdsButton
-    status="success"
+    primary
+  </cds-button>
+  <cds-button
+    tabindex="0"
   >
-    <CdsButton
-      l={null}
-      status="success"
-    >
-      <cds-button
-        l={null}
-      >
-        success
-      </cds-button>
-    </CdsButton>
-  </CdsButton>
-  <CdsButton
-    status="danger"
+    success
+  </cds-button>
+  <cds-button
+    tabindex="0"
   >
-    <CdsButton
-      l={null}
-      status="danger"
-    >
-      <cds-button
-        l={null}
-      >
-        danger
-      </cds-button>
-    </CdsButton>
-  </CdsButton>
-  <CdsButton
-    disabled={true}
-    status="danger"
+    danger
+  </cds-button>
+  <cds-button
+    tabindex="0"
   >
-    <CdsButton
-      disabled={true}
-      l={null}
-      status="danger"
-    >
-      <cds-button
-        l={null}
-      >
-        disabled
-      </cds-button>
-    </CdsButton>
-  </CdsButton>
+    disabled
+  </cds-button>
 </div>
 `;

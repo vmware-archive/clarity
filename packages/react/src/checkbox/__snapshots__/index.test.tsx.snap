@@ -2,21 +2,18 @@
 
 exports[`CdsCheckbox snapshot 1`] = `
 <div>
-  <CdsCheckbox>
-    <CdsCheckbox
-      l={null}
+  <cds-checkbox
+    cds-control=""
+  >
+    <label
+      for="my-checkbox"
     >
-      <cds-checkbox
-        l={null}
-      >
-        <label>
-          Hello
-        </label>
-        <input
-          type="checkbox"
-        />
-      </cds-checkbox>
-    </CdsCheckbox>
-  </CdsCheckbox>
+      Hello
+    </label>
+    <input
+      id="my-checkbox"
+      type="checkbox"
+    />
+  </cds-checkbox>
 </div>
 `;

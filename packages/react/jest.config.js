@@ -2,7 +2,7 @@ module.exports = {
   roots: ['./'],
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.test.json',
+      tsconfig: 'tsconfig.test.json',
     },
   },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
@@ -12,7 +12,7 @@ module.exports = {
     '.*(utils/index.js)$': '<rootDir>/dist/react/utils/index.js',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
+  testEnvironment: 'jest-environment-jsdom',
   testMatch: ['**/__tests__/**/*.+(ts|tsx|js)', '**/?(*.)+(test).+(ts|tsx|js)'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',

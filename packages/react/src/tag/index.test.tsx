@@ -1,35 +1,35 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsTag } from './index';
 
 describe('CdsTag', () => {
-  it('renders', () => {
-    const wrapper = shallow(
-      <div>
+  it('renders', async () => {
+    render(
+      <>
         <CdsTag readonly status="info">
           Info
         </CdsTag>
         <CdsTag readonly status="success">
           Success
         </CdsTag>
-      </div>
+      </>
     );
-    const renderedComponent = wrapper.find(CdsTag);
-    expect(renderedComponent.at(0).html()).toMatch(/Info/);
-    expect(renderedComponent.at(1).html()).toMatch(/Success/);
+    expect(document.querySelectorAll('cds-tag')).toHaveLength(2);
+    expect(await screen.findByText(/Info/i)).toHaveAttribute('status', 'info');
+    expect(await screen.findByText(/Success/i)).toHaveAttribute('status', 'success');
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
-      <div>
+    const { container } = render(
+      <>
         <CdsTag readonly status="info">
           Info
         </CdsTag>
         <CdsTag readonly status="success">
           Success
         </CdsTag>
-      </div>
+      </>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

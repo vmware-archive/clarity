@@ -2,14 +2,10 @@
 
 exports[`CdsButtonAction snapshot 1`] = `
 <div>
-  <CdsButtonHandle>
-    <CdsButtonHandle
-      l={null}
-    >
-      <cds-button-handle
-        l={null}
-      />
-    </CdsButtonHandle>
-  </CdsButtonHandle>
+  <cds-button-handle
+    aria-label="resize"
+    cds-draggable="handle"
+    tabindex="0"
+  />
 </div>
 `;

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CdsControl, CdsControlMessage } from './index';
 
 describe('CdsControl', () => {
-  it('renders', () => {
-    const wrapper = shallow(
+  it('renders', async () => {
+    render(
       <div cds-layout="vertical gap:lg">
         <CdsControl layout="compact">
           <label>Foo</label>
@@ -13,13 +13,14 @@ describe('CdsControl', () => {
         </CdsControl>
       </div>
     );
-    const renderedComponent = wrapper.find(CdsControl);
-    expect(renderedComponent.at(0).html()).toMatch(/Foo/);
-    expect(renderedComponent.at(0).html()).toMatch(/message text/);
+
+    expect(await screen.findByLabelText('Foo')).toBeInTheDocument();
+    expect(await screen.findByPlaceholderText('some custom control')).toBeInTheDocument();
+    expect(await screen.findByText('message text')).toBeInTheDocument();
   });
 
   it('snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <div cds-layout="vertical gap:lg">
         <CdsControl layout="compact">
           <label>label</label>
@@ -40,6 +41,6 @@ describe('CdsControl', () => {
         </CdsControl>
       </div>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

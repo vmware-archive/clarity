@@ -1,29 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CdsModal snapshot 1`] = `
+exports[`CdsInternalPopup snapshot 1`] = `
 <div>
-  <CdsInternalPopup>
-    <CdsInternalPopup
-      l={null}
-    >
-      <cds-internal-popup
-        l={null}
-      >
-        <CdsInternalPointer
-          type="angle"
-        >
-          <CdsInternalPointer
-            l={null}
-            type="angle"
-          >
-            <cds-internal-pointer
-              l={null}
-            />
-          </CdsInternalPointer>
-        </CdsInternalPointer>
-        Ohai
-      </cds-internal-popup>
-    </CdsInternalPopup>
-  </CdsInternalPopup>
+  <cds-internal-popup
+    aria-modal="true"
+  >
+    <cds-internal-pointer
+      aria-hidden="true"
+    />
+    Ohai
+  </cds-internal-popup>
 </div>
 `;

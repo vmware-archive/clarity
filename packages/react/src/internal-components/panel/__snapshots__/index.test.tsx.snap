@@ -2,16 +2,8 @@
 
 exports[`CdsInternalPanel snapshot 1`] = `
 <div>
-  <CdsInternalPanel>
-    <CdsInternalPanel
-      l={null}
-    >
-      <cds-internal-panel
-        l={null}
-      >
-        Hello!
-      </cds-internal-panel>
-    </CdsInternalPanel>
-  </CdsInternalPanel>
+  <cds-internal-panel>
+    Hello!
+  </cds-internal-panel>
 </div>
 `;

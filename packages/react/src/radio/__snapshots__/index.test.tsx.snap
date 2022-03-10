@@ -2,67 +2,44 @@
 
 exports[`CdsRadio snapshot 1`] = `
 <div>
-  <CdsRadioGroup>
-    <CdsRadioGroup
-      l={null}
+  <cds-radio-group
+    cds-control-group=""
+    role="group"
+  >
+    <label>
+      radio group
+    </label>
+    <cds-radio
+      cds-control=""
     >
-      <cds-radio-group
-        l={null}
-      >
-        <label>
-          radio group
-        </label>
-        <CdsRadio>
-          <CdsRadio
-            l={null}
-          >
-            <cds-radio
-              l={null}
-            >
-              <label>
-                radio 1
-              </label>
-              <input
-                defaultChecked={true}
-                type="radio"
-              />
-            </cds-radio>
-          </CdsRadio>
-        </CdsRadio>
-        <CdsRadio>
-          <CdsRadio
-            l={null}
-          >
-            <cds-radio
-              l={null}
-            >
-              <label>
-                radio 2
-              </label>
-              <input
-                type="radio"
-              />
-            </cds-radio>
-          </CdsRadio>
-        </CdsRadio>
-        <CdsRadio>
-          <CdsRadio
-            l={null}
-          >
-            <cds-radio
-              l={null}
-            >
-              <label>
-                radio 3
-              </label>
-              <input
-                type="radio"
-              />
-            </cds-radio>
-          </CdsRadio>
-        </CdsRadio>
-      </cds-radio-group>
-    </CdsRadioGroup>
-  </CdsRadioGroup>
+      <label>
+        radio 1
+      </label>
+      <input
+        checked=""
+        type="radio"
+      />
+    </cds-radio>
+    <cds-radio
+      cds-control=""
+    >
+      <label>
+        radio 2
+      </label>
+      <input
+        type="radio"
+      />
+    </cds-radio>
+    <cds-radio
+      cds-control=""
+    >
+      <label>
+        radio 3
+      </label>
+      <input
+        type="radio"
+      />
+    </cds-radio>
+  </cds-radio-group>
 </div>
 `;

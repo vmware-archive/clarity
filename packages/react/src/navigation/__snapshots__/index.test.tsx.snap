@@ -2,83 +2,46 @@
 
 exports[`CdsNavigation snapshot 1`] = `
 <div>
-  <CdsNavigation>
-    <CdsNavigation
-      l={null}
+  <cds-navigation
+    role="list"
+  >
+    <cds-navigation-start
+      id="nav-start"
+      role="listitem"
     >
-      <cds-navigation
-        l={null}
+      Root start
+    </cds-navigation-start>
+    <cds-navigation-item
+      id="nav-item-1"
+      role="listitem"
+    >
+      <a>
+        Root item
+      </a>
+    </cds-navigation-item>
+    <cds-navigation-group
+      id="nav-group"
+    >
+      <cds-navigation-start
+        id="nav-start-1"
+        role="listitem"
       >
-        <CdsNavigationStart>
-          <CdsNavigationStart
-            l={null}
-          >
-            <cds-navigation-start
-              l={null}
-            >
-              Root start
-            </cds-navigation-start>
-          </CdsNavigationStart>
-        </CdsNavigationStart>
-        <CdsNavigationItem>
-          <CdsNavigationItem
-            l={null}
-          >
-            <cds-navigation-item
-              l={null}
-            >
-              <a>
-                Root item
-              </a>
-            </cds-navigation-item>
-          </CdsNavigationItem>
-        </CdsNavigationItem>
-        <CdsNavigationGroup>
-          <CdsNavigationGroup
-            l={null}
-          >
-            <cds-navigation-group
-              l={null}
-            >
-              <CdsNavigationStart>
-                <CdsNavigationStart
-                  l={null}
-                >
-                  <cds-navigation-start
-                    l={null}
-                  >
-                    <CdsNavigationStart>
-                      <CdsNavigationStart
-                        l={null}
-                      >
-                        <cds-navigation-start
-                          l={null}
-                        >
-                          Group start
-                        </cds-navigation-start>
-                      </CdsNavigationStart>
-                    </CdsNavigationStart>
-                    <CdsNavigationItem>
-                      <CdsNavigationItem
-                        l={null}
-                      >
-                        <cds-navigation-item
-                          l={null}
-                        >
-                          <a>
-                            Group item
-                          </a>
-                        </cds-navigation-item>
-                      </CdsNavigationItem>
-                    </CdsNavigationItem>
-                  </cds-navigation-start>
-                </CdsNavigationStart>
-              </CdsNavigationStart>
-            </cds-navigation-group>
-          </CdsNavigationGroup>
-        </CdsNavigationGroup>
-      </cds-navigation>
-    </CdsNavigation>
-  </CdsNavigation>
+        <cds-navigation-start
+          id="nav-start-2"
+          role="listitem"
+        >
+          Group start
+        </cds-navigation-start>
+        <cds-navigation-item
+          id="nav-item"
+          role="listitem"
+        >
+          <a>
+            Group item
+          </a>
+        </cds-navigation-item>
+      </cds-navigation-start>
+    </cds-navigation-group>
+  </cds-navigation>
 </div>
 `;

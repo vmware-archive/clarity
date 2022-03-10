@@ -2,88 +2,53 @@
 
 exports[`CdsToggle snapshot 1`] = `
 <div>
-  <CdsToggleGroup>
-    <CdsToggleGroup
-      l={null}
+  <cds-toggle-group
+    cds-control-group=""
+    role="group"
+  >
+    <label>
+      A toggle group
+    </label>
+    <cds-toggle
+      cds-control=""
     >
-      <cds-toggle-group
-        l={null}
-      >
-        <label>
-          A toggle group
-        </label>
-        <CdsToggle>
-          <CdsToggle
-            l={null}
-          >
-            <cds-toggle
-              l={null}
-            >
-              <label>
-                Toggle 1
-              </label>
-              <input
-                type="checkbox"
-              />
-            </cds-toggle>
-          </CdsToggle>
-        </CdsToggle>
-        <CdsToggle>
-          <CdsToggle
-            l={null}
-          >
-            <cds-toggle
-              l={null}
-            >
-              <label>
-                Toggle 2
-              </label>
-              <input
-                type="checkbox"
-              />
-            </cds-toggle>
-          </CdsToggle>
-        </CdsToggle>
-        <n>
-          <n
-            l={null}
-          >
-            <cds-control-message
-              l={null}
-            >
-              group message text
-            </cds-control-message>
-          </n>
-        </n>
-      </cds-toggle-group>
-    </CdsToggleGroup>
-  </CdsToggleGroup>
-  <CdsToggle>
-    <CdsToggle
-      l={null}
+      <label>
+        Toggle 1
+      </label>
+      <input
+        type="checkbox"
+      />
+    </cds-toggle>
+    <cds-toggle
+      cds-control=""
     >
-      <cds-toggle
-        l={null}
-      >
-        <label>
-          Toggle
-        </label>
-        <input
-          type="checkbox"
-        />
-        <n>
-          <n
-            l={null}
-          >
-            <cds-control-message
-              l={null}
-            >
-              message text
-            </cds-control-message>
-          </n>
-        </n>
-      </cds-toggle>
-    </CdsToggle>
-  </CdsToggle>
+      <label>
+        Toggle 2
+      </label>
+      <input
+        type="checkbox"
+      />
+    </cds-toggle>
+    <cds-control-message
+      slot="message"
+    >
+      group message text
+    </cds-control-message>
+  </cds-toggle-group>
+  <cds-toggle
+    cds-control=""
+  >
+    <label>
+      Toggle
+    </label>
+    <input
+      type="checkbox"
+    />
+    <cds-control-message
+      slot="message"
+    >
+      message text
+    </cds-control-message>
+  </cds-toggle>
 </div>
 `;

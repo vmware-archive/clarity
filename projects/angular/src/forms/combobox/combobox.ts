@@ -194,13 +194,23 @@ export class ClrCombobox<T>
 
   @Input('clrMulti')
   set multiSelect(value: boolean | string) {
-    if (value) {
-      this.optionSelectionService.selectionModel = new MultiSelectComboboxModel<T>();
-    } else {
-      // in theory, setting this again should not cause errors even though we already set it in constructor,
-      // since the initial call to writeValue (caused by [ngModel] input) should happen after this
-      this.optionSelectionService.selectionModel = new SingleSelectComboboxModel<T>();
+    let isMultiSelectModel: boolean;
+
+    switch (true) {
+      case value === 'false' || value === false:
+        isMultiSelectModel = false;
+        break;
+      case value === 'true' || value === true:
+        isMultiSelectModel = true;
+        break;
+      default:
+        isMultiSelectModel = false;
     }
+    // in theory, setting this again should not cause errors even though we already set it in constructor,
+    // since the initial call to writeValue (caused by [ngModel] input) should happen after this
+    this.optionSelectionService.selectionModel = isMultiSelectModel
+      ? new MultiSelectComboboxModel<T>()
+      : new SingleSelectComboboxModel<T>();
     this.updateControlValue();
   }
 

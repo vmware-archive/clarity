@@ -37,7 +37,7 @@ import { ClrComboboxModule } from './combobox.module';
   `,
 })
 class TestComponent {
-  multi: boolean;
+  multi: boolean | string;
   selection: any;
   inputValue: string;
   openState: boolean;
@@ -147,8 +147,20 @@ export default function (): void {
         expect(selectionService.selectionModel instanceof SingleSelectComboboxModel).toBeTrue();
       });
 
-      it('can change to multi model', () => {
+      it('can change to multi model by setting multi to boolean true', () => {
         fixture.componentInstance.multi = true;
+        fixture.detectChanges();
+        expect(selectionService.selectionModel instanceof MultiSelectComboboxModel).toBeTrue();
+      });
+
+      it('can change to single model by setting multi to string "false"', () => {
+        fixture.componentInstance.multi = 'false';
+        fixture.detectChanges();
+        expect(selectionService.selectionModel instanceof SingleSelectComboboxModel).toBeTrue();
+      });
+
+      it('can change to multi model by setting multi to string "true"', () => {
+        fixture.componentInstance.multi = 'true';
         fixture.detectChanges();
         expect(selectionService.selectionModel instanceof MultiSelectComboboxModel).toBeTrue();
       });

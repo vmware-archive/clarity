@@ -27,7 +27,7 @@
               >
                 <template v-for="(childItem, index) in $options.filters.filterReleasedComponents(item.children)">
                   <router-link
-                    @focus.native="focusToggle(index)"
+                    @focus.native="focusToggle(index, item.children)"
                     class="nav-link"
                     :to="childItem.path"
                     v-if="childItem.type !== 'external' && isBeta(childItem) === false"
@@ -195,14 +195,19 @@ export default {
       // This is because Vue can't detect changes mutated on an array, so this alerts it of changes
       this.$set(this.states, index, !this.states[index]);
     },
-    focusToggle: function (index) {
+    focusToggle: function (index, items) {
       if (this.states[index]) {
         // already open
         return;
-      } else {
-        // open when hidden item is focused
-        this.$set(this.states, index, !this.states[index]);
       }
+
+      // Fix of https://github.com/vmware/clarity/issues/6757
+      if (this.states[index] !== items) {
+        return;
+      }
+
+      // open when hidden item is focused
+      this.$set(this.states, index, !this.states[index]);
     },
     isItemActive: function (childItem) {
       const childItemPath = removePathExt(childItem.path);

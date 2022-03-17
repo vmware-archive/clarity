@@ -1,3 +1,5 @@
+NOTE: The Clarity Design System has moved and is now split into two repositories, one for [Clarity Angular](https://github.com/vmware-clarity/ng-clarity) and one for [Clarity Core](https://github.com/vmware-clarity/core). This repository is now for archived purposes only.
+
 ![Clarity](logo.png)
 
 # Clarity Design System

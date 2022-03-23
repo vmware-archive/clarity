@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2022 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -28,6 +28,8 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
   @ViewChildren(BreakingChange) breakingChanges: QueryList<BreakingChange>;
   @ViewChildren(BugFix) bugFixes: QueryList<BugFix>;
   @ViewChildren(NewComponent) newComponents: QueryList<NewComponent>;
+
+  movedToGithub: boolean;
 
   nbBreakingChanges: number;
   nbBugFixes: number;
@@ -86,7 +88,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
           this.resetCounts();
           setTimeout(() => {
             if (urlLength > 0 && url[urlLength - 1] !== 'news') {
-              this.setTemplate(url[urlLength - 1]);
+              this.setTemplate(decodeURIComponent(url[urlLength - 1]));
             } else if (url[urlLength - 1] === 'news') {
               this.setTemplate(this.current);
             }
@@ -123,6 +125,7 @@ export class NewsComponent implements OnDestroy, AfterViewInit {
   }
 
   setInfo(releaseNo: string, releaseInfo: any): void {
+    this.movedToGithub = releaseInfo.movedToGithub || false;
     this.releaseNumber = releaseNo;
     this.releaseDate = releaseInfo.date;
     this.sketchVersion = releaseInfo.sketch;

@@ -78,6 +78,7 @@
     "@angular/router": "~13.0.0",
     "@cds/angular": "^6.0.0-next.0",
     "@cds/core": "^6.0.0-next.0",
+    "@clr/angular": "^13.0.3",
     "dotenv": "8.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",

@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="card card-block whats-new-summary">
+    <div class="card card-block whats-new-summary" *ngIf="!movedToGithub">
       <div class="card-text summary-blocks">
         <div class="summary-block">
           <p class="summary-block-title">Breaking Changes</p>
@@ -107,7 +107,7 @@
 <nav class="sidenav" [clr-nav-level]="2">
   <section class="sidenav-content">
     <a class="nav-link" routerLink="/news" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-      >Current Release ({{current}})</a
+      >Current Release</a
     >
 
     <section *ngFor="let version of versions | keyvalue:orderVersions" class="nav-group collapsible">

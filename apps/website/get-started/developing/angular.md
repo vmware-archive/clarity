@@ -139,5 +139,5 @@ That is all you need to get Clarity installed. To see it running, start your app
 
 1. Add Clarity components wherever they are needed in your application
 1. Explore the component usage, demo and api sections to learn about specific components
-1. Get help by asking a question on [Clarity discussions](https://github.com/vmware/clarity/discussions)
+1. Get help by asking a question on [Clarity discussions](https://github.com/vmware-clarity/ng-clarity/discussions)
 1. Follow [Clarity on Twitter](https://twitter.com/vmwareclarity), stay up to date

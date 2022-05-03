@@ -8,7 +8,7 @@ As a design system, Clarity plays a large role in applications and many people f
 
 ## How we work
 
-Clarity is an open source project, so we welcome input from the community to help guide the future of Clarity. If you are interested in submitting ideas, we encourage you to use the [GitHub Discussions](https://github.com/vmware/clarity/discussions) forum to share your thoughts. We continuously take those requests and review them and incorporate things into our future plans.
+Clarity is an open source project, so we welcome input from the community to help guide the future of Clarity. If you are interested in submitting ideas, we encourage you to use the [GitHub Discussions](https://github.com/vmware-clarity/core/discussions) forum to share your thoughts. We continuously take those requests and review them and incorporate things into our future plans.
 
 Maintaining a design system is a delicate balance of defining the specific capabilities and allowing maximum flexibility. We often take requests together in block to design the best solution that meets the most needs. This means at times we can't accept or prioritize requests, but do our best to balance the overall needs of the community with aligning efforts to keep harmony with Clarity.
 
@@ -45,10 +45,6 @@ This is a new component, designed to replace Clarity Angular Tree View. We are b
 ### Core Components
 
 Clarity is actively working on creating our Clarity Core components. Our long term goal is to provide a greater level of capabilities through Clarity Core for the next generation of applications to depend upon for the long term. We are also working to ensure that accessibility is included by default in all of our Core components.
-
-#### Datagrid
-
-This is a collection of new components, designed to replace the Clarity Angular Datagrid. We are building out a new Datagrid that will start with the most basic use cases and be expanded to support the full range of features currently found in Clarity Angular. You can expect the Datagrid to be released in waves with new capabilities over time, but the current work is focused on the basic Datagrid use cases and foundational architecture.
 
 #### Popovers and Dropdowns
 

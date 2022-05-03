@@ -14,7 +14,7 @@ If you are new to Clarity, we suggest using Clarity's web component implemenatio
 
 ## Contributing to Clarity
 
-The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware/clarity/blob/next/docs/CONTRIBUTING.md) on GitHub.
+The Clarity team welcomes contributions from the community. See our [contribution guidelines](https://github.com/vmware-clarity/core/blob/main/docs/CONTRIBUTING.md) on GitHub.
 
 ## Clarity Blog
 
@@ -22,14 +22,10 @@ Clarity regularly blogs about new releases, technical insights, design improveme
 
 ## Reporting an Issue
 
-Ongoing work and feature requests are tracked using [GitHub Issues](https://github.com/vmware/clarity/issues). Please feel free to file an issue.
+Ongoing work and feature requests are tracked using [GitHub Issues](https://github.com/vmware-clarity/core/issues). Please feel free to file an issue.
 
 When submitting issues please provide a minimal app that demonstrates the issue by forking one of the Clarity Stackblitz projects. Since it depends on your issue starting with the correct Clarity version and theme will help us deliver support. You can find all of the [StackBlitz templates here](https://stackblitz.com/@clr-team).
 
 ## Asking a Question
 
-Ask questions on [GitHub Discussions](https://github.com/vmware/clarity/discussions) to get help with your project. You can also view previous discussions that might answer your questions or even share news about your successes!
-
-## Attributions
-
-See the [legal attributions](https://github.com/vmware/clarity/blob/master/docs/ATTRIBUTION.md) for third party software included in Clarity.
+Ask questions on [GitHub Discussions](https://github.com/vmware-clarity/core/discussions) to get help with your project. You can also view previous discussions that might answer your questions or even share news about your successes!

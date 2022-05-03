@@ -1,3 +1,3 @@
 # Angular Components Overview
 
-<ComponentsOverview framework="Angular Components"/>
+For `@clr/angular` component documentation, please visit [angular.clarity.design.](https://angular.clarity.design/)

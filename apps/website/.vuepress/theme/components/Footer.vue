@@ -15,7 +15,7 @@
         <div class="social-media-links">
           <a
             aria-label="Clarity on GitHub"
-            href="https://github.com/vmware/clarity"
+            href="https://github.com/vmware-clarity/core"
             target="_blank"
             class="sm-icon-link"
           >

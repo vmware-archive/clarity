@@ -86,11 +86,11 @@
       </div>
     </section>
     <!-- release notes -->
-    <section cds-layout="p-l:md p-l@sm:xl p-r:md p-r@sm:none p-t:lg p-y@sm:xl" class="tinted action-light">
+    <!-- <section cds-layout="p-l:md p-l@sm:xl p-r:md p-r@sm:none p-t:lg p-y@sm:xl" class="tinted action-light">
       <div class="home-section">
         <WhatsNew version="v5" />
       </div>
-    </section>
+    </section> -->
     <!-- just like you -->
     <section cds-layout="p-l:md p-l@sm:xl p-r:md p-r@sm:none p-y:lg p-y@sm:xl" class="tinted action-dark">
       <div class="home-section">
@@ -155,7 +155,11 @@
           <router-link to="/get-started/developing/" cds-layout="m-t:md" cds-text="subsection expanded"
             >Get started with Core components</router-link
           >
-          <a target="_blank" href="https://github.com/vmware/clarity" cds-layout="m-t:md" cds-text="subsection expanded"
+          <a
+            target="_blank"
+            href="https://github.com/vmware-clarity/core"
+            cds-layout="m-t:md"
+            cds-text="subsection expanded"
             >Explore our Github</a
           >
         </div>

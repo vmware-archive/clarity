@@ -118,7 +118,9 @@ export default {
     },
 
     sidebarItems() {
-      return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
+      const items = resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
+      console.log(items);
+      return items;
     },
   },
 

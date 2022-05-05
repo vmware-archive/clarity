@@ -277,7 +277,7 @@
 # Redirect support for storybook/core demo
 [[redirects]]
   from = "/storybook/core/*"
-  to = "/storybook/core"
+  to = "https://main--core-demo.netlify.app/:splat"
   status = 200
 
 # Support CORS on JSON files

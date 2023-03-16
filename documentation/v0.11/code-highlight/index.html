@@ -1,4 +1,21 @@
-<!DOCTYPE html><html lang="en-US"><head><!-- Meta --><meta charset="utf-8"><title>Clarity Design System - Documentation - Code Highlight</title><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta content="yes" name="apple-mobile-web-app-capable"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="robots" content="noindex nofollow"><base href="/clarity/documentation/v0.11/"><link rel="shortcut icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="icon" href="favicon.ico?v=2" type="image/x-icon"><script src="scripts/custom-elements.min.js"></script><script src="scripts/clr-icons.min.js"></script><script src="scripts/prism.js"></script><script src="scripts/prism-typescript.min.js"></script><script type="text/javascript">if (/vmware.github.io/.test(window.location.href)) {
+<!DOCTYPE html><html lang="en-US"><head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+
+    <title>Clarity Design System - Page Not Found</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <base href="/clarity/">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+
+    <script type="text/javascript">
+        if (/vmware.github.io/.test(window.location.href)) {
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -20,592 +37,48 @@
                 ga('send', 'event', 'icon-search', 'input', searchedIcon, numberOfMatches);
             }
 
-        }</script><link href="styles.867aeaf22b90fcfa5ff0.bundle.css" rel="stylesheet"><style ng-transition="clarity">[_nghost-c1]{width:100%;padding:.25rem 0 .25rem .5rem;border-bottom:1px solid #ccc;display:block}</style><style ng-transition="clarity">pre[_ngcontent-c5] {
-            background: transparent;
-            padding: 12px;
-            max-height: none;
-        }</style></head><body id="body"><root ng-version="5.0.0" class="layout-documentation page-code-highlight"><clr-alert>
+            window["trackHiringAlert"] = function (eventLabel, externalLink) {
+                if (eventLabel) {
+                    if (externalLink) {
+                        ga('send', 'event', 'hiring-alert', 'click', eventLabel, {
+                            'transport': 'beacon',
+                            'hitCallback': function () {
+                                document.location = eventLabel;
+                            }
+                        });
+                    }
+                    else {
+                        ga('send', 'event', 'hiring-alert', 'click', eventLabel);
+                    }
+                }
+            }
+        }
+    </script>
+<link rel="stylesheet" href="styles.0e274f532d181bfc3ed5.css"><style ng-transition="clarity">[_nghost-sc0] { display: block; }</style><style ng-transition="clarity">.clrweb-error-block[_ngcontent-sc7] {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 24px;
+}
 
-<!----><div class="alert alert-warning alert-sm alert-app-level">
-    <div class="alert-items">
-        
-    <clr-alert-item class="alert-item">
-        <div class="alert-icon-wrapper">
-            <clr-icon class="alert-icon" shape="exclamation-triangle"></clr-icon>
-        </div>
-        
-        <span class="alert-text">
-            This version of Clarity is no longer supported. We recommend that you update to the latest version of Clarity.
-        </span>
-        <div class="alert-actions">
-            <a class="btn alert-action" href="/clarity/news">Update</a>
-        </div>
-    
-    </clr-alert-item>
+.clrweb-error-block[_ngcontent-sc7]   .logo-block[_ngcontent-sc7]   img[_ngcontent-sc7] {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    height: 286px;
+    opacity: 0.28;
+}
 
-    </div>
-    <!---->
-</div>
-</clr-alert>
-<clr-main-container class="main-container">
-    <clr-header class="header-6 header">
-        <!----><button class="header-hamburger-trigger" type="button">
-            <span></span>
-        </button>
-        
-        <div class="branding">
-            <a class="logo-and-title" href="/clarity/">
-                <span class="clr-icon clarity-logo"></span>
-                <span class="title">Project Clarity</span>
-            </a>
-        </div>
-        <div class="divider"></div>
-        <div class="header-nav clr-nav-level-1">
-            <a class="nav-link" id="home-link" href="/clarity/"><span class="nav-text">Home</span></a>
-            <a class="nav-link active" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Documentation</span></a>
-            <a class="nav-link" href="/clarity/icons/clarity-icons"><span class="nav-text">Icons</span></a>
-            <a class="nav-link" href="/clarity/community"><span class="nav-text">Community</span></a>
-            <a class="nav-link" href="/clarity/news"><span class="nav-text">What's New</span></a>
-        </div>
-        <div class="settings">
-            
-            <iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe>
-        </div>
-    
-        <!----><button class="header-overflow-trigger" type="button">
-            <span></span>
-        </button>
-        <div class="header-backdrop"></div>
-    </clr-header>
+.clrweb-error-block[_ngcontent-sc7]   p.error-code[_ngcontent-sc7] {
+    font-size: 60px;
+    font-weight: 200;
+    line-height: 1em;
+    opacity: 0.5;
+    margin-top: 0;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZS1ub3QtZm91bmQvcGFnZS1ub3QtZm91bmQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGVBQWU7SUFDZixtQkFBbUI7SUFDbkIsa0JBQWtCO0NBQ3JCOztBQUVEO0lBQ0ksWUFBWTtJQUNaLGlCQUFpQjtJQUNqQixtQkFBbUI7SUFDbkIsY0FBYztJQUNkLGNBQWM7Q0FDakI7O0FBRUQ7SUFDSSxnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLGlCQUFpQjtJQUNqQixhQUFhO0lBQ2IsY0FBYztDQUNqQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2xyd2ViLWVycm9yLWJsb2NrIHtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgcGFkZGluZy10b3A6IDI0cHg7XG59XG5cbi5jbHJ3ZWItZXJyb3ItYmxvY2sgLmxvZ28tYmxvY2sgaW1nIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXgtd2lkdGg6IDM4MHB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBoZWlnaHQ6IDI4NnB4O1xuICAgIG9wYWNpdHk6IDAuMjg7XG59XG5cbi5jbHJ3ZWItZXJyb3ItYmxvY2sgcC5lcnJvci1jb2RlIHtcbiAgICBmb250LXNpemU6IDYwcHg7XG4gICAgZm9udC13ZWlnaHQ6IDIwMDtcbiAgICBsaW5lLWhlaWdodDogMWVtO1xuICAgIG9wYWNpdHk6IDAuNTtcbiAgICBtYXJnaW4tdG9wOiAwO1xufSJdfQ== */</style></head>
 
-    <router-outlet></router-outlet><documentation class="content-container"><router-outlet></router-outlet><clr-code-highlight-demo class="content-area dox-content-panel"><clr-doc-wrapper class="dox-wrapper"><div class="dox-wrapper dox-header">
-    <section>
-        <h1>Code Highlight</h1>
-        <!---->
+<body id="body">
+    <root ng-version="7.0.1" class="layout-error"><clr-main-container class="main-container"><!----><clr-header class="header-6 header"><!----><button class="header-hamburger-trigger" type="button"><span></span></button><div class="branding"><a class="logo-and-title" routerlink="/" href="/"><span class="clr-icon clarity-logo"></span><span class="title">Project Clarity</span></a></div><div class="divider"></div><div class="header-nav clr-nav-level-1"><a class="nav-link" id="home-link" routerlink="/" routerlinkactive="active" href="/"><span class="nav-text">Home</span></a><!----><a class="nav-link active" routerlink="/documentation" routerlinkactive="active" href="/documentation"><span class="nav-text">Documentation</span></a><!----><a class="nav-link" routerlink="/icons" routerlinkactive="active" href="/icons"><span class="nav-text">Icons</span></a><a class="nav-link" routerlink="/community" routerlinkactive="active" href="/community"><span class="nav-text">Community</span></a><a class="nav-link" routerlink="/news" routerlinkactive="active" href="/news"><span class="nav-text">What's New</span></a></div><div class="settings"><iframe class="github-btn" frameborder="0" height="20px" scrolling="0" src="https://ghbtns.com/github-btn.html?user=vmware&amp;repo=clarity&amp;type=star&amp;count=true" width="170px"></iframe></div><!----><div class="header-backdrop"></div></clr-header><router-outlet></router-outlet><page-not-found _nghost-sc7="" class="content-container"><div _ngcontent-sc7="" class="clrweb-error-block"><div _ngcontent-sc7="" class="logo-block"><img _ngcontent-sc7="" src="assets/images/clarity_logo.svg"></div><p _ngcontent-sc7="" class="error-code">404</p><p _ngcontent-sc7="" class="error-blurb">We couldn't find the page you requested.</p></div></page-not-found></clr-main-container></root>
+<script type="text/javascript" src="runtime.ed699ac5f6c180c9d0be.js"></script><script type="text/javascript" src="polyfills.cfe9ecd3b91034f116f0.js"></script><script type="text/javascript" src="scripts.e09963802947d62a0957.js"></script><script type="text/javascript" src="main.489c88ca2a6613cdb32a.js"></script>
 
-        <!----><div class="component-workstream-bugs">
-            <span class="bug bug-html hidden">
-            <img src="assets/images/bugs/badge_html5.svg" alt="HTML5" title="HTML5">
-            </span>
-            <span class="bug bug-css hidden">
-            <img src="assets/images/bugs/badge_css3.svg" alt="CSS3" title="CSS3">
-            </span>
-            <!----><span class="bug bug-ng">
-            <img src="assets/images/bugs/badge_ng_inprogress.svg" alt="Angular" title="Angular">
-            </span>
-        </div>
-
-        <div class="dox-tabs">
-            <ul class="list-unstyled">
-                <!----><li>
-                    <a class="clrweb-tablink active" fragment="top" id="topTabLink" routerlink="." routerlinkactive="active" href="/code-highlight#top">
-                        Examples &amp; Code
-                    </a>
-                </li>
-                <!----><li>
-                    <a class="clrweb-tablink active" fragment="guidelines" id="guidelinesTabLink" routerlink="." routerlinkactive="active" href="/code-highlight#guidelines">
-                        Design Guidelines
-                    </a>
-                </li>
-                <!---->
-                <!---->
-            </ul>
-        </div>
-    </section>
-</div>
-
-<section class="dox-content" hash-listener="" style="position:relative;">
-    <div class="dox-content-wrapper">
-        <a id="top"></a>
-        
-    <article>
-        <h5 class="component-summary" id="code-highlight-is-a-custom-directive-to-highlight-code-blocks-using-prismhttpprismjscom" target="_blank">Code Highlight
-            is a custom directive to highlight code blocks using <a href="http://prismjs.com/" target="_blank">Prism</a>.
-        </h5>
-
-        <div id="code-examples">
-            <p>Highlighting languages other than HTML, CSS, and JavaScript requires <code class="clr-code">prism.css</code> and <code class="clr-code">prism.js</code> to be included 
-                in the page.</p>
-
-            <clr-code-highlight-imports-demo>
-
-<clr-code-snippet _nghost-c5="">
-        <!----><!---->
-            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;head&gt;
-    ...
-    &lt;link rel="stylesheet" href="node_modules/prismjs/themes/prism-solarizedlight.css"&gt;
-    &lt;script src="node_modules/prismjs/prism.js"&gt;&lt;/script&gt;
-    &lt;script src="node_modules/prismjs/components/prism-typescript.min.js"&gt;&lt;/script&gt;
-    ...
-&lt;/head&gt;</code></pre>
-        
-        <!---->
-    </clr-code-snippet></clr-code-highlight-imports-demo>
-
-            <p>To highlight a code block, add the <code class="clr-code">clr-code-highlight</code> directive to the
-                <code class="clr-code">code</code> tag with the value set to the <code class="clr-code">language-*</code> style classes from PrismJS. Refer to the <a href="http://prismjs.com/#languages-list" target="_blank">Prism
-                documentation</a> for the list of supported languages.</p>
-
-            <h6 id="example">Example</h6>
-            <clr-code-highlight-snippet-demo>
-
-<clr-code-snippet _nghost-c5="">
-        <!----><!---->
-            <pre _ngcontent-c5=""><code _ngcontent-c5="" class="language-html">&lt;!-- "&amp;#123;" left curly brace / "&amp;#125;" right curly brace --&gt;
-&lt;pre&gt;
-    &lt;code clr-code-highlight="language-css"&gt;
-        .some-component &amp;#123;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        &amp;#125;
-    &lt;/code&gt;
-&lt;/pre&gt;</code></pre>
-        
-        <!---->
-    </clr-code-snippet>
-</clr-code-highlight-snippet-demo>
-
-        </div>
-    </article>
-
-    </div>
-</section></clr-doc-wrapper></clr-code-highlight-demo>
-<nav class="sidenav clr-nav-level-2">
-    <section class="sidenav-content">
-        <version-switcher _nghost-c1=""><clr-dropdown _ngcontent-c1="" class="dropdown">
-  <button _ngcontent-c1="" class="dropdown-toggle btn btn-link" clrdropdowntrigger="" type="button">
-    Version v0.11
-    <clr-icon _ngcontent-c1="" shape="caret down"></clr-icon>
-  </button>
-  <!---->
-</clr-dropdown>
-</version-switcher>
-
-        <a class="nav-link" routerlink="/" routerlinkactive="active" href="/">Component Status</a>
-
-        <a class="nav-link" routerlink="/get-started" routerlinkactive="active" href="/get-started">Get Started</a>
-
-        <section class="nav-group collapsible">
-            <input id="tab2" type="checkbox">
-            <label for="tab2">Patterns</label>
-            <ul class="nav-list">
-                <documentation-nav-links type="pattern">
-        <!----><!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/app-layout">
-                    Application Layout
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/color">
-                    Color Palette
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/navigation">
-                    Navigation
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/themes">
-                    Themes
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/typography">
-                    Typography
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        
-    </documentation-nav-links>
-            </ul>
-        </section>
-        <section class="nav-group collapsible">
-            <input id="tab1" type="checkbox">
-            <label for="tab1">Components</label>
-            <ul class="nav-list">
-                <documentation-nav-links type="component">
-        <!----><!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/alerts">
-                    Alerts
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/badges">
-                    Badges
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/buttons">
-                    Buttons
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/button-group">
-                    Button Group
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/cards">
-                    Cards
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/checkboxes">
-                    Checkboxes
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link active" routerlinkactive="active" href="/code-highlight">
-                    Code Highlight
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/datepicker">
-                    Date Picker
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/datagrid">
-                    Datagrid
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/dropdowns">
-                    Dropdowns
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/forms">
-                    Forms (Layout)
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/grid">
-                    Grid
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/header">
-                    Header
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/input-fields">
-                    Input Fields
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/labels">
-                    Labels
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/lists">
-                    Lists
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/login">
-                    Login Page
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/modals">
-                    Modals
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/progress">
-                    Progress Bars
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/radios">
-                    Radio Buttons
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/select-boxes">
-                    Select Boxes
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/sidenav">
-                    Sidenav
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/signposts">
-                    Signposts
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/spinners">
-                    Spinners
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/stack-view">
-                    Stack View
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/tables">
-                    Tables
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/tabs">
-                    Tabs
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/toggle-switches">
-                    Toggle Switches
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/tooltips">
-                    Tooltips
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/tree-view">
-                    Tree View
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/vertical-nav">
-                    Vertical Nav
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        <!---->
-            <!---->
-        <!---->
-            <!----><li>
-                <a class="nav-link" routerlinkactive="active" href="/wizards">
-                    Wizards
-                    <!---->
-                    <!---->
-                </a>
-            </li>
-        
-    </documentation-nav-links>
-            </ul>
-        </section>
-    </section>
-</nav></documentation>
-
-</clr-main-container>
-</root><script type="text/javascript" src="inline.a5b0b2167e209636d4de.bundle.js"></script><script type="text/javascript" src="polyfills.dbbf9d5a3269cc05457b.bundle.js"></script><script type="text/javascript" src="main.8fa68ecd9e858c8b9727.bundle.js"></script></body></html>
+</body></html>
